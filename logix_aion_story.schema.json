@@ -1,0 +1,512 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Logix AION narrative catalog",
+  "type": "object",
+  "properties": {
+    "assumptions": {
+      "type": "object",
+      "properties": {
+        "scenario": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "base_scenario": {
+              "type": "string"
+            },
+            "alternative_scenario": {
+              "type": "string"
+            },
+            "time_model": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "base_scenario",
+            "alternative_scenario",
+            "time_model"
+          ],
+          "additionalProperties": false
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "person",
+                  "company",
+                  "group",
+                  "market"
+                ]
+              },
+              "aliases": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "type",
+              "aliases",
+              "description"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "principles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "actor_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "equipment": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "components": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "components"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "description",
+              "actor_refs"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "conventions": {
+          "type": "object",
+          "properties": {
+            "dates": {
+              "type": "string"
+            },
+            "plans": {
+              "type": "string"
+            },
+            "naming": {
+              "type": "string"
+            },
+            "event_structure": {
+              "type": "string"
+            },
+            "provenance": {
+              "type": "string"
+            },
+            "phase_order": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "dates",
+            "plans",
+            "naming",
+            "event_structure",
+            "provenance",
+            "phase_order"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "scenario",
+        "entities",
+        "principles",
+        "conventions"
+      ],
+      "additionalProperties": false
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "pre_conference",
+              "between_conferences",
+              "conference"
+            ]
+          },
+          "period": {
+            "$ref": "#/$defs/date"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/event"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "kind",
+          "period",
+          "events"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "assumptions",
+    "phases"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "date": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$"
+        },
+        "end": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$"
+        },
+        "precision": {
+          "enum": [
+            "year",
+            "month",
+            "day",
+            "range",
+            "unspecified"
+          ]
+        },
+        "qualifier": {
+          "type": "string"
+        },
+        "display": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "precision",
+        "qualifier",
+        "display"
+      ],
+      "additionalProperties": false
+    },
+    "term": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "reuse_right",
+            "retailer_margin",
+            "cash_offer",
+            "equity_offer",
+            "technical_access",
+            "testing",
+            "consultation",
+            "responsibility",
+            "target_schedule",
+            "target_launch",
+            "target_price",
+            "staffing",
+            "funding",
+            "ownership",
+            "equity",
+            "porting_right",
+            "relocation"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "actor_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "minimum": {
+                  "type": "number"
+                },
+                "maximum": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "minimum",
+                "maximum"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effective_date": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "description",
+        "actor_refs",
+        "value",
+        "unit",
+        "effective_date"
+      ],
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^event\\."
+        },
+        "title": {
+          "type": "string"
+        },
+        "event_type": {
+          "enum": [
+            "premise",
+            "action",
+            "organization",
+            "recruitment",
+            "agreement",
+            "offer",
+            "launch",
+            "commitment",
+            "market_response",
+            "market_outcome",
+            "development",
+            "service_launch",
+            "release",
+            "policy",
+            "plan",
+            "release_and_policy"
+          ]
+        },
+        "date": {
+          "$ref": "#/$defs/date"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "actor_ref": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "actor_ref",
+              "role"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "actor_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "actor_refs",
+              "description"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "outcomes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "description"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "agreement_terms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/term"
+          }
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "minimum": {
+                        "type": "number"
+                      },
+                      "maximum": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "minimum",
+                      "maximum"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "unit": {
+                "type": "string"
+              },
+              "qualifier": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "value",
+              "unit",
+              "qualifier"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "product_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "related_event_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "event_type",
+        "date",
+        "participants",
+        "actions",
+        "outcomes",
+        "agreement_terms",
+        "metrics",
+        "product_refs",
+        "related_event_refs"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
