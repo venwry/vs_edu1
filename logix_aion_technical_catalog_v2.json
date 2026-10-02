@@ -2043,7 +2043,42 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "description": "Separately offered 16 KB XIP ROM expansion cartridge containing shared TUI routines and compact everyday tools. It complements the CP/M system cartridge; mutable workspace and clipboard data occupy reserved system RAM.",
+      "subcomponents": [
+        {
+          "id": "tui",
+          "name": "Shared TUI library",
+          "description": "Common screen, input and editing routines used by the tools and compatible applications."
+        },
+        {
+          "id": "editor",
+          "name": "Text editor",
+          "description": "Create and edit text using the common keyboard and editing conventions."
+        },
+        {
+          "id": "browser",
+          "name": "Disk browser",
+          "description": "Browse disk contents and select files through the shared text interface."
+        },
+        {
+          "id": "calculator",
+          "name": "Calculator",
+          "description": "Perform everyday calculations within the tools workspace."
+        },
+        {
+          "id": "calendar",
+          "name": "Calendar / scheduler",
+          "description": "Maintain calendar and scheduling information using the shared interface."
+        }
+      ],
+      "runtime_notes": [
+        "The complete cartridge is 16 KB; no individual subcomponent size is specified.",
+        "Uses one cartridge slot alongside the CP/M system cartridge.",
+        "Code executes from banked ROM where practical; writable state is held in RAM.",
+        "The shared TUI library provides the application-facing toolkit; the CP/M platform supplies its underlying driver and extension services.",
+        "A resident workspace reserves RAM explicitly; the cartridge does not imply multitasking."
+      ]
     },
     {
       "id": "software.abacus_1",
@@ -2193,7 +2228,8 @@
       "technology_refs": [
         "technology.bpi_relational_database",
         "technology.aion_c_portability_framework"
-      ]
+      ],
+      "sold_separately": true
     },
     {
       "id": "software.microsoft_basic_aurelia",
@@ -2227,7 +2263,8 @@
       },
       "features_ref": "technology.pulse_notebook_model",
       "positioning": "easy-to-learn programming language / interactive environment and direct BASIC competitor; tightly integrated with Abacus",
-      "training_available": true
+      "training_available": true,
+      "sold_separately": true
     },
     {
       "id": "software.abacus_2",
@@ -2256,7 +2293,8 @@
         "computer.aurelia_plus",
         "computer.artemis"
       ],
-      "delivery_on_artemis": "diskette"
+      "delivery_on_artemis": "diskette",
+      "sold_separately": true
     },
     {
       "id": "software.aionix",
@@ -3002,8 +3040,151 @@
     "notes": {
       "hardware": "Functional connections, not an electrical schematic. Select Memory to inspect the proposed mapping.",
       "peripherals": "Compatible choices, not simultaneous port occupancy. Later accessories show their introduction dates; they were not included at the original launch.",
-      "software": "Functional software relationships. Standard CP/M interfaces coexist with the Logix extension API.",
-      "memory": "Normal application map — identical to the organization table below. The mapper may temporarily replace pages within 7000–EFFF with ROM or VRAM; hidden RAM is preserved."
+      "software": "Explore system internals, the Business Tools cartridge and independent software offerings. Introduction dates are shown; later editions are not implied at launch.",
+      "memory": "Normal application map — identical to the organization table below. The mapper may temporarily replace pages within 7000–EFFF with ROM or VRAM; hidden RAM is preserved.",
+      "bundles": "Bundle decomposition. Existing offers and proposed packages are labeled separately. Listed dates prevent later software from being implied at launch; prices are not assumed."
     }
-  }
+  },
+  "proposed_bundles": [
+    {
+      "id": "bundle.proposed_aurelia_office",
+      "name": "Aurelia — Office productivity",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia",
+      "base_bundle_ref": "bundle.aurelia_mono",
+      "description": "A practical writing, calculation and spreadsheet setup.",
+      "earliest_offer_date": "1978-06-05",
+      "included_software": [
+        "software.business_tools_aurelia",
+        "software.abacus_1"
+      ],
+      "included_devices": [],
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_accounts",
+      "name": "Aurelia — Small-business accounting",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia",
+      "base_bundle_ref": "bundle.aurelia_mono",
+      "description": "Accounting tools with a dedicated printer for reports and business documents.",
+      "earliest_offer_date": "1978-11",
+      "included_software": [
+        "software.business_tools_aurelia",
+        "software.bpi_suite"
+      ],
+      "included_devices": [
+        "device.flexiprint40"
+      ],
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_developer",
+      "name": "Aurelia — C development",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia",
+      "base_bundle_ref": "bundle.aurelia_mono",
+      "description": "A complete platform starting point for C development and hardware/software integration.",
+      "earliest_offer_date": "1978-06-05",
+      "included_software": [
+        "software.business_tools_aurelia",
+        "software.simple_c_z80",
+        "software.aurelia_sdk"
+      ],
+      "included_devices": [],
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_plus_office",
+      "name": "Aurelia+ — Office productivity",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia_plus",
+      "base_bundle_ref": "bundle.aurelia_plus_mono",
+      "description": "A practical writing, calculation and spreadsheet setup.",
+      "earliest_offer_date": "1979-11",
+      "included_software": [
+        "software.business_tools_aurelia",
+        "software.abacus_2"
+      ],
+      "included_devices": [],
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_plus_accounts",
+      "name": "Aurelia+ — Small-business accounting",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia_plus",
+      "base_bundle_ref": "bundle.aurelia_plus_mono",
+      "description": "Accounting tools with a dedicated printer for reports and business documents.",
+      "earliest_offer_date": "1979-11",
+      "included_software": [
+        "software.business_tools_aurelia",
+        "software.bpi_suite"
+      ],
+      "included_devices": [
+        "device.flexiprint40"
+      ],
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_plus_developer",
+      "name": "Aurelia+ — C development",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia_plus",
+      "base_bundle_ref": "bundle.aurelia_plus_mono",
+      "description": "A complete platform starting point for C development and hardware/software integration.",
+      "earliest_offer_date": "1979-11",
+      "included_software": [
+        "software.business_tools_aurelia",
+        "software.simple_c_z80",
+        "software.aurelia_sdk"
+      ],
+      "included_devices": [],
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_plus_analysis",
+      "name": "Aurelia+ — Interactive analysis",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia_plus",
+      "base_bundle_ref": "bundle.aurelia_plus_mono",
+      "description": "Pairs the integrated Pulse environment with Abacus reporting.",
+      "earliest_offer_date": "1979-11",
+      "included_software": [
+        "software.business_tools_aurelia",
+        "software.abacus_2",
+        "software.pulse_1"
+      ],
+      "included_devices": [],
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ]
+    }
+  ]
 }
