@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.3",
+    "version": "2.4",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -11,7 +11,8 @@
       "references": "Stable IDs link computers, technologies, components, devices and software.",
       "architecture": "Architecture descriptions and relationships are shared with the interactive explorer.",
       "platform_editions": "Canonical software compatibility records with per-platform availability, execution target, role, dependencies and resource limits. Computer lists are derived from them.",
-      "design_status": "proposed_design objects are review proposals, not frozen specifications or measured guarantees."
+      "design_status": "Accepted implementation designs reside under specification.implementation_design. Numerical performance goals and pending validation are explicitly labeled; acceptance does not imply completed hardware/software.",
+      "graphics_storage": "Per-computer video.memory_layout supplies text and bitmap allocations; shared mode-switch and preservation behavior resides in the display API specification."
     }
   },
   "technologies": [
@@ -36,7 +37,58 @@
           "POWER REQUIREMENTS"
         ],
         "openness": "The technical specification is published for third-party implementation.",
-        "compatibility_policy": "Logix commits to forward peripheral compatibility across future Logix computer generations."
+        "compatibility_policy": "Logix commits to forward peripheral compatibility across future Logix computer generations.",
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "FlexiBUS v1 transport and driver model",
+          "physical": {
+            "topology": "Point-to-point host port to one device; no passive multidrop or implicit daisy chaining in v1.",
+            "signaling": "Separate differential transmit and receive pairs; asynchronous serial framing.",
+            "rates_bps": [
+              125000,
+              500000
+            ],
+            "startup_rate_bps": 125000,
+            "cable_target": "Shielded cable up to 3 m at 500 kbit/s; qualify signal integrity and period-appropriate line components.",
+            "power": "Power contacts/current limits and keyed connector pinout require an electrical drawing. Disk/printer devices self-powered; keyboard power is current-limited.",
+            "attachment": "Attach or detach only while the port is quiescent. Ground-first/power sequencing must be defined; no unrestricted live hot-plug claim."
+          },
+          "frames": {
+            "encoding": "8N1 byte transport, 0x7E delimiter and escaped delimiter/escape bytes.",
+            "header": [
+              "protocol version",
+              "message class",
+              "flags",
+              "request ID",
+              "payload length"
+            ],
+            "max_payload_bytes": 256,
+            "integrity": "CRC-16-CCITT, polynomial 0x1021, init 0xFFFF, no reflection, xorout 0x0000; cover unescaped header and payload. Byte order must be frozen in wire specification.",
+            "flow_control": "One outstanding request per device initially; explicit ACK/NAK, bounded timeout/retry, device BUSY and response credit."
+          },
+          "commands": [
+            "IDENTIFY and capabilities",
+            "RESET and health",
+            "Keyboard event read",
+            "Printer status and bounded output blocks",
+            "Disk geometry/media generation, sector read/write and flush"
+          ],
+          "reliability": [
+            "Sequence/request IDs reject duplicate execution; keep the last completed request/response until session reset.",
+            "Retries of writes must carry the same identity; media changes invalidate queued requests.",
+            "Disk devices buffer complete sectors locally. Host throughput need not equal raw disk bit rate.",
+            "Report removal, CRC errors, timeouts and unsupported operations through stable OS errors.",
+            "Reset changes the session epoch. Do not silently retry an unresolved non-idempotent operation such as print output after reset; report uncertain completion to the caller."
+          ],
+          "performance": "500 kbit/s with 8N1 permits at most 50 KB/s before headers, escaping and turnaround; 125 kbit/s permits at most 12.5 KB/s. Keyboard polling must not monopolize CPU during disk transfers.",
+          "drivers": "Use architecture-neutral device descriptors and class protocols. Host OS provides Z80 or ERA class drivers. Optional device-specific ROM drivers must carry explicit ISA/ABI tags; never execute a Z80 ROM driver as ERA code.",
+          "validation": [
+            "FIFO overrun and worst-case CPU service latency",
+            "Printer backpressure",
+            "Disk retry after lost reply",
+            "CRC faults, cable removal and power sequencing"
+          ]
+        }
       },
       "used_by": [
         "computer.aurelia",
@@ -46,58 +98,7 @@
         "device.flexidisk",
         "device.apple2_expansion_card",
         "device.flexidisk_ii"
-      ],
-      "proposed_design": {
-        "status": "Proposed for review; not a measured or frozen implementation.",
-        "title": "FlexiBUS v1 transport and driver model",
-        "physical": {
-          "topology": "Point-to-point host port to one device; no passive multidrop or implicit daisy chaining in v1.",
-          "signaling": "Separate differential transmit and receive pairs; asynchronous serial framing.",
-          "rates_bps": [
-            125000,
-            500000
-          ],
-          "startup_rate_bps": 125000,
-          "cable_target": "Shielded cable up to 3 m at 500 kbit/s; qualify signal integrity and period-appropriate line components.",
-          "power": "Power contacts/current limits and keyed connector pinout require an electrical drawing. Disk/printer devices self-powered; keyboard power is current-limited.",
-          "attachment": "Attach or detach only while the port is quiescent. Ground-first/power sequencing must be defined; no unrestricted live hot-plug claim."
-        },
-        "frames": {
-          "encoding": "8N1 byte transport, 0x7E delimiter and escaped delimiter/escape bytes.",
-          "header": [
-            "protocol version",
-            "message class",
-            "flags",
-            "request ID",
-            "payload length"
-          ],
-          "max_payload_bytes": 256,
-          "integrity": "CRC-16-CCITT, polynomial 0x1021, init 0xFFFF, no reflection, xorout 0x0000; cover unescaped header and payload. Byte order must be frozen in wire specification.",
-          "flow_control": "One outstanding request per device initially; explicit ACK/NAK, bounded timeout/retry, device BUSY and response credit."
-        },
-        "commands": [
-          "IDENTIFY and capabilities",
-          "RESET and health",
-          "Keyboard event read",
-          "Printer status and bounded output blocks",
-          "Disk geometry/media generation, sector read/write and flush"
-        ],
-        "reliability": [
-          "Sequence/request IDs reject duplicate execution; keep the last completed request/response until session reset.",
-          "Retries of writes must carry the same identity; media changes invalidate queued requests.",
-          "Disk devices buffer complete sectors locally. Host throughput need not equal raw disk bit rate.",
-          "Report removal, CRC errors, timeouts and unsupported operations through stable OS errors.",
-          "Reset changes the session epoch. Do not silently retry an unresolved non-idempotent operation such as print output after reset; report uncertain completion to the caller."
-        ],
-        "performance": "500 kbit/s with 8N1 permits at most 50 KB/s before headers, escaping and turnaround; 125 kbit/s permits at most 12.5 KB/s. Keyboard polling must not monopolize CPU during disk transfers.",
-        "drivers": "Use architecture-neutral device descriptors and class protocols. Host OS provides Z80 or ERA class drivers. Optional device-specific ROM drivers must carry explicit ISA/ABI tags; never execute a Z80 ROM driver as ERA code.",
-        "validation": [
-          "FIFO overrun and worst-case CPU service latency",
-          "Printer backpressure",
-          "Disk retry after lost reply",
-          "CRC faults, cable removal and power sequencing"
-        ]
-      }
+      ]
     },
     {
       "id": "technology.plug_and_execute",
@@ -430,69 +431,69 @@
       "specification": {
         "virtual_address_bits": 32,
         "physical_address_bits": 24,
-        "page_table_goal": "avoid conventional multi-level 32-bit page table"
+        "page_table_goal": "Use compact software-managed mapping records and a 32-entry translation cache; do not allocate a flat table for the entire 32-bit virtual address space.",
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "ERA MMU v1",
+          "addressing": {
+            "virtual_bits": 32,
+            "physical_bits": 24,
+            "page_bytes": 4096,
+            "physical_frame_count": 4096
+          },
+          "translation_cache": {
+            "entries": 32,
+            "associativity": "fully associative",
+            "replacement": "software-controlled round-robin among unlocked entries",
+            "entry_fields": [
+              "20-bit virtual page number",
+              "12-bit physical frame number",
+              "valid",
+              "user accessible",
+              "writable",
+              "referenced",
+              "dirty",
+              "locked"
+            ],
+            "context_policy": "No ASIDs in v1. Flush unlocked user translations at each address-space switch; retain wired kernel translations."
+          },
+          "backing_map": {
+            "organization": "One compact record per allocated virtual mapping, indexed by virtual page; stored in kernel-owned RAM. Software resolves misses. No flat 4 GB page table.",
+            "entry_bytes_budget": 8,
+            "example": "128 mapped pages require 1024 bytes of mapping records per process, plus indexing and process metadata. This is an illustrative budget, not a measured total.",
+            "kernel_access": "Keep trap vectors, refill routine, kernel stack and map-access window permanently translatable; refill must not depend on an unresolved user mapping."
+          },
+          "faults": [
+            "Translation miss traps before a memory side effect; software finds the mapping, fills an entry and retries.",
+            "Writes to a copy-on-write mapping cause a protection fault; allocate/copy a page, update mappings and retry.",
+            "Unmapped or unauthorized addresses cause a process fault. Allocation failure returns a defined error or terminates the offending process according to the fault contract.",
+            "No demand paging or implicit swap is introduced."
+          ],
+          "cpu_contract": [
+            "Instruction restart must preserve exact state; multi-register loads/stores need defined restart semantics or restrictions.",
+            "Kernel instructions update translations, invalidate entries and control protection.",
+            "DMA uses physical addresses with pinned buffers or bounded bounce buffers; never translate arbitrary user pointers asynchronously.",
+            "Harvest referenced/dirty bits before replacing or flushing translation entries; merge them into kernel mapping metadata.",
+            "Maintain physical-frame reference counts for shared and copy-on-write pages; invalidate stale writable translations before sharing a frame."
+          ],
+          "timing": {
+            "baseline": "Begin with a conservative registered translation stage and an explicit wait/ready handshake. Do not promise zero wait states.",
+            "optional_double_clock": "Evaluate 12 MHz MMU at 6 MHz CPU and 16 MHz MMU at 8 MHz CPU, phase-locked to the CPU clock. A two-phase translation/permission lookup may reduce hit latency only if address setup, comparison and output timing close.",
+            "validation": "Measure hit/miss latency, context-switch cost, DMA contention and workload hit rate. A faster MMU clock cannot remove DRAM wait time or software refill cost."
+          },
+          "open_items": [
+            "Physical address map",
+            "Silicon timing and area",
+            "TLB entry count tuning",
+            "Final mapping-record layout",
+            "DMA hardware interface; memory-bus organization remains deferred"
+          ]
+        }
       },
       "used_by": [
         "computer.artemis",
         "software.aionix"
-      ],
-      "proposed_design": {
-        "status": "Proposed for review; not a measured or frozen implementation.",
-        "title": "ERA MMU v1",
-        "addressing": {
-          "virtual_bits": 32,
-          "physical_bits": 24,
-          "page_bytes": 4096,
-          "physical_frame_count": 4096
-        },
-        "translation_cache": {
-          "entries": 32,
-          "associativity": "fully associative",
-          "replacement": "software-controlled round-robin among unlocked entries",
-          "entry_fields": [
-            "20-bit virtual page number",
-            "12-bit physical frame number",
-            "valid",
-            "user accessible",
-            "writable",
-            "referenced",
-            "dirty",
-            "locked"
-          ],
-          "context_policy": "No ASIDs in v1. Flush unlocked user translations at each address-space switch; retain wired kernel translations."
-        },
-        "backing_map": {
-          "organization": "One compact record per allocated virtual mapping, indexed by virtual page; stored in kernel-owned RAM. Software resolves misses. No flat 4 GB page table.",
-          "entry_bytes_budget": 8,
-          "example": "128 mapped pages require 1024 bytes of mapping records per process, plus indexing and process metadata. This is an illustrative budget, not a measured total.",
-          "kernel_access": "Keep trap vectors, refill routine, kernel stack and map-access window permanently translatable; refill must not depend on an unresolved user mapping."
-        },
-        "faults": [
-          "Translation miss traps before a memory side effect; software finds the mapping, fills an entry and retries.",
-          "Writes to a copy-on-write mapping cause a protection fault; allocate/copy a page, update mappings and retry.",
-          "Unmapped or unauthorized addresses cause a process fault. Allocation failure returns a defined error or terminates the offending process according to the fault contract.",
-          "No demand paging or implicit swap is introduced."
-        ],
-        "cpu_contract": [
-          "Instruction restart must preserve exact state; multi-register loads/stores need defined restart semantics or restrictions.",
-          "Kernel instructions update translations, invalidate entries and control protection.",
-          "DMA uses physical addresses with pinned buffers or bounded bounce buffers; never translate arbitrary user pointers asynchronously.",
-          "Harvest referenced/dirty bits before replacing or flushing translation entries; merge them into kernel mapping metadata.",
-          "Maintain physical-frame reference counts for shared and copy-on-write pages; invalidate stale writable translations before sharing a frame."
-        ],
-        "timing": {
-          "baseline": "Begin with a conservative registered translation stage and an explicit wait/ready handshake. Do not promise zero wait states.",
-          "optional_double_clock": "Evaluate 12 MHz MMU at 6 MHz CPU and 16 MHz MMU at 8 MHz CPU, phase-locked to the CPU clock. A two-phase translation/permission lookup may reduce hit latency only if address setup, comparison and output timing close.",
-          "validation": "Measure hit/miss latency, context-switch cost, DMA contention and workload hit rate. A faster MMU clock cannot remove DRAM wait time or software refill cost."
-        },
-        "open_items": [
-          "Physical address map",
-          "Silicon timing and area",
-          "TLB entry count tuning",
-          "Final mapping-record layout",
-          "DMA hardware interface; memory-bus organization remains deferred"
-        ]
-      }
+      ]
     },
     {
       "id": "technology.aionix_os_model",
@@ -561,39 +562,39 @@
         "execution": "Aurelia CP/M application binaries execute natively in a dedicated compatibility environment",
         "peripheral_model": "the ERA host exposes Artemis peripherals through a virtual peripheral bridge",
         "goal": "preserve the Aurelia software investment while transitioning to the 32-bit platform",
-        "api_discovery": "Return the display/input/service capabilities actually implemented by the compatibility environment."
+        "api_discovery": "Return the display/input/service capabilities actually implemented by the compatibility environment.",
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "Z80 compatibility module and host driver",
+          "execution": "Z80 executes the enhanced CP/M environment in its local 64 KB RAM; ERA executes the AIONix host driver. This is neither ERA execution of Z80 instructions nor a C-source port.",
+          "module_requirements": [
+            "Local boot/system ROM or a host-uploaded system image",
+            "Bank/window emulation sufficient for documented Logix CP/M service entry points",
+            "A bounded shared mailbox or dual-ported transfer window and interrupt/doorbell signals; reserve its CP/M-side RAM before advertising TPA"
+          ],
+          "software_split": {
+            "guest": "CP/M BIOS and Logix TUI/device stubs marshal requests; applications using these interfaces do not access Artemis registers.",
+            "host": "A privileged AIONix driver validates guest buffer offsets and lengths, copies data and dispatches console/display, file, printer and clock operations.",
+            "ownership": "Guest-visible drive images preserve CP/M semantics. Host filesystem translation is a separate explicit mode, not transparent raw-volume sharing."
+          },
+          "mailbox": [
+            "version",
+            "request ID",
+            "opcode",
+            "buffer offset and length",
+            "completion status",
+            "transferred byte count"
+          ],
+          "scheduling": "One outstanding synchronous guest request initially; host completes then signals the guest. Add polling fallback and timeout/reset recovery. Never allow a guest to supply an unchecked ERA pointer.",
+          "display": "Render an isolated guest text surface through host display services. Capability queries describe that guest surface, not every ERA capability.",
+          "scope": "Support documented enhanced CP/M/Logix API applications. Arbitrary direct Aurelia hardware access, undocumented mapper use, timing-sensitive code and unvirtualized expansion ROMs are not guaranteed.",
+          "qualification": "Artemis PRO support remains unclaimed until its compatibility list and tests explicitly add the module."
+        }
       },
       "used_by": [
         "device.artemis_cpm80_module",
         "computer.artemis"
-      ],
-      "proposed_design": {
-        "status": "Proposed for review; not a measured or frozen implementation.",
-        "title": "Z80 compatibility module and host driver",
-        "execution": "Z80 executes the enhanced CP/M environment in its local 64 KB RAM; ERA executes the AIONix host driver. This is neither ERA execution of Z80 instructions nor a C-source port.",
-        "module_requirements": [
-          "Local boot/system ROM or a host-uploaded system image",
-          "Bank/window emulation sufficient for documented Logix CP/M service entry points",
-          "A bounded shared mailbox or dual-ported transfer window and interrupt/doorbell signals; reserve its CP/M-side RAM before advertising TPA"
-        ],
-        "software_split": {
-          "guest": "CP/M BIOS and Logix TUI/device stubs marshal requests; applications using these interfaces do not access Artemis registers.",
-          "host": "A privileged AIONix driver validates guest buffer offsets and lengths, copies data and dispatches console/display, file, printer and clock operations.",
-          "ownership": "Guest-visible drive images preserve CP/M semantics. Host filesystem translation is a separate explicit mode, not transparent raw-volume sharing."
-        },
-        "mailbox": [
-          "version",
-          "request ID",
-          "opcode",
-          "buffer offset and length",
-          "completion status",
-          "transferred byte count"
-        ],
-        "scheduling": "One outstanding synchronous guest request initially; host completes then signals the guest. Add polling fallback and timeout/reset recovery. Never allow a guest to supply an unchecked ERA pointer.",
-        "display": "Render an isolated guest text surface through host display services. Capability queries describe that guest surface, not every ERA capability.",
-        "scope": "Support documented enhanced CP/M/Logix API applications. Arbitrary direct Aurelia hardware access, undocumented mapper use, timing-sensitive code and unvirtualized expansion ROMs are not guaranteed.",
-        "qualification": "Artemis PRO support remains unclaimed until its compatibility list and tests explicitly add the module."
-      }
+      ]
     },
     {
       "id": "technology.logix_tcpip_lan",
@@ -717,7 +718,52 @@
         "vram_policy": "CPU maps selected VRAM pages temporarily; display refresh continues independently, with access arbitration and wait states where needed.",
         "reset_policy": "Boot ROM initially appears at address zero; normal execution restores RAM and CP/M vectors.",
         "application_policy": "Installed RAM is accessible, but system workspaces and the resident Business Tools workspace reduce application memory.",
-        "expansion_policy": "Additional RAM uses mapped pages; an expansion does not enlarge the CPU logical address space."
+        "expansion_policy": "Additional RAM uses mapped pages; an expansion does not enlarge the CPU logical address space.",
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "CP/M-compatible application-memory boundary",
+          "discovery": "At launch, the little-endian word at 0006H (the operand of JMP at 0005H) points to the BDOS entry stub at the exclusive top of usable contiguous application RAM. Keep the entire advertised range writable RAM.",
+          "budget": "Reserve 4 KB at the top of lower RAM for the entry stub and resident workspace, in addition to F000–FFFF common system RAM. These are the initial design allocations, not measured image sizes. If implementation requires more workspace, revise the boot profile before application launch and report the actual lower boundary.",
+          "dispatch": [
+            "CALL 0005H enters the top-of-TPA stub.",
+            "The stub jumps to common memory before any bank mapping changes.",
+            "Common code saves mapping and application stack, then adopts the system stack.",
+            "Map the service; copy caller buffers in bounded chunks while respecting page boundaries.",
+            "Restore the application view and stack before returning."
+          ],
+          "lifecycle": [
+            "Choose all workspace reservations before launching the program. Never shrink TPA under a running program.",
+            "Warm boot restores vectors and the normal map. Legacy programs with hardcoded addresses beyond the published boundary remain unsupported.",
+            "Disable optional resident tools or choose a smaller TPA when networking needs more RAM; never silently consume advertised program memory."
+          ],
+          "extension_api": "lx_memory_query returns installed RAM, TPA bounds, reserved bytes and optional banked-handle capacity. Standard CP/M programs need not use it.",
+          "validation": [
+            "Exercise programs that inspect 0006H and fill their advertised TPA.",
+            "Test nested calls, interrupts, DMA buffers crossing pages and warm boot after application failure."
+          ],
+          "application_memory_profiles": [
+            {
+              "installed_ram_kb": 48,
+              "application_start": "0100",
+              "application_end_inclusive": "9FFF",
+              "bdos_entry": "A000",
+              "lower_reserved_range": "A000–AFFF",
+              "tpa_bytes": 40704,
+              "id": "ram_48kb",
+              "status": "Specified initial allocation; any future budget change must preserve the published boundary for each running program."
+            },
+            {
+              "installed_ram_kb": 64,
+              "application_start": "0100",
+              "application_end_inclusive": "DFFF",
+              "bdos_entry": "E000",
+              "lower_reserved_range": "E000–EFFF",
+              "tpa_bytes": 57088,
+              "id": "ram_64kb",
+              "status": "Specified initial allocation; any future budget change must preserve the published boundary for each running program."
+            }
+          ]
+        }
       },
       "regions": [
         {
@@ -757,48 +803,7 @@
         "Final ROM capacities, timing and common-memory budget require implementation validation."
       ],
       "normal_map_explanation": "Normal mapping describes what the CPU sees while an application runs. Mapper capability describes which addresses can change. The same 7000–EFFF switching capability exists in every configuration, even when those addresses normally contain RAM.",
-      "full_ram_explanation": "With 64 KB installed (Aurelia+ or expanded Aurelia), 0000–EFFF contains 60 KB lower RAM and F000–FFFF contains 4 KB common system RAM. B000–EFFF is therefore RAM rather than a permanently reserved ROM window. System calls temporarily overlay selected pages with ROM/cartridge/VRAM, then restore RAM. The Z80 never sees all physical RAM and ROM simultaneously.",
-      "proposed_design": {
-        "status": "Proposed for review; not a measured or frozen implementation.",
-        "title": "CP/M-compatible application-memory boundary",
-        "discovery": "At launch, the little-endian word at 0006H (the operand of JMP at 0005H) points to the BDOS entry stub at the exclusive top of usable contiguous application RAM. Keep the entire advertised range writable RAM.",
-        "provisional_profiles": [
-          {
-            "installed_ram_kb": 48,
-            "application_start": "0100",
-            "application_end_inclusive": "9FFF",
-            "bdos_entry": "A000",
-            "lower_reserved_range": "A000–AFFF",
-            "tpa_bytes": 40704
-          },
-          {
-            "installed_ram_kb": 64,
-            "application_start": "0100",
-            "application_end_inclusive": "DFFF",
-            "bdos_entry": "E000",
-            "lower_reserved_range": "E000–EFFF",
-            "tpa_bytes": 57088
-          }
-        ],
-        "budget": "Reserve an initial 4 KB at the top of lower RAM for the entry stub and resident workspace, in addition to F000–FFFF common system RAM. These boundaries are proposed budgets; increase reservations if linked-image measurements require it.",
-        "dispatch": [
-          "CALL 0005H enters the top-of-TPA stub.",
-          "The stub jumps to common memory before any bank mapping changes.",
-          "Common code saves mapping and application stack, then adopts the system stack.",
-          "Map the service; copy caller buffers in bounded chunks while respecting page boundaries.",
-          "Restore the application view and stack before returning."
-        ],
-        "lifecycle": [
-          "Choose all workspace reservations before launching the program. Never shrink TPA under a running program.",
-          "Warm boot restores vectors and the normal map. Legacy programs with hardcoded addresses beyond the published boundary remain unsupported.",
-          "Disable optional resident tools or choose a smaller TPA when networking needs more RAM; never silently consume advertised program memory."
-        ],
-        "extension_api": "Proposed lx_memory_query returns installed RAM, TPA bounds, reserved bytes and optional banked-handle capacity. Standard CP/M programs need not use it.",
-        "validation": [
-          "Exercise programs that inspect 0006H and fill their advertised TPA.",
-          "Test nested calls, interrupts, DMA buffers crossing pages and warm boot after application failure."
-        ]
-      }
+      "full_ram_explanation": "With 64 KB installed (Aurelia+ or expanded Aurelia), 0000–EFFF contains 60 KB lower RAM and F000–FFFF contains 4 KB common system RAM. B000–EFFF is therefore RAM rather than a permanently reserved ROM window. System calls temporarily overlay selected pages with ROM/cartridge/VRAM, then restore RAM. The Z80 never sees all physical RAM and ROM simultaneously."
     },
     {
       "id": "technology.logix_c_api",
@@ -921,7 +926,21 @@
         ],
         "framebuffer_policy": "Application code uses drawing operations rather than native VRAM addresses, stride or pixel packing.",
         "compatibility_canvas": "Optional later service: preserve a logical canvas and convert to available output. Not guaranteed at launch; report emulation and validate RAM, quality and speed.",
-        "text_mode_policy": "Aurelia+ compatibility does not require native 40-column hardware mode. Use adaptive layout or a compact viewport within its 80-column display."
+        "text_mode_policy": "Aurelia+ compatibility does not require native 40-column hardware mode. Use adaptive layout or a compact viewport within its 80-column display.",
+        "vram_storage_policy": {
+          "status": "Accepted design baseline; capacities are arithmetic allocations, not measured timing guarantees.",
+          "allocation_model": "Text and bitmap modes reuse the same VRAM. Do not reserve all text maps, font storage and a full bitmap simultaneously.",
+          "mode_switch": [
+            "Validate the requested mode and resource allocation before changing the display.",
+            "Quiesce rendering and blank or synchronize the change to avoid scanning partially reconfigured memory.",
+            "Reconfigure the VRAM layout. Reload the font and initialize text maps when entering text mode.",
+            "Notify the application/context of the changed mode and request a redraw from its document state."
+          ],
+          "preservation": "Previous screen pixels are not preserved by default. An explicit preservation request may use a system-RAM buffer only if allocation succeeds; unsupported or unaffordable requests return a defined error before changing the mode.",
+          "graphics_buffering": "One full bitmap is the baseline. A second graphics buffer is not promised merely because some modes fit; expose additional buffering only through validated capability descriptors.",
+          "graphics_text": "Draw glyphs from ROM/system resources into the bitmap; bitmap mode does not require a complete resident character-generator table in VRAM.",
+          "boundary": "Application documents remain in application RAM or files; a mode switch does not discard document state."
+        }
       },
       "used_by": [
         "computer.aurelia",
@@ -1659,7 +1678,8 @@
       "specification": {
         "cpu_ref": "part.z80a",
         "local_ram_kb": 64,
-        "expansion_role": "executes Aurelia CP/M applications natively and bridges Artemis peripherals through the ERA host"
+        "expansion_role": "executes Aurelia CP/M applications natively and bridges Artemis peripherals through the ERA host",
+        "bridge_design_ref": "technology.cpm80_virtual_peripheral_bridge"
       },
       "compatible_with": [
         "computer.artemis"
@@ -1788,7 +1808,8 @@
               "description": "Common system RAM"
             }
           ],
-          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM."
+          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
+          "application_memory_profile": "ram_48kb"
         },
         "expansion_ref": "device.aurelia_ram_16kb_card",
         "expanded_organization": {
@@ -1809,7 +1830,8 @@
               "description": "Stable runtime entry code, system stack and critical state."
             }
           ],
-          "note": "The card fills B000–EFFF with RAM in the normal view. ROM, cartridges and VRAM use temporary overlays within 7000–EFFF; the underlying RAM retains its contents."
+          "note": "The card fills B000–EFFF with RAM in the normal view. ROM, cartridges and VRAM use temporary overlays within 7000–EFFF; the underlying RAM retains its contents.",
+          "application_memory_profile": "ram_64kb"
         }
       },
       "storage": {
@@ -1853,7 +1875,24 @@
           "character_definition": "1 x 2 KB"
         },
         "api_ref": "technology.logix_display_api",
-        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display."
+        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display.",
+        "memory_layout": {
+          "policy_ref": "technology.logix_display_api",
+          "text_mode": {
+            "text_buffer_count": 2,
+            "character_map_bytes_per_buffer": 1024,
+            "attribute_map_bytes_per_buffer": 1024,
+            "font_bytes": 2048,
+            "allocated_bytes": 6144
+          },
+          "bitmap_mode": {
+            "framebuffer_count": 1,
+            "bytes_per_framebuffer": 8000,
+            "remaining_vram_bytes": 192,
+            "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
+          },
+          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same VRAM, not additive reservations."
+        }
       },
       "technology_refs": [
         "technology.flexibus",
@@ -1931,7 +1970,8 @@
               "description": "Common system RAM"
             }
           ],
-          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM."
+          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
+          "application_memory_profile": "ram_64kb"
         }
       },
       "storage": {
@@ -1972,7 +2012,24 @@
           "per_character_color": "4-bit foreground + 4-bit background"
         },
         "api_ref": "technology.logix_display_api",
-        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display."
+        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display.",
+        "memory_layout": {
+          "policy_ref": "technology.logix_display_api",
+          "text_mode": {
+            "text_buffer_count": 1,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "font_bytes": 2048,
+            "allocated_bytes": 6144
+          },
+          "bitmap_mode": {
+            "framebuffer_count": 1,
+            "bytes_per_framebuffer": 8000,
+            "remaining_vram_bytes": 8384,
+            "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
+          },
+          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same VRAM, not additive reservations."
+        }
       },
       "technology_refs": [
         "technology.flexibus",
@@ -2079,7 +2136,24 @@
           "320x100x4-bit"
         ],
         "api_ref": "technology.logix_display_api",
-        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display."
+        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display.",
+        "memory_layout": {
+          "policy_ref": "technology.logix_display_api",
+          "text_mode": {
+            "text_buffer_count": 1,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "font_bytes": 2048,
+            "allocated_bytes": 6144
+          },
+          "bitmap_mode": {
+            "framebuffer_count": 1,
+            "bytes_per_framebuffer": 16000,
+            "remaining_vram_bytes": 384,
+            "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
+          },
+          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same VRAM, not additive reservations."
+        }
       },
       "networking_from_ncc_1981": {
         "included_by_default": true,
@@ -2210,7 +2284,24 @@
           "320x100x4-bit"
         ],
         "api_ref": "technology.logix_display_api",
-        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display."
+        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display.",
+        "memory_layout": {
+          "policy_ref": "technology.logix_display_api",
+          "text_mode": {
+            "text_buffer_count": 1,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "font_bytes": 2048,
+            "allocated_bytes": 6144
+          },
+          "bitmap_mode": {
+            "framebuffer_count": 1,
+            "bytes_per_framebuffer": 16000,
+            "remaining_vram_bytes": 384,
+            "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
+          },
+          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same VRAM, not additive reservations."
+        }
       },
       "networking": {
         "included_by_default": true,
@@ -2558,7 +2649,8 @@
       },
       "edition_refs": [
         "edition.cpm_aurelia.z80"
-      ]
+      ],
+      "memory_discovery_ref": "technology.aurelia_memory_model"
     },
     {
       "id": "software.business_tools_aurelia",
@@ -3242,7 +3334,7 @@
         "Base AIONix process, file, device and TUI services",
         "Network service lifecycle and server administration interfaces"
       ],
-      "feature_status": "Detailed server-service design remains proposed; inclusion of an OS edition does not include a BPI application license.",
+      "feature_status": "Server-service interfaces are part of the edition specification; implementation remains to be validated. Inclusion of an OS edition does not include a BPI application license.",
       "edition_refs": [
         "edition.aionix_server.server"
       ]
@@ -3259,7 +3351,7 @@
       "architecture": {
         "client_server": true,
         "server": "computer.artemis_pro",
-        "database": "Relational engine; robust multiuser behavior is a design goal pending the proposed transaction/recovery validation.",
+        "database": "Relational engine with the specified transaction, logging, checkpoint and recovery design; robustness and capacity remain subject to acceptance testing.",
         "network_ref": "technology.logix_tcpip_lan",
         "server_edition_ref": "edition.bpi_client_server.era_server"
       },
@@ -3287,65 +3379,67 @@
         "edition.bpi_client_server.era_client",
         "edition.bpi_client_server.era_server"
       ],
-      "proposed_design": {
-        "status": "Proposed for review; not a measured or frozen implementation.",
-        "title": "BPI transactional client/server v1",
-        "architecture": "Thin Z80/ERA clients send bounded business operations to an Artemis PRO server. Query evaluation, indexes, validation, accounting posting and transactions execute on the server; clients do not fetch arbitrary database pages.",
-        "transactions": {
-          "concurrency": "Single serialized writer for v1 with short transactions and bounded reader locks; no long interactive transaction while a user edits a form.",
-          "commit": "Append checked log records and a commit marker, force them to durable storage, then acknowledge. Apply/replay committed changes idempotently.",
-          "recovery": "On startup validate checksums and recover committed log records; incomplete transactions never become visible. Use shadow page/index replacement or another explicitly validated torn-write-safe method.",
-          "failure": "Do not claim durable commit until disk/controller completion semantics are proven; no battery-backed cache is assumed.",
-          "log_format": "Redo-only changed-record/page after-images with transaction ID, sequence, length and checksum; the commit marker covers transaction record count and checksum. Persist duplicate-suppression outcomes in the same transaction.",
-          "buffer_policy": "Do not write uncommitted changes to database files (no-steal); cap transaction size to available transaction buffers.",
-          "checkpoint": "Write replacement pages and indexes to new locations, force them, then alternate checksummed generation-numbered root/checkpoint records. Retain the preceding valid root and necessary redo log until the new checkpoint is durable."
-        },
-        "protocol": {
-          "transport": "Length-framed requests over TCP; bounded messages and chunked results.",
-          "fields": [
-            "protocol version",
-            "authenticated session",
-            "durable request ID",
-            "operation",
-            "payload length",
-            "payload"
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "BPI transactional client/server v1",
+          "architecture": "Thin Z80/ERA clients send bounded business operations to an Artemis PRO server. Query evaluation, indexes, validation, accounting posting and transactions execute on the server; clients do not fetch arbitrary database pages.",
+          "transactions": {
+            "concurrency": "Single serialized writer for v1 with short transactions and bounded reader locks; no long interactive transaction while a user edits a form.",
+            "commit": "Append checked log records and a commit marker, force them to durable storage, then acknowledge. Apply/replay committed changes idempotently.",
+            "recovery": "On startup validate checksums and recover committed log records; incomplete transactions never become visible. Use shadow page/index replacement or another explicitly validated torn-write-safe method.",
+            "failure": "Do not claim durable commit until disk/controller completion semantics are proven; no battery-backed cache is assumed.",
+            "log_format": "Redo-only changed-record/page after-images with transaction ID, sequence, length and checksum; the commit marker covers transaction record count and checksum. Persist duplicate-suppression outcomes in the same transaction.",
+            "buffer_policy": "Do not write uncommitted changes to database files (no-steal); cap transaction size to available transaction buffers.",
+            "checkpoint": "Write replacement pages and indexes to new locations, force them, then alternate checksummed generation-numbered root/checkpoint records. Retain the preceding valid root and necessary redo log until the new checkpoint is durable."
+          },
+          "protocol": {
+            "transport": "Length-framed requests over TCP; bounded messages and chunked results.",
+            "fields": [
+              "protocol version",
+              "authenticated session",
+              "durable request ID",
+              "operation",
+              "payload length",
+              "payload"
+            ],
+            "operations": [
+              "login",
+              "lookup",
+              "paged query",
+              "validate draft",
+              "post invoice/payment/journal",
+              "transaction status",
+              "report job",
+              "logout"
+            ],
+            "duplicate_suppression": "Store committed write request IDs and outcomes durably. After reconnect, clients query status or retry with the same ID; never post the same payment twice."
+          },
+          "data_integrity": [
+            "Amounts use explicitly scaled integers/decimal rules, never unspecified binary floating-point rounding.",
+            "Record currency, rounding, posting dates, account periods and unique document IDs.",
+            "Cross-module posting is atomic and produces an append-only audit record."
           ],
           "operations": [
-            "login",
-            "lookup",
-            "paged query",
-            "validate draft",
-            "post invoice/payment/journal",
-            "transaction status",
-            "report job",
-            "logout"
+            "Role-based authorization and server-side input validation",
+            "Backup captures a consistent checkpoint plus required logs; test restoration onto a clean disk.",
+            "Bounded log growth, disk-full handling and operator-visible recovery status",
+            "Plan backups and report traffic around the shared 100 kbit/s LAN budget."
           ],
-          "duplicate_suppression": "Store committed write request IDs and outcomes durably. After reconnect, clients query status or retry with the same ID; never post the same payment twice."
-        },
-        "data_integrity": [
-          "Amounts use explicitly scaled integers/decimal rules, never unspecified binary floating-point rounding.",
-          "Record currency, rounding, posting dates, account periods and unique document IDs.",
-          "Cross-module posting is atomic and produces an append-only audit record."
-        ],
-        "operations": [
-          "Role-based authorization and server-side input validation",
-          "Backup captures a consistent checkpoint plus required logs; test restoration onto a clean disk.",
-          "Bounded log growth, disk-full handling and operator-visible recovery status",
-          "Plan backups and report traffic around the shared 100 kbit/s LAN budget."
-        ],
-        "initial_limits": {
-          "server_ram_kb": 512,
-          "concurrent_sessions_target": 4,
-          "status": "Proposed acceptance target, not measured capacity.",
-          "client_policy": "Bounded pages of results and forms; no entire-table download or whole-document duplication."
-        },
-        "acceptance_tests": [
-          "Power loss before/after commit acknowledgement",
-          "Lost acknowledgement and duplicate retry",
-          "Concurrent invoice/payment updates",
-          "Full disk, corrupt log tail and failed backup restore",
-          "48 KB Aurelia client resource budget"
-        ]
+          "initial_limits": {
+            "server_ram_kb": 512,
+            "concurrent_sessions_target": 4,
+            "status": "Specified acceptance target, not measured capacity.",
+            "client_policy": "Bounded pages of results and forms; no entire-table download or whole-document duplication."
+          },
+          "acceptance_tests": [
+            "Power loss before/after commit acknowledgement",
+            "Lost acknowledgement and duplicate retry",
+            "Concurrent invoice/payment updates",
+            "Full disk, corrupt log tail and failed backup restore",
+            "48 KB Aurelia client resource budget"
+          ]
+        }
       }
     },
     {
