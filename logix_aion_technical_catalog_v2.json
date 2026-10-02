@@ -1,38 +1,15 @@
 {
   "metadata": {
-    "title": "Logix / AION technical catalog for the alternative-history story",
-    "version": "2.0",
-    "purpose": "Canonical structured technical/product catalog separated from the narrative story document.",
-    "scope": {
-      "included": [
-        "Logix/AION technologies and standards used in products",
-        "chips and non-standalone components",
-        "peripherals, expansion devices, and separately/bundled devices",
-        "Logix computers",
-        "Logix/AION and explicitly offered third-party software",
-        "support, training, developer, certification, and licensing services",
-        "post-document technical additions explicitly stated by the user in this chat"
-      ],
-      "excluded": [
-        "competitor products except where a Logix device directly interfaces with them",
-        "market-reaction assumptions and sales forecasts",
-        "Adam's secret CAD/lithography facility because it is internal production tooling rather than a product/component sold or bundled to customers",
-        "technical features invented in assistant analysis but not explicitly stated by the user"
-      ]
-    },
-    "source_document": "alternative story (with reactions)(20261001-204351).docx",
-    "source_conventions": {
-      "uploaded_story": "Specification explicitly present in the uploaded story document.",
-      "conversation_addition": "Specification added explicitly by the user later in this conversation and not yet present in the uploaded document.",
-      "derived_relationship": "A structural relationship inferred only to avoid duplication, such as Aurelia+ inheriting unchanged Aurelia features. No new technical capability is added by the inference."
-    },
+    "title": "Logix / AION technical catalog",
+    "version": "2.1",
+    "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
-      "introduced": "Every catalog object uses an introduced object with event_name and event_start_date. Partial dates use YYYY-MM and include date_precision=month. For third-party base parts, the date means first use in a Logix/AION product in this scenario, not the vendor’s historical market introduction.",
-      "technologies": "Technology specifications describe reusable standards/architectures, not per-product implementation counts. Product-specific port/slot/count details belong to computers/devices/base_parts.",
-      "computers": "Each computer is fully specified. No inheritance/override mechanism is used.",
-      "bundles": "Commercial packaging is represented separately in root-level offered_bundles.",
-      "references": "Cross-references use stable IDs such as technology.flexibus, part.z80b and device.flexibus_keyboard."
+      "introduced": "Event name and event start date; month-only dates retain month precision.",
+      "computers": "Each computer is fully specified.",
+      "bundles": "Commercial packaging is represented separately in offered_bundles.",
+      "references": "Stable IDs link computers, technologies, components, devices and software.",
+      "architecture": "Architecture descriptions and relationships are shared with the interactive explorer."
     }
   },
   "technologies": [
@@ -44,7 +21,6 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "canonical_status": "uploaded_story",
       "owner": "Logix",
       "specification": {
         "communication": "serial duplex peripheral communication",
@@ -68,11 +44,7 @@
         "device.flexidisk",
         "device.apple2_expansion_card",
         "device.flexidisk_ii"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "65, 98-106, 144-145, 222"
-      }
+      ]
     },
     {
       "id": "technology.plug_and_execute",
@@ -82,7 +54,6 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "canonical_status": "uploaded_story",
       "owner": "Logix",
       "specification": {
         "configuration_switches_required": false,
@@ -94,11 +65,7 @@
         "computer.aurelia",
         "computer.aurelia_plus",
         "computer.artemis"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "66, 221"
-      }
+      ]
     },
     {
       "id": "technology.xip_rom_platform",
@@ -108,7 +75,6 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "canonical_status": "uploaded_story",
       "owner": "Logix / AION",
       "specification": {
         "execution_model": "system and application components may execute directly from ROM where practical",
@@ -122,11 +88,7 @@
         "computer.artemis",
         "software.cpm_aurelia",
         "software.aionix"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "62-64, 223, 233"
-      }
+      ]
     },
     {
       "id": "technology.logix_digital_video",
@@ -136,7 +98,6 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "canonical_status": "uploaded_story",
       "owner": "Logix",
       "specification": {
         "digital_data_width_bits": 4,
@@ -162,11 +123,7 @@
         "device.color_monitor_1",
         "device.mono_monitor_2",
         "device.color_monitor_2"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "67-74, 213-226"
-      }
+      ]
     },
     {
       "id": "technology.logix_tui_standard",
@@ -176,7 +133,6 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "canonical_status": "uploaded_story",
       "owner": "Logix / AION Software; portable CP/M extension developed with DRI",
       "specification": {
         "common_components": [
@@ -213,11 +169,7 @@
         "software.pulse_1",
         "software.aionix",
         "software.aion_c_ide"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "76-87, 119, 135, 232"
-      }
+      ]
     },
     {
       "id": "technology.abacus_sparse_model",
@@ -227,7 +179,6 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "canonical_status": "uploaded_story",
       "owner": "AION Software",
       "specification": {
         "sparse_matrix_representation": [
@@ -239,11 +190,7 @@
       "used_by": [
         "software.abacus_1",
         "software.abacus_2"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "81"
-      }
+      ]
     },
     {
       "id": "technology.pulse_notebook_model",
@@ -253,9 +200,8 @@
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       },
-      "canonical_status": "uploaded_story",
       "owner": "AION Software",
       "specification": {
         "code_organization": "sequential independently executable sections/cells",
@@ -277,11 +223,7 @@
       "used_by": [
         "software.pulse_1",
         "software.pulse_3"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "149-159"
-      }
+      ]
     },
     {
       "id": "technology.aion_c_portability_framework",
@@ -291,7 +233,6 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "canonical_status": "conversation_addition",
       "owner": "AION Software",
       "specification": {
         "targets": [
@@ -312,11 +253,7 @@
         "software.abacus_2",
         "software.bpi_suite",
         "software.business_tools_artemis"
-      ],
-      "source": {
-        "origin": "conversation_addition",
-        "note": "User clarification after the initial May-November 1980 analysis."
-      }
+      ]
     },
     {
       "id": "technology.era1_isa",
@@ -326,7 +263,6 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "canonical_status": "uploaded_story",
       "owner": "Logix / AION Labs implementation based on future-derived blueprint",
       "specification": {
         "system_bus_bits": 32,
@@ -343,11 +279,7 @@
       "used_by": [
         "computer.artemis",
         "computer.artemis_pro"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "184-185, 202-210"
-      }
+      ]
     },
     {
       "id": "technology.artemis_memory_model",
@@ -357,7 +289,6 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "canonical_status": "uploaded_story",
       "owner": "Logix / AION Labs",
       "specification": {
         "virtual_address_bits": 32,
@@ -367,11 +298,7 @@
       "used_by": [
         "computer.artemis",
         "software.aionix"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "212"
-      }
+      ]
     },
     {
       "id": "technology.aionix_os_model",
@@ -381,7 +308,6 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "canonical_status": "uploaded_story",
       "owner": "AION Software controlling roadmap; developed with Digital Research",
       "specification": {
         "programming_model": "recognizably Unix V7, simplified for small RAM",
@@ -424,11 +350,7 @@
         "software.abacus_3",
         "software.pulse_3",
         "software.bpi_client_server"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "187-192, 227-233"
-      }
+      ]
     },
     {
       "id": "technology.cpm80_virtual_peripheral_bridge",
@@ -438,7 +360,6 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "canonical_status": "uploaded_story",
       "owner": "Logix with Digital Research",
       "specification": {
         "execution": "Aurelia CP/M application binaries execute natively in a dedicated compatibility environment",
@@ -448,11 +369,7 @@
       "used_by": [
         "device.artemis_cpm80_module",
         "computer.artemis"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "195, 246"
-      }
+      ]
     },
     {
       "id": "technology.logix_tcpip_lan",
@@ -462,7 +379,6 @@
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
       },
-      "canonical_status": "conversation_addition",
       "owner": "Logix / AION",
       "specification": {
         "network_protocol": "TCP/IP",
@@ -476,11 +392,7 @@
         "software.bpi_client_server",
         "computer.artemis",
         "computer.artemis_pro"
-      ],
-      "source": {
-        "origin": "conversation_addition",
-        "note": "User's planned NCC 1981 'bombshell'."
-      }
+      ]
     },
     {
       "id": "technology.logix_lan100_link",
@@ -490,7 +402,6 @@
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
       },
-      "canonical_status": "conversation_resolution_with_historical_feasibility_basis",
       "owner": "Logix",
       "specification": {
         "topology": "active star through a multiport hub/repeater/arbiter",
@@ -515,25 +426,7 @@
         "device.network_card_aurelia",
         "device.network_card_artemis",
         "device.network_hub"
-      ],
-      "research_basis": [
-        {
-          "fact": "Balanced-voltage digital interface standard existed by 1975.",
-          "url": "https://store.accuristech.com/standards/tia-rs-422?product_id=2591509"
-        },
-        {
-          "fact": "HDLC elements of procedure were standardized by 1979.",
-          "url": "https://ecma-international.org/publications-and-standards/standards/ecma-49/"
-        },
-        {
-          "fact": "Modular telephone connectors were established in the 1970s; 8-position variants are historically plausible hardware.",
-          "url": "https://regression.flukenetworks.com/blog/cabling-chronicles/history-rj45-case-mistaken-identity"
-        }
-      ],
-      "source": {
-        "origin": "conversation_resolution",
-        "note": "Proposed to close the previously open link-layer specification while staying conservative for 1981."
-      }
+      ]
     },
     {
       "id": "technology.bpi_relational_database",
@@ -543,9 +436,8 @@
         "event_name": "COMDEX November 1978 — BPI Products for Aurelia",
         "event_start_date": "1978-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario event naming/date retained from the story."
+        "timeline_note": "Alternative-timeline introduction date."
       },
-      "canonical_status": "uploaded_story_plus_conversation_addition",
       "owner": "AION BPI Systems",
       "specification": {
         "model": "relational database engine used as the common data foundation for BPI business applications",
@@ -556,18 +448,13 @@
         "software.bpi_client_server",
         "computer.artemis_pro"
       ],
-      "source": {
-        "origin": "uploaded_story_plus_conversation_addition",
-        "lines": "124-132",
-        "note": "Client-server/RDBMS evolution added later by user."
-      },
       "milestones": [
         {
           "event": {
             "event_name": "COMDEX November 1978 — BPI Products for Aurelia",
             "event_start_date": "1978-11",
             "date_precision": "month",
-            "timeline_note": "Alternative-scenario event naming/date retained from the story."
+            "timeline_note": "Alternative-timeline introduction date."
           },
           "change": "Relational engine introduced with the AION C/TUI BPI application family."
         },
@@ -578,6 +465,72 @@
           },
           "change": "Evolves into a multiuser client-server RDBMS used by networked BPI clients."
         }
+      ]
+    },
+    {
+      "id": "technology.aurelia_memory_model",
+      "name": "Aurelia banked memory organization",
+      "category": "memory_mapping",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "used_by": [
+        "computer.aurelia",
+        "computer.aurelia_plus"
+      ],
+      "description": "A Logix memory mapper exposes RAM, motherboard ROM, cartridge ROM and video RAM through one CPU address space. Banks hidden by another mapping retain their contents. No separate Zilog MMU is required.",
+      "specification": {
+        "cpu_address_space_kb": 64,
+        "page_size_kb": 4,
+        "fixed_low_ram_kb": 28,
+        "switchable_window_kb": 32,
+        "common_system_ram_kb": 4,
+        "common_ram_budget_status": "Initial planning allocation; validate against firmware, buffers and interrupt requirements.",
+        "mapping_register_access": "I/O ports",
+        "implementation": "Bank-selection registers, address decoding and multiplexing logic; suitable for later AION integration.",
+        "rom_policy": "Read-only code and constants execute directly from ROM where practical. Mutable state, stacks and buffers reside in RAM.",
+        "vram_policy": "CPU maps selected VRAM pages temporarily; display refresh continues independently, with access arbitration and wait states where needed.",
+        "reset_policy": "Boot ROM initially appears at address zero; normal execution restores RAM and CP/M vectors.",
+        "application_policy": "Installed RAM is accessible, but system workspaces and the resident Business Tools workspace reduce application memory.",
+        "expansion_policy": "Additional RAM uses mapped pages; an expansion does not enlarge the CPU logical address space."
+      },
+      "regions": [
+        {
+          "start": "0000",
+          "end": "6FFF",
+          "size_kb": 28,
+          "role": "Fixed lower RAM",
+          "description": "Includes page zero and the lower application area."
+        },
+        {
+          "start": "7000",
+          "end": "EFFF",
+          "size_kb": 32,
+          "role": "Switchable pages",
+          "description": "Remaining application RAM, motherboard ROM, cartridge ROM or VRAM, selected in 4 KB pages."
+        },
+        {
+          "start": "F000",
+          "end": "FFFF",
+          "size_kb": 4,
+          "role": "Common system RAM",
+          "description": "Stable entry routines, system stack, critical interrupt code and mutable system state."
+        }
+      ],
+      "call_sequence": [
+        "Enter a stable routine in common memory.",
+        "Save application mapping and stack; switch to the system stack.",
+        "Map the required ROM and data/VRAM pages.",
+        "Execute the service; use a common buffer or alternate window for hidden application data.",
+        "Restore mapping and stack, then return."
+      ],
+      "requirements": [
+        "Preserve interrupt safety across every permitted mapping.",
+        "Define nested bank-call save/restore conventions.",
+        "Separate writable state from ROM code and remove or relocate self-modifying code.",
+        "Reserve resident workspace memory explicitly.",
+        "Final ROM capacities, timing and common-memory budget require implementation validation."
       ]
     }
   ],
@@ -593,13 +546,8 @@
       },
       "used_in": [
         "computer.aurelia",
-        "computer.aurelia_plus",
         "device.artemis_cpm80_module"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "60, 195"
-      },
       "vendor": "Zilog",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -616,19 +564,14 @@
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       },
       "specification": {
         "clock_mhz": 6
       },
       "used_in": [
         "computer.aurelia_plus"
-      ],
-      "source": {
-        "origin": "conversation_correction_plus_base_history_verification",
-        "note": "User corrected Aurelia+ CPU to Z80B; Zilog documentation specifies the Z80B speed grade at 6 MHz.",
-        "url": "https://www.bitsavers.org/components/zilog/_dataBooks/1982_Zilog_Data_Book.pdf"
-      }
+      ]
     },
     {
       "id": "part.era1",
@@ -649,14 +592,9 @@
           "clock_mhz": 8,
           "used_in": [
             "computer.artemis_pro"
-          ],
-          "canonical_status": "conversation_addition"
+          ]
         }
       ],
-      "source": {
-        "origin": "uploaded_story_plus_conversation_addition",
-        "lines": "202-210"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -671,10 +609,6 @@
       "used_in": [
         "part.artemis_ram_module_prototype"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "217"
-      },
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -689,10 +623,6 @@
       "used_in": [
         "part.artemis_ram_module_64kb"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "218"
-      },
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -703,15 +633,11 @@
       "id": "part.dram_128kbit",
       "name": "128 Kbit RAM chip",
       "category": "memory_chip",
-      "origin": "conversation_defined_component",
+      "origin": "custom_specified_component",
       "used_in": [
         "part.artemis_ram_module_128kb",
         "computer.artemis_pro"
       ],
-      "source": {
-        "origin": "conversation_addition",
-        "note": "User specifies newly introduced 128 Kbit chips for Artemis PRO."
-      },
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
@@ -731,10 +657,6 @@
       "used_in": [
         "computer.artemis_prototypes"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "216-217"
-      },
       "vendor": "Logix / AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -755,10 +677,6 @@
       "used_in": [
         "computer.artemis"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "216-219"
-      },
       "vendor": "Logix / AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -770,7 +688,6 @@
       "name": "Artemis PRO 128 KB RAM module",
       "category": "memory_module",
       "origin": "custom_logix",
-      "canonical_status": "conversation_addition",
       "specification": {
         "capacity_kb": 128,
         "chip_type_ref": "part.dram_128kbit",
@@ -781,10 +698,6 @@
       "used_in": [
         "computer.artemis_pro"
       ],
-      "source": {
-        "origin": "conversation_correction",
-        "note": "User clarified the 1 MB Artemis PRO uses eight 128 KB modules, each built from eight 128 Kbit chips."
-      },
       "vendor": "Logix / AION Labs",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
@@ -802,10 +715,6 @@
         "computer.aurelia_plus",
         "computer.artemis"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "65, 103, 222"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -823,10 +732,6 @@
         "device.flexidisk",
         "device.flexidisk_ii"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "65, 98-99, 103"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -845,10 +750,6 @@
       "used_in": [
         "computer.aurelia"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "67-71"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -867,10 +768,6 @@
       "used_in": [
         "device.mono_monitor_1"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "72"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -892,10 +789,6 @@
         "device.color_monitor_1",
         "device.color_monitor_2"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "74, 173, 226"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -915,16 +808,12 @@
       "used_in": [
         "device.mono_monitor_2"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "172, 225"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       }
     },
     {
@@ -936,10 +825,6 @@
         "computer.artemis",
         "computer.artemis_pro"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "212"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -956,10 +841,6 @@
         "computer.artemis",
         "computer.artemis_pro"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "212"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -979,10 +860,6 @@
         "computer.artemis",
         "computer.artemis_pro"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "213-215"
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -1005,10 +882,6 @@
         "computer.artemis",
         "computer.artemis_pro"
       ],
-      "source": {
-        "origin": "conversation_correction",
-        "note": "User corrected the architecture statement: the controller supports two FDDs."
-      },
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -1023,10 +896,6 @@
       "used_in": [
         "device.mono_monitor_1"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "72"
-      },
       "vendor": "Ball Brothers",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -1050,10 +919,6 @@
       "used_in": [
         "device.color_monitor_1"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "74"
-      },
       "vendor": "Sony",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -1068,16 +933,12 @@
       "used_in": [
         "device.mono_monitor_2"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "172, 225"
-      },
       "vendor": "Motorola",
       "introduced": {
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       }
     },
     {
@@ -1088,16 +949,12 @@
       "used_in": [
         "device.color_monitor_2"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "173, 226"
-      },
       "vendor": "unspecified display OEM",
       "introduced": {
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       }
     },
     {
@@ -1108,10 +965,6 @@
       "used_in": [
         "device.flexiprint40"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "54, 98, 247"
-      },
       "vendor": "Micro Peripherals, Inc.",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -1123,16 +976,12 @@
       "name": "5 MB hard disk drive",
       "category": "storage_component",
       "origin": "unspecified_supplier",
-      "canonical_status": "conversation_addition",
       "specification": {
         "capacity_mb": 5
       },
       "used_in": [
         "computer.artemis_pro"
       ],
-      "source": {
-        "origin": "conversation_addition"
-      },
       "vendor": "unspecified HDD supplier",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
@@ -1145,7 +994,6 @@
       "id": "device.flexibus_keyboard",
       "name": "Logix FlexiBUS keyboard",
       "category": "input_device",
-      "canonical_status": "uploaded_story",
       "connection": "FlexiBUS",
       "specification": {
         "function_keys": "F1-F12",
@@ -1163,10 +1011,6 @@
         "computer.aurelia_plus",
         "computer.artemis"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "92, 238"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -1176,7 +1020,6 @@
       "id": "device.mono_monitor_1",
       "name": "Logix Monochrome Monitor I 9-inch",
       "category": "display",
-      "canonical_status": "uploaded_story",
       "specification": {
         "crt_ref": "part.ball_tv90_crt",
         "controller_ref": "part.aurelia_monitor_dac",
@@ -1186,10 +1029,6 @@
       "offered_with": [
         "computer.aurelia"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "72, 90-93"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -1199,7 +1038,6 @@
       "id": "device.color_monitor_1",
       "name": "Logix Color Monitor I 12-inch",
       "category": "display",
-      "canonical_status": "uploaded_story",
       "specification": {
         "display_subassembly_ref": "part.sony_kv1204_display_assembly",
         "controller_ref": "part.color_monitor_controller",
@@ -1210,10 +1048,6 @@
       "offered_with": [
         "computer.aurelia"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "74, 90-93"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -1223,7 +1057,6 @@
       "id": "device.mono_monitor_2",
       "name": "Logix Mono Monitor II 12-inch",
       "category": "display",
-      "canonical_status": "uploaded_story",
       "specification": {
         "crt_ref": "part.motorola_ds3000_140a_crt",
         "controller_ref": "part.mono_monitor2_controller",
@@ -1234,22 +1067,20 @@
         "computer.aurelia_plus",
         "computer.artemis"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "171-173, 224-226"
-      },
       "introduced": {
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
-      }
+        "timeline_note": "Month-level introduction date."
+      },
+      "optional_with": [
+        "computer.aurelia"
+      ]
     },
     {
       "id": "device.color_monitor_2",
       "name": "Logix Color Monitor II 12-inch",
       "category": "display",
-      "canonical_status": "uploaded_story",
       "specification": {
         "crt_ref": "part.medium_resolution_rgb_crt",
         "controller_ref": "part.color_monitor_controller",
@@ -1260,31 +1091,25 @@
         "computer.aurelia_plus",
         "computer.artemis"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "173, 224-226"
-      },
       "introduced": {
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
-      }
+        "timeline_note": "Month-level introduction date."
+      },
+      "optional_with": [
+        "computer.aurelia"
+      ]
     },
     {
       "id": "device.aurelia_ram_16kb_card",
       "name": "Logix Aurelia 16 KB RAM expansion card",
       "category": "expansion_card",
-      "canonical_status": "uploaded_story",
       "capacity_kb": 16,
       "compatible_with": [
         "computer.aurelia"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "97"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -1294,17 +1119,12 @@
       "id": "device.flexiprint40",
       "name": "Logix FlexiPrint40",
       "category": "printer",
-      "canonical_status": "uploaded_story",
       "specification": {
         "mechanism_ref": "part.mpi_mp40_mechanism",
         "controller_ref": "part.flexibus_device_controller",
         "connection": "FlexiBUS"
       },
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "54, 98, 247"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -1314,17 +1134,12 @@
       "id": "device.flexidisk",
       "name": "Logix FlexiDisk",
       "category": "external_floppy_drive",
-      "canonical_status": "uploaded_story",
       "specification": {
         "media": "5.25-inch FDD",
         "connection": "FlexiBUS",
         "controller_ref": "part.flexibus_device_controller"
       },
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "99"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -1334,7 +1149,6 @@
       "id": "device.apple2_expansion_card",
       "name": "Logix Apple II Expansion Card",
       "category": "third_party_host_expansion_card",
-      "canonical_status": "uploaded_story",
       "specification": {
         "host": "Apple II",
         "flexibus_ports": 2,
@@ -1342,10 +1156,6 @@
       },
       "price_usd": 299,
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "137-145"
-      },
       "introduced": {
         "event_name": "NCC 1979 — Apple II extensions",
         "event_start_date": "1979-06-04"
@@ -1355,7 +1165,6 @@
       "id": "device.flexidisk_ii",
       "name": "Logix FlexiDisk II",
       "category": "external_floppy_drive",
-      "canonical_status": "uploaded_story",
       "specification": {
         "media": "5.25-inch FDD",
         "connection": "FlexiBUS",
@@ -1370,10 +1179,6 @@
       },
       "price_usd": 595,
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "143-145"
-      },
       "introduced": {
         "event_name": "NCC 1979 — Apple II extensions",
         "event_start_date": "1979-06-04"
@@ -1383,7 +1188,6 @@
       "id": "device.artemis_cpm80_module",
       "name": "Artemis CP/M-80 backward-compatibility expansion module",
       "category": "processor_expansion_card",
-      "canonical_status": "uploaded_story",
       "specification": {
         "cpu_ref": "part.z80a",
         "local_ram_kb": 64,
@@ -1393,10 +1197,6 @@
         "computer.artemis"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "195, 246"
-      },
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -1406,16 +1206,11 @@
       "id": "device.artemis_ram_64kb_module",
       "name": "Logix Artemis additional 64 KB RAM module",
       "category": "memory_expansion",
-      "canonical_status": "uploaded_story",
       "part_ref": "part.artemis_ram_module_64kb",
       "compatible_with": [
         "computer.artemis"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "216-219, 245"
-      },
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -1425,7 +1220,6 @@
       "id": "device.network_card_aurelia",
       "name": "Logix Aurelia network card",
       "category": "network_interface_card",
-      "canonical_status": "conversation_addition",
       "compatible_with": [
         "computer.aurelia",
         "computer.aurelia_plus"
@@ -1433,9 +1227,6 @@
       "sold_with": [
         "software.networking_upgrade"
       ],
-      "source": {
-        "origin": "conversation_addition"
-      },
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
@@ -1449,15 +1240,11 @@
       "id": "device.network_card_artemis",
       "name": "Logix Artemis network interface",
       "category": "network_interface_card_or_integrated_interface",
-      "canonical_status": "conversation_addition",
       "compatible_with": [
         "computer.artemis",
         "computer.artemis_pro"
       ],
       "packaging": "Networking is stated to be included with Artemis by default from the 1981 networking release; exact physical integration is not specified.",
-      "source": {
-        "origin": "conversation_addition"
-      },
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
@@ -1471,7 +1258,6 @@
       "id": "device.network_hub",
       "name": "Logix network hub/repeater",
       "category": "network_repeater_hub",
-      "canonical_status": "conversation_addition",
       "specification": {
         "port_count_options": [
           4,
@@ -1483,9 +1269,6 @@
         "media_access_control": "polls/grants one transmitting station at a time and repeats admitted frames to receiving ports"
       },
       "sold_separately": true,
-      "source": {
-        "origin": "conversation_addition"
-      },
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
@@ -1504,15 +1287,37 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "canonical_status": "uploaded_story",
       "form_factor": "slim desktop",
       "processor": {
         "part_ref": "part.z80a",
         "clock_mhz": 4
       },
       "memory": {
-        "ram_kb": 32,
-        "video_ram_kb": 8
+        "ram_kb": 48,
+        "video_ram_kb": 8,
+        "organization_ref": "technology.aurelia_memory_model",
+        "organization": {
+          "common_system_ram_kb": 4,
+          "contiguous_lower_ram_kb": 44,
+          "normal_view": [
+            {
+              "start": "0000",
+              "end": "AFFF",
+              "role": "Lower RAM, including CP/M page zero and application memory"
+            },
+            {
+              "start": "B000",
+              "end": "EFFF",
+              "role": "ROM / cartridge / VRAM windows"
+            },
+            {
+              "start": "F000",
+              "end": "FFFF",
+              "role": "Common system RAM"
+            }
+          ],
+          "note": "Switchable upper pages can temporarily replace application RAM with ROM or VRAM without erasing RAM. Available application memory is lower than the lower-RAM total."
+        }
       },
       "storage": {
         "internal_fdd": {
@@ -1560,7 +1365,8 @@
         "technology.plug_and_execute",
         "technology.xip_rom_platform",
         "technology.logix_digital_video",
-        "technology.logix_tui_standard"
+        "technology.logix_tui_standard",
+        "technology.aurelia_memory_model"
       ],
       "compatible_devices": [
         "device.flexibus_keyboard",
@@ -1570,7 +1376,9 @@
         "device.flexiprint40",
         "device.flexidisk",
         "device.flexidisk_ii",
-        "device.network_card_aurelia"
+        "device.network_card_aurelia",
+        "device.mono_monitor_2",
+        "device.color_monitor_2"
       ],
       "compatible_software": [
         "software.cpm_aurelia",
@@ -1581,11 +1389,7 @@
         "software.microsoft_basic_aurelia",
         "software.bpi_suite",
         "software.cpm_aurelia_networking"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "45-117"
-      }
+      ]
     },
     {
       "id": "computer.aurelia_plus",
@@ -1594,9 +1398,8 @@
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       },
-      "canonical_status": "uploaded_story_plus_conversation_correction",
       "form_factor": "slim desktop",
       "processor": {
         "part_ref": "part.z80b",
@@ -1604,7 +1407,25 @@
       },
       "memory": {
         "ram_kb": 64,
-        "video_ram_kb": 16
+        "video_ram_kb": 16,
+        "organization_ref": "technology.aurelia_memory_model",
+        "organization": {
+          "common_system_ram_kb": 4,
+          "contiguous_lower_ram_kb": 60,
+          "normal_view": [
+            {
+              "start": "0000",
+              "end": "EFFF",
+              "role": "Lower RAM, including CP/M page zero and application memory"
+            },
+            {
+              "start": "F000",
+              "end": "FFFF",
+              "role": "Common system RAM"
+            }
+          ],
+          "note": "Switchable upper pages can temporarily replace application RAM with ROM or VRAM without erasing RAM. Available application memory is lower than the lower-RAM total."
+        }
       },
       "storage": {
         "internal_fdd": {
@@ -1649,7 +1470,8 @@
         "technology.plug_and_execute",
         "technology.xip_rom_platform",
         "technology.logix_digital_video",
-        "technology.logix_tui_standard"
+        "technology.logix_tui_standard",
+        "technology.aurelia_memory_model"
       ],
       "compatible_devices": [
         "device.flexibus_keyboard",
@@ -1674,12 +1496,7 @@
         "software.bpi_suite",
         "software.pulse_1",
         "software.cpm_aurelia_networking"
-      ],
-      "source": {
-        "origin": "uploaded_story_plus_conversation_correction",
-        "lines": "149-173",
-        "note": "CPU corrected by user to Z80B; 6 MHz follows Zilog Z80B speed grade."
-      }
+      ]
     },
     {
       "id": "computer.artemis",
@@ -1688,7 +1505,6 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "canonical_status": "uploaded_story_plus_conversation_additions",
       "form_factor": "full desktop",
       "processor": {
         "part_ref": "part.era1",
@@ -1790,11 +1606,7 @@
         "software.pulse_3",
         "software.aionix_networked",
         "software.bpi_client_server"
-      ],
-      "source": {
-        "origin": "uploaded_story_plus_conversation_additions",
-        "lines": "182-251"
-      }
+      ]
     },
     {
       "id": "computer.artemis_pro",
@@ -1803,7 +1615,6 @@
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
       },
-      "canonical_status": "conversation_addition",
       "role": "network server",
       "form_factor": "full desktop / server",
       "processor": {
@@ -1911,24 +1722,19 @@
         "software.bpi_client_server",
         "software.aion_c_ide",
         "software.artemis_sdk"
-      ],
-      "source": {
-        "origin": "conversation_addition",
-        "note": "Planned NCC 1981 server platform; RAM organization corrected by user."
-      }
+      ]
     }
   ],
   "software_products": [
     {
       "id": "software.cpm_aurelia",
-      "name": "Enhanced CP/M for Logix Aurelia",
+      "name": "Enhanced CP/M 1.4 for Logix Aurelia",
       "vendor": "Logix / Digital Research cooperation",
       "category": "operating_system",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "canonical_status": "uploaded_story",
       "delivery": [
         "mainboard XIP ROM",
         "System ROM cartridge"
@@ -1960,10 +1766,221 @@
         "computer.aurelia",
         "computer.aurelia_plus"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "62-64, 75-87"
-      }
+      "base_version": "CP/M 1.4",
+      "development_lineage": "Cooperation begins on CP/M 1.3; the initial Aurelia system is derived from CP/M 1.4.",
+      "description": "A ROM-adapted CP/M 1.4 platform combining the standard application and file-service interfaces with Logix memory, peripheral and TUI services. The same architecture supports Aurelia and Aurelia+.",
+      "vanilla_architecture": {
+        "execution_model": "Single user, one foreground application; conventional operating-system and application images execute in RAM.",
+        "memory_layout": [
+          {
+            "region": "0000H–00FFH",
+            "purpose": "System vectors, default file-control information and command/disk buffer"
+          },
+          {
+            "region": "From 0100H",
+            "purpose": "Transient Program Area (TPA): application code and data"
+          },
+          {
+            "region": "Above TPA",
+            "purpose": "CCP, then BDOS, then machine-specific BIOS at the high end of configured memory"
+          }
+        ],
+        "application_entry": "CALL 0005H",
+        "program_load_address": "0100H",
+        "components": [
+          {
+            "id": "ccp",
+            "name": "CCP — Console Command Processor",
+            "description": "Reads commands, executes built-in commands and loads transient programs. Uses BDOS services."
+          },
+          {
+            "id": "bdos",
+            "name": "BDOS — Basic Disk Operating System",
+            "description": "Provides console and file services, directory/allocation management and record operations. Calls BIOS for hardware operations."
+          },
+          {
+            "id": "bios",
+            "name": "BIOS — Basic Input/Output System",
+            "description": "Machine-specific console, printer and disk primitives, including startup and sector transfers."
+          },
+          {
+            "id": "tpa",
+            "name": "TPA — Transient Program Area",
+            "description": "Application code and data in RAM. A memory region, not an executable OS module."
+          },
+          {
+            "id": "utilities",
+            "name": "Transient utilities",
+            "description": "Separate editing, copying, assembly, debugging and maintenance programs loaded when needed."
+          }
+        ],
+        "changes_from_1_3": [
+          "Four logical disk drives; BIOS drive selection accepts 0–3.",
+          "Disk-sector translation moves into BIOS.",
+          "Drive selection can maintain additional disk state.",
+          "BDOS begins one 256-byte page lower; CCP and BIOS bases remain unchanged.",
+          "Revised disk-error handling interface.",
+          "DE returns the same value as HL.",
+          "BDOS implementation is divided into a PL/M main body and an assembly interface module."
+        ],
+        "limits": [
+          "No built-in banked-ROM runtime, cartridge manager or dynamic driver registry.",
+          "No shared TUI widgets, clipboard or resident Business Tools workspace.",
+          "The generalized CP/M 2.0 disk-parameter-block model is not part of vanilla 1.4."
+        ]
+      },
+      "internal_organization": [
+        {
+          "id": "boot",
+          "name": "Boot and recovery firmware",
+          "responsibility": "Logix",
+          "residence": "Motherboard ROM",
+          "description": "Initialize hardware, discover the system cartridge and provide diagnostics/recovery.",
+          "diagram_label": "Boot & recovery"
+        },
+        {
+          "id": "runtime",
+          "name": "Memory / cartridge runtime",
+          "responsibility": "Logix",
+          "residence": "Stable common-memory entry routines plus ROM services",
+          "description": "Select banks, preserve mappings and stacks, support nested calls and execute cartridge components.",
+          "diagram_label": "Memory runtime"
+        },
+        {
+          "id": "drivers",
+          "name": "Hardware drivers and device registry",
+          "responsibility": "Logix",
+          "residence": "Motherboard ROM, device ROM and replaceable extensions",
+          "description": "Operate video, keyboard, floppy and FlexiBUS hardware; discover devices and register compatible drivers.",
+          "diagram_label": "Drivers & registry"
+        },
+        {
+          "id": "bios",
+          "name": "CP/M BIOS adapter",
+          "responsibility": "Customized CP/M interface",
+          "residence": "Stable firmware primitives plus system-cartridge adaptation",
+          "description": "Translate CP/M console, printer and disk operations into Logix driver calls.",
+          "diagram_label": "BIOS adapter"
+        },
+        {
+          "id": "bdos",
+          "name": "CP/M 1.4-derived BDOS",
+          "responsibility": "DRI / Logix adaptation",
+          "residence": "System cartridge; mutable state in RAM",
+          "description": "Preserve file/application services; adapt disk-format assumptions and code for banked ROM execution.",
+          "diagram_label": "BDOS"
+        },
+        {
+          "id": "ccp",
+          "name": "CP/M 1.4-derived CCP",
+          "responsibility": "DRI / Logix adaptation",
+          "residence": "System cartridge; command buffers in RAM",
+          "description": "Interpret commands, launch disk/cartridge applications and use shared command-line editing.",
+          "diagram_label": "CCP"
+        },
+        {
+          "id": "tui",
+          "name": "Logix TUI and shared services",
+          "responsibility": "Logix / AION",
+          "residence": "ROM services with mutable state in reserved RAM",
+          "description": "Provide screen primitives, structured keyboard input, menus, fields, clipboard and resident-workspace support.",
+          "diagram_label": "TUI & services"
+        },
+        {
+          "id": "apps",
+          "name": "Utilities and applications",
+          "responsibility": "Platform software",
+          "residence": "RAM or optional application cartridges",
+          "description": "Use standard CP/M calls and, when Logix-aware, the versioned extension interface.",
+          "diagram_label": "Applications"
+        }
+      ],
+      "internal_relationships": [
+        [
+          "apps",
+          "bdos"
+        ],
+        [
+          "apps",
+          "tui"
+        ],
+        [
+          "ccp",
+          "bdos"
+        ],
+        [
+          "ccp",
+          "tui"
+        ],
+        [
+          "bdos",
+          "bios"
+        ],
+        [
+          "bios",
+          "drivers"
+        ],
+        [
+          "tui",
+          "drivers"
+        ],
+        [
+          "boot",
+          "runtime"
+        ],
+        [
+          "runtime",
+          "drivers"
+        ]
+      ],
+      "logix_requirements": [
+        "Preserve standard CP/M entry points, loading conventions and available-memory boundaries.",
+        "Adapt both BIOS and relevant BDOS assumptions to Aurelia floppy formats.",
+        "Keep bank-switching entry code, stack and critical interrupt handling permanently accessible.",
+        "Separate ROM code/constants from RAM state; adapt self-modifying routines.",
+        "Discover cartridge/device ROMs through defined, versioned interfaces.",
+        "Map Logix peripherals to standard CP/M console, printer and disk services.",
+        "Provide a separate versioned Logix service interface and C bindings."
+      ],
+      "tui_features": [
+        {
+          "name": "Screen primitives",
+          "description": "Position text, clear/fill/scroll regions, control cursor and character attributes."
+        },
+        {
+          "name": "Capability queries",
+          "description": "Report screen dimensions and available attributes so applications adapt to each model."
+        },
+        {
+          "name": "Structured keyboard input",
+          "description": "Represent ordinary characters, function/navigation keys and modifiers consistently."
+        },
+        {
+          "name": "Shared text editing",
+          "description": "Common insertion, deletion and cursor movement for the CCP and editable fields."
+        },
+        {
+          "name": "Menus and forms",
+          "description": "Reusable selection, focus, validation and dialog operations."
+        },
+        {
+          "name": "Screen-state management",
+          "description": "Save/restore affected regions and coordinate redraws and available hardware buffering."
+        },
+        {
+          "name": "Clipboard",
+          "description": "Shared ownership and copy/paste operations with explicitly bounded storage."
+        },
+        {
+          "name": "Resident workspace",
+          "description": "Reserve Business Tools state and provide safe application entry/return conventions."
+        }
+      ],
+      "compatibility_notes": [
+        "Ordinary CP/M applications keep character/file services; rich TUI behavior requires use of Logix APIs.",
+        "Shared TUI routines do not require multitasking; applications may remain sequential.",
+        "Clipboard capacity, exact widgets and workspace behavior remain implementation decisions."
+      ]
     },
     {
       "id": "software.business_tools_aurelia",
@@ -1974,7 +1991,6 @@
         "computer.aurelia",
         "computer.aurelia_plus"
       ],
-      "canonical_status": "uploaded_story",
       "delivery": "16 KB XIP ROM system overlay / expansion cartridge",
       "features": [
         "shared TUI library",
@@ -1984,10 +2000,6 @@
         "calendar/scheduler"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "76-80, 96"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2002,7 +2014,6 @@
       "platform": [
         "computer.aurelia"
       ],
-      "canonical_status": "uploaded_story",
       "delivery": "diskette",
       "features": [
         "one tab per document",
@@ -2016,10 +2027,6 @@
         "technology.abacus_sparse_model",
         "technology.logix_tui_standard"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "81, 95"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2034,15 +2041,10 @@
         "computer.aurelia",
         "computer.aurelia_plus"
       ],
-      "canonical_status": "uploaded_story",
       "features": [
         "basic C libraries"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "83, 100"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2057,7 +2059,6 @@
         "computer.aurelia",
         "computer.aurelia_plus"
       ],
-      "canonical_status": "uploaded_story",
       "contents": [
         "Aurelia Technical Reference",
         "Aurelia Programmer's Manual",
@@ -2068,10 +2069,6 @@
         "SDK tools/software"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "101-102"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2086,9 +2083,8 @@
         "event_name": "COMDEX November 1978 — BPI Products for Aurelia",
         "event_start_date": "1978-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario event naming/date retained from the story."
+        "timeline_note": "Alternative-timeline introduction date."
       },
-      "canonical_status": "uploaded_story",
       "implementation": {
         "language": "AION C",
         "ui": "Logix TUI",
@@ -2157,33 +2153,24 @@
       "technology_refs": [
         "technology.bpi_relational_database",
         "technology.aion_c_portability_framework"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "124-132, 244"
-      }
+      ]
     },
     {
       "id": "software.microsoft_basic_aurelia",
       "name": "Microsoft BASIC for Aurelia",
       "vendor": "Microsoft",
       "category": "programming_language",
-      "canonical_status": "uploaded_story",
       "relationship": "licensed third-party software developed in cooperation with AION / for Aurelia CP/M with TUI",
       "platform": [
         "computer.aurelia",
         "computer.aurelia_plus"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "123, 133"
-      },
       "introduced": {
         "event_name": "COMDEX November 1978 — BPI Products for Aurelia",
         "event_start_date": "1978-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario event naming/date retained from the story."
+        "timeline_note": "Alternative-timeline introduction date."
       }
     },
     {
@@ -2196,16 +2183,11 @@
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       },
-      "canonical_status": "uploaded_story",
       "features_ref": "technology.pulse_notebook_model",
       "positioning": "easy-to-learn programming language / interactive environment and direct BASIC competitor; tightly integrated with Abacus",
-      "training_available": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "149-159"
-      }
+      "training_available": true
     },
     {
       "id": "software.abacus_2",
@@ -2216,9 +2198,8 @@
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       },
-      "canonical_status": "uploaded_story",
       "features": [
         "text-mode vertical or horizontal bar charts",
         "report/document layouts",
@@ -2235,11 +2216,7 @@
         "computer.aurelia_plus",
         "computer.artemis"
       ],
-      "delivery_on_artemis": "diskette",
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "160-165, 198, 242"
-      }
+      "delivery_on_artemis": "diskette"
     },
     {
       "id": "software.aionix",
@@ -2250,7 +2227,6 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "canonical_status": "uploaded_story",
       "platform": [
         "computer.artemis"
       ],
@@ -2258,18 +2234,13 @@
       "technology_ref": "technology.aionix_os_model",
       "bundled_with": [
         "computer.artemis"
-      ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "187-192, 197, 227-233, 236"
-      }
+      ]
     },
     {
       "id": "software.business_tools_artemis",
       "name": "AION Business Tools / Office Suite for Artemis",
       "vendor": "AION Software",
       "category": "productivity_suite",
-      "canonical_status": "uploaded_story",
       "platform": [
         "computer.artemis"
       ],
@@ -2284,10 +2255,6 @@
         "chat"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "200-201, 243"
-      },
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2298,7 +2265,6 @@
       "name": "AION C IDE and compiler for ERA",
       "vendor": "AION Software",
       "category": "development_toolchain",
-      "canonical_status": "uploaded_story_plus_conversation_addition",
       "platform": [
         "computer.artemis",
         "computer.artemis_pro"
@@ -2312,10 +2278,6 @@
       ],
       "technology_ref": "technology.aion_c_portability_framework",
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story_plus_conversation_addition",
-        "lines": "199, 248"
-      },
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2326,7 +2288,6 @@
       "name": "Logix Artemis Developer Package Complete SDK",
       "vendor": "Logix",
       "category": "sdk_and_documentation",
-      "canonical_status": "uploaded_story",
       "contents": [
         "Artemis Technical Reference",
         "Artemis Programmer's Manual",
@@ -2337,10 +2298,6 @@
         "SDK tools/software"
       ],
       "sold_separately": true,
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "249-250"
-      },
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2355,7 +2312,6 @@
         "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
         "event_start_date": "1980-11-19"
       },
-      "canonical_status": "conversation_addition",
       "platform": [
         "computer.artemis",
         "computer.artemis_pro"
@@ -2371,10 +2327,7 @@
         "document size limits",
         "new chart types",
         "other features previously suggested only by assistant"
-      ],
-      "source": {
-        "origin": "conversation_addition"
-      }
+      ]
     },
     {
       "id": "software.pulse_3",
@@ -2385,7 +2338,6 @@
         "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
         "event_start_date": "1980-11-19"
       },
-      "canonical_status": "conversation_addition",
       "platform": [
         "computer.artemis",
         "computer.artemis_pro"
@@ -2395,9 +2347,6 @@
         "native 32-bit product",
         "designed to fully use the potential of the 32-bit platform"
       ],
-      "source": {
-        "origin": "conversation_addition"
-      },
       "design_continuity_with": "software.pulse_1"
     },
     {
@@ -2409,7 +2358,6 @@
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
       },
-      "canonical_status": "conversation_addition",
       "platform": [
         "computer.artemis",
         "computer.artemis_pro"
@@ -2417,9 +2365,6 @@
       "adds": [
         "TCP/IP networking support for Logix LAN"
       ],
-      "source": {
-        "origin": "conversation_addition"
-      },
       "technology_refs": [
         "technology.aionix_os_model",
         "technology.logix_tcpip_lan",
@@ -2435,7 +2380,6 @@
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
       },
-      "canonical_status": "conversation_addition",
       "architecture": {
         "client_server": true,
         "server": "computer.artemis_pro",
@@ -2447,7 +2391,7 @@
         "computer.aurelia_plus",
         "computer.artemis"
       ],
-      "unspecified_in_source": [
+      "unspecified": [
         "SQL or other query language",
         "transaction semantics",
         "record/page locking",
@@ -2455,9 +2399,6 @@
         "backup protocol",
         "client/server wire protocol"
       ],
-      "source": {
-        "origin": "conversation_addition"
-      },
       "business_module_lineage": "software.bpi_suite"
     },
     {
@@ -2469,7 +2410,6 @@
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
       },
-      "canonical_status": "conversation_correction",
       "platform": [
         "computer.aurelia",
         "computer.aurelia_plus"
@@ -2485,11 +2425,7 @@
         "technology.logix_tcpip_lan",
         "technology.logix_lan100_link",
         "technology.logix_tui_standard"
-      ],
-      "source": {
-        "origin": "conversation_correction",
-        "note": "User explicitly clarified that Aurelia CP/M must also be upgraded to support networking."
-      }
+      ]
     }
   ],
   "services": [
@@ -2497,7 +2433,6 @@
       "id": "service.customer_care",
       "name": "Logix Customer Care",
       "category": "support",
-      "canonical_status": "uploaded_story",
       "features": [
         "telephone access during business hours",
         "documentation",
@@ -2517,10 +2452,6 @@
           "price": 49
         }
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "108-111, 252-256"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2530,7 +2461,6 @@
       "id": "service.regular_support",
       "name": "Logix Regular Support Service",
       "category": "support",
-      "canonical_status": "uploaded_story",
       "features": [
         "toll-free telephone line",
         "unlimited reasonable telephone support",
@@ -2553,10 +2483,6 @@
         "computer.aurelia_plus",
         "computer.artemis"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "108-111, 235-240, 252-256"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2566,7 +2492,6 @@
       "id": "service.professional_support",
       "name": "Logix Professional Support Service",
       "category": "support",
-      "canonical_status": "uploaded_story",
       "features": [
         "Regular Support features",
         "preferential repair turnaround",
@@ -2584,10 +2509,6 @@
           "price": 299
         }
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "111, 255"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2597,13 +2518,8 @@
       "id": "service.professional_business_onsite",
       "name": "Logix Professional Business On-site",
       "category": "support",
-      "canonical_status": "uploaded_story",
       "price_usd": 449,
-      "details": "No additional scope details are specified in the source.",
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "256"
-      },
+      "details": "Additional scope is unspecified.",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2618,7 +2534,6 @@
         "event_start_date": "1978-03",
         "date_precision": "month"
       },
-      "canonical_status": "uploaded_story",
       "courses": [
         {
           "name": "Aurelia Fundamentals",
@@ -2640,22 +2555,13 @@
       "completion": {
         "credential": "Aurelia Driving License",
         "voucher_usd": 150
-      },
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "57, 112-117"
       }
     },
     {
       "id": "service.academy_regular_courses",
       "name": "Logix Computer Academy - regular courses",
       "category": "training",
-      "canonical_status": "uploaded_story",
       "pricing_rule": "$50 cheaper than before-you-buy course; no voucher",
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "115"
-      },
       "introduced": {
         "event_name": "Logix Computer Academy launch",
         "event_start_date": "1978-03",
@@ -2666,12 +2572,7 @@
       "id": "service.academy_customer_site",
       "name": "Logix Computer Academy - customer-site courses",
       "category": "training",
-      "canonical_status": "uploaded_story",
       "delivery": "at customer premises",
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "116"
-      },
       "introduced": {
         "event_name": "Logix Computer Academy launch",
         "event_start_date": "1978-03",
@@ -2682,12 +2583,7 @@
       "id": "service.academy_direct_sales",
       "name": "Logix Computer Academy direct product sales",
       "category": "sales_channel",
-      "canonical_status": "uploaded_story",
       "description": "Academy facilities also supply Logix/AION products via a direct channel.",
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "117"
-      },
       "introduced": {
         "event_name": "Logix Computer Academy launch",
         "event_start_date": "1978-03",
@@ -2698,41 +2594,30 @@
       "id": "service.pulse_training",
       "name": "AION Pulse training",
       "category": "training",
-      "canonical_status": "uploaded_story",
       "delivery": "Logix Computer Academy",
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "159"
-      },
       "introduced": {
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       }
     },
     {
       "id": "service.bpi_training",
       "name": "BPI Products training",
       "category": "training",
-      "canonical_status": "uploaded_story",
       "delivery": "Logix Computer Academy; available days after COMDEX 1978 presentation",
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "132"
-      },
       "introduced": {
         "event_name": "COMDEX November 1978 — BPI Products for Aurelia",
         "event_start_date": "1978-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario event naming/date retained from the story."
+        "timeline_note": "Alternative-timeline introduction date."
       }
     },
     {
       "id": "service.aurelia_commercial_developer_license",
       "name": "Logix Aurelia Commercial Developer License",
       "category": "developer_program_and_license",
-      "canonical_status": "uploaded_story",
       "includes": [
         "software.aurelia_sdk",
         "permission to distribute Aurelia-compatible software",
@@ -2740,10 +2625,6 @@
         "developer identification number",
         "ability to submit products for Aurelia Compatible designation"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "101-102"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2753,7 +2634,6 @@
       "id": "service.artemis_commercial_developer_license",
       "name": "Logix Artemis Commercial Developer License",
       "category": "developer_program_and_license",
-      "canonical_status": "uploaded_story",
       "includes": [
         "software.artemis_sdk",
         "permission to distribute Artemis-compatible software",
@@ -2761,10 +2641,6 @@
         "developer identification number",
         "ability to submit products for Artemis Compatible designation"
       ],
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "249-250"
-      },
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2774,12 +2650,7 @@
       "id": "service.component_licensing",
       "name": "Logix custom-chip licensing / supply to other manufacturers",
       "category": "oem_licensing",
-      "canonical_status": "uploaded_story",
       "scope": "All custom chips except ROMs, especially FlexiBUS computer and device controllers, are available to other computer manufacturers under individually negotiated contracts.",
-      "source": {
-        "origin": "uploaded_story",
-        "lines": "103, 251"
-      },
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2788,7 +2659,6 @@
   ],
   "product_strategy": {
     "software_platform_policy_from_november_1980": {
-      "canonical_status": "conversation_addition",
       "primary_focus": "32-bit Artemis software",
       "8_bit_policy": "Aurelia/Aurelia+ receive simplified refreshes and maintenance rather than equal-feature major releases.",
       "flagship_products": [
@@ -2797,7 +2667,6 @@
       ]
     }
   },
-  "source_conflicts_and_open_issues": [],
   "offered_bundles": [
     {
       "id": "bundle.aurelia_mono",
@@ -2850,7 +2719,7 @@
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       },
       "computer_ref": "computer.aurelia_plus",
       "included_devices": [
@@ -2874,7 +2743,7 @@
         "event_name": "COMDEX November 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-11",
         "date_precision": "month",
-        "timeline_note": "Alternative-scenario month retained from the story."
+        "timeline_note": "Month-level introduction date."
       },
       "computer_ref": "computer.aurelia_plus",
       "included_devices": [
@@ -3058,5 +2927,43 @@
       ],
       "availability": "planned NCC 1981"
     }
-  ]
+  ],
+  "aurelia_explorer": {
+    "computer_refs": [
+      "computer.aurelia",
+      "computer.aurelia_plus"
+    ],
+    "memory_ref": "technology.aurelia_memory_model",
+    "os_ref": "software.cpm_aurelia",
+    "introduction": "Explore the 8-bit platform that starts the Logix story. From its processor to its peripheral ecosystem, one connected system at a time.",
+    "context": "Logix launches Aurelia as a complete personal-computing platform: hardware, enhanced CP/M, AION applications, developer programs, support and the Computer Academy.",
+    "timeline": [
+      {
+        "date": "1978-06-05",
+        "title": "NCC 1978",
+        "description": "Aurelia launches with FlexiBUS and enhanced CP/M 1.4."
+      },
+      {
+        "date": "1979-11",
+        "title": "COMDEX 1979",
+        "description": "Aurelia+ arrives alongside Pulse and Abacus 2.0; Monitor II options become available."
+      },
+      {
+        "date": "1980-11",
+        "title": "Software direction",
+        "description": "Artemis becomes the primary AION software platform; Aurelia receives maintenance and simplified refreshes."
+      },
+      {
+        "date": "1981-05-04",
+        "title": "NCC 1981",
+        "description": "An optional network adapter and CP/M upgrade add business networking."
+      }
+    ],
+    "notes": {
+      "hardware": "Functional connections, not an electrical schematic. Select Memory to inspect the proposed mapping.",
+      "peripherals": "Compatible choices, not simultaneous port occupancy. Later accessories show their introduction dates; they were not included at the original launch.",
+      "software": "Functional software relationships. Standard CP/M interfaces coexist with the Logix extension API.",
+      "memory": "Proposed 4 KB-page organization. The common-RAM allocation is a planning budget; application capacity depends on system and workspace reservations."
+    }
+  }
 }
