@@ -103,6 +103,7 @@ function buildSoftware(c){
  if($('software-mode').value==='cartridge'){
  add(tools.id,'Business Tools cartridge',tools.delivery,2,1,'Independent offering',tools.description,[['Introduced',tools.introduced.event_start_date],['Delivery',tools.delivery]],tools.runtime_notes);
  tools.subcomponents.forEach((s,i)=>{const col=i%3+1,row=Math.floor(i/3)+2;add(s.id,s.name,'Cartridge subcomponent',col,row,'Business Tools',s.description,[],tools.runtime_notes);edges.push([tools.id,s.id]);});
+ (tools.system_dependencies||[]).forEach((dep,i)=>{add('dependency'+i,dep.name,'External · system cartridge',i+2,3,'System dependency',dep.description,[['Provided by',rec(dep.software_ref).name]]);edges.push([tools.id,'dependency'+i]);});
  }else{
  const software=c.compatible_software.map(rec).filter(x=>x?.sold_separately);
  software.forEach((s,i)=>{product(s.id,i%3+1,Math.floor(i/3)+1);nodes[nodes.length-1].sub='Sold separately · '+s.introduced.event_start_date;});

@@ -1922,8 +1922,8 @@
           "id": "tui",
           "name": "Logix TUI and shared services",
           "responsibility": "Logix / AION",
-          "residence": "ROM services with mutable state in reserved RAM",
-          "description": "Provide screen primitives, structured keyboard input, menus, fields, clipboard and resident-workspace support.",
+          "residence": "CP/M system cartridge; mutable state in reserved RAM; hardware operations delegated to drivers",
+          "description": "Own the shared application-facing screen and keyboard API, editing controls, menus, forms, lists, popup windows, clipboard service and workspace entry/return support. Business Tools and other compatible applications call these services rather than carrying a second shared TUI library.",
           "diagram_label": "TUI & services"
         },
         {
@@ -2020,7 +2020,19 @@
         "Ordinary CP/M applications keep character/file services; rich TUI behavior requires use of Logix APIs.",
         "Shared TUI routines do not require multitasking; applications may remain sequential.",
         "Clipboard capacity, exact widgets and workspace behavior remain implementation decisions."
-      ]
+      ],
+      "tui_ownership": {
+        "owner": "System TUI & services",
+        "interface_ref": "technology.logix_tui_standard",
+        "consumers": [
+          "software.business_tools_aurelia",
+          "software.abacus_1",
+          "software.abacus_2",
+          "software.bpi_suite",
+          "software.pulse_1"
+        ],
+        "boundary": "System services supply reusable controls and clipboard/workspace mechanisms. Applications own their documents, calculations, file-management workflows and calendar records."
+      }
     },
     {
       "id": "software.business_tools_aurelia",
@@ -2033,7 +2045,6 @@
       ],
       "delivery": "16 KB XIP ROM system overlay / expansion cartridge",
       "features": [
-        "shared TUI library",
         "text editor",
         "simple disk browser",
         "calculator",
@@ -2044,40 +2055,45 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "description": "Separately offered 16 KB XIP ROM expansion cartridge containing shared TUI routines and compact everyday tools. It complements the CP/M system cartridge; mutable workspace and clipboard data occupy reserved system RAM.",
+      "description": "Separately offered 16 KB XIP ROM expansion cartridge with four applications: text editor, disk browser, calculator and calendar/scheduler. It calls TUI & services in the CP/M system cartridge. It does not contain a duplicate shared TUI library; application documents and state occupy RAM or disk storage.",
       "subcomponents": [
-        {
-          "id": "tui",
-          "name": "Shared TUI library",
-          "description": "Common screen, input and editing routines used by the tools and compatible applications."
-        },
         {
           "id": "editor",
           "name": "Text editor",
-          "description": "Create and edit text using the common keyboard and editing conventions."
+          "description": "Own text documents and editor commands, using the system editing controls, screen services and clipboard."
         },
         {
           "id": "browser",
           "name": "Disk browser",
-          "description": "Browse disk contents and select files through the shared text interface."
+          "description": "Own disk/file browsing workflows, using system list controls, dialogs and file services."
         },
         {
           "id": "calculator",
           "name": "Calculator",
-          "description": "Perform everyday calculations within the tools workspace."
+          "description": "Own arithmetic operations and calculator state, using system input fields and clipboard services."
         },
         {
           "id": "calendar",
           "name": "Calendar / scheduler",
-          "description": "Maintain calendar and scheduling information using the shared interface."
+          "description": "Own calendar records and scheduling workflows, using system forms, navigation and display services."
         }
       ],
       "runtime_notes": [
-        "The complete cartridge is 16 KB; no individual subcomponent size is specified.",
+        "The cartridge remains a 16 KB product capacity; removing duplicate routines does not establish a measured free-space budget.",
         "Uses one cartridge slot alongside the CP/M system cartridge.",
-        "Code executes from banked ROM where practical; writable state is held in RAM.",
-        "The shared TUI library provides the application-facing toolkit; the CP/M platform supplies its underlying driver and extension services.",
+        "Code executes from banked ROM where practical; writable application state is held in RAM.",
+        "Reusable TUI widgets, screen and input primitives, clipboard ownership and workspace mechanisms belong to the CP/M system cartridge.",
+        "Application-specific text editing, file browsing, calculation and scheduling logic remain in this cartridge.",
+        "The applications call the system TUI interface; they do not require their own copy of its library.",
         "A resident workspace reserves RAM explicitly; the cartridge does not imply multitasking."
+      ],
+      "system_dependencies": [
+        {
+          "software_ref": "software.cpm_aurelia",
+          "component_id": "tui",
+          "name": "System TUI & services",
+          "description": "External dependency in the CP/M system cartridge: shared screen, input, editing controls, menus/forms, clipboard and workspace mechanisms."
+        }
       ]
     },
     {
