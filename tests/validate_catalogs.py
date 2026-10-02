@@ -20,6 +20,11 @@ for p in story['assumptions']['principles']:assert set(p['actor_refs'])<=actors
 page_ids={p['id'] for p in site['pages']};paths={p['path'] for p in site['pages']}
 assert len(page_ids)==len(site['pages'])==len(paths)
 assert set(site['navigation'])<=page_ids
+lanes=site['timeline_view']['lanes']
+assigned=[e for lane in lanes for e in lane['event_refs']]
+assert len(assigned)==len(set(assigned))==len(events)
+assert set(assigned)==event_ids
+for lane in lanes:assert set(lane['actor_refs'])<=actors
 for p in site['pages']:
  assert (root/p['path']).exists(),p['path'];assert set(p['record_refs'])<=records.keys(),p['id']
  assert '<script defer src="atlas.js">' in (root/p['path']).read_text()

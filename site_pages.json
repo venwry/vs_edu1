@@ -311,7 +311,7 @@
       "id": "timeline",
       "path": "timeline.html",
       "title": "Timeline",
-      "description": "Events, agreements, market reactions and planned milestones across the alternative history.",
+      "description": "Follow Adam, his companies, their partners and competitors through a visual timeline of the alternative computing history.",
       "record_refs": [],
       "kind": "timeline",
       "aliases": [
@@ -344,7 +344,7 @@
     "search": "Search events",
     "actor": "Participant",
     "type": "Event type",
-    "expand": "Expand all events",
+    "expand": "Show all event details",
     "empty": "No events match these filters.",
     "existing": "Existing bundles",
     "proposed": "Proposed bundles",
@@ -362,5 +362,131 @@
     "actor.bpi": "bpi",
     "actor.academy": "academy"
   },
-  "rendering_notes": "Display text and product facts come from these JSON catalogs. HTML files are page shells; shared scripts render and link their content."
+  "rendering_notes": "Display text and product facts come from these JSON catalogs. HTML files are page shells; shared scripts render and link their content.",
+  "timeline_view": {
+    "eyebrow": "Alternative history / Swimlane timeline",
+    "board_label": "Event swimlanes: phases run downward, organizations run across",
+    "axis_label": "Phases ↓ / Actors →",
+    "instructions": "Scroll down through the phases. Select an event card to open its details below the board. Scroll sideways on smaller screens.",
+    "scale_note": "Phases follow narrative order, not a proportional date scale. The 2025 origin appears before the journey to 1972. Each event appears once in its principal lane; all participants are shown on its card.",
+    "details_label": "Event details",
+    "select_hint": "Select any event card above to explore its actions, agreements, products and related events.",
+    "lanes": [
+      {
+        "id": "adam",
+        "title": "Adam & foundations",
+        "description": "Identity, financing and recruitment",
+        "actor_refs": [
+          "actor.adam",
+          "actor.original_adam",
+          "actor.letwin",
+          "actor.paterson"
+        ],
+        "event_refs": [
+          "event.power",
+          "event.identity",
+          "event.lottery",
+          "event.harvard",
+          "event.office",
+          "event.exchanges",
+          "event.companies",
+          "event.facility",
+          "event.letwin",
+          "event.paterson"
+        ]
+      },
+      {
+        "id": "logix",
+        "title": "Logix & hardware",
+        "description": "Platforms, peripherals and training",
+        "actor_refs": [
+          "actor.logix",
+          "actor.labs",
+          "actor.academy"
+        ],
+        "event_refs": [
+          "event.setup",
+          "event.academy",
+          "event.aurelia_launch",
+          "event.bpi_training",
+          "event.apple_extensions",
+          "event.plus_launch",
+          "event.artemis_engineering",
+          "event.cpm_bridge",
+          "event.artemis_launch",
+          "event.network_launch"
+        ]
+      },
+      {
+        "id": "aion",
+        "title": "AION & BPI",
+        "description": "Applications and software strategy",
+        "actor_refs": [
+          "actor.aion",
+          "actor.bpi"
+        ],
+        "event_refs": [
+          "event.bpi_offer",
+          "event.bpi_launch",
+          "event.aionix_agreement",
+          "event.artemis_software",
+          "event.software32"
+        ]
+      },
+      {
+        "id": "partners",
+        "title": "Partners",
+        "description": "DRI, Microsoft and distribution",
+        "actor_refs": [
+          "actor.dri",
+          "actor.kildall",
+          "actor.microsoft",
+          "actor.mpi",
+          "actor.computerland"
+        ],
+        "event_refs": [
+          "event.dri_cpm",
+          "event.mpi",
+          "event.retail",
+          "event.dri_portable",
+          "event.basic_develop",
+          "event.basic_launch",
+          "event.dri_release"
+        ]
+      },
+      {
+        "id": "apple",
+        "title": "Apple & Peachtree",
+        "description": "Business software and cooperation",
+        "actor_refs": [
+          "actor.apple",
+          "actor.peachtree"
+        ],
+        "event_refs": [
+          "event.apple_search",
+          "event.apple_peachtree",
+          "event.apple_cooperation",
+          "event.apple_policy",
+          "event.apple_business"
+        ]
+      },
+      {
+        "id": "market",
+        "title": "IBM & the market",
+        "description": "Competitor decisions and market effects",
+        "actor_refs": [
+          "actor.ibm",
+          "actor.others",
+          "actor.customers"
+        ],
+        "event_refs": [
+          "event.others_monitor",
+          "event.market_growth",
+          "event.ibm_investigate",
+          "event.ibm_project"
+        ]
+      }
+    ],
+    "group_label": "events · expand"
+  }
 }
