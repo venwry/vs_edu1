@@ -531,7 +531,9 @@
         "Separate writable state from ROM code and remove or relocate self-modifying code.",
         "Reserve resident workspace memory explicitly.",
         "Final ROM capacities, timing and common-memory budget require implementation validation."
-      ]
+      ],
+      "normal_map_explanation": "Normal mapping describes what the CPU sees while an application runs. Mapper capability describes which addresses can change. The same 7000–EFFF switching capability exists in every configuration, even when those addresses normally contain RAM.",
+      "full_ram_explanation": "With 64 KB installed (Aurelia+ or expanded Aurelia), 0000–EFFF contains 60 KB lower RAM and F000–FFFF contains 4 KB common system RAM. B000–EFFF is therefore RAM rather than a permanently reserved ROM window. System calls temporarily overlay selected pages with ROM/cartridge/VRAM, then restore RAM. The Z80 never sees all physical RAM and ROM simultaneously."
     }
   ],
   "base_parts": [
@@ -1113,6 +1115,18 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
+      },
+      "description": "Optional 16 KB RAM card occupying one Plug and Execute expansion slot. On Aurelia it increases installed RAM from 48 KB to 64 KB. The mapper exposes its four 4 KB pages at B000–EFFF in the normal application view; ROM and VRAM can temporarily overlay those pages without erasing their contents.",
+      "memory_mapping": {
+        "page_size_kb": 4,
+        "page_count": 4,
+        "normal_cpu_range": "B000–EFFF",
+        "slot_count": 1,
+        "configuration": "Firmware discovers the card at startup and maps its pages; no manual address switches.",
+        "system_workspace": "The existing 4 KB common system RAM remains at F000–FFFF; the card adds 16 KB to lower RAM.",
+        "service_calls": "The common-memory runtime saves the RAM mapping, selects ROM/VRAM for a service and restores the card pages before returning.",
+        "installation": "Install with power off, then restart so firmware can discover and test the card.",
+        "application_memory": "Lower RAM rises from 44 KB to 60 KB, before other system and workspace reservations."
       }
     },
     {
@@ -1303,20 +1317,44 @@
             {
               "start": "0000",
               "end": "AFFF",
-              "role": "Lower RAM, including CP/M page zero and application memory"
+              "role": "Lower RAM",
+              "description": "Lower RAM, including CP/M page zero and application memory"
             },
             {
               "start": "B000",
               "end": "EFFF",
-              "role": "ROM / cartridge / VRAM windows"
+              "role": "ROM / cartridge / VRAM windows",
+              "description": "ROM / cartridge / VRAM windows"
             },
             {
               "start": "F000",
               "end": "FFFF",
-              "role": "Common system RAM"
+              "role": "Common system RAM",
+              "description": "Common system RAM"
             }
           ],
-          "note": "Switchable upper pages can temporarily replace application RAM with ROM or VRAM without erasing RAM. Available application memory is lower than the lower-RAM total."
+          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM."
+        },
+        "expansion_ref": "device.aurelia_ram_16kb_card",
+        "expanded_organization": {
+          "ram_kb": 64,
+          "common_system_ram_kb": 4,
+          "contiguous_lower_ram_kb": 60,
+          "normal_view": [
+            {
+              "start": "0000",
+              "end": "EFFF",
+              "role": "Lower RAM",
+              "description": "Base and expansion RAM, including CP/M page zero and application memory. The card supplies B000–EFFF."
+            },
+            {
+              "start": "F000",
+              "end": "FFFF",
+              "role": "Common system RAM",
+              "description": "Stable runtime entry code, system stack and critical state."
+            }
+          ],
+          "note": "The card fills B000–EFFF with RAM in the normal view. ROM, cartridges and VRAM use temporary overlays within 7000–EFFF; the underlying RAM retains its contents."
         }
       },
       "storage": {
@@ -1416,15 +1454,17 @@
             {
               "start": "0000",
               "end": "EFFF",
-              "role": "Lower RAM, including CP/M page zero and application memory"
+              "role": "Lower RAM",
+              "description": "Lower RAM, including CP/M page zero and application memory"
             },
             {
               "start": "F000",
               "end": "FFFF",
-              "role": "Common system RAM"
+              "role": "Common system RAM",
+              "description": "Common system RAM"
             }
           ],
-          "note": "Switchable upper pages can temporarily replace application RAM with ROM or VRAM without erasing RAM. Available application memory is lower than the lower-RAM total."
+          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM."
         }
       },
       "storage": {
@@ -2963,7 +3003,7 @@
       "hardware": "Functional connections, not an electrical schematic. Select Memory to inspect the proposed mapping.",
       "peripherals": "Compatible choices, not simultaneous port occupancy. Later accessories show their introduction dates; they were not included at the original launch.",
       "software": "Functional software relationships. Standard CP/M interfaces coexist with the Logix extension API.",
-      "memory": "Proposed 4 KB-page organization. The common-RAM allocation is a planning budget; application capacity depends on system and workspace reservations."
+      "memory": "Normal application map — identical to the organization table below. The mapper may temporarily replace pages within 7000–EFFF with ROM or VRAM; hidden RAM is preserved."
     }
   }
 }
