@@ -177,7 +177,7 @@
       {
         "id": "assumption.strategy",
         "title": "Compete for the personal-computing standard",
-        "description": "Compete with IBM, present products at NCC/COMDEX from 1978 onward and manufacture at the maximum feasible scale to achieve standard-setting market coverage.",
+        "description": "Compete with IBM, present products at NCC from 1978 and COMDEX from 1979 onward, and manufacture at the maximum feasible scale to achieve standard-setting market coverage.",
         "actor_refs": [
           "actor.adam",
           "actor.logix",
@@ -1009,21 +1009,101 @@
             "software.cpm_aurelia"
           ],
           "related_event_refs": []
+        },
+        {
+          "id": "event.bpi_launch",
+          "title": "BPI suite presented for Aurelia",
+          "event_type": "launch",
+          "date": {
+            "start": "1978-06",
+            "end": null,
+            "precision": "month",
+            "qualifier": "At NCC 1978",
+            "display": "NCC June 1978"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "presenter"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "presenter"
+            },
+            {
+              "actor_ref": "actor.bpi",
+              "role": "presenter"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.bpi"
+              ],
+              "description": "Logix, AION and BPI jointly present the BPI business-application suite as part of the initial Aurelia offering at NCC 1978."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "software.bpi_suite",
+            "computer.aurelia"
+          ],
+          "related_event_refs": []
         }
       ]
     },
     {
       "id": "phase.after_ncc78",
-      "title": "Market response after NCC 1978",
+      "title": "Market response and cooperation before NCC 1979",
       "kind": "between_conferences",
       "period": {
         "start": "1978-06",
-        "end": "1978-11",
+        "end": "1979-06",
         "precision": "range",
-        "qualifier": "",
-        "display": "1978-06 to 1978-11"
+        "qualifier": "Between NCC 1978 and NCC 1979",
+        "display": "June 1978 to June 1979"
       },
       "events": [
+        {
+          "id": "event.bpi_training",
+          "title": "BPI training and direct sales begin",
+          "event_type": "service_launch",
+          "date": {
+            "start": null,
+            "end": null,
+            "precision": "unspecified",
+            "qualifier": "A few days after the NCC June 1978 premiere",
+            "display": "A few days after NCC June 1978"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.academy",
+              "role": "provider"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.academy"
+              ],
+              "description": "Makes BPI training and direct sales available."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "service.bpi_training",
+            "software.bpi_suite"
+          ],
+          "related_event_refs": [
+            "event.bpi_launch"
+          ]
+        },
         {
           "id": "event.dri_portable",
           "title": "DRI commits to portable TUI extensions",
@@ -1184,8 +1264,8 @@
             "start": null,
             "end": null,
             "precision": "unspecified",
-            "qualifier": "Before COMDEX November 1978",
-            "display": "Before COMDEX November 1978"
+            "qualifier": "Before NCC June 1979",
+            "display": "Before NCC June 1979"
           },
           "participants": [
             {
@@ -1213,148 +1293,7 @@
             "software.microsoft_basic_aurelia"
           ],
           "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.comdex78",
-      "title": "COMDEX November 1978",
-      "kind": "conference",
-      "period": {
-        "start": "1978-11",
-        "end": "1978-11",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1978-11 to 1978-11"
-      },
-      "events": [
-        {
-          "id": "event.bpi_launch",
-          "title": "BPI suite presented for Aurelia",
-          "event_type": "launch",
-          "date": {
-            "start": "1978-11",
-            "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1978-11"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "presenter"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "presenter"
-            },
-            {
-              "actor_ref": "actor.bpi",
-              "role": "presenter"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.aion",
-                "actor.bpi"
-              ],
-              "description": "Jointly present the BPI business-application suite."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "software.bpi_suite",
-            "computer.aurelia"
-          ],
-          "related_event_refs": []
         },
-        {
-          "id": "event.bpi_training",
-          "title": "BPI training and direct sales begin",
-          "event_type": "service_launch",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "A few days after the November 1978 presentation",
-            "display": "A few days after the November 1978 presentation"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.academy",
-              "role": "provider"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.academy"
-              ],
-              "description": "Makes BPI training and direct sales available."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "service.bpi_training",
-            "software.bpi_suite"
-          ],
-          "related_event_refs": [
-            "event.bpi_launch"
-          ]
-        },
-        {
-          "id": "event.basic_launch",
-          "title": "Microsoft BASIC presented",
-          "event_type": "launch",
-          "date": {
-            "start": "1978-11",
-            "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1978-11"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.microsoft",
-              "role": "presenter"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.microsoft"
-              ],
-              "description": "Presents licensed third-party Microsoft BASIC for Aurelia in parallel with BPI."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "software.microsoft_basic_aurelia"
-          ],
-          "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.before_ncc79",
-      "title": "Cooperation and competition before NCC 1979",
-      "kind": "between_conferences",
-      "period": {
-        "start": "1978-11",
-        "end": "1979-06",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1978-11 to 1979-06"
-      },
-      "events": [
         {
           "id": "event.dri_release",
           "title": "Portable CP/M extensions released",
@@ -1590,6 +1529,39 @@
           "related_event_refs": [
             "event.apple_cooperation"
           ]
+        },
+        {
+          "id": "event.basic_launch",
+          "title": "Microsoft BASIC presented",
+          "event_type": "launch",
+          "date": {
+            "start": "1979-06-04",
+            "end": "1979-06-07",
+            "precision": "range",
+            "qualifier": "At NCC 1979; individual presentation day unspecified",
+            "display": "NCC, 4–7 June 1979"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.microsoft",
+              "role": "presenter"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.microsoft"
+              ],
+              "description": "Microsoft releases Microsoft BASIC for Aurelia at NCC 1979 as licensed third-party software."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "software.microsoft_basic_aurelia"
+          ],
+          "related_event_refs": []
         }
       ]
     },

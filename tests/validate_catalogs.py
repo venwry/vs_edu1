@@ -87,5 +87,14 @@ assert by['event.ibm_project']['event_type']=='plan'
 assert by['event.apple_extensions']['date']['end']=='1979-06-07'
 assert by['event.aionix_agreement']['agreement_terms'][4]['effective_date']['start']=='1982'
 assert by['event.aurelia_launch']['date']['precision']=='month'
+assert records['software.bpi_suite']['introduced']['event_start_date']=='1978-06-05'
+assert records['technology.bpi_relational_database']['introduced']['event_start_date']=='1978-06-05'
+assert records['software.microsoft_basic_aurelia']['introduced']['event_start_date']=='1979-06-04'
+for product,edition in [('software.bpi_suite','edition.bpi_suite.z80'),('software.microsoft_basic_aurelia','edition.microsoft_basic_aurelia.z80')]:
+ assert records[product]['introduced']==records[edition]['introduced']
+assert 'event.bpi_launch' in {e['id'] for p in story['phases'] if p['id']=='phase.ncc78' for e in p['events']}
+assert 'event.basic_launch' in {e['id'] for p in story['phases'] if p['id']=='phase.ncc79' for e in p['events']}
+assert 'phase.comdex78' not in {p['id'] for p in story['phases']}
+for data in [tech,story]:assert not re.search(r'COMDEX.{0,20}1978',json.dumps(data),re.I)
 assert set(story)=={'assumptions','phases'}
 print(f'Validated {len(events)} events, {len(actors)} actors, {len(site["pages"])} pages; schema and references pass.')

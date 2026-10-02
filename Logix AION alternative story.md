@@ -21,7 +21,7 @@ He starts in late between 1975 three companies to change the original history of
 
 3)  AION Software in Copenhagen - focused on business applications and compliers development
 
-Adam aims at competing with IBM on personal computing standard. His companies are focused at developing products to be presented at NCC/Comdex conferences in consecutive years starting from 1978 and then got manufactured at maximum possible scale to gain market coverage enough to dictate standards.
+Adam aims at competing with IBM on personal computing standard. His companies are focused at developing products to be presented at NCC conferences starting from 1978 and COMDEX conferences starting from 1979 and then got manufactured at maximum possible scale to gain market coverage enough to dictate standards.
 
 Adam doesn’t play fair he took from 2020s equipment that would allow him to design and beam lithography masks for chip manufacturing and established a secret facility away from his three companies:
 
@@ -56,7 +56,11 @@ In March 1978 Logix Computer Academy company is brought to life: training facili
 
 At NCC 1978 Logix launches Aurelia as a complete personal-computing platform, supported by AION software, peripherals, support services, developer programs and the Logix Computer Academy.
 
-## The market and competition response until November 1978
+Logix, AION and BPI jointly premiere the BPI business-application suite as part of the initial Aurelia offering at NCC 1978. The suite is sold separately rather than automatically included in each base computer bundle.
+
+BPI product training and direct sales through Logix Computer Academy become available a few days after the NCC presentation.
+
+## The market and competition response between NCC 1978 and NCC 1979
 
 - DRI in Late 1978: Commits to developing a portable CP/M extension incorporating Logix's TUI libraries, with the intention of offering it to other computer manufacturers.
 
@@ -68,21 +72,11 @@ At NCC 1978 Logix launches Aurelia as a complete personal-computing platform, su
 
 - Microsoft in cooperation with AION develops Microsoft Basic utilizing Aurelia CP/M with TUI.
 
-# COMDEX November 1978 – BPI Products for Aurelia
-
-Logix, AION and BPI jointly present the BPI business-application suite for Aurelia.
-
-BPI Products trainings and direct sale becomes available in Logix Computer Academy a few days after presentation.
-
-In parallel Microsoft presents Microsoft BASIC for Aurelia a licensed third-party software
-
-## The market and competition response until June 1979
-
 - DRI Releases in May 1979 another of CP/M version that offers the Logix TUI and FlexiBUS libraries to other computer manufacturers, preserving the opportunity to expand CP/M's software ecosystem.
 
 - Apple seeks for Apple II's business software catalogue, especially spreadsheet, database and accounting products. Unfortunately for them VisiCalc is less advanced, in terms of spreadsheet size and available features. Apple starts partnership with Peachtree Software to ensure their computer has tailored offering for business users.
 
-# NCC June 1979 - Apple II extensions
+# NCC June 1979 - Apple II extensions and Microsoft BASIC
 
 In February 1979, Logix contacted Apple Computer seeking technical cooperation in developing peripherals that would allow users to exchange files between the Apple II and Logix Aurelia. Logix requested:
 
@@ -95,6 +89,8 @@ In February 1979, Logix contacted Apple Computer seeking technical cooperation i
 Apple agreed to provide limited technical cooperation and compatibility assistance, while Logix remained responsible for the design and development of its hardware and software.
 
 At NCC, 4–7 June 1979, Logix presents the Logix Apple II Expansion Card and Logix FlexiDisk II, with an Apple representative participating in the demonstration.
+
+At the same NCC 1979 conference, Microsoft releases Microsoft BASIC for Aurelia as licensed third-party software, developed in cooperation with AION for enhanced CP/M and Logix TUI.
 
 ## The market and competition response until November 1979
 
@@ -160,3 +156,4 @@ AION presents Artemis-exclusive Abacus 3.0 and Pulse 3.0. From this point, major
 # NCC May 1981 – Logix networked business computing
 
 Logix presents its TCP/IP networking platform, the Artemis PRO server, networking upgrades for both Aurelia CP/M and Artemis/AIONix, and a new client-server generation of BPI built around a robust relational database. Networking becomes part of the standard Artemis direction rather than an isolated peripheral feature.
+

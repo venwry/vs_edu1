@@ -11,7 +11,7 @@ Then visit `http://localhost:8000/`. No build step is required. When opening an 
 ## Data ownership
 
 - `logix_aion_technical_catalog_v2.json`: product specifications, architectures, software, services and bundles. This change preserves the existing technical catalog.
-- `logix_aion_story.json`: narrative conversion with exactly two root sections, `assumptions` and `phases`. The original Markdown remains unchanged.
+- `logix_aion_story.json`: narrative conversion with exactly two root sections, `assumptions` and `phases`. The narrative Markdown is synchronized when story events are amended.
 - `site_pages.json`: page titles, descriptions, catalog record membership, aliases and navigation.
 - `logix_aion_story.schema.json`: strict JSON Schema for the narrative. Events use the same keys for dates, participants, actions, outcomes, agreement terms, metrics and references. Empty collections remain arrays; unknown values remain null.
 
@@ -21,7 +21,7 @@ Technical catalog v2.3 adds canonical `platform_editions`. Each software edition
 
 Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility planning, pricing, manufacturing and memory-bus organization remain deferred.
 
-The 41 events retain narrative order within 13 phases. The time-travel origin in 2025 intentionally precedes the intervention in 1972 in causal order. Approximate dates, offers, future rights and plans are not converted into completed transactions or invented exact dates. Product introductions can be more precise in the technical catalog than in the narrative; each retains its own date precision.
+The 41 events retain narrative order within 11 phases. The time-travel origin in 2025 intentionally precedes the intervention in 1972 in causal order. Approximate dates, offers, future rights and plans are not converted into completed transactions or invented exact dates. Product introductions can be more precise in the technical catalog than in the narrative; each retains its own date precision.
 
 ## Pages
 
@@ -45,3 +45,5 @@ node tests/atlas.test.cjs
 ```
 
 The schema/reference check validates uniform structures, unique IDs, actor/product/event references, page membership and key narrative distinctions. The DOM tests render every page, verify internal links and fragment targets, exercise both architecture explorers, RAM expansion, timeline filters and direct event links, and confirm JSON updates and offline recovery. DOM tests do not replace visual checks in a browser.
+
+Catalog v2.5 places the BPI suite and relational-engine premiere in the NCC 1978 initial Aurelia offering, with Academy courses shortly afterward. Microsoft BASIC premieres at NCC 1979. The timeline removes the nonexistent 1978 COMDEX phase; platform editions and accounting-package availability follow the revised dates. BPI remains separately sold.
