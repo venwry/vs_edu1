@@ -19,7 +19,7 @@ function add(id,title,sub,col,row,data,optional=false){nodes.push({id,title,sub,
 function product(id,col,row,optional=false,sub){const r=rec(id);if(!r)throw Error('Missing catalog record: '+id);add(id,r.name,sub||r.introduced?.event_start_date||human(r.category),col,row,clean(r),optional);}
 function definition(n){if(n.id==='network'&&!network())return;
  if(n.requires_compatible_device&&!c.compatible_devices.includes(n.record_ref))return;
- let r=n.record_ref?rec(n.record_ref):null,data=r?clean(r):{},source=r?.specification||r;
+ let r=n.record_ref?rec(n.id==='os'&&network()?settings.network_software_ref:n.record_ref):null,data=r?clean(r):{},source=r?.specification||r;
  if(n.fields)data=Object.fromEntries(n.fields.map(k=>[k,source[k]]));
  if(n.computer_path)data={...data,...at(c,n.computer_path)};
  if(r?.specification_ref)data.related_specification=rec(r.specification_ref).specification;
@@ -88,7 +88,7 @@ function select(){const n=nodes.find(n=>n.id===selected);if(!n)return;
 function draw(){const box=$('diagram'),svg=box.querySelector('svg');if(!svg)return;const r=box.getBoundingClientRect();svg.innerHTML=edges.map(([a,b,opt])=>{const an=[...box.querySelectorAll('[data-node]')].find(n=>n.dataset.node===a),bn=[...box.querySelectorAll('[data-node]')].find(n=>n.dataset.node===b);if(!an||!bn)return '';const ar=an.getBoundingClientRect(),br=bn.getBoundingClientRect();return `<path class="wire ${opt?'optional':''}" d="M${ar.x+ar.width/2-r.x},${ar.y+ar.height/2-r.y} L${br.x+br.width/2-r.x},${br.y+br.height/2-r.y}"/>`;}).join('');}
 function details(){
  $('memory-section').innerHTML='<div class="eyebrow">Memory organization</div><h2>'+esc(c.name)+' · '+ram()+' KB RAM</h2><p>'+esc(settings.memory_note)+'</p>'+table(['Resource','Configuration'],[['Virtual addressing',rec(settings.memory_ref).specification.virtual_address_bits+' bits'],['Physical addressing',rec(settings.memory_ref).specification.physical_address_bits+' bits'],['RAM population',ram()/moduleKB+' × '+moduleKB+' KB modules'],['Available sockets',c.memory.ram_sockets],['Maximum module population',maxKB+' KB'],['Video RAM',c.video.video_ram_kb+' KB'],['Cartridge slots',c.io_and_expansion.rom_eeprom_cartridge_slots]])+'<p>'+esc(settings.ram_note)+'</p><details><summary>RAM modules and process memory</summary>'+dl(clean(module))+dl(rec(settings.os_model_ref).specification)+'</details>';
- $('software-section').innerHTML='<div class="eyebrow">System organization</div><h2>'+esc(rec(settings.os_ref).name)+'</h2>'+dl(clean(rec(settings.os_ref)))+(network()?'<details open><summary>'+esc(rec(settings.network_software_ref).name)+'</summary>'+dl(clean(rec(settings.network_software_ref)))+'</details>':'');
+ $('software-section').innerHTML='<div class="eyebrow">System organization</div><h2>'+esc(rec(network()?settings.network_software_ref:settings.os_ref).name)+'</h2>'+dl(clean(rec(network()?settings.network_software_ref:settings.os_ref)));
  $('portability-section').innerHTML='<div class="eyebrow">Platform records</div>'+page.record_refs.filter(id=>id!==c.id).map(id=>`<details id="${esc(id)}"><summary>${esc(rec(id).name)}</summary>${dl(clean(rec(id)))}</details>`).join('')+'<details><summary>'+esc(c.name)+' · full specification</summary>'+dl(clean(c))+'</details>';
 }
 function build(){nodes=[];edges=[];

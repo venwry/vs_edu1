@@ -6,6 +6,34 @@ def read(n):return json.loads((root/n).read_text())
 story=read('logix_aion_story.json');tech=read('logix_aion_technical_catalog_v2.json');site=read('site_pages.json')
 jsonschema.Draft202012Validator(read('logix_aion_story.schema.json')).validate(story)
 records={x['id']:x for v in tech.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id'in x}
+import re
+def check_refs(value):
+ if isinstance(value,dict):
+  for item in value.values():check_refs(item)
+ elif isinstance(value,list):
+  for item in value:check_refs(item)
+ elif isinstance(value,str) and re.fullmatch(r'(?:computer|software|part|device|technology|service|bundle|edition)\.[a-z0-9_.]+',value):
+  assert value in records, 'Unresolved catalog reference: '+value
+check_refs(tech)
+editions=tech['platform_editions']
+edition_keys={'id','name','product_ref','execution_target','role','introduced','platform_support','minimum_resources','dependency_refs','delivery','support_status'}
+for e in editions:
+ assert set(e)==edition_keys,e['id']
+ assert set(e['minimum_resources'])=={'installed_ram_kb','application_ram_bytes','rom_bytes','status'}
+ assert e['execution_target'] in {'z80_cpm','era_aionix'}
+ assert e['id'] in records[e['product_ref']]['edition_refs']
+ assert len({p['computer_ref'] for p in e['platform_support']})==len(e['platform_support'])
+ for support in e['platform_support']:
+  assert set(support)=={'computer_ref','available_from'}
+  assert support['available_from']>=records[support['computer_ref']]['introduced']['event_start_date']
+for c in tech['computers']:
+ expected={e['product_ref'] for e in editions if any(p['computer_ref']==c['id'] for p in e['platform_support'])}
+ assert set(c['compatible_software'])==expected,c['id']
+for id in ['computer.aurelia','computer.aurelia_plus']:
+ assert {'software.abacus_1','software.abacus_2'}<=set(records[id]['compatible_software'])
+assert records['software.aionix_server']['category']=='operating_system_edition'
+assert records['device.network_card_aurelia']['sold_with']==['software.cpm_aurelia_networking']
+assert 'used_in' not in records['part.artemis_ram_module_prototype']
 actors={x['id'] for x in story['assumptions']['entities']};events=[e for p in story['phases'] for e in p['events']];event_ids={e['id'] for e in events}
 assert len(event_ids)==len(events);assert len(actors)==len(story['assumptions']['entities']);assert len({p['id'] for p in story['phases']})==len(story['phases'])
 for e in events:

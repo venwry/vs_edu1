@@ -52,7 +52,8 @@
         "part.era1",
         "technology.era1_isa",
         "technology.artemis_memory_model",
-        "device.artemis_cpm80_module"
+        "device.artemis_cpm80_module",
+        "technology.cpm80_virtual_peripheral_bridge"
       ],
       "kind": "explorer",
       "aliases": [
@@ -83,7 +84,11 @@
         "software.abacus_1",
         "software.abacus_2",
         "software.abacus_3",
-        "technology.abacus_sparse_model"
+        "technology.abacus_sparse_model",
+        "edition.abacus_1.z80",
+        "edition.abacus_2.z80",
+        "edition.abacus_2.era",
+        "edition.abacus_3.era"
       ],
       "kind": "offering",
       "aliases": [
@@ -100,7 +105,12 @@
       "record_refs": [
         "software.bpi_suite",
         "software.bpi_client_server",
-        "technology.bpi_relational_database"
+        "technology.bpi_relational_database",
+        "edition.bpi_suite.z80",
+        "edition.bpi_suite.era",
+        "edition.bpi_client_server.z80_client",
+        "edition.bpi_client_server.era_client",
+        "edition.bpi_client_server.era_server"
       ],
       "kind": "offering",
       "aliases": [
@@ -117,7 +127,9 @@
       "record_refs": [
         "software.pulse_1",
         "software.pulse_3",
-        "technology.pulse_notebook_model"
+        "technology.pulse_notebook_model",
+        "edition.pulse_1.z80",
+        "edition.pulse_3.era"
       ],
       "kind": "offering",
       "aliases": [
@@ -132,7 +144,9 @@
       "description": "Application cartridges that use shared platform TUI services.",
       "record_refs": [
         "software.business_tools_aurelia",
-        "software.business_tools_artemis"
+        "software.business_tools_artemis",
+        "edition.business_tools_aurelia.z80",
+        "edition.business_tools_artemis.era"
       ],
       "kind": "offering",
       "aliases": [
@@ -151,7 +165,11 @@
         "software.aurelia_sdk",
         "software.artemis_sdk",
         "technology.logix_c_target_contract",
-        "technology.aion_c_portability_framework"
+        "technology.aion_c_portability_framework",
+        "edition.simple_c_z80.z80",
+        "edition.aurelia_sdk.z80",
+        "edition.aion_c_ide.era",
+        "edition.artemis_sdk.era"
       ],
       "kind": "offering",
       "aliases": [
@@ -167,7 +185,9 @@
       "description": "Aurelia’s operating system, internal organization and networking upgrade.",
       "record_refs": [
         "software.cpm_aurelia",
-        "software.cpm_aurelia_networking"
+        "software.cpm_aurelia_networking",
+        "edition.cpm_aurelia.z80",
+        "edition.cpm_aurelia_networking.z80"
       ],
       "kind": "offering",
       "aliases": [
@@ -183,8 +203,10 @@
       "description": "The ERA operating system and its evolving networking services.",
       "record_refs": [
         "software.aionix",
-        "software.aionix_networked",
-        "technology.aionix_os_model"
+        "software.aionix_server",
+        "technology.aionix_os_model",
+        "edition.aionix.standard",
+        "edition.aionix_server.server"
       ],
       "kind": "offering",
       "aliases": [
@@ -302,7 +324,8 @@
       "title": "Microsoft BASIC for Aurelia",
       "description": "The licensed third-party programming offering.",
       "record_refs": [
-        "software.microsoft_basic_aurelia"
+        "software.microsoft_basic_aurelia",
+        "edition.microsoft_basic_aurelia.z80"
       ],
       "kind": "offering",
       "aliases": [

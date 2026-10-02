@@ -15,6 +15,12 @@ Then visit `http://localhost:8000/`. No build step is required. When opening an 
 - `site_pages.json`: page titles, descriptions, catalog record membership, aliases and navigation.
 - `logix_aion_story.schema.json`: strict JSON Schema for the narrative. Events use the same keys for dates, participants, actions, outcomes, agreement terms, metrics and references. Empty collections remain arrays; unknown values remain null.
 
+Technical catalog v2.3 adds canonical `platform_editions`. Each software edition declares its execution target, role, per-computer availability, dependencies, delivery and resource-budget status. Product `edition_refs` and computer compatibility lists are validated against these records. Software product pages show their editions directly. Abacus 1 and 2 both support Aurelia and Aurelia+; their later native ERA editions remain separate.
+
+`software.aionix_server` replaces `software.aionix_networked` as a complete AIONix Server edition. It includes the base OS and network services and does not require a prior OS installation. Network bundles supply this edition, while BPI application licensing remains separate. Pulse integration means offline read/edit/write access to versioned Abacus files, not a live shared spreadsheet.
+
+The MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs are stored under `proposed_design` on their respective records. They are proposals for review, not frozen implementations or measured performance claims. Facility planning, pricing, manufacturing and memory-bus organization remain deferred. Provisional TPA boundaries do not change the existing physical RAM map.
+
 The 41 events retain narrative order within 13 phases. The time-travel origin in 2025 intentionally precedes the intervention in 1972 in causal order. Approximate dates, offers, future rights and plans are not converted into completed transactions or invented exact dates. Product introductions can be more precise in the technical catalog than in the narrative; each retains its own date precision.
 
 ## Pages
