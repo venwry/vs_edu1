@@ -9,7 +9,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const errors=[],fetched=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(read(page.path),{url,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
  const w=dom.window;w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||JSON.parse(read(name))};};
- w.eval(read('architecture-explorer.js'));w.eval(read('atlas.js'));await tick();
+ w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors,fetched};
 }
@@ -21,7 +21,8 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
   assert.equal(fetched.length,3);
   assert(!d.querySelector('#catalogs'),page.id+' failed to load');
   if(page.kind==='explorer'){
-   assert(d.querySelector('#stats').textContent.includes(page.id==='aurelia'?'48 KB':'64 KB'));
+   const initialRAM={aurelia:48,'aurelia-plus':64,artemis:128,'artemis-pro':512}[page.id];
+   assert(d.querySelector('#stats').textContent.includes(initialRAM+' KB'));
    assert.equal(d.querySelectorAll('[data-model]').length,0);
    for(const layer of d.querySelectorAll('[data-layer]')){
     layer.click();await tick();assert(d.querySelectorAll('[data-node]').length>0,layer.dataset.layer);
@@ -33,6 +34,33 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
    if(page.id==='aurelia'){
     d.querySelector('[data-layer="memory"]').click();const card=d.querySelector('#ram-card');card.checked=true;card.dispatchEvent(new w.Event('change'));
     assert(d.querySelector('#stats').textContent.includes('64 KB'));assert(d.querySelector('#memory-section').textContent.includes('64 KB'));
+   }
+   if(page.explorer_family==='artemis'){
+    assert(!d.body.textContent.includes('undefined'),page.id+' contains undefined values');
+    d.querySelector('[data-layer="memory"]').click();
+    assert(d.querySelector('[data-node="virtual"]').textContent.includes('32-bit'));
+    assert(d.querySelector('[data-node="physical"]').textContent.includes('24-bit'));
+    const ram=d.querySelector('#artemis-ram');ram.value=page.id==='artemis'?512:1024;ram.dispatchEvent(new w.Event('change'));
+    assert(d.querySelector('#stats').textContent.includes(ram.value+' KB'));
+    d.querySelector('[data-node="ram"]').click();assert(d.querySelector('#inspector').textContent.includes('populated modules8'));
+    d.querySelector('[data-layer="hardware"]').click();
+    if(page.id==='artemis'){
+     assert(d.querySelector('[data-node="compatibility"]'));
+     assert(!d.querySelector('[data-node="network"]'));
+     const era=d.querySelector('#era');era.value='1981';era.dispatchEvent(new w.Event('change'));assert(d.querySelector('[data-node="network"]'));
+     era.value='launch';era.dispatchEvent(new w.Event('change'));assert(!d.querySelector('[data-node="network"]'));
+    }else{
+     assert(!d.querySelector('[data-node="compatibility"]'));
+     assert(d.querySelector('[data-node="network"]'));assert(d.querySelector('#era').parentElement.hidden);
+     assert(d.querySelector('[data-node="disk"]').textContent.includes('5 MB HDD'));
+    }
+    d.querySelector('[data-layer="bundles"]').click();
+    const bundle=d.querySelector('#bundle-select');
+    for(const option of bundle.options){bundle.value=option.value;bundle.dispatchEvent(new w.Event('change'));assert(d.querySelector('[data-node="bundle"]'));
+     if(option.value.includes('128'))assert(d.querySelector('[data-node="bundle-item-0"]').textContent.includes('128 KB'));
+     if(option.value.includes('1mb'))assert(d.querySelector('[data-node="bundle-item-0"]').textContent.includes('1024 KB'));
+     if(option.value.includes('network_upgrade'))assert(!d.querySelector('#diagram').textContent.includes('Host computer'));
+    }
    }
   }
   targets.set(page.path,new Set([...d.querySelectorAll('[id]')].map(x=>x.id)));
@@ -78,5 +106,5 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const changed=structuredClone(story);changed.phases[0].events[0].title='JSON update reaches the timeline';
  const dynamic=await boot(page,{'logix_aion_story.json':changed});assert(dynamic.d.body.textContent.includes('JSON update reaches the timeline'));dynamic.dom.window.close();
  const offline=await boot(page,{},'file:///atlas/timeline.html');assert(offline.d.querySelector('#catalogs'));offline.dom.window.close();
- console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; diagrams, RAM expansion, filters, JSON updates and offline recovery.`);
+ console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; four computer explorers, RAM expansion, networking, bundles, filters, JSON updates and offline recovery.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});

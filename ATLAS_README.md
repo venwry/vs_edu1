@@ -19,13 +19,15 @@ The 41 events retain narrative order within 13 phases. The time-travel origin in
 
 ## Pages
 
-The directory links to dedicated Aurelia, Aurelia+, Artemis, Artemis PRO, Abacus, BPI, Pulse, Business Tools, C development, CP/M, AIONix, TUI/graphics, FlexiBUS, peripherals, networking, Academy/services and BASIC pages. Aurelia and Aurelia+ retain their interactive architecture layers, RAM and networking controls, and bundle diagrams, each fixed to its own computer model.
+The directory links to dedicated Aurelia, Aurelia+, Artemis, Artemis PRO, Abacus, BPI, Pulse, Business Tools, C development, CP/M, AIONix, TUI/graphics, FlexiBUS, peripherals, networking, Academy/services and BASIC pages. All four computer pages provide hardware, peripherals, software, memory and bundle diagram layers, each fixed to its own model.
+
+Artemis and Artemis PRO share the visual explorer format through `artemis-explorer.js`. The technical catalog's `artemis_explorer` section owns their diagram definitions and explanatory content. RAM controls distinguish shipping configurations from expanded module populations. Artemis exposes the later networking configuration; PRO includes networking at launch. Bundle diagrams use the selected bundle's configuration independently of these exploratory controls and preserve planned availability labels. The memory view depicts virtual-to-physical translation and memory resources; numeric address ranges remain unspecified. The optional CP/M-80 module appears only on the model whose compatibility list includes it.
 
 `timeline.html` shows six colored swimlanes for Adam, Logix, AION/BPI, partners, Apple/Peachtree and IBM/the market. Conference and inter-conference phases run downward, with sticky lane headings and phase labels. Each event appears once in its principal lane, with all participants identified on the card. Dense event groups can be expanded. Lane assignments and display labels are defined in `site_pages.json`; event facts remain in the story JSON.
 
 The timeline retains phase, participant, event-type and text filters. Select a card to open its full details below the board, or enable all event details. Stable event links select the corresponding event, clearing incompatible filters when needed. The layout follows narrative phase order rather than proportional calendar spacing, including the 2025 time-travel origin before the 1972 arrival. Offering pages link to related events, and product references and subject mentions link to relevant offering pages.
 
-All HTML files are thin shells. `atlas.js` loads the three catalogs and renders their content; `architecture-explorer.js` renders the two Aurelia diagrams from the technical catalog. Shared styling is in `atlas.css`. Product or story changes belong in JSON, not in HTML or copied JavaScript objects.
+All HTML files are thin shells. `atlas.js` loads the three catalogs and renders their content; `architecture-explorer.js` renders the two Aurelia diagrams and supplies the shared explorer shell. The Artemis pages also load `artemis-explorer.js`. Shared styling is in `atlas.css`. Product or story changes belong in JSON, not in HTML or copied JavaScript objects.
 
 ## Validation
 

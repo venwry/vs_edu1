@@ -3797,5 +3797,412 @@
         "These are proposed commercial packages, not additional software compatibility requirements."
       ]
     }
-  ]
+  ],
+  "artemis_explorer": {
+    "computer_refs": [
+      "computer.artemis",
+      "computer.artemis_pro"
+    ],
+    "page_ids": [
+      "artemis",
+      "artemis-pro"
+    ],
+    "memory_ref": "technology.artemis_memory_model",
+    "os_ref": "software.aionix",
+    "os_model_ref": "technology.aionix_os_model",
+    "business_tools_ref": "software.business_tools_artemis",
+    "network_software_ref": "software.aionix_networked",
+    "network_adapter_ref": "device.network_card_artemis",
+    "compatibility_ref": "device.artemis_cpm80_module",
+    "context": "Artemis introduces native ERA applications and AIONix. Artemis PRO extends this family into a network server with larger RAM modules and an internal hard disk. The shared C/TUI interfaces support source migration; the optional Z80 compatibility module is a separate execution path listed for Artemis.",
+    "memory_note": "This is a functional memory diagram, not a numeric address map. The catalog defines virtual and physical address widths but does not yet assign ROM, RAM, video or device address ranges. Address-space capacity is not installed RAM. Video RAM is separate from the RAM modules.",
+    "ram_note": "Select a shipping configuration or populate additional compatible modules. Maximum capacity is calculated from socket count and module capacity; it is not an additional shipping bundle.",
+    "bundle_note": "Bundle contents follow the selected catalog offer and are independent of the exploratory RAM and networking controls. Items absent from the bundle record are not assumed to be included.",
+    "notes": {
+      "hardware": "Select a block to inspect the processor, RAM, custom chipset, storage and expansion interfaces. Lines show functional relationships, not a wiring or bus-timing specification.",
+      "peripherals": "Compatible devices are grouped by interface. Dashed connections denote optional devices; a monitor listed as a bundle option is included only in bundles naming that monitor. Introduction dates are shown for later offerings.",
+      "software": "Explore the native AIONix services, Business Tools, compatible software and C development tools. The optional Z80 module is distinct from native ERA recompilation.",
+      "memory": "Follow virtual addressing through the MMU to physical memory resources. Select RAM capacity to inspect module population. No undefined address ranges are invented.",
+      "bundles": "Select an offer to see its computer configuration, devices, software and services. Planned availability remains explicitly labeled."
+    },
+    "software_views": [
+      {
+        "id": "internals",
+        "label": "System internals"
+      },
+      {
+        "id": "cartridge",
+        "label": "Business Tools / Office Suite"
+      },
+      {
+        "id": "packages",
+        "label": "Compatible software"
+      },
+      {
+        "id": "portability",
+        "label": "C development & portability"
+      }
+    ],
+    "portability_refs": {
+      "api": "technology.logix_c_api",
+      "display": "technology.logix_display_api",
+      "language": "technology.logix_c_target_contract",
+      "tui": "technology.logix_tui_standard",
+      "framework": "technology.aion_c_portability_framework",
+      "aurelia_tools": "software.simple_c_z80",
+      "artemis_tools": "software.aion_c_ide"
+    },
+    "diagrams": {
+      "hardware": {
+        "nodes": [
+          {
+            "id": "cpu",
+            "title": "Processor",
+            "column": 2,
+            "row": 1,
+            "computer_path": "processor"
+          },
+          {
+            "id": "ram",
+            "title": "System RAM",
+            "column": 1,
+            "row": 1,
+            "computer_path": "memory"
+          },
+          {
+            "id": "rom",
+            "title": "ROM / EEPROM cartridges",
+            "column": 3,
+            "row": 1,
+            "computer_path": "io_and_expansion.rom_eeprom_cartridge_slots"
+          },
+          {
+            "id": "mmu",
+            "title": "Memory management unit",
+            "column": 2,
+            "row": 2,
+            "record_ref": "part.artemis_mmu"
+          },
+          {
+            "id": "dma",
+            "title": "DMA controller",
+            "column": 1,
+            "row": 2,
+            "record_ref": "part.artemis_dma"
+          },
+          {
+            "id": "graphics",
+            "title": "Graphics and video RAM",
+            "column": 3,
+            "row": 2,
+            "record_ref": "part.artemis_graphics_chip",
+            "computer_path": "video"
+          },
+          {
+            "id": "disk",
+            "title": "Disk storage",
+            "column": 1,
+            "row": 3,
+            "computer_path": "storage"
+          },
+          {
+            "id": "slots",
+            "title": "Expansion slots",
+            "column": 2,
+            "row": 3,
+            "computer_path": "io_and_expansion.expansion_slots"
+          },
+          {
+            "id": "flex",
+            "title": "FlexiBUS controller",
+            "column": 3,
+            "row": 3,
+            "record_ref": "part.flexibus_host_controller",
+            "computer_path": "io_and_expansion"
+          },
+          {
+            "id": "network",
+            "title": "Network interface",
+            "column": 2,
+            "row": 4,
+            "record_ref": "device.network_card_artemis"
+          },
+          {
+            "id": "compatibility",
+            "title": "Optional CP/M-80 module",
+            "column": 3,
+            "row": 4,
+            "record_ref": "device.artemis_cpm80_module",
+            "optional": true,
+            "requires_compatible_device": true
+          }
+        ],
+        "edges": [
+          [
+            "cpu",
+            "mmu"
+          ],
+          [
+            "mmu",
+            "ram"
+          ],
+          [
+            "mmu",
+            "rom"
+          ],
+          [
+            "cpu",
+            "dma"
+          ],
+          [
+            "dma",
+            "disk"
+          ],
+          [
+            "cpu",
+            "slots"
+          ],
+          [
+            "cpu",
+            "graphics"
+          ],
+          [
+            "cpu",
+            "flex"
+          ],
+          [
+            "slots",
+            "network"
+          ],
+          [
+            "slots",
+            "compatibility"
+          ]
+        ]
+      },
+      "memory": {
+        "nodes": [
+          {
+            "id": "virtual",
+            "title": "Virtual address space",
+            "column": 2,
+            "row": 1,
+            "record_ref": "technology.artemis_memory_model",
+            "fields": [
+              "virtual_address_bits"
+            ]
+          },
+          {
+            "id": "mmu",
+            "title": "Address translation",
+            "column": 2,
+            "row": 2,
+            "record_ref": "part.artemis_mmu"
+          },
+          {
+            "id": "physical",
+            "title": "Physical address space",
+            "column": 2,
+            "row": 3,
+            "record_ref": "technology.artemis_memory_model",
+            "fields": [
+              "physical_address_bits",
+              "page_table_goal"
+            ]
+          },
+          {
+            "id": "ram",
+            "title": "Installed system RAM",
+            "column": 1,
+            "row": 3,
+            "computer_path": "memory"
+          },
+          {
+            "id": "rom",
+            "title": "XIP system / application ROM",
+            "column": 3,
+            "row": 3,
+            "record_ref": "technology.xip_rom_platform",
+            "computer_path": "io_and_expansion.rom_eeprom_cartridge_slots"
+          },
+          {
+            "id": "vram",
+            "title": "Separate video RAM",
+            "column": 3,
+            "row": 4,
+            "computer_path": "video"
+          },
+          {
+            "id": "os",
+            "title": "Process memory policy",
+            "column": 1,
+            "row": 4,
+            "record_ref": "technology.aionix_os_model",
+            "fields": [
+              "virtual_address_space_per_process",
+              "fork",
+              "brk_sbrk",
+              "demand_paging",
+              "user_kernel_modes",
+              "rom_backed_executables"
+            ]
+          }
+        ],
+        "edges": [
+          [
+            "virtual",
+            "mmu"
+          ],
+          [
+            "mmu",
+            "physical"
+          ],
+          [
+            "physical",
+            "ram"
+          ],
+          [
+            "physical",
+            "rom"
+          ],
+          [
+            "physical",
+            "vram"
+          ],
+          [
+            "os",
+            "mmu"
+          ]
+        ]
+      },
+      "software": {
+        "nodes": [
+          {
+            "id": "apps",
+            "title": "Native applications",
+            "column": 2,
+            "row": 1
+          },
+          {
+            "id": "shell",
+            "title": "Shell and utilities",
+            "column": 1,
+            "row": 2,
+            "record_ref": "technology.aionix_os_model",
+            "fields": [
+              "shell",
+              "utilities",
+              "rescue_unix_in_rom"
+            ]
+          },
+          {
+            "id": "tui",
+            "title": "TUI and display services",
+            "column": 3,
+            "row": 2,
+            "record_ref": "technology.logix_tui_standard"
+          },
+          {
+            "id": "api",
+            "title": "C API and target ABI",
+            "column": 2,
+            "row": 2,
+            "record_ref": "technology.logix_c_api"
+          },
+          {
+            "id": "kernel",
+            "title": "AIONix process services",
+            "column": 2,
+            "row": 3,
+            "record_ref": "technology.aionix_os_model",
+            "fields": [
+              "programming_model",
+              "fork",
+              "process_limit_example",
+              "signals",
+              "user_kernel_modes",
+              "permissions",
+              "stable_c_abi",
+              "stable_c_abi_scope"
+            ]
+          },
+          {
+            "id": "files",
+            "title": "Files and I/O",
+            "column": 1,
+            "row": 3,
+            "record_ref": "technology.aionix_os_model",
+            "fields": [
+              "file_descriptors",
+              "pipes",
+              "device_files",
+              "ioctl",
+              "directory_model",
+              "dma",
+              "serial_as_tty"
+            ]
+          },
+          {
+            "id": "memory",
+            "title": "Virtual memory",
+            "column": 3,
+            "row": 3,
+            "record_ref": "technology.artemis_memory_model"
+          },
+          {
+            "id": "os",
+            "title": "System cartridge",
+            "column": 2,
+            "row": 4,
+            "record_ref": "software.aionix"
+          },
+          {
+            "id": "network",
+            "title": "Networking services",
+            "column": 1,
+            "row": 4,
+            "record_ref": "software.aionix_networked"
+          }
+        ],
+        "edges": [
+          [
+            "apps",
+            "api"
+          ],
+          [
+            "apps",
+            "tui"
+          ],
+          [
+            "shell",
+            "api"
+          ],
+          [
+            "tui",
+            "api"
+          ],
+          [
+            "api",
+            "kernel"
+          ],
+          [
+            "kernel",
+            "files"
+          ],
+          [
+            "kernel",
+            "memory"
+          ],
+          [
+            "os",
+            "kernel"
+          ],
+          [
+            "files",
+            "network"
+          ]
+        ]
+      }
+    }
+  }
 }
