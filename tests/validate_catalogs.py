@@ -84,9 +84,10 @@ for p in site['pages']:
 by={e['id']:e for e in events}
 assert by['event.bpi_offer']['event_type']=='offer'
 assert by['event.ibm_project']['event_type']=='plan'
-assert by['event.apple_extensions']['date']['end']=='1979-06-07'
+assert by['event.apple_extensions']['date']['start']=='1979-06-04'
+assert by['event.apple_extensions']['date']['end'] is None
 assert by['event.aionix_agreement']['agreement_terms'][4]['effective_date']['start']=='1982'
-assert by['event.aurelia_launch']['date']['precision']=='month'
+assert all(e['date']['precision']=='day' and e['date']['end'] is None for e in events)
 assert records['software.bpi_suite']['introduced']['event_start_date']=='1978-06-05'
 assert records['technology.bpi_relational_database']['introduced']['event_start_date']=='1978-06-05'
 assert records['software.microsoft_basic_aurelia']['introduced']['event_start_date']=='1979-06-04'
@@ -96,7 +97,7 @@ assert 'event.bpi_launch' in {e['id'] for p in story['phases'] if p['id']=='phas
 assert 'event.basic_launch' in {e['id'] for p in story['phases'] if p['id']=='phase.ncc79' for e in p['events']}
 assert 'phase.comdex78' not in {p['id'] for p in story['phases']}
 for data in [tech,story]:assert not re.search(r'COMDEX.{0,20}1978',json.dumps(data),re.I)
-assert set(story)=={'assumptions','phases'}
+assert set(story)=={'assumptions','phases','processes'}
 print(f'Validated {len(events)} events, {len(actors)} actors, {len(site["pages"])} pages; schema and references pass.')
 
 
@@ -110,18 +111,38 @@ for i,phase in enumerate(phases):
  start=date.fromisoformat(phase['period']['start']);end=date.fromisoformat(phase['period']['end'])
  assert start<=end
  if i:assert date.fromisoformat(phases[i-1]['period']['end'])+timedelta(days=1)==start
-anchors=site['timeline_view']['date_anchors']
-for event_id,anchor in anchors.items():
- assert anchor['date']==records[anchor['product_ref']]['introduced']['event_start_date']
- phase=next(p for p in phases if any(e['id']==event_id for e in p['events']))
- assert phase['period']['start']<=anchor['date']<=phase['period']['end'],event_id
 phase_by_event={e['id']:p['id'] for p in phases for e in p['events']}
 assert phase_by_event['event.companies']=='phase.prepare_aurelia'
 assert phase_by_event['event.facility']=='phase.prepare_aurelia'
-assert phase_by_event['event.exchanges']=='phase.foundations'
-assert phase_by_event['event.plus_launch']=='phase.ncc79' # November precedes 3 December.
-assert by['event.plus_launch']['date']['start']=='1979-11'
-assert phase_by_event['event.cpm_bridge']=='phase.comdex79' # Development precedes launch.
-assert phase_by_event['event.artemis_software']=='phase.comdex79'
+assert 'event.exchanges' not in phase_by_event
+assert phase_by_event['event.plus_launch']=='phase.comdex79'
+assert by['event.plus_launch']['date']['start']=='1979-12-03'
+assert phase_by_event['event.cpm_bridge']=='phase.ncc79' # Development precedes launch.
+assert phase_by_event['event.artemis_software']=='phase.ncc79'
+assert phase_by_event['event.aionix_agreement']=='phase.ncc78'
 assert all(target in {p['id'] for p in phases} for target in site['timeline_view']['phase_aliases'].values())
-print('Validated eight consecutive phases, catalog launch anchors, date conflicts and legacy phase aliases.')
+print('Validated eight consecutive phases, confirmed-date placement, processes and legacy phase aliases.')
+
+assert len(events)==33
+assert 'event.basic_develop' not in event_ids
+processes=story['processes'];process_ids={p['id'] for p in processes}
+assert len(process_ids)==len(processes)==8
+for proc in processes:
+ assert set(proc['phase_refs'])<={p['id'] for p in phases}
+ assert set(proc['related_event_refs'])<=event_ids
+ assert set(proc['product_refs'])<=records.keys()
+ assert {p['actor_ref'] for p in proc['participants']}<=actors
+ for action in proc['actions']:assert set(action['actor_refs'])<=actors
+assert {'process.economics_studies','process.nyse_speculation'}<=process_ids
+assert set(next(p for p in processes if p['id']=='process.international_investment')['phase_refs'])=={'phase.foundations','phase.prepare_aurelia'}
+for phase in phases:
+ for e in phase['events']:
+  if e['id']!='event.power':assert phase['period']['start']<=e['date']['start']<=phase['period']['end'],e['id']
+assert by['event.power']['date']['start']=='2025-12-07'
+assert records['service.bpi_training']['introduced']['event_start_date']=='1978-06-12'
+assert records['service.academy_direct_sales']['introduced']['event_start_date']=='1978-03-25'
+for id in ['computer.aurelia_plus','software.pulse_1','software.abacus_2']:
+ assert records[id]['introduced']['event_start_date']=='1979-12-03'
+assert '1979-11' not in json.dumps(tech)
+assert all(target in process_ids|{p['id'] for p in phases} for target in site['timeline_view']['item_aliases'].values())
+print('Validated 33 confirmed point events, 8 separate processes and synchronized catalog availability.')
