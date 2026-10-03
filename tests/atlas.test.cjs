@@ -83,6 +83,22 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
   const lane=config.timeline_view.lanes.find(l=>l.event_refs.includes(card.dataset.event));
   assert.equal(card.closest('[data-lane]').dataset.lane,lane.id);
  }
+ assert.equal(d.querySelector('.timeline-workspace').firstElementChild.className,'event-inspection');
+ assert.deepEqual([...d.querySelectorAll('.calendar-year')].map(x=>x.textContent),Array.from({length:10},(_,i)=>String(1972+i)));
+ assert(d.querySelector('.timeline-origin [data-event="event.power"]'));
+ assert(!d.querySelector('.calendar-grid [data-event="event.power"]'));
+ assert(d.querySelector('[data-event="event.lottery"]').classList.contains('approximate'));
+ for(const cell of d.querySelectorAll('.calendar-cell')){
+  const positions=[...cell.querySelectorAll('.calendar-event')].map(x=>parseFloat(x.style.top));
+  for(let i=1;i<positions.length;i++)assert(positions[i]-positions[i-1]>=88,'event cards overlap');
+ }
+ const phaseButton=d.querySelector('[data-select-phase="phase.ncc78"]');phaseButton.click();
+ assert.equal(w.location.hash,'#phase.ncc78');
+ assert.equal(d.getElementById('phase-inspection').hidden,false);
+ assert(d.getElementById('phase-inspection').textContent.includes('NCC June 1978'));
+ assert.equal(d.querySelectorAll('.event:not([hidden])').length,0);
+ d.querySelector('[data-event="event.bpi_offer"]').click();
+ assert.equal(d.getElementById('phase-inspection').hidden,true);
  assert(d.getElementById('event.bpi_offer').open);
  assert.equal(d.getElementById('event.bpi_offer').hidden,false);
  d.querySelector('[data-event="event.ibm_project"]').click();
@@ -108,3 +124,4 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const offline=await boot(page,{},'file:///atlas/timeline.html');assert(offline.d.querySelector('#catalogs'));offline.dom.window.close();
  console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; four computer explorers, RAM expansion, networking, bundles, filters, JSON updates and offline recovery.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
