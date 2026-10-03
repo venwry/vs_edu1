@@ -1,3 +1,94 @@
+# Calendar phase organization
+
+These inclusive phase periods supersede the conference-based grouping in the narrative below. Event dates and narrative claims remain unchanged. The event inventory follows the story JSON; phase assignment is not a new assertion of an exact event date.
+
+## 1. Adam studying and investing on stock market
+
+1972-01-01 to 1974-12-31
+
+- `event.power` — Vincent gains time-travel powers (2025)
+- `event.identity` — Arrival and assumption of Adam’s identity (1972-01)
+- `event.lottery` — Lottery win and move to the US (After January 1972; exact date unspecified)
+- `event.harvard` — Economics studies and NYSE speculation (After relocation to the US)
+- `event.office` — Investment-data office established (1973)
+- `event.exchanges` — Investment activity expands internationally (1973)
+
+## 2. Preparing first products and their ecosystem
+
+1975-01-01 to 1978-06-04
+
+- `event.companies` — Three technology companies founded (Late 1975)
+- `event.facility` — Secret future-equipped facility established (Before product development; exact date unspecified)
+- `event.setup` — Build the engineering and manufacturing organizations (Before NCC 1978)
+- `event.letwin` — Gordon Letwin recruited (1977-06)
+- `event.paterson` — Tim Paterson recruited (1977)
+- `event.dri_cpm` — CP/M development cooperation (Before NCC 1978; exact signing date unspecified)
+- `event.mpi` — OEM printer-mechanism agreement (Before NCC 1978)
+- `event.retail` — ComputerLand retail agreement (Before NCC 1978)
+- `event.bpi_offer` — Offer to establish AION BPI Systems (Early 1977)
+- `event.academy` — Logix Computer Academy established (1978-03)
+
+## 3. Aurelia premiere and first months of sales
+
+1978-06-05 to 1979-06-03
+
+- `event.aurelia_launch` — Aurelia platform launches (1978-06)
+- `event.bpi_launch` — BPI suite presented for Aurelia (NCC June 1978)
+- `event.bpi_training` — BPI training and direct sales begin (A few days after NCC June 1978)
+- `event.dri_portable` — DRI commits to portable TUI extensions (Late 1978)
+- `event.apple_search` — Apple seeks business-software partners (By 1979)
+- `event.others_monitor` — Other companies monitor the market (Post-NCC 1978 response period)
+- `event.market_growth` — US personal-computer market expands (Post-NCC 1978 response period)
+- `event.basic_develop` — Microsoft BASIC developed with AION (Before NCC June 1979)
+- `event.dri_release` — Portable CP/M extensions released (1979-05)
+- `event.apple_peachtree` — Apple partners with Peachtree (Between November 1978 and June 1979)
+- `event.apple_cooperation` — Logix and Apple agree limited technical cooperation (1979-02)
+
+## 4. Apple extensions and market expansion
+
+1979-06-04 to 1979-12-02
+
+- `event.apple_extensions` — Apple II expansion products demonstrated (4–7 June 1979)
+- `event.basic_launch` — Microsoft BASIC presented (NCC, 4–7 June 1979)
+- `event.apple_policy` — Apple continues limited compatibility cooperation (After NCC 1979)
+- `event.ibm_investigate` — IBM investigates the personal-computer market (1979)
+- `event.plus_launch` — Aurelia+, Pulse and Abacus 2.0 arrive (1979-11)
+
+## 5. Aurelia+ and Pulse premiere Abacus 2.0
+
+1979-12-03 to 1980-05-18
+
+- `event.ibm_project` — IBM starts its personal-computer project (After the 1979 investigation, before May 1980)
+- `event.apple_business` — Apple–Peachtree small-business package starts (1980-03)
+- `event.artemis_engineering` — Artemis and ERA1 engineering (Before NCC May 1980; exact start unspecified)
+- `event.aionix_agreement` — AIONix development and ownership agreement (Before NCC May 1980)
+- `event.cpm_bridge` — CP/M-80 compatibility module developed (Before NCC May 1980)
+- `event.artemis_software` — Artemis software and development tools prepared (Before NCC May 1980)
+
+## 6. Artemis launch, compatibility card and recompiled products
+
+1980-05-19 to 1980-11-18
+
+- `event.artemis_launch` — Artemis platform launches commercially (1980-05)
+
+## 7. Abacus and Pulse 3.0 for Artemis
+
+1980-11-19 to 1981-05-03
+
+- `event.software32` — AION shifts major software development to 32-bit Artemis (1980-11)
+
+## 8. Artemis Pro, Networking and new BPI
+
+1981-05-04 to 1981-11-18
+
+- `event.network_launch` — Networked business-computing platform presented (1981-05)
+
+The 2025 origin is a prologue outside phase one's calendar range. International investment expansion starts in phase one but runs through 1975. The November 1979 Aurelia+/Pulse/Abacus 2.0 premiere belongs to phase four under the recorded date, despite phase five's requested title. Development events previously grouped before NCC 1980 remain provisionally in phase five; their start dates may be earlier. See [PHASE_DATE_REVIEW.md](PHASE_DATE_REVIEW.md) for all imprecise dates and proposed resolutions. Proposals are not applied to event or product dates.
+
+---
+
+# Original narrative
+
 This an alternative reality story to be analsysed:
 
 (Let't call the real history as base scenario and the story below the alternative scenario.)
@@ -156,4 +247,5 @@ AION presents Artemis-exclusive Abacus 3.0 and Pulse 3.0. From this point, major
 # NCC May 1981 – Logix networked business computing
 
 Logix presents its TCP/IP networking platform, the Artemis PRO server, networking upgrades for both Aurelia CP/M and Artemis/AIONix, and a new client-server generation of BPI built around a robust relational database. Networking becomes part of the standard Artemis direction rather than an isolated peripheral feature.
+
 

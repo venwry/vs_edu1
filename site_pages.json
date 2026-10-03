@@ -394,7 +394,7 @@
     "board_label": "Calendar timeline: equal years downward, parties across",
     "axis_label": "Year / Phase",
     "instructions": "Select an event or phase to read its details on the left. Scroll the timeline down through equal year sections, or sideways to see more parties.",
-    "scale_note": "Each year has the same height. Cards are spaced to avoid overlaps within their year. Dashed cards have unspecified dates and are placed in their phase’s starting year, not at an asserted date. The 2025 origin is shown separately above the 1972–1981 calendar.",
+    "scale_note": "Each year has the same height. Cards are spaced to avoid overlaps within their year. Known product introduction dates anchor launch cards; coarse dates are positioned within their assigned phase. Dashed cards have unspecified dates and use their phase start only for placement. The 2025 origin is separate. Aurelia+/Pulse/Abacus 2.0 remains in phase four because its recorded launch is November 1979, before phase five begins on 3 December.",
     "details_label": "Event or phase details",
     "select_hint": "Select an event or phase on the right to explore its details.",
     "lanes": [
@@ -513,6 +513,33 @@
         ]
       }
     ],
-    "group_label": "events · expand"
+    "group_label": "events · expand",
+    "phase_aliases": {
+      "phase.after_ncc78": "phase.ncc78",
+      "phase.before_comdex79": "phase.ncc79",
+      "phase.before_ncc80": "phase.comdex79"
+    },
+    "date_anchors": {
+      "event.aurelia_launch": {
+        "date": "1978-06-05",
+        "product_ref": "computer.aurelia"
+      },
+      "event.bpi_launch": {
+        "date": "1978-06-05",
+        "product_ref": "software.bpi_suite"
+      },
+      "event.artemis_launch": {
+        "date": "1980-05-19",
+        "product_ref": "computer.artemis"
+      },
+      "event.software32": {
+        "date": "1980-11-19",
+        "product_ref": "software.abacus_3"
+      },
+      "event.network_launch": {
+        "date": "1981-05-04",
+        "product_ref": "computer.artemis_pro"
+      }
+    }
   }
 }

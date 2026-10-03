@@ -98,3 +98,30 @@ assert 'phase.comdex78' not in {p['id'] for p in story['phases']}
 for data in [tech,story]:assert not re.search(r'COMDEX.{0,20}1978',json.dumps(data),re.I)
 assert set(story)=={'assumptions','phases'}
 print(f'Validated {len(events)} events, {len(actors)} actors, {len(site["pages"])} pages; schema and references pass.')
+
+
+# Calendar phases must cover the requested period without gaps or overlaps.
+from datetime import date, timedelta
+phases=story['phases']
+assert len(phases)==8
+assert phases[0]['period']['start']=='1972-01-01'
+assert phases[-1]['period']['end']=='1981-11-18'
+for i,phase in enumerate(phases):
+ start=date.fromisoformat(phase['period']['start']);end=date.fromisoformat(phase['period']['end'])
+ assert start<=end
+ if i:assert date.fromisoformat(phases[i-1]['period']['end'])+timedelta(days=1)==start
+anchors=site['timeline_view']['date_anchors']
+for event_id,anchor in anchors.items():
+ assert anchor['date']==records[anchor['product_ref']]['introduced']['event_start_date']
+ phase=next(p for p in phases if any(e['id']==event_id for e in p['events']))
+ assert phase['period']['start']<=anchor['date']<=phase['period']['end'],event_id
+phase_by_event={e['id']:p['id'] for p in phases for e in p['events']}
+assert phase_by_event['event.companies']=='phase.prepare_aurelia'
+assert phase_by_event['event.facility']=='phase.prepare_aurelia'
+assert phase_by_event['event.exchanges']=='phase.foundations'
+assert phase_by_event['event.plus_launch']=='phase.ncc79' # November precedes 3 December.
+assert by['event.plus_launch']['date']['start']=='1979-11'
+assert phase_by_event['event.cpm_bridge']=='phase.comdex79' # Development precedes launch.
+assert phase_by_event['event.artemis_software']=='phase.comdex79'
+assert all(target in {p['id'] for p in phases} for target in site['timeline_view']['phase_aliases'].values())
+print('Validated eight consecutive phases, catalog launch anchors, date conflicts and legacy phase aliases.')

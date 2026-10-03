@@ -95,7 +95,11 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const phaseButton=d.querySelector('[data-select-phase="phase.ncc78"]');phaseButton.click();
  assert.equal(w.location.hash,'#phase.ncc78');
  assert.equal(d.getElementById('phase-inspection').hidden,false);
- assert(d.getElementById('phase-inspection').textContent.includes('NCC June 1978'));
+ assert(d.getElementById('phase-inspection').textContent.includes('Aurelia premiere and first months of sales'));
+ assert.equal(d.querySelectorAll('#phase-filter option').length,9);
+ assert(d.getElementById('phase-inspection').textContent.includes('1978-06-05 to 1979-06-03'));
+ w.location.hash='#phase.after_ncc78';await tick();
+ assert(d.getElementById('phase-inspection').textContent.includes('Aurelia premiere and first months of sales'));
  assert.equal(d.querySelectorAll('.event:not([hidden])').length,0);
  d.querySelector('[data-event="event.bpi_offer"]').click();
  assert.equal(d.getElementById('phase-inspection').hidden,true);

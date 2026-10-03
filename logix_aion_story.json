@@ -242,20 +242,20 @@
       "naming": "Stable actor/product identifiers; aliases retain spelling variants.",
       "event_structure": "Every event uses date, participants, actions, outcomes, agreement_terms, metrics, product_refs and related_event_refs.",
       "provenance": "This JSON structures the narrative; product specifications remain in the technical catalog.",
-      "phase_order": "Phases follow the story sequence; future-origin and retrospective events retain their explicit dates."
+      "phase_order": "Eight consecutive inclusive calendar phases from 1972-01-01 through 1981-11-18. Events are assigned by recorded date, then matching product introduction date, then narrative context. Multi-phase activities are assigned by their start. The 2025 origin is retained in the first phase as an explicit causal prologue outside its calendar period. Undated phase assignments do not assert an event date. See PHASE_DATE_REVIEW.md for ambiguities and unapproved proposals."
     }
   },
   "phases": [
     {
       "id": "phase.foundations",
-      "title": "Foundations and financing",
+      "title": "Adam studying and investing on stock market",
       "kind": "pre_conference",
       "period": {
-        "start": "1972-01",
-        "end": "1975",
+        "start": "1972-01-01",
+        "end": "1974-12-31",
         "precision": "range",
-        "qualifier": "",
-        "display": "1972-01 to 1975"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1972-01-01 to 1974-12-31"
       },
       "events": [
         {
@@ -492,7 +492,21 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "phase.prepare_aurelia",
+      "title": "Preparing first products and their ecosystem",
+      "kind": "pre_conference",
+      "period": {
+        "start": "1975-01-01",
+        "end": "1978-06-04",
+        "precision": "range",
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1975-01-01 to 1978-06-04"
+      },
+      "events": [
         {
           "id": "event.companies",
           "title": "Three technology companies founded",
@@ -570,21 +584,7 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.prepare_aurelia",
-      "title": "Preparing Aurelia and its ecosystem",
-      "kind": "pre_conference",
-      "period": {
-        "start": "1975",
-        "end": "1978-06",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1975 to 1978-06"
-      },
-      "events": [
+        },
         {
           "id": "event.setup",
           "title": "Build the engineering and manufacturing organizations",
@@ -952,14 +952,14 @@
     },
     {
       "id": "phase.ncc78",
-      "title": "NCC June 1978",
-      "kind": "conference",
+      "title": "Aurelia premiere and first months of sales",
+      "kind": "between_conferences",
       "period": {
-        "start": "1978-06",
-        "end": "1978-06",
+        "start": "1978-06-05",
+        "end": "1979-06-03",
         "precision": "range",
-        "qualifier": "",
-        "display": "1978-06 to 1978-06"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1978-06-05 to 1979-06-03"
       },
       "events": [
         {
@@ -1053,21 +1053,7 @@
             "computer.aurelia"
           ],
           "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.after_ncc78",
-      "title": "Market response and cooperation before NCC 1979",
-      "kind": "between_conferences",
-      "period": {
-        "start": "1978-06",
-        "end": "1979-06",
-        "precision": "range",
-        "qualifier": "Between NCC 1978 and NCC 1979",
-        "display": "June 1978 to June 1979"
-      },
-      "events": [
+        },
         {
           "id": "event.bpi_training",
           "title": "BPI training and direct sales begin",
@@ -1474,14 +1460,14 @@
     },
     {
       "id": "phase.ncc79",
-      "title": "NCC June 1979",
-      "kind": "conference",
+      "title": "Apple extensions and market expansion",
+      "kind": "between_conferences",
       "period": {
         "start": "1979-06-04",
-        "end": "1979-06-07",
+        "end": "1979-12-02",
         "precision": "range",
-        "qualifier": "",
-        "display": "1979-06-04 to 1979-06-07"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1979-06-04 to 1979-12-02"
       },
       "events": [
         {
@@ -1562,21 +1548,7 @@
             "software.microsoft_basic_aurelia"
           ],
           "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.before_comdex79",
-      "title": "Market response before COMDEX 1979",
-      "kind": "between_conferences",
-      "period": {
-        "start": "1979-06",
-        "end": "1979-11",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1979-06 to 1979-11"
-      },
-      "events": [
+        },
         {
           "id": "event.apple_policy",
           "title": "Apple continues limited compatibility cooperation",
@@ -1646,21 +1618,7 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.comdex79",
-      "title": "COMDEX November 1979",
-      "kind": "conference",
-      "period": {
-        "start": "1979-11",
-        "end": "1979-11",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1979-11 to 1979-11"
-      },
-      "events": [
+        },
         {
           "id": "event.plus_launch",
           "title": "Aurelia+, Pulse and Abacus 2.0 arrive",
@@ -1720,15 +1678,15 @@
       ]
     },
     {
-      "id": "phase.before_ncc80",
-      "title": "Competition and Artemis development",
+      "id": "phase.comdex79",
+      "title": "Aurelia+ and Pulse premiere Abacus 2.0",
       "kind": "between_conferences",
       "period": {
-        "start": "1979-11",
-        "end": "1980-05",
+        "start": "1979-12-03",
+        "end": "1980-05-18",
         "precision": "range",
-        "qualifier": "",
-        "display": "1979-11 to 1980-05"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1979-12-03 to 1980-05-18"
       },
       "events": [
         {
@@ -2152,14 +2110,14 @@
     },
     {
       "id": "phase.ncc80",
-      "title": "NCC May 1980",
-      "kind": "conference",
+      "title": "Artemis launch, compatibility card and recompiled products",
+      "kind": "between_conferences",
       "period": {
-        "start": "1980-05",
-        "end": "1980-05",
+        "start": "1980-05-19",
+        "end": "1980-11-18",
         "precision": "range",
-        "qualifier": "",
-        "display": "1980-05 to 1980-05"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1980-05-19 to 1980-11-18"
       },
       "events": [
         {
@@ -2217,14 +2175,14 @@
     },
     {
       "id": "phase.comdex80",
-      "title": "COMDEX November 1980",
-      "kind": "conference",
+      "title": "Abacus and Pulse 3.0 for Artemis",
+      "kind": "between_conferences",
       "period": {
-        "start": "1980-11",
-        "end": "1980-11",
+        "start": "1980-11-19",
+        "end": "1981-05-03",
         "precision": "range",
-        "qualifier": "",
-        "display": "1980-11 to 1980-11"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1980-11-19 to 1981-05-03"
       },
       "events": [
         {
@@ -2272,14 +2230,14 @@
     },
     {
       "id": "phase.ncc81",
-      "title": "NCC May 1981",
-      "kind": "conference",
+      "title": "Artemis Pro, Networking and new BPI",
+      "kind": "between_conferences",
       "period": {
-        "start": "1981-05",
-        "end": "1981-05",
+        "start": "1981-05-04",
+        "end": "1981-11-18",
         "precision": "range",
-        "qualifier": "",
-        "display": "1981-05 to 1981-05"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1981-05-04 to 1981-11-18"
       },
       "events": [
         {
