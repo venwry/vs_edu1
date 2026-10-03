@@ -40,9 +40,16 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
     d.querySelector('[data-layer="memory"]').click();
     assert(d.querySelector('[data-node="virtual"]').textContent.includes('32-bit'));
     assert(d.querySelector('[data-node="physical"]').textContent.includes('24-bit'));
-    const ram=d.querySelector('#artemis-ram');ram.value=page.id==='artemis'?512:1024;ram.dispatchEvent(new w.Event('change'));
-    assert(d.querySelector('#stats').textContent.includes(ram.value+' KB'));
-    d.querySelector('[data-node="ram"]').click();assert(d.querySelector('#inspector').textContent.includes('populated modules8'));
+    const ram=d.querySelector('#artemis-ram');
+    const selectRAM=(id,capacity,modules,banks)=>{ram.value=id;ram.dispatchEvent(new w.Event('change'));assert.equal(ram.value,id);assert(d.querySelector('#stats').textContent.includes(capacity+' KB'));d.querySelector('[data-node="ram"]').click();assert(d.querySelector('#inspector').textContent.includes('populated modules'+modules));assert(d.querySelector('#inspector').textContent.includes('populated banks'+banks));};
+    if(page.id==='artemis'){
+     selectRAM('m32_128',128,4,2);
+     selectRAM('m32_256',256,8,4);
+     selectRAM('m128_256',256,2,1);
+     assert(d.querySelector('#memory-section').textContent.includes('2 × 128 KB / 16-bit modules'));
+    }else selectRAM('m128_512',512,4,2);
+    selectRAM('m128_1024',1024,8,4);
+    assert(d.querySelector('#memory-section').textContent.includes('qualification pending'));
     d.querySelector('[data-layer="hardware"]').click();
     if(page.id==='artemis'){
      assert(d.querySelector('[data-node="compatibility"]'));
