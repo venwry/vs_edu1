@@ -237,25 +237,25 @@
       }
     ],
     "conventions": {
-      "dates": "Preserve the precision stated in the narrative. An unspecified event date is not replaced with its phase boundary.",
+      "dates": "Point-event dates are author-confirmed exact days. Process periods preserve their existing precision; an unspecified process duration is not replaced with a phase boundary.",
       "plans": "Targets, offers and future rights are distinguished from completed actions.",
       "naming": "Stable actor/product identifiers; aliases retain spelling variants.",
-      "event_structure": "Every event uses date, participants, actions, outcomes, agreement_terms, metrics, product_refs and related_event_refs.",
+      "event_structure": "Events use date, participants, actions, outcomes, agreement_terms, metrics, product_refs and related_event_refs. Processes use period and phase_refs instead of event_type/date; phase_refs identify narrative context, not asserted start/end dates.",
       "provenance": "This JSON structures the narrative; product specifications remain in the technical catalog.",
-      "phase_order": "Phases follow the story sequence; future-origin and retrospective events retain their explicit dates."
+      "phase_order": "Eight consecutive inclusive calendar phases from 1972-01-01 through 1981-11-18. Point events are assigned by their confirmed dates and sorted chronologically. The 2025-12-07 origin remains an explicit prologue associated with phase one, outside its calendar period. Processes are listed separately in their contextual phases; the explicit 1973–1975 investment expansion spans phases one and two."
     }
   },
   "phases": [
     {
       "id": "phase.foundations",
-      "title": "Foundations and financing",
+      "title": "Adam studying and investing on stock market",
       "kind": "pre_conference",
       "period": {
-        "start": "1972-01",
-        "end": "1975",
+        "start": "1972-01-01",
+        "end": "1974-12-31",
         "precision": "range",
-        "qualifier": "",
-        "display": "1972-01 to 1975"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1972-01-01 to 1974-12-31"
       },
       "events": [
         {
@@ -263,11 +263,11 @@
           "title": "Vincent gains time-travel powers",
           "event_type": "premise",
           "date": {
-            "start": "2025",
+            "start": "2025-12-07",
             "end": null,
-            "precision": "year",
-            "qualifier": "",
-            "display": "2025"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "2025-12-07"
           },
           "participants": [
             {
@@ -301,11 +301,11 @@
           "title": "Arrival and assumption of Adam’s identity",
           "event_type": "action",
           "date": {
-            "start": "1972-01",
+            "start": "1972-01-01",
             "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1972-01"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1972-01-01"
           },
           "participants": [
             {
@@ -340,11 +340,11 @@
           "title": "Lottery win and move to the US",
           "event_type": "action",
           "date": {
-            "start": null,
+            "start": "1972-02-06",
             "end": null,
-            "precision": "unspecified",
-            "qualifier": "After January 1972; exact date unspecified",
-            "display": "After January 1972; exact date unspecified"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1972-02-06"
           },
           "participants": [
             {
@@ -382,48 +382,15 @@
           ]
         },
         {
-          "id": "event.harvard",
-          "title": "Economics studies and NYSE speculation",
-          "event_type": "action",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "After relocation to the US",
-            "display": "After relocation to the US"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.adam",
-              "role": "student_and_investor"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.adam"
-              ],
-              "description": "Starts a bachelor degree in economics at Harvard and multiplies his funds through NYSE speculation using secret foreknowledge."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": [
-            "event.lottery"
-          ]
-        },
-        {
           "id": "event.office",
           "title": "Investment-data office established",
           "event_type": "organization",
           "date": {
-            "start": "1973",
+            "start": "1973-01-01",
             "end": null,
-            "precision": "year",
-            "qualifier": "",
-            "display": "1973"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1973-01-01"
           },
           "participants": [
             {
@@ -461,48 +428,31 @@
           ],
           "product_refs": [],
           "related_event_refs": []
-        },
-        {
-          "id": "event.exchanges",
-          "title": "Investment activity expands internationally",
-          "event_type": "action",
-          "date": {
-            "start": "1973",
-            "end": "1975",
-            "precision": "range",
-            "qualifier": "",
-            "display": "1973"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.adam",
-              "role": "investor"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.adam"
-              ],
-              "description": "Expands investments to London, Frankfurt, Hong Kong and Tokyo stock exchanges."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "phase.prepare_aurelia",
+      "title": "Preparing first products and their ecosystem",
+      "kind": "pre_conference",
+      "period": {
+        "start": "1975-01-01",
+        "end": "1978-06-04",
+        "precision": "range",
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1975-01-01 to 1978-06-04"
+      },
+      "events": [
         {
           "id": "event.companies",
           "title": "Three technology companies founded",
           "event_type": "organization",
           "date": {
-            "start": "1975",
+            "start": "1975-01-01",
             "end": null,
-            "precision": "year",
-            "qualifier": "Late 1975; wording in the narrative is imprecise",
-            "display": "Late 1975"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1975-01-01"
           },
           "participants": [
             {
@@ -541,11 +491,11 @@
           "title": "Secret future-equipped facility established",
           "event_type": "organization",
           "date": {
-            "start": null,
+            "start": "1975-02-01",
             "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before product development; exact date unspecified",
-            "display": "Before product development; exact date unspecified"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1975-02-01"
           },
           "participants": [
             {
@@ -570,157 +520,17 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.prepare_aurelia",
-      "title": "Preparing Aurelia and its ecosystem",
-      "kind": "pre_conference",
-      "period": {
-        "start": "1975",
-        "end": "1978-06",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1975 to 1978-06"
-      },
-      "events": [
-        {
-          "id": "event.setup",
-          "title": "Build the engineering and manufacturing organizations",
-          "event_type": "organization",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC 1978",
-            "display": "Before NCC 1978"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.adam",
-              "role": "organizer"
-            },
-            {
-              "actor_ref": "actor.logix",
-              "role": "developer"
-            },
-            {
-              "actor_ref": "actor.labs",
-              "role": "developer"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "developer"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.adam",
-                "actor.logix",
-                "actor.labs",
-                "actor.aion"
-              ],
-              "description": "Hire staff, establish software-development environments, computer manufacturing and R&D, and a conservative semiconductor operation."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "computer.aurelia"
-          ],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.letwin",
-          "title": "Gordon Letwin recruited",
-          "event_type": "recruitment",
-          "date": {
-            "start": "1977-06",
-            "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1977-06"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.adam",
-              "role": "recruiter"
-            },
-            {
-              "actor_ref": "actor.letwin",
-              "role": "recruit"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.adam"
-              ],
-              "description": "Recruits Gordon Letwin from his then-current employer."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "Letwin never joins Microsoft in this scenario."
-            }
-          ],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.paterson",
-          "title": "Tim Paterson recruited",
-          "event_type": "recruitment",
-          "date": {
-            "start": "1977",
-            "end": null,
-            "precision": "year",
-            "qualifier": "",
-            "display": "1977"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.adam",
-              "role": "recruiter"
-            },
-            {
-              "actor_ref": "actor.paterson",
-              "role": "recruit"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.adam"
-              ],
-              "description": "Recruits Tim Paterson."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "Paterson does not develop QDOS and is unavailable to Microsoft."
-            }
-          ],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
         },
         {
           "id": "event.dri_cpm",
           "title": "CP/M development cooperation",
           "event_type": "agreement",
           "date": {
-            "start": null,
+            "start": "1976-09-01",
             "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC 1978; exact signing date unspecified",
-            "display": "Before NCC 1978; exact signing date unspecified"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1976-09-01"
           },
           "participants": [
             {
@@ -763,104 +573,15 @@
           "related_event_refs": []
         },
         {
-          "id": "event.mpi",
-          "title": "OEM printer-mechanism agreement",
-          "event_type": "agreement",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC 1978",
-            "display": "Before NCC 1978"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.adam",
-              "role": "buyer"
-            },
-            {
-              "actor_ref": "actor.mpi",
-              "role": "supplier"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.adam",
-                "actor.mpi"
-              ],
-              "description": "Agree OEM purchasing/manufacturing arrangements for bare MP-40 mechanisms to receive FlexiBUS controllers."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "device.flexiprint40",
-            "part.mpi_mp40_mechanism"
-          ],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.retail",
-          "title": "ComputerLand retail agreement",
-          "event_type": "agreement",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC 1978",
-            "display": "Before NCC 1978"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.adam",
-              "role": "negotiator"
-            },
-            {
-              "actor_ref": "actor.computerland",
-              "role": "retailer"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.adam",
-                "actor.computerland"
-              ],
-              "description": "Arrange computer sales through ComputerLand as the planned primary channel."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [
-            {
-              "type": "retailer_margin",
-              "description": "Retailer margin of 20–30%.",
-              "actor_refs": [
-                "actor.computerland"
-              ],
-              "value": {
-                "minimum": 20,
-                "maximum": 30
-              },
-              "unit": "percent",
-              "effective_date": null
-            }
-          ],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
           "id": "event.bpi_offer",
           "title": "Offer to establish AION BPI Systems",
           "event_type": "offer",
           "date": {
-            "start": "1977",
+            "start": "1977-02-15",
             "end": null,
-            "precision": "year",
-            "qualifier": "Early",
-            "display": "Early 1977"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1977-02-15"
           },
           "participants": [
             {
@@ -915,15 +636,182 @@
           "related_event_refs": []
         },
         {
+          "id": "event.letwin",
+          "title": "Gordon Letwin recruited",
+          "event_type": "recruitment",
+          "date": {
+            "start": "1977-06-01",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1977-06-01"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "recruiter"
+            },
+            {
+              "actor_ref": "actor.letwin",
+              "role": "recruit"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "description": "Recruits Gordon Letwin from his then-current employer."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "Letwin never joins Microsoft in this scenario."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.paterson",
+          "title": "Tim Paterson recruited",
+          "event_type": "recruitment",
+          "date": {
+            "start": "1977-07-15",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1977-07-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "recruiter"
+            },
+            {
+              "actor_ref": "actor.paterson",
+              "role": "recruit"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "description": "Recruits Tim Paterson."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "Paterson does not develop QDOS and is unavailable to Microsoft."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.mpi",
+          "title": "OEM printer-mechanism agreement",
+          "event_type": "agreement",
+          "date": {
+            "start": "1977-09-01",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1977-09-01"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "buyer"
+            },
+            {
+              "actor_ref": "actor.mpi",
+              "role": "supplier"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.mpi"
+              ],
+              "description": "Agree OEM purchasing/manufacturing arrangements for bare MP-40 mechanisms to receive FlexiBUS controllers."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "device.flexiprint40",
+            "part.mpi_mp40_mechanism"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.retail",
+          "title": "ComputerLand retail agreement",
+          "event_type": "agreement",
+          "date": {
+            "start": "1978-02-05",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1978-02-05"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "negotiator"
+            },
+            {
+              "actor_ref": "actor.computerland",
+              "role": "retailer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.computerland"
+              ],
+              "description": "Arrange computer sales through ComputerLand as the planned primary channel."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [
+            {
+              "type": "retailer_margin",
+              "description": "Retailer margin of 20–30%.",
+              "actor_refs": [
+                "actor.computerland"
+              ],
+              "value": {
+                "minimum": 20,
+                "maximum": 30
+              },
+              "unit": "percent",
+              "effective_date": null
+            }
+          ],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
           "id": "event.academy",
           "title": "Logix Computer Academy established",
           "event_type": "organization",
           "date": {
-            "start": "1978-03",
+            "start": "1978-03-25",
             "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1978-03"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1978-03-25"
           },
           "participants": [
             {
@@ -952,14 +840,14 @@
     },
     {
       "id": "phase.ncc78",
-      "title": "NCC June 1978",
-      "kind": "conference",
+      "title": "Aurelia premiere and first months of sales",
+      "kind": "between_conferences",
       "period": {
-        "start": "1978-06",
-        "end": "1978-06",
+        "start": "1978-06-05",
+        "end": "1979-06-03",
         "precision": "range",
-        "qualifier": "",
-        "display": "1978-06 to 1978-06"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1978-06-05 to 1979-06-03"
       },
       "events": [
         {
@@ -967,11 +855,11 @@
           "title": "Aurelia platform launches",
           "event_type": "launch",
           "date": {
-            "start": "1978-06",
+            "start": "1978-06-05",
             "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1978-06"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1978-06-05"
           },
           "participants": [
             {
@@ -1015,11 +903,11 @@
           "title": "BPI suite presented for Aurelia",
           "event_type": "launch",
           "date": {
-            "start": "1978-06",
+            "start": "1978-06-05",
             "end": null,
-            "precision": "month",
-            "qualifier": "At NCC 1978",
-            "display": "NCC June 1978"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1978-06-05"
           },
           "participants": [
             {
@@ -1053,31 +941,17 @@
             "computer.aurelia"
           ],
           "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.after_ncc78",
-      "title": "Market response and cooperation before NCC 1979",
-      "kind": "between_conferences",
-      "period": {
-        "start": "1978-06",
-        "end": "1979-06",
-        "precision": "range",
-        "qualifier": "Between NCC 1978 and NCC 1979",
-        "display": "June 1978 to June 1979"
-      },
-      "events": [
+        },
         {
           "id": "event.bpi_training",
           "title": "BPI training and direct sales begin",
           "event_type": "service_launch",
           "date": {
-            "start": null,
+            "start": "1978-06-12",
             "end": null,
-            "precision": "unspecified",
-            "qualifier": "A few days after the NCC June 1978 premiere",
-            "display": "A few days after NCC June 1978"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1978-06-12"
           },
           "participants": [
             {
@@ -1105,837 +979,15 @@
           ]
         },
         {
-          "id": "event.dri_portable",
-          "title": "DRI commits to portable TUI extensions",
-          "event_type": "commitment",
-          "date": {
-            "start": "1978",
-            "end": null,
-            "precision": "year",
-            "qualifier": "Late",
-            "display": "Late 1978"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.dri",
-              "role": "developer"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.dri"
-              ],
-              "description": "Commits to portable CP/M extensions incorporating Logix TUI for other computer manufacturers."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "technology.logix_tui_standard",
-            "software.cpm_aurelia"
-          ],
-          "related_event_refs": [
-            "event.dri_cpm"
-          ]
-        },
-        {
-          "id": "event.apple_search",
-          "title": "Apple seeks business-software partners",
-          "event_type": "market_response",
-          "date": {
-            "start": null,
-            "end": "1979",
-            "precision": "unspecified",
-            "qualifier": "By 1979; described in the post-NCC-1978 phase",
-            "display": "By 1979"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.apple",
-              "role": "competitor"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.apple"
-              ],
-              "description": "Searches for partnerships supplying Apple II business software, disk-based capabilities, spreadsheets and databases."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.others_monitor",
-          "title": "Other companies monitor the market",
-          "event_type": "market_response",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "Post-NCC 1978 response period",
-            "display": "Post-NCC 1978 response period"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.others",
-              "role": "observers"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.others"
-              ],
-              "description": "Actively monitor Logix/AION without significant decisions or actions yet."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.market_growth",
-          "title": "US personal-computer market expands",
-          "event_type": "market_outcome",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "Post-NCC 1978 response period",
-            "display": "Post-NCC 1978 response period"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.customers",
-              "role": "market"
-            },
-            {
-              "actor_ref": "actor.logix",
-              "role": "contributor"
-            },
-            {
-              "actor_ref": "actor.academy",
-              "role": "contributor"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.academy"
-              ],
-              "description": "Contribute through product availability, computer popularization, seamless peripherals and accessible interfaces."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "US personal-computer market is larger than in the base scenario."
-            }
-          ],
-          "agreement_terms": [],
-          "metrics": [
-            {
-              "name": "market_size_increase",
-              "value": {
-                "minimum": 10,
-                "maximum": 15
-              },
-              "unit": "percent",
-              "qualifier": "relative to base scenario"
-            }
-          ],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.basic_develop",
-          "title": "Microsoft BASIC developed with AION",
-          "event_type": "development",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC June 1979",
-            "display": "Before NCC June 1979"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.microsoft",
-              "role": "developer"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.microsoft",
-                "actor.aion"
-              ],
-              "description": "Develop Microsoft BASIC using Aurelia CP/M and TUI."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "software.microsoft_basic_aurelia"
-          ],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.dri_release",
-          "title": "Portable CP/M extensions released",
-          "event_type": "release",
-          "date": {
-            "start": "1979-05",
-            "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1979-05"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.dri",
-              "role": "publisher"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.dri"
-              ],
-              "description": "Releases a CP/M version offering Logix TUI and FlexiBUS libraries to other manufacturers."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "The CP/M ecosystem retains an opportunity to expand."
-            }
-          ],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "software.cpm_aurelia",
-            "technology.logix_tui_standard",
-            "technology.flexibus"
-          ],
-          "related_event_refs": [
-            "event.dri_portable"
-          ]
-        },
-        {
-          "id": "event.apple_peachtree",
-          "title": "Apple partners with Peachtree",
-          "event_type": "market_response",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "Between November 1978 and June 1979",
-            "display": "Between November 1978 and June 1979"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.apple",
-              "role": "partner"
-            },
-            {
-              "actor_ref": "actor.peachtree",
-              "role": "partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.apple"
-              ],
-              "description": "Seeks a business catalog, especially spreadsheet, database and accounting products."
-            },
-            {
-              "actor_refs": [
-                "actor.apple",
-                "actor.peachtree"
-              ],
-              "description": "Start a partnership for an Apple II business offering."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "In the scenario, VisiCalc is less advanced in spreadsheet size and available features."
-            }
-          ],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.apple_cooperation",
-          "title": "Logix and Apple agree limited technical cooperation",
-          "event_type": "agreement",
-          "date": {
-            "start": "1979-02",
-            "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1979-02"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "requester_and_developer"
-            },
-            {
-              "actor_ref": "actor.apple",
-              "role": "technical_partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix"
-              ],
-              "description": "Requests cooperation for peripherals exchanging files between Apple II and Aurelia."
-            },
-            {
-              "actor_refs": [
-                "actor.apple"
-              ],
-              "description": "Agrees to limited technical cooperation and compatibility assistance."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [
-            {
-              "type": "technical_access",
-              "description": "Access to relevant Apple II documentation and machines.",
-              "actor_refs": [
-                "actor.apple",
-                "actor.logix"
-              ],
-              "value": null,
-              "unit": null,
-              "effective_date": null
-            },
-            {
-              "type": "testing",
-              "description": "Assistance with compatibility testing.",
-              "actor_refs": [
-                "actor.apple",
-                "actor.logix"
-              ],
-              "value": null,
-              "unit": null,
-              "effective_date": null
-            },
-            {
-              "type": "consultation",
-              "description": "Engineering consultation on Apple II peripherals and Disk II compatibility.",
-              "actor_refs": [
-                "actor.apple",
-                "actor.logix"
-              ],
-              "value": null,
-              "unit": null,
-              "effective_date": null
-            },
-            {
-              "type": "responsibility",
-              "description": "Logix retains hardware and software design/development responsibility.",
-              "actor_refs": [
-                "actor.logix"
-              ],
-              "value": null,
-              "unit": null,
-              "effective_date": null
-            }
-          ],
-          "metrics": [],
-          "product_refs": [
-            "device.apple2_expansion_card",
-            "device.flexidisk_ii",
-            "computer.aurelia"
-          ],
-          "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.ncc79",
-      "title": "NCC June 1979",
-      "kind": "conference",
-      "period": {
-        "start": "1979-06-04",
-        "end": "1979-06-07",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1979-06-04 to 1979-06-07"
-      },
-      "events": [
-        {
-          "id": "event.apple_extensions",
-          "title": "Apple II expansion products demonstrated",
-          "event_type": "launch",
-          "date": {
-            "start": "1979-06-04",
-            "end": "1979-06-07",
-            "precision": "range",
-            "qualifier": "",
-            "display": "4–7 June 1979"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "presenter"
-            },
-            {
-              "actor_ref": "actor.apple",
-              "role": "demonstration_participant"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix"
-              ],
-              "description": "Presents the Logix Apple II Expansion Card and FlexiDisk II."
-            },
-            {
-              "actor_refs": [
-                "actor.apple"
-              ],
-              "description": "An Apple representative participates in the demonstration."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "device.apple2_expansion_card",
-            "device.flexidisk_ii"
-          ],
-          "related_event_refs": [
-            "event.apple_cooperation"
-          ]
-        },
-        {
-          "id": "event.basic_launch",
-          "title": "Microsoft BASIC presented",
-          "event_type": "launch",
-          "date": {
-            "start": "1979-06-04",
-            "end": "1979-06-07",
-            "precision": "range",
-            "qualifier": "At NCC 1979; individual presentation day unspecified",
-            "display": "NCC, 4–7 June 1979"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.microsoft",
-              "role": "presenter"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.microsoft"
-              ],
-              "description": "Microsoft releases Microsoft BASIC for Aurelia at NCC 1979 as licensed third-party software."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "software.microsoft_basic_aurelia"
-          ],
-          "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.before_comdex79",
-      "title": "Market response before COMDEX 1979",
-      "kind": "between_conferences",
-      "period": {
-        "start": "1979-06",
-        "end": "1979-11",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1979-06 to 1979-11"
-      },
-      "events": [
-        {
-          "id": "event.apple_policy",
-          "title": "Apple continues limited compatibility cooperation",
-          "event_type": "policy",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "After NCC 1979",
-            "display": "After NCC 1979"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.apple",
-              "role": "partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.apple"
-              ],
-              "description": "Continues technical cooperation and testing support; permits independent compatible products."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "Apple neither manufactures FlexiBUS devices nor adopts FlexiBUS as an official Apple standard."
-            }
-          ],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "technology.flexibus"
-          ],
-          "related_event_refs": [
-            "event.apple_cooperation"
-          ]
-        },
-        {
-          "id": "event.ibm_investigate",
-          "title": "IBM investigates the personal-computer market",
-          "event_type": "market_response",
-          "date": {
-            "start": "1979",
-            "end": null,
-            "precision": "year",
-            "qualifier": "",
-            "display": "1979"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.ibm",
-              "role": "competitor"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.ibm"
-              ],
-              "description": "Begins a confidential investigation and formal competitive/financial assessment."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.comdex79",
-      "title": "COMDEX November 1979",
-      "kind": "conference",
-      "period": {
-        "start": "1979-11",
-        "end": "1979-11",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1979-11 to 1979-11"
-      },
-      "events": [
-        {
-          "id": "event.plus_launch",
-          "title": "Aurelia+, Pulse and Abacus 2.0 arrive",
-          "event_type": "launch",
-          "date": {
-            "start": "1979-11",
-            "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1979-11"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "presenter"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "presenter"
-            },
-            {
-              "actor_ref": "actor.academy",
-              "role": "training_provider"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix"
-              ],
-              "description": "Launches Aurelia+."
-            },
-            {
-              "actor_refs": [
-                "actor.aion"
-              ],
-              "description": "Presents Pulse and Abacus 2.0."
-            },
-            {
-              "actor_refs": [
-                "actor.academy"
-              ],
-              "description": "Makes corresponding training available."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "computer.aurelia_plus",
-            "software.pulse_1",
-            "software.abacus_2",
-            "service.pulse_training"
-          ],
-          "related_event_refs": []
-        }
-      ]
-    },
-    {
-      "id": "phase.before_ncc80",
-      "title": "Competition and Artemis development",
-      "kind": "between_conferences",
-      "period": {
-        "start": "1979-11",
-        "end": "1980-05",
-        "precision": "range",
-        "qualifier": "",
-        "display": "1979-11 to 1980-05"
-      },
-      "events": [
-        {
-          "id": "event.ibm_project",
-          "title": "IBM starts its personal-computer project",
-          "event_type": "plan",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "After the 1979 investigation, before May 1980",
-            "display": "After the 1979 investigation, before May 1980"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.ibm",
-              "role": "competitor"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.ibm"
-              ],
-              "description": "Concludes that the market is consolidating around Logix and Apple, and starts a project drawing on business credibility, corporate relationships, global service and engineering/manufacturing resources."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "Intends a 16-bit x86 operating system, potentially using contractors. The scenario treats Microsoft as unable to build the OS and DRI as focused on Logix-linked 8-bit systems."
-            }
-          ],
-          "agreement_terms": [
-            {
-              "type": "target_schedule",
-              "description": "Functional prototype after project start.",
-              "actor_refs": [
-                "actor.ibm"
-              ],
-              "value": {
-                "minimum": 3,
-                "maximum": 4
-              },
-              "unit": "months",
-              "effective_date": null
-            },
-            {
-              "type": "target_schedule",
-              "description": "Manufacturing-ready design after project start.",
-              "actor_refs": [
-                "actor.ibm"
-              ],
-              "value": {
-                "minimum": 11,
-                "maximum": 13
-              },
-              "unit": "months",
-              "effective_date": null
-            },
-            {
-              "type": "target_launch",
-              "description": "Commercial launch targeted for early 1982.",
-              "actor_refs": [
-                "actor.ibm"
-              ],
-              "value": null,
-              "unit": null,
-              "effective_date": {
-                "start": "1982",
-                "end": null,
-                "precision": "year",
-                "qualifier": "Early in the year; planned target, not a completed launch",
-                "display": "Early 1982"
-              }
-            },
-            {
-              "type": "target_price",
-              "description": "Approximately this price for an entry configuration; practical business systems cost more.",
-              "actor_refs": [
-                "actor.ibm"
-              ],
-              "value": 1500,
-              "unit": "USD",
-              "effective_date": null
-            }
-          ],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": [
-            "event.ibm_investigate"
-          ]
-        },
-        {
-          "id": "event.apple_business",
-          "title": "Apple–Peachtree small-business package starts",
-          "event_type": "launch",
-          "date": {
-            "start": "1980-03",
-            "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1980-03"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.apple",
-              "role": "partner"
-            },
-            {
-              "actor_ref": "actor.peachtree",
-              "role": "partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.apple",
-                "actor.peachtree"
-              ],
-              "description": "Start a package with simplified setup, Apple II-oriented interface, documentation and support."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "Accounting coverage potentially includes general ledger, receivables/payables, inventory, invoicing and payroll."
-            }
-          ],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": [
-            "event.apple_peachtree"
-          ]
-        },
-        {
-          "id": "event.artemis_engineering",
-          "title": "Artemis and ERA1 engineering",
-          "event_type": "development",
-          "date": {
-            "start": null,
-            "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC May 1980; exact start unspecified",
-            "display": "Before NCC May 1980; exact start unspecified"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "system_developer"
-            },
-            {
-              "actor_ref": "actor.labs",
-              "role": "chip_developer"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "software_developer"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix"
-              ],
-              "description": "Purchases several PDP-11s, develops a processor emulator from an ARM-v1-like blueprint named ERA1, and designs Artemis architecture."
-            },
-            {
-              "actor_refs": [
-                "actor.labs"
-              ],
-              "description": "Uses supplied processor blueprints, designs masks and develops other custom chips."
-            },
-            {
-              "actor_refs": [
-                "actor.logix"
-              ],
-              "description": "Designs and constructs motherboard, BIOS and other computer elements."
-            },
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.labs",
-                "actor.aion"
-              ],
-              "description": "Jointly design, construct and manufacture Artemis; a major campaign promotes a new era of personal computing."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "computer.artemis",
-            "part.era1",
-            "technology.era1_isa"
-          ],
-          "related_event_refs": []
-        },
-        {
           "id": "event.aionix_agreement",
           "title": "AIONix development and ownership agreement",
           "event_type": "agreement",
           "date": {
-            "start": null,
+            "start": "1978-09-12",
             "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC May 1980",
-            "display": "Before NCC May 1980"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1978-09-12"
           },
           "participants": [
             {
@@ -2060,15 +1112,351 @@
           "related_event_refs": []
         },
         {
+          "id": "event.apple_search",
+          "title": "Apple seeks business-software partners",
+          "event_type": "market_response",
+          "date": {
+            "start": "1978-10-15",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1978-10-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.apple",
+              "role": "competitor"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.apple"
+              ],
+              "description": "Searches for partnerships supplying Apple II business software, disk-based capabilities, spreadsheets and databases."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.dri_portable",
+          "title": "DRI commits to portable TUI extensions",
+          "event_type": "commitment",
+          "date": {
+            "start": "1978-11-10",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1978-11-10"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.dri",
+              "role": "developer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.dri"
+              ],
+              "description": "Commits to portable CP/M extensions incorporating Logix TUI for other computer manufacturers."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.logix_tui_standard",
+            "software.cpm_aurelia"
+          ],
+          "related_event_refs": [
+            "event.dri_cpm"
+          ]
+        },
+        {
+          "id": "event.apple_peachtree",
+          "title": "Apple partners with Peachtree",
+          "event_type": "market_response",
+          "date": {
+            "start": "1979-01-16",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-01-16"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.apple",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.peachtree",
+              "role": "partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.apple"
+              ],
+              "description": "Seeks a business catalog, especially spreadsheet, database and accounting products."
+            },
+            {
+              "actor_refs": [
+                "actor.apple",
+                "actor.peachtree"
+              ],
+              "description": "Start a partnership for an Apple II business offering."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "In the scenario, VisiCalc is less advanced in spreadsheet size and available features."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.apple_cooperation",
+          "title": "Logix and Apple agree limited technical cooperation",
+          "event_type": "agreement",
+          "date": {
+            "start": "1979-02-08",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-02-08"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "requester_and_developer"
+            },
+            {
+              "actor_ref": "actor.apple",
+              "role": "technical_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "description": "Requests cooperation for peripherals exchanging files between Apple II and Aurelia."
+            },
+            {
+              "actor_refs": [
+                "actor.apple"
+              ],
+              "description": "Agrees to limited technical cooperation and compatibility assistance."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [
+            {
+              "type": "technical_access",
+              "description": "Access to relevant Apple II documentation and machines.",
+              "actor_refs": [
+                "actor.apple",
+                "actor.logix"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "testing",
+              "description": "Assistance with compatibility testing.",
+              "actor_refs": [
+                "actor.apple",
+                "actor.logix"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "consultation",
+              "description": "Engineering consultation on Apple II peripherals and Disk II compatibility.",
+              "actor_refs": [
+                "actor.apple",
+                "actor.logix"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "responsibility",
+              "description": "Logix retains hardware and software design/development responsibility.",
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            }
+          ],
+          "metrics": [],
+          "product_refs": [
+            "device.apple2_expansion_card",
+            "device.flexidisk_ii",
+            "computer.aurelia"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.dri_release",
+          "title": "Portable CP/M extensions released",
+          "event_type": "release",
+          "date": {
+            "start": "1979-05-05",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-05-05"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.dri",
+              "role": "publisher"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.dri"
+              ],
+              "description": "Releases a CP/M version offering Logix TUI and FlexiBUS libraries to other manufacturers."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "The CP/M ecosystem retains an opportunity to expand."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "software.cpm_aurelia",
+            "technology.logix_tui_standard",
+            "technology.flexibus"
+          ],
+          "related_event_refs": [
+            "event.dri_portable"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phase.ncc79",
+      "title": "Apple extensions and market expansion",
+      "kind": "between_conferences",
+      "period": {
+        "start": "1979-06-04",
+        "end": "1979-12-02",
+        "precision": "range",
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1979-06-04 to 1979-12-02"
+      },
+      "events": [
+        {
+          "id": "event.apple_extensions",
+          "title": "Apple II expansion products demonstrated",
+          "event_type": "launch",
+          "date": {
+            "start": "1979-06-04",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-06-04"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "presenter"
+            },
+            {
+              "actor_ref": "actor.apple",
+              "role": "demonstration_participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "description": "Presents the Logix Apple II Expansion Card and FlexiDisk II."
+            },
+            {
+              "actor_refs": [
+                "actor.apple"
+              ],
+              "description": "An Apple representative participates in the demonstration."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "device.apple2_expansion_card",
+            "device.flexidisk_ii"
+          ],
+          "related_event_refs": [
+            "event.apple_cooperation"
+          ]
+        },
+        {
+          "id": "event.basic_launch",
+          "title": "Microsoft BASIC presented",
+          "event_type": "launch",
+          "date": {
+            "start": "1979-06-04",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-06-04"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.microsoft",
+              "role": "presenter"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.microsoft"
+              ],
+              "description": "Microsoft releases Microsoft BASIC for Aurelia at NCC 1979 as licensed third-party software."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "software.microsoft_basic_aurelia"
+          ],
+          "related_event_refs": []
+        },
+        {
           "id": "event.cpm_bridge",
           "title": "CP/M-80 compatibility module developed",
           "event_type": "development",
           "date": {
-            "start": null,
+            "start": "1979-07-01",
             "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC May 1980",
-            "display": "Before NCC May 1980"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-07-01"
           },
           "participants": [
             {
@@ -2104,11 +1492,11 @@
           "title": "Artemis software and development tools prepared",
           "event_type": "development",
           "date": {
-            "start": null,
+            "start": "1979-07-01",
             "end": null,
-            "precision": "unspecified",
-            "qualifier": "Before NCC May 1980",
-            "display": "Before NCC May 1980"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-07-01"
           },
           "participants": [
             {
@@ -2147,19 +1535,252 @@
           "related_event_refs": [
             "event.aionix_agreement"
           ]
+        },
+        {
+          "id": "event.ibm_investigate",
+          "title": "IBM investigates the personal-computer market",
+          "event_type": "market_response",
+          "date": {
+            "start": "1979-07-05",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-07-05"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.ibm",
+              "role": "competitor"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.ibm"
+              ],
+              "description": "Begins a confidential investigation and formal competitive/financial assessment."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        }
+      ]
+    },
+    {
+      "id": "phase.comdex79",
+      "title": "Aurelia+ and Pulse premiere Abacus 2.0",
+      "kind": "between_conferences",
+      "period": {
+        "start": "1979-12-03",
+        "end": "1980-05-18",
+        "precision": "range",
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1979-12-03 to 1980-05-18"
+      },
+      "events": [
+        {
+          "id": "event.plus_launch",
+          "title": "Aurelia+, Pulse and Abacus 2.0 arrive",
+          "event_type": "launch",
+          "date": {
+            "start": "1979-12-03",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-12-03"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "presenter"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "presenter"
+            },
+            {
+              "actor_ref": "actor.academy",
+              "role": "training_provider"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "description": "Launches Aurelia+."
+            },
+            {
+              "actor_refs": [
+                "actor.aion"
+              ],
+              "description": "Presents Pulse and Abacus 2.0."
+            },
+            {
+              "actor_refs": [
+                "actor.academy"
+              ],
+              "description": "Makes corresponding training available."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.aurelia_plus",
+            "software.pulse_1",
+            "software.abacus_2",
+            "service.pulse_training"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.ibm_project",
+          "title": "IBM starts its personal-computer project",
+          "event_type": "plan",
+          "date": {
+            "start": "1979-12-10",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1979-12-10"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.ibm",
+              "role": "competitor"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.ibm"
+              ],
+              "description": "Concludes that the market is consolidating around Logix and Apple, and starts a project drawing on business credibility, corporate relationships, global service and engineering/manufacturing resources."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "Intends a 16-bit x86 operating system, potentially using contractors. The scenario treats Microsoft as unable to build the OS and DRI as focused on Logix-linked 8-bit systems."
+            }
+          ],
+          "agreement_terms": [
+            {
+              "type": "target_schedule",
+              "description": "Functional prototype after project start.",
+              "actor_refs": [
+                "actor.ibm"
+              ],
+              "value": {
+                "minimum": 3,
+                "maximum": 4
+              },
+              "unit": "months",
+              "effective_date": null
+            },
+            {
+              "type": "target_schedule",
+              "description": "Manufacturing-ready design after project start.",
+              "actor_refs": [
+                "actor.ibm"
+              ],
+              "value": {
+                "minimum": 11,
+                "maximum": 13
+              },
+              "unit": "months",
+              "effective_date": null
+            },
+            {
+              "type": "target_launch",
+              "description": "Commercial launch targeted for early 1982.",
+              "actor_refs": [
+                "actor.ibm"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": {
+                "start": "1982",
+                "end": null,
+                "precision": "year",
+                "qualifier": "Early in the year; planned target, not a completed launch",
+                "display": "Early 1982"
+              }
+            },
+            {
+              "type": "target_price",
+              "description": "Approximately this price for an entry configuration; practical business systems cost more.",
+              "actor_refs": [
+                "actor.ibm"
+              ],
+              "value": 1500,
+              "unit": "USD",
+              "effective_date": null
+            }
+          ],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.ibm_investigate"
+          ]
+        },
+        {
+          "id": "event.apple_business",
+          "title": "Apple–Peachtree small-business package starts",
+          "event_type": "launch",
+          "date": {
+            "start": "1980-03-15",
+            "end": null,
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1980-03-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.apple",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.peachtree",
+              "role": "partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.apple",
+                "actor.peachtree"
+              ],
+              "description": "Start a package with simplified setup, Apple II-oriented interface, documentation and support."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "Accounting coverage potentially includes general ledger, receivables/payables, inventory, invoicing and payroll."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.apple_peachtree"
+          ]
         }
       ]
     },
     {
       "id": "phase.ncc80",
-      "title": "NCC May 1980",
-      "kind": "conference",
+      "title": "Artemis launch, compatibility card and recompiled products",
+      "kind": "between_conferences",
       "period": {
-        "start": "1980-05",
-        "end": "1980-05",
+        "start": "1980-05-19",
+        "end": "1980-11-18",
         "precision": "range",
-        "qualifier": "",
-        "display": "1980-05 to 1980-05"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1980-05-19 to 1980-11-18"
       },
       "events": [
         {
@@ -2167,11 +1788,11 @@
           "title": "Artemis platform launches commercially",
           "event_type": "launch",
           "date": {
-            "start": "1980-05",
+            "start": "1980-05-19",
             "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1980-05"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1980-05-19"
           },
           "participants": [
             {
@@ -2217,14 +1838,14 @@
     },
     {
       "id": "phase.comdex80",
-      "title": "COMDEX November 1980",
-      "kind": "conference",
+      "title": "Abacus and Pulse 3.0 for Artemis",
+      "kind": "between_conferences",
       "period": {
-        "start": "1980-11",
-        "end": "1980-11",
+        "start": "1980-11-19",
+        "end": "1981-05-03",
         "precision": "range",
-        "qualifier": "",
-        "display": "1980-11 to 1980-11"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1980-11-19 to 1981-05-03"
       },
       "events": [
         {
@@ -2232,11 +1853,11 @@
           "title": "AION shifts major software development to 32-bit Artemis",
           "event_type": "release_and_policy",
           "date": {
-            "start": "1980-11",
+            "start": "1980-11-19",
             "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1980-11"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1980-11-19"
           },
           "participants": [
             {
@@ -2272,14 +1893,14 @@
     },
     {
       "id": "phase.ncc81",
-      "title": "NCC May 1981",
-      "kind": "conference",
+      "title": "Artemis Pro, Networking and new BPI",
+      "kind": "between_conferences",
       "period": {
-        "start": "1981-05",
-        "end": "1981-05",
+        "start": "1981-05-04",
+        "end": "1981-11-18",
         "precision": "range",
-        "qualifier": "",
-        "display": "1981-05 to 1981-05"
+        "qualifier": "Inclusive phase boundaries",
+        "display": "1981-05-04 to 1981-11-18"
       },
       "events": [
         {
@@ -2287,11 +1908,11 @@
           "title": "Networked business-computing platform presented",
           "event_type": "launch",
           "date": {
-            "start": "1981-05",
+            "start": "1981-05-04",
             "end": null,
-            "precision": "month",
-            "qualifier": "",
-            "display": "1981-05"
+            "precision": "day",
+            "qualifier": "Confirmed by the author",
+            "display": "1981-05-04"
           },
           "participants": [
             {
@@ -2337,6 +1958,357 @@
           ],
           "related_event_refs": []
         }
+      ]
+    }
+  ],
+  "processes": [
+    {
+      "id": "process.economics_studies",
+      "title": "Economics studies",
+      "participants": [
+        {
+          "actor_ref": "actor.adam",
+          "role": "student"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.adam"
+          ],
+          "description": "Studies for a bachelor degree in economics at Harvard."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [],
+      "related_event_refs": [
+        "event.lottery"
+      ],
+      "period": {
+        "start": null,
+        "end": null,
+        "precision": "unspecified",
+        "qualifier": "After relocation to the US",
+        "display": "After relocation to the US"
+      },
+      "phase_refs": [
+        "phase.foundations"
+      ]
+    },
+    {
+      "id": "process.nyse_speculation",
+      "title": "NYSE speculation",
+      "participants": [
+        {
+          "actor_ref": "actor.adam",
+          "role": "investor"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.adam"
+          ],
+          "description": "Multiplies his funds through NYSE speculation using secret foreknowledge."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [],
+      "related_event_refs": [
+        "event.lottery"
+      ],
+      "period": {
+        "start": null,
+        "end": null,
+        "precision": "unspecified",
+        "qualifier": "After relocation to the US",
+        "display": "After relocation to the US"
+      },
+      "phase_refs": [
+        "phase.foundations"
+      ]
+    },
+    {
+      "id": "process.international_investment",
+      "title": "International investment expansion",
+      "participants": [
+        {
+          "actor_ref": "actor.adam",
+          "role": "investor"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.adam"
+          ],
+          "description": "Expands investments to London, Frankfurt, Hong Kong and Tokyo stock exchanges."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [],
+      "related_event_refs": [],
+      "period": {
+        "start": "1973",
+        "end": "1975",
+        "precision": "range",
+        "qualifier": "",
+        "display": "1973–1975"
+      },
+      "phase_refs": [
+        "phase.foundations",
+        "phase.prepare_aurelia"
+      ]
+    },
+    {
+      "id": "process.organization_buildout",
+      "title": "Engineering and manufacturing organization buildout",
+      "participants": [
+        {
+          "actor_ref": "actor.adam",
+          "role": "organizer"
+        },
+        {
+          "actor_ref": "actor.logix",
+          "role": "developer"
+        },
+        {
+          "actor_ref": "actor.labs",
+          "role": "developer"
+        },
+        {
+          "actor_ref": "actor.aion",
+          "role": "developer"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.adam",
+            "actor.logix",
+            "actor.labs",
+            "actor.aion"
+          ],
+          "description": "Hire staff, establish software-development environments, computer manufacturing and R&D, and a conservative semiconductor operation."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "computer.aurelia"
+      ],
+      "related_event_refs": [],
+      "period": {
+        "start": null,
+        "end": null,
+        "precision": "unspecified",
+        "qualifier": "Before NCC 1978",
+        "display": "Before NCC 1978"
+      },
+      "phase_refs": [
+        "phase.prepare_aurelia"
+      ]
+    },
+    {
+      "id": "process.market_monitoring",
+      "title": "Other companies monitor the market",
+      "participants": [
+        {
+          "actor_ref": "actor.others",
+          "role": "observers"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.others"
+          ],
+          "description": "Actively monitor Logix/AION without significant decisions or actions yet."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [],
+      "related_event_refs": [],
+      "period": {
+        "start": null,
+        "end": null,
+        "precision": "unspecified",
+        "qualifier": "Post-NCC 1978 response period",
+        "display": "Post-NCC 1978 response period"
+      },
+      "phase_refs": [
+        "phase.ncc78"
+      ]
+    },
+    {
+      "id": "process.market_expansion",
+      "title": "US personal-computer market expansion",
+      "participants": [
+        {
+          "actor_ref": "actor.customers",
+          "role": "market"
+        },
+        {
+          "actor_ref": "actor.logix",
+          "role": "contributor"
+        },
+        {
+          "actor_ref": "actor.academy",
+          "role": "contributor"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.logix",
+            "actor.academy"
+          ],
+          "description": "Contribute through product availability, computer popularization, seamless peripherals and accessible interfaces."
+        }
+      ],
+      "outcomes": [
+        {
+          "description": "US personal-computer market is larger than in the base scenario."
+        }
+      ],
+      "agreement_terms": [],
+      "metrics": [
+        {
+          "name": "market_size_increase",
+          "value": {
+            "minimum": 10,
+            "maximum": 15
+          },
+          "unit": "percent",
+          "qualifier": "relative to base scenario"
+        }
+      ],
+      "product_refs": [],
+      "related_event_refs": [],
+      "period": {
+        "start": null,
+        "end": null,
+        "precision": "unspecified",
+        "qualifier": "Post-NCC 1978 response period",
+        "display": "Post-NCC 1978 response period"
+      },
+      "phase_refs": [
+        "phase.ncc78"
+      ]
+    },
+    {
+      "id": "process.apple_compatibility",
+      "title": "Apple compatibility cooperation",
+      "participants": [
+        {
+          "actor_ref": "actor.apple",
+          "role": "partner"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.apple"
+          ],
+          "description": "Continues technical cooperation and testing support; permits independent compatible products."
+        }
+      ],
+      "outcomes": [
+        {
+          "description": "Apple neither manufactures FlexiBUS devices nor adopts FlexiBUS as an official Apple standard."
+        }
+      ],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "technology.flexibus"
+      ],
+      "related_event_refs": [
+        "event.apple_cooperation"
+      ],
+      "period": {
+        "start": null,
+        "end": null,
+        "precision": "unspecified",
+        "qualifier": "After NCC 1979",
+        "display": "After NCC 1979"
+      },
+      "phase_refs": [
+        "phase.ncc79"
+      ]
+    },
+    {
+      "id": "process.artemis_engineering",
+      "title": "Artemis and ERA1 engineering",
+      "participants": [
+        {
+          "actor_ref": "actor.logix",
+          "role": "system_developer"
+        },
+        {
+          "actor_ref": "actor.labs",
+          "role": "chip_developer"
+        },
+        {
+          "actor_ref": "actor.aion",
+          "role": "software_developer"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.logix"
+          ],
+          "description": "Purchases several PDP-11s, develops a processor emulator from an ARM-v1-like blueprint named ERA1, and designs Artemis architecture."
+        },
+        {
+          "actor_refs": [
+            "actor.labs"
+          ],
+          "description": "Uses supplied processor blueprints, designs masks and develops other custom chips."
+        },
+        {
+          "actor_refs": [
+            "actor.logix"
+          ],
+          "description": "Designs and constructs motherboard, BIOS and other computer elements."
+        },
+        {
+          "actor_refs": [
+            "actor.logix",
+            "actor.labs",
+            "actor.aion"
+          ],
+          "description": "Jointly design, construct and manufacture Artemis; a major campaign promotes a new era of personal computing."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "computer.artemis",
+        "part.era1",
+        "technology.era1_isa"
+      ],
+      "related_event_refs": [],
+      "period": {
+        "start": null,
+        "end": null,
+        "precision": "unspecified",
+        "qualifier": "Before NCC May 1980; exact start unspecified",
+        "display": "Before NCC May 1980; exact start unspecified"
+      },
+      "phase_refs": [
+        "phase.comdex79"
       ]
     }
   ]
