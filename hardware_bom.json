@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "1.0",
+    "version": "1.1",
     "status": "Engineering BOM baseline; not released for purchase or unit-cost quotation.",
-    "source_catalog_version": "2.6",
+    "source_catalog_version": "2.7",
     "quantity_policy": "Known quantities are integers; unresolved quantities are null and block cost roll-up. Functional assembly placeholders are not purchasable IC selections.",
     "cost_policy": "No prices invented. Separate recurring material, conversion, factory overhead, NRE/capital and commercial/service costs. Do not count an OEM subassembly and its included parts twice."
   },
@@ -207,8 +207,8 @@
       "quantity_tier": null,
       "qualification_status": "unresolved",
       "requirements": [
-        "Define clocks, pixel/text generation, memory interface and arbitration, output electrical layer. Add a documented Aurelia+ variant or qualified shared design for 80 columns and 16 KiB",
-        "current 8 KiB record is insufficient."
+        "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
+        "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
       ]
     },
     {
@@ -1995,20 +1995,6 @@
       "requirements": []
     },
     {
-      "id": "bompart.computer.aurelia.video_ram_chips",
-      "name": "video RAM chips",
-      "category": "unresolved_component",
-      "catalog_ref": null,
-      "manufacturer": null,
-      "manufacturer_part_number": null,
-      "unit_cost": null,
-      "currency": null,
-      "quote_date": null,
-      "quantity_tier": null,
-      "qualification_status": "unresolved",
-      "requirements": []
-    },
-    {
       "id": "bompart.computer.aurelia.boot_rom_chips",
       "name": "boot ROM chips",
       "category": "unresolved_component",
@@ -2065,20 +2051,6 @@
       "requirements": []
     },
     {
-      "id": "bompart.computer.aurelia_plus.80_column_16_kib_video_controller_revision",
-      "name": "80 column 16 KiB video controller revision",
-      "category": "unresolved_component",
-      "catalog_ref": null,
-      "manufacturer": null,
-      "manufacturer_part_number": null,
-      "unit_cost": null,
-      "currency": null,
-      "quote_date": null,
-      "quantity_tier": null,
-      "qualification_status": "unresolved",
-      "requirements": []
-    },
-    {
       "id": "bompart.computer.aurelia_plus.floppy_controller_data_separator_and_buffers",
       "name": "floppy controller data separator and buffers",
       "category": "unresolved_component",
@@ -2123,20 +2095,6 @@
     {
       "id": "bompart.computer.aurelia_plus.enclosure_and_chassis",
       "name": "enclosure and chassis",
-      "category": "unresolved_component",
-      "catalog_ref": null,
-      "manufacturer": null,
-      "manufacturer_part_number": null,
-      "unit_cost": null,
-      "currency": null,
-      "quote_date": null,
-      "quantity_tier": null,
-      "qualification_status": "unresolved",
-      "requirements": []
-    },
-    {
-      "id": "bompart.computer.aurelia_plus.video_ram_chips",
-      "name": "video RAM chips",
       "category": "unresolved_component",
       "catalog_ref": null,
       "manufacturer": null,
@@ -2875,6 +2833,23 @@
       "quantity_tier": null,
       "qualification_status": "unresolved",
       "requirements": []
+    },
+    {
+      "id": "bompart.part.vram_16kbit_dual_port",
+      "name": "AION 16Kx1 NMOS random-plus-serial VRAM",
+      "category": "catalog_component",
+      "catalog_ref": "part.vram_16kbit_dual_port",
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Develop and qualify the DRAM cell/capacitor, sense amplifiers, retention and row-transfer/serial register operation before June 1978 launch.",
+        "Release pinout, package, rails, timing, power, wafer probe and final test. No commercial 1978 dual-port supplier availability is assumed."
+      ]
     }
   ],
   "assemblies": [
@@ -3155,8 +3130,8 @@
         }
       ],
       "requirements": [
-        "Define clocks, pixel/text generation, memory interface and arbitration, output electrical layer. Add a documented Aurelia+ variant or qualified shared design for 80 columns and 16 KiB",
-        "current 8 KiB record is insufficient."
+        "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
+        "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
       ],
       "routing": {
         "operations": [],
@@ -3764,7 +3739,8 @@
       ],
       "requirements": [
         "Decide whether TV-90 means a tube or a complete display assembly",
-        "specify included yoke/HV/deflection/PSU boundary. Add link receiver, sync/clock handling, DAC/video amplifier, blanking, controls, enclosure, cable and adjustment/test routing."
+        "specify included yoke/HV/deflection/PSU boundary. Add link receiver, sync/clock handling, DAC/video amplifier, blanking, controls, enclosure, cable and adjustment/test routing.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
       ],
       "routing": {
         "operations": [],
@@ -3839,7 +3815,8 @@
         }
       ],
       "requirements": [
-        "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once."
+        "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
       ],
       "routing": {
         "operations": [],
@@ -3915,7 +3892,8 @@
       ],
       "requirements": [
         "Resolve tube-versus-module purchase boundary",
-        "specify readable 80-column raster and video bandwidth, receiver, controller/DAC/analog path, sync, mains/PSU, case and alignment. Qualify all claimed old/new host modes."
+        "specify readable 80-column raster and video bandwidth, receiver, controller/DAC/analog path, sync, mains/PSU, case and alignment. Qualify all claimed old/new host modes.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
       ],
       "routing": {
         "operations": [],
@@ -3992,7 +3970,8 @@
       "requirements": [
         "Name an OEM/model and electrical/raster specification",
         "define whether HV/yoke/deflection/PSU are included",
-        "verify 80-column and 640-pixel modes on the chosen raster. Add receiver/analog electronics, cable, case and calibration. Reusing a palette controller does not prove display bandwidth compatibility."
+        "verify 80-column and 640-pixel modes on the chosen raster. Add receiver/analog electronics, cable, case and calibration. Reusing a palette controller does not prove display bandwidth compatibility.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
       ],
       "routing": {
         "operations": [],
@@ -4967,11 +4946,11 @@
         },
         {
           "ref": "bompart.part.aurelia_video_chip",
-          "quantity": null,
+          "quantity": 1,
           "unit": "each",
-          "role": "video controller",
+          "role": "Shared Aurelia / Aurelia+ video controller",
           "condition": "always",
-          "quantity_status": "unresolved"
+          "quantity_status": "defined"
         },
         {
           "ref": "bompart.part.flexibus_host_controller",
@@ -5014,12 +4993,12 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "bompart.computer.aurelia.video_ram_chips",
-          "quantity": null,
+          "ref": "bompart.part.vram_16kbit_dual_port",
+          "quantity": 8,
           "unit": "each",
-          "role": "Separate 8 KiB storage; organization unresolved",
+          "role": "Separate 16 KiB VRAM: eight 16Kx1 random-plus-serial chips",
           "condition": "always",
-          "quantity_status": "unresolved"
+          "quantity_status": "defined"
         },
         {
           "ref": "bompart.computer.aurelia.boot_rom_chips",
@@ -5056,13 +5035,12 @@
       ],
       "requirements": [
         "Add 24 data DRAMs and their decode/refresh logic",
-        "separate VRAM chip type/count and access arbitration",
         "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
         "motherboard ROM capacity/package/count and cartridge connectors",
         "mapper registers/logic",
-        "video and FlexiBUS controller quantities",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
+        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -5101,12 +5079,12 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "bompart.computer.aurelia_plus.80_column_16_kib_video_controller_revision",
-          "quantity": null,
+          "ref": "bompart.part.aurelia_video_chip",
+          "quantity": 1,
           "unit": "each",
-          "role": "video controller",
+          "role": "Shared Aurelia / Aurelia+ video controller",
           "condition": "always",
-          "quantity_status": "unresolved"
+          "quantity_status": "defined"
         },
         {
           "ref": "bompart.part.flexibus_host_controller",
@@ -5149,12 +5127,12 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "bompart.computer.aurelia_plus.video_ram_chips",
-          "quantity": null,
+          "ref": "bompart.part.vram_16kbit_dual_port",
+          "quantity": 8,
           "unit": "each",
-          "role": "Separate 16 KiB storage; organization unresolved",
+          "role": "Separate 16 KiB VRAM: eight 16Kx1 random-plus-serial chips",
           "condition": "always",
-          "quantity_status": "unresolved"
+          "quantity_status": "defined"
         },
         {
           "ref": "bompart.computer.aurelia_plus.boot_rom_chips",
@@ -5191,7 +5169,8 @@
       ],
       "requirements": [
         "Qualify eight 64K×1 DRAMs for December 1979",
-        "define a compatible 80-column/16 KiB video-controller revision because `part.aurelia_video_chip` only specifies Aurelia's 8 KiB setup and lists Aurelia as its user. Add exact dual-drive controller/mechanisms, ROM images/capacities, 6 MHz timing and PSU/thermal deltas. Do not treat this as a RAM-only Aurelia variant.",
+        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7300,6 +7279,34 @@
         "fixture_refs": []
       },
       "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "assembly.part.vram_16kbit_dual_port",
+      "name": "AION 16Kx1 NMOS random-plus-serial VRAM",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.vram_16kbit_dual_port",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "requirements": [
+        "Develop and qualify the DRAM cell/capacitor, sense amplifiers, retention and row-transfer/serial register operation before June 1978 launch.",
+        "Release pinout, package, rails, timing, power, wafer probe and final test. No commercial 1978 dual-port supplier availability is assumed."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     }
   ],
   "products": [
@@ -7311,13 +7318,12 @@
       ],
       "requirements": [
         "Add 24 data DRAMs and their decode/refresh logic",
-        "separate VRAM chip type/count and access arbitration",
         "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
         "motherboard ROM capacity/package/count and cartridge connectors",
         "mapper registers/logic",
-        "video and FlexiBUS controller quantities",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
+        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7333,7 +7339,8 @@
       ],
       "requirements": [
         "Qualify eight 64K×1 DRAMs for December 1979",
-        "define a compatible 80-column/16 KiB video-controller revision because `part.aurelia_video_chip` only specifies Aurelia's 8 KiB setup and lists Aurelia as its user. Add exact dual-drive controller/mechanisms, ROM images/capacities, 6 MHz timing and PSU/thermal deltas. Do not treat this as a RAM-only Aurelia variant.",
+        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7412,6 +7419,7 @@
       "requirements": [
         "Decide whether TV-90 means a tube or a complete display assembly",
         "specify included yoke/HV/deflection/PSU boundary. Add link receiver, sync/clock handling, DAC/video amplifier, blanking, controls, enclosure, cable and adjustment/test routing.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7427,6 +7435,7 @@
       ],
       "requirements": [
         "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7443,6 +7452,7 @@
       "requirements": [
         "Resolve tube-versus-module purchase boundary",
         "specify readable 80-column raster and video bandwidth, receiver, controller/DAC/analog path, sync, mains/PSU, case and alignment. Qualify all claimed old/new host modes.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7460,6 +7470,7 @@
         "Name an OEM/model and electrical/raster specification",
         "define whether HV/yoke/deflection/PSU are included",
         "verify 80-column and 640-pixel modes on the chosen raster. Add receiver/analog electronics, cable, case and calibration. Reusing a palette controller does not prove display bandwidth compatibility.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7827,8 +7838,8 @@
         "assembly.part.aurelia_video_chip"
       ],
       "requirements": [
-        "Define clocks, pixel/text generation, memory interface and arbitration, output electrical layer. Add a documented Aurelia+ variant or qualified shared design for 80 columns and 16 KiB",
-        "current 8 KiB record is insufficient.",
+        "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
+        "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -8051,6 +8062,17 @@
         "Power per rail, startup/thermal limits and region-specific power configuration",
         "Firmware image capacity/revision, programming and verification",
         "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+      ]
+    },
+    {
+      "catalog_ref": "part.vram_16kbit_dual_port",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.part.vram_16kbit_dual_port"
+      ],
+      "requirements": [
+        "Develop and qualify the DRAM cell/capacitor, sense amplifiers, retention and row-transfer/serial register operation before June 1978 launch.",
+        "Release pinout, package, rails, timing, power, wafer probe and final test. No commercial 1978 dual-port supplier availability is assumed."
       ]
     }
   ],
@@ -8282,7 +8304,7 @@
     {
       "id": "vram_rom",
       "status": "open",
-      "description": "Select VRAM organization and cartridge technology/image capacities; all are separate from system RAM."
+      "description": "Aurelia family VRAM organization and count fixed: eight custom 16Kx1 random-plus-serial chips. Qualify memory process, pinout, rails, timing, refresh and tests. Cartridge capacities remain open."
     },
     {
       "id": "flexibus_ports",
@@ -8292,7 +8314,7 @@
     {
       "id": "video_link",
       "status": "open",
-      "description": "Freeze electrical signaling, connector, termination, cable and timing for the eight-pair video link."
+      "description": "Qualify fixed 320/640 raster profiles and bidirectional Control identification. Freeze sync/porches, electrical levels, termination, connector and capability packet encoding."
     },
     {
       "id": "pro_console",

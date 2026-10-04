@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.6",
+    "version": "2.7",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -168,7 +168,51 @@
           "V-sync"
         ],
         "plus_base_or_reference_connection": true,
-        "monitor_palette_control": "Color/greyscale registers may be changed using Control commands during vertical retrace."
+        "monitor_palette_control": "Color/greyscale registers may be changed using Control commands during vertical retrace.",
+        "control_channel": {
+          "direction": "Half-duplex bidirectional Control pair",
+          "implementation": "Host firmware performs selection using controller control-channel registers; monitor fixed capability ROM/straps and serializer.",
+          "startup": [
+            "Blank picture",
+            "Read versioned capability record with integrity check and timeout",
+            "Intersect host and monitor raster support",
+            "Select raster and initialize palette",
+            "Enable picture"
+          ],
+          "capability_fields": [
+            "protocol version",
+            "monitor ID",
+            "supported raster IDs",
+            "maximum pixel clock",
+            "color or grayscale",
+            "palette precision",
+            "preferred raster",
+            "integrity check"
+          ],
+          "failure_policy": "Use an explicitly configured profile or documented common safe raster; otherwise remain blank. Never infer 640-pixel support from connection alone.",
+          "electrical_status": "External drivers/transceivers; voltage, termination, connector pinout, turnaround, timeout and packet encoding remain qualification gates. No hot-plug guarantee."
+        },
+        "raster_profiles": [
+          {
+            "id": "raster_320_200",
+            "active_width": 320,
+            "active_height": 200,
+            "pixel_clock_mhz": 7.15909,
+            "horizontal_total_pixels": 456,
+            "vertical_total_lines": 262
+          },
+          {
+            "id": "raster_640_200",
+            "active_width": 640,
+            "active_height": 200,
+            "pixel_clock_mhz": 14.31818,
+            "horizontal_total_pixels": 912,
+            "vertical_total_lines": 262
+          }
+        ],
+        "raster_status": "Design timing targets: approximately 15.70 kHz horizontal and 59.92 Hz frame; porch/sync widths and OEM analog bandwidth must be qualified. Not exact TV-standard compliance.",
+        "scaling": "Integer horizontal/vertical pixel repetition, including sprites. 160/320-wide logical modes can repeat to 320/640; 100 lines repeat to 200. Reject 640-wide graphics or 80-column text on a 320-only monitor; software viewport is a separately reported service.",
+        "palette_mapping": "Explicit 1-bit and 2-bit pixel-to-output-index maps. Color indices are not brightness values. On grayscale displays map RGB palette entries to luminance; Mono I direct DAC requires host index mapping."
       },
       "used_by": [
         "computer.aurelia",
@@ -932,7 +976,11 @@
           "palette capabilities",
           "pixel aspect",
           "buffering capabilities",
-          "native or emulated implementation"
+          "native or emulated implementation",
+          "sprite count and per-scanline limit",
+          "valid buffer/sprite combinations",
+          "output raster ID",
+          "logical-to-output integer scaling"
         ],
         "selection_sequence": [
           "Query capabilities",
@@ -941,7 +989,7 @@
           "Check success or failure",
           "Query and use the actual configuration"
         ],
-        "monitor_policy": "Report configurations usable by the computer and connected display. Use a configured monitor profile if hardware cannot identify the monitor.",
+        "monitor_policy": "Identify monitor through Logix bidirectional Control; use an explicit configured profile on identification failure. Report the intersection of host, monitor and memory-allocation capabilities.",
         "future_modes": "New identifiers may be selected by descriptor properties without changing an older application. Unsupported requests fail cleanly.",
         "drawing_operations": [
           "Create/destroy drawing context",
@@ -954,7 +1002,7 @@
         ],
         "framebuffer_policy": "Application code uses drawing operations rather than native VRAM addresses, stride or pixel packing.",
         "compatibility_canvas": "Optional later service: preserve a logical canvas and convert to available output. Not guaranteed at launch; report emulation and validate RAM, quality and speed.",
-        "text_mode_policy": "Aurelia+ compatibility does not require native 40-column hardware mode. Use adaptive layout or a compact viewport within its 80-column display.",
+        "text_mode_policy": "Aurelia and Aurelia+ both implement native 40x25 and 80x25; enumerate only configurations usable with the connected monitor.",
         "vram_storage_policy": {
           "status": "Accepted design baseline; capacities are arithmetic allocations, not measured timing guarantees.",
           "allocation_model": "Text and bitmap modes reuse the same VRAM. Do not reserve all text maps, font storage and a full bitmap simultaneously.",
@@ -965,9 +1013,10 @@
             "Notify the application/context of the changed mode and request a redraw from its document state."
           ],
           "preservation": "Previous screen pixels are not preserved by default. An explicit preservation request may use a system-RAM buffer only if allocation succeeds; unsupported or unaffordable requests return a defined error before changing the mode.",
-          "graphics_buffering": "One full bitmap is the baseline. A second graphics buffer is not promised merely because some modes fit; expose additional buffering only through validated capability descriptors.",
+          "graphics_buffering": "Aurelia family: 16000-byte bitmaps support one page without sprites; 8000-byte modes support two pages without sprites or one page with five sprites. Both text modes allow two pages and five sprites with one shared font. Other hosts retain their specified allocations.",
           "graphics_text": "Draw glyphs from ROM/system resources into the bitmap; bitmap mode does not require a complete resident character-generator table in VRAM.",
-          "boundary": "Application documents remain in application RAM or files; a mode switch does not discard document state."
+          "boundary": "Application documents remain in application RAM or files; a mode switch does not discard document state.",
+          "presentation": "Latch page and sprite positions during vertical blank; shared-font and sprite-pattern changes need separate synchronization."
         }
       },
       "used_by": [
@@ -1364,15 +1413,93 @@
     },
     {
       "id": "part.aurelia_video_chip",
-      "name": "Aurelia custom video chip",
+      "name": "Aurelia / Aurelia+ shared video controller",
       "category": "video_controller_chip",
       "origin": "custom_logix_aion",
       "specification": {
         "digital_output_bits": 4,
-        "video_ram_kb": 8
+        "video_ram_kb": 16,
+        "vram_chip_ref": "part.vram_16kbit_dual_port",
+        "vram_chip_count": 8,
+        "implementation_design": {
+          "status": "Accepted design baseline; electrical timing, layout, fabrication and monitor qualification remain pending.",
+          "text_mode_ids": [
+            "text_40",
+            "text_80"
+          ],
+          "bitmap_mode_ids": [
+            "graphics_a",
+            "graphics_b2",
+            "graphics_b1",
+            "graphics_c4",
+            "graphics_c2",
+            "graphics_legacy"
+          ],
+          "sprites": {
+            "count": 5,
+            "maximum_per_scanline": 5,
+            "width": 16,
+            "height": 16,
+            "bits_per_pixel": 4,
+            "pattern_bytes_per_sprite": 128,
+            "position_bytes_per_sprite": 4,
+            "total_pattern_and_position_bytes": 660,
+            "reserved_vram_bytes": 768,
+            "transparent_index": 0,
+            "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
+            "priority": "Lower sprite number wins; all sprites overlay background/text.",
+            "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved VRAM region.",
+            "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
+            "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
+          },
+          "internal_buffers": {
+            "character_attribute_row_cache_bytes": 160,
+            "sprite_row_shifters_bytes": 40,
+            "sprite_staging_bytes": 40,
+            "bitmap_fifo_bytes": 16,
+            "included_in_die_estimates": true
+          },
+          "arbitration": "Deadline-scheduled serial transfers, glyph reads, sprite prefetch, full-array refresh and CPU access. CPU wait states allowed; random and serial ports are not two independent random-access ports.",
+          "text_fetch": "Cache character/attribute row; random-port glyph-row fetches and staged sprite reads. Validate worst-case five overlapping sprites in 80-column text.",
+          "line_repeat": "Re-fetch/reload repeated bitmap lines; no complete on-chip scanline buffer assumed.",
+          "clock_targets": {
+            "master_mhz": 14.31818,
+            "high_resolution_pixel_mhz": 14.31818,
+            "low_resolution_pixel_mhz": 7.15909,
+            "maximum_bitmap_byte_rate_mbytes_per_second": 3.579545,
+            "scope": "Fast output/counter pipeline only; divided clocks for other logic. Targets require process-corner validation."
+          },
+          "manufacturing_planning": {
+            "status": "Engineering estimates, not measured yields or released costs.",
+            "process": "3–3.5 micron NMOS; laser-written masks from secret facility, wafer fabrication at AION Labs.",
+            "transistors_range": [
+              25000,
+              40000
+            ],
+            "die_area_mm2_at_3um_range": [
+              30,
+              50
+            ],
+            "die_area_mm2_at_3_5um_range": [
+              40,
+              65
+            ],
+            "saleable_yield_fraction_range": [
+              0.2,
+              0.45
+            ],
+            "yield_note": "Stabilized planning assumption; includes buffers. Requires actual defect density, layout, speed and assembly data.",
+            "external_functions": [
+              "VRAM arrays",
+              "cable line drivers/transceivers",
+              "monitor palette and DACs"
+            ]
+          }
+        }
       },
       "used_in": [
-        "computer.aurelia"
+        "computer.aurelia",
+        "computer.aurelia_plus"
       ],
       "vendor": "AION Labs",
       "introduced": {
@@ -1380,8 +1507,8 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_requirements": [
-        "Define clocks, pixel/text generation, memory interface and arbitration, output electrical layer. Add a documented Aurelia+ variant or qualified shared design for 80 columns and 16 KiB",
-        "current 8 KiB record is insufficient."
+        "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
+        "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -1754,6 +1881,59 @@
       "bom_assembly_refs": [
         "assembly.part.artemis_ram_module_32kb_x16"
       ]
+    },
+    {
+      "id": "part.vram_16kbit_dual_port",
+      "name": "AION 16Kx1 NMOS random-plus-serial VRAM",
+      "category": "memory_chip",
+      "origin": "custom_logix_aion",
+      "vendor": "AION Labs",
+      "used_in": [
+        "computer.aurelia",
+        "computer.aurelia_plus"
+      ],
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "capacity_kbit": 16,
+        "organization_words": 16384,
+        "data_width_bits": 1,
+        "ports": [
+          "random read/write",
+          "serial scanout"
+        ],
+        "array_rows": 128,
+        "array_columns": 128,
+        "serial_register_bits": 128,
+        "transfer_semantics": "A row transfer uses the DRAM array and must be arbitrated; serial shifting can continue independently between transfers.",
+        "random_cycle_target_ns": 375,
+        "serial_clock_target_mhz": 3.579545,
+        "refresh": "Controller refreshes all rows, including hidden pages; retention interval, transfer timing and refresh timing require silicon qualification.",
+        "package": null,
+        "supply_rails_v": null,
+        "qualification_status": "Accepted design baseline; electrical timing, layout, fabrication and monitor qualification remain pending.",
+        "manufacturing_planning": {
+          "transistors_range": [
+            20000,
+            25000
+          ],
+          "die_area_mm2_range": [
+            15,
+            30
+          ],
+          "status": "Preliminary estimates; DRAM cell/capacitor process and serial-port margins require separate development."
+        }
+      },
+      "manufacturing_requirements": [
+        "Develop and qualify the DRAM cell/capacitor, sense amplifiers, retention and row-transfer/serial register operation before June 1978 launch.",
+        "Release pinout, package, rails, timing, power, wafer probe and final test. No commercial 1978 dual-port supplier availability is assumed."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.vram_16kbit_dual_port"
+      ]
     }
   ],
   "devices": [
@@ -1798,7 +1978,19 @@
         "crt_ref": "part.ball_tv90_crt",
         "controller_ref": "part.aurelia_monitor_dac",
         "input": "Logix 4-bit digital video",
-        "intensity_levels": 16
+        "intensity_levels": 16,
+        "capabilities": {
+          "protocol_version": 1,
+          "raster_ids": [
+            "raster_320_200"
+          ],
+          "preferred_raster_id": "raster_320_200",
+          "maximum_pixel_clock_mhz": 7.15909,
+          "color_model": "grayscale",
+          "palette_precision_bits": 4,
+          "programmable_palette": false,
+          "qualification_status": "Required design capabilities; analog bandwidth, raster and readable text not yet qualified."
+        }
       },
       "offered_with": [
         "computer.aurelia"
@@ -1809,7 +2001,8 @@
       },
       "manufacturing_requirements": [
         "Decide whether TV-90 means a tube or a complete display assembly",
-        "specify included yoke/HV/deflection/PSU boundary. Add link receiver, sync/clock handling, DAC/video amplifier, blanking, controls, enclosure, cable and adjustment/test routing."
+        "specify included yoke/HV/deflection/PSU boundary. Add link receiver, sync/clock handling, DAC/video amplifier, blanking, controls, enclosure, cable and adjustment/test routing.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -1825,7 +2018,19 @@
         "controller_ref": "part.color_monitor_controller",
         "input": "Logix 4-bit digital video",
         "displayed_color_registers": 16,
-        "source_palette": "4096-color / 12-bit RGB palette"
+        "source_palette": "4096-color / 12-bit RGB palette",
+        "capabilities": {
+          "protocol_version": 1,
+          "raster_ids": [
+            "raster_320_200"
+          ],
+          "preferred_raster_id": "raster_320_200",
+          "maximum_pixel_clock_mhz": 7.15909,
+          "color_model": "RGB",
+          "palette_precision_bits": 12,
+          "programmable_palette": true,
+          "qualification_status": "Required design capabilities; analog bandwidth, raster and readable text not yet qualified."
+        }
       },
       "offered_with": [
         "computer.aurelia"
@@ -1835,7 +2040,8 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_requirements": [
-        "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once."
+        "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -1850,7 +2056,20 @@
         "crt_ref": "part.motorola_ds3000_140a_crt",
         "controller_ref": "part.mono_monitor2_controller",
         "displayed_registers": 16,
-        "source_palette": "8-bit greyscale"
+        "source_palette": "8-bit greyscale",
+        "capabilities": {
+          "protocol_version": 1,
+          "raster_ids": [
+            "raster_320_200",
+            "raster_640_200"
+          ],
+          "preferred_raster_id": "raster_640_200",
+          "maximum_pixel_clock_mhz": 14.31818,
+          "color_model": "grayscale",
+          "palette_precision_bits": 8,
+          "programmable_palette": true,
+          "qualification_status": "Required design capabilities; analog bandwidth, raster and readable text not yet qualified."
+        }
       },
       "offered_with": [
         "computer.aurelia_plus",
@@ -1867,7 +2086,8 @@
       ],
       "manufacturing_requirements": [
         "Resolve tube-versus-module purchase boundary",
-        "specify readable 80-column raster and video bandwidth, receiver, controller/DAC/analog path, sync, mains/PSU, case and alignment. Qualify all claimed old/new host modes."
+        "specify readable 80-column raster and video bandwidth, receiver, controller/DAC/analog path, sync, mains/PSU, case and alignment. Qualify all claimed old/new host modes.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -1882,7 +2102,20 @@
         "crt_ref": "part.medium_resolution_rgb_crt",
         "controller_ref": "part.color_monitor_controller",
         "displayed_color_registers": 16,
-        "source_palette": "4096-color / 12-bit RGB palette"
+        "source_palette": "4096-color / 12-bit RGB palette",
+        "capabilities": {
+          "protocol_version": 1,
+          "raster_ids": [
+            "raster_320_200",
+            "raster_640_200"
+          ],
+          "preferred_raster_id": "raster_640_200",
+          "maximum_pixel_clock_mhz": 14.31818,
+          "color_model": "RGB",
+          "palette_precision_bits": 12,
+          "programmable_palette": true,
+          "qualification_status": "Required design capabilities; analog bandwidth, raster and readable text not yet qualified."
+        }
       },
       "offered_with": [
         "computer.aurelia_plus",
@@ -1900,7 +2133,8 @@
       "manufacturing_requirements": [
         "Name an OEM/model and electrical/raster specification",
         "define whether HV/yoke/deflection/PSU are included",
-        "verify 80-column and 640-pixel modes on the chosen raster. Add receiver/analog electronics, cable, case and calibration. Reusing a palette controller does not prove display bandwidth compatibility."
+        "verify 80-column and 640-pixel modes on the chosen raster. Add receiver/analog electronics, cable, case and calibration. Reusing a palette controller does not prove display bandwidth compatibility.",
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -2256,7 +2490,7 @@
       },
       "memory": {
         "ram_kb": 48,
-        "video_ram_kb": 8,
+        "video_ram_kb": 16,
         "organization_ref": "technology.aurelia_memory_model",
         "organization": {
           "common_system_ram_kb": 4,
@@ -2317,6 +2551,13 @@
           "common_ram_included": true,
           "status": "Accepted chip-count baseline; decode/refresh/electrical qualification pending.",
           "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
+        },
+        "video_physical_population": {
+          "chip_ref": "part.vram_16kbit_dual_port",
+          "chip_count": 8,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 16384,
+          "separate_from_system_ram": true
         }
       },
       "storage": {
@@ -2348,19 +2589,23 @@
       "video": {
         "technology_ref": "technology.logix_digital_video",
         "graphics_modes": [
-          "320x200x1-bit mono",
+          "640x200x1-bit",
+          "320x200x2-bit",
+          "320x200x1-bit",
+          "320x100x4-bit",
+          "320x100x2-bit",
           "160x100x4-bit"
         ],
         "text_mode": {
           "characters": "40x25",
           "glyph": "8x8",
           "double_buffered": true,
-          "character_map_buffers": "2 x 1 KB",
-          "color_map_buffers": "2 x 1 KB; 4-bit foreground + 4-bit background",
-          "character_definition": "1 x 2 KB"
+          "character_table": "256 characters / 2 KiB shared font",
+          "per_character_color": "4-bit foreground + 4-bit background",
+          "selection": "Preferred text width; choose a usable mode from monitor capabilities. Both 40x25 and 80x25 are native."
         },
         "api_ref": "technology.logix_display_api",
-        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display.",
+        "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
         "memory_layout": {
           "policy_ref": "technology.logix_display_api",
           "text_mode": {
@@ -2368,15 +2613,258 @@
             "character_map_bytes_per_buffer": 1024,
             "attribute_map_bytes_per_buffer": 1024,
             "font_bytes": 2048,
-            "allocated_bytes": 6144
+            "allocated_bytes": 6144,
+            "allocation_note": "Preferred double-buffered text allocation without sprites; add 768 bytes for all five sprites. Both pages share one font."
           },
           "bitmap_mode": {
             "framebuffer_count": 1,
             "bytes_per_framebuffer": 8000,
-            "remaining_vram_bytes": 192,
-            "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
+            "remaining_vram_bytes": 8384,
+            "allocation_note": "Compatibility baseline 320x200x1; bitmap_modes contains per-mode configurations, including 16000-byte modes."
           },
-          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same VRAM, not additive reservations."
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of VRAM. Mode changes reload fonts and redraw.",
+          "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
+          "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
+        },
+        "controller_ref": "part.aurelia_video_chip",
+        "text_modes": [
+          {
+            "id": "text_40",
+            "columns": 40,
+            "rows": 25,
+            "width": 320,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 1024,
+            "attribute_map_bytes_per_buffer": 1024,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 4096,
+                "remaining_vram_bytes": 12288
+              },
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 4864,
+                "remaining_vram_bytes": 11520
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 6144,
+                "remaining_vram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 6912,
+                "remaining_vram_bytes": 9472
+              }
+            ]
+          },
+          {
+            "id": "text_80",
+            "columns": 80,
+            "rows": 25,
+            "width": 640,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 6144,
+                "remaining_vram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 6912,
+                "remaining_vram_bytes": 9472
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 10240,
+                "remaining_vram_bytes": 6144
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 11008,
+                "remaining_vram_bytes": 5376
+              }
+            ]
+          }
+        ],
+        "bitmap_modes": [
+          {
+            "id": "graphics_a",
+            "width": 640,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_b2",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_b1",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 40,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_vram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8768,
+                "remaining_vram_bytes": 7616
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_c4",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 160,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_c2",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_vram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8768,
+                "remaining_vram_bytes": 7616
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_legacy",
+            "width": 160,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_vram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8768,
+                "remaining_vram_bytes": 7616
+              }
+            ],
+            "compatibility_mode": true
+          }
+        ],
+        "sprites": {
+          "count": 5,
+          "maximum_per_scanline": 5,
+          "width": 16,
+          "height": 16,
+          "bits_per_pixel": 4,
+          "pattern_bytes_per_sprite": 128,
+          "position_bytes_per_sprite": 4,
+          "total_pattern_and_position_bytes": 660,
+          "reserved_vram_bytes": 768,
+          "transparent_index": 0,
+          "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
+          "priority": "Lower sprite number wins; all sprites overlay background/text.",
+          "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved VRAM region.",
+          "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
+          "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
         }
       },
       "technology_refs": [
@@ -2417,17 +2905,16 @@
         "native_target": "z80_cpm",
         "api_ref": "technology.logix_c_api",
         "adaptive_text": "Applications query usable columns/rows instead of selecting behavior from model name.",
-        "native_40_column_mode": "Native 40x25 text mode; applications still query usable dimensions."
+        "native_40_column_mode": "Native 40x25 and 80x25 text on both hosts; usable width depends on monitor capabilities."
       },
       "manufacturing_requirements": [
         "Add 24 data DRAMs and their decode/refresh logic",
-        "separate VRAM chip type/count and access arbitration",
         "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
         "motherboard ROM capacity/package/count and cartridge connectors",
         "mapper registers/logic",
-        "video and FlexiBUS controller quantities",
         "clock/reset/interrupt circuitry",
-        "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration."
+        "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
+        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -2483,6 +2970,13 @@
           "common_ram_included": true,
           "status": "Accepted chip-count baseline; decode/refresh/electrical qualification pending.",
           "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
+        },
+        "video_physical_population": {
+          "chip_ref": "part.vram_16kbit_dual_port",
+          "chip_count": 8,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 16384,
+          "separate_from_system_ram": true
         }
       },
       "storage": {
@@ -2514,32 +3008,282 @@
       "video": {
         "technology_ref": "technology.logix_digital_video",
         "graphics_modes": [
-          "320x200x1-bit mono",
+          "640x200x1-bit",
+          "320x200x2-bit",
+          "320x200x1-bit",
+          "320x100x4-bit",
+          "320x100x2-bit",
           "160x100x4-bit"
         ],
         "text_mode": {
           "characters": "80x25",
-          "character_table": "256 characters / 2 KB",
-          "per_character_color": "4-bit foreground + 4-bit background"
+          "glyph": "8x8",
+          "double_buffered": true,
+          "character_table": "256 characters / 2 KiB shared font",
+          "per_character_color": "4-bit foreground + 4-bit background",
+          "selection": "Preferred text width; choose a usable mode from monitor capabilities. Both 40x25 and 80x25 are native."
         },
         "api_ref": "technology.logix_display_api",
-        "mode_discovery": "Enumerate configurations supported by the computer and configured monitor. Listed native modes are not a promise of every mode on every display.",
+        "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
         "memory_layout": {
           "policy_ref": "technology.logix_display_api",
           "text_mode": {
-            "text_buffer_count": 1,
+            "text_buffer_count": 2,
             "character_map_bytes_per_buffer": 2048,
             "attribute_map_bytes_per_buffer": 2048,
             "font_bytes": 2048,
-            "allocated_bytes": 6144
+            "allocated_bytes": 10240,
+            "allocation_note": "Preferred double-buffered text allocation without sprites; add 768 bytes for all five sprites. Both pages share one font."
           },
           "bitmap_mode": {
             "framebuffer_count": 1,
             "bytes_per_framebuffer": 8000,
             "remaining_vram_bytes": 8384,
-            "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
+            "allocation_note": "Compatibility baseline 320x200x1; bitmap_modes contains per-mode configurations, including 16000-byte modes."
           },
-          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same VRAM, not additive reservations."
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of VRAM. Mode changes reload fonts and redraw.",
+          "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
+          "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
+        },
+        "controller_ref": "part.aurelia_video_chip",
+        "text_modes": [
+          {
+            "id": "text_40",
+            "columns": 40,
+            "rows": 25,
+            "width": 320,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 1024,
+            "attribute_map_bytes_per_buffer": 1024,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 4096,
+                "remaining_vram_bytes": 12288
+              },
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 4864,
+                "remaining_vram_bytes": 11520
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 6144,
+                "remaining_vram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 6912,
+                "remaining_vram_bytes": 9472
+              }
+            ]
+          },
+          {
+            "id": "text_80",
+            "columns": 80,
+            "rows": 25,
+            "width": 640,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 6144,
+                "remaining_vram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 6912,
+                "remaining_vram_bytes": 9472
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 10240,
+                "remaining_vram_bytes": 6144
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 11008,
+                "remaining_vram_bytes": 5376
+              }
+            ]
+          }
+        ],
+        "bitmap_modes": [
+          {
+            "id": "graphics_a",
+            "width": 640,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_b2",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_b1",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 40,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_vram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8768,
+                "remaining_vram_bytes": 7616
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_c4",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 160,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_c2",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_vram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8768,
+                "remaining_vram_bytes": 7616
+              }
+            ],
+            "compatibility_mode": false
+          },
+          {
+            "id": "graphics_legacy",
+            "width": 160,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_vram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_vram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8768,
+                "remaining_vram_bytes": 7616
+              }
+            ],
+            "compatibility_mode": true
+          }
+        ],
+        "sprites": {
+          "count": 5,
+          "maximum_per_scanline": 5,
+          "width": 16,
+          "height": 16,
+          "bits_per_pixel": 4,
+          "pattern_bytes_per_sprite": 128,
+          "position_bytes_per_sprite": 4,
+          "total_pattern_and_position_bytes": 660,
+          "reserved_vram_bytes": 768,
+          "transparent_index": 0,
+          "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
+          "priority": "Lower sprite number wins; all sprites overlay background/text.",
+          "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved VRAM region.",
+          "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
+          "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
         }
       },
       "technology_refs": [
@@ -2580,11 +3324,12 @@
         "native_target": "z80_cpm",
         "api_ref": "technology.logix_c_api",
         "adaptive_text": "Applications query usable columns/rows instead of selecting behavior from model name.",
-        "native_40_column_mode": "Not additionally assumed; a compact viewport can be rendered within a wider text display."
+        "native_40_column_mode": "Native 40x25 and 80x25 text on both hosts; usable width depends on monitor capabilities."
       },
       "manufacturing_requirements": [
         "Qualify eight 64K×1 DRAMs for December 1979",
-        "define a compatible 80-column/16 KiB video-controller revision because `part.aurelia_video_chip` only specifies Aurelia's 8 KiB setup and lists Aurelia as its user. Add exact dual-drive controller/mechanisms, ROM images/capacities, 6 MHz timing and PSU/thermal deltas. Do not treat this as a RAM-only Aurelia variant."
+        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
