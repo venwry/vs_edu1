@@ -24,7 +24,7 @@ function definition(n){if(n.id==='network'&&!network())return;
  let r=n.record_ref?rec(n.id==='os'&&network()?settings.network_software_ref:n.record_ref):null,data=r?clean(r):{},source=r?.specification||r;
  if(n.fields)data=Object.fromEntries(n.fields.map(k=>[k,source[k]]));
  if(n.computer_path)data={...data,...at(c,n.computer_path)};
- if(r?.specification_ref)data.related_specification=rec(r.specification_ref).specification;
+ if(r?.specification_ref)data[rec(r.specification_ref).name]=rec(r.specification_ref).specification;
  if(n.id==='ram')data=ramFacts();
  if(n.id==='apps')data={compatible_software:c.compatible_software,software_compatibility:c.software_compatibility};
  let sub=r?.name||human(n.computer_path?.split('.').pop()||n.id);
@@ -85,7 +85,7 @@ function bundles(){const b=rec($('bundle-select').value);if(!b)return;
 }
 function select(){const n=nodes.find(n=>n.id===selected);if(!n)return;
  $('diagram').querySelectorAll('[data-node]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.node===selected)));
- $('inspector').innerHTML='<div class="eyebrow">'+esc(layer)+'</div><h2>'+esc(n.title)+'</h2><p>'+esc(n.sub)+'</p>'+dl(n.data);
+ $('inspector').innerHTML='<div class="eyebrow">'+esc(layer)+'</div><h2>'+esc(n.title)+'</h2><p>'+esc(n.sub)+'</p>'+window.renderSpecification(n.data,records);window.bindSpecificationControls($('inspector'));
 }
 function draw(){window.drawArchitectureWires($('diagram'),edges);}
 function details(){
@@ -118,4 +118,3 @@ for(const button of document.querySelectorAll('[data-layer]')){button.disabled=f
 for(const id of ['artemis-ram','era','software-mode','bundle-select'])$(id).addEventListener('change',build);
 if(typeof ResizeObserver!=='undefined')new ResizeObserver(draw).observe($('diagram'));window.addEventListener('resize',draw);build();
 };
-
