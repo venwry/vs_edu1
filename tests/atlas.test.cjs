@@ -41,7 +41,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
     assert(d.querySelector('[data-node="virtual"]').textContent.includes('32-bit'));
     assert(d.querySelector('[data-node="physical"]').textContent.includes('24-bit'));
     const ram=d.querySelector('#artemis-ram');
-    const selectRAM=(id,capacity,modules,banks)=>{ram.value=id;ram.dispatchEvent(new w.Event('change'));assert.equal(ram.value,id);assert(d.querySelector('#stats').textContent.includes(capacity+' KB'));d.querySelector('[data-node="ram"]').click();assert(d.querySelector('#inspector').textContent.includes('populated modules'+modules));assert(d.querySelector('#inspector').textContent.includes('populated banks'+banks));};
+    const selectRAM=(id,capacity,modules,banks)=>{ram.value=id;ram.dispatchEvent(new w.Event('change'));assert.equal(ram.value,id);assert(d.querySelector('#stats').textContent.includes(capacity+' KB'));d.querySelector('[data-node="ram"]').click();assert(d.querySelector('#inspector').textContent.includes('Populated modules'+modules));assert(d.querySelector('#inspector').textContent.includes('Populated banks'+banks));};
     if(page.id==='artemis'){
      selectRAM('m32_128',128,4,2);
      selectRAM('m32_256',256,8,4);
@@ -145,6 +145,3 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const offline=await boot(page,{},'file:///atlas/timeline.html');assert(offline.d.querySelector('#catalogs'));offline.dom.window.close();
  console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; four computer explorers, RAM expansion, networking, bundles, filters, JSON updates and offline recovery.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});
-
-
-
