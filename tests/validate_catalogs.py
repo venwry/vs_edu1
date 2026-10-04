@@ -146,3 +146,10 @@ for id in ['computer.aurelia_plus','software.pulse_1','software.abacus_2']:
 assert '1979-11' not in json.dumps(tech)
 assert all(target in process_ids|{p['id'] for p in phases} for target in site['timeline_view']['item_aliases'].values())
 print('Validated 33 confirmed point events, 8 separate processes and synchronized catalog availability.')
+
+# Every process has one explicit display lane, and both renderers share story data.
+assigned_processes=[x for lane in lanes for x in lane.get('process_refs',[])]
+assert len(assigned_processes)==len(set(assigned_processes))==len(process_ids)
+assert set(assigned_processes)==process_ids
+assert next(p for p in site['pages'] if p['id']=='timeline2')['renderer']=='timelinejs'
+print('Validated process lane coverage and the second timeline page.')

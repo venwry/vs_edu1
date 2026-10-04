@@ -6,9 +6,9 @@ const siteLink=(id,text)=>{const p=pages[id];return p?`<a href="${esc(p.path)}"$
 function refLink(id){if(records[id]){const p=recordPages[id];return p?`<a href="${esc(p.path)}#${esc(id)}">${esc(records[id].name)}</a>`:esc(records[id].name);}if(actors[id])return site.entity_page_links[id]?siteLink(site.entity_page_links[id],actors[id].name):esc(actors[id].name);return esc(id);}
 function render(v){if(v===null||v===undefined)return '—';if(typeof v==='boolean')return v?'Yes':'No';if(Array.isArray(v))return v.length?'<ul>'+v.map(x=>'<li>'+render(x)+'</li>').join('')+'</ul>':'—';if(typeof v==='object')return '<dl class="fields">'+Object.entries(v).map(([k,x])=>`<div><dt>${esc(human(k))}</dt><dd>${render(x)}</dd></div>`).join('')+'</dl>';return typeof v==='string'&&(records[v]||actors[v])?refLink(v):esc(v);}
 function date(d){return d?.display||[d?.start,d?.end].filter(Boolean).join(' – ')||'Date unspecified';}
-function eventLink(e){return `<a href="${esc(pages.timeline.path)}#${esc(e.id)}">${esc(e.title)}</a>`;}
+function eventLink(e){return `<a href="${esc(page.kind==='timeline'?page.path:pages.timeline.path)}#${esc(e.id)}">${esc(e.title)}</a>`;}
 function prepareLinks(){const names=new Map();for(const p of site.pages){for(const n of [p.title,...(p.aliases||[])])if(n.length>1)names.set(n.toLowerCase(),{name:n,page:p});}for(const [id,p] of Object.entries(recordPages)){const n=records[id].name;if(n?.length>3)names.set(n.toLowerCase(),{name:n,page:p,id});}linkNames=names;const alternatives=[...names.values()].sort((a,b)=>b.name.length-a.name.length).map(x=>x.name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));linkPattern=new RegExp('(^|[^A-Za-z0-9])('+alternatives.join('|')+')(?=$|[^A-Za-z0-9])','gi');}
-function decorate(){observer?.disconnect();const walker=document.createTreeWalker(app,NodeFilter.SHOW_TEXT);const texts=[];while(walker.nextNode()){const n=walker.currentNode;if(!n.parentElement?.closest('a,button,select,script,style,code,pre,h1'))texts.push(n);}for(const n of texts){const text=n.nodeValue;linkPattern.lastIndex=0;let match,last=0,changed=false;const frag=document.createDocumentFragment();while((match=linkPattern.exec(text))){const found=linkNames.get(match[2].toLowerCase());if(!found||found.page.id===page.id)continue;const start=match.index+match[1].length;frag.append(document.createTextNode(text.slice(last,start)));const a=document.createElement('a');a.href=found.page.path+(found.id?'#'+found.id:'');a.textContent=match[2];frag.append(a);last=start+match[2].length;changed=true;}if(changed){frag.append(document.createTextNode(text.slice(last)));n.replaceWith(frag);}}observer?.observe(app,{childList:true,subtree:true});}
+function decorate(){observer?.disconnect();const walker=document.createTreeWalker(app,NodeFilter.SHOW_TEXT);const texts=[];while(walker.nextNode()){const n=walker.currentNode;if(!n.parentElement?.closest('a,button,select,script,style,code,pre,h1,.tl-timeline'))texts.push(n);}for(const n of texts){const text=n.nodeValue;linkPattern.lastIndex=0;let match,last=0,changed=false;const frag=document.createDocumentFragment();while((match=linkPattern.exec(text))){const found=linkNames.get(match[2].toLowerCase());if(!found||found.page.id===page.id)continue;const start=match.index+match[1].length;frag.append(document.createTextNode(text.slice(last,start)));const a=document.createElement('a');a.href=found.page.path+(found.id?'#'+found.id:'');a.textContent=match[2];frag.append(a);last=start+match[2].length;changed=true;}if(changed){frag.append(document.createTextNode(text.slice(last)));n.replaceWith(frag);}}observer?.observe(app,{childList:true,subtree:true});}
 function header(){return `<header class="site-header"><div class="brand">${siteLink('index',site.title)}</div><nav class="site-nav" aria-label="Offering navigation">${site.navigation.map(id=>siteLink(id)).join('')}</nav></header>`;}
 function footer(){return `<footer class="site-footer"><span>${esc(site.labels.fiction)}</span>${siteLink('index',site.labels.back)} ${siteLink('timeline')}</footer>`;}
 function relatedEvents(ids){const set=new Set(ids);const events=story.phases.flatMap(p=>p.events).filter(e=>e.product_refs.some(id=>set.has(id)));return events.length?`<section><h2>${esc(site.labels.events)}</h2><div class="cards">${events.map(e=>`<article class="card"><span class="status">${esc(date(e.date))}</span><h3>${eventLink(e)}</h3><p>${esc(e.actions.map(a=>a.description).join(' '))}</p></article>`).join('')}</div></section>`:'';}
@@ -16,37 +16,25 @@ function assumptions(){return `<section id="assumptions"><h2>${esc(site.labels.a
 function decomposition(r){const parts=r.subcomponents||r.modules;if(!Array.isArray(parts))return '';return `<section class="component-tree"><h3>${esc(r.name)} · ${esc(site.labels.components)}</h3><div class="cards">${parts.map(s=>typeof s==='object'?`<details class="card"><summary>${esc(s.name||s.id)}</summary>${render(Object.fromEntries(Object.entries(s).filter(([k])=>k!=='name')))}</details>`:`<article class="card">${render(s)}</article>`).join('')}</div>${r.system_dependencies?'<p>System dependencies</p>'+render(r.system_dependencies):''}</section>`;}
 function offering(){return `<main class="site-main"><div class="eyebrow">${esc(site.labels.products)}</div><h1 class="page-title">${esc(page.title)}</h1><p>${esc(page.description)}</p><nav class="related">${page.record_refs.map(id=>`<a href="#${esc(id)}">${esc(records[id].name)}</a>`).join('')}</nav>${page.record_refs.map(id=>{const r=records[id];return `<article class="record" id="${esc(id)}"><span class="status">${esc(r.introduced?.event_start_date||'')}</span><h2>${esc(r.name)}</h2>${r.description?'<p>'+esc(r.description)+'</p>':''}${decomposition(r)}${Object.entries(r).filter(([k])=>!['id','name','description','subcomponents','modules'].includes(k)).map(([k,v])=>`<details${['features','specification','platform','platforms','delivery','introduced'].includes(k)?' open':''}><summary>${esc(human(k))}</summary>${render(v)}</details>`).join('')}</article>`;}).join('')}${relatedEvents(page.record_refs)}</main>`;}
 function home(){return `<main class="site-main"><div class="eyebrow">${esc(site.title)}</div><h1 class="page-title">${esc(page.title)}</h1><p>${esc(page.description)}</p><div class="cards">${site.pages.filter(p=>!['home','timeline'].includes(p.kind)).map(p=>`<article class="card"><h2>${siteLink(p.id)}</h2><p>${esc(p.description)}</p></article>`).join('')}</div><article class="card"><h2>${siteLink('timeline')}</h2><p>${story.phases.length} ${esc(site.labels.phase_count)} · ${story.phases.reduce((n,p)=>n+p.events.length,0)} ${esc(site.labels.event_count)}</p></article>${assumptions()}<section id="entities"><h2>People and organizations</h2><div class="cards">${story.assumptions.entities.map(e=>`<article class="card"><h3>${refLink(e.id)}</h3><p>${esc(e.description)}</p></article>`).join('')}</div></section></main>`;}
-function timeline(){const types=[...new Set(story.phases.flatMap(p=>p.events.map(e=>e.event_type)))].sort(),v=site.timeline_view;return `<main class="site-main timeline-main"><div class="eyebrow">${esc(v.eyebrow)}</div><h1 class="page-title">${esc(page.title)}</h1><p>${esc(page.description)}</p><div class="filters"><label>${esc(site.labels.search)}<input id="event-search" type="search"></label><label>${esc(site.labels.phases)} <select id="phase-filter"><option value="">${esc(site.labels.all)}</option>${story.phases.map(p=>`<option value="${esc(p.id)}">${esc(p.title)}</option>`).join('')}</select></label><label>${esc(site.labels.actor)} <select id="actor-filter"><option value="">${esc(site.labels.all)}</option>${story.assumptions.entities.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('')}</select></label><label>${esc(site.labels.type)} <select id="type-filter"><option value="">${esc(site.labels.all)}</option>${types.map(t=>`<option value="${esc(t)}">${esc(human(t))}</option>`).join('')}</select></label><label><input type="checkbox" id="expand-events">${esc(site.labels.expand)}</label></div><div class="swim-guide"><p>${esc(v.instructions)}</p><span id="site-status" role="status"></span></div><p class="swim-note">${esc(v.scale_note)}</p><div class="timeline-workspace"><section class="event-inspection" aria-label="${esc(v.details_label)}"><h2>${esc(v.details_label)}</h2><p id="event-hint">${esc(v.select_hint)}</p><div id="phase-inspection" hidden></div><div id="timeline-events"></div></section><div id="timeline-board"></div></div>${phaseProcessLists()}${assumptions()}</main>`;}
 function eventDetails(e){return `<details class="event" id="${esc(e.id)}" hidden><summary><time>${esc(date(e.date))}</time>${esc(e.title)}</summary><div class="tags">${esc(human(e.event_type))}</div><p>${e.participants.map(x=>refLink(x.actor_ref)+' — '+esc(human(x.role))).join('; ')}</p><h3>Actions</h3>${render(e.actions)}${e.outcomes.length?'<h3>Outcomes</h3>'+render(e.outcomes):''}${e.agreement_terms.length?'<h3>Agreement terms and targets</h3>'+render(e.agreement_terms):''}${e.metrics.length?'<h3>Measures</h3>'+render(e.metrics):''}${e.product_refs.length?'<h3>Products and services</h3><div class="related">'+e.product_refs.map(refLink).join(' · ')+'</div>':''}${e.related_event_refs.length?'<h3>Related events</h3>'+e.related_event_refs.map(id=>eventLink(story.phases.flatMap(p=>p.events).find(x=>x.id===id))).join(' · '):''}<details><summary>Date precision</summary>${render(e.date)}</details></details>`;}
-function eventLane(e){return site.timeline_view.lanes.find(l=>l.event_refs.includes(e.id))||site.timeline_view.lanes.find(l=>e.participants.some(p=>l.actor_refs.includes(p.actor_ref)))||site.timeline_view.lanes[0];}
+function eventLane(e){return site.timeline_view.lanes.find(l=>l.event_refs.includes(e.id)||(l.process_refs||[]).includes(e.id))||site.timeline_view.lanes.find(l=>e.participants.some(p=>l.actor_refs.includes(p.actor_ref)))||site.timeline_view.lanes[0];}
 function selectEvent(id,scroll=false){const target=document.getElementById(id);if(!target?.classList.contains('event'))return;const expanded=document.getElementById('expand-events').checked;
  document.getElementById('phase-inspection').hidden=true;
+ document.getElementById('process-inspection').hidden=true;
+ document.querySelectorAll('[data-select-process]').forEach(b=>b.setAttribute('aria-pressed','false'));
  document.querySelectorAll('[data-select-phase]').forEach(b=>b.setAttribute('aria-pressed','false'));
  document.querySelectorAll('#timeline-events>.event').forEach(d=>{d.hidden=!expanded&&d.id!==id;d.open=expanded||d.id===id;});
  document.querySelectorAll('[data-event]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.event===id)));
  document.getElementById('event-hint').hidden=true;
  if(scroll){document.querySelector('.event-inspection').scrollTop=0;target.querySelector('summary').focus({preventScroll:true});}
 }
-function timelineEvents(){const query=document.getElementById('event-search').value.toLowerCase(),phase=document.getElementById('phase-filter').value,actor=document.getElementById('actor-filter').value,type=document.getElementById('type-filter').value,expanded=document.getElementById('expand-events').checked;
- const groups=story.phases.filter(p=>!phase||p.id===phase).map(p=>({...p,events:p.events.filter(e=>(!actor||e.participants.some(x=>x.actor_ref===actor))&&(!type||e.event_type===type)&&(!query||(JSON.stringify(e)+' '+e.participants.map(x=>actors[x.actor_ref].name).join(' ')+' '+e.product_refs.map(id=>records[id]?.name||'').join(' ')).toLowerCase().includes(query)))})).filter(p=>p.events.length);
- const events=groups.flatMap(p=>p.events),v=site.timeline_view,lanes=v.lanes;
- document.getElementById('timeline-board').innerHTML=events.length?calendarBoard(groups):`<p class="timeline-empty">${esc(site.labels.empty)}</p>`;
- document.getElementById('timeline-events').innerHTML=events.map(eventDetails).join('');document.getElementById('site-status').textContent=events.length+' '+site.labels.event_count+' · '+groups.length+' '+site.labels.phase_count;
- document.getElementById('event-hint').hidden=!events.length||expanded;
- for(const button of document.querySelectorAll('[data-event]'))button.addEventListener('click',()=>{history.replaceState(null,'','#'+button.dataset.event);selectEvent(button.dataset.event,true);});
- if(expanded)document.querySelectorAll('#timeline-events>.event').forEach(d=>{d.hidden=false;d.open=true;});
- for(const button of document.querySelectorAll('[data-select-phase]'))button.addEventListener('click',()=>{history.replaceState(null,'','#'+button.dataset.selectPhase);selectPhase(button.dataset.selectPhase);});
- document.getElementById('phase-inspection').hidden=true;
- const selected=decodeURIComponent(location.hash.slice(1));if(events.some(e=>e.id===selected))selectEvent(selected);else if(groups.some(p=>p.id===selected))selectPhase(selected);else if(events.length&&!expanded)selectEvent(events[0].id);
- decorate();
-}
-// Exact days use a proportional position within each equal-height calendar year.
 function calendarPoint(value){const m=/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/.exec(value||'');if(!m)return null;const year=Number(m[1]),start=Date.UTC(year,0,1),end=Date.UTC(year+1,0,1);return year+(Date.UTC(year,Number(m[2]||1)-1,Number(m[3]||1))-start)/(end-start);}
 function eventCalendarPoint(e,p){return calendarPoint(e.date.start)??calendarPoint(p.period.start);}
 function phaseProcesses(id){return (story.processes||[]).filter(p=>p.phase_refs.includes(id));}
 function processDetails(p,withId=false){return `<details class="process-detail"${withId?` id="${esc(p.id)}"`:''} data-process="${esc(p.id)}"><summary>${esc(p.title)}</summary><p class="status">Process · ${esc(date(p.period))}</p><p>${p.participants.map(x=>refLink(x.actor_ref)+' — '+esc(human(x.role))).join('; ')}</p>${render(p.actions)}${p.outcomes.length?'<h4>Outcomes</h4>'+render(p.outcomes):''}${p.metrics.length?'<h4>Measures</h4>'+render(p.metrics):''}${p.agreement_terms.length?'<h4>Agreements</h4>'+render(p.agreement_terms):''}${p.product_refs.length?'<div class="related">'+p.product_refs.map(refLink).join(' · ')+'</div>':''}${p.related_event_refs.length?'<p>Related events: '+p.related_event_refs.map(id=>eventLink(story.phases.flatMap(p=>p.events).find(e=>e.id===id))).join(' · ')+'</p>':''}</details>`;}
-function phaseProcessLists(){const seen=new Set();return `<section class="phase-processes"><h2>Processes by phase</h2><p>Ongoing activities are listed separately from dated events. Phase membership provides context; it does not assign an unspecified start or end date.</p>${story.phases.filter(p=>phaseProcesses(p.id).length).map(p=>`<section class="phase-process-group" data-process-phase="${esc(p.id)}"><h3>${esc(p.title)}</h3><p>${esc(date(p.period))}</p>${phaseProcesses(p.id).map(proc=>{const withId=!seen.has(proc.id);seen.add(proc.id);return processDetails(proc,withId);}).join('')}</section>`).join('')}</section>`;}
 function selectPhase(id){const p=story.phases.find(p=>p.id===id);if(!p)return;
+ document.getElementById('process-inspection').hidden=true;
+ document.querySelectorAll('[data-select-process]').forEach(b=>b.setAttribute('aria-pressed','false'));
  document.querySelectorAll('#timeline-events>.event').forEach(d=>d.hidden=true);
  document.querySelectorAll('[data-event]').forEach(b=>b.setAttribute('aria-pressed','false'));
  document.querySelectorAll('[data-select-phase]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.selectPhase===id)));
@@ -55,31 +43,119 @@ function selectPhase(id){const p=story.phases.find(p=>p.id===id);if(!p)return;
  panel.innerHTML=`<span class="status">${esc(human(p.kind))}</span><h3>${esc(p.title)}</h3><p>${esc(date(p.period))}</p><p>${p.events.length} ${esc(site.labels.event_count)}</p>${render(Object.fromEntries(Object.entries(p).filter(([k])=>!['id','title','kind','period','events'].includes(k))))}<ul>${p.events.map(e=>`<li>${eventLink(e)}</li>`).join('')}</ul>${phaseProcesses(p.id).length?'<h3>Processes</h3>'+phaseProcesses(p.id).map(proc=>processDetails(proc)).join(''):''}`;
  document.querySelector('.event-inspection').scrollTop=0;decorate();
 }
-function calendarBoard(groups){const v=site.timeline_view,lanes=v.lanes;
+let timelineJS=null,timelineJSReady=false,timelineHash='';
+function timelineTabs(content){return `<main class="site-main timeline-main"><div class="eyebrow">${esc(page.title)} · ${page.renderer==='timelinejs'?'TimelineJS':'Calendar swimlanes'}</div><h1 class="visually-hidden">${esc(page.title)}</h1><div class="page-title timeline-title" role="tablist" aria-label="Story view"><button id="timeline-tab" role="tab" aria-selected="true" aria-controls="timeline-panel" tabindex="0">Timeline</button><span aria-hidden="true"> / </span><button id="assumptions-tab" role="tab" aria-selected="false" aria-controls="assumptions-panel" tabindex="-1">Assumptions</button></div><nav class="timeline-versions" aria-label="Timeline rendering">${siteLink('timeline','Timeline (original)')} ${siteLink('timeline2','Timeline2 · TimelineJS')}</nav><section id="timeline-panel" role="tabpanel" aria-labelledby="timeline-tab">${content}</section><section id="assumptions-panel" role="tabpanel" aria-labelledby="assumptions-tab" hidden>${assumptions()}</section></main>`;}
+function switchTimelineView(showAssumptions,updateHash=false){
+ document.getElementById('timeline-panel').hidden=showAssumptions;
+ document.getElementById('assumptions-panel').hidden=!showAssumptions;
+ for(const id of ['timeline','assumptions']){const active=(id==='assumptions')===showAssumptions,tab=document.getElementById(id+'-tab');tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;}
+ if(updateHash){if(showAssumptions){timelineHash=location.hash==='#assumptions'?timelineHash:location.hash;history.replaceState(null,'','#assumptions');}else history.replaceState(null,'',location.pathname+location.search+timelineHash);}
+ if(!showAssumptions&&timelineJSReady)timelineJS.updateDisplay();
+}
+function setupTimelineTabs(){
+ for(const id of ['timeline','assumptions'])document.getElementById(id+'-tab').addEventListener('click',()=>switchTimelineView(id==='assumptions',true));
+ document.querySelector('.timeline-title').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const assumptions=e.key==='End'||(e.key!=='Home'&&document.activeElement.id==='timeline-tab');document.getElementById((assumptions?'assumptions':'timeline')+'-tab').click();document.getElementById((assumptions?'assumptions':'timeline')+'-tab').focus();});
+}
+function timeline(){
+ if(page.renderer==='timelinejs')return timelineTwo();
+ const types=[...new Set(story.phases.flatMap(p=>p.events.map(e=>e.event_type)))].sort(),v=site.timeline_view;
+ return timelineTabs(`<p>${esc(page.description)}</p><div class="filters"><label>${esc(site.labels.search)}<input id="event-search" type="search"></label><label>${esc(site.labels.phases)} <select id="phase-filter"><option value="">${esc(site.labels.all)}</option>${story.phases.map(p=>`<option value="${esc(p.id)}">${esc(p.title)}</option>`).join('')}</select></label><label>${esc(site.labels.actor)} <select id="actor-filter"><option value="">${esc(site.labels.all)}</option>${story.assumptions.entities.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('')}</select></label><label>${esc(site.labels.type)} <select id="type-filter"><option value="">${esc(site.labels.all)}</option><option value="process">Process</option>${types.map(t=>`<option value="${esc(t)}">${esc(human(t))}</option>`).join('')}</select></label><label><input type="checkbox" id="expand-events">${esc(site.labels.expand)}</label></div><div class="swim-guide"><p>${esc(v.instructions)}</p><span id="site-status" role="status"></span></div><p class="swim-note">${esc(v.scale_note)}</p><div class="timeline-workspace"><section class="event-inspection" aria-label="${esc(v.details_label)}"><h2>${esc(v.details_label)}</h2><p id="event-hint">${esc(v.select_hint)}</p><div id="phase-inspection" hidden></div><div id="process-inspection" hidden></div><div id="timeline-events"></div></section><div id="timeline-board"></div></div>`);
+}
+function processPlotNote(p){const span=AtlasTimeline.processSpan(p,story);return `<p class="process-timing ${span.approximate?'approximate':''}"><strong>${span.approximate?'Approximate display interval':'Recorded interval'}</strong><br>${esc(span.startDate)} to ${esc(span.endDate)}<br>${esc(span.basis)}<br>Story timing: ${esc(date(p.period))}</p>`;}
+function selectProcess(id){
+ const p=story.processes.find(p=>p.id===id);if(!p)return;
+ document.getElementById('phase-inspection').hidden=true;
+ document.getElementById('event-hint').hidden=true;
+ document.querySelectorAll('#timeline-events>.event').forEach(d=>d.hidden=true);
+ document.querySelectorAll('[data-event],[data-select-phase]').forEach(b=>b.setAttribute('aria-pressed','false'));
+ document.querySelectorAll('[data-select-process]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.selectProcess===id)));
+ const panel=document.getElementById('process-inspection');panel.hidden=false;panel.innerHTML=processPlotNote(p)+processDetails(p);panel.querySelector('details').open=true;
+ document.querySelector('.event-inspection').scrollTop=0;decorate();
+}
+function timelineEvents(){
+ const query=document.getElementById('event-search').value.toLowerCase(),phase=document.getElementById('phase-filter').value,actor=document.getElementById('actor-filter').value,type=document.getElementById('type-filter').value,expanded=document.getElementById('expand-events').checked;
+ const matches=item=>(!actor||item.participants.some(x=>x.actor_ref===actor))&&(!query||(JSON.stringify(item)+' '+item.participants.map(x=>actors[x.actor_ref].name).join(' ')+' '+item.product_refs.map(id=>records[id]?.name||'').join(' ')).toLowerCase().includes(query));
+ const groups=story.phases.filter(p=>!phase||p.id===phase).map(p=>({...p,events:p.events.filter(e=>(!type||e.event_type===type)&&matches(e))}));
+ const processes=story.processes.filter(p=>(!phase||p.phase_refs.includes(phase))&&(!type||type==='process')&&matches(p));
+ const events=groups.flatMap(p=>p.events),visibleGroups=groups.filter(p=>p.events.length||processes.some(proc=>proc.phase_refs.includes(p.id))||(!query&&!actor&&!type));
+ document.getElementById('timeline-board').innerHTML=events.length||processes.length||visibleGroups.length?calendarBoard(visibleGroups,processes):`<p class="timeline-empty">${esc(site.labels.empty)}</p>`;
+ document.getElementById('timeline-events').innerHTML=events.map(eventDetails).join('');
+ document.getElementById('site-status').textContent=events.length+' events · '+processes.length+' processes · '+visibleGroups.length+' phases';
+ document.getElementById('event-hint').hidden=expanded;
+ document.getElementById('phase-inspection').hidden=true;document.getElementById('process-inspection').hidden=true;
+ for(const button of document.querySelectorAll('[data-event]'))button.addEventListener('click',()=>{history.replaceState(null,'','#'+button.dataset.event);selectEvent(button.dataset.event,true);});
+ for(const button of document.querySelectorAll('[data-select-phase]'))button.addEventListener('click',()=>{history.replaceState(null,'','#'+button.dataset.selectPhase);selectPhase(button.dataset.selectPhase);});
+ for(const button of document.querySelectorAll('[data-select-process]'))button.addEventListener('click',()=>{history.replaceState(null,'','#'+button.dataset.selectProcess);selectProcess(button.dataset.selectProcess);});
+ const selected=decodeURIComponent(location.hash.slice(1));
+ if(expanded){document.querySelectorAll('#timeline-events>.event').forEach(d=>{d.hidden=false;d.open=true;});}
+ else if(events.some(e=>e.id===selected))selectEvent(selected);
+ else if(processes.some(p=>p.id===selected))selectProcess(selected);
+ else if(visibleGroups.some(p=>p.id===selected))selectPhase(selected);
+ else if(events.length)selectEvent(events[0].id);
+ else if(processes.length)selectProcess(processes[0].id);
+ decorate();
+}
+function calendarBoard(groups,processes){
+ const v=site.timeline_view,lanes=v.lanes,M=AtlasTimeline;
  const start=Math.floor(Math.min(...story.phases.map(p=>calendarPoint(p.period.start))));
- const end=Math.floor(Math.max(...story.phases.map(p=>calendarPoint(p.period.end||p.period.start))));
- const entries=groups.flatMap(p=>p.events.map(e=>{const known=calendarPoint(e.date.start);return {e,p,point:eventCalendarPoint(e,p),approx:known===null};}));
+ const end=Math.floor(Math.max(...story.phases.map(p=>calendarPoint(p.period.end))));
+ const entries=groups.flatMap(p=>p.events.map(e=>({e,p,point:eventCalendarPoint(e,p)})));
  const regular=entries.filter(x=>x.point>=start&&x.point<end+1),outside=entries.filter(x=>!regular.includes(x));
- // Reserve enough space for the densest year/lane, using the same height in every year.
  const allEntries=story.phases.flatMap(p=>p.events.map(e=>({e,point:eventCalendarPoint(e,p)})));
  const density=Math.max(1,...lanes.flatMap(l=>Array.from({length:end-start+1},(_,i)=>allEntries.filter(x=>Math.floor(x.point)===start+i&&eventLane(x.e).id===l.id).length)));
- const height=Math.max(420,density*88+40);
- const card=x=>`<button class="swim-event${x.approx?' approximate':''}" data-event="${esc(x.e.id)}" aria-pressed="false" aria-controls="${esc(x.e.id)}" title="${esc(x.e.title+' — '+date(x.e.date))}"><strong>${esc(x.e.short_title||x.e.title)}</strong><time>${esc(x.approx?'Date unspecified · phase placement':date(x.e.date))}</time></button>`;
- const phaseButton=(p,style='')=>`<button class="calendar-phase ${p.kind==='conference'?'conference':''}" data-select-phase="${esc(p.id)}" aria-pressed="false" aria-controls="phase-inspection" style="${style}" title="${esc(p.title+' — '+date(p.period))}"><strong>${esc(p.title)}</strong><small>${esc(date(p.period))}</small></button>`;
- return `${outside.length?`<div class="timeline-origin"><span class="eyebrow">Story origin · outside the calendar below</span>${outside.map(x=>`<div class="origin-event lane-${lanes.findIndex(l=>l.id===eventLane(x.e).id)}" data-lane="${esc(eventLane(x.e).id)}">${card(x)}</div>`).join('')}</div>`:''}<div class="swim-scroll" tabindex="0" role="region" aria-label="${esc(v.board_label)}"><div class="calendar-grid" style="--lane-count:${lanes.length};--year-height:${height}px"><div class="calendar-axis">Year</div><div class="calendar-axis">Phase</div>${lanes.map((l,i)=>`<div class="swim-heading lane-${i}" title="${esc(l.description)}"><span class="lane-dot"></span><strong>${esc(l.title)}</strong></div>`).join('')}${Array.from({length:end-start+1},(_,i)=>{const year=start+i;
- const phases=groups.filter(p=>calendarPoint(p.period.start)<year+1&&calendarPoint(p.period.end||p.period.start)>=year);
- const tracks=[];const phaseBoxes=phases.map(p=>{const top=Math.min(Math.max(0,calendarPoint(p.period.start)-year)*height,height-76),bottom=Math.min(height,Math.max(top+64,Math.min(1,calendarPoint(p.period.end||p.period.start)-year)*height-8));let track=tracks.findIndex(end=>end<=top);if(track<0)track=tracks.length;tracks[track]=bottom+4;return {p,top,bottom,track};});
- return `<div class="calendar-year" data-year="${year}">${year}</div><div class="calendar-phases">${phaseBoxes.map(({p,top,bottom,track})=>phaseButton(p,`top:${top}px;height:${bottom-top}px;left:calc(${track*100/tracks.length}% + 4px);width:calc(${100/tracks.length}% - 8px)`)).join('')}</div>${lanes.map((l,n)=>{const items=regular.filter(x=>Math.floor(x.point)===year&&eventLane(x.e).id===l.id).sort((a,b)=>a.point-b.point);let previous=-88;const positions=items.map(x=>{previous=Math.max(previous+88,(x.point-year)*(height-88)+8);return previous;});for(let j=positions.length-1;j>=0;j--)positions[j]=Math.min(positions[j],j===positions.length-1?height-80:positions[j+1]-88);
- return `<div class="calendar-cell lane-${n}" data-lane="${esc(l.id)}" data-year="${year}">${items.map((x,j)=>`<div class="calendar-event" style="top:${positions[j]}px">${card(x)}</div>`).join('')}</div>`;}).join('')}`;}).join('')}</div></div>`;
+ const height=Math.max(420,density*88+40),total=(end-start+1)*height;
+ const y=ms=>(M.point(ms)-start)*height;
+ const processLayout=lanes.map(l=>M.tracks(processes.filter(p=>eventLane(p).id===l.id).map(p=>({p,span:M.processSpan(p,story)}))));
+ const counts=processLayout.map(items=>Math.max(0,...items.map(x=>x.track+1)));
+ const columns='64px 200px '+counts.map(n=>`minmax(${170+n*112}px,1fr)`).join(' ');
+ const card=x=>`<button class="swim-event" data-event="${esc(x.e.id)}" aria-pressed="false" aria-controls="${esc(x.e.id)}" title="${esc(x.e.title+' — '+date(x.e.date))}"><strong>${esc(x.e.short_title||x.e.title)}</strong><time>${esc(date(x.e.date))}</time></button>`;
+ const phases=groups.map(p=>{const top=y(M.boundary(p.period.start)),bottom=y(M.boundary(p.period.end,true));return `<button class="calendar-phase" id="${esc(p.id)}" data-select-phase="${esc(p.id)}" aria-pressed="false" aria-controls="phase-inspection" style="top:${top}px;height:${bottom-top}px" title="${esc(p.title+' — '+date(p.period))}"><span class="span-label"><strong>${esc(p.title)}</strong><small>${esc(date(p.period))}</small></span></button>`;}).join('');
+ const laneBodies=lanes.map((l,n)=>{
+  const eventCards=Array.from({length:end-start+1},(_,i)=>{const year=start+i,items=regular.filter(x=>Math.floor(x.point)===year&&eventLane(x.e).id===l.id).sort((a,b)=>a.point-b.point);let previous=-88;const positions=items.map(x=>{previous=Math.max(previous+88,(x.point-year)*(height-88)+8);return previous;});for(let j=positions.length-1;j>=0;j--)positions[j]=Math.min(positions[j],j===positions.length-1?height-80:positions[j+1]-88);return items.map((x,j)=>`<div class="calendar-event" data-year="${year}" style="top:${i*height+positions[j]}px">${card(x)}</div>`).join('');}).join('');
+  const bars=processLayout[n].map(({p,span,track})=>`<button class="calendar-process${span.approximate?' approximate':''}" id="${esc(p.id)}" data-select-process="${esc(p.id)}" data-start="${span.startDate}" data-end="${span.endDate}" data-approximate="${span.approximate}" aria-pressed="false" aria-controls="process-inspection" style="left:${track*112+4}px;top:${y(span.start)}px;height:${y(span.end)-y(span.start)}px;width:104px" title="${esc(p.title+' — '+date(p.period)+' — '+span.basis)}"><span class="span-label"><small>PROCESS${span.approximate?' · approximate':''}</small><strong>${esc(p.title)}</strong><small>${esc(span.approximate?'Phase context':date(p.period))}</small></span></button>`).join('');
+  return `<div class="calendar-cell lane-${n}" data-lane="${esc(l.id)}"><div class="lane-events" style="right:${counts[n]*112}px">${eventCards}</div><div class="lane-processes" style="width:${counts[n]*112}px">${bars}</div></div>`;
+ }).join('');
+ return `${outside.length?`<div class="timeline-origin"><span class="eyebrow">Story origin · outside the calendar below</span>${outside.map(x=>`<div class="origin-event lane-${lanes.findIndex(l=>l.id===eventLane(x.e).id)}" data-lane="${esc(eventLane(x.e).id)}">${card(x)}</div>`).join('')}</div>`:''}<div class="swim-scroll" tabindex="0" role="region" aria-label="${esc(v.board_label)}"><div class="calendar-grid continuous-calendar" style="grid-template-columns:${columns};--year-height:${height}px;--calendar-height:${total}px;min-width:${264+counts.reduce((sum,n)=>sum+170+n*112,0)}px"><div class="calendar-axis">Year</div><div class="calendar-axis">Phase</div>${lanes.map((l,i)=>`<div class="swim-heading lane-${i}"><span class="lane-dot"></span><strong>${esc(l.title)}</strong></div>`).join('')}<div class="calendar-years">${Array.from({length:end-start+1},(_,i)=>`<div class="calendar-year" data-year="${start+i}">${start+i}</div>`).join('')}</div><div class="calendar-phases">${phases}</div>${laneBodies}</div></div>`;
 }
-function openHash(){const rawId=decodeURIComponent(location.hash.slice(1)),id=site.timeline_view.item_aliases?.[rawId]||site.timeline_view.phase_aliases?.[rawId]||rawId;if(!id)return;
- if(page.kind==='timeline'&&story.phases.some(p=>p.id===id)){
-  if(![...document.querySelectorAll('[data-select-phase]')].some(b=>b.dataset.selectPhase===id)){for(const key of ['event-search','phase-filter','actor-filter','type-filter'])document.getElementById(key).value='';timelineEvents();}
-  selectPhase(id);return;
- }
- if(page.kind==='timeline'&&story.phases.some(p=>p.events.some(e=>e.id===id))){
-  if(!document.getElementById(id)){for(const key of ['event-search','phase-filter','actor-filter','type-filter'])document.getElementById(key).value='';timelineEvents();}
-  selectEvent(id,true);return;
+function timelineTwo(){
+ const events=story.phases.flatMap(p=>p.events),origin=events.find(e=>e.id==='event.power');
+ return timelineTabs(`<p>${esc(page.description)}</p><p class="swim-note">Phases are continuous era bands. Processes are duration ranges in party groups. Approximate ranges use labeled phase-context envelopes; the story's unspecified dates remain unspecified.</p><details class="timeline-two-origin" id="event.power"><summary>Story origin · ${esc(date(origin.date))} · ${esc(origin.title)}</summary>${render(origin.actions)}</details><div class="timeline-two-toolbar"><label>Jump to event or process <select id="timeline-two-jump">${story.phases.map(p=>`<optgroup label="${esc(p.title)}">${p.events.filter(e=>e.id!=='event.power').map(e=>`<option value="${esc(e.id)}">${esc(date(e.date)+' · '+e.title)}</option>`).join('')}</optgroup>`).join('')}<optgroup label="Processes">${story.processes.map(p=>`<option value="${esc(p.id)}">${esc(p.title)}</option>`).join('')}</optgroup></select></label><label>Jump to phase <select id="timeline-two-phase"><option value="">Choose a phase</option>${story.phases.map(p=>`<option value="${esc(p.id)}">${esc(p.title)}</option>`).join('')}</select></label></div><div id="timelinejs" aria-label="TimelineJS story timeline"><p role="status">Loading TimelineJS…</p></div><div id="timeline-two-status" role="status"></div><div class="timeline-two-fallback" hidden><p>TimelineJS could not load. <a href="timeline.html">Open the original timeline</a>.</p></div>`);
+}
+function timelineJSData(){
+ const M=AtlasTimeline,toDate=ms=>{const d=new Date(ms);return {year:d.getUTCFullYear(),month:d.getUTCMonth()+1,day:d.getUTCDate()};};
+ const events=story.phases.flatMap(p=>p.events).filter(e=>e.id!=='event.power').map(e=>({unique_id:e.id,start_date:toDate(M.boundary(e.date.start)),display_date:date(e.date),group:eventLane(e).title,text:{headline:esc(e.title),text:eventDetails(e).replace(/^<details[^>]*>[\s\S]*?<\/summary>/,'<div>').replace(/<\/details>$/,'</div>')}}));
+ const processes=story.processes.map(p=>{const span=M.processSpan(p,story);return {unique_id:p.id,start_date:toDate(span.start),end_date:toDate(span.end),display_date:(span.approximate?'Approximate · ':'')+date(p.period),group:eventLane(p).title,text:{headline:esc(p.title)+(span.approximate?' · approximate':''),text:processPlotNote(p)+processDetails(p)}};});
+ return {events:[...events,...processes],eras:story.phases.map(p=>({start_date:toDate(M.boundary(p.period.start)),end_date:toDate(M.boundary(p.period.end,true)),text:{headline:esc(p.title)}}))};
+}
+function startTimelineTwo(){
+ if(!window.TL?.Timeline){document.getElementById('timelinejs').hidden=true;document.querySelector('.timeline-two-fallback').hidden=false;return;}
+ timelineJSReady=false;
+ timelineJS=new TL.Timeline('timelinejs',timelineJSData(),{language:'en',font:null,hash_bookmark:false,start_at_slide:0,initial_zoom:2,timenav_height_percentage:48,timenav_height_min:280,default_bg_color:'#182323',duration:250,marker_height_min:36,marker_width_min:130});
+ const ready=()=>{timelineJSReady=true;document.getElementById('timeline-two-status').textContent='32 historical events · 8 processes · 8 phases';openHash();timelineJS.updateDisplay();};
+ timelineJS.on('ready',ready);
+ timelineJS.on('change',e=>{if(!timelineJSReady)return;document.getElementById('timeline-two-jump').value=e.unique_id;if(!document.getElementById('timeline-panel').hidden)history.replaceState(null,'','#'+e.unique_id);});
+ if(timelineJS.ready)ready();
+ document.getElementById('timeline-two-jump').addEventListener('change',e=>{history.replaceState(null,'','#'+e.target.value);timelineJS.goToId(e.target.value);});
+ document.getElementById('timeline-two-phase').addEventListener('change',e=>{if(e.target.value){history.replaceState(null,'','#'+e.target.value);openHash();}});
+}
+
+function openHash(){
+ const rawId=decodeURIComponent(location.hash.slice(1)),id=site.timeline_view.item_aliases?.[rawId]||site.timeline_view.phase_aliases?.[rawId]||rawId;
+ if(page.kind==='timeline'){
+  switchTimelineView(id==='assumptions');if(!id||id==='assumptions')return;
+  if(page.renderer==='timelinejs'){
+   if(id==='event.power'){document.getElementById(id).open=true;return;}
+   if(!timelineJSReady)return;
+   const phase=story.phases.find(p=>p.id===id),target=phase?phase.events.find(e=>e.id!=='event.power')?.id:id;
+   if(target&&[...story.phases.flatMap(p=>p.events),...story.processes].some(x=>x.id===target)){timelineJS.goToId(target);if(phase){document.getElementById('timeline-two-phase').value=id;history.replaceState(null,'','#'+id);}}
+   return;
+  }
+  const process=story.processes.some(p=>p.id===id),phase=story.phases.some(p=>p.id===id),event=story.phases.some(p=>p.events.some(e=>e.id===id));
+  if(process||phase||event){
+   if(!document.getElementById(id)){for(const key of ['event-search','phase-filter','actor-filter','type-filter'])document.getElementById(key).value='';timelineEvents();}
+   if(process)selectProcess(id);else if(phase)selectPhase(id);else selectEvent(id,true);
+   return;
+  }
  }
  const target=document.getElementById(id);if(target){if(target.tagName==='DETAILS')target.open=true;target.scrollIntoView?.();}
 }
@@ -87,7 +163,7 @@ function start(t,s,config){if(!Array.isArray(t.computers)||!s.assumptions||!Arra
  app.innerHTML=header()+(page.kind==='home'?home():page.kind==='timeline'?timeline():page.kind==='explorer'?window.architectureTemplate:offering())+footer();
  if(page.kind==='explorer'){(page.explorer_family==='artemis'?window.startArtemisExplorer:window.startArchitectureExplorer)(tech,page,siteLink);const related=document.createElement('section');related.className='site-main';related.innerHTML=relatedEvents(page.record_refs);app.querySelector('main').append(related);const marker=document.createElement('span');marker.id=page.record_refs[0];app.querySelector('main').prepend(marker);}
  observer=new MutationObserver(()=>decorate());decorate();
- if(page.kind==='timeline'){for(const id of ['event-search','phase-filter','actor-filter','type-filter','expand-events'])document.getElementById(id).addEventListener(id==='event-search'?'input':'change',timelineEvents);timelineEvents();}
+ if(page.kind==='timeline'){setupTimelineTabs();if(page.renderer==='timelinejs')startTimelineTwo();else {for(const id of ['event-search','phase-filter','actor-filter','type-filter','expand-events'])document.getElementById(id).addEventListener(id==='event-search'?'input':'change',timelineEvents);timelineEvents();}}
  openHash();window.addEventListener('hashchange',openHash);
  if(location.protocol==='file:'){try{sessionStorage.setItem('logix-atlas-catalogs',JSON.stringify([t,s,config]));}catch{}}
 }
