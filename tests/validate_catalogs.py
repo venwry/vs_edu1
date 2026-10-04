@@ -85,9 +85,9 @@ by={e['id']:e for e in events}
 assert by['event.bpi_offer']['event_type']=='offer'
 assert by['event.ibm_project']['event_type']=='plan'
 assert by['event.apple_extensions']['date']['start']=='1979-06-04'
-assert by['event.apple_extensions']['date']['end'] is None
+assert by['event.apple_extensions']['date']['end']=='1979-06-04'
 assert by['event.aionix_agreement']['agreement_terms'][4]['effective_date']['start']=='1982'
-assert all(e['date']['precision']=='day' and e['date']['end'] is None for e in events)
+assert all(set(e['date'])=={'start','end'} and e['date']['end']==e['date']['start'] for e in events)
 assert records['software.bpi_suite']['introduced']['event_start_date']=='1978-06-05'
 assert records['technology.bpi_relational_database']['introduced']['event_start_date']=='1978-06-05'
 assert records['software.microsoft_basic_aurelia']['introduced']['event_start_date']=='1979-06-04'
@@ -123,18 +123,18 @@ assert phase_by_event['event.aionix_agreement']=='phase.ncc78'
 assert all(target in {p['id'] for p in phases} for target in site['timeline_view']['phase_aliases'].values())
 print('Validated eight consecutive phases, confirmed-date placement, processes and legacy phase aliases.')
 
-assert len(events)==33
+assert len(events)==34
 assert 'event.basic_develop' not in event_ids
-processes=story['processes'];process_ids={p['id'] for p in processes}
-assert len(process_ids)==len(processes)==8
+processes=[p for parent in story['processes'] for p in [parent]+parent.get('subprocesses',[])];process_ids={p['id'] for p in processes}
+assert len(process_ids)==len(processes)==7
 for proc in processes:
  assert set(proc['phase_refs'])<={p['id'] for p in phases}
  assert set(proc['related_event_refs'])<=event_ids
  assert set(proc['product_refs'])<=records.keys()
  assert {p['actor_ref'] for p in proc['participants']}<=actors
  for action in proc['actions']:assert set(action['actor_refs'])<=actors
-assert {'process.economics_studies','process.nyse_speculation'}<=process_ids
-assert set(next(p for p in processes if p['id']=='process.international_investment')['phase_refs'])=={'phase.foundations','phase.prepare_aurelia'}
+assert 'process.economics_studies' in process_ids and 'process.nyse_speculation' not in process_ids
+assert 'process.international_investment' not in process_ids
 for phase in phases:
  for e in phase['events']:
   if e['id']!='event.power':assert phase['period']['start']<=e['date']['start']<=phase['period']['end'],e['id']
@@ -144,5 +144,21 @@ assert records['service.academy_direct_sales']['introduced']['event_start_date']
 for id in ['computer.aurelia_plus','software.pulse_1','software.abacus_2']:
  assert records[id]['introduced']['event_start_date']=='1979-12-03'
 assert '1979-11' not in json.dumps(tech)
-assert all(target in process_ids|{p['id'] for p in phases} for target in site['timeline_view']['item_aliases'].values())
-print('Validated 33 confirmed point events, 8 separate processes and synchronized catalog availability.')
+assert all(target in process_ids|event_ids|{p['id'] for p in story['assumptions']['principles']}|{p['id'] for p in phases} for target in site['timeline_view']['item_aliases'].values())
+print('Validated 34 point events, 3 parent processes and 4 subprocesses and synchronized catalog availability.')
+
+# Each top-level process has one lane; nested processes inherit their parent lane.
+assigned_processes=[x for lane in lanes for x in lane.get('process_refs',[])]
+assert len(assigned_processes)==len(set(assigned_processes))==3
+assert set(assigned_processes)=={p['id'] for p in story['processes']}
+assert 'timeline2' not in page_ids
+study=next(p for p in story['processes'] if p['id']=='process.economics_studies')
+assert len(study['subprocesses'])==4
+for child in study['subprocesses']:
+ assert study['period']['start']<=child['period']['start']<=child['period']['end']<=study['period']['end']
+assert by['event.us_nyse_start']['date']['start']=='1972-03-01'
+assert by['event.us_nyse_start']['related_event_refs']==['event.lottery']
+for name in ['organization_buildout','market_monitoring','market_expansion']:
+ assert 'process.'+name not in process_ids
+ assert any(p['id']=='assumption.'+name for p in story['assumptions']['principles'])
+print('Validated nested academic years, migrated assumptions and timeline navigation.')

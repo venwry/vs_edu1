@@ -110,6 +110,107 @@
                   ],
                   "additionalProperties": false
                 }
+              },
+              "context": {
+                "type": "object",
+                "properties": {
+                  "period": {
+                    "$ref": "#/$defs/date"
+                  },
+                  "phase_refs": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^phase\\."
+                    }
+                  },
+                  "outcomes": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "description"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "agreement_terms": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/term"
+                    }
+                  },
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "null"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "minimum": {
+                                  "type": "number"
+                                },
+                                "maximum": {
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "minimum",
+                                "maximum"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "unit": {
+                          "type": "string"
+                        },
+                        "qualifier": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "value",
+                        "unit",
+                        "qualifier"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "product_refs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "related_event_refs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "additionalProperties": false
               }
             },
             "required": [
@@ -373,7 +474,24 @@
           ]
         },
         "date": {
-          "$ref": "#/$defs/date"
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string",
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            "end": {
+              "type": "string",
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "start",
+            "end"
+          ],
+          "additionalProperties": false
         },
         "participants": {
           "type": "array",
@@ -660,6 +778,18 @@
             "type": "string",
             "pattern": "^phase\\."
           }
+        },
+        "subprocesses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/process"
+          }
+        },
+        "date_basis": {
+          "enum": [
+            "provisional",
+            "verified"
+          ]
         }
       },
       "required": [

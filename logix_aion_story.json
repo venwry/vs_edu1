@@ -234,6 +234,102 @@
           "actor.paterson",
           "actor.microsoft"
         ]
+      },
+      {
+        "id": "assumption.organization_buildout",
+        "title": "Engineering and manufacturing organization buildout",
+        "description": "Hire staff, establish software-development environments, computer manufacturing and R&D, and a conservative semiconductor operation.",
+        "actor_refs": [
+          "actor.adam",
+          "actor.logix",
+          "actor.labs",
+          "actor.aion"
+        ],
+        "context": {
+          "period": {
+            "start": null,
+            "end": null,
+            "precision": "unspecified",
+            "qualifier": "Before NCC 1978",
+            "display": "Before NCC 1978"
+          },
+          "phase_refs": [
+            "phase.prepare_aurelia"
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.aurelia"
+          ],
+          "related_event_refs": []
+        }
+      },
+      {
+        "id": "assumption.market_monitoring",
+        "title": "Other companies monitor the market",
+        "description": "Actively monitor Logix/AION without significant decisions or actions yet.",
+        "actor_refs": [
+          "actor.others"
+        ],
+        "context": {
+          "period": {
+            "start": null,
+            "end": null,
+            "precision": "unspecified",
+            "qualifier": "Post-NCC 1978 response period",
+            "display": "Post-NCC 1978 response period"
+          },
+          "phase_refs": [
+            "phase.ncc78"
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        }
+      },
+      {
+        "id": "assumption.market_expansion",
+        "title": "US personal-computer market expansion",
+        "description": "Contribute through product availability, computer popularization, seamless peripherals and accessible interfaces.",
+        "actor_refs": [
+          "actor.customers",
+          "actor.logix",
+          "actor.academy"
+        ],
+        "context": {
+          "period": {
+            "start": null,
+            "end": null,
+            "precision": "unspecified",
+            "qualifier": "Post-NCC 1978 response period",
+            "display": "Post-NCC 1978 response period"
+          },
+          "phase_refs": [
+            "phase.ncc78"
+          ],
+          "outcomes": [
+            {
+              "description": "US personal-computer market is larger than in the base scenario."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [
+            {
+              "name": "market_size_increase",
+              "value": {
+                "minimum": 10,
+                "maximum": 15
+              },
+              "unit": "percent",
+              "qualifier": "relative to base scenario"
+            }
+          ],
+          "product_refs": [],
+          "related_event_refs": []
+        }
       }
     ],
     "conventions": {
@@ -264,10 +360,7 @@
           "event_type": "premise",
           "date": {
             "start": "2025-12-07",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "2025-12-07"
+            "end": "2025-12-07"
           },
           "participants": [
             {
@@ -302,10 +395,7 @@
           "event_type": "action",
           "date": {
             "start": "1972-01-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1972-01-01"
+            "end": "1972-01-01"
           },
           "participants": [
             {
@@ -337,14 +427,11 @@
         },
         {
           "id": "event.lottery",
-          "title": "Lottery win and move to the US",
+          "title": "Lottery win and US relocation preparations",
           "event_type": "action",
           "date": {
             "start": "1972-02-06",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1972-02-06"
+            "end": "1972-02-06"
           },
           "participants": [
             {
@@ -357,7 +444,7 @@
               "actor_refs": [
                 "actor.adam"
               ],
-              "description": "Leaves the UK, wins Germany’s LOTTO 6aus49 using foreknowledge, exchanges the winnings and moves to the US."
+              "description": "Leaves the UK, wins Germany’s LOTTO 6aus49 using foreknowledge, exchanges the winnings and prepares to move to the US."
             }
           ],
           "outcomes": [],
@@ -382,15 +469,46 @@
           ]
         },
         {
+          "id": "event.us_nyse_start",
+          "title": "Move to the US and start of NYSE investing",
+          "event_type": "action",
+          "date": {
+            "start": "1972-03-01",
+            "end": "1972-03-01"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "protagonist"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "description": "Moves to the US and begins investing and speculating on the NYSE using secret foreknowledge."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "Rapid multiplication of Adam’s wealth through NYSE investing and speculation."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.lottery"
+          ]
+        },
+        {
           "id": "event.office",
           "title": "Investment-data office established",
           "event_type": "organization",
           "date": {
             "start": "1973-01-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1973-01-01"
+            "end": "1973-01-01"
           },
           "participants": [
             {
@@ -449,10 +567,7 @@
           "event_type": "organization",
           "date": {
             "start": "1975-01-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1975-01-01"
+            "end": "1975-01-01"
           },
           "participants": [
             {
@@ -492,10 +607,7 @@
           "event_type": "organization",
           "date": {
             "start": "1975-02-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1975-02-01"
+            "end": "1975-02-01"
           },
           "participants": [
             {
@@ -527,10 +639,7 @@
           "event_type": "agreement",
           "date": {
             "start": "1976-09-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1976-09-01"
+            "end": "1976-09-01"
           },
           "participants": [
             {
@@ -578,10 +687,7 @@
           "event_type": "offer",
           "date": {
             "start": "1977-02-15",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1977-02-15"
+            "end": "1977-02-15"
           },
           "participants": [
             {
@@ -641,10 +747,7 @@
           "event_type": "recruitment",
           "date": {
             "start": "1977-06-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1977-06-01"
+            "end": "1977-06-01"
           },
           "participants": [
             {
@@ -680,10 +783,7 @@
           "event_type": "recruitment",
           "date": {
             "start": "1977-07-15",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1977-07-15"
+            "end": "1977-07-15"
           },
           "participants": [
             {
@@ -719,10 +819,7 @@
           "event_type": "agreement",
           "date": {
             "start": "1977-09-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1977-09-01"
+            "end": "1977-09-01"
           },
           "participants": [
             {
@@ -758,10 +855,7 @@
           "event_type": "agreement",
           "date": {
             "start": "1978-02-05",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1978-02-05"
+            "end": "1978-02-05"
           },
           "participants": [
             {
@@ -808,10 +902,7 @@
           "event_type": "organization",
           "date": {
             "start": "1978-03-25",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1978-03-25"
+            "end": "1978-03-25"
           },
           "participants": [
             {
@@ -856,10 +947,7 @@
           "event_type": "launch",
           "date": {
             "start": "1978-06-05",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1978-06-05"
+            "end": "1978-06-05"
           },
           "participants": [
             {
@@ -904,10 +992,7 @@
           "event_type": "launch",
           "date": {
             "start": "1978-06-05",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1978-06-05"
+            "end": "1978-06-05"
           },
           "participants": [
             {
@@ -948,10 +1033,7 @@
           "event_type": "service_launch",
           "date": {
             "start": "1978-06-12",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1978-06-12"
+            "end": "1978-06-12"
           },
           "participants": [
             {
@@ -984,10 +1066,7 @@
           "event_type": "agreement",
           "date": {
             "start": "1978-09-12",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1978-09-12"
+            "end": "1978-09-12"
           },
           "participants": [
             {
@@ -1117,10 +1196,7 @@
           "event_type": "market_response",
           "date": {
             "start": "1978-10-15",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1978-10-15"
+            "end": "1978-10-15"
           },
           "participants": [
             {
@@ -1148,10 +1224,7 @@
           "event_type": "commitment",
           "date": {
             "start": "1978-11-10",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1978-11-10"
+            "end": "1978-11-10"
           },
           "participants": [
             {
@@ -1184,10 +1257,7 @@
           "event_type": "market_response",
           "date": {
             "start": "1979-01-16",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-01-16"
+            "end": "1979-01-16"
           },
           "participants": [
             {
@@ -1230,10 +1300,7 @@
           "event_type": "agreement",
           "date": {
             "start": "1979-02-08",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-02-08"
+            "end": "1979-02-08"
           },
           "participants": [
             {
@@ -1319,10 +1386,7 @@
           "event_type": "release",
           "date": {
             "start": "1979-05-05",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-05-05"
+            "end": "1979-05-05"
           },
           "participants": [
             {
@@ -1374,10 +1438,7 @@
           "event_type": "launch",
           "date": {
             "start": "1979-06-04",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-06-04"
+            "end": "1979-06-04"
           },
           "participants": [
             {
@@ -1420,10 +1481,7 @@
           "event_type": "launch",
           "date": {
             "start": "1979-06-04",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-06-04"
+            "end": "1979-06-04"
           },
           "participants": [
             {
@@ -1453,10 +1511,7 @@
           "event_type": "development",
           "date": {
             "start": "1979-07-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-07-01"
+            "end": "1979-07-01"
           },
           "participants": [
             {
@@ -1493,10 +1548,7 @@
           "event_type": "development",
           "date": {
             "start": "1979-07-01",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-07-01"
+            "end": "1979-07-01"
           },
           "participants": [
             {
@@ -1542,10 +1594,7 @@
           "event_type": "market_response",
           "date": {
             "start": "1979-07-05",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-07-05"
+            "end": "1979-07-05"
           },
           "participants": [
             {
@@ -1587,10 +1636,7 @@
           "event_type": "launch",
           "date": {
             "start": "1979-12-03",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-12-03"
+            "end": "1979-12-03"
           },
           "participants": [
             {
@@ -1643,10 +1689,7 @@
           "event_type": "plan",
           "date": {
             "start": "1979-12-10",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1979-12-10"
+            "end": "1979-12-10"
           },
           "participants": [
             {
@@ -1733,10 +1776,7 @@
           "event_type": "launch",
           "date": {
             "start": "1980-03-15",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1980-03-15"
+            "end": "1980-03-15"
           },
           "participants": [
             {
@@ -1789,10 +1829,7 @@
           "event_type": "launch",
           "date": {
             "start": "1980-05-19",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1980-05-19"
+            "end": "1980-05-19"
           },
           "participants": [
             {
@@ -1854,10 +1891,7 @@
           "event_type": "release_and_policy",
           "date": {
             "start": "1980-11-19",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1980-11-19"
+            "end": "1980-11-19"
           },
           "participants": [
             {
@@ -1909,10 +1943,7 @@
           "event_type": "launch",
           "date": {
             "start": "1981-05-04",
-            "end": null,
-            "precision": "day",
-            "qualifier": "Confirmed by the author",
-            "display": "1981-05-04"
+            "end": "1981-05-04"
           },
           "participants": [
             {
@@ -1984,225 +2015,164 @@
       "metrics": [],
       "product_refs": [],
       "related_event_refs": [
-        "event.lottery"
+        "event.us_nyse_start"
       ],
       "period": {
-        "start": null,
-        "end": null,
-        "precision": "unspecified",
-        "qualifier": "After relocation to the US",
-        "display": "After relocation to the US"
-      },
-      "phase_refs": [
-        "phase.foundations"
-      ]
-    },
-    {
-      "id": "process.nyse_speculation",
-      "title": "NYSE speculation",
-      "participants": [
-        {
-          "actor_ref": "actor.adam",
-          "role": "investor"
-        }
-      ],
-      "actions": [
-        {
-          "actor_refs": [
-            "actor.adam"
-          ],
-          "description": "Multiplies his funds through NYSE speculation using secret foreknowledge."
-        }
-      ],
-      "outcomes": [],
-      "agreement_terms": [],
-      "metrics": [],
-      "product_refs": [],
-      "related_event_refs": [
-        "event.lottery"
-      ],
-      "period": {
-        "start": null,
-        "end": null,
-        "precision": "unspecified",
-        "qualifier": "After relocation to the US",
-        "display": "After relocation to the US"
-      },
-      "phase_refs": [
-        "phase.foundations"
-      ]
-    },
-    {
-      "id": "process.international_investment",
-      "title": "International investment expansion",
-      "participants": [
-        {
-          "actor_ref": "actor.adam",
-          "role": "investor"
-        }
-      ],
-      "actions": [
-        {
-          "actor_refs": [
-            "actor.adam"
-          ],
-          "description": "Expands investments to London, Frankfurt, Hong Kong and Tokyo stock exchanges."
-        }
-      ],
-      "outcomes": [],
-      "agreement_terms": [],
-      "metrics": [],
-      "product_refs": [],
-      "related_event_refs": [],
-      "period": {
-        "start": "1973",
-        "end": "1975",
+        "start": "1972-09-25",
+        "end": "1976-06-17",
         "precision": "range",
-        "qualifier": "",
-        "display": "1973–1975"
+        "display": "1972-09-25 – 1976-06-17",
+        "qualifier": "Provisional fall start: inferred from the contemporary late-September calendar; exact 1972/1973 opening day remains unverified. Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
       },
       "phase_refs": [
         "phase.foundations",
         "phase.prepare_aurelia"
-      ]
-    },
-    {
-      "id": "process.organization_buildout",
-      "title": "Engineering and manufacturing organization buildout",
-      "participants": [
-        {
-          "actor_ref": "actor.adam",
-          "role": "organizer"
-        },
-        {
-          "actor_ref": "actor.logix",
-          "role": "developer"
-        },
-        {
-          "actor_ref": "actor.labs",
-          "role": "developer"
-        },
-        {
-          "actor_ref": "actor.aion",
-          "role": "developer"
-        }
       ],
-      "actions": [
+      "date_basis": "provisional",
+      "subprocesses": [
         {
-          "actor_refs": [
-            "actor.adam",
-            "actor.logix",
-            "actor.labs",
-            "actor.aion"
+          "id": "process.harvard_year_1",
+          "title": "Harvard Economics Bachelor Yr 1",
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "student"
+            }
           ],
-          "description": "Hire staff, establish software-development environments, computer manufacturing and R&D, and a conservative semiconductor operation."
-        }
-      ],
-      "outcomes": [],
-      "agreement_terms": [],
-      "metrics": [],
-      "product_refs": [
-        "computer.aurelia"
-      ],
-      "related_event_refs": [],
-      "period": {
-        "start": null,
-        "end": null,
-        "precision": "unspecified",
-        "qualifier": "Before NCC 1978",
-        "display": "Before NCC 1978"
-      },
-      "phase_refs": [
-        "phase.prepare_aurelia"
-      ]
-    },
-    {
-      "id": "process.market_monitoring",
-      "title": "Other companies monitor the market",
-      "participants": [
-        {
-          "actor_ref": "actor.others",
-          "role": "observers"
-        }
-      ],
-      "actions": [
-        {
-          "actor_refs": [
-            "actor.others"
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "description": "Completes year 1 of the Harvard economics bachelor program (1972–1973)."
+            }
           ],
-          "description": "Actively monitor Logix/AION without significant decisions or actions yet."
-        }
-      ],
-      "outcomes": [],
-      "agreement_terms": [],
-      "metrics": [],
-      "product_refs": [],
-      "related_event_refs": [],
-      "period": {
-        "start": null,
-        "end": null,
-        "precision": "unspecified",
-        "qualifier": "Post-NCC 1978 response period",
-        "display": "Post-NCC 1978 response period"
-      },
-      "phase_refs": [
-        "phase.ncc78"
-      ]
-    },
-    {
-      "id": "process.market_expansion",
-      "title": "US personal-computer market expansion",
-      "participants": [
-        {
-          "actor_ref": "actor.customers",
-          "role": "market"
-        },
-        {
-          "actor_ref": "actor.logix",
-          "role": "contributor"
-        },
-        {
-          "actor_ref": "actor.academy",
-          "role": "contributor"
-        }
-      ],
-      "actions": [
-        {
-          "actor_refs": [
-            "actor.logix",
-            "actor.academy"
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.us_nyse_start"
           ],
-          "description": "Contribute through product availability, computer popularization, seamless peripherals and accessible interfaces."
-        }
-      ],
-      "outcomes": [
-        {
-          "description": "US personal-computer market is larger than in the base scenario."
-        }
-      ],
-      "agreement_terms": [],
-      "metrics": [
-        {
-          "name": "market_size_increase",
-          "value": {
-            "minimum": 10,
-            "maximum": 15
+          "period": {
+            "start": "1972-09-25",
+            "end": "1973-06-14",
+            "precision": "range",
+            "display": "1972-09-25 – 1973-06-14",
+            "qualifier": "Provisional fall start: inferred from the contemporary late-September calendar; exact 1972/1973 opening day remains unverified. Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
           },
-          "unit": "percent",
-          "qualifier": "relative to base scenario"
+          "phase_refs": [
+            "phase.foundations"
+          ],
+          "date_basis": "provisional"
+        },
+        {
+          "id": "process.harvard_year_2",
+          "title": "Harvard Economics Bachelor Yr 2",
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "student"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "description": "Completes year 2 of the Harvard economics bachelor program (1973–1974)."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.us_nyse_start"
+          ],
+          "period": {
+            "start": "1973-09-24",
+            "end": "1974-06-13",
+            "precision": "range",
+            "display": "1973-09-24 – 1974-06-13",
+            "qualifier": "Provisional fall start: inferred from the contemporary late-September calendar; exact 1972/1973 opening day remains unverified. Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
+          },
+          "phase_refs": [
+            "phase.foundations"
+          ],
+          "date_basis": "provisional"
+        },
+        {
+          "id": "process.harvard_year_3",
+          "title": "Harvard Economics Bachelor Yr 3",
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "student"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "description": "Completes year 3 of the Harvard economics bachelor program (1974–1975)."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.us_nyse_start"
+          ],
+          "period": {
+            "start": "1974-09-23",
+            "end": "1975-06-12",
+            "precision": "range",
+            "display": "1974-09-23 – 1975-06-12",
+            "qualifier": "Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
+          },
+          "phase_refs": [
+            "phase.foundations",
+            "phase.prepare_aurelia"
+          ]
+        },
+        {
+          "id": "process.harvard_year_4",
+          "title": "Harvard Economics Bachelor Yr 4",
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "student"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "description": "Completes year 4 of the Harvard economics bachelor program (1975–1976)."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.us_nyse_start"
+          ],
+          "period": {
+            "start": "1975-09-22",
+            "end": "1976-06-17",
+            "precision": "range",
+            "display": "1975-09-22 – 1976-06-17",
+            "qualifier": "Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
+          },
+          "phase_refs": [
+            "phase.prepare_aurelia"
+          ]
         }
-      ],
-      "product_refs": [],
-      "related_event_refs": [],
-      "period": {
-        "start": null,
-        "end": null,
-        "precision": "unspecified",
-        "qualifier": "Post-NCC 1978 response period",
-        "display": "Post-NCC 1978 response period"
-      },
-      "phase_refs": [
-        "phase.ncc78"
       ]
     },
     {

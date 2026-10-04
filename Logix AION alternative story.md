@@ -1,6 +1,6 @@
 # Calendar phases, confirmed events and processes
 
-The dates below are author-confirmed. Processes are separate from point events; their phase membership is contextual and does not invent unspecified start or end dates. The 2025-12-07 origin remains an out-of-period prologue associated with phase one.
+Point-event dates are author-confirmed. Academic-year dates and remaining provisional boundaries are documented in HARVARD_ACADEMIC_DATES.md. The 2025 origin remains a prologue.
 
 ## 1. Adam studying and investing on stock market
 
@@ -10,14 +10,17 @@ The dates below are author-confirmed. Processes are separate from point events; 
 
 - 2025-12-07 — Vincent gains time-travel powers (`event.power`)
 - 1972-01-01 — Arrival and assumption of Adam’s identity (`event.identity`)
-- 1972-02-06 — Lottery win and move to the US (`event.lottery`)
+- 1972-02-06 — Lottery win and US relocation preparations (`event.lottery`)
+- 1972-03-01 — Move to the US and start of NYSE investing (`event.us_nyse_start`)
 - 1973-01-01 — Investment-data office established (`event.office`)
 
 ### Processes
 
-- Economics studies — After relocation to the US (`process.economics_studies`)
-- NYSE speculation — After relocation to the US (`process.nyse_speculation`)
-- International investment expansion — 1973–1975 (`process.international_investment`)
+- Economics studies — 1972-09-25 – 1976-06-17 (`process.economics_studies`)
+  - Harvard Economics Bachelor Yr 1 — 1972-09-25 – 1973-06-14 (provisional fall start) (`process.harvard_year_1`)
+  - Harvard Economics Bachelor Yr 2 — 1973-09-24 – 1974-06-13 (provisional fall start) (`process.harvard_year_2`)
+  - Harvard Economics Bachelor Yr 3 — 1974-09-23 – 1975-06-12 (`process.harvard_year_3`)
+  - Harvard Economics Bachelor Yr 4 — 1975-09-22 – 1976-06-17 (`process.harvard_year_4`)
 
 ## 2. Preparing first products and their ecosystem
 
@@ -37,8 +40,11 @@ The dates below are author-confirmed. Processes are separate from point events; 
 
 ### Processes
 
-- International investment expansion — 1973–1975 (`process.international_investment`)
-- Engineering and manufacturing organization buildout — Before NCC 1978 (`process.organization_buildout`)
+- Economics studies — 1972-09-25 – 1976-06-17 (`process.economics_studies`)
+  - Harvard Economics Bachelor Yr 1 — 1972-09-25 – 1973-06-14 (provisional fall start) (`process.harvard_year_1`)
+  - Harvard Economics Bachelor Yr 2 — 1973-09-24 – 1974-06-13 (provisional fall start) (`process.harvard_year_2`)
+  - Harvard Economics Bachelor Yr 3 — 1974-09-23 – 1975-06-12 (`process.harvard_year_3`)
+  - Harvard Economics Bachelor Yr 4 — 1975-09-22 – 1976-06-17 (`process.harvard_year_4`)
 
 ## 3. Aurelia premiere and first months of sales
 
@@ -55,11 +61,6 @@ The dates below are author-confirmed. Processes are separate from point events; 
 - 1979-01-16 — Apple partners with Peachtree (`event.apple_peachtree`)
 - 1979-02-08 — Logix and Apple agree limited technical cooperation (`event.apple_cooperation`)
 - 1979-05-05 — Portable CP/M extensions released (`event.dri_release`)
-
-### Processes
-
-- Other companies monitor the market — Post-NCC 1978 response period (`process.market_monitoring`)
-- US personal-computer market expansion — Post-NCC 1978 response period (`process.market_expansion`)
 
 ## 4. Apple extensions and market expansion
 
@@ -115,7 +116,13 @@ The dates below are author-confirmed. Processes are separate from point events; 
 
 - 1981-05-04 — Networked business-computing platform presented (`event.network_launch`)
 
-See [PHASE_DATE_REVIEW.md](PHASE_DATE_REVIEW.md) for the confirmed-date and classification record.
+## Reclassified assumptions
+
+- Engineering and manufacturing organization buildout (`assumption.organization_buildout`): Hire staff, establish software-development environments, computer manufacturing and R&D, and a conservative semiconductor operation.
+- Other companies monitor the market (`assumption.market_monitoring`): Actively monitor Logix/AION without significant decisions or actions yet.
+- US personal-computer market expansion (`assumption.market_expansion`): Contribute through product availability, computer popularization, seamless peripherals and accessible interfaces.
+
+See PHASE_DATE_REVIEW.md for the classification record.
 
 ---
 
@@ -130,7 +137,7 @@ This an alternative reality story to be analsysed:
 There is an 19yrs old individual who gained on 2025-12-07 a special power letting him to travel in time.  
 Vincent time travels to 1972-01-01, he obtains the identity of 19yrs old Adam Pleskot living in UK that looks very similar to him. Adam after graduating from high school, has just died along with his parents in a car accident, so time traveler was able to replace Adam before anybody noticed. Let’s start calling time traveler Adam from this moment on.
 
-On 1972-02-06 Adam leaves UK and goes to Germany where he wins LOTTO 6aus49 1 million DM (using his superpower), he exchanges it into ~310000\$ and moves to US. In US he starts bachelor degree studies of economics on Harvard. In parallel to that he speculates on NYSE and multiplies his money, he uses his special time-travel abilities foresee the future and keeps it in secret.
+On 1972-02-06 Adam leaves UK and goes to Germany where he wins LOTTO 6aus49 1 million DM (using his superpower), he exchanges it into ~310000\$ and prepares to relocate. On 1972-03-01 he moves to the US and begins NYSE investing and speculation, rapidly multiplying his wealth. His four-year Harvard economics studies run from autumn 1972 through June 1976, with annual study periods detailed in the index above (the first two fall start dates remain provisional). In parallel to that he speculates on NYSE and multiplies his money, he uses his special time-travel abilities foresee the future and keeps it in secret.
 
 He starts on 1973-01-01 a small office with 3 workers and PDP-11/40 setup with 3 terminals. Workers manually capture NY Times information about NYSE stock market prices, sales and other statistics, they also capture in the form of measures sentiments for NYSE companies and their markets based on articles in the newspapers. These captured data can be analyzed and used for predictions. Adam will use prediction algorithms as a fake justification for unusual successes in investing.
 
@@ -279,3 +286,5 @@ On 1980-11-19 AION presents Artemis-exclusive Abacus 3.0 and Pulse 3.0. From thi
 On 1981-05-04 Logix presents its TCP/IP networking platform, the Artemis PRO server, networking upgrades for both Aurelia CP/M and Artemis/AIONix, and a new client-server generation of BPI built around a robust relational database. Networking becomes part of the standard Artemis direction rather than an isolated peripheral feature.
 
 
+
+Event dates contain only `start` and `end` (ISO dates); single-day events have equal endpoints. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.

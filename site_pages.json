@@ -339,8 +339,8 @@
     {
       "id": "timeline",
       "path": "timeline.html",
-      "title": "Timeline",
-      "description": "Follow Adam, his companies, their partners and competitors through a visual timeline of the alternative computing history.",
+      "title": "Timeline (original)",
+      "description": "Explore events, continuous phases and ongoing processes across the calendar.",
       "record_refs": [],
       "kind": "timeline",
       "aliases": [
@@ -397,10 +397,10 @@
     "eyebrow": "Alternative history / Swimlane timeline",
     "board_label": "Calendar timeline: equal years downward, parties across",
     "axis_label": "Year / Phase",
-    "instructions": "Select an event or phase to read its details on the left. Scroll down through equal year sections, or sideways on narrower screens. Ongoing activities appear in separate phase Processes lists below.",
-    "scale_note": "Each year has the same height. All event cards use author-confirmed dates and are spaced to avoid overlaps within their year. The 2025 origin is separate. Ongoing activities are listed under Processes for each relevant phase; unknown process durations are not plotted as dated events.",
-    "details_label": "Event or phase details",
-    "select_hint": "Select an event or phase on the right to explore its details.",
+    "instructions": "Select an event, phase or process to read its details on the left. Scroll down through equal year sections, or sideways through the party lanes.",
+    "scale_note": "Every year has equal height. Phases and processes are single continuous blocks across year boundaries. Dashed process blocks are approximate display envelopes derived from phase context, not confirmed start/end dates. Event cards are spaced to avoid overlap; the 2025 origin is separate.",
+    "details_label": "Event, phase or process details",
+    "select_hint": "Select an event, phase or process on the right.",
     "lanes": [
       {
         "id": "adam",
@@ -416,11 +416,15 @@
           "event.power",
           "event.identity",
           "event.lottery",
+          "event.us_nyse_start",
           "event.office",
           "event.companies",
           "event.facility",
           "event.letwin",
           "event.paterson"
+        ],
+        "process_refs": [
+          "process.economics_studies"
         ]
       },
       {
@@ -441,6 +445,9 @@
           "event.cpm_bridge",
           "event.artemis_launch",
           "event.network_launch"
+        ],
+        "process_refs": [
+          "process.artemis_engineering"
         ]
       },
       {
@@ -457,7 +464,8 @@
           "event.aionix_agreement",
           "event.artemis_software",
           "event.software32"
-        ]
+        ],
+        "process_refs": []
       },
       {
         "id": "partners",
@@ -477,7 +485,8 @@
           "event.dri_portable",
           "event.basic_launch",
           "event.dri_release"
-        ]
+        ],
+        "process_refs": []
       },
       {
         "id": "apple",
@@ -492,6 +501,9 @@
           "event.apple_peachtree",
           "event.apple_cooperation",
           "event.apple_business"
+        ],
+        "process_refs": [
+          "process.apple_compatibility"
         ]
       },
       {
@@ -506,7 +518,8 @@
         "event_refs": [
           "event.ibm_investigate",
           "event.ibm_project"
-        ]
+        ],
+        "process_refs": []
       }
     ],
     "group_label": "events · expand",
@@ -516,13 +529,16 @@
       "phase.before_ncc80": "phase.comdex79"
     },
     "item_aliases": {
-      "event.harvard": "phase.foundations",
-      "event.exchanges": "process.international_investment",
-      "event.setup": "process.organization_buildout",
-      "event.others_monitor": "process.market_monitoring",
-      "event.market_growth": "process.market_expansion",
+      "event.harvard": "process.economics_studies",
+      "event.setup": "assumption.organization_buildout",
+      "event.others_monitor": "assumption.market_monitoring",
+      "event.market_growth": "assumption.market_expansion",
       "event.apple_policy": "process.apple_compatibility",
-      "event.artemis_engineering": "process.artemis_engineering"
+      "event.artemis_engineering": "process.artemis_engineering",
+      "process.nyse_speculation": "event.us_nyse_start",
+      "process.organization_buildout": "assumption.organization_buildout",
+      "process.market_monitoring": "assumption.market_monitoring",
+      "process.market_expansion": "assumption.market_expansion"
     }
   }
 }
