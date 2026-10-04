@@ -78,6 +78,7 @@ function timelineEvents(){
  const processes=story.processes.filter(p=>(!phase||p.phase_refs.includes(phase))&&(!type||type==='process')&&matches(p));
  const events=groups.flatMap(p=>p.events),visibleGroups=groups.filter(p=>p.events.length||processes.some(proc=>proc.phase_refs.includes(p.id))||(!query&&!actor&&!type));
  document.getElementById('timeline-board').innerHTML=events.length||processes.length||visibleGroups.length?calendarBoard(visibleGroups,processes):`<p class="timeline-empty">${esc(site.labels.empty)}</p>`;
+ setupLaneControls();
  document.getElementById('timeline-events').innerHTML=events.map(eventDetails).join('');
  document.getElementById('site-status').textContent=events.length+' events · '+processes.length+' processes · '+visibleGroups.length+' phases';
  document.getElementById('event-hint').hidden=expanded;
@@ -93,6 +94,37 @@ function timelineEvents(){
  else if(events.length)selectEvent(events[0].id);
  else if(processes.length)selectProcess(processes[0].id);
  decorate();
+}
+// Keep widths and collapse state while filters rebuild the calendar.
+const laneSizes=new Map();
+function setupLaneControls(){
+ const grid=document.querySelector('.continuous-calendar');if(!grid)return;
+ const heads=[...grid.querySelectorAll('[data-lane-heading]')];
+ for(const head of heads){const id=head.dataset.laneHeading;if(!laneSizes.has(id))laneSizes.set(id,{width:Math.max(Number(head.dataset.defaultWidth),head.getBoundingClientRect().width),min:Number(head.dataset.minWidth),collapsed:false});}
+ const apply=()=>{
+  const sizes=heads.map(head=>{const id=head.dataset.laneHeading,state=laneSizes.get(id),button=head.querySelector('.lane-toggle'),handle=head.querySelector('.lane-resize');
+   head.classList.toggle('lane-collapsed',state.collapsed);
+   button.textContent=state.collapsed?'＋':'−';button.setAttribute('aria-expanded',String(!state.collapsed));button.setAttribute('aria-label',(state.collapsed?'Expand ':'Collapse ')+head.dataset.title);button.title=button.getAttribute('aria-label');
+   handle.hidden=state.collapsed;handle.setAttribute('aria-valuenow',String(Math.round(state.width)));handle.setAttribute('aria-valuemin',String(state.min));
+   const cell=[...grid.querySelectorAll('.calendar-cell')].find(el=>el.dataset.lane===id);cell.classList.toggle('lane-collapsed',state.collapsed);
+   for(const child of cell.children)child.hidden=state.collapsed;
+   document.querySelectorAll('.origin-event').forEach(el=>{if(el.dataset.lane===id)el.hidden=state.collapsed;});
+   return state.collapsed?32:state.width;
+  });
+  grid.style.gridTemplateColumns='64px 200px '+sizes.map(n=>n+'px').join(' ');grid.style.width=grid.style.minWidth=(264+sizes.reduce((a,b)=>a+b,0))+'px';
+ };
+ for(const head of heads){
+  const state=laneSizes.get(head.dataset.laneHeading),handle=head.querySelector('.lane-resize');
+  head.querySelector('.lane-toggle').addEventListener('click',()=>{state.collapsed=!state.collapsed;apply();});
+  handle.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home'].includes(e.key))return;e.preventDefault();state.width=e.key==='Home'?Number(head.dataset.defaultWidth):Math.max(state.min,state.width+(e.key==='ArrowRight'?20:-20));apply();});
+  handle.addEventListener('pointerdown',e=>{
+   if(e.button!==0||state.collapsed)return;e.preventDefault();const start=e.clientX,width=state.width;handle.setPointerCapture?.(e.pointerId);document.body.classList.add('resizing-lane');
+   const move=event=>{if(event.pointerId!==e.pointerId)return;state.width=Math.max(state.min,width+event.clientX-start);apply();};
+   const stop=event=>{if(event.pointerId!==e.pointerId)return;document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',stop);document.removeEventListener('pointercancel',stop);handle.removeEventListener('lostpointercapture',stop);document.body.classList.remove('resizing-lane');};
+   document.addEventListener('pointermove',move);document.addEventListener('pointerup',stop);document.addEventListener('pointercancel',stop);handle.addEventListener('lostpointercapture',stop);
+  });
+ }
+ apply();
 }
 function calendarBoard(groups,processes){
  const v=site.timeline_view,lanes=v.lanes,M=AtlasTimeline;
@@ -116,9 +148,9 @@ function calendarBoard(groups,processes){
    const nested=(p.subprocesses||[]).map(child=>{const cs=M.processSpan(child,story);return `<button class="calendar-process calendar-subprocess${cs.approximate?' approximate':''}" id="${esc(child.id)}" data-select-process="${esc(child.id)}" data-start="${cs.startDate}" data-end="${cs.endDate}" aria-pressed="false" aria-controls="process-inspection" style="top:${y(cs.start)-y(span.start)}px;height:${y(cs.end)-y(cs.start)}px" title="${esc(child.period.qualifier)}"><span class="span-label"><strong>${esc(child.title)}</strong><small>${esc(date(child.period))}</small>${cs.approximate?'<small>Provisional dates</small>':''}</span></button>`;}).join('');
    return `<div class="calendar-process process-group${span.approximate?' approximate':''}" id="${esc(p.id)}" data-start="${span.startDate}" data-end="${span.endDate}" data-approximate="${span.approximate}" style="left:${track*widths[n]+4}px;top:${y(span.start)}px;height:${y(span.end)-y(span.start)}px;width:${widths[n]-8}px"><button class="process-parent" data-select-process="${esc(p.id)}" aria-pressed="false" aria-controls="process-inspection" style="width:${nested?'104px':'100%'}" title="${esc(p.title+' — '+date(p.period)+' — '+span.basis)}"><span class="span-label"><small>PROCESS${span.approximate?' · approximate':''}</small><strong>${esc(p.title)}</strong><small>${esc(date(p.period))}</small></span></button>${nested}</div>`;
   }).join('');
-  return `<div class="calendar-cell lane-${n}" data-lane="${esc(l.id)}"><div class="lane-events" style="right:${counts[n]*widths[n]}px">${eventCards}</div><div class="lane-processes" style="width:${counts[n]*widths[n]}px">${bars}</div></div>`;
+  return `<div class="calendar-cell lane-${n}" id="lane-body-${n}" data-lane="${esc(l.id)}"><div class="lane-events" style="right:${counts[n]*widths[n]}px">${eventCards}</div><div class="lane-processes" style="width:${counts[n]*widths[n]}px">${bars}</div></div>`;
  }).join('');
- return `${outside.length?`<div class="timeline-origin"><span class="eyebrow">Story origin · outside the calendar below</span>${outside.map(x=>`<div class="origin-event lane-${lanes.findIndex(l=>l.id===eventLane(x.e).id)}" data-lane="${esc(eventLane(x.e).id)}">${card(x)}</div>`).join('')}</div>`:''}<div class="swim-scroll" tabindex="0" role="region" aria-label="${esc(v.board_label)}"><div class="calendar-grid continuous-calendar" style="grid-template-columns:${columns};--year-height:${height}px;--calendar-height:${total}px;min-width:${264+counts.reduce((sum,n,i)=>sum+170+n*widths[i],0)}px"><div class="calendar-axis">Year</div><div class="calendar-axis">Phase</div>${lanes.map((l,i)=>`<div class="swim-heading lane-${i}"><span class="lane-dot"></span><strong>${esc(l.title)}</strong></div>`).join('')}<div class="calendar-years">${Array.from({length:end-start+1},(_,i)=>`<div class="calendar-year" data-year="${start+i}">${start+i}</div>`).join('')}</div><div class="calendar-phases">${phases}</div>${laneBodies}</div></div>`;
+ return `${outside.length?`<div class="timeline-origin"><span class="eyebrow">Story origin · outside the calendar below</span>${outside.map(x=>`<div class="origin-event lane-${lanes.findIndex(l=>l.id===eventLane(x.e).id)}" data-lane="${esc(eventLane(x.e).id)}">${card(x)}</div>`).join('')}</div>`:''}<div class="swim-scroll" tabindex="0" role="region" aria-label="${esc(v.board_label)}"><div class="calendar-grid continuous-calendar" style="grid-template-columns:${columns};--year-height:${height}px;--calendar-height:${total}px;min-width:${264+counts.reduce((sum,n,i)=>sum+170+n*widths[i],0)}px"><div class="calendar-axis">Year</div><div class="calendar-axis">Phase</div>${lanes.map((l,i)=>`<div class="swim-heading lane-${i}" data-lane-heading="${esc(l.id)}" data-title="${esc(l.title)}" data-default-width="${170+counts[i]*widths[i]}" data-min-width="${120+counts[i]*widths[i]}"><button class="lane-toggle" type="button" aria-expanded="true" aria-controls="lane-body-${i}">−</button><span class="lane-dot"></span><strong>${esc(l.title)}</strong><div class="lane-resize" role="separator" aria-orientation="vertical" aria-label="Resize ${esc(l.title)} lane" tabindex="0" title="Drag to resize; arrow keys adjust width; Home resets"></div></div>`).join('')}<div class="calendar-years">${Array.from({length:end-start+1},(_,i)=>`<div class="calendar-year" data-year="${start+i}">${start+i}</div>`).join('')}</div><div class="calendar-phases">${phases}</div>${laneBodies}</div></div>`;
 }
 function openHash(){
  const rawId=decodeURIComponent(location.hash.slice(1)),id=site.timeline_view.item_aliases?.[rawId]||site.timeline_view.phase_aliases?.[rawId]||rawId;

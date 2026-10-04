@@ -63,3 +63,5 @@ Catalog v2.5 places the BPI suite and relational-engine premiere in the NCC 1978
 Legacy fragments for the three merged phases resolve to their replacement phases. The narrative includes the synchronized phase/event/process index and updated dates.
 
 
+
+Party lanes have draggable right-edge resize handles and collapse/expand buttons in their sticky headers. Collapsing hides all lane objects and leaves a 32px strip; expanding restores the previous width. Widths and collapsed states survive filtering and tab switches during the page session. Resize handles also support Left/Right arrows (20px steps) and Home (default width). Minimum widths keep event and process tracks from overlapping.

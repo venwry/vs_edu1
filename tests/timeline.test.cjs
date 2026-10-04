@@ -24,6 +24,21 @@ async function boot(file,hash=''){
  assert.equal(d.querySelectorAll('[data-select-process]').length,8);
  assert(!d.querySelector('#timeline-panel #assumptions'));
  assert(d.getElementById('assumptions-panel').hidden);
+ const head=d.querySelector('[data-lane-heading]'),toggle=head.querySelector('.lane-toggle'),handle=head.querySelector('.lane-resize'),grid=d.querySelector('.continuous-calendar');
+ const initial=Number(handle.getAttribute('aria-valuenow'));
+ const pointer=(target,type,x)=>{const event=new w.MouseEvent(type,{bubbles:true,clientX:x,button:0});Object.defineProperty(event,'pointerId',{value:7});target.dispatchEvent(event);};
+ pointer(handle,'pointerdown',100);pointer(d,'pointermove',180);pointer(d,'pointerup',180);
+ assert.equal(Number(handle.getAttribute('aria-valuenow')),initial+80);
+ assert(!d.body.classList.contains('resizing-lane'));
+ toggle.click();assert.equal(toggle.getAttribute('aria-expanded'),'false');assert.equal(grid.style.gridTemplateColumns.split(' ')[2],'32px');
+ const body=d.getElementById(toggle.getAttribute('aria-controls'));assert([...body.children].every(el=>el.hidden));
+ assert(d.querySelector('.origin-event').hidden);
+ toggle.click();assert.equal(Number(handle.getAttribute('aria-valuenow')),initial+80);assert([...body.children].every(el=>!el.hidden));
+ toggle.click();d.getElementById('event-search').dispatchEvent(new w.Event('input'));
+ const restored=d.querySelector('[data-lane-heading]');assert.equal(restored.querySelector('.lane-toggle').getAttribute('aria-expanded'),'false');
+ restored.querySelector('.lane-toggle').click();assert.equal(Number(restored.querySelector('.lane-resize').getAttribute('aria-valuenow')),initial+80);
+ restored.querySelector('.lane-resize').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Home',bubbles:true}));
+ assert.equal(Number(restored.querySelector('.lane-resize').getAttribute('aria-valuenow')),Number(restored.dataset.defaultWidth));
  const yearHeight=parseFloat(d.querySelector('.calendar-grid').style.getPropertyValue('--year-height'));
  for(const phase of story.phases){
   const node=d.getElementById(phase.id),M=w.AtlasTimeline;
