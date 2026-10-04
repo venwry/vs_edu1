@@ -21,7 +21,6 @@ Point-event dates are author-confirmed. Academic-year dates and remaining provis
   - Harvard Economics Bachelor Yr 2 — 1973-09-24 – 1974-06-13 (provisional fall start) (`process.harvard_year_2`)
   - Harvard Economics Bachelor Yr 3 — 1974-09-23 – 1975-06-12 (`process.harvard_year_3`)
   - Harvard Economics Bachelor Yr 4 — 1975-09-22 – 1976-06-17 (`process.harvard_year_4`)
-- International investment expansion — 1973–1975 (`process.international_investment`)
 
 ## 2. Preparing first products and their ecosystem
 
@@ -46,7 +45,6 @@ Point-event dates are author-confirmed. Academic-year dates and remaining provis
   - Harvard Economics Bachelor Yr 2 — 1973-09-24 – 1974-06-13 (provisional fall start) (`process.harvard_year_2`)
   - Harvard Economics Bachelor Yr 3 — 1974-09-23 – 1975-06-12 (`process.harvard_year_3`)
   - Harvard Economics Bachelor Yr 4 — 1975-09-22 – 1976-06-17 (`process.harvard_year_4`)
-- International investment expansion — 1973–1975 (`process.international_investment`)
 
 ## 3. Aurelia premiere and first months of sales
 
@@ -288,3 +286,5 @@ On 1980-11-19 AION presents Artemis-exclusive Abacus 3.0 and Pulse 3.0. From thi
 On 1981-05-04 Logix presents its TCP/IP networking platform, the Artemis PRO server, networking upgrades for both Aurelia CP/M and Artemis/AIONix, and a new client-server generation of BPI built around a robust relational database. Networking becomes part of the standard Artemis direction rather than an isolated peripheral feature.
 
 
+
+Event dates contain only `start` and `end` (ISO dates); single-day events have equal endpoints. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.

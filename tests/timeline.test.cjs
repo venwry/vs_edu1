@@ -21,9 +21,24 @@ async function boot(file,hash=''){
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).marginBottom,'0px');
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-main')).paddingBottom,'0px');
  assert.equal(d.querySelectorAll('[data-select-phase]').length,8);
- assert.equal(d.querySelectorAll('[data-select-process]').length,8);
+ assert.equal(d.querySelectorAll('[data-select-process]').length,7);
  assert(!d.querySelector('#timeline-panel #assumptions'));
  assert(d.getElementById('assumptions-panel').hidden);
+ const head=d.querySelector('[data-lane-heading]'),toggle=head.querySelector('.lane-toggle'),handle=head.querySelector('.lane-resize'),grid=d.querySelector('.continuous-calendar');
+ const initial=Number(handle.getAttribute('aria-valuenow'));
+ const pointer=(target,type,x)=>{const event=new w.MouseEvent(type,{bubbles:true,clientX:x,button:0});Object.defineProperty(event,'pointerId',{value:7});target.dispatchEvent(event);};
+ pointer(handle,'pointerdown',100);pointer(d,'pointermove',180);pointer(d,'pointerup',180);
+ assert.equal(Number(handle.getAttribute('aria-valuenow')),initial+80);
+ assert(!d.body.classList.contains('resizing-lane'));
+ toggle.click();assert.equal(toggle.getAttribute('aria-expanded'),'false');assert.equal(grid.style.gridTemplateColumns.split(' ')[2],'32px');
+ const body=d.getElementById(toggle.getAttribute('aria-controls'));assert([...body.children].every(el=>el.hidden));
+ assert(d.querySelector('.origin-event').hidden);
+ toggle.click();assert.equal(Number(handle.getAttribute('aria-valuenow')),initial+80);assert([...body.children].every(el=>!el.hidden));
+ toggle.click();d.getElementById('event-search').dispatchEvent(new w.Event('input'));
+ const restored=d.querySelector('[data-lane-heading]');assert.equal(restored.querySelector('.lane-toggle').getAttribute('aria-expanded'),'false');
+ restored.querySelector('.lane-toggle').click();assert.equal(Number(restored.querySelector('.lane-resize').getAttribute('aria-valuenow')),initial+80);
+ restored.querySelector('.lane-resize').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Home',bubbles:true}));
+ assert.equal(Number(restored.querySelector('.lane-resize').getAttribute('aria-valuenow')),Number(restored.dataset.defaultWidth));
  const yearHeight=parseFloat(d.querySelector('.calendar-grid').style.getPropertyValue('--year-height'));
  for(const phase of story.phases){
   const node=d.getElementById(phase.id),M=w.AtlasTimeline;
@@ -31,9 +46,10 @@ async function boot(file,hash=''){
   const height=(M.point(M.boundary(phase.period.end,true))-M.point(M.boundary(phase.period.start)))*yearHeight;
   assert.equal(parseFloat(node.style.top),top);assert.equal(parseFloat(node.style.height),height);
  }
- const investment=d.getElementById('process.international_investment');
- assert.equal(investment.dataset.approximate,'false');assert.equal(investment.dataset.start,'1973-01-01');assert.equal(investment.dataset.end,'1975-12-31');
- assert.equal(parseFloat(investment.style.top),yearHeight);assert.equal(parseFloat(investment.style.height),yearHeight*3);
+ assert(!d.getElementById('process.international_investment'));
+ const investment=d.getElementById('process.economics_studies');
+ const studyHeight=parseFloat(investment.style.height);
+ for(const event of story.phases.flatMap(p=>p.events)){assert.equal(d.querySelector('[data-event="'+event.id+'"] time').textContent,event.date.start);const detail=d.getElementById(event.id);assert(!detail.textContent.includes('Date precision'));assert.equal(detail.querySelector('.event-dates dd').textContent,event.date.start);assert.equal(detail.querySelector('.event-dates div:last-child dd').textContent,event.date.end);}
  assert.equal(d.querySelectorAll('.calendar-process.approximate').length,5);
  const study=w.AtlasTimeline.processSpan(story.processes.find(p=>p.id==='process.economics_studies'),story);
  assert.equal(study.startDate,'1972-09-25');assert.equal(study.approximate,true);
@@ -43,12 +59,12 @@ async function boot(file,hash=''){
    const a=nodes[i],b=nodes[j];assert(parseFloat(a.style.top)+parseFloat(a.style.height)<=parseFloat(b.style.top)||parseFloat(b.style.top)+parseFloat(b.style.height)<=parseFloat(a.style.top),'overlapping processes share a track');
   }
  }
- investment.querySelector('[data-select-process]').click();assert(!d.getElementById('process-inspection').hidden);assert(d.getElementById('process-inspection').textContent.includes('Recorded interval'));
+ investment.querySelector('[data-select-process]').click();assert(!d.getElementById('process-inspection').hidden);assert(d.getElementById('process-inspection').textContent.includes('Provisional academic calendar'));
  d.getElementById('assumptions-tab').click();assert(d.getElementById('timeline-panel').hidden);assert.equal(w.location.hash,'#assumptions');
- d.getElementById('timeline-tab').click();assert(!d.getElementById('timeline-panel').hidden);assert.equal(w.location.hash,'#process.international_investment');
+ d.getElementById('timeline-tab').click();assert(!d.getElementById('timeline-panel').hidden);assert.equal(w.location.hash,'#process.economics_studies');
  const filter=d.getElementById('phase-filter');filter.value='phase.foundations';filter.dispatchEvent(new w.Event('change'));
- assert.equal(parseFloat(d.getElementById('process.international_investment').style.height),yearHeight*3,'phase filter must not clip a process range');
- const type=d.getElementById('type-filter');type.value='process';type.dispatchEvent(new w.Event('change'));assert.equal(d.querySelectorAll('[data-event]').length,0);assert.equal(d.querySelectorAll('[data-select-process]').length,6);
+ assert.equal(parseFloat(d.getElementById('process.economics_studies').style.height),studyHeight,'phase filter must not clip a process range');
+ const type=d.getElementById('type-filter');type.value='process';type.dispatchEvent(new w.Event('change'));assert.equal(d.querySelectorAll('[data-event]').length,0);assert.equal(d.querySelectorAll('[data-select-process]').length,5);
  w.location.hash='#process.artemis_engineering';await tick();assert.equal(type.value,'');assert.equal(filter.value,'');assert(d.getElementById('process-inspection').textContent.includes('Approximate'));
  dom.window.close();
  const direct=await boot('timeline.html','#assumptions');assert(direct.d.getElementById('timeline-panel').hidden);direct.dom.window.close();

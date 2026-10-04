@@ -21,7 +21,7 @@ Technical catalog v2.3 adds canonical `platform_editions`. Each software edition
 
 Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility planning, pricing, manufacturing and memory-bus organization remain deferred.
 
-The 33 point events have author-confirmed day-level dates and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Eight processes retain their original date precision/context and are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
+The 34 point events have author-confirmed day-level dates and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Three top-level processes and four nested academic-year subprocesses are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
 
 ## Pages
 
@@ -31,13 +31,13 @@ Artemis and Artemis PRO share the visual explorer format through `artemis-explor
 
 `timeline.html` (Timeline original) fills the browser's available width. Its left inspector shows selected events, phases or processes. The right calendar has equal-height years from 1972–1981 and vertical party lanes. Each phase and each process is one continuous rectangle on the shared calendar coordinate system, spanning year boundaries without splitting. Overlapping processes occupy separate tracks alongside event cards. The 2025-12-07 origin is separately labeled above the calendar.
 
-Both timeline pages have a prominent **Timeline / Assumptions** tab switch. Assumptions occupy their own view, not a section below the calendar. The selected timeline position and item survive tab switches; `#assumptions` opens the assumptions view directly. Keyboard arrows, Home and End switch tabs.
+The timeline has a prominent **Timeline / Assumptions** tab switch. Assumptions occupy their own view, not a section below the calendar. The selected timeline position and item survive tab switches; `#assumptions` opens the assumptions view directly. Keyboard arrows, Home and End switch tabs.
 
-Processes retain their canonical date precision in the story JSON. `timeline-model.js` derives display intervals shared by both renderers. Explicit year/month ranges cover their complete calendar units; international investment spans all of 1973–1975. Seven unspecified processes use approximate envelopes from their associated phases. Economics studies and NYSE speculation use relocation as the earliest contextual boundary. These envelopes are labeled approximate, drawn with dashed borders in the custom view, and explained in the inspector. They are not confirmed process dates. Phase filtering never truncates a process's full interval. Each phase inspector also retains its Processes list.
+`timeline-model.js` derives continuous display intervals. Economics studies spans September 1972–June 1976 with four nested year rectangles; the first two fall starts remain explicitly provisional. See [HARVARD_ACADEMIC_DATES.md](HARVARD_ACADEMIC_DATES.md) for sources and the commencement-based end-date convention. Apple compatibility and Artemis engineering still use approximate phase-context envelopes. Filtering never clips a process range.
+
+The workspace is 870px high on desktop and mobile. There is no footer or visible section below it. The three organization/market assumptions retain their former process details and metrics in the Assumptions view. Legacy process links open the corresponding assumption. NYSE speculation is now part of Adam’s March 1, 1972 arrival event, following February’s lottery win.
 
 The original view supports event/process search, phase/actor/type filters, all-event-details mode, product links and event/phase/process fragments. Legacy fragments still resolve. Party assignments and labels live in `site_pages.json`; story and product facts remain in their JSON catalogs.
-
-`timeline2.html` uses **TimelineJS 3.9.13** from a version-pinned jsDelivr package URL with its native horizontal time axis, party groups and narrative slides. It adapts the same JSON into 32 historical event markers, 8 process ranges and 8 continuous phase eras. The 2025 origin remains a separate prologue. Event/process and phase jump controls, zoom controls, product links and legacy/direct fragments are supported. TimelineJS expresses duration through horizontal width; the original view expresses it through vertical height. An internet connection to jsDelivr is required for the TimelineJS script; the original timeline remains fully local. Story data, CSS and the icon font are local. Library source, license and local CSS modification details are in `vendor/timelinejs/README.md`.
 
 All HTML files are thin shells. `atlas.js` loads the three catalogs and renders their content; `architecture-explorer.js` renders the two Aurelia diagrams and supplies the shared explorer shell. The Artemis pages also load `artemis-explorer.js`. Shared styling is in `atlas.css`. Product or story changes belong in JSON, not in HTML or copied JavaScript objects.
 
@@ -46,12 +46,12 @@ All HTML files are thin shells. `atlas.js` loads the three catalogs and renders 
 ```sh
 python -m pip install jsonschema
 python tests/validate_catalogs.py
-npm install --no-save jsdom @knight-lab/timelinejs@3.9.13
+npm install --no-save jsdom
 node tests/atlas.test.cjs
 node tests/timeline.test.cjs
 ```
 
-The schema/reference check validates uniform structures, unique IDs, actor/product/event references, page membership and key narrative distinctions. The DOM tests render every page, verify internal links and fragment targets, exercise both architecture explorers, RAM expansion, timeline filters and direct event links, and confirm JSON updates and offline recovery. The dedicated timeline tests verify continuous range geometry, collision tracks, approximate envelopes, filtering, tab switching and direct links, and instantiate the real pinned TimelineJS to verify its markers, ranges, eras and navigation. DOM tests do not replace visual checks in a browser.
+The schema/reference check validates uniform structures, unique IDs, actor/product/event references, page membership and key narrative distinctions. The DOM tests render every page, verify internal links and fragment targets, exercise both architecture explorers, RAM expansion, timeline filters and direct event links, and confirm JSON updates and offline recovery. The dedicated timeline tests verify continuous range geometry, collision tracks, approximate envelopes, filtering, tab switching and direct links, including nested study years and migrated assumption links. DOM tests do not replace visual checks in a browser.
 
 Catalog v2.5 places the BPI suite and relational-engine premiere in the NCC 1978 initial Aurelia offering, with Academy courses shortly afterward. Microsoft BASIC premieres at NCC 1979. The timeline removes the nonexistent 1978 COMDEX phase; platform editions and accounting-package availability follow the revised dates. BPI remains separately sold.
 
@@ -62,3 +62,8 @@ Catalog v2.5 places the BPI suite and relational-engine premiere in the NCC 1978
 
 Legacy fragments for the three merged phases resolve to their replacement phases. The narrative includes the synchronized phase/event/process index and updated dates.
 
+
+
+Party lanes have draggable right-edge resize handles and collapse/expand buttons in their sticky headers. Collapsing hides all lane objects and leaves a 32px strip; expanding restores the previous width. Widths and collapsed states survive filtering and tab switches during the page session. Resize handles also support Left/Right arrows (20px steps) and Home (default width). Minimum widths keep event and process tracks from overlapping.
+
+Event dates contain only `start` and `end` (ISO dates); single-day events have equal endpoints. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.

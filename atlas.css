@@ -75,3 +75,14 @@
 
 .process-group.approximate{box-shadow:none;outline:1px dashed var(--blue);outline-offset:-1px}
 .process-parent{display:flex;flex-direction:column;align-items:flex-start}
+
+/* Lane controls stay visible in the sticky heading. */
+.calendar-grid .swim-heading{padding-left:40px;padding-right:14px;min-width:0}
+.lane-toggle{position:absolute;left:5px;top:10px;width:27px;height:28px;padding:0;border:1px solid var(--line);border-radius:4px;background:var(--panel);color:var(--accent);line-height:1}
+.lane-resize{position:absolute;right:-4px;top:0;bottom:0;width:9px;cursor:col-resize;touch-action:none;z-index:5}
+.lane-resize:hover,.lane-resize:focus-visible{background:var(--accent);opacity:.65}
+.calendar-grid .swim-heading.lane-collapsed{padding:0}
+.swim-heading.lane-collapsed>strong,.swim-heading.lane-collapsed>.lane-dot{display:none}
+.swim-heading.lane-collapsed .lane-toggle{left:2px;width:27px}
+.calendar-cell.lane-collapsed{overflow:hidden}
+.resizing-lane,.resizing-lane *{cursor:col-resize!important;user-select:none!important}
