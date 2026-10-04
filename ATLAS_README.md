@@ -21,7 +21,7 @@ Technical catalog v2.3 adds canonical `platform_editions`. Each software edition
 
 Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility planning, pricing, manufacturing and memory-bus organization remain deferred.
 
-The 34 point events have author-confirmed day-level dates and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Four top-level processes and four nested academic-year subprocesses are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
+The 34 point events have author-confirmed day-level dates and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Three top-level processes and four nested academic-year subprocesses are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
 
 ## Pages
 
@@ -33,7 +33,7 @@ Artemis and Artemis PRO share the visual explorer format through `artemis-explor
 
 The timeline has a prominent **Timeline / Assumptions** tab switch. Assumptions occupy their own view, not a section below the calendar. The selected timeline position and item survive tab switches; `#assumptions` opens the assumptions view directly. Keyboard arrows, Home and End switch tabs.
 
-`timeline-model.js` derives continuous display intervals. International investment spans all of 1973–1975. Economics studies spans September 1972–June 1976 with four nested year rectangles; the first two fall starts remain explicitly provisional. See [HARVARD_ACADEMIC_DATES.md](HARVARD_ACADEMIC_DATES.md) for sources and the commencement-based end-date convention. Apple compatibility and Artemis engineering still use approximate phase-context envelopes. Filtering never clips a process range.
+`timeline-model.js` derives continuous display intervals. Economics studies spans September 1972–June 1976 with four nested year rectangles; the first two fall starts remain explicitly provisional. See [HARVARD_ACADEMIC_DATES.md](HARVARD_ACADEMIC_DATES.md) for sources and the commencement-based end-date convention. Apple compatibility and Artemis engineering still use approximate phase-context envelopes. Filtering never clips a process range.
 
 The workspace is 870px high on desktop and mobile. There is no footer or visible section below it. The three organization/market assumptions retain their former process details and metrics in the Assumptions view. Legacy process links open the corresponding assumption. NYSE speculation is now part of Adam’s March 1, 1972 arrival event, following February’s lottery win.
 
@@ -65,3 +65,5 @@ Legacy fragments for the three merged phases resolve to their replacement phases
 
 
 Party lanes have draggable right-edge resize handles and collapse/expand buttons in their sticky headers. Collapsing hides all lane objects and leaves a 32px strip; expanding restores the previous width. Widths and collapsed states survive filtering and tab switches during the page session. Resize handles also support Left/Right arrows (20px steps) and Home (default width). Minimum widths keep event and process tracks from overlapping.
+
+Event dates contain only `start` and `end` (ISO dates); single-day events have equal endpoints. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.

@@ -1,6 +1,6 @@
 # Confirmed dates and process classification
 
-This replaces the earlier proposed-date review. All 34 point-event dates below are author-confirmed. Four top-level processes and four academic-year subprocesses are stored separately, and the standalone Microsoft BASIC development event has been deleted. Existing offers, plans, outcomes and product facts are retained.
+This replaces the earlier proposed-date review. All 34 point-event dates below are author-confirmed. Three top-level processes and four academic-year subprocesses are stored separately, and the standalone Microsoft BASIC development event has been deleted. Existing offers, plans, outcomes and product facts are retained.
 
 ## Confirmed events
 
@@ -47,7 +47,6 @@ Processes render as continuous ranges, with four nested academic years inside Ec
 | Process | Existing period/context | Listed under phases |
 |---|---|---|
 | `process.economics_studies` — Economics studies | 1972-09-25 to 1976-06-17 (provisional start) | Foundations and preparing first products |
-| `process.international_investment` — International investment expansion | 1973–1975 | Adam studying and investing on stock market, Preparing first products and their ecosystem |
 | `process.apple_compatibility` — Apple compatibility cooperation | After NCC 1979 | Apple extensions and market expansion |
 | `process.artemis_engineering` — Artemis and ERA1 engineering | Before NCC May 1980; exact start unspecified | Aurelia+ and Pulse premiere Abacus 2.0 |
 
@@ -66,3 +65,5 @@ Processes render as continuous ranges, with four nested academic years inside Ec
 - Economics studies contains four Bachelor-year subprocesses for 1972–1973, 1973–1974, 1974–1975 and 1975–1976. “1975–1975” is interpreted as the final 1975–1976 academic year. Date evidence and provisional starts are documented separately.
 - Engineering and manufacturing organization buildout, other companies’ market monitoring and US personal-computer market expansion are assumptions. Their original context, outcomes and metrics (including 10–15% market growth) are preserved.
 - Timeline2 and its dependency files are removed. The original timeline workspace is 870px high and ends the page.
+
+Event dates contain only `start` and `end` (ISO dates); single-day events have equal endpoints. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.
