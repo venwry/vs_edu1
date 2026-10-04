@@ -1,0 +1,460 @@
+{
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "source_catalog_version": {
+          "type": "string"
+        },
+        "quantity_policy": {
+          "type": "string"
+        },
+        "cost_policy": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "status",
+        "source_catalog_version",
+        "quantity_policy",
+        "cost_policy"
+      ],
+      "additionalProperties": false
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/component"
+      }
+    },
+    "assemblies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/assembly"
+      }
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/product"
+      }
+    },
+    "offers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/offer"
+      }
+    },
+    "proposed_offer_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "description"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "costing_inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "required_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "status",
+          "required_fields"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "metadata",
+    "components",
+    "assemblies",
+    "products",
+    "offers",
+    "proposed_offer_refs",
+    "open_decisions",
+    "costing_inputs"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Logix engineering BOM and costing readiness",
+  "$defs": {
+    "component": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^bompart\\."
+        },
+        "name": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "catalog_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "manufacturer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "manufacturer_part_number": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "unit_cost": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quote_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quantity_tier": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "qualification_status": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "category",
+        "catalog_ref",
+        "manufacturer",
+        "manufacturer_part_number",
+        "unit_cost",
+        "currency",
+        "quote_date",
+        "quantity_tier",
+        "qualification_status",
+        "requirements"
+      ],
+      "additionalProperties": false
+    },
+    "line": {
+      "type": "object",
+      "properties": {
+        "ref": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "unit": {
+          "const": "each"
+        },
+        "role": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "quantity_status": {
+          "enum": [
+            "defined",
+            "unresolved"
+          ]
+        }
+      },
+      "required": [
+        "ref",
+        "quantity",
+        "unit",
+        "role",
+        "condition",
+        "quantity_status"
+      ],
+      "additionalProperties": false
+    },
+    "assembly": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^assembly\\."
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/line"
+          }
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "routing": {
+          "type": "object",
+          "properties": {
+            "operations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "minutes_per_unit": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "first_pass_yield": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            },
+            "rework_rate": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            },
+            "scrap_rate": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 1
+            },
+            "fixture_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "operations",
+            "minutes_per_unit",
+            "first_pass_yield",
+            "rework_rate",
+            "scrap_rate",
+            "fixture_refs"
+          ],
+          "additionalProperties": false
+        },
+        "cost_rollup_status": {
+          "type": "string"
+        },
+        "ram_configuration_id": {
+          "type": "string"
+        },
+        "shipping_configuration": {
+          "type": "boolean"
+        },
+        "effective_from": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "status",
+        "lines",
+        "requirements",
+        "routing",
+        "cost_rollup_status"
+      ],
+      "additionalProperties": false
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "catalog_ref": {
+          "type": "string"
+        },
+        "production_status": {
+          "enum": [
+            "excluded",
+            "design_baseline"
+          ]
+        },
+        "assembly_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "catalog_ref",
+        "production_status",
+        "assembly_refs",
+        "requirements"
+      ],
+      "additionalProperties": false
+    },
+    "offer": {
+      "type": "object",
+      "properties": {
+        "catalog_ref": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "upgrade_kit",
+            "system_bundle"
+          ]
+        },
+        "assembly_ref": {
+          "type": "string"
+        },
+        "compatible_host_ref": {
+          "type": "string"
+        },
+        "included_host": {
+          "type": "boolean"
+        },
+        "effective_from": {
+          "type": "string"
+        },
+        "shipping_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "availability_status": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "licenses_and_services": {
+          "type": "string"
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "effective_from": {
+                "type": "string"
+              },
+              "assembly_ref": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "effective_from",
+              "assembly_ref"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "catalog_ref",
+        "kind",
+        "assembly_ref",
+        "compatible_host_ref",
+        "included_host",
+        "effective_from",
+        "shipping_date",
+        "availability_status",
+        "requirements",
+        "licenses_and_services"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

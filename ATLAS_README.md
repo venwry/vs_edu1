@@ -19,7 +19,7 @@ Technical catalog v2.3 adds canonical `platform_editions`. Each software edition
 
 `software.aionix_server` replaces `software.aionix_networked` as a complete AIONix Server edition. It includes the base OS and network services and does not require a prior OS installation. Network bundles supply this edition, while BPI application licensing remains separate. Pulse integration means offline read/edit/write access to versioned Abacus files, not a live shared spreadsheet.
 
-Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility planning, pricing, manufacturing and memory-bus organization remain deferred.
+Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility planning and pricing remain deferred. Catalog v2.6 defines physical RAM populations and manufacturing requirements; electrical qualification remains open.
 
 The 34 point events have author-confirmed day-level dates and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Three top-level processes and four nested academic-year subprocesses are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
 
@@ -46,6 +46,7 @@ All HTML files are thin shells. `atlas.js` loads the three catalogs and renders 
 ```sh
 python -m pip install jsonschema
 python tests/validate_catalogs.py
+python tests/validate_hardware_bom.py
 npm install --no-save jsdom
 node tests/atlas.test.cjs
 node tests/timeline.test.cjs
@@ -67,3 +68,8 @@ Legacy fragments for the three merged phases resolve to their replacement phases
 Party lanes have draggable right-edge resize handles and collapse/expand buttons in their sticky headers. Collapsing hides all lane objects and leaves a 32px strip; expanding restores the previous width. Widths and collapsed states survive filtering and tab switches during the page session. Resize handles also support Left/Right arrows (20px steps) and Home (default width). Minimum widths keep event and process tracks from overlapping.
 
 Event dates contain only `start` and `end` (ISO dates); single-day events have equal endpoints. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.
+## RAM and manufacturing baseline (v2.6)
+
+[RAM_BOM_DESIGN.md](RAM_BOM_DESIGN.md) documents corrected chip densities, paired 16-bit RAM modules and four 32-bit banks. The Artemis explorer distinguishes equal capacities with different module populations. Superseded RAM records remain available for historical references but are excluded from active manufacturing.
+
+`hardware_bom.json` contains component requirements, nested assemblies, coverage for every hardware catalog record and packouts for all offered bundles. `hardware_bom.schema.json` validates its structure. This engineering file is separate from the three catalogs loaded by the site; catalog records link to it through manufacturing requirements and assembly IDs. Unknown quantities and costs are null, and cost rollups remain blocked. The hardware validator checks bank arithmetic, assembly references and cycles, bundle coverage, and single-count networking/OS configurations.

@@ -4,16 +4,18 @@ window.startArtemisExplorer=function(catalog,page,siteLink){
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(x=>x?.id).map(x=>[x.id,x]));
 const settings=catalog.artemis_explorer,c=records[page.record_refs[0]],rec=id=>records[id],human=k=>k.replace(/_/g,' '),at=(obj,path)=>path.split('.').reduce((v,k)=>v?.[k],obj);
-if(!settings||!c?.memory?.module_ref)throw Error('The catalog is missing the Artemis architecture definitions.');
+if(!settings||!c?.memory?.configurations?.length)throw Error('The catalog is missing the Artemis architecture definitions.');
 const value=v=>Array.isArray(v)?v.map(value).join('; '):v&&typeof v==='object'?Object.entries(v).map(([k,x])=>human(k)+': '+value(x)).join(' · '):typeof v==='boolean'?(v?'Yes':'No'):records[v]?.name||String(v??'—');
 const fields=v=>Object.entries(v||{}).map(([k,x])=>`<div><dt>${esc(human(k))}</dt><dd>${esc(value(x))}</dd></div>`).join('');
 const dl=v=>'<dl class="fields">'+fields(v)+'</dl>';
 const table=(heads,rows)=>'<div class="table-wrap"><table><thead><tr>'+heads.map(h=>'<th scope="col">'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(x=>'<td>'+esc(value(x))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
-const module=rec(c.memory.module_ref),moduleKB=module.specification.capacity_kb,shipping=c.memory.shipping_configurations_kb||c.memory.shipping_configurations.map(x=>x.ram_kb),maxKB=c.memory.ram_sockets*moduleKB;
+const configurations=c.memory.configurations,maxKB=c.memory.physical_capacity_limit_kb;
 let layer='hardware',selected='',nodes=[],edges=[];
 const network=()=>Boolean(c.networking?.included_by_default)||$('era').value==='1981';
-const ram=()=>Number($('artemis-ram').value);
-const ramFacts=()=>({...c.memory,selected_ram_kb:ram(),module_capacity_kb:moduleKB,populated_modules:ram()/moduleKB,empty_sockets:c.memory.ram_sockets-ram()/moduleKB,maximum_socket_capacity_kb:maxKB,configuration:shipping.includes(ram())?'Shipping configuration':'Expanded module population'});
+const ramConfiguration=()=>configurations.find(x=>x.id===$('artemis-ram').value)||configurations.find(x=>x.id===c.memory.default_configuration);
+const module=()=>rec(ramConfiguration().module_ref);
+const ram=()=>ramConfiguration().ram_kb;
+const ramFacts=()=>({...ramConfiguration(),module_name:module().name,module_capacity_kb:module().specification.capacity_kb,module_data_width_bits:16,bank_data_width_bits:32,empty_sockets:c.memory.ram_sockets-ramConfiguration().populated_modules,physical_capacity_limit_kb:maxKB,capacity_limit_status:c.memory.capacity_limit_status,population_policy:c.memory.population_policy,upgrade_policy:c.memory.upgrade_policy,reliability_policy:c.memory.reliability_policy});
 const clean=r=>Object.fromEntries(Object.entries(r||{}).filter(([k])=>!['id','used_by','used_in','compatible_with'].includes(k)));
 function add(id,title,sub,col,row,data,optional=false){nodes.push({id,title,sub,col,row,data,optional});}
 function product(id,col,row,optional=false,sub){const r=rec(id);if(!r)throw Error('Missing catalog record: '+id);add(id,r.name,sub||r.introduced?.event_start_date||human(r.category),col,row,clean(r),optional);}
@@ -27,7 +29,7 @@ function definition(n){if(n.id==='network'&&!network())return;
  if(n.id==='apps')data={compatible_software:c.compatible_software,software_compatibility:c.software_compatibility};
  let sub=r?.name||human(n.computer_path?.split('.').pop()||n.id);
  if(n.id==='cpu')sub=c.processor.variant+' · '+c.processor.clock_mhz+' MHz';
- if(n.id==='ram')sub=ram()+' KB · '+ram()/moduleKB+' / '+c.memory.ram_sockets+' modules';
+ if(n.id==='ram')sub=ram()+' KB · '+ramConfiguration().populated_modules+' modules · '+ramConfiguration().populated_banks+' banks';
  if(n.id==='graphics'||n.id==='vram')sub=c.video.video_ram_kb+' KB VRAM · '+c.video.text_mode.characters;
  if(n.id==='virtual')sub=rec(settings.memory_ref).specification.virtual_address_bits+'-bit virtual addresses';
  if(n.id==='physical')sub=rec(settings.memory_ref).specification.physical_address_bits+'-bit physical addresses';
@@ -45,7 +47,7 @@ function peripherals(){
  c.compatible_devices.filter(id=>network()||![settings.network_adapter_ref,'device.network_hub'].includes(id)).forEach((id,i)=>{
   const d=rec(id),standard=id===settings.network_adapter_ref&&network(),bundle=bundled.has(id),optional=!standard&&!bundle;
   product(id,i%3+1,Math.floor(i/3)+3,optional,(standard?'Included in selected configuration':bundle?'Bundle option':'Optional')+' · '+d.introduced.event_start_date);
-  const parent=id==='device.artemis_ram_64kb_module'?'host':id==='device.network_hub'?settings.network_adapter_ref:d.category==='display'?c.video.technology_ref:['device.artemis_cpm80_module',settings.network_adapter_ref].includes(id)?'technology.plug_and_execute':'technology.flexibus';
+  const parent=d.category==='memory_expansion'?'host':id==='device.network_hub'?settings.network_adapter_ref:d.category==='display'?c.video.technology_ref:['device.artemis_cpm80_module',settings.network_adapter_ref].includes(id)?'technology.plug_and_execute':'technology.flexibus';
   edges.push([parent,id,optional]);
  });
 }
@@ -87,7 +89,7 @@ function select(){const n=nodes.find(n=>n.id===selected);if(!n)return;
 }
 function draw(){const box=$('diagram'),svg=box.querySelector('svg');if(!svg)return;const r=box.getBoundingClientRect();svg.innerHTML=edges.map(([a,b,opt])=>{const an=[...box.querySelectorAll('[data-node]')].find(n=>n.dataset.node===a),bn=[...box.querySelectorAll('[data-node]')].find(n=>n.dataset.node===b);if(!an||!bn)return '';const ar=an.getBoundingClientRect(),br=bn.getBoundingClientRect();return `<path class="wire ${opt?'optional':''}" d="M${ar.x+ar.width/2-r.x},${ar.y+ar.height/2-r.y} L${br.x+br.width/2-r.x},${br.y+br.height/2-r.y}"/>`;}).join('');}
 function details(){
- $('memory-section').innerHTML='<div class="eyebrow">Memory organization</div><h2>'+esc(c.name)+' · '+ram()+' KB RAM</h2><p>'+esc(settings.memory_note)+'</p>'+table(['Resource','Configuration'],[['Virtual addressing',rec(settings.memory_ref).specification.virtual_address_bits+' bits'],['Physical addressing',rec(settings.memory_ref).specification.physical_address_bits+' bits'],['RAM population',ram()/moduleKB+' × '+moduleKB+' KB modules'],['Available sockets',c.memory.ram_sockets],['Maximum module population',maxKB+' KB'],['Video RAM',c.video.video_ram_kb+' KB'],['Cartridge slots',c.io_and_expansion.rom_eeprom_cartridge_slots]])+'<p>'+esc(settings.ram_note)+'</p><details><summary>RAM modules and process memory</summary>'+dl(clean(module))+dl(rec(settings.os_model_ref).specification)+'</details>';
+ $('memory-section').innerHTML='<div class="eyebrow">Memory organization</div><h2>'+esc(c.name)+' · '+ram()+' KB RAM</h2><p>'+esc(settings.memory_note)+'</p>'+table(['Resource','Configuration'],[['Virtual addressing',rec(settings.memory_ref).specification.virtual_address_bits+' bits'],['Physical addressing',rec(settings.memory_ref).specification.physical_address_bits+' bits'],['RAM population',ramConfiguration().populated_modules+' × '+module().specification.capacity_kb+' KB / 16-bit modules'],['Populated banks',ramConfiguration().populated_banks+' / '+c.memory.bank_count],['Data DRAM chips',ramConfiguration().data_chip_count],['Qualification',ramConfiguration().validation_status],['Available sockets',c.memory.ram_sockets],['Physical capacity design target',maxKB+' KB · qualification pending'],['Video RAM',c.video.video_ram_kb+' KB'],['Cartridge slots',c.io_and_expansion.rom_eeprom_cartridge_slots]])+'<p>'+esc(settings.ram_note)+'</p><details><summary>RAM modules and process memory</summary>'+dl(clean(module()))+dl(rec(settings.os_model_ref).specification)+'</details>';
  $('software-section').innerHTML='<div class="eyebrow">System organization</div><h2>'+esc(rec(network()?settings.network_software_ref:settings.os_ref).name)+'</h2>'+dl(clean(rec(network()?settings.network_software_ref:settings.os_ref)));
  $('portability-section').innerHTML='<div class="eyebrow">Platform records</div>'+page.record_refs.filter(id=>id!==c.id).map(id=>`<details id="${esc(id)}"><summary>${esc(rec(id).name)}</summary>${dl(clean(rec(id)))}</details>`).join('')+'<details><summary>'+esc(c.name)+' · full specification</summary>'+dl(clean(c))+'</details>';
 }
@@ -105,14 +107,15 @@ $('diagram').closest('main').classList.add('artemis-explorer');
 $('models').innerHTML=settings.page_ids.map(id=>siteLink(id)).join(' · ');$('page-heading').textContent=page.title;$('intro').textContent=page.description;
 $('launch').textContent=c.introduced.event_start_date;$('event').textContent=c.introduced.event_name;
 $('load-panel').hidden=true;$('ram-choice').hidden=true;
-const control=document.createElement('label');control.id='artemis-ram-choice';control.className='era';control.innerHTML='RAM <select id="artemis-ram">'+Array.from({length:c.memory.ram_sockets},(_,i)=>(i+1)*moduleKB).filter(k=>k>=Math.min(...shipping)).map(k=>`<option value="${k}">${k} KB${shipping.includes(k)?' · shipping':' · expanded'}</option>`).join('')+'</select>';$('ram-choice').after(control);
+const control=document.createElement('label');control.id='artemis-ram-choice';control.className='era';control.innerHTML='RAM <select id="artemis-ram">'+configurations.map(cfg=>`<option value="${esc(cfg.id)}"${cfg.id===c.memory.default_configuration?' selected':''}>${cfg.ram_kb} KB · ${cfg.populated_modules} × ${rec(cfg.module_ref).specification.capacity_kb} KB · ${cfg.populated_banks} banks${cfg.shipping_configuration?' · shipping':' · expansion target'}</option>`).join('')+'</select>';$('ram-choice').after(control);
 $('era').disabled=false;$('era').value=c.networking?'1981':'launch';$('era').options[0].textContent='Launch configuration';$('era').options[1].textContent=rec(settings.network_software_ref).introduced.event_start_date+' · networking';
 $('software-mode').innerHTML=settings.software_views.map(v=>'<option value="'+esc(v.id)+'">'+esc(v.label)+'</option>').join('');
 $('bundle-select').innerHTML=offers.map(b=>'<option value="'+esc(b.id)+'">'+esc(b.name)+'</option>').join('');
 $('context').textContent=settings.context;$('timeline').innerHTML=settings.computer_refs.map(rec).map(x=>'<time>'+esc(x.introduced.event_start_date)+'</time><p>'+esc(x.name)+' · '+esc(x.introduced.event_name)+'</p>').join('');
 const cs=settings.computer_refs.map(rec);$('comparison').closest('article').querySelector('h2').textContent='Artemis family comparison';
-$('comparison').innerHTML=table(['Component',...cs.map(x=>x.name)],[['Processor',...cs.map(x=>x.processor.variant+' · '+x.processor.clock_mhz+' MHz')],['Shipping RAM',...cs.map(x=>(x.memory.shipping_configurations_kb||x.memory.shipping_configurations.map(r=>r.ram_kb)).join(' / ')+' KB')],['RAM module',...cs.map(x=>rec(x.memory.module_ref).specification.capacity_kb+' KB')],['Internal hard disk',...cs.map(x=>x.storage.internal_hdd?x.storage.internal_hdd.capacity_mb+' MB':'Not included')],['Video RAM',...cs.map(x=>x.video.video_ram_kb+' KB')],['Networking',...cs.map(x=>x.networking?'Included at launch':'Standard from '+rec(settings.network_software_ref).introduced.event_start_date)]]);
+$('comparison').innerHTML=table(['Component',...cs.map(x=>x.name)],[['Processor',...cs.map(x=>x.processor.variant+' · '+x.processor.clock_mhz+' MHz')],['Shipping RAM',...cs.map(x=>x.memory.configurations.filter(r=>r.shipping_configuration).map(r=>r.ram_kb).join(' / ')+' KB')],['RAM module',...cs.map(x=>x.memory.module_refs.map(id=>rec(id).specification.capacity_kb+' KB / 16-bit').join(' or '))],['Internal hard disk',...cs.map(x=>x.storage.internal_hdd?x.storage.internal_hdd.capacity_mb+' MB':'Not included')],['Video RAM',...cs.map(x=>x.video.video_ram_kb+' KB')],['Networking',...cs.map(x=>x.networking?'Included at launch':'Standard from '+rec(settings.network_software_ref).introduced.event_start_date)]]);
 for(const button of document.querySelectorAll('[data-layer]')){button.disabled=false;button.addEventListener('click',()=>{layer=button.dataset.layer;document.querySelectorAll('[data-layer]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));selected='';build();});}
 for(const id of ['artemis-ram','era','software-mode','bundle-select'])$(id).addEventListener('change',build);
 if(typeof ResizeObserver!=='undefined')new ResizeObserver(draw).observe($('diagram'));window.addEventListener('resize',draw);build();
 };
+
