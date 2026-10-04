@@ -47,6 +47,7 @@ All HTML files are thin shells. `atlas.js` loads the three catalogs and renders 
 python -m pip install jsonschema
 python tests/validate_catalogs.py
 python tests/validate_hardware_bom.py
+python tests/validate_video.py
 npm install --no-save jsdom
 node tests/atlas.test.cjs
 node tests/timeline.test.cjs
@@ -75,3 +76,8 @@ Event dates contain only `start` and `end` (ISO dates); single-day events have e
 `hardware_bom.json` contains component requirements, nested assemblies, coverage for every hardware catalog record and packouts for all offered bundles. `hardware_bom.schema.json` validates its structure. This engineering file is separate from the three catalogs loaded by the site; catalog records link to it through manufacturing requirements and assembly IDs. Unknown quantities and costs are null, and cost rollups remain blocked. The hardware validator checks bank arithmetic, assembly references and cycles, bundle coverage, and single-count networking/OS configurations.
 
 All four architecture pages fill the browser width. Drag the divider between diagram and details (or use its Left/Right arrow keys; Home resets it). Narrow screens stack the sections. Smaller blocks and larger gutters make the diagrams easier to read; shared orthogonal routing avoids intervening blocks and recalculates after resizing or changing layers. Run `node tests/architecture-layout.test.cjs` for routing checks.
+
+
+## Unified Aurelia video (v2.7)
+
+See [VIDEO_DESIGN.md](VIDEO_DESIGN.md). Both Aurelia and Aurelia+ now use 16 KiB custom dual-port VRAM and the shared controller, with native 40/80-column text, explicit bitmap and sprite allocations, and monitor capability discovery. The retained `video.text_mode` and `memory_layout` summaries describe the preferred/default configuration; `text_modes` and `bitmap_modes` enumerate all hardware configurations. Monitor filtering remains mandatory. Manufacturing figures are planning estimates; electrical qualification and costing gates remain open.

@@ -24,7 +24,7 @@ The unqualified 128 Kbit DRAM record and old 8-bit 64 KiB RAM module are retaine
 
 ## Manufacturing coverage
 
-`hardware_bom.json` covers all 47 hardware records, including superseded and prototype records explicitly excluded from production, and all 12 offered bundles. Seven proposed bundles are retained as references outside committed manufacturing coverage. Its 84 assemblies include RAM populations, bank kits, hub port variants, physical software media and bundle packouts. Its 201 component requirements include both catalog parts and unresolved implementation requirements. These counts describe engineering records, not unique purchasable SKUs.
+`hardware_bom.json` covers all 48 hardware records, including superseded and prototype records explicitly excluded from production, and all 12 offered bundles. Seven proposed bundles are retained as references outside committed manufacturing coverage. Its 85 assemblies include RAM populations, bank kits, hub port variants, physical software media and bundle packouts. Its 199 component requirements include both catalog parts and unresolved implementation requirements. These counts describe engineering records, not unique purchasable SKUs.
 
 Every hardware catalog record now includes manufacturing requirements. Active records link to assembly IDs. Nested assemblies separate purchased mechanisms from their host systems and prevent counting both a functional assembly and its implementation as independent purchased items. Unknown quantities remain null, rather than zero or an invented count. Superseded records retain their historical identity.
 
@@ -41,10 +41,15 @@ Networking-era Artemis configurations add one removable NIC. PRO includes one NI
 
 ## Decisions required before costing
 
-The BOM's `open_decisions` and per-product requirements preserve the remaining work: exact DRAM suppliers and electrical qualification; the physical memory map; drive/display OEM selection; VRAM and ROM organization; the video-link electrical specification; custom-silicon implementation and yields; PRO console packout or validated headless operation; and Aurelia's two-port FlexiBUS limit when keyboard, disk and printer are all required.
+The BOM's `open_decisions` and per-product requirements preserve the remaining work: exact DRAM suppliers and electrical qualification; the physical memory map; drive/display OEM selection; VRAM electrical qualification and ROM organization; the video-link electrical specification; custom-silicon implementation and yields; PRO console packout or validated headless operation; and Aurelia's two-port FlexiBUS limit when keyboard, disk and printer are all required.
 
 `costing_inputs` separates direct materials, conversion labor/test/rework, factory overhead, NRE/capital and commercial costs. Before calculating totals, define supplier quote dates and volume tiers, quantities, assembly routing and minutes, programming/calibration, scrap and yield, fixtures, utilization and overhead allocation. Prices and all unresolved inputs remain null. All cost rollups are explicitly blocked; a sum of known lines must not be presented as a complete manufacturing cost.
 
 ## Validation
 
 Run the catalog validator, the hardware BOM validator and the existing DOM suite as documented in ATLAS_README.md. Checks cover schema and references, complete hardware/offer coverage, recursive assembly cycles, DRAM arithmetic, paired-bank population, shipping configurations, networking count and OS replacement. DOM checks exercise both low- and high-density 256 KiB configurations and PRO's four-bank 1 MiB configuration. They do not establish electrical feasibility or replace browser visual review.
+
+
+## Unified Aurelia video (v2.7)
+
+Both Aurelia models now populate one shared controller and eight custom 16Kx1 random-plus-serial VRAM chips (16 KiB). See VIDEO_DESIGN.md for mode allocations, monitor discovery and manufacturing estimates. Run `python tests/validate_video.py` to verify every buffer/sprite allocation and the nine-chip BOM. These quantities are defined; electrical qualification and unit-cost quotations remain open.
