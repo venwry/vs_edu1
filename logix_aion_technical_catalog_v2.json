@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.7",
+    "version": "2.8",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -697,7 +697,7 @@
     },
     {
       "id": "technology.logix_lan100_link",
-      "name": "LogixLAN-100 physical and data-link standard",
+      "name": "LogixLAN negotiated-rate physical and data-link standard",
       "category": "lan_physical_and_data_link_standard",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
@@ -706,7 +706,6 @@
       "owner": "Logix",
       "specification": {
         "topology": "active star through a multiport hub/repeater/arbiter",
-        "line_rate_kbps": 100,
         "signaling": "balanced differential serial signaling compatible in principle with EIA-422-class line drivers/receivers",
         "connector": "8-position modular connector (RJ45-style / 8P8C family)",
         "cable": "four twisted pairs",
@@ -718,9 +717,105 @@
         },
         "media_access": "hub-controlled polling/grant; one station is granted transmit access at a time, avoiding collision-detection hardware",
         "framing": "HDLC-inspired bit-oriented framing with address/control fields and 16-bit frame check sequence",
-        "hub_behavior": "receives an admitted frame and repeats it to the other active ports; adapters filter by destination address",
+        "hub_behavior": "Stream the granted frame to other admitted ports at the common rate; destination filtering and CRC validation occur in adapters. No independent per-port rates, frame-store switching or rate conversion in the 1981 baseline.",
         "station_addressing": "locally assigned link address stored/configured by the adapter; broadcast supported",
-        "design_goal": "simple, deterministic and inexpensive LAN implementation using technology comfortably available by 1981"
+        "design_goal": "simple, deterministic and inexpensive LAN implementation using technology comfortably available by 1981",
+        "supported_rates_kbps": [
+          100,
+          250,
+          500,
+          1000
+        ],
+        "startup_rate_kbps": 100,
+        "fallback_rate_kbps": 100,
+        "maximum_shared_raw_rate_kbps": 1000,
+        "rate_scope": "One common rate across all admitted stations; one transmitter at a time. Port count does not multiply shared bandwidth. Application throughput is lower and remains unvalidated.",
+        "legacy_identifier": "The stable logix_lan100_link identifier is retained for references; 100 denotes the mandatory startup/fallback rate, not the maximum rate.",
+        "platform_rate_profiles": [
+          {
+            "computer_ref": "computer.aurelia",
+            "supported_rates_kbps": [
+              100,
+              250
+            ],
+            "qualified_max_rate_kbps": 250
+          },
+          {
+            "computer_ref": "computer.aurelia_plus",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500
+            ],
+            "qualified_max_rate_kbps": 500
+          },
+          {
+            "computer_ref": "computer.artemis",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500,
+              1000
+            ],
+            "qualified_max_rate_kbps": 1000
+          },
+          {
+            "computer_ref": "computer.artemis_pro",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500,
+              1000
+            ],
+            "qualified_max_rate_kbps": 1000
+          }
+        ],
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "LogixLAN shared-rate negotiation and buffered adapters",
+          "advertised_rates": "Intersection of adapter hardware capability, firmware-enforced host qualification ceiling and configured cable/reliability limits. Platform ceilings are design qualification targets, not measured throughput claims.",
+          "selection": "Hub selects the highest rate in the intersection of its own capability and every admitted station/link capability. A 100-only station or link limits the whole network to 100 kbit/s.",
+          "negotiation": [
+            "Reset/start at 100 kbit/s; keep unadmitted ports isolated from normal traffic.",
+            "Poll station identity, supported-rate bitmap, host profile and receiver capacity at 100 kbit/s.",
+            "Choose the highest common candidate; announce a switch epoch and bounded idle interval at 100 kbit/s and collect acknowledgments from all admitted stations.",
+            "Drain the current frame and stop grants before changing the distributed clock. Do not switch with a missing acknowledgment.",
+            "Run bounded test frames on every admitted link at the candidate rate; resume normal grants only after every link passes.",
+            "On failed qualification or persistent link errors, return to 100 kbit/s for coordination, exclude the failed candidate and try the next lower common rate. If 100 fails, isolate the faulty port and report the fault."
+          ],
+          "admission": "Periodically drain traffic and open an announced 100 kbit/s discovery window. New stations join only after coordinated renegotiation; admitting a slower station lowers the common rate. Discovery windows consume shared bandwidth.",
+          "recovery": "Adapters use a timeout independent of the distributed bit clock. On lost clock/control or switch timeout, stop transmitting and await the hub at 100 kbit/s. The hub watchdog restores 100 kbit/s and a new negotiation epoch; never allow unilateral station transmission at a different rate.",
+          "clock_generation": {
+            "timing_source_hz": 10000000,
+            "bit_clock_divisors": [
+              100,
+              40,
+              20,
+              10
+            ],
+            "scope": "Hub clock-divider reference only; does not require every adapter or host logic path to run at 10 MHz."
+          },
+          "adapter_requirements": {
+            "hardware_services": [
+              "Serial framing and CRC generation/checking",
+              "Destination filtering before CPU interrupt",
+              "Complete-frame buffering",
+              "Packet-level interrupts and receiver-ready reporting"
+            ],
+            "local_packet_ram_target_bytes": 4096,
+            "buffer_policy": "Local adapter RAM, additional to host system RAM. Partition transmit/receive buffers and metadata; freeze maximum frame length and IP MTU to fit complete frames before implementation. Physical RAM chip count remains unresolved.",
+            "flow_control": "Grant unicast only when the destination advertises credit for a complete frame; reserve that credit until completion. Broadcast requires credit from all intended admitted receivers. Timeouts revoke stale credits; bounded queues and retry/error reporting prevent indefinite blocking. Use flow control first for receiver pressure, not automatic rate changes.",
+            "host_service": "No per-byte interrupt requirement. Aurelia at 250 kbit/s has 128 CPU clocks per raw byte at 4 MHz; Aurelia+ at 500 kbit/s has 96 at 6 MHz. Validate worst-case service latency. A persistently slow host may advertise a lower configured ceiling."
+          },
+          "qualification_gates": [
+            "Cable lengths, termination, drivers and clock skew at each advertised rate",
+            "Exact frame format/length, IP MTU, buffer partitions and credit accounting",
+            "Discovery cadence, switch/ack timeouts and independent recovery watchdog",
+            "Error thresholds, test-frame counts and fallback hysteresis",
+            "Mixed-platform admission, missing acknowledgments, clock loss, buffer exhaustion and broadcast backpressure",
+            "Sustained TCP/IP throughput and CPU load on all four host platforms"
+          ]
+        }
       },
       "used_by": [
         "technology.logix_tcpip_lan",
@@ -2352,12 +2447,49 @@
       ],
       "manufacturing_requirements": [
         "Host bus/mapper interface, controller or sequencer, serial framing/CRC logic, RAM/FIFO, firmware ROM, differential data and clock transceivers, port connector, protection/termination and cable. Specify Z80 CPU-service latency and buffers",
-        "bind the supplied OS media and any RAM prerequisite to the kit BOM."
+        "bind the supplied OS media and any RAM prerequisite to the kit BOM.",
+        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.network_card_aurelia"
-      ]
+      ],
+      "specification": {
+        "link_layer_ref": "technology.logix_lan100_link",
+        "platform_rate_profiles": [
+          {
+            "computer_ref": "computer.aurelia",
+            "supported_rates_kbps": [
+              100,
+              250
+            ],
+            "qualified_max_rate_kbps": 250
+          },
+          {
+            "computer_ref": "computer.aurelia_plus",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500
+            ],
+            "qualified_max_rate_kbps": 500
+          }
+        ],
+        "startup_rate_kbps": 100,
+        "local_packet_ram_target_bytes": 4096,
+        "adapter_requirements": {
+          "hardware_services": [
+            "Serial framing and CRC generation/checking",
+            "Destination filtering before CPU interrupt",
+            "Complete-frame buffering",
+            "Packet-level interrupts and receiver-ready reporting"
+          ],
+          "local_packet_ram_target_bytes": 4096,
+          "buffer_policy": "Local adapter RAM, additional to host system RAM. Partition transmit/receive buffers and metadata; freeze maximum frame length and IP MTU to fit complete frames before implementation. Physical RAM chip count remains unresolved.",
+          "flow_control": "Grant unicast only when the destination advertises credit for a complete frame; reserve that credit until completion. Broadcast requires credit from all intended admitted receivers. Timeouts revoke stale credits; bounded queues and retry/error reporting prevent indefinite blocking. Use flow control first for receiver pressure, not automatic rate changes.",
+          "host_service": "No per-byte interrupt requirement. Aurelia at 250 kbit/s has 128 CPU clocks per raw byte at 4 MHz; Aurelia+ at 500 kbit/s has 96 at 6 MHz. Validate worst-case service latency. A persistently slow host may advertise a lower configured ceiling."
+        }
+      }
     },
     {
       "id": "device.network_card_artemis",
@@ -2379,12 +2511,52 @@
       "slot_count": 1,
       "manufacturing_requirements": [
         "Choose physical implementation. A practical first-costing baseline is one common removable NIC installed in new systems and sold for upgrades",
-        "this is a proposal. Specify 32-bit slot decode, buffer widths, PIO versus DMA, controller/firmware, link electronics, cable and assembly test. Do not cost both integrated circuitry and a separate card."
+        "this is a proposal. Specify 32-bit slot decode, buffer widths, PIO versus DMA, controller/firmware, link electronics, cable and assembly test. Do not cost both integrated circuitry and a separate card.",
+        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.network_card_artemis"
-      ]
+      ],
+      "specification": {
+        "link_layer_ref": "technology.logix_lan100_link",
+        "platform_rate_profiles": [
+          {
+            "computer_ref": "computer.artemis",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500,
+              1000
+            ],
+            "qualified_max_rate_kbps": 1000
+          },
+          {
+            "computer_ref": "computer.artemis_pro",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500,
+              1000
+            ],
+            "qualified_max_rate_kbps": 1000
+          }
+        ],
+        "startup_rate_kbps": 100,
+        "local_packet_ram_target_bytes": 4096,
+        "adapter_requirements": {
+          "hardware_services": [
+            "Serial framing and CRC generation/checking",
+            "Destination filtering before CPU interrupt",
+            "Complete-frame buffering",
+            "Packet-level interrupts and receiver-ready reporting"
+          ],
+          "local_packet_ram_target_bytes": 4096,
+          "buffer_policy": "Local adapter RAM, additional to host system RAM. Partition transmit/receive buffers and metadata; freeze maximum frame length and IP MTU to fit complete frames before implementation. Physical RAM chip count remains unresolved.",
+          "flow_control": "Grant unicast only when the destination advertises credit for a complete frame; reserve that credit until completion. Broadcast requires credit from all intended admitted receivers. Timeouts revoke stale credits; bounded queues and retry/error reporting prevent indefinite blocking. Use flow control first for receiver pressure, not automatic rate changes.",
+          "host_service": "No per-byte interrupt requirement. Aurelia at 250 kbit/s has 128 CPU clocks per raw byte at 4 MHz; Aurelia+ at 500 kbit/s has 96 at 6 MHz. Validate worst-case service latency. A persistently slow host may advertise a lower configured ceiling."
+        }
+      }
     },
     {
       "id": "device.network_hub",
@@ -2396,9 +2568,18 @@
           8,
           16
         ],
-        "role": "active star hub/repeater/arbiter for LogixLAN-100",
-        "line_rate_kbps_per_port": 100,
-        "media_access_control": "polls/grants one transmitting station at a time and repeats admitted frames to receiving ports"
+        "role": "Active star shared-rate LogixLAN repeater/arbiter",
+        "media_access_control": "One receiver-credit-aware transmit grant at a time; common-rate streaming repetition, with coordinated discovery, qualification and fallback.",
+        "supported_rates_kbps": [
+          100,
+          250,
+          500,
+          1000
+        ],
+        "startup_rate_kbps": 100,
+        "maximum_shared_raw_rate_kbps": 1000,
+        "rate_scope": "One common rate across all admitted stations; one transmitter at a time. Port count does not multiply shared bandwidth. Application throughput is lower and remains unvalidated.",
+        "negotiation_ref": "technology.logix_lan100_link"
       },
       "sold_separately": true,
       "introduced": {
@@ -2410,7 +2591,7 @@
         "technology.logix_tcpip_lan"
       ],
       "manufacturing_requirements": [
-        "Create three actual SKUs. Separate per-port connector/transceiver/protection cost from shared arbiter/clock/firmware/buffering/PSU. Define whether forwarding is streamed or frame-buffered, fault isolation, diagnostics and maximum cables. The shared one-transmitter medium does not provide 4/8/16 times 100 kbit/s aggregate payload bandwidth."
+        "Qualify 4-, 8- and 16-port SKUs with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -2578,7 +2759,7 @@
         "system_cartridge_ref": "software.cpm_aurelia"
       },
       "io_and_expansion": {
-        "flexibus_ports": 2,
+        "flexibus_ports": 3,
         "expansion_slots": {
           "count": 2,
           "width_bits": 8,
@@ -2914,12 +3095,28 @@
         "mapper registers/logic",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
-        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers."
+        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.computer.aurelia.base"
-      ]
+      ],
+      "networking_from_ncc_1981": {
+        "included_by_default": false,
+        "adapter_ref": "device.network_card_aurelia",
+        "technology_refs": [
+          "technology.logix_tcpip_lan",
+          "technology.logix_lan100_link"
+        ],
+        "implementation": "Optional expansion NIC and Enhanced CP/M networking upgrade from NCC 1981.",
+        "supported_rates_kbps": [
+          100,
+          250
+        ],
+        "qualified_max_rate_kbps": 250,
+        "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link."
+      }
     },
     {
       "id": "computer.aurelia_plus",
@@ -2997,7 +3194,7 @@
         "system_cartridge_ref": "software.cpm_aurelia"
       },
       "io_and_expansion": {
-        "flexibus_ports": 2,
+        "flexibus_ports": 3,
         "expansion_slots": {
           "count": 2,
           "width_bits": 8,
@@ -3329,12 +3526,29 @@
       "manufacturing_requirements": [
         "Qualify eight 64K×1 DRAMs for December 1979",
         "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
-        "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas."
+        "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
+        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.computer.aurelia_plus.base"
-      ]
+      ],
+      "networking_from_ncc_1981": {
+        "included_by_default": false,
+        "adapter_ref": "device.network_card_aurelia",
+        "technology_refs": [
+          "technology.logix_tcpip_lan",
+          "technology.logix_lan100_link"
+        ],
+        "implementation": "Optional expansion NIC and Enhanced CP/M networking upgrade from NCC 1981.",
+        "supported_rates_kbps": [
+          100,
+          250,
+          500
+        ],
+        "qualified_max_rate_kbps": 500,
+        "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link."
+      }
     },
     {
       "id": "computer.artemis",
@@ -3655,7 +3869,15 @@
           "technology.logix_lan100_link"
         ],
         "adapter_ref": "device.network_card_artemis",
-        "implementation": "One removable NIC occupying one of the four general-purpose expansion slots; not additional integrated circuitry."
+        "implementation": "One removable NIC occupying one of the four general-purpose expansion slots; not additional integrated circuitry.",
+        "supported_rates_kbps": [
+          100,
+          250,
+          500,
+          1000
+        ],
+        "qualified_max_rate_kbps": 1000,
+        "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link."
       },
       "technology_refs": [
         "technology.era1_isa",
@@ -3930,7 +4152,15 @@
         ],
         "adapter_ref": "device.network_card_artemis",
         "server_role": true,
-        "implementation": "One removable NIC occupying one of the four general-purpose expansion slots; not additional integrated circuitry."
+        "implementation": "One removable NIC occupying one of the four general-purpose expansion slots; not additional integrated circuitry.",
+        "supported_rates_kbps": [
+          100,
+          250,
+          500,
+          1000
+        ],
+        "qualified_max_rate_kbps": 1000,
+        "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link."
       },
       "technology_refs": [
         "technology.era1_isa",
@@ -4966,7 +5196,11 @@
       "feature_status": "Server-service interfaces are part of the edition specification; implementation remains to be validated. Inclusion of an OS edition does not include a BPI application license.",
       "edition_refs": [
         "edition.aionix_server.server"
-      ]
+      ],
+      "network_link_policy": {
+        "link_layer_ref": "technology.logix_lan100_link",
+        "driver_contract": "Enforce host rate ceilings, report advertised and negotiated rates separately, process packet-level interrupts and receiver credits, and expose fallback/error diagnostics. TCP/IP application throughput is below shared raw line rate and requires measurement."
+      }
     },
     {
       "id": "software.bpi_client_server",
@@ -5053,7 +5287,7 @@
             "Role-based authorization and server-side input validation",
             "Backup captures a consistent checkpoint plus required logs; test restoration onto a clean disk.",
             "Bounded log growth, disk-full handling and operator-visible recovery status",
-            "Plan backups and report traffic around the shared 100 kbit/s LAN budget."
+            "Plan backups and report traffic around the negotiated shared 100/250/500/1000 kbit/s raw LAN budget and measured payload throughput; slower admitted hosts limit the whole network."
           ],
           "initial_limits": {
             "server_ram_kb": 512,
@@ -5083,7 +5317,7 @@
       "delivery": "system/software upgrade supplied with the Aurelia network-adapter offer",
       "adds": [
         "TCP/IP stack",
-        "LogixLAN-100 adapter driver",
+        "LogixLAN negotiated-rate adapter driver",
         "network configuration tools",
         "BPI client networking API"
       ],
@@ -5096,7 +5330,11 @@
       "api_compatibility": "Retains the base platform C/TUI API; optional networking services are discovered through versioned capability checks.",
       "edition_refs": [
         "edition.cpm_aurelia_networking.z80"
-      ]
+      ],
+      "network_link_policy": {
+        "link_layer_ref": "technology.logix_lan100_link",
+        "driver_contract": "Enforce host rate ceilings, report advertised and negotiated rates separately, process packet-level interrupts and receiver credits, and expose fallback/error diagnostics. TCP/IP application throughput is below shared raw line rate and requires measurement."
+      }
     }
   ],
   "services": [

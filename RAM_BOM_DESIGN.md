@@ -41,7 +41,7 @@ Networking-era Artemis configurations add one removable NIC. PRO includes one NI
 
 ## Decisions required before costing
 
-The BOM's `open_decisions` and per-product requirements preserve the remaining work: exact DRAM suppliers and electrical qualification; the physical memory map; drive/display OEM selection; VRAM electrical qualification and ROM organization; the video-link electrical specification; custom-silicon implementation and yields; PRO console packout or validated headless operation; and Aurelia's two-port FlexiBUS limit when keyboard, disk and printer are all required.
+The BOM's `open_decisions` and per-product requirements preserve the remaining work: exact DRAM suppliers and electrical qualification; the physical memory map; drive/display OEM selection; VRAM electrical qualification and ROM organization; the video-link electrical specification; custom-silicon implementation and yields; PRO console packout or validated headless operation; and the controller die count and electrical qualification for three FlexiBUS ports on both Aurelia models.
 
 `costing_inputs` separates direct materials, conversion labor/test/rework, factory overhead, NRE/capital and commercial costs. Before calculating totals, define supplier quote dates and volume tiers, quantities, assembly routing and minutes, programming/calibration, scrap and yield, fixtures, utilization and overhead allocation. Prices and all unresolved inputs remain null. All cost rollups are explicitly blocked; a sum of known lines must not be presented as a complete manufacturing cost.
 
