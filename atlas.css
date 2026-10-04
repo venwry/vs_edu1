@@ -103,7 +103,7 @@ main.architecture-main{max-width:none;width:100%;padding-left:28px;padding-right
 .architecture-main .wires{pointer-events:none}
 @media(max-width:750px){main.architecture-main{padding:0 12px}.architecture-main .explorer{grid-template-columns:minmax(0,1fr)}.architecture-divider{display:none}.architecture-main .canvas{padding:16px}.architecture-main .inspector{border-top:1px solid var(--line)}}
 
-/* Compact Property / Value pairs, with structured sections for longer content. */
+/* Single Property / Value table, with structured sections for longer content. */
 .architecture-main .inspector{container-type:inline-size}
 .structured-spec{font-size:13px;line-height:1.55;min-width:0}
 .spec-property-groups{display:grid;grid-template-columns:minmax(0,1fr);gap:0 18px;margin:12px 0}
@@ -121,4 +121,3 @@ main.architecture-main{max-width:none;width:100%;padding-left:28px;padding-right
 .structured-spec p{font-size:13px;margin:5px 0 12px}
 .spec-list{padding-left:20px;margin:10px 0}.spec-list>li{margin:7px 0}
 .spec-table-scroll{overflow-x:auto}.spec-table-scroll table{font-size:12px}
-@container(min-width:520px){.spec-property-groups{grid-template-columns:repeat(2,minmax(0,1fr))}.spec-properties+ .spec-properties{border-left:1px solid var(--line)}}
