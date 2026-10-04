@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "1.1",
+    "version": "1.2",
     "status": "Engineering BOM baseline; not released for purchase or unit-cost quotation.",
-    "source_catalog_version": "2.7",
+    "source_catalog_version": "2.8",
     "quantity_policy": "Known quantities are integers; unresolved quantities are null and block cost roll-up. Functional assembly placeholders are not purchasable IC selections.",
     "cost_policy": "No prices invented. Separate recurring material, conversion, factory overhead, NRE/capital and commercial/service costs. Do not count an OEM subassembly and its included parts twice."
   },
@@ -1558,7 +1558,9 @@
       "quote_date": null,
       "quantity_tier": null,
       "qualification_status": "unresolved",
-      "requirements": []
+      "requirements": [
+        "Hardware framing/CRC and address filtering; 4 KiB local packet RAM target, complete-frame credits and packet interrupts. Freeze frame size, RAM organization and chip count; enforce the catalog host rate profile."
+      ]
     },
     {
       "id": "bompart.device.network_card_aurelia.firmware_rom",
@@ -1670,7 +1672,9 @@
       "quote_date": null,
       "quantity_tier": null,
       "qualification_status": "unresolved",
-      "requirements": []
+      "requirements": [
+        "Hardware framing/CRC and address filtering; 4 KiB local packet RAM target, complete-frame credits and packet interrupts. Freeze frame size, RAM organization and chip count; enforce the catalog host rate profile."
+      ]
     },
     {
       "id": "bompart.device.network_card_artemis.firmware_rom",
@@ -1782,7 +1786,9 @@
       "quote_date": null,
       "quantity_tier": null,
       "qualification_status": "unresolved",
-      "requirements": []
+      "requirements": [
+        "Common 100/250/500/1000 kbit/s distributed clock, coordinated negotiation/discovery/fallback and receiver-ready grants. 10 MHz reference with divisors 100/40/20/10; no per-port rate conversion."
+      ]
     },
     {
       "id": "bompart.device.network_hub.4_port_pcb",
@@ -4556,7 +4562,8 @@
       ],
       "requirements": [
         "Host bus/mapper interface, controller or sequencer, serial framing/CRC logic, RAM/FIFO, firmware ROM, differential data and clock transceivers, port connector, protection/termination and cable. Specify Z80 CPU-service latency and buffers",
-        "bind the supplied OS media and any RAM prerequisite to the kit BOM."
+        "bind the supplied OS media and any RAM prerequisite to the kit BOM.",
+        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release."
       ],
       "routing": {
         "operations": [],
@@ -4640,7 +4647,8 @@
       ],
       "requirements": [
         "Choose physical implementation. A practical first-costing baseline is one common removable NIC installed in new systems and sold for upgrades",
-        "this is a proposal. Specify 32-bit slot decode, buffer widths, PIO versus DMA, controller/firmware, link electronics, cable and assembly test. Do not cost both integrated circuitry and a separate card."
+        "this is a proposal. Specify 32-bit slot decode, buffer widths, PIO versus DMA, controller/firmware, link electronics, cable and assembly test. Do not cost both integrated circuitry and a separate card.",
+        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release."
       ],
       "routing": {
         "operations": [],
@@ -4707,7 +4715,7 @@
         }
       ],
       "requirements": [
-        "Create three actual SKUs. Separate per-port connector/transceiver/protection cost from shared arbiter/clock/firmware/buffering/PSU. Define whether forwarding is streamed or frame-buffered, fault isolation, diagnostics and maximum cables. The shared one-transmitter medium does not provide 4/8/16 times 100 kbit/s aggregate payload bandwidth."
+        "Qualify 4-, 8- and 16-port SKUs with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity."
       ],
       "routing": {
         "operations": [],
@@ -4774,7 +4782,7 @@
         }
       ],
       "requirements": [
-        "Create three actual SKUs. Separate per-port connector/transceiver/protection cost from shared arbiter/clock/firmware/buffering/PSU. Define whether forwarding is streamed or frame-buffered, fault isolation, diagnostics and maximum cables. The shared one-transmitter medium does not provide 4/8/16 times 100 kbit/s aggregate payload bandwidth."
+        "Qualify 4-, 8- and 16-port SKUs with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity."
       ],
       "routing": {
         "operations": [],
@@ -4841,7 +4849,7 @@
         }
       ],
       "requirements": [
-        "Create three actual SKUs. Separate per-port connector/transceiver/protection cost from shared arbiter/clock/firmware/buffering/PSU. Define whether forwarding is streamed or frame-buffered, fault isolation, diagnostics and maximum cables. The shared one-transmitter medium does not provide 4/8/16 times 100 kbit/s aggregate payload bandwidth."
+        "Qualify 4-, 8- and 16-port SKUs with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity."
       ],
       "routing": {
         "operations": [],
@@ -4956,7 +4964,7 @@
           "ref": "bompart.part.flexibus_host_controller",
           "quantity": null,
           "unit": "each",
-          "role": "two host ports; die port count unresolved",
+          "role": "three independent host ports; die port count unresolved",
           "condition": "always",
           "quantity_status": "unresolved"
         },
@@ -5041,6 +5049,7 @@
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
         "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -5090,7 +5099,7 @@
           "ref": "bompart.part.flexibus_host_controller",
           "quantity": null,
           "unit": "each",
-          "role": "two host ports; die port count unresolved",
+          "role": "three independent host ports; die port count unresolved",
           "condition": "always",
           "quantity_status": "unresolved"
         },
@@ -5171,6 +5180,7 @@
         "Qualify eight 64K×1 DRAMs for December 1979",
         "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
+        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7324,6 +7334,7 @@
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
         "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7341,6 +7352,7 @@
         "Qualify eight 64K×1 DRAMs for December 1979",
         "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
+        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7593,6 +7605,7 @@
       "requirements": [
         "Host bus/mapper interface, controller or sequencer, serial framing/CRC logic, RAM/FIFO, firmware ROM, differential data and clock transceivers, port connector, protection/termination and cable. Specify Z80 CPU-service latency and buffers",
         "bind the supplied OS media and any RAM prerequisite to the kit BOM.",
+        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7609,6 +7622,7 @@
       "requirements": [
         "Choose physical implementation. A practical first-costing baseline is one common removable NIC installed in new systems and sold for upgrades",
         "this is a proposal. Specify 32-bit slot decode, buffer widths, PIO versus DMA, controller/firmware, link electronics, cable and assembly test. Do not cost both integrated circuitry and a separate card.",
+        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -7625,7 +7639,7 @@
         "assembly.device.network_hub.16_port"
       ],
       "requirements": [
-        "Create three actual SKUs. Separate per-port connector/transceiver/protection cost from shared arbiter/clock/firmware/buffering/PSU. Define whether forwarding is streamed or frame-buffered, fault isolation, diagnostics and maximum cables. The shared one-transmitter medium does not provide 4/8/16 times 100 kbit/s aggregate payload bandwidth.",
+        "Qualify 4-, 8- and 16-port SKUs with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -8309,7 +8323,7 @@
     {
       "id": "flexibus_ports",
       "status": "open",
-      "description": "Aurelia has two point-to-point ports; keyboard plus disk plus printer requires a new explicit expansion offer or accepted limitation."
+      "description": "Aurelia and Aurelia+ each have three independent point-to-point ports. Qualify simultaneous keyboard/disk/printer service, port power and transceivers; freeze controller ports per die and resulting die quantity."
     },
     {
       "id": "video_link",
