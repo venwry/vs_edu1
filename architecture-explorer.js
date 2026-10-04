@@ -200,8 +200,7 @@ window.renderSpecification=function(data,records={}){
    return '<ul class="spec-list">'+v.filter(x=>!empty(x)).map(x=>'<li>'+(simple(x)?esc(scalar(x)):render(x))+'</li>').join('')+'</ul>';
   }
   const entries=Object.entries(v).filter(([,x])=>!empty(x)),short=entries.filter(([k,x])=>simple(x)&&scalar(x).length<=65&&!/status|description|note|qualifier/i.test(k)),rest=entries.filter(e=>!short.includes(e));
-  const midpoint=Math.ceil(short.length/2);
-  return (short.length?'<div class="spec-property-groups">'+table(short.slice(0,midpoint))+(short.length>1?table(short.slice(midpoint)):'')+'</div>':'')+rest.map(([k,x])=>simple(x)?'<section class="spec-explanation"><h4>'+esc(label(k))+'</h4>'+render(x)+'</section>':'<details class="spec-section"><summary>'+esc(label(k))+'</summary>'+render(x)+'</details>').join('');
+  return (short.length?'<div class="spec-property-groups">'+table(short)+'</div>':'')+rest.map(([k,x])=>simple(x)?'<section class="spec-explanation"><h4>'+esc(label(k))+'</h4>'+render(x)+'</section>':'<details class="spec-section"><summary>'+esc(label(k))+'</summary>'+render(x)+'</details>').join('');
  }
  return '<div class="structured-spec"><div class="spec-controls"><button type="button" data-spec-expand="true">Expand all</button><button type="button" data-spec-expand="false">Collapse all</button></div>'+render(data)+'</div>';
 };

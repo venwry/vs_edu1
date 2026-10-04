@@ -82,7 +82,7 @@ All four architecture pages fill the browser width. Drag the divider between dia
 
 See [VIDEO_DESIGN.md](VIDEO_DESIGN.md). Both Aurelia and Aurelia+ now use 16 KiB custom dual-port VRAM and the shared controller, with native 40/80-column text, explicit bitmap and sprite allocations, and monitor capability discovery. The retained `video.text_mode` and `memory_layout` summaries describe the preferred/default configuration; `text_modes` and `bitmap_modes` enumerate all hardware configurations. Monitor filtering remains mandatory. Manufacturing figures are planning estimates; electrical qualification and costing gates remain open.
 
-Architecture detail panels preserve nested specifications as expandable sections, lists and record tables. Short scalar properties use two side-by-side Property/Value groups when the panel is at least 520px wide, and stack on narrower panels. Expand all / Collapse all controls operate within each specification; long explanations and status notes remain separate paragraphs. The renderer preserves zeros, false values, unknown values, and component names. Run `node tests/specification.test.cjs` for content-preservation and interaction checks.
+Architecture detail panels preserve nested specifications as expandable sections, lists and record tables. Short scalar properties use a single two-column Property/Value table at every panel width. Expand all / Collapse all controls operate within each specification; long explanations and status notes remain separate paragraphs. The renderer preserves zeros, false values, unknown values, and component names. Run `node tests/specification.test.cjs` for content-preservation and interaction checks.
 
 ## Negotiated networking and three-port Aurelia (v2.8)
 
