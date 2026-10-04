@@ -8,8 +8,8 @@ const tick=()=>new Promise(r=>setTimeout(r,35));
 async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const errors=[],fetched=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(read(page.path),{url,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
- const w=dom.window;w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||JSON.parse(read(name))};};
- w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
+ const w=dom.window;w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||JSON.parse(read(name))};};
+ w.eval(read('timeline-model.js'));if(page.renderer==='timelinejs'){Object.defineProperty(w.HTMLElement.prototype,'offsetWidth',{get(){return this.id==='timelinejs'?1200:500;}});Object.defineProperty(w.HTMLElement.prototype,'offsetHeight',{get(){return this.id==='timelinejs'?800:200;}});w.eval(fs.readFileSync(process.env.TIMELINEJS_TEST_BUNDLE||require.resolve('@knight-lab/timelinejs/dist/js/timeline.js'),'utf8'));}w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors,fetched};
 }
@@ -76,6 +76,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  }
  for(const [source,href] of links){
   const u=new URL(href,'https://atlas.test/'+source),file=u.pathname.slice(1);
+  if(u.origin!=='https://atlas.test')continue;
   assert(targets.has(file),source+' -> '+href);
   if(u.hash)assert(targets.get(file).has(decodeURIComponent(u.hash.slice(1))),source+' -> missing '+href);
  }
@@ -96,12 +97,12 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  assert(!d.querySelector('.calendar-grid [data-event="event.power"]'));
  assert.equal(d.querySelectorAll('.swim-event.approximate').length,0);
  assert.equal(d.querySelector('[data-event="event.lottery"] time').textContent,'1972-02-06');
- assert.equal(new Set([...d.querySelectorAll('.phase-processes [data-process]')].map(x=>x.dataset.process)).size,8);
- assert.equal(d.querySelectorAll('.phase-processes [data-process="process.international_investment"]').length,2);
+ assert.equal(d.querySelectorAll('[data-select-process]').length,8);
+ assert.equal(d.querySelectorAll('[data-select-process="process.international_investment"]').length,1);
  assert(!d.querySelector('[data-event="event.basic_develop"]'));
  assert(!d.querySelector('[data-event="event.harvard"]'));
  w.location.hash='#event.exchanges';await tick();
- assert(d.getElementById('process.international_investment').open);
+ assert.equal(d.getElementById('process-inspection').hidden,false);assert(d.querySelector('#process-inspection [data-process="process.international_investment"]').open);
  for(const cell of d.querySelectorAll('.calendar-cell')){
   const positions=[...cell.querySelectorAll('.calendar-event')].map(x=>parseFloat(x.style.top));
   for(let i=1;i<positions.length;i++)assert(positions[i]-positions[i-1]>=88,'event cards overlap');
@@ -144,4 +145,5 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const offline=await boot(page,{},'file:///atlas/timeline.html');assert(offline.d.querySelector('#catalogs'));offline.dom.window.close();
  console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; four computer explorers, RAM expansion, networking, bundles, filters, JSON updates and offline recovery.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
 

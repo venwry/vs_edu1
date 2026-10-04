@@ -42,7 +42,7 @@ This replaces the earlier proposed-date review. All 33 point-event dates below a
 
 ## Processes
 
-These are not plotted as point events. Each relevant phase lists its processes separately, including in the selected-phase inspector. Unspecified endpoints remain unspecified. Contextual phase membership does not establish a duration, and none of the earlier proposed process dates is treated as confirmed.
+These are rendered as continuous process ranges, and each relevant phase also lists its processes in the selected-phase inspector. Unspecified endpoints remain unspecified in the story JSON. For visualization, the seven unspecified processes receive explicitly approximate phase-context envelopes; studies and NYSE speculation begin no earlier than relocation. Contextual phase membership does not establish an actual duration, and none of the earlier proposed process dates is treated as confirmed. The shared display rules are documented in ATLAS_README.md.
 
 | Process | Existing period/context | Listed under phases |
 |---|---|---|

@@ -40,3 +40,48 @@
 @media(max-width:650px){.timeline-workspace{display:flex;flex-direction:column;height:auto;min-height:0}.timeline-workspace .event-inspection{max-height:32vh;border-right:0;border-bottom:1px solid var(--line)}#timeline-board{height:65vh}.timeline-workspace .event>summary{font-size:18px}.timeline-origin{flex-wrap:wrap}.timeline-origin>.eyebrow{max-width:none}.calendar-grid{grid-template-columns:55px 190px repeat(var(--lane-count),170px)}}
 
 .phase-processes{margin:30px 0}.phase-processes>p,.phase-process-group>p{color:var(--muted);font-size:13px}.phase-process-group{border:1px solid var(--line);padding:20px;margin:16px 0;border-radius:8px}.phase-process-group h3{margin:0;font-size:18px}.process-detail{padding:12px 0;border-top:1px solid var(--line);scroll-margin-top:20px}.process-detail summary{font-weight:600}.process-detail .status{display:block;text-transform:none}.process-detail .fields{font-size:13px}
+
+/* Shared Timeline / Assumptions navigation. */
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.timeline-title{display:flex;gap:.25em;align-items:center;flex-wrap:wrap;margin:8px 0 18px;font-weight:500;line-height:1.2}
+.timeline-title button{font:inherit;letter-spacing:inherit;color:var(--muted);background:none;border:0;padding:0 0 5px;border-bottom:3px solid transparent}
+.timeline-title button[aria-selected=true]{color:var(--text);border-bottom-color:var(--accent)}
+.timeline-title>span{color:var(--line)}
+.timeline-versions{display:flex;gap:20px;flex-wrap:wrap;margin:12px 0 22px;font-size:13px}
+.timeline-versions [aria-current=page]{color:var(--text);text-decoration:none}
+#assumptions-panel{max-width:1400px;margin:auto}
+/* One shared body coordinate system keeps ranges continuous across years. */
+.continuous-calendar{grid-template-rows:auto var(--calendar-height)}
+.continuous-calendar .calendar-cell,.continuous-calendar .calendar-phases{height:var(--calendar-height);background:repeating-linear-gradient(to bottom,var(--line) 0,var(--line) 1px,transparent 1px,transparent var(--year-height))}
+.continuous-calendar .calendar-phase{border-radius:0;overflow:visible;padding:0;background:#22312b;z-index:1}
+.span-label{display:block;position:sticky;top:65px;padding:10px 8px;text-align:left;overflow-wrap:anywhere}
+.continuous-calendar .calendar-phase strong{font-size:12px}
+.continuous-calendar .calendar-phase small{font-size:11px}
+.lane-events{position:absolute;left:0;top:0;bottom:0}
+.lane-processes{position:absolute;right:0;top:0;bottom:0}
+.calendar-process{position:absolute;text-align:left;padding:0;border:1px solid var(--blue);border-radius:0;background:#20333b;color:var(--text)}
+.calendar-process.approximate{border-style:dashed;background:repeating-linear-gradient(135deg,#20333b,#20333b 10px,#243b42 10px,#243b42 11px)}
+.calendar-process strong{display:block;font-size:12px;line-height:1.4;margin:8px 0}
+.calendar-process small{display:block;font-size:11px;line-height:1.4;color:var(--blue)}
+.calendar-process[aria-pressed=true]{outline:2px solid var(--accent);outline-offset:-3px}
+.process-timing{padding:12px;border-left:3px solid var(--blue);background:#20333b;color:var(--text)!important;font-size:12px}
+.process-timing.approximate{border-left-style:dashed}
+/* TimelineJS keeps its native horizontal navigation and story slides. */
+#timelinejs{width:100%;height:78vh;min-height:700px;background:var(--panel);border:1px solid var(--line)}
+.timeline-two-toolbar{display:flex;gap:20px;flex-wrap:wrap;margin:18px 0}
+.timeline-two-toolbar label{font-size:12px;flex:1;min-width:240px}
+.timeline-two-toolbar select{display:block;width:100%;max-width:100%;margin-top:6px}
+.timeline-two-origin{padding:12px 18px;border:1px solid var(--line);background:var(--panel);font-size:13px}
+#timeline-two-status{font-size:12px;color:var(--muted);padding:12px 0}
+#timelinejs .tl-storyslider,#timelinejs .tl-slide,#timelinejs .tl-slide-content-container{background:var(--panel)}
+#timelinejs .tl-text h2,#timelinejs .tl-text h3,#timelinejs .tl-text p,#timelinejs .tl-text li,#timelinejs .tl-text .tl-headline,#timelinejs .tl-slidenav-title,#timelinejs .tl-slidenav-description{color:var(--text)}
+#timelinejs .tl-text,#timelinejs .tl-text p{font-family:system-ui,sans-serif;font-size:14px;line-height:1.6}
+#timelinejs .tl-text .tl-headline{font-size:30px;line-height:1.2;letter-spacing:-.5px}
+#timelinejs .tl-text a{color:var(--accent)}
+#timelinejs .tl-text .tl-headline-date{color:var(--muted)}
+#timelinejs .tl-timenav{background:#e8ede7}
+#timelinejs .tl-timemarker-content .tl-headline{font-family:system-ui,sans-serif;font-size:12px}
+#timelinejs .tl-timeera .tl-headline{font-family:system-ui,sans-serif;font-size:11px;line-height:1.3}
+#timelinejs .tl-slidenav-next .tl-slidenav-icon,#timelinejs .tl-slidenav-previous .tl-slidenav-icon{color:var(--accent)}
+#timelinejs .tl-text-content details{margin:12px 0}
+@media(max-width:650px){.timeline-title{font-size:clamp(27px,7vw,40px);letter-spacing:-1px}.timeline-two-toolbar label{min-width:0;flex-basis:100%}#timelinejs{height:850px;min-height:0}.span-label{top:65px}.timeline-two-origin{padding:10px}}
