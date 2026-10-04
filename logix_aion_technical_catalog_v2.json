@@ -1,18 +1,19 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.5",
+    "version": "2.6",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
       "introduced": "Event name and event start date; month-only dates retain month precision.",
-      "computers": "Each computer is fully specified.",
+      "computers": "Functional specifications with explicit RAM populations; manufacturing completeness is tracked in hardware_bom.json. Unknown suppliers, quantities and validation remain unresolved.",
       "bundles": "Commercial packaging is represented separately in offered_bundles.",
       "references": "Stable IDs link computers, technologies, components, devices and software.",
       "architecture": "Architecture descriptions and relationships are shared with the interactive explorer.",
       "platform_editions": "Canonical software compatibility records with per-platform availability, execution target, role, dependencies and resource limits. Computer lists are derived from them.",
       "design_status": "Accepted implementation designs reside under specification.implementation_design. Numerical performance goals and pending validation are explicitly labeled; acceptance does not imply completed hardware/software.",
-      "graphics_storage": "Per-computer video.memory_layout supplies text and bitmap allocations; shared mode-switch and preservation behavior resides in the display API specification."
+      "graphics_storage": "Per-computer video.memory_layout supplies text and bitmap allocations; shared mode-switch and preservation behavior resides in the display API specification.",
+      "manufacturing": "hardware_bom.json separates recurring material, assembly requirements, variant packout and unresolved costing inputs. No prices or qualified supplier claims are invented."
     }
   },
   "technologies": [
@@ -486,7 +487,38 @@
             "Silicon timing and area",
             "TLB entry count tuning",
             "Final mapping-record layout",
-            "DMA hardware interface; memory-bus organization remains deferred"
+            "DMA interface and electrical implementation of the specified paired-bank memory organization"
+          ]
+        },
+        "physical_memory_design": {
+          "status": "Accepted banked-memory design baseline; electrical implementation and validation pending.",
+          "ram_slots": 8,
+          "banks": 4,
+          "modules_per_bank": 2,
+          "module_data_width_bits": 16,
+          "bank_data_width_bits": 32,
+          "supported_module_refs": [
+            "part.artemis_ram_module_32kb_x16",
+            "part.artemis_ram_module_128kb"
+          ],
+          "mixed_density_allowed": false,
+          "physical_limit_kb": 1024,
+          "physical_map_status": "RAM base, ROM, VRAM, I/O and reset overlays remain to be assigned; 24-bit physical addressing is unchanged.",
+          "requirements": [
+            "Independent bank selection with row/column address multiplexing.",
+            "Four byte write enables per 32-bit bank; defined aligned byte/halfword/word access and alignment faults.",
+            "RAS/CAS/WE timing, data buffers, refresh arbitration and DMA contention handling.",
+            "Explicit READY/wait handshake; full-width data transfer is not a zero-wait guarantee.",
+            "Capacity straps, pair matching, boot memory test and incomplete-bank rejection.",
+            "Shared module edge interface with separate board routing for selected DRAM rails; no chip-footprint interchangeability assumption."
+          ],
+          "open_items": [
+            "Exact controller ASIC versus discrete logic partition and physical component counts",
+            "Connector/pinout/keying and rails",
+            "Supplier-specific refresh and speed grades",
+            "Contiguous physical bank decoding and reset ROM map",
+            "Worst-case loading and power with eight modules",
+            "Optional server byte-parity variant"
           ]
         }
       },
@@ -1025,7 +1057,14 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.z80a"
+      ]
     },
     {
       "id": "part.z80b",
@@ -1044,6 +1083,14 @@
       },
       "used_in": [
         "computer.aurelia_plus"
+      ],
+      "manufacturing_requirements": [
+        "Same, with 6 MHz timing and December 1979 sourcing qualification",
+        "distinguish speed-bin procurement from a new CPU design."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.z80b"
       ]
     },
     {
@@ -1072,7 +1119,14 @@
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
-      }
+      },
+      "manufacturing_requirements": [
+        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.era1"
+      ]
     },
     {
       "id": "part.dram_16kbit",
@@ -1080,13 +1134,36 @@
       "category": "memory_chip",
       "origin": "historical_external_component",
       "used_in": [
+        "computer.aurelia",
+        "device.aurelia_ram_16kb_card",
+        "part.artemis_ram_module_32kb_x16",
         "part.artemis_ram_module_prototype"
       ],
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      }
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "capacity_kbit": 16,
+        "organization_words": 16384,
+        "data_width_bits": 1,
+        "package": null,
+        "manufacturer_part_number": null,
+        "access_time_ns": null,
+        "cycle_time_ns": null,
+        "supply_rails_v": null,
+        "refresh_requirement": null,
+        "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
+      },
+      "manufacturing_requirements": [
+        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and production M32-16",
+        "the current list only names the prototype."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.dram_16kbit"
+      ]
     },
     {
       "id": "part.dram_64kbit",
@@ -1094,28 +1171,56 @@
       "category": "memory_chip",
       "origin": "historical_external_component",
       "used_in": [
-        "part.artemis_ram_module_64kb"
+        "computer.aurelia_plus",
+        "part.artemis_ram_module_128kb"
       ],
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      }
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "specification": {
+        "capacity_kbit": 64,
+        "organization_words": 65536,
+        "data_width_bits": 1,
+        "package": null,
+        "manufacturer_part_number": null,
+        "access_time_ns": null,
+        "cycle_time_ns": null,
+        "supply_rails_v": null,
+        "refresh_requirement": null,
+        "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
+      },
+      "manufacturing_requirements": [
+        "Add 64K×1 and sourcing by launch date",
+        "rails/refresh/timing/package. Link to Aurelia+, high-density modules and any selected compatibility-card local RAM."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.dram_64kbit"
+      ]
     },
     {
       "id": "part.dram_128kbit",
       "name": "128 Kbit RAM chip",
       "category": "memory_chip",
       "origin": "custom_specified_component",
-      "used_in": [
-        "part.artemis_ram_module_128kb",
-        "computer.artemis_pro"
-      ],
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
-      }
+      },
+      "product_status": "Superseded design assumption; excluded from active manufacturing BOMs.",
+      "superseded_by": [
+        "part.dram_64kbit"
+      ],
+      "manufacturing_requirements": [
+        "Remove from active production BOMs. Preserve only as a superseded design assumption if history is retained",
+        "it is not a qualified purchased component."
+      ],
+      "manufacturing_status": "excluded_from_active_production"
     },
     {
       "id": "part.artemis_ram_module_prototype",
@@ -1125,14 +1230,21 @@
       "specification": {
         "chips": 16,
         "chip_type_ref": "part.dram_16kbit",
-        "physical_arrangement": "4 rows x 4 chips"
+        "physical_arrangement": "4 rows x 4 chips",
+        "capacity_kb": 32,
+        "data_width_bits": 16
       },
       "vendor": "Logix / AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "product_status": "Pre-release engineering subassembly; not a commercial offering."
+      "product_status": "Historical pre-release engineering subassembly; not a commercial offering. Production replacement is a separate qualified design record.",
+      "manufacturing_requirements": [
+        "Retain noncommercial engineering status. Its chip count implies 32 KiB",
+        "define width/PCB/connectors separately from a new production M32-16."
+      ],
+      "manufacturing_status": "excluded_from_active_production"
     },
     {
       "id": "part.artemis_ram_module_64kb",
@@ -1145,35 +1257,60 @@
         "chip_type_ref": "part.dram_64kbit",
         "physical_arrangement": "2 rows x 4 chips"
       },
+      "vendor": "Logix / AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "product_status": "Superseded design assumption; excluded from active manufacturing BOMs.",
+      "superseded_by": [
+        "part.artemis_ram_module_32kb_x16",
+        "part.artemis_ram_module_128kb"
+      ],
+      "manufacturing_requirements": [
+        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
+        "identify how existing prototypes/spares are handled."
+      ],
+      "manufacturing_status": "excluded_from_active_production"
+    },
+    {
+      "id": "part.artemis_ram_module_128kb",
+      "name": "Artemis M128-16 128 KiB / 16-bit RAM module",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "specification": {
+        "capacity_kb": 128,
+        "data_width_bits": 16,
+        "chips": 16,
+        "chip_type_ref": "part.dram_64kbit",
+        "chip_organization": "64K x 1",
+        "physical_arrangement": "16 data chips; final board placement and connector drawing pending.",
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 256,
+        "parity_bits": 0,
+        "installation": "Power off; matched density and qualified speed within each pair. No incomplete bank or mixed module density in one chassis in v1.",
+        "electrical_interface": "Shared edge interface target; module-specific PCB routing. Rails, pinout, keying, decoupling and buffer population must be frozen before manufacture."
+      },
       "used_in": [
-        "computer.artemis"
+        "computer.artemis",
+        "computer.artemis_pro"
       ],
       "vendor": "Logix / AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
-      }
-    },
-    {
-      "id": "part.artemis_ram_module_128kb",
-      "name": "Artemis PRO 128 KB RAM module",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "specification": {
-        "capacity_kb": 128,
-        "chip_type_ref": "part.dram_128kbit",
-        "chip_count": 8,
-        "organization": "8 x 128 Kbit DRAM chips = 1 Mbit = 128 KB per module",
-        "mechanical_electrical_compatibility": "uses the Artemis eight-slot RAM-module format"
       },
-      "used_in": [
-        "computer.artemis_pro"
+      "revision": "2",
+      "product_status": "Accepted production design baseline; electrical timing, supplier and full-population qualification pending.",
+      "manufacturing_requirements": [
+        "Redefine/revise as sixteen 64K×1 chips, ×16 data width",
+        "add PCB, two byte lanes, buffers/straps/connectors, decoupling and test."
       ],
-      "vendor": "Logix / AION Labs",
-      "introduced": {
-        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
-        "event_start_date": "1981-05-04"
-      }
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_ram_module_128kb"
+      ]
     },
     {
       "id": "part.flexibus_host_controller",
@@ -1190,7 +1327,15 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
+        "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.flexibus_host_controller"
+      ]
     },
     {
       "id": "part.flexibus_device_controller",
@@ -1207,7 +1352,15 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Specify whether it is a transport-only state machine or programmable controller",
+        "CPU/ROM/RAM integration, peripheral interfaces, external drivers and power. Define keyboard use explicitly if adopted."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.flexibus_device_controller"
+      ]
     },
     {
       "id": "part.aurelia_video_chip",
@@ -1225,7 +1378,15 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Define clocks, pixel/text generation, memory interface and arbitration, output electrical layer. Add a documented Aurelia+ variant or qualified shared design for 80 columns and 16 KiB",
+        "current 8 KiB record is insufficient."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aurelia_video_chip"
+      ]
     },
     {
       "id": "part.aurelia_monitor_dac",
@@ -1243,7 +1404,14 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Specify reference, transfer function/linearity, output range, settling time, package and required analog stages. Decide custom silicon versus a discrete implementation before assigning die cost."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aurelia_monitor_dac"
+      ]
     },
     {
       "id": "part.color_monitor_controller",
@@ -1264,7 +1432,15 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Locate the 16×12-bit palette storage, command decoder, clocking, RGB conversion and external analog drivers",
+        "establish whether Monitor I/II share silicon but differ in bandwidth/output stages."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.color_monitor_controller"
+      ]
     },
     {
       "id": "part.mono_monitor2_controller",
@@ -1285,7 +1461,15 @@
         "event_start_date": "1979-12-03",
         "date_precision": "day",
         "timeline_note": "Author-confirmed introduction date."
-      }
+      },
+      "manufacturing_requirements": [
+        "Locate 16×8-bit palette storage, command decode, DAC and analog output",
+        "define clock/raster and custom-silicon parameters."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.mono_monitor2_controller"
+      ]
     },
     {
       "id": "part.artemis_dma",
@@ -1300,7 +1484,15 @@
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
-      }
+      },
+      "manufacturing_requirements": [
+        "Channels, bus-master handshake, byte/word widths, counters, request lines, priority, refresh interaction and external buffering",
+        "freeze die/package/test design."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_dma"
+      ]
     },
     {
       "id": "part.artemis_mmu",
@@ -1316,7 +1508,14 @@
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
-      }
+      },
+      "manufacturing_requirements": [
+        "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_mmu"
+      ]
     },
     {
       "id": "part.artemis_graphics_chip",
@@ -1335,7 +1534,14 @@
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
-      }
+      },
+      "manufacturing_requirements": [
+        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define VRAM bus, arbitration, scan timing, font path, output serializers/drivers and package."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_graphics_chip"
+      ]
     },
     {
       "id": "part.artemis_fdd_hdd_controller",
@@ -1357,7 +1563,15 @@
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
-      }
+      },
+      "manufacturing_requirements": [
+        "Define exact floppy and HDD electrical interfaces, encodings, data separator/PLL, DMA/FIFO and firmware split. Specify what remains external",
+        "“HDD supported” is not a complete controller."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_fdd_hdd_controller"
+      ]
     },
     {
       "id": "part.ball_tv90_crt",
@@ -1371,7 +1585,14 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Exact OEM orderable part, supplied assembly boundary, screen/phosphor, scan requirements, life/acceptance limits and what analog/HV components remain to buy."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.ball_tv90_crt"
+      ]
     },
     {
       "id": "part.sony_kv1204_display_assembly",
@@ -1394,7 +1615,15 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Exact OEM supply boundary and permitted purchasable kit, with included component list",
+        "quantify RGB-interface modifications, mechanical fit, yield and calibration."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.sony_kv1204_display_assembly"
+      ]
     },
     {
       "id": "part.motorola_ds3000_140a_crt",
@@ -1410,7 +1639,15 @@
         "event_start_date": "1979-12-03",
         "date_precision": "day",
         "timeline_note": "Author-confirmed introduction date."
-      }
+      },
+      "manufacturing_requirements": [
+        "Exact tube or monitor-assembly identification, included electronics, raster/bandwidth and acceptance test",
+        "prevent tube-plus-complete-monitor double counting."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.motorola_ds3000_140a_crt"
+      ]
     },
     {
       "id": "part.medium_resolution_rgb_crt",
@@ -1426,7 +1663,14 @@
         "event_start_date": "1979-12-03",
         "date_precision": "day",
         "timeline_note": "Author-confirmed introduction date."
-      }
+      },
+      "manufacturing_requirements": [
+        "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.medium_resolution_rgb_crt"
+      ]
     },
     {
       "id": "part.mpi_mp40_mechanism",
@@ -1440,7 +1684,15 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Orderable revision and contents: head, motors, sensors, frame, carriage/platen, ribbon system, wiring",
+        "define excluded controller/PSU/case and incoming tests."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.mpi_mp40_mechanism"
+      ]
     },
     {
       "id": "part.hdd_5mb",
@@ -1457,7 +1709,51 @@
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
-      }
+      },
+      "manufacturing_requirements": [
+        "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.hdd_5mb"
+      ]
+    },
+    {
+      "id": "part.artemis_ram_module_32kb_x16",
+      "name": "Artemis M32-16 32 KiB / 16-bit RAM module",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "specification": {
+        "capacity_kb": 32,
+        "data_width_bits": 16,
+        "chips": 16,
+        "chip_type_ref": "part.dram_16kbit",
+        "chip_organization": "16K x 1",
+        "physical_arrangement": "16 data chips; final board placement and connector drawing pending.",
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 64,
+        "parity_bits": 0,
+        "installation": "Power off; matched density and qualified speed within each pair. No incomplete bank or mixed module density in one chassis in v1.",
+        "electrical_interface": "Shared edge interface target; module-specific PCB routing. Rails, pinout, keying, decoupling and buffer population must be frozen before manufacture."
+      },
+      "used_in": [
+        "computer.artemis"
+      ],
+      "vendor": "Logix / AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "revision": "2",
+      "product_status": "Accepted production design baseline; electrical timing, supplier and full-population qualification pending.",
+      "manufacturing_requirements": [
+        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_ram_module_32kb_x16"
+      ]
     }
   ],
   "devices": [
@@ -1485,7 +1781,14 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Exact key count and regional layouts, switch technology, matrix/diodes, debounce and rollover, scan controller or MCU, firmware ROM/RAM, FlexiBUS transceiver/controller, LEDs, PCB, cable/connector, enclosure/keycaps, bus-power budget and keyboard test fixture. It is not presently linked to a complete controller BOM."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.flexibus_keyboard"
+      ]
     },
     {
       "id": "device.mono_monitor_1",
@@ -1503,7 +1806,15 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Decide whether TV-90 means a tube or a complete display assembly",
+        "specify included yoke/HV/deflection/PSU boundary. Add link receiver, sync/clock handling, DAC/video amplifier, blanking, controls, enclosure, cable and adjustment/test routing."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.mono_monitor_1"
+      ]
     },
     {
       "id": "device.color_monitor_1",
@@ -1522,7 +1833,14 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.color_monitor_1"
+      ]
     },
     {
       "id": "device.mono_monitor_2",
@@ -1546,6 +1864,14 @@
       },
       "optional_with": [
         "computer.aurelia"
+      ],
+      "manufacturing_requirements": [
+        "Resolve tube-versus-module purchase boundary",
+        "specify readable 80-column raster and video bandwidth, receiver, controller/DAC/analog path, sync, mains/PSU, case and alignment. Qualify all claimed old/new host modes."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.mono_monitor_2"
       ]
     },
     {
@@ -1570,6 +1896,15 @@
       },
       "optional_with": [
         "computer.aurelia"
+      ],
+      "manufacturing_requirements": [
+        "Name an OEM/model and electrical/raster specification",
+        "define whether HV/yoke/deflection/PSU are included",
+        "verify 80-column and 640-pixel modes on the chosen raster. Add receiver/analog electronics, cable, case and calibration. Reusing a palette controller does not prove display bandwidth compatibility."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.color_monitor_2"
       ]
     },
     {
@@ -1596,7 +1931,21 @@
         "service_calls": "The common-memory runtime saves the RAM mapping, selects ROM/VRAM for a service and restores the card pages before returning.",
         "installation": "Install with power off, then restart so firmware can discover and test the card.",
         "application_memory": "Lower RAM rises from 44 KB to 60 KB, before other system and workspace reservations."
-      }
+      },
+      "physical_population": {
+        "chip_ref": "part.dram_16kbit",
+        "data_chip_count": 8,
+        "data_width_bits": 8,
+        "capacity_kb": 16,
+        "refresh_owner": "Host memory controller must refresh the card even while its pages are overlaid; exact interface pending."
+      },
+      "manufacturing_requirements": [
+        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/VRAM."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.aurelia_ram_16kb_card"
+      ]
     },
     {
       "id": "device.flexiprint40",
@@ -1611,7 +1960,14 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Establish which motors, printhead, sensors and cable harnesses the purchased mechanism includes. Add motor/head drivers, power supply, local sequencer/MCU, RAM input buffer, font/firmware ROM, paper controls/path, ribbon/consumables, case, interface cable and print/registration test. A bus controller alone is not a complete printer controller."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.flexiprint40"
+      ]
     },
     {
       "id": "device.flexidisk",
@@ -1626,7 +1982,15 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "manufacturing_requirements": [
+        "Exact mechanism, number of drives, sides/tracks/density/format and usable capacity",
+        "floppy controller, data separator, sector buffer, local firmware/processor, interface electronics, PSU, enclosure, cable and alignment/read-write tests. The transport controller is not implicitly the disk controller."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.flexidisk"
+      ]
     },
     {
       "id": "device.apple2_expansion_card",
@@ -1642,7 +2006,14 @@
       "introduced": {
         "event_name": "NCC 1979 — Apple II extensions",
         "event_start_date": "1979-06-04"
-      }
+      },
+      "manufacturing_requirements": [
+        "Apple bus decode/buffering and connector, identification/boot/driver ROM size, port-controller count, transceivers and any FIFO, Disk II sequencing/data handling, timing and firmware ownership. Freeze how native Disk II and FlexiBUS drive access coexist. Existing retail price is not component cost."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.apple2_expansion_card"
+      ]
     },
     {
       "id": "device.flexidisk_ii",
@@ -1665,7 +2036,15 @@
       "introduced": {
         "event_name": "NCC 1979 — Apple II extensions",
         "event_start_date": "1979-06-04"
-      }
+      },
+      "manufacturing_requirements": [
+        "Exact mechanism/media geometry",
+        "controller and firmware able to handle each specified encoding/format, sector/track buffering, local CPU/ROM/RAM, PSU/enclosure and separate format-interchange tests. Define formatting and read/write capability explicitly. Avoid silently using the standard FlexiDisk BOM if its controller cannot implement both formats."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.flexidisk_ii"
+      ]
     },
     {
       "id": "device.artemis_cpm80_module",
@@ -1685,7 +2064,15 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "compatibility_note": "Runs Z80 binaries through the peripheral bridge; distinct from recompiling to native ERA. Bridge capability queries must reflect the emulated CP/M environment, not expose unavailable ERA facilities."
+      "compatibility_note": "Runs Z80 binaries through the peripheral bridge; distinct from recompiling to native ERA. Bridge capability queries must reflect the emulated CP/M environment, not expose unavailable ERA facilities.",
+      "manufacturing_requirements": [
+        "Choose eight 64K×1 data DRAMs as a candidate, or another explicitly costed organization",
+        "add refresh, ROM or host-upload boot logic, mailbox RAM/window and arbitration (dual-port is not mandatory), bus transceivers/width conversion, doorbells, clock/reset, mapper emulation, connector and diagnostics. Count its RAM separately from system modules. PRO compatibility is not currently promised."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.artemis_cpm80_module"
+      ]
     },
     {
       "id": "device.artemis_ram_64kb_module",
@@ -1695,11 +2082,20 @@
       "compatible_with": [
         "computer.artemis"
       ],
-      "sold_separately": true,
+      "sold_separately": false,
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
-      }
+      },
+      "product_status": "Superseded standalone 8-bit module offer; use matched bank kits.",
+      "superseded_by": [
+        "device.artemis_ram_64kb_bank_kit",
+        "device.artemis_ram_256kb_bank_kit"
+      ],
+      "manufacturing_requirements": [
+        "Retire/revise this offering to a matched-pair kit. Define separate 64 KiB low-density and 256 KiB high-density bank kits, included modules, compatible host revisions, installation instructions, spares and kit packaging. The old eight-chip module cannot remain under the new electrical rule."
+      ],
+      "manufacturing_status": "excluded_from_active_production"
     },
     {
       "id": "device.network_card_aurelia",
@@ -1719,17 +2115,25 @@
       "technology_refs": [
         "technology.logix_lan100_link",
         "technology.logix_tcpip_lan"
+      ],
+      "manufacturing_requirements": [
+        "Host bus/mapper interface, controller or sequencer, serial framing/CRC logic, RAM/FIFO, firmware ROM, differential data and clock transceivers, port connector, protection/termination and cable. Specify Z80 CPU-service latency and buffers",
+        "bind the supplied OS media and any RAM prerequisite to the kit BOM."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.network_card_aurelia"
       ]
     },
     {
       "id": "device.network_card_artemis",
       "name": "Logix Artemis network interface",
-      "category": "network_interface_card_or_integrated_interface",
+      "category": "network_interface_card",
       "compatible_with": [
         "computer.artemis",
         "computer.artemis_pro"
       ],
-      "packaging": "Networking is stated to be included with Artemis by default from the 1981 networking release; exact physical integration is not specified.",
+      "packaging": "Removable 32-bit Plug and Execute NIC; one fitted as standard in networking-era Artemis and PRO, and separately offered for earlier Artemis upgrades. Electrical implementation remains open.",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
@@ -1737,6 +2141,15 @@
       "technology_refs": [
         "technology.logix_lan100_link",
         "technology.logix_tcpip_lan"
+      ],
+      "slot_count": 1,
+      "manufacturing_requirements": [
+        "Choose physical implementation. A practical first-costing baseline is one common removable NIC installed in new systems and sold for upgrades",
+        "this is a proposal. Specify 32-bit slot decode, buffer widths, PIO versus DMA, controller/firmware, link electronics, cable and assembly test. Do not cost both integrated circuitry and a separate card."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.network_card_artemis"
       ]
     },
     {
@@ -1761,6 +2174,70 @@
       "technology_refs": [
         "technology.logix_lan100_link",
         "technology.logix_tcpip_lan"
+      ],
+      "manufacturing_requirements": [
+        "Create three actual SKUs. Separate per-port connector/transceiver/protection cost from shared arbiter/clock/firmware/buffering/PSU. Define whether forwarding is streamed or frame-buffered, fault isolation, diagnostics and maximum cables. The shared one-transmitter medium does not provide 4/8/16 times 100 kbit/s aggregate payload bandwidth."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.network_hub.4_port",
+        "assembly.device.network_hub.8_port",
+        "assembly.device.network_hub.16_port"
+      ]
+    },
+    {
+      "id": "device.artemis_ram_64kb_bank_kit",
+      "name": "Artemis 64 KiB matched RAM bank kit",
+      "category": "memory_expansion",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "capacity_kb": 64,
+      "module_ref": "part.artemis_ram_module_32kb_x16",
+      "module_quantity": 2,
+      "bank_count": 1,
+      "data_width_bits": 32,
+      "compatible_with": [
+        "computer.artemis"
+      ],
+      "sold_separately": true,
+      "installation": "Matched pair only, with power off. Do not mix module densities in one chassis. High-density conversion replaces all low-density modules.",
+      "qualification_status": "Accepted offering baseline; host revision and electrical qualification pending.",
+      "manufacturing_requirements": [
+        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.artemis_ram_64kb_bank_kit"
+      ]
+    },
+    {
+      "id": "device.artemis_ram_256kb_bank_kit",
+      "name": "Artemis 256 KiB matched RAM bank kit",
+      "category": "memory_expansion",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "capacity_kb": 256,
+      "module_ref": "part.artemis_ram_module_128kb",
+      "module_quantity": 2,
+      "bank_count": 1,
+      "data_width_bits": 32,
+      "compatible_with": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "sold_separately": true,
+      "installation": "Matched pair only, with power off. Do not mix module densities in one chassis. High-density conversion replaces all low-density modules.",
+      "qualification_status": "Accepted offering baseline; host revision and electrical qualification pending.",
+      "manufacturing_requirements": [
+        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.artemis_ram_256kb_bank_kit"
       ]
     }
   ],
@@ -1828,6 +2305,18 @@
           ],
           "note": "The card fills B000–EFFF with RAM in the normal view. ROM, cartridges and VRAM use temporary overlays within 7000–EFFF; the underlying RAM retains its contents.",
           "application_memory_profile": "ram_64kb"
+        },
+        "physical_population": {
+          "data_ram_kb": 48,
+          "chip_ref": "part.dram_16kbit",
+          "data_chip_count": 24,
+          "bank_count": 3,
+          "bank_data_width_bits": 8,
+          "parity_bits": 0,
+          "video_ram_separate": true,
+          "common_ram_included": true,
+          "status": "Accepted chip-count baseline; decode/refresh/electrical qualification pending.",
+          "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
         }
       },
       "storage": {
@@ -1929,7 +2418,21 @@
         "api_ref": "technology.logix_c_api",
         "adaptive_text": "Applications query usable columns/rows instead of selecting behavior from model name.",
         "native_40_column_mode": "Native 40x25 text mode; applications still query usable dimensions."
-      }
+      },
+      "manufacturing_requirements": [
+        "Add 24 data DRAMs and their decode/refresh logic",
+        "separate VRAM chip type/count and access arbitration",
+        "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
+        "motherboard ROM capacity/package/count and cartridge connectors",
+        "mapper registers/logic",
+        "video and FlexiBUS controller quantities",
+        "clock/reset/interrupt circuitry",
+        "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.computer.aurelia.base"
+      ]
     },
     {
       "id": "computer.aurelia_plus",
@@ -1968,6 +2471,18 @@
           ],
           "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
           "application_memory_profile": "ram_64kb"
+        },
+        "physical_population": {
+          "data_ram_kb": 64,
+          "chip_ref": "part.dram_64kbit",
+          "data_chip_count": 8,
+          "bank_count": 1,
+          "bank_data_width_bits": 8,
+          "parity_bits": 0,
+          "video_ram_separate": true,
+          "common_ram_included": true,
+          "status": "Accepted chip-count baseline; decode/refresh/electrical qualification pending.",
+          "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
         }
       },
       "storage": {
@@ -2066,7 +2581,15 @@
         "api_ref": "technology.logix_c_api",
         "adaptive_text": "Applications query usable columns/rows instead of selecting behavior from model name.",
         "native_40_column_mode": "Not additionally assumed; a compact viewport can be rendered within a wider text display."
-      }
+      },
+      "manufacturing_requirements": [
+        "Qualify eight 64K×1 DRAMs for December 1979",
+        "define a compatible 80-column/16 KiB video-controller revision because `part.aurelia_video_chip` only specifies Aurelia's 8 KiB setup and lists Aurelia as its user. Add exact dual-drive controller/mechanisms, ROM images/capacities, 6 MHz timing and PSU/thermal deltas. Do not treat this as a RAM-only Aurelia variant."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.computer.aurelia_plus.base"
+      ]
     },
     {
       "id": "computer.artemis",
@@ -2083,11 +2606,240 @@
       },
       "memory": {
         "ram_sockets": 8,
-        "module_ref": "part.artemis_ram_module_64kb",
-        "shipping_configurations_kb": [
-          128,
-          256
-        ]
+        "bank_count": 4,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "parity_bits": 0,
+        "mixed_density_allowed": false,
+        "physical_capacity_limit_kb": 1024,
+        "capacity_limit_status": "Design target; all-bank timing, loading and power qualification pending.",
+        "module_refs": [
+          "part.artemis_ram_module_32kb_x16",
+          "part.artemis_ram_module_128kb"
+        ],
+        "configurations": [
+          {
+            "id": "m32_128",
+            "ram_kb": 128,
+            "module_ref": "part.artemis_ram_module_32kb_x16",
+            "populated_modules": 4,
+            "populated_banks": 2,
+            "data_chip_count": 64,
+            "shipping_configuration": true,
+            "validation_status": "Specified baseline; electrical qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              }
+            ]
+          },
+          {
+            "id": "m32_192",
+            "ram_kb": 192,
+            "module_ref": "part.artemis_ram_module_32kb_x16",
+            "populated_modules": 6,
+            "populated_banks": 3,
+            "data_chip_count": 96,
+            "shipping_configuration": false,
+            "validation_status": "Expansion design target; qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "bank": 2,
+                "slots": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "id": "m32_256",
+            "ram_kb": 256,
+            "module_ref": "part.artemis_ram_module_32kb_x16",
+            "populated_modules": 8,
+            "populated_banks": 4,
+            "data_chip_count": 128,
+            "shipping_configuration": false,
+            "validation_status": "Expansion design target; qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "bank": 2,
+                "slots": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "bank": 3,
+                "slots": [
+                  6,
+                  7
+                ]
+              }
+            ]
+          },
+          {
+            "id": "m128_256",
+            "ram_kb": 256,
+            "module_ref": "part.artemis_ram_module_128kb",
+            "populated_modules": 2,
+            "populated_banks": 1,
+            "data_chip_count": 32,
+            "shipping_configuration": true,
+            "validation_status": "Specified baseline; electrical qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "id": "m128_512",
+            "ram_kb": 512,
+            "module_ref": "part.artemis_ram_module_128kb",
+            "populated_modules": 4,
+            "populated_banks": 2,
+            "data_chip_count": 64,
+            "shipping_configuration": false,
+            "validation_status": "Expansion design target; qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              }
+            ]
+          },
+          {
+            "id": "m128_768",
+            "ram_kb": 768,
+            "module_ref": "part.artemis_ram_module_128kb",
+            "populated_modules": 6,
+            "populated_banks": 3,
+            "data_chip_count": 96,
+            "shipping_configuration": false,
+            "validation_status": "Expansion design target; qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "bank": 2,
+                "slots": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "id": "m128_1024",
+            "ram_kb": 1024,
+            "module_ref": "part.artemis_ram_module_128kb",
+            "populated_modules": 8,
+            "populated_banks": 4,
+            "data_chip_count": 128,
+            "shipping_configuration": false,
+            "validation_status": "Expansion design target; qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "bank": 2,
+                "slots": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "bank": 3,
+                "slots": [
+                  6,
+                  7
+                ]
+              }
+            ]
+          }
+        ],
+        "default_configuration": "m32_128",
+        "population_policy": "Matched pairs fill B0–B3 in order. One density per chassis in v1. Capacity straps identify modules; firmware rejects incomplete/mismatched pairs. RAM is contiguous within the physical RAM region; base address still requires a frozen map.",
+        "upgrade_policy": "Low-density 128 KiB can expand to 256 KiB with four additional M32-16 modules. Transition to high density replaces all low-density modules. High-density expansion uses complete 256 KiB banks.",
+        "reliability_policy": "Baseline has no parity or ECC. PRO byte parity is an unimplemented option requiring 18-chip modules and generation/check/reporting logic; never count it as fitted."
       },
       "storage": {
         "internal_fdd": {
@@ -2157,7 +2909,8 @@
           "technology.logix_tcpip_lan",
           "technology.logix_lan100_link"
         ],
-        "adapter_ref": "device.network_card_artemis"
+        "adapter_ref": "device.network_card_artemis",
+        "implementation": "One removable NIC occupying one of the four general-purpose expansion slots; not additional integrated circuitry."
       },
       "technology_refs": [
         "technology.era1_isa",
@@ -2179,12 +2932,13 @@
         "device.mono_monitor_2",
         "device.color_monitor_2",
         "device.artemis_cpm80_module",
-        "device.artemis_ram_64kb_module",
         "device.flexiprint40",
         "device.flexidisk",
         "device.flexidisk_ii",
         "device.network_card_artemis",
-        "device.network_hub"
+        "device.network_hub",
+        "device.artemis_ram_64kb_bank_kit",
+        "device.artemis_ram_256kb_bank_kit"
       ],
       "compatible_software": [
         "software.abacus_2",
@@ -2203,7 +2957,27 @@
         "api_ref": "technology.logix_c_api",
         "adaptive_text": "Applications query usable columns/rows instead of selecting behavior from model name.",
         "native_40_column_mode": "Not additionally assumed; a compact viewport can be rendered within a wider text display."
-      }
+      },
+      "manufacturing_requirements": [
+        "Replace old module model with the two-density, four-bank architecture. Add DRAM controller/refresh/buffers and capacity straps, numeric physical map, boot/reset ROM path, bus width adapters and exact custom-chip quantities/packages. Define FDD mechanisms and HDD interface even when no HDD ships. Cost pre-1981 and networking-included 1981 revisions separately. Determine which chip implements four FlexiBUS ports."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.computer.artemis.m32_128",
+        "assembly.computer.artemis.m32_128.networked",
+        "assembly.computer.artemis.m32_192",
+        "assembly.computer.artemis.m32_192.networked",
+        "assembly.computer.artemis.m32_256",
+        "assembly.computer.artemis.m32_256.networked",
+        "assembly.computer.artemis.m128_256",
+        "assembly.computer.artemis.m128_256.networked",
+        "assembly.computer.artemis.m128_512",
+        "assembly.computer.artemis.m128_512.networked",
+        "assembly.computer.artemis.m128_768",
+        "assembly.computer.artemis.m128_768.networked",
+        "assembly.computer.artemis.m128_1024",
+        "assembly.computer.artemis.m128_1024.networked"
+      ]
     },
     {
       "id": "computer.artemis_pro",
@@ -2221,17 +2995,121 @@
       },
       "memory": {
         "ram_sockets": 8,
-        "module_ref": "part.artemis_ram_module_128kb",
-        "shipping_configurations": [
+        "bank_count": 4,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "parity_bits": 0,
+        "mixed_density_allowed": false,
+        "physical_capacity_limit_kb": 1024,
+        "capacity_limit_status": "Design target; all-bank timing, loading and power qualification pending.",
+        "module_refs": [
+          "part.artemis_ram_module_128kb"
+        ],
+        "configurations": [
           {
+            "id": "m128_512",
             "ram_kb": 512,
-            "populated_modules": 4
+            "module_ref": "part.artemis_ram_module_128kb",
+            "populated_modules": 4,
+            "populated_banks": 2,
+            "data_chip_count": 64,
+            "shipping_configuration": true,
+            "validation_status": "Specified baseline; electrical qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              }
+            ]
           },
           {
+            "id": "m128_768",
+            "ram_kb": 768,
+            "module_ref": "part.artemis_ram_module_128kb",
+            "populated_modules": 6,
+            "populated_banks": 3,
+            "data_chip_count": 96,
+            "shipping_configuration": false,
+            "validation_status": "Expansion design target; qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "bank": 2,
+                "slots": [
+                  4,
+                  5
+                ]
+              }
+            ]
+          },
+          {
+            "id": "m128_1024",
             "ram_kb": 1024,
-            "populated_modules": 8
+            "module_ref": "part.artemis_ram_module_128kb",
+            "populated_modules": 8,
+            "populated_banks": 4,
+            "data_chip_count": 128,
+            "shipping_configuration": true,
+            "validation_status": "Specified baseline; electrical qualification pending.",
+            "bank_population": [
+              {
+                "bank": 0,
+                "slots": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "bank": 1,
+                "slots": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "bank": 2,
+                "slots": [
+                  4,
+                  5
+                ]
+              },
+              {
+                "bank": 3,
+                "slots": [
+                  6,
+                  7
+                ]
+              }
+            ]
           }
-        ]
+        ],
+        "default_configuration": "m128_512",
+        "population_policy": "Matched pairs fill B0–B3 in order. One density per chassis in v1. Capacity straps identify modules; firmware rejects incomplete/mismatched pairs. RAM is contiguous within the physical RAM region; base address still requires a frozen map.",
+        "upgrade_policy": "Low-density 128 KiB can expand to 256 KiB with four additional M32-16 modules. Transition to high density replaces all low-density modules. High-density expansion uses complete 256 KiB banks.",
+        "reliability_policy": "Baseline has no parity or ECC. PRO byte parity is an unimplemented option requiring 18-chip modules and generation/check/reporting logic; never count it as fitted."
       },
       "storage": {
         "internal_fdd": {
@@ -2306,7 +3184,8 @@
           "technology.logix_lan100_link"
         ],
         "adapter_ref": "device.network_card_artemis",
-        "server_role": true
+        "server_role": true,
+        "implementation": "One removable NIC occupying one of the four general-purpose expansion slots; not additional integrated circuitry."
       },
       "technology_refs": [
         "technology.era1_isa",
@@ -2330,7 +3209,8 @@
         "device.flexidisk",
         "device.flexidisk_ii",
         "device.network_card_artemis",
-        "device.network_hub"
+        "device.network_hub",
+        "device.artemis_ram_256kb_bank_kit"
       ],
       "compatible_software": [
         "software.business_tools_artemis",
@@ -2351,7 +3231,18 @@
         "announcement_date": "1981-05-04",
         "shipping_date": null,
         "status": "announced; shipment date not separately specified"
-      }
+      },
+      "manufacturing_requirements": [
+        "Remove 128 Kbit dependency",
+        "use four/eight high-density modules and two/four banks. Specify 8 MHz die/speed-bin and MMU timing, power and cooling at full population, exact HDD model and interface/format, network integration boundary, optional parity policy, RTC/battery need, and boot/service-console policy. Keyboard/monitor are not enumerated in the PRO bundles: decide included console, optional console, or independently validated headless operation. Announcement is recorded for 1981-05-04",
+        "actual shipping date remains unspecified."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.computer.artemis_pro.m128_512",
+        "assembly.computer.artemis_pro.m128_768",
+        "assembly.computer.artemis_pro.m128_1024"
+      ]
     }
   ],
   "software_products": [
@@ -3723,7 +4614,8 @@
           "service_ref": "service.regular_support",
           "duration_years": 1
         }
-      ]
+      ],
+      "bom_assembly_ref": "assembly.bundle.aurelia_mono"
     },
     {
       "id": "bundle.aurelia_color",
@@ -3745,7 +4637,8 @@
           "service_ref": "service.regular_support",
           "duration_years": 1
         }
-      ]
+      ],
+      "bom_assembly_ref": "assembly.bundle.aurelia_color"
     },
     {
       "id": "bundle.aurelia_plus_mono",
@@ -3769,7 +4662,8 @@
           "service_ref": "service.regular_support",
           "duration_years": 1
         }
-      ]
+      ],
+      "bom_assembly_ref": "assembly.bundle.aurelia_plus_mono"
     },
     {
       "id": "bundle.aurelia_plus_color",
@@ -3793,7 +4687,8 @@
           "service_ref": "service.regular_support",
           "duration_years": 1
         }
-      ]
+      ],
+      "bom_assembly_ref": "assembly.bundle.aurelia_plus_color"
     },
     {
       "id": "bundle.artemis_128_mono",
@@ -3804,7 +4699,11 @@
       },
       "computer_ref": "computer.artemis",
       "computer_configuration": {
-        "ram_kb": 128
+        "ram_kb": 128,
+        "ram_configuration_id": "m32_128",
+        "module_ref": "part.artemis_ram_module_32kb_x16",
+        "populated_modules": 4,
+        "populated_banks": 2
       },
       "included_devices": [
         "device.flexibus_keyboard",
@@ -3817,6 +4716,13 @@
         {
           "service_ref": "service.regular_support",
           "duration_years": 1
+        }
+      ],
+      "bom_assembly_ref": "assembly.bundle.artemis_128_mono",
+      "manufacturing_variants": [
+        {
+          "effective_from": "1981-05-04",
+          "assembly_ref": "assembly.bundle.artemis_128_mono.networked"
         }
       ]
     },
@@ -3829,7 +4735,11 @@
       },
       "computer_ref": "computer.artemis",
       "computer_configuration": {
-        "ram_kb": 128
+        "ram_kb": 128,
+        "ram_configuration_id": "m32_128",
+        "module_ref": "part.artemis_ram_module_32kb_x16",
+        "populated_modules": 4,
+        "populated_banks": 2
       },
       "included_devices": [
         "device.flexibus_keyboard",
@@ -3843,6 +4753,13 @@
           "service_ref": "service.regular_support",
           "duration_years": 1
         }
+      ],
+      "bom_assembly_ref": "assembly.bundle.artemis_128_color",
+      "manufacturing_variants": [
+        {
+          "effective_from": "1981-05-04",
+          "assembly_ref": "assembly.bundle.artemis_128_color.networked"
+        }
       ]
     },
     {
@@ -3854,7 +4771,11 @@
       },
       "computer_ref": "computer.artemis",
       "computer_configuration": {
-        "ram_kb": 256
+        "ram_kb": 256,
+        "ram_configuration_id": "m128_256",
+        "module_ref": "part.artemis_ram_module_128kb",
+        "populated_modules": 2,
+        "populated_banks": 1
       },
       "included_devices": [
         "device.flexibus_keyboard",
@@ -3868,6 +4789,13 @@
           "service_ref": "service.regular_support",
           "duration_years": 1
         }
+      ],
+      "bom_assembly_ref": "assembly.bundle.artemis_256_mono",
+      "manufacturing_variants": [
+        {
+          "effective_from": "1981-05-04",
+          "assembly_ref": "assembly.bundle.artemis_256_mono.networked"
+        }
       ]
     },
     {
@@ -3879,7 +4807,11 @@
       },
       "computer_ref": "computer.artemis",
       "computer_configuration": {
-        "ram_kb": 256
+        "ram_kb": 256,
+        "ram_configuration_id": "m128_256",
+        "module_ref": "part.artemis_ram_module_128kb",
+        "populated_modules": 2,
+        "populated_banks": 1
       },
       "included_devices": [
         "device.flexibus_keyboard",
@@ -3892,6 +4824,13 @@
         {
           "service_ref": "service.regular_support",
           "duration_years": 1
+        }
+      ],
+      "bom_assembly_ref": "assembly.bundle.artemis_256_color",
+      "manufacturing_variants": [
+        {
+          "effective_from": "1981-05-04",
+          "assembly_ref": "assembly.bundle.artemis_256_color.networked"
         }
       ]
     },
@@ -3911,7 +4850,8 @@
       ],
       "included_software": [
         "software.cpm_aurelia_networking"
-      ]
+      ],
+      "bom_assembly_ref": "assembly.bundle.aurelia_network_upgrade"
     },
     {
       "id": "bundle.artemis_network_upgrade",
@@ -3926,7 +4866,8 @@
       ],
       "included_software": [
         "software.aionix_server"
-      ]
+      ],
+      "bom_assembly_ref": "assembly.bundle.artemis_network_upgrade"
     },
     {
       "id": "bundle.artemis_pro_512_server",
@@ -3938,14 +4879,19 @@
       "computer_ref": "computer.artemis_pro",
       "computer_configuration": {
         "ram_kb": 512,
-        "hdd_mb": 5
+        "hdd_mb": 5,
+        "ram_configuration_id": "m128_512",
+        "module_ref": "part.artemis_ram_module_128kb",
+        "populated_modules": 4,
+        "populated_banks": 2
       },
       "included_software": [
         "software.aionix_server"
       ],
       "availability": "Announced at NCC 1981; shipment date not separately specified.",
       "availability_status": "announced",
-      "shipping_date": null
+      "shipping_date": null,
+      "bom_assembly_ref": "assembly.bundle.artemis_pro_512_server"
     },
     {
       "id": "bundle.artemis_pro_1mb_server",
@@ -3957,14 +4903,19 @@
       "computer_ref": "computer.artemis_pro",
       "computer_configuration": {
         "ram_kb": 1024,
-        "hdd_mb": 5
+        "hdd_mb": 5,
+        "ram_configuration_id": "m128_1024",
+        "module_ref": "part.artemis_ram_module_128kb",
+        "populated_modules": 8,
+        "populated_banks": 4
       },
       "included_software": [
         "software.aionix_server"
       ],
       "availability": "Announced at NCC 1981; shipment date not separately specified.",
       "availability_status": "announced",
-      "shipping_date": null
+      "shipping_date": null,
+      "bom_assembly_ref": "assembly.bundle.artemis_pro_1mb_server"
     }
   ],
   "aurelia_explorer": {
@@ -4179,9 +5130,9 @@
     "network_software_ref": "software.aionix_server",
     "network_adapter_ref": "device.network_card_artemis",
     "compatibility_ref": "device.artemis_cpm80_module",
-    "context": "Artemis introduces native ERA applications and AIONix. Artemis PRO extends this family into a network server with larger RAM modules and an internal hard disk. The shared C/TUI interfaces support source migration; the optional Z80 compatibility module is a separate execution path listed for Artemis.",
+    "context": "Artemis uses paired 16-bit RAM modules on a 32-bit memory bus. PRO uses the same high-density module family with larger populations. Native ERA applications use AIONix; the optional Z80 card remains a separate execution path qualified only for Artemis.",
     "memory_note": "This is a functional memory diagram, not a numeric address map. The catalog defines virtual and physical address widths but does not yet assign ROM, RAM, video or device address ranges. Address-space capacity is not installed RAM. Video RAM is separate from the RAM modules.",
-    "ram_note": "Select a shipping configuration or populate additional compatible modules. Maximum capacity is calculated from socket count and module capacity; it is not an additional shipping bundle.",
+    "ram_note": "Choose an explicit matched-bank population. Low- and high-density configurations with the same capacity are distinct. Expanded populations and 1 MiB board capacity are design targets pending timing, loading and power qualification; they are not extra shipping bundles.",
     "bundle_note": "Bundle contents follow the selected catalog offer and are independent of the exploratory RAM and networking controls. Items absent from the bundle record are not assumed to be included.",
     "notes": {
       "hardware": "Select a block to inspect the processor, RAM, custom chipset, storage and expansion interfaces. Lines show functional relationships, not a wiring or bus-timing specification.",
