@@ -182,7 +182,7 @@
       "id": "cpm",
       "path": "cpm.html",
       "title": "Enhanced CP/M",
-      "description": "Aurelia\u2019s operating system, internal organization and networking upgrade.",
+      "description": "Aurelia’s operating system, internal organization and networking upgrade.",
       "record_refs": [
         "software.cpm_aurelia",
         "software.cpm_aurelia_networking",
@@ -342,16 +342,6 @@
       "aliases": [
         "timeline"
       ]
-    },
-    {
-      "id": "timeline2",
-      "path": "timeline2.html",
-      "title": "Timeline2",
-      "description": "Read the same story through TimelineJS, with party groups, phase eras and process ranges.",
-      "record_refs": [],
-      "kind": "timeline",
-      "renderer": "timelinejs",
-      "aliases": []
     }
   ],
   "navigation": [
@@ -364,11 +354,10 @@
     "bpi",
     "business-tools",
     "c-development",
-    "timeline",
-    "timeline2"
+    "timeline"
   ],
   "labels": {
-    "loading": "Loading the product and story catalogs\u2026",
+    "loading": "Loading the product and story catalogs…",
     "load_error": "Catalogs could not be loaded. Retry or select the three accompanying JSON files.",
     "file_help": "For offline use, select logix_aion_technical_catalog_v2.json, logix_aion_story.json and site_pages.json together.",
     "retry": "Retry",
@@ -387,7 +376,7 @@
     "proposed": "Proposed bundles",
     "components": "Components",
     "back": "All offerings",
-    "fiction": "Alternative timeline \u00b7 Product and event catalogs",
+    "fiction": "Alternative timeline · Product and event catalogs",
     "event_count": "events",
     "phase_count": "phases"
   },
@@ -423,6 +412,7 @@
           "event.power",
           "event.identity",
           "event.lottery",
+          "event.us_nyse_start",
           "event.office",
           "event.companies",
           "event.facility",
@@ -431,7 +421,6 @@
         ],
         "process_refs": [
           "process.economics_studies",
-          "process.nyse_speculation",
           "process.international_investment"
         ]
       },
@@ -455,7 +444,6 @@
           "event.network_launch"
         ],
         "process_refs": [
-          "process.organization_buildout",
           "process.artemis_engineering"
         ]
       },
@@ -528,26 +516,27 @@
           "event.ibm_investigate",
           "event.ibm_project"
         ],
-        "process_refs": [
-          "process.market_monitoring",
-          "process.market_expansion"
-        ]
+        "process_refs": []
       }
     ],
-    "group_label": "events \u00b7 expand",
+    "group_label": "events · expand",
     "phase_aliases": {
       "phase.after_ncc78": "phase.ncc78",
       "phase.before_comdex79": "phase.ncc79",
       "phase.before_ncc80": "phase.comdex79"
     },
     "item_aliases": {
-      "event.harvard": "phase.foundations",
+      "event.harvard": "process.economics_studies",
       "event.exchanges": "process.international_investment",
-      "event.setup": "process.organization_buildout",
-      "event.others_monitor": "process.market_monitoring",
-      "event.market_growth": "process.market_expansion",
+      "event.setup": "assumption.organization_buildout",
+      "event.others_monitor": "assumption.market_monitoring",
+      "event.market_growth": "assumption.market_expansion",
       "event.apple_policy": "process.apple_compatibility",
-      "event.artemis_engineering": "process.artemis_engineering"
+      "event.artemis_engineering": "process.artemis_engineering",
+      "process.nyse_speculation": "event.us_nyse_start",
+      "process.organization_buildout": "assumption.organization_buildout",
+      "process.market_monitoring": "assumption.market_monitoring",
+      "process.market_expansion": "assumption.market_expansion"
     }
   }
 }

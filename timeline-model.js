@@ -16,12 +16,9 @@ function processSpan(process,story){
  let start=explicit?boundary(process.period.start):Math.min(...phases.map(p=>boundary(p.period.start)));
  const end=explicit?boundary(process.period.end,true):Math.max(...phases.map(p=>boundary(p.period.end,true)));
  let basis=explicit?'Recorded interval; partial dates cover their stated calendar years or months.':'Approximate display envelope from the associated phase boundaries; actual start and end are unspecified.';
- if(!explicit&&['process.economics_studies','process.nyse_speculation'].includes(process.id)){
-  const relocation=story.phases.flatMap(p=>p.events).find(e=>e.id==='event.lottery');
-  if(relocation){start=Math.max(start,boundary(relocation.date.start));basis='Approximate display envelope from US relocation to the end of phase one; actual study/trading dates are unspecified.';}
- }
- return {start,end,startDate:iso(start),endDate:iso(end-DAY),approximate:!explicit,basis};
+ return {start,end,startDate:iso(start),endDate:iso(end-DAY),approximate:!explicit||process.date_basis==='provisional',basis:process.date_basis==='provisional'?'Provisional academic calendar interval; see date precision notes.':basis};
 }
 function tracks(items){const ends=[];return items.slice().sort((a,b)=>a.span.start-b.span.start||a.span.end-b.span.end).map(item=>{let track=ends.findIndex(end=>end<=item.span.start);if(track<0)track=ends.length;ends[track]=item.span.end;return {...item,track};});}
 window.AtlasTimeline={boundary,point,iso,processSpan,tracks};
 })();
+

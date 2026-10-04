@@ -9,7 +9,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const errors=[],fetched=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(read(page.path),{url,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
  const w=dom.window;w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||JSON.parse(read(name))};};
- w.eval(read('timeline-model.js'));if(page.renderer==='timelinejs'){Object.defineProperty(w.HTMLElement.prototype,'offsetWidth',{get(){return this.id==='timelinejs'?1200:500;}});Object.defineProperty(w.HTMLElement.prototype,'offsetHeight',{get(){return this.id==='timelinejs'?800:200;}});w.eval(fs.readFileSync(process.env.TIMELINEJS_TEST_BUNDLE||require.resolve('@knight-lab/timelinejs/dist/js/timeline.js'),'utf8'));}w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
+ w.eval(read('timeline-model.js'));w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors,fetched};
 }
@@ -105,7 +105,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  assert.equal(d.getElementById('phase-inspection').hidden,false);
  assert(d.getElementById('phase-inspection').textContent.includes('Aurelia premiere and first months of sales'));
  assert.equal(d.querySelectorAll('#phase-filter option').length,9);
- assert(d.querySelector('#phase-inspection [data-process="process.market_expansion"]'));
+ assert(!d.querySelector('#phase-inspection [data-process="process.market_expansion"]'));
  assert(!d.querySelector('#phase-inspection [data-event="event.market_growth"]'));
  assert(d.getElementById('phase-inspection').textContent.includes('1978-06-05 to 1979-06-03'));
  w.location.hash='#phase.after_ncc78';await tick();
@@ -138,5 +138,6 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const offline=await boot(page,{},'file:///atlas/timeline.html');assert(offline.d.querySelector('#catalogs'));offline.dom.window.close();
  console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; four computer explorers, RAM expansion, networking, bundles, filters, JSON updates and offline recovery.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
 
 
