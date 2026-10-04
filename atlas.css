@@ -15,7 +15,7 @@
 
 
 /* Calendar timeline: independent inspector and equal-height year bands. */
-.timeline-workspace{display:grid;grid-template-columns:clamp(280px,24vw,380px) minmax(0,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;height:78vh;min-height:500px;margin-bottom:35px}
+.timeline-workspace{display:grid;grid-template-columns:clamp(280px,24vw,380px) minmax(0,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;height:870px;min-height:870px;margin-bottom:0}
 .timeline-workspace .event-inspection{margin:0;padding:22px;overflow:auto;border-right:1px solid var(--line);background:var(--panel)}
 .timeline-workspace .event-inspection>h2{font-size:15px;margin:0 0 22px;color:var(--muted)}
 .timeline-workspace .event{padding:0;border:0;margin:0;font-size:13px}
@@ -47,8 +47,6 @@
 .timeline-title button{font:inherit;letter-spacing:inherit;color:var(--muted);background:none;border:0;padding:0 0 5px;border-bottom:3px solid transparent}
 .timeline-title button[aria-selected=true]{color:var(--text);border-bottom-color:var(--accent)}
 .timeline-title>span{color:var(--line)}
-.timeline-versions{display:flex;gap:20px;flex-wrap:wrap;margin:12px 0 22px;font-size:13px}
-.timeline-versions [aria-current=page]{color:var(--text);text-decoration:none}
 #assumptions-panel{max-width:1400px;margin:auto}
 /* One shared body coordinate system keeps ranges continuous across years. */
 .continuous-calendar{grid-template-rows:auto var(--calendar-height)}
@@ -66,22 +64,14 @@
 .calendar-process[aria-pressed=true]{outline:2px solid var(--accent);outline-offset:-3px}
 .process-timing{padding:12px;border-left:3px solid var(--blue);background:#20333b;color:var(--text)!important;font-size:12px}
 .process-timing.approximate{border-left-style:dashed}
-/* TimelineJS keeps its native horizontal navigation and story slides. */
-#timelinejs{width:100%;height:78vh;min-height:700px;background:var(--panel);border:1px solid var(--line)}
-.timeline-two-toolbar{display:flex;gap:20px;flex-wrap:wrap;margin:18px 0}
-.timeline-two-toolbar label{font-size:12px;flex:1;min-width:240px}
-.timeline-two-toolbar select{display:block;width:100%;max-width:100%;margin-top:6px}
-.timeline-two-origin{padding:12px 18px;border:1px solid var(--line);background:var(--panel);font-size:13px}
-#timeline-two-status{font-size:12px;color:var(--muted);padding:12px 0}
-#timelinejs .tl-storyslider,#timelinejs .tl-slide,#timelinejs .tl-slide-content-container{background:var(--panel)}
-#timelinejs .tl-text h2,#timelinejs .tl-text h3,#timelinejs .tl-text p,#timelinejs .tl-text li,#timelinejs .tl-text .tl-headline,#timelinejs .tl-slidenav-title,#timelinejs .tl-slidenav-description{color:var(--text)}
-#timelinejs .tl-text,#timelinejs .tl-text p{font-family:system-ui,sans-serif;font-size:14px;line-height:1.6}
-#timelinejs .tl-text .tl-headline{font-size:30px;line-height:1.2;letter-spacing:-.5px}
-#timelinejs .tl-text a{color:var(--accent)}
-#timelinejs .tl-text .tl-headline-date{color:var(--muted)}
-#timelinejs .tl-timenav{background:#e8ede7}
-#timelinejs .tl-timemarker-content .tl-headline{font-family:system-ui,sans-serif;font-size:12px}
-#timelinejs .tl-timeera .tl-headline{font-family:system-ui,sans-serif;font-size:11px;line-height:1.3}
-#timelinejs .tl-slidenav-next .tl-slidenav-icon,#timelinejs .tl-slidenav-previous .tl-slidenav-icon{color:var(--accent)}
-#timelinejs .tl-text-content details{margin:12px 0}
-@media(max-width:650px){.timeline-title{font-size:clamp(27px,7vw,40px);letter-spacing:-1px}.timeline-two-toolbar label{min-width:0;flex-basis:100%}#timelinejs{height:850px;min-height:0}.span-label{top:65px}.timeline-two-origin{padding:10px}}
+
+.timeline-main{padding-bottom:0}
+.timeline-workspace{height:870px;min-height:870px;margin-bottom:0}
+.process-group{border:0;box-shadow:inset 0 0 0 1px var(--blue)}
+.process-parent{height:100%;padding:0;text-align:left;color:var(--text);background:transparent;border:0;display:block}
+.process-parent[aria-pressed=true]{outline:2px solid var(--accent);outline-offset:-3px}
+.calendar-subprocess{left:108px;right:4px;background:#294651}
+@media(max-width:650px){.timeline-title{font-size:clamp(27px,7vw,40px);letter-spacing:-1px}.timeline-workspace{height:870px;min-height:870px}.timeline-workspace .event-inspection{flex:0 0 220px;max-height:220px}.timeline-workspace #timeline-board{height:auto;flex:1;min-height:0}}
+
+.process-group.approximate{box-shadow:none;outline:1px dashed var(--blue);outline-offset:-1px}
+.process-parent{display:flex;flex-direction:column;align-items:flex-start}

@@ -1,4 +1,4 @@
-// Tests the real pinned TimelineJS as well as custom calendar geometry.
+// Tests continuous and nested calendar geometry and navigation.
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {JSDOM,VirtualConsole}=require('jsdom');
 const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8');
@@ -10,13 +10,16 @@ async function boot(file,hash=''){
  w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>({ok:true,json:async()=>JSON.parse(read(p.replace('./','')))});
  Object.defineProperty(w.HTMLElement.prototype,'offsetWidth',{get(){return this.id==='timelinejs'?1200:500;}});
  Object.defineProperty(w.HTMLElement.prototype,'offsetHeight',{get(){return this.id==='timelinejs'?800:200;}});
- if(file==='timeline2.html')w.eval(fs.readFileSync(process.env.TIMELINEJS_TEST_BUNDLE||require.resolve('@knight-lab/timelinejs/dist/js/timeline.js'),'utf8'));
  w.eval(read('timeline-model.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors};
 }
 (async()=>{
  const {dom,w,d}=await boot('timeline.html');
+ const css=d.createElement('style');css.textContent=read('atlas.css');d.head.append(css);
+ assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).height,'870px');
+ assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).marginBottom,'0px');
+ assert.equal(w.getComputedStyle(d.querySelector('.timeline-main')).paddingBottom,'0px');
  assert.equal(d.querySelectorAll('[data-select-phase]').length,8);
  assert.equal(d.querySelectorAll('[data-select-process]').length,8);
  assert(!d.querySelector('#timeline-panel #assumptions'));
@@ -31,37 +34,43 @@ async function boot(file,hash=''){
  const investment=d.getElementById('process.international_investment');
  assert.equal(investment.dataset.approximate,'false');assert.equal(investment.dataset.start,'1973-01-01');assert.equal(investment.dataset.end,'1975-12-31');
  assert.equal(parseFloat(investment.style.top),yearHeight);assert.equal(parseFloat(investment.style.height),yearHeight*3);
- assert.equal(d.querySelectorAll('.calendar-process.approximate').length,7);
+ assert.equal(d.querySelectorAll('.calendar-process.approximate').length,5);
  const study=w.AtlasTimeline.processSpan(story.processes.find(p=>p.id==='process.economics_studies'),story);
- assert.equal(study.startDate,'1972-02-06');assert.equal(study.approximate,true);
+ assert.equal(study.startDate,'1972-09-25');assert.equal(study.approximate,true);
  for(const lane of d.querySelectorAll('.lane-processes')){
   const nodes=[...lane.children];
   for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)if(nodes[i].style.left===nodes[j].style.left){
    const a=nodes[i],b=nodes[j];assert(parseFloat(a.style.top)+parseFloat(a.style.height)<=parseFloat(b.style.top)||parseFloat(b.style.top)+parseFloat(b.style.height)<=parseFloat(a.style.top),'overlapping processes share a track');
   }
  }
- investment.click();assert(!d.getElementById('process-inspection').hidden);assert(d.getElementById('process-inspection').textContent.includes('Recorded interval'));
+ investment.querySelector('[data-select-process]').click();assert(!d.getElementById('process-inspection').hidden);assert(d.getElementById('process-inspection').textContent.includes('Recorded interval'));
  d.getElementById('assumptions-tab').click();assert(d.getElementById('timeline-panel').hidden);assert.equal(w.location.hash,'#assumptions');
  d.getElementById('timeline-tab').click();assert(!d.getElementById('timeline-panel').hidden);assert.equal(w.location.hash,'#process.international_investment');
  const filter=d.getElementById('phase-filter');filter.value='phase.foundations';filter.dispatchEvent(new w.Event('change'));
  assert.equal(parseFloat(d.getElementById('process.international_investment').style.height),yearHeight*3,'phase filter must not clip a process range');
- const type=d.getElementById('type-filter');type.value='process';type.dispatchEvent(new w.Event('change'));assert.equal(d.querySelectorAll('[data-event]').length,0);assert.equal(d.querySelectorAll('[data-select-process]').length,3);
+ const type=d.getElementById('type-filter');type.value='process';type.dispatchEvent(new w.Event('change'));assert.equal(d.querySelectorAll('[data-event]').length,0);assert.equal(d.querySelectorAll('[data-select-process]').length,6);
  w.location.hash='#process.artemis_engineering';await tick();assert.equal(type.value,'');assert.equal(filter.value,'');assert(d.getElementById('process-inspection').textContent.includes('Approximate'));
  dom.window.close();
- const second=await boot('timeline2.html','#process.international_investment'),d2=second.d;
- assert(d2.getElementById('timeline-two-status').textContent.includes('8 processes'));
- assert.equal(d2.querySelectorAll('.tl-timemarker').length,40);
- assert.equal(d2.querySelectorAll('.tl-timemarker-with-end').length,8);
- assert.equal(d2.querySelectorAll('.tl-timeera').length,8);
- assert(d2.getElementById('process.international_investment-marker').classList.contains('tl-timemarker-active'));
- assert.equal(d2.querySelectorAll('#event\\.power').length,1);
- const jump=d2.getElementById('timeline-two-jump');jump.value='event.plus_launch';jump.dispatchEvent(new second.w.Event('change'));
- assert(d2.getElementById('event.plus_launch-marker').classList.contains('tl-timemarker-active'));
- const phase=d2.getElementById('timeline-two-phase');phase.value='phase.ncc80';phase.dispatchEvent(new second.w.Event('change'));
- assert.equal(second.w.location.hash,'#phase.ncc80');
- d2.getElementById('assumptions-tab').click();assert(d2.getElementById('timeline-panel').hidden);d2.getElementById('timeline-tab').click();assert(!d2.getElementById('timeline-panel').hidden);
- second.w.location.hash='#event.exchanges';await tick();assert(d2.getElementById('process.international_investment-marker').classList.contains('tl-timemarker-active'));
- assert.equal(second.errors.length,0);second.dom.window.close();
- for(const file of ['timeline.html','timeline2.html']){const direct=await boot(file,'#assumptions');assert(direct.d.getElementById('timeline-panel').hidden);assert(!direct.d.getElementById('assumptions-panel').hidden);direct.dom.window.close();}
- console.log('PASS: continuous phase/process geometry, approximate envelopes, collision tracks, filtering, tabs, deep links; real TimelineJS has 40 markers, 8 ranges and 8 eras.');
+ const direct=await boot('timeline.html','#assumptions');assert(direct.d.getElementById('timeline-panel').hidden);direct.dom.window.close();
+ const nested=await boot('timeline.html','#process.harvard_year_4');
+ assert(nested.d.getElementById('process-inspection').textContent.includes('Harvard Economics Bachelor Yr 4'));
+ const parent=nested.d.getElementById('process.economics_studies'),M=nested.w.AtlasTimeline;
+ for(const child of story.processes.find(p=>p.id==='process.economics_studies').subprocesses){
+  const el=nested.d.getElementById(child.id),span=M.processSpan(child,story);
+  assert.equal(el.parentElement,parent);
+  assert.equal(parseFloat(el.style.top),(M.point(span.start)-1972)*yearHeight-(M.point(study.start)-1972)*yearHeight);
+  assert.equal(parseFloat(el.style.height),(M.point(span.end)-1972)*yearHeight-(M.point(span.start)-1972)*yearHeight);
+  el.click();assert(nested.d.getElementById('process-inspection').textContent.includes(child.title));
+ }
+ assert(!nested.d.querySelector('button button'));
+ assert(!nested.d.querySelector('.site-footer'));
+ assert.equal(nested.d.querySelector('#timeline-panel').lastElementChild.className,'timeline-workspace');
+ assert.equal(nested.w.getComputedStyle(parent).display,'block');
+ for(const old of ['organization_buildout','market_monitoring','market_expansion']){
+  assert(!nested.d.querySelector('[data-select-process="process.'+old+'"]'));
+  nested.w.location.hash='#process.'+old;await tick();assert(nested.d.getElementById('timeline-panel').hidden);assert(nested.d.getElementById('assumption.'+old).open);
+ }
+ nested.w.location.hash='#process.nyse_speculation';await tick();assert(!nested.d.getElementById('timeline-panel').hidden);assert(nested.d.getElementById('event.us_nyse_start').open);
+ nested.dom.window.close();
+ console.log('PASS: continuous and nested geometry, filters, tabs, migrated aliases and no timeline footer.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
