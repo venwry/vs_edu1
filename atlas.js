@@ -166,11 +166,12 @@ function openHash(){
  const target=document.getElementById(id);if(target){if(target.tagName==='DETAILS')target.open=true;target.scrollIntoView?.();}
 }
 function start(t,s,config){if(!Array.isArray(t.computers)||!s.assumptions||!Array.isArray(s.phases)||!Array.isArray(config.pages))throw Error('Incompatible JSON catalogs.');tech=t;story=s;site=config;records=Object.fromEntries(Object.values(tech).filter(Array.isArray).flat().filter(x=>x?.id).map(x=>[x.id,x]));actors=Object.fromEntries(story.assumptions.entities.map(x=>[x.id,x]));pages=Object.fromEntries(site.pages.map(x=>[x.id,x]));page=pages[document.documentElement.dataset.page];if(!page)throw Error('Page configuration is missing.');recordPages={};for(const pg of site.pages)for(const id of pg.record_refs)recordPages[id]=pg;document.title=page.title+' · '+site.title;prepareLinks();observer?.disconnect();
- app.innerHTML=header()+(page.kind==='home'?home():page.kind==='timeline'?timeline():page.kind==='explorer'?window.architectureTemplate:page.kind==='costs'?window.costTemplate:offering())+(page.kind==='timeline'?'':footer());
+ app.innerHTML=header()+(page.kind==='home'?home():page.kind==='timeline'?timeline():page.kind==='explorer'?window.architectureTemplate:page.kind==='costs'?window.costTemplate:page.kind==='pricing'?window.pricingTemplate:offering())+(page.kind==='timeline'?'':footer());
  if(page.kind==='explorer'){(page.explorer_family==='artemis'?window.startArtemisExplorer:window.startArchitectureExplorer)(tech,page,siteLink);const related=document.createElement('section');related.className='site-main';related.innerHTML=relatedEvents(page.record_refs);app.querySelector('main').append(related);const marker=document.createElement('span');marker.id=page.record_refs[0];app.querySelector('main').prepend(marker);window.setupArchitectureSplit();}
  observer=new MutationObserver(()=>decorate());decorate();
  if(page.kind==='timeline'){setupTimelineTabs();for(const id of ['event-search','phase-filter','actor-filter','type-filter','expand-events'])document.getElementById(id).addEventListener(id==='event-search'?'input':'change',timelineEvents);timelineEvents();}
  if(page.kind==='costs')window.startCostAssessment();
+ if(page.kind==='pricing')window.startPricing();
  openHash();window.addEventListener('hashchange',openHash);
  if(location.protocol==='file:'){try{sessionStorage.setItem('logix-atlas-catalogs',JSON.stringify([t,s,config]));}catch{}}
 }

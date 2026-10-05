@@ -91,3 +91,7 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 ## Recurring manufacturing cost assessment
 
 `manufacturing-costs.html` compares all modeled June 15 offerings from 1978 through 1981, with product rows, four year columns, central/range values and selectable cost/BOM breakdowns. `manufacturing_costs.json` contains results and explicit assumptions; `tools/build_cost_assessment.py` reproduces it. See `MANUFACTURING_COSTS.md` for scope, historical sources, units, exclusions and uncertainty. Costs are scenario estimates rather than supplier quotes; engineering BOM unknowns remain unchanged. Software media, service units and bundles are distinct, overlapping views and must not be summed into a fleet-wide total.
+
+### Retail pricing assessment
+
+`pricing.html` presents 76 commercial products and bundles grouped by type, with June 15 snapshots for 1978–1981. `pricing_results.json` stores proposed retail prices, associated recurring costs, competitor evidence, availability, fees and stress cases. ComputerLand fees and cost scenarios are adjustable in the page. See `PRICING_ASSESSMENT.md` for assumptions and `tools/build_pricing.py` to regenerate. Prices are proposals, not amendments to historical catalog price fields.
