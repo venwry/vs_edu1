@@ -87,3 +87,7 @@ Architecture detail panels preserve nested specifications as expandable sections
 ## Negotiated networking and three-port Aurelia (v2.8)
 
 See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 100/250/500/1000 kbit/s rate with host ceilings, receiver credits, discovery and fallback. Aurelia and Aurelia+ each have three FlexiBUS ports. The catalog, adapter/hub requirements and manufacturing BOM carry the same baseline; rates and packet-RAM targets still require qualification.
+
+## Recurring manufacturing cost assessment
+
+`manufacturing-costs.html` compares all modeled June 15 offerings from 1978 through 1981, with product rows, four year columns, central/range values and selectable cost/BOM breakdowns. `manufacturing_costs.json` contains results and explicit assumptions; `tools/build_cost_assessment.py` reproduces it. See `MANUFACTURING_COSTS.md` for scope, historical sources, units, exclusions and uncertainty. Costs are scenario estimates rather than supplier quotes; engineering BOM unknowns remain unchanged. Software media, service units and bundles are distinct, overlapping views and must not be summed into a fleet-wide total.

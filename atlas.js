@@ -166,10 +166,11 @@ function openHash(){
  const target=document.getElementById(id);if(target){if(target.tagName==='DETAILS')target.open=true;target.scrollIntoView?.();}
 }
 function start(t,s,config){if(!Array.isArray(t.computers)||!s.assumptions||!Array.isArray(s.phases)||!Array.isArray(config.pages))throw Error('Incompatible JSON catalogs.');tech=t;story=s;site=config;records=Object.fromEntries(Object.values(tech).filter(Array.isArray).flat().filter(x=>x?.id).map(x=>[x.id,x]));actors=Object.fromEntries(story.assumptions.entities.map(x=>[x.id,x]));pages=Object.fromEntries(site.pages.map(x=>[x.id,x]));page=pages[document.documentElement.dataset.page];if(!page)throw Error('Page configuration is missing.');recordPages={};for(const pg of site.pages)for(const id of pg.record_refs)recordPages[id]=pg;document.title=page.title+' · '+site.title;prepareLinks();observer?.disconnect();
- app.innerHTML=header()+(page.kind==='home'?home():page.kind==='timeline'?timeline():page.kind==='explorer'?window.architectureTemplate:offering())+(page.kind==='timeline'?'':footer());
+ app.innerHTML=header()+(page.kind==='home'?home():page.kind==='timeline'?timeline():page.kind==='explorer'?window.architectureTemplate:page.kind==='costs'?window.costTemplate:offering())+(page.kind==='timeline'?'':footer());
  if(page.kind==='explorer'){(page.explorer_family==='artemis'?window.startArtemisExplorer:window.startArchitectureExplorer)(tech,page,siteLink);const related=document.createElement('section');related.className='site-main';related.innerHTML=relatedEvents(page.record_refs);app.querySelector('main').append(related);const marker=document.createElement('span');marker.id=page.record_refs[0];app.querySelector('main').prepend(marker);window.setupArchitectureSplit();}
  observer=new MutationObserver(()=>decorate());decorate();
  if(page.kind==='timeline'){setupTimelineTabs();for(const id of ['event-search','phase-filter','actor-filter','type-filter','expand-events'])document.getElementById(id).addEventListener(id==='event-search'?'input':'change',timelineEvents);timelineEvents();}
+ if(page.kind==='costs')window.startCostAssessment();
  openHash();window.addEventListener('hashchange',openHash);
  if(location.protocol==='file:'){try{sessionStorage.setItem('logix-atlas-catalogs',JSON.stringify([t,s,config]));}catch{}}
 }
@@ -177,5 +178,3 @@ function recovery(message){observer?.disconnect();app.innerHTML=`<section class=
 async function load(){app.innerHTML='<section class="boot" role="status">Loading…</section>';try{if(location.protocol==='file:'){const saved=sessionStorage.getItem('logix-atlas-catalogs');if(saved){start(...JSON.parse(saved));return;}recovery('Choose the three accompanying JSON catalogs for offline use.');return;}const data=await Promise.all(['logix_aion_technical_catalog_v2.json','logix_aion_story.json','site_pages.json'].map(async path=>{const response=await fetch('./'+path,{cache:'no-store'});if(!response.ok)throw Error('Unable to load '+path+' (HTTP '+response.status+').');return response.json();}));start(...data);}catch(e){recovery(e.message);}}
 load();
 })();
-
-

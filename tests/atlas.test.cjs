@@ -9,7 +9,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const errors=[],fetched=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(read(page.path),{url,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
  const w=dom.window;w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||JSON.parse(read(name))};};
- w.eval(read('timeline-model.js'));w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
+ w.eval(read('manufacturing-costs.js'));w.eval(read('timeline-model.js'));w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors,fetched};
 }
@@ -18,7 +18,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const page of config.pages){
   const {w,d,dom,errors,fetched}=await boot(page);
   assert.equal(d.querySelector('h1').textContent,page.title,page.id);
-  assert.equal(fetched.length,3);
+  assert.equal(fetched.length,page.kind==='costs'?4:3);
   assert(!d.querySelector('#catalogs'),page.id+' failed to load');
   if(page.kind==='explorer'){
    const initialRAM={aurelia:48,'aurelia-plus':64,artemis:128,'artemis-pro':512}[page.id];
@@ -77,6 +77,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const [source,href] of links){
   const u=new URL(href,'https://atlas.test/'+source),file=u.pathname.slice(1);
   if(u.origin!=='https://atlas.test')continue;
+  if(file==='manufacturing_costs.json'){assert(fs.existsSync(path.join(root,file)));continue;}
   assert(targets.has(file),source+' -> '+href);
   if(u.hash)assert(targets.get(file).has(decodeURIComponent(u.hash.slice(1))),source+' -> missing '+href);
  }
