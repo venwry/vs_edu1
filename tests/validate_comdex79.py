@@ -21,6 +21,6 @@ r={x['id']:x for v in t.values() if isinstance(v,list) for x in v if isinstance(
 assert all(ref in r for ref in c['offering_refs'])
 assert {x['computer_ref'] for x in r['edition.abacus_2.z80']['platform_support']}==set(d['computer_refs'])
 assert c['disclosure']['architecture_reveal']==read('ncc_1979_campaign.json')['migration']['architecture_reveal']
-f=read('sales_forecast.json');assert f['metadata']['forecast_end']<c['metadata']['launch_date']
+f=read('sales_forecast.json');assert f['metadata']['november_forecast_end']<c['metadata']['launch_date']
 assert [x['launch_through_november_1979']['units'] for x in f['scenarios']]==[49737,66900,77800]
 print('PASS: COMDEX timing, matched workloads, no invented benchmark, Abacus/BPI order, compatibility and unchanged sales.')

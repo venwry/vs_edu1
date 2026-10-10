@@ -4,7 +4,7 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 f=json.loads((R/'sales_forecast.json').read_text());p=json.loads((R/'pricing_results.json').read_text());offers={x['id']:x for x in p['products']}
 assert f['metadata']['source_campaign_sha256']==hashlib.sha256((R/'ncc_1979_campaign.json').read_bytes()).hexdigest()
-assert f['metadata']['forecast_end']=='1979-11-30'<f['metadata']['aurelia_plus_launch']=='1979-12-03'
+assert f['metadata']['november_forecast_end']=='1979-11-30'<f['metadata']['aurelia_plus_launch']=='1979-12-03'
 policy=f['post_ncc_policy']
 for year in ['1978','1979']:
  assert math.isclose(policy['complete_package_'+year+'_usd'],sum(offers[r]['snapshots'][year]['retail_price_usd'] for r in f['pricing_comparison']['references']),abs_tol=.001)

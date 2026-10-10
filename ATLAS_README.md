@@ -138,3 +138,7 @@ The accepted NCC 1979 50-minute campaign and migration disclosure boundary are i
 ## COMDEX 1979 campaign
 
 [COMDEX_1979_CAMPAIGN.md](COMDEX_1979_CAMPAIGN.md) and `comdex_1979_campaign.json` record the accepted 45-minute presentation, side-by-side speed comparison, Abacus charts/payslip layouts, independent BPI participation and manufacturer campaign. The existing December 3 launch event carries the programme without inventing new exact-day milestones. Run `tests/validate_comdex79.py`.
+
+## Forecast through NCC 1980
+
+[SALES_NCC1980.md](SALES_NCC1980.md) describes the December–May 18 forecast, separate Aurelia/Aurelia+ queues, provisional launch-price proxies and Academy demand/capacity by course. The sales page displays both forecasts; the Academy page links to its enrolment section. Run `tests/validate_ncc80_forecast.py` after `tools/build_sales.py`. Earlier forecasts remain unchanged.
