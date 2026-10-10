@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "title": "COMDEX 1979 campaign and presentation",
+    "status": "Accepted alternative-history campaign; demonstrations require qualification, not claimed measured results",
+    "launch_date": "1979-12-03",
+    "launch_event_ref": "event.plus_launch",
+    "date_basis": "Existing scenario conference date"
+  },
+  "messages": {
+    "campaign": "More room to work. More freedom to choose.",
+    "aurelia_plus": "Your existing software. Less waiting.",
+    "abacus_2": "Calculate once. Chart it. Print the documents."
+  },
+  "offering_refs": [
+    "computer.aurelia_plus",
+    "software.abacus_2",
+    "software.pulse_1",
+    "software.bpi_suite",
+    "software.aurelia_compatibility_kit",
+    "service.aurelia_compatibility_support",
+    "service.aurelia_compatibility_certification"
+  ],
+  "premiere": {
+    "duration_minutes_before_questions": 45,
+    "stages": [
+      {
+        "id": "opening",
+        "minutes": 4,
+        "description": "Adam: growing businesses need more capacity, less waiting and compatible choices."
+      },
+      {
+        "id": "aurelia_plus_speed",
+        "minutes": 6,
+        "description": "Identical live calculated shaded-cube animation on Aurelia and Aurelia+, followed by identical Abacus recalculation and chart generation; present measured results."
+      },
+      {
+        "id": "abacus_2",
+        "minutes": 12,
+        "description": "Chart employee pay values; link fields to a payslip layout; preview employees and print the entire batch."
+      },
+      {
+        "id": "bpi",
+        "minutes": 6,
+        "description": "The head of independent BPI demonstrates BPI Payroll as the source of calculated values, documented file exchange and reconciled totals."
+      },
+      {
+        "id": "pulse",
+        "minutes": 5,
+        "description": "Demonstrate a focused information-management task using tested, implemented capabilities; no implied live cross-application integration."
+      },
+      {
+        "id": "manufacturers",
+        "minutes": 6,
+        "description": "Introduce the Compatibility Kit, reference adapters and diagnostics. Show an independent application implementation only after qualification; otherwise show clearly labelled engineering work."
+      },
+      {
+        "id": "partners",
+        "minutes": 3,
+        "description": "BPI leadership joins participating peripheral/computer suppliers. Name products and distinguish shipping, qualified and prototype status."
+      },
+      {
+        "id": "availability",
+        "minutes": 3,
+        "description": "Purchasing, existing-Aurelia upgrades, ongoing support and independent manufacturer participation; new hardware focus on Aurelia+."
+      }
+    ]
+  },
+  "speed_demonstration": {
+    "computer_refs": [
+      "computer.aurelia",
+      "computer.aurelia_plus"
+    ],
+    "segment_minutes": {
+      "explanation": 1,
+      "shaded_cube": 2,
+      "abacus_workload": 2,
+      "results": 1
+    },
+    "workload": "Calculate rotation, project vertices, determine visible faces, calculate shading and draw a fixed sequence of cube rotations live. No prerecorded animation or precomputed frames.",
+    "controls": [
+      "Same executable and inputs on both machines, compatible with both",
+      "Same resolution, shading method, rendering settings and equivalent qualified display configurations; disclose unavoidable differences",
+      "Visible start countdown, elapsed time and completed-frame count",
+      "Fixed frame/rotation sequence completes the same amount of work; no silent frame skipping or quality reduction",
+      "Use a workload that fits both machines; demonstrate additional capacity separately",
+      "Both machines must finish correctly; publish results only after measurement"
+    ],
+    "business_comparison": "Same Abacus 2.0 executable, worksheet values/formulas, calculation settings and chart workload. Compare recalculation and chart-generation time; exclude physical printer time.",
+    "interpretation": "Animation measures the combined calculation/display path, not pure CPU performance. The catalog clocks are 4 and 6 MHz, but no 1.5x or other application speedup is promised.",
+    "measured_results": null
+  },
+  "abacus_demonstration": {
+    "headline_features": [
+      "Charts",
+      "Document layouts populated by spreadsheet field values"
+    ],
+    "chart_scope": "Use the catalogued text-mode vertical or horizontal bar charts; do not imply unimplemented graphical chart types.",
+    "data": "Fictitious employees with names, departments, pay components, deductions and precalculated net pay; one row per employee.",
+    "steps": [
+      "Inspect precalculated values and reconcile totals",
+      "Show a payroll-cost bar chart by department",
+      "Open one reusable payslip layout and identify linked spreadsheet fields",
+      "Preview different employees to show field substitution",
+      "Print one complete payslip per employee from the same layout"
+    ],
+    "acceptance": [
+      "Validate field mapping, missing values, numeric formatting and rounding",
+      "Validate pagination and ensure every selected employee prints exactly once with the correct values",
+      "Validate save/reopen and preserve spreadsheet/document contents",
+      "Reconcile BPI-exported values with source totals through documented versioned disk-file exchange"
+    ],
+    "boundary": "Abacus charts, formats and prints supplied calculations. Payroll law/rules, statutory deductions and updates belong to the payroll application or properly maintained worksheet. No direct ledger write-back or live database link.",
+    "sparse_storage": "Supporting implementation advantage for useful workloads, not a permanently exclusive general technique.",
+    "existing_owners": "Promote Abacus 2.0 on both Aurelia and Aurelia+ in supported configurations. Do not imply a new computer is required."
+  },
+  "partner_policy": {
+    "bpi": "Independent branding, management, licences and support. The head of BPI speaks immediately after Abacus and joins the partner segment.",
+    "peripherals": "Demonstrate only individually qualified configurations. Invitations and targets are not agreements or shipments.",
+    "manufacturers": "Published interfaces and kit permit independent Aurelia-class implementations; support and certification optional. Native hardware adapters are valid; FlexiBUS and Logix video are separate profiles. Proper application/OS/firmware licences remain necessary."
+  },
+  "activities": [
+    {
+      "period": "October–November 1979",
+      "activity": "Confidential dealer/BPI training, demo qualification, workflow rehearsal and press-material preparation. Invite business buyers and manufacturers to separate sessions; do not disclose unreleased specifications or pricing publicly."
+    },
+    {
+      "period": "COMDEX launch week, December 1979",
+      "activity": "Trade-press demos and advertisements show side-by-side speed, charts and printed payslips. Press pack includes sample data/layouts, configurations and measured results. Paid broadcasting/celebrity promotion requires confirmed arrangements."
+    },
+    {
+      "period": "At COMDEX",
+      "activity": "Business-workflow stations, existing-owner upgrade consultations, peripheral demos and manufacturer clinics. Each visitor gets a relevant next step."
+    },
+    {
+      "period": "December 1979–January 1980",
+      "activity": "Dealer roadshows and Academy sessions: From spreadsheet to finished documents. Follow up with demonstrations and quotations."
+    },
+    {
+      "period": "January–March 1980",
+      "activity": "Manufacturer porting workshops and publication of verified configuration-specific compatibility results."
+    }
+  ],
+  "commercial_policy": {
+    "new_buyers": "Clearly price hardware, required software and printing configuration; separately quote BPI licences and specialist setup.",
+    "existing_owners": "New capabilities for the computer you already own. Publish configuration requirements and explain workloads that benefit from Aurelia+.",
+    "manufacturers": "Freely accessible specifications/self-tests, modest physical-kit pricing, optional bounded assistance and configuration-specific certification; no exclusive partnership required.",
+    "suppliers": "Interoperability sessions and verified directory listings; document production supplies a concrete printer use case.",
+    "promotion": "Prefer training, demonstration access and implementation help over another general price cut. Discounts, contracts and media spend are not invented."
+  },
+  "strategy": "Logix focuses new hardware development and promotion on Aurelia+ while enabling independent Aurelia-class clones and maintaining installed-base support; no immediate withdrawal date.",
+  "disclosure": {
+    "policy_ref": "ncc_1979_campaign.json",
+    "architecture_reveal": "1980-05-19",
+    "permitted": "Native binary compatibility will change; established C practices reduce migration work; a planned optional Z80 path supports qualified legacy code.",
+    "withheld": "No future product/processor/OS names, word size, architecture, future-target compiler output, binaries or revealing demonstrations before NCC 1980."
+  },
+  "metrics": {
+    "business": [
+      "Qualified demonstrations converted to purchases",
+      "Delivered Aurelia+ systems and lead times",
+      "Abacus upgrades on existing Aurelias",
+      "BPI installations and reconciled handoffs",
+      "Successful document-production deployments"
+    ],
+    "ecosystem": [
+      "Active kit evaluations",
+      "Passing independent implementations",
+      "Applications qualified on named independent computers",
+      "Shipping compatible peripherals"
+    ],
+    "quality": [
+      "Support effort",
+      "Printing/import failures",
+      "Time to successful deployment"
+    ],
+    "counting": "Track delivery and ecosystem progress separately. Kit registrations, prototypes, applications and certification submissions are not computer sales."
+  },
+  "economics": {
+    "budget_usd": null,
+    "status": "Campaign, venue/AV, staffing, demo equipment, printing, press, travel and workshop budgets remain to be approved; no ROI claim.",
+    "forecast_boundary": "Public launch occurs after the November 30 sales cutoff. Confidential preparation adds no separately calibrated prelaunch uplift. Existing scenario values remain unchanged; later sales/cannibalisation require an explicit model."
+  }
+}

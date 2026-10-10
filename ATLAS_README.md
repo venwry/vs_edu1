@@ -134,3 +134,7 @@ The accepted NCC 1979 50-minute campaign and migration disclosure boundary are i
 ## COMDEX 1979 manufacturer compatibility programme
 
 [AURELIA_COMPATIBILITY_KIT.md](AURELIA_COMPATIBILITY_KIT.md) records the December 3 kit launch, optional support/certification and shift toward Aurelia+ with independent Aurelia-class implementations. The C/developer offering page shows the kit; the Academy/support page shows optional services. All three appear under Developer programs in pricing, first at the June 1980 annual snapshot. The separate compatibility pricing baseline preserves the original baseline unchanged.
+
+## COMDEX 1979 campaign
+
+[COMDEX_1979_CAMPAIGN.md](COMDEX_1979_CAMPAIGN.md) and `comdex_1979_campaign.json` record the accepted 45-minute presentation, side-by-side speed comparison, Abacus charts/payslip layouts, independent BPI participation and manufacturer campaign. The existing December 3 launch event carries the programme without inventing new exact-day milestones. Run `tests/validate_comdex79.py`.
