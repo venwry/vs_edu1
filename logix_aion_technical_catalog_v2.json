@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.11",
+    "version": "2.12",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -1191,7 +1191,7 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "owner": "AION BPI Systems",
+      "owner": "BPI Systems",
       "specification": {
         "model": "relational database engine used as the common data foundation for BPI business applications",
         "design_goal": "shared, structured business data across accounting, receivables, payables, inventory and payroll"
@@ -5192,6 +5192,13 @@
           "terms": "AION funds adaptation in exchange for official Tandy CP/M/FlexiBUS support and a distribution commitment; royalties/minimum purchases not specified. OEM sales/revenue are not priced as Aurelia retail copies.",
           "video": "Native Tandy display through software adapter; no Logix video hardware required."
         }
+      },
+      "data_interchange": {
+        "partner": "BPI Systems",
+        "available_from": "1978-06-05",
+        "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+        "status": "Accepted requirement; measured implementation qualification pending.",
+        "export_definition_ref": "software.bpi_suite"
       }
     },
     {
@@ -5299,7 +5306,7 @@
     {
       "id": "software.bpi_suite",
       "name": "BPI Products for Aurelia / Artemis",
-      "vendor": "AION BPI Systems",
+      "vendor": "BPI Systems",
       "category": "business_application_suite",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -5381,7 +5388,23 @@
         "edition.bpi_suite.z80",
         "edition.bpi_suite.era"
       ],
-      "launch_positioning": "Available as an independently sold application suite in the initial Aurelia offering at NCC 1978; not automatically included in every computer bundle."
+      "launch_positioning": "Independent BPI Systems partner software, demonstrated after Abacus at NCC 1978. Separately licensed and optionally combined by dealers with Logix hardware and AION applications; never an automatically included Logix product.",
+      "specification": {
+        "company_and_support": "BPI retains product ownership, independent management, licensing, updates and specialist support; Adam investment and AION engineering cooperation are disclosed. Dealers provide first-line installation support; Logix supports hardware.",
+        "summary_export": {
+          "status": "Accepted launch requirement; qualification pending.",
+          "format": "Versioned delimited-text file on disk with named columns, period, currency, account identifiers, decimal amounts and control totals.",
+          "scope": "Selected balances or monthly totals imported into Abacus as planning inputs. No automatic write-back, concurrent execution or live database link. Close BPI before loading Abacus.",
+          "acceptance": "Reconcile record counts and control totals; validate rounding, quoting, disk-full errors, memory use and save/reopen. Prepared demo data is labelled."
+        },
+        "launch_acceptance": [
+          "Measured 48 KB workspace, disk capacity and supported disk configuration; 64 KB or extra drives only when qualified and separately quoted.",
+          "Posting consistency, correction history, disk-full handling and tested backup/restore.",
+          "Readable reports on launch display and supported printers; supported forms and paper documented.",
+          "Payroll jurisdictions, update process and maintenance responsibility explicitly documented."
+        ],
+        "commercial_policy": "Credit documented net amounts paid for eligible same-platform BPI module licences against one complete-suite upgrade, capped at current suite price; no cash refund, duplicate licence or training/setup credit. Retire credited module entitlements. Support and paid setup costs require separate budgets."
+      }
     },
     {
       "id": "software.microsoft_basic_aurelia",
@@ -5488,7 +5511,14 @@
       "edition_refs": [
         "edition.abacus_2.z80",
         "edition.abacus_2.era"
-      ]
+      ],
+      "data_interchange": {
+        "partner": "BPI Systems",
+        "available_from": "1979-12-03",
+        "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+        "status": "Accepted requirement; measured implementation qualification pending.",
+        "export_definition_ref": "software.bpi_suite"
+      }
     },
     {
       "id": "software.aionix",
@@ -5785,7 +5815,7 @@
     {
       "id": "software.bpi_client_server",
       "name": "BPI client-server business suite / RDBMS edition",
-      "vendor": "AION BPI Systems",
+      "vendor": "BPI Systems",
       "category": "client_server_business_software",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
@@ -6126,7 +6156,7 @@
       "id": "service.bpi_training",
       "name": "BPI Products training",
       "category": "training",
-      "delivery": "Logix Computer Academy; courses and Academy direct sales begin a few days after the NCC 1978 premiere.",
+      "delivery": "Logix Computer Academy teaches BPI-authorised courses under a cooperation agreement; BPI retains software and specialist support. Start June 12, 1978.",
       "introduced": {
         "event_name": "BPI training and direct sales begin",
         "event_start_date": "1978-06-12",

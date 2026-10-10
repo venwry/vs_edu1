@@ -60,7 +60,7 @@ Keep the reduced-profit prices unchanged. Explicit incremental event adjustments
 - May portable-extension/compatibility confidence: 150 additional Aurelia purchases.
 - June NCC demonstration, October Tandy release, later Apple review and confidential IBM developments: zero effect on earlier completed sales.
 
-Central Aurelia forecast becomes **10,350 in calendar 1978** and **28,200 during June 1978–May 1979**, approximately **10.37%** of the assumed expanded US launch-year market. Displayed precision supports arithmetic, not forecasting accuracy: interpret this as roughly 28,000, with scenarios spanning roughly 23,000–33,000. The new/accelerated share of Apple-transferred purchases remains in competitor totals, so displacement does not falsely shrink the market.
+Before the BPI campaign revision, the central Aurelia forecast was **10,350 in calendar 1978** and **28,200 during June 1978–May 1979**, approximately **10.37%** of the assumed expanded US launch-year market. Displayed precision supports arithmetic, not forecasting accuracy: interpret this as roughly 28,000, with scenarios spanning roughly 23,000–33,000. The new/accelerated share of Apple-transferred purchases remains in competitor totals, so displacement does not falsely shrink the market.
 
 Tandy's later Abacus revenue and any longer-term ecosystem benefit require a separate post-NCC forecast. IBM's later delay is not credited as extra sales in 1978–early 1979. Existing Academy capacity recommendations remain prudent capacity targets rather than automatic openings.
 
@@ -70,3 +70,8 @@ Tandy's later Abacus revenue and any longer-term ecosystem benefit require a sep
 - [Model II reference](https://trs-80.com/sub-models-model2.htm): May announcement and October shipment window.
 - [Contemporary October 1979 Radio Shack advertisement](https://www.bitsavers.org/magazines/Datamation/197910.pdf), printed page 115: Model II business positioning, sales/service centres and training.
 - [IBM's PC history](https://www.ibm.com/history/personal-computer): historical 1980 authorisation and 1981 launch, against which the scenario's software delay is differentiated.
+
+
+## BPI partner campaign revision
+
+The independent BPI programme adds 1,200 central-case Aurelia deliveries, producing 10,750 in 1978 and 29,400 through May 1979 (10.78% assumed US unit share). Apple displacement and Tandy deferral/confidence assumptions remain intact; BPI is not a second blanket market-expansion bonus. Strong-case demand is capped at 34,000 deliveries. BPI licence receipts are separately accounted. No BPI Model II release is implied by the Abacus agreement. See BPI_PARTNER_STRATEGY.md.

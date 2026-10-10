@@ -13,7 +13,7 @@ This replaces the earlier proposed-date review. The original 34 day-level event 
 | `event.companies` — Three technology companies founded | 1975-01-01 | 2 |
 | `event.facility` — Secret future-equipped facility established | 1975-02-01 | 2 |
 | `event.dri_cpm` — CP/M development cooperation | 1976-09-01 | 2 |
-| `event.bpi_offer` — Offer to establish AION BPI Systems | 1977-02-15 | 2 |
+| `event.bpi_offer` — Investment and cooperation offer to independent BPI Systems | 1977-02-15 | 2 |
 | `event.letwin` — Gordon Letwin recruited | 1977-06-01 | 2 |
 | `event.paterson` — Tim Paterson recruited | 1977-07-15 | 2 |
 | `event.mpi` — OEM printer-mechanism agreement | 1977-09-01 | 2 |

@@ -14,7 +14,7 @@ assert c['academy']['credit']==r['service.academy_before_you_buy']['completion']
 assert all(x['event_ref'] in e for x in c['schedule'])
 a=c['premiere']['stages'];ids=[x['id'] for x in a]
 assert ids.index('partners')+1==ids.index('academy') and ids.index('academy')+1==ids.index('packages')
-assert sum(x['minutes'] for x in a)==c['premiere']['duration_minutes_before_questions']==37
+assert sum(x['minutes'] for x in a)==c['premiere']['duration_minutes_before_questions']==44
 assert len(c['technical_sessions'])==2 and c['broadcast_program']['broadcast_fee_usd']==0
 assert e['event.ncc78_sessions_media']['date']=={'start':'1978-06-05','end':'1978-06-08'}
 assert r['service.bpi_training']['introduced']['event_start_date']==c['academy']['bpi_training_start']=='1978-06-12'

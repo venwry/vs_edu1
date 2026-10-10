@@ -15,20 +15,22 @@ The accepted campaign is defined in [aurelia_1978_campaign.json](aurelia_1978_ca
 | June 5–8 | Two technical sessions, hands-on demonstrations and professional recording of every Logix presentation | Developer participation and informed purchasing |
 | After NCC, June onward | Free edited television material, Academy courses, dealer demonstrations and practical advertising | Adoption, feedback and documented customer experience |
 
-The television commercial is a proposed 60-second film-trailer-style therapy scene with Michael Douglas. The conversation initially suggests a human assistant; the reveal identifies Aurelia, and the therapist becomes curious. Use concrete examples of useful, consistent behaviour instead of addiction, speech recognition or artificial intelligence. Reserve the final 10–15 seconds for the computer, Abacus, a printed result, logo and premiere date. Casting, fee and contract remain unconfirmed fictional arrangements.
+The television commercial is a proposed 60-second film-trailer-style therapy scene with Michael Douglas. The conversation initially suggests a human assistant; the reveal identifies Aurelia, and the therapist becomes curious. Use concrete examples of useful, consistent behaviour instead of addiction, speech recognition or artificial intelligence. Reserve the final 10–15 seconds for the computer, Abacus, a BPI-branded printed result, logo and premiere date. Casting, fee and contract remain unconfirmed fictional arrangements.
 
-## Premiere: 37 minutes, then questions
+## Premiere: 44 minutes, then questions
 
-1. **Adam's introduction — 3 minutes.** Almost four years of development toward accessible, dependable computing. Acknowledge the assembled machines popularised in 1977; explain the next barrier, confident everyday business use.
-2. **Reveal and startup — 3 minutes.** One Aurelia platform with detachable keyboard and colour or 16-shade grayscale display choices.
-3. **Common editing — 5 minutes.** A customer quotation letter demonstrates consistent navigation, editing and copy-buffer behaviour.
-4. **Peripherals — 3 minutes.** Attach the printer at a safely quiescent port with Aurelia powered on, recognise it and print. Complete the job before safely swapping printer and keyboard ports. Account for keyboard polling; no unrestricted hot-plugging.
-5. **Business Tools — 3 minutes.** Address book, calendar and calculator support the same customer-order task.
-6. **Abacus — 10 minutes.** Safely attach the external disk drive, load Abacus, explain a small worksheet, then open a 500-plus-row business document. Raise supplier costs by 8%, recalculate, add/fill an IF column flagging low margins, print a concise report, save, close and reopen.
-7. **Gary and MPI — 5 minutes.** Explain independent CP/M OEM licensing and optional interfaces, then the printer partnership. Further MPI devices require an agreement. CP/M licensing does not automatically confer Logix hardware or AION application rights. SMC is not announced before its July agreement.
-8. **Computer Academy — 2 minutes.** Announce five cities, hands-on learning before purchase, configuration advice, purchase credit and on-site ordering.
-9. **Packages and next steps — 3 minutes.** Exact contents, prices, delivery, warranty, service, registration and the two technical sessions.
-10. **Moderated questions.** Resolve business and implementation concerns.
+1. **Opening — 3 minutes.** Adam introduces almost four years of development toward an accessible, dependable business assistant; acknowledges the assembled personal computers popularised in 1977.
+2. **Reveal — 3 minutes.** Reveal one Aurelia platform with detachable keyboard and two display choices. Power on colour and 16-shade grayscale systems and show startup; no claim of two different CPU models.
+3. **Editing — 5 minutes.** Prepare a customer quotation letter, demonstrate consistent editing and the copy-buffer; explain how learning transfers between applications.
+4. **Peripherals — 3 minutes.** Attach the self-powered printer at a safely quiescent FlexiBUS port with Aurelia powered on, wait for identification, and print. Once the job finishes, safely interchange printer and keyboard ports and verify both. No removal during traffic or unrestricted hot-plug claim.
+5. **Business Tools — 3 minutes.** Use address book, calendar and calculator in the same customer-order workflow.
+6. **Abacus — 8 minutes.** Safely attach external FDD, load Abacus from diskette, explain a small worksheet, then open a 500-plus-row business document. Raise supplier costs by 8%, show automatic recalculation, add and fill a column using IF to flag low-margin orders, print a short report, save, close and reopen. Use readable worksheet sections on 320x200 launch displays. Use a labelled prepared worksheet with BPI-exported totals; explain their origin. The following BPI demonstration shows the source records and export. Rehearse the shorter slot; retain the full workload for hands-on sessions.
+7. **Bpi — 7 minutes.** Independent BPI Systems demonstrates a small wholesaler: existing customer/invoice records, incoming payment and remaining balance, receivables/payables and a concise report, then summary export for Abacus. Prepared history is labelled. No live write-back or simultaneous applications. Software presenter explains the workflow; the BPI head speaks in the subsequent partners section.
+8. **Partners — 7 minutes.** Gary explains independent CP/M OEM availability, published interfaces and optional extensions; CP/M, hardware and application licenses remain distinct. MPI explains the printer partnership and any separately agreed future FlexiBUS devices. Do not announce the later July SMC agreement. The head of BPI Systems explains its independent brand, management, software ownership and support, with Adam investment and AION/Logix cooperation disclosed. No invented name or claim of unrelated ownership.
+9. **Academy — 2 minutes.** Announce Logix Computer Academy in five US cities: learn before you decide, hands-on Fundamentals, configuration advice, 50% tuition purchase credit and direct ordering. Show selected locations, first course dates and exact tuition once finalised. BPI-authorised courses start June 12; specialist support is provided by BPI.
+10. **Packages — 3 minutes.** State complete package contents and prices, delivery dates, warranty, training and service; invite orders, Academy registration and dealer demonstrations; announce the two technical sessions. Show optional dealer-assembled BPI configurations, separate supplier licences and training/setup prices.
+
+Moderated questions follow. BPI is independent partner software, not a Logix division or an AION-owned application. BPI’s head appears in the partners section; no unsupported personal identity is assigned.
 
 The follow-up sessions cover (1) architecture, FlexiBUS, displays and the open peripheral ecosystem, and (2) the C compiler IDE, SDK, TUI and source portability. Their exact time slots remain to be booked.
 
@@ -59,3 +61,15 @@ Book an auditorium or negotiate a conference presentation slot; main-stage acces
 Before advertising the large Abacus demonstration, qualify IF/fill semantics, populated-cell and formula counts, RAM, load and recalculation times, and save/reopen behaviour. Sparse storage alone does not establish capacity or speed. Powered-on attachment requires quiescent ports and validated electrical sequencing.
 
 Campaign media, celebrity/production contracts, venue/AV, filming/editing, rights, broadcast copies, dispatch, press handling and Academy launch setup are marketing/program expenses. Amounts remain unbudgeted, not zero. Do not put them in hardware BOMs or invent a per-unit manufacturing charge. Existing recurring training costs remain separate. Reserve purchase-credit expense once across the course and computer sale, including dealer reimbursement; free broadcast material generates no licensing revenue.
+
+## BPI partner campaign and follow-through
+
+Business Tools organise office work; Abacus supports planning; independent BPI Systems maintains business records. Adam’s proposed investment is disclosed without suggesting a completed equity transaction. BPI retains management, brand, product ownership, licences and specialist support. See [BPI_PARTNER_STRATEGY.md](BPI_PARTNER_STRATEGY.md).
+
+Add BPI-branded printed results to the TV reveal, explanatory business-press material and direct mail. The main presentation demonstrates Abacus first, then BPI; label prepared BPI-exported figures in the Abacus worksheet. BPI later demonstrates source records and a versioned summary export. Use sequential applications, no automatic ledger write-back or live link.
+
+Book a separate 30–45-minute BPI business session during June 5–8 for setup, corrections, backup/restore, month-end, inventory and payroll coverage. Record it with the other presentations, subject to BPI rights clearance. Include independent BPI branding and support contacts in the press kit and station material.
+
+Pilot preparation begins March 20, launch qualification May 15, BPI-qualified dealer/accountant outreach July 17, year-end workshops October 16, and customer-results promotion January 15, 1979. These dates are scenario choices. All five launch modules retain June 5 availability; measured limits and payroll jurisdictions must pass acceptance before claims are made. Academy courses retain June 12 availability under BPI authorisation.
+
+Dealer component baskets combine separately identified suppliers and licences. They are not new Logix SKUs and receive no second price reduction. Training, setup, support contracts and tax are separate. BPI specialist staffing, export/import development, dealer qualification and upgrade credits require budgets; none are free simply because software media is inexpensive.
