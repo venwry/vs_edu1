@@ -1,6 +1,6 @@
 # Aurelia sales under revised pricing
 
-This is a scenario forecast, not recorded sales or a new canonical story outcome. View [Sales 1978](sales.html), the machine-readable [forecast](sales_forecast.json) and [retail pricing](pricing.html).
+This is a scenario forecast, not recorded sales or a new canonical story outcome. View [Logix computer demand and sales](sales.html), the machine-readable [forecast](sales_forecast.json) and [retail pricing](pricing.html).
 
 ## Price policy
 
@@ -63,4 +63,38 @@ BPI courses consume part of the existing 10,000–13,000 Academy enrolment plan.
 
 ## NCC 1979 campaign boundary
 
-The accepted open-architecture campaign and migration roadmap are in ncc_1979_campaign.json. The forecast ends May 31; June presentation, October deliveries and 1980 adoption targets do not enter it. Confidential OEM preparation has no assumed direct consumer effect; May profile publication has no separately calibrated increment beyond the existing generic marketing and compatibility assumptions. Central totals remain 10,750/29,400. A later model must separate Aurelia cannibalisation, other manufacturers' compatible sales, peripheral adoption and independent supplier receipts. The roughly ten-year $100 expectation is not an input to 1978–1981 pricing or a discontinuation schedule.
+The original May 31 forecast remains unchanged. A separate June–November extension now models the accepted campaign in `ncc_1979_campaign.json`. Confidential preparation and later milestones are not applied retroactively. The ten-year $100 outlook is not a price or retirement input.
+
+## June–November 1979 extension
+
+The canonical Aurelia+ premiere is **December 3, 1979**, not November. Projection stops November 30 and contains no Aurelia+ sales, Pulse or Abacus 2.0 sales. It does not give buyers advance knowledge of unannounced successor details.
+
+| Scenario | New demand, June–November | Deliveries, June–November | Sales, January–November 1979 | Cumulative since launch | Unmet demand at November end |
+|---|---:|---:|---:|---:|---:|
+| Conservative | 25,792 | 25,792 | 40,701 | 49,737 | 0 |
+| Central | 40,282 | 37,500 | 56,150 | 66,900 | 1,334 |
+| Strong | 53,518 | 43,800 | 65,336 | 77,800 | 5,612 |
+
+These are conditional scenarios, not confidence intervals. New demand excludes returning unmet demand. The strong case starts June with 855 previously deferred BPI-related purchase intentions. Of unmet demand, 75% retries next month and 25% lapses; central attrition totals 1,448 through November. No demand is counted twice as a new buyer or as a completed sale.
+
+### June price change
+
+The complete Office/disk/printer package falls from **$2,462.71 to $2,117.95 (14.00%)**. Office/disk falls from $2,070.78 to $1,725.57. This is the 1979 annual snapshot change, separate from the already modelled contribution-policy reduction. No second 40% reduction is applied.
+
+The June 15 snapshots are used as proxies for a June 4 NCC price change, an explicit assumption because the annual pricing data does not establish an exact effective date. June blends three days at old prices and 27 at new prices for both demand response and receipts. July–November use 1979 prices. Ceteris paribus, the package cut increases full-month demand by about 12.8% / 25.4% / 35.2% under elasticities 0.8 / 1.5 / 2.0. Actual deliveries can remain capacity-limited.
+
+### Demand and offering assessment
+
+Each scenario starts from its May delivered run rate, preserving existing Abacus, BPI, dealer, Academy and advertising effects. Modest monthly maturation/autumn factors are explicit assumptions. Incremental campaign, BPI execution and ecosystem confidence gains are additive against price-adjusted demand. They are separate from additional Apple substitution, Tandy waiting/substitution and migration hesitation. Full input arrays and scenario scaling are in `post_ncc_policy` and `tools/extend_sales.py`.
+
+NCC demonstrations and July roadshows build awareness and developer confidence. Independent BPI deployment support helps convert business buyers; existing BPI availability is not counted again. Third-party peripherals improve usefulness without becoming Logix product revenue. October's qualified Tandy release increases competitive substitution. Optional video and Apple native cards can strengthen competitors as well as the ecosystem. No unsigned OEM target is treated as a delivered machine. Future architecture details remain secret; the migration message promises C source support and a planned qualified Z80 legacy option, not native binary continuity.
+
+### Delivery and financial implications
+
+Central monthly deliveries are 5,400 / 5,700 / 6,000 / 6,400 / 6,800 / 7,200, June through November. The corresponding new demand is 6,103 / 6,200 / 6,449 / 6,895 / 7,174 / 7,461. Raising November capacity to 7,200 requires about 46% more customer deliveries than May, plus inventory and service stock. These ceilings require factory, disk/printer supply, working capital, dealer and support plans; they are not established manufacturing capacity. The cost snapshots are retained without speculative volume savings.
+
+June–November central customer package spending is **$76.99m**, supplier receipts after channel fees **$57.74m**, and recurring contribution **$16.28m**. Contribution excludes campaign, support expansion, Academy, R&D, financing and tax; it is not net profit. Independent BPI adds 7,500 customer installations and **$1.44m** after-channel receipts, excluded from Logix/AION totals. The original attachment rates and mutually exclusive cohorts remain; June price blending also applies to BPI.
+
+This remains a computer-led package forecast. Other vendors' compatible machines, standalone cards/software, third-party peripherals, OEM royalties and Academy revenue are not quantified. Extended-period market share is withheld because no new market denominator has been calibrated. The main central-case constraint is delivery capacity, so extra marketing demand does not automatically create more sales.
+
+Rebuild with `python tools/build_sales.py`; validate period arithmetic, pricing transitions and demand conservation with `tests/validate_sales_extension.py`. The page shows monthly demand, capacity, sales, unmet demand and price/campaign/competition components for each scenario.
