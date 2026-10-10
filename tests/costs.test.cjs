@@ -3,6 +3,7 @@ const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n
 (async()=>{
  const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/manufacturing-costs.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('manufacturing-costs.js'));w.document.getElementById('app').innerHTML=w.costTemplate;w.fetch=async()=>({ok:true,json:async()=>model});await w.startCostAssessment();const d=w.document;
  assert.equal(d.querySelectorAll('.cost-table tbody tr').length,model.products.length);assert.equal(d.querySelectorAll('.cost-table thead th').length,5);
+ assert(d.getElementById('cost-sourcing').textContent.includes('1979-10'));assert(d.getElementById('cost-sourcing').textContent.includes('330,000'));assert(d.querySelector('[data-cost-row="device.apple2_video_card"][data-cost-year="1979"]'));
  const button=d.querySelector('[data-cost-row="computer.aurelia"][data-cost-year="1978"]');button.click();assert(!d.getElementById('cost-detail').hidden);assert(d.getElementById('cost-detail').textContent.includes('Workforce'));assert(d.getElementById('cost-detail').textContent.includes('Freight'));assert(d.getElementById('cost-detail').textContent.includes('24'));
  d.getElementById('cost-close').click();assert(d.getElementById('cost-detail').hidden);
  assert(!d.querySelector('[data-cost-row="computer.aurelia_plus"][data-cost-year="1979"]'));
@@ -11,3 +12,4 @@ const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n
  d.getElementById('cost-search').value='no match';d.getElementById('cost-search').dispatchEvent(new w.Event('input'));assert(d.getElementById('cost-matrix').textContent.includes('No matching'));
  dom.window.close();console.log('PASS: all cost rows, four-year matrix, unavailable cells, filters and detailed breakdowns.');
 })();
+

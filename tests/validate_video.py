@@ -9,7 +9,15 @@ records = {r['id']: r for items in catalog.values() if isinstance(items, list)
            for r in items if isinstance(r, dict) and 'id' in r}
 hosts = ['computer.aurelia', 'computer.aurelia_plus']
 chip = records['part.aurelia_video_chip']
-assert chip['used_in'] == hosts
+cards = ['device.apple2_video_card', 'device.s100_video_card']
+assert set(chip['used_in']) == set(hosts + cards)
+for card in cards:
+    spec = records[card]['specification']
+    assert spec['vram_chip_count'] * records[spec['vram_chip_ref']]['specification']['capacity_kbit'] // 8 == spec['video_ram_kb'] == 16
+    assembly = next(a for a in bom['assemblies'] if a['id'] == 'assembly.' + card)
+    quantities = {line['ref']: line['quantity'] for line in assembly['lines']}
+    assert quantities['bompart.part.aurelia_video_chip'] == 1
+    assert quantities['bompart.part.vram_16kbit_dual_port'] == 8
 assert chip['specification']['implementation_design']['internal_buffers'] == {
     'character_attribute_row_cache_bytes': 160, 'sprite_row_shifters_bytes': 40,
     'sprite_staging_bytes': 40, 'bitmap_fifo_bytes': 16, 'included_in_die_estimates': True}
@@ -63,3 +71,4 @@ for monitor in ['device.mono_monitor_1', 'device.color_monitor_1', 'device.mono_
     assert all(profiles[r]['pixel_clock_mhz'] <= caps['maximum_pixel_clock_mhz'] for r in caps['raster_ids'])
     assert ('raster_640_200' in caps['raster_ids']) == monitor.endswith('_2')
 print('Validated shared video modes, all buffer/sprite budgets, monitor profiles and nine-chip BOMs.')
+

@@ -103,6 +103,74 @@
         ],
         "additionalProperties": false
       }
+    },
+    "supplier_programs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "manufacturer",
+          "agreement_date",
+          "initial_sales_date",
+          "date_precision",
+          "part_refs",
+          "launch_source",
+          "qualification_status",
+          "rights",
+          "transfer_deliverables",
+          "qualification_gates",
+          "cost_boundary"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "agreement_date": {
+            "type": "string"
+          },
+          "initial_sales_date": {
+            "type": "string"
+          },
+          "date_precision": {
+            "type": "string"
+          },
+          "part_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "launch_source": {
+            "type": "string"
+          },
+          "qualification_status": {
+            "type": "string"
+          },
+          "rights": {
+            "type": "string"
+          },
+          "transfer_deliverables": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "qualification_gates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cost_boundary": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "required": [
@@ -113,7 +181,8 @@
     "offers",
     "proposed_offer_refs",
     "open_decisions",
-    "costing_inputs"
+    "costing_inputs",
+    "supplier_programs"
   ],
   "additionalProperties": false,
   "$schema": "https://json-schema.org/draft/2020-12/schema",

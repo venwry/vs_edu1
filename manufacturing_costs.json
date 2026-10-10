@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION recurring unit cost assessment",
-    "version": "1.0",
+    "version": "1.1",
     "currency": "USD",
     "price_basis": "nominal dollars of each snapshot year; no conversion to current money",
     "snapshots": [
@@ -10,7 +10,13 @@
       "1980-06-15",
       "1981-06-15"
     ],
-    "source_commit": "693742657da1d28a84825d9b8f07f3d6531ff4cc",
+    "source_commit": "c4567d340882e132ca92671861487af453dafc80",
+    "source_note": "Baseline commit; source hashes identify the edited inputs used for this build.",
+    "source_sha256": {
+      "logix_aion_technical_catalog_v2.json": "a73b9c7e1d42de6aa4c8cdc0547d04e5f2c5e080d9a616c14980ddaad7288e2d",
+      "hardware_bom.json": "677155cf7c58e5bc42351f696e1fb844836a1c5b15e167a61998d6c703388736",
+      "manufacturing_programs.json": "2a5d0a874069d869de22b8ed65ae4e7b39ebf47c9a6a858bd56b5379547c8b35"
+    },
     "estimate_status": "engineering planning scenario; no supplier quotes; not audited manufacturing accounts",
     "generated_by": "tools/build_cost_assessment.py"
   },
@@ -61,7 +67,9 @@
     "royalties": "CP/M 10 USD/copy, CP/M networking 5 USD, Microsoft BASIC 20 USD; provisional contract allowances, not sourced contract terms. Owned software has no external royalty.",
     "service_units": "Support is per customer-year; training is per learner at 8 learners and 6 teaching hours/day plus 1.5 prep hours/class/day. Unspecified course lengths are scenario assumptions. No repair-parts entitlement is assumed unless stated.",
     "uncertainty": "Hardware/software ranges usually 0.70–1.60× central; PRO 0.65–1.75×; OEM silicon 0.50–2.50×; services 0.55–1.90×. Correlated scenario envelopes, not statistical intervals. Custom chip yield and 64K DRAM procurement dominate risk.",
-    "double_counting": "Nested BOMs count each component once. Final manuals/cartons/freight applied only at the top-level offer. Chip fabrication labor/energy is categorized inside the breakdown; extended BOM line costs include these internal conversion costs and must not be added to the total again."
+    "double_counting": "Nested BOMs count each component once. Final manuals/cartons/freight applied only at the top-level offer. Chip fabrication labor/energy is categorized inside the breakdown; extended BOM line costs include these internal conversion costs and must not be added to the total again.",
+    "second_source": "June 1979 cards use AION chips. SMC procurement is a separate conditional scenario from October 1979; June 1980/1981 comparisons do not assert a purchasing switch or a price reduction.",
+    "joint_dri": "DRI remains a separately owned licensor despite Adam’s minority stake. Existing provisional per-copy CP/M allowance remains; the $250,000 founder capital commitment is excluded from unit costs."
   },
   "sources": [
     {
@@ -2195,29 +2203,6 @@
         },
         "1981": {
           "bom_materials": 3.4
-        }
-      },
-      "confidence": "low",
-      "price_range_multipliers": [
-        0.7,
-        1.55
-      ]
-    },
-    "bompart.device.apple2_expansion_card.flexibus_host_controller_and_two_port_transceivers": {
-      "name": "FlexiBUS host controller and two port transceivers",
-      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
-      "annual_cost_buckets_usd": {
-        "1978": {
-          "bom_materials": 12
-        },
-        "1979": {
-          "bom_materials": 11.52
-        },
-        "1980": {
-          "bom_materials": 10.8
-        },
-        "1981": {
-          "bom_materials": 10.2
         }
       },
       "confidence": "low",
@@ -4760,6 +4745,535 @@
         0.5,
         2.5
       ]
+    },
+    "bompart.device.s100_flexibus_card.s100_expansion_pcb": {
+      "name": "s100 expansion pcb",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 7.68
+        },
+        "1980": {
+          "bom_materials": 7.2
+        },
+        "1981": {
+          "bom_materials": 6.8
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_flexibus_card.s100_host_interface": {
+      "name": "s100 host interface",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 10
+        },
+        "1979": {
+          "bom_materials": 10.9
+        },
+        "1980": {
+          "bom_materials": 12.0
+        },
+        "1981": {
+          "bom_materials": 13.2
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_flexibus_card.boot_and_driver_rom": {
+      "name": "boot and driver rom",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4
+        },
+        "1979": {
+          "bom_materials": 3.84
+        },
+        "1980": {
+          "bom_materials": 3.6
+        },
+        "1981": {
+          "bom_materials": 3.4
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_flexibus_card.passives_protection_and_internal_harnesses": {
+      "name": "passives protection and internal harnesses",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4
+        },
+        "1979": {
+          "bom_materials": 4.36
+        },
+        "1980": {
+          "bom_materials": 4.8
+        },
+        "1981": {
+          "bom_materials": 5.28
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_flexibus_card.slot_connector_contacts": {
+      "name": "slot connector contacts",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 2
+        },
+        "1979": {
+          "bom_materials": 2.18
+        },
+        "1980": {
+          "bom_materials": 2.4
+        },
+        "1981": {
+          "bom_materials": 2.64
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_flexibus_card.flexibus_two_port_transceivers_connectors": {
+      "name": "flexibus two port transceivers connectors",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 8.72
+        },
+        "1980": {
+          "bom_materials": 9.6
+        },
+        "1981": {
+          "bom_materials": 10.56
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.apple_expansion_pcb": {
+      "name": "apple expansion pcb",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 5
+        },
+        "1979": {
+          "bom_materials": 4.8
+        },
+        "1980": {
+          "bom_materials": 4.5
+        },
+        "1981": {
+          "bom_materials": 4.25
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.apple_host_interface": {
+      "name": "apple host interface",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 7
+        },
+        "1979": {
+          "bom_materials": 7.63
+        },
+        "1980": {
+          "bom_materials": 8.4
+        },
+        "1981": {
+          "bom_materials": 9.24
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.boot_and_driver_rom": {
+      "name": "boot and driver rom",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4
+        },
+        "1979": {
+          "bom_materials": 3.84
+        },
+        "1980": {
+          "bom_materials": 3.6
+        },
+        "1981": {
+          "bom_materials": 3.4
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.passives_protection_and_internal_harnesses": {
+      "name": "passives protection and internal harnesses",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4
+        },
+        "1979": {
+          "bom_materials": 4.36
+        },
+        "1980": {
+          "bom_materials": 4.8
+        },
+        "1981": {
+          "bom_materials": 5.28
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.slot_connector_contacts": {
+      "name": "slot connector contacts",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 2
+        },
+        "1979": {
+          "bom_materials": 2.18
+        },
+        "1980": {
+          "bom_materials": 2.4
+        },
+        "1981": {
+          "bom_materials": 2.64
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.vram_window_and_bus_arbitration": {
+      "name": "vram window and bus arbitration",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 7.68
+        },
+        "1980": {
+          "bom_materials": 7.2
+        },
+        "1981": {
+          "bom_materials": 6.8
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.video_clock_reset": {
+      "name": "video clock reset",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 3
+        },
+        "1979": {
+          "bom_materials": 3.27
+        },
+        "1980": {
+          "bom_materials": 3.6
+        },
+        "1981": {
+          "bom_materials": 3.96
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.digital_video_transceivers_and_connector": {
+      "name": "digital video transceivers and connector",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 8.72
+        },
+        "1980": {
+          "bom_materials": 9.6
+        },
+        "1981": {
+          "bom_materials": 10.56
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.s100_expansion_pcb": {
+      "name": "s100 expansion pcb",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 7.68
+        },
+        "1980": {
+          "bom_materials": 7.2
+        },
+        "1981": {
+          "bom_materials": 6.8
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.s100_host_interface": {
+      "name": "s100 host interface",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 10
+        },
+        "1979": {
+          "bom_materials": 10.9
+        },
+        "1980": {
+          "bom_materials": 12.0
+        },
+        "1981": {
+          "bom_materials": 13.2
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.boot_and_driver_rom": {
+      "name": "boot and driver rom",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4
+        },
+        "1979": {
+          "bom_materials": 3.84
+        },
+        "1980": {
+          "bom_materials": 3.6
+        },
+        "1981": {
+          "bom_materials": 3.4
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.passives_protection_and_internal_harnesses": {
+      "name": "passives protection and internal harnesses",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4
+        },
+        "1979": {
+          "bom_materials": 4.36
+        },
+        "1980": {
+          "bom_materials": 4.8
+        },
+        "1981": {
+          "bom_materials": 5.28
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.slot_connector_contacts": {
+      "name": "slot connector contacts",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 2
+        },
+        "1979": {
+          "bom_materials": 2.18
+        },
+        "1980": {
+          "bom_materials": 2.4
+        },
+        "1981": {
+          "bom_materials": 2.64
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.vram_window_and_bus_arbitration": {
+      "name": "vram window and bus arbitration",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 7.68
+        },
+        "1980": {
+          "bom_materials": 7.2
+        },
+        "1981": {
+          "bom_materials": 6.8
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.video_clock_reset": {
+      "name": "video clock reset",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 3
+        },
+        "1979": {
+          "bom_materials": 3.27
+        },
+        "1980": {
+          "bom_materials": 3.6
+        },
+        "1981": {
+          "bom_materials": 3.96
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.digital_video_transceivers_and_connector": {
+      "name": "digital video transceivers and connector",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 8.72
+        },
+        "1980": {
+          "bom_materials": 9.6
+        },
+        "1981": {
+          "bom_materials": 10.56
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_expansion_card.flexibus_two_port_transceivers_connectors": {
+      "name": "Two-port differential transceivers, connectors and protection",
+      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 8.72
+        },
+        "1980": {
+          "bom_materials": 9.6
+        },
+        "1981": {
+          "bom_materials": 10.56
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
     }
   },
   "chip_fabrication_models": {
@@ -6044,13 +6558,37 @@
       "operating_overhead_fraction_of_loaded_labor": 0.25,
       "rework_allowance_fraction_of_labor": 0.1,
       "incremental_material_scrap_rate": 0
+    },
+    "assembly.device.s100_flexibus_card": {
+      "assembly_hours_1978": 0.4,
+      "kwh_1978": 0.5,
+      "consumables_usd_1978": 0.35,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0.015
+    },
+    "assembly.device.apple2_video_card": {
+      "assembly_hours_1978": 0.4,
+      "kwh_1978": 0.5,
+      "consumables_usd_1978": 0.35,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0.015
+    },
+    "assembly.device.s100_video_card": {
+      "assembly_hours_1978": 0.4,
+      "kwh_1978": 0.5,
+      "consumables_usd_1978": 0.35,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0.015
     }
   },
   "unresolved_quantity_assumptions": {
     "assembly.computer.aurelia.base|bompart.part.flexibus_host_controller": {
       "quantity": 3,
       "unit": "chip",
-      "reason": "Three host ports provisionally use three host-controller dies."
+      "reason": "One controller die per port, pending released ports-per-die definition."
     },
     "assembly.computer.aurelia.base|bompart.computer.aurelia.floppy_controller_data_separator_and_buffers": {
       "quantity": 1,
@@ -6075,7 +6613,7 @@
     "assembly.computer.aurelia_plus.base|bompart.part.flexibus_host_controller": {
       "quantity": 3,
       "unit": "chip",
-      "reason": "Three host ports provisionally use three host-controller dies."
+      "reason": "One controller die per port, pending released ports-per-die definition."
     },
     "assembly.computer.aurelia_plus.base|bompart.computer.aurelia_plus.floppy_controller_data_separator_and_buffers": {
       "quantity": 1,
@@ -6492,11 +7030,6 @@
       "unit": "functional set",
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
     },
-    "assembly.device.apple2_expansion_card|bompart.device.apple2_expansion_card.flexibus_host_controller_and_two_port_transceivers": {
-      "quantity": 1,
-      "unit": "functional set",
-      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
-    },
     "assembly.device.apple2_expansion_card|bompart.device.apple2_expansion_card.disk_ii_sequencer_interface": {
       "quantity": 1,
       "unit": "functional set",
@@ -6508,6 +7041,16 @@
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
     },
     "assembly.device.apple2_expansion_card|bompart.device.apple2_expansion_card.external_cable_and_regional_mains_packout": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.apple2_expansion_card|bompart.part.flexibus_host_controller": {
+      "quantity": 2,
+      "unit": "chip",
+      "reason": "One controller die per port, pending released ports-per-die definition."
+    },
+    "assembly.device.apple2_expansion_card|bompart.device.apple2_expansion_card.flexibus_two_port_transceivers_connectors": {
       "quantity": 1,
       "unit": "functional set",
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
@@ -6613,6 +7156,91 @@
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
     },
     "assembly.device.network_hub.16_port|bompart.device.network_hub.shared_arbiter_clock_and_firmware": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_flexibus_card|bompart.part.flexibus_host_controller": {
+      "quantity": 2,
+      "unit": "chip",
+      "reason": "One controller die per port, pending released ports-per-die definition."
+    },
+    "assembly.device.s100_flexibus_card|bompart.device.s100_flexibus_card.s100_host_interface": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_flexibus_card|bompart.device.s100_flexibus_card.boot_and_driver_rom": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_flexibus_card|bompart.device.s100_flexibus_card.passives_protection_and_internal_harnesses": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_flexibus_card|bompart.device.s100_flexibus_card.flexibus_two_port_transceivers_connectors": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.apple2_video_card|bompart.device.apple2_video_card.apple_host_interface": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.apple2_video_card|bompart.device.apple2_video_card.boot_and_driver_rom": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.apple2_video_card|bompart.device.apple2_video_card.passives_protection_and_internal_harnesses": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.apple2_video_card|bompart.device.apple2_video_card.vram_window_and_bus_arbitration": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.apple2_video_card|bompart.device.apple2_video_card.video_clock_reset": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.apple2_video_card|bompart.device.apple2_video_card.digital_video_transceivers_and_connector": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_video_card|bompart.device.s100_video_card.s100_host_interface": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_video_card|bompart.device.s100_video_card.boot_and_driver_rom": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_video_card|bompart.device.s100_video_card.passives_protection_and_internal_harnesses": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_video_card|bompart.device.s100_video_card.vram_window_and_bus_arbitration": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_video_card|bompart.device.s100_video_card.video_clock_reset": {
+      "quantity": 1,
+      "unit": "functional set",
+      "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
+    },
+    "assembly.device.s100_video_card|bompart.device.s100_video_card.digital_video_transceivers_and_connector": {
       "quantity": 1,
       "unit": "functional set",
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
@@ -10624,16 +11252,16 @@
         },
         "1979": {
           "status": "offered_estimate",
-          "total_usd": 53.71,
-          "low_usd": 37.6,
-          "high_usd": 85.94,
+          "total_usd": 55.61,
+          "low_usd": 38.93,
+          "high_usd": 88.98,
           "breakdown_usd": {
-            "bom_materials": 42.14,
-            "workforce": 3.36,
-            "energy": 0.02,
-            "consumables": 0.38,
-            "operating_overhead": 0.84,
-            "yield_and_rework": 0.97,
+            "bom_materials": 41.2,
+            "workforce": 5.04,
+            "energy": 0.27,
+            "consumables": 1.0,
+            "operating_overhead": 1.15,
+            "yield_and_rework": 0.95,
             "instructions": 1.31,
             "packaging": 1.96,
             "logistics": 2.73,
@@ -10663,9 +11291,9 @@
               "extended_recurring_cost_usd": 2.18
             },
             {
-              "component_ref": "bompart.device.apple2_expansion_card.flexibus_host_controller_and_two_port_transceivers",
+              "component_ref": "bompart.device.apple2_expansion_card.flexibus_two_port_transceivers_connectors",
               "quantity": 1,
-              "extended_recurring_cost_usd": 11.52
+              "extended_recurring_cost_usd": 8.72
             },
             {
               "component_ref": "bompart.device.apple2_expansion_card.host_bus_decode_and_buffering",
@@ -10676,6 +11304,11 @@
               "component_ref": "bompart.device.apple2_expansion_card.passives_protection_and_internal_harnesses",
               "quantity": 1,
               "extended_recurring_cost_usd": 4.36
+            },
+            {
+              "component_ref": "bompart.part.flexibus_host_controller",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 4.73
             }
           ],
           "confidence": "low",
@@ -10683,16 +11316,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 54.31,
-          "low_usd": 38.02,
-          "high_usd": 86.9,
+          "total_usd": 57.9,
+          "low_usd": 40.53,
+          "high_usd": 92.64,
           "breakdown_usd": {
-            "bom_materials": 42.0,
-            "workforce": 3.44,
-            "energy": 0.02,
-            "consumables": 0.42,
-            "operating_overhead": 0.86,
-            "yield_and_rework": 0.97,
+            "bom_materials": 42.67,
+            "workforce": 5.14,
+            "energy": 0.28,
+            "consumables": 1.05,
+            "operating_overhead": 1.18,
+            "yield_and_rework": 0.98,
             "instructions": 1.44,
             "packaging": 2.16,
             "logistics": 3.0,
@@ -10722,9 +11355,9 @@
               "extended_recurring_cost_usd": 2.4
             },
             {
-              "component_ref": "bompart.device.apple2_expansion_card.flexibus_host_controller_and_two_port_transceivers",
+              "component_ref": "bompart.device.apple2_expansion_card.flexibus_two_port_transceivers_connectors",
               "quantity": 1,
-              "extended_recurring_cost_usd": 10.8
+              "extended_recurring_cost_usd": 9.6
             },
             {
               "component_ref": "bompart.device.apple2_expansion_card.host_bus_decode_and_buffering",
@@ -10735,6 +11368,11 @@
               "component_ref": "bompart.device.apple2_expansion_card.passives_protection_and_internal_harnesses",
               "quantity": 1,
               "extended_recurring_cost_usd": 4.8
+            },
+            {
+              "component_ref": "bompart.part.flexibus_host_controller",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 4.77
             }
           ],
           "confidence": "low",
@@ -10742,16 +11380,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 55.51,
-          "low_usd": 38.86,
-          "high_usd": 88.82,
+          "total_usd": 60.81,
+          "low_usd": 42.57,
+          "high_usd": 97.3,
           "breakdown_usd": {
-            "bom_materials": 42.28,
-            "workforce": 3.6,
-            "energy": 0.02,
-            "consumables": 0.46,
-            "operating_overhead": 0.9,
-            "yield_and_rework": 0.99,
+            "bom_materials": 44.53,
+            "workforce": 5.34,
+            "energy": 0.3,
+            "consumables": 1.12,
+            "operating_overhead": 1.23,
+            "yield_and_rework": 1.03,
             "instructions": 1.58,
             "packaging": 2.38,
             "logistics": 3.3,
@@ -10781,9 +11419,9 @@
               "extended_recurring_cost_usd": 2.64
             },
             {
-              "component_ref": "bompart.device.apple2_expansion_card.flexibus_host_controller_and_two_port_transceivers",
+              "component_ref": "bompart.device.apple2_expansion_card.flexibus_two_port_transceivers_connectors",
               "quantity": 1,
-              "extended_recurring_cost_usd": 10.2
+              "extended_recurring_cost_usd": 10.56
             },
             {
               "component_ref": "bompart.device.apple2_expansion_card.host_bus_decode_and_buffering",
@@ -10794,6 +11432,11 @@
               "component_ref": "bompart.device.apple2_expansion_card.passives_protection_and_internal_harnesses",
               "quantity": 1,
               "extended_recurring_cost_usd": 5.28
+            },
+            {
+              "component_ref": "bompart.part.flexibus_host_controller",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 4.9
             }
           ],
           "confidence": "low",
@@ -11853,6 +12496,675 @@
         }
       },
       "assembly_ref": "assembly.device.artemis_ram_256kb_bank_kit"
+    },
+    {
+      "id": "device.s100_flexibus_card",
+      "catalog_ref": "device.s100_flexibus_card",
+      "name": "Logix FlexiBUS Interface for S-100",
+      "group": "Peripherals",
+      "unit": "one finished accessory",
+      "available_from": "1979-06-04",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "offered_estimate",
+          "total_usd": 53.93,
+          "low_usd": 37.75,
+          "high_usd": 86.29,
+          "breakdown_usd": {
+            "bom_materials": 39.54,
+            "workforce": 5.04,
+            "energy": 0.27,
+            "consumables": 1.0,
+            "operating_overhead": 1.15,
+            "yield_and_rework": 0.93,
+            "instructions": 1.31,
+            "packaging": 1.96,
+            "logistics": 2.73,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.s100_flexibus_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.84
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.flexibus_two_port_transceivers_connectors",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8.72
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.36
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.s100_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.68
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.s100_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.9
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.18
+            },
+            {
+              "component_ref": "bompart.part.flexibus_host_controller",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 4.73
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 56.69,
+          "low_usd": 39.68,
+          "high_usd": 90.7,
+          "breakdown_usd": {
+            "bom_materials": 41.47,
+            "workforce": 5.14,
+            "energy": 0.28,
+            "consumables": 1.05,
+            "operating_overhead": 1.18,
+            "yield_and_rework": 0.97,
+            "instructions": 1.44,
+            "packaging": 2.16,
+            "logistics": 3.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.s100_flexibus_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.6
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.flexibus_two_port_transceivers_connectors",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.6
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.8
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.s100_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.2
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.s100_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 12.0
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.4
+            },
+            {
+              "component_ref": "bompart.part.flexibus_host_controller",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 4.77
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 60.04,
+          "low_usd": 42.03,
+          "high_usd": 96.06,
+          "breakdown_usd": {
+            "bom_materials": 43.77,
+            "workforce": 5.34,
+            "energy": 0.3,
+            "consumables": 1.12,
+            "operating_overhead": 1.23,
+            "yield_and_rework": 1.02,
+            "instructions": 1.58,
+            "packaging": 2.38,
+            "logistics": 3.3,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.s100_flexibus_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.4
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.flexibus_two_port_transceivers_connectors",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.56
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 5.28
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.s100_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.8
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.s100_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 13.2
+            },
+            {
+              "component_ref": "bompart.device.s100_flexibus_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.64
+            },
+            {
+              "component_ref": "bompart.part.flexibus_host_controller",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 4.9
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.device.s100_flexibus_card"
+    },
+    {
+      "id": "device.apple2_video_card",
+      "catalog_ref": "device.apple2_video_card",
+      "name": "Logix Video Card for Apple II",
+      "group": "Peripherals",
+      "unit": "one finished accessory",
+      "available_from": "1979-06-04",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "offered_estimate",
+          "total_usd": 96.43,
+          "low_usd": 67.5,
+          "high_usd": 154.29,
+          "breakdown_usd": {
+            "bom_materials": 54.44,
+            "workforce": 19.11,
+            "energy": 3.17,
+            "consumables": 7.94,
+            "operating_overhead": 4.62,
+            "yield_and_rework": 1.15,
+            "instructions": 1.31,
+            "packaging": 1.96,
+            "logistics": 2.73,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.apple2_video_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.apple2_video_card.apple_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.8
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.apple_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.84
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.digital_video_transceivers_and_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8.72
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.36
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.18
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.video_clock_reset",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.27
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.vram_window_and_bus_arbitration",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.68
+            },
+            {
+              "component_ref": "bompart.part.aurelia_video_chip",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8.23
+            },
+            {
+              "component_ref": "bompart.part.vram_16kbit_dual_port",
+              "quantity": 8,
+              "extended_recurring_cost_usd": 33.98
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 97.91,
+          "low_usd": 68.54,
+          "high_usd": 156.66,
+          "breakdown_usd": {
+            "bom_materials": 55.9,
+            "workforce": 18.86,
+            "energy": 3.08,
+            "consumables": 7.76,
+            "operating_overhead": 4.53,
+            "yield_and_rework": 1.18,
+            "instructions": 1.44,
+            "packaging": 2.16,
+            "logistics": 3.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.apple2_video_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.apple2_video_card.apple_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.5
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.apple_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8.4
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.6
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.digital_video_transceivers_and_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.6
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.8
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.4
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.video_clock_reset",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.6
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.vram_window_and_bus_arbitration",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.2
+            },
+            {
+              "component_ref": "bompart.part.aurelia_video_chip",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.86
+            },
+            {
+              "component_ref": "bompart.part.vram_16kbit_dual_port",
+              "quantity": 8,
+              "extended_recurring_cost_usd": 33.43
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 101.21,
+          "low_usd": 70.85,
+          "high_usd": 161.94,
+          "breakdown_usd": {
+            "bom_materials": 57.98,
+            "workforce": 19.14,
+            "energy": 3.11,
+            "consumables": 7.88,
+            "operating_overhead": 4.61,
+            "yield_and_rework": 1.23,
+            "instructions": 1.58,
+            "packaging": 2.38,
+            "logistics": 3.3,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.apple2_video_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.apple2_video_card.apple_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.25
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.apple_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.24
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.4
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.digital_video_transceivers_and_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.56
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 5.28
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.64
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.video_clock_reset",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.96
+            },
+            {
+              "component_ref": "bompart.device.apple2_video_card.vram_window_and_bus_arbitration",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.8
+            },
+            {
+              "component_ref": "bompart.part.aurelia_video_chip",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.78
+            },
+            {
+              "component_ref": "bompart.part.vram_16kbit_dual_port",
+              "quantity": 8,
+              "extended_recurring_cost_usd": 33.82
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.device.apple2_video_card"
+    },
+    {
+      "id": "device.s100_video_card",
+      "catalog_ref": "device.s100_video_card",
+      "name": "Logix Video Card for S-100",
+      "group": "Peripherals",
+      "unit": "one finished accessory",
+      "available_from": "1979-06-04",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "offered_estimate",
+          "total_usd": 102.67,
+          "low_usd": 71.87,
+          "high_usd": 164.27,
+          "breakdown_usd": {
+            "bom_materials": 60.59,
+            "workforce": 19.11,
+            "energy": 3.17,
+            "consumables": 7.94,
+            "operating_overhead": 4.62,
+            "yield_and_rework": 1.24,
+            "instructions": 1.31,
+            "packaging": 1.96,
+            "logistics": 2.73,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.s100_video_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.s100_video_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.84
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.digital_video_transceivers_and_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8.72
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.36
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.s100_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.68
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.s100_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.9
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.18
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.video_clock_reset",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.27
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.vram_window_and_bus_arbitration",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.68
+            },
+            {
+              "component_ref": "bompart.part.aurelia_video_chip",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8.23
+            },
+            {
+              "component_ref": "bompart.part.vram_16kbit_dual_port",
+              "quantity": 8,
+              "extended_recurring_cost_usd": 33.98
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 104.31,
+          "low_usd": 73.02,
+          "high_usd": 166.9,
+          "breakdown_usd": {
+            "bom_materials": 62.2,
+            "workforce": 18.86,
+            "energy": 3.08,
+            "consumables": 7.76,
+            "operating_overhead": 4.53,
+            "yield_and_rework": 1.28,
+            "instructions": 1.44,
+            "packaging": 2.16,
+            "logistics": 3.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.s100_video_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.s100_video_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.6
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.digital_video_transceivers_and_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.6
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.8
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.s100_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.2
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.s100_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 12.0
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.4
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.video_clock_reset",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.6
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.vram_window_and_bus_arbitration",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.2
+            },
+            {
+              "component_ref": "bompart.part.aurelia_video_chip",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.86
+            },
+            {
+              "component_ref": "bompart.part.vram_16kbit_dual_port",
+              "quantity": 8,
+              "extended_recurring_cost_usd": 33.43
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 107.82,
+          "low_usd": 75.47,
+          "high_usd": 172.51,
+          "breakdown_usd": {
+            "bom_materials": 64.49,
+            "workforce": 19.14,
+            "energy": 3.11,
+            "consumables": 7.88,
+            "operating_overhead": 4.61,
+            "yield_and_rework": 1.33,
+            "instructions": 1.58,
+            "packaging": 2.38,
+            "logistics": 3.3,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.s100_video_card",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.s100_video_card.boot_and_driver_rom",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.4
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.digital_video_transceivers_and_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.56
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.passives_protection_and_internal_harnesses",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 5.28
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.s100_expansion_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.8
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.s100_host_interface",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 13.2
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.slot_connector_contacts",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.64
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.video_clock_reset",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.96
+            },
+            {
+              "component_ref": "bompart.device.s100_video_card.vram_window_and_bus_arbitration",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.8
+            },
+            {
+              "component_ref": "bompart.part.aurelia_video_chip",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.78
+            },
+            {
+              "component_ref": "bompart.part.vram_16kbit_dual_port",
+              "quantity": 8,
+              "extended_recurring_cost_usd": 33.82
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.device.s100_video_card"
     },
     {
       "id": "part.artemis_dma",
@@ -13093,7 +14405,7 @@
     {
       "id": "software.cpm_aurelia",
       "catalog_ref": "software.cpm_aurelia",
-      "name": "Enhanced CP/M 1.4 for Logix Aurelia",
+      "name": "CP/M for Aurelia — 1.4-derived core with Platform Extensions 1.0",
       "group": "Software",
       "unit": "one media/manual set; bundled editions are not separate purchases",
       "available_from": "1978-06-05",
@@ -24518,6 +25830,10 @@
       "reason": "Technology/specification, not separately sold"
     },
     {
+      "catalog_ref": "technology.logix_tui_keyboard_standard",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
       "catalog_ref": "technology.abacus_sparse_model",
       "reason": "Technology/specification, not separately sold"
     },
@@ -24601,5 +25917,446 @@
       "catalog_ref": "bundle.proposed_aurelia_plus_analysis",
       "reason": "Proposed bundle, not offered"
     }
-  ]
+  ],
+  "manufacturing_programs": {
+    "metadata": {
+      "currency": "USD",
+      "basis": "Nominal 1978–1979 engineering planning allowances, not historical quotations or agreed contract prices. No present-value conversion.",
+      "scope": "One-time costs and optional supplier purchase scenarios separate from recurring product costs."
+    },
+    "dri_founding": {
+      "year": "1974",
+      "committed_capital_usd": 250000,
+      "initial_paid_in_usd": 150000,
+      "scheduled_balance_usd": 100000,
+      "period_years": 2,
+      "cost_classification": "Equity funding, not a manufacturing expense; no per-unit amortization."
+    },
+    "smc_transfer": {
+      "agreement_date": "1978-07",
+      "initial_sales_date": "1979-10",
+      "licensed_part_refs": [
+        "part.flexibus_host_controller",
+        "part.flexibus_device_controller",
+        "part.aurelia_video_chip",
+        "part.vram_16kbit_dual_port"
+      ],
+      "nre_status": "Illustrative budget, not a committed payment; AION/Logix fund transfer. No unit-cost allocation without production volumes.",
+      "nre_items": [
+        {
+          "name": "Process adaptation, layout and engineering support",
+          "low_usd": 90000,
+          "central_usd": 160000,
+          "high_usd": 280000
+        },
+        {
+          "name": "SMC-compatible mask sets, test structures and revisions",
+          "low_usd": 20000,
+          "central_usd": 40000,
+          "high_usd": 80000
+        },
+        {
+          "name": "Pilot wafers, characterization and corrective runs",
+          "low_usd": 30000,
+          "central_usd": 65000,
+          "high_usd": 130000
+        },
+        {
+          "name": "Probe/final-test development and reliability qualification",
+          "low_usd": 25000,
+          "central_usd": 45000,
+          "high_usd": 85000
+        },
+        {
+          "name": "Transfer documentation, training and travel",
+          "low_usd": 10000,
+          "central_usd": 20000,
+          "high_usd": 35000
+        }
+      ],
+      "nre_total_usd": {
+        "low": 175000,
+        "central": 330000,
+        "high": 610000
+      },
+      "nre_exclusions": [
+        "New fab equipment, facilities and major process-capacity expansion",
+        "Original AION chip development",
+        "Logix card design and driver development",
+        "Production inventory and working capital"
+      ],
+      "feasibility": "October 1979 initial sales plausible with characterized AION silicon, SMC-compatible masks by late 1978 and successful qualification. Family-wide availability/mature yield is not guaranteed. VRAM may require additional process investment beyond this allowance.",
+      "purchase_price_proxy": {
+        "central_multiplier": 1.6,
+        "low_multiplier": 1.2,
+        "high_multiplier": 2.4,
+        "inbound_freight_usd_per_chip": 0.25,
+        "basis": "Sensitivity relative to modeled AION internal cost, including SMC overhead/margin/capital recovery and embedded royalty. No exact royalty rate, quote or guaranteed cost advantage is inferred."
+      },
+      "sources": [
+        {
+          "url": "https://manuals.plus/m/e43becab466f1fc2ba1742e95b4f0645632eb5d5ac2aea60ac96975b1c99320c",
+          "use": "SMC 1979 catalog supports custom MOS, supplied-mask production and peripheral/display capability; does not substantiate these budgets or prove AION VRAM process compatibility."
+        }
+      ]
+    },
+    "ncc1979_card_refs": [
+      "device.apple2_expansion_card",
+      "device.s100_flexibus_card",
+      "device.apple2_video_card",
+      "device.s100_video_card"
+    ]
+  },
+  "supplier_scenarios": {
+    "supplier": "SMC",
+    "basis": "Illustrative purchased-price sensitivity, not an SMC quote. Independent commercial sales start October 1979, after the June 1979 snapshot. Base costs retain AION fabrication; alternate rows replace rather than add chip costs. Part qualification is required, not assumed proven.",
+    "chips": [
+      {
+        "part_ref": "part.flexibus_host_controller",
+        "snapshots": {
+          "1978": {
+            "status": "not_yet_available",
+            "purchase_price_usd": null
+          },
+          "1979": {
+            "status": "not_yet_available",
+            "purchase_price_usd": null
+          },
+          "1980": {
+            "status": "conditional_on_part_qualification",
+            "aion_internal_recurring_cost_usd": 2.38724,
+            "purchase_price_usd": 4.06958,
+            "low_usd": 3.11469,
+            "high_usd": 5.97938,
+            "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
+          },
+          "1981": {
+            "status": "conditional_on_part_qualification",
+            "aion_internal_recurring_cost_usd": 2.44856,
+            "purchase_price_usd": 4.1677,
+            "low_usd": 3.18827,
+            "high_usd": 6.12654,
+            "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
+          }
+        }
+      },
+      {
+        "part_ref": "part.flexibus_device_controller",
+        "snapshots": {
+          "1978": {
+            "status": "not_yet_available",
+            "purchase_price_usd": null
+          },
+          "1979": {
+            "status": "not_yet_available",
+            "purchase_price_usd": null
+          },
+          "1980": {
+            "status": "conditional_on_part_qualification",
+            "aion_internal_recurring_cost_usd": 2.11213,
+            "purchase_price_usd": 3.62941,
+            "low_usd": 2.78456,
+            "high_usd": 5.31911,
+            "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
+          },
+          "1981": {
+            "status": "conditional_on_part_qualification",
+            "aion_internal_recurring_cost_usd": 2.16712,
+            "purchase_price_usd": 3.71739,
+            "low_usd": 2.85054,
+            "high_usd": 5.45109,
+            "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
+          }
+        }
+      },
+      {
+        "part_ref": "part.aurelia_video_chip",
+        "snapshots": {
+          "1978": {
+            "status": "not_yet_available",
+            "purchase_price_usd": null
+          },
+          "1979": {
+            "status": "not_yet_available",
+            "purchase_price_usd": null
+          },
+          "1980": {
+            "status": "conditional_on_part_qualification",
+            "aion_internal_recurring_cost_usd": 7.86469,
+            "purchase_price_usd": 12.8335,
+            "low_usd": 9.68763,
+            "high_usd": 19.12526,
+            "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
+          },
+          "1981": {
+            "status": "conditional_on_part_qualification",
+            "aion_internal_recurring_cost_usd": 7.78267,
+            "purchase_price_usd": 12.70227,
+            "low_usd": 9.5892,
+            "high_usd": 18.92841,
+            "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
+          }
+        }
+      },
+      {
+        "part_ref": "part.vram_16kbit_dual_port",
+        "snapshots": {
+          "1978": {
+            "status": "not_yet_available",
+            "purchase_price_usd": null
+          },
+          "1979": {
+            "status": "not_yet_available",
+            "purchase_price_usd": null
+          },
+          "1980": {
+            "status": "conditional_on_part_qualification",
+            "aion_internal_recurring_cost_usd": 4.17814,
+            "purchase_price_usd": 6.93502,
+            "low_usd": 5.26377,
+            "high_usd": 10.27754,
+            "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
+          },
+          "1981": {
+            "status": "conditional_on_part_qualification",
+            "aion_internal_recurring_cost_usd": 4.22718,
+            "purchase_price_usd": 7.01349,
+            "low_usd": 5.32262,
+            "high_usd": 10.39523,
+            "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
+          }
+        }
+      }
+    ],
+    "cards": [
+      {
+        "catalog_ref": "device.apple2_expansion_card",
+        "name": "Logix Apple II Expansion Card",
+        "snapshots": {
+          "1978": {
+            "status": "not_yet_available",
+            "total_usd": null
+          },
+          "1979": {
+            "status": "not_yet_available",
+            "total_usd": null
+          },
+          "1980": {
+            "status": "conditional_on_all_used_parts_qualified",
+            "total_usd": 61.36,
+            "breakdown_usd": {
+              "bom_materials": 48.94,
+              "workforce": 3.44,
+              "energy": 0.02,
+              "consumables": 0.42,
+              "operating_overhead": 0.86,
+              "yield_and_rework": 1.08,
+              "instructions": 1.44,
+              "packaging": 2.16,
+              "logistics": 3.0,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "delta_vs_aion_base_usd": 3.46,
+            "replaced_chip_quantities": {
+              "part.flexibus_host_controller": 2
+            }
+          },
+          "1981": {
+            "status": "conditional_on_all_used_parts_qualified",
+            "total_usd": 64.34,
+            "breakdown_usd": {
+              "bom_materials": 50.98,
+              "workforce": 3.6,
+              "energy": 0.02,
+              "consumables": 0.46,
+              "operating_overhead": 0.9,
+              "yield_and_rework": 1.12,
+              "instructions": 1.58,
+              "packaging": 2.38,
+              "logistics": 3.3,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "delta_vs_aion_base_usd": 3.53,
+            "replaced_chip_quantities": {
+              "part.flexibus_host_controller": 2
+            }
+          }
+        }
+      },
+      {
+        "catalog_ref": "device.s100_flexibus_card",
+        "name": "Logix FlexiBUS Interface for S-100",
+        "snapshots": {
+          "1978": {
+            "status": "not_yet_available",
+            "total_usd": null
+          },
+          "1979": {
+            "status": "not_yet_available",
+            "total_usd": null
+          },
+          "1980": {
+            "status": "conditional_on_all_used_parts_qualified",
+            "total_usd": 60.14,
+            "breakdown_usd": {
+              "bom_materials": 47.74,
+              "workforce": 3.44,
+              "energy": 0.02,
+              "consumables": 0.42,
+              "operating_overhead": 0.86,
+              "yield_and_rework": 1.06,
+              "instructions": 1.44,
+              "packaging": 2.16,
+              "logistics": 3.0,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "delta_vs_aion_base_usd": 3.45,
+            "replaced_chip_quantities": {
+              "part.flexibus_host_controller": 2
+            }
+          },
+          "1981": {
+            "status": "conditional_on_all_used_parts_qualified",
+            "total_usd": 63.57,
+            "breakdown_usd": {
+              "bom_materials": 50.22,
+              "workforce": 3.6,
+              "energy": 0.02,
+              "consumables": 0.46,
+              "operating_overhead": 0.9,
+              "yield_and_rework": 1.11,
+              "instructions": 1.58,
+              "packaging": 2.38,
+              "logistics": 3.3,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "delta_vs_aion_base_usd": 3.53,
+            "replaced_chip_quantities": {
+              "part.flexibus_host_controller": 2
+            }
+          }
+        }
+      },
+      {
+        "catalog_ref": "device.apple2_video_card",
+        "name": "Logix Video Card for Apple II",
+        "snapshots": {
+          "1978": {
+            "status": "not_yet_available",
+            "total_usd": null
+          },
+          "1979": {
+            "status": "not_yet_available",
+            "total_usd": null
+          },
+          "1980": {
+            "status": "conditional_on_all_used_parts_qualified",
+            "total_usd": 125.78,
+            "breakdown_usd": {
+              "bom_materials": 112.41,
+              "workforce": 3.44,
+              "energy": 0.02,
+              "consumables": 0.42,
+              "operating_overhead": 0.86,
+              "yield_and_rework": 2.03,
+              "instructions": 1.44,
+              "packaging": 2.16,
+              "logistics": 3.0,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "delta_vs_aion_base_usd": 27.87,
+            "replaced_chip_quantities": {
+              "part.aurelia_video_chip": 1,
+              "part.vram_16kbit_dual_port": 8
+            }
+          },
+          "1981": {
+            "status": "conditional_on_all_used_parts_qualified",
+            "total_usd": 129.26,
+            "breakdown_usd": {
+              "bom_materials": 114.94,
+              "workforce": 3.6,
+              "energy": 0.02,
+              "consumables": 0.46,
+              "operating_overhead": 0.9,
+              "yield_and_rework": 2.08,
+              "instructions": 1.58,
+              "packaging": 2.38,
+              "logistics": 3.3,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "delta_vs_aion_base_usd": 28.05,
+            "replaced_chip_quantities": {
+              "part.aurelia_video_chip": 1,
+              "part.vram_16kbit_dual_port": 8
+            }
+          }
+        }
+      },
+      {
+        "catalog_ref": "device.s100_video_card",
+        "name": "Logix Video Card for S-100",
+        "snapshots": {
+          "1978": {
+            "status": "not_yet_available",
+            "total_usd": null
+          },
+          "1979": {
+            "status": "not_yet_available",
+            "total_usd": null
+          },
+          "1980": {
+            "status": "conditional_on_all_used_parts_qualified",
+            "total_usd": 132.17,
+            "breakdown_usd": {
+              "bom_materials": 118.71,
+              "workforce": 3.44,
+              "energy": 0.02,
+              "consumables": 0.42,
+              "operating_overhead": 0.86,
+              "yield_and_rework": 2.12,
+              "instructions": 1.44,
+              "packaging": 2.16,
+              "logistics": 3.0,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "delta_vs_aion_base_usd": 27.86,
+            "replaced_chip_quantities": {
+              "part.aurelia_video_chip": 1,
+              "part.vram_16kbit_dual_port": 8
+            }
+          },
+          "1981": {
+            "status": "conditional_on_all_used_parts_qualified",
+            "total_usd": 135.87,
+            "breakdown_usd": {
+              "bom_materials": 121.45,
+              "workforce": 3.6,
+              "energy": 0.02,
+              "consumables": 0.46,
+              "operating_overhead": 0.9,
+              "yield_and_rework": 2.18,
+              "instructions": 1.58,
+              "packaging": 2.38,
+              "logistics": 3.3,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "delta_vs_aion_base_usd": 28.05,
+            "replaced_chip_quantities": {
+              "part.aurelia_video_chip": 1,
+              "part.vram_16kbit_dual_port": 8
+            }
+          }
+        }
+      }
+    ]
+  }
 }

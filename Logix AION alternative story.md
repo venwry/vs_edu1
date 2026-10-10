@@ -1,6 +1,6 @@
-# Calendar phases, confirmed events and processes
+# Calendar phases, events and processes
 
-Point-event dates are author-confirmed. Academic-year dates and remaining provisional boundaries are documented in HARVARD_ACADEMIC_DATES.md. The 2025 origin remains a prologue.
+Existing day-level event dates remain confirmed. The late-1974 DRI founding and July 1978 / October 1979 supplier milestones preserve year/month precision.
 
 ## 1. Adam studying and investing on stock market
 
@@ -13,14 +13,11 @@ Point-event dates are author-confirmed. Academic-year dates and remaining provis
 - 1972-02-06 — Lottery win and US relocation preparations (`event.lottery`)
 - 1972-03-01 — Move to the US and start of NYSE investing (`event.us_nyse_start`)
 - 1973-01-01 — Investment-data office established (`event.office`)
+- 1974 — Joint DRI founding and funding (late 1974) (`event.dri_founding`)
 
 ### Processes
 
 - Economics studies — 1972-09-25 – 1976-06-17 (`process.economics_studies`)
-  - Harvard Economics Bachelor Yr 1 — 1972-09-25 – 1973-06-14 (provisional fall start) (`process.harvard_year_1`)
-  - Harvard Economics Bachelor Yr 2 — 1973-09-24 – 1974-06-13 (provisional fall start) (`process.harvard_year_2`)
-  - Harvard Economics Bachelor Yr 3 — 1974-09-23 – 1975-06-12 (`process.harvard_year_3`)
-  - Harvard Economics Bachelor Yr 4 — 1975-09-22 – 1976-06-17 (`process.harvard_year_4`)
 
 ## 2. Preparing first products and their ecosystem
 
@@ -30,7 +27,7 @@ Point-event dates are author-confirmed. Academic-year dates and remaining provis
 
 - 1975-01-01 — Three technology companies founded (`event.companies`)
 - 1975-02-01 — Secret future-equipped facility established (`event.facility`)
-- 1976-09-01 — CP/M development cooperation (`event.dri_cpm`)
+- 1976-09-01 — Aurelia CP/M implementation agreement (`event.dri_cpm`)
 - 1977-02-15 — Offer to establish AION BPI Systems (`event.bpi_offer`)
 - 1977-06-01 — Gordon Letwin recruited (`event.letwin`)
 - 1977-07-15 — Tim Paterson recruited (`event.paterson`)
@@ -41,10 +38,6 @@ Point-event dates are author-confirmed. Academic-year dates and remaining provis
 ### Processes
 
 - Economics studies — 1972-09-25 – 1976-06-17 (`process.economics_studies`)
-  - Harvard Economics Bachelor Yr 1 — 1972-09-25 – 1973-06-14 (provisional fall start) (`process.harvard_year_1`)
-  - Harvard Economics Bachelor Yr 2 — 1973-09-24 – 1974-06-13 (provisional fall start) (`process.harvard_year_2`)
-  - Harvard Economics Bachelor Yr 3 — 1974-09-23 – 1975-06-12 (`process.harvard_year_3`)
-  - Harvard Economics Bachelor Yr 4 — 1975-09-22 – 1976-06-17 (`process.harvard_year_4`)
 
 ## 3. Aurelia premiere and first months of sales
 
@@ -55,9 +48,10 @@ Point-event dates are author-confirmed. Academic-year dates and remaining provis
 - 1978-06-05 — Aurelia platform launches (`event.aurelia_launch`)
 - 1978-06-05 — BPI suite presented for Aurelia (`event.bpi_launch`)
 - 1978-06-12 — BPI training and direct sales begin (`event.bpi_training`)
+- 1978-07 — SMC second-source and technology-transfer agreement (`event.smc_agreement`)
 - 1978-09-12 — AIONix development and ownership agreement (`event.aionix_agreement`)
 - 1978-10-15 — Apple seeks business-software partners (`event.apple_search`)
-- 1978-11-10 — DRI commits to portable TUI extensions (`event.dri_portable`)
+- 1978-11-10 — External CP/M extension qualification begins (`event.dri_portable`)
 - 1979-01-16 — Apple partners with Peachtree (`event.apple_peachtree`)
 - 1979-02-08 — Logix and Apple agree limited technical cooperation (`event.apple_cooperation`)
 - 1979-05-05 — Portable CP/M extensions released (`event.dri_release`)
@@ -68,11 +62,12 @@ Point-event dates are author-confirmed. Academic-year dates and remaining provis
 
 ### Events
 
-- 1979-06-04 — Apple II expansion products demonstrated (`event.apple_extensions`)
+- 1979-06-04 — Apple II and S-100 expansion products launch (`event.apple_extensions`)
 - 1979-06-04 — Microsoft BASIC presented (`event.basic_launch`)
 - 1979-07-01 — CP/M-80 compatibility module developed (`event.cpm_bridge`)
 - 1979-07-01 — Artemis software and development tools prepared (`event.artemis_software`)
 - 1979-07-05 — IBM investigates the personal-computer market (`event.ibm_investigate`)
+- 1979-10 — SMC begins licensed chip sales (`event.smc_sales`)
 
 ### Processes
 
@@ -116,14 +111,6 @@ Point-event dates are author-confirmed. Academic-year dates and remaining provis
 
 - 1981-05-04 — Networked business-computing platform presented (`event.network_launch`)
 
-## Reclassified assumptions
-
-- Engineering and manufacturing organization buildout (`assumption.organization_buildout`): Hire staff, establish software-development environments, computer manufacturing and R&D, and a conservative semiconductor operation.
-- Other companies monitor the market (`assumption.market_monitoring`): Actively monitor Logix/AION without significant decisions or actions yet.
-- US personal-computer market expansion (`assumption.market_expansion`): Contribute through product availability, computer popularization, seamless peripherals and accessible interfaces.
-
-See PHASE_DATE_REVIEW.md for the classification record.
-
 ---
 
 # Narrative
@@ -151,7 +138,7 @@ He starts on 1975-01-01 three companies to change the original history of person
 
 3)  AION Software in Copenhagen - focused on business applications and compliers development
 
-Adam aims at competing with IBM on personal computing standard. His companies are focused at developing products to be presented at NCC conferences starting from 1978 and COMDEX conferences starting from 1979 and then got manufactured at maximum possible scale to gain market coverage enough to dictate standards.
+Adam aims at competing for the personal-computing standard through published interfaces, widely available compatible components, software and services. DRI remains an independent licensor, including to competing OEMs. His companies are focused at developing products to be presented at NCC conferences starting from 1978 and COMDEX conferences starting from 1979 and then got manufactured at maximum possible scale to gain market coverage around interoperable standards.
 
 Adam doesn’t play fair he took from 2020s equipment that would allow him to design and beam lithography masks for chip manufacturing and on 1975-02-01 established a secret facility away from his three companies:
 
@@ -173,8 +160,9 @@ Given that Adam knows history architects and talented technologists:
 
 Adam also sign agreements:
 
-- on 1976-09-01 with Digital Research to work with them on extended version of CP/M.  
-  Adam offered CP/M to retain the right to Implement TUI libraries and FlexiBUS support to any CP/M version for non-Logix computer.
+- In late 1974, Adam, Gary Kildall and Dorothy McEwen jointly establish and fund Digital Research before Logix is founded. DRI owns and sells CP/M independently to competing OEMs. Gary leads engineering, Dorothy operations, and Adam capital and product strategy. The Kildall founders retain 60%, Adam 30%, and 10% is reserved for employees (fully diluted). Adam commits $250,000 over two years: $150,000 at formation and $100,000 in installments. The internal Gary/Dorothy split is unspecified.
+
+- On 1976-09-01 the existing partnership signs the Aurelia implementation agreement. Earlier hardware abstraction and documented interfaces support an alternate CP/M 1.4-derived core with optional Platform Extensions 1.0: ROM/banking, device services, FlexiBUS and TUI. These are not features of historical CP/M 1.4. Ordinary CP/M remains usable without Logix hardware. Logix pays OEM licenses and platform-specific engineering costs.
 
 - on 1977-09-01 with Micro Peripherals, Inc. to agree manufacturing purchasing OEM MP-40 units bare mechanisms in order to equip them with FlexiBUS controller
 
@@ -192,7 +180,7 @@ BPI product training and direct sales through Logix Computer Academy become avai
 
 ## The market and competition response between NCC 1978 and NCC 1979
 
-- DRI on 1978-11-10: Commits to developing a portable CP/M extension incorporating Logix's TUI libraries, with the intention of offering it to other computer manufacturers.
+- DRI on 1978-11-10 begins external OEM implementation, documentation and qualification of portable TUI/FlexiBUS extensions. Portability was already a founding policy; this is its external delivery program.
 
 - Apple on 1978-10-15: Start searching for a partnership to provide Apple II business software and disk-based capabilities, including spreadsheet and database applications.
 
@@ -216,7 +204,7 @@ On 1979-02-08, Logix contacted Apple Computer seeking technical cooperation in d
 
 Apple agreed to provide limited technical cooperation and compatibility assistance, while Logix remained responsible for the design and development of its hardware and software.
 
-At NCC on 1979-06-04, Logix presents the Logix Apple II Expansion Card and Logix FlexiDisk II, with an Apple representative participating in the demonstration.
+At NCC on 1979-06-04, Logix launches the Apple II Expansion Card and FlexiDisk II plus three additional cards: the S-100 FlexiBUS Interface, Apple II Video Card and S-100 Video Card. Each video card uses the Aurelia-family display controller and eight 16Kx1 VRAM chips (16 KiB), connected to compatible Logix monitors. Native Apple drivers/examples expose FlexiBUS and video without adding CP/M execution; CP/M-6502 remains deferred. Qualified S-100 hosts receive CP/M adapters and optional TUI support. Logix alone develops and sells these cards; the program is not a DRI obligation. An Apple representative joins the Apple demonstration. All launch cards use AION chips, independently of SMC’s later release.
 
 On 1979-06-04 at NCC 1979, Microsoft releases Microsoft BASIC for Aurelia as licensed third-party software, developed in cooperation with AION for enhanced CP/M and Logix TUI.
 
@@ -234,12 +222,13 @@ AION presents Pulse and Abacus 2.0, while Logix launches Aurelia+ and makes corr
 
 - IBM’s investigation indicates that partitioned personal computer market started consolidating around Logix and Apple. On 1979-12-10 IBM starts a project to establish credibility in business computing, relationships with corporate customers, a global service organization and substantial engineering and manufacturing resources.
 
+  - DRI is now an independent potential OS supplier. Its relationship with Logix does not automatically preclude IBM business; x86 availability, negotiations and selection remain unresolved.
+
   - Their plan: Functional prototype in 3–4 months; manufacturing-ready design in 11–13 months; commercial launch targeted for early 1982.
 
   - Objective Approximately \$1,500 for an entry configuration, with practical business configurations priced higher.
 
-  - IBM intends to create themselves a 16bit operating x86, possibly using external contractors.  
-    (taking into account that Microsoft is incapable of building operating system, and DRI offering is done in cooperation with Logix for 8-bit machines only)
+  - IBM plans a 16-bit x86 operating system, potentially using contractors. Paterson remains unavailable for the historical QDOS route, but this no longer implies DRI is contractually unavailable to IBM.
 
 - Apple and Peachtree starts on 1980-03-15 the Small-business package offering that covers: accounting, potentially including general ledger, accounts payable/receivable, inventory, invoicing, and payroll.  
   It contains a simplified setup, Apple II-oriented interface, documentation, and support for business users.
@@ -262,6 +251,8 @@ Logix Tech, AION Labs and AION Software work jointly on designing, constructing 
   - Gary Kildal will receive in tranches 8% of Logix equities
 
   - DRI will obtain in 1982 the right to port AIONix to non-ERA processors. DRI can freely re-use key AIONix components, but not the Logix computer architecture or bus/IO standards.
+
+  - This remains a separate AIONix agreement: it does not transfer CP/M ownership or restrict DRI’s independent CP/M licensing. The existing AION ownership, Gary’s 8% Logix grant and 1982 AIONix porting right are retained; a different allocation was discussed but not selected.
 
   - AION Software department working on **AIONix** must move from Copenhagen to Logix offices to be based close to DRI headquarters.
 
@@ -287,4 +278,20 @@ On 1981-05-04 Logix presents its TCP/IP networking platform, the Artemis PRO ser
 
 
 
-Event dates contain only `start` and `end` (ISO dates); single-day events have equal endpoints. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.
+Event dates contain only `start` and `end`; existing exact dates are retained. New founding/supplier milestones use equal year/month endpoints without inventing exact days. Timeline placement within a partial-date period is indicative.
+
+
+
+## Independent semiconductor supply: July 1978–1980
+
+In July 1978, after Aurelia’s premiere, AION Labs and Logix sign a non-exclusive license with Standard Microsystems Corporation (SMC) covering the FlexiBUS host/device controllers, Aurelia display controller and AION 16Kx1 random-plus-serial VRAM. SMC may fabricate and sell them independently, including to Logix competitors. ERA processor designs are excluded.
+
+SMC provides process/lithography requirements. AION provides compatible ready-to-use mask sets and revisions, reference silicon, process know-how, wafer-test structures, production-test programs and on-site engineering support. Masks must match the receiving process; they do not eliminate DRAM retention, sensing, refresh, transfer and yield qualification. Logix supplies reference boards, acceptance tests and initial purchase commitments. Contract prices, royalty rates and order volumes remain unspecified.
+
+SMC begins initial qualified commercial chip sales in October 1979. This is staged availability, not an assertion that every part has completed qualification or reached mature yields. VRAM has a separate qualification gate; higher-volume production ramps into 1980. AION continues supplying the June 1979 cards. The cost model keeps AION internal manufacture as the base and shows conditional SMC purchase alternatives separately.
+
+AION/Logix funds transfer engineering, compatible masks and qualification. One-time planning allowances are separate from unit manufacturing costs and are not supplier quotations or agreed contract payments.
+
+## Application and ecosystem policy
+
+Published interfaces and affordable developer support allow competing cards, peripherals, monitors and software. Logix’s cards are proof of that policy, not requirements imposed on DRI. AION retains the existing Abacus, C tools, Business Tools, AIONix and Pulse products. BPI’s independence around 1985 remains a future ownership/governance objective requiring a separate transaction; no completed buyout is invented.

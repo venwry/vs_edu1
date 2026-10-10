@@ -4,7 +4,7 @@ Open `pricing.html` through the same HTTP server as the Atlas. The navigation in
 
 ## Commercial scope
 
-76 commercial purchase units across ten types: complete systems; application bundles; network installation bundles; peripherals and expansion; networking; software/developer tools; business applications; support; training; developer programs. There are 203 applicable annual snapshots.
+79 commercial purchase units across ten types: complete systems; application bundles; network installation bundles; peripherals and expansion; networking; software/developer tools; business applications; support; training; developer programs. There are 212 applicable annual snapshots.
 
 Includes the original review list, seven Aurelia/Aurelia+ use-case bundles and seven Artemis/PRO packages. Existing hardware bundles are unchanged. The JSON is the consolidated pricing proposal; it does not rewrite historical price fields or technical compatibility contracts in the technical catalog.
 
@@ -54,3 +54,7 @@ node tests/atlas.test.cjs
 ```
 
 Checks cover full product coverage, date gating, source chronology, exact cost reconciliation, mathematical fee/profit identities, the margin floor, stress cases, edition changes, no duplicated NICs, training units, grouped matrix, scenario controls, availability filters and site links.
+
+
+
+The three NCC 1979 cards are included in the pricing matrix. Their new retail values are cost-floor planning proposals without a matched historical competitor benchmark. They do not overwrite a quoted catalog price. Host computer, compatible monitor and separate FlexiBUS/video cards are not bundled implicitly. Costs use AION launch silicon; SMC sensitivity is separate.
