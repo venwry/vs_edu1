@@ -71,8 +71,11 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 - 1979-01-16 — Apple partners with Peachtree (`event.apple_peachtree`)
 - 1979-02-08 — Logix and Apple agree limited technical cooperation (`event.apple_cooperation`)
 - 1979-02-19 — Model II CP/M and Abacus prototype review (`event.tandy_port_review`)
+- 1979-02-19 — Independent OEM and peripheral engineering briefings (`event.oem79_briefings`)
 - 1979-04-16 — Apple promotes complete business configurations (`event.apple_business_promotions`)
 - 1979-05-05 — Portable CP/M extensions released (`event.dri_release`)
+- 1979-05-05 — Publish independent compatibility programmes (`event.open79_profiles`)
+- 1979-05-21 — Pre-NCC cross-vendor qualification workshop (`event.open79_workshop`)
 - 1979-05-30 — Model II announced with planned CP/M, FlexiBUS and Abacus offering (`event.tandy_announcement`)
 
 ## 4. Apple extensions and market expansion
@@ -84,12 +87,15 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 - 1979-06-04 — Apple II and S-100 expansion products launch (`event.apple_extensions`)
 - 1979-06-04 — Microsoft BASIC presented (`event.basic_launch`)
 - 1979-06-04 — Model II CP/M, FlexiBUS and Abacus demonstrated at NCC (`event.tandy_ncc_demo`)
-- 1979-07-01 — CP/M-80 compatibility module developed (`event.cpm_bridge`)
+- 1979-06-04 — NCC 1979 open architecture and migration presentation (`event.ncc79_campaign`)
+- 1979-07-01 — Detailed CP/M-80 compatibility module development begins (`event.cpm_bridge`)
 - 1979-07-01 — Artemis software and development tools prepared (`event.artemis_software`)
 - 1979-07-05 — IBM investigates the personal-computer market (`event.ibm_investigate`)
+- 1979-07-16 — Compatibility roadshows and developer migration clinics (`event.open79_roadshows`)
 - 1979-09-17 — Apple reviews successor-product compatibility requirements (`event.apple_compatibility_review`)
 - 1979-10 — SMC begins licensed chip sales (`event.smc_sales`)
 - 1979-10-15 — Supported Model II CP/M and Abacus configuration released (`event.tandy_release`)
+- 1979-10-15 — Promote verified ecosystem deliveries (`event.open79_delivery`)
 
 ### Processes
 
@@ -103,6 +109,8 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 
 - 1979-12-03 — Aurelia+, Pulse and Abacus 2.0 arrive (`event.plus_launch`)
 - 1979-12-10 — IBM starts its personal-computer project (`event.ibm_project`)
+- 1979-12-15 — Review end-1979 ecosystem adoption targets (`event.open79_targets`)
+- 1980-01-14 — Customer evidence and compatibility programme review (`event.open80_results`)
 - 1980-02-15 — IBM software sourcing review exposes schedule gap (`event.ibm_os_review`)
 - 1980-03-15 — Apple–Peachtree small-business package starts (`event.apple_business`)
 
@@ -341,3 +349,10 @@ See [COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.jso
 
 
 Independent BPI positioning, scenario dates, dealer configurations, summary export and revised sales accounting are specified in [BPI_PARTNER_STRATEGY.md](BPI_PARTNER_STRATEGY.md).
+
+
+## NCC 1979 open architecture and migration campaign
+
+The June 4, 1979 presentation lasts 50 minutes before questions. Separate CP/M application, FlexiBUS peripheral and optional display programmes support independent manufacturers. Abacus precedes BPI; BPI management appears with partners. Adam states the next generation breaks native Z80 binary compatibility, while existing C/API practices reduce migration work and a planned optional Z80 coprocessor offers qualified legacy execution. The new host word size/architecture remains secret until NCC 1980. July 1 marks detailed module development, not its shipment; product introduction remains May 19, 1980.
+
+Eight-bit systems continue in business and expand into home/education use. The next-generation sub-$100 expectation is a roughly ten-year strategic forecast, not a withdrawal date or engineered price guarantee. Consumer-TV compatibility and the basic-storage configuration remain to be designed. See [NCC_1979_CAMPAIGN.md](NCC_1979_CAMPAIGN.md) and [ncc_1979_campaign.json](ncc_1979_campaign.json) for adoption targets, partners, marketing, commercial boundaries and disclosure rules.
