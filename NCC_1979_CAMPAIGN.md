@@ -16,9 +16,13 @@ CP/M remains commercially licensed. Openness means non-exclusive implementation 
 
 The next generation will break native Z80 binary compatibility. The established C environment, APIs and file formats reduce source migration work; developers still recompile, adapt and test. Assembly, pointer/integer assumptions, banking and direct hardware access require review. The 1979 campaign teaches existing portable-C practices; it does not release the full new-target compiler/framework a year early.
 
-A planned optional Z80 coprocessor provides a separate legacy path, with appropriate guest memory, CP/M services and peripheral bridging. Support is for qualified documented-interface applications, not arbitrary hardware tricks. The coprocessor is not a June 1979 shipping product. Detailed development begins July 1; the separately sold module retains its May 19, 1980 introduction. Artemis PRO and every future model are not automatically covered.
+A planned optional Z80 coprocessor provides a separate path for qualified legacy applications. Implementation details remain confidential. It is not a June 1979 shipping product, and compatibility is not promised for every future model.
 
 Adam reveals neither the next processor's word size nor architecture before NCC 1980. The project technical catalog may contain those facts for the author; it must not be copied unfiltered into 1979 press material. The architecture reveal belongs to May 19, 1980.
+
+The embargo applies throughout 1979, including COMDEX, Q&A, sales proposals, dealer training, partner/OEM briefings and developer clinics. Call the future offering only “next-generation computers”. Withhold future product/processor/OS names, word size, ISA, registers, memory organisation, execution design, performance, schematics and coprocessor integration. Demonstrate released 8-bit products only; distribute no future-target SDK, binaries, compiler output, benchmark, board photograph or linked specification from which the architecture could be inferred. Published current CP/M, FlexiBUS and optional video interfaces remain available.
+
+Approved response to architecture questions: “We will discuss the new architecture at NCC 1980. Today we can describe our C migration approach and planned optional Z80 compatibility path.”
 
 ## Continuing eight-bit market
 

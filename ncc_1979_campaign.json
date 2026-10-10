@@ -153,8 +153,7 @@
     "disclosure": "Public 1979 materials withhold word size, ISA details and architecture; full project technical catalog is an author-facing specification, not a 1979 press kit.",
     "native_binary_compatibility": false,
     "source_path": "Use the existing Z80 C environment, documented APIs, portable file formats and separated platform adapters. Recompile for the later target; review assembly, integer/pointer assumptions, memory banking and direct hardware access.",
-    "legacy_path": "Planned optional Z80 coprocessor with compatible OS, memory and peripheral bridge for qualified documented-interface applications. Not a universal guarantee for hardware-dependent software.",
-    "internal_product_ref": "device.artemis_cpm80_module",
+    "legacy_path": "Planned optional Z80 coprocessor for qualified legacy applications. Implementation details remain confidential; this is not a universal guarantee for hardware-dependent software.",
     "public_status": "Future commitment, not a shipping or fully qualified June-1979 product.",
     "support": "Maintain CP/M tools and applications alongside next-generation development; publish a funded duration before making a dated service guarantee."
   },
@@ -302,5 +301,25 @@
       "url": "https://www.bitsavers.org/pdf/intertec/Superbrain_Users_Manual_Sep80.pdf",
       "scope": "Later primary manual; architecture precedent only, not proof of June 1979 adapter availability."
     }
-  ]
+  ],
+  "disclosure_policy": {
+    "embargo_until": "1980-05-19",
+    "scope": "Every 1979 keynote, Q&A, press release, advertisement, dealer script, sales proposal, partner/OEM briefing, roadshow, developer clinic and demonstration. Confidential internal engineering is not a public announcement.",
+    "public_name": "next-generation computers",
+    "permitted": [
+      "Native binary compatibility with existing Z80 applications will break.",
+      "The established C development environment and documented interfaces will minimise source migration effort; adaptation, recompilation and testing remain necessary.",
+      "An optional Z80 coprocessor is planned for qualified legacy applications; availability and compatibility are not guaranteed for every model.",
+      "Eight-bit systems retain years of business use and increasingly serve homes and education; the next-generation sub-$100 forecast is roughly a decade away, not a withdrawal deadline."
+    ],
+    "withheld": [
+      "Future product, processor and operating-system names.",
+      "Word size, instruction set, register model, execution design, address width, memory organisation and protection.",
+      "Clock rates, performance claims, chip counts, schematics, board photographs, bus topology and future display specifications.",
+      "Coprocessor implementation, interconnect, memory mapping and host integration.",
+      "Future-target SDKs, compiler output, binaries, benchmarks and demonstrations that allow architectural inference."
+    ],
+    "enforcement": "Use only released 8-bit products in 1979 demonstrations and clinics. Review slides, screenshots, captions, attachments and linked specifications as well as speech. Do not attach the all-years technical catalog or disclose future implementation details to prospective partners; current CP/M, FlexiBUS and optional video specifications remain available.",
+    "qa_response": "We will discuss the new architecture at NCC 1980. Today we can describe our C migration approach and planned optional Z80 compatibility path."
+  }
 }

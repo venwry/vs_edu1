@@ -89,7 +89,7 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 - 1979-06-04 — Model II CP/M, FlexiBUS and Abacus demonstrated at NCC (`event.tandy_ncc_demo`)
 - 1979-06-04 — NCC 1979 open architecture and migration presentation (`event.ncc79_campaign`)
 - 1979-07-01 — Detailed CP/M-80 compatibility module development begins (`event.cpm_bridge`)
-- 1979-07-01 — Artemis software and development tools prepared (`event.artemis_software`)
+- 1979-07-01 — Confidential next-generation software and tool preparation (`event.artemis_software`)
 - 1979-07-05 — IBM investigates the personal-computer market (`event.ibm_investigate`)
 - 1979-07-16 — Compatibility roadshows and developer migration clinics (`event.open79_roadshows`)
 - 1979-09-17 — Apple reviews successor-product compatibility requirements (`event.apple_compatibility_review`)
@@ -116,7 +116,7 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 
 ### Processes
 
-- Artemis and ERA1 engineering (`process.artemis_engineering`)
+- Confidential next-generation engineering (`process.artemis_engineering`)
 
 ## 6. Artemis launch, compatibility card and recompiled products
 
@@ -255,7 +255,7 @@ AION presents Pulse and Abacus 2.0, while Logix launches Aurelia+ and makes corr
 
 - IBM’s investigation indicates that Logix, Tandy, Apple and independent software/peripheral suppliers are establishing business-computing expectations outside IBM. On 1979-12-10 IBM starts a project to establish credibility in business computing, relationships with corporate customers, a global service organization and substantial engineering and manufacturing resources.
 
-  - DRI remains an independent potential supplier, but its funded AIONix and CP/M-80 commitments leave no committed qualified x86 delivery on IBM’s timetable. Supplier selection and replacement OS/application qualification delay commercial readiness.
+  - DRI remains an independent potential supplier, but its existing funded development and CP/M-80 commitments leave no committed qualified x86 delivery on IBM’s timetable. Supplier selection and replacement OS/application qualification delay commercial readiness.
 
   - Their plan: Functional prototype in 3–4 months; manufacturing-ready design in 11–13 months; commercial launch targeted for early 1982.
 
@@ -268,7 +268,7 @@ AION presents Pulse and Abacus 2.0, while Logix launches Aurelia+ and makes corr
 
 # NCC May 1980 – Logix Artemis release
 
-Logix Tech, AION Labs and AION Software work jointly on designing, constructing and manufacturing Logix Artemis. Massive marketing campaign precedes presentation telling about new era of personal computing.
+Logix Tech, AION Labs and AION Software work jointly on designing, constructing and manufacturing Logix Artemis. The preceding campaign promises migration support without exposing the architecture. The technical details below are author-facing background, revealed publicly only at NCC 1980.
 
 - Logix Tech buys a few PDP-11 machines develops a processor emulator based on the blueprint that heavily reminds ARM v1 architecture but implements called ERA1  
   (Extreme RISC Architecture).
@@ -293,9 +293,9 @@ Logix Tech, AION Labs and AION Software work jointly on designing, constructing 
 
 - Logix designs and constructs motherboard. develops BIOS, designs and constructs other elements of the computer.
 
-- On 1979-07-01 Logix and DRI undertake development of a CP/M-80 compatibility module so that existing Aurelia software can continue to run on Artemis.
+- On 1979-07-01 Logix and DRI begin confidential work on the planned optional Z80 compatibility path. No implementation details are announced.
 
-- On 1979-07-01 AION Software undertakes preparation of Artemis software and development tools: it develops AIONix with DRI, ports the established business applications to Artemis, and creates the native ERA C development environment and a larger Business Tools suite.
+- On 1979-07-01 AION Software begins confidential next-generation software and tool preparation. Public clinics remain based on established C tools and documented interfaces; future software names and target details are withheld.
 
  
 

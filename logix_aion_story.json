@@ -373,7 +373,7 @@
       "plans": "Targets, offers and future rights are distinguished from completed actions.",
       "naming": "Stable actor/product identifiers; aliases retain spelling variants.",
       "event_structure": "Events use date, participants, actions, outcomes, agreement_terms, metrics, product_refs and related_event_refs. Processes use period and phase_refs instead of event_type/date; phase_refs identify narrative context, not asserted start/end dates.",
-      "provenance": "This JSON structures the narrative; product specifications remain in the technical catalog.",
+      "provenance": "This JSON structures the narrative; product specifications remain in the technical catalog. The technical catalog is an author-facing, all-years reference, not a contemporaneous press kit. All 1979 public and partner-facing next-generation references must follow the disclosure policy in ncc_1979_campaign.json; internal identifiers do not establish public product names.",
       "phase_order": "Eight consecutive inclusive calendar phases from 1972-01-01 through 1981-11-18. Point events are assigned by their confirmed dates and sorted chronologically. The 2025-12-07 origin remains an explicit prologue associated with phase one, outside its calendar period. Processes are listed separately in their contextual phases; the explicit 1973–1975 investment expansion spans phases one and two."
     }
   },
@@ -2914,22 +2914,20 @@
                 "actor.logix",
                 "actor.dri"
               ],
-              "description": "Begin detailed module implementation following the public June 4 migration commitment and preliminary feasibility work. Z80 execution, guest memory and the host peripheral bridge must be qualified; this is not a July shipment. Product introduction remains NCC 1980."
+              "description": "Begin confidential implementation work following the public June 4 migration commitment and preliminary feasibility work. Public language remains a planned optional Z80 coprocessor for qualified legacy applications; implementation details and future-platform specifications remain undisclosed until NCC 1980. This is not a July shipment."
             }
           ],
           "outcomes": [],
           "agreement_terms": [],
           "metrics": [],
           "product_refs": [
-            "device.artemis_cpm80_module",
-            "computer.artemis",
             "computer.aurelia"
           ],
           "related_event_refs": []
         },
         {
           "id": "event.artemis_software",
-          "title": "Artemis software and development tools prepared",
+          "title": "Confidential next-generation software and tool preparation",
           "event_type": "development",
           "date": {
             "start": "1979-07-01",
@@ -2951,27 +2949,20 @@
                 "actor.aion",
                 "actor.dri"
               ],
-              "description": "Develop AIONix."
+              "description": "Prepare future system software internally; publish no names or architectural details before NCC 1980."
             },
             {
               "actor_refs": [
                 "actor.aion"
               ],
-              "description": "Ports established business applications and creates the native ERA C development environment and a larger Business Tools suite."
+              "description": "Prepare application migration and future C tools internally. Public 1979 clinics use the established C environment and documented interfaces only; no future-target binaries, compiler output or SDK are distributed."
             }
           ],
           "outcomes": [],
           "agreement_terms": [],
           "metrics": [],
-          "product_refs": [
-            "software.aionix",
-            "software.aion_c_ide",
-            "software.business_tools_artemis",
-            "software.bpi_suite"
-          ],
-          "related_event_refs": [
-            "event.aionix_agreement"
-          ]
+          "product_refs": [],
+          "related_event_refs": []
         },
         {
           "id": "event.ibm_investigate",
@@ -3310,7 +3301,7 @@
           ],
           "outcomes": [
             {
-              "description": "DRI remains an independent licensor but its funded AIONix and CP/M-80 commitments leave no committed x86 OS on IBM’s required schedule. Paterson’s recruitment removes the historical SCP 86-DOS route; Letwin’s absence reduces Microsoft staffing options. Alternatives remain possible. Supplier selection, substitute OS development and application qualification become the critical path toward early 1982, rather than technical impossibility."
+              "description": "DRI remains an independent licensor but its existing funded development and CP/M-80 commitments leave no committed x86 OS on IBM’s required schedule. Paterson’s recruitment removes the historical SCP 86-DOS route; Letwin’s absence reduces Microsoft staffing options. Alternatives remain possible. Supplier selection, substitute OS development and application qualification become the critical path toward early 1982, rather than technical impossibility."
             }
           ],
           "agreement_terms": [
@@ -3371,7 +3362,6 @@
           "product_refs": [],
           "related_event_refs": [
             "event.ibm_investigate",
-            "event.aionix_agreement",
             "event.paterson",
             "event.letwin"
           ]
@@ -4018,7 +4008,7 @@
     },
     {
       "id": "process.artemis_engineering",
-      "title": "Artemis and ERA1 engineering",
+      "title": "Confidential next-generation engineering",
       "participants": [
         {
           "actor_ref": "actor.logix",
@@ -4038,19 +4028,19 @@
           "actor_refs": [
             "actor.logix"
           ],
-          "description": "Purchases several PDP-11s, develops a processor emulator from an ARM-v1-like blueprint named ERA1, and designs Artemis architecture."
+          "description": "Develop and validate the future platform internally. Architecture and engineering specifications are withheld from all 1979 communications."
         },
         {
           "actor_refs": [
             "actor.labs"
           ],
-          "description": "Uses supplied processor blueprints, designs masks and develops other custom chips."
+          "description": "Perform confidential component development and qualification."
         },
         {
           "actor_refs": [
             "actor.logix"
           ],
-          "description": "Designs and constructs motherboard, BIOS and other computer elements."
+          "description": "Construct and test the future system internally."
         },
         {
           "actor_refs": [
@@ -4058,17 +4048,13 @@
             "actor.labs",
             "actor.aion"
           ],
-          "description": "Jointly design, construct and manufacture Artemis; a major campaign promotes a new era of personal computing."
+          "description": "Coordinate confidential hardware and software development. Any 1979 marketing uses only the approved migration statements; the architecture reveal is reserved for NCC 1980."
         }
       ],
       "outcomes": [],
       "agreement_terms": [],
       "metrics": [],
-      "product_refs": [
-        "computer.artemis",
-        "part.era1",
-        "technology.era1_isa"
-      ],
+      "product_refs": [],
       "related_event_refs": [],
       "period": {
         "start": null,
