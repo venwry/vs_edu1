@@ -72,3 +72,6 @@ Checks cover full product coverage, date gating, source chronology, exact cost r
 
 
 The three NCC 1979 cards are included in the pricing matrix. Their new retail values are cost-floor planning proposals without a matched historical competitor benchmark. They do not overwrite a quoted catalog price. Host computer, compatible monitor and separate FlexiBUS/video cards are not bundled implicitly. Costs use AION launch silicon; SMC sensitivity is separate.
+
+
+External Tandy Model II hardware, its CP/M distribution and the Abacus partner edition have no agreed OEM prices or licensing volumes. They are represented in the technical catalog, but excluded from the 79 Logix/AION retail offers; the existing Abacus Aurelia price is not silently reused as a Tandy license price.

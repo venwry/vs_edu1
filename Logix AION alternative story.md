@@ -1,10 +1,10 @@
 # Calendar phases, events and processes
 
-Existing day-level event dates remain confirmed. The late-1974 DRI founding and July 1978 / October 1979 supplier milestones preserve year/month precision.
+Original confirmed dates are preserved. New partner and competitor dates are explicit alternative-story choices; see COMPETITOR_REACTIONS.md.
 
 ## 1. Adam studying and investing on stock market
 
-1972-01-01 to 1974-12-31
+1972-01-01 – 1974-12-31
 
 ### Events
 
@@ -17,11 +17,11 @@ Existing day-level event dates remain confirmed. The late-1974 DRI founding and 
 
 ### Processes
 
-- Economics studies — 1972-09-25 – 1976-06-17 (`process.economics_studies`)
+- Economics studies (`process.economics_studies`)
 
 ## 2. Preparing first products and their ecosystem
 
-1975-01-01 to 1978-06-04
+1975-01-01 – 1978-06-04
 
 ### Events
 
@@ -32,76 +32,90 @@ Existing day-level event dates remain confirmed. The late-1974 DRI founding and 
 - 1977-06-01 — Gordon Letwin recruited (`event.letwin`)
 - 1977-07-15 — Tim Paterson recruited (`event.paterson`)
 - 1977-09-01 — OEM printer-mechanism agreement (`event.mpi`)
+- 1978-02-01 — AIONix preliminary architecture and portability work (`event.aionix_preliminary`)
 - 1978-02-05 — ComputerLand retail agreement (`event.retail`)
 - 1978-03-25 — Logix Computer Academy established (`event.academy`)
-- 1978-04 — Newspaper teaser campaign begins (`event.aurelia_campaign_teaser`)
-- 1978-05 — Cinematic television and explanatory print campaign (`event.aurelia_campaign_advert`)
-- Late May–early June 1978 — Press, dealer and launch preparation (`event.aurelia_campaign_preparation`)
+- 1978-04 — Aurelia newspaper teaser campaign begins (`event.aurelia_campaign_teaser`)
+- 1978-05 — Aurelia cinematic advertising campaign (`event.aurelia_campaign_advert`)
+- 1978-05 — Press, dealer and launch preparation (late May into early June) (`event.aurelia_campaign_preparation`)
 
 ### Processes
 
-- Economics studies — 1972-09-25 – 1976-06-17 (`process.economics_studies`)
+- Economics studies (`process.economics_studies`)
 
 ## 3. Aurelia premiere and first months of sales
 
-1978-06-05 to 1979-06-03
+1978-06-05 – 1979-06-03
 
 ### Events
 
-- 1978-06-05 — Aurelia platform launches; five-city Academy publicly announced (`event.aurelia_launch`)
-- 1978-06-05 to 1978-06-08 — Technical sessions, professional recording and subsequent free station distribution (`event.ncc78_sessions_media`)
+- 1978-06-05 — Aurelia platform launches (`event.aurelia_launch`)
 - 1978-06-05 — BPI suite presented for Aurelia (`event.bpi_launch`)
+- 1978-06-05 to 1978-06-08 — NCC technical sessions, professional filming and free television distribution (`event.ncc78_sessions_media`)
 - 1978-06-12 — BPI training and direct sales begin (`event.bpi_training`)
 - 1978-07 — SMC second-source and technology-transfer agreement (`event.smc_agreement`)
-- 1978-09-12 — AIONix development and ownership agreement (`event.aionix_agreement`)
+- 1978-07-17 — Apple coordinates business-software recruitment (`event.apple_business_initiative`)
+- 1978-09-12 — AIONix development programme and ownership formalised (`event.aionix_agreement`)
+- 1978-09-18 — Apple business-dealer demonstration programme (`event.apple_dealer_demos`)
 - 1978-10-15 — Apple seeks business-software partners (`event.apple_search`)
+- 1978-11-06 — Adam opens confidential Model II cooperation talks (`event.tandy_contact`)
 - 1978-11-10 — External CP/M extension qualification begins (`event.dri_portable`)
+- 1978-11-27 — Tandy, Logix, DRI and AION sign Model II cooperation agreement (`event.tandy_agreement`)
+- 1978-12-15 — Model II compatibility design baseline agreed (`event.tandy_design_review`)
 - 1979-01-16 — Apple partners with Peachtree (`event.apple_peachtree`)
 - 1979-02-08 — Logix and Apple agree limited technical cooperation (`event.apple_cooperation`)
+- 1979-02-19 — Model II CP/M and Abacus prototype review (`event.tandy_port_review`)
+- 1979-04-16 — Apple promotes complete business configurations (`event.apple_business_promotions`)
 - 1979-05-05 — Portable CP/M extensions released (`event.dri_release`)
+- 1979-05-30 — Model II announced with planned CP/M, FlexiBUS and Abacus offering (`event.tandy_announcement`)
 
 ## 4. Apple extensions and market expansion
 
-1979-06-04 to 1979-12-02
+1979-06-04 – 1979-12-02
 
 ### Events
 
 - 1979-06-04 — Apple II and S-100 expansion products launch (`event.apple_extensions`)
 - 1979-06-04 — Microsoft BASIC presented (`event.basic_launch`)
+- 1979-06-04 — Model II CP/M, FlexiBUS and Abacus demonstrated at NCC (`event.tandy_ncc_demo`)
 - 1979-07-01 — CP/M-80 compatibility module developed (`event.cpm_bridge`)
 - 1979-07-01 — Artemis software and development tools prepared (`event.artemis_software`)
 - 1979-07-05 — IBM investigates the personal-computer market (`event.ibm_investigate`)
+- 1979-09-17 — Apple reviews successor-product compatibility requirements (`event.apple_compatibility_review`)
 - 1979-10 — SMC begins licensed chip sales (`event.smc_sales`)
+- 1979-10-15 — Supported Model II CP/M and Abacus configuration released (`event.tandy_release`)
 
 ### Processes
 
-- Apple compatibility cooperation — After NCC 1979 (`process.apple_compatibility`)
+- Apple compatibility cooperation (`process.apple_compatibility`)
 
 ## 5. Aurelia+ and Pulse premiere Abacus 2.0
 
-1979-12-03 to 1980-05-18
+1979-12-03 – 1980-05-18
 
 ### Events
 
 - 1979-12-03 — Aurelia+, Pulse and Abacus 2.0 arrive (`event.plus_launch`)
 - 1979-12-10 — IBM starts its personal-computer project (`event.ibm_project`)
+- 1980-02-15 — IBM software sourcing review exposes schedule gap (`event.ibm_os_review`)
 - 1980-03-15 — Apple–Peachtree small-business package starts (`event.apple_business`)
 
 ### Processes
 
-- Artemis and ERA1 engineering — Before NCC May 1980; exact start unspecified (`process.artemis_engineering`)
+- Artemis and ERA1 engineering (`process.artemis_engineering`)
 
 ## 6. Artemis launch, compatibility card and recompiled products
 
-1980-05-19 to 1980-11-18
+1980-05-19 – 1980-11-18
 
 ### Events
 
 - 1980-05-19 — Artemis platform launches commercially (`event.artemis_launch`)
+- 1980-07-15 — IBM funds an alternative OS delivery programme (`event.ibm_os_program`)
 
 ## 7. Abacus and Pulse 3.0 for Artemis
 
-1980-11-19 to 1981-05-03
+1980-11-19 – 1981-05-03
 
 ### Events
 
@@ -109,11 +123,12 @@ Existing day-level event dates remain confirmed. The late-1974 DRI founding and 
 
 ## 8. Artemis Pro, Networking and new BPI
 
-1981-05-04 to 1981-11-18
+1981-05-04 – 1981-11-18
 
 ### Events
 
 - 1981-05-04 — Networked business-computing platform presented (`event.network_launch`)
+- 1981-08-17 — IBM business-software qualification delays commercial release (`event.ibm_qualification`)
 
 ---
 
@@ -224,9 +239,9 @@ AION presents Pulse and Abacus 2.0, while Logix launches Aurelia+ and makes corr
 
 ## The market and competition response until May 1980
 
-- IBM’s investigation indicates that partitioned personal computer market started consolidating around Logix and Apple. On 1979-12-10 IBM starts a project to establish credibility in business computing, relationships with corporate customers, a global service organization and substantial engineering and manufacturing resources.
+- IBM’s investigation indicates that Logix, Tandy, Apple and independent software/peripheral suppliers are establishing business-computing expectations outside IBM. On 1979-12-10 IBM starts a project to establish credibility in business computing, relationships with corporate customers, a global service organization and substantial engineering and manufacturing resources.
 
-  - DRI is now an independent potential OS supplier. Its relationship with Logix does not automatically preclude IBM business; x86 availability, negotiations and selection remain unresolved.
+  - DRI remains an independent potential supplier, but its funded AIONix and CP/M-80 commitments leave no committed qualified x86 delivery on IBM’s timetable. Supplier selection and replacement OS/application qualification delay commercial readiness.
 
   - Their plan: Functional prototype in 3–4 months; manufacturing-ready design in 11–13 months; commercial launch targeted for early 1982.
 
@@ -246,7 +261,7 @@ Logix Tech, AION Labs and AION Software work jointly on designing, constructing 
 
 - Logix Tech also works on designing the computer architecture - Logix Artemis
 
-- On 1978-09-12 I (on behalf of AION Software and Logix) sign the agreement with DRI to work jointly with on the operating **AIONix** system for ERA processor (assembler and c):
+- On 1978-09-12 I (on behalf of AION Software and Logix) formalise the funding, staffing and ownership agreement with DRI for preliminary work begun on 1978-02-01 on the operating **AIONix** system for ERA processor (assembler and c):
 
   - DRI will dedicate resources together with AION Software, provide their expertise and operating system development experience
 
@@ -308,3 +323,12 @@ The accepted April–June 1978 campaign introduces Aurelia as a personal assista
 A professional team records every Logix NCC presentation, including the premiere, technical sessions, partners and Q&A. Logix edits attractive features, short news material and full presentations, and supplies cleared station-compatible copies free to any television station wishing to broadcast them, covering ordinary duplication and dispatch. Stations retain editorial and scheduling choice; coverage is not guaranteed. After NCC, Academy courses, dealer demonstrations and practical advertising continue. Campaign expenses and purchase credits are separate from recurring manufacturing costs.
 
 See [AURELIA_1978_CAMPAIGN.md](AURELIA_1978_CAMPAIGN.md) and [aurelia_1978_campaign.json](aurelia_1978_campaign.json) for the full sequence, 37-minute presentation, recording/distribution plan and qualification gates.
+
+
+## Tandy compatibility and competitor decisions
+
+On November 27, 1978, following confidential talks begun November 6, Adam, Tandy, Logix, DRI and AION agree official Model II CP/M and a supported FlexiBUS option in exchange for an AION-funded, qualified and maintained Abacus port. Tandy retains native video and its own customer relationship. A December design review reserves the option before the scenario integration baseline; May announcement, June NCC demonstration and October customer release preserve the historical product window. Exact internal dates are scenario choices, not a verified historical freeze schedule.
+
+Apple responds with earlier business-software recruitment, dealer demonstrations and complete-system promotions, while continuing the agreed Peachtree and native expansion relationships. IBM’s earlier project start encounters DRI resource commitments and the absence of the historical Paterson/SCP OS shortcut. A 1980 substitute OS programme and 1981 application qualification explain the early-1982 commercial target without making alternative OS development impossible.
+
+See [COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.json` for milestones, source boundaries and forecast effects. Updated central sales are about 10,350 Aurelias in 1978 and 28,200 through May 1979; these are forecasts, not recorded events. No pre-NCC Tandy customer hardware/software sales or IBM-delay bonus is counted.

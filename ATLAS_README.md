@@ -108,7 +108,7 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 - June 4, 1979 adds S-100 FlexiBUS and Apple II/S-100 video cards using AION launch silicon. Apple software is native; CP/M-6502 remains deferred.
 - AIONix’s existing separate ownership/equity/1982 terms are retained; no replacement allocation was selected.
 - `manufacturing_programs.json` contains separate one-time transfer budget assumptions and SMC purchase-price sensitivity inputs. Rebuild costs before pricing.
-- 41 events, 3 parent processes and 4 subprocesses. Year/month positions in the chart are indicative; labels preserve source precision.
+- 56 events, 3 parent processes and 4 subprocesses. Year/month positions in the chart are indicative; labels preserve source precision.
 
 
 ## Aurelia 1978 marketing and Academy
@@ -119,3 +119,8 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 ## Revised retail contribution and Sales 1978
 
 Every page now includes Retail pricing and Sales 1978 in its shared top navigation. `pricing_baseline.json` preserves the pre-reduction snapshots; current retail prices retain 60% of prior dollar contribution at unchanged costs/fees. Rebuild pricing, then `python tools/build_sales.py`. `sales.html` shows forecast monthly 1978 sell-through and explicitly separate launch-year projections, with scenario selection, market assumptions and the Academy roadmap. See [SALES_FORECAST.md](SALES_FORECAST.md). Run `python tests/validate_sales.py` and `node tests/sales.test.cjs` in addition to existing checks.
+
+
+## Tandy, Apple and IBM reaction revision
+
+[COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.json` distinguish historical release windows from scenario milestones. The timeline has 56 events. Tandy external platform/CP/M/FlexiBUS and Abacus edition records appear on the Abacus page without invented OEM prices or Logix manufacturing costs. IBM delay is a software critical-path scenario; AIONix preliminary work begins before Aurelia launch. Sales incorporate named incremental effects, not retroactive Tandy shipments or an early IBM windfall. Run `python tests/validate_reactions.py` after costs, pricing and sales regeneration.

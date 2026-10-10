@@ -24,6 +24,6 @@ for sc in s['scenarios']:
   for k in ['customer_retail_spend_usd','supplier_revenue_after_channel_usd','recurring_cost_usd','unit_contribution_total_usd']:assert math.isclose(sum(x[k] for x in rows),a[k],abs_tol=.011)
  assert sc['months'][-1]['cumulative_units']==sc['launch_year']['units']
  assert sc['launch_year']['units']<=sc['delivery_capacity_units']
-central=next(x for x in s['scenarios'] if x['id']=='central');assert central['calendar_1978']['units']==10600 and central['launch_year']['units']==30000
+central=next(x for x in s['scenarios'] if x['id']=='central');assert central['calendar_1978']['units']==10350 and central['launch_year']['units']==28200
 assert 'pricing' in site['navigation'] and 'sales' in site['navigation']
 print('PASS: proportional reduction against immutable baseline, cost/fee preservation, course variants, forecast hashes, period totals, capacity, market denominators and navigation configuration.')
