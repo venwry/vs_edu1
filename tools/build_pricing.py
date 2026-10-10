@@ -278,6 +278,25 @@ for offer in P:
 model['metadata'].update(schema_version='1.1',source_commit=baseline['metadata']['source_commit'],baseline_file='pricing_baseline.json',baseline_sha256=hashlib.sha256((ROOT/'pricing_baseline.json').read_bytes()).hexdigest())
 model['policy'].update(profit_retained_fraction=.6,profit_reduction_pct=40,target_discount_pct=None,acceptable_discount_band_pct=None,minimum_margin_on_net_revenue_at_max_fee_pct=None,rounding='Nearest cent, half up. Exact proportional contribution reduction takes precedence over retail price endings.',formula='new_profit=0.60*baseline_profit; new_retail=(unchanged_cost+new_profit)/(1-channel_fee). Margin percentage is derived, not reduced directly.',risk='Old 25% margin and nonnegative stress guarantees are superseded; show losses rather than silently raising the new prices.',baseline='Immutable pricing_baseline.json from commit 3751194; no compounding on rebuild.',scope='All 79 offers and all 212 available annual snapshots; before-you-buy course variants use pre-voucher contribution. Historical catalog prices remain separate.',price_floor='Displayed floor is central-cost break-even at baseline fee; legacy safeguard retained separately for audit.')
 
+# Independent partner baskets are component sums, outside the immutable SKU baseline.
+bp={'business_accounts':['software.bpi_suite.bpi_general_accounting'],
+    'trading_office':['software.bpi_suite.bpi_general_accounting','software.bpi_suite.bpi_accounts_receivable','software.bpi_suite.bpi_accounts_payable','software.bpi_suite.bpi_inventory_control'],
+    'complete_business':['software.bpi_suite']}
+by_id={x['id']:x for x in P}
+model['partner_configurations']=[]
+for key,licenses in bp.items():
+ refs=['bundle.proposed_aurelia_office','device.flexidisk','device.flexiprint40']+licenses
+ row={'id':'bpi_'+key,'name':'Aurelia '+key.replace('_',' ').title()+' — dealer configuration','supplier_policy':'Logix hardware, AION applications and independently licensed BPI Systems software. Component basket, not an additional SKU.','components':refs,'snapshots':{}}
+ for year in YEARS:
+  ss=[by_id[r]['snapshots'][str(year)] for r in refs]
+  row['snapshots'][str(year)]={k:cents(sum(x[k] for x in ss)) for k in ['retail_price_usd','manufacturing_cost_usd','computerland_fee_usd','revenue_after_fee_usd','unit_profit_usd']} if all(x['retail_price_usd'] is not None for x in ss) else {'retail_price_usd':None}
+ model['partner_configurations'].append(row)
+model['policy']['independent_bpi']='BPI Systems owns and supports its applications independently. BPI receipts belong to BPI; baskets combine suppliers and do not imply Logix revenue or ownership. Training, setup, support contracts, upgrade-credit redemptions and tax excluded; quote separately. No new discount applied.'
+model['policy']['bpi_upgrade_credit']='Eligible same-platform module net licence payments credited once toward complete suite, capped at suite price, with credited licences retired; no cash refund or training/setup credit. Redemption costs must be modelled if upgrades are forecast.'
+for product in P:
+ if product['id'].startswith('software.bpi') or product['id']=='offer.bpi_client':
+  product['notes'].append('Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded.')
+
 (ROOT/'pricing_results.json').write_text(json.dumps(model,indent=2,ensure_ascii=False)+'\n')
 print(f'{len(P)} products; '+str(sum(s['retail_price_usd'] is not None for p in P for s in p['snapshots'].values()))+' assessed snapshots')
 

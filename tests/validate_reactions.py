@@ -18,7 +18,7 @@ assert f['metadata']['source_reactions_sha256']==hashlib.sha256((R/'market_react
 assert f['metadata']['source_story_sha256']==hashlib.sha256((R/'logix_aion_story.json').read_bytes()).hexdigest()
 for sc in f['scenarios']:
  for row in sc['months']:
-  assert row['units']==row['pre_reaction_units']-row['apple_displacement_units']-row['tandy_deferred_units']+row['compatibility_gain_units']
+  assert row['units']==row['pre_reaction_units']-row['apple_displacement_units']-row['tandy_deferred_units']+row['compatibility_gain_units']+row['bpi_gain_units']
   if row['month']<'1979-05':assert row['tandy_deferred_units']==row['compatibility_gain_units']==0
  assert sum(x['pre_reaction_units'] for x in sc['months'])==sc['pre_reaction_units']
  assert sc['reaction_delta_units']==sc['launch_year']['units']-sc['pre_reaction_units']

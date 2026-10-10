@@ -28,16 +28,19 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 - 1975-01-01 — Three technology companies founded (`event.companies`)
 - 1975-02-01 — Secret future-equipped facility established (`event.facility`)
 - 1976-09-01 — Aurelia CP/M implementation agreement (`event.dri_cpm`)
-- 1977-02-15 — Offer to establish AION BPI Systems (`event.bpi_offer`)
+- 1977-02-15 — Investment and cooperation offer to independent BPI Systems (`event.bpi_offer`)
+- 1977-03-15 — BPI development and distribution cooperation (`event.bpi_cooperation`)
 - 1977-06-01 — Gordon Letwin recruited (`event.letwin`)
 - 1977-07-15 — Tim Paterson recruited (`event.paterson`)
 - 1977-09-01 — OEM printer-mechanism agreement (`event.mpi`)
 - 1978-02-01 — AIONix preliminary architecture and portability work (`event.aionix_preliminary`)
 - 1978-02-05 — ComputerLand retail agreement (`event.retail`)
+- 1978-03-20 — BPI business and accountant pilot programme (`event.bpi_pilot`)
 - 1978-03-25 — Logix Computer Academy established (`event.academy`)
 - 1978-04 — Aurelia newspaper teaser campaign begins (`event.aurelia_campaign_teaser`)
 - 1978-05 — Aurelia cinematic advertising campaign (`event.aurelia_campaign_advert`)
 - 1978-05 — Press, dealer and launch preparation (late May into early June) (`event.aurelia_campaign_preparation`)
+- 1978-05-15 — BPI launch qualification and dealer preparation (`event.bpi_qualification`)
 
 ### Processes
 
@@ -50,18 +53,21 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 ### Events
 
 - 1978-06-05 — Aurelia platform launches (`event.aurelia_launch`)
-- 1978-06-05 — BPI suite presented for Aurelia (`event.bpi_launch`)
+- 1978-06-05 — Independent BPI Systems launches Aurelia applications (`event.bpi_launch`)
 - 1978-06-05 to 1978-06-08 — NCC technical sessions, professional filming and free television distribution (`event.ncc78_sessions_media`)
 - 1978-06-12 — BPI training and direct sales begin (`event.bpi_training`)
 - 1978-07 — SMC second-source and technology-transfer agreement (`event.smc_agreement`)
 - 1978-07-17 — Apple coordinates business-software recruitment (`event.apple_business_initiative`)
+- 1978-07-17 — BPI-qualified dealers and accountant referrals (`event.bpi_dealer_program`)
 - 1978-09-12 — AIONix development programme and ownership formalised (`event.aionix_agreement`)
 - 1978-09-18 — Apple business-dealer demonstration programme (`event.apple_dealer_demos`)
 - 1978-10-15 — Apple seeks business-software partners (`event.apple_search`)
+- 1978-10-16 — BPI year-end preparation campaign (`event.bpi_year_end`)
 - 1978-11-06 — Adam opens confidential Model II cooperation talks (`event.tandy_contact`)
 - 1978-11-10 — External CP/M extension qualification begins (`event.dri_portable`)
 - 1978-11-27 — Tandy, Logix, DRI and AION sign Model II cooperation agreement (`event.tandy_agreement`)
 - 1978-12-15 — Model II compatibility design baseline agreed (`event.tandy_design_review`)
+- 1979-01-15 — BPI customer results and dealer expansion (`event.bpi_expansion`)
 - 1979-01-16 — Apple partners with Peachtree (`event.apple_peachtree`)
 - 1979-02-08 — Logix and Apple agree limited technical cooperation (`event.apple_cooperation`)
 - 1979-02-19 — Model II CP/M and Abacus prototype review (`event.tandy_port_review`)
@@ -187,13 +193,13 @@ Adam also sign agreements:
 
 - on 1978-02-05 with Computerland for selling computers with a 20-30% margin, Computer is planned as a primary sales channel
 
-On 1977-02-15 Adam makes an offer to the owners BPI Systems: \$150K in cash, + 33% of shares in the new AION BPI Systems: the new company will focus on selling products to Logix computers. BPI former owners will remain running the company but along with Adam’s people. Adam’s people will help to port BPI products to C Language, include database engine, change UI to Logix TUI.
+On 1977-02-15 Adam proposes investment and cooperation with independently operated BPI Systems. The original $150,000 cash and 33% founder-stake proposal is retained as an offer, not a completed transaction. BPI keeps its own brand, management, software ownership, licensing and specialist support; AION assists with the C port, database engine and Logix TUI under a cooperation agreement dated March 15 in this scenario.
 
 On 1978-03-25 Logix Computer Academy company is brought to life: training facilities rent in different US cities. An initial five-city US programme is publicly announced at the June 5 premiere; city names and first class dates remain to be selected. Capacity adjusts to demand.
 
 On 1978-06-05 at NCC 1978 Logix launches Aurelia as a complete personal-computing platform, supported by AION software, peripherals, support services, developer programs and the Logix Computer Academy.
 
-Logix, AION and BPI jointly premiere the BPI business-application suite as part of the initial Aurelia offering at NCC 1978 on 1978-06-05. The suite is sold separately rather than automatically included in each base computer bundle.
+Independent BPI Systems premieres its Aurelia application suite immediately after Abacus at NCC 1978 on 1978-06-05. BPI’s head then speaks in the partners section alongside DRI and MPI. BPI owns and supports its software; Logix and AION are cooperating suppliers. The suite is sold separately rather than automatically included in each base computer bundle.
 
 BPI product training and direct sales through Logix Computer Academy become available on 1978-06-12, after the NCC presentation.
 
@@ -313,16 +319,16 @@ AION/Logix funds transfer engineering, compatible masks and qualification. One-t
 
 ## Application and ecosystem policy
 
-Published interfaces and affordable developer support allow competing cards, peripherals, monitors and software. Logix’s cards are proof of that policy, not requirements imposed on DRI. AION retains the existing Abacus, C tools, Business Tools, AIONix and Pulse products. BPI’s independence around 1985 remains a future ownership/governance objective requiring a separate transaction; no completed buyout is invented.
+Published interfaces and affordable developer support allow competing cards, peripherals, monitors and software. Logix’s cards are proof of that policy, not requirements imposed on DRI. AION retains the existing Abacus, C tools, Business Tools, AIONix and Pulse products. BPI is independently operated and branded from the cooperation period. Any further ownership separation around 1985 requires a separate transaction; no completed buyout is invented.
 
 
 ## Aurelia launch marketing and television coverage
 
-The accepted April–June 1978 campaign introduces Aurelia as a personal assistant in business through newspaper teasers, a proposed Michael Douglas cinematic commercial, and a practical NCC presentation. After Gary and MPI, Adam announces the five-city Academy before discussing packages and availability. Two-day Fundamentals offers hands-on learning without purchase obligation and 50% tuition credit toward one Aurelia, valid six months at Academy centres or participating dealers reimbursed by Logix. Orders can be placed during training. City names, class dates, tuition, celebrity contract and final commercial packages remain execution decisions.
+The accepted April–June 1978 campaign introduces Aurelia as a personal assistant in business through newspaper teasers, a proposed Michael Douglas cinematic commercial, and a practical NCC presentation. After the partner appearances by Gary, MPI and BPI’s head, Adam announces the five-city Academy before discussing packages and availability. Two-day Fundamentals offers hands-on learning without purchase obligation and 50% tuition credit toward one Aurelia, valid six months at Academy centres or participating dealers reimbursed by Logix. Orders can be placed during training. City names, class dates, tuition, celebrity contract and final commercial packages remain execution decisions.
 
 A professional team records every Logix NCC presentation, including the premiere, technical sessions, partners and Q&A. Logix edits attractive features, short news material and full presentations, and supplies cleared station-compatible copies free to any television station wishing to broadcast them, covering ordinary duplication and dispatch. Stations retain editorial and scheduling choice; coverage is not guaranteed. After NCC, Academy courses, dealer demonstrations and practical advertising continue. Campaign expenses and purchase credits are separate from recurring manufacturing costs.
 
-See [AURELIA_1978_CAMPAIGN.md](AURELIA_1978_CAMPAIGN.md) and [aurelia_1978_campaign.json](aurelia_1978_campaign.json) for the full sequence, 37-minute presentation, recording/distribution plan and qualification gates.
+See [AURELIA_1978_CAMPAIGN.md](AURELIA_1978_CAMPAIGN.md) and [aurelia_1978_campaign.json](aurelia_1978_campaign.json) for the full sequence, 44-minute presentation, recording/distribution plan and qualification gates.
 
 
 ## Tandy compatibility and competitor decisions
@@ -331,4 +337,7 @@ On November 27, 1978, following confidential talks begun November 6, Adam, Tandy
 
 Apple responds with earlier business-software recruitment, dealer demonstrations and complete-system promotions, while continuing the agreed Peachtree and native expansion relationships. IBM’s earlier project start encounters DRI resource commitments and the absence of the historical Paterson/SCP OS shortcut. A 1980 substitute OS programme and 1981 application qualification explain the early-1982 commercial target without making alternative OS development impossible.
 
-See [COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.json` for milestones, source boundaries and forecast effects. Updated central sales are about 10,350 Aurelias in 1978 and 28,200 through May 1979; these are forecasts, not recorded events. No pre-NCC Tandy customer hardware/software sales or IBM-delay bonus is counted.
+See [COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.json` for milestones, source boundaries and forecast effects. Updated central sales are about 10,750 Aurelias in 1978 and 29,400 through May 1979, including stronger independent BPI promotion; these are forecasts, not recorded events. No pre-NCC Tandy customer hardware/software sales or IBM-delay bonus is counted.
+
+
+Independent BPI positioning, scenario dates, dealer configurations, summary export and revised sales accounting are specified in [BPI_PARTNER_STRATEGY.md](BPI_PARTNER_STRATEGY.md).
