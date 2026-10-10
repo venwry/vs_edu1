@@ -1,3 +1,17 @@
+# Active policy: proportional 40% contribution reduction
+
+All 79 offers and 212 available 1978–1981 snapshots now retain 60% of their previous dollar contribution, with unchanged recurring cost and baseline fee. `pricing_baseline.json` pins the pre-change values from commit 3751194. New retail = (cost + 0.60 × previous contribution) / (1 − fee), rounded to cents. This is neither a 40% retail discount nor a fixed margin percentage. It is contribution before marketing, vouchers, R&D, capital and taxes, not net corporate profit.
+
+The old competitor-discount target, price endings, minimum-margin floor and nonnegative stress guarantee below describe the baseline method, not current safeguards. Losses under stress are now shown explicitly. The displayed floor is cost break-even at the default channel fee. Course variants receive the same reduction before vouchers; the old $50 surcharge becomes $30 and Fundamentals retains its 50% tuition credit. Other course vouchers remain $150, even where full redemption produces a negative course-only contribution.
+
+Rebuild in order: `python tools/build_cost_assessment.py`, `python tools/build_pricing.py`, `python tools/build_sales.py`. Do not overwrite the immutable baseline with revised results. Cost/channel changes require an explicit baseline review; the builder rejects silent drift.
+
+See [Sales 1978](sales.html) and [SALES_FORECAST.md](SALES_FORECAST.md).
+
+---
+
+## Original baseline methodology (superseded where noted above)
+
 # Retail pricing, June 15, 1978–1981
 
 Open `pricing.html` through the same HTTP server as the Atlas. The navigation includes **Retail pricing**. The page reads `pricing_results.json`; regenerate it with `python tools/build_pricing.py`.
