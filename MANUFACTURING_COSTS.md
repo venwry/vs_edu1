@@ -1,6 +1,6 @@
 # Recurring unit manufacturing and delivery costs, 1978–1981
 
-Open `manufacturing-costs.html` through the same static server as the Atlas. It reads `manufacturing_costs.json`: 116 rows with four June 15 snapshots. There are 48 priced rows in 1978, 52 in 1979, 89 in 1980 and 114 in 1981. Rows overlap (bundles, parent software, platform editions and individual components), so **do not add all rows into a company-wide total**.
+Open `manufacturing-costs.html` through the same static server as the Atlas. It reads `manufacturing_costs.json`: 119 rows with four June 15 snapshots. There are 48 priced rows in 1978, 55 in 1979, 92 in 1980 and 117 in 1981. Rows overlap (bundles, parent software, platform editions and individual components), so **do not add all rows into a company-wide total**.
 
 These are engineering scenario estimates, not historical Logix accounts or supplier quotations. The alternative-history design is taken from the catalog revision recorded in JSON. Historical wages and electricity prices anchor the conversion costs; component procurement, volumes, fabrication yields and operation times are explicit assumptions. The engineering BOM retains its unresolved quantities and prices unchanged.
 
@@ -34,7 +34,7 @@ Computer chassis rows exclude external keyboard/monitor and the system software 
 - Planning volumes: 10,000 hardware units per family/year, 1,000 PRO/year, 5,000 media/manual sets, component orders generally 10,000–100,000 pieces. These are assumptions, not story sales forecasts or quoted tiers. Supplier availability and volume discounts may dominate actual results.
 - Loaded manufacturing labor equals June BLS manufacturing hourly earnings multiplied by 1.35 for employment burden. Skilled service staff and instructors have additional 1.6× and 2× wage multipliers.
 - Assembly hours, kWh and consumables per assembly are recorded in JSON. Routine supervision/maintenance is 25% of loaded assembly labor; a 10% labor rework allowance and 1.5% incremental materials loss apply to assemblies with processing operations. Equipment depreciation is excluded.
-- Each of 199 BOM input lines has annual price/cost buckets. An unresolved multi-part line is one priced **functional set**, not an assertion that a circuit contains one physical part. There are 148 explicitly identified unresolved quantity substitutions. Three Aurelia/Aurelia+ FlexiBUS ports provisionally use three host-controller dies; the engineering integration remains undecided.
+- Each of 221 component-cost entries has annual price/cost buckets. An unresolved multi-part line is one priced **functional set**, not an assertion that a circuit contains one physical part. There are 166 explicitly identified unresolved quantity substitutions. Three Aurelia/Aurelia+ FlexiBUS ports provisionally use three host-controller dies; the engineering integration remains undecided.
 - Custom silicon uses a 75 mm wafer scenario, explicit die area and year-dependent defect density. Good die output is geometric usable dies times die yield. Recurring processed-wafer cost is allocated 18% substrate/materials, 36% workforce, 10% energy, 24% consumables and 12% operations. Packaging and final-test labor are added and divided by 93% packaging/test yield. All these fabrication parameters are unverified planning assumptions; design and mask access does not eliminate yield risk. Yield loss is already inside the chip's cost buckets.
 - Purchased 16K DRAM central prices are $6/$4.50/$3.25/$2.25 per chip; 64K DRAM $80/$65/$40/$25. The first two 64K prices are unused in pre-introduction products. These are assumed OEM tiers, not verified quotations. High-density Artemis cost is especially sensitive to 64K DRAM sourcing. A 1 MiB PRO needs 128 data DRAMs, not eight chips.
 - The 1981 5 MB HDD allowance is $950; historical Seagate single-unit and large-order pricing provide a plausibility bracket, not a Logix purchase agreement.
@@ -88,3 +88,6 @@ The 1978 campaign, professional NCC filming/editing and free station-copy distri
 
 
 Tandy Model II and its external partner interface are Tandy-owned designs, not added to Logix BOM/unit-cost totals. The Abacus port requires engineering expenditure and native media qualification; no invented OEM royalty, port budget or extra retail unit is assigned. Their commercial terms remain unresolved in the partner specification.
+
+
+NCC 1979 campaign, engineering support and compatibility certification expenses remain unbudgeted operating programmes, not changes to recurring hardware costs. See NCC_1979_CAMPAIGN.md and CONSISTENCY_REVIEW_1979.md.

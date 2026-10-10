@@ -71,8 +71,11 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 - 1979-01-16 — Apple partners with Peachtree (`event.apple_peachtree`)
 - 1979-02-08 — Logix and Apple agree limited technical cooperation (`event.apple_cooperation`)
 - 1979-02-19 — Model II CP/M and Abacus prototype review (`event.tandy_port_review`)
+- 1979-02-19 — Independent OEM and peripheral engineering briefings (`event.oem79_briefings`)
 - 1979-04-16 — Apple promotes complete business configurations (`event.apple_business_promotions`)
 - 1979-05-05 — Portable CP/M extensions released (`event.dri_release`)
+- 1979-05-05 — Publish independent compatibility programmes (`event.open79_profiles`)
+- 1979-05-21 — Pre-NCC cross-vendor qualification workshop (`event.open79_workshop`)
 - 1979-05-30 — Model II announced with planned CP/M, FlexiBUS and Abacus offering (`event.tandy_announcement`)
 
 ## 4. Apple extensions and market expansion
@@ -84,12 +87,15 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 - 1979-06-04 — Apple II and S-100 expansion products launch (`event.apple_extensions`)
 - 1979-06-04 — Microsoft BASIC presented (`event.basic_launch`)
 - 1979-06-04 — Model II CP/M, FlexiBUS and Abacus demonstrated at NCC (`event.tandy_ncc_demo`)
-- 1979-07-01 — CP/M-80 compatibility module developed (`event.cpm_bridge`)
-- 1979-07-01 — Artemis software and development tools prepared (`event.artemis_software`)
+- 1979-06-04 — NCC 1979 open architecture and migration presentation (`event.ncc79_campaign`)
+- 1979-07-01 — Detailed CP/M-80 compatibility module development begins (`event.cpm_bridge`)
+- 1979-07-01 — Confidential next-generation software and tool preparation (`event.artemis_software`)
 - 1979-07-05 — IBM investigates the personal-computer market (`event.ibm_investigate`)
+- 1979-07-16 — Compatibility roadshows and developer migration clinics (`event.open79_roadshows`)
 - 1979-09-17 — Apple reviews successor-product compatibility requirements (`event.apple_compatibility_review`)
 - 1979-10 — SMC begins licensed chip sales (`event.smc_sales`)
 - 1979-10-15 — Supported Model II CP/M and Abacus configuration released (`event.tandy_release`)
+- 1979-10-15 — Promote verified ecosystem deliveries (`event.open79_delivery`)
 
 ### Processes
 
@@ -103,12 +109,14 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 
 - 1979-12-03 — Aurelia+, Pulse and Abacus 2.0 arrive (`event.plus_launch`)
 - 1979-12-10 — IBM starts its personal-computer project (`event.ibm_project`)
+- 1979-12-15 — Review end-1979 ecosystem adoption targets (`event.open79_targets`)
+- 1980-01-14 — Customer evidence and compatibility programme review (`event.open80_results`)
 - 1980-02-15 — IBM software sourcing review exposes schedule gap (`event.ibm_os_review`)
 - 1980-03-15 — Apple–Peachtree small-business package starts (`event.apple_business`)
 
 ### Processes
 
-- Artemis and ERA1 engineering (`process.artemis_engineering`)
+- Confidential next-generation engineering (`process.artemis_engineering`)
 
 ## 6. Artemis launch, compatibility card and recompiled products
 
@@ -247,7 +255,7 @@ AION presents Pulse and Abacus 2.0, while Logix launches Aurelia+ and makes corr
 
 - IBM’s investigation indicates that Logix, Tandy, Apple and independent software/peripheral suppliers are establishing business-computing expectations outside IBM. On 1979-12-10 IBM starts a project to establish credibility in business computing, relationships with corporate customers, a global service organization and substantial engineering and manufacturing resources.
 
-  - DRI remains an independent potential supplier, but its funded AIONix and CP/M-80 commitments leave no committed qualified x86 delivery on IBM’s timetable. Supplier selection and replacement OS/application qualification delay commercial readiness.
+  - DRI remains an independent potential supplier, but its existing funded development and CP/M-80 commitments leave no committed qualified x86 delivery on IBM’s timetable. Supplier selection and replacement OS/application qualification delay commercial readiness.
 
   - Their plan: Functional prototype in 3–4 months; manufacturing-ready design in 11–13 months; commercial launch targeted for early 1982.
 
@@ -260,7 +268,7 @@ AION presents Pulse and Abacus 2.0, while Logix launches Aurelia+ and makes corr
 
 # NCC May 1980 – Logix Artemis release
 
-Logix Tech, AION Labs and AION Software work jointly on designing, constructing and manufacturing Logix Artemis. Massive marketing campaign precedes presentation telling about new era of personal computing.
+Logix Tech, AION Labs and AION Software work jointly on designing, constructing and manufacturing Logix Artemis. The preceding campaign promises migration support without exposing the architecture. The technical details below are author-facing background, revealed publicly only at NCC 1980.
 
 - Logix Tech buys a few PDP-11 machines develops a processor emulator based on the blueprint that heavily reminds ARM v1 architecture but implements called ERA1  
   (Extreme RISC Architecture).
@@ -285,9 +293,9 @@ Logix Tech, AION Labs and AION Software work jointly on designing, constructing 
 
 - Logix designs and constructs motherboard. develops BIOS, designs and constructs other elements of the computer.
 
-- On 1979-07-01 Logix and DRI undertake development of a CP/M-80 compatibility module so that existing Aurelia software can continue to run on Artemis.
+- On 1979-07-01 Logix and DRI begin confidential work on the planned optional Z80 compatibility path. No implementation details are announced.
 
-- On 1979-07-01 AION Software undertakes preparation of Artemis software and development tools: it develops AIONix with DRI, ports the established business applications to Artemis, and creates the native ERA C development environment and a larger Business Tools suite.
+- On 1979-07-01 AION Software begins confidential next-generation software and tool preparation. Public clinics remain based on established C tools and documented interfaces; future software names and target details are withheld.
 
  
 
@@ -341,3 +349,10 @@ See [COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.jso
 
 
 Independent BPI positioning, scenario dates, dealer configurations, summary export and revised sales accounting are specified in [BPI_PARTNER_STRATEGY.md](BPI_PARTNER_STRATEGY.md).
+
+
+## NCC 1979 open architecture and migration campaign
+
+The June 4, 1979 presentation lasts 50 minutes before questions. Separate CP/M application, FlexiBUS peripheral and optional display programmes support independent manufacturers. Abacus precedes BPI; BPI management appears with partners. Adam states the next generation breaks native Z80 binary compatibility, while existing C/API practices reduce migration work and a planned optional Z80 coprocessor offers qualified legacy execution. The new host word size/architecture remains secret until NCC 1980. July 1 marks detailed module development, not its shipment; product introduction remains May 19, 1980.
+
+Eight-bit systems continue in business and expand into home/education use. The next-generation sub-$100 expectation is a roughly ten-year strategic forecast, not a withdrawal date or engineered price guarantee. Consumer-TV compatibility and the basic-storage configuration remain to be designed. See [NCC_1979_CAMPAIGN.md](NCC_1979_CAMPAIGN.md) and [ncc_1979_campaign.json](ncc_1979_campaign.json) for adoption targets, partners, marketing, commercial boundaries and disclosure rules.

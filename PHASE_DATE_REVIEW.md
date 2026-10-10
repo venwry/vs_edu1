@@ -30,7 +30,7 @@ This replaces the earlier proposed-date review. The original 34 day-level event 
 | `event.dri_release` — Portable CP/M extensions released | 1979-05-05 | 3 |
 | `event.apple_extensions` — Apple II expansion products demonstrated | 1979-06-04 | 4 |
 | `event.basic_launch` — Microsoft BASIC presented | 1979-06-04 | 4 |
-| `event.cpm_bridge` — CP/M-80 compatibility module developed | 1979-07-01 | 4 |
+| `event.cpm_bridge` — Detailed CP/M-80 compatibility module development begins | 1979-07-01 | 4 |
 | `event.artemis_software` — Artemis software and development tools prepared | 1979-07-01 | 4 |
 | `event.ibm_investigate` — IBM investigates the personal-computer market | 1979-07-05 | 4 |
 | `event.plus_launch` — Aurelia+, Pulse and Abacus 2.0 arrive | 1979-12-03 | 5 |
@@ -90,3 +90,6 @@ Retain the March 25, 1978 Academy establishment. April teasers and May advertisi
 ## Partner/competitor revision
 
 Fifteen scenario-selected day-level milestones bring the total to 56 (49 exact-day, six partial-date, one conference interval). Exact late-1978 Tandy negotiation/design dates are invented planning dates, not claims about a historical freeze. Preserve May announcement, June NCC and October US release windows. February 1978 AIONix preliminary work precedes the retained September formal agreement. IBM milestones through August 1981 explain an early-1982 target, not a recorded shipment beyond the phase range. See `market_reactions.json` for the complete new-date list.
+
+
+The eight NCC 1979 programme dates added in this revision are selected scenario milestones, not historical findings. The canonical complete event inventory is logix_aion_story.json; older date-review tables are retained as a dated review subset. See NCC_1979_CAMPAIGN.md.
