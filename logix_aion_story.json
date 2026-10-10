@@ -1055,7 +1055,7 @@
               "actor_refs": [
                 "actor.academy"
               ],
-              "description": "Rents training facilities in US cities, with number and size adjusted to demand."
+              "description": "Establishes the Academy company and prepares rented facilities for an initial five-city US programme; publicly presented at the June 5 Aurelia premiere. City names and first course dates remain unspecified; capacity expands with demand."
             }
           ],
           "outcomes": [],
@@ -1066,6 +1066,104 @@
             "service.academy_direct_sales"
           ],
           "related_event_refs": []
+        },
+        {
+          "id": "event.aurelia_campaign_teaser",
+          "title": "Aurelia newspaper teaser campaign begins",
+          "event_type": "action",
+          "date": {
+            "start": "1978-04",
+            "end": "1978-04"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "description": "Newspaper and business-press teasers introduce Aurelia and the personal-assistant promise; coming this spring, followed by June 5 launch date; brochure and invitation requests."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.aurelia"
+          ],
+          "related_event_refs": [
+            "event.academy"
+          ]
+        },
+        {
+          "id": "event.aurelia_campaign_advert",
+          "title": "Aurelia cinematic advertising campaign",
+          "event_type": "action",
+          "date": {
+            "start": "1978-05",
+            "end": "1978-05"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "description": "Cinematic TV commercial and explanatory print advertisements; prioritise markets with demonstration, support and Academy coverage. Proposed Michael Douglas therapy-session reveal; casting remains subject to agreement. No AI or unhealthy-dependency claim."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.aurelia",
+            "software.abacus_1"
+          ],
+          "related_event_refs": [
+            "event.aurelia_campaign_teaser"
+          ]
+        },
+        {
+          "id": "event.aurelia_campaign_preparation",
+          "title": "Press, dealer and launch preparation (late May into early June)",
+          "event_type": "action",
+          "date": {
+            "start": "1978-05",
+            "end": "1978-05"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "description": "Press previews, dealer/staff preparation, launch invitations, television-station outreach and complete venue rehearsal. Month precision preserves the planning window; no exact preview date is asserted."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.aurelia",
+            "service.academy_before_you_buy"
+          ],
+          "related_event_refs": [
+            "event.aurelia_campaign_advert"
+          ]
         }
       ]
     },
@@ -1101,6 +1199,18 @@
             {
               "actor_ref": "actor.academy",
               "role": "training_partner"
+            },
+            {
+              "actor_ref": "actor.adam",
+              "role": "host"
+            },
+            {
+              "actor_ref": "actor.kildall",
+              "role": "CP/M_presenter"
+            },
+            {
+              "actor_ref": "actor.mpi",
+              "role": "printer_partner"
             }
           ],
           "actions": [
@@ -1108,12 +1218,15 @@
               "actor_refs": [
                 "actor.logix"
               ],
-              "description": "Launches Aurelia as a complete personal-computing platform."
+              "description": "Premieres Aurelia through a connected business workflow: startup/display choices, common editing and copy-buffer, safe powered-on peripheral attachment, business tools, Abacus what-if analysis and printed/saved results. Follow with Gary and MPI, the five-city Academy announcement, then packages, availability, support and technical-session invitations. Planned duration 37 minutes before questions; see aurelia_1978_campaign.json."
             }
           ],
           "outcomes": [
             {
               "description": "Platform includes AION software, peripherals, support, developer programs and Academy training."
+            },
+            {
+              "description": "Academy Fundamentals offers two days of hands-on learning before purchase; 50% tuition credit valid six months toward one Aurelia, redeemable at Academy or participating dealers reimbursed by Logix. Orders accepted at training; no purchase obligation. Locations, tuition and first class dates must be published once selected."
             }
           ],
           "agreement_terms": [],
@@ -1122,9 +1235,18 @@
             "computer.aurelia",
             "software.business_tools_aurelia",
             "software.abacus_1",
-            "software.cpm_aurelia"
+            "software.cpm_aurelia",
+            "service.academy_before_you_buy",
+            "service.academy_direct_sales",
+            "device.flexiprint40",
+            "software.aurelia_sdk",
+            "software.aion_c_ide"
           ],
-          "related_event_refs": []
+          "related_event_refs": [
+            "event.academy",
+            "event.aurelia_campaign_advert",
+            "event.ncc78_sessions_media"
+          ]
         },
         {
           "id": "event.bpi_launch",
@@ -1166,6 +1288,41 @@
             "computer.aurelia"
           ],
           "related_event_refs": []
+        },
+        {
+          "id": "event.ncc78_sessions_media",
+          "title": "NCC technical sessions, professional filming and free television distribution",
+          "event_type": "action",
+          "date": {
+            "start": "1978-06-05",
+            "end": "1978-06-08"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "description": "Logix holds architecture/open-peripheral and C IDE/SDK sessions plus hands-on demos. A professional team records every Logix NCC presentation, including partner segments and Q&A. After NCC, edit attractive features, news excerpts and full presentations and supply cleared broadcast material free to any willing television station, including normal copies/dispatch. Stations decide whether and when to air it; no guaranteed coverage. Continue Academy courses, dealer demos and practical advertising."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.aurelia",
+            "software.aurelia_sdk",
+            "software.aion_c_ide",
+            "service.academy_before_you_buy"
+          ],
+          "related_event_refs": [
+            "event.aurelia_launch"
+          ]
         },
         {
           "id": "event.bpi_training",

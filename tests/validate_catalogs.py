@@ -87,7 +87,8 @@ assert by['event.ibm_project']['event_type']=='plan'
 assert by['event.apple_extensions']['date']['start']=='1979-06-04'
 assert by['event.apple_extensions']['date']['end']=='1979-06-04'
 assert by['event.aionix_agreement']['agreement_terms'][4]['effective_date']['start']=='1982'
-assert all(set(e['date'])=={'start','end'} and e['date']['end']==e['date']['start'] for e in events)
+assert all(set(e['date'])=={'start','end'} and e['date']['end']>=e['date']['start'] for e in events)
+assert [e['id'] for e in events if e['date']['end']!=e['date']['start']]==['event.ncc78_sessions_media']
 assert records['software.bpi_suite']['introduced']['event_start_date']=='1978-06-05'
 assert records['technology.bpi_relational_database']['introduced']['event_start_date']=='1978-06-05'
 assert records['software.microsoft_basic_aurelia']['introduced']['event_start_date']=='1979-06-04'
@@ -123,7 +124,7 @@ assert phase_by_event['event.aionix_agreement']=='phase.ncc78'
 assert all(target in {p['id'] for p in phases} for target in site['timeline_view']['phase_aliases'].values())
 print('Validated eight consecutive phases, confirmed-date placement, processes and legacy phase aliases.')
 
-assert len(events)==37
+assert len(events)==41
 assert 'event.basic_develop' not in event_ids
 processes=[p for parent in story['processes'] for p in [parent]+parent.get('subprocesses',[])];process_ids={p['id'] for p in processes}
 assert len(process_ids)==len(processes)==7
@@ -145,7 +146,7 @@ for id in ['computer.aurelia_plus','software.pulse_1','software.abacus_2']:
  assert records[id]['introduced']['event_start_date']=='1979-12-03'
 assert '1979-11' not in json.dumps(tech)
 assert all(target in process_ids|event_ids|{p['id'] for p in story['assumptions']['principles']}|{p['id'] for p in phases} for target in site['timeline_view']['item_aliases'].values())
-print('Validated 37 events (34 exact-day, 3 partial-date milestones), 3 parent processes and 4 subprocesses and synchronized catalog availability.')
+print('Validated 41 events (34 exact-day, 6 partial-date milestones, 1 conference interval), 3 parent processes and 4 subprocesses and synchronized catalog availability.')
 
 # Each top-level process has one lane; nested processes inherit their parent lane.
 assigned_processes=[x for lane in lanes for x in lane.get('process_refs',[])]

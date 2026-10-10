@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.9",
+    "version": "2.10",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -5170,7 +5170,17 @@
       "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
       "edition_refs": [
         "edition.abacus_1.z80"
-      ]
+      ],
+      "launch_acceptance_requirements": {
+        "campaign_file": "aurelia_1978_campaign.json",
+        "status": "Required for the advertised launch demonstration; implementation and measured performance not yet qualified.",
+        "functions": [
+          "IF(condition, value_if_true, value_if_false)",
+          "Copy/fill-down formulas with documented relative and absolute references"
+        ],
+        "workload": "500-plus rows with populated-cell/formula count, RAM configuration and measured load/recalculation time recorded; automatic does not imply instantaneous.",
+        "workflow": "Change supplier cost assumption, recalculate, flag low margins, print report, save, close and reopen without loss."
+      }
     },
     {
       "id": "software.simple_c_z80",
@@ -6006,7 +6016,12 @@
       "courses": [
         {
           "name": "Aurelia Fundamentals",
-          "days": 2
+          "days": 2,
+          "curriculum": [
+            "Business-computer capabilities and appropriate configuration selection",
+            "Hands-on common editing, Business Tools and introductory Abacus",
+            "Purchasing advice without obligation"
+          ]
         },
         {
           "name": "Aurelia Fundamentals + Abacus",
@@ -6023,7 +6038,31 @@
       ],
       "completion": {
         "credential": "Aurelia Driving License",
-        "voucher_usd": 150
+        "fundamentals_purchase_credit": {
+          "eligible_course": "Aurelia Fundamentals",
+          "tuition_fraction": 0.5,
+          "validity_months": 6,
+          "systems_per_credit": 1,
+          "redemption_channels": [
+            "Academy direct sales",
+            "participating authorised dealers"
+          ],
+          "dealer_reimbursement": "Logix reimburses participating dealers; do not deduct the credit from their agreed margin.",
+          "purchase_obligation": false,
+          "scope": "Standalone two-day Fundamentals. Existing $150 vouchers for the other before-you-buy courses remain unchanged; no stacking or extension to other courses is implied.",
+          "accounting": "Reserve the redeemed credit once as promotional expense across the course and computer sale, outside recurring manufacturing costs."
+        },
+        "other_before_you_buy_courses_voucher_usd": 150
+      },
+      "launch_program": {
+        "established_date": "1978-03-25",
+        "public_announcement_date": "1978-06-05",
+        "launch_city_count": 5,
+        "city_names": null,
+        "first_course_dates": null,
+        "tuition_usd": null,
+        "tuition_positioning": "A modest fraction of an Aurelia package price; publish exact tuition and a named package comparison when commercial prices are selected. Generated pricing proposals are not approved tuition.",
+        "teaching": "Small classes, substantial hands-on time, ideally one machine per participant or pair; business tools, introductory Abacus and advice on appropriate configurations and unnecessary purchases."
       }
     },
     {
@@ -6052,7 +6091,7 @@
       "id": "service.academy_direct_sales",
       "name": "Logix Computer Academy direct product sales",
       "category": "sales_channel",
-      "description": "Academy facilities also supply Logix/AION products via a direct channel.",
+      "description": "Order and pay at training centres; immediate collection only where stock is available. No purchase obligation. Accept Fundamentals purchase credit; participating dealers can redeem it with Logix reimbursement.",
       "introduced": {
         "event_name": "Logix Computer Academy launch",
         "event_start_date": "1978-03-25",
@@ -6081,7 +6120,7 @@
         "event_start_date": "1978-06-12",
         "date_precision": "day"
       },
-      "availability_note": "Introduced with the NCC 1978 offering; exact course-start date is unspecified."
+      "availability_note": "BPI courses and direct sales begin June 12, 1978, after the NCC premiere; this is separate from the March Academy establishment and June 5 five-city public announcement."
     },
     {
       "id": "service.aurelia_commercial_developer_license",
@@ -6154,6 +6193,20 @@
         "software.abacus_3",
         "software.pulse_3"
       ]
+    },
+    "aurelia_1978_campaign": {
+      "definition_file": "aurelia_1978_campaign.json",
+      "tagline": "Logix Aurelia—a computer like no other. Your personal assistant in business.",
+      "event_refs": [
+        "event.aurelia_campaign_teaser",
+        "event.aurelia_campaign_advert",
+        "event.aurelia_campaign_preparation",
+        "event.aurelia_launch",
+        "event.ncc78_sessions_media",
+        "event.ncc78_sessions_media"
+      ],
+      "broadcast_policy": "Every Logix presentation at NCC 1978, including the premiere, both technical sessions, partner appearances, questions and any additional Logix sessions. Offer and supply the material free of charge to any television station wishing to broadcast it; Logix covers normal duplication and dispatch. Supply station-compatible broadcast copies on request.",
+      "accounting": "No fabricated campaign total and no automatic per-unit allocation. Reuse existing recurring course costs; do not charge Academy teaching twice. Free station supply creates no content-license revenue; reach and uptake are not guaranteed."
     }
   },
   "offered_bundles": [

@@ -80,3 +80,8 @@ Event dates contain only `start` and `end`; equal endpoints may be ISO year, mon
 - AIONix’s existing separate ownership/equity/1982 terms are retained; no replacement allocation was selected.
 - `manufacturing_programs.json` contains separate one-time transfer budget assumptions and SMC purchase-price sensitivity inputs. Rebuild costs before pricing.
 - 37 events, 3 parent processes and 4 subprocesses. Year/month positions in the chart are indicative; labels preserve source precision.
+
+
+## Campaign revision
+
+Retain the March 25, 1978 Academy establishment. April teasers and May advertising/preparation retain month precision; preparation continues into early June. The five-city Academy public announcement belongs to the June 5 premiere. `event.ncc78_sessions_media` spans June 5–8, with editing/free station distribution afterward and no invented release day. There are now 41 events: 34 exact-day events, six partial-date milestones and one conference interval.

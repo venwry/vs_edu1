@@ -43,7 +43,7 @@ BPI five-application suite uses the consolidated suite media cost, not five indi
 
 Services retain their cost-model workload assumptions. On-site support is priced as a capped eight-hour engagement, not unlimited annual cover. Customer-site training is one two-day class for up to eight people: the per-learner cost is multiplied by eight, with travel billed additionally at cost. BPI and Pulse training assume three and two days respectively. These scope limits need to accompany any actual sale.
 
-The four regular Academy courses also show their before-you-buy variant: +$50 tuition and a $150 hardware voucher. Maximum voucher exposure and fully reserved contribution are explicit. The voucher is promotional spend excluded from the main manufacturing-cost/profit columns, and must only be reserved once across the associated course and computer sale.
+The four regular Academy courses also show their before-you-buy variant: +$50 tuition. Standalone Fundamentals receives purchase credit equal to 50% of that tuition; the other three courses retain the existing $150 voucher. Fundamentals credit is valid six months toward one Aurelia, accepted by Academy centres and participating dealers reimbursed by Logix, without a purchase obligation. Maximum voucher exposure and fully reserved contribution are explicit. The voucher is promotional spend excluded from the main manufacturing-cost/profit columns, and must only be reserved once across the associated course and computer sale.
 
 ## Validation
 
