@@ -3244,6 +3244,14 @@
             {
               "actor_ref": "actor.academy",
               "role": "training_provider"
+            },
+            {
+              "actor_ref": "actor.adam",
+              "role": "keynote presenter"
+            },
+            {
+              "actor_ref": "actor.bpi",
+              "role": "independent partner; head of BPI presents"
             }
           ],
           "actions": [
@@ -3276,6 +3284,21 @@
                 "actor.logix"
               ],
               "description": "Shift new hardware development and promotion to Aurelia+ while enabling independent Aurelia-class clones. Continue installed-base support and compatible software; do not impose an immediate Aurelia withdrawal. FlexiBUS and Logix video adoption remain separate choices. Future architecture details remain undisclosed until NCC 1980."
+            },
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.logix",
+                "actor.aion"
+              ],
+              "description": "Present the 45-minute COMDEX campaign plus questions: More room to work. More freedom to choose. Run identical live calculated shaded-cube and Abacus workloads on Aurelia and Aurelia+ under equivalent conditions; show measured results without an unverified speed multiplier. See comdex_1979_campaign.json."
+            },
+            {
+              "actor_refs": [
+                "actor.aion",
+                "actor.bpi"
+              ],
+              "description": "Demonstrate Abacus 2.0 charts and spreadsheet-linked layouts using precalculated fictitious employee values, then preview and print a complete payslip batch. The head of independent BPI follows Abacus with the source payroll and reconciled file-exchange workflow, and joins the partner segment. Abacus 2.0 also serves existing Aurelia owners."
             }
           ],
           "outcomes": [],
@@ -3288,7 +3311,9 @@
             "service.pulse_training",
             "software.aurelia_compatibility_kit",
             "service.aurelia_compatibility_support",
-            "service.aurelia_compatibility_certification"
+            "service.aurelia_compatibility_certification",
+            "computer.aurelia",
+            "software.bpi_suite"
           ],
           "related_event_refs": []
         },
