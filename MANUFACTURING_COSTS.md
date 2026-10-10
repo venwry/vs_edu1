@@ -1,6 +1,6 @@
 # Recurring unit manufacturing and delivery costs, 1978–1981
 
-Open `manufacturing-costs.html` through the same static server as the Atlas. It reads `manufacturing_costs.json`: 119 rows with four June 15 snapshots. There are 48 priced rows in 1978, 55 in 1979, 92 in 1980 and 117 in 1981. Rows overlap (bundles, parent software, platform editions and individual components), so **do not add all rows into a company-wide total**.
+Open `manufacturing-costs.html` through the same static server as the Atlas. It reads `manufacturing_costs.json`: 122 rows with four June 15 snapshots. There are 48 priced rows in 1978, 55 in 1979, 95 in 1980 and 120 in 1981. Rows overlap (bundles, parent software, platform editions and individual components), so **do not add all rows into a company-wide total**.
 
 These are engineering scenario estimates, not historical Logix accounts or supplier quotations. The alternative-history design is taken from the catalog revision recorded in JSON. Historical wages and electricity prices anchor the conversion costs; component procurement, volumes, fabrication yields and operation times are explicit assumptions. The engineering BOM retains its unresolved quantities and prices unchanged.
 
@@ -91,3 +91,5 @@ Tandy Model II and its external partner interface are Tandy-owned designs, not a
 
 
 NCC 1979 campaign, engineering support and compatibility certification expenses remain unbudgeted operating programmes, not changes to recurring hardware costs. See NCC_1979_CAMPAIGN.md and CONSISTENCY_REVIEW_1979.md.
+
+The December 1979 manufacturer compatibility kit and optional support/certification add three rows, first costed in the June 1980 snapshot. Reproduction and bounded engineering workloads exclude programme development/NRE. See AURELIA_COMPATIBILITY_KIT.md.

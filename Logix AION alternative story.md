@@ -107,7 +107,7 @@ Original confirmed dates are preserved. New partner and competitor dates are exp
 
 ### Events
 
-- 1979-12-03 — Aurelia+, Pulse and Abacus 2.0 arrive (`event.plus_launch`)
+- 1979-12-03 — Aurelia+, Pulse, Abacus 2.0 and manufacturer compatibility kit arrive (`event.plus_launch`)
 - 1979-12-10 — IBM starts its personal-computer project (`event.ibm_project`)
 - 1979-12-15 — Review end-1979 ecosystem adoption targets (`event.open79_targets`)
 - 1980-01-14 — Customer evidence and compatibility programme review (`event.open80_results`)
@@ -356,3 +356,9 @@ Independent BPI positioning, scenario dates, dealer configurations, summary expo
 The June 4, 1979 presentation lasts 50 minutes before questions. Separate CP/M application, FlexiBUS peripheral and optional display programmes support independent manufacturers. Abacus precedes BPI; BPI management appears with partners. Adam states the next generation breaks native Z80 binary compatibility, while existing C/API practices reduce migration work and a planned optional Z80 coprocessor offers qualified legacy execution. The new host word size/architecture remains secret until NCC 1980. July 1 marks detailed module development, not its shipment; product introduction remains May 19, 1980.
 
 Eight-bit systems continue in business and expand into home/education use. The next-generation sub-$100 expectation is a roughly ten-year strategic forecast, not a withdrawal date or engineered price guarantee. Consumer-TV compatibility and the basic-storage configuration remain to be designed. See [NCC_1979_CAMPAIGN.md](NCC_1979_CAMPAIGN.md) and [ncc_1979_campaign.json](ncc_1979_campaign.json) for adoption targets, partners, marketing, commercial boundaries and disclosure rules.
+
+## COMDEX 1979: independent Aurelia-compatible computers
+
+On December 3, alongside Aurelia+, AION launches the Aurelia Software Compatibility Kit. Logix shifts new hardware development and promotion to Aurelia+ and enables other manufacturers to build Aurelia-class clones. Existing Aurelia support and compatible software continue; no immediate withdrawal is asserted. Any manufacturer may implement the published execution environment, using native hardware adapters where appropriate. Proper software licensing and technical conformance are required; a bespoke partnership, paid certification, FlexiBUS or Logix video hardware are not prerequisites for running compatible applications.
+
+The kit provides documentation, reference adapter source, diagnostics and application acceptance tests. Specifications and self-test requirements are freely accessible; paid media/manual kits, optional annual engineering support and optional configuration-specific certification sustain the programme. Standard terms permit royalty-free runtime adapter redistribution. CP/M, applications, firmware and trademark rights remain separate. The programme exposes released 8-bit interfaces only; the next-generation architecture stays confidential until NCC 1980. See AURELIA_COMPATIBILITY_KIT.md.

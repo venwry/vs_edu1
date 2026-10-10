@@ -128,6 +128,9 @@ for n in range(1,5):
 add('service.academy_customer_site',group='Training',bench='training',direct=True,unit='one two-day class for up to 8 learners; travel extra at cost',parts=[{'cost_ref':'service.academy_customer_site','quantity':8}],note='Commercial unit reconciled from cost model per-learner estimate ×8. Two days assumed; minimum class charge protects low attendance.')
 for id in ['bpi_training','pulse_training']:add('service.'+id,group='Training',bench='training',direct=True,note='Modeled course duration: BPI 3 days; Pulse 2 days. These durations are commercial assumptions, not original catalog terms.')
 for id in ['aurelia_commercial_developer_license','artemis_commercial_developer_license']:add('service.'+id,group='Developer programs',bench='registration',direct=True,note='One registration including SDK; no duplicate SDK charge.')
+# New manufacturer kit and optional services; cost-based, no asserted competitor discount.
+for id in ['software.aurelia_compatibility_kit','service.aurelia_compatibility_support','service.aurelia_compatibility_certification']:
+ add(id,group='Developer programs',direct=True,note='COMDEX 1979 manufacturer programme; optional support/certification, no per-machine runtime royalty. Cost-based annual planning price; launch and extra-work quotations are separate. Development/NRE excluded.')
 # Approved use-case bundles, both generations, use exact component references.
 for b in catalog['proposed_bundles']:
  add(b['id'],b['name'],'Application bundles',start=b['earliest_offer_date'],parts=[{'cost_ref':r,'quantity':1} for r in [b['base_bundle_ref']]+b['included_software']+b['included_devices']],note='Approved commercial bundle. Base system includes one year Regular Support; no second support charge.')
@@ -239,6 +242,18 @@ model={'metadata':{'title':'Logix / AION retail pricing assessment','schema_vers
 from decimal import Decimal, ROUND_HALF_UP
 def cents(value):return float(Decimal(str(value)).quantize(Decimal('0.01'),rounding=ROUND_HALF_UP))
 baseline=load('pricing_baseline.json')
+# Preserve every original baseline entry; new offers have a separate frozen baseline.
+import sys
+new_ids={'software.aurelia_compatibility_kit','service.aurelia_compatibility_support','service.aurelia_compatibility_certification'}
+oem_path=ROOT/'compatibility_pricing_baseline.json'
+if '--initialize-compatibility-baseline' in sys.argv:
+ assert not oem_path.exists(), 'Never overwrite a frozen baseline.'
+ oem={'metadata':{'basis':'Initial cost-based assessment for newly approved COMDEX 1979 offers; not historical prices. Existing baseline unchanged.'},'products':{x['id']:{y:s.copy() for y,s in x['snapshots'].items() if s['retail_price_usd'] is not None} for x in P if x['id'] in new_ids}}
+ oem_path.write_text(json.dumps(oem,indent=2,ensure_ascii=False)+'\n')
+oem_baseline=load('compatibility_pricing_baseline.json')
+assert not set(baseline['products']) & set(oem_baseline['products'])
+baseline['products'].update(oem_baseline['products'])
+model['metadata']['compatibility_baseline_sha256']=hashlib.sha256(oem_path.read_bytes()).hexdigest()
 for offer in P:
  for year,s in offer['snapshots'].items():
   if s['retail_price_usd'] is None:continue
@@ -276,7 +291,7 @@ for offer in P:
   s['separate_purchase_price_usd']=cents(total)
   if s['retail_price_usd']>total:s['warnings'].append('Bundle price exceeds revised separate components; compare both purchase routes.')
 model['metadata'].update(schema_version='1.1',source_commit=baseline['metadata']['source_commit'],baseline_file='pricing_baseline.json',baseline_sha256=hashlib.sha256((ROOT/'pricing_baseline.json').read_bytes()).hexdigest())
-model['policy'].update(profit_retained_fraction=.6,profit_reduction_pct=40,target_discount_pct=None,acceptable_discount_band_pct=None,minimum_margin_on_net_revenue_at_max_fee_pct=None,rounding='Nearest cent, half up. Exact proportional contribution reduction takes precedence over retail price endings.',formula='new_profit=0.60*baseline_profit; new_retail=(unchanged_cost+new_profit)/(1-channel_fee). Margin percentage is derived, not reduced directly.',risk='Old 25% margin and nonnegative stress guarantees are superseded; show losses rather than silently raising the new prices.',baseline='Immutable pricing_baseline.json from commit 3751194; no compounding on rebuild.',scope='All 79 offers and all 212 available annual snapshots; before-you-buy course variants use pre-voucher contribution. Historical catalog prices remain separate.',price_floor='Displayed floor is central-cost break-even at baseline fee; legacy safeguard retained separately for audit.')
+model['policy'].update(profit_retained_fraction=.6,profit_reduction_pct=40,target_discount_pct=None,acceptable_discount_band_pct=None,minimum_margin_on_net_revenue_at_max_fee_pct=None,rounding='Nearest cent, half up. Exact proportional contribution reduction takes precedence over retail price endings.',formula='new_profit=0.60*baseline_profit; new_retail=(unchanged_cost+new_profit)/(1-channel_fee). Margin percentage is derived, not reduced directly.',risk='Old 25% margin and nonnegative stress guarantees are superseded; show losses rather than silently raising the new prices.',baseline='Immutable original pricing_baseline.json plus separate compatibility_pricing_baseline.json for new manufacturer offers; no compounding on rebuild.',scope='All 82 offers and all 218 available annual snapshots; before-you-buy course variants use pre-voucher contribution. Historical catalog prices remain separate.',price_floor='Displayed floor is central-cost break-even at baseline fee; legacy safeguard retained separately for audit.')
 
 # Independent partner baskets are component sums, outside the immutable SKU baseline.
 bp={'business_accounts':['software.bpi_suite.bpi_general_accounting'],
