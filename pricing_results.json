@@ -6,7 +6,7 @@
     "price_basis": "Nominal US retail prices before sales tax; June 15 snapshots, 1978–1981",
     "source_commit": "3751194e197330e228a7fdf26df5b30c4c46d1ee",
     "cost_model_file": "manufacturing_costs.json",
-    "cost_model_sha256": "e326c7fb281d0ae4c3b2f158652dfe8fe4fc3ee8f1ee83d9321d38abc21a20ab",
+    "cost_model_sha256": "50db2dab2623e260a09987512d3bea92dfb6fa215a3c3eb5fe0c12c40530d1af",
     "snapshots": [
       "1978-06-15",
       "1979-06-15",
@@ -14,6 +14,7 @@
       "1981-06-15"
     ],
     "status": "Recommended pricing scenario; does not overwrite historical catalog price fields",
+    "compatibility_baseline_sha256": "c5f390db423fff28c16330a9bde018ffdccc397f9469d3f486bacc3f98e2aeb9",
     "baseline_file": "pricing_baseline.json",
     "baseline_sha256": "eefbb029974cbd5f8ed277e6252d859faa66474286f13602e86335eb5a0272ce"
   },
@@ -37,8 +38,8 @@
     "service_scope": "On-site support is a proposed capped eight-hour engagement with modeled travel, not unlimited annual repairs. Training prices assume eight learners; customer-site sold as class ×8 with travel extra. BPI/Pulse course durations remain model assumptions.",
     "profit_retained_fraction": 0.6,
     "profit_reduction_pct": 40,
-    "baseline": "Immutable pricing_baseline.json from commit 3751194; no compounding on rebuild.",
-    "scope": "All 79 offers and all 212 available annual snapshots; before-you-buy course variants use pre-voucher contribution. Historical catalog prices remain separate.",
+    "baseline": "Immutable original pricing_baseline.json plus separate compatibility_pricing_baseline.json for new manufacturer offers; no compounding on rebuild.",
+    "scope": "All 82 offers and all 218 available annual snapshots; before-you-buy course variants use pre-voucher contribution. Historical catalog prices remain separate.",
     "price_floor": "Displayed floor is central-cost break-even at baseline fee; legacy safeguard retained separately for audit.",
     "independent_bpi": "BPI Systems owns and supports its applications independently. BPI receipts belong to BPI; baskets combine suppliers and do not imply Logix revenue or ownership. Training, setup, support contracts, upgrade-credit redemptions and tax excluded; quote separately. No new discount applied.",
     "bpi_upgrade_credit": "Eligible same-platform module net licence payments credited once toward complete suite, capped at suite price, with credited licences retired; no cash refund or training/setup credit. Redemption costs must be modelled if upgrades are forecast."
@@ -17782,6 +17783,795 @@
             "retail_reduction_pct": 11.84
           },
           "legacy_price_floor_usd": 121.08
+        }
+      }
+    },
+    {
+      "id": "software.aurelia_compatibility_kit",
+      "name": "Aurelia Software Compatibility Kit",
+      "type": "Developer programs",
+      "offering_start": "1979-12-03",
+      "offering_end": null,
+      "unit": "one media/manual set; bundled editions are not separate purchases",
+      "channel": "direct",
+      "computerland_fee_rate": 0,
+      "status": "approved_pricing_proposal",
+      "notes": [
+        "COMDEX 1979 manufacturer programme; optional support/certification, no per-machine runtime royalty. Cost-based annual planning price; launch and extra-work quotations are separate. Development/NRE excluded."
+      ],
+      "components": [
+        {
+          "cost_ref": "software.aurelia_compatibility_kit",
+          "quantity": 1
+        }
+      ],
+      "announced_only": false,
+      "snapshots": {
+        "1978": {
+          "date": "1978-06-15",
+          "status": "not_yet_available",
+          "retail_price_usd": null,
+          "manufacturing_cost_usd": null
+        },
+        "1979": {
+          "date": "1979-06-15",
+          "status": "not_yet_available",
+          "retail_price_usd": null,
+          "manufacturing_cost_usd": null
+        },
+        "1980": {
+          "date": "1980-06-15",
+          "status": "available_proposal",
+          "retail_price_usd": 39.01,
+          "manufacturing_cost_usd": 31.53,
+          "cost_low_usd": 22.07,
+          "cost_high_usd": 50.45,
+          "cost_breakdown_usd": {
+            "bom_materials": 7.0,
+            "workforce": 1.96,
+            "energy": 0.0,
+            "consumables": 0.12,
+            "operating_overhead": 0.49,
+            "yield_and_rework": 0.0,
+            "instructions": 18.72,
+            "packaging": 1.44,
+            "logistics": 1.8,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "cost_components": [
+            {
+              "cost_ref": "software.aurelia_compatibility_kit",
+              "quantity": 1,
+              "unit_cost_usd": 31.53,
+              "extended_cost_usd": 31.53
+            }
+          ],
+          "computerland_fee_rate": 0,
+          "computerland_fee_usd": 0.0,
+          "revenue_after_fee_usd": 39.01,
+          "unit_profit_usd": 7.48,
+          "contribution_margin_on_net_revenue_pct": 19.17,
+          "price_floor_usd": 31.53,
+          "competitor": {
+            "normalized_price_usd": null,
+            "evidence_refs": [],
+            "assessment_type": "cost_based",
+            "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+            "discount_pct": null,
+            "discount_claim": "not_claimed"
+          },
+          "separate_purchase_price_usd": null,
+          "stress": {
+            "fee_rate": 0,
+            "markdown_pct": 10,
+            "cost_increase_pct": 20,
+            "profit_usd": -2.73,
+            "high_cost_profit_usd": -15.34
+          },
+          "warnings": [
+            "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+            "Markdown plus higher costs and maximum channel fee loses money under the reduced-profit policy.",
+            "High cost scenario plus markdown loses money; the old margin safeguard is not retained."
+          ],
+          "pre_reduction": {
+            "date": "1980-06-15",
+            "status": "available_proposal",
+            "retail_price_usd": 44,
+            "manufacturing_cost_usd": 31.53,
+            "cost_low_usd": 22.07,
+            "cost_high_usd": 50.45,
+            "cost_breakdown_usd": {
+              "bom_materials": 7.0,
+              "workforce": 1.96,
+              "energy": 0.0,
+              "consumables": 0.12,
+              "operating_overhead": 0.49,
+              "yield_and_rework": 0.0,
+              "instructions": 18.72,
+              "packaging": 1.44,
+              "logistics": 1.8,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "cost_components": [
+              {
+                "cost_ref": "software.aurelia_compatibility_kit",
+                "quantity": 1,
+                "unit_cost_usd": 31.53,
+                "extended_cost_usd": 31.53
+              }
+            ],
+            "computerland_fee_rate": 0,
+            "computerland_fee_usd": 0,
+            "revenue_after_fee_usd": 44,
+            "unit_profit_usd": 12.47,
+            "contribution_margin_on_net_revenue_pct": 28.34,
+            "price_floor_usd": 42.04,
+            "competitor": {
+              "normalized_price_usd": null,
+              "evidence_refs": [],
+              "assessment_type": "cost_based",
+              "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+              "discount_pct": null,
+              "discount_claim": "not_claimed"
+            },
+            "separate_purchase_price_usd": null,
+            "stress": {
+              "fee_rate": 0,
+              "markdown_pct": 10,
+              "cost_increase_pct": 20,
+              "profit_usd": 1.76,
+              "high_cost_profit_usd": -10.85
+            },
+            "warnings": [
+              "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+              "High cost scenario plus markdown loses money; oversupply protection is not guaranteed."
+            ],
+            "profit_retained_fraction": 0.6,
+            "retail_reduction_pct": 11.34
+          },
+          "legacy_price_floor_usd": 42.04
+        },
+        "1981": {
+          "date": "1981-06-15",
+          "status": "available_proposal",
+          "retail_price_usd": 42.8,
+          "manufacturing_cost_usd": 33.49,
+          "cost_low_usd": 23.44,
+          "cost_high_usd": 53.58,
+          "cost_breakdown_usd": {
+            "bom_materials": 6.5,
+            "workforce": 2.17,
+            "energy": 0.0,
+            "consumables": 0.13,
+            "operating_overhead": 0.54,
+            "yield_and_rework": 0.0,
+            "instructions": 20.59,
+            "packaging": 1.58,
+            "logistics": 1.98,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "cost_components": [
+            {
+              "cost_ref": "software.aurelia_compatibility_kit",
+              "quantity": 1,
+              "unit_cost_usd": 33.49,
+              "extended_cost_usd": 33.49
+            }
+          ],
+          "computerland_fee_rate": 0,
+          "computerland_fee_usd": 0.0,
+          "revenue_after_fee_usd": 42.8,
+          "unit_profit_usd": 9.31,
+          "contribution_margin_on_net_revenue_pct": 21.75,
+          "price_floor_usd": 33.49,
+          "competitor": {
+            "normalized_price_usd": null,
+            "evidence_refs": [],
+            "assessment_type": "cost_based",
+            "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+            "discount_pct": null,
+            "discount_claim": "not_claimed"
+          },
+          "separate_purchase_price_usd": null,
+          "stress": {
+            "fee_rate": 0,
+            "markdown_pct": 10,
+            "cost_increase_pct": 20,
+            "profit_usd": -1.67,
+            "high_cost_profit_usd": -15.06
+          },
+          "warnings": [
+            "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+            "Markdown plus higher costs and maximum channel fee loses money under the reduced-profit policy.",
+            "High cost scenario plus markdown loses money; the old margin safeguard is not retained."
+          ],
+          "pre_reduction": {
+            "date": "1981-06-15",
+            "status": "available_proposal",
+            "retail_price_usd": 49,
+            "manufacturing_cost_usd": 33.49,
+            "cost_low_usd": 23.44,
+            "cost_high_usd": 53.58,
+            "cost_breakdown_usd": {
+              "bom_materials": 6.5,
+              "workforce": 2.17,
+              "energy": 0.0,
+              "consumables": 0.13,
+              "operating_overhead": 0.54,
+              "yield_and_rework": 0.0,
+              "instructions": 20.59,
+              "packaging": 1.58,
+              "logistics": 1.98,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "cost_components": [
+              {
+                "cost_ref": "software.aurelia_compatibility_kit",
+                "quantity": 1,
+                "unit_cost_usd": 33.49,
+                "extended_cost_usd": 33.49
+              }
+            ],
+            "computerland_fee_rate": 0,
+            "computerland_fee_usd": 0,
+            "revenue_after_fee_usd": 49,
+            "unit_profit_usd": 15.51,
+            "contribution_margin_on_net_revenue_pct": 31.65,
+            "price_floor_usd": 44.65,
+            "competitor": {
+              "normalized_price_usd": null,
+              "evidence_refs": [],
+              "assessment_type": "cost_based",
+              "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+              "discount_pct": null,
+              "discount_claim": "not_claimed"
+            },
+            "separate_purchase_price_usd": null,
+            "stress": {
+              "fee_rate": 0,
+              "markdown_pct": 10,
+              "cost_increase_pct": 20,
+              "profit_usd": 3.91,
+              "high_cost_profit_usd": -9.48
+            },
+            "warnings": [
+              "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+              "High cost scenario plus markdown loses money; oversupply protection is not guaranteed."
+            ],
+            "profit_retained_fraction": 0.6,
+            "retail_reduction_pct": 12.65
+          },
+          "legacy_price_floor_usd": 44.65
+        }
+      }
+    },
+    {
+      "id": "service.aurelia_compatibility_support",
+      "name": "Aurelia compatibility engineering support",
+      "type": "Developer programs",
+      "offering_start": "1979-12-03",
+      "offering_end": null,
+      "unit": "one manufacturer-year",
+      "channel": "direct",
+      "computerland_fee_rate": 0,
+      "status": "approved_pricing_proposal",
+      "notes": [
+        "COMDEX 1979 manufacturer programme; optional support/certification, no per-machine runtime royalty. Cost-based annual planning price; launch and extra-work quotations are separate. Development/NRE excluded."
+      ],
+      "components": [
+        {
+          "cost_ref": "service.aurelia_compatibility_support",
+          "quantity": 1
+        }
+      ],
+      "announced_only": false,
+      "snapshots": {
+        "1978": {
+          "date": "1978-06-15",
+          "status": "not_yet_available",
+          "retail_price_usd": null,
+          "manufacturing_cost_usd": null
+        },
+        "1979": {
+          "date": "1979-06-15",
+          "status": "not_yet_available",
+          "retail_price_usd": null,
+          "manufacturing_cost_usd": null
+        },
+        "1980": {
+          "date": "1980-06-15",
+          "status": "available_proposal",
+          "retail_price_usd": 257.54,
+          "manufacturing_cost_usd": 210.36,
+          "cost_low_usd": 115.7,
+          "cost_high_usd": 399.68,
+          "cost_breakdown_usd": {
+            "bom_materials": 0.0,
+            "workforce": 152.93,
+            "energy": 0.0,
+            "consumables": 0.0,
+            "operating_overhead": 56.23,
+            "yield_and_rework": 0.0,
+            "instructions": 1.2,
+            "packaging": 0.0,
+            "logistics": 0.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "cost_components": [
+            {
+              "cost_ref": "service.aurelia_compatibility_support",
+              "quantity": 1,
+              "unit_cost_usd": 210.36,
+              "extended_cost_usd": 210.36
+            }
+          ],
+          "computerland_fee_rate": 0,
+          "computerland_fee_usd": 0.0,
+          "revenue_after_fee_usd": 257.54,
+          "unit_profit_usd": 47.18,
+          "contribution_margin_on_net_revenue_pct": 18.32,
+          "price_floor_usd": 210.36,
+          "competitor": {
+            "normalized_price_usd": null,
+            "evidence_refs": [],
+            "assessment_type": "cost_based",
+            "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+            "discount_pct": null,
+            "discount_claim": "not_claimed"
+          },
+          "separate_purchase_price_usd": null,
+          "stress": {
+            "fee_rate": 0,
+            "markdown_pct": 10,
+            "cost_increase_pct": 20,
+            "profit_usd": -20.65,
+            "high_cost_profit_usd": -167.89
+          },
+          "warnings": [
+            "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+            "Markdown plus higher costs and maximum channel fee loses money under the reduced-profit policy.",
+            "High cost scenario plus markdown loses money; the old margin safeguard is not retained."
+          ],
+          "pre_reduction": {
+            "date": "1980-06-15",
+            "status": "available_proposal",
+            "retail_price_usd": 289,
+            "manufacturing_cost_usd": 210.36,
+            "cost_low_usd": 115.7,
+            "cost_high_usd": 399.68,
+            "cost_breakdown_usd": {
+              "bom_materials": 0.0,
+              "workforce": 152.93,
+              "energy": 0.0,
+              "consumables": 0.0,
+              "operating_overhead": 56.23,
+              "yield_and_rework": 0.0,
+              "instructions": 1.2,
+              "packaging": 0.0,
+              "logistics": 0.0,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "cost_components": [
+              {
+                "cost_ref": "service.aurelia_compatibility_support",
+                "quantity": 1,
+                "unit_cost_usd": 210.36,
+                "extended_cost_usd": 210.36
+              }
+            ],
+            "computerland_fee_rate": 0,
+            "computerland_fee_usd": 0,
+            "revenue_after_fee_usd": 289,
+            "unit_profit_usd": 78.64,
+            "contribution_margin_on_net_revenue_pct": 27.21,
+            "price_floor_usd": 280.48,
+            "competitor": {
+              "normalized_price_usd": null,
+              "evidence_refs": [],
+              "assessment_type": "cost_based",
+              "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+              "discount_pct": null,
+              "discount_claim": "not_claimed"
+            },
+            "separate_purchase_price_usd": null,
+            "stress": {
+              "fee_rate": 0,
+              "markdown_pct": 10,
+              "cost_increase_pct": 20,
+              "profit_usd": 7.67,
+              "high_cost_profit_usd": -139.58
+            },
+            "warnings": [
+              "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+              "High cost scenario plus markdown loses money; oversupply protection is not guaranteed."
+            ],
+            "profit_retained_fraction": 0.6,
+            "retail_reduction_pct": 10.89
+          },
+          "legacy_price_floor_usd": 280.48
+        },
+        "1981": {
+          "date": "1981-06-15",
+          "status": "available_proposal",
+          "retail_price_usd": 284.63,
+          "manufacturing_cost_usd": 233.07,
+          "cost_low_usd": 128.19,
+          "cost_high_usd": 442.83,
+          "cost_breakdown_usd": {
+            "bom_materials": 0.0,
+            "workforce": 169.56,
+            "energy": 0.0,
+            "consumables": 0.0,
+            "operating_overhead": 62.19,
+            "yield_and_rework": 0.0,
+            "instructions": 1.32,
+            "packaging": 0.0,
+            "logistics": 0.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "cost_components": [
+            {
+              "cost_ref": "service.aurelia_compatibility_support",
+              "quantity": 1,
+              "unit_cost_usd": 233.07,
+              "extended_cost_usd": 233.07
+            }
+          ],
+          "computerland_fee_rate": 0,
+          "computerland_fee_usd": 0.0,
+          "revenue_after_fee_usd": 284.63,
+          "unit_profit_usd": 51.56,
+          "contribution_margin_on_net_revenue_pct": 18.11,
+          "price_floor_usd": 233.07,
+          "competitor": {
+            "normalized_price_usd": null,
+            "evidence_refs": [],
+            "assessment_type": "cost_based",
+            "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+            "discount_pct": null,
+            "discount_claim": "not_claimed"
+          },
+          "separate_purchase_price_usd": null,
+          "stress": {
+            "fee_rate": 0,
+            "markdown_pct": 10,
+            "cost_increase_pct": 20,
+            "profit_usd": -23.52,
+            "high_cost_profit_usd": -186.66
+          },
+          "warnings": [
+            "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+            "Markdown plus higher costs and maximum channel fee loses money under the reduced-profit policy.",
+            "High cost scenario plus markdown loses money; the old margin safeguard is not retained."
+          ],
+          "pre_reduction": {
+            "date": "1981-06-15",
+            "status": "available_proposal",
+            "retail_price_usd": 319,
+            "manufacturing_cost_usd": 233.07,
+            "cost_low_usd": 128.19,
+            "cost_high_usd": 442.83,
+            "cost_breakdown_usd": {
+              "bom_materials": 0.0,
+              "workforce": 169.56,
+              "energy": 0.0,
+              "consumables": 0.0,
+              "operating_overhead": 62.19,
+              "yield_and_rework": 0.0,
+              "instructions": 1.32,
+              "packaging": 0.0,
+              "logistics": 0.0,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "cost_components": [
+              {
+                "cost_ref": "service.aurelia_compatibility_support",
+                "quantity": 1,
+                "unit_cost_usd": 233.07,
+                "extended_cost_usd": 233.07
+              }
+            ],
+            "computerland_fee_rate": 0,
+            "computerland_fee_usd": 0,
+            "revenue_after_fee_usd": 319,
+            "unit_profit_usd": 85.93,
+            "contribution_margin_on_net_revenue_pct": 26.94,
+            "price_floor_usd": 310.76,
+            "competitor": {
+              "normalized_price_usd": null,
+              "evidence_refs": [],
+              "assessment_type": "cost_based",
+              "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+              "discount_pct": null,
+              "discount_claim": "not_claimed"
+            },
+            "separate_purchase_price_usd": null,
+            "stress": {
+              "fee_rate": 0,
+              "markdown_pct": 10,
+              "cost_increase_pct": 20,
+              "profit_usd": 7.42,
+              "high_cost_profit_usd": -155.73
+            },
+            "warnings": [
+              "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+              "High cost scenario plus markdown loses money; oversupply protection is not guaranteed."
+            ],
+            "profit_retained_fraction": 0.6,
+            "retail_reduction_pct": 10.77
+          },
+          "legacy_price_floor_usd": 310.76
+        }
+      }
+    },
+    {
+      "id": "service.aurelia_compatibility_certification",
+      "name": "Aurelia application compatibility certification",
+      "type": "Developer programs",
+      "offering_start": "1979-12-03",
+      "offering_end": null,
+      "unit": "one named configuration submission",
+      "channel": "direct",
+      "computerland_fee_rate": 0,
+      "status": "approved_pricing_proposal",
+      "notes": [
+        "COMDEX 1979 manufacturer programme; optional support/certification, no per-machine runtime royalty. Cost-based annual planning price; launch and extra-work quotations are separate. Development/NRE excluded."
+      ],
+      "components": [
+        {
+          "cost_ref": "service.aurelia_compatibility_certification",
+          "quantity": 1
+        }
+      ],
+      "announced_only": false,
+      "snapshots": {
+        "1978": {
+          "date": "1978-06-15",
+          "status": "not_yet_available",
+          "retail_price_usd": null,
+          "manufacturing_cost_usd": null
+        },
+        "1979": {
+          "date": "1979-06-15",
+          "status": "not_yet_available",
+          "retail_price_usd": null,
+          "manufacturing_cost_usd": null
+        },
+        "1980": {
+          "date": "1980-06-15",
+          "status": "available_proposal",
+          "retail_price_usd": 204.81,
+          "manufacturing_cost_usd": 168.53,
+          "cost_low_usd": 92.69,
+          "cost_high_usd": 320.21,
+          "cost_breakdown_usd": {
+            "bom_materials": 0.0,
+            "workforce": 122.34,
+            "energy": 0.0,
+            "consumables": 0.0,
+            "operating_overhead": 44.99,
+            "yield_and_rework": 0.0,
+            "instructions": 1.2,
+            "packaging": 0.0,
+            "logistics": 0.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "cost_components": [
+            {
+              "cost_ref": "service.aurelia_compatibility_certification",
+              "quantity": 1,
+              "unit_cost_usd": 168.53,
+              "extended_cost_usd": 168.53
+            }
+          ],
+          "computerland_fee_rate": 0,
+          "computerland_fee_usd": 0.0,
+          "revenue_after_fee_usd": 204.81,
+          "unit_profit_usd": 36.28,
+          "contribution_margin_on_net_revenue_pct": 17.71,
+          "price_floor_usd": 168.53,
+          "competitor": {
+            "normalized_price_usd": null,
+            "evidence_refs": [],
+            "assessment_type": "cost_based",
+            "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+            "discount_pct": null,
+            "discount_claim": "not_claimed"
+          },
+          "separate_purchase_price_usd": null,
+          "stress": {
+            "fee_rate": 0,
+            "markdown_pct": 10,
+            "cost_increase_pct": 20,
+            "profit_usd": -17.91,
+            "high_cost_profit_usd": -135.88
+          },
+          "warnings": [
+            "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+            "Markdown plus higher costs and maximum channel fee loses money under the reduced-profit policy.",
+            "High cost scenario plus markdown loses money; the old margin safeguard is not retained."
+          ],
+          "pre_reduction": {
+            "date": "1980-06-15",
+            "status": "available_proposal",
+            "retail_price_usd": 229,
+            "manufacturing_cost_usd": 168.53,
+            "cost_low_usd": 92.69,
+            "cost_high_usd": 320.21,
+            "cost_breakdown_usd": {
+              "bom_materials": 0.0,
+              "workforce": 122.34,
+              "energy": 0.0,
+              "consumables": 0.0,
+              "operating_overhead": 44.99,
+              "yield_and_rework": 0.0,
+              "instructions": 1.2,
+              "packaging": 0.0,
+              "logistics": 0.0,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "cost_components": [
+              {
+                "cost_ref": "service.aurelia_compatibility_certification",
+                "quantity": 1,
+                "unit_cost_usd": 168.53,
+                "extended_cost_usd": 168.53
+              }
+            ],
+            "computerland_fee_rate": 0,
+            "computerland_fee_usd": 0,
+            "revenue_after_fee_usd": 229,
+            "unit_profit_usd": 60.47,
+            "contribution_margin_on_net_revenue_pct": 26.41,
+            "price_floor_usd": 224.71,
+            "competitor": {
+              "normalized_price_usd": null,
+              "evidence_refs": [],
+              "assessment_type": "cost_based",
+              "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+              "discount_pct": null,
+              "discount_claim": "not_claimed"
+            },
+            "separate_purchase_price_usd": null,
+            "stress": {
+              "fee_rate": 0,
+              "markdown_pct": 10,
+              "cost_increase_pct": 20,
+              "profit_usd": 3.86,
+              "high_cost_profit_usd": -114.11
+            },
+            "warnings": [
+              "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+              "High cost scenario plus markdown loses money; oversupply protection is not guaranteed."
+            ],
+            "profit_retained_fraction": 0.6,
+            "retail_reduction_pct": 10.56
+          },
+          "legacy_price_floor_usd": 224.71
+        },
+        "1981": {
+          "date": "1981-06-15",
+          "status": "available_proposal",
+          "retail_price_usd": 224.09,
+          "manufacturing_cost_usd": 186.72,
+          "cost_low_usd": 102.7,
+          "cost_high_usd": 354.77,
+          "cost_breakdown_usd": {
+            "bom_materials": 0.0,
+            "workforce": 135.65,
+            "energy": 0.0,
+            "consumables": 0.0,
+            "operating_overhead": 49.75,
+            "yield_and_rework": 0.0,
+            "instructions": 1.32,
+            "packaging": 0.0,
+            "logistics": 0.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "cost_components": [
+            {
+              "cost_ref": "service.aurelia_compatibility_certification",
+              "quantity": 1,
+              "unit_cost_usd": 186.72,
+              "extended_cost_usd": 186.72
+            }
+          ],
+          "computerland_fee_rate": 0,
+          "computerland_fee_usd": 0.0,
+          "revenue_after_fee_usd": 224.09,
+          "unit_profit_usd": 37.37,
+          "contribution_margin_on_net_revenue_pct": 16.68,
+          "price_floor_usd": 186.72,
+          "competitor": {
+            "normalized_price_usd": null,
+            "evidence_refs": [],
+            "assessment_type": "cost_based",
+            "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+            "discount_pct": null,
+            "discount_claim": "not_claimed"
+          },
+          "separate_purchase_price_usd": null,
+          "stress": {
+            "fee_rate": 0,
+            "markdown_pct": 10,
+            "cost_increase_pct": 20,
+            "profit_usd": -22.38,
+            "high_cost_profit_usd": -153.09
+          },
+          "warnings": [
+            "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+            "Markdown plus higher costs and maximum channel fee loses money under the reduced-profit policy.",
+            "High cost scenario plus markdown loses money; the old margin safeguard is not retained."
+          ],
+          "pre_reduction": {
+            "date": "1981-06-15",
+            "status": "available_proposal",
+            "retail_price_usd": 249,
+            "manufacturing_cost_usd": 186.72,
+            "cost_low_usd": 102.7,
+            "cost_high_usd": 354.77,
+            "cost_breakdown_usd": {
+              "bom_materials": 0.0,
+              "workforce": 135.65,
+              "energy": 0.0,
+              "consumables": 0.0,
+              "operating_overhead": 49.75,
+              "yield_and_rework": 0.0,
+              "instructions": 1.32,
+              "packaging": 0.0,
+              "logistics": 0.0,
+              "recurring_licenses": 0.0,
+              "included_service_delivery": 0.0
+            },
+            "cost_components": [
+              {
+                "cost_ref": "service.aurelia_compatibility_certification",
+                "quantity": 1,
+                "unit_cost_usd": 186.72,
+                "extended_cost_usd": 186.72
+              }
+            ],
+            "computerland_fee_rate": 0,
+            "computerland_fee_usd": 0,
+            "revenue_after_fee_usd": 249,
+            "unit_profit_usd": 62.28,
+            "contribution_margin_on_net_revenue_pct": 25.01,
+            "price_floor_usd": 248.96,
+            "competitor": {
+              "normalized_price_usd": null,
+              "evidence_refs": [],
+              "assessment_type": "cost_based",
+              "assessment": "No matching contemporaneous price; recommendation uses delivery-cost floor.",
+              "discount_pct": null,
+              "discount_claim": "not_claimed"
+            },
+            "separate_purchase_price_usd": null,
+            "stress": {
+              "fee_rate": 0,
+              "markdown_pct": 10,
+              "cost_increase_pct": 20,
+              "profit_usd": 0.04,
+              "high_cost_profit_usd": -130.67
+            },
+            "warnings": [
+              "Estimated or unmatched comparator; discount is indicative, not verified like-for-like.",
+              "High cost scenario plus markdown loses money; oversupply protection is not guaranteed."
+            ],
+            "profit_retained_fraction": 0.6,
+            "retail_reduction_pct": 10.0
+          },
+          "legacy_price_floor_usd": 248.96
         }
       }
     }

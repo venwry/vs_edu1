@@ -13,7 +13,7 @@
     "source_commit": "c4567d340882e132ca92671861487af453dafc80",
     "source_note": "Baseline commit; source hashes identify the edited inputs used for this build.",
     "source_sha256": {
-      "logix_aion_technical_catalog_v2.json": "9d1abb025a699a9734659f31ce74119773f988a62e9f28112a1e8235ca170abb",
+      "logix_aion_technical_catalog_v2.json": "e90a72356803d684eebd04513e23d26abd23401786788f66efe5b1165e95577c",
       "hardware_bom.json": "677155cf7c58e5bc42351f696e1fb844836a1c5b15e167a61998d6c703388736",
       "manufacturing_programs.json": "2a5d0a874069d869de22b8ed65ae4e7b39ebf47c9a6a858bd56b5379547c8b35"
     },
@@ -16040,6 +16040,77 @@
       "assembly_ref": "assembly.media.software.cpm_aurelia_networking"
     },
     {
+      "id": "software.aurelia_compatibility_kit",
+      "catalog_ref": "software.aurelia_compatibility_kit",
+      "name": "Aurelia Software Compatibility Kit",
+      "group": "Software",
+      "unit": "one media/manual set; bundled editions are not separate purchases",
+      "available_from": "1979-12-03",
+      "assumptions": [
+        "Media and documentation reproduction only, plus an explicit recurring third-party license allowance where applicable."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 31.53,
+          "low_usd": 22.07,
+          "high_usd": 50.45,
+          "breakdown_usd": {
+            "bom_materials": 7.0,
+            "workforce": 1.96,
+            "energy": 0.0,
+            "consumables": 0.12,
+            "operating_overhead": 0.49,
+            "yield_and_rework": 0.0,
+            "instructions": 18.72,
+            "packaging": 1.44,
+            "logistics": 1.8,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 33.49,
+          "low_usd": 23.44,
+          "high_usd": 53.58,
+          "breakdown_usd": {
+            "bom_materials": 6.5,
+            "workforce": 2.17,
+            "energy": 0.0,
+            "consumables": 0.13,
+            "operating_overhead": 0.54,
+            "yield_and_rework": 0.0,
+            "instructions": 20.59,
+            "packaging": 1.58,
+            "logistics": 1.98,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "software_profile": [
+        5,
+        800
+      ]
+    },
+    {
       "id": "software.bpi_suite.bpi_general_accounting",
       "catalog_ref": "software.bpi_suite",
       "name": "BPI General Accounting",
@@ -25742,6 +25813,142 @@
         }
       },
       "not_costed_reason": "Negotiated licensing has no defined unit. Recurring chip manufacture is assessed in individual OEM chip rows; engineering/NRE is excluded."
+    },
+    {
+      "id": "service.aurelia_compatibility_support",
+      "catalog_ref": "service.aurelia_compatibility_support",
+      "name": "Aurelia compatibility engineering support",
+      "group": "Services",
+      "unit": "one manufacturer-year",
+      "available_from": "1979-12-03",
+      "assumptions": [
+        "Course duration and service usage are explicit planning units, not established contractual limits. Free promotional vouchers are excluded as marketing."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 210.36,
+          "low_usd": 115.7,
+          "high_usd": 399.68,
+          "breakdown_usd": {
+            "bom_materials": 0.0,
+            "workforce": 152.93,
+            "energy": 0.0,
+            "consumables": 0.0,
+            "operating_overhead": 56.23,
+            "yield_and_rework": 0.0,
+            "instructions": 1.2,
+            "packaging": 0.0,
+            "logistics": 0.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 233.07,
+          "low_usd": 128.19,
+          "high_usd": 442.83,
+          "breakdown_usd": {
+            "bom_materials": 0.0,
+            "workforce": 169.56,
+            "energy": 0.0,
+            "consumables": 0.0,
+            "operating_overhead": 62.19,
+            "yield_and_rework": 0.0,
+            "instructions": 1.32,
+            "packaging": 0.0,
+            "logistics": 0.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "service_hours": 10
+    },
+    {
+      "id": "service.aurelia_compatibility_certification",
+      "catalog_ref": "service.aurelia_compatibility_certification",
+      "name": "Aurelia application compatibility certification",
+      "group": "Services",
+      "unit": "one named configuration submission",
+      "available_from": "1979-12-03",
+      "assumptions": [
+        "Course duration and service usage are explicit planning units, not established contractual limits. Free promotional vouchers are excluded as marketing."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 168.53,
+          "low_usd": 92.69,
+          "high_usd": 320.21,
+          "breakdown_usd": {
+            "bom_materials": 0.0,
+            "workforce": 122.34,
+            "energy": 0.0,
+            "consumables": 0.0,
+            "operating_overhead": 44.99,
+            "yield_and_rework": 0.0,
+            "instructions": 1.2,
+            "packaging": 0.0,
+            "logistics": 0.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 186.72,
+          "low_usd": 102.7,
+          "high_usd": 354.77,
+          "breakdown_usd": {
+            "bom_materials": 0.0,
+            "workforce": 135.65,
+            "energy": 0.0,
+            "consumables": 0.0,
+            "operating_overhead": 49.75,
+            "yield_and_rework": 0.0,
+            "instructions": 1.32,
+            "packaging": 0.0,
+            "logistics": 0.0,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "service_hours": 8
     }
   ],
   "coverage_exclusions": [

@@ -4,7 +4,7 @@ This is a scenario forecast, not recorded sales or a new canonical story outcome
 
 ## Price policy
 
-Retain 60% of each offer's baseline dollar contribution after its baseline channel fee and recurring cost. Apply to all 79 offers and 212 available annual snapshots, including course variants before promotional credit. The frozen `pricing_baseline.json` prevents repeated reductions on rebuild. Profit here excludes marketing, development, capital, financing and taxes.
+Retain 60% of each offer's baseline dollar contribution after its baseline channel fee and recurring cost. Apply to all 82 offers and 218 available annual snapshots, including course variants before promotional credit. The frozen original `pricing_baseline.json` and separate `compatibility_pricing_baseline.json` for the three new COMDEX offers prevent repeated reductions on rebuild. Profit here excludes marketing, development, capital, financing and taxes.
 
 1978 examples:
 
@@ -98,3 +98,5 @@ June–November central customer package spending is **$76.99m**, supplier recei
 This remains a computer-led package forecast. Other vendors' compatible machines, standalone cards/software, third-party peripherals, OEM royalties and Academy revenue are not quantified. Extended-period market share is withheld because no new market denominator has been calibrated. The main central-case constraint is delivery capacity, so extra marketing demand does not automatically create more sales.
 
 Rebuild with `python tools/build_sales.py`; validate period arithmetic, pricing transitions and demand conservation with `tests/validate_sales_extension.py`. The page shows monthly demand, capacity, sales, unmet demand and price/campaign/competition components for each scenario.
+
+The December 3 manufacturer compatibility kit and clone-enablement policy occur after this forecast cutoff. They change neither November Aurelia demand nor shipments; future clone substitution and application/support income require a later model.

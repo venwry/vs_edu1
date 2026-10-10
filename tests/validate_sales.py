@@ -5,6 +5,7 @@ def read(n):return json.loads((R/n).read_text())
 s=read('sales_forecast.json');p=read('pricing_results.json');b=read('pricing_baseline.json');site=read('site_pages.json')
 assert s['metadata']['source_pricing_sha256']==hashlib.sha256((R/'pricing_results.json').read_bytes()).hexdigest()
 assert p['metadata']['baseline_sha256']==hashlib.sha256((R/'pricing_baseline.json').read_bytes()).hexdigest()
+b['products'].update(read('compatibility_pricing_baseline.json')['products'])
 for offer in p['products']:
  for year,x in offer['snapshots'].items():
   if x['retail_price_usd'] is None:continue

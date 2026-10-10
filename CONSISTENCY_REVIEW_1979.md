@@ -23,7 +23,7 @@ Scope: the narrative, event/phase/lane assignments, technical catalog and editio
 
 | ID | Open item | Impact / required resolution |
 |---|---|---|
-| R01 | Governance and licensing | Working-group charter, voting, certification operator/dispute procedure, licence fees and reference-code redistribution rights are not agreed. The programme commits to publishing terms; it does not claim contracts already exist. |
+| R01 | Governance and licensing | COMDEX now defines standard kit terms, royalty-free reference-runtime redistribution, optional AION certification and bounded support. Working-group governance, dispute/appeal procedure and final launch/extra-work fees remain open; no OEM contract is asserted. |
 | R02 | Long-term CP/M support | No funded duration, staffing or end-of-support policy. “Years of future” cannot become a ten-year contractual support guarantee without these decisions. |
 | R03 | Campaign and porting budget | OEM kits, reference engineering, workshops, venue/AV, roadshows, directory, joint media and migration clinics are unbudgeted. Unit-cost and contribution tables exclude them. |
 | R04 | Public demonstration qualification | TPA/RAM budgets, large Abacus workloads, BPI export/import, cross-host document round trip and exact physical transfer route need measured acceptance. CP/M does not guarantee a common disk format or identical program binaries. |
@@ -59,3 +59,7 @@ Scope: the narrative, event/phase/lane assignments, technical catalog and editio
 ## Validation
 
 Run all tests/validate_*.py and tests/*.test.cjs after rebuilding costs, pricing and sales. The added validate_ncc79.py checks stage order/duration, profile separation, timeline references, prospective OEM status, disclosure/product dates, targets and unchanged pre-NCC unit forecasts. Source hashes and deterministic rebuilds retain provenance; passing structural tests does not close R01–R20.
+
+## COMDEX compatibility-kit follow-up
+
+The December 3 kit, optional support and certification are now catalogued, costed and included in annual pricing. Named Abacus platforms are supported configurations rather than an exclusive permission list. The Aurelia+ focus permits independently designed Aurelia-class clones and maintains installed-base support without inventing a withdrawal date. The original 79-offer pricing baseline is unchanged; three additions use their own frozen baseline. November demand/sales values remain unchanged. Specialist staffing, certification throughput, December launch quotations, actual OEM adoption and post-launch substitution remain planning decisions. Public materials preserve the NCC 1980 architecture embargo.

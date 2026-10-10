@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.13",
+    "version": "2.14",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -3645,7 +3645,8 @@
         ],
         "qualified_max_rate_kbps": 250,
         "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link."
-      }
+      },
+      "lifecycle_policy": "From COMDEX 1979 Logix focuses new hardware development and promotion on Aurelia+. Existing Aurelia support and compatible software continue; independent manufacturers may develop Aurelia-class clones through published interfaces and appropriate software licences. No immediate withdrawal or shutdown date is imposed."
     },
     {
       "id": "computer.aurelia_plus",
@@ -5224,7 +5225,8 @@
         "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
         "status": "Accepted requirement; measured implementation qualification pending.",
         "export_definition_ref": "software.bpi_suite"
-      }
+      },
+      "independent_implementation_policy": "Any manufacturer may implement the published Aurelia execution environment to run properly licensed compatible Abacus binaries; named editions document supported configurations, not exclusive manufacturer rights. Processor, resources and interface conformance must be met. The COMDEX 1979 compatibility kit supplies reference adapters and tests. No mandatory FlexiBUS or Logix video hardware."
     },
     {
       "id": "software.simple_c_z80",
@@ -5973,6 +5975,41 @@
         "link_layer_ref": "technology.logix_lan100_link",
         "driver_contract": "Enforce host rate ceilings, report advertised and negotiated rates separately, process packet-level interrupts and receiver credits, and expose fallback/error diagnostics. TCP/IP application throughput is below shared raw line rate and requires measurement."
       }
+    },
+    {
+      "id": "software.aurelia_compatibility_kit",
+      "name": "Aurelia Software Compatibility Kit",
+      "vendor": "AION Software",
+      "category": "sdk_and_documentation",
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
+        "event_start_date": "1979-12-03"
+      },
+      "description": "Manufacturer and independent-integrator kit for implementing the released Aurelia application environment on independently designed computers. Separate from the 1978 application-developer SDK.",
+      "contents": [
+        "Published processor, CP/M, memory, display, keyboard, storage and error-behaviour contracts",
+        "Reference runtime adapter source and redistribution terms",
+        "Diagnostics and conformance tests, including resource limits and failure cases",
+        "Abacus and Business Tools acceptance workloads: calculations, file interchange, printing, save/reopen",
+        "Porting and troubleshooting manuals, source listings and machine-readable disks",
+        "Versioned results forms and optional certification submission requirements"
+      ],
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "compatibility_policy": {
+        "eligibility": "Any manufacturer or independent integrator may implement the published environment without a bespoke partnership or mandatory certification.",
+        "binary": "Existing Z80 binaries require compatible instruction execution and the specified OS/runtime and memory behaviour; CP/M alone is insufficient. Other processors need an appropriate port or execution solution.",
+        "hardware": "Native video, keyboards, disks and printers may be exposed through adapters. FlexiBUS and Logix video hardware are separate optional profiles. Full hardware clones may implement those published interfaces under their applicable terms.",
+        "applications": "Named supported platforms are tested configurations, not an exclusive permission list. Independently implemented environments may run properly licensed applications; certification identifies precisely what AION tested.",
+        "scope": "Released 8-bit Aurelia interfaces only. No future processor names, word size, ISA, binaries or architectural details before NCC 1980.",
+        "licensing": "Specification and self-test requirements are freely accessible. Kit fee covers media, manuals and updates supplied with the kit. Reference runtime adapters may be modified and redistributed without per-machine royalty under standard terms. No automatic licence to redistribute CP/M, application binaries, firmware or trademarks; obtain each required licence separately. Proprietary application source is not included.",
+        "delivery": "Printed manuals/source listings and disks; host/media conversion quoted separately.",
+        "certification": "Optional, configuration- and version-specific. Manufacturer-declared compatibility is distinct from AION-tested application compatibility. FlexiBUS electrical/protocol and Logix display tests are separate claims."
+      }
     }
   ],
   "services": [
@@ -6207,7 +6244,7 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "openness_policy": "Basic published interfaces are accessible without mandatory certification. Developer fees cover the SDK, support and optional compatibility designation; competitors can implement compatible hardware and software."
+      "openness_policy": "Basic published interfaces are accessible without mandatory certification. Developer fees cover the SDK, support and optional compatibility designation; competitors can implement compatible hardware and software. From COMDEX 1979, the separate manufacturer compatibility kit and optional support/testing services assist whole-computer implementations; the older developer registration is not a prerequisite."
     },
     {
       "id": "service.artemis_commercial_developer_license",
@@ -6251,6 +6288,41 @@
         "economics": "Transfer/NRE funded by AION/Logix; external-sales royalties and minimum orders negotiated, not priced facts.",
         "historical_basis": "https://manuals.plus/m/e43becab466f1fc2ba1742e95b4f0645632eb5d5ac2aea60ac96975b1c99320c"
       }
+    },
+    {
+      "id": "service.aurelia_compatibility_support",
+      "name": "Aurelia compatibility engineering support",
+      "category": "compatibility_engineering",
+      "introduced": {
+        "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
+        "event_start_date": "1979-12-03"
+      },
+      "includes": [
+        "Ten remote engineering hours by correspondence or telephone",
+        "Documentation and test-suite updates during subscription",
+        "Extra hours, media conversion and site visits quoted separately; no unlimited support"
+      ],
+      "delivery_unit": "one manufacturer-year",
+      "engineering_hours": 10,
+      "commercial_policy": "Optional standard agreement; implementation is not conditional on purchase. AION-funded ports, proprietary source access and OEM application redistribution require separate agreements."
+    },
+    {
+      "id": "service.aurelia_compatibility_certification",
+      "name": "Aurelia application compatibility certification",
+      "category": "compatibility_engineering",
+      "introduced": {
+        "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
+        "event_start_date": "1979-12-03"
+      },
+      "includes": [
+        "Eight engineering hours for review and application acceptance testing",
+        "Versioned configuration report and optional designation on passing",
+        "Failures returned for correction; additional work and incremental retests quoted separately",
+        "Relevant hardware, OS or adapter changes require scoped retesting; manufacturer supports its own machines"
+      ],
+      "delivery_unit": "one named configuration submission",
+      "engineering_hours": 8,
+      "commercial_policy": "Optional standard agreement; implementation is not conditional on purchase. AION-funded ports, proprietary source access and OEM application redistribution require separate agreements."
     }
   ],
   "product_strategy": {

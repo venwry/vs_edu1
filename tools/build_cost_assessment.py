@@ -107,7 +107,7 @@ for x in C['computers']+C['devices']:
 for ref in sorted(custom):
  x=records[ref];row(ref,ref,x['name'],'OEM chips','one tested packaged chip, bulk shipment',date(x),assembly_ref='assembly.'+ref)
 # Software production excludes development; platform variants retain distinct availability.
-software_profiles={'abacus_1':(1,80),'simple_c_z80':(3,220),'aurelia_sdk':(5,800),'bpi_suite':(5,700),'microsoft_basic_aurelia':(1,180),'pulse_1':(3,240),'abacus_2':(2,160),'aion_c_ide':(6,400),'artemis_sdk':(8,1000),'abacus_3':(4,280),'pulse_3':(4,300),'bpi_client_server':(8,800)}
+software_profiles={'aurelia_compatibility_kit':(5,800),'abacus_1':(1,80),'simple_c_z80':(3,220),'aurelia_sdk':(5,800),'bpi_suite':(5,700),'microsoft_basic_aurelia':(1,180),'pulse_1':(3,240),'abacus_2':(2,160),'aion_c_ide':(6,400),'artemis_sdk':(8,1000),'abacus_3':(4,280),'pulse_3':(4,300),'bpi_client_server':(8,800)}
 for x in C['software_products']:
  a='assembly.media.'+x['id'];kwargs={'assembly_ref':a} if a in assemblies else {'software_profile':software_profiles[x['id'].split('.')[1]]}
  row(x['id'],x['id'],x['name'],'Software','one media/manual set; bundled editions are not separate purchases',date(x),**kwargs,assumptions=['Media count and printed pages are planning allowances; software-development costs excluded.','Generic BPI suite denotes the five-module set; separately costed module rows below are alternatives, not additions.'] if x['id']=='software.bpi_suite' else ['Media and documentation reproduction only, plus an explicit recurring third-party license allowance where applicable.'])
@@ -126,6 +126,7 @@ for x in C['services']:
  id=x['id'];category=x['category'];args={}
  if category=='sales_channel':args={'not_costed_reason':'Sales channel, not a manufactured product. Marketing/sales activity excluded; product logistics is already included.'};unit='not applicable'
  elif category=='oem_licensing':args={'not_costed_reason':'Negotiated licensing has no defined unit. Recurring chip manufacture is assessed in individual OEM chip rows; engineering/NRE is excluded.'};unit='negotiated contract'
+ elif category=='compatibility_engineering':args={'service_hours':x['engineering_hours']};unit=x['delivery_unit']
  elif category=='support':args={'service_hours':{'service.customer_care':.6,'service.regular_support':2,'service.professional_support':4,'service.professional_business_onsite':8}[id],'travel':100 if 'onsite' in id else 0};unit='one customer-year'
  elif category=='developer_program_and_license':args={'developer_sdk':'software.aurelia_sdk' if 'aurelia' in id else 'software.artemis_sdk','service_hours':2};unit='one registration with SDK'
  else:args={'course_days':2 if 'pulse' in id else 3 if 'bpi' in id else 2,'onsite':'customer_site' in id};unit='one learner-course (8 learners, 6 contact hours/day)'
