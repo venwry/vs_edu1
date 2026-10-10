@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.12",
+    "version": "2.13",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -91,7 +91,13 @@
             "CRC faults, cable removal and power sequencing"
           ]
         },
-        "keyboard_standard_ref": "technology.logix_tui_keyboard_standard"
+        "keyboard_standard_ref": "technology.logix_tui_keyboard_standard",
+        "ecosystem_programme": {
+          "programme_file": "ncc_1979_campaign.json",
+          "policy": "Non-exclusive independently branded implementations; software and video adoption are optional.",
+          "class_extension_gates": "Plotter, modem and specialist profiles and drivers require design and qualification. Discovery metadata alone does not guarantee operation.",
+          "governance": "DRI leads software interfaces; Logix contributes hardware specifications; independent manufacturers participate. Final charter, fees and support period remain open."
+        }
       },
       "used_by": [
         "computer.aurelia",
@@ -795,7 +801,12 @@
         "software.abacus_2",
         "software.bpi_suite",
         "software.business_tools_artemis"
-      ]
+      ],
+      "public_roadmap": {
+        "announced": "1979-06-04",
+        "available_from": "1980-05-19",
+        "boundary": "Existing C discipline is available in 1979; the complete dual-target framework remains a 1980 product. Recompilation is distinct from legacy execution."
+      }
     },
     {
       "id": "technology.era1_isa",
@@ -994,7 +1005,7 @@
       },
       "owner": "Logix with Digital Research",
       "specification": {
-        "execution": "Aurelia CP/M application binaries execute natively in a dedicated compatibility environment",
+        "execution": "Qualified Z80 binaries execute on the Z80 guest processor, not natively on the new host ISA; OS/memory/peripheral bridging remains required.",
         "peripheral_model": "the ERA host exposes Artemis peripherals through a virtual peripheral bridge",
         "goal": "preserve the Aurelia software investment while transitioning to the 32-bit platform",
         "api_discovery": "Return the display/input/service capabilities actually implemented by the compatibility environment.",
@@ -2784,7 +2795,7 @@
       "specification": {
         "cpu_ref": "part.z80a",
         "local_ram_kb": 64,
-        "expansion_role": "executes Aurelia CP/M applications natively and bridges Artemis peripherals through the ERA host",
+        "expansion_role": "Z80 executes qualified Aurelia/CP/M binaries in a separate guest environment; the new host processor does not execute them natively.",
         "bridge_design_ref": "technology.cpm80_virtual_peripheral_bridge"
       },
       "compatible_with": [
@@ -2803,7 +2814,14 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.artemis_cpm80_module"
-      ]
+      ],
+      "public_roadmap": {
+        "announced": "1979-06-04",
+        "development_milestone": "1979-07-01",
+        "introduced": "1980-05-19",
+        "status_at_announcement": "Planned separately sold Z80 legacy option; host architecture and word size undisclosed.",
+        "scope": "Qualified documented-interface applications only; no extension of compatibility to Artemis PRO or all future models."
+      }
     },
     {
       "id": "device.artemis_ram_64kb_module",
@@ -5056,7 +5074,14 @@
       "sources": [
         "https://computerhistory.org/blog/early-digital-research-cpm-source-code/",
         "https://computerhistory.org/blog/in-his-own-words-gary-kildall/"
-      ]
+      ],
+      "ecosystem_policy": {
+        "programme_file": "ncc_1979_campaign.json",
+        "public_date": "1979-06-04",
+        "profiles": "Optional versioned extensions separate from the CP/M core; neither FlexiBUS nor Logix video is mandatory for all CP/M applications.",
+        "continuity": "Fund CP/M maintenance alongside the next-generation programme; detailed duration and budget remain open.",
+        "qualification": "Named host/ISA/TPA/application editions and file interchange; no universal Aurelia binary or disk compatibility promise."
+      }
     },
     {
       "id": "software.business_tools_aurelia",
@@ -5301,7 +5326,8 @@
       ],
       "edition_refs": [
         "edition.aurelia_sdk.z80"
-      ]
+      ],
+      "roadmap_1979": "NCC 1979 clinics teach source portability using existing C/API/file-format contracts. No new-target compiler, public word size or ISA is released before NCC 1980."
     },
     {
       "id": "software.bpi_suite",
@@ -7896,13 +7922,13 @@
   ],
   "review_scope": {
     "deferred": [
-      "Facility and chip-production planning",
-      "Pricing and sales forecasts",
-      "Assembly and PCB factories",
-      "Memory-bus organization",
-      "Other audit topics not explicitly requested in this revision"
+      "Electrical release details and measured performance",
+      "Fabrication/yield and production-capacity validation",
+      "Final commercial licence, maintenance and campaign budgets",
+      "Future consumer-TV implementation and sub-$100 costing"
     ],
-    "era_area_assumption": "User targets an ERA die a little larger than 8086. This is an area target, not a transistor-count or timing equivalence. Quartz versus soda-lime mask choice remains a later process decision."
+    "era_area_assumption": "User targets an ERA die a little larger than 8086. This is an area target, not a transistor-count or timing equivalence. Quartz versus soda-lime mask choice remains a later process decision.",
+    "completed_assessments": "Pricing, sales, hardware BOM and memory-bus design have scenario assessments; this does not establish measured qualification or audited costs."
   },
   "external_platforms": [
     {

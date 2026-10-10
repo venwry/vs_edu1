@@ -59,3 +59,8 @@ First-purchase attachment is 15% / 20% / 25% across scenarios. Cohorts are mutua
 Central BPI customer spending is $1,504,427.40; BPI receipts after the assumed 25% channel fee are $1,128,320.55. These are independent BPI receipts, not Logix/AION or Adam income. Software development, specialist support, marketing, setup, taxes and upgrade redemptions are not estimated, so this is not a profit forecast. No additional post-purchase upgrade revenue is counted; upgrade credits require a separate cohort model if introduced later.
 
 BPI courses consume part of the existing 10,000–13,000 Academy enrolment plan. Each launch centre needs access to a BPI specialist; dealer qualification and paid setup capacity constrain adoption. Course completion does not create an extra computer sale. Detailed commitments and deployment gates are in BPI_PARTNER_STRATEGY.md.
+
+
+## NCC 1979 campaign boundary
+
+The accepted open-architecture campaign and migration roadmap are in ncc_1979_campaign.json. The forecast ends May 31; June presentation, October deliveries and 1980 adoption targets do not enter it. Confidential OEM preparation has no assumed direct consumer effect; May profile publication has no separately calibrated increment beyond the existing generic marketing and compatibility assumptions. Central totals remain 10,750/29,400. A later model must separate Aurelia cannibalisation, other manufacturers' compatible sales, peripheral adoption and independent supplier receipts. The roughly ten-year $100 expectation is not an input to 1978–1981 pricing or a discontinuation schedule.

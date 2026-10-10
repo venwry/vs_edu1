@@ -75,3 +75,8 @@ Tandy's later Abacus revenue and any longer-term ecosystem benefit require a sep
 ## BPI partner campaign revision
 
 The independent BPI programme adds 1,200 central-case Aurelia deliveries, producing 10,750 in 1978 and 29,400 through May 1979 (10.78% assumed US unit share). Apple displacement and Tandy deferral/confidence assumptions remain intact; BPI is not a second blanket market-expansion bonus. Strong-case demand is capped at 34,000 deliveries. BPI licence receipts are separately accounted. No BPI Model II release is implied by the Abacus agreement. See BPI_PARTNER_STRATEGY.md.
+
+
+## NCC 1979 standardisation programme
+
+NCC_1979_CAMPAIGN.md records accepted recruitment and marketing plans. North Star and Vector Graphic are priority prospects; Cromemco, Altos, Intertec and Heath have conditional/selective paths. No actual commitment or supported new OEM release is invented. Targets are one additional OEM shipping by end-1979, another qualifying, and three to five non-Logix OEMs by NCC 1980 including Tandy. Independent video adoption remains optional. These targets do not add sales retroactively before June or grant a Tandy BPI port. Software portfolios, host resource limits and native interfaces remain independent.

@@ -373,7 +373,7 @@
       "plans": "Targets, offers and future rights are distinguished from completed actions.",
       "naming": "Stable actor/product identifiers; aliases retain spelling variants.",
       "event_structure": "Events use date, participants, actions, outcomes, agreement_terms, metrics, product_refs and related_event_refs. Processes use period and phase_refs instead of event_type/date; phase_refs identify narrative context, not asserted start/end dates.",
-      "provenance": "This JSON structures the narrative; product specifications remain in the technical catalog.",
+      "provenance": "This JSON structures the narrative; product specifications remain in the technical catalog. The technical catalog is an author-facing, all-years reference, not a contemporaneous press kit. All 1979 public and partner-facing next-generation references must follow the disclosure policy in ncc_1979_campaign.json; internal identifiers do not establish public product names.",
       "phase_order": "Eight consecutive inclusive calendar phases from 1972-01-01 through 1981-11-18. Point events are assigned by their confirmed dates and sorted chronologically. The 2025-12-07 origin remains an explicit prologue associated with phase one, outside its calendar period. Processes are listed separately in their contextual phases; the explicit 1973–1975 investment expansion spans phases one and two."
     }
   },
@@ -2440,6 +2440,50 @@
           ]
         },
         {
+          "id": "event.oem79_briefings",
+          "title": "Independent OEM and peripheral engineering briefings",
+          "event_type": "plan",
+          "date": {
+            "start": "1979-02-19",
+            "end": "1979-02-19"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "programme organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Begin confidential briefings and engineering-kit evaluations. Prioritise North Star and Vector Graphic as prospects; approach Cromemco, Altos, Intertec and Heath selectively. Invitations are not signed agreements or qualified products. This day is a selected scenario milestone."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.flexibus",
+            "technology.logix_tui_standard",
+            "software.aurelia_sdk"
+          ],
+          "related_event_refs": [
+            "event.dri_portable"
+          ]
+        },
+        {
           "id": "event.apple_business_promotions",
           "title": "Apple promotes complete business configurations",
           "event_type": "action",
@@ -2506,6 +2550,94 @@
           ],
           "related_event_refs": [
             "event.dri_portable"
+          ]
+        },
+        {
+          "id": "event.open79_profiles",
+          "title": "Publish independent compatibility programmes",
+          "event_type": "policy",
+          "date": {
+            "start": "1979-05-05",
+            "end": "1979-05-05"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "programme organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Alongside the existing DRI portable-extension release, publish separate CP/M application, FlexiBUS peripheral and optional Logix display compatibility profiles, reference-driver and test access, non-exclusive implementation principles and support-roadmap requirements. Exact fees and support duration remain to be settled. This day is a selected scenario milestone."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.flexibus",
+            "technology.logix_tui_standard",
+            "software.aurelia_sdk"
+          ],
+          "related_event_refs": [
+            "event.dri_release"
+          ]
+        },
+        {
+          "id": "event.open79_workshop",
+          "title": "Pre-NCC cross-vendor qualification workshop",
+          "event_type": "plan",
+          "date": {
+            "start": "1979-05-21",
+            "end": "1979-05-21"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "programme organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Invite computer, software and peripheral suppliers to test named configurations and document failures before public demonstrations. Supplier attendance and passing results must be verified; no announcement of an unsigned OEM. This day is a selected scenario milestone."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.flexibus",
+            "technology.logix_tui_standard",
+            "software.aurelia_sdk"
+          ],
+          "related_event_refs": [
+            "event.dri_release"
           ]
         },
         {
@@ -2710,8 +2842,57 @@
           ]
         },
         {
+          "id": "event.ncc79_campaign",
+          "title": "NCC 1979 open architecture and migration presentation",
+          "event_type": "policy",
+          "date": {
+            "start": "1979-06-04",
+            "end": "1979-06-04"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "keynote presenter"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "programme organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Present a 50-minute cross-vendor campaign before questions. Demonstrate applications/documents, then independent BPI, FlexiBUS, Apple native drivers and optional video. BPI management speaks with partners. State that the next generation breaks native Z80 binary compatibility; C source/API portability reduces migration work and a planned optional Z80 compatibility coprocessor supports qualified legacy software. Reveal neither processor word size nor architecture before NCC 1980. See ncc_1979_campaign.json. This day is a selected scenario milestone."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.flexibus",
+            "technology.logix_tui_standard",
+            "software.aurelia_sdk"
+          ],
+          "related_event_refs": [
+            "event.dri_release"
+          ]
+        },
+        {
           "id": "event.cpm_bridge",
-          "title": "CP/M-80 compatibility module developed",
+          "title": "Detailed CP/M-80 compatibility module development begins",
           "event_type": "development",
           "date": {
             "start": "1979-07-01",
@@ -2733,22 +2914,20 @@
                 "actor.logix",
                 "actor.dri"
               ],
-              "description": "Develop a CP/M-80 module to preserve existing Aurelia application use on Artemis."
+              "description": "Begin confidential implementation work following the public June 4 migration commitment and preliminary feasibility work. Public language remains a planned optional Z80 coprocessor for qualified legacy applications; implementation details and future-platform specifications remain undisclosed until NCC 1980. This is not a July shipment."
             }
           ],
           "outcomes": [],
           "agreement_terms": [],
           "metrics": [],
           "product_refs": [
-            "device.artemis_cpm80_module",
-            "computer.artemis",
             "computer.aurelia"
           ],
           "related_event_refs": []
         },
         {
           "id": "event.artemis_software",
-          "title": "Artemis software and development tools prepared",
+          "title": "Confidential next-generation software and tool preparation",
           "event_type": "development",
           "date": {
             "start": "1979-07-01",
@@ -2770,27 +2949,20 @@
                 "actor.aion",
                 "actor.dri"
               ],
-              "description": "Develop AIONix."
+              "description": "Prepare future system software internally; publish no names or architectural details before NCC 1980."
             },
             {
               "actor_refs": [
                 "actor.aion"
               ],
-              "description": "Ports established business applications and creates the native ERA C development environment and a larger Business Tools suite."
+              "description": "Prepare application migration and future C tools internally. Public 1979 clinics use the established C environment and documented interfaces only; no future-target binaries, compiler output or SDK are distributed."
             }
           ],
           "outcomes": [],
           "agreement_terms": [],
           "metrics": [],
-          "product_refs": [
-            "software.aionix",
-            "software.aion_c_ide",
-            "software.business_tools_artemis",
-            "software.bpi_suite"
-          ],
-          "related_event_refs": [
-            "event.aionix_agreement"
-          ]
+          "product_refs": [],
+          "related_event_refs": []
         },
         {
           "id": "event.ibm_investigate",
@@ -2819,6 +2991,50 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": []
+        },
+        {
+          "id": "event.open79_roadshows",
+          "title": "Compatibility roadshows and developer migration clinics",
+          "event_type": "plan",
+          "date": {
+            "start": "1979-07-16",
+            "end": "1979-07-16"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "programme organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Run dealer demonstrations, joint trade-press activity and developer clinics. Teach documented APIs, file interchange, C portability boundaries and device-class drivers. Publish a directory distinguishing shipping, qualified and prototype configurations. This day is a selected scenario milestone."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.flexibus",
+            "technology.logix_tui_standard",
+            "software.aurelia_sdk"
+          ],
+          "related_event_refs": [
+            "event.dri_release"
+          ]
         },
         {
           "id": "event.apple_compatibility_review",
@@ -2949,6 +3165,50 @@
           "related_event_refs": [
             "event.tandy_ncc_demo"
           ]
+        },
+        {
+          "id": "event.open79_delivery",
+          "title": "Promote verified ecosystem deliveries",
+          "event_type": "plan",
+          "date": {
+            "start": "1979-10-15",
+            "end": "1979-10-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "programme organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Promote the separately recorded Tandy customer release and only individually qualified SMC or peripheral products. Update directory evidence; do not imply all licensed chips, every peripheral class or new independent OEM systems are shipping. This day is a selected scenario milestone."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.flexibus",
+            "technology.logix_tui_standard",
+            "software.aurelia_sdk"
+          ],
+          "related_event_refs": [
+            "event.dri_release"
+          ]
         }
       ]
     },
@@ -3041,7 +3301,7 @@
           ],
           "outcomes": [
             {
-              "description": "DRI remains an independent licensor but its funded AIONix and CP/M-80 commitments leave no committed x86 OS on IBM’s required schedule. Paterson’s recruitment removes the historical SCP 86-DOS route; Letwin’s absence reduces Microsoft staffing options. Alternatives remain possible. Supplier selection, substitute OS development and application qualification become the critical path toward early 1982, rather than technical impossibility."
+              "description": "DRI remains an independent licensor but its existing funded development and CP/M-80 commitments leave no committed x86 OS on IBM’s required schedule. Paterson’s recruitment removes the historical SCP 86-DOS route; Letwin’s absence reduces Microsoft staffing options. Alternatives remain possible. Supplier selection, substitute OS development and application qualification become the critical path toward early 1982, rather than technical impossibility."
             }
           ],
           "agreement_terms": [
@@ -3102,9 +3362,96 @@
           "product_refs": [],
           "related_event_refs": [
             "event.ibm_investigate",
-            "event.aionix_agreement",
             "event.paterson",
             "event.letwin"
+          ]
+        },
+        {
+          "id": "event.open79_targets",
+          "title": "Review end-1979 ecosystem adoption targets",
+          "event_type": "plan",
+          "date": {
+            "start": "1979-12-15",
+            "end": "1979-12-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "programme organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Target Tandy shipping, one additional named OEM selling a supported CP/M-extension/FlexiBUS option, another OEM in qualification, dealer/integrator configurations and third-party devices in several categories. These are adoption targets, not recorded achievements or contracted orders. This day is a selected scenario milestone."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.flexibus",
+            "technology.logix_tui_standard",
+            "software.aurelia_sdk"
+          ],
+          "related_event_refs": [
+            "event.dri_release"
+          ]
+        },
+        {
+          "id": "event.open80_results",
+          "title": "Customer evidence and compatibility programme review",
+          "event_type": "plan",
+          "date": {
+            "start": "1980-01-14",
+            "end": "1980-01-14"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme organiser"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "programme organiser"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Publish verified customer examples, compatibility results and partner configurations. Target three to five non-Logix manufacturers with supported configurations by NCC 1980, counting Tandy once and excluding duplicate dealer builds. Do not disclose the new processor architecture early. This day is a selected scenario milestone."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.flexibus",
+            "technology.logix_tui_standard",
+            "software.aurelia_sdk"
+          ],
+          "related_event_refs": [
+            "event.dri_release"
           ]
         },
         {
@@ -3235,6 +3582,12 @@
                 "actor.academy"
               ],
               "description": "Introduces Artemis training."
+            },
+            {
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "description": "At NCC 1980 reveal the processor architecture and word size withheld in the NCC 1979 public campaign. The separately sold Z80 compatibility module is an optional qualified legacy path; native applications require an appropriate target build."
             }
           ],
           "outcomes": [],
@@ -3655,7 +4008,7 @@
     },
     {
       "id": "process.artemis_engineering",
-      "title": "Artemis and ERA1 engineering",
+      "title": "Confidential next-generation engineering",
       "participants": [
         {
           "actor_ref": "actor.logix",
@@ -3675,19 +4028,19 @@
           "actor_refs": [
             "actor.logix"
           ],
-          "description": "Purchases several PDP-11s, develops a processor emulator from an ARM-v1-like blueprint named ERA1, and designs Artemis architecture."
+          "description": "Develop and validate the future platform internally. Architecture and engineering specifications are withheld from all 1979 communications."
         },
         {
           "actor_refs": [
             "actor.labs"
           ],
-          "description": "Uses supplied processor blueprints, designs masks and develops other custom chips."
+          "description": "Perform confidential component development and qualification."
         },
         {
           "actor_refs": [
             "actor.logix"
           ],
-          "description": "Designs and constructs motherboard, BIOS and other computer elements."
+          "description": "Construct and test the future system internally."
         },
         {
           "actor_refs": [
@@ -3695,17 +4048,13 @@
             "actor.labs",
             "actor.aion"
           ],
-          "description": "Jointly design, construct and manufacture Artemis; a major campaign promotes a new era of personal computing."
+          "description": "Coordinate confidential hardware and software development. Any 1979 marketing uses only the approved migration statements; the architecture reveal is reserved for NCC 1980."
         }
       ],
       "outcomes": [],
       "agreement_terms": [],
       "metrics": [],
-      "product_refs": [
-        "computer.artemis",
-        "part.era1",
-        "technology.era1_isa"
-      ],
+      "product_refs": [],
       "related_event_refs": [],
       "period": {
         "start": null,

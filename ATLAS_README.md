@@ -19,7 +19,7 @@ Technical catalog v2.3 adds canonical `platform_editions`. Each software edition
 
 `software.aionix_server` replaces `software.aionix_networked` as a complete AIONix Server edition. It includes the base OS and network services and does not require a prior OS installation. Network bundles supply this edition, while BPI application licensing remains separate. Pulse integration means offline read/edit/write access to versioned Abacus files, not a live shared spreadsheet.
 
-Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility planning and pricing remain deferred. Catalog v2.6 defines physical RAM populations and manufacturing requirements; electrical qualification remains open.
+Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility qualification remains open; pricing and sales now have separate scenario assessments. Catalog v2.6 defines physical RAM populations and manufacturing requirements; electrical qualification remains open.
 
 The original 34 point events have author-confirmed day-level dates; six additional milestones use year/month precision and one event covers the NCC recording/session interval and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Three top-level processes and four nested academic-year subprocesses are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
 
@@ -108,7 +108,7 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 - June 4, 1979 adds S-100 FlexiBUS and Apple II/S-100 video cards using AION launch silicon. Apple software is native; CP/M-6502 remains deferred.
 - AIONix’s existing separate ownership/equity/1982 terms are retained; no replacement allocation was selected.
 - `manufacturing_programs.json` contains separate one-time transfer budget assumptions and SMC purchase-price sensitivity inputs. Rebuild costs before pricing.
-- 62 events, 3 parent processes and 4 subprocesses. Year/month positions in the chart are indicative; labels preserve source precision.
+- 70 events, 3 parent processes and 4 subprocesses. Year/month positions in the chart are indicative; labels preserve source precision.
 
 
 ## Aurelia 1978 marketing and Academy
@@ -123,7 +123,10 @@ Every page now includes Retail pricing and Sales 1978 in its shared top navigati
 
 ## Tandy, Apple and IBM reaction revision
 
-[COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.json` distinguish historical release windows from scenario milestones. The timeline has 62 events. Tandy external platform/CP/M/FlexiBUS and Abacus edition records appear on the Abacus page without invented OEM prices or Logix manufacturing costs. IBM delay is a software critical-path scenario; AIONix preliminary work begins before Aurelia launch. Sales incorporate named incremental effects, not retroactive Tandy shipments or an early IBM windfall. Run `python tests/validate_reactions.py` after costs, pricing and sales regeneration.
+[COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.json` distinguish historical release windows from scenario milestones. The timeline has 70 events. Tandy external platform/CP/M/FlexiBUS and Abacus edition records appear on the Abacus page without invented OEM prices or Logix manufacturing costs. IBM delay is a software critical-path scenario; AIONix preliminary work begins before Aurelia launch. Sales incorporate named incremental effects, not retroactive Tandy shipments or an early IBM windfall. Run `python tests/validate_reactions.py` after costs, pricing and sales regeneration.
 
 
 BPI is an independent partner in the Partners lane. See BPI_PARTNER_STRATEGY.md; run tests/validate_bpi.py for presentation order, ownership, dealer baskets, separate receipts and capacity gates.
+
+
+The accepted NCC 1979 50-minute campaign and migration disclosure boundary are in NCC_1979_CAMPAIGN.md and ncc_1979_campaign.json. The timeline has 70 events. Run tests/validate_ncc79.py. CONSISTENCY_REVIEW_1979.md separates corrected conflicts from open engineering/commercial decisions.

@@ -124,7 +124,7 @@ assert phase_by_event['event.aionix_agreement']=='phase.ncc78'
 assert all(target in {p['id'] for p in phases} for target in site['timeline_view']['phase_aliases'].values())
 print('Validated eight consecutive phases, confirmed-date placement, processes and legacy phase aliases.')
 
-assert len(events)==62
+assert len(events)==70
 assert 'event.basic_develop' not in event_ids
 processes=[p for parent in story['processes'] for p in [parent]+parent.get('subprocesses',[])];process_ids={p['id'] for p in processes}
 assert len(process_ids)==len(processes)==7
@@ -146,7 +146,7 @@ for id in ['computer.aurelia_plus','software.pulse_1','software.abacus_2']:
  assert records[id]['introduced']['event_start_date']=='1979-12-03'
 assert '1979-11' not in json.dumps(tech)
 assert all(target in process_ids|event_ids|{p['id'] for p in story['assumptions']['principles']}|{p['id'] for p in phases} for target in site['timeline_view']['item_aliases'].values())
-print('Validated 62 events (55 exact-day, 6 partial-date milestones, 1 conference interval), 3 parent processes and 4 subprocesses and synchronized catalog availability.')
+print('Validated 70 events (63 exact-day, 6 partial-date milestones, 1 conference interval), 3 parent processes and 4 subprocesses and synchronized catalog availability.')
 
 # Each top-level process has one lane; nested processes inherit their parent lane.
 assigned_processes=[x for lane in lanes for x in lane.get('process_refs',[])]
