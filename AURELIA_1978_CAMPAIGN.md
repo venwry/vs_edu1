@@ -42,7 +42,7 @@ The existing **March 25 establishment** is retained. The **June 5 public announc
 - Credit is valid six months and redeemable at Academy centres or participating authorised dealers; Logix reimburses the dealers.
 - There is no purchase obligation. Participants can order and pay during training; collection depends on stock.
 - The existing $150 vouchers for the other before-you-buy courses remain unchanged. No stacking or automatic extension of the 50% rule to longer courses is implied.
-- The pricing model calculates the Fundamentals credit from each proposed tuition, not a fixed dollar amount. Proposed tuition is not an approved advertised price.
+- The pricing model calculates the Fundamentals credit from each proposed tuition, not a fixed dollar amount. Following the proportional profit reduction, 1978 proposed Fundamentals tuition is $138.38 and credit is $69.19; these remain proposals. Proposed tuition is not an approved advertised price.
 
 ## Professional filming and free television material
 

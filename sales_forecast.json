@@ -1,0 +1,544 @@
+{
+  "metadata": {
+    "title": "Sales 1978",
+    "status": "Alternative-history planning forecast; not actual sales, firm orders or statistically calibrated probabilities.",
+    "geography": "United States",
+    "currency": "Nominal USD, before sales tax",
+    "calendar_period": "1978-01-01 to 1978-12-31; no pre-launch Aurelia sales, June–December shown",
+    "launch_year_period": "1978-06-05 to 1979-05-31; rounded planning proxy for sales by June 4 NCC 1979; June 1–3 omitted",
+    "source_pricing_sha256": "d603f797306c9822fd5a3c56dca7f58cd388742bb6b47aa11eb8df5edea83f4e",
+    "generated_by": "tools/build_sales.py"
+  },
+  "pricing_comparison": {
+    "references": [
+      "bundle.proposed_aurelia_office",
+      "device.flexidisk",
+      "device.flexiprint40"
+    ],
+    "previous_complete_package_usd": 3057,
+    "revised_complete_package_usd": 2462.71,
+    "reduction_pct": 19.44,
+    "previous_disk_office_usd": 2598,
+    "revised_disk_office_usd": 2070.78,
+    "baseline_launch_year_units": 22000
+  },
+  "assumptions": {
+    "demand": "22,000 baseline launch-year sales × (revised complete-package price / old price)^(-elasticity), rounded to 1,000 and capped at the scenario delivery capacity. Elasticities are judgement assumptions, not historical measurements.",
+    "monthly_ramp": "Monthly weights are a production/distribution planning allocation, not measured seasonality. Prices held at June 1978 snapshot through May 1979; no use of June 1979 prices before NCC.",
+    "market_denominator": "180,000 US calendar-1978 purchases without Logix and 250,000 launch-year purchases without Logix are modelling assumptions, not sourced historical counts. Different periods must not be mixed. New/accelerated purchases plus competitor halo expand the denominator; diverted purchases do not.",
+    "mix": "80% Office grayscale bundle; 20% colour system plus separately purchased Business Tools and Abacus. One disk per computer, 70% printer attachment. All sales use baseline 25% dealer fee; no extra direct-sales margin is assumed.",
+    "accounting": "Customer retail spend is not manufacturer revenue. Supplier revenue combines Logix/AION offering receipts after channel fees; legal-entity allocation is not modelled. Contribution excludes campaign, Academy setup, credits, R&D, capital, finance and tax. Academy tuition revenue is excluded.",
+    "production": "Central case needs about 5,200 monthly customer deliveries by May 1979 plus demonstration/service/inventory stock. Existing manufacturing costs assume 10,000 annual units per hardware family and are held unchanged, not treated as proof of capacity or automatic scale savings.",
+    "marketing": "Assumes qualified launch software, effective dealer demonstrations and campaign delivery. Free TV packages do not imply guaranteed airtime. Competitor reaction is absorbed in scenarios rather than separately quantified.",
+    "uncertainty": "Central estimate is a planning case. Demand response, manufacturing yield, disk/printer supply, channel reach and service quality dominate uncertainty."
+  },
+  "average_sale": {
+    "components": [
+      {
+        "product_ref": "bundle.proposed_aurelia_office",
+        "quantity_per_computer": 0.8
+      },
+      {
+        "product_ref": "bundle.aurelia_color",
+        "quantity_per_computer": 0.2
+      },
+      {
+        "product_ref": "software.business_tools_aurelia",
+        "quantity_per_computer": 0.2
+      },
+      {
+        "product_ref": "software.abacus_1",
+        "quantity_per_computer": 0.2
+      },
+      {
+        "product_ref": "device.flexidisk",
+        "quantity_per_computer": 1
+      },
+      {
+        "product_ref": "device.flexiprint40",
+        "quantity_per_computer": 0.7
+      }
+    ],
+    "retail_price_usd": 2395.48,
+    "manufacturing_cost_usd": 1133.52,
+    "computerland_fee_usd": 598.87,
+    "revenue_after_fee_usd": 1796.61,
+    "unit_profit_usd": 663.09
+  },
+  "scenarios": [
+    {
+      "id": "conservative",
+      "title": "Conservative",
+      "elasticity_assumption": 0.8,
+      "unconstrained_demand_units": 26153,
+      "delivery_capacity_units": 26000,
+      "months": [
+        {
+          "month": "1978-06",
+          "units": 433,
+          "cumulative_units": 433,
+          "customer_retail_spend_usd": 1037242.84,
+          "supplier_revenue_after_channel_usd": 777932.13,
+          "recurring_cost_usd": 490814.16,
+          "unit_contribution_total_usd": 287117.97
+        },
+        {
+          "month": "1978-07",
+          "units": 693,
+          "cumulative_units": 1126,
+          "customer_retail_spend_usd": 1660067.64,
+          "supplier_revenue_after_channel_usd": 1245050.73,
+          "recurring_cost_usd": 785529.36,
+          "unit_contribution_total_usd": 459521.37
+        },
+        {
+          "month": "1978-08",
+          "units": 953,
+          "cumulative_units": 2079,
+          "customer_retail_spend_usd": 2282892.44,
+          "supplier_revenue_after_channel_usd": 1712169.33,
+          "recurring_cost_usd": 1080244.56,
+          "unit_contribution_total_usd": 631924.77
+        },
+        {
+          "month": "1978-09",
+          "units": 1300,
+          "cumulative_units": 3379,
+          "customer_retail_spend_usd": 3114124.0,
+          "supplier_revenue_after_channel_usd": 2335593.0,
+          "recurring_cost_usd": 1473576.0,
+          "unit_contribution_total_usd": 862017.0
+        },
+        {
+          "month": "1978-10",
+          "units": 1647,
+          "cumulative_units": 5026,
+          "customer_retail_spend_usd": 3945355.56,
+          "supplier_revenue_after_channel_usd": 2959016.67,
+          "recurring_cost_usd": 1866907.44,
+          "unit_contribution_total_usd": 1092109.23
+        },
+        {
+          "month": "1978-11",
+          "units": 1907,
+          "cumulative_units": 6933,
+          "customer_retail_spend_usd": 4568180.36,
+          "supplier_revenue_after_channel_usd": 3426135.27,
+          "recurring_cost_usd": 2161622.64,
+          "unit_contribution_total_usd": 1264512.63
+        },
+        {
+          "month": "1978-12",
+          "units": 2253,
+          "cumulative_units": 9186,
+          "customer_retail_spend_usd": 5397016.44,
+          "supplier_revenue_after_channel_usd": 4047762.33,
+          "recurring_cost_usd": 2553820.56,
+          "unit_contribution_total_usd": 1493941.77
+        },
+        {
+          "month": "1979-01",
+          "units": 2600,
+          "cumulative_units": 11786,
+          "customer_retail_spend_usd": 6228248.0,
+          "supplier_revenue_after_channel_usd": 4671186.0,
+          "recurring_cost_usd": 2947152.0,
+          "unit_contribution_total_usd": 1724034.0
+        },
+        {
+          "month": "1979-02",
+          "units": 2860,
+          "cumulative_units": 14646,
+          "customer_retail_spend_usd": 6851072.8,
+          "supplier_revenue_after_channel_usd": 5138304.6,
+          "recurring_cost_usd": 3241867.2,
+          "unit_contribution_total_usd": 1896437.4
+        },
+        {
+          "month": "1979-03",
+          "units": 3207,
+          "cumulative_units": 17853,
+          "customer_retail_spend_usd": 7682304.36,
+          "supplier_revenue_after_channel_usd": 5761728.27,
+          "recurring_cost_usd": 3635198.64,
+          "unit_contribution_total_usd": 2126529.63
+        },
+        {
+          "month": "1979-04",
+          "units": 3640,
+          "cumulative_units": 21493,
+          "customer_retail_spend_usd": 8719547.2,
+          "supplier_revenue_after_channel_usd": 6539660.4,
+          "recurring_cost_usd": 4126012.8,
+          "unit_contribution_total_usd": 2413647.6
+        },
+        {
+          "month": "1979-05",
+          "units": 4507,
+          "cumulative_units": 26000,
+          "customer_retail_spend_usd": 10796428.36,
+          "supplier_revenue_after_channel_usd": 8097321.27,
+          "recurring_cost_usd": 5108774.64,
+          "unit_contribution_total_usd": 2988546.63
+        }
+      ],
+      "calendar_1978": {
+        "units": 9186,
+        "customer_retail_spend_usd": 22004879.28,
+        "supplier_revenue_after_channel_usd": 16503659.46,
+        "recurring_cost_usd": 10412514.72,
+        "unit_contribution_total_usd": 6091144.74,
+        "baseline_market_units": 180000,
+        "new_or_accelerated_logix_purchases": 4593,
+        "diverted_purchases": 4593,
+        "halo_competitor_purchases": 600,
+        "expanded_market_units": 185193,
+        "market_expansion_pct": 2.89,
+        "unit_market_share_pct": 4.96
+      },
+      "launch_year": {
+        "units": 26000,
+        "customer_retail_spend_usd": 62282480.0,
+        "supplier_revenue_after_channel_usd": 46711860.0,
+        "recurring_cost_usd": 29471520.0,
+        "unit_contribution_total_usd": 17240340.0,
+        "baseline_market_units": 250000,
+        "new_or_accelerated_logix_purchases": 13000,
+        "diverted_purchases": 13000,
+        "halo_competitor_purchases": 2000,
+        "expanded_market_units": 265000,
+        "market_expansion_pct": 6.0,
+        "unit_market_share_pct": 9.81
+      }
+    },
+    {
+      "id": "central",
+      "title": "Central",
+      "elasticity_assumption": 1.5,
+      "unconstrained_demand_units": 30426,
+      "delivery_capacity_units": 30000,
+      "months": [
+        {
+          "month": "1978-06",
+          "units": 500,
+          "cumulative_units": 500,
+          "customer_retail_spend_usd": 1197740.0,
+          "supplier_revenue_after_channel_usd": 898305.0,
+          "recurring_cost_usd": 566760.0,
+          "unit_contribution_total_usd": 331545.0
+        },
+        {
+          "month": "1978-07",
+          "units": 800,
+          "cumulative_units": 1300,
+          "customer_retail_spend_usd": 1916384.0,
+          "supplier_revenue_after_channel_usd": 1437288.0,
+          "recurring_cost_usd": 906816.0,
+          "unit_contribution_total_usd": 530472.0
+        },
+        {
+          "month": "1978-08",
+          "units": 1100,
+          "cumulative_units": 2400,
+          "customer_retail_spend_usd": 2635028.0,
+          "supplier_revenue_after_channel_usd": 1976271.0,
+          "recurring_cost_usd": 1246872.0,
+          "unit_contribution_total_usd": 729399.0
+        },
+        {
+          "month": "1978-09",
+          "units": 1500,
+          "cumulative_units": 3900,
+          "customer_retail_spend_usd": 3593220.0,
+          "supplier_revenue_after_channel_usd": 2694915.0,
+          "recurring_cost_usd": 1700280.0,
+          "unit_contribution_total_usd": 994635.0
+        },
+        {
+          "month": "1978-10",
+          "units": 1900,
+          "cumulative_units": 5800,
+          "customer_retail_spend_usd": 4551412.0,
+          "supplier_revenue_after_channel_usd": 3413559.0,
+          "recurring_cost_usd": 2153688.0,
+          "unit_contribution_total_usd": 1259871.0
+        },
+        {
+          "month": "1978-11",
+          "units": 2200,
+          "cumulative_units": 8000,
+          "customer_retail_spend_usd": 5270056.0,
+          "supplier_revenue_after_channel_usd": 3952542.0,
+          "recurring_cost_usd": 2493744.0,
+          "unit_contribution_total_usd": 1458798.0
+        },
+        {
+          "month": "1978-12",
+          "units": 2600,
+          "cumulative_units": 10600,
+          "customer_retail_spend_usd": 6228248.0,
+          "supplier_revenue_after_channel_usd": 4671186.0,
+          "recurring_cost_usd": 2947152.0,
+          "unit_contribution_total_usd": 1724034.0
+        },
+        {
+          "month": "1979-01",
+          "units": 3000,
+          "cumulative_units": 13600,
+          "customer_retail_spend_usd": 7186440.0,
+          "supplier_revenue_after_channel_usd": 5389830.0,
+          "recurring_cost_usd": 3400560.0,
+          "unit_contribution_total_usd": 1989270.0
+        },
+        {
+          "month": "1979-02",
+          "units": 3300,
+          "cumulative_units": 16900,
+          "customer_retail_spend_usd": 7905084.0,
+          "supplier_revenue_after_channel_usd": 5928813.0,
+          "recurring_cost_usd": 3740616.0,
+          "unit_contribution_total_usd": 2188197.0
+        },
+        {
+          "month": "1979-03",
+          "units": 3700,
+          "cumulative_units": 20600,
+          "customer_retail_spend_usd": 8863276.0,
+          "supplier_revenue_after_channel_usd": 6647457.0,
+          "recurring_cost_usd": 4194024.0,
+          "unit_contribution_total_usd": 2453433.0
+        },
+        {
+          "month": "1979-04",
+          "units": 4200,
+          "cumulative_units": 24800,
+          "customer_retail_spend_usd": 10061016.0,
+          "supplier_revenue_after_channel_usd": 7545762.0,
+          "recurring_cost_usd": 4760784.0,
+          "unit_contribution_total_usd": 2784978.0
+        },
+        {
+          "month": "1979-05",
+          "units": 5200,
+          "cumulative_units": 30000,
+          "customer_retail_spend_usd": 12456496.0,
+          "supplier_revenue_after_channel_usd": 9342372.0,
+          "recurring_cost_usd": 5894304.0,
+          "unit_contribution_total_usd": 3448068.0
+        }
+      ],
+      "calendar_1978": {
+        "units": 10600,
+        "customer_retail_spend_usd": 25392088.0,
+        "supplier_revenue_after_channel_usd": 19044066.0,
+        "recurring_cost_usd": 12015312.0,
+        "unit_contribution_total_usd": 7028754.0,
+        "baseline_market_units": 180000,
+        "new_or_accelerated_logix_purchases": 6360,
+        "diverted_purchases": 4240,
+        "halo_competitor_purchases": 1000,
+        "expanded_market_units": 187360,
+        "market_expansion_pct": 4.09,
+        "unit_market_share_pct": 5.66
+      },
+      "launch_year": {
+        "units": 30000,
+        "customer_retail_spend_usd": 71864400.0,
+        "supplier_revenue_after_channel_usd": 53898300.0,
+        "recurring_cost_usd": 34005600.0,
+        "unit_contribution_total_usd": 19892700.0,
+        "baseline_market_units": 250000,
+        "new_or_accelerated_logix_purchases": 18000,
+        "diverted_purchases": 12000,
+        "halo_competitor_purchases": 4000,
+        "expanded_market_units": 272000,
+        "market_expansion_pct": 8.8,
+        "unit_market_share_pct": 11.03
+      }
+    },
+    {
+      "id": "strong",
+      "title": "Strong",
+      "elasticity_assumption": 2,
+      "unconstrained_demand_units": 33899,
+      "delivery_capacity_units": 34000,
+      "months": [
+        {
+          "month": "1978-06",
+          "units": 567,
+          "cumulative_units": 567,
+          "customer_retail_spend_usd": 1358237.16,
+          "supplier_revenue_after_channel_usd": 1018677.87,
+          "recurring_cost_usd": 642705.84,
+          "unit_contribution_total_usd": 375972.03
+        },
+        {
+          "month": "1978-07",
+          "units": 907,
+          "cumulative_units": 1474,
+          "customer_retail_spend_usd": 2172700.36,
+          "supplier_revenue_after_channel_usd": 1629525.27,
+          "recurring_cost_usd": 1028102.64,
+          "unit_contribution_total_usd": 601422.63
+        },
+        {
+          "month": "1978-08",
+          "units": 1247,
+          "cumulative_units": 2721,
+          "customer_retail_spend_usd": 2987163.56,
+          "supplier_revenue_after_channel_usd": 2240372.67,
+          "recurring_cost_usd": 1413499.44,
+          "unit_contribution_total_usd": 826873.23
+        },
+        {
+          "month": "1978-09",
+          "units": 1700,
+          "cumulative_units": 4421,
+          "customer_retail_spend_usd": 4072316.0,
+          "supplier_revenue_after_channel_usd": 3054237.0,
+          "recurring_cost_usd": 1926984.0,
+          "unit_contribution_total_usd": 1127253.0
+        },
+        {
+          "month": "1978-10",
+          "units": 2153,
+          "cumulative_units": 6574,
+          "customer_retail_spend_usd": 5157468.44,
+          "supplier_revenue_after_channel_usd": 3868101.33,
+          "recurring_cost_usd": 2440468.56,
+          "unit_contribution_total_usd": 1427632.77
+        },
+        {
+          "month": "1978-11",
+          "units": 2493,
+          "cumulative_units": 9067,
+          "customer_retail_spend_usd": 5971931.64,
+          "supplier_revenue_after_channel_usd": 4478948.73,
+          "recurring_cost_usd": 2825865.36,
+          "unit_contribution_total_usd": 1653083.37
+        },
+        {
+          "month": "1978-12",
+          "units": 2947,
+          "cumulative_units": 12014,
+          "customer_retail_spend_usd": 7059479.56,
+          "supplier_revenue_after_channel_usd": 5294609.67,
+          "recurring_cost_usd": 3340483.44,
+          "unit_contribution_total_usd": 1954126.23
+        },
+        {
+          "month": "1979-01",
+          "units": 3400,
+          "cumulative_units": 15414,
+          "customer_retail_spend_usd": 8144632.0,
+          "supplier_revenue_after_channel_usd": 6108474.0,
+          "recurring_cost_usd": 3853968.0,
+          "unit_contribution_total_usd": 2254506.0
+        },
+        {
+          "month": "1979-02",
+          "units": 3740,
+          "cumulative_units": 19154,
+          "customer_retail_spend_usd": 8959095.2,
+          "supplier_revenue_after_channel_usd": 6719321.4,
+          "recurring_cost_usd": 4239364.8,
+          "unit_contribution_total_usd": 2479956.6
+        },
+        {
+          "month": "1979-03",
+          "units": 4193,
+          "cumulative_units": 23347,
+          "customer_retail_spend_usd": 10044247.64,
+          "supplier_revenue_after_channel_usd": 7533185.73,
+          "recurring_cost_usd": 4752849.36,
+          "unit_contribution_total_usd": 2780336.37
+        },
+        {
+          "month": "1979-04",
+          "units": 4760,
+          "cumulative_units": 28107,
+          "customer_retail_spend_usd": 11402484.8,
+          "supplier_revenue_after_channel_usd": 8551863.6,
+          "recurring_cost_usd": 5395555.2,
+          "unit_contribution_total_usd": 3156308.4
+        },
+        {
+          "month": "1979-05",
+          "units": 5893,
+          "cumulative_units": 34000,
+          "customer_retail_spend_usd": 14116563.64,
+          "supplier_revenue_after_channel_usd": 10587422.73,
+          "recurring_cost_usd": 6679833.36,
+          "unit_contribution_total_usd": 3907589.37
+        }
+      ],
+      "calendar_1978": {
+        "units": 12014,
+        "customer_retail_spend_usd": 28779296.72,
+        "supplier_revenue_after_channel_usd": 21584472.54,
+        "recurring_cost_usd": 13618109.28,
+        "unit_contribution_total_usd": 7966363.26,
+        "baseline_market_units": 180000,
+        "new_or_accelerated_logix_purchases": 7809,
+        "diverted_purchases": 4205,
+        "halo_competitor_purchases": 1500,
+        "expanded_market_units": 189309,
+        "market_expansion_pct": 5.17,
+        "unit_market_share_pct": 6.35
+      },
+      "launch_year": {
+        "units": 34000,
+        "customer_retail_spend_usd": 81446320.0,
+        "supplier_revenue_after_channel_usd": 61084740.0,
+        "recurring_cost_usd": 38539680.0,
+        "unit_contribution_total_usd": 22545060.0,
+        "baseline_market_units": 250000,
+        "new_or_accelerated_logix_purchases": 22100,
+        "diverted_purchases": 11900,
+        "halo_competitor_purchases": 6000,
+        "expanded_market_units": 278100,
+        "market_expansion_pct": 11.24,
+        "unit_market_share_pct": 12.23
+      }
+    }
+  ],
+  "academy": {
+    "launch_centres": 5,
+    "end_1978_centres_range": [
+      8,
+      10
+    ],
+    "ncc1979_centres_range": [
+      14,
+      18
+    ],
+    "ncc1979_rooms_range": [
+      40,
+      45
+    ],
+    "ncc1979_instructors_range": [
+      50,
+      56
+    ],
+    "first_year_course_enrolments_range": [
+      10000,
+      13000
+    ],
+    "first_year_fundamentals_tuition_usd": 138.38,
+    "fundamentals_credit_usd": 69.19,
+    "gates": "Expand after sustained 70–75% classroom occupancy or two-week waiting lists; use dealer-hosted/visiting classes before a permanent lease. Enrolments include repeat students, not additional computer sales. Target assumes eight learners per room and advance instructor recruitment.",
+    "status": "Recommended central-scenario capacity roadmap, not approved city selections or actual openings."
+  },
+  "context_sources": [
+    {
+      "title": "Contemporary BYTE report of Dataquest 1978 market estimates",
+      "url": "https://vintageapple.org/byte/pdf/197905_Byte_Magazine_Vol_04-05_Computer_Generated_Maps.pdf",
+      "use": "Historical scale context only; not the numerical US denominators above."
+    },
+    {
+      "title": "Dan Bricklin: VisiCalc release history",
+      "url": "https://www.bricklin.com/history/saiproduct1_m.htm",
+      "use": "October 1979 release context for the earlier Abacus business proposition; not demand-elasticity evidence."
+    }
+  ]
+}

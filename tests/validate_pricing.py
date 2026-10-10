@@ -16,7 +16,9 @@ for x in rows.values():
   assert abs(s['revenue_after_fee_usd']-(price-s['computerland_fee_usd']))<.011
   assert abs(s['unit_profit_usd']-(s['revenue_after_fee_usd']-cost))<.011
   assert price+0.01>=s['price_floor_usd']
-  assert s['stress']['profit_usd']>=0
+  assert abs(s['stress']['profit_usd']-round(price*.9*(1-s['stress']['fee_rate'])-cost*1.2,2))<.011
+  assert abs(s['unit_profit_usd']-.6*s['pre_reduction']['unit_profit_usd'])<.011
+  assert abs(price-(cost+.6*s['pre_reduction']['unit_profit_usd'])/(1-fee))<.011
   assert abs(sum(v['extended_cost_usd'] for v in s['cost_components'])-cost)<.011
   assert abs(sum(s['cost_breakdown_usd'].values())-cost)<.08
   for part in s['cost_components']:

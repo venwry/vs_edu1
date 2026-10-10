@@ -114,3 +114,8 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 ## Aurelia 1978 marketing and Academy
 
 [AURELIA_1978_CAMPAIGN.md](AURELIA_1978_CAMPAIGN.md) and `aurelia_1978_campaign.json` define the accepted campaign, premiere, five-city Academy announcement and free professional television material. Timeline events appear in the Logix lane; the Academy catalog records the 50% Fundamentals credit. Run `python tests/validate_campaign.py` after regenerating costs and pricing.
+
+
+## Revised retail contribution and Sales 1978
+
+Every page now includes Retail pricing and Sales 1978 in its shared top navigation. `pricing_baseline.json` preserves the pre-reduction snapshots; current retail prices retain 60% of prior dollar contribution at unchanged costs/fees. Rebuild pricing, then `python tools/build_sales.py`. `sales.html` shows forecast monthly 1978 sell-through and explicitly separate launch-year projections, with scenario selection, market assumptions and the Academy roadmap. See [SALES_FORECAST.md](SALES_FORECAST.md). Run `python tests/validate_sales.py` and `node tests/sales.test.cjs` in addition to existing checks.
