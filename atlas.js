@@ -29,7 +29,7 @@ function selectEvent(id,scroll=false){const target=document.getElementById(id);i
  if(scroll){document.querySelector('.event-inspection').scrollTop=0;target.querySelector('summary').focus({preventScroll:true});}
 }
 function calendarPoint(value){const m=/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/.exec(value||'');if(!m)return null;const year=Number(m[1]),start=Date.UTC(year,0,1),end=Date.UTC(year+1,0,1);return year+(Date.UTC(year,Number(m[2]||1)-1,Number(m[3]||1))-start)/(end-start);}
-function eventCalendarPoint(e,p){return calendarPoint(e.date.start)??calendarPoint(p.period.start);}
+function eventCalendarPoint(e,p){const value=e.date.start;if(/^\d{4}$/.test(value))return calendarPoint(value+'-07-01');if(/^\d{4}-\d{2}$/.test(value))return calendarPoint(value+'-15');return calendarPoint(value)??calendarPoint(p.period.start);}
 function phaseProcesses(id){return (story.processes||[]).filter(p=>p.phase_refs.includes(id));}
 function processDetails(p,withId=false){return `<details class="process-detail"${withId?` id="${esc(p.id)}"`:''} data-process="${esc(p.id)}"><summary>${esc(p.title)}</summary><p class="status">Process · ${esc(date(p.period))}</p><p>${p.participants.map(x=>refLink(x.actor_ref)+' — '+esc(human(x.role))).join('; ')}</p>${render(p.actions)}${p.outcomes.length?'<h4>Outcomes</h4>'+render(p.outcomes):''}${p.metrics.length?'<h4>Measures</h4>'+render(p.metrics):''}${p.agreement_terms.length?'<h4>Agreements</h4>'+render(p.agreement_terms):''}${p.product_refs.length?'<div class="related">'+p.product_refs.map(refLink).join(' · ')+'</div>':''}${p.related_event_refs.length?'<p>Related events: '+p.related_event_refs.map(id=>eventLink(story.phases.flatMap(p=>p.events).find(e=>e.id===id))).join(' · ')+'</p>':''}${(p.subprocesses||[]).map(c=>processDetails(c)).join('')}</details>`;}
 function selectPhase(id){const p=story.phases.find(p=>p.id===id);if(!p)return;
@@ -179,3 +179,4 @@ function recovery(message){observer?.disconnect();app.innerHTML=`<section class=
 async function load(){app.innerHTML='<section class="boot" role="status">Loading…</section>';try{if(location.protocol==='file:'){const saved=sessionStorage.getItem('logix-atlas-catalogs');if(saved){start(...JSON.parse(saved));return;}recovery('Choose the three accompanying JSON catalogs for offline use.');return;}const data=await Promise.all(['logix_aion_technical_catalog_v2.json','logix_aion_story.json','site_pages.json'].map(async path=>{const response=await fetch('./'+path,{cache:'no-store'});if(!response.ok)throw Error('Unable to load '+path+' (HTTP '+response.status+').');return response.json();}));start(...data);}catch(e){recovery(e.message);}}
 load();
 })();
+

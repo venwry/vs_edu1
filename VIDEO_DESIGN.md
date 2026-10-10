@@ -26,3 +26,11 @@ Manufacturing estimates assume laser-written masks and an average 1978 AION wafe
 The conversation's illustrative nine-chip cost allowance is $65 stabilized or $130 during ramp in nominal 1978 USD, excluding development, exceptional startup costs, secret-facility costs and board/monitor electronics. This is not a supplier quote or a released BOM unit cost. BOM prices remain null and full cost rollups remain blocked pending qualification and routing data.
 
 Run `python tests/validate_video.py` alongside the catalog/BOM validators and existing DOM tests. Resource arithmetic does not establish silicon timing or production yield.
+
+
+
+## NCC 1979 third-party-host video cards
+
+Apple II and S-100 video cards reuse the Aurelia-family controller, eight 16Kx1 random-plus-serial VRAMs and the Logix digital video interface. Each carries 16 KiB onboard display memory; this is not host general-purpose RAM. Host bus adapters, window/addressed VRAM access, software and electrical qualification are card-specific. Mode availability requires a compatible monitor; 80 columns requires the 640-pixel raster. Native Apple applications must use the card library or an explicit adaptation; existing display writes are not transparently redirected. These cards add no CP/M execution capability.
+
+AION supplies June 1979 silicon; SMC transfer starts July 1978 and qualified independent chips become available from October 1979, subject to individual release. Process-compatible masks, test structures, process know-how and engineering assistance are transferred; arbitrary AION masks are not assumed drop-in compatible with SMC equipment.

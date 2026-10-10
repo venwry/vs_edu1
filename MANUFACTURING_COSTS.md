@@ -70,3 +70,15 @@ node tests/atlas.test.cjs
 ```
 
 The generator owns price and process assumptions; adjust it and regenerate JSON for alternative scenarios. Tests check offering coverage, endpoints, arithmetic, one-count NIC/OS inclusion, correct RAM population, filters and detailed views. Original engineering BOM files are read-only inputs. The page is integrated into the shared Atlas navigation and loads its cost data separately.
+
+
+
+## NCC 1979 cards and independent SMC sourcing
+
+Three new cards have explicit engineering assemblies: S-100 FlexiBUS, Apple II video, and S-100 video. Each video card counts one Aurelia video controller and eight 16Kx1 VRAMs (16 KiB). The two-port Apple/S-100 FlexiBUS interfaces use two host dies as an explicit cost assumption pending final ports-per-die design. Controller silicon is split from transceivers to prevent hidden/double-counted fabrication cost.
+
+The June 1979 snapshot uses AION-produced chips. SMC’s initial commercial sales start in October 1979, with per-part qualification gates. Base annual unit costs retain AION fabrication; conditional 1980/1981 card alternatives replace those chip costs with purchased SMC components. The illustrative price proxy is 1.6 times modeled internal recurring chip cost plus $0.25 inbound freight; 1.2–2.4 times is a sensitivity range, not a quote. Vendor margin/capital recovery and any embedded royalty are included, not charged again. No supplier-switch or cost-saving claim follows from licensing.
+
+`manufacturing_programs.json` separately budgets process/layout support, SMC-compatible ready-to-use masks/revisions, pilot wafers, qualification/test engineering and training. Its $175,000–$610,000 range ($330,000 central) is a planning allowance in nominal 1978–1979 USD, not an agreed payment. New fab equipment and major process-capacity expansion are excluded. Mask delivery helps but does not establish DRAM retention, sensing or production yields. None of this NRE is silently amortized into product rows.
+
+Adam’s $250,000 DRI founder commitment is equity financing, not an expense per CP/M copy. Existing provisional OEM royalty allowances remain because DRI is a separately owned licensor.

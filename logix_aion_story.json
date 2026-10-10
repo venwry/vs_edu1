@@ -69,7 +69,7 @@
         "aliases": [
           "DRI"
         ],
-        "description": "Operating-system development partner."
+        "description": "Independent CP/M company jointly founded by Gary, Dorothy and Adam in late 1974; broadly licenses OEMs and separately cooperates on AIONix."
       },
       {
         "id": "actor.microsoft",
@@ -155,6 +155,20 @@
         "type": "market",
         "aliases": [],
         "description": "Market whose size changes in the alternative scenario."
+      },
+      {
+        "id": "actor.dorothy",
+        "name": "Dorothy McEwen",
+        "type": "person",
+        "aliases": [],
+        "description": "DRI cofounder and operating principal."
+      },
+      {
+        "id": "actor.smc",
+        "name": "Standard Microsystems Corporation",
+        "type": "company",
+        "aliases": [],
+        "description": "Independent licensed second-source manufacturer and seller of the selected AION peripheral/display chipset."
       }
     ],
     "principles": [
@@ -330,10 +344,22 @@
           "product_refs": [],
           "related_event_refs": []
         }
+      },
+      {
+        "id": "assumption.open_ecosystem",
+        "title": "Open platform and independent suppliers",
+        "description": "Logix alone develops the Apple II and S-100 expansion cards; these demonstrate Adam’s ecosystem intentions and are not DRI obligations. Apple cards expose FlexiBUS and video to native Apple software. CP/M-6502 is deferred, with no product, schedule or cost commitment. Published interfaces and affordable developer access permit competing software, cards, peripherals and monitors. AION retains Abacus, C tools, Business Tools, AIONix and the existing Pulse offering; DRI licenses CP/M independently. BPI independence around 1985 remains a strategic target requiring a later ownership/governance transaction, not a completed buyout.",
+        "actor_refs": [
+          "actor.adam",
+          "actor.logix",
+          "actor.aion",
+          "actor.dri",
+          "actor.bpi"
+        ]
       }
     ],
     "conventions": {
-      "dates": "Point-event dates are author-confirmed exact days. Process periods preserve their existing precision; an unspecified process duration is not replaced with a phase boundary.",
+      "dates": "Previously confirmed events retain exact days. New 1974 DRI founding retains year precision (late-year qualifier in its title); SMC agreement and initial sales retain month precision. Equal start/end partial dates identify one milestone within that period, not a whole-period process. Never infer a confirmed day from plotting geometry.",
       "plans": "Targets, offers and future rights are distinguished from completed actions.",
       "naming": "Stable actor/product identifiers; aliases retain spelling variants.",
       "event_structure": "Events use date, participants, actions, outcomes, agreement_terms, metrics, product_refs and related_event_refs. Processes use period and phase_refs instead of event_type/date; phase_refs identify narrative context, not asserted start/end dates.",
@@ -546,6 +572,118 @@
           ],
           "product_refs": [],
           "related_event_refs": []
+        },
+        {
+          "id": "event.dri_founding",
+          "title": "Joint DRI founding and funding (late 1974)",
+          "event_type": "organization",
+          "date": {
+            "start": "1974",
+            "end": "1974"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.kildall",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.dorothy",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.kildall",
+                "actor.dorothy",
+                "actor.dri"
+              ],
+              "description": "Formalize and finance DRI before Logix exists. Gary leads CP/M engineering, Dorothy operations, and Adam capital, product strategy and OEM relationships. Begin earlier hardware abstraction and stable documented interfaces; implement optional ROM, memory and TUI services progressively. Precise founding month/day remains unspecified."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [
+            {
+              "type": "ownership",
+              "description": "DRI owns CP/M and DRI-funded improvements; licenses competing OEMs on predictable non-exclusive terms. Logix later pays OEM license and platform-engineering charges.",
+              "actor_refs": [
+                "actor.dri"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "equity",
+              "description": "Gary and Dorothy together retain 60% on a fully diluted basis; their internal allocation is unspecified.",
+              "actor_refs": [
+                "actor.kildall",
+                "actor.dorothy"
+              ],
+              "value": 60,
+              "unit": "percent",
+              "effective_date": null
+            },
+            {
+              "type": "equity",
+              "description": "Adam receives 30% for his capital commitment and founding contribution.",
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "value": 30,
+              "unit": "percent",
+              "effective_date": null
+            },
+            {
+              "type": "equity",
+              "description": "Reserve for future employees; not an issued voting block.",
+              "actor_refs": [
+                "actor.dri"
+              ],
+              "value": 10,
+              "unit": "percent",
+              "effective_date": null
+            },
+            {
+              "type": "funding",
+              "description": "Adam commits $250,000 nominal 1974 USD over two years: $150,000 at formation and $100,000 in scheduled installments. Company capital, not a CP/M purchase price or per-copy manufacturing cost.",
+              "actor_refs": [
+                "actor.adam",
+                "actor.dri"
+              ],
+              "value": 250000,
+              "unit": "USD",
+              "effective_date": null
+            },
+            {
+              "type": "responsibility",
+              "description": "Technical leadership and neutral licensing protected; Logix-related transactions independently reviewed. Expansion cards and chip licensing remain Logix/AION work, not DRI deliverables.",
+              "actor_refs": [
+                "actor.adam",
+                "actor.kildall",
+                "actor.dorothy",
+                "actor.dri"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            }
+          ],
+          "metrics": [],
+          "product_refs": [
+            "software.cpm_aurelia",
+            "technology.logix_c_api"
+          ],
+          "related_event_refs": []
         }
       ]
     },
@@ -635,7 +773,7 @@
         },
         {
           "id": "event.dri_cpm",
-          "title": "CP/M development cooperation",
+          "title": "Aurelia CP/M implementation agreement",
           "event_type": "agreement",
           "date": {
             "start": "1976-09-01",
@@ -657,7 +795,7 @@
                 "actor.adam",
                 "actor.dri"
               ],
-              "description": "Agree to work on an extended CP/M for Aurelia."
+              "description": "Within the partnership founded in late 1974, agree the Aurelia OEM implementation and freeze ROM/banking, FlexiBUS, display and optional TUI interface requirements. This is not first contact with DRI."
             }
           ],
           "outcomes": [],
@@ -679,7 +817,9 @@
             "technology.logix_tui_standard",
             "technology.flexibus"
           ],
-          "related_event_refs": []
+          "related_event_refs": [
+            "event.dri_founding"
+          ]
         },
         {
           "id": "event.bpi_offer",
@@ -1061,6 +1201,97 @@
           ]
         },
         {
+          "id": "event.smc_agreement",
+          "title": "SMC second-source and technology-transfer agreement",
+          "event_type": "agreement",
+          "date": {
+            "start": "1978-07",
+            "end": "1978-07"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.smc",
+              "role": "partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs",
+                "actor.logix",
+                "actor.smc"
+              ],
+              "description": "Start independent second-source manufacturing and sales cooperation after Aurelia’s premiere. AION transfers working reference silicon, SMC-compatible ready-to-use masks, process know-how and production-test specifications; SMC supplies process/mask requirements and performs its own wafer fabrication. Logix supplies reference boards, system tests and initial purchase commitments."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [
+            {
+              "type": "reuse_right",
+              "description": "Non-exclusive independent manufacturing and sales rights for the four named chip types, including sales to Logix competitors. ERA CPU designs and unrelated chips are excluded.",
+              "actor_refs": [
+                "actor.labs",
+                "actor.logix",
+                "actor.smc"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "responsibility",
+              "description": "AION adapts mask sets to SMC’s agreed process and lithography equipment, supplies revisions/test structures and sends engineers to assist DRAM retention, sensing, refresh and random-to-serial transfer qualification. Masks alone do not transfer a process.",
+              "actor_refs": [
+                "actor.labs",
+                "actor.smc"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "funding",
+              "description": "AION/Logix funds transfer engineering, mask revisions and qualification; SMC earns manufacturing margin and pays negotiated royalties on external sales. Amounts and minimum purchase volumes remain unspecified.",
+              "actor_refs": [
+                "actor.labs",
+                "actor.logix",
+                "actor.smc"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "target_launch",
+              "description": "First qualified independent chip sales targeted for October 1979; family-wide timing depends on per-part qualification, especially VRAM. Volume/yield ramp continues into 1980.",
+              "actor_refs": [
+                "actor.smc"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            }
+          ],
+          "metrics": [],
+          "product_refs": [
+            "part.flexibus_host_controller",
+            "part.flexibus_device_controller",
+            "part.aurelia_video_chip",
+            "part.vram_16kbit_dual_port"
+          ],
+          "related_event_refs": [
+            "event.aurelia_launch"
+          ]
+        },
+        {
           "id": "event.aionix_agreement",
           "title": "AIONix development and ownership agreement",
           "event_type": "agreement",
@@ -1181,6 +1412,18 @@
               "value": null,
               "unit": null,
               "effective_date": null
+            },
+            {
+              "type": "responsibility",
+              "description": "This separate AIONix agreement does not transfer CP/M ownership or restrict DRI’s independent CP/M OEM business. Existing AION ownership, Gary’s 8% Logix grant and the 1982 AIONix non-ERA porting right remain; replacing those specific terms requires a separate decision.",
+              "actor_refs": [
+                "actor.dri",
+                "actor.aion",
+                "actor.logix"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
             }
           ],
           "metrics": [],
@@ -1188,7 +1431,9 @@
             "software.aionix",
             "computer.artemis"
           ],
-          "related_event_refs": []
+          "related_event_refs": [
+            "event.dri_founding"
+          ]
         },
         {
           "id": "event.apple_search",
@@ -1220,7 +1465,7 @@
         },
         {
           "id": "event.dri_portable",
-          "title": "DRI commits to portable TUI extensions",
+          "title": "External CP/M extension qualification begins",
           "event_type": "commitment",
           "date": {
             "start": "1978-11-10",
@@ -1237,7 +1482,7 @@
               "actor_refs": [
                 "actor.dri"
               ],
-              "description": "Commits to portable CP/M extensions incorporating Logix TUI for other computer manufacturers."
+              "description": "Begin external OEM implementations, developer documentation and qualification of portable TUI/FlexiBUS extensions, executing the portability policy established at DRI founding."
             }
           ],
           "outcomes": [],
@@ -1248,7 +1493,8 @@
             "software.cpm_aurelia"
           ],
           "related_event_refs": [
-            "event.dri_cpm"
+            "event.dri_cpm",
+            "event.dri_founding"
           ]
         },
         {
@@ -1317,7 +1563,7 @@
               "actor_refs": [
                 "actor.logix"
               ],
-              "description": "Requests cooperation for peripherals exchanging files between Apple II and Aurelia."
+              "description": "Requests documentation, test machines and compatibility assistance for native Apple II FlexiBUS, disk interoperability and Logix video products."
             },
             {
               "actor_refs": [
@@ -1376,7 +1622,8 @@
           "product_refs": [
             "device.apple2_expansion_card",
             "device.flexidisk_ii",
-            "computer.aurelia"
+            "computer.aurelia",
+            "device.apple2_video_card"
           ],
           "related_event_refs": []
         },
@@ -1399,7 +1646,7 @@
               "actor_refs": [
                 "actor.dri"
               ],
-              "description": "Releases a CP/M version offering Logix TUI and FlexiBUS libraries to other manufacturers."
+              "description": "Release documented, optional CP/M Platform Extensions for non-Logix manufacturers: TUI, capability discovery and FlexiBUS adapters. Ordinary CP/M remains usable without these facilities; hardware and application resource requirements still apply."
             }
           ],
           "outcomes": [
@@ -1434,7 +1681,7 @@
       "events": [
         {
           "id": "event.apple_extensions",
-          "title": "Apple II expansion products demonstrated",
+          "title": "Apple II and S-100 expansion products launch",
           "event_type": "launch",
           "date": {
             "start": "1979-06-04",
@@ -1455,7 +1702,7 @@
               "actor_refs": [
                 "actor.logix"
               ],
-              "description": "Presents the Logix Apple II Expansion Card and FlexiDisk II."
+              "description": "Logix launches the existing Apple II Expansion Card and FlexiDisk II plus three new products: S-100 FlexiBUS Interface, Apple II Video Card, and S-100 Video Card. Cards initially use AION chips. Native Apple drivers/examples and supported S-100 CP/M adapters accompany the cards; Apple participation does not imply an S-100 endorsement."
             },
             {
               "actor_refs": [
@@ -1465,11 +1712,25 @@
             }
           ],
           "outcomes": [],
-          "agreement_terms": [],
+          "agreement_terms": [
+            {
+              "type": "responsibility",
+              "description": "Logix owns design, firmware, drivers, integration and sales. DRI’s optional CP/M interfaces support eligible S-100 systems but the card program is not a DRI obligation. No Apple CP/M execution is included.",
+              "actor_refs": [
+                "actor.logix"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            }
+          ],
           "metrics": [],
           "product_refs": [
             "device.apple2_expansion_card",
-            "device.flexidisk_ii"
+            "device.flexidisk_ii",
+            "device.s100_flexibus_card",
+            "device.apple2_video_card",
+            "device.s100_video_card"
           ],
           "related_event_refs": [
             "event.apple_cooperation"
@@ -1615,6 +1876,55 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": []
+        },
+        {
+          "id": "event.smc_sales",
+          "title": "SMC begins licensed chip sales",
+          "event_type": "release",
+          "date": {
+            "start": "1979-10",
+            "end": "1979-10"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.smc",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "partner"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.smc",
+                "actor.labs",
+                "actor.logix"
+              ],
+              "description": "Initial qualified SMC-manufactured chips become commercially available in the alternate timeline. This begins staged availability, not guaranteed release of every chip or mature yields; VRAM retains a separate qualification gate. SMC performs wafer fabrication rather than merely packaging AION dies."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "AION remains the launch supplier for June 1979 cards. Qualified SMC parts become independently purchasable alternatives; no automatic procurement switch, price reduction or high-volume yield is asserted."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "part.flexibus_host_controller",
+            "part.flexibus_device_controller",
+            "part.aurelia_video_chip",
+            "part.vram_16kbit_dual_port"
+          ],
+          "related_event_refs": [
+            "event.smc_agreement"
+          ]
         }
       ]
     },
@@ -1707,7 +2017,7 @@
           ],
           "outcomes": [
             {
-              "description": "Intends a 16-bit x86 operating system, potentially using contractors. The scenario treats Microsoft as unable to build the OS and DRI as focused on Logix-linked 8-bit systems."
+              "description": "Plans a 16-bit x86 OS, potentially using contractors. Tim Paterson remains unavailable for the historical QDOS route. DRI is an independent potential supplier, not automatically disqualified by its Logix relationship; x86 availability, negotiations and selection remain unresolved."
             }
           ],
           "agreement_terms": [

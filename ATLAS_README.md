@@ -21,7 +21,7 @@ Technical catalog v2.3 adds canonical `platform_editions`. Each software edition
 
 Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility planning and pricing remain deferred. Catalog v2.6 defines physical RAM populations and manufacturing requirements; electrical qualification remains open.
 
-The 34 point events have author-confirmed day-level dates and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Three top-level processes and four nested academic-year subprocesses are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
+The original 34 point events have author-confirmed day-level dates; three new milestones use year/month precision and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Three top-level processes and four nested academic-year subprocesses are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
 
 ## Pages
 
@@ -48,6 +48,7 @@ python -m pip install jsonschema
 python tests/validate_catalogs.py
 python tests/validate_hardware_bom.py
 python tests/validate_video.py
+python tests/validate_ecosystem.py
 npm install --no-save jsdom
 node tests/atlas.test.cjs
 node tests/timeline.test.cjs
@@ -68,7 +69,7 @@ Legacy fragments for the three merged phases resolve to their replacement phases
 
 Party lanes have draggable right-edge resize handles and collapse/expand buttons in their sticky headers. Collapsing hides all lane objects and leaves a 32px strip; expanding restores the previous width. Widths and collapsed states survive filtering and tab switches during the page session. Resize handles also support Left/Right arrows (20px steps) and Home (default width). Minimum widths keep event and process tracks from overlapping.
 
-Event dates contain only `start` and `end` (ISO dates); single-day events have equal endpoints. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.
+Event dates contain only `start` and `end`; equal endpoints may be ISO year, month or day. Partial-date milestones do not assert an exact day. Event labels use the start date. The inspector shows Start date and End date without a Date precision section. International investment expansion has been removed as a timeline process.
 ## RAM and manufacturing baseline (v2.6)
 
 [RAM_BOM_DESIGN.md](RAM_BOM_DESIGN.md) documents corrected chip densities, paired 16-bit RAM modules and four 32-bit banks. The Artemis explorer distinguishes equal capacities with different module populations. Superseded RAM records remain available for historical references but are excluded from active manufacturing.
@@ -94,4 +95,17 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 
 ### Retail pricing assessment
 
-`pricing.html` presents 76 commercial products and bundles grouped by type, with June 15 snapshots for 1978–1981. `pricing_results.json` stores proposed retail prices, associated recurring costs, competitor evidence, availability, fees and stress cases. ComputerLand fees and cost scenarios are adjustable in the page. See `PRICING_ASSESSMENT.md` for assumptions and `tools/build_pricing.py` to regenerate. Prices are proposals, not amendments to historical catalog price fields.
+`pricing.html` presents 79 commercial products and bundles grouped by type, with June 15 snapshots for 1978–1981. `pricing_results.json` stores proposed retail prices, associated recurring costs, competitor evidence, availability, fees and stress cases. ComputerLand fees and cost scenarios are adjustable in the page. See `PRICING_ASSESSMENT.md` for assumptions and `tools/build_pricing.py` to regenerate. Prices are proposals, not amendments to historical catalog price fields.
+
+
+
+## 1974 DRI / 1979 expansion and SMC revision
+
+- `event.dri_founding`: late 1974, year precision; joint Gary/Dorothy/Adam company before Logix.
+- `event.dri_cpm`: September 1, 1976 remains an Aurelia implementation milestone, not first cooperation.
+- `event.smc_agreement`: July 1978; independent manufacturing/sales license with process-compatible mask and know-how transfer.
+- `event.smc_sales`: October 1979; initial qualified sales, separate VRAM qualification and subsequent volume ramp.
+- June 4, 1979 adds S-100 FlexiBUS and Apple II/S-100 video cards using AION launch silicon. Apple software is native; CP/M-6502 remains deferred.
+- AIONix’s existing separate ownership/equity/1982 terms are retained; no replacement allocation was selected.
+- `manufacturing_programs.json` contains separate one-time transfer budget assumptions and SMC purchase-price sensitivity inputs. Rebuild costs before pricing.
+- 37 events, 3 parent processes and 4 subprocesses. Year/month positions in the chart are indicative; labels preserve source precision.

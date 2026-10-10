@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.8",
+    "version": "2.9",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -13,7 +13,8 @@
       "platform_editions": "Canonical software compatibility records with per-platform availability, execution target, role, dependencies and resource limits. Computer lists are derived from them.",
       "design_status": "Accepted implementation designs reside under specification.implementation_design. Numerical performance goals and pending validation are explicitly labeled; acceptance does not imply completed hardware/software.",
       "graphics_storage": "Per-computer video.memory_layout supplies text and bitmap allocations; shared mode-switch and preservation behavior resides in the display API specification.",
-      "manufacturing": "hardware_bom.json separates recurring material, assembly requirements, variant packout and unresolved costing inputs. No prices or qualified supplier claims are invented."
+      "manufacturing": "hardware_bom.json separates recurring material, assembly requirements, variant packout and unresolved costing inputs. No prices or qualified supplier claims are invented.",
+      "second_source": "SMC transfer begins 1978-07; initial independent commercial sales 1979-10. Dates are month-precision; per-part qualification and supplier pricing remain engineering inputs."
     }
   },
   "technologies": [
@@ -99,7 +100,8 @@
         "device.flexiprint40",
         "device.flexidisk",
         "device.apple2_expansion_card",
-        "device.flexidisk_ii"
+        "device.flexidisk_ii",
+        "device.s100_flexibus_card"
       ]
     },
     {
@@ -222,7 +224,9 @@
         "device.mono_monitor_1",
         "device.color_monitor_1",
         "device.mono_monitor_2",
-        "device.color_monitor_2"
+        "device.color_monitor_2",
+        "device.apple2_video_card",
+        "device.s100_video_card"
       ]
     },
     {
@@ -1822,7 +1826,9 @@
       "used_in": [
         "computer.aurelia",
         "computer.aurelia_plus",
-        "computer.artemis"
+        "computer.artemis",
+        "device.s100_flexibus_card",
+        "device.apple2_expansion_card"
       ],
       "vendor": "AION Labs",
       "introduced": {
@@ -1836,7 +1842,15 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.part.flexibus_host_controller"
-      ]
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
     },
     {
       "id": "part.flexibus_device_controller",
@@ -1861,7 +1875,15 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.part.flexibus_device_controller"
-      ]
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
     },
     {
       "id": "part.aurelia_video_chip",
@@ -1951,7 +1973,9 @@
       },
       "used_in": [
         "computer.aurelia",
-        "computer.aurelia_plus"
+        "computer.aurelia_plus",
+        "device.apple2_video_card",
+        "device.s100_video_card"
       ],
       "vendor": "AION Labs",
       "introduced": {
@@ -1965,7 +1989,15 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.part.aurelia_video_chip"
-      ]
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
     },
     {
       "id": "part.aurelia_monitor_dac",
@@ -2342,7 +2374,9 @@
       "vendor": "AION Labs",
       "used_in": [
         "computer.aurelia",
-        "computer.aurelia_plus"
+        "computer.aurelia_plus",
+        "device.apple2_video_card",
+        "device.s100_video_card"
       ],
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -2385,7 +2419,15 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.part.vram_16kbit_dual_port"
-      ]
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
     }
   ],
   "devices": [
@@ -2686,7 +2728,9 @@
       "specification": {
         "host": "Apple II",
         "flexibus_ports": 2,
-        "disk_interface": "Disk II-compatible controller interface"
+        "disk_interface": "Disk II-compatible controller interface",
+        "software": "Native Apple II 6502 FlexiBUS/disk drivers and examples; no CP/M or Z80 execution capability.",
+        "sourcing": "AION chips at June 1979 launch; qualified SMC alternatives after their individual release, no earlier than October 1979."
       },
       "price_usd": 299,
       "sold_separately": true,
@@ -3011,6 +3055,114 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.artemis_ram_256kb_bank_kit"
+      ]
+    },
+    {
+      "id": "device.s100_flexibus_card",
+      "name": "Logix FlexiBUS Interface for S-100",
+      "category": "third_party_host_expansion_card",
+      "introduced": {
+        "event_name": "NCC 1979 — Apple II and S-100 expansion launch",
+        "event_start_date": "1979-06-04"
+      },
+      "sold_separately": true,
+      "vendor": "Logix",
+      "description": "Logix-developed open-ecosystem expansion, independent of DRI’s development obligations.",
+      "specification": {
+        "host": "S-100",
+        "host_interface": "Configurable 8-bit S-100 interface; qualify address decode, waits, power and conflicts on named systems.",
+        "software": "CP/M BIOS adapters, installation diagnostics and optional Platform Extensions/TUI support for qualified 8080/Z80 hosts; declare ISA and memory prerequisites.",
+        "sourcing": "AION silicon at June 1979 launch; qualified SMC equivalents eligible only after the relevant part release, no earlier than October 1979.",
+        "flexibus_ports": 2,
+        "controller_ref": "part.flexibus_host_controller",
+        "transport_ref": "technology.flexibus",
+        "controller_die_count": null,
+        "controller_population": "Cost planning uses two host-controller dies, one per port; final ports-per-die implementation must be frozen.",
+        "boot": "Driver-loaded operation from an existing supported boot disk is baseline. FlexiBUS boot requires a qualified boot ROM.",
+        "disk_ii_interface": false
+      },
+      "manufacturing_requirements": [
+        "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
+        "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
+        "Release assembly routing, test fixtures and procurement specifications."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.s100_flexibus_card"
+      ]
+    },
+    {
+      "id": "device.apple2_video_card",
+      "name": "Logix Video Card for Apple II",
+      "category": "third_party_host_expansion_card",
+      "introduced": {
+        "event_name": "NCC 1979 — Apple II and S-100 expansion launch",
+        "event_start_date": "1979-06-04"
+      },
+      "sold_separately": true,
+      "vendor": "Logix",
+      "description": "Logix-developed open-ecosystem expansion, independent of DRI’s development obligations.",
+      "specification": {
+        "host": "Apple II",
+        "host_interface": "Apple II slot decode and driver ROM; preserve native memory map and avoid other cards.",
+        "software": "Native Apple II 6502 drivers, callable libraries and examples; applications must use the card API. No CP/M port, Z80 CPU or transparent redirection of existing graphics.",
+        "sourcing": "AION silicon at June 1979 launch; qualified SMC equivalents eligible only after the relevant part release, no earlier than October 1979.",
+        "display_controller_ref": "part.aurelia_video_chip",
+        "video_ram_kb": 16,
+        "vram_chip_ref": "part.vram_16kbit_dual_port",
+        "vram_chip_count": 8,
+        "video_link_ref": "technology.logix_digital_video",
+        "host_access": "Windowed/addressed access to onboard VRAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
+        "display_modes": "Reuse Aurelia controller text/bitmap capabilities subject to card/monitor qualification. 80-column output requires a compatible 640-pixel monitor. Host CPU determines drawing throughput.",
+        "included_monitor": false,
+        "flexibus_ports": 0
+      },
+      "manufacturing_requirements": [
+        "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
+        "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
+        "Release assembly routing, test fixtures and procurement specifications.",
+        "Qualify 16 KiB VRAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.apple2_video_card"
+      ]
+    },
+    {
+      "id": "device.s100_video_card",
+      "name": "Logix Video Card for S-100",
+      "category": "third_party_host_expansion_card",
+      "introduced": {
+        "event_name": "NCC 1979 — Apple II and S-100 expansion launch",
+        "event_start_date": "1979-06-04"
+      },
+      "sold_separately": true,
+      "vendor": "Logix",
+      "description": "Logix-developed open-ecosystem expansion, independent of DRI’s development obligations.",
+      "specification": {
+        "host": "S-100",
+        "host_interface": "Configurable 8-bit S-100 interface; qualify address decode, waits, power and conflicts on named systems.",
+        "software": "CP/M BIOS adapters, installation diagnostics and optional Platform Extensions/TUI support for qualified 8080/Z80 hosts; declare ISA and memory prerequisites.",
+        "sourcing": "AION silicon at June 1979 launch; qualified SMC equivalents eligible only after the relevant part release, no earlier than October 1979.",
+        "display_controller_ref": "part.aurelia_video_chip",
+        "video_ram_kb": 16,
+        "vram_chip_ref": "part.vram_16kbit_dual_port",
+        "vram_chip_count": 8,
+        "video_link_ref": "technology.logix_digital_video",
+        "host_access": "Windowed/addressed access to onboard VRAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
+        "display_modes": "Reuse Aurelia controller text/bitmap capabilities subject to card/monitor qualification. 80-column output requires a compatible 640-pixel monitor. Host CPU determines drawing throughput.",
+        "included_monitor": false,
+        "flexibus_ports": 0
+      },
+      "manufacturing_requirements": [
+        "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
+        "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
+        "Release assembly routing, test fixtures and procurement specifications.",
+        "Qualify 16 KiB VRAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.device.s100_video_card"
       ]
     }
   ],
@@ -4583,8 +4735,8 @@
   "software_products": [
     {
       "id": "software.cpm_aurelia",
-      "name": "Enhanced CP/M 1.4 for Logix Aurelia",
-      "vendor": "Logix / Digital Research cooperation",
+      "name": "CP/M for Aurelia — 1.4-derived core with Platform Extensions 1.0",
+      "vendor": "Digital Research / Logix OEM implementation",
       "category": "operating_system",
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
@@ -4622,7 +4774,7 @@
         "computer.aurelia_plus"
       ],
       "base_version": "CP/M 1.4",
-      "development_lineage": "Cooperation begins on CP/M 1.3; the initial Aurelia system is derived from CP/M 1.4.",
+      "development_lineage": "Joint DRI founded in late 1974; earlier documented hardware abstraction. September 1976 is the Aurelia implementation agreement. Alternate 1.4-derived core retains ordinary CP/M interfaces; Platform Extensions 1.0 are an optional, versioned layer, not features claimed for historical CP/M 1.4.",
       "description": "A ROM-adapted CP/M 1.4 platform combining the standard application and file-service interfaces with Logix memory, peripheral and TUI services. The same architecture supports Aurelia and Aurelia+.",
       "vanilla_architecture": {
         "execution_model": "Single user, one foreground application; conventional operating-system and application images execute in RAM.",
@@ -4873,7 +5025,38 @@
       "edition_refs": [
         "edition.cpm_aurelia.z80"
       ],
-      "memory_discovery_ref": "technology.aurelia_memory_model"
+      "memory_discovery_ref": "technology.aurelia_memory_model",
+      "alternate_history_roadmap": [
+        {
+          "period": "1974–1975",
+          "base_scenario": "Prototype and first commercial licenses; BIOS separation not yet released.",
+          "alternative_scenario": "Funded commercialization and earlier hardware-dependent layer/API discipline; rich services remain future work."
+        },
+        {
+          "period": "1976",
+          "base_scenario": "CP/M 1.3 introduces the separate BIOS.",
+          "alternative_scenario": "Existing abstraction work underlies the September Aurelia OEM requirements milestone."
+        },
+        {
+          "period": "1977–1978",
+          "base_scenario": "Conventional CP/M 1.4 without Logix ROM, banking or TUI facilities.",
+          "alternative_scenario": "Alternate 1.4-derived core plus optional Platform Extensions 1.0; Aurelia release June 5, 1978."
+        },
+        {
+          "period": "1979",
+          "base_scenario": "CP/M 2.x/2.2 general-purpose development.",
+          "alternative_scenario": "General-purpose CP/M development continues independently; portable extension package released May 5. No unsupported claim that Aurelia automatically upgrades to 2.2."
+        },
+        {
+          "period": "1980",
+          "base_scenario": "Processor transitions require architecture-specific software work.",
+          "alternative_scenario": "Shared C APIs support source recompilation to ERA; separate Z80 module executes supported existing binaries."
+        }
+      ],
+      "sources": [
+        "https://computerhistory.org/blog/early-digital-research-cpm-source-code/",
+        "https://computerhistory.org/blog/in-his-own-words-gary-kildall/"
+      ]
     },
     {
       "id": "software.business_tools_aurelia",
@@ -5909,12 +6092,15 @@
         "permission to distribute Aurelia-compatible software",
         "ROM/cartridge certification guidelines",
         "developer identification number",
-        "ability to submit products for Aurelia Compatible designation"
+        "ability to submit products for Aurelia Compatible designation",
+        "published interfaces and affordable support/certification access for compatible cards, peripherals and monitors",
+        "third-party implementations may use licensed chips from AION or qualified independent suppliers"
       ],
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      }
+      },
+      "openness_policy": "Basic published interfaces are accessible without mandatory certification. Developer fees cover the SDK, support and optional compatibility designation; competitors can implement compatible hardware and software."
     },
     {
       "id": "service.artemis_commercial_developer_license",
@@ -5940,6 +6126,23 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
+      },
+      "second_source_program": {
+        "partner": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "initial_sales_date": "1979-10",
+        "date_precision": "month",
+        "licensed_part_refs": [
+          "part.flexibus_host_controller",
+          "part.flexibus_device_controller",
+          "part.aurelia_video_chip",
+          "part.vram_16kbit_dual_port"
+        ],
+        "rights": "Independent manufacture and sale to competing OEMs; non-exclusive; ERA CPU excluded from this agreement.",
+        "transfer": "SMC-compatible ready-to-use masks, revisions, process know-how, known-good reference chips, wafer-test structures, test programs and on-site engineering assistance.",
+        "release_policy": "Initial qualified sales in October; individual part qualification and volume ramp separate. VRAM is the highest-risk gate.",
+        "economics": "Transfer/NRE funded by AION/Logix; external-sales royalties and minimum orders negotiated, not priced facts.",
+        "historical_basis": "https://manuals.plus/m/e43becab466f1fc2ba1742e95b4f0645632eb5d5ac2aea60ac96975b1c99320c"
       }
     }
   ],
