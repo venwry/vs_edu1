@@ -6,9 +6,9 @@
     "currency": "Nominal USD, before sales tax",
     "calendar_period": "1978-01-01 to 1978-12-31; no pre-launch Aurelia sales, June–December shown",
     "launch_year_period": "1978-06-05 to 1979-05-31; rounded planning proxy for sales by June 4 NCC 1979; June 1–3 omitted",
-    "source_reactions_sha256": "35c6265f8655c721962e326c82fbc37653d1ffd0afa093a2743f3b31b5bf8b52",
-    "source_story_sha256": "cecce0b81e73e6cf9c8c3b8d4ab80bccf1eeaac92e2901640aacf94b72d0baa0",
-    "source_pricing_sha256": "27d1a710b13aac4dd94702fe50ba9dd1a1be1c2f4a9b4e7497b636d663549227",
+    "source_reactions_sha256": "38836aa36f023f7dd6282e602f30b0ee8f8806637839778c39e2374125d220f8",
+    "source_story_sha256": "25fa0af9262fc49391bad0881ada4757864ad2994085cc0cb8810cf3631d665b",
+    "source_pricing_sha256": "e24f7d94a847d3c592735582e01548a2fda2402511ebb3df6b4223e8960562f4",
     "generated_by": "tools/build_sales.py"
   },
   "reaction_policy": {
@@ -83,7 +83,29 @@
     "tandy_computer_shipments_before_ncc": 0,
     "tandy_abacus_customer_licenses_before_ncc": 0,
     "ibm_pre_ncc_sales_effect": 0,
-    "later_tandy_economics": "Customer release October 1979; OEM prices and volume not yet forecast. No unsupported incremental Abacus revenue added to current totals."
+    "later_tandy_economics": "Customer release October 1979; OEM prices and volume not yet forecast. No unsupported incremental Abacus revenue added to current totals.",
+    "bpi_monthly_gain": [
+      0,
+      20,
+      40,
+      60,
+      80,
+      100,
+      100,
+      100,
+      120,
+      160,
+      200,
+      220
+    ],
+    "bpi_effect": "Incremental to already available BPI software: better presentation, demonstrations, training and installation support. Central +1,200 Aurelias; existing positive multipliers give +600/+1,200/+1,800. No double counting of BPI installations as computers; capacity still applies.",
+    "bpi_event_refs": [
+      "event.bpi_launch",
+      "event.bpi_training",
+      "event.bpi_dealer_program",
+      "event.bpi_year_end",
+      "event.bpi_expansion"
+    ]
   },
   "pricing_comparison": {
     "references": [
@@ -99,14 +121,21 @@
     "baseline_launch_year_units": 22000
   },
   "assumptions": {
-    "demand": "22,000 baseline launch-year sales × (revised complete-package price / old price)^(-elasticity), rounded to 1,000 and capped at the scenario delivery capacity, then adjusted by the explicit dated competitor/partner effects in market_reactions.json. Elasticities are judgement assumptions, not historical measurements.",
+    "demand": "22,000 baseline launch-year sales × (revised complete-package price / old price)^(-elasticity), rounded to 1,000 and capped at the scenario delivery capacity, then adjusted by explicit dated competitor/partner effects in market_reactions.json. BPI gains are limited to remaining scenario delivery capacity, with excess demand shown as deferred. Elasticities are judgement assumptions, not historical measurements.",
     "monthly_ramp": "Monthly weights are a production/distribution planning allocation, not measured seasonality. Prices held at June 1978 snapshot through May 1979; no use of June 1979 prices before NCC.",
     "market_denominator": "180,000 US calendar-1978 purchases without Logix and 250,000 launch-year purchases without Logix are modelling assumptions, not sourced historical counts. Different periods must not be mixed. New/accelerated purchases plus competitor halo expand the denominator; diverted purchases do not.",
     "mix": "80% Office grayscale bundle; 20% colour system plus separately purchased Business Tools and Abacus. One disk per computer, 70% printer attachment. All sales use baseline 25% dealer fee; no extra direct-sales margin is assumed.",
-    "accounting": "Customer retail spend is not manufacturer revenue. Supplier revenue combines Logix/AION offering receipts after channel fees; legal-entity allocation is not modelled. Contribution excludes campaign, Academy setup, credits, R&D, capital, finance and tax. Academy tuition revenue is excluded.",
-    "production": "Central case needs about 4,700 monthly customer deliveries by May 1979 plus demonstration/service/inventory stock. Existing manufacturing costs assume 10,000 annual units per hardware family and are held unchanged, not treated as proof of capacity or automatic scale savings.",
+    "accounting": "Customer retail spend is not manufacturer revenue. Supplier revenue combines Logix/AION offering receipts after channel fees; legal-entity allocation is not modelled. Contribution excludes campaign, Academy setup, credits, R&D, capital, finance and tax. Academy tuition revenue is excluded. BPI licence receipts are separately reported and excluded from Logix/AION totals; neither BPI specialist support costs nor corporate profit are estimated.",
+    "production": "Central case needs about 4,920 monthly customer deliveries by May 1979 plus demonstration/service/inventory stock. Existing manufacturing costs assume 10,000 annual units per hardware family and are held unchanged, not treated as proof of capacity or automatic scale savings.",
     "marketing": "Assumes qualified launch software, effective dealer demonstrations and campaign delivery. Free TV packages do not imply guaranteed airtime. Incremental Apple, public Tandy-announcement and compatibility-confidence effects are explicitly tabulated; private cooperation and later IBM actions have no early demand effect.",
     "uncertainty": "Central estimate is a planning case. Demand response, manufacturing yield, disk/printer supply, channel reach and service quality dominate uncertainty."
+  },
+  "bpi_policy": {
+    "scope": "15/20/25% first-purchase attachment; scenario assumptions, not observed conversions. Existing BPI availability is already in baseline; only stronger execution adds hardware demand.",
+    "mix": "50% accounting-only, 25% four-module trading configuration, 25% complete suite; rounded per month. A suite is one licence entitlement covering five modules.",
+    "ownership": "BPI receipts belong to independent BPI Systems; not Logix/AION revenue or Adam personal income.",
+    "exclusions": "No Tandy BPI port, training, setup fees, support profit, equity income or upgrade revenue forecast. Upgrade credits are not hidden inside first-purchase cohorts. No extra RAM/drive sales assumed before configuration qualification.",
+    "capacity": "Use existing delivery caps; strong-case BPI demand above capacity is deferred beyond cutoff. Academy BPI enrolments are part of existing 10,000–13,000 capacity, not extra hardware sales."
   },
   "average_sale": {
     "components": [
@@ -149,11 +178,14 @@
       "unconstrained_demand_units": 26153,
       "delivery_capacity_units": 26000,
       "pre_reaction_units": 26000,
-      "reaction_delta_units": -2655,
+      "reaction_delta_units": -2055,
       "reaction_components": {
         "apple_displacement": 2520,
         "tandy_deferral": 210,
-        "compatibility_gain": 75
+        "compatibility_gain": 75,
+        "bpi_incremental_deliveries": 600,
+        "bpi_requested_gain": 600,
+        "bpi_capacity_deferred": 0
       },
       "months": [
         {
@@ -162,12 +194,22 @@
           "apple_displacement_units": 0,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
+          "bpi_gain_units": 0,
           "units": 433,
           "cumulative_units": 433,
           "customer_retail_spend_usd": 1037242.84,
           "supplier_revenue_after_channel_usd": 777932.13,
           "recurring_cost_usd": 490814.16,
-          "unit_contribution_total_usd": 287117.97
+          "unit_contribution_total_usd": 287117.97,
+          "bpi": {
+            "customer_installations": 65,
+            "single_accounting_licenses": 33,
+            "four_module_customers": 16,
+            "complete_suite_licenses": 16,
+            "individual_module_licenses": 97,
+            "retail_spend_usd": 16469.02,
+            "bpi_receipts_after_channel_usd": 12351.76
+          }
         },
         {
           "month": "1978-07",
@@ -175,12 +217,22 @@
           "apple_displacement_units": 0,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 693,
-          "cumulative_units": 1126,
-          "customer_retail_spend_usd": 1660067.64,
-          "supplier_revenue_after_channel_usd": 1245050.73,
-          "recurring_cost_usd": 785529.36,
-          "unit_contribution_total_usd": 459521.37
+          "bpi_gain_units": 10,
+          "units": 703,
+          "cumulative_units": 1136,
+          "customer_retail_spend_usd": 1684022.44,
+          "supplier_revenue_after_channel_usd": 1263016.83,
+          "recurring_cost_usd": 796864.56,
+          "unit_contribution_total_usd": 466152.27,
+          "bpi": {
+            "customer_installations": 105,
+            "single_accounting_licenses": 53,
+            "four_module_customers": 26,
+            "complete_suite_licenses": 26,
+            "individual_module_licenses": 157,
+            "retail_spend_usd": 26703.22,
+            "bpi_receipts_after_channel_usd": 20027.42
+          }
         },
         {
           "month": "1978-08",
@@ -188,12 +240,22 @@
           "apple_displacement_units": 28,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 925,
-          "cumulative_units": 2051,
-          "customer_retail_spend_usd": 2215819.0,
-          "supplier_revenue_after_channel_usd": 1661864.25,
-          "recurring_cost_usd": 1048506.0,
-          "unit_contribution_total_usd": 613358.25
+          "bpi_gain_units": 20,
+          "units": 945,
+          "cumulative_units": 2081,
+          "customer_retail_spend_usd": 2263728.6,
+          "supplier_revenue_after_channel_usd": 1697796.45,
+          "recurring_cost_usd": 1071176.4,
+          "unit_contribution_total_usd": 626620.05,
+          "bpi": {
+            "customer_installations": 142,
+            "single_accounting_licenses": 70,
+            "four_module_customers": 36,
+            "complete_suite_licenses": 36,
+            "individual_module_licenses": 214,
+            "retail_spend_usd": 36654.52,
+            "bpi_receipts_after_channel_usd": 27490.89
+          }
         },
         {
           "month": "1978-09",
@@ -201,12 +263,22 @@
           "apple_displacement_units": 42,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 1258,
-          "cumulative_units": 3309,
-          "customer_retail_spend_usd": 3013513.84,
-          "supplier_revenue_after_channel_usd": 2260135.38,
-          "recurring_cost_usd": 1425968.16,
-          "unit_contribution_total_usd": 834167.22
+          "bpi_gain_units": 30,
+          "units": 1288,
+          "cumulative_units": 3369,
+          "customer_retail_spend_usd": 3085378.24,
+          "supplier_revenue_after_channel_usd": 2314033.68,
+          "recurring_cost_usd": 1459973.76,
+          "unit_contribution_total_usd": 854059.92,
+          "bpi": {
+            "customer_installations": 193,
+            "single_accounting_licenses": 97,
+            "four_module_customers": 48,
+            "complete_suite_licenses": 48,
+            "individual_module_licenses": 289,
+            "retail_spend_usd": 49218.46,
+            "bpi_receipts_after_channel_usd": 36913.85
+          }
         },
         {
           "month": "1978-10",
@@ -214,12 +286,22 @@
           "apple_displacement_units": 56,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 1591,
-          "cumulative_units": 4900,
-          "customer_retail_spend_usd": 3811208.68,
-          "supplier_revenue_after_channel_usd": 2858406.51,
-          "recurring_cost_usd": 1803430.32,
-          "unit_contribution_total_usd": 1054976.19
+          "bpi_gain_units": 40,
+          "units": 1631,
+          "cumulative_units": 5000,
+          "customer_retail_spend_usd": 3907027.88,
+          "supplier_revenue_after_channel_usd": 2930270.91,
+          "recurring_cost_usd": 1848771.12,
+          "unit_contribution_total_usd": 1081499.79,
+          "bpi": {
+            "customer_installations": 245,
+            "single_accounting_licenses": 123,
+            "four_module_customers": 61,
+            "complete_suite_licenses": 61,
+            "individual_module_licenses": 367,
+            "retail_spend_usd": 62522.92,
+            "bpi_receipts_after_channel_usd": 46892.19
+          }
         },
         {
           "month": "1978-11",
@@ -227,12 +309,22 @@
           "apple_displacement_units": 84,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 1823,
-          "cumulative_units": 6723,
-          "customer_retail_spend_usd": 4366960.04,
-          "supplier_revenue_after_channel_usd": 3275220.03,
-          "recurring_cost_usd": 2066406.96,
-          "unit_contribution_total_usd": 1208813.07
+          "bpi_gain_units": 50,
+          "units": 1873,
+          "cumulative_units": 6873,
+          "customer_retail_spend_usd": 4486734.04,
+          "supplier_revenue_after_channel_usd": 3365050.53,
+          "recurring_cost_usd": 2123082.96,
+          "unit_contribution_total_usd": 1241967.57,
+          "bpi": {
+            "customer_installations": 281,
+            "single_accounting_licenses": 141,
+            "four_module_customers": 70,
+            "complete_suite_licenses": 70,
+            "individual_module_licenses": 421,
+            "retail_spend_usd": 71733.7,
+            "bpi_receipts_after_channel_usd": 53800.27
+          }
         },
         {
           "month": "1978-12",
@@ -240,12 +332,22 @@
           "apple_displacement_units": 140,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2113,
-          "cumulative_units": 8836,
-          "customer_retail_spend_usd": 5061649.24,
-          "supplier_revenue_after_channel_usd": 3796236.93,
-          "recurring_cost_usd": 2395127.76,
-          "unit_contribution_total_usd": 1401109.17
+          "bpi_gain_units": 50,
+          "units": 2163,
+          "cumulative_units": 9036,
+          "customer_retail_spend_usd": 5181423.24,
+          "supplier_revenue_after_channel_usd": 3886067.43,
+          "recurring_cost_usd": 2451803.76,
+          "unit_contribution_total_usd": 1434263.67,
+          "bpi": {
+            "customer_installations": 324,
+            "single_accounting_licenses": 162,
+            "four_module_customers": 81,
+            "complete_suite_licenses": 81,
+            "individual_module_licenses": 486,
+            "retail_spend_usd": 82897.02,
+            "bpi_receipts_after_channel_usd": 62172.76
+          }
         },
         {
           "month": "1979-01",
@@ -253,12 +355,22 @@
           "apple_displacement_units": 210,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2390,
-          "cumulative_units": 11226,
-          "customer_retail_spend_usd": 5725197.2,
-          "supplier_revenue_after_channel_usd": 4293897.9,
-          "recurring_cost_usd": 2709112.8,
-          "unit_contribution_total_usd": 1584785.1
+          "bpi_gain_units": 50,
+          "units": 2440,
+          "cumulative_units": 11476,
+          "customer_retail_spend_usd": 5844971.2,
+          "supplier_revenue_after_channel_usd": 4383728.4,
+          "recurring_cost_usd": 2765788.8,
+          "unit_contribution_total_usd": 1617939.6,
+          "bpi": {
+            "customer_installations": 366,
+            "single_accounting_licenses": 182,
+            "four_module_customers": 92,
+            "complete_suite_licenses": 92,
+            "individual_module_licenses": 550,
+            "retail_spend_usd": 93966.04,
+            "bpi_receipts_after_channel_usd": 70474.53
+          }
         },
         {
           "month": "1979-02",
@@ -266,12 +378,22 @@
           "apple_displacement_units": 280,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2580,
-          "cumulative_units": 13806,
-          "customer_retail_spend_usd": 6180338.4,
-          "supplier_revenue_after_channel_usd": 4635253.8,
-          "recurring_cost_usd": 2924481.6,
-          "unit_contribution_total_usd": 1710772.2
+          "bpi_gain_units": 60,
+          "units": 2640,
+          "cumulative_units": 14116,
+          "customer_retail_spend_usd": 6324067.2,
+          "supplier_revenue_after_channel_usd": 4743050.4,
+          "recurring_cost_usd": 2992492.8,
+          "unit_contribution_total_usd": 1750557.6,
+          "bpi": {
+            "customer_installations": 396,
+            "single_accounting_licenses": 198,
+            "four_module_customers": 99,
+            "complete_suite_licenses": 99,
+            "individual_module_licenses": 594,
+            "retail_spend_usd": 101318.58,
+            "bpi_receipts_after_channel_usd": 75988.93
+          }
         },
         {
           "month": "1979-03",
@@ -279,12 +401,22 @@
           "apple_displacement_units": 420,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2787,
-          "cumulative_units": 16593,
-          "customer_retail_spend_usd": 6676202.76,
-          "supplier_revenue_after_channel_usd": 5007152.07,
-          "recurring_cost_usd": 3159120.24,
-          "unit_contribution_total_usd": 1848031.83
+          "bpi_gain_units": 80,
+          "units": 2867,
+          "cumulative_units": 16983,
+          "customer_retail_spend_usd": 6867841.16,
+          "supplier_revenue_after_channel_usd": 5150880.87,
+          "recurring_cost_usd": 3249801.84,
+          "unit_contribution_total_usd": 1901079.03,
+          "bpi": {
+            "customer_installations": 430,
+            "single_accounting_licenses": 214,
+            "four_module_customers": 108,
+            "complete_suite_licenses": 108,
+            "individual_module_licenses": 646,
+            "retail_spend_usd": 110340.76,
+            "bpi_receipts_after_channel_usd": 82755.57
+          }
         },
         {
           "month": "1979-04",
@@ -292,12 +424,22 @@
           "apple_displacement_units": 560,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 3080,
-          "cumulative_units": 19673,
-          "customer_retail_spend_usd": 7378078.4,
-          "supplier_revenue_after_channel_usd": 5533558.8,
-          "recurring_cost_usd": 3491241.6,
-          "unit_contribution_total_usd": 2042317.2
+          "bpi_gain_units": 100,
+          "units": 3180,
+          "cumulative_units": 20163,
+          "customer_retail_spend_usd": 7617626.4,
+          "supplier_revenue_after_channel_usd": 5713219.8,
+          "recurring_cost_usd": 3604593.6,
+          "unit_contribution_total_usd": 2108626.2,
+          "bpi": {
+            "customer_installations": 477,
+            "single_accounting_licenses": 239,
+            "four_module_customers": 119,
+            "complete_suite_licenses": 119,
+            "individual_module_licenses": 715,
+            "retail_spend_usd": 121881.28,
+            "bpi_receipts_after_channel_usd": 91410.96
+          }
         },
         {
           "month": "1979-05",
@@ -305,42 +447,71 @@
           "apple_displacement_units": 700,
           "tandy_deferred_units": 210,
           "compatibility_gain_units": 75,
-          "units": 3672,
-          "cumulative_units": 23345,
-          "customer_retail_spend_usd": 8796202.56,
-          "supplier_revenue_after_channel_usd": 6597151.92,
-          "recurring_cost_usd": 4162285.44,
-          "unit_contribution_total_usd": 2434866.48
+          "bpi_gain_units": 110,
+          "units": 3782,
+          "cumulative_units": 23945,
+          "customer_retail_spend_usd": 9059705.36,
+          "supplier_revenue_after_channel_usd": 6794779.02,
+          "recurring_cost_usd": 4286972.64,
+          "unit_contribution_total_usd": 2507806.38,
+          "bpi": {
+            "customer_installations": 567,
+            "single_accounting_licenses": 283,
+            "four_module_customers": 142,
+            "complete_suite_licenses": 142,
+            "individual_module_licenses": 851,
+            "retail_spend_usd": 145231.34,
+            "bpi_receipts_after_channel_usd": 108923.51
+          }
         }
       ],
       "calendar_1978": {
-        "units": 8836,
-        "customer_retail_spend_usd": 21166461.28,
-        "supplier_revenue_after_channel_usd": 15874845.96,
-        "recurring_cost_usd": 10015782.72,
-        "unit_contribution_total_usd": 5859063.24,
+        "units": 9036,
+        "customer_retail_spend_usd": 21645557.28,
+        "supplier_revenue_after_channel_usd": 16234167.96,
+        "recurring_cost_usd": 10242486.72,
+        "unit_contribution_total_usd": 5991681.24,
         "baseline_market_units": 180000,
-        "new_or_accelerated_logix_purchases": 4418,
-        "diverted_purchases": 4418,
+        "new_or_accelerated_logix_purchases": 4518,
+        "diverted_purchases": 4518,
         "halo_competitor_purchases": 775,
-        "expanded_market_units": 185193,
-        "market_expansion_pct": 2.89,
-        "unit_market_share_pct": 4.77
+        "expanded_market_units": 185293,
+        "market_expansion_pct": 2.94,
+        "unit_market_share_pct": 4.88,
+        "bpi": {
+          "customer_installations": 1355,
+          "single_accounting_licenses": 679,
+          "four_module_customers": 338,
+          "complete_suite_licenses": 338,
+          "individual_module_licenses": 2031,
+          "retail_spend_usd": 346198.86,
+          "bpi_receipts_after_channel_usd": 259649.14
+        }
       },
       "launch_year": {
-        "units": 23345,
-        "customer_retail_spend_usd": 55922480.6,
-        "supplier_revenue_after_channel_usd": 41941860.45,
-        "recurring_cost_usd": 26462024.4,
-        "unit_contribution_total_usd": 15479836.05,
+        "units": 23945,
+        "customer_retail_spend_usd": 57359768.6,
+        "supplier_revenue_after_channel_usd": 43019826.45,
+        "recurring_cost_usd": 27142136.4,
+        "unit_contribution_total_usd": 15877690.05,
         "baseline_market_units": 250000,
-        "new_or_accelerated_logix_purchases": 11672,
-        "diverted_purchases": 11673,
+        "new_or_accelerated_logix_purchases": 11972,
+        "diverted_purchases": 11973,
         "halo_competitor_purchases": 3260,
-        "expanded_market_units": 264932,
-        "market_expansion_pct": 5.97,
-        "unit_market_share_pct": 8.81
-      }
+        "expanded_market_units": 265232,
+        "market_expansion_pct": 6.09,
+        "unit_market_share_pct": 9.03,
+        "bpi": {
+          "customer_installations": 3591,
+          "single_accounting_licenses": 1795,
+          "four_module_customers": 898,
+          "complete_suite_licenses": 898,
+          "individual_module_licenses": 5387,
+          "retail_spend_usd": 918936.86,
+          "bpi_receipts_after_channel_usd": 689202.64
+        }
+      },
+      "bpi_attachment_rate": 0.15
     },
     {
       "id": "central",
@@ -349,11 +520,14 @@
       "unconstrained_demand_units": 30426,
       "delivery_capacity_units": 30000,
       "pre_reaction_units": 30000,
-      "reaction_delta_units": -1800,
+      "reaction_delta_units": -600,
       "reaction_components": {
         "apple_displacement": 1800,
         "tandy_deferral": 150,
-        "compatibility_gain": 150
+        "compatibility_gain": 150,
+        "bpi_incremental_deliveries": 1200,
+        "bpi_requested_gain": 1200,
+        "bpi_capacity_deferred": 0
       },
       "months": [
         {
@@ -362,12 +536,22 @@
           "apple_displacement_units": 0,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
+          "bpi_gain_units": 0,
           "units": 500,
           "cumulative_units": 500,
           "customer_retail_spend_usd": 1197740.0,
           "supplier_revenue_after_channel_usd": 898305.0,
           "recurring_cost_usd": 566760.0,
-          "unit_contribution_total_usd": 331545.0
+          "unit_contribution_total_usd": 331545.0,
+          "bpi": {
+            "customer_installations": 100,
+            "single_accounting_licenses": 50,
+            "four_module_customers": 25,
+            "complete_suite_licenses": 25,
+            "individual_module_licenses": 150,
+            "retail_spend_usd": 25585.5,
+            "bpi_receipts_after_channel_usd": 19189.12
+          }
         },
         {
           "month": "1978-07",
@@ -375,12 +559,22 @@
           "apple_displacement_units": 0,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 800,
-          "cumulative_units": 1300,
-          "customer_retail_spend_usd": 1916384.0,
-          "supplier_revenue_after_channel_usd": 1437288.0,
-          "recurring_cost_usd": 906816.0,
-          "unit_contribution_total_usd": 530472.0
+          "bpi_gain_units": 20,
+          "units": 820,
+          "cumulative_units": 1320,
+          "customer_retail_spend_usd": 1964293.6,
+          "supplier_revenue_after_channel_usd": 1473220.2,
+          "recurring_cost_usd": 929486.4,
+          "unit_contribution_total_usd": 543733.8,
+          "bpi": {
+            "customer_installations": 164,
+            "single_accounting_licenses": 82,
+            "four_module_customers": 41,
+            "complete_suite_licenses": 41,
+            "individual_module_licenses": 246,
+            "retail_spend_usd": 41960.22,
+            "bpi_receipts_after_channel_usd": 31470.17
+          }
         },
         {
           "month": "1978-08",
@@ -388,12 +582,22 @@
           "apple_displacement_units": 20,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 1080,
-          "cumulative_units": 2380,
-          "customer_retail_spend_usd": 2587118.4,
-          "supplier_revenue_after_channel_usd": 1940338.8,
-          "recurring_cost_usd": 1224201.6,
-          "unit_contribution_total_usd": 716137.2
+          "bpi_gain_units": 40,
+          "units": 1120,
+          "cumulative_units": 2440,
+          "customer_retail_spend_usd": 2682937.6,
+          "supplier_revenue_after_channel_usd": 2012203.2,
+          "recurring_cost_usd": 1269542.4,
+          "unit_contribution_total_usd": 742660.8,
+          "bpi": {
+            "customer_installations": 224,
+            "single_accounting_licenses": 112,
+            "four_module_customers": 56,
+            "complete_suite_licenses": 56,
+            "individual_module_licenses": 336,
+            "retail_spend_usd": 57311.52,
+            "bpi_receipts_after_channel_usd": 42983.64
+          }
         },
         {
           "month": "1978-09",
@@ -401,12 +605,22 @@
           "apple_displacement_units": 30,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 1470,
-          "cumulative_units": 3850,
-          "customer_retail_spend_usd": 3521355.6,
-          "supplier_revenue_after_channel_usd": 2641016.7,
-          "recurring_cost_usd": 1666274.4,
-          "unit_contribution_total_usd": 974742.3
+          "bpi_gain_units": 60,
+          "units": 1530,
+          "cumulative_units": 3970,
+          "customer_retail_spend_usd": 3665084.4,
+          "supplier_revenue_after_channel_usd": 2748813.3,
+          "recurring_cost_usd": 1734285.6,
+          "unit_contribution_total_usd": 1014527.7,
+          "bpi": {
+            "customer_installations": 306,
+            "single_accounting_licenses": 154,
+            "four_module_customers": 76,
+            "complete_suite_licenses": 76,
+            "individual_module_licenses": 458,
+            "retail_spend_usd": 77968.52,
+            "bpi_receipts_after_channel_usd": 58476.39
+          }
         },
         {
           "month": "1978-10",
@@ -414,12 +628,22 @@
           "apple_displacement_units": 40,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 1860,
-          "cumulative_units": 5710,
-          "customer_retail_spend_usd": 4455592.8,
-          "supplier_revenue_after_channel_usd": 3341694.6,
-          "recurring_cost_usd": 2108347.2,
-          "unit_contribution_total_usd": 1233347.4
+          "bpi_gain_units": 80,
+          "units": 1940,
+          "cumulative_units": 5910,
+          "customer_retail_spend_usd": 4647231.2,
+          "supplier_revenue_after_channel_usd": 3485423.4,
+          "recurring_cost_usd": 2199028.8,
+          "unit_contribution_total_usd": 1286394.6,
+          "bpi": {
+            "customer_installations": 388,
+            "single_accounting_licenses": 194,
+            "four_module_customers": 97,
+            "complete_suite_licenses": 97,
+            "individual_module_licenses": 582,
+            "retail_spend_usd": 99271.74,
+            "bpi_receipts_after_channel_usd": 74453.81
+          }
         },
         {
           "month": "1978-11",
@@ -427,12 +651,22 @@
           "apple_displacement_units": 60,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2140,
-          "cumulative_units": 7850,
-          "customer_retail_spend_usd": 5126327.2,
-          "supplier_revenue_after_channel_usd": 3844745.4,
-          "recurring_cost_usd": 2425732.8,
-          "unit_contribution_total_usd": 1419012.6
+          "bpi_gain_units": 100,
+          "units": 2240,
+          "cumulative_units": 8150,
+          "customer_retail_spend_usd": 5365875.2,
+          "supplier_revenue_after_channel_usd": 4024406.4,
+          "recurring_cost_usd": 2539084.8,
+          "unit_contribution_total_usd": 1485321.6,
+          "bpi": {
+            "customer_installations": 448,
+            "single_accounting_licenses": 224,
+            "four_module_customers": 112,
+            "complete_suite_licenses": 112,
+            "individual_module_licenses": 672,
+            "retail_spend_usd": 114623.04,
+            "bpi_receipts_after_channel_usd": 85967.28
+          }
         },
         {
           "month": "1978-12",
@@ -440,12 +674,22 @@
           "apple_displacement_units": 100,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2500,
-          "cumulative_units": 10350,
-          "customer_retail_spend_usd": 5988700.0,
-          "supplier_revenue_after_channel_usd": 4491525.0,
-          "recurring_cost_usd": 2833800.0,
-          "unit_contribution_total_usd": 1657725.0
+          "bpi_gain_units": 100,
+          "units": 2600,
+          "cumulative_units": 10750,
+          "customer_retail_spend_usd": 6228248.0,
+          "supplier_revenue_after_channel_usd": 4671186.0,
+          "recurring_cost_usd": 2947152.0,
+          "unit_contribution_total_usd": 1724034.0,
+          "bpi": {
+            "customer_installations": 520,
+            "single_accounting_licenses": 260,
+            "four_module_customers": 130,
+            "complete_suite_licenses": 130,
+            "individual_module_licenses": 780,
+            "retail_spend_usd": 133044.6,
+            "bpi_receipts_after_channel_usd": 99783.45
+          }
         },
         {
           "month": "1979-01",
@@ -453,12 +697,22 @@
           "apple_displacement_units": 150,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2850,
-          "cumulative_units": 13200,
-          "customer_retail_spend_usd": 6827118.0,
-          "supplier_revenue_after_channel_usd": 5120338.5,
-          "recurring_cost_usd": 3230532.0,
-          "unit_contribution_total_usd": 1889806.5
+          "bpi_gain_units": 100,
+          "units": 2950,
+          "cumulative_units": 13700,
+          "customer_retail_spend_usd": 7066666.0,
+          "supplier_revenue_after_channel_usd": 5299999.5,
+          "recurring_cost_usd": 3343884.0,
+          "unit_contribution_total_usd": 1956115.5,
+          "bpi": {
+            "customer_installations": 590,
+            "single_accounting_licenses": 294,
+            "four_module_customers": 148,
+            "complete_suite_licenses": 148,
+            "individual_module_licenses": 886,
+            "retail_spend_usd": 151277.56,
+            "bpi_receipts_after_channel_usd": 113458.17
+          }
         },
         {
           "month": "1979-02",
@@ -466,12 +720,22 @@
           "apple_displacement_units": 200,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 3100,
-          "cumulative_units": 16300,
-          "customer_retail_spend_usd": 7425988.0,
-          "supplier_revenue_after_channel_usd": 5569491.0,
-          "recurring_cost_usd": 3513912.0,
-          "unit_contribution_total_usd": 2055579.0
+          "bpi_gain_units": 120,
+          "units": 3220,
+          "cumulative_units": 16920,
+          "customer_retail_spend_usd": 7713445.6,
+          "supplier_revenue_after_channel_usd": 5785084.2,
+          "recurring_cost_usd": 3649934.4,
+          "unit_contribution_total_usd": 2135149.8,
+          "bpi": {
+            "customer_installations": 644,
+            "single_accounting_licenses": 322,
+            "four_module_customers": 161,
+            "complete_suite_licenses": 161,
+            "individual_module_licenses": 966,
+            "retail_spend_usd": 164770.62,
+            "bpi_receipts_after_channel_usd": 123577.96
+          }
         },
         {
           "month": "1979-03",
@@ -479,12 +743,22 @@
           "apple_displacement_units": 300,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 3400,
-          "cumulative_units": 19700,
-          "customer_retail_spend_usd": 8144632.0,
-          "supplier_revenue_after_channel_usd": 6108474.0,
-          "recurring_cost_usd": 3853968.0,
-          "unit_contribution_total_usd": 2254506.0
+          "bpi_gain_units": 160,
+          "units": 3560,
+          "cumulative_units": 20480,
+          "customer_retail_spend_usd": 8527908.8,
+          "supplier_revenue_after_channel_usd": 6395931.6,
+          "recurring_cost_usd": 4035331.2,
+          "unit_contribution_total_usd": 2360600.4,
+          "bpi": {
+            "customer_installations": 712,
+            "single_accounting_licenses": 356,
+            "four_module_customers": 178,
+            "complete_suite_licenses": 178,
+            "individual_module_licenses": 1068,
+            "retail_spend_usd": 182168.76,
+            "bpi_receipts_after_channel_usd": 136626.57
+          }
         },
         {
           "month": "1979-04",
@@ -492,12 +766,22 @@
           "apple_displacement_units": 400,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 3800,
-          "cumulative_units": 23500,
-          "customer_retail_spend_usd": 9102824.0,
-          "supplier_revenue_after_channel_usd": 6827118.0,
-          "recurring_cost_usd": 4307376.0,
-          "unit_contribution_total_usd": 2519742.0
+          "bpi_gain_units": 200,
+          "units": 4000,
+          "cumulative_units": 24480,
+          "customer_retail_spend_usd": 9581920.0,
+          "supplier_revenue_after_channel_usd": 7186440.0,
+          "recurring_cost_usd": 4534080.0,
+          "unit_contribution_total_usd": 2652360.0,
+          "bpi": {
+            "customer_installations": 800,
+            "single_accounting_licenses": 400,
+            "four_module_customers": 200,
+            "complete_suite_licenses": 200,
+            "individual_module_licenses": 1200,
+            "retail_spend_usd": 204684.0,
+            "bpi_receipts_after_channel_usd": 153513.0
+          }
         },
         {
           "month": "1979-05",
@@ -505,42 +789,71 @@
           "apple_displacement_units": 500,
           "tandy_deferred_units": 150,
           "compatibility_gain_units": 150,
-          "units": 4700,
-          "cumulative_units": 28200,
-          "customer_retail_spend_usd": 11258756.0,
-          "supplier_revenue_after_channel_usd": 8444067.0,
-          "recurring_cost_usd": 5327544.0,
-          "unit_contribution_total_usd": 3116523.0
+          "bpi_gain_units": 220,
+          "units": 4920,
+          "cumulative_units": 29400,
+          "customer_retail_spend_usd": 11785761.6,
+          "supplier_revenue_after_channel_usd": 8839321.2,
+          "recurring_cost_usd": 5576918.4,
+          "unit_contribution_total_usd": 3262402.8,
+          "bpi": {
+            "customer_installations": 984,
+            "single_accounting_licenses": 492,
+            "four_module_customers": 246,
+            "complete_suite_licenses": 246,
+            "individual_module_licenses": 1476,
+            "retail_spend_usd": 251761.32,
+            "bpi_receipts_after_channel_usd": 188820.99
+          }
         }
       ],
       "calendar_1978": {
-        "units": 10350,
-        "customer_retail_spend_usd": 24793218.0,
-        "supplier_revenue_after_channel_usd": 18594913.5,
-        "recurring_cost_usd": 11731932.0,
-        "unit_contribution_total_usd": 6862981.5,
+        "units": 10750,
+        "customer_retail_spend_usd": 25751410.0,
+        "supplier_revenue_after_channel_usd": 19313557.5,
+        "recurring_cost_usd": 12185340.0,
+        "unit_contribution_total_usd": 7128217.5,
         "baseline_market_units": 180000,
-        "new_or_accelerated_logix_purchases": 6210,
-        "diverted_purchases": 4140,
+        "new_or_accelerated_logix_purchases": 6450,
+        "diverted_purchases": 4300,
         "halo_competitor_purchases": 1150,
-        "expanded_market_units": 187360,
-        "market_expansion_pct": 4.09,
-        "unit_market_share_pct": 5.52
+        "expanded_market_units": 187600,
+        "market_expansion_pct": 4.22,
+        "unit_market_share_pct": 5.73,
+        "bpi": {
+          "customer_installations": 2150,
+          "single_accounting_licenses": 1076,
+          "four_module_customers": 537,
+          "complete_suite_licenses": 537,
+          "individual_module_licenses": 3224,
+          "retail_spend_usd": 549765.14,
+          "bpi_receipts_after_channel_usd": 412323.86
+        }
       },
       "launch_year": {
-        "units": 28200,
-        "customer_retail_spend_usd": 67552536.0,
-        "supplier_revenue_after_channel_usd": 50664402.0,
-        "recurring_cost_usd": 31965264.0,
-        "unit_contribution_total_usd": 18699138.0,
+        "units": 29400,
+        "customer_retail_spend_usd": 70427112.0,
+        "supplier_revenue_after_channel_usd": 52820334.0,
+        "recurring_cost_usd": 33325488.0,
+        "unit_contribution_total_usd": 19494846.0,
         "baseline_market_units": 250000,
-        "new_or_accelerated_logix_purchases": 16920,
-        "diverted_purchases": 11280,
+        "new_or_accelerated_logix_purchases": 17640,
+        "diverted_purchases": 11760,
         "halo_competitor_purchases": 5080,
-        "expanded_market_units": 272000,
-        "market_expansion_pct": 8.8,
-        "unit_market_share_pct": 10.37
-      }
+        "expanded_market_units": 272720,
+        "market_expansion_pct": 9.09,
+        "unit_market_share_pct": 10.78,
+        "bpi": {
+          "customer_installations": 5880,
+          "single_accounting_licenses": 2940,
+          "four_module_customers": 1470,
+          "complete_suite_licenses": 1470,
+          "individual_module_licenses": 8820,
+          "retail_spend_usd": 1504427.4,
+          "bpi_receipts_after_channel_usd": 1128320.55
+        }
+      },
+      "bpi_attachment_rate": 0.2
     },
     {
       "id": "strong",
@@ -549,11 +862,14 @@
       "unconstrained_demand_units": 33899,
       "delivery_capacity_units": 34000,
       "pre_reaction_units": 34000,
-      "reaction_delta_units": -945,
+      "reaction_delta_units": 0,
       "reaction_components": {
         "apple_displacement": 1080,
         "tandy_deferral": 90,
-        "compatibility_gain": 225
+        "compatibility_gain": 225,
+        "bpi_incremental_deliveries": 945,
+        "bpi_requested_gain": 1800,
+        "bpi_capacity_deferred": 855
       },
       "months": [
         {
@@ -562,12 +878,22 @@
           "apple_displacement_units": 0,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
+          "bpi_gain_units": 0,
           "units": 567,
           "cumulative_units": 567,
           "customer_retail_spend_usd": 1358237.16,
           "supplier_revenue_after_channel_usd": 1018677.87,
           "recurring_cost_usd": 642705.84,
-          "unit_contribution_total_usd": 375972.03
+          "unit_contribution_total_usd": 375972.03,
+          "bpi": {
+            "customer_installations": 142,
+            "single_accounting_licenses": 70,
+            "four_module_customers": 36,
+            "complete_suite_licenses": 36,
+            "individual_module_licenses": 214,
+            "retail_spend_usd": 36654.52,
+            "bpi_receipts_after_channel_usd": 27490.89
+          }
         },
         {
           "month": "1978-07",
@@ -575,12 +901,22 @@
           "apple_displacement_units": 0,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 907,
-          "cumulative_units": 1474,
-          "customer_retail_spend_usd": 2172700.36,
-          "supplier_revenue_after_channel_usd": 1629525.27,
-          "recurring_cost_usd": 1028102.64,
-          "unit_contribution_total_usd": 601422.63
+          "bpi_gain_units": 30,
+          "units": 937,
+          "cumulative_units": 1504,
+          "customer_retail_spend_usd": 2244564.76,
+          "supplier_revenue_after_channel_usd": 1683423.57,
+          "recurring_cost_usd": 1062108.24,
+          "unit_contribution_total_usd": 621315.33,
+          "bpi": {
+            "customer_installations": 234,
+            "single_accounting_licenses": 118,
+            "four_module_customers": 58,
+            "complete_suite_licenses": 58,
+            "individual_module_licenses": 350,
+            "retail_spend_usd": 59546.96,
+            "bpi_receipts_after_channel_usd": 44660.22
+          }
         },
         {
           "month": "1978-08",
@@ -588,12 +924,22 @@
           "apple_displacement_units": 12,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 1235,
-          "cumulative_units": 2709,
-          "customer_retail_spend_usd": 2958417.8,
-          "supplier_revenue_after_channel_usd": 2218813.35,
-          "recurring_cost_usd": 1399897.2,
-          "unit_contribution_total_usd": 818916.15
+          "bpi_gain_units": 60,
+          "units": 1295,
+          "cumulative_units": 2799,
+          "customer_retail_spend_usd": 3102146.6,
+          "supplier_revenue_after_channel_usd": 2326609.95,
+          "recurring_cost_usd": 1467908.4,
+          "unit_contribution_total_usd": 858701.55,
+          "bpi": {
+            "customer_installations": 324,
+            "single_accounting_licenses": 162,
+            "four_module_customers": 81,
+            "complete_suite_licenses": 81,
+            "individual_module_licenses": 486,
+            "retail_spend_usd": 82897.02,
+            "bpi_receipts_after_channel_usd": 62172.76
+          }
         },
         {
           "month": "1978-09",
@@ -601,12 +947,22 @@
           "apple_displacement_units": 18,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 1682,
-          "cumulative_units": 4391,
-          "customer_retail_spend_usd": 4029197.36,
-          "supplier_revenue_after_channel_usd": 3021898.02,
-          "recurring_cost_usd": 1906580.64,
-          "unit_contribution_total_usd": 1115317.38
+          "bpi_gain_units": 90,
+          "units": 1772,
+          "cumulative_units": 4571,
+          "customer_retail_spend_usd": 4244790.56,
+          "supplier_revenue_after_channel_usd": 3183592.92,
+          "recurring_cost_usd": 2008597.44,
+          "unit_contribution_total_usd": 1174995.48,
+          "bpi": {
+            "customer_installations": 443,
+            "single_accounting_licenses": 221,
+            "four_module_customers": 111,
+            "complete_suite_licenses": 111,
+            "individual_module_licenses": 665,
+            "retail_spend_usd": 113505.32,
+            "bpi_receipts_after_channel_usd": 85128.99
+          }
         },
         {
           "month": "1978-10",
@@ -614,12 +970,22 @@
           "apple_displacement_units": 24,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2129,
-          "cumulative_units": 6520,
-          "customer_retail_spend_usd": 5099976.92,
-          "supplier_revenue_after_channel_usd": 3824982.69,
-          "recurring_cost_usd": 2413264.08,
-          "unit_contribution_total_usd": 1411718.61
+          "bpi_gain_units": 120,
+          "units": 2249,
+          "cumulative_units": 6820,
+          "customer_retail_spend_usd": 5387434.52,
+          "supplier_revenue_after_channel_usd": 4040575.89,
+          "recurring_cost_usd": 2549286.48,
+          "unit_contribution_total_usd": 1491289.41,
+          "bpi": {
+            "customer_installations": 562,
+            "single_accounting_licenses": 282,
+            "four_module_customers": 140,
+            "complete_suite_licenses": 140,
+            "individual_module_licenses": 842,
+            "retail_spend_usd": 143467.4,
+            "bpi_receipts_after_channel_usd": 107600.55
+          }
         },
         {
           "month": "1978-11",
@@ -627,12 +993,22 @@
           "apple_displacement_units": 36,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2457,
-          "cumulative_units": 8977,
-          "customer_retail_spend_usd": 5885694.36,
-          "supplier_revenue_after_channel_usd": 4414270.77,
-          "recurring_cost_usd": 2785058.64,
-          "unit_contribution_total_usd": 1629212.13
+          "bpi_gain_units": 150,
+          "units": 2607,
+          "cumulative_units": 9427,
+          "customer_retail_spend_usd": 6245016.36,
+          "supplier_revenue_after_channel_usd": 4683762.27,
+          "recurring_cost_usd": 2955086.64,
+          "unit_contribution_total_usd": 1728675.63,
+          "bpi": {
+            "customer_installations": 652,
+            "single_accounting_licenses": 326,
+            "four_module_customers": 163,
+            "complete_suite_licenses": 163,
+            "individual_module_licenses": 978,
+            "retail_spend_usd": 166817.46,
+            "bpi_receipts_after_channel_usd": 125113.1
+          }
         },
         {
           "month": "1978-12",
@@ -640,12 +1016,22 @@
           "apple_displacement_units": 60,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 2887,
-          "cumulative_units": 11864,
-          "customer_retail_spend_usd": 6915750.76,
-          "supplier_revenue_after_channel_usd": 5186813.07,
-          "recurring_cost_usd": 3272472.24,
-          "unit_contribution_total_usd": 1914340.83
+          "bpi_gain_units": 150,
+          "units": 3037,
+          "cumulative_units": 12464,
+          "customer_retail_spend_usd": 7275072.76,
+          "supplier_revenue_after_channel_usd": 5456304.57,
+          "recurring_cost_usd": 3442500.24,
+          "unit_contribution_total_usd": 2013804.33,
+          "bpi": {
+            "customer_installations": 759,
+            "single_accounting_licenses": 379,
+            "four_module_customers": 190,
+            "complete_suite_licenses": 190,
+            "individual_module_licenses": 1139,
+            "retail_spend_usd": 194355.5,
+            "bpi_receipts_after_channel_usd": 145766.62
+          }
         },
         {
           "month": "1979-01",
@@ -653,12 +1039,22 @@
           "apple_displacement_units": 90,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 3310,
-          "cumulative_units": 15174,
-          "customer_retail_spend_usd": 7929038.8,
-          "supplier_revenue_after_channel_usd": 5946779.1,
-          "recurring_cost_usd": 3751951.2,
-          "unit_contribution_total_usd": 2194827.9
+          "bpi_gain_units": 150,
+          "units": 3460,
+          "cumulative_units": 15924,
+          "customer_retail_spend_usd": 8288360.8,
+          "supplier_revenue_after_channel_usd": 6216270.6,
+          "recurring_cost_usd": 3921979.2,
+          "unit_contribution_total_usd": 2294291.4,
+          "bpi": {
+            "customer_installations": 865,
+            "single_accounting_licenses": 433,
+            "four_module_customers": 216,
+            "complete_suite_licenses": 216,
+            "individual_module_licenses": 1297,
+            "retail_spend_usd": 221153.02,
+            "bpi_receipts_after_channel_usd": 165864.76
+          }
         },
         {
           "month": "1979-02",
@@ -666,12 +1062,22 @@
           "apple_displacement_units": 120,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 3620,
-          "cumulative_units": 18794,
-          "customer_retail_spend_usd": 8671637.6,
-          "supplier_revenue_after_channel_usd": 6503728.2,
-          "recurring_cost_usd": 4103342.4,
-          "unit_contribution_total_usd": 2400385.8
+          "bpi_gain_units": 180,
+          "units": 3800,
+          "cumulative_units": 19724,
+          "customer_retail_spend_usd": 9102824.0,
+          "supplier_revenue_after_channel_usd": 6827118.0,
+          "recurring_cost_usd": 4307376.0,
+          "unit_contribution_total_usd": 2519742.0,
+          "bpi": {
+            "customer_installations": 950,
+            "single_accounting_licenses": 474,
+            "four_module_customers": 238,
+            "complete_suite_licenses": 238,
+            "individual_module_licenses": 1426,
+            "retail_spend_usd": 243385.36,
+            "bpi_receipts_after_channel_usd": 182539.02
+          }
         },
         {
           "month": "1979-03",
@@ -679,12 +1085,22 @@
           "apple_displacement_units": 180,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
-          "units": 4013,
-          "cumulative_units": 22807,
-          "customer_retail_spend_usd": 9613061.24,
-          "supplier_revenue_after_channel_usd": 7209795.93,
-          "recurring_cost_usd": 4548815.76,
-          "unit_contribution_total_usd": 2660980.17
+          "bpi_gain_units": 15,
+          "units": 4028,
+          "cumulative_units": 23752,
+          "customer_retail_spend_usd": 9648993.44,
+          "supplier_revenue_after_channel_usd": 7236745.08,
+          "recurring_cost_usd": 4565818.56,
+          "unit_contribution_total_usd": 2670926.52,
+          "bpi": {
+            "customer_installations": 1007,
+            "single_accounting_licenses": 503,
+            "four_module_customers": 252,
+            "complete_suite_licenses": 252,
+            "individual_module_licenses": 1511,
+            "retail_spend_usd": 257807.54,
+            "bpi_receipts_after_channel_usd": 193355.65
+          }
         },
         {
           "month": "1979-04",
@@ -692,12 +1108,22 @@
           "apple_displacement_units": 240,
           "tandy_deferred_units": 0,
           "compatibility_gain_units": 0,
+          "bpi_gain_units": 0,
           "units": 4520,
-          "cumulative_units": 27327,
+          "cumulative_units": 28272,
           "customer_retail_spend_usd": 10827569.6,
           "supplier_revenue_after_channel_usd": 8120677.2,
           "recurring_cost_usd": 5123510.4,
-          "unit_contribution_total_usd": 2997166.8
+          "unit_contribution_total_usd": 2997166.8,
+          "bpi": {
+            "customer_installations": 1130,
+            "single_accounting_licenses": 566,
+            "four_module_customers": 282,
+            "complete_suite_licenses": 282,
+            "individual_module_licenses": 1694,
+            "retail_spend_usd": 288793.04,
+            "bpi_receipts_after_channel_usd": 216594.78
+          }
         },
         {
           "month": "1979-05",
@@ -705,42 +1131,71 @@
           "apple_displacement_units": 300,
           "tandy_deferred_units": 90,
           "compatibility_gain_units": 225,
+          "bpi_gain_units": 0,
           "units": 5728,
-          "cumulative_units": 33055,
+          "cumulative_units": 34000,
           "customer_retail_spend_usd": 13721309.44,
           "supplier_revenue_after_channel_usd": 10290982.08,
           "recurring_cost_usd": 6492802.56,
-          "unit_contribution_total_usd": 3798179.52
+          "unit_contribution_total_usd": 3798179.52,
+          "bpi": {
+            "customer_installations": 1432,
+            "single_accounting_licenses": 716,
+            "four_module_customers": 358,
+            "complete_suite_licenses": 358,
+            "individual_module_licenses": 2148,
+            "retail_spend_usd": 366384.36,
+            "bpi_receipts_after_channel_usd": 274788.27
+          }
         }
       ],
       "calendar_1978": {
-        "units": 11864,
-        "customer_retail_spend_usd": 28419974.72,
-        "supplier_revenue_after_channel_usd": 21314981.04,
-        "recurring_cost_usd": 13448081.28,
-        "unit_contribution_total_usd": 7866899.76,
+        "units": 12464,
+        "customer_retail_spend_usd": 29857262.72,
+        "supplier_revenue_after_channel_usd": 22392947.04,
+        "recurring_cost_usd": 14128193.28,
+        "unit_contribution_total_usd": 8264753.76,
         "baseline_market_units": 180000,
-        "new_or_accelerated_logix_purchases": 7712,
-        "diverted_purchases": 4152,
+        "new_or_accelerated_logix_purchases": 8102,
+        "diverted_purchases": 4362,
         "halo_competitor_purchases": 1598,
-        "expanded_market_units": 189310,
-        "market_expansion_pct": 5.17,
-        "unit_market_share_pct": 6.27
+        "expanded_market_units": 189700,
+        "market_expansion_pct": 5.39,
+        "unit_market_share_pct": 6.57,
+        "bpi": {
+          "customer_installations": 3116,
+          "single_accounting_licenses": 1558,
+          "four_module_customers": 779,
+          "complete_suite_licenses": 779,
+          "individual_module_licenses": 4674,
+          "retail_spend_usd": 797244.18,
+          "bpi_receipts_after_channel_usd": 597933.13
+        }
       },
       "launch_year": {
-        "units": 33055,
-        "customer_retail_spend_usd": 79182591.4,
-        "supplier_revenue_after_channel_usd": 59386943.55,
-        "recurring_cost_usd": 37468503.6,
-        "unit_contribution_total_usd": 21918439.95,
+        "units": 34000,
+        "customer_retail_spend_usd": 81446320.0,
+        "supplier_revenue_after_channel_usd": 61084740.0,
+        "recurring_cost_usd": 38539680.0,
+        "unit_contribution_total_usd": 22545060.0,
         "baseline_market_units": 250000,
-        "new_or_accelerated_logix_purchases": 21486,
-        "diverted_purchases": 11569,
+        "new_or_accelerated_logix_purchases": 22100,
+        "diverted_purchases": 11900,
         "halo_competitor_purchases": 6702,
-        "expanded_market_units": 278188,
-        "market_expansion_pct": 11.28,
-        "unit_market_share_pct": 11.88
-      }
+        "expanded_market_units": 278802,
+        "market_expansion_pct": 11.52,
+        "unit_market_share_pct": 12.2,
+        "bpi": {
+          "customer_installations": 8500,
+          "single_accounting_licenses": 4250,
+          "four_module_customers": 2125,
+          "complete_suite_licenses": 2125,
+          "individual_module_licenses": 12750,
+          "retail_spend_usd": 2174767.5,
+          "bpi_receipts_after_channel_usd": 1631075.61
+        }
+      },
+      "bpi_attachment_rate": 0.25
     }
   ],
   "academy": {

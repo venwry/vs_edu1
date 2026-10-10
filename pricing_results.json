@@ -6,7 +6,7 @@
     "price_basis": "Nominal US retail prices before sales tax; June 15 snapshots, 1978–1981",
     "source_commit": "3751194e197330e228a7fdf26df5b30c4c46d1ee",
     "cost_model_file": "manufacturing_costs.json",
-    "cost_model_sha256": "7da7c82902c48f4a59636ce26bc39cd576d9feff21f51767e546e3541890aa2a",
+    "cost_model_sha256": "fd55c406503bc325524fe9865b22e7782b582ff1a9d7808065bc21e472d4d5e4",
     "snapshots": [
       "1978-06-15",
       "1979-06-15",
@@ -39,7 +39,9 @@
     "profit_reduction_pct": 40,
     "baseline": "Immutable pricing_baseline.json from commit 3751194; no compounding on rebuild.",
     "scope": "All 79 offers and all 212 available annual snapshots; before-you-buy course variants use pre-voucher contribution. Historical catalog prices remain separate.",
-    "price_floor": "Displayed floor is central-cost break-even at baseline fee; legacy safeguard retained separately for audit."
+    "price_floor": "Displayed floor is central-cost break-even at baseline fee; legacy safeguard retained separately for audit.",
+    "independent_bpi": "BPI Systems owns and supports its applications independently. BPI receipts belong to BPI; baskets combine suppliers and do not imply Logix revenue or ownership. Training, setup, support contracts, upgrade-credit redemptions and tax excluded; quote separately. No new discount applied.",
+    "bpi_upgrade_credit": "Eligible same-platform module net licence payments credited once toward complete suite, capped at suite price, with credited licences retired; no cash refund or training/setup credit. Redemption costs must be modelled if upgrades are forecast."
   },
   "sources": {
     "byte1978": {
@@ -12286,7 +12288,8 @@
       "computerland_fee_rate": 0.25,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license."
+        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license.",
+        "Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded."
       ],
       "components": [
         {
@@ -12561,7 +12564,8 @@
       "computerland_fee_rate": 0.25,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license."
+        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license.",
+        "Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded."
       ],
       "components": [
         {
@@ -12836,7 +12840,8 @@
       "computerland_fee_rate": 0.25,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license."
+        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license.",
+        "Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded."
       ],
       "components": [
         {
@@ -13111,7 +13116,8 @@
       "computerland_fee_rate": 0.25,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license."
+        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license.",
+        "Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded."
       ],
       "components": [
         {
@@ -13386,7 +13392,8 @@
       "computerland_fee_rate": 0.25,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license."
+        "Z80 at launch; native Artemis edition from 1980-05-19. Same price per platform license.",
+        "Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded."
       ],
       "components": [
         {
@@ -13661,7 +13668,8 @@
       "computerland_fee_rate": 0.25,
       "status": "approved_pricing_proposal",
       "notes": [
-        "One five-application license and consolidated media/documentation; cost uses existing suite estimate, not five separately packaged copies."
+        "One five-application license and consolidated media/documentation; cost uses existing suite estimate, not five separately packaged copies.",
+        "Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded."
       ],
       "components": [
         {
@@ -13936,7 +13944,8 @@
       "computerland_fee_rate": 0.25,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Proposed one-server entitlement, all five business modules; clients sold separately. Existing media/delivery cost proxy, not software development."
+        "Proposed one-server entitlement, all five business modules; clients sold separately. Existing media/delivery cost proxy, not software development.",
+        "Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded."
       ],
       "components": [
         {
@@ -14043,7 +14052,8 @@
       "computerland_fee_rate": 0.25,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Same conservative $38.39 full-pack cost proxy per client; no unsupported royalty split assumed."
+        "Same conservative $38.39 full-pack cost proxy per client; no unsupported royalty split assumed.",
+        "Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded."
       ],
       "components": [
         {
@@ -17784,5 +17794,133 @@
     "Prototype/superseded RAM",
     "Duplicate platform editions except separately selectable Abacus 2 platform SKUs",
     "Academy direct-sales channel record"
+  ],
+  "partner_configurations": [
+    {
+      "id": "bpi_business_accounts",
+      "name": "Aurelia Business Accounts — dealer configuration",
+      "supplier_policy": "Logix hardware, AION applications and independently licensed BPI Systems software. Component basket, not an additional SKU.",
+      "components": [
+        "bundle.proposed_aurelia_office",
+        "device.flexidisk",
+        "device.flexiprint40",
+        "software.bpi_suite.bpi_general_accounting"
+      ],
+      "snapshots": {
+        "1978": {
+          "retail_price_usd": 2557.01,
+          "manufacturing_cost_usd": 1187.63,
+          "computerland_fee_usd": 639.26,
+          "revenue_after_fee_usd": 1917.75,
+          "unit_profit_usd": 730.12
+        },
+        "1979": {
+          "retail_price_usd": 2212.56,
+          "manufacturing_cost_usd": 1160.53,
+          "computerland_fee_usd": 553.14,
+          "revenue_after_fee_usd": 1659.42,
+          "unit_profit_usd": 498.89
+        },
+        "1980": {
+          "retail_price_usd": 1976.98,
+          "manufacturing_cost_usd": 1140.72,
+          "computerland_fee_usd": 494.26,
+          "revenue_after_fee_usd": 1482.72,
+          "unit_profit_usd": 342.0
+        },
+        "1981": {
+          "retail_price_usd": 1976.24,
+          "manufacturing_cost_usd": 1139.32,
+          "computerland_fee_usd": 494.07,
+          "revenue_after_fee_usd": 1482.17,
+          "unit_profit_usd": 342.85
+        }
+      }
+    },
+    {
+      "id": "bpi_trading_office",
+      "name": "Aurelia Trading Office — dealer configuration",
+      "supplier_policy": "Logix hardware, AION applications and independently licensed BPI Systems software. Component basket, not an additional SKU.",
+      "components": [
+        "bundle.proposed_aurelia_office",
+        "device.flexidisk",
+        "device.flexiprint40",
+        "software.bpi_suite.bpi_general_accounting",
+        "software.bpi_suite.bpi_accounts_receivable",
+        "software.bpi_suite.bpi_accounts_payable",
+        "software.bpi_suite.bpi_inventory_control"
+      ],
+      "snapshots": {
+        "1978": {
+          "retail_price_usd": 2839.91,
+          "manufacturing_cost_usd": 1215.17,
+          "computerland_fee_usd": 710.0,
+          "revenue_after_fee_usd": 2129.91,
+          "unit_profit_usd": 914.74
+        },
+        "1979": {
+          "retail_price_usd": 2496.39,
+          "manufacturing_cost_usd": 1189.84,
+          "computerland_fee_usd": 624.09,
+          "revenue_after_fee_usd": 1872.3,
+          "unit_profit_usd": 682.46
+        },
+        "1980": {
+          "retail_price_usd": 2126.92,
+          "manufacturing_cost_usd": 1172.13,
+          "computerland_fee_usd": 531.76,
+          "revenue_after_fee_usd": 1595.16,
+          "unit_profit_usd": 423.03
+        },
+        "1981": {
+          "retail_price_usd": 2127.5,
+          "manufacturing_cost_usd": 1173.19,
+          "computerland_fee_usd": 531.9,
+          "revenue_after_fee_usd": 1595.6,
+          "unit_profit_usd": 422.41
+        }
+      }
+    },
+    {
+      "id": "bpi_complete_business",
+      "name": "Aurelia Complete Business — dealer configuration",
+      "supplier_policy": "Logix hardware, AION applications and independently licensed BPI Systems software. Component basket, not an additional SKU.",
+      "components": [
+        "bundle.proposed_aurelia_office",
+        "device.flexidisk",
+        "device.flexiprint40",
+        "software.bpi_suite"
+      ],
+      "snapshots": {
+        "1978": {
+          "retail_price_usd": 2920.33,
+          "manufacturing_cost_usd": 1205.12,
+          "computerland_fee_usd": 730.09,
+          "revenue_after_fee_usd": 2190.24,
+          "unit_profit_usd": 985.12
+        },
+        "1979": {
+          "retail_price_usd": 2576.21,
+          "manufacturing_cost_usd": 1178.62,
+          "computerland_fee_usd": 644.06,
+          "revenue_after_fee_usd": 1932.15,
+          "unit_profit_usd": 753.53
+        },
+        "1980": {
+          "retail_price_usd": 2158.06,
+          "manufacturing_cost_usd": 1159.62,
+          "computerland_fee_usd": 539.53,
+          "revenue_after_fee_usd": 1618.53,
+          "unit_profit_usd": 458.91
+        },
+        "1981": {
+          "retail_price_usd": 2157.82,
+          "manufacturing_cost_usd": 1159.15,
+          "computerland_fee_usd": 539.46,
+          "revenue_after_fee_usd": 1618.36,
+          "unit_profit_usd": 459.21
+        }
+      }
+    }
   ]
 }

@@ -104,8 +104,8 @@
     {
       "id": "bpi",
       "path": "bpi.html",
-      "title": "AION BPI Systems",
-      "description": "Business applications, their modules and the later client-server architecture.",
+      "title": "BPI Systems",
+      "description": "Independent business-software partner: BPI products, cooperation, support, training and later client-server applications.",
       "record_refs": [
         "software.bpi_suite",
         "software.bpi_client_server",
@@ -114,7 +114,8 @@
         "edition.bpi_suite.era",
         "edition.bpi_client_server.z80_client",
         "edition.bpi_client_server.era_client",
-        "edition.bpi_client_server.era_server"
+        "edition.bpi_client_server.era_server",
+        "service.bpi_training"
       ],
       "kind": "offering",
       "aliases": [
@@ -502,15 +503,12 @@
       },
       {
         "id": "aion",
-        "title": "AION & BPI",
+        "title": "AION Software",
         "description": "Applications and software strategy",
         "actor_refs": [
-          "actor.aion",
-          "actor.bpi"
+          "actor.aion"
         ],
         "event_refs": [
-          "event.bpi_offer",
-          "event.bpi_launch",
           "event.aionix_agreement",
           "event.artemis_software",
           "event.software32",
@@ -521,7 +519,7 @@
       {
         "id": "partners",
         "title": "Partners",
-        "description": "DRI, SMC, Microsoft and distribution",
+        "description": "Independent BPI, DRI, MPI, SMC, Microsoft, Tandy and distribution",
         "actor_refs": [
           "actor.dri",
           "actor.kildall",
@@ -530,7 +528,8 @@
           "actor.computerland",
           "actor.dorothy",
           "actor.smc",
-          "actor.tandy"
+          "actor.tandy",
+          "actor.bpi"
         ],
         "event_refs": [
           "event.dri_cpm",
@@ -548,7 +547,15 @@
           "event.tandy_port_review",
           "event.tandy_announcement",
           "event.tandy_ncc_demo",
-          "event.tandy_release"
+          "event.tandy_release",
+          "event.bpi_offer",
+          "event.bpi_launch",
+          "event.bpi_cooperation",
+          "event.bpi_pilot",
+          "event.bpi_qualification",
+          "event.bpi_dealer_program",
+          "event.bpi_year_end",
+          "event.bpi_expansion"
         ],
         "process_refs": []
       },
