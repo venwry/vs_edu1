@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Logix computer demand and sales, 1978–November 1979",
+    "title": "Logix computer sales and Academy demand through NCC 1980",
     "status": "Alternative-history planning forecast; not actual sales, firm orders or statistically calibrated probabilities.",
     "geography": "United States",
     "currency": "Nominal USD, before sales tax",
@@ -10,9 +10,12 @@
     "source_story_sha256": "58395cc2bdd07290de73af3bfcc0b1af26baa04c04c50190b92a8d49dab9503e",
     "source_pricing_sha256": "e87c5e93cca161668ad7e02cb76933c5a183979e3d9016efce6dff2cbde16df2",
     "generated_by": "tools/build_sales.py",
-    "forecast_end": "1979-11-30",
+    "forecast_end": "1980-05-18",
     "aurelia_plus_launch": "1979-12-03",
-    "source_campaign_sha256": "50e7a056edd0d491a8c9bd512400eafda00b548d6ef44fb465b407044364545a"
+    "source_campaign_sha256": "e509e203661da64a3d1d7b1b1220aa816c4df5a951595c2b72be9cabbfe7faf4",
+    "november_forecast_end": "1979-11-30",
+    "ncc1980_date": "1980-05-19",
+    "source_comdex_campaign_sha256": "4a219726cd3bc1db2213e7d8227b5bf76978cc942536dbb7b18cbd39bce45195"
   },
   "reaction_policy": {
     "boundary": "June 1978–May 1979 sell-through. The June 4 demonstration, October Tandy release, later Apple successor review and confidential July/December IBM actions add no pre-NCC shipments.",
@@ -832,6 +835,1184 @@
           "retail_spend_usd": 1911057.61,
           "bpi_receipts_after_channel_usd": 1433293.2
         }
+      },
+      "comdex_to_ncc1980_months": [
+        {
+          "month": "1979-12",
+          "period_end": "1979-12-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 4896,
+          "incremental_effects": {
+            "comdex_applications_gain": 147,
+            "independent_compatibility_confidence_gain": 0,
+            "competition_loss": 103,
+            "clone_substitution_loss": 0,
+            "migration_waiting_loss": 69
+          },
+          "new_demand_units": 4354,
+          "plus_price_deferred_units": 517,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 2137,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 2903,
+              "units": 2137,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 4376554.63,
+              "supplier_revenue_after_channel_usd": 3282410.63,
+              "recurring_cost_usd": 2361833.77,
+              "unit_contribution_total_usd": 920598.23
+            },
+            "aurelia_plus": {
+              "new_demand_units": 2217,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 2947,
+              "units": 2217,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 5900345.97,
+              "supplier_revenue_after_channel_usd": 4425242.85,
+              "recurring_cost_usd": 3351527.58,
+              "unit_contribution_total_usd": 1073737.44
+            }
+          },
+          "units": 4354,
+          "cumulative_units": 54091,
+          "delivery_capacity_units": 5850,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 465,
+            "pulse_licenses_on_new_aurelia_plus": 222,
+            "customer_retail_spend_usd": 52432.35,
+            "supplier_revenue_after_channel_usd": 39324.87,
+            "recurring_cost_usd": 9422.31,
+            "unit_contribution_total_usd": 29902.56
+          },
+          "bpi": {
+            "customer_installations": 653,
+            "retail_spend_usd": 167319.57,
+            "bpi_receipts_after_channel_usd": 125489.68
+          },
+          "customer_retail_spend_usd": 10276900.6,
+          "supplier_revenue_after_channel_usd": 7707653.48,
+          "recurring_cost_usd": 5713361.35,
+          "unit_contribution_total_usd": 1994335.67
+        },
+        {
+          "month": "1980-01",
+          "period_end": "1980-01-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 4306,
+          "incremental_effects": {
+            "comdex_applications_gain": 172,
+            "independent_compatibility_confidence_gain": 11,
+            "competition_loss": 121,
+            "clone_substitution_loss": 30,
+            "migration_waiting_loss": 90
+          },
+          "new_demand_units": 3686,
+          "plus_price_deferred_units": 562,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 1274,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 1950,
+              "units": 1274,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 2609139.26,
+              "supplier_revenue_after_channel_usd": 1956851.26,
+              "recurring_cost_usd": 1408037.54,
+              "unit_contribution_total_usd": 548826.46
+            },
+            "aurelia_plus": {
+              "new_demand_units": 2412,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 4200,
+              "units": 2412,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 6419320.92,
+              "supplier_revenue_after_channel_usd": 4814472.6,
+              "recurring_cost_usd": 3646316.88,
+              "unit_contribution_total_usd": 1168179.84
+            }
+          },
+          "units": 3686,
+          "cumulative_units": 57777,
+          "delivery_capacity_units": 6150,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 622,
+            "pulse_licenses_on_new_aurelia_plus": 241,
+            "customer_retail_spend_usd": 64318.81,
+            "supplier_revenue_after_channel_usd": 48240.06,
+            "recurring_cost_usd": 11706.65,
+            "unit_contribution_total_usd": 36533.41
+          },
+          "bpi": {
+            "customer_installations": 553,
+            "retail_spend_usd": 141671.57,
+            "bpi_receipts_after_channel_usd": 106253.68
+          },
+          "customer_retail_spend_usd": 9028460.18,
+          "supplier_revenue_after_channel_usd": 6771323.86,
+          "recurring_cost_usd": 5054354.42,
+          "unit_contribution_total_usd": 1717006.3
+        },
+        {
+          "month": "1980-02",
+          "period_end": "1980-02-29",
+          "month_fraction": 1,
+          "baseline_demand_units": 4533,
+          "incremental_effects": {
+            "comdex_applications_gain": 204,
+            "independent_compatibility_confidence_gain": 23,
+            "competition_loss": 159,
+            "clone_substitution_loss": 63,
+            "migration_waiting_loss": 127
+          },
+          "new_demand_units": 3760,
+          "plus_price_deferred_units": 651,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 970,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 1500,
+              "units": 970,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 1986550.3,
+              "supplier_revenue_after_channel_usd": 1489910.3,
+              "recurring_cost_usd": 1072053.7,
+              "unit_contribution_total_usd": 417866.3
+            },
+            "aurelia_plus": {
+              "new_demand_units": 2790,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 4950,
+              "units": 2790,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 7425333.9,
+              "supplier_revenue_after_channel_usd": 5568979.5,
+              "recurring_cost_usd": 4217754.6,
+              "unit_contribution_total_usd": 1351252.8
+            }
+          },
+          "units": 3760,
+          "cumulative_units": 61537,
+          "delivery_capacity_units": 6450,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 622,
+            "pulse_licenses_on_new_aurelia_plus": 279,
+            "customer_retail_spend_usd": 68268.91,
+            "supplier_revenue_after_channel_usd": 51202.54,
+            "recurring_cost_usd": 12315.79,
+            "unit_contribution_total_usd": 38886.75
+          },
+          "bpi": {
+            "customer_installations": 564,
+            "retail_spend_usd": 144654.72,
+            "bpi_receipts_after_channel_usd": 108491.04
+          },
+          "customer_retail_spend_usd": 9411884.2,
+          "supplier_revenue_after_channel_usd": 7058889.8,
+          "recurring_cost_usd": 5289808.3,
+          "unit_contribution_total_usd": 1769119.1
+        },
+        {
+          "month": "1980-03",
+          "period_end": "1980-03-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 4760,
+          "incremental_effects": {
+            "comdex_applications_gain": 190,
+            "independent_compatibility_confidence_gain": 36,
+            "competition_loss": 200,
+            "clone_substitution_loss": 100,
+            "migration_waiting_loss": 167
+          },
+          "new_demand_units": 3818,
+          "plus_price_deferred_units": 701,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 813,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 1200,
+              "units": 813,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 1665015.87,
+              "supplier_revenue_after_channel_usd": 1248759.87,
+              "recurring_cost_usd": 898535.73,
+              "unit_contribution_total_usd": 350232.27
+            },
+            "aurelia_plus": {
+              "new_demand_units": 3005,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 5550,
+              "units": 3005,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 7997537.05,
+              "supplier_revenue_after_channel_usd": 5998130.25,
+              "recurring_cost_usd": 4542778.7,
+              "unit_contribution_total_usd": 1455381.6
+            }
+          },
+          "units": 3818,
+          "cumulative_units": 65355,
+          "delivery_capacity_units": 6750,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 497,
+            "pulse_licenses_on_new_aurelia_plus": 300,
+            "customer_retail_spend_usd": 62560.61,
+            "supplier_revenue_after_channel_usd": 46920.95,
+            "recurring_cost_usd": 11076.17,
+            "unit_contribution_total_usd": 35844.78
+          },
+          "bpi": {
+            "customer_installations": 573,
+            "retail_spend_usd": 146801.17,
+            "bpi_receipts_after_channel_usd": 110100.88
+          },
+          "customer_retail_spend_usd": 9662552.92,
+          "supplier_revenue_after_channel_usd": 7246890.12,
+          "recurring_cost_usd": 5441314.43,
+          "unit_contribution_total_usd": 1805613.87
+        },
+        {
+          "month": "1980-04",
+          "period_end": "1980-04-30",
+          "month_fraction": 1,
+          "baseline_demand_units": 4986,
+          "incremental_effects": {
+            "comdex_applications_gain": 175,
+            "independent_compatibility_confidence_gain": 50,
+            "competition_loss": 244,
+            "clone_substitution_loss": 140,
+            "migration_waiting_loss": 279
+          },
+          "new_demand_units": 3817,
+          "plus_price_deferred_units": 731,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 682,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 1050,
+              "units": 682,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 1396729.18,
+              "supplier_revenue_after_channel_usd": 1047545.18,
+              "recurring_cost_usd": 753753.22,
+              "unit_contribution_total_usd": 293798.78
+            },
+            "aurelia_plus": {
+              "new_demand_units": 3135,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 6000,
+              "units": 3135,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 8343520.35,
+              "supplier_revenue_after_channel_usd": 6257616.75,
+              "recurring_cost_usd": 4739304.9,
+              "unit_contribution_total_usd": 1518343.2
+            }
+          },
+          "units": 3817,
+          "cumulative_units": 69172,
+          "delivery_capacity_units": 7050,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 373,
+            "pulse_licenses_on_new_aurelia_plus": 314,
+            "customer_retail_spend_usd": 56187.79,
+            "supplier_revenue_after_channel_usd": 42140.99,
+            "recurring_cost_usd": 9736.95,
+            "unit_contribution_total_usd": 32404.04
+          },
+          "bpi": {
+            "customer_installations": 573,
+            "retail_spend_usd": 146801.17,
+            "bpi_receipts_after_channel_usd": 110100.88
+          },
+          "customer_retail_spend_usd": 9740249.53,
+          "supplier_revenue_after_channel_usd": 7305161.93,
+          "recurring_cost_usd": 5493058.12,
+          "unit_contribution_total_usd": 1812141.98
+        },
+        {
+          "month": "1980-05",
+          "period_end": "1980-05-18",
+          "month_fraction": 0.5806451612903226,
+          "baseline_demand_units": 2948,
+          "incremental_effects": {
+            "comdex_applications_gain": 88,
+            "independent_compatibility_confidence_gain": 37,
+            "competition_loss": 165,
+            "clone_substitution_loss": 124,
+            "migration_waiting_loss": 248
+          },
+          "new_demand_units": 2114,
+          "plus_price_deferred_units": 422,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 304,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 523,
+              "units": 304,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 622588.96,
+              "supplier_revenue_after_channel_usd": 466940.96,
+              "recurring_cost_usd": 335983.84,
+              "unit_contribution_total_usd": 130960.16
+            },
+            "aurelia_plus": {
+              "new_demand_units": 1810,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 3745,
+              "units": 1810,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 4817152.1,
+              "supplier_revenue_after_channel_usd": 3612850.5,
+              "recurring_cost_usd": 2736249.4,
+              "unit_contribution_total_usd": 876619.2
+            }
+          },
+          "units": 2114,
+          "cumulative_units": 71286,
+          "delivery_capacity_units": 4268,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 217,
+            "pulse_licenses_on_new_aurelia_plus": 181,
+            "customer_retail_spend_usd": 32514.16,
+            "supplier_revenue_after_channel_usd": 24385.71,
+            "recurring_cost_usd": 5637.8,
+            "unit_contribution_total_usd": 18747.91
+          },
+          "bpi": {
+            "customer_installations": 317,
+            "retail_spend_usd": 81142.29,
+            "bpi_receipts_after_channel_usd": 60856.72
+          },
+          "customer_retail_spend_usd": 5439741.06,
+          "supplier_revenue_after_channel_usd": 4079791.46,
+          "recurring_cost_usd": 3072233.24,
+          "unit_contribution_total_usd": 1007579.36
+        }
+      ],
+      "comdex_to_ncc1980": {
+        "units": 21549,
+        "customer_retail_spend_usd": 53559788.49,
+        "supplier_revenue_after_channel_usd": 40169710.65,
+        "recurring_cost_usd": 30064129.86,
+        "unit_contribution_total_usd": 10105796.28,
+        "aurelia_units": 6180,
+        "aurelia_plus_units": 15369,
+        "new_demand_units": 21549,
+        "opening_unmet_units": 0,
+        "lapsed_demand_units": 0,
+        "ending_unmet_units": 0,
+        "additional_application_receipts_usd": 252215.12,
+        "bpi_receipts_usd": 621292.88,
+        "abacus2_existing_owner_licenses": 2796,
+        "pulse_licenses": 1537
+      },
+      "launch_through_ncc1980": {
+        "units": 71286,
+        "aurelia_units": 55917,
+        "aurelia_plus_units": 15369,
+        "customer_retail_spend_usd": 163884102.92,
+        "supplier_revenue_after_channel_usd": 122912871.72,
+        "recurring_cost_usd": 85723471.05,
+        "unit_contribution_total_usd": 37189874.08
+      },
+      "calendar_1979": {
+        "units": 45055,
+        "customer_retail_spend_usd": 98955657.75,
+        "supplier_revenue_after_channel_usd": 74216646.59,
+        "recurring_cost_usd": 51130215.82,
+        "unit_contribution_total_usd": 23086732.23
+      },
+      "calendar_1980_to_ncc": {
+        "units": 17195,
+        "customer_retail_spend_usd": 43282887.89,
+        "supplier_revenue_after_channel_usd": 32462057.17,
+        "recurring_cost_usd": 24350768.51,
+        "unit_contribution_total_usd": 8111460.61
+      },
+      "academy_months": [
+        {
+          "month": "1979-06",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 740,
+            "existing_owners": 72,
+            "prospective_buyers": 144,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 956,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 956,
+          "unmet_requests": 0,
+          "centres": 13,
+          "rooms": 34,
+          "instructors": 43,
+          "available_teaching_days": 612,
+          "scheduled_teaching_days": 608,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 336,
+              "enrolments": 336,
+              "classes": 56,
+              "teaching_days": 112
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 239,
+              "enrolments": 239,
+              "classes": 40,
+              "teaching_days": 200
+            },
+            "business_workflow": {
+              "requested_enrolments": 143,
+              "enrolments": 143,
+              "classes": 24,
+              "teaching_days": 144
+            },
+            "developer": {
+              "requested_enrolments": 95,
+              "enrolments": 95,
+              "classes": 16,
+              "teaching_days": 80
+            },
+            "bpi": {
+              "requested_enrolments": 143,
+              "enrolments": 143,
+              "classes": 24,
+              "teaching_days": 72
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 966
+        },
+        {
+          "month": "1979-07",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 735,
+            "existing_owners": 84,
+            "prospective_buyers": 144,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 963,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 963,
+          "unmet_requests": 0,
+          "centres": 13,
+          "rooms": 35,
+          "instructors": 44,
+          "available_teaching_days": 630,
+          "scheduled_teaching_days": 610,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 339,
+              "enrolments": 339,
+              "classes": 57,
+              "teaching_days": 114
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 240,
+              "enrolments": 240,
+              "classes": 40,
+              "teaching_days": 200
+            },
+            "business_workflow": {
+              "requested_enrolments": 144,
+              "enrolments": 144,
+              "classes": 24,
+              "teaching_days": 144
+            },
+            "developer": {
+              "requested_enrolments": 96,
+              "enrolments": 96,
+              "classes": 16,
+              "teaching_days": 80
+            },
+            "bpi": {
+              "requested_enrolments": 144,
+              "enrolments": 144,
+              "classes": 24,
+              "teaching_days": 72
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 994
+        },
+        {
+          "month": "1979-08",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 755,
+            "existing_owners": 96,
+            "prospective_buyers": 144,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 995,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 995,
+          "unmet_requests": 0,
+          "centres": 14,
+          "rooms": 37,
+          "instructors": 47,
+          "available_teaching_days": 666,
+          "scheduled_teaching_days": 638,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 350,
+              "enrolments": 350,
+              "classes": 59,
+              "teaching_days": 118
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 248,
+              "enrolments": 248,
+              "classes": 42,
+              "teaching_days": 210
+            },
+            "business_workflow": {
+              "requested_enrolments": 149,
+              "enrolments": 149,
+              "classes": 25,
+              "teaching_days": 150
+            },
+            "developer": {
+              "requested_enrolments": 99,
+              "enrolments": 99,
+              "classes": 17,
+              "teaching_days": 85
+            },
+            "bpi": {
+              "requested_enrolments": 149,
+              "enrolments": 149,
+              "classes": 25,
+              "teaching_days": 75
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1051
+        },
+        {
+          "month": "1979-09",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 795,
+            "existing_owners": 109,
+            "prospective_buyers": 144,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 1048,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1046,
+          "unmet_requests": 2,
+          "centres": 14,
+          "rooms": 38,
+          "instructors": 48,
+          "available_teaching_days": 684,
+          "scheduled_teaching_days": 668,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 368,
+              "enrolments": 368,
+              "classes": 62,
+              "teaching_days": 124
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 262,
+              "enrolments": 262,
+              "classes": 44,
+              "teaching_days": 220
+            },
+            "business_workflow": {
+              "requested_enrolments": 157,
+              "enrolments": 156,
+              "classes": 26,
+              "teaching_days": 156
+            },
+            "developer": {
+              "requested_enrolments": 104,
+              "enrolments": 104,
+              "classes": 18,
+              "teaching_days": 90
+            },
+            "bpi": {
+              "requested_enrolments": 157,
+              "enrolments": 156,
+              "classes": 26,
+              "teaching_days": 78
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1080
+        },
+        {
+          "month": "1979-10",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 802,
+            "existing_owners": 122,
+            "prospective_buyers": 144,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 1068,
+          "opening_unmet_requests": 2,
+          "returning_requests": 2,
+          "lapsed_requests": 0,
+          "enrolments": 1070,
+          "unmet_requests": 0,
+          "centres": 15,
+          "rooms": 40,
+          "instructors": 50,
+          "available_teaching_days": 720,
+          "scheduled_teaching_days": 684,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 376,
+              "enrolments": 376,
+              "classes": 63,
+              "teaching_days": 126
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 267,
+              "enrolments": 267,
+              "classes": 45,
+              "teaching_days": 225
+            },
+            "business_workflow": {
+              "requested_enrolments": 160,
+              "enrolments": 160,
+              "classes": 27,
+              "teaching_days": 162
+            },
+            "developer": {
+              "requested_enrolments": 107,
+              "enrolments": 107,
+              "classes": 18,
+              "teaching_days": 90
+            },
+            "bpi": {
+              "requested_enrolments": 160,
+              "enrolments": 160,
+              "classes": 27,
+              "teaching_days": 81
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1136
+        },
+        {
+          "month": "1979-11",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 816,
+            "existing_owners": 136,
+            "prospective_buyers": 144,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 1096,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1096,
+          "unmet_requests": 0,
+          "centres": 16,
+          "rooms": 42,
+          "instructors": 53,
+          "available_teaching_days": 756,
+          "scheduled_teaching_days": 707,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 385,
+              "enrolments": 385,
+              "classes": 65,
+              "teaching_days": 130
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 274,
+              "enrolments": 274,
+              "classes": 46,
+              "teaching_days": 230
+            },
+            "business_workflow": {
+              "requested_enrolments": 164,
+              "enrolments": 164,
+              "classes": 28,
+              "teaching_days": 168
+            },
+            "developer": {
+              "requested_enrolments": 109,
+              "enrolments": 109,
+              "classes": 19,
+              "teaching_days": 95
+            },
+            "bpi": {
+              "requested_enrolments": 164,
+              "enrolments": 164,
+              "classes": 28,
+              "teaching_days": 84
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1193
+        },
+        {
+          "month": "1979-12",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 784,
+            "existing_owners": 224,
+            "prospective_buyers": 208,
+            "manufacturer_integrator_learners": 24
+          },
+          "new_requests": 1240,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1240,
+          "unmet_requests": 0,
+          "centres": 18,
+          "rooms": 45,
+          "instructors": 57,
+          "available_teaching_days": 810,
+          "scheduled_teaching_days": 780,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 310,
+              "enrolments": 310,
+              "classes": 52,
+              "teaching_days": 104
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 372,
+              "enrolments": 372,
+              "classes": 62,
+              "teaching_days": 310
+            },
+            "business_workflow": {
+              "requested_enrolments": 124,
+              "enrolments": 124,
+              "classes": 21,
+              "teaching_days": 126
+            },
+            "developer": {
+              "requested_enrolments": 124,
+              "enrolments": 124,
+              "classes": 21,
+              "teaching_days": 105
+            },
+            "bpi": {
+              "requested_enrolments": 186,
+              "enrolments": 186,
+              "classes": 31,
+              "teaching_days": 93
+            },
+            "pulse": {
+              "requested_enrolments": 124,
+              "enrolments": 124,
+              "classes": 21,
+              "teaching_days": 42
+            }
+          },
+          "planning_seat_capacity": 1296
+        },
+        {
+          "month": "1980-01",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 663,
+            "existing_owners": 243,
+            "prospective_buyers": 208,
+            "manufacturer_integrator_learners": 36
+          },
+          "new_requests": 1150,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1150,
+          "unmet_requests": 0,
+          "centres": 18,
+          "rooms": 48,
+          "instructors": 60,
+          "available_teaching_days": 864,
+          "scheduled_teaching_days": 733,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 288,
+              "enrolments": 288,
+              "classes": 48,
+              "teaching_days": 96
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 345,
+              "enrolments": 345,
+              "classes": 58,
+              "teaching_days": 290
+            },
+            "business_workflow": {
+              "requested_enrolments": 115,
+              "enrolments": 115,
+              "classes": 20,
+              "teaching_days": 120
+            },
+            "developer": {
+              "requested_enrolments": 115,
+              "enrolments": 115,
+              "classes": 20,
+              "teaching_days": 100
+            },
+            "bpi": {
+              "requested_enrolments": 172,
+              "enrolments": 172,
+              "classes": 29,
+              "teaching_days": 87
+            },
+            "pulse": {
+              "requested_enrolments": 115,
+              "enrolments": 115,
+              "classes": 20,
+              "teaching_days": 40
+            }
+          },
+          "planning_seat_capacity": 1382
+        },
+        {
+          "month": "1980-02",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 677,
+            "existing_owners": 260,
+            "prospective_buyers": 208,
+            "manufacturer_integrator_learners": 48
+          },
+          "new_requests": 1193,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1193,
+          "unmet_requests": 0,
+          "centres": 19,
+          "rooms": 51,
+          "instructors": 64,
+          "available_teaching_days": 918,
+          "scheduled_teaching_days": 752,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 301,
+              "enrolments": 301,
+              "classes": 51,
+              "teaching_days": 102
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 357,
+              "enrolments": 357,
+              "classes": 60,
+              "teaching_days": 300
+            },
+            "business_workflow": {
+              "requested_enrolments": 119,
+              "enrolments": 119,
+              "classes": 20,
+              "teaching_days": 120
+            },
+            "developer": {
+              "requested_enrolments": 119,
+              "enrolments": 119,
+              "classes": 20,
+              "teaching_days": 100
+            },
+            "bpi": {
+              "requested_enrolments": 178,
+              "enrolments": 178,
+              "classes": 30,
+              "teaching_days": 90
+            },
+            "pulse": {
+              "requested_enrolments": 119,
+              "enrolments": 119,
+              "classes": 20,
+              "teaching_days": 40
+            }
+          },
+          "planning_seat_capacity": 1468
+        },
+        {
+          "month": "1980-03",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 687,
+            "existing_owners": 277,
+            "prospective_buyers": 208,
+            "manufacturer_integrator_learners": 60
+          },
+          "new_requests": 1232,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1232,
+          "unmet_requests": 0,
+          "centres": 20,
+          "rooms": 54,
+          "instructors": 68,
+          "available_teaching_days": 972,
+          "scheduled_teaching_days": 780,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 310,
+              "enrolments": 310,
+              "classes": 52,
+              "teaching_days": 104
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 369,
+              "enrolments": 369,
+              "classes": 62,
+              "teaching_days": 310
+            },
+            "business_workflow": {
+              "requested_enrolments": 123,
+              "enrolments": 123,
+              "classes": 21,
+              "teaching_days": 126
+            },
+            "developer": {
+              "requested_enrolments": 123,
+              "enrolments": 123,
+              "classes": 21,
+              "teaching_days": 105
+            },
+            "bpi": {
+              "requested_enrolments": 184,
+              "enrolments": 184,
+              "classes": 31,
+              "teaching_days": 93
+            },
+            "pulse": {
+              "requested_enrolments": 123,
+              "enrolments": 123,
+              "classes": 21,
+              "teaching_days": 42
+            }
+          },
+          "planning_seat_capacity": 1555
+        },
+        {
+          "month": "1980-04",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 687,
+            "existing_owners": 294,
+            "prospective_buyers": 208,
+            "manufacturer_integrator_learners": 72
+          },
+          "new_requests": 1261,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1261,
+          "unmet_requests": 0,
+          "centres": 21,
+          "rooms": 56,
+          "instructors": 70,
+          "available_teaching_days": 1008,
+          "scheduled_teaching_days": 790,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 316,
+              "enrolments": 316,
+              "classes": 53,
+              "teaching_days": 106
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 378,
+              "enrolments": 378,
+              "classes": 63,
+              "teaching_days": 315
+            },
+            "business_workflow": {
+              "requested_enrolments": 126,
+              "enrolments": 126,
+              "classes": 21,
+              "teaching_days": 126
+            },
+            "developer": {
+              "requested_enrolments": 126,
+              "enrolments": 126,
+              "classes": 21,
+              "teaching_days": 105
+            },
+            "bpi": {
+              "requested_enrolments": 189,
+              "enrolments": 189,
+              "classes": 32,
+              "teaching_days": 96
+            },
+            "pulse": {
+              "requested_enrolments": 126,
+              "enrolments": 126,
+              "classes": 21,
+              "teaching_days": 42
+            }
+          },
+          "planning_seat_capacity": 1612
+        },
+        {
+          "month": "1980-05",
+          "month_fraction": 0.5806451612903226,
+          "drivers": {
+            "new_system_customers": 381,
+            "existing_owners": 181,
+            "prospective_buyers": 121,
+            "manufacturer_integrator_learners": 49
+          },
+          "new_requests": 732,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 732,
+          "unmet_requests": 0,
+          "centres": 22,
+          "rooms": 58,
+          "instructors": 73,
+          "available_teaching_days": 606,
+          "scheduled_teaching_days": 473,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 185,
+              "enrolments": 185,
+              "classes": 31,
+              "teaching_days": 62
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 219,
+              "enrolments": 219,
+              "classes": 37,
+              "teaching_days": 185
+            },
+            "business_workflow": {
+              "requested_enrolments": 73,
+              "enrolments": 73,
+              "classes": 13,
+              "teaching_days": 78
+            },
+            "developer": {
+              "requested_enrolments": 73,
+              "enrolments": 73,
+              "classes": 13,
+              "teaching_days": 65
+            },
+            "bpi": {
+              "requested_enrolments": 109,
+              "enrolments": 109,
+              "classes": 19,
+              "teaching_days": 57
+            },
+            "pulse": {
+              "requested_enrolments": 73,
+              "enrolments": 73,
+              "classes": 13,
+              "teaching_days": 26
+            }
+          },
+          "planning_seat_capacity": 969
+        }
+      ],
+      "academy_to_ncc1980": {
+        "new_requests": 12934,
+        "enrolments": 12934,
+        "opening_unmet_requests": 0,
+        "lapsed_requests": 0,
+        "ending_unmet_requests": 0,
+        "course_enrolments": {
+          "fundamentals": 3864,
+          "fundamentals_abacus": 3570,
+          "business_workflow": 1596,
+          "developer": 1290,
+          "bpi": 1934,
+          "pulse": 680
+        }
+      },
+      "academy_comdex_to_ncc1980": {
+        "new_requests": 6808,
+        "enrolments": 6808,
+        "opening_unmet_requests": 0,
+        "lapsed_requests": 0,
+        "ending_unmet_requests": 0,
+        "course_enrolments": {
+          "fundamentals": 1710,
+          "fundamentals_abacus": 2040,
+          "business_workflow": 680,
+          "developer": 680,
+          "bpi": 1018,
+          "pulse": 680
+        }
       }
     },
     {
@@ -1491,6 +2672,1184 @@
           "individual_module_licenses": 20070,
           "retail_spend_usd": 3427959.9,
           "bpi_receipts_after_channel_usd": 2570969.93
+        }
+      },
+      "comdex_to_ncc1980_months": [
+        {
+          "month": "1979-12",
+          "period_end": "1979-12-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 8058,
+          "incremental_effects": {
+            "comdex_applications_gain": 483,
+            "independent_compatibility_confidence_gain": 0,
+            "competition_loss": 121,
+            "clone_substitution_loss": 0,
+            "migration_waiting_loss": 81
+          },
+          "new_demand_units": 6818,
+          "plus_price_deferred_units": 1521,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 3658,
+              "opening_unmet_units": 1334,
+              "returning_demand_units": 1000,
+              "lapsed_demand_units": 334,
+              "delivery_capacity_units": 3871,
+              "units": 3871,
+              "unmet_demand_units": 787,
+              "customer_retail_spend_usd": 7927769.29,
+              "supplier_revenue_after_channel_usd": 5945817.29,
+              "recurring_cost_usd": 4278267.91,
+              "unit_contribution_total_usd": 1667588.09
+            },
+            "aurelia_plus": {
+              "new_demand_units": 3160,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 3929,
+              "units": 3160,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 8410055.6,
+              "supplier_revenue_after_channel_usd": 6307518.0,
+              "recurring_cost_usd": 4777098.4,
+              "unit_contribution_total_usd": 1530451.2
+            }
+          },
+          "units": 7031,
+          "cumulative_units": 73931,
+          "delivery_capacity_units": 7800,
+          "unmet_demand_units": 787,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 1252,
+            "pulse_licenses_on_new_aurelia_plus": 632,
+            "customer_retail_spend_usd": 144735.16,
+            "supplier_revenue_after_channel_usd": 108552.92,
+            "recurring_cost_usd": 25918.68,
+            "unit_contribution_total_usd": 82634.24
+          },
+          "bpi": {
+            "customer_installations": 1406,
+            "retail_spend_usd": 360934.62,
+            "bpi_receipts_after_channel_usd": 270700.96
+          },
+          "customer_retail_spend_usd": 16337824.89,
+          "supplier_revenue_after_channel_usd": 12253335.29,
+          "recurring_cost_usd": 9055366.31,
+          "unit_contribution_total_usd": 3198039.29
+        },
+        {
+          "month": "1980-01",
+          "period_end": "1980-01-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 7088,
+          "incremental_effects": {
+            "comdex_applications_gain": 567,
+            "independent_compatibility_confidence_gain": 35,
+            "competition_loss": 142,
+            "clone_substitution_loss": 35,
+            "migration_waiting_loss": 106
+          },
+          "new_demand_units": 5722,
+          "plus_price_deferred_units": 1685,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 2222,
+              "opening_unmet_units": 787,
+              "returning_demand_units": 590,
+              "lapsed_demand_units": 197,
+              "delivery_capacity_units": 2600,
+              "units": 2600,
+              "unmet_demand_units": 212,
+              "customer_retail_spend_usd": 5324774.0,
+              "supplier_revenue_after_channel_usd": 3993574.0,
+              "recurring_cost_usd": 2873546.0,
+              "unit_contribution_total_usd": 1120054.0
+            },
+            "aurelia_plus": {
+              "new_demand_units": 3500,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 5600,
+              "units": 3500,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 9314935.0,
+              "supplier_revenue_after_channel_usd": 6986175.0,
+              "recurring_cost_usd": 5291090.0,
+              "unit_contribution_total_usd": 1695120.0
+            }
+          },
+          "units": 6100,
+          "cumulative_units": 80031,
+          "delivery_capacity_units": 8200,
+          "unmet_demand_units": 212,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 1672,
+            "pulse_licenses_on_new_aurelia_plus": 700,
+            "customer_retail_spend_usd": 178318.36,
+            "supplier_revenue_after_channel_usd": 133741.2,
+            "recurring_cost_usd": 32304.92,
+            "unit_contribution_total_usd": 101436.28
+          },
+          "bpi": {
+            "customer_installations": 1220,
+            "retail_spend_usd": 312905.6,
+            "bpi_receipts_after_channel_usd": 234679.2
+          },
+          "customer_retail_spend_usd": 14639709.0,
+          "supplier_revenue_after_channel_usd": 10979749.0,
+          "recurring_cost_usd": 8164636.0,
+          "unit_contribution_total_usd": 2815174.0
+        },
+        {
+          "month": "1980-02",
+          "period_end": "1980-02-29",
+          "month_fraction": 1,
+          "baseline_demand_units": 7461,
+          "incremental_effects": {
+            "comdex_applications_gain": 671,
+            "independent_compatibility_confidence_gain": 75,
+            "competition_loss": 187,
+            "clone_substitution_loss": 75,
+            "migration_waiting_loss": 149
+          },
+          "new_demand_units": 5820,
+          "plus_price_deferred_units": 1976,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 1715,
+              "opening_unmet_units": 212,
+              "returning_demand_units": 159,
+              "lapsed_demand_units": 53,
+              "delivery_capacity_units": 2000,
+              "units": 1874,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 3837933.26,
+              "supplier_revenue_after_channel_usd": 2878445.26,
+              "recurring_cost_usd": 2071163.54,
+              "unit_contribution_total_usd": 807300.46
+            },
+            "aurelia_plus": {
+              "new_demand_units": 4105,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 6600,
+              "units": 4105,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 10925088.05,
+              "supplier_revenue_after_channel_usd": 8193785.25,
+              "recurring_cost_usd": 6205692.7,
+              "unit_contribution_total_usd": 1988133.6
+            }
+          },
+          "units": 5979,
+          "cumulative_units": 86010,
+          "delivery_capacity_units": 8600,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 1672,
+            "pulse_licenses_on_new_aurelia_plus": 821,
+            "customer_retail_spend_usd": 190896.31,
+            "supplier_revenue_after_channel_usd": 143174.36,
+            "recurring_cost_usd": 34244.55,
+            "unit_contribution_total_usd": 108929.81
+          },
+          "bpi": {
+            "customer_installations": 1196,
+            "retail_spend_usd": 306750.08,
+            "bpi_receipts_after_channel_usd": 230062.56
+          },
+          "customer_retail_spend_usd": 14763021.31,
+          "supplier_revenue_after_channel_usd": 11072230.51,
+          "recurring_cost_usd": 8276856.24,
+          "unit_contribution_total_usd": 2795434.06
+        },
+        {
+          "month": "1980-03",
+          "period_end": "1980-03-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 7834,
+          "incremental_effects": {
+            "comdex_applications_gain": 627,
+            "independent_compatibility_confidence_gain": 118,
+            "competition_loss": 235,
+            "clone_substitution_loss": 118,
+            "migration_waiting_loss": 196
+          },
+          "new_demand_units": 5890,
+          "plus_price_deferred_units": 2140,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 1445,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 1600,
+              "units": 1445,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 2959345.55,
+              "supplier_revenue_after_channel_usd": 2219505.55,
+              "recurring_cost_usd": 1597028.45,
+              "unit_contribution_total_usd": 622491.55
+            },
+            "aurelia_plus": {
+              "new_demand_units": 4445,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 7400,
+              "units": 4445,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 11829967.45,
+              "supplier_revenue_after_channel_usd": 8872442.25,
+              "recurring_cost_usd": 6719684.3,
+              "unit_contribution_total_usd": 2152802.4
+            }
+          },
+          "units": 5890,
+          "cumulative_units": 91900,
+          "delivery_capacity_units": 9000,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 1338,
+            "pulse_licenses_on_new_aurelia_plus": 889,
+            "customer_retail_spend_usd": 176879.49,
+            "supplier_revenue_after_channel_usd": 132660.74,
+            "recurring_cost_usd": 31122.85,
+            "unit_contribution_total_usd": 101537.89
+          },
+          "bpi": {
+            "customer_installations": 1178,
+            "retail_spend_usd": 301809.7,
+            "bpi_receipts_after_channel_usd": 226357.28
+          },
+          "customer_retail_spend_usd": 14789313.0,
+          "supplier_revenue_after_channel_usd": 11091947.8,
+          "recurring_cost_usd": 8316712.75,
+          "unit_contribution_total_usd": 2775293.95
+        },
+        {
+          "month": "1980-04",
+          "period_end": "1980-04-30",
+          "month_fraction": 1,
+          "baseline_demand_units": 8207,
+          "incremental_effects": {
+            "comdex_applications_gain": 574,
+            "independent_compatibility_confidence_gain": 164,
+            "competition_loss": 287,
+            "clone_substitution_loss": 164,
+            "migration_waiting_loss": 328
+          },
+          "new_demand_units": 5910,
+          "plus_price_deferred_units": 2256,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 1225,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 1400,
+              "units": 1225,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 2508787.75,
+              "supplier_revenue_after_channel_usd": 1881587.75,
+              "recurring_cost_usd": 1353882.25,
+              "unit_contribution_total_usd": 527717.75
+            },
+            "aurelia_plus": {
+              "new_demand_units": 4685,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 8000,
+              "units": 4685,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 12468705.85,
+              "supplier_revenue_after_channel_usd": 9351494.25,
+              "recurring_cost_usd": 7082501.9,
+              "unit_contribution_total_usd": 2269039.2
+            }
+          },
+          "units": 5910,
+          "cumulative_units": 97810,
+          "delivery_capacity_units": 9400,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 1004,
+            "pulse_licenses_on_new_aurelia_plus": 937,
+            "customer_retail_spend_usd": 160783.67,
+            "supplier_revenue_after_channel_usd": 120587.92,
+            "recurring_cost_usd": 27680.55,
+            "unit_contribution_total_usd": 92907.37
+          },
+          "bpi": {
+            "customer_installations": 1182,
+            "retail_spend_usd": 303483.1,
+            "bpi_receipts_after_channel_usd": 227612.32
+          },
+          "customer_retail_spend_usd": 14977493.6,
+          "supplier_revenue_after_channel_usd": 11233082.0,
+          "recurring_cost_usd": 8436384.15,
+          "unit_contribution_total_usd": 2796756.95
+        },
+        {
+          "month": "1980-05",
+          "period_end": "1980-05-18",
+          "month_fraction": 0.5806451612903226,
+          "baseline_demand_units": 4852,
+          "incremental_effects": {
+            "comdex_applications_gain": 291,
+            "independent_compatibility_confidence_gain": 121,
+            "competition_loss": 194,
+            "clone_substitution_loss": 146,
+            "migration_waiting_loss": 291
+          },
+          "new_demand_units": 3308,
+          "plus_price_deferred_units": 1325,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 556,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 696,
+              "units": 556,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 1138682.44,
+              "supplier_revenue_after_channel_usd": 854010.44,
+              "recurring_cost_usd": 614496.76,
+              "unit_contribution_total_usd": 239519.24
+            },
+            "aurelia_plus": {
+              "new_demand_units": 2752,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 4994,
+              "units": 2752,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 7324200.32,
+              "supplier_revenue_after_channel_usd": 5493129.6,
+              "recurring_cost_usd": 4160308.48,
+              "unit_contribution_total_usd": 1332848.64
+            }
+          },
+          "units": 3308,
+          "cumulative_units": 101118,
+          "delivery_capacity_units": 5690,
+          "unmet_demand_units": 0,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 583,
+            "pulse_licenses_on_new_aurelia_plus": 550,
+            "customer_retail_spend_usd": 93977.29,
+            "supplier_revenue_after_channel_usd": 70483.05,
+            "recurring_cost_usd": 16168.13,
+            "unit_contribution_total_usd": 54314.92
+          },
+          "bpi": {
+            "customer_installations": 662,
+            "retail_spend_usd": 170113.5,
+            "bpi_receipts_after_channel_usd": 127585.12
+          },
+          "customer_retail_spend_usd": 8462882.76,
+          "supplier_revenue_after_channel_usd": 6347140.04,
+          "recurring_cost_usd": 4774805.24,
+          "unit_contribution_total_usd": 1572367.88
+        }
+      ],
+      "comdex_to_ncc1980": {
+        "units": 34218,
+        "customer_retail_spend_usd": 83970244.56,
+        "supplier_revenue_after_channel_usd": 62977484.64,
+        "recurring_cost_usd": 47024760.69,
+        "unit_contribution_total_usd": 15953066.13,
+        "aurelia_units": 11571,
+        "aurelia_plus_units": 22647,
+        "new_demand_units": 33468,
+        "opening_unmet_units": 1334,
+        "lapsed_demand_units": 584,
+        "ending_unmet_units": 0,
+        "additional_application_receipts_usd": 709200.19,
+        "bpi_receipts_usd": 1316997.44,
+        "abacus2_existing_owner_licenses": 7521,
+        "pulse_licenses": 4529
+      },
+      "launch_through_ncc1980": {
+        "units": 101118,
+        "aurelia_units": 78471,
+        "aurelia_plus_units": 22647,
+        "customer_retail_spend_usd": 231384631.56,
+        "supplier_revenue_after_channel_usd": 173538167.64,
+        "recurring_cost_usd": 121810905.69,
+        "unit_contribution_total_usd": 51727979.13
+      },
+      "calendar_1979": {
+        "units": 63181,
+        "customer_retail_spend_usd": 138000801.89,
+        "supplier_revenue_after_channel_usd": 103500460.79,
+        "recurring_cost_usd": 71656171.31,
+        "unit_contribution_total_usd": 31844734.79
+      },
+      "calendar_1980_to_ncc": {
+        "units": 27187,
+        "customer_retail_spend_usd": 67632419.67,
+        "supplier_revenue_after_channel_usd": 50724149.35,
+        "recurring_cost_usd": 37969394.38,
+        "unit_contribution_total_usd": 12755026.84
+      },
+      "academy_months": [
+        {
+          "month": "1979-06",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1242,
+            "existing_owners": 88,
+            "prospective_buyers": 180,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 1510,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1170,
+          "unmet_requests": 340,
+          "centres": 16,
+          "rooms": 42,
+          "instructors": 53,
+          "available_teaching_days": 756,
+          "scheduled_teaching_days": 739,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 530,
+              "enrolments": 414,
+              "classes": 69,
+              "teaching_days": 138
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 377,
+              "enrolments": 294,
+              "classes": 49,
+              "teaching_days": 245
+            },
+            "business_workflow": {
+              "requested_enrolments": 226,
+              "enrolments": 174,
+              "classes": 29,
+              "teaching_days": 174
+            },
+            "developer": {
+              "requested_enrolments": 151,
+              "enrolments": 114,
+              "classes": 19,
+              "teaching_days": 95
+            },
+            "bpi": {
+              "requested_enrolments": 226,
+              "enrolments": 174,
+              "classes": 29,
+              "teaching_days": 87
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1193
+        },
+        {
+          "month": "1979-07",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1311,
+            "existing_owners": 104,
+            "prospective_buyers": 180,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 1595,
+          "opening_unmet_requests": 340,
+          "returning_requests": 255,
+          "lapsed_requests": 85,
+          "enrolments": 1236,
+          "unmet_requests": 614,
+          "centres": 16,
+          "rooms": 44,
+          "instructors": 55,
+          "available_teaching_days": 792,
+          "scheduled_teaching_days": 783,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 649,
+              "enrolments": 432,
+              "classes": 72,
+              "teaching_days": 144
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 462,
+              "enrolments": 312,
+              "classes": 52,
+              "teaching_days": 260
+            },
+            "business_workflow": {
+              "requested_enrolments": 277,
+              "enrolments": 186,
+              "classes": 31,
+              "teaching_days": 186
+            },
+            "developer": {
+              "requested_enrolments": 185,
+              "enrolments": 120,
+              "classes": 20,
+              "teaching_days": 100
+            },
+            "bpi": {
+              "requested_enrolments": 277,
+              "enrolments": 186,
+              "classes": 31,
+              "teaching_days": 93
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1250
+        },
+        {
+          "month": "1979-08",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1380,
+            "existing_owners": 122,
+            "prospective_buyers": 180,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 1682,
+          "opening_unmet_requests": 614,
+          "returning_requests": 460,
+          "lapsed_requests": 154,
+          "enrolments": 1290,
+          "unmet_requests": 852,
+          "centres": 17,
+          "rooms": 46,
+          "instructors": 58,
+          "available_teaching_days": 828,
+          "scheduled_teaching_days": 815,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 751,
+              "enrolments": 456,
+              "classes": 76,
+              "teaching_days": 152
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 535,
+              "enrolments": 324,
+              "classes": 54,
+              "teaching_days": 270
+            },
+            "business_workflow": {
+              "requested_enrolments": 321,
+              "enrolments": 192,
+              "classes": 32,
+              "teaching_days": 192
+            },
+            "developer": {
+              "requested_enrolments": 214,
+              "enrolments": 126,
+              "classes": 21,
+              "teaching_days": 105
+            },
+            "bpi": {
+              "requested_enrolments": 321,
+              "enrolments": 192,
+              "classes": 32,
+              "teaching_days": 96
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1307
+        },
+        {
+          "month": "1979-09",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1472,
+            "existing_owners": 140,
+            "prospective_buyers": 180,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 1792,
+          "opening_unmet_requests": 852,
+          "returning_requests": 639,
+          "lapsed_requests": 213,
+          "enrolments": 1350,
+          "unmet_requests": 1081,
+          "centres": 18,
+          "rooms": 48,
+          "instructors": 60,
+          "available_teaching_days": 864,
+          "scheduled_teaching_days": 854,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 853,
+              "enrolments": 474,
+              "classes": 79,
+              "teaching_days": 158
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 607,
+              "enrolments": 336,
+              "classes": 56,
+              "teaching_days": 280
+            },
+            "business_workflow": {
+              "requested_enrolments": 364,
+              "enrolments": 204,
+              "classes": 34,
+              "teaching_days": 204
+            },
+            "developer": {
+              "requested_enrolments": 243,
+              "enrolments": 132,
+              "classes": 22,
+              "teaching_days": 110
+            },
+            "bpi": {
+              "requested_enrolments": 364,
+              "enrolments": 204,
+              "classes": 34,
+              "teaching_days": 102
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1364
+        },
+        {
+          "month": "1979-10",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1564,
+            "existing_owners": 159,
+            "prospective_buyers": 180,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 1903,
+          "opening_unmet_requests": 1081,
+          "returning_requests": 811,
+          "lapsed_requests": 270,
+          "enrolments": 1404,
+          "unmet_requests": 1310,
+          "centres": 19,
+          "rooms": 50,
+          "instructors": 63,
+          "available_teaching_days": 900,
+          "scheduled_teaching_days": 889,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 951,
+              "enrolments": 492,
+              "classes": 82,
+              "teaching_days": 164
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 678,
+              "enrolments": 354,
+              "classes": 59,
+              "teaching_days": 295
+            },
+            "business_workflow": {
+              "requested_enrolments": 407,
+              "enrolments": 210,
+              "classes": 35,
+              "teaching_days": 210
+            },
+            "developer": {
+              "requested_enrolments": 271,
+              "enrolments": 138,
+              "classes": 23,
+              "teaching_days": 115
+            },
+            "bpi": {
+              "requested_enrolments": 407,
+              "enrolments": 210,
+              "classes": 35,
+              "teaching_days": 105
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1421
+        },
+        {
+          "month": "1979-11",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1656,
+            "existing_owners": 179,
+            "prospective_buyers": 180,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 2015,
+          "opening_unmet_requests": 1310,
+          "returning_requests": 982,
+          "lapsed_requests": 328,
+          "enrolments": 1458,
+          "unmet_requests": 1539,
+          "centres": 20,
+          "rooms": 52,
+          "instructors": 65,
+          "available_teaching_days": 936,
+          "scheduled_teaching_days": 921,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1051,
+              "enrolments": 516,
+              "classes": 86,
+              "teaching_days": 172
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 749,
+              "enrolments": 366,
+              "classes": 61,
+              "teaching_days": 305
+            },
+            "business_workflow": {
+              "requested_enrolments": 449,
+              "enrolments": 216,
+              "classes": 36,
+              "teaching_days": 216
+            },
+            "developer": {
+              "requested_enrolments": 299,
+              "enrolments": 144,
+              "classes": 24,
+              "teaching_days": 120
+            },
+            "bpi": {
+              "requested_enrolments": 449,
+              "enrolments": 216,
+              "classes": 36,
+              "teaching_days": 108
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1477
+        },
+        {
+          "month": "1979-12",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1617,
+            "existing_owners": 301,
+            "prospective_buyers": 260,
+            "manufacturer_integrator_learners": 30
+          },
+          "new_requests": 2208,
+          "opening_unmet_requests": 1539,
+          "returning_requests": 1154,
+          "lapsed_requests": 385,
+          "enrolments": 1590,
+          "unmet_requests": 1772,
+          "centres": 22,
+          "rooms": 56,
+          "instructors": 70,
+          "available_teaching_days": 1008,
+          "scheduled_teaching_days": 992,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 842,
+              "enrolments": 402,
+              "classes": 67,
+              "teaching_days": 134
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1008,
+              "enrolments": 480,
+              "classes": 80,
+              "teaching_days": 400
+            },
+            "business_workflow": {
+              "requested_enrolments": 336,
+              "enrolments": 156,
+              "classes": 26,
+              "teaching_days": 156
+            },
+            "developer": {
+              "requested_enrolments": 336,
+              "enrolments": 156,
+              "classes": 26,
+              "teaching_days": 130
+            },
+            "bpi": {
+              "requested_enrolments": 504,
+              "enrolments": 240,
+              "classes": 40,
+              "teaching_days": 120
+            },
+            "pulse": {
+              "requested_enrolments": 336,
+              "enrolments": 156,
+              "classes": 26,
+              "teaching_days": 52
+            }
+          },
+          "planning_seat_capacity": 1612
+        },
+        {
+          "month": "1980-01",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1403,
+            "existing_owners": 333,
+            "prospective_buyers": 260,
+            "manufacturer_integrator_learners": 45
+          },
+          "new_requests": 2041,
+          "opening_unmet_requests": 1772,
+          "returning_requests": 1329,
+          "lapsed_requests": 443,
+          "enrolments": 1710,
+          "unmet_requests": 1660,
+          "centres": 23,
+          "rooms": 60,
+          "instructors": 75,
+          "available_teaching_days": 1080,
+          "scheduled_teaching_days": 1067,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 843,
+              "enrolments": 432,
+              "classes": 72,
+              "teaching_days": 144
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1011,
+              "enrolments": 516,
+              "classes": 86,
+              "teaching_days": 430
+            },
+            "business_workflow": {
+              "requested_enrolments": 337,
+              "enrolments": 168,
+              "classes": 28,
+              "teaching_days": 168
+            },
+            "developer": {
+              "requested_enrolments": 337,
+              "enrolments": 168,
+              "classes": 28,
+              "teaching_days": 140
+            },
+            "bpi": {
+              "requested_enrolments": 505,
+              "enrolments": 258,
+              "classes": 43,
+              "teaching_days": 129
+            },
+            "pulse": {
+              "requested_enrolments": 337,
+              "enrolments": 168,
+              "classes": 28,
+              "teaching_days": 56
+            }
+          },
+          "planning_seat_capacity": 1728
+        },
+        {
+          "month": "1980-02",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1375,
+            "existing_owners": 360,
+            "prospective_buyers": 260,
+            "manufacturer_integrator_learners": 60
+          },
+          "new_requests": 2055,
+          "opening_unmet_requests": 1660,
+          "returning_requests": 1245,
+          "lapsed_requests": 415,
+          "enrolments": 1824,
+          "unmet_requests": 1476,
+          "centres": 24,
+          "rooms": 64,
+          "instructors": 80,
+          "available_teaching_days": 1152,
+          "scheduled_teaching_days": 1140,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 825,
+              "enrolments": 456,
+              "classes": 76,
+              "teaching_days": 152
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 990,
+              "enrolments": 552,
+              "classes": 92,
+              "teaching_days": 460
+            },
+            "business_workflow": {
+              "requested_enrolments": 330,
+              "enrolments": 180,
+              "classes": 30,
+              "teaching_days": 180
+            },
+            "developer": {
+              "requested_enrolments": 330,
+              "enrolments": 180,
+              "classes": 30,
+              "teaching_days": 150
+            },
+            "bpi": {
+              "requested_enrolments": 495,
+              "enrolments": 276,
+              "classes": 46,
+              "teaching_days": 138
+            },
+            "pulse": {
+              "requested_enrolments": 330,
+              "enrolments": 180,
+              "classes": 30,
+              "teaching_days": 60
+            }
+          },
+          "planning_seat_capacity": 1843
+        },
+        {
+          "month": "1980-03",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1355,
+            "existing_owners": 387,
+            "prospective_buyers": 260,
+            "manufacturer_integrator_learners": 75
+          },
+          "new_requests": 2077,
+          "opening_unmet_requests": 1476,
+          "returning_requests": 1107,
+          "lapsed_requests": 369,
+          "enrolments": 1932,
+          "unmet_requests": 1252,
+          "centres": 25,
+          "rooms": 68,
+          "instructors": 85,
+          "available_teaching_days": 1224,
+          "scheduled_teaching_days": 1207,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 798,
+              "enrolments": 486,
+              "classes": 81,
+              "teaching_days": 162
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 955,
+              "enrolments": 582,
+              "classes": 97,
+              "teaching_days": 485
+            },
+            "business_workflow": {
+              "requested_enrolments": 318,
+              "enrolments": 192,
+              "classes": 32,
+              "teaching_days": 192
+            },
+            "developer": {
+              "requested_enrolments": 318,
+              "enrolments": 192,
+              "classes": 32,
+              "teaching_days": 160
+            },
+            "bpi": {
+              "requested_enrolments": 477,
+              "enrolments": 288,
+              "classes": 48,
+              "teaching_days": 144
+            },
+            "pulse": {
+              "requested_enrolments": 318,
+              "enrolments": 192,
+              "classes": 32,
+              "teaching_days": 64
+            }
+          },
+          "planning_seat_capacity": 1958
+        },
+        {
+          "month": "1980-04",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1359,
+            "existing_owners": 414,
+            "prospective_buyers": 260,
+            "manufacturer_integrator_learners": 90
+          },
+          "new_requests": 2123,
+          "opening_unmet_requests": 1252,
+          "returning_requests": 939,
+          "lapsed_requests": 313,
+          "enrolments": 1998,
+          "unmet_requests": 1064,
+          "centres": 26,
+          "rooms": 70,
+          "instructors": 88,
+          "available_teaching_days": 1260,
+          "scheduled_teaching_days": 1247,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 767,
+              "enrolments": 504,
+              "classes": 84,
+              "teaching_days": 168
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 918,
+              "enrolments": 600,
+              "classes": 100,
+              "teaching_days": 500
+            },
+            "business_workflow": {
+              "requested_enrolments": 306,
+              "enrolments": 198,
+              "classes": 33,
+              "teaching_days": 198
+            },
+            "developer": {
+              "requested_enrolments": 306,
+              "enrolments": 198,
+              "classes": 33,
+              "teaching_days": 165
+            },
+            "bpi": {
+              "requested_enrolments": 459,
+              "enrolments": 300,
+              "classes": 50,
+              "teaching_days": 150
+            },
+            "pulse": {
+              "requested_enrolments": 306,
+              "enrolments": 198,
+              "classes": 33,
+              "teaching_days": 66
+            }
+          },
+          "planning_seat_capacity": 2016
+        },
+        {
+          "month": "1980-05",
+          "month_fraction": 0.5806451612903226,
+          "drivers": {
+            "new_system_customers": 761,
+            "existing_owners": 256,
+            "prospective_buyers": 151,
+            "manufacturer_integrator_learners": 61
+          },
+          "new_requests": 1229,
+          "opening_unmet_requests": 1064,
+          "returning_requests": 798,
+          "lapsed_requests": 266,
+          "enrolments": 1200,
+          "unmet_requests": 827,
+          "centres": 27,
+          "rooms": 72,
+          "instructors": 90,
+          "available_teaching_days": 752,
+          "scheduled_teaching_days": 750,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 509,
+              "enrolments": 300,
+              "classes": 50,
+              "teaching_days": 100
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 608,
+              "enrolments": 360,
+              "classes": 60,
+              "teaching_days": 300
+            },
+            "business_workflow": {
+              "requested_enrolments": 202,
+              "enrolments": 120,
+              "classes": 20,
+              "teaching_days": 120
+            },
+            "developer": {
+              "requested_enrolments": 202,
+              "enrolments": 120,
+              "classes": 20,
+              "teaching_days": 100
+            },
+            "bpi": {
+              "requested_enrolments": 304,
+              "enrolments": 180,
+              "classes": 30,
+              "teaching_days": 90
+            },
+            "pulse": {
+              "requested_enrolments": 202,
+              "enrolments": 120,
+              "classes": 20,
+              "teaching_days": 40
+            }
+          },
+          "planning_seat_capacity": 1203
+        }
+      ],
+      "academy_to_ncc1980": {
+        "new_requests": 22230,
+        "enrolments": 18162,
+        "opening_unmet_requests": 0,
+        "lapsed_requests": 3241,
+        "ending_unmet_requests": 827,
+        "course_enrolments": {
+          "fundamentals": 5364,
+          "fundamentals_abacus": 5076,
+          "business_workflow": 2196,
+          "developer": 1788,
+          "bpi": 2724,
+          "pulse": 1014
+        }
+      },
+      "academy_comdex_to_ncc1980": {
+        "new_requests": 11733,
+        "enrolments": 10254,
+        "opening_unmet_requests": 1539,
+        "lapsed_requests": 2191,
+        "ending_unmet_requests": 827,
+        "course_enrolments": {
+          "fundamentals": 2580,
+          "fundamentals_abacus": 3090,
+          "business_workflow": 1014,
+          "developer": 1014,
+          "bpi": 1542,
+          "pulse": 1014
         }
       }
     },
@@ -2152,6 +4511,1184 @@
           "retail_spend_usd": 4983450.3,
           "bpi_receipts_after_channel_usd": 3737587.71
         }
+      },
+      "comdex_to_ncc1980_months": [
+        {
+          "month": "1979-12",
+          "period_end": "1979-12-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 11080,
+          "incremental_effects": {
+            "comdex_applications_gain": 931,
+            "independent_compatibility_confidence_gain": 0,
+            "competition_loss": 116,
+            "clone_substitution_loss": 0,
+            "migration_waiting_loss": 78
+          },
+          "new_demand_units": 9112,
+          "plus_price_deferred_units": 2705,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 5184,
+              "opening_unmet_units": 5612,
+              "returning_demand_units": 4209,
+              "lapsed_demand_units": 1403,
+              "delivery_capacity_units": 4645,
+              "units": 4645,
+              "unmet_demand_units": 4748,
+              "customer_retail_spend_usd": 9512913.55,
+              "supplier_revenue_after_channel_usd": 7134673.55,
+              "recurring_cost_usd": 5133700.45,
+              "unit_contribution_total_usd": 2001019.55
+            },
+            "aurelia_plus": {
+              "new_demand_units": 3928,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 4715,
+              "units": 3928,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 10454018.48,
+              "supplier_revenue_after_channel_usd": 7840484.4,
+              "recurring_cost_usd": 5938114.72,
+              "unit_contribution_total_usd": 1902408.96
+            }
+          },
+          "units": 8573,
+          "cumulative_units": 86373,
+          "delivery_capacity_units": 9360,
+          "unmet_demand_units": 4748,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 2038,
+            "pulse_licenses_on_new_aurelia_plus": 1178,
+            "customer_retail_spend_usd": 251112.04,
+            "supplier_revenue_after_channel_usd": 188336.18,
+            "recurring_cost_usd": 44582.52,
+            "unit_contribution_total_usd": 143753.66
+          },
+          "bpi": {
+            "customer_installations": 2143,
+            "retail_spend_usd": 549798.51,
+            "bpi_receipts_after_channel_usd": 412348.88
+          },
+          "customer_retail_spend_usd": 19966932.03,
+          "supplier_revenue_after_channel_usd": 14975157.95,
+          "recurring_cost_usd": 11071815.17,
+          "unit_contribution_total_usd": 3903428.51
+        },
+        {
+          "month": "1980-01",
+          "period_end": "1980-01-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 9746,
+          "incremental_effects": {
+            "comdex_applications_gain": 1092,
+            "independent_compatibility_confidence_gain": 68,
+            "competition_loss": 136,
+            "clone_substitution_loss": 34,
+            "migration_waiting_loss": 102
+          },
+          "new_demand_units": 7598,
+          "plus_price_deferred_units": 3036,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 3190,
+              "opening_unmet_units": 4748,
+              "returning_demand_units": 3561,
+              "lapsed_demand_units": 1187,
+              "delivery_capacity_units": 3120,
+              "units": 3120,
+              "unmet_demand_units": 3631,
+              "customer_retail_spend_usd": 6389728.8,
+              "supplier_revenue_after_channel_usd": 4792288.8,
+              "recurring_cost_usd": 3448255.2,
+              "unit_contribution_total_usd": 1344064.8
+            },
+            "aurelia_plus": {
+              "new_demand_units": 4408,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 6720,
+              "units": 4408,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 11731495.28,
+              "supplier_revenue_after_channel_usd": 8798588.4,
+              "recurring_cost_usd": 6663749.92,
+              "unit_contribution_total_usd": 2134882.56
+            }
+          },
+          "units": 7528,
+          "cumulative_units": 93901,
+          "delivery_capacity_units": 9840,
+          "unmet_demand_units": 3631,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 2723,
+            "pulse_licenses_on_new_aurelia_plus": 1322,
+            "customer_retail_spend_usd": 309324.89,
+            "supplier_revenue_after_channel_usd": 231997.17,
+            "recurring_cost_usd": 55528.69,
+            "unit_contribution_total_usd": 176468.48
+          },
+          "bpi": {
+            "customer_installations": 1882,
+            "retail_spend_usd": 482371.62,
+            "bpi_receipts_after_channel_usd": 361778.71
+          },
+          "customer_retail_spend_usd": 18121224.08,
+          "supplier_revenue_after_channel_usd": 13590877.2,
+          "recurring_cost_usd": 10112005.12,
+          "unit_contribution_total_usd": 3478947.36
+        },
+        {
+          "month": "1980-02",
+          "period_end": "1980-02-29",
+          "month_fraction": 1,
+          "baseline_demand_units": 10259,
+          "incremental_effects": {
+            "comdex_applications_gain": 1293,
+            "independent_compatibility_confidence_gain": 144,
+            "competition_loss": 180,
+            "clone_substitution_loss": 72,
+            "migration_waiting_loss": 144
+          },
+          "new_demand_units": 7705,
+          "plus_price_deferred_units": 3595,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 2486,
+              "opening_unmet_units": 3631,
+              "returning_demand_units": 2723,
+              "lapsed_demand_units": 908,
+              "delivery_capacity_units": 2400,
+              "units": 2400,
+              "unmet_demand_units": 2809,
+              "customer_retail_spend_usd": 4915176.0,
+              "supplier_revenue_after_channel_usd": 3686376.0,
+              "recurring_cost_usd": 2652504.0,
+              "unit_contribution_total_usd": 1033896.0
+            },
+            "aurelia_plus": {
+              "new_demand_units": 5219,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 7920,
+              "units": 5219,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 13889898.79,
+              "supplier_revenue_after_channel_usd": 10417384.95,
+              "recurring_cost_usd": 7889771.06,
+              "unit_contribution_total_usd": 2527666.08
+            }
+          },
+          "units": 7619,
+          "cumulative_units": 101520,
+          "delivery_capacity_units": 10320,
+          "unmet_demand_units": 2809,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 2723,
+            "pulse_licenses_on_new_aurelia_plus": 1566,
+            "customer_retail_spend_usd": 334688.69,
+            "supplier_revenue_after_channel_usd": 251019.41,
+            "recurring_cost_usd": 59440.01,
+            "unit_contribution_total_usd": 191579.4
+          },
+          "bpi": {
+            "customer_installations": 1905,
+            "retail_spend_usd": 488432.53,
+            "bpi_receipts_after_channel_usd": 366324.4
+          },
+          "customer_retail_spend_usd": 18805074.79,
+          "supplier_revenue_after_channel_usd": 14103760.95,
+          "recurring_cost_usd": 10542275.06,
+          "unit_contribution_total_usd": 3561562.08
+        },
+        {
+          "month": "1980-03",
+          "period_end": "1980-03-31",
+          "month_fraction": 1,
+          "baseline_demand_units": 10772,
+          "incremental_effects": {
+            "comdex_applications_gain": 1206,
+            "independent_compatibility_confidence_gain": 226,
+            "competition_loss": 226,
+            "clone_substitution_loss": 113,
+            "migration_waiting_loss": 189
+          },
+          "new_demand_units": 7771,
+          "plus_price_deferred_units": 3905,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 2102,
+              "opening_unmet_units": 2809,
+              "returning_demand_units": 2107,
+              "lapsed_demand_units": 702,
+              "delivery_capacity_units": 1920,
+              "units": 1920,
+              "unmet_demand_units": 2289,
+              "customer_retail_spend_usd": 3932140.8,
+              "supplier_revenue_after_channel_usd": 2949100.8,
+              "recurring_cost_usd": 2122003.2,
+              "unit_contribution_total_usd": 827116.8
+            },
+            "aurelia_plus": {
+              "new_demand_units": 5669,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 8880,
+              "units": 5669,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 15087533.29,
+              "supplier_revenue_after_channel_usd": 11315607.45,
+              "recurring_cost_usd": 8570054.06,
+              "unit_contribution_total_usd": 2745610.08
+            }
+          },
+          "units": 7589,
+          "cumulative_units": 109109,
+          "delivery_capacity_units": 10800,
+          "unmet_demand_units": 2289,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 2178,
+            "pulse_licenses_on_new_aurelia_plus": 1701,
+            "customer_retail_spend_usd": 314316.09,
+            "supplier_revenue_after_channel_usd": 235738.26,
+            "recurring_cost_usd": 54731.61,
+            "unit_contribution_total_usd": 181006.65
+          },
+          "bpi": {
+            "customer_installations": 1897,
+            "retail_spend_usd": 486380.69,
+            "bpi_receipts_after_channel_usd": 364785.52
+          },
+          "customer_retail_spend_usd": 19019674.09,
+          "supplier_revenue_after_channel_usd": 14264708.25,
+          "recurring_cost_usd": 10692057.26,
+          "unit_contribution_total_usd": 3572726.88
+        },
+        {
+          "month": "1980-04",
+          "period_end": "1980-04-30",
+          "month_fraction": 1,
+          "baseline_demand_units": 11285,
+          "incremental_effects": {
+            "comdex_applications_gain": 1106,
+            "independent_compatibility_confidence_gain": 316,
+            "competition_loss": 276,
+            "clone_substitution_loss": 158,
+            "migration_waiting_loss": 316
+          },
+          "new_demand_units": 7812,
+          "plus_price_deferred_units": 4145,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 1794,
+              "opening_unmet_units": 2289,
+              "returning_demand_units": 1717,
+              "lapsed_demand_units": 572,
+              "delivery_capacity_units": 1680,
+              "units": 1680,
+              "unmet_demand_units": 1831,
+              "customer_retail_spend_usd": 3440623.2,
+              "supplier_revenue_after_channel_usd": 2580463.2,
+              "recurring_cost_usd": 1856752.8,
+              "unit_contribution_total_usd": 723727.2
+            },
+            "aurelia_plus": {
+              "new_demand_units": 6018,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 9600,
+              "units": 6018,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 16016365.38,
+              "supplier_revenue_after_channel_usd": 12012228.9,
+              "recurring_cost_usd": 9097651.32,
+              "unit_contribution_total_usd": 2914637.76
+            }
+          },
+          "units": 7698,
+          "cumulative_units": 116807,
+          "delivery_capacity_units": 11280,
+          "unmet_demand_units": 1831,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 1634,
+            "pulse_licenses_on_new_aurelia_plus": 1805,
+            "customer_retail_spend_usd": 290784.17,
+            "supplier_revenue_after_channel_usd": 218087.7,
+            "recurring_cost_usd": 49538.89,
+            "unit_contribution_total_usd": 168548.81
+          },
+          "bpi": {
+            "customer_installations": 1924,
+            "retail_spend_usd": 493467.52,
+            "bpi_receipts_after_channel_usd": 370100.64
+          },
+          "customer_retail_spend_usd": 19456988.58,
+          "supplier_revenue_after_channel_usd": 14592692.1,
+          "recurring_cost_usd": 10954404.12,
+          "unit_contribution_total_usd": 3638364.96
+        },
+        {
+          "month": "1980-05",
+          "period_end": "1980-05-18",
+          "month_fraction": 0.5806451612903226,
+          "baseline_demand_units": 6672,
+          "incremental_effects": {
+            "comdex_applications_gain": 560,
+            "independent_compatibility_confidence_gain": 234,
+            "competition_loss": 187,
+            "clone_substitution_loss": 140,
+            "migration_waiting_loss": 280
+          },
+          "new_demand_units": 4397,
+          "plus_price_deferred_units": 2462,
+          "products": {
+            "aurelia": {
+              "new_demand_units": 823,
+              "opening_unmet_units": 1831,
+              "returning_demand_units": 1373,
+              "lapsed_demand_units": 458,
+              "delivery_capacity_units": 836,
+              "units": 836,
+              "unmet_demand_units": 1360,
+              "customer_retail_spend_usd": 1712119.64,
+              "supplier_revenue_after_channel_usd": 1284087.64,
+              "recurring_cost_usd": 923955.56,
+              "unit_contribution_total_usd": 360140.44
+            },
+            "aurelia_plus": {
+              "new_demand_units": 3574,
+              "opening_unmet_units": 0,
+              "returning_demand_units": 0,
+              "lapsed_demand_units": 0,
+              "delivery_capacity_units": 5992,
+              "units": 3574,
+              "unmet_demand_units": 0,
+              "customer_retail_spend_usd": 9511879.34,
+              "supplier_revenue_after_channel_usd": 7133882.7,
+              "recurring_cost_usd": 5402958.76,
+              "unit_contribution_total_usd": 1730959.68
+            }
+          },
+          "units": 4410,
+          "cumulative_units": 121217,
+          "delivery_capacity_units": 6828,
+          "unmet_demand_units": 1360,
+          "applications": {
+            "existing_aurelia_abacus2_licenses": 949,
+            "pulse_licenses_on_new_aurelia_plus": 1072,
+            "customer_retail_spend_usd": 171344.77,
+            "supplier_revenue_after_channel_usd": 128508.27,
+            "recurring_cost_usd": 29151.05,
+            "unit_contribution_total_usd": 99357.22
+          },
+          "bpi": {
+            "customer_installations": 1102,
+            "retail_spend_usd": 282964.7,
+            "bpi_receipts_after_channel_usd": 212223.53
+          },
+          "customer_retail_spend_usd": 11223998.98,
+          "supplier_revenue_after_channel_usd": 8417970.34,
+          "recurring_cost_usd": 6326914.32,
+          "unit_contribution_total_usd": 2091100.12
+        }
+      ],
+      "comdex_to_ncc1980": {
+        "units": 43417,
+        "customer_retail_spend_usd": 106593892.55,
+        "supplier_revenue_after_channel_usd": 79945166.79,
+        "recurring_cost_usd": 59699471.05,
+        "unit_contribution_total_usd": 20246129.91,
+        "aurelia_units": 14601,
+        "aurelia_plus_units": 28816,
+        "new_demand_units": 44395,
+        "opening_unmet_units": 5612,
+        "lapsed_demand_units": 5230,
+        "ending_unmet_units": 1360,
+        "additional_application_receipts_usd": 1253686.99,
+        "bpi_receipts_usd": 2087561.68,
+        "abacus2_existing_owner_licenses": 12245,
+        "pulse_licenses": 8644
+      },
+      "launch_through_ncc1980": {
+        "units": 121217,
+        "aurelia_units": 92401,
+        "aurelia_plus_units": 28816,
+        "customer_retail_spend_usd": 277957624.55,
+        "supplier_revenue_after_channel_usd": 208467840.79,
+        "recurring_cost_usd": 146664895.05,
+        "unit_contribution_total_usd": 61803817.91
+      },
+      "calendar_1979": {
+        "units": 73909,
+        "customer_retail_spend_usd": 161473401.31,
+        "supplier_revenue_after_channel_usd": 121104884.91,
+        "recurring_cost_usd": 83909045.89,
+        "unit_contribution_total_usd": 37196362.75
+      },
+      "calendar_1980_to_ncc": {
+        "units": 34844,
+        "customer_retail_spend_usd": 86626960.52,
+        "supplier_revenue_after_channel_usd": 64970008.84,
+        "recurring_cost_usd": 48627655.88,
+        "unit_contribution_total_usd": 16342701.4
+      },
+      "academy_months": [
+        {
+          "month": "1979-06",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1736,
+            "existing_owners": 102,
+            "prospective_buyers": 216,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 2054,
+          "opening_unmet_requests": 0,
+          "returning_requests": 0,
+          "lapsed_requests": 0,
+          "enrolments": 1404,
+          "unmet_requests": 650,
+          "centres": 19,
+          "rooms": 50,
+          "instructors": 63,
+          "available_teaching_days": 900,
+          "scheduled_teaching_days": 889,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 720,
+              "enrolments": 492,
+              "classes": 82,
+              "teaching_days": 164
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 513,
+              "enrolments": 354,
+              "classes": 59,
+              "teaching_days": 295
+            },
+            "business_workflow": {
+              "requested_enrolments": 308,
+              "enrolments": 210,
+              "classes": 35,
+              "teaching_days": 210
+            },
+            "developer": {
+              "requested_enrolments": 205,
+              "enrolments": 138,
+              "classes": 23,
+              "teaching_days": 115
+            },
+            "bpi": {
+              "requested_enrolments": 308,
+              "enrolments": 210,
+              "classes": 35,
+              "teaching_days": 105
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1421
+        },
+        {
+          "month": "1979-07",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1848,
+            "existing_owners": 121,
+            "prospective_buyers": 216,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 2185,
+          "opening_unmet_requests": 650,
+          "returning_requests": 488,
+          "lapsed_requests": 162,
+          "enrolments": 1488,
+          "unmet_requests": 1185,
+          "centres": 19,
+          "rooms": 53,
+          "instructors": 67,
+          "available_teaching_days": 954,
+          "scheduled_teaching_days": 942,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 938,
+              "enrolments": 522,
+              "classes": 87,
+              "teaching_days": 174
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 668,
+              "enrolments": 372,
+              "classes": 62,
+              "teaching_days": 310
+            },
+            "business_workflow": {
+              "requested_enrolments": 400,
+              "enrolments": 222,
+              "classes": 37,
+              "teaching_days": 222
+            },
+            "developer": {
+              "requested_enrolments": 267,
+              "enrolments": 150,
+              "classes": 25,
+              "teaching_days": 125
+            },
+            "bpi": {
+              "requested_enrolments": 400,
+              "enrolments": 222,
+              "classes": 37,
+              "teaching_days": 111
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1506
+        },
+        {
+          "month": "1979-08",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 1960,
+            "existing_owners": 140,
+            "prospective_buyers": 216,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 2316,
+          "opening_unmet_requests": 1185,
+          "returning_requests": 889,
+          "lapsed_requests": 296,
+          "enrolments": 1560,
+          "unmet_requests": 1645,
+          "centres": 20,
+          "rooms": 55,
+          "instructors": 69,
+          "available_teaching_days": 990,
+          "scheduled_teaching_days": 988,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1124,
+              "enrolments": 546,
+              "classes": 91,
+              "teaching_days": 182
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 801,
+              "enrolments": 390,
+              "classes": 65,
+              "teaching_days": 325
+            },
+            "business_workflow": {
+              "requested_enrolments": 480,
+              "enrolments": 234,
+              "classes": 39,
+              "teaching_days": 234
+            },
+            "developer": {
+              "requested_enrolments": 320,
+              "enrolments": 156,
+              "classes": 26,
+              "teaching_days": 130
+            },
+            "bpi": {
+              "requested_enrolments": 480,
+              "enrolments": 234,
+              "classes": 39,
+              "teaching_days": 117
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1563
+        },
+        {
+          "month": "1979-09",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 2100,
+            "existing_owners": 161,
+            "prospective_buyers": 216,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 2477,
+          "opening_unmet_requests": 1645,
+          "returning_requests": 1234,
+          "lapsed_requests": 411,
+          "enrolments": 1638,
+          "unmet_requests": 2073,
+          "centres": 22,
+          "rooms": 58,
+          "instructors": 73,
+          "available_teaching_days": 1044,
+          "scheduled_teaching_days": 1036,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1301,
+              "enrolments": 576,
+              "classes": 96,
+              "teaching_days": 192
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 927,
+              "enrolments": 408,
+              "classes": 68,
+              "teaching_days": 340
+            },
+            "business_workflow": {
+              "requested_enrolments": 556,
+              "enrolments": 246,
+              "classes": 41,
+              "teaching_days": 246
+            },
+            "developer": {
+              "requested_enrolments": 371,
+              "enrolments": 162,
+              "classes": 27,
+              "teaching_days": 135
+            },
+            "bpi": {
+              "requested_enrolments": 556,
+              "enrolments": 246,
+              "classes": 41,
+              "teaching_days": 123
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1648
+        },
+        {
+          "month": "1979-10",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 2240,
+            "existing_owners": 184,
+            "prospective_buyers": 216,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 2640,
+          "opening_unmet_requests": 2073,
+          "returning_requests": 1555,
+          "lapsed_requests": 518,
+          "enrolments": 1692,
+          "unmet_requests": 2503,
+          "centres": 23,
+          "rooms": 60,
+          "instructors": 75,
+          "available_teaching_days": 1080,
+          "scheduled_teaching_days": 1071,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1470,
+              "enrolments": 594,
+              "classes": 99,
+              "teaching_days": 198
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1048,
+              "enrolments": 426,
+              "classes": 71,
+              "teaching_days": 355
+            },
+            "business_workflow": {
+              "requested_enrolments": 629,
+              "enrolments": 252,
+              "classes": 42,
+              "teaching_days": 252
+            },
+            "developer": {
+              "requested_enrolments": 419,
+              "enrolments": 168,
+              "classes": 28,
+              "teaching_days": 140
+            },
+            "bpi": {
+              "requested_enrolments": 629,
+              "enrolments": 252,
+              "classes": 42,
+              "teaching_days": 126
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1705
+        },
+        {
+          "month": "1979-11",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 2380,
+            "existing_owners": 208,
+            "prospective_buyers": 216,
+            "manufacturer_integrator_learners": 0
+          },
+          "new_requests": 2804,
+          "opening_unmet_requests": 2503,
+          "returning_requests": 1877,
+          "lapsed_requests": 626,
+          "enrolments": 1752,
+          "unmet_requests": 2929,
+          "centres": 24,
+          "rooms": 62,
+          "instructors": 78,
+          "available_teaching_days": 1116,
+          "scheduled_teaching_days": 1110,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1639,
+              "enrolments": 612,
+              "classes": 102,
+              "teaching_days": 204
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1170,
+              "enrolments": 438,
+              "classes": 73,
+              "teaching_days": 365
+            },
+            "business_workflow": {
+              "requested_enrolments": 702,
+              "enrolments": 264,
+              "classes": 44,
+              "teaching_days": 264
+            },
+            "developer": {
+              "requested_enrolments": 468,
+              "enrolments": 174,
+              "classes": 29,
+              "teaching_days": 145
+            },
+            "bpi": {
+              "requested_enrolments": 702,
+              "enrolments": 264,
+              "classes": 44,
+              "teaching_days": 132
+            },
+            "pulse": {
+              "requested_enrolments": 0,
+              "enrolments": 0,
+              "classes": 0,
+              "teaching_days": 0
+            }
+          },
+          "planning_seat_capacity": 1762
+        },
+        {
+          "month": "1979-12",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 2400,
+            "existing_owners": 350,
+            "prospective_buyers": 312,
+            "manufacturer_integrator_learners": 36
+          },
+          "new_requests": 3098,
+          "opening_unmet_requests": 2929,
+          "returning_requests": 2197,
+          "lapsed_requests": 732,
+          "enrolments": 1920,
+          "unmet_requests": 3375,
+          "centres": 26,
+          "rooms": 67,
+          "instructors": 84,
+          "available_teaching_days": 1206,
+          "scheduled_teaching_days": 1200,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1326,
+              "enrolments": 480,
+              "classes": 80,
+              "teaching_days": 160
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1588,
+              "enrolments": 576,
+              "classes": 96,
+              "teaching_days": 480
+            },
+            "business_workflow": {
+              "requested_enrolments": 529,
+              "enrolments": 192,
+              "classes": 32,
+              "teaching_days": 192
+            },
+            "developer": {
+              "requested_enrolments": 529,
+              "enrolments": 192,
+              "classes": 32,
+              "teaching_days": 160
+            },
+            "bpi": {
+              "requested_enrolments": 794,
+              "enrolments": 288,
+              "classes": 48,
+              "teaching_days": 144
+            },
+            "pulse": {
+              "requested_enrolments": 529,
+              "enrolments": 192,
+              "classes": 32,
+              "teaching_days": 64
+            }
+          },
+          "planning_seat_capacity": 1929
+        },
+        {
+          "month": "1980-01",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 2108,
+            "existing_owners": 389,
+            "prospective_buyers": 312,
+            "manufacturer_integrator_learners": 54
+          },
+          "new_requests": 2863,
+          "opening_unmet_requests": 3375,
+          "returning_requests": 2531,
+          "lapsed_requests": 844,
+          "enrolments": 2052,
+          "unmet_requests": 3342,
+          "centres": 28,
+          "rooms": 72,
+          "instructors": 90,
+          "available_teaching_days": 1296,
+          "scheduled_teaching_days": 1282,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1350,
+              "enrolments": 516,
+              "classes": 86,
+              "teaching_days": 172
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1618,
+              "enrolments": 618,
+              "classes": 103,
+              "teaching_days": 515
+            },
+            "business_workflow": {
+              "requested_enrolments": 539,
+              "enrolments": 204,
+              "classes": 34,
+              "teaching_days": 204
+            },
+            "developer": {
+              "requested_enrolments": 539,
+              "enrolments": 204,
+              "classes": 34,
+              "teaching_days": 170
+            },
+            "bpi": {
+              "requested_enrolments": 809,
+              "enrolments": 306,
+              "classes": 51,
+              "teaching_days": 153
+            },
+            "pulse": {
+              "requested_enrolments": 539,
+              "enrolments": 204,
+              "classes": 34,
+              "teaching_days": 68
+            }
+          },
+          "planning_seat_capacity": 2073
+        },
+        {
+          "month": "1980-02",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 2133,
+            "existing_owners": 423,
+            "prospective_buyers": 312,
+            "manufacturer_integrator_learners": 72
+          },
+          "new_requests": 2940,
+          "opening_unmet_requests": 3342,
+          "returning_requests": 2506,
+          "lapsed_requests": 836,
+          "enrolments": 2190,
+          "unmet_requests": 3256,
+          "centres": 29,
+          "rooms": 77,
+          "instructors": 97,
+          "available_teaching_days": 1386,
+          "scheduled_teaching_days": 1367,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1365,
+              "enrolments": 552,
+              "classes": 92,
+              "teaching_days": 184
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1633,
+              "enrolments": 660,
+              "classes": 110,
+              "teaching_days": 550
+            },
+            "business_workflow": {
+              "requested_enrolments": 544,
+              "enrolments": 216,
+              "classes": 36,
+              "teaching_days": 216
+            },
+            "developer": {
+              "requested_enrolments": 544,
+              "enrolments": 216,
+              "classes": 36,
+              "teaching_days": 180
+            },
+            "bpi": {
+              "requested_enrolments": 816,
+              "enrolments": 330,
+              "classes": 55,
+              "teaching_days": 165
+            },
+            "pulse": {
+              "requested_enrolments": 544,
+              "enrolments": 216,
+              "classes": 36,
+              "teaching_days": 72
+            }
+          },
+          "planning_seat_capacity": 2217
+        },
+        {
+          "month": "1980-03",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 2125,
+            "existing_owners": 457,
+            "prospective_buyers": 312,
+            "manufacturer_integrator_learners": 90
+          },
+          "new_requests": 2984,
+          "opening_unmet_requests": 3256,
+          "returning_requests": 2442,
+          "lapsed_requests": 814,
+          "enrolments": 2352,
+          "unmet_requests": 3074,
+          "centres": 30,
+          "rooms": 82,
+          "instructors": 103,
+          "available_teaching_days": 1476,
+          "scheduled_teaching_days": 1470,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1360,
+              "enrolments": 588,
+              "classes": 98,
+              "teaching_days": 196
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1627,
+              "enrolments": 708,
+              "classes": 118,
+              "teaching_days": 590
+            },
+            "business_workflow": {
+              "requested_enrolments": 542,
+              "enrolments": 234,
+              "classes": 39,
+              "teaching_days": 234
+            },
+            "developer": {
+              "requested_enrolments": 542,
+              "enrolments": 234,
+              "classes": 39,
+              "teaching_days": 195
+            },
+            "bpi": {
+              "requested_enrolments": 813,
+              "enrolments": 354,
+              "classes": 59,
+              "teaching_days": 177
+            },
+            "pulse": {
+              "requested_enrolments": 542,
+              "enrolments": 234,
+              "classes": 39,
+              "teaching_days": 78
+            }
+          },
+          "planning_seat_capacity": 2361
+        },
+        {
+          "month": "1980-04",
+          "month_fraction": 1,
+          "drivers": {
+            "new_system_customers": 2155,
+            "existing_owners": 491,
+            "prospective_buyers": 312,
+            "manufacturer_integrator_learners": 108
+          },
+          "new_requests": 3066,
+          "opening_unmet_requests": 3074,
+          "returning_requests": 2306,
+          "lapsed_requests": 768,
+          "enrolments": 2400,
+          "unmet_requests": 2972,
+          "centres": 31,
+          "rooms": 84,
+          "instructors": 105,
+          "available_teaching_days": 1512,
+          "scheduled_teaching_days": 1500,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1345,
+              "enrolments": 600,
+              "classes": 100,
+              "teaching_days": 200
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1611,
+              "enrolments": 720,
+              "classes": 120,
+              "teaching_days": 600
+            },
+            "business_workflow": {
+              "requested_enrolments": 537,
+              "enrolments": 240,
+              "classes": 40,
+              "teaching_days": 240
+            },
+            "developer": {
+              "requested_enrolments": 537,
+              "enrolments": 240,
+              "classes": 40,
+              "teaching_days": 200
+            },
+            "bpi": {
+              "requested_enrolments": 805,
+              "enrolments": 360,
+              "classes": 60,
+              "teaching_days": 180
+            },
+            "pulse": {
+              "requested_enrolments": 537,
+              "enrolments": 240,
+              "classes": 40,
+              "teaching_days": 80
+            }
+          },
+          "planning_seat_capacity": 2419
+        },
+        {
+          "month": "1980-05",
+          "month_fraction": 0.5806451612903226,
+          "drivers": {
+            "new_system_customers": 1235,
+            "existing_owners": 305,
+            "prospective_buyers": 181,
+            "manufacturer_integrator_learners": 73
+          },
+          "new_requests": 1794,
+          "opening_unmet_requests": 2972,
+          "returning_requests": 2229,
+          "lapsed_requests": 743,
+          "enrolments": 1404,
+          "unmet_requests": 2619,
+          "centres": 32,
+          "rooms": 86,
+          "instructors": 108,
+          "available_teaching_days": 898,
+          "scheduled_teaching_days": 877,
+          "courses": {
+            "fundamentals": {
+              "requested_enrolments": 1008,
+              "enrolments": 354,
+              "classes": 59,
+              "teaching_days": 118
+            },
+            "fundamentals_abacus": {
+              "requested_enrolments": 1206,
+              "enrolments": 426,
+              "classes": 71,
+              "teaching_days": 355
+            },
+            "business_workflow": {
+              "requested_enrolments": 402,
+              "enrolments": 138,
+              "classes": 23,
+              "teaching_days": 138
+            },
+            "developer": {
+              "requested_enrolments": 402,
+              "enrolments": 138,
+              "classes": 23,
+              "teaching_days": 115
+            },
+            "bpi": {
+              "requested_enrolments": 603,
+              "enrolments": 210,
+              "classes": 35,
+              "teaching_days": 105
+            },
+            "pulse": {
+              "requested_enrolments": 402,
+              "enrolments": 138,
+              "classes": 23,
+              "teaching_days": 46
+            }
+          },
+          "planning_seat_capacity": 1436
+        }
+      ],
+      "academy_to_ncc1980": {
+        "new_requests": 31221,
+        "enrolments": 21852,
+        "opening_unmet_requests": 0,
+        "lapsed_requests": 6750,
+        "ending_unmet_requests": 2619,
+        "course_enrolments": {
+          "fundamentals": 6432,
+          "fundamentals_abacus": 6096,
+          "business_workflow": 2652,
+          "developer": 2172,
+          "bpi": 3276,
+          "pulse": 1224
+        }
+      },
+      "academy_comdex_to_ncc1980": {
+        "new_requests": 16745,
+        "enrolments": 12318,
+        "opening_unmet_requests": 2929,
+        "lapsed_requests": 4737,
+        "ending_unmet_requests": 2619,
+        "course_enrolments": {
+          "fundamentals": 3090,
+          "fundamentals_abacus": 3708,
+          "business_workflow": 1224,
+          "developer": 1224,
+          "bpi": 1848,
+          "pulse": 1224
+        }
       }
     }
   ],
@@ -2323,5 +5860,211 @@
     "market_scope": "Forecast Logix Aurelia customer purchases only. Competing compatible computers and third-party peripherals are not Logix sales. OEM royalties, expansion-card sales to other installed bases, standalone software and Academy receipts remain unquantified; no extended-period market share is asserted without a new denominator.",
     "campaign_ref": "ncc_1979_campaign.json",
     "architecture_reveal": "1980-05-19"
+  },
+  "ncc1980_policy": {
+    "period": "1979-12-01 to 1980-05-18 inclusive; May 1–18 only, before the NCC launch",
+    "price_basis": "Hold existing products at June 1979 prices and costs. New COMDEX products use their first available June 1980 snapshots as provisional launch-period price/cost proxies, not proof of December quotes. Do not apply a June 1980 price cut to existing products before NCC. Financial estimates require sensitivity review once launch quotes exist.",
+    "average_sale_by_computer": {
+      "aurelia": {
+        "retail_price_usd": 2047.99,
+        "manufacturing_cost_usd": 1105.21,
+        "computerland_fee_usd": 512.0,
+        "revenue_after_fee_usd": 1535.99,
+        "unit_profit_usd": 430.79
+      },
+      "aurelia_plus": {
+        "retail_price_usd": 2661.41,
+        "manufacturing_cost_usd": 1511.74,
+        "computerland_fee_usd": 665.36,
+        "revenue_after_fee_usd": 1996.05,
+        "unit_profit_usd": 484.32
+      }
+    },
+    "plus_components": [
+      {
+        "product_ref": "bundle.proposed_aurelia_plus_office",
+        "quantity": 0.8,
+        "snapshot_year": 1980
+      },
+      {
+        "product_ref": "bundle.aurelia_plus_color",
+        "quantity": 0.2,
+        "snapshot_year": 1980
+      },
+      {
+        "product_ref": "software.business_tools_aurelia",
+        "quantity": 0.2,
+        "snapshot_year": 1979
+      },
+      {
+        "product_ref": "software.abacus_2",
+        "quantity": 0.2,
+        "snapshot_year": 1980
+      },
+      {
+        "product_ref": "device.flexidisk",
+        "quantity": 1,
+        "snapshot_year": 1979
+      },
+      {
+        "product_ref": "device.flexiprint40",
+        "quantity": 0.7,
+        "snapshot_year": 1979
+      }
+    ],
+    "baseline": "Use November new demand, already including the June price response and NCC campaign. Add only incremental COMDEX/product/workshop effects. No new universal price cut or quantified speed claim.",
+    "run_rate_factors": [
+      1.08,
+      0.95,
+      1.0,
+      1.05,
+      1.1,
+      1.12
+    ],
+    "central_incremental_rates": {
+      "comdex_applications_gain": [
+        0.06,
+        0.08,
+        0.09,
+        0.08,
+        0.07,
+        0.06
+      ],
+      "independent_compatibility_confidence_gain": [
+        0,
+        0.005,
+        0.01,
+        0.015,
+        0.02,
+        0.025
+      ],
+      "competition_loss": [
+        0.015,
+        0.02,
+        0.025,
+        0.03,
+        0.035,
+        0.04
+      ],
+      "clone_substitution_loss": [
+        0,
+        0.005,
+        0.01,
+        0.015,
+        0.02,
+        0.03
+      ],
+      "migration_waiting_loss": [
+        0.01,
+        0.015,
+        0.02,
+        0.025,
+        0.04,
+        0.06
+      ]
+    },
+    "plus_preference_share": [
+      0.6,
+      0.7,
+      0.78,
+      0.82,
+      0.85,
+      0.88
+    ],
+    "plus_price_response": "Preference shares precede price response. Apply (Plus average package / retained Aurelia average package)^(-scenario elasticity) to the Plus-intending cohort; the premium deters some purchases rather than silently assuming willingness to pay. COMDEX application gains already represent feature benefits; no extra quality multiplier. Existing-price Aurelia intentions are unchanged.",
+    "central_full_month_delivery_capacity": [
+      7800,
+      8200,
+      8600,
+      9000,
+      9400,
+      9800
+    ],
+    "central_full_month_plus_capacity": [
+      4200,
+      5600,
+      6600,
+      7400,
+      8000,
+      8600
+    ],
+    "scenario_capacity_scale": {
+      "conservative": 0.75,
+      "central": 1,
+      "strong": 1.2
+    },
+    "capacity": "Assumed net customer-delivery ceilings and product-specific ramp, not proven factory capacity. No model is forced to retire. Do not move unfilled old-model requests into Plus without modelling a buyer decision. Unused capacity is not a sale.",
+    "timing": "December Plus demand/capacity exposure is 29/31 because launch is December 3. May demand and capacity are 18/31 of a month. Monthly rows are approximations, not dated individual orders.",
+    "backlog": "75% of each model’s opening unmet demand retries; 25% lapses. November backlog opens as Aurelia demand. Separate product queues; no automatic substitution. Fresh demand plus returning demand equals deliveries plus ending unmet demand.",
+    "competition": "Independent ports/clones gain gradually after kit availability; this is a substitution sensitivity, not named OEM shipment evidence. Other manufacturers’ systems and royalties remain outside Logix computer totals. No next-generation details or post-NCC hardware sales enter the forecast.",
+    "application_upgrades": "Existing November Aurelia cohort only: monthly Abacus 2 full-licence purchase assumptions 2/2.5/2.5/2/1.5/1.5% before scenario scaling and partial-month exposure. No unapproved upgrade discount. These licences are separate from new-machine bundle licences; Pulse attached to new Aurelia+ systems only is reported separately.",
+    "scope": "All forecasts are US scenario sell-through. Academy attendance is a consequence/channel interaction already reflected in demand, not another additive computer-sales uplift. No new market-share denominator or corporate-profit claim."
+  },
+  "academy_demand_policy": {
+    "period": "June 1979–May 18, 1980; prospective demand/capacity extension of the original first-year roadmap",
+    "unit": "Course enrolments, not unique people, graduations or additional computer purchases. Repeat attendance across courses/months is allowed; no unique-student count is inferred.",
+    "drivers": "New-system customers, owners of the installed base, prospective buyers who do not buy in that month, and manufacturer/integrator learners. These are enrolment requests; no extra hardware conversion bonus is added.",
+    "course_days": {
+      "fundamentals": 2,
+      "fundamentals_abacus": 5,
+      "business_workflow": 6,
+      "developer": 5,
+      "bpi": 3,
+      "pulse": 2
+    },
+    "course_mapping": "Use the existing 2/5/6/5-day courses; charts/layouts enter Abacus teaching after December 3. BPI uses 3-day and Pulse 2-day planning allowances already in the cost model. Manufacturer learners consume developer capacity; optional engineering subscriptions are not course enrolments.",
+    "shares_before_comdex": {
+      "fundamentals": 0.35,
+      "fundamentals_abacus": 0.25,
+      "business_workflow": 0.15,
+      "developer": 0.1,
+      "bpi": 0.15,
+      "pulse": 0
+    },
+    "shares_after_comdex": {
+      "fundamentals": 0.25,
+      "fundamentals_abacus": 0.3,
+      "business_workflow": 0.1,
+      "developer": 0.1,
+      "bpi": 0.15,
+      "pulse": 0.1
+    },
+    "central_centres": [
+      16,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "central_rooms": [
+      42,
+      44,
+      46,
+      48,
+      50,
+      52,
+      56,
+      60,
+      64,
+      68,
+      70,
+      72
+    ],
+    "class_size": 8,
+    "target_seat_occupancy": 0.75,
+    "teaching_days_per_room_month": 18,
+    "teaching_days_per_instructor_month": 15,
+    "staffing": "Plan 1.25 instructors per room, including specialist capability; room-days are capped by both rooms and instructors. Cross-trained BPI/Pulse teachers and geographic fit remain hiring/scheduling gates. Counts are aggregate capacity targets, not signed leases or named openings.",
+    "capacity": "Plan classes at six occupied seats (75% of eight). Reserve whole class blocks by course duration; demand is allocated proportionally, then capped by requested places. May uses 18/31 of room/instructor days; December Pulse classes begin only after launch. No course starting too late to finish by cutoff is assumed.",
+    "backlog": "75% of unmet enrolment requests retry the following period; 25% lapse. Capacity is measured in teaching days, so a five-day course consumes more than Fundamentals.",
+    "accounting": "Tuition, support costs and purchase-credit redemption are not quantified here. Existing 50% Fundamentals credit and six-month expiry remain; other eligible course vouchers retain their terms. Student attendance is not a second computer purchase.",
+    "previous_period": "The original 10,000–13,000 first-year enrolment target is retained, not presented as actual attendance. No historical enrolments are fabricated to reconcile it."
   }
 }

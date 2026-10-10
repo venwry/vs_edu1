@@ -20,6 +20,6 @@ assert 'without a bespoke partnership or mandatory certification' in policy['eli
 assert 'CP/M alone is insufficient' in policy['binary']
 assert 'separate optional profiles' in policy['hardware']
 assert 'No future processor' in policy['scope']
-assert f['metadata']['forecast_end']<e['date']['start']
+assert f['metadata']['november_forecast_end']<e['date']['start']
 assert [x['launch_through_november_1979']['units'] for x in f['scenarios']]==[49737,66900,77800]
 print('PASS: December compatibility kit, independent implementation, separate licences, snapshot gates and unchanged November forecast.')

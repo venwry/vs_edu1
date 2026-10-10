@@ -1,6 +1,6 @@
 # Aurelia sales under revised pricing
 
-This is a scenario forecast, not recorded sales or a new canonical story outcome. View [Logix computer demand and sales](sales.html), the machine-readable [forecast](sales_forecast.json) and [retail pricing](pricing.html).
+This is a scenario forecast, not recorded sales or a new canonical story outcome. The current horizon is May 18, 1980; see [SALES_NCC1980.md](SALES_NCC1980.md) for the COMDEX-to-NCC extension and Academy demand. Earlier sections retain their explicitly named historical forecast periods. View [Logix computer demand and sales](sales.html), the machine-readable [forecast](sales_forecast.json) and [retail pricing](pricing.html).
 
 ## Price policy
 
@@ -99,4 +99,4 @@ This remains a computer-led package forecast. Other vendors' compatible machines
 
 Rebuild with `python tools/build_sales.py`; validate period arithmetic, pricing transitions and demand conservation with `tests/validate_sales_extension.py`. The page shows monthly demand, capacity, sales, unmet demand and price/campaign/competition components for each scenario.
 
-The December 3 manufacturer compatibility kit and clone-enablement policy occur after this forecast cutoff. They change neither November Aurelia demand nor shipments; future clone substitution and application/support income require a later model.
+The December 3 manufacturer compatibility kit and clone-enablement policy occur after this forecast cutoff. They change neither November Aurelia demand nor shipments. The NCC 1980 extension now includes a clone-substitution sensitivity and application purchases; OEM volumes and kit/support revenue remain unquantified.
