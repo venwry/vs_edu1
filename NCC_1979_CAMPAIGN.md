@@ -87,7 +87,7 @@ By December 1979 target Tandy shipping, one additional supported OEM configurati
 
 Track independent compatible-computer sales, qualified applications, third-party peripheral shipments, interchange/support results and supply concentration. A fall in Aurelia share may accompany ecosystem success. No OEM volume or royalty is invented.
 
-Campaign, ports, reference engineering, certification, support, directories and roadshows need operating budgets outside unit manufacturing costs. The pre-NCC forecast remains 10,750 Aurelias in 1978 and 29,400 through May 1979. Most activity occurs after its cutoff; confidential recruitment creates no immediate consumer sales. May communications receive no separately calibrated uplift beyond existing assumptions. Future forecasts must model cannibalisation, expanded demand and partner receipts separately.
+Campaign, ports, reference engineering, certification, support, directories and roadshows need operating budgets outside unit manufacturing costs. The pre-NCC forecast remains 10,750 Aurelias in 1978 and 29,400 through May 1979. Most activity occurs after its cutoff; confidential recruitment creates no immediate consumer sales. May communications receive no separately calibrated uplift beyond existing assumptions. The separate June–November extension in sales_forecast.json now models price response, campaign gains, substitution and monthly delivery limits; independent BPI receipts remain separate. Compatible OEM volumes and royalties remain unquantified.
 
 ## Evidence boundaries
 
