@@ -85,3 +85,8 @@ Event dates contain only `start` and `end`; equal endpoints may be ISO year, mon
 ## Campaign revision
 
 Retain the March 25, 1978 Academy establishment. April teasers and May advertising/preparation retain month precision; preparation continues into early June. The five-city Academy public announcement belongs to the June 5 premiere. `event.ncc78_sessions_media` spans June 5–8, with editing/free station distribution afterward and no invented release day. There are now 41 events: 34 exact-day events, six partial-date milestones and one conference interval.
+
+
+## Partner/competitor revision
+
+Fifteen scenario-selected day-level milestones bring the total to 56 (49 exact-day, six partial-date, one conference interval). Exact late-1978 Tandy negotiation/design dates are invented planning dates, not claims about a historical freeze. Preserve May announcement, June NCC and October US release windows. February 1978 AIONix preliminary work precedes the retained September formal agreement. IBM milestones through August 1981 explain an early-1982 target, not a recorded shipment beyond the phase range. See `market_reactions.json` for the complete new-date list.

@@ -169,6 +169,16 @@
         "type": "company",
         "aliases": [],
         "description": "Independent licensed second-source manufacturer and seller of the selected AION peripheral/display chipset."
+      },
+      {
+        "id": "actor.tandy",
+        "name": "Tandy / Radio Shack",
+        "type": "company",
+        "aliases": [
+          "Tandy",
+          "Radio Shack"
+        ],
+        "description": "Independent computer manufacturer and retail/service operator; Model II CP/M and FlexiBUS cooperation partner, retaining native display and customer relationship."
       }
     ],
     "principles": [
@@ -990,6 +1000,48 @@
           "related_event_refs": []
         },
         {
+          "id": "event.aionix_preliminary",
+          "title": "AIONix preliminary architecture and portability work",
+          "event_type": "development",
+          "date": {
+            "start": "1978-02-01",
+            "end": "1978-02-01"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.aion",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.kildall",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.aion",
+                "actor.dri",
+                "actor.kildall"
+              ],
+              "description": "Begin funded exploratory architecture, C portability and future ERA operating-system work before Aurelia launch. Preserve CP/M maintenance and the Aurelia release team. The September 12 agreement later formalises ownership, staffing and funding; preliminary work does not move product availability."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "software.aionix"
+          ],
+          "related_event_refs": [
+            "event.dri_founding"
+          ]
+        },
+        {
           "id": "event.retail",
           "title": "ComputerLand retail agreement",
           "event_type": "agreement",
@@ -1449,8 +1501,40 @@
           ]
         },
         {
+          "id": "event.apple_business_initiative",
+          "title": "Apple coordinates business-software recruitment",
+          "event_type": "action",
+          "date": {
+            "start": "1978-07-17",
+            "end": "1978-07-17"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.apple",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.apple"
+              ],
+              "description": "Respond to Aurelia with a coordinated search for accounting, spreadsheet and database partners, engineering access and demonstration systems. Disk II development already predates Aurelia; this is a change in software/commercial priority, not the invention of disk support."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.aurelia"
+          ],
+          "related_event_refs": [
+            "event.aurelia_launch"
+          ]
+        },
+        {
           "id": "event.aionix_agreement",
-          "title": "AIONix development and ownership agreement",
+          "title": "AIONix development programme and ownership formalised",
           "event_type": "agreement",
           "date": {
             "start": "1978-09-12",
@@ -1486,7 +1570,7 @@
                 "actor.aion",
                 "actor.dri"
               ],
-              "description": "Agree joint development of AIONix for ERA in assembler and C."
+              "description": "Formalise the AIONix programme begun in February 1978: joint ERA development in assembler and C, funded by AION. Existing ownership, equity and future porting-right terms remain."
             }
           ],
           "outcomes": [],
@@ -1589,7 +1673,38 @@
             "computer.artemis"
           ],
           "related_event_refs": [
-            "event.dri_founding"
+            "event.dri_founding",
+            "event.aionix_preliminary"
+          ]
+        },
+        {
+          "id": "event.apple_dealer_demos",
+          "title": "Apple business-dealer demonstration programme",
+          "event_type": "action",
+          "date": {
+            "start": "1978-09-18",
+            "end": "1978-09-18"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.apple",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.apple"
+              ],
+              "description": "Prepare complete-system quotations, repeatable business-workflow demonstrations and introductory customer lessons. Initial implementation is selective, not an instantly nationwide training network."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.apple_business_initiative"
           ]
         },
         {
@@ -1611,14 +1726,56 @@
               "actor_refs": [
                 "actor.apple"
               ],
-              "description": "Searches for partnerships supplying Apple II business software, disk-based capabilities, spreadsheets and databases."
+              "description": "Expand the July business-software initiative into partner negotiations for disk-based accounting, spreadsheets and databases; seek independent software alternatives to AION."
             }
           ],
           "outcomes": [],
           "agreement_terms": [],
           "metrics": [],
           "product_refs": [],
-          "related_event_refs": []
+          "related_event_refs": [
+            "event.apple_business_initiative"
+          ]
+        },
+        {
+          "id": "event.tandy_contact",
+          "title": "Adam opens confidential Model II cooperation talks",
+          "event_type": "action",
+          "date": {
+            "start": "1978-11-06",
+            "end": "1978-11-06"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.tandy",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.tandy"
+              ],
+              "description": "After Aurelia launch and growing dealer sales, Adam demonstrates Abacus and proposes an official Model II CP/M configuration plus FlexiBUS in return for an AION-funded Abacus adaptation. Talks occur during the scenario early-design window; no historical design-freeze date is asserted. Confidential talks have no immediate mass-market demand effect."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.trs80_model_ii",
+            "software.cpm_model_ii",
+            "device.model_ii_flexibus",
+            "edition.abacus_1.model_ii"
+          ],
+          "related_event_refs": [
+            "event.aurelia_launch"
+          ]
         },
         {
           "id": "event.dri_portable",
@@ -1655,6 +1812,164 @@
           ]
         },
         {
+          "id": "event.tandy_agreement",
+          "title": "Tandy, Logix, DRI and AION sign Model II cooperation agreement",
+          "event_type": "agreement",
+          "date": {
+            "start": "1978-11-27",
+            "end": "1978-11-27"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.tandy",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.tandy",
+                "actor.logix",
+                "actor.dri",
+                "actor.aion"
+              ],
+              "description": "Tandy commits to officially selling/supporting CP/M and a qualified FlexiBUS option for Model II, supplies engineering access and distributes Abacus. DRI supplies CP/M and required platform services. Logix supplies interface documentation, reference engineering and initial chips. AION funds the port, corrects incompatibilities, qualifies and maintains the Model II edition. Tandy keeps native video, keyboard, disk architecture, legacy ports, branding, sales and first-line support. No Logix video or CP/M-6502 commitment."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [
+            {
+              "type": "responsibility",
+              "description": "Non-exclusive software and interface licenses; Tandy can manufacture or source compatible peripherals. Exact royalties, engineering payments and minimum software purchases remain unspecified.",
+              "actor_refs": [
+                "actor.tandy",
+                "actor.logix",
+                "actor.dri",
+                "actor.aion"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "responsibility",
+              "description": "Abacus acceptance covers native display/keyboard, documented editing behaviour, CP/M services, printing, shared document format, save/reopen and measured RAM/worksheet/performance limits on a 64 KB configuration. No automatic Aurelia binary or identical-capacity claim.",
+              "actor_refs": [
+                "actor.tandy",
+                "actor.logix",
+                "actor.dri",
+                "actor.aion"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "responsibility",
+              "description": "Use a Model II-specific internal FlexiBUS option board, provisionally two ports, rather than force a mainboard or video redesign. Preserve existing Tandy interfaces. Slot, power, timing and quiescent-attachment qualification are required.",
+              "actor_refs": [
+                "actor.tandy",
+                "actor.logix",
+                "actor.dri",
+                "actor.aion"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            },
+            {
+              "type": "responsibility",
+              "description": "Radio Shack owns the customer relationship and delivers demonstrations/training; AION handles software defects and updates. No Academy attendance or Logix-branded peripherals required. Initial AION silicon supply must not depend on unqualified October 1979 SMC parts.",
+              "actor_refs": [
+                "actor.tandy",
+                "actor.logix",
+                "actor.dri",
+                "actor.aion"
+              ],
+              "value": null,
+              "unit": null,
+              "effective_date": null
+            }
+          ],
+          "metrics": [],
+          "product_refs": [
+            "computer.trs80_model_ii",
+            "software.cpm_model_ii",
+            "device.model_ii_flexibus",
+            "edition.abacus_1.model_ii"
+          ],
+          "related_event_refs": [
+            "event.tandy_contact"
+          ]
+        },
+        {
+          "id": "event.tandy_design_review",
+          "title": "Model II compatibility design baseline agreed",
+          "event_type": "development",
+          "date": {
+            "start": "1978-12-15",
+            "end": "1978-12-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.tandy",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.tandy",
+                "actor.logix",
+                "actor.dri",
+                "actor.aion"
+              ],
+              "description": "Reserve an internal option-board slot and interface/power budget before the scenario design baseline is closed. Freeze CP/M BIOS responsibilities, native display/keyboard adapter and the FlexiBUS connector plan. This review is an invented alternate-history engineering milestone, not a claim about the real Model II freeze date."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.trs80_model_ii",
+            "software.cpm_model_ii",
+            "device.model_ii_flexibus",
+            "edition.abacus_1.model_ii"
+          ],
+          "related_event_refs": [
+            "event.tandy_agreement"
+          ]
+        },
+        {
           "id": "event.apple_peachtree",
           "title": "Apple partners with Peachtree",
           "event_type": "market_response",
@@ -1677,7 +1992,7 @@
               "actor_refs": [
                 "actor.apple"
               ],
-              "description": "Seeks a business catalog, especially spreadsheet, database and accounting products."
+              "description": "Develop an Apple II accounting offering with Peachtree while separately pursuing spreadsheet and database suppliers. Peachtree is not treated as a substitute for Abacus by itself."
             },
             {
               "actor_refs": [
@@ -1729,7 +2044,11 @@
               "description": "Agrees to limited technical cooperation and compatibility assistance."
             }
           ],
-          "outcomes": [],
+          "outcomes": [
+            {
+              "description": "Apple accepts Logix-funded native expansion as a way to increase installed Apple II utility, with separate branding/support and no requirement to adopt the full Logix platform; its own peripheral strategy continues."
+            }
+          ],
           "agreement_terms": [
             {
               "type": "technical_access",
@@ -1785,6 +2104,87 @@
           "related_event_refs": []
         },
         {
+          "id": "event.tandy_port_review",
+          "title": "Model II CP/M and Abacus prototype review",
+          "event_type": "development",
+          "date": {
+            "start": "1979-02-19",
+            "end": "1979-02-19"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.tandy",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.tandy",
+                "actor.dri",
+                "actor.aion",
+                "actor.logix"
+              ],
+              "description": "Review prototype CP/M boot, Tandy disk/printer BIOS, native TUI adapter and Abacus document interchange. Resolve ROM/banking assumptions and measure available RAM on the 64 KB target. FlexiBUS prototype is specific to the Tandy bus, not a plug-in S-100 card."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.trs80_model_ii",
+            "software.cpm_model_ii",
+            "device.model_ii_flexibus",
+            "edition.abacus_1.model_ii"
+          ],
+          "related_event_refs": [
+            "event.tandy_design_review"
+          ]
+        },
+        {
+          "id": "event.apple_business_promotions",
+          "title": "Apple promotes complete business configurations",
+          "event_type": "action",
+          "date": {
+            "start": "1979-04-16",
+            "end": "1979-04-16"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.apple",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.apple"
+              ],
+              "description": "Participating dealers promote Apple II/Disk II business configurations, demonstrations and introductory lessons; Apple pursues spreadsheet distribution/development support separately from Peachtree accounting. No completed VisiCalc release or finished March 1980 Apple–Peachtree package is pulled into spring 1979."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.apple_peachtree",
+            "event.apple_dealer_demos"
+          ]
+        },
+        {
           "id": "event.dri_release",
           "title": "Portable CP/M extensions released",
           "event_type": "release",
@@ -1820,6 +2220,56 @@
           ],
           "related_event_refs": [
             "event.dri_portable"
+          ]
+        },
+        {
+          "id": "event.tandy_announcement",
+          "title": "Model II announced with planned CP/M, FlexiBUS and Abacus offering",
+          "event_type": "plan",
+          "date": {
+            "start": "1979-05-30",
+            "end": "1979-05-30"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.tandy",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.tandy",
+                "actor.logix",
+                "actor.dri",
+                "actor.aion"
+              ],
+              "description": "Publicly announce Model II and the planned officially supported CP/M/Abacus configuration and FlexiBUS option. Preserve the historical late-May announcement window, June NCC demonstrations and October US delivery window. Announcements and orders are not completed computer or Abacus sales."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.trs80_model_ii",
+            "software.cpm_model_ii",
+            "device.model_ii_flexibus",
+            "edition.abacus_1.model_ii"
+          ],
+          "related_event_refs": [
+            "event.tandy_port_review"
           ]
         }
       ]
@@ -1924,6 +2374,56 @@
           "related_event_refs": []
         },
         {
+          "id": "event.tandy_ncc_demo",
+          "title": "Model II CP/M, FlexiBUS and Abacus demonstrated at NCC",
+          "event_type": "action",
+          "date": {
+            "start": "1979-06-04",
+            "end": "1979-06-04"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.tandy",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.tandy",
+                "actor.dri",
+                "actor.aion",
+                "actor.logix"
+              ],
+              "description": "Demonstrate Abacus using the native Model II display/keyboard, a CP/M disk build and qualified prototype FlexiBUS peripherals. Distinguish demonstrations from customer releases; announce an autumn supported 64 KB configuration. No Logix video subsystem is required."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.trs80_model_ii",
+            "software.cpm_model_ii",
+            "device.model_ii_flexibus",
+            "edition.abacus_1.model_ii"
+          ],
+          "related_event_refs": [
+            "event.tandy_announcement"
+          ]
+        },
+        {
           "id": "event.cpm_bridge",
           "title": "CP/M-80 compatibility module developed",
           "event_type": "development",
@@ -2025,7 +2525,7 @@
               "actor_refs": [
                 "actor.ibm"
               ],
-              "description": "Begins a confidential investigation and formal competitive/financial assessment."
+              "description": "Confidentially benchmark Aurelia/Abacus business workflows, Tandy distribution and Apple software partnerships; examine price, training, service and independent OS suppliers. No public IBM product announcement or immediate buyer-deferral effect is assumed."
             }
           ],
           "outcomes": [],
@@ -2033,6 +2533,37 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": []
+        },
+        {
+          "id": "event.apple_compatibility_review",
+          "title": "Apple reviews successor-product compatibility requirements",
+          "event_type": "plan",
+          "date": {
+            "start": "1979-09-17",
+            "end": "1979-09-17"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.apple",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.apple"
+              ],
+              "description": "Competitive review increases priority for protecting existing software, peripherals and customer data in successor plans. This is a requirements decision, not a guaranteed technical fix or early Lisa/GUI shipment. Apple keeps its independent hardware roadmap."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.apple_business_promotions",
+            "event.apple_extensions"
+          ]
         },
         {
           "id": "event.smc_sales",
@@ -2081,6 +2612,56 @@
           ],
           "related_event_refs": [
             "event.smc_agreement"
+          ]
+        },
+        {
+          "id": "event.tandy_release",
+          "title": "Supported Model II CP/M and Abacus configuration released",
+          "event_type": "release",
+          "date": {
+            "start": "1979-10-15",
+            "end": "1979-10-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.tandy",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.tandy",
+                "actor.dri",
+                "actor.aion",
+                "actor.logix"
+              ],
+              "description": "Scenario customer release within the historical October US shipping window: supported 64 KB CP/M configuration, Model II Abacus and the separately supported FlexiBUS option. Release follows disk, printing, save/reopen, native UI and interface qualification; publish resource limits. October 15 is a scenario-selected day. OEM economics and Tandy system prices are not inferred from Aurelia retail prices."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.trs80_model_ii",
+            "software.cpm_model_ii",
+            "device.model_ii_flexibus",
+            "edition.abacus_1.model_ii"
+          ],
+          "related_event_refs": [
+            "event.tandy_ncc_demo"
           ]
         }
       ]
@@ -2169,18 +2750,18 @@
               "actor_refs": [
                 "actor.ibm"
               ],
-              "description": "Concludes that the market is consolidating around Logix and Apple, and starts a project drawing on business credibility, corporate relationships, global service and engineering/manufacturing resources."
+              "description": "Authorise a PC project because independent suppliers, including Logix, Tandy and Apple, are establishing business applications, interfaces and retail/service channels outside IBM. Do not assume a Logix–Apple duopoly. Initially expect external software to shorten development."
             }
           ],
           "outcomes": [
             {
-              "description": "Plans a 16-bit x86 OS, potentially using contractors. Tim Paterson remains unavailable for the historical QDOS route. DRI is an independent potential supplier, not automatically disqualified by its Logix relationship; x86 availability, negotiations and selection remain unresolved."
+              "description": "DRI remains an independent licensor but its funded AIONix and CP/M-80 commitments leave no committed x86 OS on IBM’s required schedule. Paterson’s recruitment removes the historical SCP 86-DOS route; Letwin’s absence reduces Microsoft staffing options. Alternatives remain possible. Supplier selection, substitute OS development and application qualification become the critical path toward early 1982, rather than technical impossibility."
             }
           ],
           "agreement_terms": [
             {
               "type": "target_schedule",
-              "description": "Functional prototype after project start.",
+              "description": "Functional prototype after project start. Hardware milestone only; it does not establish OS/application or commercial readiness.",
               "actor_refs": [
                 "actor.ibm"
               ],
@@ -2193,7 +2774,7 @@
             },
             {
               "type": "target_schedule",
-              "description": "Manufacturing-ready design after project start.",
+              "description": "Manufacturing-ready design after project start. Hardware milestone only; it does not establish OS/application or commercial readiness.",
               "actor_refs": [
                 "actor.ibm"
               ],
@@ -2206,7 +2787,7 @@
             },
             {
               "type": "target_launch",
-              "description": "Commercial launch targeted for early 1982.",
+              "description": "Early-1982 commercial target after supplier-selection delay, alternative OS development and business-application qualification. A late-1981 recovery remains possible; this is not a guarantee that no other OS can be produced.",
               "actor_refs": [
                 "actor.ibm"
               ],
@@ -2234,7 +2815,50 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": [
-            "event.ibm_investigate"
+            "event.ibm_investigate",
+            "event.aionix_agreement",
+            "event.paterson",
+            "event.letwin"
+          ]
+        },
+        {
+          "id": "event.ibm_os_review",
+          "title": "IBM software sourcing review exposes schedule gap",
+          "event_type": "development",
+          "date": {
+            "start": "1980-02-15",
+            "end": "1980-02-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.ibm",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "participant"
+            },
+            {
+              "actor_ref": "actor.microsoft",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.ibm",
+                "actor.dri",
+                "actor.microsoft"
+              ],
+              "description": "Supplier discussions find no committed qualified x86 CP/M delivery on IBM terms. DRI prioritises AIONix and existing CP/M-80 OEM obligations rather than refusing solely because IBM competes with Logix. Microsoft cannot acquire the historical Paterson/SCP product in this scenario and must recruit, commission or obtain another OS."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.ibm_project"
           ]
         },
         {
@@ -2337,6 +2961,36 @@
             "software.business_tools_artemis"
           ],
           "related_event_refs": []
+        },
+        {
+          "id": "event.ibm_os_program",
+          "title": "IBM funds an alternative OS delivery programme",
+          "event_type": "development",
+          "date": {
+            "start": "1980-07-15",
+            "end": "1980-07-15"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.ibm",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.ibm"
+              ],
+              "description": "After evaluating suppliers, fund substitute OS work and stabilise application interfaces. Supplier identity and OS name remain unresolved. Hardware development proceeds; development, utilities, application ports and service preparation now determine commercial timing."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.ibm_os_review"
+          ]
         }
       ]
     },
@@ -2455,6 +3109,36 @@
             "software.bpi_client_server"
           ],
           "related_event_refs": []
+        },
+        {
+          "id": "event.ibm_qualification",
+          "title": "IBM business-software qualification delays commercial release",
+          "event_type": "development",
+          "date": {
+            "start": "1981-08-17",
+            "end": "1981-08-17"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.ibm",
+              "role": "participant"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.ibm"
+              ],
+              "description": "Hardware is substantially ready but OS integration, business-application qualification and support preparation remain on the critical path. Retain early 1982 as the planned commercial launch, with late 1981 possible if issues are resolved unusually quickly; no completed 1982 shipment is asserted."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": [
+            "event.ibm_os_program"
+          ]
         }
       ]
     }

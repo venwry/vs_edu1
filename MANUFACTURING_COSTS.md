@@ -85,3 +85,6 @@ Adam’s $250,000 DRI founder commitment is equity financing, not an expense per
 
 
 The 1978 campaign, professional NCC filming/editing and free station-copy distribution are marketing costs, excluded from hardware BOMs and recurring unit costs. The campaign budget is unspecified, not zero; see `aurelia_1978_campaign.json`. Academy setup is distinct from existing recurring course delivery. Fundamentals 50% tuition credit is calculated in pricing as promotional exposure, counted once across the course and system sale including dealer reimbursement.
+
+
+Tandy Model II and its external partner interface are Tandy-owned designs, not added to Logix BOM/unit-cost totals. The Abacus port requires engineering expenditure and native media qualification; no invented OEM royalty, port budget or extra retail unit is assigned. Their commercial terms remain unresolved in the partner specification.

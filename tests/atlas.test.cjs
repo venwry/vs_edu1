@@ -134,7 +134,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  assert.equal(d.querySelectorAll('.event:not([hidden])').length,1);
  const actor=d.getElementById('actor-filter');actor.value='actor.ibm';actor.dispatchEvent(new w.Event('change'));
  assert.equal(d.querySelectorAll('.event').length,events.filter(e=>e.participants.some(x=>x.actor_ref==='actor.ibm')).length);
- assert.equal(d.querySelectorAll('[data-event]').length,2);
+ assert.equal(d.querySelectorAll('[data-event]').length,events.filter(e=>e.participants.some(x=>x.actor_ref==='actor.ibm')).length);
  w.location.hash='#event.bpi_offer';await tick();
  assert.equal(actor.value,'');assert.equal(d.getElementById('event.bpi_offer').hidden,false);
  actor.value='';actor.dispatchEvent(new w.Event('change'));

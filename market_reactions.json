@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "status": "Accepted alternative-story events; selected dates are scenario dates, not newly established historical facts. Forecast effects are rough incremental judgement adjustments.",
+    "historical_sources": [
+      {
+        "url": "https://trs-80.com/sub-models-model2.htm",
+        "note": "May 1979 introduction and October US shipment window."
+      },
+      {
+        "url": "https://www.trs-80.org/model-2.html",
+        "note": "June NCC demonstration/order period and October delivery; sources differ on announcement wording."
+      },
+      {
+        "url": "https://www.bitsavers.org/magazines/Datamation/197910.pdf",
+        "note": "Contemporary Radio Shack advertisement, printed p.115: business positioning, service/training and Model II offering."
+      },
+      {
+        "url": "https://www.ibm.com/history/personal-computer",
+        "note": "Historical 1980 authorisation and August 1981 launch; the scenario substitutes an OS procurement/development delay."
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_ref": "event.aionix_preliminary",
+      "date": "1978-02-01",
+      "lane": "aion",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.tandy_contact",
+      "date": "1978-11-06",
+      "lane": "partners",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.tandy_agreement",
+      "date": "1978-11-27",
+      "lane": "partners",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.tandy_design_review",
+      "date": "1978-12-15",
+      "lane": "partners",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.tandy_port_review",
+      "date": "1979-02-19",
+      "lane": "partners",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.tandy_announcement",
+      "date": "1979-05-30",
+      "lane": "partners",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.tandy_ncc_demo",
+      "date": "1979-06-04",
+      "lane": "partners",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.tandy_release",
+      "date": "1979-10-15",
+      "lane": "partners",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.apple_business_initiative",
+      "date": "1978-07-17",
+      "lane": "apple",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.apple_dealer_demos",
+      "date": "1978-09-18",
+      "lane": "apple",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.apple_business_promotions",
+      "date": "1979-04-16",
+      "lane": "apple",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.apple_compatibility_review",
+      "date": "1979-09-17",
+      "lane": "apple",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.ibm_os_review",
+      "date": "1980-02-15",
+      "lane": "market",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.ibm_os_program",
+      "date": "1980-07-15",
+      "lane": "market",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.ibm_qualification",
+      "date": "1981-08-17",
+      "lane": "market",
+      "date_status": "Authorised scenario date, not a documented historical event date."
+    }
+  ],
+  "date_policy": "Late-1978 Model II design window is a scenario assumption. November 27 agreement precedes the December 15 scenario integration baseline; no precise historical freeze date is claimed. May 30 announcement and October 15 partner release use plausible selected days, with historical May/June/October windows preserved.",
+  "forecast_adjustments": {
+    "boundary": "June 1978–May 1979 sell-through. The June 4 demonstration, October Tandy release, later Apple successor review and confidential July/December IBM actions add no pre-NCC shipments.",
+    "interpretation": "Replace the prior generic competitor-response allowance with explicit incremental deviations. Apple losses are transfers to competitor sales; Tandy waiting is deferral beyond cutoff, not shipped Model II units; compatibility confidence is a small positive effect. These are assumptions, not measured elasticities.",
+    "apple_event_refs": [
+      "event.apple_business_initiative",
+      "event.apple_dealer_demos",
+      "event.apple_business_promotions"
+    ],
+    "apple_monthly_displacement": [
+      0,
+      0,
+      20,
+      30,
+      40,
+      60,
+      100,
+      150,
+      200,
+      300,
+      400,
+      500
+    ],
+    "tandy_event_ref": "event.tandy_announcement",
+    "tandy_monthly_deferral": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      150
+    ],
+    "compatibility_event_refs": [
+      "event.dri_release",
+      "event.tandy_announcement"
+    ],
+    "compatibility_monthly_gain": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      150
+    ],
+    "scenario_multipliers": {
+      "conservative": {
+        "negative": 1.4,
+        "positive": 0.5
+      },
+      "central": {
+        "negative": 1,
+        "positive": 1
+      },
+      "strong": {
+        "negative": 0.6,
+        "positive": 1.5
+      }
+    },
+    "tandy_computer_shipments_before_ncc": 0,
+    "tandy_abacus_customer_licenses_before_ncc": 0,
+    "ibm_pre_ncc_sales_effect": 0,
+    "later_tandy_economics": "Customer release October 1979; OEM prices and volume not yet forecast. No unsupported incremental Abacus revenue added to current totals."
+  }
+}

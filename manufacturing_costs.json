@@ -13,7 +13,7 @@
     "source_commit": "c4567d340882e132ca92671861487af453dafc80",
     "source_note": "Baseline commit; source hashes identify the edited inputs used for this build.",
     "source_sha256": {
-      "logix_aion_technical_catalog_v2.json": "a9d5f28af4e53ae9444189f2598d525d84f7463b25bfaf93d927a07f7b0feb8c",
+      "logix_aion_technical_catalog_v2.json": "116d8e0bf2e46fa611ad5a3ee68de9c4bb65d804f7c8fb4fe0481ecef86e3db2",
       "hardware_bom.json": "677155cf7c58e5bc42351f696e1fb844836a1c5b15e167a61998d6c703388736",
       "manufacturing_programs.json": "2a5d0a874069d869de22b8ed65ae4e7b39ebf47c9a6a858bd56b5379547c8b35"
     },
@@ -25745,6 +25745,22 @@
     }
   ],
   "coverage_exclusions": [
+    {
+      "catalog_ref": "computer.trs80_model_ii",
+      "reason": "External partner offering; manufacturing/media boundary and OEM terms not costed."
+    },
+    {
+      "catalog_ref": "software.cpm_model_ii",
+      "reason": "External partner offering; manufacturing/media boundary and OEM terms not costed."
+    },
+    {
+      "catalog_ref": "device.model_ii_flexibus",
+      "reason": "External partner offering; manufacturing/media boundary and OEM terms not costed."
+    },
+    {
+      "catalog_ref": "edition.abacus_1.model_ii",
+      "reason": "External partner offering; manufacturing/media boundary and OEM terms not costed."
+    },
     {
       "catalog_ref": "device.artemis_ram_64kb_module",
       "reason": "Superseded/prototype part, not active offering"

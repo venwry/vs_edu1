@@ -113,7 +113,10 @@ for x in C['software_products']:
  row(x['id'],x['id'],x['name'],'Software','one media/manual set; bundled editions are not separate purchases',date(x),**kwargs,assumptions=['Media count and printed pages are planning allowances; software-development costs excluded.','Generic BPI suite denotes the five-module set; separately costed module rows below are alternatives, not additions.'] if x['id']=='software.bpi_suite' else ['Media and documentation reproduction only, plus an explicit recurring third-party license allowance where applicable.'])
 # Individual BPI offerings and native/client/server distribution variants.
 for m in records['software.bpi_suite']['modules']:row('software.bpi_suite.'+m['name'].lower().replace(' ','_'),'software.bpi_suite',m['name'],'Software','one module media/manual set','1978-06-05',software_profile=[1,140])
+external_platform_ids={x['id'] for x in C.get('external_platforms',[])}
+external_editions=[e for e in C['platform_editions'] if all(x['computer_ref'] in external_platform_ids for x in e['platform_support'])]
 for e in C['platform_editions']:
+ if e in external_editions:continue
  prod=records[e['product_ref']];profile=software_profiles.get(prod['id'].split('.')[1]);a='assembly.media.'+prod['id']
  row(e['id'],prod['id'],e['name'],'Software editions','one platform-specific media/manual set',date(e),**({'assembly_ref':a} if a in assemblies else {'software_profile':profile or [2,200]}),assumptions=['Alternative distribution of the parent software product; do not add parent and edition rows.'])
 for x in C['offered_bundles']:
@@ -176,7 +179,7 @@ for r in rows:
   if 'artemis_pro' in r['id']:low,high=.65,1.75
   r['snapshots'][str(y)]={'status':'announced_shipping_unconfirmed' if r.get('announced_only') else 'offered_estimate','total_usd':total,'low_usd':round(total*low,2),'high_usd':round(total*high,2),'breakdown_usd':breakdown,'bom_assembly_ref':a,'bom_lines':[{'component_ref':k,'quantity':n,'extended_recurring_cost_usd':round(n*sum(inputs[k]['annual_cost_buckets_usd'][str(y)].values()),2)} for k,n in sorted(flat.items())],'confidence':'low','range_basis':'Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development.'}
 # Coverage ledger deliberately includes internal/superseded records without pretending they are products.
-covered={r['catalog_ref'] for r in rows};excluded=[]
+covered={r['catalog_ref'] for r in rows};excluded=[{'catalog_ref':x['id'],'reason':'External partner offering; manufacturing/media boundary and OEM terms not costed.'} for x in C.get('external_platforms',[])+C.get('external_partner_products',[])+external_editions]
 for cat in ['computers','devices','software_products','services','offered_bundles','base_parts','technologies','proposed_bundles']:
  for x in C[cat]:
   if x['id'] not in covered:excluded.append({'catalog_ref':x['id'],'reason':'Proposed bundle, not offered' if cat=='proposed_bundles' else 'Technology/specification, not separately sold' if cat=='technologies' else 'Superseded/prototype part, not active offering' if x.get('superseded_by') or 'prototype' in x['id'] or '128kbit' in x['id'] or 'module_64kb' in x['id'] else 'Purchased/internal component; included in end-product BOM, not a separate Logix offering'})
