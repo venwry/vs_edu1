@@ -82,3 +82,6 @@ The June 1979 snapshot uses AION-produced chips. SMC’s initial commercial sale
 `manufacturing_programs.json` separately budgets process/layout support, SMC-compatible ready-to-use masks/revisions, pilot wafers, qualification/test engineering and training. Its $175,000–$610,000 range ($330,000 central) is a planning allowance in nominal 1978–1979 USD, not an agreed payment. New fab equipment and major process-capacity expansion are excluded. Mask delivery helps but does not establish DRAM retention, sensing or production yields. None of this NRE is silently amortized into product rows.
 
 Adam’s $250,000 DRI founder commitment is equity financing, not an expense per CP/M copy. Existing provisional OEM royalty allowances remain because DRI is a separately owned licensor.
+
+
+The 1978 campaign, professional NCC filming/editing and free station-copy distribution are marketing costs, excluded from hardware BOMs and recurring unit costs. The campaign budget is unspecified, not zero; see `aurelia_1978_campaign.json`. Academy setup is distinct from existing recurring course delivery. Fundamentals 50% tuition credit is calculated in pricing as promotional exposure, counted once across the course and system sale including dealer reimbursement.

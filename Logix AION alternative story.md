@@ -34,6 +34,9 @@ Existing day-level event dates remain confirmed. The late-1974 DRI founding and 
 - 1977-09-01 — OEM printer-mechanism agreement (`event.mpi`)
 - 1978-02-05 — ComputerLand retail agreement (`event.retail`)
 - 1978-03-25 — Logix Computer Academy established (`event.academy`)
+- 1978-04 — Newspaper teaser campaign begins (`event.aurelia_campaign_teaser`)
+- 1978-05 — Cinematic television and explanatory print campaign (`event.aurelia_campaign_advert`)
+- Late May–early June 1978 — Press, dealer and launch preparation (`event.aurelia_campaign_preparation`)
 
 ### Processes
 
@@ -45,7 +48,8 @@ Existing day-level event dates remain confirmed. The late-1974 DRI founding and 
 
 ### Events
 
-- 1978-06-05 — Aurelia platform launches (`event.aurelia_launch`)
+- 1978-06-05 — Aurelia platform launches; five-city Academy publicly announced (`event.aurelia_launch`)
+- 1978-06-05 to 1978-06-08 — Technical sessions, professional recording and subsequent free station distribution (`event.ncc78_sessions_media`)
 - 1978-06-05 — BPI suite presented for Aurelia (`event.bpi_launch`)
 - 1978-06-12 — BPI training and direct sales begin (`event.bpi_training`)
 - 1978-07 — SMC second-source and technology-transfer agreement (`event.smc_agreement`)
@@ -170,7 +174,7 @@ Adam also sign agreements:
 
 On 1977-02-15 Adam makes an offer to the owners BPI Systems: \$150K in cash, + 33% of shares in the new AION BPI Systems: the new company will focus on selling products to Logix computers. BPI former owners will remain running the company but along with Adam’s people. Adam’s people will help to port BPI products to C Language, include database engine, change UI to Logix TUI.
 
-On 1978-03-25 Logix Computer Academy company is brought to life: training facilities rent in different US cities. Number and size of facilities adjusted to market demand.
+On 1978-03-25 Logix Computer Academy company is brought to life: training facilities rent in different US cities. An initial five-city US programme is publicly announced at the June 5 premiere; city names and first class dates remain to be selected. Capacity adjusts to demand.
 
 On 1978-06-05 at NCC 1978 Logix launches Aurelia as a complete personal-computing platform, supported by AION software, peripherals, support services, developer programs and the Logix Computer Academy.
 
@@ -295,3 +299,12 @@ AION/Logix funds transfer engineering, compatible masks and qualification. One-t
 ## Application and ecosystem policy
 
 Published interfaces and affordable developer support allow competing cards, peripherals, monitors and software. Logix’s cards are proof of that policy, not requirements imposed on DRI. AION retains the existing Abacus, C tools, Business Tools, AIONix and Pulse products. BPI’s independence around 1985 remains a future ownership/governance objective requiring a separate transaction; no completed buyout is invented.
+
+
+## Aurelia launch marketing and television coverage
+
+The accepted April–June 1978 campaign introduces Aurelia as a personal assistant in business through newspaper teasers, a proposed Michael Douglas cinematic commercial, and a practical NCC presentation. After Gary and MPI, Adam announces the five-city Academy before discussing packages and availability. Two-day Fundamentals offers hands-on learning without purchase obligation and 50% tuition credit toward one Aurelia, valid six months at Academy centres or participating dealers reimbursed by Logix. Orders can be placed during training. City names, class dates, tuition, celebrity contract and final commercial packages remain execution decisions.
+
+A professional team records every Logix NCC presentation, including the premiere, technical sessions, partners and Q&A. Logix edits attractive features, short news material and full presentations, and supplies cleared station-compatible copies free to any television station wishing to broadcast them, covering ordinary duplication and dispatch. Stations retain editorial and scheduling choice; coverage is not guaranteed. After NCC, Academy courses, dealer demonstrations and practical advertising continue. Campaign expenses and purchase credits are separate from recurring manufacturing costs.
+
+See [AURELIA_1978_CAMPAIGN.md](AURELIA_1978_CAMPAIGN.md) and [aurelia_1978_campaign.json](aurelia_1978_campaign.json) for the full sequence, 37-minute presentation, recording/distribution plan and qualification gates.

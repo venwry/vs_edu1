@@ -6,7 +6,7 @@
     "price_basis": "Nominal US retail prices before sales tax; June 15 snapshots, 1978–1981",
     "source_commit": "47177a6a75b07f0c2a9a00aedf2a30a9793cb1de",
     "cost_model_file": "manufacturing_costs.json",
-    "cost_model_sha256": "f05b5c674bf4dacc22974c7a3f5b4e97658fb7c287168e295c093f3bcfc6f475",
+    "cost_model_sha256": "27d01e10bd9130653639f2424b673bb2cbdecc7fde0581b774e7c9ba60191724",
     "snapshots": [
       "1978-06-15",
       "1979-06-15",
@@ -13443,7 +13443,7 @@
       "computerland_fee_rate": 0,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Regular-course price; before-you-buy variant +$50 with $150 purchase voucher. Voucher remains promotional spend, excluded from manufacturing cost; exposure shown separately."
+        "Regular-course price; before-you-buy variant +$50. Fundamentals receives 50% tuition purchase credit; other courses retain their $150 voucher. Voucher remains promotional spend, excluded from manufacturing cost; exposure shown separately."
       ],
       "components": [
         {
@@ -13510,11 +13510,12 @@
           ],
           "before_you_buy_variant": {
             "retail_price_usd": 199,
-            "voucher_face_value_usd": 150,
+            "voucher_face_value_usd": 99.5,
+            "voucher_basis": "50% of Fundamentals tuition",
             "voucher_redemption_assumed_pct": 100,
-            "maximum_incremental_promotion_cost_usd": 150,
-            "contribution_after_full_voucher_usd": 1.56,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "maximum_incremental_promotion_cost_usd": 99.5,
+            "contribution_after_full_voucher_usd": 52.06,
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1979": {
@@ -13574,11 +13575,12 @@
           ],
           "before_you_buy_variant": {
             "retail_price_usd": 199,
-            "voucher_face_value_usd": 150,
+            "voucher_face_value_usd": 99.5,
+            "voucher_basis": "50% of Fundamentals tuition",
             "voucher_redemption_assumed_pct": 100,
-            "maximum_incremental_promotion_cost_usd": 150,
-            "contribution_after_full_voucher_usd": -2.79,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "maximum_incremental_promotion_cost_usd": 99.5,
+            "contribution_after_full_voucher_usd": 47.71,
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1980": {
@@ -13638,11 +13640,12 @@
           ],
           "before_you_buy_variant": {
             "retail_price_usd": 199,
-            "voucher_face_value_usd": 150,
+            "voucher_face_value_usd": 99.5,
+            "voucher_basis": "50% of Fundamentals tuition",
             "voucher_redemption_assumed_pct": 100,
-            "maximum_incremental_promotion_cost_usd": 150,
-            "contribution_after_full_voucher_usd": -7.25,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "maximum_incremental_promotion_cost_usd": 99.5,
+            "contribution_after_full_voucher_usd": 43.25,
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1981": {
@@ -13702,11 +13705,12 @@
           ],
           "before_you_buy_variant": {
             "retail_price_usd": 199,
-            "voucher_face_value_usd": 150,
+            "voucher_face_value_usd": 99.5,
+            "voucher_basis": "50% of Fundamentals tuition",
             "voucher_redemption_assumed_pct": 100,
-            "maximum_incremental_promotion_cost_usd": 150,
-            "contribution_after_full_voucher_usd": -13.3,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "maximum_incremental_promotion_cost_usd": 99.5,
+            "contribution_after_full_voucher_usd": 37.2,
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         }
       }
@@ -13722,7 +13726,7 @@
       "computerland_fee_rate": 0,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Regular-course price; before-you-buy variant +$50 with $150 purchase voucher. Voucher remains promotional spend, excluded from manufacturing cost; exposure shown separately."
+        "Regular-course price; before-you-buy variant +$50. Fundamentals receives 50% tuition purchase credit; other courses retain their $150 voucher. Voucher remains promotional spend, excluded from manufacturing cost; exposure shown separately."
       ],
       "components": [
         {
@@ -13790,10 +13794,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 429,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 160.39,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1979": {
@@ -13854,10 +13859,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 429,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 149.52,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1980": {
@@ -13918,10 +13924,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 429,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 138.37,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1981": {
@@ -13982,10 +13989,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 429,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 123.24,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         }
       }
@@ -14001,7 +14009,7 @@
       "computerland_fee_rate": 0,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Regular-course price; before-you-buy variant +$50 with $150 purchase voucher. Voucher remains promotional spend, excluded from manufacturing cost; exposure shown separately."
+        "Regular-course price; before-you-buy variant +$50. Fundamentals receives 50% tuition purchase credit; other courses retain their $150 voucher. Voucher remains promotional spend, excluded from manufacturing cost; exposure shown separately."
       ],
       "components": [
         {
@@ -14069,10 +14077,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 499,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 206.67,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1979": {
@@ -14133,10 +14142,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 499,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 193.62,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1980": {
@@ -14197,10 +14207,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 499,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 180.24,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1981": {
@@ -14261,10 +14272,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 499,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 162.09,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         }
       }
@@ -14280,7 +14292,7 @@
       "computerland_fee_rate": 0,
       "status": "approved_pricing_proposal",
       "notes": [
-        "Regular-course price; before-you-buy variant +$50 with $150 purchase voucher. Voucher remains promotional spend, excluded from manufacturing cost; exposure shown separately."
+        "Regular-course price; before-you-buy variant +$50. Fundamentals receives 50% tuition purchase credit; other courses retain their $150 voucher. Voucher remains promotional spend, excluded from manufacturing cost; exposure shown separately."
       ],
       "components": [
         {
@@ -14348,10 +14360,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 429,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 160.39,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1979": {
@@ -14412,10 +14425,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 429,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 149.52,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1980": {
@@ -14476,10 +14490,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 429,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 138.37,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         },
         "1981": {
@@ -14540,10 +14555,11 @@
           "before_you_buy_variant": {
             "retail_price_usd": 429,
             "voucher_face_value_usd": 150,
+            "voucher_basis": "Existing fixed voucher for other courses",
             "voucher_redemption_assumed_pct": 100,
             "maximum_incremental_promotion_cost_usd": 150,
             "contribution_after_full_voucher_usd": 123.24,
-            "note": "Voucher redeemed against a future hardware purchase; reserve marketing expense once across the course and hardware sale."
+            "note": "Fundamentals credit valid six months toward one Aurelia via Academy or participating dealers reimbursed by Logix; no purchase obligation. Other course terms unchanged. Reserve marketing expense once across course and computer sale."
           }
         }
       }
