@@ -147,3 +147,11 @@ The accepted NCC 1979 50-minute campaign and migration disclosure boundary are i
 ## NCC 1980 Artemis campaign and COMDEX sales extension
 
 See [NCC_1980_CAMPAIGN.md](NCC_1980_CAMPAIGN.md) for the accepted launch, bounded compatibility-through-2000 commitment, independent BPI appearance and dated follow-up activities. See [SALES_COMDEX1980.md](SALES_COMDEX1980.md) for the capacity-constrained three-product forecast. The 1979 disclosure embargo remains unchanged; native Pulse 3 and Abacus 3 stay at the November 19, 1980 milestone.
+
+
+
+## Industrial investment report
+
+The shared navigation and home cards include **Industrial investment**. Its standalone HTML embeds `industrial_investment_1974_1981.json`, so this report also works offline without selecting catalogs. It uses the same navigation destinations as the Atlas, generated from `site_pages.json`.
+
+Run `python tools/build_investment_model.py` after changing source forecasts, manufacturing costs, bundle definitions or navigation, then `python tests/validate_investment.py`. See `INDUSTRIAL_INVESTMENT.md` for scope and assumptions.

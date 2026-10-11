@@ -9,6 +9,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const errors=[],fetched=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(read(page.path),{url,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
  const w=dom.window;w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||JSON.parse(read(name))};};
+ if(page.kind==='report'){w.eval(w.document.querySelector('script:not([type])').textContent);return {dom,w,d:w.document,errors,fetched};}
  w.eval(read('sales.js'));w.eval(read('pricing.js'));w.eval(read('manufacturing-costs.js'));w.eval(read('timeline-model.js'));w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors,fetched};
@@ -18,8 +19,8 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const page of config.pages){
   const {w,d,dom,errors,fetched}=await boot(page);
   assert.equal(d.querySelector('h1').textContent,page.title,page.id);
-  for(const target of ['pricing.html','sales.html'])assert(d.querySelector('.site-nav a[href="'+target+'"]'),page.id+' missing '+target);
-  assert.equal(fetched.length,['costs','pricing','sales'].includes(page.kind)?4:3);
+  for(const target of ['pricing.html','sales.html','industrial_investment_1974_1981.html'])assert(d.querySelector('.site-nav a[href="'+target+'"]'),page.id+' missing '+target);
+  assert.equal(fetched.length,page.kind==='report'?0:['costs','pricing','sales'].includes(page.kind)?4:3);
   assert(!d.querySelector('#catalogs'),page.id+' failed to load');
   if(page.kind==='explorer'){
    const initialRAM={aurelia:48,'aurelia-plus':64,artemis:128,'artemis-pro':512}[page.id];
@@ -78,7 +79,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const [source,href] of links){
   const u=new URL(href,'https://atlas.test/'+source),file=u.pathname.slice(1);
   if(u.origin!=='https://atlas.test')continue;
-  if(['manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
+  if(['industrial_investment_1974_1981.json','manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
   assert(targets.has(file),source+' -> '+href);
   if(u.hash)assert(targets.get(file).has(decodeURIComponent(u.hash.slice(1))),source+' -> missing '+href);
  }
@@ -147,4 +148,5 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const offline=await boot(page,{},'file:///atlas/timeline.html');assert(offline.d.querySelector('#catalogs'));offline.dom.window.close();
  console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; four computer explorers, RAM expansion, networking, bundles, filters, JSON updates and offline recovery.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
 
