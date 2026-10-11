@@ -19,7 +19,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const page of config.pages){
   const {w,d,dom,errors,fetched}=await boot(page);
   assert.equal(d.querySelector('h1').textContent,page.title,page.id);
-  for(const target of ['pricing.html','sales.html','industrial_investment_1974_1981.html'])assert(d.querySelector('.site-nav a[href="'+target+'"]'),page.id+' missing '+target);
+  for(const target of ['pricing.html','sales.html','industrial_investment_1974_1981.html','roi.html'])assert(d.querySelector('.site-nav a[href="'+target+'"]'),page.id+' missing '+target);
   assert.equal(fetched.length,page.kind==='report'?0:['costs','pricing','sales'].includes(page.kind)?4:3);
   assert(!d.querySelector('#catalogs'),page.id+' failed to load');
   if(page.kind==='explorer'){
@@ -79,7 +79,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const [source,href] of links){
   const u=new URL(href,'https://atlas.test/'+source),file=u.pathname.slice(1);
   if(u.origin!=='https://atlas.test')continue;
-  if(['industrial_investment_1974_1981.json','manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
+  if(['roi_1974_1980.json','marketing_budget_1974_1980.json','ROI.md','industrial_investment_1974_1981.json','manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
   assert(targets.has(file),source+' -> '+href);
   if(u.hash)assert(targets.get(file).has(decodeURIComponent(u.hash.slice(1))),source+' -> missing '+href);
  }

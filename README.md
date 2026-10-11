@@ -7,3 +7,8 @@ Open [Industrial investment](industrial_investment_1974_1981.html) from the Atla
 
 - [Machine-readable model](industrial_investment_1974_1981.json)
 - [Assumptions, regeneration and validation](INDUSTRIAL_INVESTMENT.md)
+
+
+## ROI and complete marketing budget through 1980
+
+Open [Quarterly ROI](roi.html) for revenue, marketing-adjusted operating costs, investment, quarterly ROI and cash-recovery charts. [ROI.md](ROI.md) documents the bridge and reproduction steps. The ROI model replaces the industrial report's generic marketing allowance with itemized commercial, conference and promotional budgets; its net cash/returns are project-wide and pre-tax.
