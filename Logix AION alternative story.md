@@ -366,3 +366,8 @@ The kit provides documentation, reference adapter source, diagnostics and applic
 ## COMDEX 1979 marketing and presentation
 
 The accepted 45-minute programme plus questions uses “More room to work. More freedom to choose.” Aurelia and Aurelia+ run identical live calculated shaded-cube animation and Abacus workloads in parallel, with equivalent settings and measured completion results. No benchmark multiplier is promised before measurement. Abacus 2.0 demonstrates its charts and spreadsheet-linked document layouts by previewing and printing payslips for every employee from precalculated fictitious values. The head of independent BPI follows Abacus, explains the source payroll/file-exchange workflow and joins the partner segment. Existing Aurelia owners receive the same supported application upgrade opportunity. Pulse, manufacturer compatibility and qualified peripherals complete the programme. See COMDEX_1979_CAMPAIGN.md and comdex_1979_campaign.json for stage timings, preparation, follow-up, acceptance and disclosure rules.
+
+
+## NCC 1980 Artemis campaign and COMDEX sales extension
+
+See [NCC_1980_CAMPAIGN.md](NCC_1980_CAMPAIGN.md) for the accepted launch, bounded compatibility-through-2000 commitment, independent BPI appearance and dated follow-up activities. See [SALES_COMDEX1980.md](SALES_COMDEX1980.md) for the capacity-constrained three-product forecast. The 1979 disclosure embargo remains unchanged; native Pulse 3 and Abacus 3 stay at the November 19, 1980 milestone.

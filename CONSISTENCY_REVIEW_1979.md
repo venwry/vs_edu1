@@ -71,3 +71,8 @@ The accepted campaign preserves catalogued text-mode bar charts rather than clai
 ## NCC 1980 forecast follow-up
 
 The projection now ends May 18, before the NCC launch, with a partial May row. Separate product queues and a Plus package-premium response prevent demand from becoming automatic delivery or forced replacement. Original November projections are unchanged. Pulse attachment is limited to Aurelia+. Existing-price snapshots stay at June 1979; new offers use explicitly provisional first-available snapshots. Academy enrolments are course requests/places constrained by whole-course teaching days, rooms and staff, not unique students or additional hardware sales. Launch quotations, measured demand elasticity, funded factory capacity, confirmed centres/specialists, tuition-credit cash flow and actual OEM shipments remain open.
+
+
+## NCC 1980 Artemis campaign and COMDEX sales extension
+
+See [NCC_1980_CAMPAIGN.md](NCC_1980_CAMPAIGN.md) for the accepted launch, bounded compatibility-through-2000 commitment, independent BPI appearance and dated follow-up activities. See [SALES_COMDEX1980.md](SALES_COMDEX1980.md) for the capacity-constrained three-product forecast. The 1979 disclosure embargo remains unchanged; native Pulse 3 and Abacus 3 stay at the November 19, 1980 milestone.
