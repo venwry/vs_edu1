@@ -54,5 +54,7 @@ from extend_sales import extend
 extend(model, offers, R)
 from extend_sales_ncc80 import extend_ncc80
 extend_ncc80(model, offers, R)
+from extend_sales_comdex80 import extend_comdex80
+extend_comdex80(model, offers, R)
 (R/'sales_forecast.json').write_text(json.dumps(model,indent=2,ensure_ascii=False)+'\n')
 print('Forecast central:',scenarios[1]['calendar_1978']['units'],'calendar 1978;',scenarios[1]['launch_year']['units'],'launch year')

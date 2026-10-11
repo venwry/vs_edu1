@@ -100,3 +100,8 @@ This remains a computer-led package forecast. Other vendors' compatible machines
 Rebuild with `python tools/build_sales.py`; validate period arithmetic, pricing transitions and demand conservation with `tests/validate_sales_extension.py`. The page shows monthly demand, capacity, sales, unmet demand and price/campaign/competition components for each scenario.
 
 The December 3 manufacturer compatibility kit and clone-enablement policy occur after this forecast cutoff. They change neither November Aurelia demand nor shipments. The NCC 1980 extension now includes a clone-substitution sensitivity and application purchases; OEM volumes and kit/support revenue remain unquantified.
+
+
+## Extension through COMDEX 1980
+
+The latest horizon is November 18, 1980. See [SALES_COMDEX1980.md](SALES_COMDEX1980.md) for three-product demand, price response, Artemis ramp and separate BPI receipts. Earlier numerical forecasts are retained. Academy enrolment estimates still end May 18.

@@ -5578,7 +5578,15 @@
       },
       "edition_refs": [
         "edition.aionix.standard"
-      ]
+      ],
+      "forward_compatibility_commitment": {
+        "announced": "1980-05-19",
+        "supported_through": "2000-12-31",
+        "scope": "Released Artemis application binaries using documented, supported ERA/AIONix interfaces retain a supported execution path on subsequent Logix professional platforms through 2000: native execution, a maintained compatibility runtime, or emulation. Source portability is a separate commitment, not a substitute for the binary execution path.",
+        "exclusions": "Undocumented hardware access, unqualified peripherals and unsupported interfaces; no promise of unchanged speed, unlimited memory, or every future device. Z80 programs use their separately qualified compatibility path.",
+        "delivery_requirements": "Publish versioned ABI/API eligibility and conformance tests; preserve reference binaries and regression workloads; budget compatibility engineering, runtime distribution and support. Staffing, funding and validation remain explicit launch readiness gates.",
+        "status": "Official scenario commitment at NCC 1980; future fulfilment is not established evidence."
+      }
     },
     {
       "id": "software.business_tools_artemis",

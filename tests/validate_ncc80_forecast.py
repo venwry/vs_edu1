@@ -4,7 +4,7 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(n):return json.loads((R/n).read_text())
 f=read('sales_forecast.json');p={x['id']:x for x in read('pricing_results.json')['products']}
-assert f['metadata']['forecast_end']=='1980-05-18'<f['metadata']['ncc1980_date']=='1980-05-19'
+assert f['metadata']['ncc1980_forecast_end']=='1980-05-18'<f['metadata']['ncc1980_date']=='1980-05-19'
 assert f['metadata']['source_comdex_campaign_sha256']==hashlib.sha256((R/'comdex_1979_campaign.json').read_bytes()).hexdigest()
 for sc in f['scenarios']:
  rows=sc['comdex_to_ncc1980_months'];assert len(rows)==6

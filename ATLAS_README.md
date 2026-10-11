@@ -142,3 +142,8 @@ The accepted NCC 1979 50-minute campaign and migration disclosure boundary are i
 ## Forecast through NCC 1980
 
 [SALES_NCC1980.md](SALES_NCC1980.md) describes the December–May 18 forecast, separate Aurelia/Aurelia+ queues, provisional launch-price proxies and Academy demand/capacity by course. The sales page displays both forecasts; the Academy page links to its enrolment section. Run `tests/validate_ncc80_forecast.py` after `tools/build_sales.py`. Earlier forecasts remain unchanged.
+
+
+## NCC 1980 Artemis campaign and COMDEX sales extension
+
+See [NCC_1980_CAMPAIGN.md](NCC_1980_CAMPAIGN.md) for the accepted launch, bounded compatibility-through-2000 commitment, independent BPI appearance and dated follow-up activities. See [SALES_COMDEX1980.md](SALES_COMDEX1980.md) for the capacity-constrained three-product forecast. The 1979 disclosure embargo remains unchanged; native Pulse 3 and Abacus 3 stay at the November 19, 1980 milestone.

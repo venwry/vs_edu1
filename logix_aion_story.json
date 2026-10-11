@@ -3607,6 +3607,18 @@
             {
               "actor_ref": "actor.academy",
               "role": "training_provider"
+            },
+            {
+              "actor_ref": "actor.adam",
+              "role": "presenter"
+            },
+            {
+              "actor_ref": "actor.bpi",
+              "role": "independent_software_partner"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "independent_software_partner"
             }
           ],
           "actions": [
@@ -3628,9 +3640,33 @@
                 "actor.logix"
               ],
               "description": "At NCC 1980 reveal the processor architecture and word size withheld in the NCC 1979 public campaign. The separately sold Z80 compatibility module is an optional qualified legacy path; native applications require an appropriate target build."
+            },
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion"
+              ],
+              "description": "Released Artemis application binaries using documented, supported ERA/AIONix interfaces retain a supported execution path on subsequent Logix professional platforms through 2000: native execution, a maintained compatibility runtime, or emulation. Source portability is a separate commitment, not a substitute for the binary execution path."
+            },
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.aion"
+              ],
+              "description": "Demonstrate familiar multitasking, separate ERA/Z80 C builds and qualified legacy-card execution; compare verified vector calculations on Aurelia+, PDP-11/34 and Artemis before revealing the 32-bit RISC ERA 1 architecture. Publish only measured performance."
+            },
+            {
+              "actor_refs": [
+                "actor.bpi"
+              ],
+              "description": "The head of independent BPI Systems presents after Abacus and joins the partner section; BPI retains separate branding, licences, support and receipts."
             }
           ],
-          "outcomes": [],
+          "outcomes": [
+            {
+              "description": "Launch campaign and dated follow-up activities are specified in ncc_1980_campaign.json and NCC_1980_CAMPAIGN.md. Compatibility through 2000 is a commitment with eligibility and maintenance obligations, not evidence of future fulfilment."
+            }
+          ],
           "agreement_terms": [],
           "metrics": [],
           "product_refs": [
@@ -3705,6 +3741,13 @@
                 "actor.aion"
               ],
               "description": "Presents Artemis-exclusive Abacus 3.0 and Pulse 3.0; makes Artemis the main target for major development."
+            },
+            {
+              "actor_refs": [
+                "actor.aion",
+                "actor.logix"
+              ],
+              "description": "COMDEX follow-up to the Artemis campaign: publish native software demonstrations and compatibility progress while preserving Aurelia/Aurelia+ maintenance and independent manufacturers’ compatibility programme."
             }
           ],
           "outcomes": [
