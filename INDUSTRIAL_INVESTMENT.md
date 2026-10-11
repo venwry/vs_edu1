@@ -28,3 +28,8 @@ The Atlas suite additionally requires its existing `jsdom` dependency. The gener
 - Embedded production payroll and custom-chip costs are reconciled to avoid charging the same resource twice. Purchased components retain supplier costs/margins.
 
 The report validates arithmetic and capacity assumptions. It does not establish electrical release, supplier commitments, yield, commercial contracts or feasibility. Retain these qualifications when reusing the estimates.
+
+
+## ROI and complete marketing budget through 1980
+
+Open [Quarterly ROI](roi.html) for revenue, marketing-adjusted operating costs, investment, quarterly ROI and cash-recovery charts. [ROI.md](ROI.md) documents the bridge and reproduction steps. The ROI model replaces the industrial report's generic marketing allowance with itemized commercial, conference and promotional budgets; its net cash/returns are project-wide and pre-tax.

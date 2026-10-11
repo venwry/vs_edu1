@@ -155,3 +155,8 @@ See [NCC_1980_CAMPAIGN.md](NCC_1980_CAMPAIGN.md) for the accepted launch, bounde
 The shared navigation and home cards include **Industrial investment**. Its standalone HTML embeds `industrial_investment_1974_1981.json`, so this report also works offline without selecting catalogs. It uses the same navigation destinations as the Atlas, generated from `site_pages.json`.
 
 Run `python tools/build_investment_model.py` after changing source forecasts, manufacturing costs, bundle definitions or navigation, then `python tests/validate_investment.py`. See `INDUSTRIAL_INVESTMENT.md` for scope and assumptions.
+
+
+## ROI and complete marketing budget through 1980
+
+Open [Quarterly ROI](roi.html) for revenue, marketing-adjusted operating costs, investment, quarterly ROI and cash-recovery charts. [ROI.md](ROI.md) documents the bridge and reproduction steps. The ROI model replaces the industrial report's generic marketing allowance with itemized commercial, conference and promotional budgets; its net cash/returns are project-wide and pre-tax.
