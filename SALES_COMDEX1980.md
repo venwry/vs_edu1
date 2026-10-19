@@ -6,27 +6,27 @@ Alternative-history US sell-through scenarios, not recorded orders. Cutoff: **No
 
 | Scenario | Aurelia | Aurelia+ | Artemis | Total added | Cumulative since June 1978 |
 |---|---:|---:|---:|---:|---:|
-| Conservative | 2,291 | 20,568 | 6,899 | 29,758 | 101,044 |
-| Central | 3,557 | 39,471 | 10,510 | 53,538 | 154,656 |
-| Strong | 4,269 | 60,653 | 13,716 | 78,638 | 199,855 |
+| Conservative | 2,292 | 20,568 | 6,914 | 29,774 | 101,076 |
+| Central | 3,557 | 39,503 | 10,561 | 53,621 | 154,801 |
+| Strong | 4,269 | 60,701 | 13,798 | 78,768 | 200,051 |
 
 ## Central monthly deliveries
 
 | Period | Aurelia | Aurelia+ | Artemis | Total |
 |---|---:|---:|---:|---:|
-| 1980-05-19–1980-05-31 | 377 | 3,001 | 252 | 3,630 |
-| 1980-06-01–1980-06-30 | 800 | 7,032 | 1,084 | 8,916 |
-| 1980-07-01–1980-07-31 | 700 | 6,770 | 1,377 | 8,847 |
-| 1980-08-01–1980-08-31 | 600 | 6,493 | 1,706 | 8,799 |
-| 1980-09-01–1980-09-30 | 500 | 6,311 | 2,083 | 8,894 |
-| 1980-10-01–1980-10-31 | 400 | 6,208 | 2,415 | 9,023 |
-| 1980-11-01–1980-11-18 | 180 | 3,656 | 1,593 | 5,429 |
+| 1980-05-19–1980-05-31 | 377 | 3,004 | 252 | 3,633 |
+| 1980-06-01–1980-06-30 | 800 | 7,038 | 1,091 | 8,929 |
+| 1980-07-01–1980-07-31 | 700 | 6,775 | 1,383 | 8,858 |
+| 1980-08-01–1980-08-31 | 600 | 6,498 | 1,714 | 8,812 |
+| 1980-09-01–1980-09-30 | 500 | 6,316 | 2,093 | 8,909 |
+| 1980-10-01–1980-10-31 | 400 | 6,213 | 2,427 | 9,040 |
+| 1980-11-01–1980-11-18 | 180 | 3,659 | 1,601 | 5,440 |
 
-Central additional package receipts after channel fees: **$111,573,497.58**. Recurring contribution: **$27,518,622.35**, before campaign, compatibility maintenance, R&D and other overhead. Independent BPI receipts: **$1,133,740.89**, excluded from Logix/AION totals.
+Central additional package receipts after channel fees: **$111,728,850.65**. Recurring contribution: **$27,573,142.75**, before campaign, compatibility maintenance, R&D and other overhead. Independent BPI receipts: **$1,135,156.39**, excluded from Logix/AION totals.
 
 ## Assumptions and limits
 
-**Period:** May 19–November 18, 1980 inclusive. May has 13/31 exposure; November 18/30. Earlier forecasts are unchanged. COMDEX launch-day Abacus 3/Pulse 3 revenue is excluded.
+**Period:** May 19–November 18, 1980 inclusive. May has 13/31 exposure; November 18/30. Earlier periods are recomputed from revised costs/prices; no later campaign is applied retroactively. COMDEX launch-day Abacus 3/Pulse 3 revenue is excluded.
 
 **Baseline:** April 1980 pre-price-response demand, from the prior model, is the full-month anchor. Apply run-rate growth and net campaign/competition effect once; then divide one buyer pool between all three computers. Artemis substitution is not added again as extra demand.
 

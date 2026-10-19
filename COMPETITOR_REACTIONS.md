@@ -16,7 +16,7 @@ The real product's May 1979 announcement, June NCC demonstration/order period an
 | June 4, 1979 | NCC demonstration on Model II hardware; distinguish prototypes from released customer configurations. |
 | October 15, 1979 | Scenario-selected customer release date within the historical October shipping window, after qualification. |
 
-Tandy preserves its native video, keyboard, disk architecture, conventional ports, branding and customer relationship. A Model II-specific internal FlexiBUS board, provisionally two ports, provides an additional interface; the S-100 card is not mechanically/electrically interchangeable. No Logix video chip, VRAM or monitor is required.
+Tandy preserves its native video, keyboard, disk architecture, conventional ports, branding and customer relationship. A Model II-specific internal FlexiBUS board, provisionally two ports, provides an additional interface; the S-100 card is not mechanically/electrically interchangeable. No Logix video chip, video RAM or monitor is required.
 
 DRI provides CP/M-80 and required platform services; Logix provides reference engineering and initial AION silicon. Tandy officially distributes/supports the configuration and trains its own staff. AION funds, qualifies and maintains Abacus, correcting native UI, disk, print, ROM/banking and memory incompatibilities. Target a 64 KB system and publish measured resource limits. Share document semantics and editing conventions; do not promise identical Aurelia binary compatibility, capacity or speed. A native Tandy printer remains usable; FlexiBUS hardware is not technically mandatory for every Abacus operation.
 

@@ -43,7 +43,7 @@ function build(){
  add('cpu',rec(c.processor.part_ref).name,c.processor.clock_mhz+' MHz',2,1,'Processor',rec(c.processor.part_ref).specification,facts(c.processor));
  add('ram','System RAM',m.ram_kb+' KB',1,1,'Memory',m.organization.note,facts({installed_ram_kb:m.ram_kb,lower_ram_kb:m.organization.contiguous_lower_ram_kb,common_system_ram_kb:m.organization.common_system_ram_kb}),[mm.specification.application_policy]);
  add('rom','ROM & cartridges',c.rom_and_cartridges.xip_slots+' cartridge slots',3,1,'Firmware',mm.specification.rom_policy,facts(c.rom_and_cartridges));
- add('video','Video subsystem',m.video_ram_kb+' KB video RAM',1,2,'Display',mm.specification.vram_policy,facts(c.video));
+ add('video','Video subsystem',m.video_ram_kb+' KB video RAM',1,2,'Display',mm.specification.vram_policy,facts({...c.video,physical_population:m.video_physical_population,controller_implementation:rec(c.video.controller_ref).specification.implementation_design}));
  add('mapper',mm.name,mm.specification.page_size_kb+' KB pages',2,2,'Memory mapper',mm.description,facts(mm.specification),mm.requirements);
  add('flex',rec('technology.flexibus').name,io.flexibus_ports+' ports',3,2,'Peripheral interface',rec('technology.flexibus').specification,facts(rec('technology.flexibus').specification));
  add('storage','Internal floppy',c.storage.internal_fdd.count+' × '+c.storage.internal_fdd.size_inch+'″',1,3,'Storage',c.storage.internal_fdd,facts(c.storage.internal_fdd));
@@ -73,7 +73,7 @@ function build(){
  add('mapper','Logix memory mapper',mm.specification.page_size_kb+' KB pages',2,2,'Mapping',mm.specification.implementation,facts(mm.specification),mm.requirements);
  add('ram','Physical system RAM',m.ram_kb+' KB',1,1,'RAM',m.organization.note,facts(m.organization));
  add('rom','ROM / cartridges','Banked execution',3,1,'ROM',mm.specification.rom_policy,facts(c.rom_and_cartridges));
- add('vram','Video RAM',m.video_ram_kb+' KB',3,2,'Display memory',mm.specification.vram_policy,[['Mapped pages',m.video_ram_kb/mm.specification.page_size_kb],['Page size',mm.specification.page_size_kb+' KB']]);
+ add('vram','Video RAM',m.video_ram_kb+' KB',3,2,'Display memory',mm.specification.vram_policy,[['Memory chips','8 × AION 4116-equivalent DRAM'],['Mapped pages',m.video_ram_kb/mm.specification.page_size_kb],['Page size',mm.specification.page_size_kb+' KB']]);
  m.organization.normal_view.forEach((r,i)=>add('region'+i,r.role,r.start+'–'+r.end,i+1,3,'Normal application map',r.description,[['Size',(parseInt(r.end,16)-parseInt(r.start,16)+1)/1024+' KB']],[mm.normal_map_explanation]));
  edges=[['cpu','mapper'],['mapper','ram'],['mapper','rom'],['mapper','vram'],...m.organization.normal_view.map((r,i)=>['mapper','region'+i])];
  }

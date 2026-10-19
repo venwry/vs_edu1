@@ -30,7 +30,7 @@ function definition(n){if(n.id==='network'&&!network())return;
  let sub=r?.name||human(n.computer_path?.split('.').pop()||n.id);
  if(n.id==='cpu')sub=c.processor.variant+' · '+c.processor.clock_mhz+' MHz';
  if(n.id==='ram')sub=ram()+' KB · '+ramConfiguration().populated_modules+' modules · '+ramConfiguration().populated_banks+' banks';
- if(n.id==='graphics'||n.id==='vram')sub=c.video.video_ram_kb+' KB VRAM · '+c.video.text_mode.characters;
+ if(n.id==='graphics'||n.id==='vram')sub=c.video.video_ram_kb+' KB video RAM · '+c.video.text_mode.characters;
  if(n.id==='virtual')sub=rec(settings.memory_ref).specification.virtual_address_bits+'-bit virtual addresses';
  if(n.id==='physical')sub=rec(settings.memory_ref).specification.physical_address_bits+'-bit physical addresses';
  if(n.id==='rom')sub=c.io_and_expansion.rom_eeprom_cartridge_slots.count+' cartridge slots';

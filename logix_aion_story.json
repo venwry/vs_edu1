@@ -1602,7 +1602,7 @@
             },
             {
               "type": "responsibility",
-              "description": "AION adapts mask sets to SMC’s agreed process and lithography equipment, supplies revisions/test structures and sends engineers to assist DRAM retention, sensing, refresh and random-to-serial transfer qualification. Masks alone do not transfer a process.",
+              "description": "AION adapts mask sets to SMC’s agreed process and lithography equipment, supplies revisions/test structures and sends engineers to assist DRAM retention, sensing, refresh and buffered-controller timing qualification. Masks alone do not transfer a process.",
               "actor_refs": [
                 "actor.labs",
                 "actor.smc"
@@ -1625,7 +1625,7 @@
             },
             {
               "type": "target_launch",
-              "description": "First qualified independent chip sales targeted for October 1979; family-wide timing depends on per-part qualification, especially VRAM. Volume/yield ramp continues into 1980.",
+              "description": "First qualified independent chip sales targeted for October 1979; family-wide timing depends on per-part qualification, especially video RAM. Volume/yield ramp continues into 1980.",
               "actor_refs": [
                 "actor.smc"
               ],
@@ -1639,7 +1639,7 @@
             "part.flexibus_host_controller",
             "part.flexibus_device_controller",
             "part.aurelia_video_chip",
-            "part.vram_16kbit_dual_port"
+            "part.aion_4116"
           ],
           "related_event_refs": [
             "event.aurelia_launch"
@@ -3096,7 +3096,7 @@
                 "actor.labs",
                 "actor.logix"
               ],
-              "description": "Initial qualified SMC-manufactured chips become commercially available in the alternate timeline. This begins staged availability, not guaranteed release of every chip or mature yields; VRAM retains a separate qualification gate. SMC performs wafer fabrication rather than merely packaging AION dies."
+              "description": "Initial qualified SMC-manufactured chips become commercially available in the alternate timeline. This begins staged availability, not guaranteed release of every chip or mature yields; video RAM retains a separate qualification gate. SMC performs wafer fabrication rather than merely packaging AION dies."
             }
           ],
           "outcomes": [
@@ -3110,7 +3110,7 @@
             "part.flexibus_host_controller",
             "part.flexibus_device_controller",
             "part.aurelia_video_chip",
-            "part.vram_16kbit_dual_port"
+            "part.aion_4116"
           ],
           "related_event_refs": [
             "event.smc_agreement"

@@ -11,7 +11,8 @@ for offer in p['products']:
   if x['retail_price_usd'] is None:continue
   old=b['products'][offer['id']][year]
   assert abs(x['unit_profit_usd']-.6*old['unit_profit_usd'])<.011
-  assert x['manufacturing_cost_usd']==old['manufacturing_cost_usd']
+  assert x['cost_revision']['baseline_manufacturing_cost_usd']==old['manufacturing_cost_usd']
+  assert abs(x['manufacturing_cost_usd']-old['manufacturing_cost_usd']-x['cost_revision']['delta_usd'])<.011
   assert x['computerland_fee_rate']==old['computerland_fee_rate']
   if 'before_you_buy_variant'in x:
    v=x['before_you_buy_variant'];ov=old['before_you_buy_variant']
@@ -27,4 +28,4 @@ for sc in s['scenarios']:
  assert sc['launch_year']['units']<=sc['delivery_capacity_units']
 central=next(x for x in s['scenarios'] if x['id']=='central');assert central['calendar_1978']['units']==10750 and central['launch_year']['units']==29400
 assert 'pricing' in site['navigation'] and 'sales' in site['navigation']
-print('PASS: proportional reduction against immutable baseline, cost/fee preservation, course variants, forecast hashes, period totals, capacity, market denominators and navigation configuration.')
+print('PASS: proportional reduction against immutable baseline, explicit cost rebase and fee preservation, course variants, forecast hashes, period totals, capacity, market denominators and navigation configuration.')

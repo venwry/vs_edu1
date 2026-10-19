@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "version": "1.3",
+    "version": "1.4",
     "status": "Engineering BOM baseline; not released for purchase or unit-cost quotation.",
-    "source_catalog_version": "2.9",
+    "source_catalog_version": "2.15",
     "quantity_policy": "Known quantities are integers; unresolved quantities are null and block cost roll-up. Functional assembly placeholders are not purchasable IC selections.",
     "cost_policy": "No prices invented. Separate recurring material, conversion, factory overhead, NRE/capital and commercial/service costs. Do not count an OEM subassembly and its included parts twice."
   },
@@ -307,7 +307,7 @@
       "quantity_tier": null,
       "qualification_status": "unresolved",
       "requirements": [
-        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define VRAM bus, arbitration, scan timing, font path, output serializers/drivers and package."
+        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define video RAM bus, arbitration, scan timing, font path, output serializers/drivers and package."
       ]
     },
     {
@@ -2827,11 +2827,11 @@
       "requirements": []
     },
     {
-      "id": "bompart.part.vram_16kbit_dual_port",
-      "name": "AION 16Kx1 NMOS random-plus-serial VRAM",
+      "id": "bompart.part.aion_4116",
+      "name": "AION 4116-equivalent 16Kx1 NMOS DRAM",
       "category": "catalog_component",
-      "catalog_ref": "part.vram_16kbit_dual_port",
-      "manufacturer": null,
+      "catalog_ref": "part.aion_4116",
+      "manufacturer": "AION Labs",
       "manufacturer_part_number": null,
       "unit_cost": null,
       "currency": null,
@@ -2839,8 +2839,8 @@
       "quantity_tier": null,
       "qualification_status": "unresolved",
       "requirements": [
-        "Develop and qualify the DRAM cell/capacitor, sense amplifiers, retention and row-transfer/serial register operation before June 1978 launch.",
-        "Release pinout, package, rails, timing, power, wafer probe and final test. No commercial 1978 dual-port supplier availability is assumed."
+        "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
+        "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
       ]
     },
     {
@@ -3610,7 +3610,7 @@
         }
       ],
       "requirements": [
-        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define VRAM bus, arbitration, scan timing, font path, output serializers/drivers and package."
+        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define video RAM bus, arbitration, scan timing, font path, output serializers/drivers and package."
       ],
       "routing": {
         "operations": [],
@@ -4360,7 +4360,7 @@
         }
       ],
       "requirements": [
-        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/VRAM."
+        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/video RAM."
       ],
       "routing": {
         "operations": [],
@@ -5317,10 +5317,10 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "bompart.part.vram_16kbit_dual_port",
+          "ref": "bompart.part.aion_4116",
           "quantity": 8,
           "unit": "each",
-          "role": "Separate 16 KiB VRAM: eight 16Kx1 random-plus-serial chips",
+          "role": "Separate 16 KiB video RAM: eight AION-manufactured 4116-equivalent 16Kx1 DRAM chips",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -5364,7 +5364,7 @@
         "mapper registers/logic",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
-        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
@@ -5452,10 +5452,10 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "bompart.part.vram_16kbit_dual_port",
+          "ref": "bompart.part.aion_4116",
           "quantity": 8,
           "unit": "each",
-          "role": "Separate 16 KiB VRAM: eight 16Kx1 random-plus-serial chips",
+          "role": "Separate 16 KiB video RAM: eight AION-manufactured 4116-equivalent 16Kx1 DRAM chips",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -5494,7 +5494,7 @@
       ],
       "requirements": [
         "Qualify eight 64K×1 DRAMs for December 1979",
-        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
@@ -7607,12 +7607,12 @@
       "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
-      "id": "assembly.part.vram_16kbit_dual_port",
-      "name": "AION 16Kx1 NMOS random-plus-serial VRAM",
+      "id": "assembly.part.aion_4116",
+      "name": "AION 4116-equivalent 16Kx1 NMOS DRAM",
       "status": "incomplete",
       "lines": [
         {
-          "ref": "bompart.part.vram_16kbit_dual_port",
+          "ref": "bompart.part.aion_4116",
           "quantity": 1,
           "unit": "each",
           "role": "",
@@ -7621,8 +7621,8 @@
         }
       ],
       "requirements": [
-        "Develop and qualify the DRAM cell/capacitor, sense amplifiers, retention and row-transfer/serial register operation before June 1978 launch.",
-        "Release pinout, package, rails, timing, power, wafer probe and final test. No commercial 1978 dual-port supplier availability is assumed."
+        "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
+        "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
       ],
       "routing": {
         "operations": [],
@@ -7725,7 +7725,7 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "bompart.part.vram_16kbit_dual_port",
+          "ref": "bompart.part.aion_4116",
           "quantity": 8,
           "unit": "each",
           "role": "Eight 16Kx1 devices = 16 KiB display memory",
@@ -7801,7 +7801,7 @@
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
-        "Qualify 16 KiB VRAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
       ],
       "routing": {
         "operations": [],
@@ -7827,7 +7827,7 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "bompart.part.vram_16kbit_dual_port",
+          "ref": "bompart.part.aion_4116",
           "quantity": 8,
           "unit": "each",
           "role": "Eight 16Kx1 devices = 16 KiB display memory",
@@ -7903,7 +7903,7 @@
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
-        "Qualify 16 KiB VRAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
       ],
       "routing": {
         "operations": [],
@@ -7930,7 +7930,7 @@
         "mapper registers/logic",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
-        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
@@ -7947,7 +7947,7 @@
       ],
       "requirements": [
         "Qualify eight 64K×1 DRAMs for December 1979",
-        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
@@ -8094,7 +8094,7 @@
         "assembly.device.aurelia_ram_16kb_card"
       ],
       "requirements": [
-        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/VRAM.",
+        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/video RAM.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -8543,7 +8543,7 @@
         "assembly.part.artemis_graphics_chip"
       ],
       "requirements": [
-        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define VRAM bus, arbitration, scan timing, font path, output serializers/drivers and package.",
+        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define video RAM bus, arbitration, scan timing, font path, output serializers/drivers and package.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -8676,14 +8676,14 @@
       ]
     },
     {
-      "catalog_ref": "part.vram_16kbit_dual_port",
+      "catalog_ref": "part.aion_4116",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.vram_16kbit_dual_port"
+        "assembly.part.aion_4116"
       ],
       "requirements": [
-        "Develop and qualify the DRAM cell/capacitor, sense amplifiers, retention and row-transfer/serial register operation before June 1978 launch.",
-        "Release pinout, package, rails, timing, power, wafer probe and final test. No commercial 1978 dual-port supplier availability is assumed."
+        "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
+        "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
       ]
     },
     {
@@ -8708,7 +8708,7 @@
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
-        "Qualify 16 KiB VRAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
       ]
     },
     {
@@ -8721,7 +8721,7 @@
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
-        "Qualify 16 KiB VRAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
       ]
     }
   ],
@@ -8933,7 +8933,7 @@
     {
       "id": "physical_map",
       "status": "open",
-      "description": "Assign RAM/ROM/VRAM/I/O/reset address ranges without changing 24-bit physical addressing."
+      "description": "Assign RAM/ROM/video RAM/I/O/reset address ranges without changing 24-bit physical addressing."
     },
     {
       "id": "pro_parity",
@@ -8953,7 +8953,7 @@
     {
       "id": "vram_rom",
       "status": "open",
-      "description": "Aurelia family VRAM organization and count fixed: eight custom 16Kx1 random-plus-serial chips. Qualify memory process, pinout, rails, timing, refresh and tests. Cartridge capacities remain open."
+      "description": "Aurelia family video RAM organization and count fixed: eight AION 4116-equivalent 16Kx1 DRAM chips. Qualify memory process, pinout, rails, timing, refresh and tests. Cartridge capacities remain open."
     },
     {
       "id": "flexibus_ports",
@@ -8978,7 +8978,7 @@
     {
       "id": "smc_process_transfer",
       "status": "open",
-      "description": "Agreement and staged October 1979 sales are story commitments, not measured engineering proof. Freeze SMC process/mask compatibility, part-specific qualification dates, VRAM process margins, order codes, NRE and independent purchase quotes."
+      "description": "Agreement and staged October 1979 sales are story commitments, not measured engineering proof. Freeze SMC process/mask compatibility, part-specific qualification dates, video RAM process margins, order codes, NRE and independent purchase quotes."
     }
   ],
   "costing_inputs": {
@@ -9055,7 +9055,7 @@
         "part.flexibus_host_controller",
         "part.flexibus_device_controller",
         "part.aurelia_video_chip",
-        "part.vram_16kbit_dual_port"
+        "part.aion_4116"
       ],
       "launch_source": "AION Labs",
       "qualification_status": "Initial sales are a story event; individual part release codes, tested margins and production yields remain unmeasured engineering inputs.",
@@ -9069,7 +9069,7 @@
       ],
       "qualification_gates": [
         "Process/mask compatibility",
-        "VRAM retention, sensing, refresh, row-to-serial transfer and timing",
+        "DRAM retention, sensing and refresh; pixel FIFO and renderer timing",
         "Controller speed, electrical equivalence and system validation",
         "Independent wafer fabrication, packaging, final test and reliability",
         "Qualified order codes and capacity before substitution"

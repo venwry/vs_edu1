@@ -1,6 +1,6 @@
 # Aurelia sales under revised pricing
 
-This is a scenario forecast, not recorded sales or a new canonical story outcome. The current horizon is May 18, 1980; see [SALES_NCC1980.md](SALES_NCC1980.md) for the COMDEX-to-NCC extension and Academy demand. Earlier sections retain their explicitly named historical forecast periods. View [Logix computer demand and sales](sales.html), the machine-readable [forecast](sales_forecast.json) and [retail pricing](pricing.html).
+This is a scenario forecast, not recorded sales or a new canonical story outcome. The current horizon is November 18, 1980; see [SALES_NCC1980.md](SALES_NCC1980.md) for the COMDEX-to-NCC extension and Academy demand. Earlier sections retain their explicitly named historical forecast periods. View [Logix computer demand and sales](sales.html), the machine-readable [forecast](sales_forecast.json) and [retail pricing](pricing.html).
 
 ## Price policy
 
@@ -10,15 +10,15 @@ Retain 60% of each offer's baseline dollar contribution after its baseline chann
 
 | Offer | Previous | Revised |
 |---|---:|---:|
-| Aurelia grayscale system | $2,109 | $1,664.69 |
-| Aurelia colour system | $2,329 | $1,851.65 |
-| Office bundle | $2,199 | $1,732.51 |
-| Office bundle + disk | $2,598 | $2,070.78 |
-| Office bundle + disk + printer | $3,057 | $2,462.71 |
+| Aurelia grayscale system | $2,109 | $1,668.05 |
+| Aurelia colour system | $2,329 | $1,855.00 |
+| Office bundle | $2,199 | $1,735.87 |
+| Office bundle + disk | $2,598 | $2,074.14 |
+| Office bundle + disk + printer | $3,057 | $2,466.07 |
 | Fundamentals tuition | $199 | $138.38 |
 | Fundamentals purchase credit | $99.50 | $69.19 |
 
-The complete package is approximately 19.44% cheaper. It does not receive a 40% price discount. The main system margins become roughly 39–40%; reducing profit dollars by 40% is not the earlier hypothetical 30% margin policy.
+The complete package is approximately 19.33% cheaper. It does not receive a 40% price discount. The main system margins become roughly 39–40%; reducing profit dollars by 40% is not the earlier hypothetical 30% margin policy.
 
 ## Forecast and periods
 
@@ -63,7 +63,7 @@ BPI courses consume part of the existing 10,000–13,000 Academy enrolment plan.
 
 ## NCC 1979 campaign boundary
 
-The original May 31 forecast remains unchanged. A separate June–November extension now models the accepted campaign in `ncc_1979_campaign.json`. Confidential preparation and later milestones are not applied retroactively. The ten-year $100 outlook is not a price or retirement input.
+The original May 31 campaign boundary is preserved; dependent prices and financials reflect the video-cost rebase. A separate June–November extension now models the accepted campaign in `ncc_1979_campaign.json`. Confidential preparation and later milestones are not applied retroactively. The ten-year $100 outlook is not a price or retirement input.
 
 ## June–November 1979 extension
 
@@ -71,15 +71,15 @@ The canonical Aurelia+ premiere is **December 3, 1979**, not November. Projectio
 
 | Scenario | New demand, June–November | Deliveries, June–November | Sales, January–November 1979 | Cumulative since launch | Unmet demand at November end |
 |---|---:|---:|---:|---:|---:|
-| Conservative | 25,792 | 25,792 | 40,701 | 49,737 | 0 |
-| Central | 40,282 | 37,500 | 56,150 | 66,900 | 1,334 |
-| Strong | 53,518 | 43,800 | 65,336 | 77,800 | 5,612 |
+| Conservative | 25,799 | 25,799 | 40,708 | 49,744 | 0 |
+| Central | 40,313 | 37,500 | 56,150 | 66,900 | 1,352 |
+| Strong | 53,571 | 43,800 | 65,336 | 77,800 | 5,641 |
 
 These are conditional scenarios, not confidence intervals. New demand excludes returning unmet demand. The strong case starts June with 855 previously deferred BPI-related purchase intentions. Of unmet demand, 75% retries next month and 25% lapses; central attrition totals 1,448 through November. No demand is counted twice as a new buyer or as a completed sale.
 
 ### June price change
 
-The complete Office/disk/printer package falls from **$2,462.71 to $2,117.95 (14.00%)**. Office/disk falls from $2,070.78 to $1,725.57. This is the 1979 annual snapshot change, separate from the already modelled contribution-policy reduction. No second 40% reduction is applied.
+The complete Office/disk/printer package falls from **$2,466.07 to $2,119.76 (14.00%)**. Office/disk falls from $2,074.14 to $1,725.57. This is the 1979 annual snapshot change, separate from the already modelled contribution-policy reduction. No second 40% reduction is applied.
 
 The June 15 snapshots are used as proxies for a June 4 NCC price change, an explicit assumption because the annual pricing data does not establish an exact effective date. June blends three days at old prices and 27 at new prices for both demand response and receipts. July–November use 1979 prices. Ceteris paribus, the package cut increases full-month demand by about 12.8% / 25.4% / 35.2% under elasticities 0.8 / 1.5 / 2.0. Actual deliveries can remain capacity-limited.
 
@@ -93,7 +93,7 @@ NCC demonstrations and July roadshows build awareness and developer confidence. 
 
 Central monthly deliveries are 5,400 / 5,700 / 6,000 / 6,400 / 6,800 / 7,200, June through November. The corresponding new demand is 6,103 / 6,200 / 6,449 / 6,895 / 7,174 / 7,461. Raising November capacity to 7,200 requires about 46% more customer deliveries than May, plus inventory and service stock. These ceilings require factory, disk/printer supply, working capital, dealer and support plans; they are not established manufacturing capacity. The cost snapshots are retained without speculative volume savings.
 
-June–November central customer package spending is **$76.99m**, supplier receipts after channel fees **$57.74m**, and recurring contribution **$16.28m**. Contribution excludes campaign, support expansion, Academy, R&D, financing and tax; it is not net profit. Independent BPI adds 7,500 customer installations and **$1.44m** after-channel receipts, excluded from Logix/AION totals. The original attachment rates and mutually exclusive cohorts remain; June price blending also applies to BPI.
+June–November central customer package spending is **$77.06m**, supplier receipts after channel fees **$57.79m**, and recurring contribution **$16.28m**. Contribution excludes campaign, support expansion, Academy, R&D, financing and tax; it is not net profit. Independent BPI adds 7,500 customer installations and **$1.44m** after-channel receipts, excluded from Logix/AION totals. The original attachment rates and mutually exclusive cohorts remain; June price blending also applies to BPI.
 
 This remains a computer-led package forecast. Other vendors' compatible machines, standalone cards/software, third-party peripherals, OEM royalties and Academy revenue are not quantified. Extended-period market share is withheld because no new market denominator has been calibrated. The main central-case constraint is delivery capacity, so extra marketing demand does not automatically create more sales.
 
