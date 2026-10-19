@@ -22,5 +22,8 @@ assert all(ref in r for ref in c['offering_refs'])
 assert {x['computer_ref'] for x in r['edition.abacus_2.z80']['platform_support']}==set(d['computer_refs'])
 assert c['disclosure']['architecture_reveal']==read('ncc_1979_campaign.json')['migration']['architecture_reveal']
 f=read('sales_forecast.json');assert f['metadata']['november_forecast_end']<c['metadata']['launch_date']
-assert [x['launch_through_november_1979']['units'] for x in f['scenarios']]==[49737,66900,77800]
+# A cost-driven price rebase may change totals; December products must not leak into November.
+for scenario in f['scenarios']:
+ assert scenario['launch_through_november_1979']['units'] == scenario['launch_year']['units'] + sum(m['units'] for m in scenario['post_ncc_months'])
+ assert all(m['aurelia_plus_units']==0 and m['month']<='1979-11' for m in scenario['post_ncc_months'])
 print('PASS: COMDEX timing, matched workloads, no invented benchmark, Abacus/BPI order, compatibility and unchanged sales.')

@@ -33,3 +33,7 @@ The report validates arithmetic and capacity assumptions. It does not establish 
 ## ROI and complete marketing budget through 1980
 
 Open [Quarterly ROI](roi.html) for revenue, marketing-adjusted operating costs, investment, quarterly ROI and cash-recovery charts. [ROI.md](ROI.md) documents the bridge and reproduction steps. The ROI model replaces the industrial report's generic marketing allowance with itemized commercial, conference and promotional budgets; its net cash/returns are project-wide and pre-tax.
+
+## Buffered video revision
+
+The Aurelia-family controller is costed at 48mm² and its eight AION-made 4116 display-memory dies at 18mm² each, on the 3µm planning process. Both logic and DRAM wafer starts remain inside AION Labs. Purchased system DRAM retains its separate procurement assumptions. The existing Artemis eight-chip storage cost proxy is included in AION wafer loading, without adopting the Aurelia controller architecture. The 360 person-month launch-silicon allowance is retained for ordinary DRAM and buffered-renderer qualification; no unsupported development saving or extra fab-capital reduction is asserted. A 3.5µm implementation requires a fresh die-size, yield and capacity scenario.

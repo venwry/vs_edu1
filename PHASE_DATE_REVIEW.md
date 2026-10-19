@@ -75,7 +75,7 @@ Event dates contain only `start` and `end`; equal endpoints may be ISO year, mon
 - `event.dri_founding`: late 1974, year precision; joint Gary/Dorothy/Adam company before Logix.
 - `event.dri_cpm`: September 1, 1976 remains an Aurelia implementation milestone, not first cooperation.
 - `event.smc_agreement`: July 1978; independent manufacturing/sales license with process-compatible mask and know-how transfer.
-- `event.smc_sales`: October 1979; initial qualified sales, separate VRAM qualification and subsequent volume ramp.
+- `event.smc_sales`: October 1979; initial qualified sales, separate video RAM qualification and subsequent volume ramp.
 - June 4, 1979 adds S-100 FlexiBUS and Apple II/S-100 video cards using AION launch silicon. Apple software is native; CP/M-6502 remains deferred.
 - AIONix’s existing separate ownership/equity/1982 terms are retained; no replacement allocation was selected.
 - `manufacturing_programs.json` contains separate one-time transfer budget assumptions and SMC purchase-price sensitivity inputs. Rebuild costs before pricing.

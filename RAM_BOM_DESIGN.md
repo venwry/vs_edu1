@@ -18,7 +18,7 @@ The 1 MiB configuration occupies all eight sockets and all four banks. Each modu
 
 The first design prohibits mixing module densities within a chassis. Populate complete pairs in consecutive banks. The 64 KiB low-density bank kit contains two 32 KiB modules; the 256 KiB high-density kit contains two 128 KiB modules. Artemis can reach 256 KiB using eight low-density modules or two high-density modules; these are separate explorer choices. Further high-density expansion reaches a 1 MiB design target, pending electrical qualification. Upgrading density replaces the existing population.
 
-VRAM and the Z80 compatibility module's RAM are separate memory pools. Existing 24-bit physical addressing, 32-bit virtual addressing and 4 KiB pages remain unchanged. Address ranges, module connectors, refresh, byte enables, wait states, loading and timing require engineering definition. A full-width bank does not imply zero-wait operation.
+video RAM and the Z80 compatibility module's RAM are separate memory pools. Existing 24-bit physical addressing, 32-bit virtual addressing and 4 KiB pages remain unchanged. Address ranges, module connectors, refresh, byte enables, wait states, loading and timing require engineering definition. A full-width bank does not imply zero-wait operation.
 
 The unqualified 128 Kbit DRAM record and old 8-bit 64 KiB RAM module are retained as superseded history and excluded from active BOMs. Exact 16K × 1 and 64K × 1 manufacturer parts, rail requirements, speeds and period supply must be qualified; density alone is not a sourcing specification.
 
@@ -30,7 +30,7 @@ Every hardware catalog record now includes manufacturing requirements. Active re
 
 The additions cover:
 
-- Computers: mainboards, DRAM population, VRAM/ROM definition, control/buffering, connectors, power, chassis, cooling, drive mechanisms, wiring and assembly requirements.
+- Computers: mainboards, DRAM population, video RAM/ROM definition, control/buffering, connectors, power, chassis, cooling, drive mechanisms, wiring and assembly requirements.
 - RAM and expansion products: module/card PCB, chips, buffers/control, connectors, decoupling, mounting and validation requirements.
 - Displays, printers and storage: OEM mechanism boundaries, control electronics, power, enclosures, cables, consumables and calibration/test requirements.
 - Networking: removable NIC assemblies, occupied host slots, hub port variants, connectors, cabling and power.
@@ -41,7 +41,7 @@ Networking-era Artemis configurations add one removable NIC. PRO includes one NI
 
 ## Decisions required before costing
 
-The BOM's `open_decisions` and per-product requirements preserve the remaining work: exact DRAM suppliers and electrical qualification; the physical memory map; drive/display OEM selection; VRAM electrical qualification and ROM organization; the video-link electrical specification; custom-silicon implementation and yields; PRO console packout or validated headless operation; and the controller die count and electrical qualification for three FlexiBUS ports on both Aurelia models.
+The BOM's `open_decisions` and per-product requirements preserve the remaining work: exact DRAM suppliers and electrical qualification; the physical memory map; drive/display OEM selection; video RAM electrical qualification and ROM organization; the video-link electrical specification; custom-silicon implementation and yields; PRO console packout or validated headless operation; and the controller die count and electrical qualification for three FlexiBUS ports on both Aurelia models.
 
 `costing_inputs` separates direct materials, conversion labor/test/rework, factory overhead, NRE/capital and commercial costs. Before calculating totals, define supplier quote dates and volume tiers, quantities, assembly routing and minutes, programming/calibration, scrap and yield, fixtures, utilization and overhead allocation. Prices and all unresolved inputs remain null. All cost rollups are explicitly blocked; a sum of known lines must not be presented as a complete manufacturing cost.
 
@@ -52,4 +52,4 @@ Run the catalog validator, the hardware BOM validator and the existing DOM suite
 
 ## Unified Aurelia video (v2.7)
 
-Both Aurelia models now populate one shared controller and eight custom 16Kx1 random-plus-serial VRAM chips (16 KiB). See VIDEO_DESIGN.md for mode allocations, monitor discovery and manufacturing estimates. Run `python tests/validate_video.py` to verify every buffer/sprite allocation and the nine-chip BOM. These quantities are defined; electrical qualification and unit-cost quotations remain open.
+Both Aurelia models now populate one shared controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAM chips (16 KiB). See VIDEO_DESIGN.md for mode allocations, monitor discovery and manufacturing estimates. Run `python tests/validate_video.py` to verify every buffer/sprite allocation and the nine-chip BOM. These quantities are defined; electrical qualification and unit-cost quotations remain open.

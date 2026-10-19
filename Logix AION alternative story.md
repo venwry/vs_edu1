@@ -237,7 +237,7 @@ On 1979-02-08, Logix contacted Apple Computer seeking technical cooperation in d
 
 Apple agreed to provide limited technical cooperation and compatibility assistance, while Logix remained responsible for the design and development of its hardware and software.
 
-At NCC on 1979-06-04, Logix launches the Apple II Expansion Card and FlexiDisk II plus three additional cards: the S-100 FlexiBUS Interface, Apple II Video Card and S-100 Video Card. Each video card uses the Aurelia-family display controller and eight 16Kx1 VRAM chips (16 KiB), connected to compatible Logix monitors. Native Apple drivers/examples expose FlexiBUS and video without adding CP/M execution; CP/M-6502 remains deferred. Qualified S-100 hosts receive CP/M adapters and optional TUI support. Logix alone develops and sells these cards; the program is not a DRI obligation. An Apple representative joins the Apple demonstration. All launch cards use AION chips, independently of SMC’s later release.
+At NCC on 1979-06-04, Logix launches the Apple II Expansion Card and FlexiDisk II plus three additional cards: the S-100 FlexiBUS Interface, Apple II Video Card and S-100 Video Card. Each video card uses the Aurelia-family display controller and eight AION 4116-equivalent 16Kx1 DRAM chips (16 KiB), connected to compatible Logix monitors. Native Apple drivers/examples expose FlexiBUS and video without adding CP/M execution; CP/M-6502 remains deferred. Qualified S-100 hosts receive CP/M adapters and optional TUI support. Logix alone develops and sells these cards; the program is not a DRI obligation. An Apple representative joins the Apple demonstration. All launch cards use AION chips, independently of SMC’s later release.
 
 On 1979-06-04 at NCC 1979, Microsoft releases Microsoft BASIC for Aurelia as licensed third-party software, developed in cooperation with AION for enhanced CP/M and Logix TUI.
 
@@ -317,11 +317,11 @@ Event dates contain only `start` and `end`; existing exact dates are retained. N
 
 ## Independent semiconductor supply: July 1978–1980
 
-In July 1978, after Aurelia’s premiere, AION Labs and Logix sign a non-exclusive license with Standard Microsystems Corporation (SMC) covering the FlexiBUS host/device controllers, Aurelia display controller and AION 16Kx1 random-plus-serial VRAM. SMC may fabricate and sell them independently, including to Logix competitors. ERA processor designs are excluded.
+In July 1978, after Aurelia’s premiere, AION Labs and Logix sign a non-exclusive license with Standard Microsystems Corporation (SMC) covering the FlexiBUS host/device controllers, Aurelia display controller and AION 4116-equivalent 16Kx1 DRAM. SMC may fabricate and sell them independently, including to Logix competitors. ERA processor designs are excluded.
 
 SMC provides process/lithography requirements. AION provides compatible ready-to-use mask sets and revisions, reference silicon, process know-how, wafer-test structures, production-test programs and on-site engineering support. Masks must match the receiving process; they do not eliminate DRAM retention, sensing, refresh, transfer and yield qualification. Logix supplies reference boards, acceptance tests and initial purchase commitments. Contract prices, royalty rates and order volumes remain unspecified.
 
-SMC begins initial qualified commercial chip sales in October 1979. This is staged availability, not an assertion that every part has completed qualification or reached mature yields. VRAM has a separate qualification gate; higher-volume production ramps into 1980. AION continues supplying the June 1979 cards. The cost model keeps AION internal manufacture as the base and shows conditional SMC purchase alternatives separately.
+SMC begins initial qualified commercial chip sales in October 1979. This is staged availability, not an assertion that every part has completed qualification or reached mature yields. video RAM has a separate qualification gate; higher-volume production ramps into 1980. AION continues supplying the June 1979 cards. The cost model keeps AION internal manufacture as the base and shows conditional SMC purchase alternatives separately.
 
 AION/Logix funds transfer engineering, compatible masks and qualification. One-time planning allowances are separate from unit manufacturing costs and are not supplier quotations or agreed contract payments.
 

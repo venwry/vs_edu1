@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.14",
+    "version": "2.15",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -14,7 +14,8 @@
       "design_status": "Accepted implementation designs reside under specification.implementation_design. Numerical performance goals and pending validation are explicitly labeled; acceptance does not imply completed hardware/software.",
       "graphics_storage": "Per-computer video.memory_layout supplies text and bitmap allocations; shared mode-switch and preservation behavior resides in the display API specification.",
       "manufacturing": "hardware_bom.json separates recurring material, assembly requirements, variant packout and unresolved costing inputs. No prices or qualified supplier claims are invented.",
-      "second_source": "SMC transfer begins 1978-07; initial independent commercial sales 1979-10. Dates are month-precision; per-part qualification and supplier pricing remain engineering inputs."
+      "second_source": "SMC transfer begins 1978-07; initial independent commercial sales 1979-10. Dates are month-precision; per-part qualification and supplier pricing remain engineering inputs.",
+      "video_memory": "Aurelia-family display storage is ordinary external AION 4116 DRAM. Retained vram_policy/reserved_vram_bytes/remaining_vram_bytes keys mean video RAM allocation, not dual-port hardware."
     }
   },
   "technologies": [
@@ -313,7 +314,7 @@
         "state_model": "Per-application context state; no accidental shared cursor, selection or editing globals. Aurelia remains single-foreground; Artemis may manage multiple isolated application contexts.",
         "compatibility_rules": [
           "Keep the same API behavior across Aurelia, Aurelia+ and Artemis.",
-          "Do not assume display stride, VRAM address, last column or direct peripheral registers.",
+          "Do not assume display stride, video RAM address, last column or direct peripheral registers.",
           "Legacy CP/M console behavior is preserved; Logix-aware interfaces use the documented editing conventions.",
           "Artemis implementation mediates process access to shared clipboard and display services."
         ],
@@ -917,7 +918,7 @@
           ],
           "mixed_density_allowed": false,
           "physical_limit_kb": 1024,
-          "physical_map_status": "RAM base, ROM, VRAM, I/O and reset overlays remain to be assigned; 24-bit physical addressing is unchanged.",
+          "physical_map_status": "RAM base, ROM, video RAM, I/O and reset overlays remain to be assigned; 24-bit physical addressing is unchanged.",
           "requirements": [
             "Independent bank selection with row/column address multiplexing.",
             "Four byte write enables per 32-bit bank; defined aligned byte/halfword/word access and alignment faults.",
@@ -1252,7 +1253,7 @@
         "mapping_register_access": "I/O ports",
         "implementation": "Bank-selection registers, address decoding and multiplexing logic; suitable for later AION integration.",
         "rom_policy": "Read-only code and constants execute directly from ROM where practical. Mutable state, stacks and buffers reside in RAM.",
-        "vram_policy": "CPU maps selected VRAM pages temporarily; display refresh continues independently, with access arbitration and wait states where needed.",
+        "vram_policy": "CPU maps selected video RAM pages temporarily; display refresh continues independently, with access arbitration and wait states where needed.",
         "reset_policy": "Boot ROM initially appears at address zero; normal execution restores RAM and CP/M vectors.",
         "application_policy": "Installed RAM is accessible, but system workspaces and the resident Business Tools workspace reduce application memory.",
         "expansion_policy": "Additional RAM uses mapped pages; an expansion does not enlarge the CPU logical address space.",
@@ -1315,7 +1316,7 @@
           "end": "EFFF",
           "size_kb": 32,
           "role": "Switchable pages",
-          "description": "Remaining application RAM, motherboard ROM, cartridge ROM or VRAM, selected in 4 KB pages."
+          "description": "Remaining application RAM, motherboard ROM, cartridge ROM or video RAM, selected in 4 KB pages."
         },
         {
           "start": "F000",
@@ -1328,7 +1329,7 @@
       "call_sequence": [
         "Enter a stable routine in common memory.",
         "Save application mapping and stack; switch to the system stack.",
-        "Map the required ROM and data/VRAM pages.",
+        "Map the required ROM and data/video RAM pages.",
         "Execute the service; use a common buffer or alternate window for hidden application data.",
         "Restore mapping and stack, then return."
       ],
@@ -1340,7 +1341,7 @@
         "Final ROM capacities, timing and common-memory budget require implementation validation."
       ],
       "normal_map_explanation": "Normal mapping describes what the CPU sees while an application runs. Mapper capability describes which addresses can change. The same 7000–EFFF switching capability exists in every configuration, even when those addresses normally contain RAM.",
-      "full_ram_explanation": "With 64 KB installed (Aurelia+ or expanded Aurelia), 0000–EFFF contains 60 KB lower RAM and F000–FFFF contains 4 KB common system RAM. B000–EFFF is therefore RAM rather than a permanently reserved ROM window. System calls temporarily overlay selected pages with ROM/cartridge/VRAM, then restore RAM. The Z80 never sees all physical RAM and ROM simultaneously."
+      "full_ram_explanation": "With 64 KB installed (Aurelia+ or expanded Aurelia), 0000–EFFF contains 60 KB lower RAM and F000–FFFF contains 4 KB common system RAM. B000–EFFF is therefore RAM rather than a permanently reserved ROM window. System calls temporarily overlay selected pages with ROM/cartridge/video RAM, then restore RAM. The Z80 never sees all physical RAM and ROM simultaneously."
     },
     {
       "id": "technology.logix_c_api",
@@ -1466,21 +1467,21 @@
           "Query/control palette when supported",
           "Begin/end update and request presentation"
         ],
-        "framebuffer_policy": "Application code uses drawing operations rather than native VRAM addresses, stride or pixel packing.",
+        "framebuffer_policy": "Application code uses drawing operations rather than native video RAM addresses, stride or pixel packing.",
         "compatibility_canvas": "Optional later service: preserve a logical canvas and convert to available output. Not guaranteed at launch; report emulation and validate RAM, quality and speed.",
         "text_mode_policy": "Aurelia and Aurelia+ both implement native 40x25 and 80x25; enumerate only configurations usable with the connected monitor.",
         "vram_storage_policy": {
           "status": "Accepted design baseline; capacities are arithmetic allocations, not measured timing guarantees.",
-          "allocation_model": "Text and bitmap modes reuse the same VRAM. Do not reserve all text maps, font storage and a full bitmap simultaneously.",
+          "allocation_model": "Text and bitmap modes reuse the same video RAM. Do not reserve all text maps, font storage and a full bitmap simultaneously.",
           "mode_switch": [
             "Validate the requested mode and resource allocation before changing the display.",
             "Quiesce rendering and blank or synchronize the change to avoid scanning partially reconfigured memory.",
-            "Reconfigure the VRAM layout. Reload the font and initialize text maps when entering text mode.",
+            "Reconfigure the video RAM layout. Reload the font and initialize text maps when entering text mode.",
             "Notify the application/context of the changed mode and request a redraw from its document state."
           ],
           "preservation": "Previous screen pixels are not preserved by default. An explicit preservation request may use a system-RAM buffer only if allocation succeeds; unsupported or unaffordable requests return a defined error before changing the mode.",
           "graphics_buffering": "Aurelia family: 16000-byte bitmaps support one page without sprites; 8000-byte modes support two pages without sprites or one page with five sprites. Both text modes allow two pages and five sprites with one shared font. Other hosts retain their specified allocations.",
-          "graphics_text": "Draw glyphs from ROM/system resources into the bitmap; bitmap mode does not require a complete resident character-generator table in VRAM.",
+          "graphics_text": "Draw glyphs from ROM/system resources into the bitmap; bitmap mode does not require a complete resident character-generator table in video RAM.",
           "boundary": "Application documents remain in application RAM or files; a mode switch does not discard document state.",
           "presentation": "Latch page and sprite positions during vertical blank; shared-font and sprite-pattern changes need separate synchronization."
         },
@@ -1904,8 +1905,8 @@
       "specification": {
         "digital_output_bits": 4,
         "video_ram_kb": 16,
-        "vram_chip_ref": "part.vram_16kbit_dual_port",
-        "vram_chip_count": 8,
+        "video_ram_chip_ref": "part.aion_4116",
+        "video_ram_chip_count": 8,
         "implementation_design": {
           "status": "Accepted design baseline; electrical timing, layout, fabrication and monitor qualification remain pending.",
           "text_mode_ids": [
@@ -1933,52 +1934,81 @@
             "transparent_index": 0,
             "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
             "priority": "Lower sprite number wins; all sprites overlay background/text.",
-            "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved VRAM region.",
+            "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved video RAM region.",
             "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
             "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
           },
           "internal_buffers": {
             "character_attribute_row_cache_bytes": 160,
+            "next_character_attribute_row_cache_bytes": 160,
             "sprite_row_shifters_bytes": 40,
             "sprite_staging_bytes": 40,
-            "bitmap_fifo_bytes": 16,
+            "pixel_fifo_page_count": 4,
+            "pixel_fifo_page_bytes": 40,
+            "pixel_fifo_bytes": 160,
+            "pixel_bits": 4,
+            "total_storage_bytes": 560,
             "included_in_die_estimates": true
           },
-          "arbitration": "Deadline-scheduled serial transfers, glyph reads, sprite prefetch, full-array refresh and CPU access. CPU wait states allowed; random and serial ports are not two independent random-access ports.",
-          "text_fetch": "Cache character/attribute row; random-port glyph-row fetches and staged sprite reads. Validate worst-case five overlapping sprites in 80-column text.",
-          "line_repeat": "Re-fetch/reload repeated bitmap lines; no complete on-chip scanline buffer assumed.",
+          "arbitration": "Single external 8-bit DRAM bus. Deadline-scheduled glyph and sprite reads, next-row prefetch, all-row refresh and bounded host access with wait states. No serial memory port. Internal FIFO fill/drain operate on different banks.",
+          "text_fetch": "Cache 80 character codes and 80 attributes; prefetch the next row into the second 160-byte cache over eight glyph scanlines. Expand each glyph byte to eight 4-bit pixels; prefetch sprite rows and apply fixed priority before publishing pixels.",
+          "line_repeat": "Re-fetch repeated bitmap lines; FIFO capacity is not an additional framebuffer or guaranteed retained scanline. Validate 320x100x4 bandwidth and refresh at the selected DRAM grade.",
           "clock_targets": {
             "master_mhz": 14.31818,
             "high_resolution_pixel_mhz": 14.31818,
             "low_resolution_pixel_mhz": 7.15909,
-            "maximum_bitmap_byte_rate_mbytes_per_second": 3.579545,
-            "scope": "Fast output/counter pipeline only; divided clocks for other logic. Targets require process-corner validation."
+            "scope": "14.31818 MHz short scanout/counter path; renderer uses block expansion and clock enables, not a full CPU at pixel rate. Process-corner qualification required.",
+            "maximum_pixel_fifo_output_mbytes_per_second": 7.15909
           },
           "manufacturing_planning": {
             "status": "Engineering estimates, not measured yields or released costs.",
-            "process": "3–3.5 micron NMOS; laser-written masks from secret facility, wafer fabrication at AION Labs.",
+            "process": "3–3.5 micron NMOS; laser-written process-matched masks from secret facility; wafer fabrication at AION Labs.",
             "transistors_range": [
-              25000,
-              40000
+              40000,
+              50000
             ],
+            "transistors_central": 45000,
             "die_area_mm2_at_3um_range": [
-              30,
-              50
+              40,
+              60
             ],
             "die_area_mm2_at_3_5um_range": [
-              40,
-              65
+              55,
+              80
             ],
+            "die_area_mm2_central_at_3um": 48,
+            "die_area_mm2_central_at_3_5um": 65,
             "saleable_yield_fraction_range": [
-              0.2,
-              0.45
+              0.1473,
+              0.2579
             ],
-            "yield_note": "Stabilized planning assumption; includes buffers. Requires actual defect density, layout, speed and assembly data.",
+            "saleable_yield_fraction_central": 0.2062,
+            "yield_note": "3 micron stabilized scenario: 0.85*exp(-2.8*area_mm2/100) die yield, then 0.93 package/test yield. 48 mm2 gives 22.17% die yield. No measured speed-bin distribution. Six-device storage-bit budgeting is illustrative and must be replaced by actual NMOS cell/layout data.",
+            "recurring_controller_cost_1978_usd": 18.743,
             "external_functions": [
-              "VRAM arrays",
+              "Eight AION 4116-equivalent DRAM chips",
               "cable line drivers/transceivers",
               "monitor palette and DACs"
             ]
+          },
+          "engines": {
+            "renderer": "Dedicated fetch/address, eight-pixel glyph expansion, colour selection and fixed-priority sprite compositor; not a general-purpose CPU. Runs when a free FIFO bank and source data are available.",
+            "scanout": "Independent fixed-raster sequencer reads completed 4-bit pixels and generates sync. Both engines use the same master clock with clock enables.",
+            "fifo": "Four 40-byte addressed banks with output latches; ordered circular FREE/FILLING/READY/READING ownership. Publish complete banks only; backpressure on full FIFO; prefill before active display.",
+            "underrun": "Continue sync, emit border colour and latch diagnostic status; never read a partially rendered bank."
+          },
+          "timing_budget": {
+            "status": "Analytical planning bounds only; not a cycle-accurate proof.",
+            "dram_random_cycle_target_ns": 375,
+            "text_glyph_reads_per_scanline": 80,
+            "next_row_prefetch_average_bytes_per_scanline": 20,
+            "maximum_sprite_row_bytes_per_scanline": 40,
+            "illustrative_total_reads_per_scanline": 140,
+            "illustrative_read_time_us": 52.5,
+            "fifo_total_pixels": 320,
+            "fifo_total_drain_time_us_at_high_resolution": 22.349,
+            "two_ready_pages_drain_time_us": 11.175,
+            "qualification": "Prove local bank deadlines, row transitions, startup prefill, worst-case sprite overlap, refresh, bitmap line repeats and host writes together. Faster qualified grade/page mode may be required; FIFO cannot cure sustained bandwidth deficit."
           }
         }
       },
@@ -2158,7 +2188,7 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_requirements": [
-        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define VRAM bus, arbitration, scan timing, font path, output serializers/drivers and package."
+        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define video RAM bus, arbitration, scan timing, font path, output serializers/drivers and package."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -2378,8 +2408,8 @@
       ]
     },
     {
-      "id": "part.vram_16kbit_dual_port",
-      "name": "AION 16Kx1 NMOS random-plus-serial VRAM",
+      "id": "part.aion_4116",
+      "name": "AION 4116-equivalent 16Kx1 NMOS DRAM",
       "category": "memory_chip",
       "origin": "custom_logix_aion",
       "vendor": "AION Labs",
@@ -2398,38 +2428,40 @@
         "organization_words": 16384,
         "data_width_bits": 1,
         "ports": [
-          "random read/write",
-          "serial scanout"
+          "single random read/write port"
         ],
         "array_rows": 128,
         "array_columns": 128,
-        "serial_register_bits": 128,
-        "transfer_semantics": "A row transfer uses the DRAM array and must be arbitrated; serial shifting can continue independently between transfers.",
         "random_cycle_target_ns": 375,
-        "serial_clock_target_mhz": 3.579545,
-        "refresh": "Controller refreshes all rows, including hidden pages; retention interval, transfer timing and refresh timing require silicon qualification.",
-        "package": null,
-        "supply_rails_v": null,
-        "qualification_status": "Accepted design baseline; electrical timing, layout, fabrication and monitor qualification remain pending.",
+        "serial_register_bits": 0,
+        "refresh": "Controller refreshes all 128 rows including hidden pages. Retention interval, refresh scheduling and speed grade require silicon qualification.",
+        "package": "16-pin DIP target; qualified ordering code pending",
+        "supply_rails_v": [
+          12,
+          5,
+          -5
+        ],
+        "qualification_status": "Accepted design baseline; AION manufacture and 4116 electrical compatibility require qualification, not a purchased supplier quote.",
         "manufacturing_planning": {
-          "transistors_range": [
-            20000,
-            25000
-          ],
           "die_area_mm2_range": [
-            15,
-            30
+            16,
+            20
           ],
-          "status": "Preliminary estimates; DRAM cell/capacitor process and serial-port margins require separate development."
+          "die_area_mm2_central": 18,
+          "die_yield_fraction_1978_central": 0.5135,
+          "saleable_yield_fraction_1978_central": 0.4775,
+          "recurring_chip_cost_1978_usd": 3.4452,
+          "eight_chip_cost_1978_usd": 27.5618,
+          "status": "Planning estimate at 3 micron, not layout-derived. Ordinary DRAM still requires capacitor, sense-amplifier, retention, refresh and speed qualification; no custom serial-output register."
         }
       },
       "manufacturing_requirements": [
-        "Develop and qualify the DRAM cell/capacitor, sense amplifiers, retention and row-transfer/serial register operation before June 1978 launch.",
-        "Release pinout, package, rails, timing, power, wafer probe and final test. No commercial 1978 dual-port supplier availability is assumed."
+        "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
+        "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
-        "assembly.part.vram_16kbit_dual_port"
+        "assembly.part.aion_4116"
       ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
@@ -2660,7 +2692,7 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "description": "Optional 16 KB RAM card occupying one Plug and Execute expansion slot. On Aurelia it increases installed RAM from 48 KB to 64 KB. The mapper exposes its four 4 KB pages at B000–EFFF in the normal application view; ROM and VRAM can temporarily overlay those pages without erasing their contents.",
+      "description": "Optional 16 KB RAM card occupying one Plug and Execute expansion slot. On Aurelia it increases installed RAM from 48 KB to 64 KB. The mapper exposes its four 4 KB pages at B000–EFFF in the normal application view; ROM and video RAM can temporarily overlay those pages without erasing their contents.",
       "memory_mapping": {
         "page_size_kb": 4,
         "page_count": 4,
@@ -2668,7 +2700,7 @@
         "slot_count": 1,
         "configuration": "Firmware discovers the card at startup and maps its pages; no manual address switches.",
         "system_workspace": "The existing 4 KB common system RAM remains at F000–FFFF; the card adds 16 KB to lower RAM.",
-        "service_calls": "The common-memory runtime saves the RAM mapping, selects ROM/VRAM for a service and restores the card pages before returning.",
+        "service_calls": "The common-memory runtime saves the RAM mapping, selects ROM/video RAM for a service and restores the card pages before returning.",
         "installation": "Install with power off, then restart so firmware can discover and test the card.",
         "application_memory": "Lower RAM rises from 44 KB to 60 KB, before other system and workspace reservations."
       },
@@ -2680,7 +2712,7 @@
         "refresh_owner": "Host memory controller must refresh the card even while its pages are overlaid; exact interface pending."
       },
       "manufacturing_requirements": [
-        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/VRAM."
+        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/video RAM."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -3127,10 +3159,10 @@
         "sourcing": "AION silicon at June 1979 launch; qualified SMC equivalents eligible only after the relevant part release, no earlier than October 1979.",
         "display_controller_ref": "part.aurelia_video_chip",
         "video_ram_kb": 16,
-        "vram_chip_ref": "part.vram_16kbit_dual_port",
-        "vram_chip_count": 8,
+        "video_ram_chip_ref": "part.aion_4116",
+        "video_ram_chip_count": 8,
         "video_link_ref": "technology.logix_digital_video",
-        "host_access": "Windowed/addressed access to onboard VRAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
+        "host_access": "Windowed/addressed access to onboard video RAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
         "display_modes": "Reuse Aurelia controller text/bitmap capabilities subject to card/monitor qualification. 80-column output requires a compatible 640-pixel monitor. Host CPU determines drawing throughput.",
         "included_monitor": false,
         "flexibus_ports": 0
@@ -3139,7 +3171,7 @@
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
-        "Qualify 16 KiB VRAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -3164,10 +3196,10 @@
         "sourcing": "AION silicon at June 1979 launch; qualified SMC equivalents eligible only after the relevant part release, no earlier than October 1979.",
         "display_controller_ref": "part.aurelia_video_chip",
         "video_ram_kb": 16,
-        "vram_chip_ref": "part.vram_16kbit_dual_port",
-        "vram_chip_count": 8,
+        "video_ram_chip_ref": "part.aion_4116",
+        "video_ram_chip_count": 8,
         "video_link_ref": "technology.logix_digital_video",
-        "host_access": "Windowed/addressed access to onboard VRAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
+        "host_access": "Windowed/addressed access to onboard video RAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
         "display_modes": "Reuse Aurelia controller text/bitmap capabilities subject to card/monitor qualification. 80-column output requires a compatible 640-pixel monitor. Host CPU determines drawing throughput.",
         "included_monitor": false,
         "flexibus_ports": 0
@@ -3176,7 +3208,7 @@
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
-        "Qualify 16 KiB VRAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -3214,8 +3246,8 @@
             {
               "start": "B000",
               "end": "EFFF",
-              "role": "ROM / cartridge / VRAM windows",
-              "description": "ROM / cartridge / VRAM windows"
+              "role": "ROM / cartridge / video RAM windows",
+              "description": "ROM / cartridge / video RAM windows"
             },
             {
               "start": "F000",
@@ -3224,7 +3256,7 @@
               "description": "Common system RAM"
             }
           ],
-          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
+          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or video RAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
           "application_memory_profile": "ram_48kb"
         },
         "expansion_ref": "device.aurelia_ram_16kb_card",
@@ -3246,7 +3278,7 @@
               "description": "Stable runtime entry code, system stack and critical state."
             }
           ],
-          "note": "The card fills B000–EFFF with RAM in the normal view. ROM, cartridges and VRAM use temporary overlays within 7000–EFFF; the underlying RAM retains its contents.",
+          "note": "The card fills B000–EFFF with RAM in the normal view. ROM, cartridges and video RAM use temporary overlays within 7000–EFFF; the underlying RAM retains its contents.",
           "application_memory_profile": "ram_64kb"
         },
         "physical_population": {
@@ -3262,7 +3294,7 @@
           "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
         },
         "video_physical_population": {
-          "chip_ref": "part.vram_16kbit_dual_port",
+          "chip_ref": "part.aion_4116",
           "chip_count": 8,
           "bank_data_width_bits": 8,
           "capacity_bytes": 16384,
@@ -3331,7 +3363,7 @@
             "remaining_vram_bytes": 8384,
             "allocation_note": "Compatibility baseline 320x200x1; bitmap_modes contains per-mode configurations, including 16000-byte modes."
           },
-          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of VRAM. Mode changes reload fonts and redraw.",
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of video RAM. Mode changes reload fonts and redraw.",
           "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
           "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
         },
@@ -3571,7 +3603,7 @@
           "transparent_index": 0,
           "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
           "priority": "Lower sprite number wins; all sprites overlay background/text.",
-          "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved VRAM region.",
+          "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved video RAM region.",
           "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
           "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
         }
@@ -3624,7 +3656,7 @@
         "mapper registers/logic",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
-        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die."
       ],
       "manufacturing_status": "incomplete_bom",
@@ -3683,7 +3715,7 @@
               "description": "Common system RAM"
             }
           ],
-          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or VRAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
+          "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or video RAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
           "application_memory_profile": "ram_64kb"
         },
         "physical_population": {
@@ -3699,7 +3731,7 @@
           "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
         },
         "video_physical_population": {
-          "chip_ref": "part.vram_16kbit_dual_port",
+          "chip_ref": "part.aion_4116",
           "chip_count": 8,
           "bank_data_width_bits": 8,
           "capacity_bytes": 16384,
@@ -3768,7 +3800,7 @@
             "remaining_vram_bytes": 8384,
             "allocation_note": "Compatibility baseline 320x200x1; bitmap_modes contains per-mode configurations, including 16000-byte modes."
           },
-          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of VRAM. Mode changes reload fonts and redraw.",
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of video RAM. Mode changes reload fonts and redraw.",
           "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
           "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
         },
@@ -4008,7 +4040,7 @@
           "transparent_index": 0,
           "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
           "priority": "Lower sprite number wins; all sprites overlay background/text.",
-          "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved VRAM region.",
+          "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved video RAM region.",
           "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
           "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
         }
@@ -4056,7 +4088,7 @@
       },
       "manufacturing_requirements": [
         "Qualify eight 64K×1 DRAMs for December 1979",
-        "Populate one shared Aurelia video controller and eight custom 16Kx1 random-plus-serial VRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, serial transfers, package, rails and external video/control line drivers.",
+        "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die."
       ],
@@ -4390,7 +4422,7 @@
             "remaining_vram_bytes": 384,
             "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
           },
-          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same VRAM, not additive reservations."
+          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same video RAM, not additive reservations."
         }
       },
       "networking_from_ncc_1981": {
@@ -4672,7 +4704,7 @@
             "remaining_vram_bytes": 384,
             "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
           },
-          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same VRAM, not additive reservations."
+          "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same video RAM, not additive reservations."
         }
       },
       "networking": {
@@ -5011,7 +5043,7 @@
         "Shared TUI routines do not require multitasking; applications may remain sequential.",
         "Clipboard capacity, exact widgets and workspace behavior remain implementation decisions.",
         "Keep the same API behavior across Aurelia, Aurelia+ and Artemis.",
-        "Do not assume display stride, VRAM address, last column or direct peripheral registers.",
+        "Do not assume display stride, video RAM address, last column or direct peripheral registers.",
         "Legacy CP/M console behavior is preserved; Logix-aware interfaces use the documented editing conventions.",
         "Artemis implementation mediates process access to shared clipboard and display services."
       ],
@@ -6288,11 +6320,11 @@
           "part.flexibus_host_controller",
           "part.flexibus_device_controller",
           "part.aurelia_video_chip",
-          "part.vram_16kbit_dual_port"
+          "part.aion_4116"
         ],
         "rights": "Independent manufacture and sale to competing OEMs; non-exclusive; ERA CPU excluded from this agreement.",
         "transfer": "SMC-compatible ready-to-use masks, revisions, process know-how, known-good reference chips, wafer-test structures, test programs and on-site engineering assistance.",
-        "release_policy": "Initial qualified sales in October; individual part qualification and volume ramp separate. VRAM is the highest-risk gate.",
+        "release_policy": "Initial qualified sales in October; individual part qualification and volume ramp separate. video RAM is the highest-risk gate.",
         "economics": "Transfer/NRE funded by AION/Logix; external-sales royalties and minimum orders negotiated, not priced facts.",
         "historical_basis": "https://manuals.plus/m/e43becab466f1fc2ba1742e95b4f0645632eb5d5ac2aea60ac96975b1c99320c"
       }
@@ -6723,7 +6755,7 @@
       "hardware": "Functional connections, not an electrical schematic. Select Memory to inspect the proposed mapping.",
       "peripherals": "Compatible choices, not simultaneous port occupancy. Later accessories show their introduction dates; they were not included at the original launch.",
       "software": "Explore system internals, the Business Tools cartridge and independent software offerings. Introduction dates are shown; later editions are not implied at launch.",
-      "memory": "Normal application map — identical to the organization table below. The mapper may temporarily replace pages within 7000–EFFF with ROM or VRAM; hidden RAM is preserved.",
+      "memory": "Normal application map — identical to the organization table below. The mapper may temporarily replace pages within 7000–EFFF with ROM or video RAM; hidden RAM is preserved.",
       "bundles": "Bundle decomposition. Existing offers and proposed packages are labeled separately. Listed dates prevent later software from being implied at launch; prices are not assumed.",
       "portability": "Shared application code and C APIs; separate target binaries, startup code and libraries. Optional emulator/debugging features are not guaranteed launch components."
     },
@@ -8024,7 +8056,7 @@
       "specification": {
         "cpu": "Z80, 4 MHz",
         "supported_installed_ram_kb": 64,
-        "display": "Native Tandy 80-column display; no Logix controller, VRAM or monitor required.",
+        "display": "Native Tandy 80-column display; no Logix controller, video RAM or monitor required.",
         "storage": "Native eight-inch disk subsystem; Model II BIOS and delivery media.",
         "expansion": "Model II-specific internal FlexiBUS option; retain original interfaces.",
         "support": "Tandy first-line hardware/customer support; DRI OS and AION application escalation."

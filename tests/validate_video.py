@@ -13,14 +13,34 @@ cards = ['device.apple2_video_card', 'device.s100_video_card']
 assert set(chip['used_in']) == set(hosts + cards)
 for card in cards:
     spec = records[card]['specification']
-    assert spec['vram_chip_count'] * records[spec['vram_chip_ref']]['specification']['capacity_kbit'] // 8 == spec['video_ram_kb'] == 16
+    assert spec['video_ram_chip_count'] * records[spec['video_ram_chip_ref']]['specification']['capacity_kbit'] // 8 == spec['video_ram_kb'] == 16
     assembly = next(a for a in bom['assemblies'] if a['id'] == 'assembly.' + card)
     quantities = {line['ref']: line['quantity'] for line in assembly['lines']}
     assert quantities['bompart.part.aurelia_video_chip'] == 1
-    assert quantities['bompart.part.vram_16kbit_dual_port'] == 8
-assert chip['specification']['implementation_design']['internal_buffers'] == {
-    'character_attribute_row_cache_bytes': 160, 'sprite_row_shifters_bytes': 40,
-    'sprite_staging_bytes': 40, 'bitmap_fifo_bytes': 16, 'included_in_die_estimates': True}
+    assert quantities['bompart.part.aion_4116'] == 8
+design = chip['specification']['implementation_design']
+buffers = design['internal_buffers']
+assert buffers['pixel_fifo_page_count'] == 4
+assert buffers['pixel_fifo_page_bytes'] == 40
+assert buffers['pixel_bits'] == 4
+assert buffers['pixel_fifo_bytes'] == buffers['pixel_fifo_page_count'] * buffers['pixel_fifo_page_bytes'] == 160
+assert buffers['total_storage_bytes'] == sum(buffers[k] for k in [
+    'character_attribute_row_cache_bytes', 'next_character_attribute_row_cache_bytes',
+    'sprite_row_shifters_bytes', 'sprite_staging_bytes', 'pixel_fifo_bytes']) == 560
+assert buffers['included_in_die_estimates']
+ram_part = records['part.aion_4116']
+assert ram_part['vendor'] == 'AION Labs'
+assert ram_part['specification']['ports'] == ['single random read/write port']
+assert ram_part['specification']['serial_register_bits'] == 0
+assert 'part.vram_' + '16kbit_dual_port' not in records
+# Storage budgets and fabrication costs are separate: both must reference the same dies.
+costs = json.loads((root / 'manufacturing_costs.json').read_text())
+models = costs['chip_fabrication_models']
+assert models[chip['id']]['1978']['die_area_mm2'] == 48
+assert models[ram_part['id']]['1978']['die_area_mm2'] == 18
+assert abs(models[chip['id']]['1978']['good_packaged_chip_cost_usd'] +
+           8 * models[ram_part['id']]['1978']['good_packaged_chip_cost_usd'] - 46.3048) < .001
+
 for host in hosts:
     c = records[host]
     v = c['video']
@@ -59,7 +79,7 @@ for host in hosts:
     a = next(a for a in bom['assemblies'] if a['id'] == 'assembly.' + host + '.base')
     lines = {l['ref']: l for l in a['lines']}
     assert lines['bompart.part.aurelia_video_chip']['quantity'] == 1
-    assert lines['bompart.part.vram_16kbit_dual_port']['quantity'] == 8
+    assert lines['bompart.part.aion_4116']['quantity'] == 8
     assert not any('video_ram_chips' in ref or 'video_controller_revision' in ref for ref in lines)
 assert records[hosts[0]]['video']['text_modes'] == records[hosts[1]]['video']['text_modes']
 assert records[hosts[0]]['video']['bitmap_modes'] == records[hosts[1]]['video']['bitmap_modes']

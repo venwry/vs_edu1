@@ -29,7 +29,7 @@ assert by['service.bpi_training']['snapshots']['1978']['total_usd']>0
 assert by['bundle.artemis_pro_1mb_server']['snapshots']['1981']['status']=='announced_shipping_unconfirmed'
 def inv(id,y):return {x['component_ref']:x['quantity'] for x in by[id]['snapshots'][str(y)]['bom_lines']}
 assert inv('computer.aurelia',1978)['bompart.part.dram_16kbit']==24
-assert inv('computer.aurelia',1978)['bompart.part.vram_16kbit_dual_port']==8
+assert inv('computer.aurelia',1978)['bompart.part.aion_4116']==8
 assert inv('computer.aurelia',1978)['bompart.part.flexibus_host_controller']==3
 assert inv('bundle.artemis_pro_1mb_server',1981)['bompart.part.dram_64kbit']==128
 assert inv('bundle.artemis_pro_1mb_server',1981)['bompart.device.network_card_artemis.network_card_pcb']==1

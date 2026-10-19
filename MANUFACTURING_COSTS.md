@@ -10,13 +10,13 @@ Nominal USD, rounded to whole dollars; each year's snapshot is June 15. A dash m
 
 | Complete offering | 1978 | 1979 | 1980 | 1981 |
 |---|---:|---:|---:|---:|
-| Aurelia monochrome system | 749 | 720 | 700 | 695 |
-| Aurelia color system | 852 | 822 | 800 | 793 |
-| Aurelia+ monochrome system | — | — | 1,117 | 998 |
-| Artemis 128 KiB monochrome system | — | — | 1,186 | 1,214 |
-| Artemis 256 KiB monochrome system | — | — | 2,279 | 1,882 |
-| Artemis PRO 512 KiB server | — | — | — | 3,516 |
-| Artemis PRO 1 MiB server | — | — | — | 5,243 |
+| Aurelia monochrome system | 751 | 722 | 701 | 695 |
+| Aurelia color system | 854 | 823 | 800 | 793 |
+| Aurelia+ monochrome system | — | — | 1,118 | 998 |
+| Artemis 128 KiB monochrome system | — | — | 1,180 | 1,208 |
+| Artemis 256 KiB monochrome system | — | — | 2,273 | 1,875 |
+| Artemis PRO 512 KiB server | — | — | — | 3,509 |
+| Artemis PRO 1 MiB server | — | — | — | 5,236 |
 
 The 1981 Artemis bundle includes its dated networking variant and Server OS replacement, so its cost is not directly comparable to the non-networked 1980 configuration. PRO estimates are for announced offers; shipping dates remain unconfirmed. The PRO offers contain only the components actually listed in their BOMs: no invented monitor or keyboard is added.
 
@@ -37,8 +37,9 @@ Computer chassis rows exclude external keyboard/monitor and the system software 
 - Each of 221 component-cost entries has annual price/cost buckets. An unresolved multi-part line is one priced **functional set**, not an assertion that a circuit contains one physical part. There are 166 explicitly identified unresolved quantity substitutions. Three Aurelia/Aurelia+ FlexiBUS ports provisionally use three host-controller dies; the engineering integration remains undecided.
 - Custom silicon uses a 75 mm wafer scenario, explicit die area and year-dependent defect density. Good die output is geometric usable dies times die yield. Recurring processed-wafer cost is allocated 18% substrate/materials, 36% workforce, 10% energy, 24% consumables and 12% operations. Packaging and final-test labor are added and divided by 93% packaging/test yield. All these fabrication parameters are unverified planning assumptions; design and mask access does not eliminate yield risk. Yield loss is already inside the chip's cost buckets.
 - Purchased 16K DRAM central prices are $6/$4.50/$3.25/$2.25 per chip; 64K DRAM $80/$65/$40/$25. The first two 64K prices are unused in pre-introduction products. These are assumed OEM tiers, not verified quotations. High-density Artemis cost is especially sensitive to 64K DRAM sourcing. A 1 MiB PRO needs 128 data DRAMs, not eight chips.
+- AION-made display RAM is separate from purchased system DRAM: `part.aion_4116`, 18mm² central die, $3.4452 each / $27.5618 for eight in 1978. The buffered Aurelia controller uses 48mm² and costs $18.743, giving $46.30 for the chipset. All are scenario estimates, excluding capital and development; see VIDEO_DESIGN.md. Later years use the existing annual yield-learning model.
 - The 1981 5 MB HDD allowance is $950; historical Seagate single-unit and large-order pricing provide a plausibility bracket, not a Logix purchase agreement.
-- The Artemis VRAM organization is unresolved; it is provisionally costed as eight custom 16K×1 VRAMs. CRT pricing assumes a complete OEM display chassis; the otherwise unspecified separate HV/deflection/PSU line is therefore zero. Bare-tube sourcing would require an additional allowance.
+- The Artemis video RAM organization is unresolved; it is provisionally costed as eight AION 4116-equivalent 16K×1 DRAMs. CRT pricing assumes a complete OEM display chassis; the otherwise unspecified separate HV/deflection/PSU line is therefore zero. Bare-tube sourcing would require an additional allowance.
 - CP/M, its networking distribution, and Microsoft BASIC have provisional recurring rights allowances of $10, $5 and $20 respectively. These are not sourced contract terms. Software development remains excluded. AIONix is owned in the scenario and receives no invented third-party royalty.
 - Software profiles record diskette counts and printed page counts. General BPI is a five-module set; module rows and platform edition rows are alternatives. Developer registrations include the SDK delivery once.
 - Training assumes eight learners and six contact hours plus 1.5 preparation hours per day; unspecified course durations are explicitly modeled. Support hours are expected usage per customer-year, not contractual caps. Sales-channel and individually negotiated OEM-license records remain N/A; actual OEM chip production is costed separately.
@@ -75,7 +76,7 @@ The generator owns price and process assumptions; adjust it and regenerate JSON 
 
 ## NCC 1979 cards and independent SMC sourcing
 
-Three new cards have explicit engineering assemblies: S-100 FlexiBUS, Apple II video, and S-100 video. Each video card counts one Aurelia video controller and eight 16Kx1 VRAMs (16 KiB). The two-port Apple/S-100 FlexiBUS interfaces use two host dies as an explicit cost assumption pending final ports-per-die design. Controller silicon is split from transceivers to prevent hidden/double-counted fabrication cost.
+Three new cards have explicit engineering assemblies: S-100 FlexiBUS, Apple II video, and S-100 video. Each video card counts one Aurelia video controller and eight 16Kx1 video RAMs (16 KiB). The two-port Apple/S-100 FlexiBUS interfaces use two host dies as an explicit cost assumption pending final ports-per-die design. Controller silicon is split from transceivers to prevent hidden/double-counted fabrication cost.
 
 The June 1979 snapshot uses AION-produced chips. SMC’s initial commercial sales start in October 1979, with per-part qualification gates. Base annual unit costs retain AION fabrication; conditional 1980/1981 card alternatives replace those chip costs with purchased SMC components. The illustrative price proxy is 1.6 times modeled internal recurring chip cost plus $0.25 inbound freight; 1.2–2.4 times is a sensitivity range, not a quote. Vendor margin/capital recovery and any embedded royalty are included, not charged again. No supplier-switch or cost-saving claim follows from licensing.
 

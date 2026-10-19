@@ -19,7 +19,7 @@ Technical catalog v2.3 adds canonical `platform_editions`. Each software edition
 
 `software.aionix_server` replaces `software.aionix_networked` as a complete AIONix Server edition. It includes the base OS and network services and does not require a prior OS installation. Network bundles supply this edition, while BPI application licensing remains separate. Pulse integration means offline read/edit/write access to versioned Abacus files, not a live shared spreadsheet.
 
-Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies VRAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility qualification remains open; pricing and sales now have separate scenario assessments. Catalog v2.6 defines physical RAM populations and manufacturing requirements; electrical qualification remains open.
+Catalog v2.4 incorporates the accepted MMU, Aurelia TPA discovery, FlexiBUS, Z80 peripheral bridge and BPI transaction designs under `specification.implementation_design`. Validation targets remain distinct from measured capabilities. The display API now specifies video RAM reuse between text and bitmap modes, font reload/redraw on mode changes and optional memory-checked screen preservation. Each computer lists its alternative text and bitmap allocations in `video.memory_layout`. TPA boundaries reserve application workspace within the existing physical RAM map. Facility qualification remains open; pricing and sales now have separate scenario assessments. Catalog v2.6 defines physical RAM populations and manufacturing requirements; electrical qualification remains open.
 
 The original 34 point events have author-confirmed day-level dates; six additional milestones use year/month precision and one event covers the NCC recording/session interval and are organized chronologically within eight consecutive calendar phases from 1972-01-01 through 1981-11-18. The 2025-12-07 time-travel origin is a separate prologue. Three top-level processes and four nested academic-year subprocesses are rendered as recorded or explicitly approximate intervals; the standalone Microsoft BASIC development event is deleted. Offers, plans and future rights retain their original meanings. Product introductions and platform availability are synchronized with confirmed launch dates.
 
@@ -79,9 +79,9 @@ Event dates contain only `start` and `end`; equal endpoints may be ISO year, mon
 All four architecture pages fill the browser width. Drag the divider between diagram and details (or use its Left/Right arrow keys; Home resets it). Narrow screens stack the sections. Smaller blocks and larger gutters make the diagrams easier to read; shared orthogonal routing avoids intervening blocks and recalculates after resizing or changing layers. Run `node tests/architecture-layout.test.cjs` for routing checks.
 
 
-## Unified Aurelia video (v2.7)
+## Buffered Aurelia video (v2.15)
 
-See [VIDEO_DESIGN.md](VIDEO_DESIGN.md). Both Aurelia and Aurelia+ now use 16 KiB custom dual-port VRAM and the shared controller, with native 40/80-column text, explicit bitmap and sprite allocations, and monitor capability discovery. The retained `video.text_mode` and `memory_layout` summaries describe the preferred/default configuration; `text_modes` and `bitmap_modes` enumerate all hardware configurations. Monitor filtering remains mandatory. Manufacturing figures are planning estimates; electrical qualification and costing gates remain open.
+See [VIDEO_DESIGN.md](VIDEO_DESIGN.md). Both Aurelia and Aurelia+ now use 16 KiB of AION-manufactured 4116-equivalent DRAM and the shared controller with four 40-byte completed-pixel FIFO banks, two 160-byte character/attribute caches and dedicated render/scanout engines, with native 40/80-column text, explicit bitmap and sprite allocations, and monitor capability discovery. The retained `video.text_mode` and `memory_layout` summaries describe the preferred/default configuration; `text_modes` and `bitmap_modes` enumerate all hardware configurations. Monitor filtering remains mandatory. Manufacturing figures are planning estimates; electrical qualification and costing gates remain open.
 
 Architecture detail panels preserve nested specifications as expandable sections, lists and record tables. Short scalar properties use a single two-column Property/Value table at every panel width. Expand all / Collapse all controls operate within each specification; long explanations and status notes remain separate paragraphs. The renderer preserves zeros, false values, unknown values, and component names. Run `node tests/specification.test.cjs` for content-preservation and interaction checks.
 
@@ -104,7 +104,7 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 - `event.dri_founding`: late 1974, year precision; joint Gary/Dorothy/Adam company before Logix.
 - `event.dri_cpm`: September 1, 1976 remains an Aurelia implementation milestone, not first cooperation.
 - `event.smc_agreement`: July 1978; independent manufacturing/sales license with process-compatible mask and know-how transfer.
-- `event.smc_sales`: October 1979; initial qualified sales, separate VRAM qualification and subsequent volume ramp.
+- `event.smc_sales`: October 1979; initial qualified sales, separate video RAM qualification and subsequent volume ramp.
 - June 4, 1979 adds S-100 FlexiBUS and Apple II/S-100 video cards using AION launch silicon. Apple software is native; CP/M-6502 remains deferred.
 - AIONix’s existing separate ownership/equity/1982 terms are retained; no replacement allocation was selected.
 - `manufacturing_programs.json` contains separate one-time transfer budget assumptions and SMC purchase-price sensitivity inputs. Rebuild costs before pricing.
@@ -118,7 +118,7 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 
 ## Revised retail contribution and demand through November 1979
 
-Every page now includes Retail pricing and Demand and sales in its shared top navigation. `pricing_baseline.json` preserves the pre-reduction snapshots; current retail prices retain 60% of prior dollar contribution at unchanged costs/fees. Rebuild pricing, then `python tools/build_sales.py`. `sales.html` shows monthly 1978 sell-through, separate launch-year projections and June–November 1979 demand, delivery limits and sales, with scenario selection, market assumptions and the Academy roadmap. See [SALES_FORECAST.md](SALES_FORECAST.md). Run `python tests/validate_sales.py` and `node tests/sales.test.cjs` in addition to existing checks.
+Every page now includes Retail pricing and Demand and sales in its shared top navigation. `pricing_baseline.json` preserves the pre-reduction snapshots; current retail prices retain 60% of prior dollar contribution using current rebuilt costs and unchanged channel fees. Rebuild pricing, then `python tools/build_sales.py`. `sales.html` shows monthly 1978 sell-through, separate launch-year projections and June–November 1979 demand, delivery limits and sales, with scenario selection, market assumptions and the Academy roadmap. See [SALES_FORECAST.md](SALES_FORECAST.md). Run `python tests/validate_sales.py` and `node tests/sales.test.cjs` in addition to existing checks.
 
 
 ## Tandy, Apple and IBM reaction revision

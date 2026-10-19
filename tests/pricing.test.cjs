@@ -4,9 +4,9 @@ const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n
 assert.equal(d.querySelectorAll('.pricing-row').length,82);assert.equal(d.querySelectorAll('.pricing-group').length,10);assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,24);
 const select=(id,value)=>{d.getElementById(id).value=value;d.getElementById(id).dispatchEvent(new w.Event('change'));};
 const first=d.querySelector('[data-product="bundle.aurelia_mono"][data-year="1978"]');first.click();assert(d.getElementById('pricing-detail').textContent.includes('North Star'));
-select('pricing-fee','0.30');let s=model.products.find(p=>p.id==='bundle.aurelia_mono').snapshots['1978'];assert(d.getElementById('pricing-detail').textContent.includes((s.retail_price_usd*.3).toLocaleString('en-US',{style:'currency',currency:'USD'})));
+select('pricing-fee','0.30');let s=model.products.find(p=>p.id==='bundle.aurelia_mono').snapshots['1978'];assert(d.getElementById('pricing-detail').textContent.includes((Math.floor((Math.round(s.retail_price_usd*100)*30+50)/100)/100).toLocaleString('en-US',{style:'currency',currency:'USD'})));
 d.querySelector('[data-product="service.academy_regular_courses.course_1"][data-year="1978"]').click();assert(d.getElementById('pricing-detail').textContent.includes('$69.19 purchase credit'));assert(d.getElementById('pricing-detail').textContent.includes('50% of Fundamentals tuition'));first.click();
-const v=w.pricingCalculate(s,.30);assert.equal(v.profit,Math.round((s.retail_price_usd*.7-s.manufacturing_cost_usd)*100)/100);
+const v=w.pricingCalculate(s,.30);assert.equal(Math.round(v.profit*100),Math.round(s.retail_price_usd*100)-Math.round(v.fee*100)-Math.round(s.manufacturing_cost_usd*100));assert.equal(w.pricingCalculate({retail_price_usd:1668.05,manufacturing_cost_usd:751.18},.30).fee,500.42);
 select('pricing-cost','cost_high_usd');assert(d.getElementById('pricing-detail').textContent.includes('selected cost'));
 select('pricing-year','1979');assert(!d.querySelector('[data-product="bundle.aurelia_plus_mono"]'));assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,6);
 select('pricing-year','1981');select('pricing-availability','available');assert(!d.querySelector('[data-product="bundle.artemis_pro_512_server"]'));

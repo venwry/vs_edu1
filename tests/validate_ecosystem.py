@@ -24,10 +24,10 @@ for id in cards:
 assert not any('6502' in id for id in r if id.startswith('software.'))
 for id in cards[1:]:
  lines={x['ref']:x['quantity'] for x in a['assembly.'+id]['lines']}
- assert lines['bompart.part.vram_16kbit_dual_port']==8
+ assert lines['bompart.part.aion_4116']==8
  assert lines['bompart.part.aurelia_video_chip']==1
  inv={x['component_ref']:x['quantity'] for x in cost[id]['snapshots']['1979']['bom_lines']}
- assert inv['bompart.part.vram_16kbit_dual_port']==8
+ assert inv['bompart.part.aion_4116']==8
  assert inv['bompart.part.aurelia_video_chip']==1
 for id in ['device.apple2_expansion_card','device.s100_flexibus_card']:
  inv={x['component_ref']:x['quantity'] for x in cost[id]['snapshots']['1979']['bom_lines']}
