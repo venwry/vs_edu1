@@ -160,3 +160,8 @@ Run `python tools/build_investment_model.py` after changing source forecasts, ma
 ## ROI and complete marketing budget through 1980
 
 Open [Quarterly ROI](roi.html) for revenue, marketing-adjusted operating costs, investment, quarterly ROI and cash-recovery charts. [ROI.md](ROI.md) documents the bridge and reproduction steps. The ROI model replaces the industrial report's generic marketing allowance with itemized commercial, conference and promotional budgets; its net cash/returns are project-wide and pre-tax.
+
+
+## Artemis replaceable video and Mono Pro
+
+See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the 32 KiB card, dedicated 1 KiB sprite SRAM, four pixel-buffer pages, 640×400 Mono Pro, new complete offers and qualification limits. Costs, balanced pricing, demand, engineering, marketing, capacity and ROI are rebuilt together; [ROI](roi.html) includes the current before/after comparison.

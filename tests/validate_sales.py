@@ -9,6 +9,10 @@ b['products'].update(read('compatibility_pricing_baseline.json')['products'])
 for offer in p['products']:
  for year,x in offer['snapshots'].items():
   if x['retail_price_usd'] is None:continue
+  if offer['id'] not in b['products']:
+   assert x['baseline_status']=='new_offer_no_historical_sales_anchor'
+   assert 'no historical' in x['pre_reduction']['basis'].lower()
+   continue
   old=b['products'][offer['id']][year]
   assert x['pricing_balance']['status'] in ('balanced_proxy','no_proxy_cost_based','cost_floor_above_proxy')
   assert x['cost_revision']['baseline_manufacturing_cost_usd']==old['manufacturing_cost_usd']

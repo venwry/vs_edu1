@@ -371,3 +371,6 @@ The accepted 45-minute programme plus questions uses “More room to work. More 
 ## NCC 1980 Artemis campaign and COMDEX sales extension
 
 See [NCC_1980_CAMPAIGN.md](NCC_1980_CAMPAIGN.md) for the accepted launch, bounded compatibility-through-2000 commitment, independent BPI appearance and dated follow-up activities. See [SALES_COMDEX1980.md](SALES_COMDEX1980.md) for the capacity-constrained three-product forecast. The 1979 disclosure embargo remains unchanged; native Pulse 3 and Abacus 3 stay at the November 19, 1980 milestone.
+
+
+At the May 19, 1980 launch, Artemis includes the replaceable 32 KiB video card with exclusive 1 KiB sprite SRAM. Mono Pro, a 14-inch 640×400 progressive monochrome monitor, is offered in additional 128/256 KiB bundles. Older monitor bundles retain legacy raster timings. Artemis PRO reuses the card and gains 512 KiB/1 MiB Mono Pro console offers in its 1981 announcement, without asserting a confirmed shipment date. See ARTEMIS_VIDEO_CARD.md and the current pricing, sales and ROI models.

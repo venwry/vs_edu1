@@ -26,7 +26,8 @@ def snapshot(ref,y):
  return p['snapshots'][yy],int(yy)
 baskets=sales['comdex1980_policy']['components']
 # Conditional server production added only after an explicitly assumed qualification date.
-baskets['artemis_pro']=[{'product_ref':'bundle.artemis_pro_512_server','quantity':.75},{'product_ref':'bundle.artemis_pro_1mb_server','quantity':.25}]
+revision=load('artemis_display_revision'); pro_mix=revision['mono_pro_pro_console_share']
+baskets['artemis_pro']=[{'product_ref':'bundle.artemis_pro_512_server','quantity':.75*(1-pro_mix)},{'product_ref':'bundle.artemis_pro_1mb_server','quantity':.25*(1-pro_mix)},{'product_ref':'bundle.artemis_pro_512_mono_pro','quantity':.75*pro_mix},{'product_ref':'bundle.artemis_pro_1mb_mono_pro','quantity':.25*pro_mix}]
 programs=[]
 def prog(id,owner,start,end,pm,refs,scope):
  programs.append(dict(id=id,entity=owner,start=start,end=end,person_months=pm,low_person_months=round(pm*.7),high_person_months=round(pm*1.7),product_refs=refs,scope=scope,productive_hours_per_person_month=130,effort_basis='Bottom-up work-package judgement; includes integration, verification, documentation and release work; future tools reduce layout effort, not qualification.'))
@@ -46,6 +47,10 @@ prog('bpi_port_help','AION Software','1977-Q2','1978-Q2',45,['software.bpi_suite
 prog('plus_hardware','Logix','1978-Q2','1979-Q4',108,['computer.aurelia_plus'],'RAM mapping, PCB derivatives, power, firmware and qualification')
 prog('abacus2_pulse','AION Software','1978-Q2','1979-Q4',240,['software.abacus_2','software.pulse_1'],'Spreadsheet evolution and interactive language/runtime; syntax, evaluation, debugger, persistence and user testing')
 prog('era_silicon','AION Labs','1977-Q1','1980-Q1',480,['part.era1','part.artemis_mmu','part.artemis_dma','part.artemis_graphics_chip','part.artemis_fdd_hdd_controller'],'ISA/ABI and simulator 80 PM; CPU architecture/logic 100; physical/layout 65; MMU/DMA/storage/graphics 105; verification/bring-up/respins 130')
+prog('artemis_video_card_increment','AION Labs','1978-Q2','1980-Q1',revision['engineering_person_months']['AION Labs video increment'],['part.artemis_graphics_chip'],'Increment beyond original graphics work: enlarged SRAM pipeline, DRAM arbitration, sprite bus, parallel renderer, masks and respin verification')
+prog('mono_pro_receiver','AION Labs','1978-Q3','1980-Q1',revision['engineering_person_months']['AION Labs monitor receiver'],['part.mono_pro_controller'],'Palette/receiver ASIC, DAC switching, verification and silicon qualification; analog circuitry remains external')
+prog('mono_pro_card_board','Logix','1978-Q3','1980-Q2',revision['engineering_person_months']['Logix card and monitor qualification'],['device.artemis_video_card','device.mono_pro'],'Dedicated slot/card PCB and tube/yoke/analog monitor qualification, calibration fixtures, safety and EMC; incremental to baseline hardware')
+prog('artemis_display_drivers','AION Software','1979-Q1','1980-Q2',revision['engineering_person_months']['AION Software display drivers'],['software.aionix','software.artemis_sdk'],'Mode discovery, 400-line fonts, page flips, sprites, monitor compatibility and driver regression')
 prog('artemis_hardware','Logix','1978-Q1','1980-Q2',300,['computer.artemis','device.artemis_cpm80_module'],'32-bit bus timing, paired RAM, PCB signal/power integrity, firmware, compatibility card, fixtures and system stress testing')
 prog('aionix_core','AION Software','1978-Q1','1980-Q2',330,['software.aionix','software.aion_c_ide','software.artemis_sdk'],'OS, scheduler, protection, filesystem, drivers, ERA compiler backend/ABI, native tools and performance validation')
 prog('aionix_dri','DRI','1978-Q1','1980-Q2',150,['software.aionix'],'DRI kernel/filesystem/driver expertise; AION reimburses assigned cost; same people not counted in AION headcount')
@@ -116,10 +121,6 @@ for m,row in monthly.items():
   for line in snap.get('bom_lines',[]):
    part=line['component_ref'];qty=line['quantity']*units;q_components[q][part]+=qty;bom.append({'component_ref':part,'quantity_per_offer':line['quantity']})
    cref=part.removeprefix('bompart.')
-   # The unresolved Artemis storage set is already priced as eight AION DRAMs.
-   # Include those physical dies in fab loading without changing its controller spec.
-   if part.startswith('bompart.computer.artemis') and part.endswith('.video_ram_chips'):
-    cref='part.aion_4116';qty*=8
    if cref in chips:
     chip_q[q][cref]+=qty
     for k,v in costs['component_cost_assumptions'][part]['annual_cost_buckets_usd'][str(sy)].items():internal[k]+=v*line['quantity']
@@ -177,6 +178,12 @@ for stage in stages:
   for offset,share in [(-4,.15),(-3,.25),(-2,.35),(-1,.25)]:cap(quarters[tq+offset],'AION Labs',typ,delta*share,'Capacity commissioned '+stage['commissioned']+'; phased procurement/install; quoted price unavailable')
  prevtools=stage['tool_installed_1978_usd'];prevbuilding=stage['facility_1978_usd']
 for q,amt in [('1975-Q2',120000),('1976-Q2',180000),('1977-Q2',260000),('1979-Q2',400000)]:cap(q,'AION Labs','process_test_development_equipment',amt,'Pilot characterization and design/test equipment; secret future machinery acquisition unpriced')
+# Incremental card/monitor capacity above the pre-revision per-system envelope.
+def display_mix(q):
+ rows=[r['products'] for m,r in monthly.items() if quarter(m)==q];total=sum(sum(r.values()) for r in rows)
+ art=sum(r.get('artemis',0) for r in rows)/total if total else 0
+ pro=sum(r.get('artemis_pro',0) for r in rows)/total if total else 0
+ return art,pro
 assembly_area=0;dc_area=0;centres=0;prior_wc=0;prior_software_seats=defaultdict(int)
 for q in quarters:
  y=int(q[:4]);idx=qi(q);infl=1.08**(y-1978);wage={1974:4.2,1975:4.6,1976:5.0,1977:5.5,1978:5.99,1979:6.54,1980:7.08,1981:7.85}[y]*1.35
@@ -185,9 +192,15 @@ for q in quarters:
  # Assembly supplier policy: outsourced bare PCBs, displays, drives, keyboards, metal/plastic, cartons and bulk print.
  direct_hours=sum(v['workforce'] for e,v in q_entity_buckets[q].items() if e=='Logix')/wage
  direct_fte=math.ceil(direct_hours/390) if direct_hours else 0
- stations=math.ceil(required*10/(22*2*8*.8)) if required else 0
+ art,pro=display_mix(q);am=revision['mono_pro_artemis_bundle_share'];pm=revision['mono_pro_pro_console_share']
+ future_mixes=[display_mix(k) for k in quarters[idx:min(idx+3,len(quarters))]]
+ station_hours=max([10+.6*(a+p)+.5*a*am+2.25*p*pm for a,p in future_mixes])
+ volume=.22+.04*art*am+.12*pro*pm;tonnes=.045+.004*art*am+.015*pro*pm
+ reserved_volume=max([.22+.04*a*am+.12*p*pm for a,p in future_mixes])
+ pcb_area=.6+.04*(art+pro)+.02*art*am+.08*pro*pm
+ stations=math.ceil(required*station_hours/(22*2*8*.8)) if required else 0
  reqarea=math.ceil((stations*14+required/22*6+600)/500)*500 if required else (500 if q>='1976-Q1' else 0)
- reqdc=math.ceil((required*.22*.5/.9+200)/250)*250 if required else 0
+ reqdc=math.ceil((required*reserved_volume*.5/.9+200)/250)*250 if required else 0
  if reqarea>assembly_area:cap(q,'Logix','factory_fitout_and_equipment',(reqarea-assembly_area)*220*infl,'Leased industrial shell, ESD benches, through-hole wave solder, fixtures and burn-in; two-quarter look-ahead');assembly_area=max(assembly_area,reqarea)
  if reqdc>dc_area:cap(q,'Logix','distribution_fitout',(reqdc-dc_area)*90*infl,'Three regional nodes as demand grows; leased floor area, racking and handling');dc_area=max(dc_area,reqdc)
  enrol=0;days=0
@@ -203,11 +216,11 @@ for q in quarters:
  needcentres=min(24,max(5,math.ceil(rooms/3))) if rooms else 0
  if needcentres>centres:cap(q,'Logix','academy_fitout',(needcentres-centres)*30000*infl,'Leased three-room centres; furniture and fitout; classroom computers budgeted separately');centres=max(centres,needcentres)
  training_hw=max(0,rooms*9-(capacity[-1]['training_computers'] if capacity else 0));cap(q,'Logix','academy_computers',training_hw*1200*infl,'Nine computers/room; incremental internal-equipment allowance at cost; omitted from retail sales') if training_hw else None
- logfte=math.ceil((q_units[q]*.22/3*1.10)/(22*6)) + (9 if q_units[q] else 0)
+ logfte=math.ceil((q_units[q]*volume/3*1.10)/(22*6)) + (9 if q_units[q] else 0)
  # Staff support is based on included service budget and avoided double payroll.
  support_budget=q_entity_buckets[q]['Logix'].get('included_service_delivery',0)
  supportfte=math.ceil(support_budget/(wage*1.6*520))
- capacity.append(dict(quarter=q,customer_computers=math.ceil(q_units[q]),peak_month_customer_demand=math.ceil(current_peak),installed_computer_capacity_month=required,assembly_gross_m2=assembly_area,assembly_stations=stations,distribution_total_m2=dc_area,logistics_fte=logfte,assembly_direct_fte=direct_fte,academy_centres=centres,academy_rooms=rooms,dealer_hosted_rooms=max(0,rooms-centres*3),academy_instructors=instructors,training_computers=rooms*9,course_enrolments=math.ceil(enrol),factory_shift_pattern='2 x 8 h, 22 days/month, 80% productive utilization',outbound_m3_month=rnd(current_peak*.22),outbound_tonnes_month=rnd(current_peak*.045),linehaul_trailer_loads_month=math.ceil(current_peak*.22/55),dealer_drops_week=math.ceil(current_peak/4.33/12),carton_capacity_month=math.ceil(required*5),manual_pages_month=math.ceil(required*500),media_sets_month=math.ceil(required*3),supplier_bare_pcb_m2_month=round(required*.6),fab_wafer_starts_required_month=wafer_peak[q],fab_capacity_month=stage['wafer_starts_per_month'] if stage else 0))
+ capacity.append(dict(quarter=q,customer_computers=math.ceil(q_units[q]),peak_month_customer_demand=math.ceil(current_peak),installed_computer_capacity_month=required,assembly_gross_m2=assembly_area,assembly_stations=stations,distribution_total_m2=dc_area,logistics_fte=logfte,assembly_direct_fte=direct_fte,academy_centres=centres,academy_rooms=rooms,dealer_hosted_rooms=max(0,rooms-centres*3),academy_instructors=instructors,training_computers=rooms*9,course_enrolments=math.ceil(enrol),display_mix_assumptions={'artemis_share':art,'pro_share':pro,'mono_pro_artemis_uptake':am,'mono_pro_pro_uptake':pm,'station_hours_per_system':station_hours,'packed_m3_per_system':volume,'packed_tonnes_per_system':tonnes,'supplier_pcb_m2_per_system':pcb_area},factory_shift_pattern='2 x 8 h, 22 days/month, 80% productive utilization',outbound_m3_month=rnd(current_peak*volume),outbound_tonnes_month=rnd(current_peak*tonnes),linehaul_trailer_loads_month=math.ceil(current_peak*volume/55),dealer_drops_week=math.ceil(current_peak/4.33/12),carton_capacity_month=math.ceil(required*5),manual_pages_month=math.ceil(required*500),media_sets_month=math.ceil(required*3),supplier_bare_pcb_m2_month=round(required*pcb_area),fab_wafer_starts_required_month=wafer_peak[q],fab_capacity_month=stage['wafer_starts_per_month'] if stage else 0))
  for e in entities:
   buckets=dict(q_entity_buckets[q][e]);eng=sum(p['person_months']/(qi(p['end'])-qi(p['start'])+1)/3 for p in programs if p['entity']==e and p['start']<=q<=p['end'])
   scheduled_eng=eng
