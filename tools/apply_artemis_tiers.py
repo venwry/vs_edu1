@@ -221,7 +221,13 @@ print('PASS: Artemis tier BOMs, mode allocation, monitor constraints, selected-c
 for f in ['logix_aion_story.json','ncc_1980_campaign.json']:
  if (R/f).exists():
   doc=rewrite(load(f))
-  if isinstance(doc,dict):doc['artemis_configuration_policy']='Artemis 128: 16 KiB card with Mono II or Color II. Artemis 256: 32 AION 64 Kbit system RAM chips and 32 KiB card with Mono Pro or Color II. Mono Pro requires the professional card; Color II uses legacy timings. See artemis_tiers.json.'
+  if f=='ncc_1980_campaign.json':doc['artemis_configuration_policy']='Artemis 128: 16 KiB card with Mono II or Color II. Artemis 256: 32 AION 64 Kbit system RAM chips and 32 KiB card with Mono Pro or Color II. Mono Pro requires the professional card; Color II uses legacy timings. See artemis_tiers.json.'
+  if f=='logix_aion_story.json':
+   e=next(e for p in doc['phases'] for e in p['events'] if e['id']=='event.artemis_launch')
+   for act in e['actions']:
+    if 'Ship the replaceable 32 KiB video card' in act['description']:
+     act['description']='Ship Artemis 128 with a replaceable 16 KiB video card and Mono II or Color II; ship Artemis 256 with 32 AION 64 Kbit system RAM chips, a 32 KiB video card and Mono Pro or Color II. Both cards include 1 KiB exclusive sprite SRAM. Only the professional card and Mono Pro enable 640×400 modes; Color II keeps legacy timings. High-resolution demonstrations and paid follow-up campaign are separately budgeted; production qualification remains required.'
+   e['product_refs']+=['device.artemis_video_card_16kb','part.aion_4164']
   save(f,doc)
 doc=R/'ARTEMIS_VIDEO_CARD.md';s=doc.read_text()
 s=s.replace('## Card and monitor','## Professional card and monitor (Artemis 256 / PRO)')
