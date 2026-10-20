@@ -121,7 +121,7 @@ edit('tools/build_cost_assessment.py',"custom=set(chip_area)","custom=set(chip_a
 edit('tools/build_cost_assessment.py'," if i==3 and maturity<1:maturity=.86"," if i==3 and maturity<1:maturity=.86\n if ref=='part.aion_4164':maturity=.85")
 edit('tools/build_cost_assessment.py',"allowances.update(card_allowances)","allowances.update(card_allowances)\nallowances['economy_video_byte_bridge']=6.5 # 1978 allowance, learning to $5.85 in 1980; no second video ASIC")
 # Pricing removes unsupported offers and gives color/mono variants real cost dependencies.
-edit('tools/build_pricing.py',"'bundle.artemis_256_mono',","")
+edit('tools/build_pricing.py',"'bundle.artemis_128_color','bundle.artemis_256_mono','bundle.artemis_256_color'","'bundle.artemis_128_color','bundle.artemis_256_color'")
 edit('tools/build_pricing.py',"'art128color','art256','art256color'","'art128color','art256color'")
 edit('tools/build_pricing.py',"('artemis_128_mono_pro','art128pro'),","")
 edit('tools/build_pricing.py',"'bundle.artemis_256_mono'","'bundle.artemis_256_mono_pro'")
@@ -273,5 +273,10 @@ Sales feed manufacturing, fab loading, staffing, logistics and capacity with 10%
 
 Run the five normal builders (cost, pricing, sales, investment, ROI), followed by Python validators and JavaScript DOM tests. tools/apply_artemis_tiers.py is an idempotent migration; artemis_tiers.json records application of the policy.
 ''')
+
+# Exercise both card choices and ensure the visible component actually contains its parts.
+edit('tests/atlas.test.cjs',"selectRAM('m32_128',128,4,2);","selectRAM('m32_128',128,4,2);assert(d.querySelector('[data-node=\"video_ram\"] .video-card-contents').textContent.includes('Display RAM: 16 KiB'));assert(d.querySelector('[data-node=\"video_ram\"] .video-card-contents').textContent.includes('Sprite SRAM: 1 KiB'));")
+edit('tests/atlas.test.cjs',"selectRAM('m128_256',256,2,1);","selectRAM('m128_256',256,2,1);assert(d.querySelector('[data-node=\"video_ram\"] .video-card-contents').textContent.includes('Display RAM: 32 KiB'));assert(!d.querySelector('[data-node=\"display_dram\"]'));")
+
 save('artemis_tiers.json',{'status':'Accepted planning scenario; electrical qualification pending','artemis_128':{'system_ram_kib':128,'video_card_ref':small,'monitor_refs':['device.mono_monitor_2','device.color_monitor_2']},'artemis_256':{'system_ram_kib':256,'system_ram_chip_ref':aion,'system_ram_chip_count':32,'video_card_ref':large,'monitor_refs':['device.mono_pro','device.color_monitor_2']},'pro_sourcing_changed':False,'sales_mix':{'artemis_128_mono':.56,'artemis_128_color':.14,'artemis_256_mono_pro':.24,'artemis_256_color':.06}})
 print('Applied Artemis configuration tiers; rebuild all derived models next.')
