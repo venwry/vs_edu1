@@ -10,7 +10,16 @@ def edit(f,a,z):
  p=R/f;s=p.read_text()
  if a not in s:raise AssertionError((f,a[:100]))
  p.write_text(s.replace(a,z))
+def repair_64k_requirements():
+ cat=load('logix_aion_technical_catalog_v2.json')
+ part=next((x for x in cat['base_parts'] if x['id']=='part.aion_4164'),None)
+ if part:
+  bom=load('hardware_bom.json')
+  for x in bom['components']+bom['assemblies']:
+   if x['id'] in ['bompart.part.aion_4164','assembly.part.aion_4164']:x['requirements']=part['manufacturing_requirements']
+  save('hardware_bom.json',bom)
 if (R/'artemis_tiers.json').exists():
+ repair_64k_requirements()
  print('Artemis tier migration already applied; normal builders remain authoritative.')
  raise SystemExit(0)
 c=load('logix_aion_technical_catalog_v2.json');b=load('hardware_bom.json')
@@ -285,4 +294,5 @@ edit('tests/atlas.test.cjs',"selectRAM('m32_128',128,4,2);","selectRAM('m32_128'
 edit('tests/atlas.test.cjs',"selectRAM('m128_256',256,2,1);","selectRAM('m128_256',256,2,1);assert(d.querySelector('[data-node=\"video_ram\"] .video-card-contents').textContent.includes('Display RAM: 32 KiB'));assert(!d.querySelector('[data-node=\"display_dram\"]'));")
 
 save('artemis_tiers.json',{'status':'Accepted planning scenario; electrical qualification pending','artemis_128':{'system_ram_kib':128,'video_card_ref':small,'monitor_refs':['device.mono_monitor_2','device.color_monitor_2']},'artemis_256':{'system_ram_kib':256,'system_ram_chip_ref':aion,'system_ram_chip_count':32,'video_card_ref':large,'monitor_refs':['device.mono_pro','device.color_monitor_2']},'pro_sourcing_changed':False,'sales_mix':{'artemis_128_mono':.56,'artemis_128_color':.14,'artemis_256_mono_pro':.24,'artemis_256_color':.06}})
+repair_64k_requirements()
 print('Applied Artemis configuration tiers; rebuild all derived models next.')
