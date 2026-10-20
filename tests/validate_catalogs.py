@@ -43,11 +43,15 @@ for p in profiles:
  assert int(p['bdos_entry'],16)==int(p['application_end_inclusive'],16)+1
  assert p['tpa_bytes']==int(p['bdos_entry'],16)-int(p['application_start'],16)
 for c in tech['computers']:
+ if 'text_modes' in c['video']:
+  for mode in c['video']['text_modes']+c['video']['bitmap_modes']:
+   for config in mode['configurations']:assert config['allocated_bytes']+config['remaining_video_ram_bytes']==c['memory']['video_ram_kb']*1024
+  continue
  layout=c['video']['memory_layout'];text=layout['text_mode'];bitmap=layout['bitmap_mode']
  capacity=(c['memory'].get('video_ram_kb') or c['video']['video_ram_kb'])*1024
  assert text['allocated_bytes']==text['text_buffer_count']*(text['character_map_bytes_per_buffer']+text['attribute_map_bytes_per_buffer'])+text['font_bytes']
  assert text['allocated_bytes']<=capacity
- assert bitmap['framebuffer_count']*bitmap['bytes_per_framebuffer']+bitmap['remaining_vram_bytes']==capacity
+ assert bitmap['framebuffer_count']*bitmap['bytes_per_framebuffer']+bitmap['remaining_video_ram_bytes']==capacity
 actors={x['id'] for x in story['assumptions']['entities']};events=[e for p in story['phases'] for e in p['events']];event_ids={e['id'] for e in events}
 assert len(event_ids)==len(events);assert len(actors)==len(story['assumptions']['entities']);assert len({p['id'] for p in story['phases']})==len(story['phases'])
 for e in events:

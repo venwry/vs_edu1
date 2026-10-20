@@ -4,6 +4,13 @@ Catalog 2.15 replaces the former custom random-plus-serial memory design with on
 
 Both hosts implement 40x25 and 80x25 text with 256 writable 8x8 glyphs and 4-bit foreground/background indices. Two text pages share one 2 KiB font. Five 16x16, 4-bit sprites require 640 bytes of patterns and 20 bytes of X/Y coordinates total; reserve 768 bytes. Index zero is transparent only for sprites. Both text modes support two pages plus all five sprites.
 
+All table allocations below are bytes used / free out of 16384 bytes. Text maps include padding; each page has a code map and an equally sized colour map.
+
+| Text mode | Pixels | Code / colour map per page | Shared font | One page | Two pages | One page + 5 sprites | Two pages + 5 sprites |
+|---|---|---|---:|---|---|---|---|
+| 40×25 | 320×200 | 1024 / 1024 | 2048 | 4096 / 12288 | 6144 / 10240 | 4864 / 11520 | 6912 / 9472 |
+| 80×25 | 640×200 | 2048 / 2048 | 2048 | 6144 / 10240 | 10240 / 6144 | 6912 / 9472 | 11008 / 5376 |
+
 | Bitmap | Bytes per page | Supported configurations |
 |---|---:|---|
 | 640x200x1 | 16000 | One page, no sprites |
@@ -21,7 +28,7 @@ The four FIFO banks follow circular raster order with FREE/FILLING/READY/READING
 
 Eight external AION 4116-equivalent 16Kx1 DRAM chips form one 16KiB, 8-bit memory bank. They have one random read/write port and no serial-output register. All glyph, sprite, bitmap, host and refresh accesses share the DRAM bus with bounded CPU waits. Character codes/colours are cached across eight glyph scanlines, while the next row is prefetched into the second cache. An illustrative worst-overlap text budget averages 80 glyph + 20 next-row + 40 sprite reads = 140 reads, or 52.5 microseconds at a 375ns cycle. This is not a local deadline proof. Validate cache transitions, FIFO refill, startup, refresh and host writes together; a faster qualified grade or page-mode schedule may be required. Repeated bitmap lines may be fetched again; no extra full scanline store is assumed. In particular, validate 320x100x4 throughput including line repetition.
 
-The main RAM remains external. The 4116-compatible target uses a 16-pin DIP and +12V/+5V/-5V rails; final ordering code, electrical compatibility and speed grade remain qualification gates. Purchased system RAM (`part.dram_16kbit`) is distinct from internally manufactured display RAM (`part.aion_4116`). Existing `vram_policy`, `reserved_vram_bytes` and `remaining_vram_bytes` keys retain their generic video-memory allocation meaning for API compatibility; they do not describe dual-port silicon.
+The main RAM remains external. The 4116-compatible target uses a 16-pin DIP and +12V/+5V/-5V rails; final ordering code, electrical compatibility and speed grade remain qualification gates. Purchased system RAM (`part.dram_16kbit`) is distinct from internally manufactured display RAM (`part.aion_4116`). Display-memory allocation keys consistently use `video_ram_policy`, `reserved_video_ram_bytes` and `remaining_video_ram_bytes` across catalog, code and reports.
 
 The existing Control pair becomes bidirectional for monitor capability discovery. Fixed raster profiles target 320x200 at 7.15909 MHz and 640x200 at 14.31818 MHz, with equal line/frame rates. Monitor I models advertise the 320 profile; Monitor II models target both. These are design requirements pending OEM bandwidth, sync and readability qualification. Both text widths are native to both computers; firmware exposes only modes supported by the connected monitor. Pixels/lines repeat by integer factors; unsupported downscaling is rejected. Mono I requires host index-to-luminance mapping because its DAC has no programmable palette.
 

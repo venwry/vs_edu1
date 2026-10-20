@@ -15,7 +15,7 @@
       "graphics_storage": "Per-computer video.memory_layout supplies text and bitmap allocations; shared mode-switch and preservation behavior resides in the display API specification.",
       "manufacturing": "hardware_bom.json separates recurring material, assembly requirements, variant packout and unresolved costing inputs. No prices or qualified supplier claims are invented.",
       "second_source": "SMC transfer begins 1978-07; initial independent commercial sales 1979-10. Dates are month-precision; per-part qualification and supplier pricing remain engineering inputs.",
-      "video_memory": "Aurelia-family display storage is ordinary external AION 4116 DRAM. Retained vram_policy/reserved_vram_bytes/remaining_vram_bytes keys mean video RAM allocation, not dual-port hardware."
+      "video_memory": "Aurelia-family display storage is ordinary external AION 4116 DRAM. Retained video_ram_policy/reserved_video_ram_bytes/remaining_video_ram_bytes keys mean video RAM allocation, not dual-port hardware."
     }
   },
   "technologies": [
@@ -1253,7 +1253,7 @@
         "mapping_register_access": "I/O ports",
         "implementation": "Bank-selection registers, address decoding and multiplexing logic; suitable for later AION integration.",
         "rom_policy": "Read-only code and constants execute directly from ROM where practical. Mutable state, stacks and buffers reside in RAM.",
-        "vram_policy": "CPU maps selected video RAM pages temporarily; display refresh continues independently, with access arbitration and wait states where needed.",
+        "video_ram_policy": "CPU maps selected video RAM pages temporarily; display refresh continues independently, with access arbitration and wait states where needed.",
         "reset_policy": "Boot ROM initially appears at address zero; normal execution restores RAM and CP/M vectors.",
         "application_policy": "Installed RAM is accessible, but system workspaces and the resident Business Tools workspace reduce application memory.",
         "expansion_policy": "Additional RAM uses mapped pages; an expansion does not enlarge the CPU logical address space.",
@@ -1470,7 +1470,7 @@
         "framebuffer_policy": "Application code uses drawing operations rather than native video RAM addresses, stride or pixel packing.",
         "compatibility_canvas": "Optional later service: preserve a logical canvas and convert to available output. Not guaranteed at launch; report emulation and validate RAM, quality and speed.",
         "text_mode_policy": "Aurelia and Aurelia+ both implement native 40x25 and 80x25; enumerate only configurations usable with the connected monitor.",
-        "vram_storage_policy": {
+        "video_ram_storage_policy": {
           "status": "Accepted design baseline; capacities are arithmetic allocations, not measured timing guarantees.",
           "allocation_model": "Text and bitmap modes reuse the same video RAM. Do not reserve all text maps, font storage and a full bitmap simultaneously.",
           "mode_switch": [
@@ -1909,35 +1909,6 @@
         "video_ram_chip_count": 8,
         "implementation_design": {
           "status": "Accepted design baseline; electrical timing, layout, fabrication and monitor qualification remain pending.",
-          "text_mode_ids": [
-            "text_40",
-            "text_80"
-          ],
-          "bitmap_mode_ids": [
-            "graphics_a",
-            "graphics_b2",
-            "graphics_b1",
-            "graphics_c4",
-            "graphics_c2",
-            "graphics_legacy"
-          ],
-          "sprites": {
-            "count": 5,
-            "maximum_per_scanline": 5,
-            "width": 16,
-            "height": 16,
-            "bits_per_pixel": 4,
-            "pattern_bytes_per_sprite": 128,
-            "position_bytes_per_sprite": 4,
-            "total_pattern_and_position_bytes": 660,
-            "reserved_vram_bytes": 768,
-            "transparent_index": 0,
-            "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
-            "priority": "Lower sprite number wins; all sprites overlay background/text.",
-            "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved video RAM region.",
-            "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
-            "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
-          },
           "internal_buffers": {
             "character_attribute_row_cache_bytes": 160,
             "next_character_attribute_row_cache_bytes": 160,
@@ -3329,40 +3300,10 @@
       },
       "video": {
         "technology_ref": "technology.logix_digital_video",
-        "graphics_modes": [
-          "640x200x1-bit",
-          "320x200x2-bit",
-          "320x200x1-bit",
-          "320x100x4-bit",
-          "320x100x2-bit",
-          "160x100x4-bit"
-        ],
-        "text_mode": {
-          "characters": "40x25",
-          "glyph": "8x8",
-          "double_buffered": true,
-          "character_table": "256 characters / 2 KiB shared font",
-          "per_character_color": "4-bit foreground + 4-bit background",
-          "selection": "Preferred text width; choose a usable mode from monitor capabilities. Both 40x25 and 80x25 are native."
-        },
         "api_ref": "technology.logix_display_api",
         "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
         "memory_layout": {
           "policy_ref": "technology.logix_display_api",
-          "text_mode": {
-            "text_buffer_count": 2,
-            "character_map_bytes_per_buffer": 1024,
-            "attribute_map_bytes_per_buffer": 1024,
-            "font_bytes": 2048,
-            "allocated_bytes": 6144,
-            "allocation_note": "Preferred double-buffered text allocation without sprites; add 768 bytes for all five sprites. Both pages share one font."
-          },
-          "bitmap_mode": {
-            "framebuffer_count": 1,
-            "bytes_per_framebuffer": 8000,
-            "remaining_vram_bytes": 8384,
-            "allocation_note": "Compatibility baseline 320x200x1; bitmap_modes contains per-mode configurations, including 16000-byte modes."
-          },
           "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of video RAM. Mode changes reload fonts and redraw.",
           "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
           "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
@@ -3387,25 +3328,25 @@
                 "text_buffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 4096,
-                "remaining_vram_bytes": 12288
+                "remaining_video_ram_bytes": 12288
               },
               {
                 "text_buffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 4864,
-                "remaining_vram_bytes": 11520
+                "remaining_video_ram_bytes": 11520
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 6144,
-                "remaining_vram_bytes": 10240
+                "remaining_video_ram_bytes": 10240
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 6912,
-                "remaining_vram_bytes": 9472
+                "remaining_video_ram_bytes": 9472
               }
             ]
           },
@@ -3427,25 +3368,25 @@
                 "text_buffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 6144,
-                "remaining_vram_bytes": 10240
+                "remaining_video_ram_bytes": 10240
               },
               {
                 "text_buffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 6912,
-                "remaining_vram_bytes": 9472
+                "remaining_video_ram_bytes": 9472
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 10240,
-                "remaining_vram_bytes": 6144
+                "remaining_video_ram_bytes": 6144
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 11008,
-                "remaining_vram_bytes": 5376
+                "remaining_video_ram_bytes": 5376
               }
             ]
           }
@@ -3463,7 +3404,7 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false
@@ -3480,7 +3421,7 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false
@@ -3497,19 +3438,19 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 8000,
-                "remaining_vram_bytes": 8384
+                "remaining_video_ram_bytes": 8384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8768,
-                "remaining_vram_bytes": 7616
+                "remaining_video_ram_bytes": 7616
               }
             ],
             "compatibility_mode": false
@@ -3526,7 +3467,7 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false
@@ -3543,19 +3484,19 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 8000,
-                "remaining_vram_bytes": 8384
+                "remaining_video_ram_bytes": 8384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8768,
-                "remaining_vram_bytes": 7616
+                "remaining_video_ram_bytes": 7616
               }
             ],
             "compatibility_mode": false
@@ -3572,19 +3513,19 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 8000,
-                "remaining_vram_bytes": 8384
+                "remaining_video_ram_bytes": 8384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8768,
-                "remaining_vram_bytes": 7616
+                "remaining_video_ram_bytes": 7616
               }
             ],
             "compatibility_mode": true
@@ -3599,7 +3540,7 @@
           "pattern_bytes_per_sprite": 128,
           "position_bytes_per_sprite": 4,
           "total_pattern_and_position_bytes": 660,
-          "reserved_vram_bytes": 768,
+          "reserved_video_ram_bytes": 768,
           "transparent_index": 0,
           "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
           "priority": "Lower sprite number wins; all sprites overlay background/text.",
@@ -3766,40 +3707,10 @@
       },
       "video": {
         "technology_ref": "technology.logix_digital_video",
-        "graphics_modes": [
-          "640x200x1-bit",
-          "320x200x2-bit",
-          "320x200x1-bit",
-          "320x100x4-bit",
-          "320x100x2-bit",
-          "160x100x4-bit"
-        ],
-        "text_mode": {
-          "characters": "80x25",
-          "glyph": "8x8",
-          "double_buffered": true,
-          "character_table": "256 characters / 2 KiB shared font",
-          "per_character_color": "4-bit foreground + 4-bit background",
-          "selection": "Preferred text width; choose a usable mode from monitor capabilities. Both 40x25 and 80x25 are native."
-        },
         "api_ref": "technology.logix_display_api",
         "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
         "memory_layout": {
           "policy_ref": "technology.logix_display_api",
-          "text_mode": {
-            "text_buffer_count": 2,
-            "character_map_bytes_per_buffer": 2048,
-            "attribute_map_bytes_per_buffer": 2048,
-            "font_bytes": 2048,
-            "allocated_bytes": 10240,
-            "allocation_note": "Preferred double-buffered text allocation without sprites; add 768 bytes for all five sprites. Both pages share one font."
-          },
-          "bitmap_mode": {
-            "framebuffer_count": 1,
-            "bytes_per_framebuffer": 8000,
-            "remaining_vram_bytes": 8384,
-            "allocation_note": "Compatibility baseline 320x200x1; bitmap_modes contains per-mode configurations, including 16000-byte modes."
-          },
           "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of video RAM. Mode changes reload fonts and redraw.",
           "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
           "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
@@ -3824,25 +3735,25 @@
                 "text_buffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 4096,
-                "remaining_vram_bytes": 12288
+                "remaining_video_ram_bytes": 12288
               },
               {
                 "text_buffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 4864,
-                "remaining_vram_bytes": 11520
+                "remaining_video_ram_bytes": 11520
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 6144,
-                "remaining_vram_bytes": 10240
+                "remaining_video_ram_bytes": 10240
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 6912,
-                "remaining_vram_bytes": 9472
+                "remaining_video_ram_bytes": 9472
               }
             ]
           },
@@ -3864,25 +3775,25 @@
                 "text_buffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 6144,
-                "remaining_vram_bytes": 10240
+                "remaining_video_ram_bytes": 10240
               },
               {
                 "text_buffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 6912,
-                "remaining_vram_bytes": 9472
+                "remaining_video_ram_bytes": 9472
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 10240,
-                "remaining_vram_bytes": 6144
+                "remaining_video_ram_bytes": 6144
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 11008,
-                "remaining_vram_bytes": 5376
+                "remaining_video_ram_bytes": 5376
               }
             ]
           }
@@ -3900,7 +3811,7 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false
@@ -3917,7 +3828,7 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false
@@ -3934,19 +3845,19 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 8000,
-                "remaining_vram_bytes": 8384
+                "remaining_video_ram_bytes": 8384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8768,
-                "remaining_vram_bytes": 7616
+                "remaining_video_ram_bytes": 7616
               }
             ],
             "compatibility_mode": false
@@ -3963,7 +3874,7 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false
@@ -3980,19 +3891,19 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 8000,
-                "remaining_vram_bytes": 8384
+                "remaining_video_ram_bytes": 8384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8768,
-                "remaining_vram_bytes": 7616
+                "remaining_video_ram_bytes": 7616
               }
             ],
             "compatibility_mode": false
@@ -4009,19 +3920,19 @@
                 "framebuffer_count": 1,
                 "sprite_count": 0,
                 "allocated_bytes": 8000,
-                "remaining_vram_bytes": 8384
+                "remaining_video_ram_bytes": 8384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_vram_bytes": 384
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8768,
-                "remaining_vram_bytes": 7616
+                "remaining_video_ram_bytes": 7616
               }
             ],
             "compatibility_mode": true
@@ -4036,7 +3947,7 @@
           "pattern_bytes_per_sprite": 128,
           "position_bytes_per_sprite": 4,
           "total_pattern_and_position_bytes": 660,
-          "reserved_vram_bytes": 768,
+          "reserved_video_ram_bytes": 768,
           "transparent_index": 0,
           "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
           "priority": "Lower sprite number wins; all sprites overlay background/text.",
@@ -4419,7 +4330,7 @@
           "bitmap_mode": {
             "framebuffer_count": 1,
             "bytes_per_framebuffer": 16000,
-            "remaining_vram_bytes": 384,
+            "remaining_video_ram_bytes": 384,
             "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
           },
           "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same video RAM, not additive reservations."
@@ -4701,7 +4612,7 @@
           "bitmap_mode": {
             "framebuffer_count": 1,
             "bytes_per_framebuffer": 16000,
-            "remaining_vram_bytes": 384,
+            "remaining_video_ram_bytes": 384,
             "allocation_note": "All listed graphics modes for this computer have this framebuffer size. Remaining bytes are not a promise of additional display features."
           },
           "mode_exclusivity": "Text/font allocation and bitmap allocation are alternative uses of the same video RAM, not additive reservations."
@@ -7139,7 +7050,7 @@
             "computer_path": "io_and_expansion.rom_eeprom_cartridge_slots"
           },
           {
-            "id": "vram",
+            "id": "video_ram",
             "title": "Separate video RAM",
             "column": 3,
             "row": 4,
@@ -7180,7 +7091,7 @@
           ],
           [
             "physical",
-            "vram"
+            "video_ram"
           ],
           [
             "os",
