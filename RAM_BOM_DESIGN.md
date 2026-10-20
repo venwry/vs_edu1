@@ -52,4 +52,4 @@ Run the catalog validator, the hardware BOM validator and the existing DOM suite
 
 ## Unified Aurelia video (v2.7)
 
-Both Aurelia models now populate one shared controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAM chips (16 KiB). See VIDEO_DESIGN.md for mode allocations, monitor discovery and manufacturing estimates. Run `python tests/validate_video.py` to verify every buffer/sprite allocation and the nine-chip BOM. These quantities are defined; electrical qualification and unit-cost quotations remain open.
+Both Aurelia models now populate one shared video controller, eight AION-manufactured 4116-equivalent DRAM chips (16 KiB), two AION 2114-equivalent SRAMs (1 KiB exclusive sprites) and one AION system controller for DMA/banking/refresh. See VIDEO_DESIGN.md for mode allocations, monitor discovery and manufacturing estimates. Run `python tests/validate_video.py` to verify every buffer/sprite allocation and the eleven-chip video population and single system-controller BOM. These quantities are defined; electrical qualification and unit-cost quotations remain open.

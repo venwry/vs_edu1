@@ -1,5 +1,7 @@
 # Sales forecast through COMDEX 1980
 
+Historical campaign-analysis snapshot. Its numerical tables precede the sprite/system-controller cost rebase; current recalculated figures are in [sales.html](sales.html), [sales_forecast.json](sales_forecast.json) and [SALES_FORECAST.md](SALES_FORECAST.md). Campaign dates and assumptions below remain applicable.
+
 Alternative-history US sell-through scenarios, not recorded orders. Cutoff: **November 18, 1980**, immediately before the November 19 software launch. Earlier forecast periods and Academy projections through May 18 are preserved.
 
 ## Additional deliveries: May 19–November 18

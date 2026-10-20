@@ -2001,8 +2001,8 @@
       "requirements": []
     },
     {
-      "id": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
-      "name": "clock reset interrupts mapper and bus buffers",
+      "id": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
+      "name": "Remaining clock/reset/interrupt and bus buffers",
       "category": "unresolved_component",
       "catalog_ref": null,
       "manufacturer": null,
@@ -2012,7 +2012,9 @@
       "quote_date": null,
       "quantity_tier": null,
       "qualification_status": "unresolved",
-      "requirements": []
+      "requirements": [
+        "Bank registers and selected decode/control logic integrated into AION system controller; retain necessary electrical buffers. $5 central replacement credit in cost model."
+      ]
     },
     {
       "id": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -2113,8 +2115,8 @@
       "requirements": []
     },
     {
-      "id": "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers",
-      "name": "clock reset interrupts mapper and bus buffers",
+      "id": "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
+      "name": "Remaining clock/reset/interrupt and bus buffers",
       "category": "unresolved_component",
       "catalog_ref": null,
       "manufacturer": null,
@@ -2124,7 +2126,9 @@
       "quote_date": null,
       "quantity_tier": null,
       "qualification_status": "unresolved",
-      "requirements": []
+      "requirements": [
+        "Bank registers and selected decode/control logic integrated into AION system controller; retain necessary electrical buffers. $5 central replacement credit in cost model."
+      ]
     },
     {
       "id": "bompart.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
@@ -3164,6 +3168,137 @@
       "quantity_tier": null,
       "qualification_status": "unresolved",
       "requirements": []
+    },
+    {
+      "id": "bompart.part.aion_2114",
+      "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
+      "category": "catalog_component",
+      "catalog_ref": "part.aion_2114",
+      "manufacturer": "AION Labs",
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
+      ]
+    },
+    {
+      "id": "bompart.part.aurelia_system_controller",
+      "name": "AION Aurelia system controller (DMA, banking and refresh)",
+      "category": "catalog_component",
+      "catalog_ref": "part.aurelia_system_controller",
+      "manufacturer": "AION Labs",
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
+      ]
+    },
+    {
+      "id": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+      "name": "Sprite interface package, PCB and test allowance",
+      "category": "unresolved_component",
+      "catalog_ref": null,
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Functional assembly allowance; select released parts and test routing before production."
+      ]
+    },
+    {
+      "id": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+      "name": "System controller interface, PCB and test allowance",
+      "category": "unresolved_component",
+      "catalog_ref": null,
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Functional assembly allowance; select released parts and test routing before production."
+      ]
+    },
+    {
+      "id": "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test",
+      "name": "Sprite interface package, PCB and test allowance",
+      "category": "unresolved_component",
+      "catalog_ref": null,
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Functional assembly allowance; select released parts and test routing before production."
+      ]
+    },
+    {
+      "id": "bompart.computer.aurelia_plus.system_controller_interface_pcb_test",
+      "name": "System controller interface, PCB and test allowance",
+      "category": "unresolved_component",
+      "catalog_ref": null,
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Functional assembly allowance; select released parts and test routing before production."
+      ]
+    },
+    {
+      "id": "bompart.device.apple2_video_card.sprite_interface_package_pcb_test",
+      "name": "Sprite interface package, PCB and test allowance",
+      "category": "unresolved_component",
+      "catalog_ref": null,
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Functional assembly allowance; select released parts and test routing before production."
+      ]
+    },
+    {
+      "id": "bompart.device.s100_video_card.sprite_interface_package_pcb_test",
+      "name": "Sprite interface package, PCB and test allowance",
+      "category": "unresolved_component",
+      "catalog_ref": null,
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Functional assembly allowance; select released parts and test routing before production."
+      ]
     }
   ],
   "assemblies": [
@@ -5333,7 +5468,7 @@
           "quantity_status": "unresolved"
         },
         {
-          "ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+          "ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
           "quantity": null,
           "unit": "each",
           "role": "",
@@ -5355,13 +5490,45 @@
           "role": "",
           "condition": "always",
           "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.aion_2114",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Exclusive 1 KiB sprite SRAM on separate bus",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.aurelia_system_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "DMA, memory-bank control and independent system refresh",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Sprite interface package, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "System controller interface, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
         }
       ],
       "requirements": [
-        "Add 24 data DRAMs and their decode/refresh logic",
+        "Populate 24 system DRAMs; AION system controller owns decode and refresh",
         "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
         "motherboard ROM capacity/package/count and cartridge connectors",
-        "mapper registers/logic",
+        "AION system controller owns mapper registers/logic",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
         "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
@@ -5370,7 +5537,12 @@
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
         "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ],
       "routing": {
         "operations": [],
@@ -5468,7 +5640,7 @@
           "quantity_status": "unresolved"
         },
         {
-          "ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers",
+          "ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
           "quantity": null,
           "unit": "each",
           "role": "",
@@ -5490,6 +5662,38 @@
           "role": "",
           "condition": "always",
           "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.aion_2114",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Exclusive 1 KiB sprite SRAM on separate bus",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.aurelia_system_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "DMA, memory-bank control and independent system refresh",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Sprite interface package, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.computer.aurelia_plus.system_controller_interface_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "System controller interface, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
         }
       ],
       "requirements": [
@@ -5501,7 +5705,12 @@
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
         "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ],
       "routing": {
         "operations": [],
@@ -7795,13 +8004,31 @@
           "role": "",
           "condition": "always",
           "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.aion_2114",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Exclusive 1 KiB sprite SRAM on separate bus",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.apple2_video_card.sprite_interface_package_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Sprite interface package, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
         }
       ],
       "requirements": [
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
-        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode.",
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
       ],
       "routing": {
         "operations": [],
@@ -7897,13 +8124,88 @@
           "role": "",
           "condition": "always",
           "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.aion_2114",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Exclusive 1 KiB sprite SRAM on separate bus",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.s100_video_card.sprite_interface_package_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Sprite interface package, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
         }
       ],
       "requirements": [
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
-        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+        "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode.",
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "assembly.part.aion_2114",
+      "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.aion_2114",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "requirements": [
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "assembly.part.aurelia_system_controller",
+      "name": "AION Aurelia system controller (DMA, banking and refresh)",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.aurelia_system_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "requirements": [
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ],
       "routing": {
         "operations": [],
@@ -7924,10 +8226,10 @@
         "assembly.computer.aurelia.base"
       ],
       "requirements": [
-        "Add 24 data DRAMs and their decode/refresh logic",
+        "Populate 24 system DRAMs; AION system controller owns decode and refresh",
         "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
         "motherboard ROM capacity/package/count and cartridge connectors",
-        "mapper registers/logic",
+        "AION system controller owns mapper registers/logic",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
         "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
@@ -7936,7 +8238,12 @@
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
         "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ]
     },
     {
@@ -7954,7 +8261,12 @@
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
         "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ]
     },
     {
@@ -8722,6 +9034,29 @@
         "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
         "Release assembly routing, test fixtures and procurement specifications.",
         "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+      ]
+    },
+    {
+      "catalog_ref": "part.aion_2114",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.part.aion_2114"
+      ],
+      "requirements": [
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
+      ]
+    },
+    {
+      "catalog_ref": "part.aurelia_system_controller",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.part.aurelia_system_controller"
+      ],
+      "requirements": [
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ]
     }
   ],

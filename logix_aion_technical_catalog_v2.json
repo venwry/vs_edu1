@@ -1242,7 +1242,7 @@
         "computer.aurelia",
         "computer.aurelia_plus"
       ],
-      "description": "A Logix memory mapper exposes RAM, motherboard ROM, cartridge ROM and video RAM through one CPU address space. Banks hidden by another mapping retain their contents. No separate Zilog MMU is required.",
+      "description": "AION system controller combines DMA, 4 KiB bank mapping and CPU-independent system-DRAM refresh. Dedicated sprite SRAM is accessed through video upload ports.",
       "specification": {
         "cpu_address_space_kb": 64,
         "page_size_kb": 4,
@@ -1251,10 +1251,10 @@
         "common_system_ram_kb": 4,
         "common_ram_budget_status": "Initial planning allocation; validate against firmware, buffers and interrupt requirements.",
         "mapping_register_access": "I/O ports",
-        "implementation": "Bank-selection registers, address decoding and multiplexing logic; suitable for later AION integration.",
+        "implementation": "One AION system-controller chip replaces mapper registers and selected decode/control logic; external clock/reset/interrupt and electrical buffers remain as required.",
         "rom_policy": "Read-only code and constants execute directly from ROM where practical. Mutable state, stacks and buffers reside in RAM.",
-        "video_ram_policy": "CPU maps selected video RAM pages temporarily; display refresh continues independently, with access arbitration and wait states where needed.",
-        "reset_policy": "Boot ROM initially appears at address zero; normal execution restores RAM and CP/M vectors.",
+        "video_ram_policy": "CPU uses temporary 4 KiB display-memory windows or auto-incrementing upload ports. DMA uses physical source banks and target-ready video ports. Video controller independently refreshes display DRAM and arbitrates sprite SRAM; sprite storage is not system RAM.",
+        "reset_policy": "Initialize refresh and boot mapping before RAM use; disable DMA and clear pending ownership on reset. Warm boot aborts/drains DMA before restoring bank maps.",
         "application_policy": "Installed RAM is accessible, but system workspaces and the resident Business Tools workspace reduce application memory.",
         "expansion_policy": "Additional RAM uses mapped pages; an expansion does not enlarge the CPU logical address space.",
         "implementation_design": {
@@ -1277,7 +1277,9 @@
           "extension_api": "lx_memory_query returns installed RAM, TPA bounds, reserved bytes and optional banked-handle capacity. Standard CP/M programs need not use it.",
           "validation": [
             "Exercise programs that inspect 0006H and fill their advertised TPA.",
-            "Test nested calls, interrupts, DMA buffers crossing pages and warm boot after application failure."
+            "Test nested calls, interrupts, DMA buffers crossing pages and warm boot after application failure.",
+            "Stress CPU/DMA/refresh/peripherals and display together at both host clocks and process/temperature corners.",
+            "Validate hidden and expanded RAM refresh, physical DMA bounds, page-crossing segmentation, abort and warm boot."
           ],
           "application_memory_profiles": [
             {
@@ -1301,6 +1303,48 @@
               "status": "Specified initial allocation; any future budget change must preserve the published boundary for each running program."
             }
           ]
+        },
+        "controller_ref": "part.aurelia_system_controller",
+        "dma": {
+          "transfer_contexts": 2,
+          "active_transfer_engines": 1,
+          "source_address_bits": 16,
+          "destination_address_bits": 16,
+          "length_bits": 16,
+          "operations": [
+            "memory-to-memory",
+            "memory-to-I/O",
+            "I/O-to-memory"
+          ],
+          "address_steps": [
+            "fixed",
+            "increment",
+            "decrement"
+          ],
+          "bank_selection": "Latch physical source/destination bank and offsets on start. CPU mapping changes cannot redirect an active transfer; split logical buffers at 4 KiB boundaries before programming physical segments. Reject ROM writes, unmapped banks and out-of-range lengths.",
+          "arbitration": "Bounded bursts with guaranteed CPU and refresh service; device-ready/WAIT handshake; video uploads yield to video-controller fetch deadlines. Numeric grant limits require cycle-level validation.",
+          "completion": "Completion/error interrupt, readable remaining count, controlled abort; reset disables DMA.",
+          "video_endpoint": "Auto-incrementing upload ports for display DRAM or dedicated sprite SRAM; target-ready backpressure.",
+          "peripheral_scope": "Disk/FlexiBUS DMA requires qualified request/ready or FIFO endpoints and drivers; legacy programmed I/O remains supported."
+        },
+        "system_refresh": {
+          "independent_of_cpu": true,
+          "all_installed_banks": true,
+          "scope": "System DRAM only, including hidden banks and expansion. Video controller refreshes display DRAM; sprite SRAM needs no refresh.",
+          "scheduler": "Always-running timer, row counter and refresh arbitration during CPU execution, HALT and DMA; initialize before enabling RAM use. Match row count and retention deadlines to each qualified system DRAM type.",
+          "supported_populations": [
+            "48 KiB: three banks of eight 16Kx1 DRAMs",
+            "64 KiB expanded Aurelia: four banks of eight 16Kx1 DRAMs",
+            "64 KiB Aurelia+: one bank of eight 64Kx1 DRAMs"
+          ]
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
         }
       },
       "regions": [
@@ -1338,7 +1382,10 @@
         "Define nested bank-call save/restore conventions.",
         "Separate writable state from ROM code and remove or relocate self-modifying code.",
         "Reserve resident workspace memory explicitly.",
-        "Final ROM capacities, timing and common-memory budget require implementation validation."
+        "Final ROM capacities, timing and common-memory budget require implementation validation.",
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ],
       "normal_map_explanation": "Normal mapping describes what the CPU sees while an application runs. Mapper capability describes which addresses can change. The same 7000–EFFF switching capability exists in every configuration, even when those addresses normally contain RAM.",
       "full_ram_explanation": "With 64 KB installed (Aurelia+ or expanded Aurelia), 0000–EFFF contains 60 KB lower RAM and F000–FFFF contains 4 KB common system RAM. B000–EFFF is therefore RAM rather than a permanently reserved ROM window. System calls temporarily overlay selected pages with ROM/cartridge/video RAM, then restore RAM. The Z80 never sees all physical RAM and ROM simultaneously."
@@ -1480,7 +1527,7 @@
             "Notify the application/context of the changed mode and request a redraw from its document state."
           ],
           "preservation": "Previous screen pixels are not preserved by default. An explicit preservation request may use a system-RAM buffer only if allocation succeeds; unsupported or unaffordable requests return a defined error before changing the mode.",
-          "graphics_buffering": "Aurelia family: 16000-byte bitmaps support one page without sprites; 8000-byte modes support two pages without sprites or one page with five sprites. Both text modes allow two pages and five sprites with one shared font. Other hosts retain their specified allocations.",
+          "graphics_buffering": "Aurelia family: 16000-byte bitmaps support one page; 8000-byte modes support two pages. All modes support five sprites in exclusive 1 KiB SRAM. Both text modes support two pages sharing one font. Other hosts retain their specified allocations.",
           "graphics_text": "Draw glyphs from ROM/system resources into the bitmap; bitmap mode does not require a complete resident character-generator table in video RAM.",
           "boundary": "Application documents remain in application RAM or files; a mode switch does not discard document state.",
           "presentation": "Latch page and sprite positions during vertical blank; shared-font and sprite-pattern changes need separate synchronization."
@@ -1921,7 +1968,7 @@
             "total_storage_bytes": 560,
             "included_in_die_estimates": true
           },
-          "arbitration": "Single external 8-bit DRAM bus. Deadline-scheduled glyph and sprite reads, next-row prefetch, all-row refresh and bounded host access with wait states. No serial memory port. Internal FIFO fill/drain operate on different banks.",
+          "arbitration": "Independent display-DRAM and sprite-SRAM buses. Display reads and full-array refresh have bounded host/DMA backpressure. Sprite fetches use the separate SRAM bus and existing staging/shifters; completed FIFO banks preserve raster order.",
           "text_fetch": "Cache 80 character codes and 80 attributes; prefetch the next row into the second 160-byte cache over eight glyph scanlines. Expand each glyph byte to eight 4-bit pixels; prefetch sprite rows and apply fixed priority before publishing pixels.",
           "line_repeat": "Re-fetch repeated bitmap lines; FIFO capacity is not an additional framebuffer or guaranteed retained scanline. Validate 320x100x4 bandwidth and refresh at the selected DRAM grade.",
           "clock_targets": {
@@ -1935,31 +1982,32 @@
             "status": "Engineering estimates, not measured yields or released costs.",
             "process": "3–3.5 micron NMOS; laser-written process-matched masks from secret facility; wafer fabrication at AION Labs.",
             "transistors_range": [
-              40000,
-              50000
+              44000,
+              56000
             ],
-            "transistors_central": 45000,
+            "transistors_central": 49000,
             "die_area_mm2_at_3um_range": [
-              40,
-              60
+              44,
+              64
             ],
             "die_area_mm2_at_3_5um_range": [
-              55,
-              80
+              60,
+              87
             ],
-            "die_area_mm2_central_at_3um": 48,
-            "die_area_mm2_central_at_3_5um": 65,
+            "die_area_mm2_central_at_3um": 52,
+            "die_area_mm2_central_at_3_5um": 71,
             "saleable_yield_fraction_range": [
-              0.1473,
-              0.2579
+              0.132,
+              0.231
             ],
-            "saleable_yield_fraction_central": 0.2062,
-            "yield_note": "3 micron stabilized scenario: 0.85*exp(-2.8*area_mm2/100) die yield, then 0.93 package/test yield. 48 mm2 gives 22.17% die yield. No measured speed-bin distribution. Six-device storage-bit budgeting is illustrative and must be replaced by actual NMOS cell/layout data.",
-            "recurring_controller_cost_1978_usd": 18.743,
+            "saleable_yield_fraction_central": 0.1843,
+            "yield_note": "3 micron planning model: 0.85*exp(-2.8*area_mm2/100), then 0.93 package/test yield. 52 mm2 central die; speed-bin and pinout qualification pending.",
+            "recurring_controller_cost_1978_usd": 22.5629,
             "external_functions": [
               "Eight AION 4116-equivalent DRAM chips",
               "cable line drivers/transceivers",
-              "monitor palette and DACs"
+              "monitor palette and DACs",
+              "Two AION 2114-equivalent SRAM chips on a separate sprite bus; enlarged interface package/PCB allowance costed at assembly level"
             ]
           },
           "engines": {
@@ -1974,13 +2022,24 @@
             "text_glyph_reads_per_scanline": 80,
             "next_row_prefetch_average_bytes_per_scanline": 20,
             "maximum_sprite_row_bytes_per_scanline": 40,
-            "illustrative_total_reads_per_scanline": 140,
-            "illustrative_read_time_us": 52.5,
+            "illustrative_total_reads_per_scanline": 100,
+            "illustrative_read_time_us": 37.5,
             "fifo_total_pixels": 320,
             "fifo_total_drain_time_us_at_high_resolution": 22.349,
             "two_ready_pages_drain_time_us": 11.175,
-            "qualification": "Prove local bank deadlines, row transitions, startup prefill, worst-case sprite overlap, refresh, bitmap line repeats and host writes together. Faster qualified grade/page mode may be required; FIFO cannot cure sustained bandwidth deficit."
-          }
+            "qualification": "100 display-DRAM reads average 37.5 us; 40 sprite bytes take 10 us on a separate bus. Descriptor reads and row transitions also need scheduling. Prove local FIFO deadlines, refresh, repeated bitmap lines and uploads; these averages are not a timing proof.",
+            "sprite_sram_cycle_target_ns": 250,
+            "sprite_pattern_fetch_time_us": 10
+          },
+          "sprite_access": "Two AION 2114-equivalent chips form an exclusive 1 KiB 8-bit SRAM bank. Auto-increment upload ports arbitrate CPU/DMA writes against sprite reads; descriptor-bank selection latches at vertical blank."
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
         }
       },
       "used_in": [
@@ -2442,6 +2501,126 @@
         "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
         "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
       }
+    },
+    {
+      "id": "part.aion_2114",
+      "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
+      "category": "memory_chip",
+      "origin": "custom_logix_aion",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "used_in": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "device.apple2_video_card",
+        "device.s100_video_card"
+      ],
+      "specification": {
+        "capacity_kbit": 4,
+        "organization_words": 1024,
+        "data_width_bits": 4,
+        "random_cycle_target_ns": 250,
+        "supply_rails_v": [
+          5
+        ],
+        "refresh_required": false,
+        "package": "18-pin DIP target; electrical qualification pending",
+        "manufacturing_planning": {
+          "die_area_mm2_range": [
+            16,
+            24
+          ],
+          "die_area_mm2_central": 20,
+          "status": "3 micron planning estimate; layout and speed-bin qualification pending"
+        }
+      },
+      "manufacturing_requirements": [
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aion_2114"
+      ]
+    },
+    {
+      "id": "part.aurelia_system_controller",
+      "name": "AION Aurelia system controller (DMA, banking and refresh)",
+      "category": "system_controller_chip",
+      "origin": "custom_logix_aion",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "used_in": [
+        "computer.aurelia",
+        "computer.aurelia_plus"
+      ],
+      "specification": {
+        "host_clock_mhz": [
+          4,
+          6
+        ],
+        "cpu_address_bits": 16,
+        "data_width_bits": 8,
+        "page_size_kb": 4,
+        "dma": {
+          "transfer_contexts": 2,
+          "active_transfer_engines": 1,
+          "source_address_bits": 16,
+          "destination_address_bits": 16,
+          "length_bits": 16,
+          "operations": [
+            "memory-to-memory",
+            "memory-to-I/O",
+            "I/O-to-memory"
+          ],
+          "address_steps": [
+            "fixed",
+            "increment",
+            "decrement"
+          ],
+          "bank_selection": "Latch physical source/destination bank and offsets on start. CPU mapping changes cannot redirect an active transfer; split logical buffers at 4 KiB boundaries before programming physical segments. Reject ROM writes, unmapped banks and out-of-range lengths.",
+          "arbitration": "Bounded bursts with guaranteed CPU and refresh service; device-ready/WAIT handshake; video uploads yield to video-controller fetch deadlines. Numeric grant limits require cycle-level validation.",
+          "completion": "Completion/error interrupt, readable remaining count, controlled abort; reset disables DMA.",
+          "video_endpoint": "Auto-incrementing upload ports for display DRAM or dedicated sprite SRAM; target-ready backpressure.",
+          "peripheral_scope": "Disk/FlexiBUS DMA requires qualified request/ready or FIFO endpoints and drivers; legacy programmed I/O remains supported."
+        },
+        "refresh": {
+          "independent_of_cpu": true,
+          "all_installed_banks": true,
+          "scope": "System DRAM only, including hidden banks and expansion. Video controller refreshes display DRAM; sprite SRAM needs no refresh.",
+          "scheduler": "Always-running timer, row counter and refresh arbitration during CPU execution, HALT and DMA; initialize before enabling RAM use. Match row count and retention deadlines to each qualified system DRAM type.",
+          "supported_populations": [
+            "48 KiB: three banks of eight 16Kx1 DRAMs",
+            "64 KiB expanded Aurelia: four banks of eight 16Kx1 DRAMs",
+            "64 KiB Aurelia+: one bank of eight 64Kx1 DRAMs"
+          ]
+        },
+        "bank_control": "0000–6FFF fixed lower RAM; 7000–EFFF switchable in 4 KiB pages; F000–FFFF common RAM. Boot ROM at zero until normal-map release.",
+        "manufacturing_planning": {
+          "die_area_mm2_range": [
+            26,
+            34
+          ],
+          "die_area_mm2_central": 30,
+          "package_allowance_usd": 3,
+          "status": "3 micron planning estimate; pin count, layout, timing and speed-bin yield pending"
+        }
+      },
+      "manufacturing_requirements": [
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aurelia_system_controller"
+      ]
     }
   ],
   "devices": [
@@ -3136,7 +3315,16 @@
         "host_access": "Windowed/addressed access to onboard video RAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
         "display_modes": "Reuse Aurelia controller text/bitmap capabilities subject to card/monitor qualification. 80-column output requires a compatible 640-pixel monitor. Host CPU determines drawing throughput.",
         "included_monitor": false,
-        "flexibus_ports": 0
+        "flexibus_ports": 0,
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        },
+        "sprite_policy": "All five sprites in every supported Aurelia-family mode using exclusive 1 KiB SRAM; host-specific upload interface. No Aurelia system DMA controller on this card."
       },
       "manufacturing_requirements": [
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
@@ -3173,7 +3361,16 @@
         "host_access": "Windowed/addressed access to onboard video RAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
         "display_modes": "Reuse Aurelia controller text/bitmap capabilities subject to card/monitor qualification. 80-column output requires a compatible 640-pixel monitor. Host CPU determines drawing throughput.",
         "included_monitor": false,
-        "flexibus_ports": 0
+        "flexibus_ports": 0,
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        },
+        "sprite_policy": "All five sprites in every supported Aurelia-family mode using exclusive 1 KiB SRAM; host-specific upload interface. No Aurelia system DMA controller on this card."
       },
       "manufacturing_requirements": [
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
@@ -3228,7 +3425,10 @@
             }
           ],
           "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or video RAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
-          "application_memory_profile": "ram_48kb"
+          "application_memory_profile": "ram_48kb",
+          "controller_ref": "part.aurelia_system_controller",
+          "dma_addressing": "Physical bank selections are latched per transfer; CPU mapping changes cannot redirect DMA.",
+          "refresh": "AION system controller refreshes all installed system DRAM independently of CPU activity."
         },
         "expansion_ref": "device.aurelia_ram_16kb_card",
         "expanded_organization": {
@@ -3250,7 +3450,10 @@
             }
           ],
           "note": "The card fills B000–EFFF with RAM in the normal view. ROM, cartridges and video RAM use temporary overlays within 7000–EFFF; the underlying RAM retains its contents.",
-          "application_memory_profile": "ram_64kb"
+          "application_memory_profile": "ram_64kb",
+          "controller_ref": "part.aurelia_system_controller",
+          "dma_addressing": "Physical bank selections are latched per transfer; CPU mapping changes cannot redirect DMA.",
+          "refresh": "AION system controller refreshes all installed system DRAM independently of CPU activity."
         },
         "physical_population": {
           "data_ram_kb": 48,
@@ -3270,6 +3473,16 @@
           "bank_data_width_bits": 8,
           "capacity_bytes": 16384,
           "separate_from_system_ram": true
+        },
+        "system_controller_ref": "part.aurelia_system_controller",
+        "sprite_ram_kb": 1,
+        "sprite_physical_population": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
         }
       },
       "storage": {
@@ -3304,7 +3517,7 @@
         "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
         "memory_layout": {
           "policy_ref": "technology.logix_display_api",
-          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of video RAM. Mode changes reload fonts and redraw.",
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of 16 KiB display DRAM. The exclusive 1 KiB sprite SRAM remains available in every mode.",
           "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
           "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
         },
@@ -3333,8 +3546,8 @@
               {
                 "text_buffer_count": 1,
                 "sprite_count": 5,
-                "allocated_bytes": 4864,
-                "remaining_video_ram_bytes": 11520
+                "allocated_bytes": 4096,
+                "remaining_video_ram_bytes": 12288
               },
               {
                 "text_buffer_count": 2,
@@ -3345,10 +3558,13 @@
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 6912,
-                "remaining_video_ram_bytes": 9472
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
               }
-            ]
+            ],
+            "ram_bytes_per_page": 2048,
+            "double_buffering": true,
+            "sprites_available": 5
           },
           {
             "id": "text_80",
@@ -3373,8 +3589,8 @@
               {
                 "text_buffer_count": 1,
                 "sprite_count": 5,
-                "allocated_bytes": 6912,
-                "remaining_video_ram_bytes": 9472
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
               },
               {
                 "text_buffer_count": 2,
@@ -3385,10 +3601,13 @@
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 11008,
-                "remaining_video_ram_bytes": 5376
+                "allocated_bytes": 10240,
+                "remaining_video_ram_bytes": 6144
               }
-            ]
+            ],
+            "ram_bytes_per_page": 4096,
+            "double_buffering": true,
+            "sprites_available": 5
           }
         ],
         "bitmap_modes": [
@@ -3405,9 +3624,17 @@
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5
           },
           {
             "id": "graphics_b2",
@@ -3422,9 +3649,17 @@
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5
           },
           {
             "id": "graphics_b1",
@@ -3441,19 +3676,27 @@
                 "remaining_video_ram_bytes": 8384
               },
               {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 1,
+                "framebuffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 8768,
-                "remaining_video_ram_bytes": 7616
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5
           },
           {
             "id": "graphics_c4",
@@ -3468,9 +3711,17 @@
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5
           },
           {
             "id": "graphics_c2",
@@ -3487,19 +3738,27 @@
                 "remaining_video_ram_bytes": 8384
               },
               {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 1,
+                "framebuffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 8768,
-                "remaining_video_ram_bytes": 7616
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5
           },
           {
             "id": "graphics_legacy",
@@ -3516,19 +3775,27 @@
                 "remaining_video_ram_bytes": 8384
               },
               {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 1,
+                "framebuffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 8768,
-                "remaining_video_ram_bytes": 7616
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": true
+            "compatibility_mode": true,
+            "double_buffering": true,
+            "sprites_available": 5
           }
         ],
         "sprites": {
@@ -3538,15 +3805,28 @@
           "height": 16,
           "bits_per_pixel": 4,
           "pattern_bytes_per_sprite": 128,
-          "position_bytes_per_sprite": 4,
-          "total_pattern_and_position_bytes": 660,
-          "reserved_video_ram_bytes": 768,
           "transparent_index": 0,
           "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
           "priority": "Lower sprite number wins; all sprites overlay background/text.",
-          "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved video RAM region.",
-          "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
-          "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
+          "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
+          "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
+          "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
+          "pattern_bytes_total": 640,
+          "descriptor_bytes_per_sprite": 8,
+          "descriptor_bank_count": 2,
+          "descriptor_bytes_total": 80,
+          "reserved_sprite_sram_bytes": 1024,
+          "spare_sprite_sram_bytes": 304,
+          "available_in_all_modes": true,
+          "pattern_double_buffered": false
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
         }
       },
       "technology_refs": [
@@ -3591,14 +3871,24 @@
         "native_40_column_mode": "Native 40x25 and 80x25 text on both hosts; usable width depends on monitor capabilities."
       },
       "manufacturing_requirements": [
-        "Add 24 data DRAMs and their decode/refresh logic",
+        "Populate 24 system DRAMs; AION system controller owns decode and refresh",
         "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
         "motherboard ROM capacity/package/count and cartridge connectors",
-        "mapper registers/logic",
+        "AION system controller owns mapper registers/logic",
         "clock/reset/interrupt circuitry",
         "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
         "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
-        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die."
+        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -3657,7 +3947,10 @@
             }
           ],
           "note": "This is the normal application mapping. Within it, 7000–EFFF remains switchable in 4 KB pages. A system call can temporarily map ROM or video RAM there, preserving and later restoring any hidden RAM. F000–FFFF remains common system RAM.",
-          "application_memory_profile": "ram_64kb"
+          "application_memory_profile": "ram_64kb",
+          "controller_ref": "part.aurelia_system_controller",
+          "dma_addressing": "Physical bank selections are latched per transfer; CPU mapping changes cannot redirect DMA.",
+          "refresh": "AION system controller refreshes all installed system DRAM independently of CPU activity."
         },
         "physical_population": {
           "data_ram_kb": 64,
@@ -3677,6 +3970,16 @@
           "bank_data_width_bits": 8,
           "capacity_bytes": 16384,
           "separate_from_system_ram": true
+        },
+        "system_controller_ref": "part.aurelia_system_controller",
+        "sprite_ram_kb": 1,
+        "sprite_physical_population": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
         }
       },
       "storage": {
@@ -3711,7 +4014,7 @@
         "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
         "memory_layout": {
           "policy_ref": "technology.logix_display_api",
-          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of video RAM. Mode changes reload fonts and redraw.",
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of 16 KiB display DRAM. The exclusive 1 KiB sprite SRAM remains available in every mode.",
           "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
           "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
         },
@@ -3740,8 +4043,8 @@
               {
                 "text_buffer_count": 1,
                 "sprite_count": 5,
-                "allocated_bytes": 4864,
-                "remaining_video_ram_bytes": 11520
+                "allocated_bytes": 4096,
+                "remaining_video_ram_bytes": 12288
               },
               {
                 "text_buffer_count": 2,
@@ -3752,10 +4055,13 @@
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 6912,
-                "remaining_video_ram_bytes": 9472
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
               }
-            ]
+            ],
+            "ram_bytes_per_page": 2048,
+            "double_buffering": true,
+            "sprites_available": 5
           },
           {
             "id": "text_80",
@@ -3780,8 +4086,8 @@
               {
                 "text_buffer_count": 1,
                 "sprite_count": 5,
-                "allocated_bytes": 6912,
-                "remaining_video_ram_bytes": 9472
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
               },
               {
                 "text_buffer_count": 2,
@@ -3792,10 +4098,13 @@
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 11008,
-                "remaining_video_ram_bytes": 5376
+                "allocated_bytes": 10240,
+                "remaining_video_ram_bytes": 6144
               }
-            ]
+            ],
+            "ram_bytes_per_page": 4096,
+            "double_buffering": true,
+            "sprites_available": 5
           }
         ],
         "bitmap_modes": [
@@ -3812,9 +4121,17 @@
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5
           },
           {
             "id": "graphics_b2",
@@ -3829,9 +4146,17 @@
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5
           },
           {
             "id": "graphics_b1",
@@ -3848,19 +4173,27 @@
                 "remaining_video_ram_bytes": 8384
               },
               {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 1,
+                "framebuffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 8768,
-                "remaining_video_ram_bytes": 7616
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5
           },
           {
             "id": "graphics_c4",
@@ -3875,9 +4208,17 @@
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5
           },
           {
             "id": "graphics_c2",
@@ -3894,19 +4235,27 @@
                 "remaining_video_ram_bytes": 8384
               },
               {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 1,
+                "framebuffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 8768,
-                "remaining_video_ram_bytes": 7616
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": false
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5
           },
           {
             "id": "graphics_legacy",
@@ -3923,19 +4272,27 @@
                 "remaining_video_ram_bytes": 8384
               },
               {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
                 "framebuffer_count": 2,
                 "sprite_count": 0,
                 "allocated_bytes": 16000,
                 "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 1,
+                "framebuffer_count": 2,
                 "sprite_count": 5,
-                "allocated_bytes": 8768,
-                "remaining_video_ram_bytes": 7616
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
-            "compatibility_mode": true
+            "compatibility_mode": true,
+            "double_buffering": true,
+            "sprites_available": 5
           }
         ],
         "sprites": {
@@ -3945,15 +4302,28 @@
           "height": 16,
           "bits_per_pixel": 4,
           "pattern_bytes_per_sprite": 128,
-          "position_bytes_per_sprite": 4,
-          "total_pattern_and_position_bytes": 660,
-          "reserved_video_ram_bytes": 768,
           "transparent_index": 0,
           "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
           "priority": "Lower sprite number wins; all sprites overlay background/text.",
-          "registers": "Enable and fixed-slot selection in controller registers; pattern and X/Y data in reserved video RAM region.",
-          "updates": "Latch positions/enables at vertical blank. Pattern writes require blanking, disabling the affected sprite or explicitly accepting tearing.",
-          "allocation_policy": "All five sprites or none. Disable sprites with 16000-byte bitmaps or two 8000-byte bitmaps; 384 spare bytes do not enable a reduced sprite mode."
+          "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
+          "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
+          "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
+          "pattern_bytes_total": 640,
+          "descriptor_bytes_per_sprite": 8,
+          "descriptor_bank_count": 2,
+          "descriptor_bytes_total": 80,
+          "reserved_sprite_sram_bytes": 1024,
+          "spare_sprite_sram_bytes": 304,
+          "available_in_all_modes": true,
+          "pattern_double_buffered": false
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
         }
       },
       "technology_refs": [
@@ -4001,7 +4371,17 @@
         "Qualify eight 64K×1 DRAMs for December 1979",
         "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
-        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die."
+        "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -4909,7 +5289,9 @@
         "Separate ROM code/constants from RAM state; adapt self-modifying routines.",
         "Discover cartridge/device ROMs through defined, versioned interfaces.",
         "Map Logix peripherals to standard CP/M console, printer and disk services.",
-        "Provide a separate versioned Logix service interface and C bindings."
+        "Provide a separate versioned Logix service interface and C bindings.",
+        "Drivers use bounded DMA transfers with physical-bank descriptors and device-ready handshakes; abort/drain transfers before warm boot or reusing buffers.",
+        "Video API exposes dedicated sprite SRAM, atomic descriptor swaps and upload-port backpressure; use programmed I/O fallback where peripherals lack DMA endpoints."
       ],
       "tui_features": [
         {
@@ -5256,7 +5638,9 @@
         "Capability-based display and TUI guide",
         "Portable file-format and memory-handle conventions",
         "40/80-column and monochrome examples",
-        "Target conformance and resource-budget test guidance"
+        "Target conformance and resource-budget test guidance",
+        "DMA physical-bank API, refresh/arbitration contract, upload ports and abort handling",
+        "Dedicated sprite SRAM and atomic descriptor-bank examples"
       ],
       "sold_separately": true,
       "introduced": {
@@ -6663,10 +7047,10 @@
       }
     ],
     "notes": {
-      "hardware": "Functional connections, not an electrical schematic. Select Memory to inspect the proposed mapping.",
+      "hardware": "AION system controller contains DMA, bank control and independent system refresh. Video uses 16 KiB DRAM plus exclusive 1 KiB sprite SRAM.",
       "peripherals": "Compatible choices, not simultaneous port occupancy. Later accessories show their introduction dates; they were not included at the original launch.",
       "software": "Explore system internals, the Business Tools cartridge and independent software offerings. Introduction dates are shown; later editions are not implied at launch.",
-      "memory": "Normal application map — identical to the organization table below. The mapper may temporarily replace pages within 7000–EFFF with ROM or video RAM; hidden RAM is preserved.",
+      "memory": "Logical CPU windows map physical banks. DMA latches physical banks; all installed DRAM is refreshed. Sprite SRAM uses separate video ports and is not application RAM.",
       "bundles": "Bundle decomposition. Existing offers and proposed packages are labeled separately. Listed dates prevent later software from being implied at launch; prices are not assumed.",
       "portability": "Shared application code and C APIs; separate target binaries, startup code and libraries. Optional emulator/debugging features are not guaranteed launch components."
     },

@@ -27,6 +27,8 @@ for sc in f['scenarios']:
   assert abs(row['customer_retail_spend_usd']-row['units']*f['average_sale']['retail_price_usd'])<.011 # excludes BPI
  for key,rows in [('calendar_1978',sc['months'][:7]),('launch_year',sc['months'])]:
   for k,v in sc[key]['bpi'].items():assert math.isclose(v,sum(x['bpi'][k] for x in rows),abs_tol=.011)
-assert f['scenarios'][2]['reaction_components']['bpi_capacity_deferred']==855
-assert f['scenarios'][1]['launch_year']['bpi']['customer_installations']==5880
+for sc in f['scenarios']:
+ before_bpi=sum(row['units']-row['bpi_gain_units'] for row in sc['months'])
+ assert sc['reaction_components']['bpi_incremental_deliveries']==min(sc['reaction_components']['bpi_requested_gain'],max(0,sc['delivery_capacity_units']-before_bpi))
+ for row in sc['months']:assert row['bpi']['customer_installations']==round(row['units']*sc['bpi_attachment_rate'])
 print('PASS: independent BPI ownership, presentation order, supplier baskets, disjoint licences, separate receipts and production cap.')

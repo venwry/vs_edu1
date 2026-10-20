@@ -44,10 +44,10 @@ Credit documented eligible same-platform module licence payments once toward a c
 
 ## Sales and economic effect before NCC 1979
 
-Compared with 28,200 Aurelias, stronger BPI execution adds a central 1,200 (+4.3%) to 29,400 through May 1979. Calendar 1978 increases 400 to 10,750. The scenario range is 23,945–34,000; 855 strong-case potential purchases exceed existing capacity and are deferred. May central deliveries reach 4,920, plus separate demonstration/service stock requirements.
+After the sprite/system-controller manufacturing-cost rebase, stronger BPI execution adds 1,200 central deliveries to 28,400 through May 1979; calendar 1978 has 10,396. The scenario range is 23,945–33,855; strong-case BPI capacity deferral is 0. May central deliveries are 4,747, plus demonstration/service stock.
 
-At 20% first-purchase attachment, 5,880 customers buy BPI; most would already have bought Aurelia. Model software licences separately from computer units. BPI receives an estimated $1.128 million after channel fees on $1.504 million customer spending; this is revenue before BPI operating/support costs, not Logix income or corporate profit. The updated Sales page shows both calendar and launch-year figures.
+At 20% first-purchase attachment, 5,680 customers buy BPI. Customer spending is $1,453,256.40; BPI after-channel receipts are $1,089,942.29, before its operating/support costs. These customers are already included in computer sales.
 
 Apple’s existing response and Tandy’s staged agreement remain. No BPI Model II port is promised by the Abacus agreement, and no Tandy customer revenue or IBM-delay bonus enters pre-NCC forecasts. Wider partner credibility is included in the BPI effect, not an additional confidence bonus. Baseline BPI availability is not counted twice.
 
-Specialist staffing, dealer qualification, export/import development, case-study production and support need separately approved operating budgets. Existing hardware costs do not change; low media costs are not evidence of low support costs. Academy BPI courses occupy part of its existing enrolment capacity.
+Specialist staffing, dealer qualification, export/import development, case-study production and support need separately approved operating budgets. Hardware costs reflect the accepted system redesign; low media costs are not evidence of low support costs. Academy BPI courses occupy part of its existing enrolment capacity.

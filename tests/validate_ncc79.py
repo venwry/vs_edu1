@@ -25,9 +25,10 @@ assert c['targets']['end_1979']['status'].startswith('Target')
 assert c['eight_bit_outlook']['threshold_usd']==100 and c['eight_bit_outlook']['reference_year']==1979
 assert c['economics']['budget_usd'] is None
 sc=next(x for x in f['scenarios'] if x['id']=='central')
-assert sc['calendar_1978']['units']==10750 and sc['launch_year']['units']==29400
+assert all(row['month']<'1979-06' for row in sc['months'])
+assert sum(row['units'] for row in sc['months'])==sc['launch_year']['units']
 assert 'No Apple CP/M' in next(x['description'] for x in c['premiere']['stages'] if x['id']=='apple_video')
-print('PASS: separate 1978/1979 campaigns, optional profiles, migration disclosure and dates, prospective OEM targets and unchanged pre-NCC sales.')
+print('PASS: separate 1978/1979 campaigns, optional profiles, migration disclosure and dates, prospective OEM targets and preserved pre-NCC forecast boundary.')
 
 # 1979 timeline must not expose future technical names or direct spec links.
 import re
