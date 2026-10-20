@@ -74,7 +74,7 @@ Tandy's later Abacus revenue and any longer-term ecosystem benefit require a sep
 
 ## BPI partner campaign revision
 
-The independent BPI programme adds 1,200 central-case Aurelia deliveries, producing 10,396 in 1978 and 28,400 through May 1979 (10.44% assumed US unit share). Apple displacement and Tandy deferral/confidence assumptions remain intact; BPI is not a second blanket market-expansion bonus. Strong-case demand is capped at 34,000 deliveries. BPI licence receipts are separately accounted. No BPI Model II release is implied by the Abacus agreement. See BPI_PARTNER_STRATEGY.md.
+The independent BPI programme adds 1,200 central-case Aurelia deliveries, producing 10,044 in 1978 and 27,400 through May 1979 (10.09% assumed US unit share). Apple displacement and Tandy deferral/confidence assumptions remain intact; BPI is not a second blanket market-expansion bonus. Strong-case demand is capped at 34,000 deliveries. BPI licence receipts are separately accounted. No BPI Model II release is implied by the Abacus agreement. See BPI_PARTNER_STRATEGY.md.
 
 
 ## NCC 1979 standardisation programme

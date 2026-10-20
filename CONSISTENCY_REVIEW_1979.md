@@ -35,7 +35,7 @@ Scope: the narrative, event/phase/lane assignments, technical catalog and editio
 | R10 | Legacy module engineering | Guest ROM/banking, 64 KB local memory budget, mailbox/bridge, drivers and conformance remain to be implemented/qualified. Artemis PRO and every future model are not automatically covered. |
 | R11 | Component sourcing | June cards use AION supply. October SMC availability is per qualified part; all chips/video RAM cannot be assumed released together. Supply allocations, warranty, yields and volumes remain gates. |
 | R12 | OEM and peripheral adoption | Except existing named story agreements, prospects remain unsigned and peripheral products unnamed/unqualified. Targets require agreements and actual evidence before being converted to shipment events or forecast revenue. |
-| R13 | Capacity versus demand | The sales model caps demand but does not establish a factory/staffing/working-capital plan. Recurring costs use 10,000 units per family while central first-year sales reach 28,400. This is an explicit modelling assumption, not proven scale economics. |
+| R13 | Capacity versus demand | The sales model caps demand but does not establish a factory/staffing/working-capital plan. Recurring costs use 10,000 units per family while central first-year sales reach 27,400. This is an explicit modelling assumption, not proven scale economics. |
 | R14 | Post-NCC sales model | June–November 1979 now has a separate price/campaign/substitution and capacity model. Compatible-machine volumes, OEM royalties and a new market-share denominator remain unquantified. Programme targets are not added to Aurelia sales. |
 | R15 | Long-horizon economics | The pricing model ends in 1981. There is no cost/demand model through approximately 1989 or a household product roadmap, so the roughly decade-long $100 forecast remains a strategic judgement. |
 | R16 | BPI commercial and delivery details | Final investment cap table/closing, specialist support costs, pilot results, database limits, payroll jurisdictions and update terms remain unresolved. Operational independence is established in the story; unrelated ownership is not asserted. |
@@ -52,7 +52,7 @@ Scope: the narrative, event/phase/lane assignments, technical catalog and editio
 - Optional open interfaces do not require Logix to fund every OEM port or DRI to promise an x86 OS on IBM's schedule.
 - Aurelia's installed base is not the whole compatible ecosystem. Competitors may gain hardware sales while the standard grows.
 - No withdrawn-product dates are invented. The $100 milestone neither retires all 8-bit systems nor guarantees every model remains in production for ten years.
-- The 40% contribution-reduction policy explicitly supersedes the old margin safeguard. Existing stress losses (94 priced snapshots under the model's combined stress case) are intentional disclosed consequences, not arithmetic errors to repair by silently raising prices.
+- The balanced contribution/proxy policy supersedes the old fixed contribution reduction. Stress losses remain explicit; two monitor snapshots use break-even prices above their proxies, and unmatched offers use a disclosed 25% net-contribution fallback.
 - Unqualified BOMs and numerical cost scenarios coexist because costs are conditional planning estimates. Likewise, announced introduction dates do not prove measured hardware/software readiness.
 - Existing 1978 advertising/celebrity arrangements and conference venue/broadcast rights remain proposed agreements, not established contracts.
 

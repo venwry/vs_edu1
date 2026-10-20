@@ -1,5 +1,6 @@
 """Cross-file campaign dates, presentation order and variable-credit accounting."""
 import json,math
+from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(n):return json.loads((R/n).read_text())
@@ -22,7 +23,7 @@ for offer in p['products']:
  if not offer['id'].startswith('service.academy_regular_courses.course_'):continue
  for year,snapshot in offer['snapshots'].items():
   v=snapshot['before_you_buy_variant'];fundamentals=offer['id'].endswith('.course_1')
-  expected=round(v['retail_price_usd']*c['academy']['credit']['tuition_fraction'],2) if fundamentals else 150
+  expected=float(Decimal(str(v['retail_price_usd']*c['academy']['credit']['tuition_fraction'])).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)) if fundamentals else 150
   assert v['voucher_face_value_usd']==v['maximum_incremental_promotion_cost_usd']==expected
   assert math.isclose(v['contribution_after_full_voucher_usd'],v['retail_price_usd']-snapshot['manufacturing_cost_usd']-expected,abs_tol=.011)
 assert c['cost_boundary']['campaign_budget_usd'] is None

@@ -118,7 +118,7 @@ See [NETWORK_DESIGN.md](NETWORK_DESIGN.md). The 1981 LAN negotiates one shared 1
 
 ## Revised retail contribution and demand through November 1979
 
-Every page now includes Retail pricing and Demand and sales in its shared top navigation. `pricing_baseline.json` preserves the pre-reduction snapshots; current retail prices retain 60% of prior dollar contribution using current rebuilt costs and unchanged channel fees. Rebuild pricing, then `python tools/build_sales.py`. `sales.html` shows monthly 1978 sell-through, separate launch-year projections and June–November 1979 demand, delivery limits and sales, with scenario selection, market assumptions and the Academy roadmap. See [SALES_FORECAST.md](SALES_FORECAST.md). Run `python tests/validate_sales.py` and `node tests/sales.test.cjs` in addition to existing checks.
+Every page now includes Retail pricing and Demand and sales in its shared top navigation. `pricing_baseline.json` preserves the pre-reduction snapshots; current retail prices balance net-receipt contribution margins and competitor-proxy discounts using current costs and unchanged channel fees, with disclosed break-even and no-proxy exceptions. Rebuild pricing, then `python tools/build_sales.py`. `sales.html` shows monthly 1978 sell-through, separate launch-year projections and June–November 1979 demand, delivery limits and sales, with scenario selection, market assumptions and the Academy roadmap. See [SALES_FORECAST.md](SALES_FORECAST.md). Run `python tests/validate_sales.py` and `node tests/sales.test.cjs` in addition to existing checks.
 
 
 ## Tandy, Apple and IBM reaction revision

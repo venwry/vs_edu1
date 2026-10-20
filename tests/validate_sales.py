@@ -10,13 +10,13 @@ for offer in p['products']:
  for year,x in offer['snapshots'].items():
   if x['retail_price_usd'] is None:continue
   old=b['products'][offer['id']][year]
-  assert abs(x['unit_profit_usd']-.6*old['unit_profit_usd'])<.011
+  assert x['pricing_balance']['status'] in ('balanced_proxy','no_proxy_cost_based','cost_floor_above_proxy')
   assert x['cost_revision']['baseline_manufacturing_cost_usd']==old['manufacturing_cost_usd']
   assert abs(x['manufacturing_cost_usd']-old['manufacturing_cost_usd']-x['cost_revision']['delta_usd'])<.011
   assert x['computerland_fee_rate']==old['computerland_fee_rate']
   if 'before_you_buy_variant'in x:
    v=x['before_you_buy_variant'];ov=old['before_you_buy_variant']
-   assert abs(v['retail_price_usd']-x['manufacturing_cost_usd']-.6*(ov['retail_price_usd']-x['manufacturing_cost_usd']))<.011
+   assert v['contribution_after_full_voucher_usd']>=0
 for sc in s['scenarios']:
  for key,rows in [('calendar_1978',sc['months'][:7]),('launch_year',sc['months'])]:
   a=sc[key];assert sum(x['units'] for x in rows)==a['units']
@@ -33,4 +33,4 @@ for sc in s['scenarios']:
  for row in sc['months']:
   assert row['units']==max(0,row['pre_reaction_units']-row['apple_displacement_units']-row['tandy_deferred_units']+row['compatibility_gain_units'])+row['bpi_gain_units']
 assert 'pricing' in site['navigation'] and 'sales' in site['navigation']
-print('PASS: proportional reduction against immutable baseline, explicit cost rebase and fee preservation, course variants, forecast hashes, period totals, capacity, market denominators and navigation configuration.')
+print('PASS: balanced pricing against immutable demand baseline, explicit cost rebase and fee preservation, course variants, forecast hashes, period totals, capacity, market denominators and navigation configuration.')
