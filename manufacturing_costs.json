@@ -13,8 +13,8 @@
     "source_commit": "c4567d340882e132ca92671861487af453dafc80",
     "source_note": "Baseline commit; source hashes identify the edited inputs used for this build.",
     "source_sha256": {
-      "logix_aion_technical_catalog_v2.json": "88d7fa02f4562f914a372389db2c12ed1f6ba6719e23df4f53db78a0b3ccc9a5",
-      "hardware_bom.json": "5373028be2654046d2c3d86b1f8d14b88a9a176ae12c61b3ab0a84d7a3de12bf",
+      "logix_aion_technical_catalog_v2.json": "03e5d07888eb2904ff1fa4acb76806b3b57ac5719fb5ca0de4ee0e83d72edad4",
+      "hardware_bom.json": "284d75de64348670a2ab3f72760c78e5d5a7ae43c776faf9096991352f22b092",
       "manufacturing_programs.json": "3456986dd3396ac5c2e965898ea10edcbaccd661be7ab62285e8be47ad344c98"
     },
     "estimate_status": "engineering planning scenario; no supplier quotes; not audited manufacturing accounts",
@@ -433,32 +433,32 @@
       "basis": "Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.",
       "annual_cost_buckets_usd": {
         "1978": {
-          "bom_materials": 3.69524,
-          "workforce": 7.39048,
-          "energy": 1.66462,
-          "consumables": 3.99509,
-          "operating_overhead": 1.99754
+          "bom_materials": 4.38283,
+          "workforce": 8.76566,
+          "energy": 2.04661,
+          "consumables": 4.91187,
+          "operating_overhead": 2.45594
         },
         "1979": {
-          "bom_materials": 3.28956,
-          "workforce": 6.57912,
-          "energy": 1.43924,
-          "consumables": 3.45418,
-          "operating_overhead": 1.72709
+          "bom_materials": 3.8335,
+          "workforce": 7.667,
+          "energy": 1.74143,
+          "consumables": 4.17943,
+          "operating_overhead": 2.08972
         },
         "1980": {
-          "bom_materials": 2.98277,
-          "workforce": 5.96554,
-          "energy": 1.2688,
-          "consumables": 3.04513,
-          "operating_overhead": 1.52256
+          "bom_materials": 3.41843,
+          "workforce": 6.83687,
+          "energy": 1.51084,
+          "consumables": 3.62601,
+          "operating_overhead": 1.81301
         },
         "1981": {
-          "bom_materials": 2.84478,
-          "workforce": 5.68956,
-          "energy": 1.19214,
-          "consumables": 2.86114,
-          "operating_overhead": 1.43057
+          "bom_materials": 3.22364,
+          "workforce": 6.44729,
+          "energy": 1.40262,
+          "consumables": 3.36629,
+          "operating_overhead": 1.68315
         }
       },
       "confidence": "low",
@@ -3414,21 +3414,21 @@
         1.55
       ]
     },
-    "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers": {
-      "name": "clock reset interrupts mapper and bus buffers",
-      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+    "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers": {
+      "name": "Remaining clock/reset/interrupt and bus buffers",
+      "basis": "Remaining clock/reset/interrupt/buffer set: 18 USD baseline less 5 USD replaced bank/decode logic in 1978, then annual learning. No second mapper charge.",
       "annual_cost_buckets_usd": {
         "1978": {
-          "bom_materials": 18
+          "bom_materials": 13
         },
         "1979": {
-          "bom_materials": 17.28
+          "bom_materials": 12.48
         },
         "1980": {
-          "bom_materials": 16.2
+          "bom_materials": 11.7
         },
         "1981": {
-          "bom_materials": 15.3
+          "bom_materials": 11.05
         }
       },
       "confidence": "low",
@@ -3598,21 +3598,21 @@
         1.55
       ]
     },
-    "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers": {
-      "name": "clock reset interrupts mapper and bus buffers",
-      "basis": "One functional set; allowance is a modeling assumption, not an exact released component list.",
+    "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers": {
+      "name": "Remaining clock/reset/interrupt and bus buffers",
+      "basis": "Remaining clock/reset/interrupt/buffer set: 18 USD baseline less 5 USD replaced bank/decode logic in 1978, then annual learning. No second mapper charge.",
       "annual_cost_buckets_usd": {
         "1978": {
-          "bom_materials": 18
+          "bom_materials": 13
         },
         "1979": {
-          "bom_materials": 17.28
+          "bom_materials": 12.48
         },
         "1980": {
-          "bom_materials": 16.2
+          "bom_materials": 11.7
         },
         "1981": {
-          "bom_materials": 15.3
+          "bom_materials": 11.05
         }
       },
       "confidence": "low",
@@ -5274,6 +5274,222 @@
         0.7,
         1.55
       ]
+    },
+    "bompart.part.aion_2114": {
+      "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
+      "basis": "Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 1.20544,
+          "workforce": 1.38937,
+          "energy": 0.28139,
+          "consumables": 0.67535,
+          "operating_overhead": 0.33767
+        },
+        "1979": {
+          "bom_materials": 1.18876,
+          "workforce": 1.35601,
+          "energy": 0.27213,
+          "consumables": 0.65311,
+          "operating_overhead": 0.32656
+        },
+        "1980": {
+          "bom_materials": 1.18193,
+          "workforce": 1.34235,
+          "energy": 0.26834,
+          "consumables": 0.644,
+          "operating_overhead": 0.322
+        },
+        "1981": {
+          "bom_materials": 1.19251,
+          "workforce": 1.36352,
+          "energy": 0.27422,
+          "consumables": 0.65812,
+          "operating_overhead": 0.32906
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.5,
+        2.5
+      ]
+    },
+    "bompart.part.aurelia_system_controller": {
+      "name": "AION Aurelia system controller (DMA, banking and refresh)",
+      "basis": "Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4.2791,
+          "workforce": 3.50443,
+          "energy": 0.58516,
+          "consumables": 1.40439,
+          "operating_overhead": 0.7022
+        },
+        "1979": {
+          "bom_materials": 4.20448,
+          "workforce": 3.35519,
+          "energy": 0.54371,
+          "consumables": 1.3049,
+          "operating_overhead": 0.65245
+        },
+        "1980": {
+          "bom_materials": 4.15299,
+          "workforce": 3.25222,
+          "energy": 0.5151,
+          "consumables": 1.23625,
+          "operating_overhead": 0.61812
+        },
+        "1981": {
+          "bom_materials": 4.14531,
+          "workforce": 3.23685,
+          "energy": 0.51083,
+          "consumables": 1.226,
+          "operating_overhead": 0.613
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.5,
+        2.5
+      ]
+    },
+    "bompart.computer.aurelia.sprite_interface_package_pcb_test": {
+      "name": "Sprite interface package, PCB and test allowance",
+      "basis": "Incremental package/interface/PCB/assembly-test functional allowance, excludes silicon and baseline assembly routing; detailed released BOM pending.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 7.4
+        },
+        "1979": {
+          "bom_materials": 7.104
+        },
+        "1980": {
+          "bom_materials": 6.66
+        },
+        "1981": {
+          "bom_materials": 6.29
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.computer.aurelia.system_controller_interface_pcb_test": {
+      "name": "System controller interface, PCB and test allowance",
+      "basis": "Incremental package/interface/PCB/assembly-test functional allowance, excludes silicon and baseline assembly routing; detailed released BOM pending.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 11.5
+        },
+        "1979": {
+          "bom_materials": 11.04
+        },
+        "1980": {
+          "bom_materials": 10.35
+        },
+        "1981": {
+          "bom_materials": 9.775
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test": {
+      "name": "Sprite interface package, PCB and test allowance",
+      "basis": "Incremental package/interface/PCB/assembly-test functional allowance, excludes silicon and baseline assembly routing; detailed released BOM pending.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 7.4
+        },
+        "1979": {
+          "bom_materials": 7.104
+        },
+        "1980": {
+          "bom_materials": 6.66
+        },
+        "1981": {
+          "bom_materials": 6.29
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.computer.aurelia_plus.system_controller_interface_pcb_test": {
+      "name": "System controller interface, PCB and test allowance",
+      "basis": "Incremental package/interface/PCB/assembly-test functional allowance, excludes silicon and baseline assembly routing; detailed released BOM pending.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 11.5
+        },
+        "1979": {
+          "bom_materials": 11.04
+        },
+        "1980": {
+          "bom_materials": 10.35
+        },
+        "1981": {
+          "bom_materials": 9.775
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.apple2_video_card.sprite_interface_package_pcb_test": {
+      "name": "Sprite interface package, PCB and test allowance",
+      "basis": "Incremental package/interface/PCB/assembly-test functional allowance, excludes silicon and baseline assembly routing; detailed released BOM pending.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 7.4
+        },
+        "1979": {
+          "bom_materials": 7.104
+        },
+        "1980": {
+          "bom_materials": 6.66
+        },
+        "1981": {
+          "bom_materials": 6.29
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.s100_video_card.sprite_interface_package_pcb_test": {
+      "name": "Sprite interface package, PCB and test allowance",
+      "basis": "Incremental package/interface/PCB/assembly-test functional allowance, excludes silicon and baseline assembly routing; detailed released BOM pending.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 7.4
+        },
+        "1979": {
+          "bom_materials": 7.104
+        },
+        "1980": {
+          "bom_materials": 6.66
+        },
+        "1981": {
+          "bom_materials": 6.29
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
     }
   },
   "chip_fabrication_models": {
@@ -5429,51 +5645,51 @@
     },
     "part.aurelia_video_chip": {
       "1978": {
-        "die_area_mm2": 48,
+        "die_area_mm2": 52,
         "wafer_diameter_mm": 75,
-        "gross_usable_dies": 61.19,
-        "die_yield": 0.2217,
+        "gross_usable_dies": 55.67,
+        "die_yield": 0.1982,
         "packaging_test_yield": 0.93,
         "recurring_processed_wafer_cost_usd": 210,
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
-        "good_packaged_chip_cost_usd": 18.743,
+        "good_packaged_chip_cost_usd": 22.5629,
         "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
       },
       "1979": {
-        "die_area_mm2": 48,
+        "die_area_mm2": 52,
         "wafer_diameter_mm": 75,
-        "gross_usable_dies": 61.19,
-        "die_yield": 0.2686,
+        "gross_usable_dies": 55.67,
+        "die_yield": 0.244,
         "packaging_test_yield": 0.93,
         "recurring_processed_wafer_cost_usd": 220,
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
-        "good_packaged_chip_cost_usd": 16.4892,
+        "good_packaged_chip_cost_usd": 19.5111,
         "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
       },
       "1980": {
-        "die_area_mm2": 48,
+        "die_area_mm2": 52,
         "wafer_diameter_mm": 75,
-        "gross_usable_dies": 61.19,
-        "die_yield": 0.3255,
+        "gross_usable_dies": 55.67,
+        "die_yield": 0.3004,
         "packaging_test_yield": 0.93,
         "recurring_processed_wafer_cost_usd": 235,
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
-        "good_packaged_chip_cost_usd": 14.7848,
+        "good_packaged_chip_cost_usd": 17.2052,
         "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
       },
       "1981": {
-        "die_area_mm2": 48,
+        "die_area_mm2": 52,
         "wafer_diameter_mm": 75,
-        "gross_usable_dies": 61.19,
-        "die_yield": 0.3759,
+        "gross_usable_dies": 55.67,
+        "die_yield": 0.3512,
         "packaging_test_yield": 0.93,
         "recurring_processed_wafer_cost_usd": 255,
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
-        "good_packaged_chip_cost_usd": 14.0182,
+        "good_packaged_chip_cost_usd": 16.123,
         "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
       }
     },
@@ -5874,6 +6090,106 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.4361,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+      }
+    },
+    "part.aion_2114": {
+      "1978": {
+        "die_area_mm2": 20,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 165.27,
+        "die_yield": 0.4855,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 210,
+        "package_usd": 0.65,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.8892,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+      },
+      "1979": {
+        "die_area_mm2": 20,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 165.27,
+        "die_yield": 0.526,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 220,
+        "package_usd": 0.65,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.7966,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+      },
+      "1980": {
+        "die_area_mm2": 20,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 165.27,
+        "die_yield": 0.5698,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 235,
+        "package_usd": 0.65,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.7586,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+      },
+      "1981": {
+        "die_area_mm2": 20,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 165.27,
+        "die_yield": 0.605,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 255,
+        "package_usd": 0.65,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.8174,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+      }
+    },
+    "part.aurelia_system_controller": {
+      "1978": {
+        "die_area_mm2": 30,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 105.16,
+        "die_yield": 0.367,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 210,
+        "package_usd": 3,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 10.4753,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+      },
+      "1979": {
+        "die_area_mm2": 30,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 105.16,
+        "die_yield": 0.4137,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 220,
+        "package_usd": 3,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 10.0607,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+      },
+      "1980": {
+        "die_area_mm2": 30,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 105.16,
+        "die_yield": 0.4665,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 235,
+        "package_usd": 3,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 9.7747,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+      },
+      "1981": {
+        "die_area_mm2": 30,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 105.16,
+        "die_yield": 0.5104,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 255,
+        "package_usd": 3,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 9.732,
         "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
       }
     }
@@ -6582,6 +6898,22 @@
       "operating_overhead_fraction_of_loaded_labor": 0.25,
       "rework_allowance_fraction_of_labor": 0.1,
       "incremental_material_scrap_rate": 0.015
+    },
+    "assembly.part.aion_2114": {
+      "assembly_hours_1978": 0,
+      "kwh_1978": 0,
+      "consumables_usd_1978": 0,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0
+    },
+    "assembly.part.aurelia_system_controller": {
+      "assembly_hours_1978": 0,
+      "kwh_1978": 0,
+      "consumables_usd_1978": 0,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0
     }
   },
   "unresolved_quantity_assumptions": {
@@ -6600,7 +6932,7 @@
       "unit": "functional set",
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
     },
-    "assembly.computer.aurelia.base|bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers": {
+    "assembly.computer.aurelia.base|bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers": {
       "quantity": 1,
       "unit": "functional set",
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
@@ -6625,7 +6957,7 @@
       "unit": "functional set",
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
     },
-    "assembly.computer.aurelia_plus.base|bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers": {
+    "assembly.computer.aurelia_plus.base|bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers": {
       "quantity": 1,
       "unit": "functional set",
       "reason": "Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment."
@@ -7428,16 +7760,16 @@
       "snapshots": {
         "1978": {
           "status": "offered_estimate",
-          "total_usd": 506.46,
-          "low_usd": 354.52,
-          "high_usd": 810.34,
+          "total_usd": 542.77,
+          "low_usd": 379.94,
+          "high_usd": 868.43,
           "breakdown_usd": {
-            "bom_materials": 411.49,
-            "workforce": 39.16,
-            "energy": 4.14,
-            "consumables": 11.97,
-            "operating_overhead": 9.59,
-            "yield_and_rework": 8.11,
+            "bom_materials": 432.77,
+            "workforce": 46.82,
+            "energy": 5.67,
+            "consumables": 15.65,
+            "operating_overhead": 11.43,
+            "yield_and_rework": 8.43,
             "instructions": 2.0,
             "packaging": 8.0,
             "logistics": 12.0,
@@ -7457,9 +7789,9 @@
               "extended_recurring_cost_usd": 8
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 18
+              "extended_recurring_cost_usd": 13
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -7487,14 +7819,34 @@
               "extended_recurring_cost_usd": 28
             },
             {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.4
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 11.5
+            },
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.78
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.56
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.48
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 18.74
+              "extended_recurring_cost_usd": 22.56
             },
             {
               "component_ref": "bompart.part.dram_16kbit",
@@ -7517,16 +7869,16 @@
         },
         "1979": {
           "status": "offered_estimate",
-          "total_usd": 466.05,
-          "low_usd": 326.24,
-          "high_usd": 745.68,
+          "total_usd": 500.39,
+          "low_usd": 350.27,
+          "high_usd": 800.62,
           "breakdown_usd": {
-            "bom_materials": 370.74,
-            "workforce": 38.89,
-            "energy": 3.89,
-            "consumables": 11.54,
-            "operating_overhead": 9.44,
-            "yield_and_rework": 7.57,
+            "bom_materials": 391.21,
+            "workforce": 46.05,
+            "energy": 5.28,
+            "consumables": 14.88,
+            "operating_overhead": 11.11,
+            "yield_and_rework": 7.88,
             "instructions": 2.18,
             "packaging": 8.72,
             "logistics": 13.08,
@@ -7546,9 +7898,9 @@
               "extended_recurring_cost_usd": 7.68
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 17.28
+              "extended_recurring_cost_usd": 12.48
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -7576,14 +7928,34 @@
               "extended_recurring_cost_usd": 30.52
             },
             {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.1
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 11.04
+            },
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.59
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.08
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.06
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.49
+              "extended_recurring_cost_usd": 19.51
             },
             {
               "component_ref": "bompart.part.dram_16kbit",
@@ -7606,16 +7978,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 432.08,
-          "low_usd": 302.46,
-          "high_usd": 691.33,
+          "total_usd": 464.59,
+          "low_usd": 325.21,
+          "high_usd": 743.34,
           "breakdown_usd": {
-            "bom_materials": 335.29,
-            "workforce": 38.78,
-            "energy": 3.76,
-            "consumables": 11.4,
-            "operating_overhead": 9.36,
-            "yield_and_rework": 7.09,
+            "bom_materials": 354.75,
+            "workforce": 45.59,
+            "energy": 5.05,
+            "consumables": 14.5,
+            "operating_overhead": 10.91,
+            "yield_and_rework": 7.39,
             "instructions": 2.4,
             "packaging": 9.6,
             "logistics": 14.4,
@@ -7635,9 +8007,9 @@
               "extended_recurring_cost_usd": 7.2
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.2
+              "extended_recurring_cost_usd": 11.7
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -7665,14 +8037,34 @@
               "extended_recurring_cost_usd": 33.6
             },
             {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.66
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.35
+            },
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.52
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 26.97
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.77
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             },
             {
               "component_ref": "bompart.part.dram_16kbit",
@@ -7695,16 +8087,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 410.11,
-          "low_usd": 287.08,
-          "high_usd": 656.18,
+          "total_usd": 441.68,
+          "low_usd": 309.18,
+          "high_usd": 706.69,
           "breakdown_usd": {
-            "bom_materials": 309.47,
-            "workforce": 39.73,
-            "energy": 3.79,
-            "consumables": 11.68,
-            "operating_overhead": 9.6,
-            "yield_and_rework": 6.8,
+            "bom_materials": 328.2,
+            "workforce": 46.45,
+            "energy": 5.06,
+            "consumables": 14.73,
+            "operating_overhead": 11.12,
+            "yield_and_rework": 7.08,
             "instructions": 2.64,
             "packaging": 10.56,
             "logistics": 15.84,
@@ -7724,9 +8116,9 @@
               "extended_recurring_cost_usd": 6.8
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 15.3
+              "extended_recurring_cost_usd": 11.05
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -7754,14 +8146,34 @@
               "extended_recurring_cost_usd": 36.96
             },
             {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.29
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.78
+            },
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.49
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.73
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             },
             {
               "component_ref": "bompart.part.dram_16kbit",
@@ -7804,16 +8216,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 827.93,
-          "low_usd": 579.55,
-          "high_usd": 1324.69,
+          "total_usd": 860.44,
+          "low_usd": 602.31,
+          "high_usd": 1376.7,
           "breakdown_usd": {
-            "bom_materials": 725.29,
-            "workforce": 38.78,
-            "energy": 3.76,
-            "consumables": 11.4,
-            "operating_overhead": 9.36,
-            "yield_and_rework": 12.94,
+            "bom_materials": 744.75,
+            "workforce": 45.59,
+            "energy": 5.05,
+            "consumables": 14.5,
+            "operating_overhead": 10.91,
+            "yield_and_rework": 13.24,
             "instructions": 2.4,
             "packaging": 9.6,
             "logistics": 14.4,
@@ -7833,9 +8245,9 @@
               "extended_recurring_cost_usd": 7.2
             },
             {
-              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.2
+              "extended_recurring_cost_usd": 11.7
             },
             {
               "component_ref": "bompart.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
@@ -7863,14 +8275,34 @@
               "extended_recurring_cost_usd": 33.6
             },
             {
+              "component_ref": "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.66
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.35
+            },
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.52
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 26.97
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.77
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             },
             {
               "component_ref": "bompart.part.dram_64kbit",
@@ -7893,16 +8325,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 696.85,
-          "low_usd": 487.79,
-          "high_usd": 1114.96,
+          "total_usd": 728.42,
+          "low_usd": 509.89,
+          "high_usd": 1165.47,
           "breakdown_usd": {
-            "bom_materials": 591.97,
-            "workforce": 39.73,
-            "energy": 3.79,
-            "consumables": 11.68,
-            "operating_overhead": 9.6,
-            "yield_and_rework": 11.04,
+            "bom_materials": 610.7,
+            "workforce": 46.45,
+            "energy": 5.06,
+            "consumables": 14.73,
+            "operating_overhead": 11.12,
+            "yield_and_rework": 11.32,
             "instructions": 2.64,
             "packaging": 10.56,
             "logistics": 15.84,
@@ -7922,9 +8354,9 @@
               "extended_recurring_cost_usd": 6.8
             },
             {
-              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 15.3
+              "extended_recurring_cost_usd": 11.05
             },
             {
               "component_ref": "bompart.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
@@ -7952,14 +8384,34 @@
               "extended_recurring_cost_usd": 36.96
             },
             {
+              "component_ref": "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.29
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.78
+            },
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.49
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.73
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             },
             {
               "component_ref": "bompart.part.dram_64kbit",
@@ -12705,16 +13157,16 @@
         },
         "1979": {
           "status": "offered_estimate",
-          "total_usd": 97.8,
-          "low_usd": 68.46,
-          "high_usd": 156.48,
+          "total_usd": 115.67,
+          "low_usd": 80.97,
+          "high_usd": 185.07,
           "breakdown_usd": {
-            "bom_materials": 54.69,
-            "workforce": 19.6,
-            "energy": 3.3,
-            "consumables": 8.27,
-            "operating_overhead": 4.78,
-            "yield_and_rework": 1.16,
+            "bom_materials": 64.71,
+            "workforce": 23.4,
+            "energy": 4.15,
+            "consumables": 10.3,
+            "operating_overhead": 5.8,
+            "yield_and_rework": 1.31,
             "instructions": 1.31,
             "packaging": 1.96,
             "logistics": 2.73,
@@ -12754,6 +13206,11 @@
               "extended_recurring_cost_usd": 2.18
             },
             {
+              "component_ref": "bompart.device.apple2_video_card.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.1
+            },
+            {
               "component_ref": "bompart.device.apple2_video_card.video_clock_reset",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.27
@@ -12764,6 +13221,11 @@
               "extended_recurring_cost_usd": 7.68
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.59
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.08
@@ -12771,7 +13233,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.49
+              "extended_recurring_cost_usd": 19.51
             }
           ],
           "confidence": "low",
@@ -12779,16 +13241,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 98.37,
-          "low_usd": 68.86,
-          "high_usd": 157.39,
+          "total_usd": 115.12,
+          "low_usd": 80.58,
+          "high_usd": 184.19,
           "breakdown_usd": {
-            "bom_materials": 55.98,
-            "workforce": 19.03,
-            "energy": 3.12,
-            "consumables": 7.87,
-            "operating_overhead": 4.59,
-            "yield_and_rework": 1.18,
+            "bom_materials": 65.44,
+            "workforce": 22.59,
+            "energy": 3.9,
+            "consumables": 9.74,
+            "operating_overhead": 5.52,
+            "yield_and_rework": 1.33,
             "instructions": 1.44,
             "packaging": 2.16,
             "logistics": 3.0,
@@ -12828,6 +13290,11 @@
               "extended_recurring_cost_usd": 2.4
             },
             {
+              "component_ref": "bompart.device.apple2_video_card.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.66
+            },
+            {
               "component_ref": "bompart.device.apple2_video_card.video_clock_reset",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.6
@@ -12838,6 +13305,11 @@
               "extended_recurring_cost_usd": 7.2
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.52
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 26.97
@@ -12845,7 +13317,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             }
           ],
           "confidence": "low",
@@ -12853,16 +13325,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 101.12,
-          "low_usd": 70.78,
-          "high_usd": 161.79,
+          "total_usd": 117.29,
+          "low_usd": 82.1,
+          "high_usd": 187.66,
           "breakdown_usd": {
-            "bom_materials": 57.97,
-            "workforce": 19.1,
-            "energy": 3.1,
-            "consumables": 7.86,
-            "operating_overhead": 4.6,
-            "yield_and_rework": 1.23,
+            "bom_materials": 67.02,
+            "workforce": 22.59,
+            "energy": 3.86,
+            "consumables": 9.68,
+            "operating_overhead": 5.51,
+            "yield_and_rework": 1.37,
             "instructions": 1.58,
             "packaging": 2.38,
             "logistics": 3.3,
@@ -12902,6 +13374,11 @@
               "extended_recurring_cost_usd": 2.64
             },
             {
+              "component_ref": "bompart.device.apple2_video_card.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.29
+            },
+            {
               "component_ref": "bompart.device.apple2_video_card.video_clock_reset",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.96
@@ -12912,6 +13389,11 @@
               "extended_recurring_cost_usd": 6.8
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.49
@@ -12919,7 +13401,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             }
           ],
           "confidence": "low",
@@ -12943,16 +13425,16 @@
         },
         "1979": {
           "status": "offered_estimate",
-          "total_usd": 104.04,
-          "low_usd": 72.83,
-          "high_usd": 166.46,
+          "total_usd": 121.91,
+          "low_usd": 85.34,
+          "high_usd": 195.06,
           "breakdown_usd": {
-            "bom_materials": 60.84,
-            "workforce": 19.6,
-            "energy": 3.3,
-            "consumables": 8.27,
-            "operating_overhead": 4.78,
-            "yield_and_rework": 1.25,
+            "bom_materials": 70.86,
+            "workforce": 23.4,
+            "energy": 4.15,
+            "consumables": 10.3,
+            "operating_overhead": 5.8,
+            "yield_and_rework": 1.4,
             "instructions": 1.31,
             "packaging": 1.96,
             "logistics": 2.73,
@@ -12992,6 +13474,11 @@
               "extended_recurring_cost_usd": 2.18
             },
             {
+              "component_ref": "bompart.device.s100_video_card.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.1
+            },
+            {
               "component_ref": "bompart.device.s100_video_card.video_clock_reset",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.27
@@ -13002,6 +13489,11 @@
               "extended_recurring_cost_usd": 7.68
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.59
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.08
@@ -13009,7 +13501,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.49
+              "extended_recurring_cost_usd": 19.51
             }
           ],
           "confidence": "low",
@@ -13017,16 +13509,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 104.77,
-          "low_usd": 73.34,
-          "high_usd": 167.63,
+          "total_usd": 121.51,
+          "low_usd": 85.06,
+          "high_usd": 194.42,
           "breakdown_usd": {
-            "bom_materials": 62.28,
-            "workforce": 19.03,
-            "energy": 3.12,
-            "consumables": 7.87,
-            "operating_overhead": 4.59,
-            "yield_and_rework": 1.28,
+            "bom_materials": 71.74,
+            "workforce": 22.59,
+            "energy": 3.9,
+            "consumables": 9.74,
+            "operating_overhead": 5.52,
+            "yield_and_rework": 1.42,
             "instructions": 1.44,
             "packaging": 2.16,
             "logistics": 3.0,
@@ -13066,6 +13558,11 @@
               "extended_recurring_cost_usd": 2.4
             },
             {
+              "component_ref": "bompart.device.s100_video_card.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.66
+            },
+            {
               "component_ref": "bompart.device.s100_video_card.video_clock_reset",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.6
@@ -13076,6 +13573,11 @@
               "extended_recurring_cost_usd": 7.2
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.52
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 26.97
@@ -13083,7 +13585,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             }
           ],
           "confidence": "low",
@@ -13091,16 +13593,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 107.73,
-          "low_usd": 75.41,
-          "high_usd": 172.37,
+          "total_usd": 123.89,
+          "low_usd": 86.72,
+          "high_usd": 198.22,
           "breakdown_usd": {
-            "bom_materials": 64.48,
-            "workforce": 19.1,
-            "energy": 3.1,
-            "consumables": 7.86,
-            "operating_overhead": 4.6,
-            "yield_and_rework": 1.33,
+            "bom_materials": 73.53,
+            "workforce": 22.59,
+            "energy": 3.86,
+            "consumables": 9.68,
+            "operating_overhead": 5.51,
+            "yield_and_rework": 1.46,
             "instructions": 1.58,
             "packaging": 2.38,
             "logistics": 3.3,
@@ -13140,6 +13642,11 @@
               "extended_recurring_cost_usd": 2.64
             },
             {
+              "component_ref": "bompart.device.s100_video_card.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.29
+            },
+            {
               "component_ref": "bompart.device.s100_video_card.video_clock_reset",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.96
@@ -13150,6 +13657,11 @@
               "extended_recurring_cost_usd": 6.8
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.49
@@ -13157,7 +13669,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             }
           ],
           "confidence": "low",
@@ -13165,6 +13677,134 @@
         }
       },
       "assembly_ref": "assembly.device.s100_video_card"
+    },
+    {
+      "id": "part.aion_2114",
+      "catalog_ref": "part.aion_2114",
+      "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
+      "group": "OEM chips",
+      "unit": "one tested packaged chip, bulk shipment",
+      "available_from": "1978-06-05",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "offered_estimate",
+          "total_usd": 4.19,
+          "low_usd": 2.1,
+          "high_usd": 10.48,
+          "breakdown_usd": {
+            "bom_materials": 1.21,
+            "workforce": 1.39,
+            "energy": 0.28,
+            "consumables": 0.68,
+            "operating_overhead": 0.34,
+            "yield_and_rework": 0.0,
+            "instructions": 0.02,
+            "packaging": 0.12,
+            "logistics": 0.15,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.aion_2114",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.89
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1979": {
+          "status": "offered_estimate",
+          "total_usd": 4.11,
+          "low_usd": 2.06,
+          "high_usd": 10.28,
+          "breakdown_usd": {
+            "bom_materials": 1.19,
+            "workforce": 1.36,
+            "energy": 0.27,
+            "consumables": 0.65,
+            "operating_overhead": 0.33,
+            "yield_and_rework": 0.0,
+            "instructions": 0.02,
+            "packaging": 0.13,
+            "logistics": 0.16,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.aion_2114",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.8
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 4.09,
+          "low_usd": 2.04,
+          "high_usd": 10.22,
+          "breakdown_usd": {
+            "bom_materials": 1.18,
+            "workforce": 1.34,
+            "energy": 0.27,
+            "consumables": 0.64,
+            "operating_overhead": 0.32,
+            "yield_and_rework": 0.0,
+            "instructions": 0.02,
+            "packaging": 0.14,
+            "logistics": 0.18,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.aion_2114",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.76
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 4.2,
+          "low_usd": 2.1,
+          "high_usd": 10.5,
+          "breakdown_usd": {
+            "bom_materials": 1.19,
+            "workforce": 1.36,
+            "energy": 0.27,
+            "consumables": 0.66,
+            "operating_overhead": 0.33,
+            "yield_and_rework": 0.0,
+            "instructions": 0.03,
+            "packaging": 0.16,
+            "logistics": 0.2,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.aion_2114",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.82
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.part.aion_2114"
     },
     {
       "id": "part.aion_4116",
@@ -13735,6 +14375,134 @@
       "assembly_ref": "assembly.part.aurelia_monitor_dac"
     },
     {
+      "id": "part.aurelia_system_controller",
+      "catalog_ref": "part.aurelia_system_controller",
+      "name": "AION Aurelia system controller (DMA, banking and refresh)",
+      "group": "OEM chips",
+      "unit": "one tested packaged chip, bulk shipment",
+      "available_from": "1978-06-05",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "offered_estimate",
+          "total_usd": 10.76,
+          "low_usd": 5.38,
+          "high_usd": 26.9,
+          "breakdown_usd": {
+            "bom_materials": 4.28,
+            "workforce": 3.5,
+            "energy": 0.59,
+            "consumables": 1.4,
+            "operating_overhead": 0.7,
+            "yield_and_rework": 0.0,
+            "instructions": 0.02,
+            "packaging": 0.12,
+            "logistics": 0.15,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.aurelia_system_controller",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.48
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1979": {
+          "status": "offered_estimate",
+          "total_usd": 10.36,
+          "low_usd": 5.18,
+          "high_usd": 25.9,
+          "breakdown_usd": {
+            "bom_materials": 4.2,
+            "workforce": 3.36,
+            "energy": 0.54,
+            "consumables": 1.3,
+            "operating_overhead": 0.65,
+            "yield_and_rework": 0.0,
+            "instructions": 0.02,
+            "packaging": 0.13,
+            "logistics": 0.16,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.aurelia_system_controller",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.06
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 10.12,
+          "low_usd": 5.06,
+          "high_usd": 25.3,
+          "breakdown_usd": {
+            "bom_materials": 4.15,
+            "workforce": 3.25,
+            "energy": 0.52,
+            "consumables": 1.24,
+            "operating_overhead": 0.62,
+            "yield_and_rework": 0.0,
+            "instructions": 0.02,
+            "packaging": 0.14,
+            "logistics": 0.18,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.aurelia_system_controller",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.77
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 10.13,
+          "low_usd": 5.07,
+          "high_usd": 25.33,
+          "breakdown_usd": {
+            "bom_materials": 4.15,
+            "workforce": 3.24,
+            "energy": 0.51,
+            "consumables": 1.23,
+            "operating_overhead": 0.61,
+            "yield_and_rework": 0.0,
+            "instructions": 0.03,
+            "packaging": 0.16,
+            "logistics": 0.2,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.aurelia_system_controller",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.73
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.part.aurelia_system_controller"
+    },
+    {
       "id": "part.aurelia_video_chip",
       "catalog_ref": "part.aurelia_video_chip",
       "name": "Aurelia / Aurelia+ shared video controller",
@@ -13745,15 +14513,15 @@
       "snapshots": {
         "1978": {
           "status": "offered_estimate",
-          "total_usd": 19.04,
-          "low_usd": 9.52,
-          "high_usd": 47.6,
+          "total_usd": 22.86,
+          "low_usd": 11.43,
+          "high_usd": 57.15,
           "breakdown_usd": {
-            "bom_materials": 3.7,
-            "workforce": 7.39,
-            "energy": 1.66,
-            "consumables": 4.0,
-            "operating_overhead": 2.0,
+            "bom_materials": 4.38,
+            "workforce": 8.77,
+            "energy": 2.05,
+            "consumables": 4.91,
+            "operating_overhead": 2.46,
             "yield_and_rework": 0.0,
             "instructions": 0.02,
             "packaging": 0.12,
@@ -13766,7 +14534,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 18.74
+              "extended_recurring_cost_usd": 22.56
             }
           ],
           "confidence": "low",
@@ -13774,15 +14542,15 @@
         },
         "1979": {
           "status": "offered_estimate",
-          "total_usd": 16.8,
-          "low_usd": 8.4,
-          "high_usd": 42.0,
+          "total_usd": 19.82,
+          "low_usd": 9.91,
+          "high_usd": 49.55,
           "breakdown_usd": {
-            "bom_materials": 3.29,
-            "workforce": 6.58,
-            "energy": 1.44,
-            "consumables": 3.45,
-            "operating_overhead": 1.73,
+            "bom_materials": 3.83,
+            "workforce": 7.67,
+            "energy": 1.74,
+            "consumables": 4.18,
+            "operating_overhead": 2.09,
             "yield_and_rework": 0.0,
             "instructions": 0.02,
             "packaging": 0.13,
@@ -13795,7 +14563,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.49
+              "extended_recurring_cost_usd": 19.51
             }
           ],
           "confidence": "low",
@@ -13803,15 +14571,15 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 15.13,
-          "low_usd": 7.57,
-          "high_usd": 37.83,
+          "total_usd": 17.55,
+          "low_usd": 8.78,
+          "high_usd": 43.88,
           "breakdown_usd": {
-            "bom_materials": 2.98,
-            "workforce": 5.97,
-            "energy": 1.27,
-            "consumables": 3.05,
-            "operating_overhead": 1.52,
+            "bom_materials": 3.42,
+            "workforce": 6.84,
+            "energy": 1.51,
+            "consumables": 3.63,
+            "operating_overhead": 1.81,
             "yield_and_rework": 0.0,
             "instructions": 0.02,
             "packaging": 0.14,
@@ -13824,7 +14592,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             }
           ],
           "confidence": "low",
@@ -13832,15 +14600,15 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 14.4,
-          "low_usd": 7.2,
-          "high_usd": 36.0,
+          "total_usd": 16.51,
+          "low_usd": 8.26,
+          "high_usd": 41.28,
           "breakdown_usd": {
-            "bom_materials": 2.84,
-            "workforce": 5.69,
-            "energy": 1.19,
-            "consumables": 2.86,
-            "operating_overhead": 1.43,
+            "bom_materials": 3.22,
+            "workforce": 6.45,
+            "energy": 1.4,
+            "consumables": 3.37,
+            "operating_overhead": 1.68,
             "yield_and_rework": 0.0,
             "instructions": 0.03,
             "packaging": 0.16,
@@ -13853,7 +14621,7 @@
             {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             }
           ],
           "confidence": "low",
@@ -18541,16 +19309,16 @@
       "snapshots": {
         "1978": {
           "status": "offered_estimate",
-          "total_usd": 751.18,
-          "low_usd": 525.83,
-          "high_usd": 1201.89,
+          "total_usd": 787.77,
+          "low_usd": 551.44,
+          "high_usd": 1260.43,
           "breakdown_usd": {
-            "bom_materials": 546.79,
-            "workforce": 56.14,
-            "energy": 4.32,
-            "consumables": 13.83,
-            "operating_overhead": 13.76,
-            "yield_and_rework": 19.99,
+            "bom_materials": 568.06,
+            "workforce": 63.8,
+            "energy": 5.85,
+            "consumables": 17.5,
+            "operating_overhead": 15.59,
+            "yield_and_rework": 20.62,
             "instructions": 8.0,
             "packaging": 18.0,
             "logistics": 24.0,
@@ -18575,9 +19343,9 @@
               "extended_recurring_cost_usd": 8
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 18
+              "extended_recurring_cost_usd": 13
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -18603,6 +19371,16 @@
               "component_ref": "bompart.computer.aurelia.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 28
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.4
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 11.5
             },
             {
               "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
@@ -18685,6 +19463,11 @@
               "extended_recurring_cost_usd": 5
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.78
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.56
@@ -18695,9 +19478,14 @@
               "extended_recurring_cost_usd": 1.6
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.48
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 18.74
+              "extended_recurring_cost_usd": 22.56
             },
             {
               "component_ref": "bompart.part.ball_tv90_crt",
@@ -18740,16 +19528,16 @@
         },
         "1979": {
           "status": "offered_estimate",
-          "total_usd": 721.81,
-          "low_usd": 505.27,
-          "high_usd": 1154.9,
+          "total_usd": 756.45,
+          "low_usd": 529.51,
+          "high_usd": 1210.32,
           "breakdown_usd": {
-            "bom_materials": 510.7,
-            "workforce": 56.49,
-            "energy": 4.08,
-            "consumables": 13.56,
-            "operating_overhead": 13.76,
-            "yield_and_rework": 19.04,
+            "bom_materials": 531.17,
+            "workforce": 63.65,
+            "energy": 5.48,
+            "consumables": 16.89,
+            "operating_overhead": 15.43,
+            "yield_and_rework": 19.65,
             "instructions": 8.72,
             "packaging": 19.62,
             "logistics": 26.16,
@@ -18774,9 +19562,9 @@
               "extended_recurring_cost_usd": 7.68
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 17.28
+              "extended_recurring_cost_usd": 12.48
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -18802,6 +19590,16 @@
               "component_ref": "bompart.computer.aurelia.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 30.52
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.1
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 11.04
             },
             {
               "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
@@ -18884,6 +19682,11 @@
               "extended_recurring_cost_usd": 5.45
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.59
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.08
@@ -18894,9 +19697,14 @@
               "extended_recurring_cost_usd": 1.61
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.06
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.49
+              "extended_recurring_cost_usd": 19.51
             },
             {
               "component_ref": "bompart.part.ball_tv90_crt",
@@ -18939,16 +19747,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 700.63,
-          "low_usd": 490.44,
-          "high_usd": 1121.01,
+          "total_usd": 733.44,
+          "low_usd": 513.41,
+          "high_usd": 1173.5,
           "breakdown_usd": {
-            "bom_materials": 481.15,
-            "workforce": 56.82,
-            "energy": 3.98,
-            "consumables": 13.61,
-            "operating_overhead": 13.79,
-            "yield_and_rework": 18.25,
+            "bom_materials": 500.61,
+            "workforce": 63.63,
+            "energy": 5.28,
+            "consumables": 16.71,
+            "operating_overhead": 15.35,
+            "yield_and_rework": 18.83,
             "instructions": 9.6,
             "packaging": 21.6,
             "logistics": 28.8,
@@ -18973,9 +19781,9 @@
               "extended_recurring_cost_usd": 7.2
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.2
+              "extended_recurring_cost_usd": 11.7
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -19001,6 +19809,16 @@
               "component_ref": "bompart.computer.aurelia.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 33.6
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.66
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.35
             },
             {
               "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
@@ -19083,6 +19901,11 @@
               "extended_recurring_cost_usd": 6.0
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.52
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 26.97
@@ -19093,9 +19916,14 @@
               "extended_recurring_cost_usd": 1.63
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.77
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             },
             {
               "component_ref": "bompart.part.ball_tv90_crt",
@@ -19138,16 +19966,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 694.66,
-          "low_usd": 486.26,
-          "high_usd": 1111.46,
+          "total_usd": 726.51,
+          "low_usd": 508.56,
+          "high_usd": 1162.42,
           "breakdown_usd": {
-            "bom_materials": 462.13,
-            "workforce": 58.61,
-            "energy": 4.05,
-            "consumables": 14.11,
-            "operating_overhead": 14.24,
-            "yield_and_rework": 17.85,
+            "bom_materials": 480.85,
+            "workforce": 65.33,
+            "energy": 5.32,
+            "consumables": 17.16,
+            "operating_overhead": 15.76,
+            "yield_and_rework": 18.42,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -19172,9 +20000,9 @@
               "extended_recurring_cost_usd": 6.8
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 15.3
+              "extended_recurring_cost_usd": 11.05
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -19200,6 +20028,16 @@
               "component_ref": "bompart.computer.aurelia.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 36.96
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.29
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.78
             },
             {
               "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
@@ -19282,6 +20120,11 @@
               "extended_recurring_cost_usd": 6.6
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.49
@@ -19292,9 +20135,14 @@
               "extended_recurring_cost_usd": 1.67
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.73
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             },
             {
               "component_ref": "bompart.part.ball_tv90_crt",
@@ -19360,16 +20208,16 @@
       "snapshots": {
         "1978": {
           "status": "offered_estimate",
-          "total_usd": 854.23,
-          "low_usd": 597.96,
-          "high_usd": 1366.77,
+          "total_usd": 890.84,
+          "low_usd": 623.59,
+          "high_usd": 1425.34,
           "breakdown_usd": {
-            "bom_materials": 645.98,
-            "workforce": 56.53,
-            "energy": 4.43,
-            "consumables": 14.09,
-            "operating_overhead": 13.89,
-            "yield_and_rework": 22.96,
+            "bom_materials": 667.26,
+            "workforce": 64.19,
+            "energy": 5.96,
+            "consumables": 17.76,
+            "operating_overhead": 15.72,
+            "yield_and_rework": 23.6,
             "instructions": 8.0,
             "packaging": 18.0,
             "logistics": 24.0,
@@ -19394,9 +20242,9 @@
               "extended_recurring_cost_usd": 8
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 18
+              "extended_recurring_cost_usd": 13
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -19422,6 +20270,16 @@
               "component_ref": "bompart.computer.aurelia.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 28
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.4
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 11.5
             },
             {
               "component_ref": "bompart.device.color_monitor_1.external_cable_and_regional_mains_packout",
@@ -19499,14 +20357,24 @@
               "extended_recurring_cost_usd": 4
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.78
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.56
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.48
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 18.74
+              "extended_recurring_cost_usd": 22.56
             },
             {
               "component_ref": "bompart.part.color_monitor_controller",
@@ -19554,16 +20422,16 @@
         },
         "1979": {
           "status": "offered_estimate",
-          "total_usd": 823.05,
-          "low_usd": 576.13,
-          "high_usd": 1316.88,
+          "total_usd": 857.69,
+          "low_usd": 600.38,
+          "high_usd": 1372.3,
           "breakdown_usd": {
-            "bom_materials": 608.15,
-            "workforce": 56.87,
-            "energy": 4.19,
-            "consumables": 13.81,
-            "operating_overhead": 13.89,
-            "yield_and_rework": 21.96,
+            "bom_materials": 628.62,
+            "workforce": 64.03,
+            "energy": 5.58,
+            "consumables": 17.15,
+            "operating_overhead": 15.56,
+            "yield_and_rework": 22.57,
             "instructions": 8.72,
             "packaging": 19.62,
             "logistics": 26.16,
@@ -19588,9 +20456,9 @@
               "extended_recurring_cost_usd": 7.68
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 17.28
+              "extended_recurring_cost_usd": 12.48
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -19616,6 +20484,16 @@
               "component_ref": "bompart.computer.aurelia.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 30.52
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7.1
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 11.04
             },
             {
               "component_ref": "bompart.device.color_monitor_1.external_cable_and_regional_mains_packout",
@@ -19693,14 +20571,24 @@
               "extended_recurring_cost_usd": 3.84
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.59
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.08
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.06
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.49
+              "extended_recurring_cost_usd": 19.51
             },
             {
               "component_ref": "bompart.part.color_monitor_controller",
@@ -19748,16 +20636,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 800.36,
-          "low_usd": 560.25,
-          "high_usd": 1280.58,
+          "total_usd": 833.17,
+          "low_usd": 583.22,
+          "high_usd": 1333.07,
           "breakdown_usd": {
-            "bom_materials": 577.14,
-            "workforce": 57.2,
-            "energy": 4.09,
-            "consumables": 13.86,
-            "operating_overhead": 13.92,
-            "yield_and_rework": 21.12,
+            "bom_materials": 596.6,
+            "workforce": 64.01,
+            "energy": 5.38,
+            "consumables": 16.97,
+            "operating_overhead": 15.47,
+            "yield_and_rework": 21.71,
             "instructions": 9.6,
             "packaging": 21.6,
             "logistics": 28.8,
@@ -19782,9 +20670,9 @@
               "extended_recurring_cost_usd": 7.2
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.2
+              "extended_recurring_cost_usd": 11.7
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -19810,6 +20698,16 @@
               "component_ref": "bompart.computer.aurelia.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 33.6
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.66
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.35
             },
             {
               "component_ref": "bompart.device.color_monitor_1.external_cable_and_regional_mains_packout",
@@ -19887,14 +20785,24 @@
               "extended_recurring_cost_usd": 3.6
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.52
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 26.97
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.77
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             },
             {
               "component_ref": "bompart.part.color_monitor_controller",
@@ -19942,16 +20850,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 793.07,
-          "low_usd": 555.15,
-          "high_usd": 1268.91,
+          "total_usd": 824.92,
+          "low_usd": 577.44,
+          "high_usd": 1319.87,
           "breakdown_usd": {
-            "bom_materials": 556.81,
-            "workforce": 59.0,
-            "energy": 4.16,
-            "consumables": 14.37,
-            "operating_overhead": 14.37,
-            "yield_and_rework": 20.69,
+            "bom_materials": 575.53,
+            "workforce": 65.72,
+            "energy": 5.43,
+            "consumables": 17.42,
+            "operating_overhead": 15.89,
+            "yield_and_rework": 21.26,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -19976,9 +20884,9 @@
               "extended_recurring_cost_usd": 6.8
             },
             {
-              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 15.3
+              "extended_recurring_cost_usd": 11.05
             },
             {
               "component_ref": "bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses",
@@ -20004,6 +20912,16 @@
               "component_ref": "bompart.computer.aurelia.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 36.96
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.29
+            },
+            {
+              "component_ref": "bompart.computer.aurelia.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.78
             },
             {
               "component_ref": "bompart.device.color_monitor_1.external_cable_and_regional_mains_packout",
@@ -20081,14 +20999,24 @@
               "extended_recurring_cost_usd": 3.4
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.49
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.73
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             },
             {
               "component_ref": "bompart.part.color_monitor_controller",
@@ -20167,16 +21095,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 1117.73,
-          "low_usd": 782.41,
-          "high_usd": 1788.37,
+          "total_usd": 1150.53,
+          "low_usd": 805.37,
+          "high_usd": 1840.85,
           "breakdown_usd": {
-            "bom_materials": 885.81,
-            "workforce": 56.95,
-            "energy": 4.02,
-            "consumables": 13.69,
-            "operating_overhead": 13.84,
-            "yield_and_rework": 30.39,
+            "bom_materials": 905.27,
+            "workforce": 63.76,
+            "energy": 5.31,
+            "consumables": 16.8,
+            "operating_overhead": 15.39,
+            "yield_and_rework": 30.97,
             "instructions": 9.6,
             "packaging": 21.6,
             "logistics": 28.8,
@@ -20201,9 +21129,9 @@
               "extended_recurring_cost_usd": 7.2
             },
             {
-              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.2
+              "extended_recurring_cost_usd": 11.7
             },
             {
               "component_ref": "bompart.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
@@ -20229,6 +21157,16 @@
               "component_ref": "bompart.computer.aurelia_plus.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 33.6
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.66
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.35
             },
             {
               "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
@@ -20306,14 +21244,24 @@
               "extended_recurring_cost_usd": 8.4
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.52
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 26.97
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.77
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             },
             {
               "component_ref": "bompart.part.dram_64kbit",
@@ -20361,16 +21309,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 997.7,
-          "low_usd": 698.39,
-          "high_usd": 1596.32,
+          "total_usd": 1029.54,
+          "low_usd": 720.68,
+          "high_usd": 1647.26,
           "breakdown_usd": {
-            "bom_materials": 756.06,
-            "workforce": 58.74,
-            "energy": 4.08,
-            "consumables": 14.2,
-            "operating_overhead": 14.28,
-            "yield_and_rework": 26.67,
+            "bom_materials": 774.78,
+            "workforce": 65.46,
+            "energy": 5.35,
+            "consumables": 17.24,
+            "operating_overhead": 15.81,
+            "yield_and_rework": 27.23,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -20395,9 +21343,9 @@
               "extended_recurring_cost_usd": 6.8
             },
             {
-              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 15.3
+              "extended_recurring_cost_usd": 11.05
             },
             {
               "component_ref": "bompart.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
@@ -20423,6 +21371,16 @@
               "component_ref": "bompart.computer.aurelia_plus.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 36.96
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.29
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.78
             },
             {
               "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
@@ -20500,14 +21458,24 @@
               "extended_recurring_cost_usd": 9.24
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.49
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.73
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             },
             {
               "component_ref": "bompart.part.dram_64kbit",
@@ -20586,16 +21554,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 1246.56,
-          "low_usd": 872.59,
-          "high_usd": 1994.5,
+          "total_usd": 1279.36,
+          "low_usd": 895.55,
+          "high_usd": 2046.98,
           "breakdown_usd": {
-            "bom_materials": 1010.34,
-            "workforce": 57.2,
-            "energy": 4.09,
-            "consumables": 13.86,
-            "operating_overhead": 13.92,
-            "yield_and_rework": 34.12,
+            "bom_materials": 1029.8,
+            "workforce": 64.01,
+            "energy": 5.38,
+            "consumables": 16.97,
+            "operating_overhead": 15.47,
+            "yield_and_rework": 34.7,
             "instructions": 9.6,
             "packaging": 21.6,
             "logistics": 28.8,
@@ -20620,9 +21588,9 @@
               "extended_recurring_cost_usd": 7.2
             },
             {
-              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 16.2
+              "extended_recurring_cost_usd": 11.7
             },
             {
               "component_ref": "bompart.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
@@ -20648,6 +21616,16 @@
               "component_ref": "bompart.computer.aurelia_plus.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 33.6
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.66
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 10.35
             },
             {
               "component_ref": "bompart.device.color_monitor_2.external_cable_and_regional_mains_packout",
@@ -20725,14 +21703,24 @@
               "extended_recurring_cost_usd": 3.6
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.52
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 26.97
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.77
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.78
+              "extended_recurring_cost_usd": 17.21
             },
             {
               "component_ref": "bompart.part.color_monitor_controller",
@@ -20780,16 +21768,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 1119.81,
-          "low_usd": 783.87,
-          "high_usd": 1791.7,
+          "total_usd": 1151.65,
+          "low_usd": 806.15,
+          "high_usd": 1842.64,
           "breakdown_usd": {
-            "bom_materials": 874.03,
-            "workforce": 59.0,
-            "energy": 4.16,
-            "consumables": 14.37,
-            "operating_overhead": 14.37,
-            "yield_and_rework": 30.21,
+            "bom_materials": 892.75,
+            "workforce": 65.72,
+            "energy": 5.43,
+            "consumables": 17.42,
+            "operating_overhead": 15.89,
+            "yield_and_rework": 30.77,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -20814,9 +21802,9 @@
               "extended_recurring_cost_usd": 6.8
             },
             {
-              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_mapper_and_bus_buffers",
+              "component_ref": "bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
               "quantity": 1,
-              "extended_recurring_cost_usd": 15.3
+              "extended_recurring_cost_usd": 11.05
             },
             {
               "component_ref": "bompart.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
@@ -20842,6 +21830,16 @@
               "component_ref": "bompart.computer.aurelia_plus.psu",
               "quantity": 1,
               "extended_recurring_cost_usd": 36.96
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.sprite_interface_package_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6.29
+            },
+            {
+              "component_ref": "bompart.computer.aurelia_plus.system_controller_interface_pcb_test",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.78
             },
             {
               "component_ref": "bompart.device.color_monitor_2.external_cable_and_regional_mains_packout",
@@ -20919,14 +21917,24 @@
               "extended_recurring_cost_usd": 3.4
             },
             {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.63
+            },
+            {
               "component_ref": "bompart.part.aion_4116",
               "quantity": 8,
               "extended_recurring_cost_usd": 27.49
             },
             {
+              "component_ref": "bompart.part.aurelia_system_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 9.73
+            },
+            {
               "component_ref": "bompart.part.aurelia_video_chip",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.02
+              "extended_recurring_cost_usd": 16.12
             },
             {
               "component_ref": "bompart.part.color_monitor_controller",
@@ -26305,18 +27313,18 @@
           },
           "1980": {
             "status": "conditional_on_part_qualification",
-            "aion_internal_recurring_cost_usd": 14.7848,
-            "purchase_price_usd": 23.90568,
-            "low_usd": 17.99176,
-            "high_usd": 35.73352,
+            "aion_internal_recurring_cost_usd": 17.20516,
+            "purchase_price_usd": 27.77826,
+            "low_usd": 20.89619,
+            "high_usd": 41.54238,
             "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
           },
           "1981": {
             "status": "conditional_on_part_qualification",
-            "aion_internal_recurring_cost_usd": 14.01819,
-            "purchase_price_usd": 22.6791,
-            "low_usd": 17.07183,
-            "high_usd": 33.89366,
+            "aion_internal_recurring_cost_usd": 16.12299,
+            "purchase_price_usd": 26.04678,
+            "low_usd": 19.59759,
+            "high_usd": 38.94518,
             "includes": "Supplier conversion cost, margin/capital recovery and any embedded license royalty; inbound freight. Do not add AION fabrication cost again."
           }
         }
@@ -26478,21 +27486,21 @@
           },
           "1980": {
             "status": "conditional_on_all_used_parts_qualified",
-            "total_usd": 126.54,
+            "total_usd": 144.79,
             "breakdown_usd": {
-              "bom_materials": 113.16,
-              "workforce": 3.44,
-              "energy": 0.02,
-              "consumables": 0.42,
-              "operating_overhead": 0.86,
-              "yield_and_rework": 2.04,
+              "bom_materials": 126.06,
+              "workforce": 6.13,
+              "energy": 0.56,
+              "consumables": 1.71,
+              "operating_overhead": 1.5,
+              "yield_and_rework": 2.23,
               "instructions": 1.44,
               "packaging": 2.16,
               "logistics": 3.0,
               "recurring_licenses": 0.0,
               "included_service_delivery": 0.0
             },
-            "delta_vs_aion_base_usd": 28.17,
+            "delta_vs_aion_base_usd": 29.67,
             "replaced_chip_quantities": {
               "part.aurelia_video_chip": 1,
               "part.aion_4116": 8
@@ -26500,21 +27508,21 @@
           },
           "1981": {
             "status": "conditional_on_all_used_parts_qualified",
-            "total_usd": 129.11,
+            "total_usd": 146.59,
             "breakdown_usd": {
-              "bom_materials": 114.79,
-              "workforce": 3.6,
-              "energy": 0.02,
-              "consumables": 0.46,
-              "operating_overhead": 0.9,
-              "yield_and_rework": 2.08,
+              "bom_materials": 126.83,
+              "workforce": 6.33,
+              "energy": 0.57,
+              "consumables": 1.78,
+              "operating_overhead": 1.56,
+              "yield_and_rework": 2.26,
               "instructions": 1.58,
               "packaging": 2.38,
               "logistics": 3.3,
               "recurring_licenses": 0.0,
               "included_service_delivery": 0.0
             },
-            "delta_vs_aion_base_usd": 27.99,
+            "delta_vs_aion_base_usd": 29.3,
             "replaced_chip_quantities": {
               "part.aurelia_video_chip": 1,
               "part.aion_4116": 8
@@ -26536,21 +27544,21 @@
           },
           "1980": {
             "status": "conditional_on_all_used_parts_qualified",
-            "total_usd": 132.94,
+            "total_usd": 151.19,
             "breakdown_usd": {
-              "bom_materials": 119.46,
-              "workforce": 3.44,
-              "energy": 0.02,
-              "consumables": 0.42,
-              "operating_overhead": 0.86,
-              "yield_and_rework": 2.14,
+              "bom_materials": 132.36,
+              "workforce": 6.13,
+              "energy": 0.56,
+              "consumables": 1.71,
+              "operating_overhead": 1.5,
+              "yield_and_rework": 2.33,
               "instructions": 1.44,
               "packaging": 2.16,
               "logistics": 3.0,
               "recurring_licenses": 0.0,
               "included_service_delivery": 0.0
             },
-            "delta_vs_aion_base_usd": 28.17,
+            "delta_vs_aion_base_usd": 29.68,
             "replaced_chip_quantities": {
               "part.aurelia_video_chip": 1,
               "part.aion_4116": 8
@@ -26558,21 +27566,21 @@
           },
           "1981": {
             "status": "conditional_on_all_used_parts_qualified",
-            "total_usd": 135.72,
+            "total_usd": 153.2,
             "breakdown_usd": {
-              "bom_materials": 121.3,
-              "workforce": 3.6,
-              "energy": 0.02,
-              "consumables": 0.46,
-              "operating_overhead": 0.9,
-              "yield_and_rework": 2.18,
+              "bom_materials": 133.34,
+              "workforce": 6.33,
+              "energy": 0.57,
+              "consumables": 1.78,
+              "operating_overhead": 1.56,
+              "yield_and_rework": 2.36,
               "instructions": 1.58,
               "packaging": 2.38,
               "logistics": 3.3,
               "recurring_licenses": 0.0,
               "included_service_delivery": 0.0
             },
-            "delta_vs_aion_base_usd": 27.99,
+            "delta_vs_aion_base_usd": 29.31,
             "replaced_chip_quantities": {
               "part.aurelia_video_chip": 1,
               "part.aion_4116": 8

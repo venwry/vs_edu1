@@ -16,10 +16,15 @@ for(const id of ['computer.aurelia','computer.aurelia_plus']){
  assert.equal(tables[0].querySelectorAll('tbody tr').length,2);assert.equal(tables[1].querySelectorAll('tbody tr').length,6);
  for(const mode of [...records[id].video.text_modes,...records[id].video.bitmap_modes]){
   const row=[...panel.querySelectorAll('.video-mode-table tbody tr')].find(r=>r.textContent.includes(mode.id));assert(row);
-  for(const c of mode.configurations)assert(row.textContent.includes(c.allocated_bytes+' / '+c.remaining_video_ram_bytes));
+  assert(row.textContent.includes(String(mode.ram_bytes_per_page??mode.bytes_per_framebuffer)));
+  if(mode.bits_per_pixel)assert.equal(row.lastElementChild.textContent,mode.double_buffering?'Yes':'No');
  }
  const headings=[...panel.querySelectorAll('summary')].map(x=>x.textContent.toLowerCase());
  assert(!headings.includes('text mode'));assert(!headings.includes('graphics modes'));assert(!headings.includes('bitmap mode'));
- assert(panel.textContent.includes('Not supported'));
+ assert(!panel.textContent.includes('used / free'));
+ assert(!panel.textContent.includes('0 sprites'));
+ assert.equal(tables[0].querySelectorAll('thead th').length,5);
+ assert.equal(tables[1].querySelectorAll('thead th').length,6);
+ assert(panel.textContent.includes('All modes support five sprites')); 
 }
 dom.window.close();console.log('PASS: full MMU content, single Property/Value table, nested sections, bulk controls and escaped values.');

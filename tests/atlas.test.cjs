@@ -28,6 +28,11 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
    assert.equal(d.querySelectorAll('[data-model]').length,0);
    for(const layer of d.querySelectorAll('[data-layer]')){
     layer.click();await tick();assert(d.querySelectorAll('[data-node]').length>0,layer.dataset.layer);
+    if(['aurelia','aurelia-plus'].includes(page.id)&&['hardware','memory'].includes(layer.dataset.layer)){
+     for(const id of ['mapper','dma','sprite_ram'])assert(d.querySelector('[data-node="'+id+'"]'),page.id+' missing '+id);
+     assert(d.querySelector('[data-node="dma"]').textContent.includes('Same system-controller die'));
+     assert(d.querySelector('#memory-section').textContent.includes('independent')||d.querySelector('#memory-section').textContent.includes('refresh'));
+    }
     for(const node of d.querySelectorAll('[data-node]')){node.click();assert(d.querySelector('#inspector').textContent.trim());}
     if(layer.dataset.layer==='software')for(const option of d.querySelector('#software-mode').options){
      d.querySelector('#software-mode').value=option.value;d.querySelector('#software-mode').dispatchEvent(new w.Event('change'));assert(d.querySelectorAll('[data-node]').length>0);

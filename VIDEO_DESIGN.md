@@ -1,52 +1,51 @@
-# Unified Aurelia video design
+# Aurelia video and dedicated sprite memory
 
-Catalog 2.15 replaces the former custom random-plus-serial memory design with one shared controller and eight AION-manufactured 4116-equivalent 16Kx1 NMOS DRAM chips, providing 16 KiB on both computers. Launch dates and system RAM remain unchanged. This is an accepted specification, not a claim that electrical qualification is complete.
+Both Aurelia and Aurelia+ use the same video controller, eight AION 4116-equivalent 16Kx1 DRAMs (16 KiB display RAM), and two AION 2114-equivalent 1Kx4 SRAMs (1 KiB exclusive sprite RAM). The SRAM has its own 8-bit bus to the video controller. These are accepted design requirements; electrical timing, layout and production qualification remain open.
 
-Both hosts implement 40x25 and 80x25 text with 256 writable 8x8 glyphs and 4-bit foreground/background indices. Two text pages share one 2 KiB font. Five 16x16, 4-bit sprites require 640 bytes of patterns and 20 bytes of X/Y coordinates total; reserve 768 bytes. Index zero is transparent only for sprites. Both text modes support two pages plus all five sprites.
+All modes below support five overlapping 16x16, 4-bit sprites. Sprite storage does not reduce display RAM. Text uses 256 writable 8x8 glyphs and 4-bit foreground/background indices. RAM per text page includes the padded character and colour maps; one 2048-byte font is additional and shared by both pages.
 
-All table allocations below are bytes used / free out of 16384 bytes. Text maps include padding; each page has a code map and an equally sized colour map.
+| Text mode | Pixels | RAM per page (bytes) | Shared font (bytes) |
+|---|---|---:|---:|
+| 40x25 | 320x200 | 2048 | 2048 |
+| 80x25 | 640x200 | 4096 | 2048 |
 
-| Text mode | Pixels | Code / colour map per page | Shared font | One page | Two pages | One page + 5 sprites | Two pages + 5 sprites |
-|---|---|---|---:|---|---|---|---|
-| 40×25 | 320×200 | 1024 / 1024 | 2048 | 4096 / 12288 | 6144 / 10240 | 4864 / 11520 | 6912 / 9472 |
-| 80×25 | 640×200 | 2048 / 2048 | 2048 | 6144 / 10240 | 10240 / 6144 | 6912 / 9472 | 11008 / 5376 |
+Both text modes support two pages. Total display allocation is `page_count * ram_bytes_per_page + font_bytes`: 4096/6144 bytes for one/two 40-column pages, or 6144/10240 bytes for one/two 80-column pages.
 
-| Bitmap | Bytes per page | Supported configurations |
-|---|---:|---|
-| 640x200x1 | 16000 | One page, no sprites |
-| 320x200x2 | 16000 | One page, no sprites |
-| 320x200x1 | 8000 | One page; two pages without sprites; or one page with five sprites |
-| 320x100x4 | 16000 | One page, no sprites |
-| 320x100x2 | 8000 | One page; two pages without sprites; or one page with five sprites |
-| 160x100x4 (retained compatibility mode) | 8000 | One page; two pages without sprites; or one page with five sprites |
+| Bitmap mode | Stride (bytes) | RAM per page (bytes) | Double buffering |
+|---|---:|---:|---|
+| 640x200x1 | 80 | 16000 | No |
+| 320x200x2 | 80 | 16000 | No |
+| 320x200x1 | 40 | 8000 | Yes |
+| 320x100x4 | 160 | 16000 | No |
+| 320x100x2 | 80 | 8000 | Yes |
+| 160x100x4 (compatibility) | 80 | 8000 | Yes |
 
-The remaining 384 bytes in a 16000-byte allocation do not enable a reduced sprite mode. Sprite coordinates use logical mode pixels and scale with the picture. All five sprites may overlap one scanline; lower sprite number wins. Page and position changes latch at vertical blank. Shared-font and sprite-pattern edits require separate synchronization.
+A full 16000-byte background or two 8000-byte backgrounds leave 384 bytes of display DRAM. Text/font and bitmap allocations are alternative uses of display RAM; mode switches reload fonts/redraw. Sprite SRAM remains available throughout.
 
-The custom controller contains two 160-byte character/attribute row caches (current and prefetched next row), 40 bytes of sprite shifters, 40 bytes of sprite staging and four 40-byte pixel FIFO banks: 560 bytes total. The FIFO holds completed 4-bit colour indices, including sprite composition; it is not additional addressable display RAM. The renderer and scanout sequencer are dedicated hardware engines on one master clock, not general-purpose CPUs. Glyph bytes expand to eight coloured pixels per block. Sprite rows are prefetched and composed with fixed priority.
+## Exclusive sprite SRAM
 
-The four FIFO banks follow circular raster order with FREE/FILLING/READY/READING ownership. Each bank holds 80 pixels. Only complete banks are published, each has an output latch, the producer stops when full, and scanout starts after prefill. At 14.31818 MHz, all four banks hold 22.35 microseconds of pixels; two ready banks provide 11.17 microseconds plus the current bank remainder. Underrun emits border colour and sets sticky diagnostic status while sync continues. Banks use addressed storage, not a physically shifting 160-byte register.
+640 bytes hold five 128-byte patterns. Two banks of five 8-byte descriptors occupy 80 bytes; 304 bytes remain reserved. Descriptors include signed 16-bit X/Y, enable and reserved controls. Switch the active descriptor bank at vertical blank for atomic position/enable updates. The 1 KiB bank does not contain two complete pattern sets: pattern changes require scheduled writes or disabling affected sprites. Lower sprite number wins; index zero is transparent for sprites. Coordinates use logical pixels and scale with the background.
 
-Eight external AION 4116-equivalent 16Kx1 DRAM chips form one 16KiB, 8-bit memory bank. They have one random read/write port and no serial-output register. All glyph, sprite, bitmap, host and refresh accesses share the DRAM bus with bounded CPU waits. Character codes/colours are cached across eight glyph scanlines, while the next row is prefetched into the second cache. An illustrative worst-overlap text budget averages 80 glyph + 20 next-row + 40 sprite reads = 140 reads, or 52.5 microseconds at a 375ns cycle. This is not a local deadline proof. Validate cache transitions, FIFO refill, startup, refresh and host writes together; a faster qualified grade or page-mode schedule may be required. Repeated bitmap lines may be fetched again; no extra full scanline store is assumed. In particular, validate 320x100x4 throughput including line repetition.
+CPU and DMA use auto-incrementing video upload ports with target-ready backpressure. Sprite SRAM reads and writes are arbitrated on the separate bus. Two 18-pin, +5 V SRAM packages target 250 ns cycles, subject to process and electrical qualification; no refresh is required.
 
-The main RAM remains external. The 4116-compatible target uses a 16-pin DIP and +12V/+5V/-5V rails; final ordering code, electrical compatibility and speed grade remain qualification gates. Purchased system RAM (`part.dram_16kbit`) is distinct from internally manufactured display RAM (`part.aion_4116`). Display-memory allocation keys consistently use `video_ram_policy`, `reserved_video_ram_bytes` and `remaining_video_ram_bytes` across catalog, code and reports.
+## Rendering and timing
 
-The existing Control pair becomes bidirectional for monitor capability discovery. Fixed raster profiles target 320x200 at 7.15909 MHz and 640x200 at 14.31818 MHz, with equal line/frame rates. Monitor I models advertise the 320 profile; Monitor II models target both. These are design requirements pending OEM bandwidth, sync and readability qualification. Both text widths are native to both computers; firmware exposes only modes supported by the connected monitor. Pixels/lines repeat by integer factors; unsupported downscaling is rejected. Mono I requires host index-to-luminance mapping because its DAC has no programmable palette.
+The controller retains two 160-byte character/attribute row caches, 40-byte sprite shifters, 40-byte sprite staging and four 40-byte completed-pixel FIFO banks: 560 bytes of internal storage. Renderer and scanout are dedicated hardware engines sharing one master clock. FIFO banks hold completed 4-bit colour indices and follow circular FREE/FILLING/READY/READING ownership with complete-bank publication, output latches, prefill and backpressure. Underrun continues sync, emits border colour and sets diagnostic status.
 
-Packet encoding, control turnaround/timing, connector, voltage, termination, sync widths and porches remain electrical release gates. The launch baseline requires video RAM process development and worst-case fetch validation before June 1978; no new historical event date or completed fabrication milestone is asserted.
+At 14.31818 MHz the FIFO holds 22.35 microseconds of pixels; two ready banks hold 11.17 microseconds. Glyph expansion creates eight pixels per fetched byte. In 80-column text, 80 glyph reads plus an average 20 next-row prefetch reads consume 37.5 microseconds at a 375 ns DRAM cycle. Separately, 40 sprite pattern bytes take 10 microseconds at 250 ns per SRAM cycle. Descriptor reads, cache transitions, startup, refresh, uploads and local FIFO deadlines still require a complete schedule. Average throughput is not a timing proof. Repeated bitmap lines may be fetched again; validate 320x100x4 explicitly.
 
-Manufacturing estimates assume process-matched laser-written masks and AION fabrication on 75mm wafers. The controller is estimated at 40,000–50,000 transistors (central 45,000), 40–60mm² at 3µm (central 48), or 55–80mm² at 3.5µm (central 65). The ordinary DRAM planning range is 16–20mm² per die, central 18 at 3µm. These are not measured layouts. A six-device-per-storage-bit accounting model informs the controller estimate but does not substitute for a qualified NMOS cell design.
+The video controller refreshes every row of its eight ordinary single-port DRAMs, including hidden pages. The system controller independently refreshes system DRAM; see [AURELIA_SYSTEM_CONTROLLER.md](AURELIA_SYSTEM_CONTROLLER.md). The 4116-compatible target uses +12V/+5V/-5V rails and a 16-pin DIP. Qualified ordering codes, retention, speed, power and package pinouts remain release gates.
 
-The reproducible recurring-cost model uses $210 per processed wafer in 1978, `die_yield = 0.85 * exp(-2.8 * area_mm2 / 100)` for these parts, then 93% package/test yield. The 48mm² controller has 22.17% wafer-test yield, 20.62% final saleable yield and costs $18.743. The 18mm² DRAM has 51.35% wafer-test yield, 47.75% saleable yield and costs $3.4452 each; eight cost $27.5618. The complete chipset is **$46.30**, approximately **$47** as a rounded planning allowance, in nominal 1978 USD. Later-year values are regenerated by `tools/build_cost_assessment.py` using the existing annual defect-density and wafer-cost assumptions. Speed-bin losses beyond this model remain unquantified.
+## Monitor and interface contract
 
-This replaces the former detailed-model $43.81 chipset and supersedes the older conversational $65 stabilized / $130 ramp allowances. It does not apply a new ramp allowance to every shipment. Development, extraordinary startup expenses, capital depreciation, secret-facility costs and board/monitor electronics are excluded. The scenario assessment is separate from unquoted BOM `unit_cost` fields, which remain null. Ordinary DRAM still requires capacitor, sensing, retention and refresh qualification; AION must still fabricate all eight RAM dies. The redesign does not eliminate RAM wafer demand or the memory-process programme.
+The bidirectional Control pair discovers monitor capabilities. Fixed raster profiles target 320x200 at 7.15909 MHz and 640x200 at 14.31818 MHz with equal line/frame rates. Monitor I supports the 320 profile; Monitor II targets both. Both computers have native 40/80-column text, but firmware exposes only modes supported by the connected monitor. Integer repetition is supported; unsupported downscaling is rejected. Mono I uses host index-to-luminance mapping. Connector, voltage, sync widths/porches, turnaround and OEM readability remain qualification gates.
 
-The shared-controller Apple II and S-100 cards inherit this silicon change. Artemis has a distinct controller; its existing unresolved 16KiB storage cost proxy follows the replacement AION DRAM part, without asserting that its architecture is now the Aurelia controller.
-Run `python tests/validate_video.py` alongside the catalog/BOM validators and existing DOM tests. Resource arithmetic does not establish silicon timing or production yield.
+## Manufacturing and integration
 
+The recurring model assumes 75 mm wafers and 3 micron NMOS: 52 mm2 central video-controller die, 18 mm2 per 4116 DRAM and 20 mm2 per 2114 SRAM. Video-controller transistor planning is 44,000–56,000, central 49,000; these estimates are not measured layouts. The 3.5 micron sensitivity requires a larger die and a separate cost/capacity run.
 
+At 1978 assumptions ($210 processed wafer, die yield `0.85 * exp(-2.8 * area_mm2 / 100)`, 93% final package/test yield), the video chip costs $22.5629, eight DRAMs $27.5618, and two SRAMs $7.7784: about $57.90 for the eleven-chip video population. Incremental package/interface/PCB/test allowance is $7.40 at assembly level. Speed-bin losses, initial design/masks and capital are excluded from recurring chip costs. The industrial model separately budgets extension engineering and computes wafer loading from the revised BOM.
 
-## NCC 1979 third-party-host video cards
+Apple II and S-100 video cards inherit the same sprite SRAM and modes because they reuse this controller. Host adapters and drivers remain specific; these cards do not contain the Aurelia system controller and do not add CP/M execution capability. Existing SMC agreements do not automatically qualify newly added SRAM or system-controller parts.
 
-Apple II and S-100 video cards reuse the Aurelia-family controller, eight AION-manufactured 4116-equivalent 16Kx1 DRAMs and the Logix digital video interface. Each carries 16 KiB onboard display memory; this is not host general-purpose RAM. Host bus adapters, window/addressed video RAM access, software and electrical qualification are card-specific. Mode availability requires a compatible monitor; 80 columns requires the 640-pixel raster. Native Apple applications must use the card library or an explicit adaptation; existing display writes are not transparently redirected. These cards add no CP/M execution capability.
-
-AION supplies June 1979 silicon; SMC transfer starts July 1978 and qualified independent chips become available from October 1979, subject to individual release. Process-compatible masks, test structures, process know-how and engineering assistance are transferred; arbitrary AION masks are not assumed drop-in compatible with SMC equipment.
+Run catalog/BOM, video, costs, investment and DOM validators. Passing arithmetic and rendering checks does not establish production timing or yield.

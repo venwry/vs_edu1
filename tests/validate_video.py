@@ -18,6 +18,8 @@ for card in cards:
     quantities = {line['ref']: line['quantity'] for line in assembly['lines']}
     assert quantities['bompart.part.aurelia_video_chip'] == 1
     assert quantities['bompart.part.aion_4116'] == 8
+    assert quantities['bompart.part.aion_2114'] == 2
+    assert 'bompart.part.aurelia_system_controller' not in quantities
 design = chip['specification']['implementation_design']
 buffers = design['internal_buffers']
 assert buffers['pixel_fifo_page_count'] == 4
@@ -35,10 +37,10 @@ assert ram_part['specification']['serial_register_bits'] == 0
 # Storage budgets and fabrication costs are separate: both must reference the same dies.
 costs = json.loads((root / 'manufacturing_costs.json').read_text())
 models = costs['chip_fabrication_models']
-assert models[chip['id']]['1978']['die_area_mm2'] == 48
+assert models[chip['id']]['1978']['die_area_mm2'] == 52
 assert models[ram_part['id']]['1978']['die_area_mm2'] == 18
 assert abs(models[chip['id']]['1978']['good_packaged_chip_cost_usd'] +
-           8 * models[ram_part['id']]['1978']['good_packaged_chip_cost_usd'] - 46.3048) < .001
+           8 * models[ram_part['id']]['1978']['good_packaged_chip_cost_usd'] + 2 * models['part.aion_2114']['1978']['good_packaged_chip_cost_usd'] - 57.9031) < .001
 
 for host in hosts:
     c = records[host]
@@ -51,8 +53,15 @@ for host in hosts:
     assert v['controller_ref'] == chip['id']
     s = v['sprites']
     assert s['pattern_bytes_per_sprite'] == s['width'] * s['height'] * s['bits_per_pixel'] // 8 == 128
-    assert s['total_pattern_and_position_bytes'] == s['count'] * (128 + s['position_bytes_per_sprite']) == 660
-    assert s['reserved_video_ram_bytes'] == 768
+    assert s['pattern_bytes_total'] == s['count'] * s['pattern_bytes_per_sprite'] == 640
+    assert s['descriptor_bytes_total'] == s['descriptor_bank_count'] * s['count'] * s['descriptor_bytes_per_sprite'] == 80
+    assert s['pattern_bytes_total'] + s['descriptor_bytes_total'] + s['spare_sprite_sram_bytes'] == s['reserved_sprite_sram_bytes'] == 1024
+    assert s['available_in_all_modes'] and not s['pattern_double_buffered']
+    pop_s = c['memory']['sprite_physical_population']
+    ram_s = records[pop_s['chip_ref']]['specification']
+    assert pop_s['chip_count'] * ram_s['organization_words'] * ram_s['data_width_bits'] // 8 == 1024
+    assert pop_s == v['sprite_memory'] and pop_s['separate_bus']
+    assert not ram_s['refresh_required']
     assert s['count'] == s['maximum_per_scanline'] == 5
     assert {m['columns'] for m in v['text_modes']} == {40, 80}
     for m in v['text_modes']:
@@ -61,7 +70,6 @@ for host in hosts:
         assert len(m['configurations']) == 4
         for cfg in m['configurations']:
             size = cfg['text_buffer_count'] * (m['character_map_bytes_per_buffer'] + m['attribute_map_bytes_per_buffer']) + m['font_bytes']
-            size += s['reserved_video_ram_bytes'] if cfg['sprite_count'] else 0
             assert size == cfg['allocated_bytes'] <= capacity
             assert size + cfg['remaining_video_ram_bytes'] == capacity
     assert {(m['width'], m['height'], m['bits_per_pixel']) for m in v['bitmap_modes']} == {
@@ -69,16 +77,28 @@ for host in hosts:
     for m in v['bitmap_modes']:
         size = m['width'] * m['height'] * m['bits_per_pixel'] // 8
         assert size == m['bytes_per_framebuffer'] == m['stride_bytes'] * m['height']
-        expected = {(1, 0)} if size == 16000 else {(1, 0), (2, 0), (1, 5)}
+        assert m['double_buffering'] == (2 * size <= capacity)
+        assert m['sprites_available'] == 5
+        expected = {(p, n) for p in ([1, 2] if m['double_buffering'] else [1]) for n in [0, 5]}
         assert {(x['framebuffer_count'], x['sprite_count']) for x in m['configurations']} == expected
         for cfg in m['configurations']:
-            used = size * cfg['framebuffer_count'] + (768 if cfg['sprite_count'] else 0)
+            used = size * cfg['framebuffer_count']
             assert used == cfg['allocated_bytes'] <= capacity
             assert used + cfg['remaining_video_ram_bytes'] == capacity
     a = next(a for a in bom['assemblies'] if a['id'] == 'assembly.' + host + '.base')
     lines = {l['ref']: l for l in a['lines']}
     assert lines['bompart.part.aurelia_video_chip']['quantity'] == 1
     assert lines['bompart.part.aion_4116']['quantity'] == 8
+    assert lines['bompart.part.aion_2114']['quantity'] == 2
+    assert lines['bompart.part.aurelia_system_controller']['quantity'] == 1
+    assert c['memory']['system_controller_ref'] == 'part.aurelia_system_controller'
+    controller = records[c['memory']['system_controller_ref']]['specification']
+    assert controller['refresh']['independent_of_cpu'] and controller['refresh']['all_installed_banks']
+    assert c['processor']['clock_mhz'] in controller['host_clock_mhz']
+    assert controller['dma']['active_transfer_engines'] == 1
+    mm = records[c['memory']['organization_ref']]['specification']
+    assert mm['controller_ref'] == c['memory']['system_controller_ref']
+    assert mm['dma'] == controller['dma'] and mm['system_refresh'] == controller['refresh']
     assert not any('video_ram_chips' in ref or 'video_controller_revision' in ref for ref in lines)
 assert records[hosts[0]]['video']['text_modes'] == records[hosts[1]]['video']['text_modes']
 assert records[hosts[0]]['video']['bitmap_modes'] == records[hosts[1]]['video']['bitmap_modes']
@@ -89,7 +109,7 @@ for monitor in ['device.mono_monitor_1', 'device.color_monitor_1', 'device.mono_
     assert caps['preferred_raster_id'] in caps['raster_ids']
     assert all(profiles[r]['pixel_clock_mhz'] <= caps['maximum_pixel_clock_mhz'] for r in caps['raster_ids'])
     assert ('raster_640_200' in caps['raster_ids']) == monitor.endswith('_2')
-print('Validated shared video modes, all buffer/sprite budgets, monitor profiles and nine-chip BOMs.')
+print('Validated shared video modes, all buffer/sprite budgets, monitor profiles and eleven-chip video BOMs and integrated system controllers.')
 
 
 assert records[hosts[0]]['video'] == records[hosts[1]]['video']

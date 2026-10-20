@@ -1,5 +1,7 @@
 # Sales and Academy demand through NCC 1980
 
+Historical campaign-analysis snapshot. Its numerical tables precede the sprite/system-controller cost rebase; current recalculated figures are in [sales.html](sales.html), [sales_forecast.json](sales_forecast.json) and [SALES_FORECAST.md](SALES_FORECAST.md). Campaign dates and assumptions below remain applicable.
+
 Cutoff: **May 18, 1980**, the day before NCC opens on May 19. The last row covers May 1–18, not a full month. This US scenario forecast includes no next-generation computer deliveries or architecture-dependent customer knowledge. Earlier periods retain their campaign boundaries; prices and dependent projections reflect the video-cost rebase.
 
 ## Computer sales
