@@ -13,6 +13,7 @@ const configurations=c.memory.configurations,maxKB=c.memory.physical_capacity_li
 let layer='hardware',selected='',nodes=[],edges=[];
 const network=()=>Boolean(c.networking?.included_by_default)||$('era').value==='1981';
 const ramConfiguration=()=>configurations.find(x=>x.id===$('artemis-ram').value)||configurations.find(x=>x.id===c.memory.default_configuration);
+const video=()=>c.video_variants?.find(v=>v.configuration_ids.includes(ramConfiguration().id))?.specification||c.video;
 const module=()=>rec(ramConfiguration().module_ref);
 const ram=()=>ramConfiguration().ram_kb;
 const ramFacts=()=>({...ramConfiguration(),module_name:module().name,module_capacity_kb:module().specification.capacity_kb,module_data_width_bits:16,bank_data_width_bits:32,empty_sockets:c.memory.ram_sockets-ramConfiguration().populated_modules,physical_capacity_limit_kb:maxKB,capacity_limit_status:c.memory.capacity_limit_status,population_policy:c.memory.population_policy,upgrade_policy:c.memory.upgrade_policy,reliability_policy:c.memory.reliability_policy});
@@ -21,9 +22,9 @@ function add(id,title,sub,col,row,data,optional=false){nodes.push({id,title,sub,
 function product(id,col,row,optional=false,sub){const r=rec(id);if(!r)throw Error('Missing catalog record: '+id);add(id,r.name,sub||r.introduced?.event_start_date||human(r.category),col,row,clean(r),optional);}
 function definition(n){if(n.id==='network'&&!network())return;
  if(n.requires_compatible_device&&!c.compatible_devices.includes(n.record_ref))return;
- let r=n.record_ref?rec(n.id==='os'&&network()?settings.network_software_ref:n.record_ref):null,data=r?clean(r):{},source=r?.specification||r;
+ let r=n.record_ref?rec(['graphics','video_ram'].includes(n.id)?video().card_ref:n.id==='os'&&network()?settings.network_software_ref:n.record_ref):null,data=r?clean(r):{},source=r?.specification||r;
  if(n.fields)data=Object.fromEntries(n.fields.map(k=>[k,source[k]]));
- if(n.computer_path){const part=at(c,n.computer_path);data=typeof part==='object'?{...data,...part}:{...data,policy:part};}
+ if(n.computer_path){const part=n.computer_path==='video'?video():n.computer_path.startsWith('video.')?at(video(),n.computer_path.slice(6)):at(c,n.computer_path);data=typeof part==='object'?{...data,...part}:{...data,policy:part};}
  if((n.id==='graphics'||n.id==='video_ram')&&data.specification){delete data.specification;delete data.manufacturing_requirements;}
  if(r?.specification_ref)data[rec(r.specification_ref).name]=rec(r.specification_ref).specification;
  if(n.id==='ram')data=ramFacts();
@@ -31,7 +32,7 @@ function definition(n){if(n.id==='network'&&!network())return;
  let sub=r?.name||human(n.computer_path?.split('.').pop()||n.id);
  if(n.id==='cpu')sub=c.processor.variant+' · '+c.processor.clock_mhz+' MHz';
  if(n.id==='ram')sub=ram()+' KB · '+ramConfiguration().populated_modules+' modules · '+ramConfiguration().populated_banks+' banks';
- if(n.id==='graphics'||n.id==='video_ram')sub=c.video.video_ram_kb+' KB video RAM · '+c.video.text_modes.map(m=>m.columns+'×'+m.rows+' ('+m.glyph_width+'×'+m.glyph_height+')').join(' / ');
+ if(n.id==='graphics'||n.id==='video_ram')sub=video().video_ram_kb+' KB video RAM · '+video().text_modes.map(m=>m.columns+'×'+m.rows+' ('+m.glyph_width+'×'+m.glyph_height+')').join(' / ');
  if(n.id==='virtual')sub=rec(settings.memory_ref).specification.virtual_address_bits+'-bit virtual addresses';
  if(n.id==='physical')sub=rec(settings.memory_ref).specification.physical_address_bits+'-bit physical addresses';
  if(n.id==='rom')sub=c.io_and_expansion.rom_eeprom_cartridge_slots.count+' cartridge slots';
@@ -42,13 +43,13 @@ function configuredDiagram(name){const view=settings.diagrams[name];view.nodes.f
 function peripherals(){
  add('host',c.name,'Host computer',2,1,{form_factor:c.form_factor,io_and_expansion:c.io_and_expansion});
  product('technology.flexibus',1,2,false,c.io_and_expansion.flexibus_ports+' ports');
- product(c.video.technology_ref,2,2);product('technology.plug_and_execute',3,2,false,c.io_and_expansion.expansion_slots.count+' × '+c.io_and_expansion.expansion_slots.width_bits+'-bit slots');
- edges=[['host','technology.flexibus'],['host',c.video.technology_ref],['host','technology.plug_and_execute']];
+ product(video().technology_ref,2,2);product('technology.plug_and_execute',3,2,false,c.io_and_expansion.expansion_slots.count+' × '+c.io_and_expansion.expansion_slots.width_bits+'-bit slots');
+ edges=[['host','technology.flexibus'],['host',video().technology_ref],['host','technology.plug_and_execute']];
  const bundled=new Set(catalog.offered_bundles.filter(b=>b.computer_ref===c.id).flatMap(b=>b.included_devices||[]));
- c.compatible_devices.filter(id=>network()||![settings.network_adapter_ref,'device.network_hub'].includes(id)).forEach((id,i)=>{
-  const d=rec(id),standard=id===c.video.card_ref||(id===settings.network_adapter_ref&&network()),bundle=bundled.has(id),optional=!standard&&!bundle;
+ c.compatible_devices.filter(id=>id!=='device.mono_pro'||video().video_ram_kb===32).filter(id=>network()||![settings.network_adapter_ref,'device.network_hub'].includes(id)).forEach((id,i)=>{
+  const d=rec(id),standard=id===video().card_ref||(id===settings.network_adapter_ref&&network()),bundle=bundled.has(id),optional=!standard&&!bundle;
   product(id,i%3+1,Math.floor(i/3)+3,optional,(standard?'Included in selected configuration':bundle?'Bundle option':'Optional')+' · '+d.introduced.event_start_date);
-  const parent=d.category==='memory_expansion'?'host':id==='device.artemis_video_card'?'host':id==='device.network_hub'?settings.network_adapter_ref:d.category==='display'?c.video.technology_ref:['device.artemis_cpm80_module',settings.network_adapter_ref].includes(id)?'technology.plug_and_execute':'technology.flexibus';
+  const parent=d.category==='memory_expansion'?'host':['device.artemis_video_card','device.artemis_video_card_16kb'].includes(id)?'host':id==='device.network_hub'?settings.network_adapter_ref:d.category==='display'?video().technology_ref:['device.artemis_cpm80_module',settings.network_adapter_ref].includes(id)?'technology.plug_and_execute':'technology.flexibus';
   edges.push([parent,id,optional]);
  });
 }
@@ -90,18 +91,18 @@ function select(){const n=nodes.find(n=>n.id===selected);if(!n)return;
 }
 function draw(){window.drawArchitectureWires($('diagram'),edges);}
 function details(){
- $('memory-section').innerHTML='<div class="eyebrow">Memory organization</div><h2>'+esc(c.name)+' · '+ram()+' KB RAM</h2><p>'+esc(settings.memory_note)+'</p>'+table(['Resource','Configuration'],[['Virtual addressing',rec(settings.memory_ref).specification.virtual_address_bits+' bits'],['Physical addressing',rec(settings.memory_ref).specification.physical_address_bits+' bits'],['RAM population',ramConfiguration().populated_modules+' × '+module().specification.capacity_kb+' KB / 16-bit modules'],['Populated banks',ramConfiguration().populated_banks+' / '+c.memory.bank_count],['Data DRAM chips',ramConfiguration().data_chip_count],['Qualification',ramConfiguration().validation_status],['Available sockets',c.memory.ram_sockets],['Physical capacity design target',maxKB+' KB · qualification pending'],['Display DRAM',c.video.video_ram_kb+' KiB on replaceable card'],['Exclusive sprite SRAM','1 KiB; separate bus'],['Internal pixel buffer','4 × 160 bytes'],['Internal character row cache','2 × 160 bytes'],['Video-card connector','1 dedicated; four general slots retained'],['Cartridge slots',c.io_and_expansion.rom_eeprom_cartridge_slots]])+'<p>'+esc(settings.ram_note)+'</p><details><summary>RAM modules and process memory</summary>'+dl(clean(module()))+dl(rec(settings.os_model_ref).specification)+'</details>';
+ $('memory-section').innerHTML='<div class="eyebrow">Memory organization</div><h2>'+esc(c.name)+' · '+ram()+' KB RAM</h2><p>'+esc(settings.memory_note)+'</p>'+table(['Resource','Configuration'],[['Virtual addressing',rec(settings.memory_ref).specification.virtual_address_bits+' bits'],['Physical addressing',rec(settings.memory_ref).specification.physical_address_bits+' bits'],['RAM population',ramConfiguration().populated_modules+' × '+module().specification.capacity_kb+' KB / 16-bit modules'],['Populated banks',ramConfiguration().populated_banks+' / '+c.memory.bank_count],['Data DRAM chips',ramConfiguration().data_chip_count],['Qualification',ramConfiguration().validation_status],['Available sockets',c.memory.ram_sockets],['Physical capacity design target',maxKB+' KB · qualification pending'],['Display DRAM',video().video_ram_kb+' KiB on replaceable card'],['Exclusive sprite SRAM','1 KiB; separate bus'],['Internal pixel buffer','4 × '+video().pixel_buffer.bytes_per_page+' bytes'],['Internal character row cache','2 × 160 bytes'],['Video-card connector','1 dedicated; four general slots retained'],['Cartridge slots',c.io_and_expansion.rom_eeprom_cartridge_slots]])+'<p>'+esc(settings.ram_note)+'</p><details><summary>RAM modules and process memory</summary>'+dl(clean(module()))+dl(rec(settings.os_model_ref).specification)+'</details>';
  $('software-section').innerHTML='<div class="eyebrow">System organization</div><h2>'+esc(rec(network()?settings.network_software_ref:settings.os_ref).name)+'</h2>'+dl(clean(rec(network()?settings.network_software_ref:settings.os_ref)));
- $('portability-section').innerHTML='<div class="eyebrow">Platform records</div>'+page.record_refs.filter(id=>id!==c.id).map(id=>`<details id="${esc(id)}"><summary>${esc(rec(id).name)}</summary>${dl(clean(rec(id)))}</details>`).join('')+'<details><summary>'+esc(c.name)+' · full specification</summary>'+window.renderSpecification(clean(c),records)+'</details>';window.bindSpecificationControls($('portability-section'));
+ $('portability-section').innerHTML='<div class="eyebrow">Platform records</div>'+page.record_refs.filter(id=>id!==c.id).map(id=>`<details id="${esc(id)}"><summary>${esc(rec(id).name)}</summary>${dl(clean(rec(id)))}</details>`).join('')+'<details><summary>'+esc(c.name)+' · full specification</summary>'+window.renderSpecification({...Object.fromEntries(Object.entries(clean(c)).filter(([k])=>k!=='video_variants')),video:video(),memory:{...c.memory,video_ram_kb:video().video_ram_kb}},records)+'</details>';window.bindSpecificationControls($('portability-section'));
 }
 function build(){nodes=[];edges=[];
  $('ram-choice').hidden=true;$('artemis-ram-choice').hidden=layer==='bundles';$('era').parentElement.hidden=Boolean(c.networking?.included_by_default)||layer==='bundles';
  $('offering-controls').hidden=!['software','bundles'].includes(layer);$('software-choice').hidden=layer!=='software';$('bundle-choice').hidden=layer!=='bundles';
- $('stats').innerHTML=[['Processor',c.processor.variant+' · '+c.processor.clock_mhz+' MHz'],['System RAM',ram()+' KB'],['Video RAM',c.video.video_ram_kb+' KB'],['Text display',c.video.text_modes.map(m=>m.columns+'×'+m.rows+' ('+m.glyph_width+'×'+m.glyph_height+')').join(' / ')]].map(([k,v])=>'<div class="stat"><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join('');
+ $('stats').innerHTML=[['Processor',c.processor.variant+' · '+c.processor.clock_mhz+' MHz'],['System RAM',ram()+' KB'],['Video RAM',video().video_ram_kb+' KB'],['Text display',video().text_modes.map(m=>m.columns+'×'+m.rows+' ('+m.glyph_width+'×'+m.glyph_height+')').join(' / ')]].map(([k,v])=>'<div class="stat"><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join('');
  $('view-title').textContent=c.name.toUpperCase()+' / '+layer.toUpperCase();$('diagram-note').textContent=settings.notes[layer];
  if(layer==='hardware'||layer==='memory')configuredDiagram(layer);else if(layer==='peripherals')peripherals();else if(layer==='software')software();else bundles();
  if(!nodes.some(n=>n.id===selected))selected=nodes[0]?.id;
- $('diagram').innerHTML='<svg class="wires" aria-hidden="true"></svg>'+nodes.map(n=>`<button class="node ${n.optional?'optional':''}" style="grid-column:${n.col};grid-row:${n.row}" data-node="${esc(n.id)}" aria-pressed="false" aria-controls="inspector"><small>${esc(layer)}</small><strong>${esc(n.title)}</strong><span>${esc(n.sub)}</span><span class="plus" aria-hidden="true">+</span></button>`).join('');
+ $('diagram').innerHTML='<svg class="wires" aria-hidden="true"></svg>'+nodes.map(n=>`<button class="node ${n.optional?'optional':''}" style="grid-column:${n.col};grid-row:${n.row}" data-node="${esc(n.id)}" aria-pressed="false" aria-controls="inspector"><small>${esc(layer)}</small><strong>${esc(n.title)}</strong>${['graphics','video_ram'].includes(n.id)?'<span class="video-card-contents"><span>Controller: '+esc(rec(video().controller_ref).name)+'</span><span>Display RAM: '+video().video_ram_kb+' KiB</span><span>Sprite SRAM: 1 KiB, exclusive bus</span></span>':'<span>'+esc(n.sub)+'</span>'}<span class="plus" aria-hidden="true">+</span></button>`).join('');
  $('diagram').querySelectorAll('[data-node]').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.node;select();}));select();details();requestAnimationFrame(draw);
 }
 $('diagram').closest('main').classList.add('artemis-explorer');
@@ -114,7 +115,7 @@ $('software-mode').innerHTML=settings.software_views.map(v=>'<option value="'+es
 $('bundle-select').innerHTML=offers.map(b=>'<option value="'+esc(b.id)+'">'+esc(b.name)+'</option>').join('');
 $('context').textContent=settings.context;$('timeline').innerHTML=settings.computer_refs.map(rec).map(x=>'<time>'+esc(x.introduced.event_start_date)+'</time><p>'+esc(x.name)+' · '+esc(x.introduced.event_name)+'</p>').join('');
 const cs=settings.computer_refs.map(rec);$('comparison').closest('article').querySelector('h2').textContent='Artemis family comparison';
-$('comparison').innerHTML=table(['Component',...cs.map(x=>x.name)],[['Processor',...cs.map(x=>x.processor.variant+' · '+x.processor.clock_mhz+' MHz')],['Shipping RAM',...cs.map(x=>x.memory.configurations.filter(r=>r.shipping_configuration).map(r=>r.ram_kb).join(' / ')+' KB')],['RAM module',...cs.map(x=>x.memory.module_refs.map(id=>rec(id).specification.capacity_kb+' KB / 16-bit').join(' or '))],['Internal hard disk',...cs.map(x=>x.storage.internal_hdd?x.storage.internal_hdd.capacity_mb+' MB':'Not included')],['Video RAM',...cs.map(x=>x.video.video_ram_kb+' KB')],['Networking',...cs.map(x=>x.networking?'Included at launch':'Standard from '+rec(settings.network_software_ref).introduced.event_start_date)]]);
+$('comparison').innerHTML=table(['Component',...cs.map(x=>x.name)],[['Processor',...cs.map(x=>x.processor.variant+' · '+x.processor.clock_mhz+' MHz')],['Shipping RAM',...cs.map(x=>x.memory.configurations.filter(r=>r.shipping_configuration).map(r=>r.ram_kb).join(' / ')+' KB')],['RAM module',...cs.map(x=>x.memory.module_refs.map(id=>rec(id).specification.capacity_kb+' KB / 16-bit').join(' or '))],['Internal hard disk',...cs.map(x=>x.storage.internal_hdd?x.storage.internal_hdd.capacity_mb+' MB':'Not included')],['Video RAM',...cs.map(x=>(x.video_variants?'16 / 32':x.video.video_ram_kb)+' KiB')],['Networking',...cs.map(x=>x.networking?'Included at launch':'Standard from '+rec(settings.network_software_ref).introduced.event_start_date)]]);
 for(const button of document.querySelectorAll('[data-layer]')){button.disabled=false;button.addEventListener('click',()=>{layer=button.dataset.layer;document.querySelectorAll('[data-layer]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));selected='';build();});}
 for(const id of ['artemis-ram','era','software-mode','bundle-select'])$(id).addEventListener('change',build);
 if(typeof ResizeObserver!=='undefined')new ResizeObserver(draw).observe($('diagram'));window.addEventListener('resize',draw);build();

@@ -1,19 +1,22 @@
 {
   "status": "Accepted planning design; production qualification and assumed demand response unproven",
   "effective_from": "1980-05-19",
-  "mono_pro_artemis_bundle_share": 0.6,
+  "mono_pro_artemis_bundle_share": 0.24,
   "mono_pro_pro_console_share": 0.3,
   "demand_uplift": {
-    "conservative": 0.06,
-    "central": 0.12,
-    "strong": 0.18
+    "conservative": 0.024,
+    "central": 0.048,
+    "strong": 0.072
   },
-  "demand_basis": "Combined product-attractiveness and incremental campaign intent uplift applied once to Artemis only before package-price elasticity. New buyers, not an extra redistribution of the existing pool; not measured conversion. No independent marketing bonus. 60% Mono Pro mix is an explicit common scenario assumption.",
+  "demand_basis": "70% Artemis128 (16 KiB card), 30% Artemis256 (32 KiB card and AION system RAM). Within each tier 80% monochrome and 20% Color II: total Mono Pro uptake 24%. Previous display-specific interest uplift scaled by 24/60; price elasticity applied once afterwards. Mix and response are scenario assumptions, not observed orders. Campaign remains $435,000; no additional price/value marketing bonus.",
   "engineering_person_months": {
     "AION Labs video increment": 72,
     "AION Labs monitor receiver": 18,
     "Logix card and monitor qualification": 36,
-    "AION Software display drivers": 24
+    "AION Software display drivers": 24,
+    "AION Labs 64K DRAM": 120,
+    "Logix memory and economy card": 24,
+    "AION Software economy driver": 12
   },
   "incremental_marketing_usd": {
     "1980-Q1": 35000,
