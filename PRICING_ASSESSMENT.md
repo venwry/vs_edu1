@@ -1,39 +1,16 @@
-# Active policy: proportional 40% contribution reduction
+# Retail pricing: balanced contribution and proxy discount
 
-All 82 offers and 218 available 1978–1981 snapshots retain 60% of their original baseline dollar contribution. The buffered-video redesign explicitly rebases recurring costs; baseline channel fees and absolute profit targets remain unchanged. Each snapshot records its cost_revision bridge. `pricing_baseline.json` pins the pre-change values from commit 3751194. New retail = (cost + 0.60 × previous contribution) / (1 − fee), rounded to cents. This is neither a 40% retail discount nor a fixed margin percentage. It is contribution before marketing, vouchers, R&D, capital and taxes, not net corporate profit.
+The active policy covers all 82 offers and 218 available annual snapshots for 1978–1981. Let P be retail price, C recurring cost, f the dealer fee and B the normalized competitor proxy. Match contribution margin on net receipts, 1 − C/[P(1 − f)], to proxy discount, 1 − P/B. Therefore **P = sqrt(C × B / (1 − f))**, rounded to cents. These percentages describe unit contribution before corporate overhead, development, marketing, capital, tax and finance; they are not corporate net profit.
 
-The old competitor-discount target, price endings, minimum-margin floor and nonnegative stress guarantee below describe the baseline method, not current safeguards. Losses under stress are now shown explicitly. The displayed floor is cost break-even at the default channel fee. Course variants receive the same reduction before vouchers; the old $50 surcharge becomes $30 and Fundamentals retains its 50% tuition credit. Other course vouchers remain $150, even where full redemption produces a negative course-only contribution.
+170 snapshots match to within 0.02 percentage points before display rounding. For 46 snapshots without a proxy, use a disclosed 25% contribution margin on net receipts; no competitor discount is claimed. Two second-generation monochrome-monitor snapshots (1980 and 1981) cannot match while avoiding a unit loss: use rounded-up break-even prices and disclose the premium above the proxy. Stress losses remain visible. Fees and manufacturing assumptions are unchanged.
 
-Rebuild in order: `python tools/build_cost_assessment.py`, `python tools/build_pricing.py`, `python tools/build_sales.py`. Do not overwrite the immutable baseline with revised results. The accepted video-cost rebase preserves both immutable price-baseline files and records old/current cost deltas. Channel changes still require explicit review.
+Course promotions balance contribution after reserving the entire voucher. Composite bundles use their own normalized proxies and exact component costs; matching may make a bundle dearer than buying components separately, which is disclosed rather than hidden by an incompatible discount cap.
 
-See [Sales 1978](sales.html) and [SALES_FORECAST.md](SALES_FORECAST.md).
+This policy supersedes the earlier 40% dollar-contribution reduction. Both immutable baseline files remain unchanged for audit and demand comparisons. The price ratio feeds the existing sales elasticity model; no uncalibrated feature or marketing uplift is added. Manufacturing capacity supplies modeled full demand plus 10% reserve; ROI uses the resulting staffing, inventory, capex and marketing requirements. The Sales page retains its dated delivery caps, so its totals differ from the full-supply investment/ROI scenario and its end-1980 extension.
 
----
+The main Retail pricing table can be resized in both dimensions using its bottom-right corner, with internal scrolling and sticky headings. Filters preserve the chosen dimensions. Print layout expands the table normally.
 
-## Original baseline methodology (superseded where noted above)
-
-# Retail pricing, June 15, 1978–1981
-
-Open `pricing.html` through the same HTTP server as the Atlas. The navigation includes **Retail pricing**. The page reads `pricing_results.json`; regenerate it with `python tools/build_pricing.py`.
-
-## Commercial scope
-
-79 commercial purchase units across ten types: complete systems; application bundles; network installation bundles; peripherals and expansion; networking; software/developer tools; business applications; support; training; developer programs. There are 212 applicable annual snapshots.
-
-Includes the original review list, seven Aurelia/Aurelia+ use-case bundles and seven Artemis/PRO packages. Existing hardware bundles are unchanged. The JSON is the consolidated pricing proposal; it does not rewrite historical price fields or technical compatibility contracts in the technical catalog.
-
-No withdrawal date is established, so end dates are null (displayed as Open). Aurelia+ and Abacus/Pulse 2 introduced in December 1979 have no June 1979 price. Abacus/Pulse 3 introduced November 1980 have no June 1980 price. PRO server and office-network packages retain provisional prices, with announced/shipping-unconfirmed status; the Available products only filter excludes them.
-
-## Pricing strategy
-
-* Aim at 75% of the normalized competitor basket, where a defensible basket can be constructed.
-* Keep at least 25% contribution on net revenue at ComputerLand's maximum 30% share. Floor = cost / (0.70 × 0.75) for dealer products.
-* Use 25% ComputerLand share as the displayed baseline; 20% and 30% scenarios recalculate immediately. This interprets the catalog's 20–30% retailer margin as a share of retail price, not a markup on wholesale.
-* Services are proposed as direct sales, fee zero; their floor is cost / 0.75. Developer registration includes its SDK.
-* Round upward to retail endings and avoid annual increases unless the cost floor requires one. A composite bundle aims at a further 5% saving against separately offered constituents when component prices exist, subject to the floor.
-* No matching quotation means no verified competitor-discount claim. Cost-based recommendations remain explicitly identified.
-
-These floors approximately protect each **sold unit** against a simultaneous 10% markdown, 20% cost overrun and 30% channel fee. They do not protect unsold inventory, severe obsolescence or the entire high-cost envelope in the manufacturing model. The detail panel shows both the moderate stress case and markdown at the original high cost. The cost selector also exposes losses at unchanged retail prices.
+Rebuild in order: `python tools/build_pricing.py`, `python tools/build_sales.py`, `python tools/build_investment_model.py`, `python tools/build_roi.py`. Rebuild manufacturing costs first only if their inputs change. Preserve frozen baselines. Pricing results contain source hashes, cost bridges and per-snapshot balance status.
 
 ## Evidence and limitations
 
@@ -43,7 +20,7 @@ Observed prices are separate from normalized baskets. Match limitations include 
 
 1978/1979 spreadsheets have no verified shipping direct equivalent in this research. ERA workstations have no exact historical equivalent. SDKs, standalone keyboards, support, courses and networking have weak or absent matching price evidence. Their estimates are scenario judgments, not competitor quotations. The numerical discount against such a basket is indicative only. Historical research is a sample of period offerings, not an exhaustive market census.
 
-Particularly difficult targets: custom monitors versus inexpensive commodity displays; large early DRAM banks; the dedicated-RAM CP/M module versus a SoftCard sharing host memory. Rows that miss 20% below their benchmark retain the cost-protecting price and a qualification.
+Particularly difficult targets: custom monitors versus inexpensive commodity displays; large early DRAM banks; the dedicated-RAM CP/M module versus a SoftCard sharing host memory. Two monitor snapshots require break-even prices above their proxies; these exceptions are disclosed.
 
 ## Cost and profit boundaries
 
@@ -57,7 +34,7 @@ BPI five-application suite uses the consolidated suite media cost, not five indi
 
 Services retain their cost-model workload assumptions. On-site support is priced as a capped eight-hour engagement, not unlimited annual cover. Customer-site training is one two-day class for up to eight people: the per-learner cost is multiplied by eight, with travel billed additionally at cost. BPI and Pulse training assume three and two days respectively. These scope limits need to accompany any actual sale.
 
-The four regular Academy courses also show their before-you-buy variant: +$50 tuition. Standalone Fundamentals receives purchase credit equal to 50% of that tuition; the other three courses retain the existing $150 voucher. Fundamentals credit is valid six months toward one Aurelia, accepted by Academy centres and participating dealers reimbursed by Logix, without a purchase obligation. Maximum voucher exposure and fully reserved contribution are explicit. The voucher is promotional spend excluded from the main manufacturing-cost/profit columns, and must only be reserved once across the associated course and computer sale.
+The four before-you-buy Academy variants are repriced separately against the same course proxy, balancing contribution after full voucher redemption. Fundamentals retains a credit of half tuition; other courses retain a $150 credit. This replaces a fixed tuition surcharge. Credits are reserved once in marketing, not also in manufacturing. The detail panel shows the full exposure.
 
 ## Validation
 
@@ -74,4 +51,4 @@ Checks cover full product coverage, date gating, source chronology, exact cost r
 The three NCC 1979 cards are included in the pricing matrix. Their new retail values are cost-floor planning proposals without a matched historical competitor benchmark. They do not overwrite a quoted catalog price. Host computer, compatible monitor and separate FlexiBUS/video cards are not bundled implicitly. Costs use AION launch silicon; SMC sensitivity is separate.
 
 
-External Tandy Model II hardware, its CP/M distribution and the Abacus partner edition have no agreed OEM prices or licensing volumes. They are represented in the technical catalog, but excluded from the 79 Logix/AION retail offers; the existing Abacus Aurelia price is not silently reused as a Tandy license price.
+External Tandy Model II hardware, its CP/M distribution and the Abacus partner edition have no agreed OEM prices or licensing volumes. They are represented in the technical catalog, but excluded from the 82 Logix/AION retail offers; the existing Abacus Aurelia price is not silently reused as a Tandy license price.

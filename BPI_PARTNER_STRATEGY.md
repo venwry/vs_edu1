@@ -34,19 +34,19 @@ New dates are fictional scenario choices, not historical discoveries. Pilots and
 
 | Configuration | Separately licensed BPI contents | June 1978 component sum |
 |---|---|---:|
-| Aurelia Business Accounts | General Accounting | $2,557.01 |
-| Aurelia Trading Office | Accounting, receivables, payables, inventory | $2,839.91 |
-| Aurelia Complete Business | Complete five-module suite | $2,920.33 |
+| Aurelia Business Accounts | General Accounting | $2,647.27 |
+| Aurelia Trading Office | Accounting, receivables, payables, inventory | $2,793.85 |
+| Aurelia Complete Business | Complete five-module suite | $2,784.61 |
 
-Each includes the existing Office package, disk and printer. These are dealer component baskets, not new Logix SKUs. Training, setup, tax and any additionally required hardware are separate. General Accounting already has simplified AR/AP; dealers should explain when dedicated modules add value. Existing retail prices and the 60%-of-baseline contribution policy remain unchanged.
+Each includes the existing Office package, disk and printer. These are dealer component baskets, not new Logix SKUs. Training, setup, tax and any additionally required hardware are separate. General Accounting already has simplified AR/AP; dealers should explain when dedicated modules add value. Component prices follow the balanced contribution/proxy policy; see pricing_results.json for annual snapshots.
 
 Credit documented eligible same-platform module licence payments once toward a complete-suite upgrade, capped at suite price. Retire credited licences; no cash refund or credit for setup/training. First-purchase sales forecasts do not also assume upgrades. Any later upgrade model must deduct redeemed credit.
 
 ## Sales and economic effect before NCC 1979
 
-After the sprite/system-controller manufacturing-cost rebase, stronger BPI execution adds 1,200 central deliveries to 28,400 through May 1979; calendar 1978 has 10,396. The scenario range is 23,945–33,855; strong-case BPI capacity deferral is 0. May central deliveries are 4,747, plus demonstration/service stock.
+After the balanced-pricing reassessment, stronger BPI execution adds 1,200 central deliveries to 27,400 through May 1979; calendar 1978 has 10,044. The scenario range is 22,945–30,855; strong-case BPI capacity deferral is 0. May central deliveries are 4,573, plus demonstration/service stock.
 
-At 20% first-purchase attachment, 5,680 customers buy BPI. Customer spending is $1,453,256.40; BPI after-channel receipts are $1,089,942.29, before its operating/support costs. These customers are already included in computer sales.
+At 20% first-purchase attachment, 5,480 customers buy BPI. Customer spending is $657,007.12; BPI after-channel receipts are $492,755.35, before its operating/support costs. These customers are already included in computer sales.
 
 Apple’s existing response and Tandy’s staged agreement remain. No BPI Model II port is promised by the Abacus agreement, and no Tandy customer revenue or IBM-delay bonus enters pre-NCC forecasts. Wider partner credibility is included in the BPI effect, not an additional confidence bonus. Baseline BPI availability is not counted twice.
 

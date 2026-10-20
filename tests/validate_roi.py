@@ -12,6 +12,9 @@ for scenario in m['scenarios']:
  cash=cap=dep=profit=revenue=peak=prior_inventory=prior_assets=0
  for r in rows:
   q=r['quarter'];assert q<='1980-Q4'
+  capacity=next(x for x in i['quarterly_capacity'] if x['quarter']==q)
+  assert r['computer_units']==capacity['customer_computers']
+  assert abs(r['capex_usd']-sum(x['capital_usd'] for x in i['quarterly_entity_costs'] if x['quarter']==q))<.1
   close=lambda a,b: abs(a-b)<.15
   assert close(r['customer_gross_usd']-r['channel_fees_usd']-r['promotional_credits_usd'],r['net_revenue_usd'])
   assert close(sum(r['revenue_streams_usd'].values())-r['promotional_credits_usd'],r['net_revenue_usd'])

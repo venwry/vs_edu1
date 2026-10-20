@@ -345,7 +345,7 @@ On November 27, 1978, following confidential talks begun November 6, Adam, Tandy
 
 Apple responds with earlier business-software recruitment, dealer demonstrations and complete-system promotions, while continuing the agreed Peachtree and native expansion relationships. IBM’s earlier project start encounters DRI resource commitments and the absence of the historical Paterson/SCP OS shortcut. A 1980 substitute OS programme and 1981 application qualification explain the early-1982 commercial target without making alternative OS development impossible.
 
-See [COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.json` for milestones, source boundaries and forecast effects. Updated central sales are about 10,396 Aurelias in 1978 and 28,400 through May 1979, including stronger independent BPI promotion; these are forecasts, not recorded events. No pre-NCC Tandy customer hardware/software sales or IBM-delay bonus is counted.
+See [COMPETITOR_REACTIONS.md](COMPETITOR_REACTIONS.md) and `market_reactions.json` for milestones, source boundaries and forecast effects. Updated central sales are about 10,044 Aurelias in 1978 and 27,400 through May 1979, including stronger independent BPI promotion; these are forecasts, not recorded events. No pre-NCC Tandy customer hardware/software sales or IBM-delay bonus is counted.
 
 
 Independent BPI positioning, scenario dates, dealer configurations, summary export and revised sales accounting are specified in [BPI_PARTNER_STRATEGY.md](BPI_PARTNER_STRATEGY.md).

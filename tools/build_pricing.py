@@ -237,49 +237,70 @@ for p in P:
 groups=['Complete computer systems','Application bundles','Network installation bundles','Peripherals and expansion','Networking','Software and developer tools','Business applications','Support','Training','Developer programs']
 P.sort(key=lambda p:groups.index(p['type']))
 model={'metadata':{'title':'Logix / AION retail pricing assessment','schema_version':'1.0','currency':'USD','price_basis':'Nominal US retail prices before sales tax; June 15 snapshots, 1978–1981','source_commit':'47177a6a75b07f0c2a9a00aedf2a30a9793cb1de','cost_model_file':'manufacturing_costs.json','cost_model_sha256':hashlib.sha256((ROOT/'manufacturing_costs.json').read_bytes()).hexdigest(),'snapshots':[f'{y}-06-15' for y in YEARS],'status':'Recommended pricing scenario; does not overwrite historical catalog price fields'},'policy':{'target_discount_pct':25,'acceptable_discount_band_pct':[20,30],'default_computerland_fee_pct':25,'catalog_fee_range_pct':[20,30],'fee_basis':'Percent of retail selling price; assumption interpreting catalog retailer-margin term. Hardware/software via ComputerLand; services direct with zero fee. Service channel is a proposal.','minimum_margin_on_net_revenue_at_max_fee_pct':25,'rounding':'Round upward to $4/$9 endings below $100; $9 endings above. Prevent annual increases unless required by cost floor.','formula':'fee=retail*rate; revenue=retail-fee; profit=revenue-recurring_cost; retail_floor=cost/((1-max_fee)*0.75)','profit_definition':'Unit contribution, not net corporate profit. Excludes R&D, capital/depreciation, marketing/vouchers, software development, tax and finance. Costs include modeled logistics and service delivery.','risk':'25% net margin at 30% fee approximately covers simultaneous 10% retail markdown and 20% cost overrun. It does not cover unsold stock, actual warranty failures or the entire original high-cost envelope.','availability':'No documented withdrawal dates: offering_end=null. Announced PRO products retain provisional prices, excluded from available-only filters. No 1979 June prices for December Aurelia+; no 1980 June prices for November Abacus/Pulse 3.','benchmark_policy':'Primary period advertisements; itemized baskets and judgment adjustments labeled estimates. No later IBM PC, 1982 networks or later warranty prices used retroactively. Observed mail-order prices are included as competitive pressure. No exact benchmark means no substantiated discount claim.','bundle_policy':'Base-system costs already include keyboard, display, OS and one-year support. 1981 Artemis includes NIC and Server edition automatically. BPI suite and developer registration already include their respective contents. Composite rows are alternative purchase units, not additive sales totals.','service_scope':'On-site support is a proposed capped eight-hour engagement with modeled travel, not unlimited annual repairs. Training prices assume eight learners; customer-site sold as class ×8 with travel extra. BPI/Pulse course durations remain model assumptions.'},'sources':sources,'competitor_evidence':E,'additional_cost_assumptions':extra,'types':groups,'products':P,'excluded':['OEM chips and licensing','Bare computer chassis and internal assemblies','Standalone NICs replaced by complete network upgrade offerings','Bundled operating systems','Prototype/superseded RAM','Duplicate platform editions except separately selectable Abacus 2 platform SKUs','Academy direct-sales channel record']}
-# Apply the accepted proportional profit reduction once against an immutable baseline.
-# Baseline assessment above preserves comparator evidence; it is not recursively discounted.
-from decimal import Decimal, ROUND_HALF_UP
+# Balance contribution/net revenue against the discount to the dated proxy.
+# Frozen baselines remain audit/demand anchors; no compounded price reductions.
+from decimal import Decimal, ROUND_HALF_UP, ROUND_CEILING
 def cents(value):return float(Decimal(str(value)).quantize(Decimal('0.01'),rounding=ROUND_HALF_UP))
-baseline=load('pricing_baseline.json')
-# Preserve every original baseline entry; new offers have a separate frozen baseline.
-import sys
-new_ids={'software.aurelia_compatibility_kit','service.aurelia_compatibility_support','service.aurelia_compatibility_certification'}
-oem_path=ROOT/'compatibility_pricing_baseline.json'
-if '--initialize-compatibility-baseline' in sys.argv:
- assert not oem_path.exists(), 'Never overwrite a frozen baseline.'
- oem={'metadata':{'basis':'Initial cost-based assessment for newly approved COMDEX 1979 offers; not historical prices. Existing baseline unchanged.'},'products':{x['id']:{y:s.copy() for y,s in x['snapshots'].items() if s['retail_price_usd'] is not None} for x in P if x['id'] in new_ids}}
- oem_path.write_text(json.dumps(oem,indent=2,ensure_ascii=False)+'\n')
+def ceil_cents(value):return float(Decimal(str(value)).quantize(Decimal('0.01'),rounding=ROUND_CEILING))
+baseline=load('pricing_baseline.json');oem_path=ROOT/'compatibility_pricing_baseline.json'
 oem_baseline=load('compatibility_pricing_baseline.json')
 assert not set(baseline['products']) & set(oem_baseline['products'])
 baseline['products'].update(oem_baseline['products'])
 model['metadata']['compatibility_baseline_sha256']=hashlib.sha256(oem_path.read_bytes()).hexdigest()
+FALLBACK_MARGIN=.25
+
+def balanced_price(cost,fee,benchmark,credit_rate=0,fixed_credit=0):
+ # Effective contribution = P*(1-fee-credit_rate)-cost-fixed_credit.
+ effective_cost=cost+fixed_credit
+ floor=effective_cost/(1-fee-credit_rate)
+ if benchmark:
+  # Equate effective contribution / net revenue to 1-P/benchmark.
+  k=credit_rate*benchmark/(1-fee)
+  ideal=(k+math.sqrt(k*k+4*effective_cost*benchmark/(1-fee)))/2
+  status='balanced_proxy' if floor<=benchmark else 'cost_floor_above_proxy'
+ else:
+  ideal=effective_cost/((1-fee)*(1-FALLBACK_MARGIN)-credit_rate)
+  status='no_proxy_cost_based'
+ price=max(cents(ideal),ceil_cents(floor))
+ # Choose the adjacent cent with the smallest displayed percentage gap.
+ if status=='balanced_proxy':
+  def gap(p):
+   net=cents(p-cents(p*fee));credit=cents(p*credit_rate+fixed_credit)
+   return abs((net-cost-credit)/net-(1-p/benchmark))
+  price=min([v for v in [cents(price-.01),price,cents(price+.01)] if v+1e-9>=floor],key=gap)
+ return price,status
+
 for offer in P:
  for year,s in offer['snapshots'].items():
   if s['retail_price_usd'] is None:continue
   old=baseline['products'][offer['id']][year]
-  cost=s['manufacturing_cost_usd'];fee=s['computerland_fee_rate']
-  assert fee==old['computerland_fee_rate'], 'Rebase channel policy explicitly when fees change.'
-  s['cost_revision']={'reason':'Aurelia buffered video controller and AION 4116 display RAM; dependent assemblies use rebuilt costs. Historical baseline profit target retained.', 'baseline_manufacturing_cost_usd':old['manufacturing_cost_usd'], 'current_manufacturing_cost_usd':cost, 'delta_usd':cents(cost-old['manufacturing_cost_usd'])}
-  price=cents((Decimal(str(cost))+Decimal('.6')*Decimal(str(old['unit_profit_usd'])))/(Decimal(1)-Decimal(str(fee))))
+  cost=s['manufacturing_cost_usd'];fee=s['computerland_fee_rate'];benchmark=s['competitor']['normalized_price_usd']
+  assert fee==old['computerland_fee_rate']
+  s['cost_revision']={'reason':'Current accepted hardware and delivery costs; frozen original costs retained for audit.', 'baseline_manufacturing_cost_usd':old['manufacturing_cost_usd'], 'current_manufacturing_cost_usd':cost, 'delta_usd':cents(cost-old['manufacturing_cost_usd'])}
+  price,status=balanced_price(cost,fee,benchmark)
   commission=cents(price*fee);revenue=cents(price-commission);profit=cents(revenue-cost)
-  s['pre_reduction']={**old,'profit_retained_fraction':0.6,'retail_reduction_pct':cents((1-price/old['retail_price_usd'])*100)}
-  s.update(retail_price_usd=price,computerland_fee_usd=commission,revenue_after_fee_usd=revenue,unit_profit_usd=profit,contribution_margin_on_net_revenue_pct=cents(profit/revenue*100),legacy_price_floor_usd=s['price_floor_usd'],price_floor_usd=cents(cost/(1-fee)))
-  s['competitor']['discount_pct']=cents((1-price/s['competitor']['normalized_price_usd'])*100) if s['competitor']['normalized_price_usd'] else None
+  margin=cents(profit/revenue*100);discount=cents((1-price/benchmark)*100) if benchmark else None
+  s['pre_reduction']={**old,'retail_reduction_pct':cents((1-price/old['retail_price_usd'])*100),'basis':'Frozen original audit and sales-demand anchor; old 40% contribution policy superseded.'}
+  s.update(retail_price_usd=price,computerland_fee_usd=commission,revenue_after_fee_usd=revenue,unit_profit_usd=profit,contribution_margin_on_net_revenue_pct=margin,legacy_price_floor_usd=s['price_floor_usd'],price_floor_usd=ceil_cents(cost/(1-fee)))
+  s['competitor']['discount_pct']=discount
+  s['pricing_balance']={'status':status,'margin_pct':margin,'discount_pct':discount,'gap_percentage_points':cents(abs(margin-discount)) if discount is not None else None,'fallback_margin_pct':25 if benchmark is None else None}
   stress=s['stress'];stress['profit_usd']=cents(price*.9*(1-stress['fee_rate'])-cost*1.2);stress['high_cost_profit_usd']=cents(price*.9*(1-stress['fee_rate'])-s['cost_high_usd'])
   s['warnings']=[w for w in s['warnings'] if not w.startswith(('Cannot','High cost','Bundle cost'))]
-  if stress['profit_usd']<0:s['warnings'].append('Markdown plus higher costs and maximum channel fee loses money under the reduced-profit policy.')
-  if stress['high_cost_profit_usd']<0:s['warnings'].append('High cost scenario plus markdown loses money; the old margin safeguard is not retained.')
+  if status=='cost_floor_above_proxy':s['warnings'].append('Cannot balance nonnegative contribution with a discount: central-cost break-even exceeds the proxy. Price held at break-even; negative discount shown as a premium.')
+  if status=='no_proxy_cost_based':s['warnings'].append('No matched proxy: use a 25% contribution margin on net revenue; no discount percentage is invented.')
+  if stress['profit_usd']<0:s['warnings'].append('Markdown plus higher costs and maximum channel fee loses money; balanced pricing is not a stress-profit guarantee.')
+  if stress['high_cost_profit_usd']<0:s['warnings'].append('High cost scenario plus markdown loses money.')
   if 'before_you_buy_variant' in s:
-   oldv=old['before_you_buy_variant'];v=s['before_you_buy_variant']
-   tuition=cents(cost+.6*(oldv['retail_price_usd']-cost))
-   credit=cents(tuition*.5) if offer['id'].endswith('.course_1') else 150
-   v.update(retail_price_usd=tuition,voucher_face_value_usd=credit,maximum_incremental_promotion_cost_usd=credit,contribution_after_full_voucher_usd=cents(tuition-cost-credit))
-   v['pre_reduction_tuition_usd']=oldv['retail_price_usd']
-   v['note']+=' The same 40% reduction applies to pre-voucher contribution; regular-course surcharge becomes $30, subject to cent rounding. Credit is promotional spend, not part of the profit target.'
-   if v['contribution_after_full_voucher_usd']<0:s['warnings'].append('Before-you-buy variant has negative course contribution after full voucher redemption; evaluate together with the system sale.')
+   v=s['before_you_buy_variant'];fundamentals=offer['id'].endswith('.course_1')
+   tuition,vstatus=balanced_price(cost,0,benchmark,credit_rate=.5 if fundamentals else 0,fixed_credit=0 if fundamentals else 150)
+   credit=cents(tuition*.5) if fundamentals else 150
+   contribution=cents(tuition-cost-credit)
+   v.update(retail_price_usd=tuition,voucher_face_value_usd=credit,maximum_incremental_promotion_cost_usd=credit,contribution_after_full_voucher_usd=contribution)
+   v['pricing_balance']={'status':vstatus,'margin_after_full_voucher_pct':cents(contribution/tuition*100),'discount_pct':cents((1-tuition/benchmark)*100) if benchmark else None}
+   v['note']='Tuition balances contribution after full voucher redemption against the same course proxy. Credit is reserved once as promotional expense, not manufacturing cost. Half-tuition Fundamentals credit / fixed $150 other-course credit retained; no additional fixed surcharge.'
+   if vstatus=='cost_floor_above_proxy':s['warnings'].append('Course variant cannot balance below the proxy after reserving its voucher; priced at voucher-inclusive break-even.')
  for i,note in enumerate(offer['notes']):
-  offer['notes'][i]=note.replace('variant +$50','variant +$30 after proportional reduction')
+  offer['notes'][i]=note.replace('variant +$50','variant priced separately including full voucher provision')
 # Reconcile displayed separate-purchase comparisons against revised component prices.
 for offer in P:
  for year,s in offer['snapshots'].items():
@@ -291,8 +312,8 @@ for offer in P:
    else:total+=q*round_price(extra[ref]['cost_usd']/.525)
   s['separate_purchase_price_usd']=cents(total)
   if s['retail_price_usd']>total:s['warnings'].append('Bundle price exceeds revised separate components; compare both purchase routes.')
-model['metadata'].update(schema_version='1.1',source_commit=baseline['metadata']['source_commit'],baseline_file='pricing_baseline.json',baseline_sha256=hashlib.sha256((ROOT/'pricing_baseline.json').read_bytes()).hexdigest())
-model['policy'].update(profit_retained_fraction=.6,profit_reduction_pct=40,target_discount_pct=None,acceptable_discount_band_pct=None,minimum_margin_on_net_revenue_at_max_fee_pct=None,rounding='Nearest cent, half up. Exact proportional contribution reduction takes precedence over retail price endings.',formula='new_profit=0.60*baseline_profit; new_retail=(current_cost+new_profit)/(1-channel_fee). Margin percentage is derived, not reduced directly.',risk='Old 25% margin and nonnegative stress guarantees are superseded; show losses rather than silently raising the new prices.',baseline='Immutable original pricing_baseline.json plus separate compatibility_pricing_baseline.json for new manufacturer offers; no compounding on rebuild. The video redesign explicitly rebases current costs while retaining the original absolute profit target; cost_revision records the bridge.',scope='All 82 offers and all 218 available annual snapshots; before-you-buy course variants use pre-voucher contribution. Historical catalog prices remain separate.',price_floor='Displayed floor is central-cost break-even at baseline fee; legacy safeguard retained separately for audit.')
+model['metadata'].update(schema_version='1.2',source_commit=baseline['metadata']['source_commit'],baseline_file='pricing_baseline.json',baseline_sha256=hashlib.sha256((ROOT/'pricing_baseline.json').read_bytes()).hexdigest())
+model['policy'].update(target_discount_pct=None,acceptable_discount_band_pct=None,minimum_margin_on_net_revenue_at_max_fee_pct=None,rounding='Nearest cent; adjacent-cent check minimizes the percentage gap. Nonnegative central contribution takes precedence.',formula='For proxy B, cost C and fee f: P=sqrt(C*B/(1-f)); contribution/net=1-C/(P*(1-f)) equals proxy discount=1-P/B. If C/(1-f)>B use break-even. Without a proxy use C/((1-f)*0.75).',risk='Stress losses remain visible. Equality is calibrated to central costs and baseline fees; interactive fee/cost scenarios retain prices and may diverge.',baseline='Frozen original baselines retained only for audit and demand anchoring. The former 40% contribution-reduction policy is superseded; each rebuild uses current costs and unchanged dated proxies.',scope='All priced offers and annual snapshots. Promotional course variants balance after full voucher provision; partner baskets remain component sums.',price_floor='Central-cost break-even at baseline fee.',fallback_margin_on_net_revenue_pct=25,matching_tolerance_percentage_points=.1,course_variant='Balance contribution after full voucher redemption against the course proxy. Fundamentals credit remains 50% of tuition; other regular-course credit $150. Reserve redemption once in marketing.',bundle_balance='Each offered bundle uses its own proxy and costs. Exact percentage matching can exceed separate component prices; both routes are disclosed, with no invented discount cap.')
 
 # Independent partner baskets are component sums, outside the immutable SKU baseline.
 bp={'business_accounts':['software.bpi_suite.bpi_general_accounting'],
