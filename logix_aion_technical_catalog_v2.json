@@ -1760,7 +1760,6 @@
       "category": "memory_chip",
       "origin": "historical_external_component",
       "used_in": [
-        "computer.aurelia_plus",
         "part.artemis_ram_module_128kb"
       ],
       "vendor": "unspecified commercial DRAM supplier",
@@ -1783,8 +1782,7 @@
         "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
       },
       "manufacturing_requirements": [
-        "Add 64K×1 and sourcing by launch date",
-        "rails/refresh/timing/package. Link to Aurelia+, high-density modules and any selected compatibility-card local RAM."
+        "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -3202,11 +3200,14 @@
       "origin": "custom_logix_aion",
       "vendor": "AION Labs",
       "used_in": [
-        "part.artemis_ram_module_128kb_aion"
+        "part.artemis_ram_module_128kb_aion",
+        "computer.aurelia_plus"
       ],
       "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
       },
       "specification": {
         "capacity_kbit": 64,
@@ -3218,7 +3219,7 @@
         "cycle_time_ns": null,
         "supply_rails_v": null,
         "refresh_requirement": null,
-        "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification.",
+        "qualification_status": "AION-owned part; released package, speed grade, rails, refresh and production yield require qualification before December 1979.",
         "organization": "64K × 1",
         "manufacturing_planning": {
           "die_area_mm2": 45,
@@ -3231,7 +3232,7 @@
         }
       },
       "manufacturing_requirements": [
-        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh and module power rails before the assumed May 1980 launch. Mature purchased DRAM is not silently treated as equivalent production evidence."
+        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -5573,14 +5574,14 @@
         },
         "physical_population": {
           "data_ram_kb": 64,
-          "chip_ref": "part.dram_64kbit",
+          "chip_ref": "part.aion_4164",
           "data_chip_count": 8,
           "bank_count": 1,
           "bank_data_width_bits": 8,
           "parity_bits": 0,
           "video_ram_separate": true,
           "common_ram_included": true,
-          "status": "Accepted chip-count baseline; decode/refresh/electrical qualification pending.",
+          "status": "Accepted AION-manufactured eight-chip baseline; 64K×1 process, speed, power, decode and independent refresh qualification required before December 1979.",
           "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
         },
         "video_physical_population": {
@@ -5987,7 +5988,7 @@
         "native_40_column_mode": "Native 40x25 and 80x25 text on both hosts; usable width depends on monitor capabilities."
       },
       "manufacturing_requirements": [
-        "Qualify eight 64K×1 DRAMs for December 1979",
+        "Qualify eight AION-manufactured 64K×1 DRAMs (64 KiB total, one 8-bit bank) before December 1979. Confirm package/pinout, supply rails, retention, refresh deadlines and 6 MHz host timing.",
         "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
