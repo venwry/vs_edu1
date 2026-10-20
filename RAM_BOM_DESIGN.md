@@ -8,7 +8,7 @@ This branch applies the accepted RAM correction and adds manufacturing requireme
 |---|---:|---|---:|---:|---:|
 | Aurelia | 48 KiB | 16K × 1 | 24 | Mainboard | 3 × 8-bit |
 | Aurelia optional card | 16 KiB additional | 16K × 1 | 8 | One expansion card | 1 × 8-bit |
-| Aurelia+ | 64 KiB | 64K × 1 | 8 | Mainboard | 1 × 8-bit |
+| Aurelia+ | 64 KiB | AION 64K × 1 | 8 | Mainboard | 1 × 8-bit |
 | Artemis | 128 KiB | 16K × 1 | 64 | 4 × 32 KiB | 2 × 32-bit |
 | Artemis | 256 KiB | AION 64K × 1 | 32 | 2 × 128 KiB | 1 × 32-bit |
 | Artemis PRO | 512 KiB | 64K × 1 | 64 | 4 × 128 KiB | 2 × 32-bit |

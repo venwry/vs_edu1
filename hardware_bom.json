@@ -86,8 +86,7 @@
       "quantity_tier": null,
       "qualification_status": "unresolved",
       "requirements": [
-        "Add 64K×1 and sourcing by launch date",
-        "rails/refresh/timing/package. Link to Aurelia+, high-density modules and any selected compatibility-card local RAM."
+        "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
       ]
     },
     {
@@ -3525,7 +3524,7 @@
       "quantity_tier": null,
       "qualification_status": "unresolved",
       "requirements": [
-        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh and module power rails before the assumed May 1980 launch. Mature purchased DRAM is not silently treated as equivalent production evidence."
+        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
       ]
     },
     {
@@ -3671,8 +3670,7 @@
         }
       ],
       "requirements": [
-        "Add 64K×1 and sourcing by launch date",
-        "rails/refresh/timing/package. Link to Aurelia+, high-density modules and any selected compatibility-card local RAM."
+        "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
       ],
       "routing": {
         "operations": [],
@@ -5812,10 +5810,10 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "bompart.part.dram_64kbit",
+          "ref": "bompart.part.aion_4164",
           "quantity": 8,
           "unit": "each",
-          "role": "system DRAM",
+          "role": "64 KiB system RAM: eight AION 64K×1 DRAMs",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -5941,7 +5939,7 @@
         }
       ],
       "requirements": [
-        "Qualify eight 64K×1 DRAMs for December 1979",
+        "Qualify eight AION-manufactured 64K×1 DRAMs (64 KiB total, one 8-bit bank) before December 1979. Confirm package/pinout, supply rails, retention, refresh deadlines and 6 MHz host timing.",
         "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
@@ -8861,7 +8859,7 @@
         }
       ],
       "requirements": [
-        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh and module power rails before the assumed May 1980 launch. Mature purchased DRAM is not silently treated as equivalent production evidence."
+        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
       ],
       "routing": {
         "operations": [],
@@ -9059,7 +9057,7 @@
         "assembly.computer.aurelia_plus.base"
       ],
       "requirements": [
-        "Qualify eight 64K×1 DRAMs for December 1979",
+        "Qualify eight AION-manufactured 64K×1 DRAMs (64 KiB total, one 8-bit bank) before December 1979. Confirm package/pinout, supply rails, retention, refresh deadlines and 6 MHz host timing.",
         "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
         "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
         "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
