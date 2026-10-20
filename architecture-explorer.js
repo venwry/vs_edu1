@@ -4,7 +4,7 @@ window.startArchitectureExplorer=function(initialCatalog,pageConfig,siteLink){
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let catalog,records,computers,settings,model=0,layer='hardware',selected='',nodes=[],edges=[];
 const rec=id=>records[id];
-const label=k=>k.replace(/_/g,' ').replace(/\b(kb|mhz|ram|rom|cpu|vram|bios|cpm|tui|rgb|id|api)\b/gi,x=>x.toUpperCase());
+const label=k=>k.replace(/_/g,' ').replace(/\b(kb|mhz|ram|rom|cpu|bios|cpm|tui|rgb|id|api)\b/gi,x=>x.toUpperCase());
 function value(v){if(Array.isArray(v))return v.map(value).join('; ');if(v&&typeof v==='object')return Object.entries(v).map(([k,x])=>label(k)+': '+value(x)).join(' · ');if(typeof v==='boolean')return v?'Yes':'No';return records?.[v]?.name||String(v??'—');}
 const facts=obj=>Object.entries(obj||{}).map(([k,v])=>[label(k),v]);
 const list=items=>'<ul>'+items.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
@@ -21,7 +21,7 @@ function install(data){
  document.querySelectorAll('[data-layer],#era').forEach(x=>x.disabled=false);
  $('intro').textContent=pageConfig.description;$('context').textContent=settings.context;
  $('timeline').innerHTML=settings.timeline.map(x=>`<time>${esc(x.date)}</time><p><b>${esc(x.title)}</b> · ${esc(x.description)}</p>`).join('');
- const comparison=[['Processor',...cs.map(c=>rec(c.processor.part_ref).name+' · '+c.processor.clock_mhz+' MHz')],['System RAM',...cs.map(c=>c.memory.ram_kb+' KB')],['Video RAM',...cs.map(c=>c.memory.video_ram_kb+' KB')],['Text display',...cs.map(c=>c.video.text_mode.characters)],['Internal floppy',...cs.map(c=>c.storage.internal_fdd)],['FlexiBUS ports',...cs.map(c=>c.io_and_expansion.flexibus_ports)],['Expansion slots',...cs.map(c=>c.io_and_expansion.expansion_slots.count+' × '+c.io_and_expansion.expansion_slots.width_bits+'-bit')],['Cartridge slots',...cs.map(c=>c.rom_and_cartridges.xip_slots)],['OS foundation',...cs.map(c=>rec(c.rom_and_cartridges.system_cartridge_ref).base_version)]];
+ const comparison=[['Processor',...cs.map(c=>rec(c.processor.part_ref).name+' · '+c.processor.clock_mhz+' MHz')],['System RAM',...cs.map(c=>c.memory.ram_kb+' KB')],['Video RAM',...cs.map(c=>c.memory.video_ram_kb+' KB')],['Text display',...cs.map(c=>c.video.text_modes.map(m=>m.columns+'×'+m.rows).join(' / '))],['Internal floppy',...cs.map(c=>c.storage.internal_fdd)],['FlexiBUS ports',...cs.map(c=>c.io_and_expansion.flexibus_ports)],['Expansion slots',...cs.map(c=>c.io_and_expansion.expansion_slots.count+' × '+c.io_and_expansion.expansion_slots.width_bits+'-bit')],['Cartridge slots',...cs.map(c=>c.rom_and_cartridges.xip_slots)],['OS foundation',...cs.map(c=>rec(c.rom_and_cartridges.system_cartridge_ref).base_version)]];
  $('comparison').innerHTML=table(['Component',...cs.map(c=>c.name)],comparison);
  build();$('load-panel').hidden=true;
 }
@@ -36,14 +36,14 @@ function build(){
  document.querySelectorAll('[data-model]').forEach(b=>b.setAttribute('aria-pressed',Number(b.dataset.model)===model));
  $('ram-choice').hidden=!c.memory.expansion_ref||layer==='bundles';$('ram-card-label').textContent=c.memory.expansion_ref?'Install '+rec(c.memory.expansion_ref).name:'';$('era').parentElement.hidden=layer==='bundles';
  $('launch').textContent=c.introduced.event_start_date;$('event').textContent=c.introduced.event_name;
- $('stats').innerHTML=[['Processor',rec(c.processor.part_ref).name+' · '+c.processor.clock_mhz+' MHz'],['System RAM',m.ram_kb+' KB'],['Video RAM',m.video_ram_kb+' KB'],['Text display',c.video.text_mode.characters]].map(([k,v])=>`<div class="stat"><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('');
+ $('stats').innerHTML=[['Processor',rec(c.processor.part_ref).name+' · '+c.processor.clock_mhz+' MHz'],['System RAM',m.ram_kb+' KB'],['Video RAM',m.video_ram_kb+' KB'],['Text display',c.video.text_modes.map(m=>m.columns+'×'+m.rows).join(' / ')]].map(([k,v])=>`<div class="stat"><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('');
  $('offering-controls').hidden=!['software','bundles'].includes(layer);$('software-choice').hidden=layer!=='software';$('bundle-choice').hidden=layer!=='bundles';
  $('view-title').textContent=c.name.toUpperCase()+' / '+layer.toUpperCase();$('diagram-note').textContent=settings.notes[layer];
  if(layer==='hardware'){
  add('cpu',rec(c.processor.part_ref).name,c.processor.clock_mhz+' MHz',2,1,'Processor',rec(c.processor.part_ref).specification,facts(c.processor));
  add('ram','System RAM',m.ram_kb+' KB',1,1,'Memory',m.organization.note,facts({installed_ram_kb:m.ram_kb,lower_ram_kb:m.organization.contiguous_lower_ram_kb,common_system_ram_kb:m.organization.common_system_ram_kb}),[mm.specification.application_policy]);
  add('rom','ROM & cartridges',c.rom_and_cartridges.xip_slots+' cartridge slots',3,1,'Firmware',mm.specification.rom_policy,facts(c.rom_and_cartridges));
- add('video','Video subsystem',m.video_ram_kb+' KB video RAM',1,2,'Display',mm.specification.vram_policy,facts({...c.video,physical_population:m.video_physical_population,controller_implementation:rec(c.video.controller_ref).specification.implementation_design}));
+ add('video','Video subsystem',m.video_ram_kb+' KB video RAM',1,2,'Display',mm.specification.video_ram_policy,facts({...c.video,physical_population:m.video_physical_population,controller_implementation:rec(c.video.controller_ref).specification.implementation_design}));
  add('mapper',mm.name,mm.specification.page_size_kb+' KB pages',2,2,'Memory mapper',mm.description,facts(mm.specification),mm.requirements);
  add('flex',rec('technology.flexibus').name,io.flexibus_ports+' ports',3,2,'Peripheral interface',rec('technology.flexibus').specification,facts(rec('technology.flexibus').specification));
  add('storage','Internal floppy',c.storage.internal_fdd.count+' × '+c.storage.internal_fdd.size_inch+'″',1,3,'Storage',c.storage.internal_fdd,facts(c.storage.internal_fdd));
@@ -73,9 +73,9 @@ function build(){
  add('mapper','Logix memory mapper',mm.specification.page_size_kb+' KB pages',2,2,'Mapping',mm.specification.implementation,facts(mm.specification),mm.requirements);
  add('ram','Physical system RAM',m.ram_kb+' KB',1,1,'RAM',m.organization.note,facts(m.organization));
  add('rom','ROM / cartridges','Banked execution',3,1,'ROM',mm.specification.rom_policy,facts(c.rom_and_cartridges));
- add('vram','Video RAM',m.video_ram_kb+' KB',3,2,'Display memory',mm.specification.vram_policy,[['Memory chips','8 × AION 4116-equivalent DRAM'],['Mapped pages',m.video_ram_kb/mm.specification.page_size_kb],['Page size',mm.specification.page_size_kb+' KB']]);
+ add('video_ram','Video RAM',m.video_ram_kb+' KB',3,2,'Display memory',mm.specification.video_ram_policy,[['Memory chips','8 × AION 4116-equivalent DRAM'],['Mapped pages',m.video_ram_kb/mm.specification.page_size_kb],['Page size',mm.specification.page_size_kb+' KB']]);
  m.organization.normal_view.forEach((r,i)=>add('region'+i,r.role,r.start+'–'+r.end,i+1,3,'Normal application map',r.description,[['Size',(parseInt(r.end,16)-parseInt(r.start,16)+1)/1024+' KB']],[mm.normal_map_explanation]));
- edges=[['cpu','mapper'],['mapper','ram'],['mapper','rom'],['mapper','vram'],...m.organization.normal_view.map((r,i)=>['mapper','region'+i])];
+ edges=[['cpu','mapper'],['mapper','ram'],['mapper','rom'],['mapper','video_ram'],...m.organization.normal_view.map((r,i)=>['mapper','region'+i])];
  }
  if(c.memory.expansion_ref&&['hardware','memory'].includes(layer)){
  const card=rec(c.memory.expansion_ref);product(card.id,1,4,true);const n=nodes[nodes.length-1];n.sub=($('ram-card').checked?'Installed':'Optional')+' · '+card.capacity_kb+' KB';n.facts.push(...facts(card.memory_mapping));edges.push([layer==='hardware'?'expansion':'mapper',card.id,true]);
@@ -187,7 +187,7 @@ window.setupArchitectureSplit=function(){
 /* Preserve specification structure instead of flattening nested JSON to prose. */
 window.renderSpecification=function(data,records={}){
  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const label=k=>k.replace(/_/g,' ').replace(/\b(?:ram|rom|mmu|cpu|dma|vram|tlb|api|io|kb|mhz|asid)\b/gi,x=>x.toUpperCase()).replace(/^./,x=>x.toUpperCase());
+ const label=k=>k.replace(/_/g,' ').replace(/\b(?:ram|rom|mmu|cpu|dma|tlb|api|io|kb|mhz|asid)\b/gi,x=>x.toUpperCase()).replace(/^./,x=>x.toUpperCase());
  const scalar=v=>v===null?'Unspecified':typeof v==='boolean'?(v?'Yes':'No'):records[v]?.name??String(v);
  const simple=v=>v===null||typeof v!=='object';
  const empty=v=>v===undefined||v===''||Array.isArray(v)&&!v.length||v&&typeof v==='object'&&!Array.isArray(v)&&!Object.keys(v).length;
@@ -195,12 +195,23 @@ window.renderSpecification=function(data,records={}){
  function render(v){
   if(simple(v))return '<p>'+esc(scalar(v))+'</p>';
   if(Array.isArray(v)){
+   if(v.length && v.every(m=>m && Array.isArray(m.configurations)) && (v[0].columns || v[0].bits_per_pixel)){
+    const textMode=!!v[0].columns;
+    const configurations=textMode?[[1,0],[2,0],[1,5],[2,5]]:[[1,0],[2,0],[1,5]];
+    const headers=['Mode','Pixels',...(textMode?['Glyphs / attributes','Code map/page (B)','Colour map/page (B)','Shared font (B)']:['Bits/pixel','Stride (B)','RAM/page (B)']),...configurations.map(([pages,sprites])=>pages+' page'+(pages>1?'s':'')+' / '+sprites+' sprites (used / free B)')];
+    const rows=v.map(m=>{
+     const cells=[m.id+(m.compatibility_mode?' (compatibility)':'')+(textMode?' · '+m.columns+'×'+m.rows:''),m.width+'×'+m.height,...(textMode?[m.character_count+' × '+m.glyph_width+'×'+m.glyph_height+'; '+m.attribute_format,m.character_map_bytes_per_buffer,m.attribute_map_bytes_per_buffer,m.font_bytes]:[m.bits_per_pixel,m.stride_bytes,m.bytes_per_framebuffer]),...configurations.map(([pages,sprites])=>{const c=m.configurations.find(c=>(c.text_buffer_count??c.framebuffer_count)===pages&&c.sprite_count===sprites);return c?c.allocated_bytes+' / '+c.remaining_video_ram_bytes:'Not supported';})];
+     return '<tr>'+cells.map((c,i)=>i?'<td>'+esc(c)+'</td>':'<th scope="row">'+esc(c)+'</th>').join('')+'</tr>';
+    });
+    return '<p>Allocations use the shared 16 KiB (16384-byte) display RAM. Each configuration shows total used / free bytes'+(textMode?'; maps include padding and both pages share one font':'')+'.</p><div class="spec-table-scroll"><table class="video-mode-table"><thead><tr>'+headers.map(h=>'<th scope="col">'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table></div>';
+   }
+
    const keys=v[0]&&typeof v[0]==='object'&&!Array.isArray(v[0])?Object.keys(v[0]):[];
    if(v.length>1&&keys.length>1&&keys.length<=5&&v.every(x=>x&&typeof x==='object'&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k)&&simple(x[k])&&scalar(x[k]).length<100)))return '<div class="spec-table-scroll"><table><thead><tr>'+keys.map(k=>'<th scope="col">'+esc(label(k))+'</th>').join('')+'</tr></thead><tbody>'+v.map(x=>'<tr>'+keys.map(k=>'<td>'+esc(scalar(x[k]))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
    return '<ul class="spec-list">'+v.filter(x=>!empty(x)).map(x=>'<li>'+(simple(x)?esc(scalar(x)):render(x))+'</li>').join('')+'</ul>';
   }
   const entries=Object.entries(v).filter(([,x])=>!empty(x)),short=entries.filter(([k,x])=>simple(x)&&scalar(x).length<=65&&!/status|description|note|qualifier/i.test(k)),rest=entries.filter(e=>!short.includes(e));
-  return (short.length?'<div class="spec-property-groups">'+table(short)+'</div>':'')+rest.map(([k,x])=>simple(x)?'<section class="spec-explanation"><h4>'+esc(label(k))+'</h4>'+render(x)+'</section>':'<details class="spec-section"><summary>'+esc(label(k))+'</summary>'+render(x)+'</details>').join('');
+  return (short.length?'<div class="spec-property-groups">'+table(short)+'</div>':'')+rest.map(([k,x])=>simple(x)?'<section class="spec-explanation"><h4>'+esc(label(k))+'</h4>'+render(x)+'</section>':'<details class="spec-section"'+(/^(text|bitmap)[_ ]modes$/.test(k.toLowerCase())?' open':'')+'><summary>'+esc(label(k))+'</summary>'+render(x)+'</details>').join('');
  }
  return '<div class="structured-spec"><div class="spec-controls"><button type="button" data-spec-expand="true">Expand all</button><button type="button" data-spec-expand="false">Collapse all</button></div>'+render(data)+'</div>';
 };

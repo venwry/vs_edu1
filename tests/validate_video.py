@@ -32,7 +32,6 @@ ram_part = records['part.aion_4116']
 assert ram_part['vendor'] == 'AION Labs'
 assert ram_part['specification']['ports'] == ['single random read/write port']
 assert ram_part['specification']['serial_register_bits'] == 0
-assert 'part.vram_' + '16kbit_dual_port' not in records
 # Storage budgets and fabrication costs are separate: both must reference the same dies.
 costs = json.loads((root / 'manufacturing_costs.json').read_text())
 models = costs['chip_fabrication_models']
@@ -53,7 +52,7 @@ for host in hosts:
     s = v['sprites']
     assert s['pattern_bytes_per_sprite'] == s['width'] * s['height'] * s['bits_per_pixel'] // 8 == 128
     assert s['total_pattern_and_position_bytes'] == s['count'] * (128 + s['position_bytes_per_sprite']) == 660
-    assert s['reserved_vram_bytes'] == 768
+    assert s['reserved_video_ram_bytes'] == 768
     assert s['count'] == s['maximum_per_scanline'] == 5
     assert {m['columns'] for m in v['text_modes']} == {40, 80}
     for m in v['text_modes']:
@@ -62,9 +61,9 @@ for host in hosts:
         assert len(m['configurations']) == 4
         for cfg in m['configurations']:
             size = cfg['text_buffer_count'] * (m['character_map_bytes_per_buffer'] + m['attribute_map_bytes_per_buffer']) + m['font_bytes']
-            size += s['reserved_vram_bytes'] if cfg['sprite_count'] else 0
+            size += s['reserved_video_ram_bytes'] if cfg['sprite_count'] else 0
             assert size == cfg['allocated_bytes'] <= capacity
-            assert size + cfg['remaining_vram_bytes'] == capacity
+            assert size + cfg['remaining_video_ram_bytes'] == capacity
     assert {(m['width'], m['height'], m['bits_per_pixel']) for m in v['bitmap_modes']} == {
         (640, 200, 1), (320, 200, 2), (320, 200, 1), (320, 100, 4), (320, 100, 2), (160, 100, 4)}
     for m in v['bitmap_modes']:
@@ -75,7 +74,7 @@ for host in hosts:
         for cfg in m['configurations']:
             used = size * cfg['framebuffer_count'] + (768 if cfg['sprite_count'] else 0)
             assert used == cfg['allocated_bytes'] <= capacity
-            assert used + cfg['remaining_vram_bytes'] == capacity
+            assert used + cfg['remaining_video_ram_bytes'] == capacity
     a = next(a for a in bom['assemblies'] if a['id'] == 'assembly.' + host + '.base')
     lines = {l['ref']: l for l in a['lines']}
     assert lines['bompart.part.aurelia_video_chip']['quantity'] == 1
@@ -92,3 +91,14 @@ for monitor in ['device.mono_monitor_1', 'device.color_monitor_1', 'device.mono_
     assert ('raster_640_200' in caps['raster_ids']) == monitor.endswith('_2')
 print('Validated shared video modes, all buffer/sprite budgets, monitor profiles and nine-chip BOMs.')
 
+
+assert records[hosts[0]]['video'] == records[hosts[1]]['video']
+assert records[hosts[0]]['memory']['video_physical_population'] == records[hosts[1]]['memory']['video_physical_population']
+for host in hosts:
+    assert not {'text_mode', 'graphics_modes'} & records[host]['video'].keys()
+    assert not {'text_mode', 'bitmap_mode'} & records[host]['video']['memory_layout'].keys()
+# Scan current project sources and generated reports, excluding repository metadata and caches.
+for path in root.rglob('*'):
+    if not path.is_file() or any(p.startswith('.') or p == '__pycache__' for p in path.relative_to(root).parts):
+        continue
+    assert ('v' + 'ram').encode() not in path.read_bytes().lower(), path

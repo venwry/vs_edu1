@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let tech,story,site,records,actors,pages,page,recordPages,observer,linkPattern,linkNames;
-const app=document.getElementById('app'),human=k=>k.replace(/_/g,' ').replace(/\b(?:ram|rom|vram|cpu|tui|api|bios|cpm|kb|mhz|sdk|io)\b/gi,s=>s.toUpperCase());
+const app=document.getElementById('app'),human=k=>k.replace(/_/g,' ').replace(/\b(?:ram|rom|cpu|tui|api|bios|cpm|kb|mhz|sdk|io)\b/gi,s=>s.toUpperCase());
 const siteLink=(id,text)=>{const p=pages[id];return p?`<a href="${esc(p.path)}"${p.id===page.id?' aria-current="page"':''}>${esc(text||p.title)}</a>`:esc(text||id);};
 function refLink(id){if(records[id]){const p=recordPages[id];return p?`<a href="${esc(p.path)}#${esc(id)}">${esc(records[id].name)}</a>`:esc(records[id].name);}if(actors[id])return site.entity_page_links[id]?siteLink(site.entity_page_links[id],actors[id].name):esc(actors[id].name);return esc(id);}
 function render(v){if(v===null||v===undefined)return '—';if(typeof v==='boolean')return v?'Yes':'No';if(Array.isArray(v))return v.length?'<ul>'+v.map(x=>'<li>'+render(x)+'</li>').join('')+'</ul>':'—';if(typeof v==='object')return '<dl class="fields">'+Object.entries(v).map(([k,x])=>`<div><dt>${esc(human(k))}</dt><dd>${render(x)}</dd></div>`).join('')+'</dl>';return typeof v==='string'&&(records[v]||actors[v])?refLink(v):esc(v);}
