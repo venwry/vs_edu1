@@ -10,21 +10,21 @@ for(const leaf of leaves(mmu.specification)){if(typeof leaf==='string'&&leaf)ass
 panel.querySelector('[data-spec-expand="true"]').click();assert([...panel.querySelectorAll('details')].every(x=>x.open));panel.querySelector('[data-spec-expand="false"]').click();assert([...panel.querySelectorAll('details')].every(x=>!x.open));
 panel.innerHTML=w.renderSpecification({ram_slots:8,banks:4,modules_per_bank:2,module_data_width_bits:16,bank_data_width_bits:32,physical_limit_kb:1024,mixed_density_allowed:false});const groups=panel.querySelector('.spec-property-groups');assert.equal(groups.children.length,1);assert.equal(groups.children[0].querySelectorAll('tbody tr').length,7);
 panel.innerHTML=w.renderSpecification({note:'<img src=x onerror=alert(1)>',zero:0,flag:false,unknown:null,empty:[]});assert(!panel.querySelector('img'));assert(panel.textContent.includes('Unspecified'));assert(panel.textContent.includes('No'));assert(panel.textContent.includes('0'));
-for(const id of ['computer.aurelia','computer.aurelia_plus']){
+for(const id of ['computer.aurelia','computer.aurelia_plus','computer.artemis','computer.artemis_pro']){
  panel.innerHTML=w.renderSpecification(records[id].video,records);
  const tables=panel.querySelectorAll('.video-mode-table');assert.equal(tables.length,2);
- assert.equal(tables[0].querySelectorAll('tbody tr').length,2);assert.equal(tables[1].querySelectorAll('tbody tr').length,6);
+ assert.equal(tables[0].querySelectorAll('tbody tr').length,records[id].video.text_modes.length);assert.equal(tables[1].querySelectorAll('tbody tr').length,records[id].video.bitmap_modes.length);
  for(const mode of [...records[id].video.text_modes,...records[id].video.bitmap_modes]){
   const row=[...panel.querySelectorAll('.video-mode-table tbody tr')].find(r=>r.textContent.includes(mode.id));assert(row);
   assert(row.textContent.includes(String(mode.ram_bytes_per_page??mode.bytes_per_framebuffer)));
-  if(mode.bits_per_pixel)assert.equal(row.lastElementChild.textContent,mode.double_buffering?'Yes':'No');
+  if(mode.bits_per_pixel)assert.equal(row.children[5].textContent,mode.double_buffering?'Yes':'No');
  }
  const headings=[...panel.querySelectorAll('summary')].map(x=>x.textContent.toLowerCase());
  assert(!headings.includes('text mode'));assert(!headings.includes('graphics modes'));assert(!headings.includes('bitmap mode'));
  assert(!panel.textContent.includes('used / free'));
  assert(!panel.textContent.includes('0 sprites'));
- assert.equal(tables[0].querySelectorAll('thead th').length,5);
- assert.equal(tables[1].querySelectorAll('thead th').length,6);
+ assert.equal(tables[0].querySelectorAll('thead th').length,id.includes('artemis')?6:5);
+ assert.equal(tables[1].querySelectorAll('thead th').length,id.includes('artemis')?7:6);
  assert(panel.textContent.includes('All modes support five sprites')); 
 }
 dom.window.close();console.log('PASS: full MMU content, single Property/Value table, nested sections, bulk controls and escaped values.');

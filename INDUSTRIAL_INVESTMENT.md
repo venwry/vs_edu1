@@ -37,3 +37,8 @@ Open [Quarterly ROI](roi.html) for revenue, marketing-adjusted operating costs, 
 ## Buffered video revision
 
 The Aurelia video controller is costed at 52 mm², its eight AION 4116 DRAM dies at 18 mm² each, two AION 2114 sprite SRAM dies at 20 mm² each, and the combined DMA/banking/refresh controller at 30 mm². The revised BOM drives internal wafer loading and factory capacity. Purchased system DRAM retains separate procurement assumptions. Artemis retains its existing eight-chip display-storage cost proxy. Incremental extension programmes add 108 AION Labs, 24 Logix, 18 DRI and 12 AION Software person-months; the baseline 360 person-month launch-silicon programme remains. Costs and ROI are regenerated with these explicit additional work packages. See AURELIA_SYSTEM_CONTROLLER.md. A 3.5 µm process requires a fresh area/yield/capacity scenario.
+
+
+## Artemis replaceable video and Mono Pro
+
+See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the 32 KiB card, dedicated 1 KiB sprite SRAM, four pixel-buffer pages, 640×400 Mono Pro, new complete offers and qualification limits. Costs, balanced pricing, demand, engineering, marketing, capacity and ROI are rebuilt together; [ROI](roi.html) includes the current before/after comparison.

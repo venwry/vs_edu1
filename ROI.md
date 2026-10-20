@@ -38,3 +38,8 @@ The financial bridge **replaces** the industrial model's generic campaign/dealer
 Inventory follows the committed one-quarter-ahead funding plan: the 1980 year-end includes 1981 Q1 prebuild. This is a continuing-business view, not liquidation at December 31. There is no AR/AP schedule, debt/interest, income tax or terminal asset value. Fab depreciation begins after commissioning; other fixed-asset lives are disclosed scenario assumptions.
 
 Marketing sensitivity changes only spending and expected credit redemptions (0.65× / 1× / 1.75×). It is not a causal marketing ROI calculation and does not substitute for demand, yield or BOM sensitivity.
+
+
+## Artemis replaceable video and Mono Pro
+
+See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the 32 KiB card, dedicated 1 KiB sprite SRAM, four pixel-buffer pages, 640×400 Mono Pro, new complete offers and qualification limits. Costs, balanced pricing, demand, engineering, marketing, capacity and ROI are rebuilt together; [ROI](roi.html) includes the current before/after comparison.

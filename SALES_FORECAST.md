@@ -4,7 +4,7 @@ Current forecast after balancing contribution margins against competitor-proxy d
 
 ## Pricing and manufacturing policy
 
-Match contribution margin on net receipts to the discount below the existing competitor proxy. No-proxy offers use a 25% margin; two monitor snapshots use break-even pricing above their proxies. No speculative demand uplift for new features is applied. Frozen pricing baselines are unchanged. Cost assumptions remain engineering estimates, not quotations.
+Match contribution margin on net receipts to the discount below the existing competitor proxy. No-proxy offers use a 25% margin; two monitor snapshots use break-even pricing above their proxies. The Artemis display revision now applies an explicit scenario uplift for product appeal and its incremental campaign; it is not measured conversion. Earlier Aurelia demand assumptions remain unchanged. Frozen pricing baselines are unchanged. Cost assumptions remain engineering estimates, not quotations.
 
 | 1978 offer | Current retail price |
 |---|---:|
@@ -45,3 +45,6 @@ June–November demand uses May run rates, annual pricing, dated campaign/compet
 Rebuild costs, pricing, sales, investment and ROI in that order. Data validators check cost pass-through, immutable original demand baselines, demand/capacity conservation and period sums. DOM tests reconcile monthly, quarterly and annual views, split May boundaries, partial periods and exports.
 
 The industrial/ROI model separately sizes for full modeled demand plus 10% capacity reserve, adds demonstration/service stock, and explicitly extrapolates November 19–December 31, 1980. Its 1980 customer demand is 83,449 computers; this is not the partially capped Sales-page delivery series. Recurring unit costs are unchanged; revised volume changes factory/fab loading, headcount, inventory and capital requirements.
+
+
+The current Artemis/Mono Pro revision is documented in [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md). Its 60% monitor mix and combined 6/12/18% intent uplift are applied before revised-price elasticity. Current Artemis figures and full-demand ROI comparisons are in the linked live pages and JSON; older campaign-analysis tables are retained as labeled historical snapshots.

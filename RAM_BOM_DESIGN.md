@@ -24,7 +24,7 @@ The unqualified 128 Kbit DRAM record and old 8-bit 64 KiB RAM module are retaine
 
 ## Manufacturing coverage
 
-`hardware_bom.json` covers all 48 hardware records, including superseded and prototype records explicitly excluded from production, and all 12 offered bundles. Seven proposed bundles are retained as references outside committed manufacturing coverage. Its 85 assemblies include RAM populations, bank kits, hub port variants, physical software media and bundle packouts. Its 199 component requirements include both catalog parts and unresolved implementation requirements. These counts describe engineering records, not unique purchasable SKUs.
+`hardware_bom.json` covers all 57 hardware records and 16 offered hardware bundles. Its 100 assemblies and 242 component requirements include both catalog parts and unresolved implementation requirements. Counts describe engineering records, not unique purchasable SKUs.
 
 Every hardware catalog record now includes manufacturing requirements. Active records link to assembly IDs. Nested assemblies separate purchased mechanisms from their host systems and prevent counting both a functional assembly and its implementation as independent purchased items. Unknown quantities remain null, rather than zero or an invented count. Superseded records retain their historical identity.
 
@@ -53,3 +53,8 @@ Run the catalog validator, the hardware BOM validator and the existing DOM suite
 ## Unified Aurelia video (v2.7)
 
 Both Aurelia models now populate one shared video controller, eight AION-manufactured 4116-equivalent DRAM chips (16 KiB), two AION 2114-equivalent SRAMs (1 KiB exclusive sprites) and one AION system controller for DMA/banking/refresh. See VIDEO_DESIGN.md for mode allocations, monitor discovery and manufacturing estimates. Run `python tests/validate_video.py` to verify every buffer/sprite allocation and the eleven-chip video population and single system-controller BOM. These quantities are defined; electrical qualification and unit-cost quotations remain open.
+
+
+## Artemis replaceable video and Mono Pro
+
+See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the 32 KiB card, dedicated 1 KiB sprite SRAM, four pixel-buffer pages, 640×400 Mono Pro, new complete offers and qualification limits. Costs, balanced pricing, demand, engineering, marketing, capacity and ROI are rebuilt together; [ROI](roi.html) includes the current before/after comparison.

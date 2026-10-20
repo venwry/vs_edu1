@@ -203,11 +203,13 @@ window.renderSpecification=function(data,records={}){
    if(v.length && v.every(m=>m && Array.isArray(m.configurations)) && (v[0].columns || v[0].bits_per_pixel)){
     const textMode=!!v[0].columns;
     const headers=['Mode','Pixels',...(textMode?['Glyphs / attributes','RAM per page (B)','Shared font (B)']:['Bits/pixel','Stride (B)','RAM per page (B)','Double buffering'])];
+    const hasRasters=v.some(m=>m.required_raster_ids);if(hasRasters)headers.push('Compatible raster profiles');
     const rows=v.map(m=>{
      const cells=[m.id+(m.compatibility_mode?' (compatibility)':'')+(textMode?' · '+m.columns+'×'+m.rows:''),m.width+'×'+m.height,...(textMode?[m.character_count+' × '+m.glyph_width+'×'+m.glyph_height+'; '+m.attribute_format,m.ram_bytes_per_page,m.font_bytes]:[m.bits_per_pixel,m.stride_bytes,m.bytes_per_framebuffer,m.double_buffering?'Yes':'No'])];
+     if(hasRasters)cells.push(m.required_raster_ids.map(r=>r==='raster_640_400'?'640×400 (Mono Pro)':r==='raster_640_200'?'640×200 (legacy)':'320×200 (legacy)').join('; '));
      return '<tr>'+cells.map((c,i)=>i?'<td>'+esc(c)+'</td>':'<th scope="row">'+esc(c)+'</th>').join('')+'</tr>';
     });
-    return '<p>'+ (textMode?'RAM per page includes the padded character and colour maps. Both text modes support two pages; one shared font is additional.':'Double buffering requires two complete bitmap pages within the 16 KiB display DRAM.')+' All modes support five sprites in separate 1 KiB SRAM.</p><div class="spec-table-scroll"><table class="video-mode-table"><thead><tr>'+headers.map(h=>'<th scope="col">'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table></div>';
+    return '<p>'+ (textMode?'RAM per page includes the padded character and colour maps. All listed text modes support two pages; one shared font is additional.':'Double buffering requires two complete bitmap pages within the host’s display DRAM capacity.')+' All modes support five sprites in separate 1 KiB SRAM.</p><div class="spec-table-scroll"><table class="video-mode-table"><thead><tr>'+headers.map(h=>'<th scope="col">'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table></div>';
 
    }
 

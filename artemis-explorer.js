@@ -23,14 +23,15 @@ function definition(n){if(n.id==='network'&&!network())return;
  if(n.requires_compatible_device&&!c.compatible_devices.includes(n.record_ref))return;
  let r=n.record_ref?rec(n.id==='os'&&network()?settings.network_software_ref:n.record_ref):null,data=r?clean(r):{},source=r?.specification||r;
  if(n.fields)data=Object.fromEntries(n.fields.map(k=>[k,source[k]]));
- if(n.computer_path)data={...data,...at(c,n.computer_path)};
+ if(n.computer_path){const part=at(c,n.computer_path);data=typeof part==='object'?{...data,...part}:{...data,policy:part};}
+ if((n.id==='graphics'||n.id==='video_ram')&&data.specification){delete data.specification;delete data.manufacturing_requirements;}
  if(r?.specification_ref)data[rec(r.specification_ref).name]=rec(r.specification_ref).specification;
  if(n.id==='ram')data=ramFacts();
  if(n.id==='apps')data={compatible_software:c.compatible_software,software_compatibility:c.software_compatibility};
  let sub=r?.name||human(n.computer_path?.split('.').pop()||n.id);
  if(n.id==='cpu')sub=c.processor.variant+' · '+c.processor.clock_mhz+' MHz';
  if(n.id==='ram')sub=ram()+' KB · '+ramConfiguration().populated_modules+' modules · '+ramConfiguration().populated_banks+' banks';
- if(n.id==='graphics'||n.id==='video_ram')sub=c.video.video_ram_kb+' KB video RAM · '+c.video.text_mode.characters;
+ if(n.id==='graphics'||n.id==='video_ram')sub=c.video.video_ram_kb+' KB video RAM · '+c.video.text_modes.map(m=>m.columns+'×'+m.rows+' ('+m.glyph_width+'×'+m.glyph_height+')').join(' / ');
  if(n.id==='virtual')sub=rec(settings.memory_ref).specification.virtual_address_bits+'-bit virtual addresses';
  if(n.id==='physical')sub=rec(settings.memory_ref).specification.physical_address_bits+'-bit physical addresses';
  if(n.id==='rom')sub=c.io_and_expansion.rom_eeprom_cartridge_slots.count+' cartridge slots';
@@ -45,9 +46,9 @@ function peripherals(){
  edges=[['host','technology.flexibus'],['host',c.video.technology_ref],['host','technology.plug_and_execute']];
  const bundled=new Set(catalog.offered_bundles.filter(b=>b.computer_ref===c.id).flatMap(b=>b.included_devices||[]));
  c.compatible_devices.filter(id=>network()||![settings.network_adapter_ref,'device.network_hub'].includes(id)).forEach((id,i)=>{
-  const d=rec(id),standard=id===settings.network_adapter_ref&&network(),bundle=bundled.has(id),optional=!standard&&!bundle;
+  const d=rec(id),standard=id===c.video.card_ref||(id===settings.network_adapter_ref&&network()),bundle=bundled.has(id),optional=!standard&&!bundle;
   product(id,i%3+1,Math.floor(i/3)+3,optional,(standard?'Included in selected configuration':bundle?'Bundle option':'Optional')+' · '+d.introduced.event_start_date);
-  const parent=d.category==='memory_expansion'?'host':id==='device.network_hub'?settings.network_adapter_ref:d.category==='display'?c.video.technology_ref:['device.artemis_cpm80_module',settings.network_adapter_ref].includes(id)?'technology.plug_and_execute':'technology.flexibus';
+  const parent=d.category==='memory_expansion'?'host':id==='device.artemis_video_card'?'host':id==='device.network_hub'?settings.network_adapter_ref:d.category==='display'?c.video.technology_ref:['device.artemis_cpm80_module',settings.network_adapter_ref].includes(id)?'technology.plug_and_execute':'technology.flexibus';
   edges.push([parent,id,optional]);
  });
 }
@@ -89,14 +90,14 @@ function select(){const n=nodes.find(n=>n.id===selected);if(!n)return;
 }
 function draw(){window.drawArchitectureWires($('diagram'),edges);}
 function details(){
- $('memory-section').innerHTML='<div class="eyebrow">Memory organization</div><h2>'+esc(c.name)+' · '+ram()+' KB RAM</h2><p>'+esc(settings.memory_note)+'</p>'+table(['Resource','Configuration'],[['Virtual addressing',rec(settings.memory_ref).specification.virtual_address_bits+' bits'],['Physical addressing',rec(settings.memory_ref).specification.physical_address_bits+' bits'],['RAM population',ramConfiguration().populated_modules+' × '+module().specification.capacity_kb+' KB / 16-bit modules'],['Populated banks',ramConfiguration().populated_banks+' / '+c.memory.bank_count],['Data DRAM chips',ramConfiguration().data_chip_count],['Qualification',ramConfiguration().validation_status],['Available sockets',c.memory.ram_sockets],['Physical capacity design target',maxKB+' KB · qualification pending'],['Video RAM',c.video.video_ram_kb+' KB'],['Cartridge slots',c.io_and_expansion.rom_eeprom_cartridge_slots]])+'<p>'+esc(settings.ram_note)+'</p><details><summary>RAM modules and process memory</summary>'+dl(clean(module()))+dl(rec(settings.os_model_ref).specification)+'</details>';
+ $('memory-section').innerHTML='<div class="eyebrow">Memory organization</div><h2>'+esc(c.name)+' · '+ram()+' KB RAM</h2><p>'+esc(settings.memory_note)+'</p>'+table(['Resource','Configuration'],[['Virtual addressing',rec(settings.memory_ref).specification.virtual_address_bits+' bits'],['Physical addressing',rec(settings.memory_ref).specification.physical_address_bits+' bits'],['RAM population',ramConfiguration().populated_modules+' × '+module().specification.capacity_kb+' KB / 16-bit modules'],['Populated banks',ramConfiguration().populated_banks+' / '+c.memory.bank_count],['Data DRAM chips',ramConfiguration().data_chip_count],['Qualification',ramConfiguration().validation_status],['Available sockets',c.memory.ram_sockets],['Physical capacity design target',maxKB+' KB · qualification pending'],['Display DRAM',c.video.video_ram_kb+' KiB on replaceable card'],['Exclusive sprite SRAM','1 KiB; separate bus'],['Internal pixel buffer','4 × 160 bytes'],['Internal character row cache','2 × 160 bytes'],['Video-card connector','1 dedicated; four general slots retained'],['Cartridge slots',c.io_and_expansion.rom_eeprom_cartridge_slots]])+'<p>'+esc(settings.ram_note)+'</p><details><summary>RAM modules and process memory</summary>'+dl(clean(module()))+dl(rec(settings.os_model_ref).specification)+'</details>';
  $('software-section').innerHTML='<div class="eyebrow">System organization</div><h2>'+esc(rec(network()?settings.network_software_ref:settings.os_ref).name)+'</h2>'+dl(clean(rec(network()?settings.network_software_ref:settings.os_ref)));
- $('portability-section').innerHTML='<div class="eyebrow">Platform records</div>'+page.record_refs.filter(id=>id!==c.id).map(id=>`<details id="${esc(id)}"><summary>${esc(rec(id).name)}</summary>${dl(clean(rec(id)))}</details>`).join('')+'<details><summary>'+esc(c.name)+' · full specification</summary>'+dl(clean(c))+'</details>';
+ $('portability-section').innerHTML='<div class="eyebrow">Platform records</div>'+page.record_refs.filter(id=>id!==c.id).map(id=>`<details id="${esc(id)}"><summary>${esc(rec(id).name)}</summary>${dl(clean(rec(id)))}</details>`).join('')+'<details><summary>'+esc(c.name)+' · full specification</summary>'+window.renderSpecification(clean(c),records)+'</details>';window.bindSpecificationControls($('portability-section'));
 }
 function build(){nodes=[];edges=[];
  $('ram-choice').hidden=true;$('artemis-ram-choice').hidden=layer==='bundles';$('era').parentElement.hidden=Boolean(c.networking?.included_by_default)||layer==='bundles';
  $('offering-controls').hidden=!['software','bundles'].includes(layer);$('software-choice').hidden=layer!=='software';$('bundle-choice').hidden=layer!=='bundles';
- $('stats').innerHTML=[['Processor',c.processor.variant+' · '+c.processor.clock_mhz+' MHz'],['System RAM',ram()+' KB'],['Video RAM',c.video.video_ram_kb+' KB'],['Text display',c.video.text_mode.characters]].map(([k,v])=>'<div class="stat"><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join('');
+ $('stats').innerHTML=[['Processor',c.processor.variant+' · '+c.processor.clock_mhz+' MHz'],['System RAM',ram()+' KB'],['Video RAM',c.video.video_ram_kb+' KB'],['Text display',c.video.text_modes.map(m=>m.columns+'×'+m.rows+' ('+m.glyph_width+'×'+m.glyph_height+')').join(' / ')]].map(([k,v])=>'<div class="stat"><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join('');
  $('view-title').textContent=c.name.toUpperCase()+' / '+layer.toUpperCase();$('diagram-note').textContent=settings.notes[layer];
  if(layer==='hardware'||layer==='memory')configuredDiagram(layer);else if(layer==='peripherals')peripherals();else if(layer==='software')software();else bundles();
  if(!nodes.some(n=>n.id===selected))selected=nodes[0]?.id;

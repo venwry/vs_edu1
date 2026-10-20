@@ -49,3 +49,8 @@ At 1978 assumptions ($210 processed wafer, die yield `0.85 * exp(-2.8 * area_mm2
 Apple II and S-100 video cards inherit the same sprite SRAM and modes because they reuse this controller. Host adapters and drivers remain specific; these cards do not contain the Aurelia system controller and do not add CP/M execution capability. Existing SMC agreements do not automatically qualify newly added SRAM or system-controller parts.
 
 Run catalog/BOM, video, costs, investment and DOM validators. Passing arithmetic and rendering checks does not establish production timing or yield.
+
+
+## Artemis replaceable video and Mono Pro
+
+See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the 32 KiB card, dedicated 1 KiB sprite SRAM, four pixel-buffer pages, 640×400 Mono Pro, new complete offers and qualification limits. Costs, balanced pricing, demand, engineering, marketing, capacity and ROI are rebuilt together; [ROI](roi.html) includes the current before/after comparison.

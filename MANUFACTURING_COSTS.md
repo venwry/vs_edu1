@@ -1,6 +1,6 @@
 # Recurring unit manufacturing and delivery costs, 1978–1981
 
-Open `manufacturing-costs.html` through the same static server as the Atlas. It reads `manufacturing_costs.json`: 122 rows with four June 15 snapshots. There are 48 priced rows in 1978, 55 in 1979, 95 in 1980 and 120 in 1981. Rows overlap (bundles, parent software, platform editions and individual components), so **do not add all rows into a company-wide total**.
+Open `manufacturing-costs.html` through the same static server as the Atlas. It reads `manufacturing_costs.json`: 131 rows with four June 15 snapshots. Availability remains gated by each offer's introduction date. Rows overlap (bundles, parent software, platform editions and individual components), so **do not add all rows into a company-wide total**.
 
 These are engineering scenario estimates, not historical Logix accounts or supplier quotations. The alternative-history design is taken from the catalog revision recorded in JSON. Historical wages and electricity prices anchor the conversion costs; component procurement, volumes, fabrication yields and operation times are explicit assumptions. The engineering BOM retains its unresolved quantities and prices unchanged.
 
@@ -10,13 +10,17 @@ Nominal USD, rounded to whole dollars; each year's snapshot is June 15. A dash m
 
 | Complete offering | 1978 | 1979 | 1980 | 1981 |
 |---|---:|---:|---:|---:|
-| Aurelia monochrome system | 751 | 722 | 701 | 695 |
-| Aurelia color system | 854 | 823 | 800 | 793 |
-| Aurelia+ monochrome system | — | — | 1,118 | 998 |
-| Artemis 128 KiB monochrome system | — | — | 1,180 | 1,208 |
-| Artemis 256 KiB monochrome system | — | — | 2,273 | 1,875 |
-| Artemis PRO 512 KiB server | — | — | — | 3,509 |
-| Artemis PRO 1 MiB server | — | — | — | 5,236 |
+| Logix Aurelia — Monochrome system | 788 | 756 | 733 | 727 |
+| Logix Aurelia — Color system | 891 | 858 | 833 | 825 |
+| Logix Aurelia+ — Monochrome system | — | — | 1,151 | 1,030 |
+| Logix Artemis 128 KB — Monochrome system | — | — | 1,324 | 1,341 |
+| Logix Artemis 256 KB — Monochrome system | — | — | 2,417 | 2,009 |
+| Logix Artemis 128 KB — Mono Pro system | — | — | 1,467 | 1,492 |
+| Logix Artemis 256 KB — Mono Pro system | — | — | 2,560 | 2,160 |
+| Artemis PRO 512 KB server | — | — | — | 3,642 |
+| Artemis PRO 1 MB server | — | — | — | 5,369 |
+| Artemis PRO 512 KB server with Mono Pro console | — | — | — | 3,976 |
+| Artemis PRO 1 MB server with Mono Pro console | — | — | — | 5,703 |
 
 The 1981 Artemis bundle includes its dated networking variant and Server OS replacement, so its cost is not directly comparable to the non-networked 1980 configuration. PRO estimates are for announced offers; shipping dates remain unconfirmed. The PRO offers contain only the components actually listed in their BOMs: no invented monitor or keyboard is added.
 
@@ -34,7 +38,7 @@ Computer chassis rows exclude external keyboard/monitor and the system software 
 - Planning volumes: 10,000 hardware units per family/year, 1,000 PRO/year, 5,000 media/manual sets, component orders generally 10,000–100,000 pieces. These are assumptions, not story sales forecasts or quoted tiers. Supplier availability and volume discounts may dominate actual results.
 - Loaded manufacturing labor equals June BLS manufacturing hourly earnings multiplied by 1.35 for employment burden. Skilled service staff and instructors have additional 1.6× and 2× wage multipliers.
 - Assembly hours, kWh and consumables per assembly are recorded in JSON. Routine supervision/maintenance is 25% of loaded assembly labor; a 10% labor rework allowance and 1.5% incremental materials loss apply to assemblies with processing operations. Equipment depreciation is excluded.
-- Each of 221 component-cost entries has annual price/cost buckets. An unresolved multi-part line is one priced **functional set**, not an assertion that a circuit contains one physical part. There are 166 explicitly identified unresolved quantity substitutions. Three Aurelia/Aurelia+ FlexiBUS ports provisionally use three host-controller dies; the engineering integration remains undecided.
+- Each of 242 component-cost entries has annual price/cost buckets. An unresolved multi-part line is one priced **functional set**, not an assertion that a circuit contains one physical part. There are 168 explicitly identified unresolved quantity substitutions. Three Aurelia/Aurelia+ FlexiBUS ports provisionally use three host-controller dies; the engineering integration remains undecided.
 - Custom silicon uses a 75 mm wafer scenario, explicit die area and year-dependent defect density. Good die output is geometric usable dies times die yield. Recurring processed-wafer cost is allocated 18% substrate/materials, 36% workforce, 10% energy, 24% consumables and 12% operations. Packaging and final-test labor are added and divided by 93% packaging/test yield. All these fabrication parameters are unverified planning assumptions; design and mask access does not eliminate yield risk. Yield loss is already inside the chip's cost buckets.
 - Purchased 16K DRAM central prices are $6/$4.50/$3.25/$2.25 per chip; 64K DRAM $80/$65/$40/$25. The first two 64K prices are unused in pre-introduction products. These are assumed OEM tiers, not verified quotations. High-density Artemis cost is especially sensitive to 64K DRAM sourcing. A 1 MiB PRO needs 128 data DRAMs, not eight chips.
 - AION-made display RAM is separate from purchased system DRAM: `part.aion_4116`, 18mm² central die, $3.4452 each / $27.5618 for eight in 1978. The revised Aurelia video controller uses 52mm² and costs $22.5629. Two dedicated AION 2114 SRAMs add $7.7784, giving $57.90 for the eleven-chip video population. The separate 30mm² AION system controller costs $10.4753; interface allowances and the $5 mapper replacement credit are applied at assembly level. All are scenario estimates, excluding capital and development; see VIDEO_DESIGN.md. Later years use the existing annual yield-learning model.
@@ -94,3 +98,6 @@ Tandy Model II and its external partner interface are Tandy-owned designs, not a
 NCC 1979 campaign, engineering support and compatibility certification expenses remain unbudgeted operating programmes, not changes to recurring hardware costs. See NCC_1979_CAMPAIGN.md and CONSISTENCY_REVIEW_1979.md.
 
 The December 1979 manufacturer compatibility kit and optional support/certification add three rows, first costed in the June 1980 snapshot. Reproduction and bounded engineering workloads exclude programme development/NRE. See AURELIA_COMPATIBILITY_KIT.md.
+
+
+Artemis and PRO include the new replaceable card once in every chassis. Mono Pro console offers explicitly include a keyboard and monitor. See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the incremental components, engineering budget and silicon-yield risks.

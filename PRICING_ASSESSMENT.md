@@ -1,8 +1,8 @@
 # Retail pricing: balanced contribution and proxy discount
 
-The active policy covers all 82 offers and 218 available annual snapshots for 1978–1981. Let P be retail price, C recurring cost, f the dealer fee and B the normalized competitor proxy. Match contribution margin on net receipts, 1 − C/[P(1 − f)], to proxy discount, 1 − P/B. Therefore **P = sqrt(C × B / (1 − f))**, rounded to cents. These percentages describe unit contribution before corporate overhead, development, marketing, capital, tax and finance; they are not corporate net profit.
+The active policy covers all 91 offers and 234 available annual snapshots for 1978–1981. Let P be retail price, C recurring cost, f the dealer fee and B the normalized competitor proxy. Match contribution margin on net receipts, 1 − C/[P(1 − f)], to proxy discount, 1 − P/B. Therefore **P = sqrt(C × B / (1 − f))**, rounded to cents. These percentages describe unit contribution before corporate overhead, development, marketing, capital, tax and finance; they are not corporate net profit.
 
-170 snapshots match to within 0.02 percentage points before display rounding. For 46 snapshots without a proxy, use a disclosed 25% contribution margin on net receipts; no competitor discount is claimed. Two second-generation monochrome-monitor snapshots (1980 and 1981) cannot match while avoiding a unit loss: use rounded-up break-even prices and disclose the premium above the proxy. Stress losses remain visible. Fees and manufacturing assumptions are unchanged.
+Matched-proxy snapshots balance within the tested 0.1-percentage-point tolerance. No-proxy offers use a disclosed 25% contribution margin; no competitor discount is claimed. Two second-generation monochrome-monitor snapshots (1980 and 1981) cannot match while avoiding a unit loss: use rounded-up break-even prices and disclose the premium above the proxy. Stress losses remain visible. Fees and manufacturing assumptions are unchanged.
 
 Course promotions balance contribution after reserving the entire voucher. Composite bundles use their own normalized proxies and exact component costs; matching may make a bundle dearer than buying components separately, which is disclosed rather than hidden by an incompatible discount cap.
 
@@ -51,4 +51,7 @@ Checks cover full product coverage, date gating, source chronology, exact cost r
 The three NCC 1979 cards are included in the pricing matrix. Their new retail values are cost-floor planning proposals without a matched historical competitor benchmark. They do not overwrite a quoted catalog price. Host computer, compatible monitor and separate FlexiBUS/video cards are not bundled implicitly. Costs use AION launch silicon; SMC sensitivity is separate.
 
 
-External Tandy Model II hardware, its CP/M distribution and the Abacus partner edition have no agreed OEM prices or licensing volumes. They are represented in the technical catalog, but excluded from the 82 Logix/AION retail offers; the existing Abacus Aurelia price is not silently reused as a Tandy license price.
+External Tandy Model II hardware, its CP/M distribution and the Abacus partner edition have no agreed OEM prices or licensing volumes. They are represented in the technical catalog, but excluded from the 91 Logix/AION retail offers; the existing Abacus Aurelia price is not silently reused as a Tandy license price.
+
+
+Mono Pro and its four system offers use explicitly unverified display comparator allowances; replacement-card pricing uses the no-proxy fallback. Three Mono Pro application-package variants feed the sales basket. See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md).

@@ -109,6 +109,14 @@ for key,vals,refs,desc in [
  ('registration',[None]*4,[[]]*4,'No equivalent developer registration quote established. Cost-based access price including SDK.')]: bench(key,vals,refs,desc,'unverified_proxy' if key in ['tools','pulse','pulse3','sdk','sdkera','support','registration','training'] else 'category_proxy')
 for id in ['bundle.aurelia_mono','bundle.aurelia_color','bundle.aurelia_plus_mono','bundle.aurelia_plus_color','bundle.artemis_128_mono','bundle.artemis_128_color','bundle.artemis_256_mono','bundle.artemis_256_color','bundle.artemis_pro_512_server','bundle.artemis_pro_1mb_server']:
  b=['aurelia','color','plus','pluscolor','art128','art128color','art256','art256color','pro512','pro1024'][len(P)];add(id,group='Complete computer systems',bench=b)
+bench('monopro',[None,None,450,425],[[],[],[],[]], 'Unverified planning envelope for a 14-inch 26.88-kHz grayscale monitor, not a historical matched price. CRT catalog establishes the tube, not this retail value.', 'unverified_proxy')
+bench('art128pro',[None,None,4511,4296],[[],[],['h78','wc80','m12_80'],['ii81','ram81','m12_81']], 'Existing workstation proxy less old monochrome monitor proxy plus unverified Mono Pro envelope ($450/$425).', 'unverified_proxy')
+bench('art256pro',[None,None,5711,5496],[[],[],['h78','r78','m12_80'],['ii81','ram81','m12_81']], 'Existing expanded workstation proxy less old monitor plus unverified Mono Pro envelope.', 'unverified_proxy')
+bench('pro512display',[None,None,None,11595],[[],[],[],['ii81','server81','ram81']], 'Server proxy plus $170 keyboard and $425 Mono Pro planning envelopes.', 'unverified_proxy')
+bench('pro1024display',[None,None,None,15595],[[],[],[],['ii81','server81','ram81']], 'Server proxy plus $170 keyboard and $425 Mono Pro planning envelopes.', 'unverified_proxy')
+for id,bm in [('artemis_128_mono_pro','art128pro'),('artemis_256_mono_pro','art256pro'),('artemis_pro_512_mono_pro','pro512display'),('artemis_pro_1mb_mono_pro','pro1024display')]:add('bundle.'+id,group='Complete computer systems',bench=bm)
+add('device.mono_pro',group='Peripherals and expansion',bench='monopro')
+add('device.artemis_video_card',group='Peripherals and expansion',note='Replacement/spare card. Already included once in each Artemis/PRO chassis; no separate retail attachment assumed.')
 for id in ['bundle.aurelia_network_upgrade','bundle.artemis_network_upgrade']:add(id,group='Networking',bench='net')
 for id,b in [('flexibus_keyboard','keyboard'),('mono_monitor_1','mono1'),('color_monitor_1','color1'),('mono_monitor_2','mono2'),('color_monitor_2','color2'),('aurelia_ram_16kb_card','ram16'),('flexiprint40','printer'),('flexidisk','disk'),('apple2_expansion_card','applecard'),('flexidisk_ii','disk2'),('artemis_cpm80_module','compat'),('artemis_ram_64kb_bank_kit','ram64'),('artemis_ram_256kb_bank_kit','ram256')]:add('device.'+id,group='Peripherals and expansion',bench=b)
 for id in ['s100_flexibus_card','apple2_video_card','s100_video_card']:
@@ -145,6 +153,14 @@ mig=package('migration','CP/M migration','bundle.artemis_256_mono',['software.bu
 mig['component_variants']=office['component_variants']
 package('network_workstation','Network business workstation','bundle.artemis_256_mono',['software.business_tools_artemis','offer.bpi_client'],start='1981-05-04',note='Base 1981 system already includes NIC and AIONix Server. Requires separately purchased compatible BPI server; no standalone operation promised.')
 add('bundle.proposed_artemis_pro_small_office','Artemis PRO — Small-office business network','Network installation bundles',start='1981-05-04',announced=True,parts=[{'cost_ref':r,'quantity':n} for r,n in [('bundle.artemis_pro_512_server',1),('bundle.artemis_128_mono',2),('device.network_hub.4_port',1),('software.bpi_client_server',1),('offer.bpi_client',2),('software.business_tools_artemis',2),('device.flexiprint40',1),('assumption.network_cables',3)]],note='One 512K/5MB server, two 128K monochrome workstations, four-port hub, three cables, BPI server + two clients, two Office Suite copies and one printer. Installation/training/backup media excluded and separately quoted. PRO shipment unconfirmed.')
+# Mono Pro versions retain exactly the same software and accessories.
+for source in ['office','developer','migration']:
+ original=byid['bundle.proposed_artemis_'+source]
+ import copy
+ revised=copy.deepcopy(original);revised['id']=original['id']+'_mono_pro';revised['name']=original['name']+' / Mono Pro'
+ for component in revised['components']:
+  if component['cost_ref'] in ['bundle.artemis_128_mono','bundle.artemis_256_mono']:component['cost_ref']+='_pro'
+ P.append(revised);byid[revised['id']]=revised
 # Deliberately explicit non-source cost addition, separate from engineering BOM.
 extra={'assumption.network_cables':{'name':'Finished network cable, allowance','cost_usd':15,'low_usd':10,'high_usd':25,'rationale':'Unspecified cable length/connectors: $15 recurring delivered cost per connection; revise after interface is finalized.'}}
 
@@ -273,14 +289,17 @@ def balanced_price(cost,fee,benchmark,credit_rate=0,fixed_credit=0):
 for offer in P:
  for year,s in offer['snapshots'].items():
   if s['retail_price_usd'] is None:continue
-  old=baseline['products'][offer['id']][year]
+  old=baseline['products'].get(offer['id'],{}).get(year)
+  new_offer=old is None
+  if new_offer:old={k:s[k] for k in ['retail_price_usd','manufacturing_cost_usd','computerland_fee_rate','revenue_after_fee_usd','unit_profit_usd']}
+  s['baseline_status']='new_offer_no_historical_sales_anchor' if new_offer else 'frozen_original_offer'
   cost=s['manufacturing_cost_usd'];fee=s['computerland_fee_rate'];benchmark=s['competitor']['normalized_price_usd']
   assert fee==old['computerland_fee_rate']
   s['cost_revision']={'reason':'Current accepted hardware and delivery costs; frozen original costs retained for audit.', 'baseline_manufacturing_cost_usd':old['manufacturing_cost_usd'], 'current_manufacturing_cost_usd':cost, 'delta_usd':cents(cost-old['manufacturing_cost_usd'])}
   price,status=balanced_price(cost,fee,benchmark)
   commission=cents(price*fee);revenue=cents(price-commission);profit=cents(revenue-cost)
   margin=cents(profit/revenue*100);discount=cents((1-price/benchmark)*100) if benchmark else None
-  s['pre_reduction']={**old,'retail_reduction_pct':cents((1-price/old['retail_price_usd'])*100),'basis':'Frozen original audit and sales-demand anchor; old 40% contribution policy superseded.'}
+  s['pre_reduction']={**old,'retail_reduction_pct':cents((1-price/old['retail_price_usd'])*100),'basis':'Initial cost-based assessment only; no historical price or demand anchor exists.' if new_offer else 'Frozen original audit and sales-demand anchor; old 40% contribution policy superseded.'}
   s.update(retail_price_usd=price,computerland_fee_usd=commission,revenue_after_fee_usd=revenue,unit_profit_usd=profit,contribution_margin_on_net_revenue_pct=margin,legacy_price_floor_usd=s['price_floor_usd'],price_floor_usd=ceil_cents(cost/(1-fee)))
   s['competitor']['discount_pct']=discount
   s['pricing_balance']={'status':status,'margin_pct':margin,'discount_pct':discount,'gap_percentage_points':cents(abs(margin-discount)) if discount is not None else None,'fallback_margin_pct':25 if benchmark is None else None}
