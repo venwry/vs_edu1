@@ -2,7 +2,13 @@
 
 Every Artemis and Artemis PRO includes one replaceable video card on one dedicated keyed connector, in addition to four general-purpose expansion slots. Replacement requires power off. The networking NIC still occupies one general-purpose slot. Existing system DMA, MMU and bank/refresh circuitry remain host components; they are not duplicated on the video card. The hardware and memory diagrams expose these boundaries.
 
-## Card and monitor
+## Economy card (Artemis 128)
+
+The 16 KiB card reuses the Aurelia controller, eight AION 4116 chips, two AION 2114 sprite SRAMs, four 40-byte pixel pages and two 160-byte row caches. A buffered bridge connects the 32-bit host to 8-bit local display memory; a CPU word write needs up to four local transfers. This is not native 32-bit display memory. Its modes match Aurelia: 40×25 and 80×25 text with 8×8 cells, plus six legacy bitmap modes. Each 8000-byte bitmap supports two pages; each 16000-byte bitmap supports one. It cannot drive Mono Pro. Canonical per-mode allocations are shown in the selected-card explorer tables.
+
+See [ARTEMIS_TIERS.md](ARTEMIS_TIERS.md) for the configuration and sourcing policy.
+
+## Professional card and monitor (Artemis 256 / PRO)
 
 | Component | Accepted design |
 |---|---|
@@ -22,7 +28,7 @@ The [1978 Brimar industrial CRT catalog](https://www.worldradiohistory.com/Archi
 
 Mono Pro is fixed-frequency. The card scales legacy modes to its 400-line raster. Older monitors receive only their advertised original 200-line timings; never the new 26.88 kHz raster. They are not generally described as incapable of progressive scanning: the distinction is the new frequency and raster. Identification failure blanks the output unless an explicit compatible profile is configured. New 200-line bitmap formats can also use capable older monitors; new 400-line text and bitmaps require Mono Pro.
 
-## Text modes
+## Professional card text modes
 
 RAM per page includes padded character and attribute maps. Each character has 4-bit foreground and 4-bit background indices. All modes support two pages and one shared 256-glyph font; glyph editing affects both pages.
 
@@ -35,7 +41,7 @@ RAM per page includes padded character and attribute maps. Each character has 4-
 
 The 80×40 maps contain 6,400 useful bytes in an 8,192-byte page allocation. Its font contains 2,560 useful bytes in 4,096 bytes using a 16-byte glyph stride.
 
-## Bitmap modes
+## Professional card bitmap modes
 
 | Logical pixels | Bits/pixel | Indexed colors | RAM/page (B) | Double buffer | Compatible raster |
 |---|---:|---:|---:|---|---|
@@ -60,13 +66,13 @@ Display fetches and refresh have reserved deadlines. Host DMA/upload requests wa
 
 The recurring-cost model separately counts card PCB, dedicated connector pair, host buffers, clocks/transceivers, DRAM, SRAM, controller and assembly/test. The monitor separately counts its bare tube, yoke, HV/deflection/PSU, receiver, ladder, amplifier, PCB, case, harnesses, calibration and packout. No original video-chip or eight-chip memory-set charge remains in the motherboard. Each bundle contains one card through its host assembly.
 
-Four new complete hardware offers cover Artemis 128/256 KiB and PRO 512 KiB/1 MiB with keyboard and Mono Pro. Original legacy-monitor Artemis and server-only PRO offers remain alternatives. PRO shipments remain unconfirmed; the industrial model conditionally starts them in July 1981, with no PRO revenue before the end-1980 ROI cutoff.
+Artemis 128 includes the 16 KiB economy card and Mono II or Color II. Artemis 256 includes the 32 KiB professional card and Mono Pro or Color II. PRO console offers retain the professional card and Mono Pro; server-only PRO offers remain available. PRO shipments remain unconfirmed; the industrial model conditionally starts them in July 1981, with no PRO revenue before the end-1980 ROI cutoff.
 
 Prices balance contribution/net receipts against discount below the proxy using P = sqrt(C × B / (1 − fee)). Mono Pro's $450/$425 comparator envelope is an unverified assumption, not a historical matching quote. New workstation proxies replace the old display allowance; server-console proxies add keyboard and display. Standalone replacement-card pricing has no matched proxy and uses the disclosed 25% contribution fallback. Corporate development, marketing and capex are assessed in ROI, not called unit manufacturing profit.
 
-The sales scenario assumes 60% Mono Pro uptake among Artemis packages and 30% among conditional 1981 PRO offers. Combined product appeal and incremental campaign uplift is 6%/12%/18% on Artemis buyer intentions, applied once before price elasticity. This is assumed, not measured. Higher prices can offset greater interest. The $435,000 incremental campaign covers new creative, regional commercials, press, dealer demonstrations and incremental NCC/COMDEX staging; original Artemis event budgets are not charged twice.
+The sales scenario assumes 24% Mono Pro uptake among Artemis packages and 30% among conditional 1981 PRO offers. Combined product appeal and incremental campaign uplift is 2.4%/4.8%/7.2% on Artemis buyer intentions, applied once before price elasticity. This is assumed, not measured. Higher prices can offset greater interest. The $435,000 incremental campaign covers new creative, regional commercials, press, dealer demonstrations and incremental NCC/COMDEX staging; original Artemis event budgets are not charged twice.
 
-Incremental engineering is 150 person-months: AION Labs 90 (72 card, 18 receiver), Logix 36 (card/monitor integration and qualification), AION Software 24 (drivers, fonts, mode discovery and compatibility). Existing chip/process and OS programmes remain separately funded. Prototype/mask/validation expenditure follows the investment model's existing engineering-cost allowance. Recurring assembly staffing, chip loading and capacity are recomputed from the BOM.
+Display engineering is 150 person-months: AION Labs 90 (72 card, 18 receiver), Logix 36 (card/monitor integration and qualification), AION Software 24 (drivers, fonts, mode discovery and compatibility). The tier revision adds 156 person-months: AION Labs 120 for the 64 Kbit DRAM, Logix 24 for modules/economy-card integration, and AION Software 12 for the economy driver. Total incremental engineering is 306 person-months. Existing chip/process and OS programmes remain separately funded. Prototype/mask/validation expenditure follows the investment model's existing engineering-cost allowance. Recurring assembly staffing, chip loading and capacity are recomputed from the BOM.
 
 Capacity retains 10% good-output headroom. Added card assembly and monitor calibration affect stations; larger monitor packout affects warehouse/linehaul allowances; extra PCB area and explicit chip counts affect supplier and fab requirements. These physical allowances are planning estimates. No separate replacement-card sales volume is invented.
 

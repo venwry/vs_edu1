@@ -3511,6 +3511,39 @@
       "requirements": [
         "Planning allowance; released drawing, sourcing and qualification pending."
       ]
+    },
+    {
+      "id": "bompart.part.aion_4164",
+      "name": "AION 64 Kbit DRAM (4164-equivalent)",
+      "category": "catalog_component",
+      "catalog_ref": "part.aion_4164",
+      "manufacturer": "AION Labs",
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
+        "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
+      ]
+    },
+    {
+      "id": "bompart.device.artemis_video_card_16kb.economy_video_byte_bridge",
+      "name": "32-bit host staging and 8-bit video bus bridge",
+      "category": "catalog_component",
+      "catalog_ref": null,
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Functional set: staging latches, byte enables, ordering, bounded READY; additional to existing card host buffering."
+      ]
     }
   ],
   "assemblies": [
@@ -6042,14 +6075,6 @@
           "role": "",
           "condition": "always",
           "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.artemis_video_card",
-          "quantity": 1,
-          "unit": "each",
-          "role": "Included replaceable video card; dedicated slot",
-          "condition": "always",
-          "quantity_status": "defined"
         }
       ],
       "requirements": [
@@ -6088,6 +6113,14 @@
           "quantity": 4,
           "unit": "each",
           "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "assembly.device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         }
@@ -6163,6 +6196,14 @@
           "role": "system RAM",
           "condition": "always",
           "quantity_status": "defined"
+        },
+        {
+          "ref": "assembly.device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
+          "condition": "always",
+          "quantity_status": "defined"
         }
       ],
       "requirements": [
@@ -6236,6 +6277,14 @@
           "role": "system RAM",
           "condition": "always",
           "quantity_status": "defined"
+        },
+        {
+          "ref": "assembly.device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
+          "condition": "always",
+          "quantity_status": "defined"
         }
       ],
       "requirements": [
@@ -6303,10 +6352,18 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb",
+          "ref": "assembly.part.artemis_ram_module_128kb_aion",
           "quantity": 2,
           "unit": "each",
           "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "assembly.device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         }
@@ -6376,10 +6433,18 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb",
+          "ref": "assembly.part.artemis_ram_module_128kb_aion",
           "quantity": 4,
           "unit": "each",
           "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "assembly.device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         }
@@ -6449,10 +6514,18 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb",
+          "ref": "assembly.part.artemis_ram_module_128kb_aion",
           "quantity": 6,
           "unit": "each",
           "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "assembly.device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         }
@@ -6522,10 +6595,18 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb",
+          "ref": "assembly.part.artemis_ram_module_128kb_aion",
           "quantity": 8,
           "unit": "each",
           "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "assembly.device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         }
@@ -7602,125 +7683,6 @@
       "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
-      "id": "assembly.bundle.artemis_256_mono",
-      "name": "Logix Artemis 256 KB — Monochrome system",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "assembly.computer.artemis.m128_256",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included assembled computer",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.flexibus_keyboard",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included accessory",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.mono_monitor_2",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included accessory",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.media.software.aionix",
-          "quantity": 1,
-          "unit": "each",
-          "role": "physical software delivery only; license separate",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.bundle.artemis_256_mono.bundle_cables_media_manuals_and_carton_packout",
-          "quantity": null,
-          "unit": "each",
-          "role": "avoid double counting accessory supplied cables",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        }
-      ],
-      "requirements": [
-        "Two M128-16 modules/one bank, Mono II, keyboard and AIONix; not four old 64 KiB ×8 modules."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.bundle.artemis_256_mono.networked",
-      "name": "Logix Artemis 256 KB — Monochrome system from 1981 networking release",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "assembly.computer.artemis.m128_256.networked",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included assembled computer",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.flexibus_keyboard",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included accessory",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.mono_monitor_2",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included accessory",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.media.software.aionix_server",
-          "quantity": 1,
-          "unit": "each",
-          "role": "physical software delivery only; license separate",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.bundle.artemis_256_mono.bundle_cables_media_manuals_and_carton_packout",
-          "quantity": null,
-          "unit": "each",
-          "role": "avoid double counting accessory supplied cables",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        }
-      ],
-      "requirements": [
-        "No second NIC; it is already fitted in the host assembly.",
-        "AIONix Server replaces the base AIONix cartridge for the networking configuration."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
       "id": "assembly.bundle.artemis_256_color",
       "name": "Logix Artemis 256 KB — Color system",
       "status": "incomplete",
@@ -8650,124 +8612,6 @@
       "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
-      "id": "assembly.bundle.artemis_128_mono_pro",
-      "name": "Logix Artemis 128 KB — Mono Pro system",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "assembly.computer.artemis.m32_128",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included assembled computer",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.flexibus_keyboard",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included accessory",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.mono_pro",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included accessory",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.media.software.aionix",
-          "quantity": 1,
-          "unit": "each",
-          "role": "physical software delivery only; license separate",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.bundle.artemis_128_mono.bundle_cables_media_manuals_and_carton_packout",
-          "quantity": null,
-          "unit": "each",
-          "role": "avoid double counting accessory supplied cables",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        }
-      ],
-      "requirements": [
-        "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.bundle.artemis_128_mono_pro.networked",
-      "name": "Logix Artemis 128 KB — Mono Pro system",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "assembly.computer.artemis.m32_128.networked",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included assembled computer",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.flexibus_keyboard",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included accessory",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.mono_pro",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included accessory",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.media.software.aionix_server",
-          "quantity": 1,
-          "unit": "each",
-          "role": "physical software delivery only; license separate",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.bundle.artemis_128_mono.bundle_cables_media_manuals_and_carton_packout",
-          "quantity": null,
-          "unit": "each",
-          "role": "avoid double counting accessory supplied cables",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        }
-      ],
-      "requirements": [
-        "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
       "id": "assembly.bundle.artemis_256_mono_pro",
       "name": "Logix Artemis 256 KB — Mono Pro system",
       "status": "incomplete",
@@ -8992,6 +8836,184 @@
       ],
       "requirements": [
         "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "assembly.part.aion_4164",
+      "name": "AION 64 Kbit DRAM (4164-equivalent)",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.aion_4164",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "requirements": [
+        "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
+        "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "assembly.part.artemis_ram_module_128kb_aion",
+      "name": "Artemis M128-16A 128 KiB / 16-bit AION RAM module",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.aion_4164",
+          "quantity": 16,
+          "unit": "each",
+          "role": "data DRAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "requirements": [
+        "Sixteen AION 64K×1 chips per module; two modules provide Artemis 256 KiB with 32 chips. Electrical qualification pending."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "assembly.device.artemis_video_card_16kb",
+      "name": "Logix Artemis 16 KiB economy video card",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.aurelia_video_chip",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.aion_4116",
+          "quantity": 8,
+          "unit": "each",
+          "role": "16 KiB / 8-bit local display RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.aion_2114",
+          "quantity": 2,
+          "unit": "each",
+          "role": "1 KiB: 1K × 8-bit separate sprite bank",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.artemis_video_card.artemis_video_card_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.artemis_video_card.artemis_video_slot_connector",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.artemis_video_card.artemis_video_host_interface",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.artemis_video_card.artemis_video_clock_transceivers",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.artemis_video_card_16kb.economy_video_byte_bridge",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "requirements": [
+        "Reuse qualified Aurelia video silicon; verify 32-bit host bridge, byte order, byte enables, DMA wait handling, clocks and power. Mono Pro unsupported."
       ],
       "routing": {
         "operations": [],
@@ -9884,6 +9906,36 @@
       "requirements": [
         "Supplier and electrical qualification pending."
       ]
+    },
+    {
+      "catalog_ref": "part.aion_4164",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.part.aion_4164"
+      ],
+      "requirements": [
+        "Accepted planning design; qualification pending."
+      ]
+    },
+    {
+      "catalog_ref": "part.artemis_ram_module_128kb_aion",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.part.artemis_ram_module_128kb_aion"
+      ],
+      "requirements": [
+        "Accepted planning design; qualification pending."
+      ]
+    },
+    {
+      "catalog_ref": "device.artemis_video_card_16kb",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.device.artemis_video_card_16kb"
+      ],
+      "requirements": [
+        "Accepted planning design; qualification pending."
+      ]
     }
   ],
   "offers": [
@@ -9984,26 +10036,6 @@
       ]
     },
     {
-      "catalog_ref": "bundle.artemis_256_mono",
-      "kind": "system_bundle",
-      "assembly_ref": "assembly.bundle.artemis_256_mono",
-      "compatible_host_ref": "computer.artemis",
-      "included_host": true,
-      "effective_from": "1980-05-19",
-      "shipping_date": null,
-      "availability_status": "catalog_offer",
-      "requirements": [
-        "Two M128-16 modules/one bank, Mono II, keyboard and AIONix; not four old 64 KiB ×8 modules."
-      ],
-      "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
-      "variants": [
-        {
-          "effective_from": "1981-05-04",
-          "assembly_ref": "assembly.bundle.artemis_256_mono.networked"
-        }
-      ]
-    },
-    {
       "catalog_ref": "bundle.artemis_256_color",
       "kind": "system_bundle",
       "assembly_ref": "assembly.bundle.artemis_256_color",
@@ -10078,26 +10110,6 @@
         "Eight M128-16 modules/four banks; otherwise same explicit inclusions and unresolved console/hub/shipment policy. Higher power and full-population testing are configuration-specific."
       ],
       "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
-    },
-    {
-      "catalog_ref": "bundle.artemis_128_mono_pro",
-      "kind": "system_bundle",
-      "assembly_ref": "assembly.bundle.artemis_128_mono_pro",
-      "compatible_host_ref": "computer.artemis",
-      "included_host": true,
-      "effective_from": "1980-05-19",
-      "shipping_date": null,
-      "availability_status": "catalog_offer",
-      "requirements": [
-        "Includes keyboard and Mono Pro; shipment qualification unchanged."
-      ],
-      "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
-      "variants": [
-        {
-          "effective_from": "1981-05-04",
-          "assembly_ref": "assembly.bundle.artemis_128_mono_pro.networked"
-        }
-      ]
     },
     {
       "catalog_ref": "bundle.artemis_256_mono_pro",

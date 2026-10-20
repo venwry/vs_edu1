@@ -925,7 +925,8 @@
           "bank_data_width_bits": 32,
           "supported_module_refs": [
             "part.artemis_ram_module_32kb_x16",
-            "part.artemis_ram_module_128kb"
+            "part.artemis_ram_module_128kb",
+            "part.artemis_ram_module_128kb_aion"
           ],
           "mixed_density_allowed": false,
           "physical_limit_kb": 1024,
@@ -948,13 +949,17 @@
           ]
         },
         "display_memory_design": {
-          "card_ref": "device.artemis_video_card",
-          "display_dram_bytes": 32768,
+          "card_ref": "device.artemis_video_card_16kb",
+          "display_dram_bytes": "16384 on Artemis 128; 32768 on Artemis 256 and PRO",
           "sprite_sram_bytes": 1024,
-          "on_chip_pixel_fifo_bytes": 640,
+          "on_chip_pixel_fifo_bytes": "160 on economy; 640 on professional",
           "on_chip_row_cache_bytes": 320,
           "host_access": "Separate physical apertures/registers, mapped by system MMU; address numbers remain unresolved. System DMA uses pinned physical buffers and bounded card-ready handshakes.",
-          "refresh": "Display DRAM refreshed by card independently of host CPU/DMA. System DRAM refresh remains in host bank controller; no duplicate charge for a second system controller."
+          "refresh": "Display DRAM refreshed by card independently of host CPU/DMA. System DRAM refresh remains in host bank controller; no duplicate charge for a second system controller.",
+          "card_variants": [
+            "device.artemis_video_card_16kb",
+            "device.artemis_video_card"
+          ]
         }
       },
       "used_by": [
@@ -1536,7 +1541,7 @@
         ],
         "framebuffer_policy": "Application code uses drawing operations rather than native video RAM addresses, stride or pixel packing.",
         "compatibility_canvas": "Optional later service: preserve a logical canvas and convert to available output. Not guaranteed at launch; report emulation and validate RAM, quality and speed.",
-        "text_mode_policy": "Aurelia and Aurelia+ both implement native 40x25 and 80x25; enumerate only configurations usable with the connected monitor. Artemis/PRO additionally support 80×25 at 8×16 and 80×40 at 8×10 on Mono Pro; the legacy 8×8 text modes remain available.",
+        "text_mode_policy": "Aurelia/Aurelia+ and Artemis 128 economy card: native 40×25 and 80×25 with 8×8 cells. Artemis 256/PRO professional card adds 80×25 at 8×16 and 80×40 at 8×10 with Mono Pro. Intersect card and monitor capabilities.",
         "video_ram_storage_policy": {
           "status": "Accepted design baseline; capacities are arithmetic allocations, not measured timing guarantees.",
           "allocation_model": "Text and bitmap modes reuse the same video RAM. Do not reserve all text maps, font storage and a full bitmap simultaneously.",
@@ -1547,7 +1552,7 @@
             "Notify the application/context of the changed mode and request a redraw from its document state."
           ],
           "preservation": "Previous screen pixels are not preserved by default. An explicit preservation request may use a system-RAM buffer only if allocation succeeds; unsupported or unaffordable requests return a defined error before changing the mode.",
-          "graphics_buffering": "Aurelia family: 16000-byte bitmaps support one page; 8000-byte modes support two pages. All modes support five sprites in exclusive 1 KiB SRAM. Both text modes support two pages sharing one font. Other hosts retain their specified allocations. Artemis/PRO: 32 KiB supports two 8,000- or 16,000-byte bitmap pages, or one 32,000-byte page; text modes all support two pages and one shared glyph bank. Sprite SRAM is always separate.",
+          "graphics_buffering": "Aurelia family and Artemis economy card: 16 KiB, two 8000-byte bitmap pages or one 16000-byte page. Artemis professional card: 32 KiB, two 8000/16000-byte pages or one 32000-byte page. All text modes support two pages and one shared font; five sprites use separate SRAM.",
           "graphics_text": "Draw glyphs from ROM/system resources into the bitmap; bitmap mode does not require a complete resident character-generator table in video RAM.",
           "boundary": "Application documents remain in application RAM or files; a mode switch does not discard document state.",
           "presentation": "Latch page and sprite positions during vertical blank; shared-font and sprite-pattern changes need separate synchronization."
@@ -1877,8 +1882,8 @@
         "electrical_interface": "Shared edge interface target; module-specific PCB routing. Rails, pinout, keying, decoupling and buffer population must be frozen before manufacture."
       },
       "used_in": [
-        "computer.artemis",
-        "computer.artemis_pro"
+        "computer.artemis_pro",
+        "device.artemis_ram_256kb_bank_kit"
       ],
       "vendor": "Logix / AION Labs",
       "introduced": {
@@ -3189,6 +3194,94 @@
       "bom_assembly_refs": [
         "assembly.part.mono_pro_controller"
       ]
+    },
+    {
+      "id": "part.aion_4164",
+      "name": "AION 64 Kbit DRAM (4164-equivalent)",
+      "category": "memory_chip",
+      "origin": "custom_logix_aion",
+      "vendor": "AION Labs",
+      "used_in": [
+        "part.artemis_ram_module_128kb_aion"
+      ],
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "capacity_kbit": 64,
+        "organization_words": 65536,
+        "data_width_bits": 1,
+        "package": null,
+        "manufacturer_part_number": null,
+        "access_time_ns": null,
+        "cycle_time_ns": null,
+        "supply_rails_v": null,
+        "refresh_requirement": null,
+        "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification.",
+        "organization": "64K × 1",
+        "manufacturing_planning": {
+          "die_area_mm2": 45,
+          "wafer_mm": 75,
+          "maturity_multiplier": 0.85,
+          "cost_1980_usd": 15.1296,
+          "cost_1981_usd": 14.4529,
+          "status": "Accepted central scenario; not proven yield. Smaller cell/array, sense amplifiers, retention, substrate bias, timing and process qualification required. No redundant-row yield benefit assumed.",
+          "boundary": "Recurring fabricated/package/test cost; development, masks and fab capital budgeted separately."
+        }
+      },
+      "manufacturing_requirements": [
+        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh and module power rails before the assumed May 1980 launch. Mature purchased DRAM is not silently treated as equivalent production evidence."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aion_4164"
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
+    },
+    {
+      "id": "part.artemis_ram_module_128kb_aion",
+      "name": "Artemis M128-16A 128 KiB / 16-bit AION RAM module",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "specification": {
+        "capacity_kb": 128,
+        "data_width_bits": 16,
+        "chips": 16,
+        "chip_type_ref": "part.aion_4164",
+        "chip_organization": "64K x 1",
+        "physical_arrangement": "16 data chips; final board placement and connector drawing pending.",
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 256,
+        "parity_bits": 0,
+        "installation": "Power off; matched density and qualified speed within each pair. No incomplete bank or mixed module density in one chassis in v1.",
+        "electrical_interface": "Shared edge interface target; module-specific PCB routing. Rails, pinout, keying, decoupling and buffer population must be frozen before manufacture."
+      },
+      "used_in": [
+        "computer.artemis"
+      ],
+      "vendor": "Logix / AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "revision": "2",
+      "product_status": "Accepted production design baseline; electrical timing, supplier and full-population qualification pending.",
+      "manufacturing_requirements": [
+        "Sixteen AION 64K×1 chips per module; two modules provide Artemis 256 KiB with 32 chips. Electrical qualification pending."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_ram_module_128kb_aion"
+      ]
     }
   ],
   "devices": [
@@ -3957,7 +4050,7 @@
     },
     {
       "id": "device.artemis_video_card",
-      "name": "Logix Artemis replaceable video card",
+      "name": "Logix Artemis 32 KiB professional video card",
       "category": "video_card",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -4510,6 +4603,403 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.mono_pro"
+      ]
+    },
+    {
+      "id": "device.artemis_video_card_16kb",
+      "name": "Logix Artemis 16 KiB economy video card",
+      "category": "video_card",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "technology_ref": "technology.logix_digital_video",
+        "api_ref": "technology.logix_display_api",
+        "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
+        "memory_layout": {
+          "policy_ref": "technology.logix_display_api",
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of 16 KiB display DRAM. The exclusive 1 KiB sprite SRAM remains available in every mode.",
+          "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
+          "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
+        },
+        "controller_ref": "part.aurelia_video_chip",
+        "text_modes": [
+          {
+            "id": "text_40",
+            "columns": 40,
+            "rows": 25,
+            "width": 320,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 1024,
+            "attribute_map_bytes_per_buffer": 1024,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 4096,
+                "remaining_video_ram_bytes": 12288
+              },
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 4096,
+                "remaining_video_ram_bytes": 12288
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
+              }
+            ],
+            "ram_bytes_per_page": 2048,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200"
+            ]
+          },
+          {
+            "id": "text_80",
+            "columns": 80,
+            "rows": 25,
+            "width": 640,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 10240,
+                "remaining_video_ram_bytes": 6144
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 10240,
+                "remaining_video_ram_bytes": 6144
+              }
+            ],
+            "ram_bytes_per_page": 4096,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_200"
+            ]
+          }
+        ],
+        "bitmap_modes": [
+          {
+            "id": "graphics_a",
+            "width": 640,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_200"
+            ]
+          },
+          {
+            "id": "graphics_b2",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200"
+            ]
+          },
+          {
+            "id": "graphics_b1",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 40,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200"
+            ]
+          },
+          {
+            "id": "graphics_c4",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 160,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": false,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200"
+            ]
+          },
+          {
+            "id": "graphics_c2",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200"
+            ]
+          },
+          {
+            "id": "graphics_legacy",
+            "width": 160,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
+              }
+            ],
+            "compatibility_mode": true,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200"
+            ]
+          }
+        ],
+        "sprites": {
+          "count": 5,
+          "maximum_per_scanline": 5,
+          "width": 16,
+          "height": 16,
+          "bits_per_pixel": 4,
+          "pattern_bytes_per_sprite": 128,
+          "transparent_index": 0,
+          "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
+          "priority": "Lower sprite number wins; all sprites overlay background/text.",
+          "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
+          "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
+          "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
+          "pattern_bytes_total": 640,
+          "descriptor_bytes_per_sprite": 8,
+          "descriptor_bank_count": 2,
+          "descriptor_bytes_total": 80,
+          "reserved_sprite_sram_bytes": 1024,
+          "spare_sprite_sram_bytes": 304,
+          "available_in_all_modes": true,
+          "pattern_double_buffered": false
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        },
+        "video_ram_kb": 16,
+        "card_ref": "device.artemis_video_card_16kb",
+        "display_memory": {
+          "chip_ref": "part.aion_4116",
+          "chip_count": 8,
+          "capacity_bytes": 16384,
+          "bank_data_width_bits": 8,
+          "organization": "16K × 8 bits; independent display refresh."
+        },
+        "pixel_buffer": {
+          "pages": 4,
+          "bytes_per_page": 40,
+          "total_bytes": 160,
+          "bits_per_pixel": 4,
+          "location": "Inside reused Aurelia controller",
+          "policy": "FREE/FILLING/READY/READING banks; output latches and serializer. Never overwrite active bank; underrun preserves sync."
+        },
+        "character_row_cache": {
+          "banks": 2,
+          "bytes_per_bank": 160,
+          "total_bytes": 320
+        },
+        "host_interface": {
+          "host_width_bits": 32,
+          "local_display_width_bits": 8,
+          "implementation": "Buffered 32-to-8-bit bridge with byte enables, staging latches and bounded READY/backpressure. Word uploads require up to four local transfers; no native 32-bit display-memory bank is claimed.",
+          "hot_swap": false
+        },
+        "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
+        "monitor_policy": "Mono II / Color II use legacy 200-line raster profiles. No 26.88 kHz output and no Mono Pro support. CPU word size does not widen local display memory. All five sprites remain available."
+      },
+      "offered_with": [
+        "computer.artemis"
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "manufacturing_requirements": [
+        "Reuse qualified Aurelia video silicon; verify 32-bit host bridge, byte order, byte enables, DMA wait handling, clocks and power. Mono Pro unsupported."
+      ],
+      "bom_assembly_refs": [
+        "assembly.device.artemis_video_card_16kb"
       ]
     }
   ],
@@ -5557,7 +6047,7 @@
         "capacity_limit_status": "Design target; all-bank timing, loading and power qualification pending.",
         "module_refs": [
           "part.artemis_ram_module_32kb_x16",
-          "part.artemis_ram_module_128kb"
+          "part.artemis_ram_module_128kb_aion"
         ],
         "configurations": [
           {
@@ -5662,7 +6152,7 @@
           {
             "id": "m128_256",
             "ram_kb": 256,
-            "module_ref": "part.artemis_ram_module_128kb",
+            "module_ref": "part.artemis_ram_module_128kb_aion",
             "populated_modules": 2,
             "populated_banks": 1,
             "data_chip_count": 32,
@@ -5681,7 +6171,7 @@
           {
             "id": "m128_512",
             "ram_kb": 512,
-            "module_ref": "part.artemis_ram_module_128kb",
+            "module_ref": "part.artemis_ram_module_128kb_aion",
             "populated_modules": 4,
             "populated_banks": 2,
             "data_chip_count": 64,
@@ -5707,7 +6197,7 @@
           {
             "id": "m128_768",
             "ram_kb": 768,
-            "module_ref": "part.artemis_ram_module_128kb",
+            "module_ref": "part.artemis_ram_module_128kb_aion",
             "populated_modules": 6,
             "populated_banks": 3,
             "data_chip_count": 96,
@@ -5740,7 +6230,7 @@
           {
             "id": "m128_1024",
             "ram_kb": 1024,
-            "module_ref": "part.artemis_ram_module_128kb",
+            "module_ref": "part.artemis_ram_module_128kb_aion",
             "populated_modules": 8,
             "populated_banks": 4,
             "data_chip_count": 128,
@@ -5782,8 +6272,9 @@
         "population_policy": "Matched pairs fill B0–B3 in order. One density per chassis in v1. Capacity straps identify modules; firmware rejects incomplete/mismatched pairs. RAM is contiguous within the physical RAM region; base address still requires a frozen map.",
         "upgrade_policy": "Low-density 128 KiB can expand to 256 KiB with four additional M32-16 modules. Transition to high density replaces all low-density modules. High-density expansion uses complete 256 KiB banks.",
         "reliability_policy": "Baseline has no parity or ECC. PRO byte parity is an unimplemented option requiring 18-chip modules and generation/check/reporting logic; never count it as fitted.",
-        "video_ram_kb": 32,
-        "sprite_sram_kb": 1
+        "video_ram_kb": 16,
+        "sprite_sram_kb": 1,
+        "video_ram_policy": "16 KiB with the 128 KiB low-density configuration; 32 KiB with the 256 KiB AION high-density configuration. Expanding a low-density machine does not automatically replace its card."
       },
       "storage": {
         "internal_fdd": {
@@ -5814,11 +6305,15 @@
         },
         "dedicated_video_slot": {
           "count": 1,
-          "included_card_ref": "device.artemis_video_card",
+          "included_card_ref": "device.artemis_video_card_16kb",
           "replaceable": true,
           "hot_swap": false,
           "general_purpose_slots_consumed": 0,
-          "interface": "Keyed dedicated connector; buffered host data/address, wait/ready, DMA access and independent card clocks; electrical pinout pending."
+          "interface": "Keyed dedicated connector; buffered host data/address, wait/ready, DMA access and independent card clocks; electrical pinout pending.",
+          "configuration_card_refs": {
+            "m32_128": "device.artemis_video_card_16kb",
+            "m128_256": "device.artemis_video_card"
+          }
         }
       },
       "video": {
@@ -5827,11 +6322,11 @@
         "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
         "memory_layout": {
           "policy_ref": "technology.logix_display_api",
-          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of 32 KiB display DRAM. Exclusive 1 KiB sprite SRAM is available in every mode.",
-          "font_policy": "One shared 256-glyph bank per mode. Font allocation 2048 bytes at 8×8, 4096 at 8×16 or 8×10 (16-byte glyph stride). Font writes affect both pages.",
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of 16 KiB display DRAM. The exclusive 1 KiB sprite SRAM remains available in every mode.",
+          "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
           "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
         },
-        "controller_ref": "part.artemis_graphics_chip",
+        "controller_ref": "part.aurelia_video_chip",
         "text_modes": [
           {
             "id": "text_40",
@@ -5849,15 +6344,27 @@
             "configurations": [
               {
                 "text_buffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 4096,
+                "remaining_video_ram_bytes": 12288
+              },
+              {
+                "text_buffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 4096,
-                "remaining_video_ram_bytes": 28672
+                "remaining_video_ram_bytes": 12288
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 6144,
-                "remaining_video_ram_bytes": 26624
+                "remaining_video_ram_bytes": 10240
               }
             ],
             "ram_bytes_per_page": 2048,
@@ -5865,8 +6372,7 @@
             "sprites_available": 5,
             "required_raster_ids": [
               "raster_320_200",
-              "raster_640_200",
-              "raster_640_400"
+              "raster_640_200"
             ]
           },
           {
@@ -5885,91 +6391,34 @@
             "configurations": [
               {
                 "text_buffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 6144,
-                "remaining_video_ram_bytes": 26624
+                "remaining_video_ram_bytes": 10240
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 10240,
+                "remaining_video_ram_bytes": 6144
               },
               {
                 "text_buffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 10240,
-                "remaining_video_ram_bytes": 22528
+                "remaining_video_ram_bytes": 6144
               }
             ],
             "ram_bytes_per_page": 4096,
             "double_buffering": true,
             "sprites_available": 5,
             "required_raster_ids": [
-              "raster_640_200",
-              "raster_640_400"
-            ]
-          },
-          {
-            "id": "text_80_25_400",
-            "columns": 80,
-            "rows": 25,
-            "width": 640,
-            "height": 400,
-            "glyph_width": 8,
-            "glyph_height": 16,
-            "character_count": 256,
-            "character_map_bytes_per_buffer": 2048,
-            "attribute_map_bytes_per_buffer": 2048,
-            "attribute_format": "4-bit foreground index + 4-bit background index",
-            "font_bytes": 4096,
-            "configurations": [
-              {
-                "text_buffer_count": 1,
-                "sprite_count": 5,
-                "allocated_bytes": 8192,
-                "remaining_video_ram_bytes": 24576
-              },
-              {
-                "text_buffer_count": 2,
-                "sprite_count": 5,
-                "allocated_bytes": 12288,
-                "remaining_video_ram_bytes": 20480
-              }
-            ],
-            "ram_bytes_per_page": 4096,
-            "double_buffering": true,
-            "sprites_available": 5,
-            "required_raster_ids": [
-              "raster_640_400"
-            ]
-          },
-          {
-            "id": "text_80_40_400",
-            "columns": 80,
-            "rows": 40,
-            "width": 640,
-            "height": 400,
-            "glyph_width": 8,
-            "glyph_height": 10,
-            "character_count": 256,
-            "character_map_bytes_per_buffer": 4096,
-            "attribute_map_bytes_per_buffer": 4096,
-            "attribute_format": "4-bit foreground index + 4-bit background index",
-            "font_bytes": 4096,
-            "configurations": [
-              {
-                "text_buffer_count": 1,
-                "sprite_count": 5,
-                "allocated_bytes": 12288,
-                "remaining_video_ram_bytes": 20480
-              },
-              {
-                "text_buffer_count": 2,
-                "sprite_count": 5,
-                "allocated_bytes": 20480,
-                "remaining_video_ram_bytes": 12288
-              }
-            ],
-            "ram_bytes_per_page": 8192,
-            "double_buffering": true,
-            "sprites_available": 5,
-            "required_raster_ids": [
-              "raster_640_400"
+              "raster_640_200"
             ]
           }
         ],
@@ -5984,23 +6433,22 @@
             "configurations": [
               {
                 "framebuffer_count": 1,
-                "sprite_count": 5,
+                "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_video_ram_bytes": 16768
+                "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 2,
+                "framebuffer_count": 1,
                 "sprite_count": 5,
-                "allocated_bytes": 32000,
-                "remaining_video_ram_bytes": 768
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false,
-            "double_buffering": true,
+            "double_buffering": false,
             "sprites_available": 5,
             "required_raster_ids": [
-              "raster_640_200",
-              "raster_640_400"
+              "raster_640_200"
             ]
           },
           {
@@ -6013,24 +6461,23 @@
             "configurations": [
               {
                 "framebuffer_count": 1,
-                "sprite_count": 5,
+                "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_video_ram_bytes": 16768
+                "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 2,
+                "framebuffer_count": 1,
                 "sprite_count": 5,
-                "allocated_bytes": 32000,
-                "remaining_video_ram_bytes": 768
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false,
-            "double_buffering": true,
+            "double_buffering": false,
             "sprites_available": 5,
             "required_raster_ids": [
               "raster_320_200",
-              "raster_640_200",
-              "raster_640_400"
+              "raster_640_200"
             ]
           },
           {
@@ -6043,15 +6490,27 @@
             "configurations": [
               {
                 "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8000,
-                "remaining_video_ram_bytes": 24768
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 16000,
-                "remaining_video_ram_bytes": 16768
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false,
@@ -6059,8 +6518,7 @@
             "sprites_available": 5,
             "required_raster_ids": [
               "raster_320_200",
-              "raster_640_200",
-              "raster_640_400"
+              "raster_640_200"
             ]
           },
           {
@@ -6073,24 +6531,23 @@
             "configurations": [
               {
                 "framebuffer_count": 1,
-                "sprite_count": 5,
+                "sprite_count": 0,
                 "allocated_bytes": 16000,
-                "remaining_video_ram_bytes": 16768
+                "remaining_video_ram_bytes": 384
               },
               {
-                "framebuffer_count": 2,
+                "framebuffer_count": 1,
                 "sprite_count": 5,
-                "allocated_bytes": 32000,
-                "remaining_video_ram_bytes": 768
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false,
-            "double_buffering": true,
+            "double_buffering": false,
             "sprites_available": 5,
             "required_raster_ids": [
               "raster_320_200",
-              "raster_640_200",
-              "raster_640_400"
+              "raster_640_200"
             ]
           },
           {
@@ -6103,15 +6560,27 @@
             "configurations": [
               {
                 "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8000,
-                "remaining_video_ram_bytes": 24768
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 16000,
-                "remaining_video_ram_bytes": 16768
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": false,
@@ -6119,8 +6588,7 @@
             "sprites_available": 5,
             "required_raster_ids": [
               "raster_320_200",
-              "raster_640_200",
-              "raster_640_400"
+              "raster_640_200"
             ]
           },
           {
@@ -6133,15 +6601,27 @@
             "configurations": [
               {
                 "framebuffer_count": 1,
+                "sprite_count": 0,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 1,
                 "sprite_count": 5,
                 "allocated_bytes": 8000,
-                "remaining_video_ram_bytes": 24768
+                "remaining_video_ram_bytes": 8384
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 0,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 384
               },
               {
                 "framebuffer_count": 2,
                 "sprite_count": 5,
                 "allocated_bytes": 16000,
-                "remaining_video_ram_bytes": 16768
+                "remaining_video_ram_bytes": 384
               }
             ],
             "compatibility_mode": true,
@@ -6149,99 +6629,7 @@
             "sprites_available": 5,
             "required_raster_ids": [
               "raster_320_200",
-              "raster_640_200",
-              "raster_640_400"
-            ]
-          },
-          {
-            "id": "graphics_640_400_1",
-            "width": 640,
-            "height": 400,
-            "bits_per_pixel": 1,
-            "bytes_per_framebuffer": 32000,
-            "stride_bytes": 80,
-            "compatibility_mode": false,
-            "sprites_available": 5,
-            "double_buffering": false,
-            "required_raster_ids": [
-              "raster_640_400"
-            ],
-            "configurations": [
-              {
-                "framebuffer_count": 1,
-                "sprite_count": 5,
-                "allocated_bytes": 32000,
-                "remaining_video_ram_bytes": 768
-              }
-            ]
-          },
-          {
-            "id": "graphics_640_200_2",
-            "width": 640,
-            "height": 200,
-            "bits_per_pixel": 2,
-            "bytes_per_framebuffer": 32000,
-            "stride_bytes": 160,
-            "compatibility_mode": false,
-            "sprites_available": 5,
-            "double_buffering": false,
-            "required_raster_ids": [
-              "raster_640_200",
-              "raster_640_400"
-            ],
-            "configurations": [
-              {
-                "framebuffer_count": 1,
-                "sprite_count": 5,
-                "allocated_bytes": 32000,
-                "remaining_video_ram_bytes": 768
-              }
-            ]
-          },
-          {
-            "id": "graphics_320_400_2",
-            "width": 320,
-            "height": 400,
-            "bits_per_pixel": 2,
-            "bytes_per_framebuffer": 32000,
-            "stride_bytes": 80,
-            "compatibility_mode": false,
-            "sprites_available": 5,
-            "double_buffering": false,
-            "required_raster_ids": [
-              "raster_640_400"
-            ],
-            "configurations": [
-              {
-                "framebuffer_count": 1,
-                "sprite_count": 5,
-                "allocated_bytes": 32000,
-                "remaining_video_ram_bytes": 768
-              }
-            ]
-          },
-          {
-            "id": "graphics_320_200_4",
-            "width": 320,
-            "height": 200,
-            "bits_per_pixel": 4,
-            "bytes_per_framebuffer": 32000,
-            "stride_bytes": 160,
-            "compatibility_mode": false,
-            "sprites_available": 5,
-            "double_buffering": false,
-            "required_raster_ids": [
-              "raster_320_200",
-              "raster_640_200",
-              "raster_640_400"
-            ],
-            "configurations": [
-              {
-                "framebuffer_count": 1,
-                "sprite_count": 5,
-                "allocated_bytes": 32000,
-                "remaining_video_ram_bytes": 768
-              }
+              "raster_640_200"
             ]
           }
         ],
@@ -6261,12 +6649,11 @@
           "pattern_bytes_total": 640,
           "descriptor_bytes_per_sprite": 8,
           "descriptor_bank_count": 2,
-          "descriptor_bytes_total": 128,
+          "descriptor_bytes_total": 80,
           "reserved_sprite_sram_bytes": 1024,
-          "spare_sprite_sram_bytes": 256,
+          "spare_sprite_sram_bytes": 304,
           "available_in_all_modes": true,
-          "pattern_double_buffered": false,
-          "descriptor_allocation_note": "80 bytes of live two-bank descriptors within a 128-byte reserved area; 48 bytes padding. 640 pattern + 128 descriptor + 256 scratch bytes = 1024."
+          "pattern_double_buffered": false
         },
         "sprite_memory": {
           "chip_ref": "part.aion_2114",
@@ -6276,46 +6663,36 @@
           "separate_bus": true,
           "separate_from_system_and_display_ram": true
         },
-        "video_ram_kb": 32,
-        "card_ref": "device.artemis_video_card",
+        "video_ram_kb": 16,
+        "card_ref": "device.artemis_video_card_16kb",
         "display_memory": {
           "chip_ref": "part.aion_4116",
-          "chip_count": 16,
-          "capacity_bytes": 32768,
-          "bank_data_width_bits": 16,
-          "organization": "16K × 16 bits; ordinary external DRAM, independent display refresh sequencer."
+          "chip_count": 8,
+          "capacity_bytes": 16384,
+          "bank_data_width_bits": 8,
+          "organization": "16K × 8 bits; independent display refresh."
         },
         "pixel_buffer": {
           "pages": 4,
-          "bytes_per_page": 160,
-          "total_bytes": 640,
-          "pixels_per_page": 320,
+          "bytes_per_page": 40,
+          "total_bytes": 160,
           "bits_per_pixel": 4,
-          "location": "On video ASIC; SRAM banks with page ownership latches",
-          "page_states": [
-            "free",
-            "filling",
-            "ready",
-            "displaying"
-          ],
-          "policy": "Eight-pixel parallel renderer fills free pages; independent clocked serializer drains ready pages. Two pages per 640-pixel line; prefill before active display; never overwrite displaying pages. Underflow blanks pixels, preserves sync and sets sticky fault.",
-          "physical_organization": "Each 160-byte bank is 40 words × 32 bits. Load eight 4-bit pixels into a separate 32-bit serializer latch every eight dot clocks, then shift at 21.504 MHz. SRAM array reads run at 2.688 MHz, not one read per dot; filler and drain use different banks."
+          "location": "Inside reused Aurelia controller",
+          "policy": "FREE/FILLING/READY/READING banks; output latches and serializer. Never overwrite active bank; underrun preserves sync."
         },
         "character_row_cache": {
           "banks": 2,
           "bytes_per_bank": 160,
-          "total_bytes": 320,
-          "purpose": "Current and next 80-column character/attribute row; separate from 640-byte pixel FIFO."
+          "total_bytes": 320
         },
-        "timing_budget": {
-          "pixel_clock_mhz": 21.504,
-          "renderer_pixels_per_step": 8,
-          "renderer_step_mhz": 2.688,
-          "page_drain_microseconds": 14.881,
-          "qualification": "At 250 ns conservative DRAM cycle, 80 glyph fetches consume 20 microseconds per active line; 160-byte row prefetch amortizes across 8/10/16 scanlines. Two row caches and 16-bit reads cover text-row transitions. Verify sprites, refresh and bounded host/DMA slots together at voltage/temperature corners; no guaranteed maximum CPU upload rate."
+        "host_interface": {
+          "host_width_bits": 32,
+          "local_display_width_bits": 8,
+          "implementation": "Buffered 32-to-8-bit bridge with byte enables, staging latches and bounded READY/backpressure. Word uploads require up to four local transfers; no native 32-bit display-memory bank is claimed.",
+          "hot_swap": false
         },
         "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
-        "monitor_policy": "Read capability descriptor before enabling sync. Mono Pro accepts only raster_640_400; integer-scale legacy modes. Old monitors retain their advertised 200-line raster(s), never 640×400. Native 400-line modes require Mono Pro; new 200-line bitmap modes also work on capable older displays. This is display-mode/API compatibility, not Z80 binary compatibility."
+        "monitor_policy": "Mono II / Color II use legacy 200-line raster profiles. No 26.88 kHz output and no Mono Pro support. CPU word size does not widen local display memory. All five sprites remain available."
       },
       "networking_from_ncc_1981": {
         "included_by_default": true,
@@ -6362,7 +6739,8 @@
         "device.artemis_ram_64kb_bank_kit",
         "device.artemis_ram_256kb_bank_kit",
         "device.artemis_video_card",
-        "device.mono_pro"
+        "device.mono_pro",
+        "device.artemis_video_card_16kb"
       ],
       "compatible_software": [
         "software.abacus_2",
@@ -6384,7 +6762,7 @@
       },
       "manufacturing_requirements": [
         "Replace old module model with the two-density, four-bank architecture. Add DRAM controller/refresh/buffers and capacity straps, numeric physical map, boot/reset ROM path, bus width adapters and exact custom-chip quantities/packages. Define FDD mechanisms and HDD interface even when no HDD ships. Cost pre-1981 and networking-included 1981 revisions separately. Determine which chip implements four FlexiBUS ports.",
-        "One replaceable video card is included in every chassis, on a dedicated connector, in addition to four general-purpose slots. Qualify 32 KiB DRAM, 1 KiB sprite SRAM and Mono Pro timings together."
+        "One replaceable video card is included in every chassis, on a dedicated connector, in addition to four general-purpose slots. Qualify the selected 16/32 KiB card and 1 KiB sprite SRAM; Mono Pro is offered with the 32 KiB card only."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -6402,6 +6780,899 @@
         "assembly.computer.artemis.m128_768.networked",
         "assembly.computer.artemis.m128_1024",
         "assembly.computer.artemis.m128_1024.networked"
+      ],
+      "video_variants": [
+        {
+          "card_ref": "device.artemis_video_card_16kb",
+          "configuration_ids": [
+            "m32_128",
+            "m32_192",
+            "m32_256"
+          ],
+          "specification": {
+            "technology_ref": "technology.logix_digital_video",
+            "api_ref": "technology.logix_display_api",
+            "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
+            "memory_layout": {
+              "policy_ref": "technology.logix_display_api",
+              "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of 16 KiB display DRAM. The exclusive 1 KiB sprite SRAM remains available in every mode.",
+              "font_policy": "One shared 2048-byte font; glyph edits affect both pages. Independent font buffering is not advertised in this baseline.",
+              "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
+            },
+            "controller_ref": "part.aurelia_video_chip",
+            "text_modes": [
+              {
+                "id": "text_40",
+                "columns": 40,
+                "rows": 25,
+                "width": 320,
+                "height": 200,
+                "glyph_width": 8,
+                "glyph_height": 8,
+                "character_count": 256,
+                "character_map_bytes_per_buffer": 1024,
+                "attribute_map_bytes_per_buffer": 1024,
+                "attribute_format": "4-bit foreground index + 4-bit background index",
+                "font_bytes": 2048,
+                "configurations": [
+                  {
+                    "text_buffer_count": 1,
+                    "sprite_count": 0,
+                    "allocated_bytes": 4096,
+                    "remaining_video_ram_bytes": 12288
+                  },
+                  {
+                    "text_buffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 4096,
+                    "remaining_video_ram_bytes": 12288
+                  },
+                  {
+                    "text_buffer_count": 2,
+                    "sprite_count": 0,
+                    "allocated_bytes": 6144,
+                    "remaining_video_ram_bytes": 10240
+                  },
+                  {
+                    "text_buffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 6144,
+                    "remaining_video_ram_bytes": 10240
+                  }
+                ],
+                "ram_bytes_per_page": 2048,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200"
+                ]
+              },
+              {
+                "id": "text_80",
+                "columns": 80,
+                "rows": 25,
+                "width": 640,
+                "height": 200,
+                "glyph_width": 8,
+                "glyph_height": 8,
+                "character_count": 256,
+                "character_map_bytes_per_buffer": 2048,
+                "attribute_map_bytes_per_buffer": 2048,
+                "attribute_format": "4-bit foreground index + 4-bit background index",
+                "font_bytes": 2048,
+                "configurations": [
+                  {
+                    "text_buffer_count": 1,
+                    "sprite_count": 0,
+                    "allocated_bytes": 6144,
+                    "remaining_video_ram_bytes": 10240
+                  },
+                  {
+                    "text_buffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 6144,
+                    "remaining_video_ram_bytes": 10240
+                  },
+                  {
+                    "text_buffer_count": 2,
+                    "sprite_count": 0,
+                    "allocated_bytes": 10240,
+                    "remaining_video_ram_bytes": 6144
+                  },
+                  {
+                    "text_buffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 10240,
+                    "remaining_video_ram_bytes": 6144
+                  }
+                ],
+                "ram_bytes_per_page": 4096,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_640_200"
+                ]
+              }
+            ],
+            "bitmap_modes": [
+              {
+                "id": "graphics_a",
+                "width": 640,
+                "height": 200,
+                "bits_per_pixel": 1,
+                "bytes_per_framebuffer": 16000,
+                "stride_bytes": 80,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 0,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  },
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": false,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_640_200"
+                ]
+              },
+              {
+                "id": "graphics_b2",
+                "width": 320,
+                "height": 200,
+                "bits_per_pixel": 2,
+                "bytes_per_framebuffer": 16000,
+                "stride_bytes": 80,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 0,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  },
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": false,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200"
+                ]
+              },
+              {
+                "id": "graphics_b1",
+                "width": 320,
+                "height": 200,
+                "bits_per_pixel": 1,
+                "bytes_per_framebuffer": 8000,
+                "stride_bytes": 40,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 0,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 8384
+                  },
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 8384
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 0,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200"
+                ]
+              },
+              {
+                "id": "graphics_c4",
+                "width": 320,
+                "height": 100,
+                "bits_per_pixel": 4,
+                "bytes_per_framebuffer": 16000,
+                "stride_bytes": 160,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 0,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  },
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": false,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200"
+                ]
+              },
+              {
+                "id": "graphics_c2",
+                "width": 320,
+                "height": 100,
+                "bits_per_pixel": 2,
+                "bytes_per_framebuffer": 8000,
+                "stride_bytes": 80,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 0,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 8384
+                  },
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 8384
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 0,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200"
+                ]
+              },
+              {
+                "id": "graphics_legacy",
+                "width": 160,
+                "height": 100,
+                "bits_per_pixel": 4,
+                "bytes_per_framebuffer": 8000,
+                "stride_bytes": 80,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 0,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 8384
+                  },
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 8384
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 0,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 384
+                  }
+                ],
+                "compatibility_mode": true,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200"
+                ]
+              }
+            ],
+            "sprites": {
+              "count": 5,
+              "maximum_per_scanline": 5,
+              "width": 16,
+              "height": 16,
+              "bits_per_pixel": 4,
+              "pattern_bytes_per_sprite": 128,
+              "transparent_index": 0,
+              "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
+              "priority": "Lower sprite number wins; all sprites overlay background/text.",
+              "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
+              "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
+              "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
+              "pattern_bytes_total": 640,
+              "descriptor_bytes_per_sprite": 8,
+              "descriptor_bank_count": 2,
+              "descriptor_bytes_total": 80,
+              "reserved_sprite_sram_bytes": 1024,
+              "spare_sprite_sram_bytes": 304,
+              "available_in_all_modes": true,
+              "pattern_double_buffered": false
+            },
+            "sprite_memory": {
+              "chip_ref": "part.aion_2114",
+              "chip_count": 2,
+              "bank_data_width_bits": 8,
+              "capacity_bytes": 1024,
+              "separate_bus": true,
+              "separate_from_system_and_display_ram": true
+            },
+            "video_ram_kb": 16,
+            "card_ref": "device.artemis_video_card_16kb",
+            "display_memory": {
+              "chip_ref": "part.aion_4116",
+              "chip_count": 8,
+              "capacity_bytes": 16384,
+              "bank_data_width_bits": 8,
+              "organization": "16K × 8 bits; independent display refresh."
+            },
+            "pixel_buffer": {
+              "pages": 4,
+              "bytes_per_page": 40,
+              "total_bytes": 160,
+              "bits_per_pixel": 4,
+              "location": "Inside reused Aurelia controller",
+              "policy": "FREE/FILLING/READY/READING banks; output latches and serializer. Never overwrite active bank; underrun preserves sync."
+            },
+            "character_row_cache": {
+              "banks": 2,
+              "bytes_per_bank": 160,
+              "total_bytes": 320
+            },
+            "host_interface": {
+              "host_width_bits": 32,
+              "local_display_width_bits": 8,
+              "implementation": "Buffered 32-to-8-bit bridge with byte enables, staging latches and bounded READY/backpressure. Word uploads require up to four local transfers; no native 32-bit display-memory bank is claimed.",
+              "hot_swap": false
+            },
+            "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
+            "monitor_policy": "Mono II / Color II use legacy 200-line raster profiles. No 26.88 kHz output and no Mono Pro support. CPU word size does not widen local display memory. All five sprites remain available."
+          }
+        },
+        {
+          "card_ref": "device.artemis_video_card",
+          "configuration_ids": [
+            "m128_256",
+            "m128_512",
+            "m128_768",
+            "m128_1024"
+          ],
+          "specification": {
+            "technology_ref": "technology.logix_digital_video",
+            "api_ref": "technology.logix_display_api",
+            "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
+            "memory_layout": {
+              "policy_ref": "technology.logix_display_api",
+              "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of 32 KiB display DRAM. Exclusive 1 KiB sprite SRAM is available in every mode.",
+              "font_policy": "One shared 256-glyph bank per mode. Font allocation 2048 bytes at 8×8, 4096 at 8×16 or 8×10 (16-byte glyph stride). Font writes affect both pages.",
+              "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
+            },
+            "controller_ref": "part.artemis_graphics_chip",
+            "text_modes": [
+              {
+                "id": "text_40",
+                "columns": 40,
+                "rows": 25,
+                "width": 320,
+                "height": 200,
+                "glyph_width": 8,
+                "glyph_height": 8,
+                "character_count": 256,
+                "character_map_bytes_per_buffer": 1024,
+                "attribute_map_bytes_per_buffer": 1024,
+                "attribute_format": "4-bit foreground index + 4-bit background index",
+                "font_bytes": 2048,
+                "configurations": [
+                  {
+                    "text_buffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 4096,
+                    "remaining_video_ram_bytes": 28672
+                  },
+                  {
+                    "text_buffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 6144,
+                    "remaining_video_ram_bytes": 26624
+                  }
+                ],
+                "ram_bytes_per_page": 2048,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200",
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "text_80",
+                "columns": 80,
+                "rows": 25,
+                "width": 640,
+                "height": 200,
+                "glyph_width": 8,
+                "glyph_height": 8,
+                "character_count": 256,
+                "character_map_bytes_per_buffer": 2048,
+                "attribute_map_bytes_per_buffer": 2048,
+                "attribute_format": "4-bit foreground index + 4-bit background index",
+                "font_bytes": 2048,
+                "configurations": [
+                  {
+                    "text_buffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 6144,
+                    "remaining_video_ram_bytes": 26624
+                  },
+                  {
+                    "text_buffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 10240,
+                    "remaining_video_ram_bytes": 22528
+                  }
+                ],
+                "ram_bytes_per_page": 4096,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_640_200",
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "text_80_25_400",
+                "columns": 80,
+                "rows": 25,
+                "width": 640,
+                "height": 400,
+                "glyph_width": 8,
+                "glyph_height": 16,
+                "character_count": 256,
+                "character_map_bytes_per_buffer": 2048,
+                "attribute_map_bytes_per_buffer": 2048,
+                "attribute_format": "4-bit foreground index + 4-bit background index",
+                "font_bytes": 4096,
+                "configurations": [
+                  {
+                    "text_buffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 8192,
+                    "remaining_video_ram_bytes": 24576
+                  },
+                  {
+                    "text_buffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 12288,
+                    "remaining_video_ram_bytes": 20480
+                  }
+                ],
+                "ram_bytes_per_page": 4096,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "text_80_40_400",
+                "columns": 80,
+                "rows": 40,
+                "width": 640,
+                "height": 400,
+                "glyph_width": 8,
+                "glyph_height": 10,
+                "character_count": 256,
+                "character_map_bytes_per_buffer": 4096,
+                "attribute_map_bytes_per_buffer": 4096,
+                "attribute_format": "4-bit foreground index + 4-bit background index",
+                "font_bytes": 4096,
+                "configurations": [
+                  {
+                    "text_buffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 12288,
+                    "remaining_video_ram_bytes": 20480
+                  },
+                  {
+                    "text_buffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 20480,
+                    "remaining_video_ram_bytes": 12288
+                  }
+                ],
+                "ram_bytes_per_page": 8192,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_640_400"
+                ]
+              }
+            ],
+            "bitmap_modes": [
+              {
+                "id": "graphics_a",
+                "width": 640,
+                "height": 200,
+                "bits_per_pixel": 1,
+                "bytes_per_framebuffer": 16000,
+                "stride_bytes": 80,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 16768
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 32000,
+                    "remaining_video_ram_bytes": 768
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_640_200",
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "graphics_b2",
+                "width": 320,
+                "height": 200,
+                "bits_per_pixel": 2,
+                "bytes_per_framebuffer": 16000,
+                "stride_bytes": 80,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 16768
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 32000,
+                    "remaining_video_ram_bytes": 768
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200",
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "graphics_b1",
+                "width": 320,
+                "height": 200,
+                "bits_per_pixel": 1,
+                "bytes_per_framebuffer": 8000,
+                "stride_bytes": 40,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 24768
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 16768
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200",
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "graphics_c4",
+                "width": 320,
+                "height": 100,
+                "bits_per_pixel": 4,
+                "bytes_per_framebuffer": 16000,
+                "stride_bytes": 160,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 16768
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 32000,
+                    "remaining_video_ram_bytes": 768
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200",
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "graphics_c2",
+                "width": 320,
+                "height": 100,
+                "bits_per_pixel": 2,
+                "bytes_per_framebuffer": 8000,
+                "stride_bytes": 80,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 24768
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 16768
+                  }
+                ],
+                "compatibility_mode": false,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200",
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "graphics_legacy",
+                "width": 160,
+                "height": 100,
+                "bits_per_pixel": 4,
+                "bytes_per_framebuffer": 8000,
+                "stride_bytes": 80,
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 8000,
+                    "remaining_video_ram_bytes": 24768
+                  },
+                  {
+                    "framebuffer_count": 2,
+                    "sprite_count": 5,
+                    "allocated_bytes": 16000,
+                    "remaining_video_ram_bytes": 16768
+                  }
+                ],
+                "compatibility_mode": true,
+                "double_buffering": true,
+                "sprites_available": 5,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200",
+                  "raster_640_400"
+                ]
+              },
+              {
+                "id": "graphics_640_400_1",
+                "width": 640,
+                "height": 400,
+                "bits_per_pixel": 1,
+                "bytes_per_framebuffer": 32000,
+                "stride_bytes": 80,
+                "compatibility_mode": false,
+                "sprites_available": 5,
+                "double_buffering": false,
+                "required_raster_ids": [
+                  "raster_640_400"
+                ],
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 32000,
+                    "remaining_video_ram_bytes": 768
+                  }
+                ]
+              },
+              {
+                "id": "graphics_640_200_2",
+                "width": 640,
+                "height": 200,
+                "bits_per_pixel": 2,
+                "bytes_per_framebuffer": 32000,
+                "stride_bytes": 160,
+                "compatibility_mode": false,
+                "sprites_available": 5,
+                "double_buffering": false,
+                "required_raster_ids": [
+                  "raster_640_200",
+                  "raster_640_400"
+                ],
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 32000,
+                    "remaining_video_ram_bytes": 768
+                  }
+                ]
+              },
+              {
+                "id": "graphics_320_400_2",
+                "width": 320,
+                "height": 400,
+                "bits_per_pixel": 2,
+                "bytes_per_framebuffer": 32000,
+                "stride_bytes": 80,
+                "compatibility_mode": false,
+                "sprites_available": 5,
+                "double_buffering": false,
+                "required_raster_ids": [
+                  "raster_640_400"
+                ],
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 32000,
+                    "remaining_video_ram_bytes": 768
+                  }
+                ]
+              },
+              {
+                "id": "graphics_320_200_4",
+                "width": 320,
+                "height": 200,
+                "bits_per_pixel": 4,
+                "bytes_per_framebuffer": 32000,
+                "stride_bytes": 160,
+                "compatibility_mode": false,
+                "sprites_available": 5,
+                "double_buffering": false,
+                "required_raster_ids": [
+                  "raster_320_200",
+                  "raster_640_200",
+                  "raster_640_400"
+                ],
+                "configurations": [
+                  {
+                    "framebuffer_count": 1,
+                    "sprite_count": 5,
+                    "allocated_bytes": 32000,
+                    "remaining_video_ram_bytes": 768
+                  }
+                ]
+              }
+            ],
+            "sprites": {
+              "count": 5,
+              "maximum_per_scanline": 5,
+              "width": 16,
+              "height": 16,
+              "bits_per_pixel": 4,
+              "pattern_bytes_per_sprite": 128,
+              "transparent_index": 0,
+              "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
+              "priority": "Lower sprite number wins; all sprites overlay background/text.",
+              "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
+              "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
+              "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
+              "pattern_bytes_total": 640,
+              "descriptor_bytes_per_sprite": 8,
+              "descriptor_bank_count": 2,
+              "descriptor_bytes_total": 128,
+              "reserved_sprite_sram_bytes": 1024,
+              "spare_sprite_sram_bytes": 256,
+              "available_in_all_modes": true,
+              "pattern_double_buffered": false,
+              "descriptor_allocation_note": "80 bytes of live two-bank descriptors within a 128-byte reserved area; 48 bytes padding. 640 pattern + 128 descriptor + 256 scratch bytes = 1024."
+            },
+            "sprite_memory": {
+              "chip_ref": "part.aion_2114",
+              "chip_count": 2,
+              "bank_data_width_bits": 8,
+              "capacity_bytes": 1024,
+              "separate_bus": true,
+              "separate_from_system_and_display_ram": true
+            },
+            "video_ram_kb": 32,
+            "card_ref": "device.artemis_video_card",
+            "display_memory": {
+              "chip_ref": "part.aion_4116",
+              "chip_count": 16,
+              "capacity_bytes": 32768,
+              "bank_data_width_bits": 16,
+              "organization": "16K × 16 bits; ordinary external DRAM, independent display refresh sequencer."
+            },
+            "pixel_buffer": {
+              "pages": 4,
+              "bytes_per_page": 160,
+              "total_bytes": 640,
+              "pixels_per_page": 320,
+              "bits_per_pixel": 4,
+              "location": "On video ASIC; SRAM banks with page ownership latches",
+              "page_states": [
+                "free",
+                "filling",
+                "ready",
+                "displaying"
+              ],
+              "policy": "Eight-pixel parallel renderer fills free pages; independent clocked serializer drains ready pages. Two pages per 640-pixel line; prefill before active display; never overwrite displaying pages. Underflow blanks pixels, preserves sync and sets sticky fault.",
+              "physical_organization": "Each 160-byte bank is 40 words × 32 bits. Load eight 4-bit pixels into a separate 32-bit serializer latch every eight dot clocks, then shift at 21.504 MHz. SRAM array reads run at 2.688 MHz, not one read per dot; filler and drain use different banks."
+            },
+            "character_row_cache": {
+              "banks": 2,
+              "bytes_per_bank": 160,
+              "total_bytes": 320,
+              "purpose": "Current and next 80-column character/attribute row; separate from 640-byte pixel FIFO."
+            },
+            "timing_budget": {
+              "pixel_clock_mhz": 21.504,
+              "renderer_pixels_per_step": 8,
+              "renderer_step_mhz": 2.688,
+              "page_drain_microseconds": 14.881,
+              "qualification": "At 250 ns conservative DRAM cycle, 80 glyph fetches consume 20 microseconds per active line; 160-byte row prefetch amortizes across 8/10/16 scanlines. Two row caches and 16-bit reads cover text-row transitions. Verify sprites, refresh and bounded host/DMA slots together at voltage/temperature corners; no guaranteed maximum CPU upload rate."
+            },
+            "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
+            "monitor_policy": "Read capability descriptor before enabling sync. Mono Pro accepts only raster_640_400; integer-scale legacy modes. Old monitors retain their advertised 200-line raster(s), never 640×400. Native 400-line modes require Mono Pro; new 200-line bitmap modes also work on capable older displays. This is display-mode/API compatibility, not Z80 binary compatibility."
+          }
+        }
       ]
     },
     {
@@ -8874,7 +10145,8 @@
         "ram_configuration_id": "m32_128",
         "module_ref": "part.artemis_ram_module_32kb_x16",
         "populated_modules": 4,
-        "populated_banks": 2
+        "populated_banks": 2,
+        "video_card_ref": "device.artemis_video_card_16kb"
       },
       "included_devices": [
         "device.flexibus_keyboard",
@@ -8910,7 +10182,8 @@
         "ram_configuration_id": "m32_128",
         "module_ref": "part.artemis_ram_module_32kb_x16",
         "populated_modules": 4,
-        "populated_banks": 2
+        "populated_banks": 2,
+        "video_card_ref": "device.artemis_video_card_16kb"
       },
       "included_devices": [
         "device.flexibus_keyboard",
@@ -8934,42 +10207,6 @@
       ]
     },
     {
-      "id": "bundle.artemis_256_mono",
-      "name": "Logix Artemis 256 KB — Monochrome system",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "computer_ref": "computer.artemis",
-      "computer_configuration": {
-        "ram_kb": 256,
-        "ram_configuration_id": "m128_256",
-        "module_ref": "part.artemis_ram_module_128kb",
-        "populated_modules": 2,
-        "populated_banks": 1
-      },
-      "included_devices": [
-        "device.flexibus_keyboard",
-        "device.mono_monitor_2"
-      ],
-      "included_software": [
-        "software.aionix"
-      ],
-      "included_services": [
-        {
-          "service_ref": "service.regular_support",
-          "duration_years": 1
-        }
-      ],
-      "bom_assembly_ref": "assembly.bundle.artemis_256_mono",
-      "manufacturing_variants": [
-        {
-          "effective_from": "1981-05-04",
-          "assembly_ref": "assembly.bundle.artemis_256_mono.networked"
-        }
-      ]
-    },
-    {
       "id": "bundle.artemis_256_color",
       "name": "Logix Artemis 256 KB — Color system",
       "introduced": {
@@ -8980,9 +10217,10 @@
       "computer_configuration": {
         "ram_kb": 256,
         "ram_configuration_id": "m128_256",
-        "module_ref": "part.artemis_ram_module_128kb",
+        "module_ref": "part.artemis_ram_module_128kb_aion",
         "populated_modules": 2,
-        "populated_banks": 1
+        "populated_banks": 1,
+        "video_card_ref": "device.artemis_video_card"
       },
       "included_devices": [
         "device.flexibus_keyboard",
@@ -9089,42 +10327,6 @@
       "bom_assembly_ref": "assembly.bundle.artemis_pro_1mb_server"
     },
     {
-      "id": "bundle.artemis_128_mono_pro",
-      "name": "Logix Artemis 128 KB — Mono Pro system",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "computer_ref": "computer.artemis",
-      "computer_configuration": {
-        "ram_kb": 128,
-        "ram_configuration_id": "m32_128",
-        "module_ref": "part.artemis_ram_module_32kb_x16",
-        "populated_modules": 4,
-        "populated_banks": 2
-      },
-      "included_devices": [
-        "device.flexibus_keyboard",
-        "device.mono_pro"
-      ],
-      "included_software": [
-        "software.aionix"
-      ],
-      "included_services": [
-        {
-          "service_ref": "service.regular_support",
-          "duration_years": 1
-        }
-      ],
-      "bom_assembly_ref": "assembly.bundle.artemis_128_mono_pro",
-      "manufacturing_variants": [
-        {
-          "effective_from": "1981-05-04",
-          "assembly_ref": "assembly.bundle.artemis_128_mono_pro.networked"
-        }
-      ]
-    },
-    {
       "id": "bundle.artemis_256_mono_pro",
       "name": "Logix Artemis 256 KB — Mono Pro system",
       "introduced": {
@@ -9135,9 +10337,10 @@
       "computer_configuration": {
         "ram_kb": 256,
         "ram_configuration_id": "m128_256",
-        "module_ref": "part.artemis_ram_module_128kb",
+        "module_ref": "part.artemis_ram_module_128kb_aion",
         "populated_modules": 2,
-        "populated_banks": 1
+        "populated_banks": 1,
+        "video_card_ref": "device.artemis_video_card"
       },
       "included_devices": [
         "device.flexibus_keyboard",
@@ -9430,7 +10633,7 @@
     "network_adapter_ref": "device.network_card_artemis",
     "compatibility_ref": "device.artemis_cpm80_module",
     "context": "Artemis uses paired 16-bit RAM modules on a 32-bit memory bus. PRO uses the same high-density module family with larger populations. Native ERA applications use AIONix; the optional Z80 card remains a separate execution path qualified only for Artemis.",
-    "memory_note": "Functional map, not assigned numeric addresses. Replaceable video card has 32 KiB display DRAM, separate 1 KiB sprite SRAM, 640-byte pixel FIFO and 320-byte character-row cache. Host DMA/MMU and system refresh remain separate.",
+    "memory_note": "Functional address map. The selected replaceable video card contains its controller, 16 or 32 KiB display DRAM, independent 1 KiB sprite SRAM and internal buffers. Host MMU, DMA and system refresh remain outside the card. Numeric apertures are not yet assigned.",
     "ram_note": "Choose an explicit matched-bank population. Low- and high-density configurations with the same capacity are distinct. Expanded populations and 1 MiB board capacity are design targets pending timing, loading and power qualification; they are not extra shipping bundles.",
     "bundle_note": "Bundle contents follow the selected catalog offer and are independent of the exploratory RAM and networking controls. Items absent from the bundle record are not assumed to be included.",
     "notes": {
@@ -9510,7 +10713,7 @@
             "title": "Replaceable video card",
             "column": 3,
             "row": 2,
-            "record_ref": "device.artemis_video_card",
+            "record_ref": "device.artemis_video_card_16kb",
             "computer_path": "video"
           },
           {
@@ -9550,34 +10753,6 @@
             "record_ref": "device.artemis_cpm80_module",
             "optional": true,
             "requires_compatible_device": true
-          },
-          {
-            "id": "display_dram",
-            "title": "32 KiB display DRAM",
-            "column": 1,
-            "row": 5,
-            "computer_path": "video.display_memory"
-          },
-          {
-            "id": "sprite_sram",
-            "title": "1 KiB sprite SRAM",
-            "column": 2,
-            "row": 5,
-            "computer_path": "video.sprite_memory"
-          },
-          {
-            "id": "pixel_fifo",
-            "title": "Four SRAM pixel pages",
-            "column": 3,
-            "row": 5,
-            "computer_path": "video.pixel_buffer"
-          },
-          {
-            "id": "display_refresh",
-            "title": "Display fetch / refresh",
-            "column": 2,
-            "row": 6,
-            "computer_path": "video.arbitration"
           },
           {
             "id": "system_refresh",
@@ -9630,26 +10805,6 @@
           [
             "slots",
             "compatibility"
-          ],
-          [
-            "graphics",
-            "display_dram"
-          ],
-          [
-            "graphics",
-            "sprite_sram"
-          ],
-          [
-            "graphics",
-            "pixel_fifo"
-          ],
-          [
-            "graphics",
-            "display_refresh"
-          ],
-          [
-            "display_refresh",
-            "display_dram"
           ],
           [
             "system_refresh",
@@ -9708,7 +10863,7 @@
             "column": 3,
             "row": 4,
             "computer_path": "video",
-            "record_ref": "device.artemis_video_card"
+            "record_ref": "device.artemis_video_card_16kb"
           },
           {
             "id": "os",
@@ -9724,34 +10879,6 @@
               "user_kernel_modes",
               "rom_backed_executables"
             ]
-          },
-          {
-            "id": "display_dram",
-            "title": "32 KiB display DRAM",
-            "column": 1,
-            "row": 5,
-            "computer_path": "video.display_memory"
-          },
-          {
-            "id": "sprite_sram",
-            "title": "1 KiB sprite SRAM",
-            "column": 2,
-            "row": 5,
-            "computer_path": "video.sprite_memory"
-          },
-          {
-            "id": "pixel_fifo",
-            "title": "Four SRAM pixel pages",
-            "column": 3,
-            "row": 5,
-            "computer_path": "video.pixel_buffer"
-          },
-          {
-            "id": "display_refresh",
-            "title": "Display fetch / refresh",
-            "column": 2,
-            "row": 6,
-            "computer_path": "video.arbitration"
           },
           {
             "id": "dma",
@@ -9795,26 +10922,6 @@
           [
             "os",
             "mmu"
-          ],
-          [
-            "video_ram",
-            "display_dram"
-          ],
-          [
-            "video_ram",
-            "sprite_sram"
-          ],
-          [
-            "video_ram",
-            "pixel_fifo"
-          ],
-          [
-            "video_ram",
-            "display_refresh"
-          ],
-          [
-            "display_refresh",
-            "display_dram"
           ],
           [
             "dma",

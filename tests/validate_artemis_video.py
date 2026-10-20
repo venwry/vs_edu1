@@ -11,7 +11,7 @@ def population(id):
   sub=population(x['ref']) if x['ref'] in assemblies else {x['ref']:1}
   for k,v in sub.items():out[k]=out.get(k,0)+v*(x['quantity'] or 1)
  return out
-v=r['computer.artemis']['video'];assert v==r['computer.artemis_pro']['video']
+v=r['computer.artemis_pro']['video'];assert v==r['computer.artemis']['video_variants'][1]['specification']
 assert v['display_memory']['capacity_bytes']==16*16384//8==32768
 assert v['sprite_memory']['capacity_bytes']==2*1024*4//8==1024
 assert v['pixel_buffer']['pages']*v['pixel_buffer']['bytes_per_page']==640
@@ -28,7 +28,7 @@ for m in v['text_modes']+v['bitmap_modes']:
  assert m['sprites_available']==5
  if m['height']==400:assert m['required_raster_ids']==['raster_640_400']
  for a in m['configurations']:assert a['allocated_bytes']+a['remaining_video_ram_bytes']==32768
-for host in ['computer.artemis','computer.artemis_pro']:
+for host in ['computer.artemis_pro']:
  inv=population('assembly.'+host+'.base')
  assert inv['bompart.part.aion_4116']==16 and inv['bompart.part.aion_2114']==2
  assert inv['bompart.part.artemis_graphics_chip']==1

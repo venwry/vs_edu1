@@ -10,7 +10,7 @@ This branch applies the accepted RAM correction and adds manufacturing requireme
 | Aurelia optional card | 16 KiB additional | 16K × 1 | 8 | One expansion card | 1 × 8-bit |
 | Aurelia+ | 64 KiB | 64K × 1 | 8 | Mainboard | 1 × 8-bit |
 | Artemis | 128 KiB | 16K × 1 | 64 | 4 × 32 KiB | 2 × 32-bit |
-| Artemis | 256 KiB | 64K × 1 | 32 | 2 × 128 KiB | 1 × 32-bit |
+| Artemis | 256 KiB | AION 64K × 1 | 32 | 2 × 128 KiB | 1 × 32-bit |
 | Artemis PRO | 512 KiB | 64K × 1 | 64 | 4 × 128 KiB | 2 × 32-bit |
 | Artemis PRO | 1 MiB | 64K × 1 | 128 | 8 × 128 KiB | 4 × 32-bit |
 
@@ -24,7 +24,7 @@ The unqualified 128 Kbit DRAM record and old 8-bit 64 KiB RAM module are retaine
 
 ## Manufacturing coverage
 
-`hardware_bom.json` covers all 57 hardware records and 16 offered hardware bundles. Its 100 assemblies and 242 component requirements include both catalog parts and unresolved implementation requirements. Counts describe engineering records, not unique purchasable SKUs.
+`hardware_bom.json` covers all active hardware and offered bundles; validators reconcile coverage and recursive assembly contents. Assemblies include catalog parts and unresolved implementation requirements. Counts describe engineering records, not unique purchasable SKUs.
 
 Every hardware catalog record now includes manufacturing requirements. Active records link to assembly IDs. Nested assemblies separate purchased mechanisms from their host systems and prevent counting both a functional assembly and its implementation as independent purchased items. Unknown quantities remain null, rather than zero or an invented count. Superseded records retain their historical identity.
 
@@ -43,7 +43,7 @@ Networking-era Artemis configurations add one removable NIC. PRO includes one NI
 
 The BOM's `open_decisions` and per-product requirements preserve the remaining work: exact DRAM suppliers and electrical qualification; the physical memory map; drive/display OEM selection; video RAM electrical qualification and ROM organization; the video-link electrical specification; custom-silicon implementation and yields; PRO console packout or validated headless operation; and the controller die count and electrical qualification for three FlexiBUS ports on both Aurelia models.
 
-`costing_inputs` separates direct materials, conversion labor/test/rework, factory overhead, NRE/capital and commercial costs. Before calculating totals, define supplier quote dates and volume tiers, quantities, assembly routing and minutes, programming/calibration, scrap and yield, fixtures, utilization and overhead allocation. Prices and all unresolved inputs remain null. All cost rollups are explicitly blocked; a sum of known lines must not be presented as a complete manufacturing cost.
+`costing_inputs` separates direct materials, conversion labor/test/rework, factory overhead, NRE/capital and commercial costs. Before calculating totals, define supplier quote dates and volume tiers, quantities, assembly routing and minutes, programming/calibration, scrap and yield, fixtures, utilization and overhead allocation. Prices and all unresolved inputs remain null. The later manufacturing-cost model supplies explicit planning estimates for unresolved quantities; these are not supplier quotations.
 
 ## Validation
 
@@ -57,4 +57,4 @@ Both Aurelia models now populate one shared video controller, eight AION-manufac
 
 ## Artemis replaceable video and Mono Pro
 
-See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the 32 KiB card, dedicated 1 KiB sprite SRAM, four pixel-buffer pages, 640×400 Mono Pro, new complete offers and qualification limits. Costs, balanced pricing, demand, engineering, marketing, capacity and ROI are rebuilt together; [ROI](roi.html) includes the current before/after comparison.
+See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the 16/32 KiB configuration-specific cards, dedicated 1 KiB sprite SRAM, four pixel-buffer pages, 640×400 Mono Pro, new complete offers and qualification limits. Costs, balanced pricing, demand, engineering, marketing, capacity and ROI are rebuilt together; [ROI](roi.html) includes the current before/after comparison.

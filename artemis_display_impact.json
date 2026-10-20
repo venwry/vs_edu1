@@ -2,19 +2,22 @@
   "policy": {
     "status": "Accepted planning design; production qualification and assumed demand response unproven",
     "effective_from": "1980-05-19",
-    "mono_pro_artemis_bundle_share": 0.6,
+    "mono_pro_artemis_bundle_share": 0.24,
     "mono_pro_pro_console_share": 0.3,
     "demand_uplift": {
-      "conservative": 0.06,
-      "central": 0.12,
-      "strong": 0.18
+      "conservative": 0.024,
+      "central": 0.048,
+      "strong": 0.072
     },
-    "demand_basis": "Combined product-attractiveness and incremental campaign intent uplift applied once to Artemis only before package-price elasticity. New buyers, not an extra redistribution of the existing pool; not measured conversion. No independent marketing bonus. 60% Mono Pro mix is an explicit common scenario assumption.",
+    "demand_basis": "70% Artemis128 (16 KiB card), 30% Artemis256 (32 KiB card and AION system RAM). Within each tier 80% monochrome and 20% Color II: total Mono Pro uptake 24%. Previous display-specific interest uplift scaled by 24/60; price elasticity applied once afterwards. Mix and response are scenario assumptions, not observed orders. Campaign remains $435,000; no additional price/value marketing bonus.",
     "engineering_person_months": {
       "AION Labs video increment": 72,
       "AION Labs monitor receiver": 18,
       "Logix card and monitor qualification": 36,
-      "AION Software display drivers": 24
+      "AION Software display drivers": 24,
+      "AION Labs 64K DRAM": 120,
+      "Logix memory and economy card": 24,
+      "AION Software economy driver": 12
     },
     "incremental_marketing_usd": {
       "1980-Q1": 35000,
@@ -25,50 +28,50 @@
     "historical_anchor_url": "https://www.worldradiohistory.com/Archive-Catalogs/Suppliers/Brimar-Industrial-Cathode-Ray-Tubes-1978-Volume-2.pdf",
     "crt_status": "M36-141W period candidate; 640\u00d7400 qualification and purchase prices are assumptions, not supplier assurances."
   },
-  "baseline_commit": "837cbe8b11fcfdba48fb6b2ff9e6d3ff084bbcfd",
+  "baseline_commit": "a19af421f897cdb29b7a7937348bf08f55b33c13",
   "comparison": [
     {
       "metric": "artemis_deliveries_to_nov18",
-      "previous": 9870,
-      "revised": 9826,
-      "change": -44
+      "previous": 9826,
+      "revised": 10893,
+      "change": 1067
     },
     {
       "metric": "full_demand_1980",
-      "previous": 83449,
-      "revised": 83388,
-      "change": -61
+      "previous": 83388,
+      "revised": 84853,
+      "change": 1465
     },
     {
       "metric": "end_1980_headcount",
-      "previous": 1241,
-      "revised": 1306,
-      "change": 65
+      "previous": 1306,
+      "revised": 1405,
+      "change": 99
     },
     {
       "metric": "cumulative_accounting_roi_pct",
-      "previous": 63.526,
-      "revised": 55.981,
-      "change": -7.545
+      "previous": 55.981,
+      "revised": 51.346,
+      "change": -4.635
     },
     {
       "metric": "cumulative_net_cash_usd",
-      "previous": -12260363.68,
-      "revised": -17201521.22,
-      "change": -4941157.54
+      "previous": -17201521.22,
+      "revised": -20782060.17,
+      "change": -3580538.95
     },
     {
       "metric": "peak_external_funding_usd",
-      "previous": 31232350.37,
-      "revised": 32054686.66,
-      "change": 822336.29
+      "previous": 32054686.66,
+      "revised": 37121846.28,
+      "change": 5067159.62
     },
     {
       "metric": "cumulative_net_revenue_usd",
-      "previous": 320436145.32,
-      "revised": 323402856.78,
-      "change": 2966711.46
+      "previous": 323402856.78,
+      "revised": 323128032.17,
+      "change": -274824.61
     }
   ],
-  "interpretation": "Central Artemis interest increases 12% before elasticity, but higher prices can offset it. ROI uses expanded capacity for all modeled demand plus 10% reserve; sales page retains its constrained delivery forecast. PRO sales start conditionally in 1981 and add no 1980 revenue. ROI sensitivity controls vary marketing cost only; they do not re-estimate sales."
+  "interpretation": "Central Artemis display-related interest increases 4.8% before elasticity, but higher prices can offset it. ROI uses expanded capacity for all modeled demand plus 10% reserve; sales page retains its constrained delivery forecast. PRO sales start conditionally in 1981 and add no 1980 revenue. ROI sensitivity controls vary marketing cost only; they do not re-estimate sales."
 }
