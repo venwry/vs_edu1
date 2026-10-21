@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.15",
+    "version": "2.16",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -711,7 +711,8 @@
       },
       "used_by": [
         "software.abacus_1",
-        "software.abacus_2"
+        "software.abacus_2",
+        "software.abacus_3"
       ]
     },
     {
@@ -740,7 +741,7 @@
           "text tools",
           "list tools"
         ],
-        "abacus_integration": "File-based integration: Pulse opens Abacus documents, reads and edits cells programmatically, and writes a valid Abacus document. Abacus need not be running; no shared in-memory spreadsheet is implied."
+        "abacus_integration": "Standalone file-based integration remains the baseline: Pulse reads and edits supported closed Abacus documents with exclusive writer ownership. Pulse 3.0 additionally supports embedded scripting in Abacus 3.0 under technology.abacus_embedded_pulse; this does not change Pulse 1.x."
       },
       "used_by": [
         "software.pulse_1",
@@ -1637,7 +1638,7 @@
         "event_start_date": "1978-06-05"
       },
       "specification": {
-        "node_um": 3.0,
+        "node_um": 3,
         "wafer_diameter_mm": 75,
         "lithography": "Micralign projection",
         "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
@@ -1680,7 +1681,7 @@
         "event_start_date": "1982-07"
       },
       "specification": {
-        "node_um": 2.0,
+        "node_um": 2,
         "wafer_diameter_mm": 75,
         "lithography": "GCA reduction stepper; tool/optics upgrades qualified per node",
         "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
@@ -1710,6 +1711,92 @@
       },
       "used_by": [
         "part.aion_4164"
+      ]
+    },
+    {
+      "id": "technology.abacus_formatted_tables",
+      "name": "Abacus formatted tables and columnar storage",
+      "category": "structured_data_and_query_model",
+      "introduced": {
+        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+        "event_start_date": "1980-11-19"
+      },
+      "owner": "AION Software",
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation, resource budgets and performance qualification pending.",
+          "scope": "Formatted-table tabs coexist with freeform sparse worksheet tabs. Independently implemented historical Abacus format; no dependency on modern Parquet libraries or claim of Parquet compatibility.",
+          "schema": {
+            "column_identity": "Stable column ID, name, declared data type and nullability; stable row IDs survive sorting/filtering.",
+            "launch_types": [
+              "text",
+              "integer",
+              "decimal with declared precision/scale",
+              "date",
+              "Boolean"
+            ],
+            "rules": "Specify rounding, collation, overflow, null/error semantics and checked conversions; preserve leading-zero identifiers as text."
+          },
+          "storage": {
+            "hierarchy": [
+              "row groups",
+              "column chunks",
+              "pages"
+            ],
+            "page_role": "Smallest compression/encoding unit; byte-bounded buffers and dictionaries. Group/page sizes require measurement on target RAM and disks.",
+            "footer": "Versioned schema, chunk/page locations and supported min/max/null-count statistics. Bound metadata memory and permit incremental access.",
+            "column_pruning": "Read output columns plus all predicate, join and formula dependencies.",
+            "block_skipping": "Skip only when valid conservative statistics prove no match; handle nulls, sort order and pending edits. Predicate pushdown evaluates filters early and is distinct from statistics-based skipping.",
+            "encoding": "Dictionary, RLE, bit packing and suitable numeric encodings with uncompressed fallback. Compression is dataset-dependent; no guaranteed 75–90% reduction or heavy codec requirement.",
+            "execution": "Stream and batch scans; bound dictionaries, query state and join memory. Use temporary disk storage or report resource limits; do not require whole tables or row groups resident.",
+            "editing": "Use a bounded edit buffer/change log with stable row IDs; merge pending changes into reads. Rewrite affected storage on save/compaction, update or invalidate statistics and preserve a consistent visible snapshot.",
+            "recovery": "Validate replacement data and footer before recoverable replacement; retain prior valid version until success. Do not publish incomplete metadata or silently skip corrupt blocks."
+          },
+          "calculation": {
+            "syntax": "Abacus native expressions or documented SQL expression subset with shared type, decimal, null and error rules.",
+            "virtual_columns": "Side-effect-free row expressions; track dependencies and reject cycles. Values computed on demand; persisted statistics require valid materialization.",
+            "lookups": "Scalar lookup requires unique-key relationship; missing keys and duplicate keys have explicit behavior, never arbitrary first-match selection.",
+            "joins": "One-to-many/many-to-many joins produce derived query tables rather than silently changing scalar column cardinality.",
+            "sql_scope": "Read-only SELECT projections, WHERE filters, GROUP BY aggregates and equijoins over local formatted tables; document supported syntax and resource limits. No claim of complete SQL standard or general transaction engine."
+          },
+          "nested_data": {
+            "launch": "Flat typed columns; reserve versioned extension points for nested values.",
+            "later": "Bounded arrays, maps and structs with explicit depth/size limits, expandable presentation, indexing, null and aggregation semantics; implementation milestone not yet dated."
+          }
+        }
+      },
+      "used_by": [
+        "software.abacus_3"
+      ]
+    },
+    {
+      "id": "technology.abacus_embedded_pulse",
+      "name": "Embedded Pulse in Abacus",
+      "category": "application_scripting",
+      "introduced": {
+        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+        "event_start_date": "1980-11-19"
+      },
+      "owner": "AION Software",
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation and qualification pending.",
+          "modes": "Standalone offline document access remains available; embedded Pulse 3.0 is a separate mode hosted by Abacus 3.0.",
+          "ownership": "Abacus owns the open document and file writer. Scripts use its API; no concurrent independent Pulse writer.",
+          "api": "Bounded iteration and operations on cells, tables, formulas, queries and report layouts; reuse Pulse language/runtime semantics.",
+          "execution": "Explicit script actions may modify documents; ordinary formula/virtual-column evaluation is side-effect-free. Define cancellation, error recovery, grouped undo and recalculation boundaries.",
+          "consistency": "Track changed dependencies, invalidate stale caches and recalculate through the matching Abacus evaluator. Avoid whole-document duplication in RAM.",
+          "compatibility": "Preserve standalone version checks, recoverable replacement saves and older edition restrictions. Embedding does not backport 3.0 features to Z80 editions."
+        }
+      },
+      "used_by": [
+        "software.abacus_3",
+        "software.pulse_3"
+      ],
+      "technology_refs": [
+        "technology.pulse_notebook_model",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
       ]
     }
   ],
@@ -1803,7 +1890,7 @@
       ],
       "manufacturing_process_ref": "technology.nmos_3um",
       "manufacturing_planning": {
-        "node_um": 3.0,
+        "node_um": 3,
         "die_area_mm2": 55,
         "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
       }
@@ -3330,7 +3417,7 @@
               "node_um": "3.0",
               "available_from": "1980-06-01",
               "die_area_mm2": 45,
-              "defect_density_cm2": 2.0,
+              "defect_density_cm2": 2,
               "nonarea_yield": 0.765,
               "processed_wafer_usd": 235,
               "repair_fraction_of_spatial_failures": 0,
@@ -9554,21 +9641,30 @@
       },
       "platform_policy": "Artemis-exclusive / 32-bit primary development line",
       "features": [
-        "native 32-bit product",
-        "designed to fully use the potential of the 32-bit platform"
+        "native 32-bit spreadsheet, structured-data analysis and reporting for Artemis",
+        "multiple tabs and cross-tab references; ordinary sparse worksheets coexist with schema-defined formatted-table tabs",
+        "typed columns, virtual calculated columns, unique-key lookups and read-only SQL queries",
+        "disk-backed columnar formatted-table storage with column pruning, conservative statistics-based block skipping and dataset-dependent encoding",
+        "graphical bar, line, pie and XY scatter charts in existing report layouts, with graphics preview and printing",
+        "embedded Pulse scripts through the Abacus document API",
+        "CSV and host-exported VSAM logical-record import into formatted tables"
       ],
       "explicitly_not_assumed": [
-        "specific new formula set",
         "background recalculation",
-        "document size limits",
-        "new chart types",
-        "other features previously suggested only by assistant"
+        "unlimited document size or memory",
+        "guaranteed compression ratios or query throughput",
+        "full SQL database or transactional ledger engine",
+        "direct reading of arbitrary VSAM disk images",
+        "unrestricted nested-data support at the 3.0 launch"
       ],
       "technology_refs": [
         "technology.logix_c_api",
         "technology.logix_display_api",
         "technology.logix_tui_standard",
-        "technology.logix_tui_keyboard_standard"
+        "technology.logix_tui_keyboard_standard",
+        "technology.abacus_sparse_model",
+        "technology.abacus_formatted_tables",
+        "technology.abacus_embedded_pulse"
       ],
       "portability_contract": {
         "api_ref": "technology.logix_c_api",
@@ -9578,10 +9674,47 @@
         "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
         "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
       },
-      "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
+      "programmatic_file_access": "Standalone Pulse retains exclusive offline read/edit/write access to supported document versions. Embedded Pulse 3.0 uses the Abacus-owned document API; never opens a second file writer. Preserve formulas and invalidate dependent cached results.",
       "edition_refs": [
         "edition.abacus_3.era"
-      ]
+      ],
+      "positioning": "Integrated spreadsheet, structured-data analysis and reporting environment, programmable in Pulse. The November 1980 release serves contemporary business workflows; direct competition with the historical 1983 Lotus 1-2-3 belongs to a later Abacus version.",
+      "reporting": {
+        "continuity": "Extend Abacus 2.0 report/document layouts, spreadsheet fields and one-off/repeating sections.",
+        "chart_types": [
+          "bar",
+          "line",
+          "pie",
+          "XY scatter"
+        ],
+        "presentation": "Retain standard TUI editing/navigation; add capability-aware graphical preview with titles, axes and legends. Support monochrome patterns and available display modes through the display API.",
+        "output": "Print reports and charts through supported printer drivers; define pagination and refresh stale query/formula results before output.",
+        "sources": "Worksheet ranges, formatted tables and grouped query results; keep source references stable after sorting and filtering."
+      },
+      "data_interchange": {
+        "bpi_continuity": "Retain versioned BPI summary imports as independent planning inputs with reconciliation and decimal validation; no ledger write-back or live database connection.",
+        "csv": "Schema-mapped CSV import with quoted fields, delimiter/character encoding selection, explicit date and decimal conventions, null handling, text preservation for identifiers and rejected-record diagnostics. Provide value-only CSV export with explicit loss-of-formulas/types warning.",
+        "vsam": "Import host-exported sequential logical records from supported VSAM datasets using a supplied field/record layout. Host-side export (for example IDCAMS REPRO) and a documented transfer path are prerequisites; raw VSAM clusters, indexes and disk images are not desktop interchange formats.",
+        "vsam_conversion": "Declare supported record boundaries, lengths, offsets, keys and character encoding; convert EBCDIC, supported binary, packed-decimal and zoned-decimal fields explicitly. Reject unsupported layouts without silently changing values.",
+        "migration": "Versioned document format; preserve supported older worksheets and reports. Older Abacus/Pulse editions must reject unsupported new features before writing. Explicit value-only export is a lossy interchange option."
+      },
+      "release_scope": {
+        "status": "Author-approved offering requirements; implementation and measured qualification remain pending.",
+        "launch_date": "1980-11-19",
+        "launch": "Flat typed formatted tables, bounded columnar processing, virtual columns, unique-key lookups, a documented read-only SQL subset, graphical reports, embedded Pulse and mapped imports.",
+        "later_milestones": [
+          "Bounded nested arrays, maps and structs with explicit expansion/indexing and aggregation semantics; format extension points reserved in 3.0.",
+          "Broader query capabilities and competitive response to Lotus 1-2-3 in a later Abacus version."
+        ],
+        "later_version_and_date": "Not assigned; no later feature is represented as available at the 1980 launch.",
+        "resource_policy": "Qualify real Artemis 128/256 KiB configurations and later Artemis PRO separately. Record application/OS memory, storage, dataset size and timings; larger jobs may require expansion or disk-backed execution. No new minimum RAM or maximum row count is asserted.",
+        "acceptance_workflow": "Import sales records, join customer/product information, calculate margins, group by region, print a graphical report, save/reopen, then repeat using a Pulse script.",
+        "acceptance_requirements": [
+          "Measure memory, disk I/O, import/query/recalculation/report times and compression on named datasets.",
+          "Verify import conversion/rejections, decimal rounding, nulls, duplicate lookup keys and join cardinality.",
+          "Verify cancellation, grouped undo, edit visibility, dependency invalidation, save recovery and unsupported-version rejection."
+        ]
+      }
     },
     {
       "id": "software.pulse_3",
@@ -9595,14 +9728,16 @@
       "platform_policy": "Artemis-exclusive / 32-bit primary development line",
       "features": [
         "native 32-bit product",
-        "designed to fully use the potential of the 32-bit platform"
+        "designed to fully use the potential of the 32-bit platform",
+        "embedded scripting runtime for Abacus 3.0 through its document API; standalone notebook and offline file editing remain available"
       ],
       "design_continuity_with": "software.pulse_1",
       "technology_refs": [
         "technology.logix_c_api",
         "technology.logix_display_api",
         "technology.logix_tui_standard",
-        "technology.logix_tui_keyboard_standard"
+        "technology.logix_tui_keyboard_standard",
+        "technology.abacus_embedded_pulse"
       ],
       "portability_contract": {
         "api_ref": "technology.logix_c_api",
@@ -9613,7 +9748,7 @@
         "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
       },
       "abacus_file_integration": {
-        "model": "Read/edit/write Abacus document files; not live application integration.",
+        "model": "Standalone mode: read/edit/write supported closed Abacus document files. Separate embedded mode in Abacus 3.0 is specified by technology.abacus_embedded_pulse.",
         "concurrency": "Exclusive writer ownership. Do not edit a file concurrently in Pulse and Abacus.",
         "format_policy": "Check format version and supported features before writing; reject unsupported edits without silently dropping data.",
         "save_policy": "Write a replacement file, validate it, then perform a recoverable replacement retaining the prior version until success.",
@@ -9623,7 +9758,8 @@
       },
       "edition_refs": [
         "edition.pulse_3.era"
-      ]
+      ],
+      "embedded_abacus_integration_ref": "technology.abacus_embedded_pulse"
     },
     {
       "id": "software.aionix_server",
