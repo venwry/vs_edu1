@@ -1,0 +1,449 @@
+{
+  "status": "Accepted alternative-history planning scenario; all production releases require engineering qualification.",
+  "baseline_commit": "8b4b09b2b708453376d0952a6db190889f130e21",
+  "era_policy": "ERA1 and its 6/8 MHz variants remain 55 mm2 on the original 3.0 um Micralign process. No CPU shrink or speed-bin uplift.",
+  "products": [
+    {
+      "product_ref": "bundle.aurelia_plus_mono",
+      "year": "1980",
+      "previous_cost_usd": 942.69,
+      "revised_cost_usd": 936.87,
+      "previous_retail_usd": 1941.84,
+      "revised_retail_usd": 1935.84,
+      "retail_change_pct": -0.309
+    },
+    {
+      "product_ref": "bundle.aurelia_plus_mono",
+      "year": "1981",
+      "previous_cost_usd": 939.88,
+      "revised_cost_usd": 916.02,
+      "previous_retail_usd": 1873.2,
+      "revised_retail_usd": 1849.27,
+      "retail_change_pct": -1.277
+    },
+    {
+      "product_ref": "bundle.aurelia_plus_color",
+      "year": "1980",
+      "previous_cost_usd": 1071.54,
+      "revised_cost_usd": 1065.7,
+      "previous_retail_usd": 2168.06,
+      "revised_retail_usd": 2162.15,
+      "retail_change_pct": -0.273
+    },
+    {
+      "product_ref": "bundle.aurelia_plus_color",
+      "year": "1981",
+      "previous_cost_usd": 1061.96,
+      "revised_cost_usd": 1038.13,
+      "previous_retail_usd": 2067.89,
+      "revised_retail_usd": 2044.56,
+      "retail_change_pct": -1.128
+    },
+    {
+      "product_ref": "bundle.artemis_256_color",
+      "year": "1980",
+      "previous_cost_usd": 1695.8,
+      "revised_cost_usd": 1672.45,
+      "previous_retail_usd": 3586.85,
+      "revised_retail_usd": 3562.07,
+      "retail_change_pct": -0.691
+    },
+    {
+      "product_ref": "bundle.artemis_256_color",
+      "year": "1981",
+      "previous_cost_usd": 1749.64,
+      "revised_cost_usd": 1653.71,
+      "previous_retail_usd": 3555.85,
+      "revised_retail_usd": 3457.0,
+      "retail_change_pct": -2.78
+    },
+    {
+      "product_ref": "bundle.artemis_256_mono_pro",
+      "year": "1980",
+      "previous_cost_usd": 1709.78,
+      "revised_cost_usd": 1686.41,
+      "previous_retail_usd": 3608.24,
+      "revised_retail_usd": 3583.5,
+      "retail_change_pct": -0.686
+    },
+    {
+      "product_ref": "bundle.artemis_256_mono_pro",
+      "year": "1981",
+      "previous_cost_usd": 1779.02,
+      "revised_cost_usd": 1683.1,
+      "previous_retail_usd": 3610.63,
+      "revised_retail_usd": 3511.95,
+      "retail_change_pct": -2.733
+    },
+    {
+      "product_ref": "bundle.artemis_pro_512_server",
+      "year": "1981",
+      "previous_cost_usd": 3641.74,
+      "revised_cost_usd": 2711.81,
+      "previous_retail_usd": 7308.36,
+      "revised_retail_usd": 6306.6,
+      "retail_change_pct": -13.707
+    },
+    {
+      "product_ref": "bundle.artemis_pro_1mb_server",
+      "year": "1981",
+      "previous_cost_usd": 5368.62,
+      "revised_cost_usd": 3508.77,
+      "previous_retail_usd": 10362.07,
+      "revised_retail_usd": 8377.08,
+      "retail_change_pct": -19.156
+    },
+    {
+      "product_ref": "device.artemis_ram_256kb_bank_kit",
+      "year": "1980",
+      "previous_cost_usd": 1352.79,
+      "revised_cost_usd": 498.16,
+      "previous_retail_usd": 2239.27,
+      "revised_retail_usd": 1358.87,
+      "retail_change_pct": -39.316
+    },
+    {
+      "product_ref": "device.artemis_ram_256kb_bank_kit",
+      "year": "1981",
+      "previous_cost_usd": 859.49,
+      "revised_cost_usd": 405.39,
+      "previous_retail_usd": 1657.04,
+      "revised_retail_usd": 1138.02,
+      "retail_change_pct": -31.322
+    }
+  ],
+  "recipes": [
+    {
+      "id": "dram64_3um_launch",
+      "node_um": "3.0",
+      "available_from": "1979-12-03",
+      "die_area_mm2": 45,
+      "defect_density_cm2": 2.4,
+      "nonarea_yield": 0.7224999999999999,
+      "processed_wafer_usd": 220,
+      "repair_fraction_of_spatial_failures": 0,
+      "comparison_year": 1981,
+      "gross_usable_dies": 66.00446978417172,
+      "raw_die_yield": 0.24535776727846847,
+      "die_yield": 0.24535776727846847,
+      "good_packaged_dies_per_wafer": 15.061079683078464,
+      "recurring_processed_wafer_cost_usd": 255,
+      "good_packaged_chip_cost_usd": 19.027831286785833
+    },
+    {
+      "id": "dram64_3um_control",
+      "node_um": "3.0",
+      "available_from": "1980-06-01",
+      "die_area_mm2": 45,
+      "defect_density_cm2": 2.0,
+      "nonarea_yield": 0.765,
+      "processed_wafer_usd": 235,
+      "repair_fraction_of_spatial_failures": 0,
+      "comparison_year": 1981,
+      "gross_usable_dies": 66.00446978417172,
+      "raw_die_yield": 0.3110257897015583,
+      "die_yield": 0.3110257897015583,
+      "good_packaged_dies_per_wafer": 19.092055874762828,
+      "recurring_processed_wafer_cost_usd": 255,
+      "good_packaged_chip_cost_usd": 15.453114740250655
+    },
+    {
+      "id": "dram64_3um_repair",
+      "node_um": "3.0",
+      "available_from": "1981-01-01",
+      "die_area_mm2": 47.25,
+      "defect_density_cm2": 1.7,
+      "nonarea_yield": 0.765,
+      "processed_wafer_usd": 255,
+      "repair_fraction_of_spatial_failures": 0.35,
+      "repair_cost_per_wafer_usd": 12,
+      "comparison_year": 1981,
+      "gross_usable_dies": 62.33568104122106,
+      "raw_die_yield": 0.34262132680681845,
+      "die_yield": 0.490453862424432,
+      "good_packaged_dies_per_wafer": 28.43268124617761,
+      "recurring_processed_wafer_cost_usd": 267,
+      "good_packaged_chip_cost_usd": 11.487376426529654
+    },
+    {
+      "id": "dram64_275um_repair",
+      "node_um": "2.75",
+      "available_from": "1981-06-01",
+      "die_area_mm2": 40,
+      "defect_density_cm2": 2.6,
+      "nonarea_yield": 0.748,
+      "processed_wafer_usd": 285,
+      "repair_fraction_of_spatial_failures": 0.35,
+      "repair_cost_per_wafer_usd": 12,
+      "comparison_year": 1981,
+      "gross_usable_dies": 75.69320533772711,
+      "raw_die_yield": 0.26438410210516755,
+      "die_yield": 0.4336496663683589,
+      "good_packaged_dies_per_wafer": 30.52662991418305,
+      "recurring_processed_wafer_cost_usd": 297,
+      "good_packaged_chip_cost_usd": 11.825984421959815
+    },
+    {
+      "id": "dram64_2um_repair",
+      "node_um": "2.0",
+      "available_from": "1982-07-01",
+      "die_area_mm2": 28,
+      "defect_density_cm2": 2.6,
+      "nonarea_yield": 0.765,
+      "processed_wafer_usd": 340,
+      "repair_fraction_of_spatial_failures": 0.35,
+      "repair_cost_per_wafer_usd": 12,
+      "comparison_year": 1982,
+      "gross_usable_dies": 113.66541698207857,
+      "raw_die_yield": 0.36939843598639077,
+      "die_yield": 0.507858983391154,
+      "good_packaged_dies_per_wafer": 53.68518289718253,
+      "recurring_processed_wafer_cost_usd": 352,
+      "good_packaged_chip_cost_usd": 8.653518177715265
+    },
+    {
+      "id": "dram64_15um_repair",
+      "node_um": "1.5",
+      "available_from": "1983-10-01",
+      "die_area_mm2": 19,
+      "defect_density_cm2": 2.5,
+      "nonarea_yield": 0.7224999999999999,
+      "processed_wafer_usd": 400,
+      "repair_fraction_of_spatial_failures": 0.35,
+      "repair_cost_per_wafer_usd": 15,
+      "comparison_year": 1983,
+      "gross_usable_dies": 174.8670041206253,
+      "raw_die_yield": 0.449311953295977,
+      "die_yield": 0.544927769642385,
+      "good_packaged_dies_per_wafer": 88.61959448173322,
+      "recurring_processed_wafer_cost_usd": 415,
+      "good_packaged_chip_cost_usd": 6.7797114426636735
+    }
+  ],
+  "sales": [
+    {
+      "period": "NCC\u2013Nov 18 1980 constrained deliveries",
+      "family": "aurelia_plus_units",
+      "previous": 34912,
+      "revised": 34914
+    },
+    {
+      "period": "NCC\u2013Nov 18 1980 constrained deliveries",
+      "family": "artemis_units",
+      "previous": 9780,
+      "revised": 9787
+    },
+    {
+      "period": "1981 conditional full demand",
+      "family": "aurelia",
+      "previous": 2932,
+      "revised": 2932
+    },
+    {
+      "period": "1981 conditional full demand",
+      "family": "aurelia_plus",
+      "previous": 63744,
+      "revised": 64156
+    },
+    {
+      "period": "1981 conditional full demand",
+      "family": "artemis",
+      "previous": 61416,
+      "revised": 62000
+    },
+    {
+      "period": "1981 conditional full demand",
+      "family": "artemis_pro",
+      "previous": 1450,
+      "revised": 1852
+    }
+  ],
+  "roi": [
+    {
+      "year": 1980,
+      "metric": "cumulative_net_revenue_usd",
+      "previous": 314122002.23,
+      "revised": 313916155.82,
+      "change": -205846.41
+    },
+    {
+      "year": 1980,
+      "metric": "cumulative_operating_profit_usd",
+      "previous": 32297398.75,
+      "revised": 31474998.45,
+      "change": -822400.3
+    },
+    {
+      "year": 1980,
+      "metric": "cumulative_net_cash_usd",
+      "previous": -13366211.98,
+      "revised": -16090484.15,
+      "change": -2724272.17
+    },
+    {
+      "year": 1980,
+      "metric": "cumulative_capex_usd",
+      "previous": 27693381.95,
+      "revised": 29887528.75,
+      "change": 2194146.8
+    },
+    {
+      "year": 1980,
+      "metric": "peak_external_funding_usd",
+      "previous": 37915744.46,
+      "revised": 39308968.62,
+      "change": 1393224.16
+    },
+    {
+      "year": 1980,
+      "metric": "cumulative_accounting_roi_pct",
+      "previous": 62.716,
+      "revised": 58.617,
+      "change": -4.099
+    },
+    {
+      "year": 1981,
+      "metric": "cumulative_net_revenue_usd",
+      "previous": 631903601.83,
+      "revised": 632695949.67,
+      "change": 792347.84
+    },
+    {
+      "year": 1981,
+      "metric": "cumulative_operating_profit_usd",
+      "previous": 94648222.07,
+      "revised": 94984934.74,
+      "change": 336712.67
+    },
+    {
+      "year": 1981,
+      "metric": "cumulative_net_cash_usd",
+      "previous": 34768868.44,
+      "revised": 33595075.52,
+      "change": -1173792.92
+    },
+    {
+      "year": 1981,
+      "metric": "cumulative_capex_usd",
+      "previous": 29948014.48,
+      "revised": 32515476.52,
+      "change": 2567462.04
+    },
+    {
+      "year": 1981,
+      "metric": "peak_external_funding_usd",
+      "previous": 37915744.46,
+      "revised": 39308968.62,
+      "change": 1393224.16
+    },
+    {
+      "year": 1981,
+      "metric": "cumulative_accounting_roi_pct",
+      "previous": 137.766,
+      "revised": 133.933,
+      "change": -3.833
+    }
+  ],
+  "investment": {
+    "policy_file": "memory_manufacturing.json",
+    "era_policy": "ERA1 and its 6/8 MHz variants remain 55 mm2 on the original 3.0 um Micralign process. No CPU shrink or speed-bin uplift.",
+    "development_line": {
+      "steppers_initial": 1,
+      "steppers_from_1980_Q2": 2,
+      "pilot_wafers_per_month": 20,
+      "one_down_capacity_wafers_month": 1462,
+      "production_output_credited": 0,
+      "basis": "Separate pilot bay; 25 passes/hour, eight layers, 65% OEE. No added saleable output or legacy capacity credit."
+    },
+    "included_process_capital_usd": 2225000,
+    "future_capital_schedule": [
+      {
+        "quarter": "1982-Q1",
+        "usd": 150000,
+        "purpose": "2 um equipment installation; commissioned 1982-Q2"
+      },
+      {
+        "quarter": "1982-Q2",
+        "usd": 150000,
+        "purpose": "2 um process acceptance; commissioned 1982-Q2"
+      },
+      {
+        "quarter": "1982-Q3",
+        "usd": 200000,
+        "purpose": "1.5 um equipment and metrology upgrade; commissioned 1983-Q3"
+      },
+      {
+        "quarter": "1982-Q4",
+        "usd": 200000,
+        "purpose": "1.5 um equipment procurement; commissioned 1983-Q3"
+      },
+      {
+        "quarter": "1983-Q1",
+        "usd": 200000,
+        "purpose": "1.5 um optics/alignment/process upgrade; commissioned 1983-Q3"
+      },
+      {
+        "quarter": "1983-Q2",
+        "usd": 200000,
+        "purpose": "1.5 um installation; commissioned 1983-Q3"
+      },
+      {
+        "quarter": "1983-Q3",
+        "usd": 200000,
+        "purpose": "1.5 um qualification equipment; commissioned 1983-Q3"
+      },
+      {
+        "quarter": "1983-Q4",
+        "usd": 200000,
+        "purpose": "1.5 um selected release and matching; commissioned 1983-Q4"
+      }
+    ],
+    "future_engineering": [
+      {
+        "period": "1982",
+        "person_months": 120,
+        "loaded_payroll_and_validation_usd": 600000
+      },
+      {
+        "period": "1983",
+        "person_months": 144,
+        "loaded_payroll_and_validation_usd": 780000
+      }
+    ],
+    "boundary": "Future budgets after 1981 excluded from closed-horizon cash/ROI; reported as forward commitments. Recurring RAM repair costs are inside chip costs, not charged again as pilot operations."
+  },
+  "forward_budget_total_usd": 2880000,
+  "forward_budget_basis": "Capital plus stated engineering/validation budgets after 1981; excludes future production operating costs. Not a complete 1982\u201383 cash forecast.",
+  "cash_after_reserving_forward_budgets_usd": 30715075.52,
+  "first_cash_payback_quarter": "1981-Q2",
+  "sources": [
+    {
+      "path": "memory_manufacturing.json",
+      "sha256": "16082a08f95d55769f0444be95938db44e18b8f6181bbc93f61e2e43ea9086e9"
+    },
+    {
+      "path": "memory_manufacturing_baseline.json",
+      "sha256": "e05de863f00484bab039c78d01bbb9d662c71e3ffc190b4806d8b9746e3aa154"
+    },
+    {
+      "path": "manufacturing_costs.json",
+      "sha256": "cea5b3b0cb1bf834f5484172b8aeca08fbacf6106fcbb00004f6cfd7e639f8d0"
+    },
+    {
+      "path": "pricing_results.json",
+      "sha256": "df6dcddbb7f4308d38c98b47a133cf0a44afd5d520c969b8e9ed50c0570a12de"
+    },
+    {
+      "path": "industrial_investment_1974_1981.json",
+      "sha256": "bf1514c13257071455e7d0b954e2aa31bfd3cda3c48530e3fc784b2ffa671b56"
+    },
+    {
+      "path": "roi_1974_1980.json",
+      "sha256": "b7b6e3e5a6e933c5f2785ef046c2bebff3e609b53b167a0b30ecab19946cd570"
+    },
+    {
+      "path": "sales_forecast.json",
+      "sha256": "abedf1d33cf42f5d9d331f336f86eb5e1b5deef2741c27f7b2646540b1d82ec6"
+    }
+  ]
+}

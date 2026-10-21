@@ -1,6 +1,7 @@
 import json, math, hashlib, calendar
 from pathlib import Path
 from collections import defaultdict
+from memory_manufacturing import policy as memory_policy
 ROOT=Path(__file__).resolve().parent.parent
 S=ROOT; OUT=ROOT
 def load(n):return json.load(open(S/(n+'.json')))
@@ -66,9 +67,11 @@ prog('cpm_network','DRI','1979-Q4','1981-Q2',100,['software.cpm_aurelia_networki
 prog('bpi_rdbms','BPI','1979-Q1','1981-Q2',540,['software.bpi_client_server'],'RDBMS 220 PM; concurrent application/server migration 160; crash recovery, locking, reporting and pilot validation 160')
 prog('pro_network_hardware','Logix','1979-Q3','1981-Q2',210,['computer.artemis_pro','device.network_card_artemis'],'Server boards, network adapter, storage/power/thermal design, burn-in and multi-client qualification')
 prog('silicon_sustain','AION Labs','1980-Q2','1981-Q4',120,list(chips),'Process retargeting, test coverage, failure analysis and controlled revisions')
+for work in memory_policy()['engineering_programs']:
+ prog(work['id'],work['entity'],work['start'],work['end'],work['person_months'],work['product_refs'],work['scope'])
 # Recurring software support/compatibility sustaining engineering, separate from initial development.
 for e,pm in [('AION Software',210),('DRI',96),('BPI',90),('Logix',96)]:prog('sustain_'+e,e,'1978-Q3','1981-Q4',pm,[],'Maintenance, documentation, release engineering and compatibility stewardship through 1981 only; post-1981 obligation excluded')
-source_refs=[dict(path=p.name,sha256=hashlib.sha256(p.read_bytes()).hexdigest(),url='https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/'+p.name) for p in [S/n for n in ['sales_forecast.json','manufacturing_costs.json','logix_aion_technical_catalog_v2.json','pricing_results.json','hardware_bom.json','logix_aion_story.json','manufacturing_programs.json']]]
+source_refs=[dict(path=p.name,sha256=hashlib.sha256(p.read_bytes()).hexdigest(),url='https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/'+p.name) for p in [S/n for n in ['sales_forecast.json','manufacturing_costs.json','logix_aion_technical_catalog_v2.json','pricing_results.json','hardware_bom.json','logix_aion_story.json','manufacturing_programs.json','memory_manufacturing.json','memory_manufacturing_baseline.json']]]
 monthly={}; sensitivities=[]
 for scenario in sales['scenarios']:
  data=defaultdict(lambda:defaultdict(float)); evidence={}
@@ -92,9 +95,26 @@ for scenario in sales['scenarios']:
   total=base*(1.04**m); pro=.02 if m>=7 else 0; ar=min(.60,.30+.025*m); old=max(.01,.04-.0025*m)
   data[f'1981-{m:02}'].update({'aurelia':total*old,'aurelia_plus':total*(1-old-ar-pro),'artemis':total*ar,'artemis_pro':total*pro})
   evidence[f'1981-{m:02}']='new extrapolation: 4% monthly growth; mix transition; conditional PRO shipping July 1'
+ memory_baseline=load('memory_manufacturing_baseline')
+ def basket_price(family, vintage, original=False):
+  total=0
+  for item in baskets[family]:
+   ref=item['product_ref'];price=(memory_baseline['prices'][ref][str(vintage)] if original else pp[ref]['snapshots'][str(vintage)]['retail_price_usd'])
+   total+=item['quantity']*price
+  return total
+ for m in [m for m in data if m.startswith('1981')]:
+  vintage=1981 if m>='1981-06' else 1980
+  for family in data[m]:
+   if family=='artemis_pro' and not data[m][family]:continue
+   v=1981 if family=='artemis_pro' else vintage
+   relative=basket_price(family,v,True)/basket_price(family,v)
+   if family!='artemis_pro':relative/=basket_price(family,1980,True)/basket_price(family,1980)
+   data[m][family]*=relative**scenario['elasticity_assumption']
+  evidence[m]+='; incremental dated balanced-price response versus baseline, normalized for December 1980 price response; no marketing bonus'
  if scenario['id']=='central':monthly={m:{'products':{f:math.ceil(n) for f,n in v.items()},'basis':evidence[m]} for m,v in sorted(data.items())}
  sensitivities.append({'scenario':scenario['id'],'computer_demand_1978_1981':math.ceil(sum(sum(v.values()) for v in data.values())),'peak_month_computers':math.ceil(max(sum(v.values()) for v in data.values())),'capacity_with_reserve':math.ceil(max(sum(v.values()) for v in data.values())*1.10)})
 # Cost and component links: each final sellable offering once, not every catalog row.
+ram_vintages=defaultdict(lambda:defaultdict(float))
 links=[]; chip_q=defaultdict(lambda:defaultdict(float)); q_units=defaultdict(float); q_month_peak=defaultdict(float)
 q_entity_buckets=defaultdict(lambda:defaultdict(lambda:defaultdict(float))); q_components=defaultdict(lambda:defaultdict(float))
 for m,row in monthly.items():
@@ -126,6 +146,7 @@ for m,row in monthly.items():
    cref=part.removeprefix('bompart.')
    if cref in chips:
     chip_q[q][cref]+=qty
+    if cref=='part.aion_4164':ram_vintages[q][max(1979,year-(int(m[5:])<6))]+=qty
     for k,v in costs['component_cost_assumptions'][part]['annual_cost_buckets_usd'][str(sy)].items():internal[k]+=v*line['quantity']
   for k,v in buckets.items():
    q_entity_buckets[q][owner][k]+=units*(v-internal.get(k,0))
@@ -134,10 +155,11 @@ for m,row in monthly.items():
 wafer_rows=[];wafer_peak={};good_chip_total={}
 for q in quarters:
  y=max(1978,int(q[:4]));total=0;goods=0
- for ref,n in chip_q[q].items():
-  model=chips[ref][str(y)];good=model['gross_usable_dies']*model['die_yield']*model['packaging_test_yield'];w=math.ceil(n/good);total+=w;goods+=n
-  wafer_rows.append(dict(quarter=q,chip_ref=ref,good_chips=math.ceil(n),good_packaged_dies_per_wafer=round(good,3),wafer_starts=w,die_area_mm2=model['die_area_mm2'],die_yield=model['die_yield'],package_yield=model['packaging_test_yield']))
-  unit=costs['component_cost_assumptions']['bompart.'+ref]['annual_cost_buckets_usd'][str(y)]
+ groups=[(ref,n,y) for ref,n in chip_q[q].items() if ref!='part.aion_4164']+[("part.aion_4164",n,vintage) for vintage,n in ram_vintages[q].items()]
+ for ref,n,vintage in groups:
+  model=chips[ref][str(vintage)];good=model['gross_usable_dies']*model['die_yield']*model['packaging_test_yield'];w=math.ceil(n/good);total+=w;goods+=n
+  wafer_rows.append(dict(quarter=q,chip_ref=ref,cost_snapshot_year=vintage,good_chips=math.ceil(n),good_packaged_dies_per_wafer=round(good,3),wafer_starts=w,die_area_mm2=model['die_area_mm2'],die_yield=model['die_yield'],package_yield=model['packaging_test_yield']))
+  unit=costs['component_cost_assumptions']['bompart.'+ref]['annual_cost_buckets_usd'][str(vintage)]
   for k,v in unit.items():q_entity_buckets[q]['AION Labs'][k]+=n*v
  ratio=q_month_peak[q]/(q_units[q]/3) if q_units[q] else 1
  wafer_peak[q]=math.ceil(total/3*ratio*1.10*1.05) # 5% engineering/monitor wafers beyond 10% commercial reserve
@@ -173,6 +195,8 @@ for id,start,end in [('pilot','1976-Q3','1977-Q4'),('launch','1978-Q1','1979-Q4'
 # Quarterly ledger: resource expenses separate from intra-ecosystem reimbursements and equity financing.
 ledger=[];capacity=[];capital=[]
 def cap(q,e,kind,amount,note):capital.append(dict(quarter=q,entity=e,cost_type=kind,usd=rnd(amount),basis=note))
+for item in memory_policy()['capital_schedule']:
+ if item['quarter'] in quarters:cap(item['quarter'],'AION Labs','memory_process_equipment',item['usd'],item['purpose'])
 prevtools=prevbuilding=0
 for stage in stages:
  tq=qi(stage['commissioned']);yy=int(stage['commissioned'][:4]);infl=1.08**(yy-1978)
@@ -244,6 +268,9 @@ for q in quarters:
   salaries=prod_pay+opspay+servicepay
   for k in ['workforce','operating_overhead','included_service_delivery']:buckets.pop(k,None)
   buckets['production_service_admin_payroll']=max(embedded,salaries) # baseline minimum avoids deleting outsourced/support expenses
+  pilot=memory_policy()['pilot_operations']
+  if e=='AION Labs' and pilot['from_quarter']<=q<=pilot['through_quarter']:
+   buckets['stepper_pilot_nonpayroll']=pilot['wafers_per_month']*3*pilot['processed_wafer_usd']+pilot['nonpayroll_operations_usd_per_quarter']
   buckets['engineering_payroll']=engcost
   buckets['engineering_prototypes_masks_validation']=engcost*(.25 if e in ['Logix','AION Labs'] else .10)
   area=assembly_area+dc_area+min(rooms,centres*3)*90 if e=='Logix' else (stage['gross_building_m2'] if e=='AION Labs' and stage else (hc*14))
@@ -282,6 +309,16 @@ for y in range(1974,1982):
  rows=[r for r in ledger if r['quarter'].startswith(str(y))];qs=[c for c in capacity if c['quarter'].startswith(str(y))];elim=sum(t['usd'] for t in transfers if t['quarter'].startswith(str(y)) and t['type']=='provisional CP/M royalty')
  summary.append(dict(year=y,computer_demand=sum(c['customer_computers'] for c in qs),capex_usd=rnd(sum(r['capital_usd'] for r in rows)),entity_operating_sum_usd=rnd(sum(r['operating_usd'] for r in rows)),ecosystem_resource_operating_usd=rnd(sum(r['operating_usd'] for r in rows)-elim),year_end_headcount=sum(r['headcount'] for r in rows if r['quarter'].endswith('Q4')),year_end_inventory_funding_usd=qs[-1]['gross_inventory_funding_usd']))
 model={'metadata':{'title':'Logix / AION industrial investment and workforce plan','version':'1.0','source_repository':'venwry/vs_edu1','source_commit':'52662752fae4abf14ce6a8adab2e4554ea932677','created':'2026-10-11','horizon':'1974-Q1 through 1981-Q4','currency':'nominal USD of each quarter; 8% annual escalation for new planning allowances, repository unit costs retain dated snapshots','status':'Engineering scenario, not historical accounts, supplier quotations or released production design','previous_sessions':'Unavailable; committed forecasts used instead','ownership':'Five independently reported entities; sum is ecosystem resource requirement, not a legal consolidated financial statement'},'summary_annual':summary,'assumptions':{'reserve':'10% installed good-output headroom; not 10% extra sales or perpetual overproduction. One-month 10% reserve inventory funded separately. 5% additional fab engineering/monitor/training-equipment allowance. Tool one-down redundancy and OEE are separate availability protections.','demand':'Central unconstrained first-year intent plus signed reaction effects; thereafter new demand only, no repeated returning backorders. Premium-price discouraged buyers are not demand at the offered price. 1980 Nov 19 onward explicitly extrapolated.','1981_extension':'4% monthly growth from December run rate; three-computer mix transition; PRO 2% from July conditional on qualification. No claim that repository confirms PRO shipments.','unforecast_scope':'External OEM silicon licences are not chip orders. Tandy hardware excluded. Selected add-in cards have explicit 2% attach allowance; other unforecast products remain unquantified and are listed as gaps. Full demand claim applies to modeled baskets, not unknown catalog demand.','geography':'Logix assembly San Jose; AION Labs Cambridge assumed Massachusetts (confirm); AION applications Copenhagen with OS group near DRI California. US distribution; Denmark costs are USD planning equivalents, not a local DKK payroll/FX forecast.','manufacturing':'Buy bare PCBs, remaining externally sourced system DRAM/CPUs, displays, drive/printer mechanisms, molded/metal parts, packaging and bulk print. Make custom logic, AION system controllers, AION 2114 sprite SRAM and AION 4116 display-memory chips and AION 64K system DRAM for Aurelia+ / Artemis, populate/test boards, integrate and pack. Supplier reserved capacity is specified; supplier-owned plants are not Logix capital.','staff_retention':'Retain at least 60% of historical peak programme engineering FTE from 1978 Q3 for defects, releases and next designs; paid sustaining capacity above scheduled work is separately identified. Training uses up to 24 dedicated centres and dealer-hosted rooms thereafter.', 'software_estimation':'130 productive hours/person-month; quarterly smooth staffing per programme; 0.7–1.7 effort envelope, not statistical probability. Staffing cannot replace elapsed integration and pilot time.','cost_boundary':'Capex plus operating resource expenses; depreciation excluded from cash totals. Debt interest, taxes, stock compensation and receivables/payables excluded. Inventory cash changes separate. Purchased component costs include suppliers’ margins/capital.','payroll':'Embedded production workforce/overhead/support replaced by larger of existing allowance and staffing cash payroll, never added twice. Any excess baseline allowance represents outsourced/other operations.','capital_timing':'Fab ordered four quarters before commissioning. Assembly uses two-quarter forward peak; facilities planning capacity must precede customer shipments. Academy equipment allowance is separate and not inferred retail demand.','secret_facility':'Future CAD/laser lithography retained as narrative premise; acquisition/replacement and maintenance dependencies unpriced, outside public-company budget. Mask/test development consumables included.'},'sources':source_refs,'historical_anchors':[{'title':'ASML / Perkin-Elmer history','url':'https://www.asml.com/en/company/stories/2023/seven-things-about-our-wilton-history','use':'Micralign first shipped 1973 at $95,000; model 1978 allowance $180,000 is not a quote.'},{'title':'SEMI oral history, Dennosuke Uchida','url':'https://www.semi.org/en/Oral-History-Interview-Dennosuke-Uchida','use':'GCA steppers reached production in 1977, Japan early 1978; early throughput constraints support projection-aligner baseline.'},{'title':'Computer History Museum equipment suppliers','url':'https://www.computerhistory.org/siliconengine/turnkey-equipment-suppliers-change-industry-dynamics/','use':'Period vendor families for furnaces, vacuum/implant, probe and deposition; exact models/recipes require qualification.'},{'title':'ASML founding history','url':'https://www.asml.com/en/company/about-asml/history','use':'ASML PAS 2000 launched 1984, therefore excluded from 1974–81 line.'}],'engineering_programs':programs,'monthly_demand':monthly,'scenario_demand_sensitivity':sensitivities,'quarterly_capacity':capacity,'fab_stages':stages,'quarterly_component_requirements':[{'quarter':q,'component_ref':p,'production_quantity':round(n,3),'supplier_reserved_quantity':math.ceil(n*1.1),'quantity_status':'Functional sets remain sets when source BOM quantity is unresolved'} for q,parts in q_components.items() for p,n in parts.items()],'quarterly_wafer_loading':wafer_rows,'product_cost_links':links,'quarterly_entity_costs':ledger,'capital_schedule':capital,'interentity_transfers':transfers,'financing_events':[{'quarter':'1974-Q4','recipient':'DRI','usd':250000,'status':'founder commitment in story; quarter placement assumption','treatment':'equity funding, not operating expense'},{'quarter':'1977-Q1','recipient':'BPI','usd':150000,'status':'offer only, not assumed closed','treatment':'excluded from expense and committed funding'}],'logistics_design':{'nodes':['San Jose assembly / western distribution','Chicago-area leased cross-dock / central distribution','Cambridge-area eastern distribution and AION fab dispatch'],'flows':['Qualified supplier deliveries → San Jose receiving, ESD/quarantine and incoming test','Cambridge packaged chips → San Jose weekly insured air shipment; 4-week chip buffer before peak ramps','San Jose finished packages → three regional nodes by consolidated road linehaul','Regional nodes → ComputerLand stores weekly LTL delivery and replenishment; dealer count unknown, drops inferred at 12 systems/drop','Academy computers → centres before course launch; manuals/media replenished monthly; returns routed to regional repair pool'],'parameters':{'package_volume_m3_per_computer_basket':.22,'package_mass_kg':45,'usable_trailer_m3':55,'pallet_m3':.9,'cartons_per_basket':5,'manual_pages_per_basket':500,'media_sets_per_basket':3,'print_capacity_rule':'500 pages x installed system capacity; outsource offset print/binding, 4-week buffer; verify actual editions/page counts before order','linehaul_rule':'ceil(monthly basket volume / 55 m3); contracted carriers, not owned fleet','service_target':'weekly dealer replenishment, 14-day finished goods, 45-day purchased input buffer funded one quarter ahead; inventory buffer is scenario not optimized service simulation'},'cost_treatment':'Repository per-offer freight retained; warehouse labor/facility cash floor budgeted separately. No second per-truck charge added. Carrier lane quotes, customer/store counts and split-shipment volumes unresolved.'},'fab_recommendation':{'public_process':'75 mm, 3 µm silicon-gate NMOS target for the costed 52 mm² video controller, 30 mm² system controller, 20 mm² sprite SRAM and 18 mm² AION 4116 DRAM; 3.5 µm sensitivity requires larger dies and a fresh capacity/cost run. Logic, SRAM and DRAM process compatibility, retention, sense amplifiers and process window require validation. Analog/DAC integration is a separate recipe qualification gate.','preferred_lithography':'Micralign projection for period availability, mask life and mature-node throughput; reserve space and reticle conversion budget before considering GCA 4800 on a later critical-layer pilot. No stepper savings assumed without wafer trials.','wafer_supply':'Buy prime polished doped wafers; no crystal puller or wafer slicing/polishing factory. No epitaxy reactor in base NMOS flow unless device design requires epitaxial substrate.','mask_supply':'Future facility supplies design/master capability; public mask inspection, revision control and process-matched working masks remain necessary.','optimality':'Least-complex fit to stated 75 mm process and modeled volumes, not proven global optimum. Compare qualified SMC outsourcing with public-fab expansion at each gate; licence alone is not available wafer capacity.','expansion_gate':'Order expansion when six-month forecast exceeds 80% qualified one-down capacity; maintain recipe-specific tool matching and separation.','yield_stress':'Halving die yield doubles wafer starts at same shipments; package test yield 0.93 remains separate. Compute stressed load per row; reserve is insufficient to cover a 50% yield loss.','schedule_gates':['1975: process specification, utilities design and pilot contracts','1976 Q3: pilot tooling commissioned; 1976–77 recipe/video RAM qualification','1977: freeze first-production masks, PCB and interfaces; no sales before release qualification','1978 Q1: volume line ready, product qualification and inventory ahead of June launch','1979: fund extra ERA validation/respins and qualify expansion before 1980 launch','1981: PRO/network/customer pilots; July shipping is conditional scenario']},'open_gaps':['166 unresolved BOM quantity substitutions remain engineering functional-set assumptions, not released purchasable part counts.','Sales forecast omits many standalone peripherals, training after May 1980, upgrades, OEM die shipments and 1981 products; explicit new assumptions cover only selected gaps.','Full factory capacities depend on validated operation times; 10 assembly hours/basket for space sizing is a conservative planning routing separate from financial labor allowances.','Fab throughput, tool purchase prices, cleanroom construction, facility loads and staffing are engineering allowances with roughly -30%/+60% capex range.','No signed SMC supply capacity or outsourcing quotes; no claim of guaranteed production.','Architecture timing, ERA ISA validation, 64K DRAM procurement, video RAM retention and RDBMS crash recovery can force calendar delay regardless of hiring.','DRI independent OEM sales and BPI non-Logix business are outside workload and demand; headcounts cover this story programme only.','1982–2000 binary compatibility maintenance obligation remains unfunded beyond this horizon.']}
+model['memory_manufacturing']={
+ 'policy_file':'memory_manufacturing.json',
+ 'era_policy':memory_policy()['era_policy'],
+ 'development_line':{'steppers_initial':1,'steppers_from_1980_Q2':2,'pilot_wafers_per_month':20,'one_down_capacity_wafers_month':1462,'production_output_credited':0,'basis':'Separate pilot bay; 25 passes/hour, eight layers, 65% OEE. No added saleable output or legacy capacity credit.'},
+ 'included_process_capital_usd':sum(x['usd'] for x in memory_policy()['capital_schedule'] if x['quarter'] in quarters),
+ 'future_capital_schedule':[x for x in memory_policy()['capital_schedule'] if x['quarter'] not in quarters],
+ 'future_engineering':memory_policy()['future_engineering'],
+ 'boundary':'Future budgets after 1981 excluded from closed-horizon cash/ROI; reported as forward commitments. Recurring RAM repair costs are inside chip costs, not charged again as pilot operations.'}
+model['fab_recommendation']['preferred_lithography']='Retain Micralign production, including ERA1 at 3 um. Separate GCA stepper development from 1979; qualify memory recipes and select lower recurring cost. Do not credit pilot output against sales capacity.'
+model['fab_recommendation']['public_process']+=' Memory recipe and repair revisions follow memory_manufacturing.json; ERA1 is unchanged.'
 # Payer cash bridge, financing separate. Product costs retain traceable recurring categories.
 for r in ledger:
  outgoing=sum(t['usd'] for t in transfers if t['quarter']==r['quarter'] and t['payer']==r['entity'] and t['type']=='AIONix cost reimbursement')
@@ -318,3 +355,4 @@ if template.exists():
  pages={x['id']:x for x in site['pages']}
  navigation=''.join('<a href="'+html.escape(pages[i]['path'],quote=True)+'"'+(' aria-current="page"' if i=='industrial-investment' else '')+'>'+html.escape(pages[i]['title'])+'</a>' for i in site['navigation'])
  (OUT/'industrial_investment_1974_1981.html').write_text(template.read_text().replace('__PROJECT_NAV__',navigation).replace('__MODEL__',json.dumps(model,indent=2).replace('</','<\\/')))
+

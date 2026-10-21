@@ -9,7 +9,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const errors=[],fetched=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(read(page.path),{url,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
  const w=dom.window;w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||JSON.parse(read(name))};};
- if(page.kind==='report'){w.eval(w.document.querySelector('script:not([type])').textContent);return {dom,w,d:w.document,errors,fetched};}
+ if(page.kind==='report'){const script=w.document.querySelector('script:not([type])');if(script)w.eval(script.textContent);return {dom,w,d:w.document,errors,fetched};}
  w.eval(read('sales.js'));w.eval(read('pricing.js'));w.eval(read('manufacturing-costs.js'));w.eval(read('timeline-model.js'));w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors,fetched};
@@ -84,7 +84,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const [source,href] of links){
   const u=new URL(href,'https://atlas.test/'+source),file=u.pathname.slice(1);
   if(u.origin!=='https://atlas.test')continue;
-  if(['artemis_display_impact.json','SALES_VIEW.md','roi_1974_1980.json','marketing_budget_1974_1980.json','ROI.md','industrial_investment_1974_1981.json','manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
+  if(['artemis_display_impact.json','memory_manufacturing_impact.json','MEMORY_MANUFACTURING.md','SALES_VIEW.md','roi_1974_1980.json','marketing_budget_1974_1980.json','ROI.md','industrial_investment_1974_1981.json','manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
   assert(targets.has(file),source+' -> '+href);
   if(u.hash)assert(targets.get(file).has(decodeURIComponent(u.hash.slice(1))),source+' -> missing '+href);
  }
@@ -100,12 +100,12 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
   assert.equal(card.closest('[data-lane]').dataset.lane,lane.id);
  }
  assert.equal(d.querySelector('.timeline-workspace').firstElementChild.className,'event-inspection');
- assert.deepEqual([...d.querySelectorAll('.calendar-year')].map(x=>x.textContent),Array.from({length:10},(_,i)=>String(1972+i)));
+ assert.deepEqual([...d.querySelectorAll('.calendar-year')].map(x=>x.textContent),Array.from({length:12},(_,i)=>String(1972+i)));
  assert(d.querySelector('.timeline-origin [data-event="event.power"]'));
  assert(!d.querySelector('.calendar-grid [data-event="event.power"]'));
  assert.equal(d.querySelectorAll('.swim-event.approximate').length,0);
  assert.equal(d.querySelector('[data-event="event.lottery"] time').textContent,'1972-02-06');
- assert.equal(d.querySelectorAll('[data-select-process]').length,7);
+ assert.equal(d.querySelectorAll('[data-select-process]').length,12);
  assert.equal(d.querySelectorAll('[data-select-process="process.international_investment"]').length,0);
  assert(!d.querySelector('[data-event="event.basic_develop"]'));
  assert(!d.querySelector('[data-event="event.harvard"]'));
@@ -119,7 +119,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  assert.equal(w.location.hash,'#phase.ncc78');
  assert.equal(d.getElementById('phase-inspection').hidden,false);
  assert(d.getElementById('phase-inspection').textContent.includes('Aurelia premiere and first months of sales'));
- assert.equal(d.querySelectorAll('#phase-filter option').length,9);
+ assert.equal(d.querySelectorAll('#phase-filter option').length,10);
  assert(!d.querySelector('#phase-inspection [data-process="process.market_expansion"]'));
  assert(!d.querySelector('#phase-inspection [data-event="event.market_growth"]'));
  assert(d.getElementById('phase-inspection').textContent.includes('1978-06-05 to 1979-06-03'));
@@ -153,5 +153,6 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const offline=await boot(page,{},'file:///atlas/timeline.html');assert(offline.d.querySelector('#catalogs'));offline.dom.window.close();
  console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; four computer explorers, RAM expansion, networking, bundles, filters, JSON updates and offline recovery.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
 
 

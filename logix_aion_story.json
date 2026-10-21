@@ -374,7 +374,7 @@
       "naming": "Stable actor/product identifiers; aliases retain spelling variants.",
       "event_structure": "Events use date, participants, actions, outcomes, agreement_terms, metrics, product_refs and related_event_refs. Processes use period and phase_refs instead of event_type/date; phase_refs identify narrative context, not asserted start/end dates.",
       "provenance": "This JSON structures the narrative; product specifications remain in the technical catalog. The technical catalog is an author-facing, all-years reference, not a contemporaneous press kit. All 1979 public and partner-facing next-generation references must follow the disclosure policy in ncc_1979_campaign.json; internal identifiers do not establish public product names.",
-      "phase_order": "Eight consecutive inclusive calendar phases from 1972-01-01 through 1981-11-18. Point events are assigned by their confirmed dates and sorted chronologically. The 2025-12-07 origin remains an explicit prologue associated with phase one, outside its calendar period. Processes are listed separately in their contextual phases; the explicit 1973–1975 investment expansion spans phases one and two."
+      "phase_order": "Nine consecutive phases from 1972-01-01 through 1983-12-31; later manufacturing roadmap is provisional and does not establish later product sales."
     }
   },
   "phases": [
@@ -390,41 +390,6 @@
         "display": "1972-01-01 to 1974-12-31"
       },
       "events": [
-        {
-          "id": "event.power",
-          "title": "Vincent gains time-travel powers",
-          "event_type": "premise",
-          "date": {
-            "start": "2025-12-07",
-            "end": "2025-12-07"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.adam",
-              "role": "protagonist"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.adam"
-              ],
-              "description": "Gains the ability to travel through time at age nineteen."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [
-            {
-              "name": "age",
-              "value": 19,
-              "unit": "years",
-              "qualifier": ""
-            }
-          ],
-          "product_refs": [],
-          "related_event_refs": []
-        },
         {
           "id": "event.identity",
           "title": "Arrival and assumption of Adam’s identity",
@@ -693,6 +658,41 @@
             "software.cpm_aurelia",
             "technology.logix_c_api"
           ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.power",
+          "title": "Vincent gains time-travel powers",
+          "event_type": "premise",
+          "date": {
+            "start": "2025-12-07",
+            "end": "2025-12-07"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "protagonist"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam"
+              ],
+              "description": "Gains the ability to travel through time at age nineteen."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [
+            {
+              "name": "age",
+              "value": 19,
+              "unit": "years",
+              "qualifier": ""
+            }
+          ],
+          "product_refs": [],
           "related_event_refs": []
         }
       ]
@@ -2209,6 +2209,36 @@
           ]
         },
         {
+          "id": "event.stepper_order",
+          "title": "Stepper programme approved and equipment ordered",
+          "event_type": "development",
+          "date": {
+            "start": "1979-01",
+            "end": "1979-01"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_275um"
+          ],
+          "related_event_refs": []
+        },
+        {
           "id": "event.bpi_expansion",
           "title": "BPI customer results and dealer expansion",
           "event_type": "plan",
@@ -3037,6 +3067,36 @@
           ]
         },
         {
+          "id": "event.stepper_accept",
+          "title": "Stepper installation and lithography acceptance",
+          "event_type": "development",
+          "date": {
+            "start": "1979-09",
+            "end": "1979-09"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_275um"
+          ],
+          "related_event_refs": []
+        },
+        {
           "id": "event.apple_compatibility_review",
           "title": "Apple reviews successor-product compatibility requirements",
           "event_type": "plan",
@@ -3209,6 +3269,36 @@
           "related_event_refs": [
             "event.dri_release"
           ]
+        },
+        {
+          "id": "event.pilot_275",
+          "title": "First complete 2.75 µm pilot lots",
+          "event_type": "development",
+          "date": {
+            "start": "1979-12",
+            "end": "1979-12"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_275um"
+          ],
+          "related_event_refs": []
         }
       ]
     },
@@ -3691,6 +3781,66 @@
           "related_event_refs": []
         },
         {
+          "id": "event.production_275",
+          "title": "Selected 2.75 µm process release review",
+          "event_type": "development",
+          "date": {
+            "start": "1980-06",
+            "end": "1980-06"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_275um"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.dram_control_release",
+          "title": "Improved 3 µm DRAM process-control release",
+          "event_type": "development",
+          "date": {
+            "start": "1980-06",
+            "end": "1980-06"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "part.aion_4164"
+          ],
+          "related_event_refs": []
+        },
+        {
           "id": "event.ibm_os_program",
           "title": "IBM funds an alternative OS delivery programme",
           "event_type": "development",
@@ -3778,6 +3928,36 @@
             "computer.aurelia_plus"
           ],
           "related_event_refs": []
+        },
+        {
+          "id": "event.dram_repair_release",
+          "title": "Repairable 64K DRAM production target",
+          "event_type": "development",
+          "date": {
+            "start": "1981-01",
+            "end": "1981-01"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "part.aion_4164"
+          ],
+          "related_event_refs": []
         }
       ]
     },
@@ -3846,6 +4026,36 @@
           "related_event_refs": []
         },
         {
+          "id": "event.dram_275_review",
+          "title": "2.75 µm RAM qualification and cost-selection review",
+          "event_type": "development",
+          "date": {
+            "start": "1981-06",
+            "end": "1981-06"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "part.aion_4164"
+          ],
+          "related_event_refs": []
+        },
+        {
           "id": "event.ibm_qualification",
           "title": "IBM business-software qualification delays commercial release",
           "event_type": "development",
@@ -3874,6 +4084,260 @@
           "related_event_refs": [
             "event.ibm_os_program"
           ]
+        },
+        {
+          "id": "event.pilot_2",
+          "title": "First complete 2.0 µm pilot lots",
+          "event_type": "development",
+          "date": {
+            "start": "1981-09",
+            "end": "1981-09"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_2um"
+          ],
+          "related_event_refs": []
+        }
+      ]
+    },
+    {
+      "id": "phase.manufacturing_1981_1983",
+      "title": "Memory manufacturing and process scaling",
+      "kind": "between_conferences",
+      "period": {
+        "start": "1981-11-19",
+        "end": "1983-12-31",
+        "precision": "range",
+        "qualifier": "Scenario roadmap beyond existing commercial forecast",
+        "display": "1981-11-19 to 1983-12-31"
+      },
+      "events": [
+        {
+          "id": "event.production_2",
+          "title": "Selected 2.0 µm process release review",
+          "event_type": "development",
+          "date": {
+            "start": "1982-06",
+            "end": "1982-06"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_2um"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.dram_2_release",
+          "title": "2.0 µm 64K RAM selected release target",
+          "event_type": "development",
+          "date": {
+            "start": "1982-07",
+            "end": "1982-07"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "part.aion_4164"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.mature_2",
+          "title": "2.0 µm repeatable-production review",
+          "event_type": "development",
+          "date": {
+            "start": "1982-12",
+            "end": "1982-12"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_2um"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.pilot_15",
+          "title": "First complete 1.5 µm pilot lots",
+          "event_type": "development",
+          "date": {
+            "start": "1983-03",
+            "end": "1983-03"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_15um"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.production_15",
+          "title": "Selected 1.5 µm process release review",
+          "event_type": "development",
+          "date": {
+            "start": "1983-09",
+            "end": "1983-09"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_15um"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.dram_15_release",
+          "title": "1.5 µm 64K RAM selected release target",
+          "event_type": "development",
+          "date": {
+            "start": "1983-10",
+            "end": "1983-10"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "part.aion_4164"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.mature_15",
+          "title": "1.5 µm repeatable-production review",
+          "event_type": "development",
+          "date": {
+            "start": "1983-12",
+            "end": "1983-12"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_15um"
+          ],
+          "related_event_refs": []
         }
       ]
     }
@@ -4162,6 +4626,198 @@
       "phase_refs": [
         "phase.comdex79"
       ]
+    },
+    {
+      "id": "process.stepper_install",
+      "title": "Stepper line procurement and installation",
+      "participants": [
+        {
+          "actor_ref": "actor.labs",
+          "role": "process_developer"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.labs"
+          ],
+          "description": "Develop and qualify the dated manufacturing scenario; ERA1 remains on 3 µm. Budgets, yields and release gates are in memory_manufacturing.json."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "technology.nmos_275um"
+      ],
+      "related_event_refs": [],
+      "period": {
+        "start": "1979-01-01",
+        "end": "1979-09-30",
+        "precision": "range",
+        "qualifier": "Selected scenario schedule, conditional on qualification",
+        "display": "1979-01-01 to 1979-09-30"
+      },
+      "phase_refs": [
+        "phase.ncc78",
+        "phase.ncc79"
+      ],
+      "date_basis": "provisional"
+    },
+    {
+      "id": "process.process_275",
+      "title": "2.75 µm development and memory qualification",
+      "participants": [
+        {
+          "actor_ref": "actor.labs",
+          "role": "process_developer"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.labs"
+          ],
+          "description": "Develop and qualify the dated manufacturing scenario; ERA1 remains on 3 µm. Budgets, yields and release gates are in memory_manufacturing.json."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "technology.nmos_275um",
+        "part.aion_4164"
+      ],
+      "related_event_refs": [],
+      "period": {
+        "start": "1979-07-01",
+        "end": "1981-06-30",
+        "precision": "range",
+        "qualifier": "Selected scenario schedule, conditional on qualification",
+        "display": "1979-07-01 to 1981-06-30"
+      },
+      "phase_refs": [
+        "phase.ncc79",
+        "phase.comdex79",
+        "phase.ncc80",
+        "phase.comdex80",
+        "phase.ncc81"
+      ],
+      "date_basis": "provisional"
+    },
+    {
+      "id": "process.dram_repair",
+      "title": "DRAM yield control and repair development",
+      "participants": [
+        {
+          "actor_ref": "actor.labs",
+          "role": "process_developer"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.labs"
+          ],
+          "description": "Develop and qualify the dated manufacturing scenario; ERA1 remains on 3 µm. Budgets, yields and release gates are in memory_manufacturing.json."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "part.aion_4164"
+      ],
+      "related_event_refs": [],
+      "period": {
+        "start": "1980-01-01",
+        "end": "1980-12-31",
+        "precision": "range",
+        "qualifier": "Selected scenario schedule, conditional on qualification",
+        "display": "1980-01-01 to 1980-12-31"
+      },
+      "phase_refs": [
+        "phase.comdex79",
+        "phase.ncc80",
+        "phase.comdex80"
+      ],
+      "date_basis": "provisional"
+    },
+    {
+      "id": "process.process_2",
+      "title": "2.0 µm process and RAM shrink development",
+      "participants": [
+        {
+          "actor_ref": "actor.labs",
+          "role": "process_developer"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.labs"
+          ],
+          "description": "Develop and qualify the dated manufacturing scenario; ERA1 remains on 3 µm. Budgets, yields and release gates are in memory_manufacturing.json."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "technology.nmos_2um",
+        "part.aion_4164"
+      ],
+      "related_event_refs": [],
+      "period": {
+        "start": "1981-01-01",
+        "end": "1982-12-31",
+        "precision": "range",
+        "qualifier": "Selected scenario schedule, conditional on qualification",
+        "display": "1981-01-01 to 1982-12-31"
+      },
+      "phase_refs": [
+        "phase.comdex80",
+        "phase.ncc81",
+        "phase.manufacturing_1981_1983"
+      ],
+      "date_basis": "provisional"
+    },
+    {
+      "id": "process.process_15",
+      "title": "1.5 µm process and RAM shrink development",
+      "participants": [
+        {
+          "actor_ref": "actor.labs",
+          "role": "process_developer"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.labs"
+          ],
+          "description": "Develop and qualify the dated manufacturing scenario; ERA1 remains on 3 µm. Budgets, yields and release gates are in memory_manufacturing.json."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "technology.nmos_15um",
+        "part.aion_4164"
+      ],
+      "related_event_refs": [],
+      "period": {
+        "start": "1982-04-01",
+        "end": "1983-12-31",
+        "precision": "range",
+        "qualifier": "Selected scenario schedule, conditional on qualification",
+        "display": "1982-04-01 to 1983-12-31"
+      },
+      "phase_refs": [
+        "phase.manufacturing_1981_1983"
+      ],
+      "date_basis": "provisional"
     }
   ]
 }

@@ -31,7 +31,8 @@ assert lo['bompart.part.aurelia_video_chip']==1 and not lo.get('bompart.part.art
 assert hi['bompart.part.aion_4116']==16 and hi['bompart.part.aion_2114']==2
 assert hi['bompart.part.aion_4164']==32 and not hi.get('bompart.part.dram_64kbit')
 assert hi['bompart.part.artemis_graphics_chip']==1 and not hi.get('bompart.part.aurelia_video_chip')
-assert not pro.get('bompart.part.aion_4164')
+assert pop('assembly.computer.artemis_pro.m128_512')['bompart.part.aion_4164']==64
+assert not pop('assembly.computer.artemis_pro.m128_512').get('bompart.part.dram_64kbit')
 assert 'bundle.artemis_128_mono_pro' not in r and 'bundle.artemis_256_mono' not in r
 for layer in ['hardware','memory']:
  nodes=c['artemis_explorer']['diagrams'][layer]['nodes']
@@ -45,3 +46,4 @@ for sc in read('sales_forecast.json')['scenarios']:
 iv=read('industrial_investment_1974_1981.json')
 assert sum(p['person_months'] for p in iv['engineering_programs'] if p['id'] in ['aion_64k_dram','artemis_tier_hardware','artemis_economy_driver'])==156
 print('PASS: Artemis tier BOMs, mode allocation, monitor constraints, selected-card diagrams, AION sourcing and sales reconciliation.')
+

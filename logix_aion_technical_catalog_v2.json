@@ -1626,6 +1626,91 @@
         "software.aurelia_sdk",
         "software.artemis_sdk"
       ]
+    },
+    {
+      "id": "technology.nmos_3um",
+      "name": "3.0 µm NMOS manufacturing process",
+      "category": "semiconductor_manufacturing",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "Scenario process qualification target",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "node_um": 3.0,
+        "wafer_diameter_mm": 75,
+        "lithography": "Micralign projection",
+        "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+        "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+        "policy_file": "memory_manufacturing.json"
+      },
+      "used_by": [
+        "part.era1",
+        "part.aion_4164"
+      ]
+    },
+    {
+      "id": "technology.nmos_275um",
+      "name": "2.75 µm NMOS manufacturing process",
+      "category": "semiconductor_manufacturing",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "Scenario process qualification target",
+        "event_start_date": "1980-06"
+      },
+      "specification": {
+        "node_um": 2.75,
+        "wafer_diameter_mm": 75,
+        "lithography": "GCA reduction stepper; tool/optics upgrades qualified per node",
+        "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+        "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+        "policy_file": "memory_manufacturing.json"
+      },
+      "used_by": [
+        "part.aion_4164"
+      ]
+    },
+    {
+      "id": "technology.nmos_2um",
+      "name": "2.0 µm NMOS manufacturing process",
+      "category": "semiconductor_manufacturing",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "Scenario process qualification target",
+        "event_start_date": "1982-07"
+      },
+      "specification": {
+        "node_um": 2.0,
+        "wafer_diameter_mm": 75,
+        "lithography": "GCA reduction stepper; tool/optics upgrades qualified per node",
+        "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+        "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+        "policy_file": "memory_manufacturing.json"
+      },
+      "used_by": [
+        "part.aion_4164"
+      ]
+    },
+    {
+      "id": "technology.nmos_15um",
+      "name": "1.5 µm NMOS manufacturing process",
+      "category": "semiconductor_manufacturing",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "Scenario process qualification target",
+        "event_start_date": "1983-10"
+      },
+      "specification": {
+        "node_um": 1.5,
+        "wafer_diameter_mm": 75,
+        "lithography": "GCA reduction stepper; tool/optics upgrades qualified per node",
+        "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+        "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+        "policy_file": "memory_manufacturing.json"
+      },
+      "used_by": [
+        "part.aion_4164"
+      ]
     }
   ],
   "base_parts": [
@@ -1715,7 +1800,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.part.era1"
-      ]
+      ],
+      "manufacturing_process_ref": "technology.nmos_3um",
+      "manufacturing_planning": {
+        "node_um": 3.0,
+        "die_area_mm2": 55,
+        "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
+      }
     },
     {
       "id": "part.dram_16kbit",
@@ -1759,9 +1850,7 @@
       "name": "64 Kbit RAM chip",
       "category": "memory_chip",
       "origin": "historical_external_component",
-      "used_in": [
-        "part.artemis_ram_module_128kb"
-      ],
+      "used_in": [],
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
         "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
@@ -1862,14 +1951,14 @@
     },
     {
       "id": "part.artemis_ram_module_128kb",
-      "name": "Artemis M128-16 128 KiB / 16-bit RAM module",
+      "name": "Artemis M128-16 128 KiB / 16-bit AION-qualified RAM module",
       "category": "memory_module",
       "origin": "custom_logix",
       "specification": {
         "capacity_kb": 128,
         "data_width_bits": 16,
         "chips": 16,
-        "chip_type_ref": "part.dram_64kbit",
+        "chip_type_ref": "part.aion_4164",
         "chip_organization": "64K x 1",
         "physical_arrangement": "16 data chips; final board placement and connector drawing pending.",
         "modules_per_bank": 2,
@@ -1891,12 +1980,14 @@
       "revision": "2",
       "product_status": "Accepted production design baseline; electrical timing, supplier and full-population qualification pending.",
       "manufacturing_requirements": [
-        "Redefine/revise as sixteen 64K×1 chips, ×16 data width",
-        "add PCB, two byte lanes, buffers/straps/connectors, decoupling and test."
+        "Sixteen AION 64K x 1 chips per module; PRO and bank kits use matched qualified grades. Keep purchased 64K supplier as a separately qualified contingency, with no automatic substitution or price saving."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.part.artemis_ram_module_128kb"
+      ],
+      "technology_refs": [
+        "technology.nmos_3um"
       ]
     },
     {
@@ -3200,8 +3291,10 @@
       "origin": "custom_logix_aion",
       "vendor": "AION Labs",
       "used_in": [
-        "part.artemis_ram_module_128kb_aion",
-        "computer.aurelia_plus"
+        "computer.artemis_pro",
+        "computer.aurelia_plus",
+        "part.artemis_ram_module_128kb",
+        "part.artemis_ram_module_128kb_aion"
       ],
       "introduced": {
         "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
@@ -3225,11 +3318,50 @@
           "die_area_mm2": 45,
           "wafer_mm": 75,
           "maturity_multiplier": 0.85,
-          "cost_1980_usd": 15.1296,
-          "cost_1981_usd": 14.4529,
-          "status": "Accepted central scenario; not proven yield. Smaller cell/array, sense amplifiers, retention, substrate bias, timing and process qualification required. No redundant-row yield benefit assumed.",
-          "boundary": "Recurring fabricated/package/test cost; development, masks and fab capital budgeted separately."
-        }
+          "cost_1980_usd": 14.4056,
+          "cost_1981_usd": 11.4874,
+          "status": "Accepted RAM process/repair scenario, not proven yield. Spare structures, retention, repair coverage and speed require qualification; recipe details in memory_manufacturing.json.",
+          "boundary": "Recurring fabricated/package/test cost; development, masks and fab capital budgeted separately.",
+          "policy_file": "memory_manufacturing.json",
+          "revision_policy": "1980 process-control improvement; 1981 repaired 3 um die includes 5% spare area. Evaluate 2.75 um against repaired 3 um; apply only if cheaper. Later 2/1.5 um releases are prospective.",
+          "production_revisions": {
+            "1980": {
+              "id": "dram64_3um_control",
+              "node_um": "3.0",
+              "available_from": "1980-06-01",
+              "die_area_mm2": 45,
+              "defect_density_cm2": 2.0,
+              "nonarea_yield": 0.765,
+              "processed_wafer_usd": 235,
+              "repair_fraction_of_spatial_failures": 0,
+              "gross_usable_dies": 66.00446978417172,
+              "raw_die_yield": 0.3110257897015583,
+              "die_yield": 0.3110257897015583,
+              "good_packaged_dies_per_wafer": 19.092055874762828,
+              "recurring_processed_wafer_cost_usd": 235,
+              "good_packaged_chip_cost_usd": 14.405558618940674
+            },
+            "1981": {
+              "id": "dram64_3um_repair",
+              "node_um": "3.0",
+              "available_from": "1981-01-01",
+              "die_area_mm2": 47.25,
+              "defect_density_cm2": 1.7,
+              "nonarea_yield": 0.765,
+              "processed_wafer_usd": 255,
+              "repair_fraction_of_spatial_failures": 0.35,
+              "repair_cost_per_wafer_usd": 12,
+              "gross_usable_dies": 62.33568104122106,
+              "raw_die_yield": 0.34262132680681845,
+              "die_yield": 0.490453862424432,
+              "good_packaged_dies_per_wafer": 28.43268124617761,
+              "recurring_processed_wafer_cost_usd": 267,
+              "good_packaged_chip_cost_usd": 11.487376426529654
+            }
+          },
+          "legacy_fields_scope": "Top-level die area and maturity describe the original launch revision only; production_revisions are authoritative for dated 1980/81 economics."
+        },
+        "electrical_contract": "64K x 1; released pinout/rails/timing/refresh remain gates. Common module interface only after retention, speed and all-bank qualification; no capacity or bus-width change."
       },
       "manufacturing_requirements": [
         "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
@@ -7808,7 +7940,8 @@
         "upgrade_policy": "Low-density 128 KiB can expand to 256 KiB with four additional M32-16 modules. Transition to high density replaces all low-density modules. High-density expansion uses complete 256 KiB banks.",
         "reliability_policy": "Baseline has no parity or ECC. PRO byte parity is an unimplemented option requiring 18-chip modules and generation/check/reporting logic; never count it as fitted.",
         "video_ram_kb": 32,
-        "sprite_sram_kb": 1
+        "sprite_sram_kb": 1,
+        "sourcing_policy": "AION 64K x 1 production grade after server qualification; 64/128 chips for 512 KiB/1 MiB. Existing 32-bit bank widths, capacities and populations unchanged."
       },
       "storage": {
         "internal_fdd": {
@@ -8376,7 +8509,8 @@
         "technology.logix_tcpip_lan",
         "technology.logix_lan100_link",
         "technology.logix_c_api",
-        "technology.logix_display_api"
+        "technology.logix_display_api",
+        "technology.nmos_3um"
       ],
       "compatible_devices": [
         "device.flexibus_keyboard",

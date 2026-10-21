@@ -13,9 +13,10 @@
     "source_commit": "c4567d340882e132ca92671861487af453dafc80",
     "source_note": "Baseline commit; source hashes identify the edited inputs used for this build.",
     "source_sha256": {
-      "logix_aion_technical_catalog_v2.json": "b46ad8833bc25c8a37887bf99d29cc292687b27c2b0cd4c668ccc80d98572324",
-      "hardware_bom.json": "ac5ac1f6b4922c39d9e15c0426dc278efdad0d89dc10c1c6082eb303413c03e8",
-      "manufacturing_programs.json": "3456986dd3396ac5c2e965898ea10edcbaccd661be7ab62285e8be47ad344c98"
+      "logix_aion_technical_catalog_v2.json": "c2649b16b17ac737328e63522e09132671a211e82f7565fb426b33bd1b4579e8",
+      "hardware_bom.json": "de0ed6369789ee04b439d71efd2fc28a868afaa202d01a6de536351006f1b6bf",
+      "manufacturing_programs.json": "03af88047b06a556acf892db0f32ca94d81dc2ff54805a488c75a0d902590a5e",
+      "memory_manufacturing.json": "16082a08f95d55769f0444be95938db44e18b8f6181bbc93f61e2e43ea9086e9"
     },
     "estimate_status": "engineering planning scenario; no supplier quotes; not audited manufacturing accounts",
     "generated_by": "tools/build_cost_assessment.py"
@@ -5793,18 +5794,18 @@
           "operating_overhead": 1.75286
         },
         "1980": {
-          "bom_materials": 3.04483,
-          "workforce": 6.08967,
-          "energy": 1.30328,
-          "consumables": 3.12788,
-          "operating_overhead": 1.56394
+          "bom_materials": 2.91451,
+          "workforce": 5.82901,
+          "energy": 1.23088,
+          "consumables": 2.95411,
+          "operating_overhead": 1.47705
         },
         "1981": {
-          "bom_materials": 2.92302,
-          "workforce": 5.84604,
-          "energy": 1.23561,
-          "consumables": 2.96546,
-          "operating_overhead": 1.48273
+          "bom_materials": 2.38923,
+          "workforce": 4.77847,
+          "energy": 0.93906,
+          "consumables": 2.25374,
+          "operating_overhead": 1.12687
         }
       },
       "confidence": "low",
@@ -5849,7 +5850,8 @@
         "package_usd": 2.5,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 37.1368,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 55,
@@ -5861,7 +5863,8 @@
         "package_usd": 2.5,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 31.873,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 55,
@@ -5873,7 +5876,8 @@
         "package_usd": 2.5,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 27.906,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 55,
@@ -5885,7 +5889,8 @@
         "package_usd": 2.5,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 22.434,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.flexibus_host_controller": {
@@ -5899,7 +5904,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.3658,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 12,
@@ -5911,7 +5917,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.3639,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 12,
@@ -5923,7 +5930,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.3872,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 12,
@@ -5935,7 +5943,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.4486,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.flexibus_device_controller": {
@@ -5949,7 +5958,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.079,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 10,
@@ -5961,7 +5971,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.0856,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 10,
@@ -5973,7 +5984,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.1121,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 10,
@@ -5985,7 +5997,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.1671,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.aurelia_video_chip": {
@@ -5999,7 +6012,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 22.5629,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 52,
@@ -6011,7 +6025,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 19.5111,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 52,
@@ -6023,7 +6038,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 17.2052,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 52,
@@ -6035,7 +6051,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 16.123,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.aurelia_monitor_dac": {
@@ -6049,7 +6066,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 1.5977,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 6,
@@ -6061,7 +6079,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 1.6096,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 6,
@@ -6073,7 +6092,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 1.6325,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 6,
@@ -6085,7 +6105,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 1.6692,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.color_monitor_controller": {
@@ -6099,7 +6120,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.687,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 14,
@@ -6111,7 +6133,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.6718,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 14,
@@ -6123,7 +6146,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.6878,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 14,
@@ -6135,7 +6159,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.753,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.mono_monitor2_controller": {
@@ -6149,7 +6174,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 1.9476,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 9,
@@ -6161,7 +6187,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 1.9568,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 9,
@@ -6173,7 +6200,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 1.9837,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 9,
@@ -6185,7 +6213,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.0347,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.artemis_dma": {
@@ -6199,7 +6228,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 4.3669,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 18,
@@ -6211,7 +6241,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 4.2841,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 18,
@@ -6223,7 +6254,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 4.2647,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 18,
@@ -6235,7 +6267,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.8205,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.artemis_mmu": {
@@ -6249,7 +6282,8 @@
         "package_usd": 2.5,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 12.2133,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 30,
@@ -6261,7 +6295,8 @@
         "package_usd": 2.5,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 11.6375,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 30,
@@ -6273,7 +6308,8 @@
         "package_usd": 2.5,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 11.2402,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 30,
@@ -6285,7 +6321,8 @@
         "package_usd": 2.5,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 10.026,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.artemis_graphics_chip": {
@@ -6299,7 +6336,8 @@
         "package_usd": 4,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 91.3969,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 80,
@@ -6311,7 +6349,8 @@
         "package_usd": 4,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 85.7483,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 80,
@@ -6323,7 +6362,8 @@
         "package_usd": 4,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 67.79,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 80,
@@ -6335,7 +6375,8 @@
         "package_usd": 4,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 50.0705,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.artemis_fdd_hdd_controller": {
@@ -6349,7 +6390,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 5.6674,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 22,
@@ -6361,7 +6403,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 5.4809,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 22,
@@ -6373,7 +6416,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 5.3848,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 22,
@@ -6385,7 +6429,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 4.7403,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.aion_4116": {
@@ -6399,7 +6444,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.4452,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 18,
@@ -6411,7 +6457,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.3856,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 18,
@@ -6423,7 +6470,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.3717,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 18,
@@ -6435,7 +6483,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.4361,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.aion_2114": {
@@ -6449,7 +6498,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.8892,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 20,
@@ -6461,7 +6511,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.7966,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 20,
@@ -6473,7 +6524,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.7586,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 20,
@@ -6485,7 +6537,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 3.8174,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.aurelia_system_controller": {
@@ -6499,7 +6552,8 @@
         "package_usd": 3,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 10.4753,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 30,
@@ -6511,7 +6565,8 @@
         "package_usd": 3,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 10.0607,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 30,
@@ -6523,7 +6578,8 @@
         "package_usd": 3,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 9.7747,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 30,
@@ -6535,7 +6591,8 @@
         "package_usd": 3,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 9.732,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.mono_pro_controller": {
@@ -6549,7 +6606,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.3658,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 12,
@@ -6561,7 +6619,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.3639,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 12,
@@ -6573,7 +6632,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.3872,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1981": {
         "die_area_mm2": 12,
@@ -6585,7 +6645,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 0.35,
         "good_packaged_chip_cost_usd": 2.4486,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       }
     },
     "part.aion_4164": {
@@ -6599,7 +6660,8 @@
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 18.7898,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1979": {
         "die_area_mm2": 45,
@@ -6611,31 +6673,42 @@
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
         "good_packaged_chip_cost_usd": 16.704,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
       },
       "1980": {
         "die_area_mm2": 45,
         "wafer_diameter_mm": 75,
         "gross_usable_dies": 66.0,
-        "die_yield": 0.2937,
+        "die_yield": 0.311,
         "packaging_test_yield": 0.93,
         "recurring_processed_wafer_cost_usd": 235,
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
-        "good_packaged_chip_cost_usd": 15.1296,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "good_packaged_chip_cost_usd": 14.4056,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0,
+        "memory_recipe": "dram64_3um_control",
+        "raw_die_yield": 0.311,
+        "repair_fraction_of_spatial_failures": 0,
+        "repair_cost_per_wafer_usd": 0
       },
       "1981": {
-        "die_area_mm2": 45,
+        "die_area_mm2": 47.25,
         "wafer_diameter_mm": 75,
-        "gross_usable_dies": 66.0,
-        "die_yield": 0.3362,
+        "gross_usable_dies": 62.34,
+        "die_yield": 0.4905,
         "packaging_test_yield": 0.93,
-        "recurring_processed_wafer_cost_usd": 255,
+        "recurring_processed_wafer_cost_usd": 267,
         "package_usd": 0.65,
         "test_labor_usd": 1.3,
-        "good_packaged_chip_cost_usd": 14.4529,
-        "cost_status": "engineering scenario, not supplier quote or proven silicon yield"
+        "good_packaged_chip_cost_usd": 11.4874,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0,
+        "memory_recipe": "dram64_3um_repair",
+        "raw_die_yield": 0.3426,
+        "repair_fraction_of_spatial_failures": 0.35,
+        "repair_cost_per_wafer_usd": 12
       }
     }
   },
@@ -8743,16 +8816,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 657.05,
-          "low_usd": 459.93,
-          "high_usd": 1051.28,
+          "total_usd": 651.24,
+          "low_usd": 455.87,
+          "high_usd": 1041.98,
           "breakdown_usd": {
-            "bom_materials": 449.11,
-            "workforce": 94.31,
-            "energy": 15.48,
-            "consumables": 39.53,
-            "operating_overhead": 23.42,
-            "yield_and_rework": 8.8,
+            "bom_materials": 448.06,
+            "workforce": 92.22,
+            "energy": 14.9,
+            "consumables": 38.14,
+            "operating_overhead": 22.73,
+            "yield_and_rework": 8.79,
             "instructions": 2.4,
             "packaging": 9.6,
             "logistics": 14.4,
@@ -8824,7 +8897,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 8,
-              "extended_recurring_cost_usd": 121.04
+              "extended_recurring_cost_usd": 115.24
             },
             {
               "component_ref": "bompart.part.aurelia_system_controller",
@@ -8852,16 +8925,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 641.39,
-          "low_usd": 448.97,
-          "high_usd": 1026.22,
+          "total_usd": 617.61,
+          "low_usd": 432.33,
+          "high_usd": 988.18,
           "breakdown_usd": {
-            "bom_materials": 434.08,
-            "workforce": 93.22,
-            "energy": 14.95,
-            "consumables": 38.45,
-            "operating_overhead": 22.98,
-            "yield_and_rework": 8.67,
+            "bom_materials": 429.81,
+            "workforce": 84.68,
+            "energy": 12.58,
+            "consumables": 32.76,
+            "operating_overhead": 20.13,
+            "yield_and_rework": 8.61,
             "instructions": 2.64,
             "packaging": 10.56,
             "logistics": 15.84,
@@ -8933,7 +9006,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 8,
-              "extended_recurring_cost_usd": 115.62
+              "extended_recurring_cost_usd": 91.9
             },
             {
               "component_ref": "bompart.part.aurelia_system_controller",
@@ -9547,16 +9620,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 1277.61,
-          "low_usd": 894.33,
-          "high_usd": 2044.18,
+          "total_usd": 1254.32,
+          "low_usd": 878.02,
+          "high_usd": 2006.91,
           "breakdown_usd": {
-            "bom_materials": 654.47,
-            "workforce": 299.4,
-            "energy": 56.67,
-            "consumables": 139.51,
-            "operating_overhead": 77.47,
-            "yield_and_rework": 23.69,
+            "bom_materials": 650.3,
+            "workforce": 291.06,
+            "energy": 54.35,
+            "consumables": 133.95,
+            "operating_overhead": 74.69,
+            "yield_and_rework": 23.57,
             "instructions": 2.4,
             "packaging": 9.6,
             "logistics": 14.4,
@@ -9638,7 +9711,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 32,
-              "extended_recurring_cost_usd": 484.15
+              "extended_recurring_cost_usd": 460.98
             },
             {
               "component_ref": "bompart.part.artemis_dma",
@@ -9701,16 +9774,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 1237.51,
-          "low_usd": 866.26,
-          "high_usd": 1980.02,
+          "total_usd": 1142.09,
+          "low_usd": 799.46,
+          "high_usd": 1827.34,
           "breakdown_usd": {
-            "bom_materials": 646.47,
-            "workforce": 284.78,
-            "energy": 52.16,
-            "consumables": 128.97,
-            "operating_overhead": 72.44,
-            "yield_and_rework": 23.65,
+            "bom_materials": 629.39,
+            "workforce": 250.62,
+            "energy": 42.67,
+            "consumables": 106.19,
+            "operating_overhead": 61.05,
+            "yield_and_rework": 23.13,
             "instructions": 2.64,
             "packaging": 10.56,
             "logistics": 15.84,
@@ -9792,7 +9865,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 32,
-              "extended_recurring_cost_usd": 462.49
+              "extended_recurring_cost_usd": 367.6
             },
             {
               "component_ref": "bompart.part.artemis_dma",
@@ -9880,16 +9953,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 1320.1,
-          "low_usd": 924.07,
-          "high_usd": 2112.16,
+          "total_usd": 1224.43,
+          "low_usd": 857.1,
+          "high_usd": 1959.09,
           "breakdown_usd": {
-            "bom_materials": 709.69,
-            "workforce": 290.0,
-            "energy": 52.23,
-            "consumables": 129.63,
-            "operating_overhead": 73.75,
-            "yield_and_rework": 35.76,
+            "bom_materials": 692.61,
+            "workforce": 255.84,
+            "energy": 42.74,
+            "consumables": 106.85,
+            "operating_overhead": 62.36,
+            "yield_and_rework": 34.99,
             "instructions": 2.64,
             "packaging": 10.56,
             "logistics": 15.84,
@@ -10011,7 +10084,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 32,
-              "extended_recurring_cost_usd": 462.49
+              "extended_recurring_cost_usd": 367.6
             },
             {
               "component_ref": "bompart.part.artemis_dma",
@@ -10100,16 +10173,16 @@
         },
         "1981": {
           "status": "announced_shipping_unconfirmed",
-          "total_usd": 3527.56,
-          "low_usd": 2292.91,
-          "high_usd": 6173.23,
+          "total_usd": 2619.33,
+          "low_usd": 1702.56,
+          "high_usd": 4583.83,
           "breakdown_usd": {
-            "bom_materials": 3215.55,
-            "workforce": 105.27,
-            "energy": 12.7,
-            "consumables": 35.46,
-            "operating_overhead": 26.89,
-            "yield_and_rework": 102.65,
+            "bom_materials": 1768.46,
+            "workforce": 411.09,
+            "energy": 72.8,
+            "consumables": 179.7,
+            "operating_overhead": 99.0,
+            "yield_and_rework": 59.24,
             "instructions": 2.64,
             "packaging": 10.56,
             "logistics": 15.84,
@@ -10229,6 +10302,11 @@
               "extended_recurring_cost_usd": 54.98
             },
             {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 64,
+              "extended_recurring_cost_usd": 735.19
+            },
+            {
               "component_ref": "bompart.part.artemis_dma",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.82
@@ -10272,11 +10350,6 @@
               "component_ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
               "quantity": 4,
               "extended_recurring_cost_usd": 10.2
-            },
-            {
-              "component_ref": "bompart.part.dram_64kbit",
-              "quantity": 64,
-              "extended_recurring_cost_usd": 1600
             },
             {
               "component_ref": "bompart.part.era1",
@@ -10326,16 +10399,16 @@
         },
         "1981": {
           "status": "announced_shipping_unconfirmed",
-          "total_usd": 5229.86,
-          "low_usd": 3399.41,
-          "high_usd": 9152.25,
+          "total_usd": 3413.41,
+          "low_usd": 2218.72,
+          "high_usd": 5973.47,
           "breakdown_usd": {
-            "bom_materials": 4855.98,
-            "workforce": 113.2,
-            "energy": 12.8,
-            "consumables": 37.31,
-            "operating_overhead": 28.87,
-            "yield_and_rework": 152.66,
+            "bom_materials": 1961.8,
+            "workforce": 724.84,
+            "energy": 133.0,
+            "consumables": 325.79,
+            "operating_overhead": 173.11,
+            "yield_and_rework": 65.83,
             "instructions": 2.64,
             "packaging": 10.56,
             "logistics": 15.84,
@@ -10455,6 +10528,11 @@
               "extended_recurring_cost_usd": 54.98
             },
             {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 128,
+              "extended_recurring_cost_usd": 1470.38
+            },
+            {
               "component_ref": "bompart.part.artemis_dma",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.82
@@ -10498,11 +10576,6 @@
               "component_ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
               "quantity": 8,
               "extended_recurring_cost_usd": 20.4
-            },
-            {
-              "component_ref": "bompart.part.dram_64kbit",
-              "quantity": 128,
-              "extended_recurring_cost_usd": 3200
             },
             {
               "component_ref": "bompart.part.era1",
@@ -13572,16 +13645,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 1352.79,
-          "low_usd": 946.95,
-          "high_usd": 2164.46,
+          "total_usd": 498.16,
+          "low_usd": 348.71,
+          "high_usd": 797.06,
           "breakdown_usd": {
-            "bom_materials": 1300.16,
-            "workforce": 4.47,
-            "energy": 0.05,
-            "consumables": 0.94,
-            "operating_overhead": 1.12,
-            "yield_and_rework": 39.45,
+            "bom_materials": 113.42,
+            "workforce": 191.0,
+            "energy": 39.44,
+            "consumables": 95.47,
+            "operating_overhead": 48.38,
+            "yield_and_rework": 3.85,
             "instructions": 1.44,
             "packaging": 2.16,
             "logistics": 3.0,
@@ -13594,6 +13667,11 @@
               "component_ref": "bompart.device.artemis_ram_256kb_bank_kit.kit_packout_and_instructions",
               "quantity": 1,
               "extended_recurring_cost_usd": 0
+            },
+            {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 32,
+              "extended_recurring_cost_usd": 460.98
             },
             {
               "component_ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
@@ -13619,11 +13697,6 @@
               "component_ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
               "quantity": 2,
               "extended_recurring_cost_usd": 5.4
-            },
-            {
-              "component_ref": "bompart.part.dram_64kbit",
-              "quantity": 32,
-              "extended_recurring_cost_usd": 1280
             }
           ],
           "confidence": "low",
@@ -13631,16 +13704,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 859.49,
-          "low_usd": 601.64,
-          "high_usd": 1375.18,
+          "total_usd": 405.39,
+          "low_usd": 283.77,
+          "high_usd": 648.62,
           "breakdown_usd": {
-            "bom_materials": 820.22,
-            "workforce": 4.68,
-            "energy": 0.06,
-            "consumables": 1.03,
-            "operating_overhead": 1.17,
-            "yield_and_rework": 25.07,
+            "bom_materials": 96.67,
+            "workforce": 157.6,
+            "energy": 30.11,
+            "consumables": 73.15,
+            "operating_overhead": 37.23,
+            "yield_and_rework": 3.37,
             "instructions": 1.58,
             "packaging": 2.38,
             "logistics": 3.3,
@@ -13653,6 +13726,11 @@
               "component_ref": "bompart.device.artemis_ram_256kb_bank_kit.kit_packout_and_instructions",
               "quantity": 1,
               "extended_recurring_cost_usd": 0
+            },
+            {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 32,
+              "extended_recurring_cost_usd": 367.6
             },
             {
               "component_ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
@@ -13678,11 +13756,6 @@
               "component_ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
               "quantity": 2,
               "extended_recurring_cost_usd": 5.1
-            },
-            {
-              "component_ref": "bompart.part.dram_64kbit",
-              "quantity": 32,
-              "extended_recurring_cost_usd": 800
             }
           ],
           "confidence": "low",
@@ -15159,15 +15232,15 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 15.46,
-          "low_usd": 7.73,
-          "high_usd": 38.65,
+          "total_usd": 14.74,
+          "low_usd": 7.37,
+          "high_usd": 36.85,
           "breakdown_usd": {
-            "bom_materials": 3.04,
-            "workforce": 6.09,
-            "energy": 1.3,
-            "consumables": 3.13,
-            "operating_overhead": 1.56,
+            "bom_materials": 2.91,
+            "workforce": 5.83,
+            "energy": 1.23,
+            "consumables": 2.95,
+            "operating_overhead": 1.48,
             "yield_and_rework": 0.0,
             "instructions": 0.02,
             "packaging": 0.14,
@@ -15180,7 +15253,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 1,
-              "extended_recurring_cost_usd": 15.13
+              "extended_recurring_cost_usd": 14.41
             }
           ],
           "confidence": "low",
@@ -15188,15 +15261,15 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 14.85,
-          "low_usd": 7.42,
-          "high_usd": 37.12,
+          "total_usd": 11.88,
+          "low_usd": 5.94,
+          "high_usd": 29.7,
           "breakdown_usd": {
-            "bom_materials": 2.92,
-            "workforce": 5.85,
-            "energy": 1.24,
-            "consumables": 2.97,
-            "operating_overhead": 1.48,
+            "bom_materials": 2.39,
+            "workforce": 4.78,
+            "energy": 0.94,
+            "consumables": 2.25,
+            "operating_overhead": 1.13,
             "yield_and_rework": 0.0,
             "instructions": 0.03,
             "packaging": 0.16,
@@ -15209,7 +15282,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 1,
-              "extended_recurring_cost_usd": 14.45
+              "extended_recurring_cost_usd": 11.49
             }
           ],
           "confidence": "low",
@@ -22457,16 +22530,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 942.69,
-          "low_usd": 659.88,
-          "high_usd": 1508.3,
+          "total_usd": 936.87,
+          "low_usd": 655.81,
+          "high_usd": 1498.99,
           "breakdown_usd": {
-            "bom_materials": 609.63,
-            "workforce": 112.47,
-            "energy": 15.74,
-            "consumables": 41.82,
-            "operating_overhead": 27.9,
-            "yield_and_rework": 22.1,
+            "bom_materials": 608.59,
+            "workforce": 110.39,
+            "energy": 15.16,
+            "consumables": 40.43,
+            "operating_overhead": 27.2,
+            "yield_and_rework": 22.07,
             "instructions": 9.6,
             "packaging": 21.6,
             "logistics": 28.8,
@@ -22618,7 +22691,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 8,
-              "extended_recurring_cost_usd": 121.04
+              "extended_recurring_cost_usd": 115.24
             },
             {
               "component_ref": "bompart.part.aurelia_system_controller",
@@ -22671,16 +22744,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 939.88,
-          "low_usd": 657.92,
-          "high_usd": 1503.81,
+          "total_usd": 916.02,
+          "low_usd": 641.21,
+          "high_usd": 1465.63,
           "breakdown_usd": {
-            "bom_materials": 598.16,
-            "workforce": 112.23,
-            "energy": 15.24,
-            "consumables": 40.97,
-            "operating_overhead": 27.67,
-            "yield_and_rework": 21.94,
+            "bom_materials": 593.89,
+            "workforce": 103.69,
+            "energy": 12.87,
+            "consumables": 35.27,
+            "operating_overhead": 24.82,
+            "yield_and_rework": 21.81,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -22832,7 +22905,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 8,
-              "extended_recurring_cost_usd": 115.62
+              "extended_recurring_cost_usd": 91.9
             },
             {
               "component_ref": "bompart.part.aurelia_system_controller",
@@ -22916,16 +22989,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 1071.54,
-          "low_usd": 750.08,
-          "high_usd": 1714.46,
+          "total_usd": 1065.7,
+          "low_usd": 745.99,
+          "high_usd": 1705.12,
           "breakdown_usd": {
-            "bom_materials": 734.16,
-            "workforce": 112.73,
-            "energy": 15.81,
-            "consumables": 41.99,
-            "operating_overhead": 27.98,
-            "yield_and_rework": 25.84,
+            "bom_materials": 733.11,
+            "workforce": 110.64,
+            "energy": 15.23,
+            "consumables": 40.6,
+            "operating_overhead": 27.29,
+            "yield_and_rework": 25.8,
             "instructions": 9.6,
             "packaging": 21.6,
             "logistics": 28.8,
@@ -23077,7 +23150,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 8,
-              "extended_recurring_cost_usd": 121.04
+              "extended_recurring_cost_usd": 115.24
             },
             {
               "component_ref": "bompart.part.aurelia_system_controller",
@@ -23130,16 +23203,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 1061.96,
-          "low_usd": 743.37,
-          "high_usd": 1699.14,
+          "total_usd": 1038.13,
+          "low_usd": 726.69,
+          "high_usd": 1661.01,
           "breakdown_usd": {
-            "bom_materials": 716.13,
-            "workforce": 112.49,
-            "energy": 15.31,
-            "consumables": 41.14,
-            "operating_overhead": 27.75,
-            "yield_and_rework": 25.47,
+            "bom_materials": 711.86,
+            "workforce": 103.95,
+            "energy": 12.94,
+            "consumables": 35.45,
+            "operating_overhead": 24.91,
+            "yield_and_rework": 25.35,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -23291,7 +23364,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 8,
-              "extended_recurring_cost_usd": 115.62
+              "extended_recurring_cost_usd": 91.9
             },
             {
               "component_ref": "bompart.part.aurelia_system_controller",
@@ -24583,16 +24656,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 1695.8,
-          "low_usd": 1187.06,
-          "high_usd": 2713.28,
+          "total_usd": 1672.45,
+          "low_usd": 1170.71,
+          "high_usd": 2675.92,
           "breakdown_usd": {
-            "bom_materials": 949.84,
-            "workforce": 317.82,
-            "energy": 56.99,
-            "consumables": 141.97,
-            "operating_overhead": 82.03,
-            "yield_and_rework": 44.12,
+            "bom_materials": 945.67,
+            "workforce": 309.48,
+            "energy": 54.68,
+            "consumables": 136.41,
+            "operating_overhead": 79.25,
+            "yield_and_rework": 43.93,
             "instructions": 9.6,
             "packaging": 21.6,
             "logistics": 28.8,
@@ -24754,7 +24827,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 32,
-              "extended_recurring_cost_usd": 484.15
+              "extended_recurring_cost_usd": 460.98
             },
             {
               "component_ref": "bompart.part.artemis_dma",
@@ -24842,16 +24915,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 1749.64,
-          "low_usd": 1224.75,
-          "high_usd": 2799.42,
+          "total_usd": 1653.71,
+          "low_usd": 1157.6,
+          "high_usd": 2645.94,
           "breakdown_usd": {
-            "bom_materials": 1006.14,
-            "workforce": 309.27,
-            "energy": 52.59,
-            "consumables": 132.32,
-            "operating_overhead": 78.52,
-            "yield_and_rework": 57.13,
+            "bom_materials": 989.06,
+            "workforce": 275.11,
+            "energy": 43.1,
+            "consumables": 109.54,
+            "operating_overhead": 67.13,
+            "yield_and_rework": 56.1,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -25053,7 +25126,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 32,
-              "extended_recurring_cost_usd": 462.49
+              "extended_recurring_cost_usd": 367.6
             },
             {
               "component_ref": "bompart.part.artemis_dma",
@@ -25409,16 +25482,16 @@
         },
         "1981": {
           "status": "announced_shipping_unconfirmed",
-          "total_usd": 3641.74,
-          "low_usd": 2367.13,
-          "high_usd": 6373.05,
+          "total_usd": 2711.81,
+          "low_usd": 1762.68,
+          "high_usd": 4745.67,
           "breakdown_usd": {
-            "bom_materials": 3239.94,
-            "workforce": 107.8,
-            "energy": 12.71,
-            "consumables": 35.9,
-            "operating_overhead": 27.52,
-            "yield_and_rework": 151.87,
+            "bom_materials": 1792.85,
+            "workforce": 413.62,
+            "energy": 72.81,
+            "consumables": 180.14,
+            "operating_overhead": 99.64,
+            "yield_and_rework": 86.75,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -25543,6 +25616,11 @@
               "extended_recurring_cost_usd": 54.98
             },
             {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 64,
+              "extended_recurring_cost_usd": 735.19
+            },
+            {
               "component_ref": "bompart.part.artemis_dma",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.82
@@ -25586,11 +25664,6 @@
               "component_ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
               "quantity": 4,
               "extended_recurring_cost_usd": 10.2
-            },
-            {
-              "component_ref": "bompart.part.dram_64kbit",
-              "quantity": 64,
-              "extended_recurring_cost_usd": 1600
             },
             {
               "component_ref": "bompart.part.era1",
@@ -25658,16 +25731,16 @@
         },
         "1981": {
           "status": "announced_shipping_unconfirmed",
-          "total_usd": 5368.62,
-          "low_usd": 3489.6,
-          "high_usd": 9395.08,
+          "total_usd": 3508.77,
+          "low_usd": 2280.7,
+          "high_usd": 6140.35,
           "breakdown_usd": {
-            "bom_materials": 4880.37,
-            "workforce": 115.72,
-            "energy": 12.81,
-            "consumables": 37.74,
-            "operating_overhead": 29.5,
-            "yield_and_rework": 226.48,
+            "bom_materials": 1986.19,
+            "workforce": 727.37,
+            "energy": 133.01,
+            "consumables": 326.22,
+            "operating_overhead": 173.74,
+            "yield_and_rework": 96.24,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -25792,6 +25865,11 @@
               "extended_recurring_cost_usd": 54.98
             },
             {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 128,
+              "extended_recurring_cost_usd": 1470.38
+            },
+            {
               "component_ref": "bompart.part.artemis_dma",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.82
@@ -25835,11 +25913,6 @@
               "component_ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
               "quantity": 8,
               "extended_recurring_cost_usd": 20.4
-            },
-            {
-              "component_ref": "bompart.part.dram_64kbit",
-              "quantity": 128,
-              "extended_recurring_cost_usd": 3200
             },
             {
               "component_ref": "bompart.part.era1",
@@ -25903,16 +25976,16 @@
         },
         "1980": {
           "status": "offered_estimate",
-          "total_usd": 1709.78,
-          "low_usd": 1196.85,
-          "high_usd": 2735.65,
+          "total_usd": 1686.41,
+          "low_usd": 1180.49,
+          "high_usd": 2698.26,
           "breakdown_usd": {
-            "bom_materials": 957.38,
-            "workforce": 322.02,
-            "energy": 57.0,
-            "consumables": 142.5,
-            "operating_overhead": 83.07,
-            "yield_and_rework": 44.78,
+            "bom_materials": 953.21,
+            "workforce": 313.67,
+            "energy": 54.68,
+            "consumables": 136.94,
+            "operating_overhead": 80.29,
+            "yield_and_rework": 44.59,
             "instructions": 9.6,
             "packaging": 21.6,
             "logistics": 28.8,
@@ -26094,7 +26167,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 32,
-              "extended_recurring_cost_usd": 484.15
+              "extended_recurring_cost_usd": 460.98
             },
             {
               "component_ref": "bompart.part.artemis_dma",
@@ -26182,16 +26255,16 @@
         },
         "1981": {
           "status": "offered_estimate",
-          "total_usd": 1779.02,
-          "low_usd": 1245.31,
-          "high_usd": 2846.43,
+          "total_usd": 1683.1,
+          "low_usd": 1178.17,
+          "high_usd": 2692.96,
           "breakdown_usd": {
-            "bom_materials": 1028.33,
-            "workforce": 313.66,
-            "energy": 52.6,
-            "consumables": 132.9,
-            "operating_overhead": 79.61,
-            "yield_and_rework": 58.25,
+            "bom_materials": 1011.25,
+            "workforce": 279.5,
+            "energy": 43.11,
+            "consumables": 110.13,
+            "operating_overhead": 68.22,
+            "yield_and_rework": 57.22,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -26413,7 +26486,7 @@
             {
               "component_ref": "bompart.part.aion_4164",
               "quantity": 32,
-              "extended_recurring_cost_usd": 462.49
+              "extended_recurring_cost_usd": 367.6
             },
             {
               "component_ref": "bompart.part.artemis_dma",
@@ -26541,16 +26614,16 @@
         },
         "1981": {
           "status": "announced_shipping_unconfirmed",
-          "total_usd": 3976.38,
-          "low_usd": 2584.65,
-          "high_usd": 6958.66,
+          "total_usd": 3046.46,
+          "low_usd": 1980.2,
+          "high_usd": 5331.31,
           "breakdown_usd": {
-            "bom_materials": 3534.18,
-            "workforce": 128.93,
-            "energy": 13.07,
-            "consumables": 38.73,
-            "operating_overhead": 32.75,
-            "yield_and_rework": 162.72,
+            "bom_materials": 2087.09,
+            "workforce": 434.76,
+            "energy": 73.17,
+            "consumables": 182.97,
+            "operating_overhead": 104.87,
+            "yield_and_rework": 97.6,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -26770,6 +26843,11 @@
               "extended_recurring_cost_usd": 54.98
             },
             {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 64,
+              "extended_recurring_cost_usd": 735.19
+            },
+            {
               "component_ref": "bompart.part.artemis_dma",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.82
@@ -26818,11 +26896,6 @@
               "component_ref": "bompart.part.brimar_m36_141w_crt",
               "quantity": 1,
               "extended_recurring_cost_usd": 85
-            },
-            {
-              "component_ref": "bompart.part.dram_64kbit",
-              "quantity": 64,
-              "extended_recurring_cost_usd": 1600
             },
             {
               "component_ref": "bompart.part.era1",
@@ -26895,16 +26968,16 @@
         },
         "1981": {
           "status": "announced_shipping_unconfirmed",
-          "total_usd": 5703.3,
-          "low_usd": 3707.15,
-          "high_usd": 9980.77,
+          "total_usd": 3843.43,
+          "low_usd": 2498.23,
+          "high_usd": 6726.0,
           "breakdown_usd": {
-            "bom_materials": 5174.61,
-            "workforce": 136.86,
-            "energy": 13.18,
-            "consumables": 40.58,
-            "operating_overhead": 34.73,
-            "yield_and_rework": 237.34,
+            "bom_materials": 2280.43,
+            "workforce": 748.5,
+            "energy": 133.37,
+            "consumables": 329.06,
+            "operating_overhead": 178.97,
+            "yield_and_rework": 107.1,
             "instructions": 10.56,
             "packaging": 23.76,
             "logistics": 31.68,
@@ -27124,6 +27197,11 @@
               "extended_recurring_cost_usd": 54.98
             },
             {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 128,
+              "extended_recurring_cost_usd": 1470.38
+            },
+            {
               "component_ref": "bompart.part.artemis_dma",
               "quantity": 1,
               "extended_recurring_cost_usd": 3.82
@@ -27172,11 +27250,6 @@
               "component_ref": "bompart.part.brimar_m36_141w_crt",
               "quantity": 1,
               "extended_recurring_cost_usd": 85
-            },
-            {
-              "component_ref": "bompart.part.dram_64kbit",
-              "quantity": 128,
-              "extended_recurring_cost_usd": 3200
             },
             {
               "component_ref": "bompart.part.era1",
@@ -29506,6 +29579,22 @@
     },
     {
       "catalog_ref": "technology.logix_c_target_contract",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.nmos_3um",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.nmos_275um",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.nmos_2um",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.nmos_15um",
       "reason": "Technology/specification, not separately sold"
     },
     {

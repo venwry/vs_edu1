@@ -415,13 +415,24 @@
       "id": "roi",
       "path": "roi.html",
       "title": "Quarterly ROI",
-      "description": "Quarterly revenue, investments, marketing, operating profit, ROI and cash recovery through 1980.",
+      "description": "Quarterly revenue, investments, marketing, operating profit, ROI and cash recovery through 1981.",
       "kind": "report",
       "record_refs": [],
       "aliases": [
         "ROI",
         "Return on investment",
         "Marketing budget"
+      ]
+    },
+    {
+      "id": "memory-manufacturing",
+      "path": "memory-manufacturing.html",
+      "title": "RAM manufacturing",
+      "description": "Qualified RAM process selection, balanced prices and investment impact.",
+      "kind": "report",
+      "record_refs": [],
+      "aliases": [
+        "Memory manufacturing"
       ]
     }
   ],
@@ -440,7 +451,8 @@
     "pricing",
     "sales",
     "industrial-investment",
-    "roi"
+    "roi",
+    "memory-manufacturing"
   ],
   "labels": {
     "loading": "Loading the product and story catalogs…",
@@ -641,6 +653,39 @@
           "event.ibm_qualification"
         ],
         "process_refs": []
+      },
+      {
+        "id": "manufacturing",
+        "title": "AION manufacturing",
+        "description": "Process development, RAM yield and release gates",
+        "actor_refs": [
+          "actor.labs",
+          "actor.logix"
+        ],
+        "event_refs": [
+          "event.stepper_order",
+          "event.stepper_accept",
+          "event.pilot_275",
+          "event.production_275",
+          "event.dram_control_release",
+          "event.dram_repair_release",
+          "event.dram_275_review",
+          "event.pilot_2",
+          "event.production_2",
+          "event.dram_2_release",
+          "event.mature_2",
+          "event.pilot_15",
+          "event.production_15",
+          "event.dram_15_release",
+          "event.mature_15"
+        ],
+        "process_refs": [
+          "process.stepper_install",
+          "process.process_275",
+          "process.dram_repair",
+          "process.process_2",
+          "process.process_15"
+        ]
       }
     ],
     "group_label": "events · expand",
