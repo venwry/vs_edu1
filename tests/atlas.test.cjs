@@ -105,7 +105,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  assert(!d.querySelector('.calendar-grid [data-event="event.power"]'));
  assert.equal(d.querySelectorAll('.swim-event.approximate').length,0);
  assert.equal(d.querySelector('[data-event="event.lottery"] time').textContent,'1972-02-06');
- assert.equal(d.querySelectorAll('[data-select-process]').length,12);
+ assert.equal(d.querySelectorAll('[data-select-process]').length,story.processes.flatMap(p=>[p,...(p.subprocesses||[])]).length);
  assert.equal(d.querySelectorAll('[data-select-process="process.international_investment"]').length,0);
  assert(!d.querySelector('[data-event="event.basic_develop"]'));
  assert(!d.querySelector('[data-event="event.harvard"]'));

@@ -163,7 +163,7 @@
       "id": "c-development",
       "path": "c-development.html",
       "title": "C development",
-      "description": "C tools and the November 1981 AION Development System — Team Edition: shared projects, collaboration and two compilation targets.",
+      "description": "C tools and the November 1981 AION Development System \u2014 Team Edition: shared projects, collaboration and two compilation targets.",
       "record_refs": [
         "software.simple_c_z80",
         "software.aion_c_ide",
@@ -261,7 +261,7 @@
       "id": "peripherals",
       "path": "peripherals.html",
       "title": "Peripherals and displays",
-      "description": "Displays, printers, storage, and Logix-developed Apple II / S-100 expansion cards. Replaceable Artemis video and the 14-inch Mono Pro 640×400 progressive display.",
+      "description": "Displays, printers, storage, and Logix-developed Apple II / S-100 expansion cards. Replaceable Artemis video and the 14-inch Mono Pro 640\u00d7400 progressive display.",
       "record_refs": [
         "device.flexibus_keyboard",
         "device.mono_monitor_1",
@@ -370,7 +370,7 @@
       "id": "manufacturing-costs",
       "path": "manufacturing-costs.html",
       "title": "Manufacturing costs",
-      "description": "Recurring per-unit cost assessment for every June 15 offering, 1978–1981.",
+      "description": "Recurring per-unit cost assessment for every June 15 offering, 1978\u20131981.",
       "kind": "costs",
       "record_refs": [],
       "aliases": []
@@ -379,7 +379,7 @@
       "id": "pricing",
       "path": "pricing.html",
       "title": "Retail pricing",
-      "description": "Commercial offerings, competitive prices and contribution margins, June 15 1978–1981.",
+      "description": "Commercial offerings, competitive prices and contribution margins, June 15 1978\u20131981.",
       "record_refs": [],
       "kind": "pricing",
       "aliases": [
@@ -403,7 +403,7 @@
       "id": "industrial-investment",
       "path": "industrial_investment_1974_1981.html",
       "title": "Industrial investment",
-      "description": "Quarterly investment, operating costs, factories, logistics, semiconductor equipment and headcount, 1974–1982.",
+      "description": "Quarterly investment, operating costs, factories, logistics, semiconductor equipment and headcount, 1974\u20131982.",
       "kind": "report",
       "record_refs": [],
       "aliases": [
@@ -440,7 +440,7 @@
       "id": "ecosystem",
       "path": "ecosystem.html",
       "title": "Third-party ecosystem",
-      "description": "Quarterly applications, paid licences, independent manufacturers, models and device sales, 1978–1983.",
+      "description": "Quarterly applications, paid licences, independent manufacturers, models and device sales, 1978\u20131983.",
       "kind": "report",
       "record_refs": [],
       "aliases": [
@@ -451,7 +451,7 @@
     {
       "id": "market-outlook",
       "path": "market-outlook.html",
-      "title": "1980–82 market outlook",
+      "title": "1980\u201382 market outlook",
       "description": "Reassessed quarterly sales, 5% capacity headroom and ROI through 1982.",
       "kind": "report",
       "record_refs": [],
@@ -482,7 +482,7 @@
     "market-outlook"
   ],
   "labels": {
-    "loading": "Loading the product and story catalogs…",
+    "loading": "Loading the product and story catalogs\u2026",
     "load_error": "Catalogs could not be loaded. Retry or select the three accompanying JSON files.",
     "file_help": "For offline use, select logix_aion_technical_catalog_v2.json, logix_aion_story.json and site_pages.json together.",
     "retry": "Retry",
@@ -501,7 +501,7 @@
     "proposed": "Proposed bundles",
     "components": "Components",
     "back": "All offerings",
-    "fiction": "Alternative timeline · Product and event catalogs",
+    "fiction": "Alternative timeline \u00b7 Product and event catalogs",
     "event_count": "events",
     "phase_count": "phases"
   },
@@ -613,7 +613,13 @@
           "actor.dorothy",
           "actor.smc",
           "actor.tandy",
-          "actor.bpi"
+          "actor.bpi",
+          "actor.northstar",
+          "actor.vector",
+          "actor.sks",
+          "actor.goupil",
+          "actor.eina",
+          "actor.aion_tech_uk"
         ],
         "event_refs": [
           "event.dri_cpm",
@@ -653,9 +659,29 @@
           "event.dri_68k_program",
           "event.x86_protection_review",
           "event.tandy_68k_review",
-          "event.compatibility_review"
+          "event.compatibility_review",
+          "event.clone_contacts",
+          "event.clone_agreement_northstar",
+          "event.clone_agreement_vector",
+          "event.clone_agreement_sks",
+          "event.clone_agreement_goupil",
+          "event.clone_agreement_eina",
+          "event.clone_design_freeze",
+          "event.aion_tech_uk_setup",
+          "event.clone_engineering_pilots",
+          "event.clone_customer_pilots",
+          "event.clone_campaign_preview",
+          "event.clone_release_gate",
+          "event.clone_january_launch",
+          "event.clone_campaign_roadshows",
+          "event.clone_90day_review"
         ],
-        "process_refs": []
+        "process_refs": [
+          "process.clone_product_preparation",
+          "process.clone_localisation",
+          "process.clone_channel_readiness",
+          "process.clone_launch_campaign"
+        ]
       },
       {
         "id": "apple",
@@ -709,7 +735,8 @@
         "description": "Process development, RAM yield and release gates",
         "actor_refs": [
           "actor.labs",
-          "actor.logix"
+          "actor.logix",
+          "actor.sgs"
         ],
         "event_refs": [
           "event.stepper_order",
@@ -728,18 +755,22 @@
           "event.dram_15_release",
           "event.mature_15",
           "event.capacity_orders_1982",
-          "event.peak_readiness"
+          "event.peak_readiness",
+          "event.sgs_contacts",
+          "event.sgs_transfer_agreement",
+          "event.sgs_controller_gate"
         ],
         "process_refs": [
           "process.stepper_install",
           "process.process_275",
           "process.dram_repair",
           "process.process_2",
-          "process.process_15"
+          "process.process_15",
+          "process.sgs_transfer"
         ]
       }
     ],
-    "group_label": "events · expand",
+    "group_label": "events \u00b7 expand",
     "phase_aliases": {
       "phase.after_ncc78": "phase.ncc78",
       "phase.before_comdex79": "phase.ncc79",
