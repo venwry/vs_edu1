@@ -8,10 +8,10 @@ assert json.loads(re.search(r'<script id="roi-model" type="application/json">(.*
 assert budget==m['marketing']
 for source in m['sources']:assert hashlib.sha256((R/source['path']).read_bytes()).hexdigest()==source['sha256'],source['path']
 for scenario in m['scenarios']:
- rows=scenario['quarterly'];assert len(rows)==28 and len({r['quarter'] for r in rows})==28
+ rows=scenario['quarterly'];assert len(rows)==32 and len({r['quarter'] for r in rows})==32
  cash=cap=dep=profit=revenue=peak=prior_inventory=prior_assets=0
  for r in rows:
-  q=r['quarter'];assert q<='1980-Q4'
+  q=r['quarter'];assert q<='1981-Q4'
   capacity=next(x for x in i['quarterly_capacity'] if x['quarter']==q)
   assert r['computer_units']==capacity['customer_computers']
   assert abs(r['capex_usd']-sum(x['capital_usd'] for x in i['quarterly_entity_costs'] if x['quarter']==q))<.1
@@ -43,4 +43,5 @@ assert '__MODEL__' not in report and '__NAV__' not in report
 static_html=re.sub(r'<script\b[^>]*>.*?</script>','',report,flags=re.S)
 for href in re.findall(r'href="([^"#]+)"',static_html):
  if not href.startswith(('http:','https:')):assert (R/href).exists(),href
-print('PASS: 3 scenarios × 28 quarters, revenue/cost bridge, marketing replacement, credit treatment, depreciation/cash distinction, funding/ROI formulas, hashes and published navigation')
+print('PASS: 3 scenarios × 32 quarters, revenue/cost bridge, marketing replacement, credit treatment, depreciation/cash distinction, funding/ROI formulas, hashes and published navigation')
+

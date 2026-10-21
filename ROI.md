@@ -1,6 +1,6 @@
-# Quarterly ROI and marketing, 1974–1980
+# Quarterly ROI and marketing, 1974–1981
 
-Open [Quarterly ROI](roi.html) in the shared Atlas navigation or home cards. It contains charts of revenue, operating costs, capex, marketing, quarterly/cumulative returns and cash recovery, plus a 28-quarter table and CSV export. Select a year or a low/central/high marketing budget.
+Open [Quarterly ROI](roi.html) in the shared Atlas navigation or home cards. It contains charts of revenue, operating costs, capex, marketing, quarterly/cumulative returns and cash recovery, plus a 32-quarter table and CSV export. Select a year or a low/central/high marketing budget.
 
 ## Files and regeneration
 
@@ -43,3 +43,8 @@ Marketing sensitivity changes only spending and expected credit redemptions (0.6
 ## Artemis replaceable video and Mono Pro
 
 See [ARTEMIS_VIDEO_CARD.md](ARTEMIS_VIDEO_CARD.md) for the 16/32 KiB configuration-specific cards, dedicated 1 KiB sprite SRAM, four pixel-buffer pages, 640×400 Mono Pro, new complete offers and qualification limits. Costs, balanced pricing, demand, engineering, marketing, capacity and ROI are rebuilt together; [ROI](roi.html) includes the current before/after comparison.
+
+
+## RAM manufacturing revision
+
+See [RAM manufacturing](memory-manufacturing.html) and [methodology](MEMORY_MANUFACTURING.md). The legacy JSON filenames ending in `1980` are preserved for link compatibility; their metadata and rows now extend through 1981 Q4. Conditional 1981 revenues use dated prices and cost-matched BPI licenses, including PRO. Later capital and engineering budgets are disclosed separately, with a cash-reserve sensitivity and no invented post-1981 revenue.

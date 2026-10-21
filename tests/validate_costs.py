@@ -31,7 +31,7 @@ def inv(id,y):return {x['component_ref']:x['quantity'] for x in by[id]['snapshot
 assert inv('computer.aurelia',1978)['bompart.part.dram_16kbit']==24
 assert inv('computer.aurelia',1978)['bompart.part.aion_4116']==8
 assert inv('computer.aurelia',1978)['bompart.part.flexibus_host_controller']==3
-assert inv('bundle.artemis_pro_1mb_server',1981)['bompart.part.dram_64kbit']==128
+assert inv('bundle.artemis_pro_1mb_server',1981)['bompart.part.aion_4164']==128
 assert inv('bundle.artemis_pro_1mb_server',1981)['bompart.device.network_card_artemis.network_card_pcb']==1
 assert inv('bundle.artemis_128_mono',1981)['bompart.device.network_card_artemis.network_card_pcb']==1
 assert not any(k.startswith('bompart.software.aionix.') for k in inv('bundle.artemis_128_mono',1981))
@@ -42,4 +42,5 @@ assert by['bundle.aurelia_mono']['snapshots']['1978']['breakdown_usd']['included
 assert all(x['unit_cost'] is None for x in b['components'])
 assert all(x['cost_rollup_status'].startswith('blocked') for x in b['assemblies'])
 print(f'PASS: {len(rows)} cost rows, complete offering coverage, arithmetic, dates, NIC/OS single counting, 1 MiB RAM and preserved engineering unknowns.')
+
 
