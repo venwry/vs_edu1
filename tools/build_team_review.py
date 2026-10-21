@@ -25,5 +25,4 @@ for r in pricing['products']:
  s=r['snapshots']['1982'];b=s.get('pricing_balance',{});discount=b.get('discount_pct')
  if s['retail_price_usd'] is None:continue
  lines.append(f"| {r['name']}{' †' if r['announced_only'] else ''} | ${s['manufacturing_cost_usd']:,.2f} | ${s['retail_price_usd']:,.2f} | {b['margin_pct']:.2f}% | {str(discount)+'%' if discount is not None else 'No proxy'} |")
-(R/'TEAM_EDITION_1982.md').write_text('\n'.join(lines)+'\n')
-print('Built Team Edition review, all 1982 prices and process comparison.')
+# Narrative budget integration is published by build_market_outlook.py.

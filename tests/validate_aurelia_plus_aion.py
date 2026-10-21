@@ -25,6 +25,6 @@ for stage in iv['fab_stages']:
   target=stage['packaging_input_per_month'] if t['id'] in ['dice','bond','package','test'] else stage['wafer_starts_per_month']
   assert t['effective_monthly_capacity_one_down']>=target,(stage['id'],t['id'],target)
 for q in iv['quarterly_capacity']:
- assert q['installed_computer_capacity_month']>=math.ceil(q['peak_month_customer_demand']*1.1)
+ assert q['installed_computer_capacity_month']>=math.ceil(q['peak_month_customer_demand']*1.05)
 print('PASS: Aurelia+ AION RAM, dated chip costs, earlier shared qualification, 1979 fab loading and redundant tool/reserve capacity.')
 

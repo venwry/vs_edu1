@@ -84,7 +84,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const [source,href] of links){
   const u=new URL(href,'https://atlas.test/'+source),file=u.pathname.slice(1);
   if(u.origin!=='https://atlas.test')continue;
-  if(['TEAM_EDITION_1982.md','ecosystem_forecast.json','ecosystem_forecast_policy.json','ECOSYSTEM_FORECAST.md','artemis_display_impact.json','memory_manufacturing_impact.json','MEMORY_MANUFACTURING.md','SALES_VIEW.md','roi_1974_1980.json','marketing_budget_1974_1980.json','ROI.md','industrial_investment_1974_1981.json','manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
+  if(['ncc_1980_campaign.json','market_outlook_1980_1982.json','TEAM_EDITION_1982.md','ecosystem_forecast.json','ecosystem_forecast_policy.json','ECOSYSTEM_FORECAST.md','artemis_display_impact.json','memory_manufacturing_impact.json','MEMORY_MANUFACTURING.md','SALES_VIEW.md','roi_1974_1980.json','marketing_budget_1974_1980.json','ROI.md','industrial_investment_1974_1981.json','manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
   assert(targets.has(file),source+' -> '+href);
   if(u.hash)assert(targets.get(file).has(decodeURIComponent(u.hash.slice(1))),source+' -> missing '+href);
  }

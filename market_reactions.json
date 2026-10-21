@@ -17,8 +17,14 @@
       {
         "url": "https://www.ibm.com/history/personal-computer",
         "note": "Historical 1980 authorisation and August 1981 launch; the scenario substitutes an OS procurement/development delay."
+      },
+      {
+        "url": "https://www.federalreservehistory.org/essays/recession-of-1981-82",
+        "note": "July 1981–November 1982 recession; forecast coefficients are scenario assumptions."
       }
-    ]
+    ],
+    "forecast_horizon": "1982-12-31",
+    "policy_file": "tools/market_outlook.py"
   },
   "events": [
     {
@@ -110,6 +116,108 @@
       "date": "1981-08-17",
       "lane": "market",
       "date_status": "Authorised scenario date, not a documented historical event date."
+    },
+    {
+      "event_ref": "event.tandy_response",
+      "date": "1980-03-31",
+      "lane": "partners",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.native_validation",
+      "date": "1980-06-30",
+      "lane": "market",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.adapter_response",
+      "date": "1980-09-30",
+      "lane": "partners",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.team_engineering",
+      "date": "1980-12-01",
+      "lane": "aion",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.capacity_orders_1982",
+      "date": "1981-01-04",
+      "lane": "manufacturing",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.portable_cpm_pressure",
+      "date": "1981-04-01",
+      "lane": "market",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.network_pilots",
+      "date": "1981-06-30",
+      "lane": "partners",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.recession_response",
+      "date": "1981-07-31",
+      "lane": "market",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.unix_competition",
+      "date": "1981-10-15",
+      "lane": "market",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.dri_68k_program",
+      "date": "1982-01-15",
+      "lane": "partners",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.x86_protection_review",
+      "date": "1982-02-01",
+      "lane": "partners",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.ibm_alternative_launch",
+      "date": "1982-03-15",
+      "lane": "market",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.tandy_68k_review",
+      "date": "1982-05-17",
+      "lane": "partners",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.application_competition",
+      "date": "1982-08-16",
+      "lane": "market",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.peak_readiness",
+      "date": "1982-10-01",
+      "lane": "manufacturing",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.compatibility_review",
+      "date": "1982-12-15",
+      "lane": "partners",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
+    },
+    {
+      "event_ref": "event.financial_review_1982",
+      "date": "1982-12-31",
+      "lane": "logix",
+      "date_status": "Selected alternative-history forecast date; historical anchors do not establish the scenario event."
     }
   ],
   "date_policy": "Late-1978 Model II design window is a scenario assumption. November 27 agreement precedes the December 15 scenario integration baseline; no precise historical freeze date is claimed. May 30 announcement and October 15 partner release use plausible selected days, with historical May/June/October windows preserved.",

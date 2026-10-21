@@ -237,25 +237,25 @@
       "period": "1981 conditional full demand",
       "family": "aurelia",
       "previous": 2932,
-      "revised": 2932
+      "revised": 2704
     },
     {
       "period": "1981 conditional full demand",
       "family": "aurelia_plus",
       "previous": 63744,
-      "revised": 64156
+      "revised": 60125
     },
     {
       "period": "1981 conditional full demand",
       "family": "artemis",
       "previous": 61416,
-      "revised": 62000
+      "revised": 44178
     },
     {
       "period": "1981 conditional full demand",
       "family": "artemis_pro",
       "previous": 1450,
-      "revised": 1852
+      "revised": 1191
     }
   ],
   "roi": [
@@ -263,85 +263,85 @@
       "year": 1980,
       "metric": "cumulative_net_revenue_usd",
       "previous": 314122002.23,
-      "revised": 313916155.82,
-      "change": -205846.41
+      "revised": 308616858.42,
+      "change": -5505143.81
     },
     {
       "year": 1980,
       "metric": "cumulative_operating_profit_usd",
       "previous": 32297398.75,
-      "revised": 31474998.45,
-      "change": -822400.3
+      "revised": 32332940.5,
+      "change": 35541.75
     },
     {
       "year": 1980,
       "metric": "cumulative_net_cash_usd",
       "previous": -13366211.98,
-      "revised": -16090484.15,
-      "change": -2724272.17
+      "revised": -8933345.35,
+      "change": 4432866.63
     },
     {
       "year": 1980,
       "metric": "cumulative_capex_usd",
       "previous": 27693381.95,
-      "revised": 29887528.75,
-      "change": 2194146.8
+      "revised": 24941774.02,
+      "change": -2751607.93
     },
     {
       "year": 1980,
       "metric": "peak_external_funding_usd",
       "previous": 37915744.46,
-      "revised": 39308968.62,
-      "change": 1393224.16
+      "revised": 34921100.66,
+      "change": -2994643.8
     },
     {
       "year": 1980,
       "metric": "cumulative_accounting_roi_pct",
       "previous": 62.716,
-      "revised": 58.617,
-      "change": -4.099
+      "revised": 68.806,
+      "change": 6.09
     },
     {
       "year": 1981,
       "metric": "cumulative_net_revenue_usd",
       "previous": 631903601.83,
-      "revised": 632695949.67,
-      "change": 792347.84
+      "revised": 565584504.52,
+      "change": -66319097.31
     },
     {
       "year": 1981,
       "metric": "cumulative_operating_profit_usd",
       "previous": 94648222.07,
-      "revised": 94984934.74,
-      "change": 336712.67
+      "revised": 80407004.96,
+      "change": -14241217.11
     },
     {
       "year": 1981,
       "metric": "cumulative_net_cash_usd",
       "previous": 34768868.44,
-      "revised": 33595075.52,
-      "change": -1173792.92
+      "revised": 32398273.18,
+      "change": -2370595.26
     },
     {
       "year": 1981,
       "metric": "cumulative_capex_usd",
       "previous": 29948014.48,
-      "revised": 32515476.52,
-      "change": 2567462.04
+      "revised": 29364042.99,
+      "change": -583971.49
     },
     {
       "year": 1981,
       "metric": "peak_external_funding_usd",
       "previous": 37915744.46,
-      "revised": 39308968.62,
-      "change": 1393224.16
+      "revised": 34921100.66,
+      "change": -2994643.8
     },
     {
       "year": 1981,
       "metric": "cumulative_accounting_roi_pct",
       "previous": 137.766,
-      "revised": 133.933,
-      "change": -3.833
+      "revised": 142.063,
+      "change": 4.297
     }
   ],
   "investment": {
@@ -355,28 +355,8 @@
       "production_output_credited": 0,
       "basis": "Separate pilot bay; 25 passes/hour, eight layers, 65% OEE. No added saleable output or legacy capacity credit."
     },
-    "included_process_capital_usd": 2225000,
+    "included_process_capital_usd": 2925000,
     "future_capital_schedule": [
-      {
-        "quarter": "1982-Q1",
-        "usd": 150000,
-        "purpose": "2 um equipment installation; commissioned 1982-Q2"
-      },
-      {
-        "quarter": "1982-Q2",
-        "usd": 150000,
-        "purpose": "2 um process acceptance; commissioned 1982-Q2"
-      },
-      {
-        "quarter": "1982-Q3",
-        "usd": 200000,
-        "purpose": "1.5 um equipment and metrology upgrade; commissioned 1983-Q3"
-      },
-      {
-        "quarter": "1982-Q4",
-        "usd": 200000,
-        "purpose": "1.5 um equipment procurement; commissioned 1983-Q3"
-      },
       {
         "quarter": "1983-Q1",
         "usd": 200000,
@@ -400,22 +380,22 @@
     ],
     "future_engineering": [
       {
-        "period": "1982",
-        "person_months": 120,
-        "loaded_payroll_and_validation_usd": 600000
-      },
-      {
         "period": "1983",
         "person_months": 144,
         "loaded_payroll_and_validation_usd": 780000
       }
     ],
-    "boundary": "Future budgets after 1981 excluded from closed-horizon cash/ROI; reported as forward commitments. Recurring RAM repair costs are inside chip costs, not charged again as pilot operations."
+    "boundary": "Future budgets after 1982 excluded from closed-horizon cash/ROI; reported as forward commitments. Recurring RAM repair costs are inside chip costs, not charged again as pilot operations.",
+    "engineering_1982": {
+      "gross_provision_usd": 600000,
+      "incremental_topup_usd": 232877.28,
+      "basis": "Half of paid retained Labs engineering payroll is allocated first; remainder is incremental. Pilot nonpayroll is separate. June 1982 mature 3 um RAM unit costs retained for volume; 2 um output not credited before repeatability."
+    }
   },
-  "forward_budget_total_usd": 2880000,
-  "forward_budget_basis": "Capital plus stated engineering/validation budgets after 1981; excludes future production operating costs. Not a complete 1982\u201383 cash forecast.",
-  "cash_after_reserving_forward_budgets_usd": 30715075.52,
-  "first_cash_payback_quarter": "1981-Q2",
+  "forward_budget_total_usd": 1580000,
+  "forward_budget_basis": "Capital plus stated engineering/validation budgets after 1982; excludes future production operating costs. Not a complete 1983 cash forecast.",
+  "cash_after_reserving_forward_budgets_usd": 86573946.25,
+  "first_cash_payback_quarter": "1981-Q1",
   "sources": [
     {
       "path": "memory_manufacturing.json",
@@ -427,23 +407,23 @@
     },
     {
       "path": "manufacturing_costs.json",
-      "sha256": "cea5b3b0cb1bf834f5484172b8aeca08fbacf6106fcbb00004f6cfd7e639f8d0"
+      "sha256": "3c66141803cd6b4980d0d17978f5efcba35b492c794f16a18bf7d9c8a6181bac"
     },
     {
       "path": "pricing_results.json",
-      "sha256": "df6dcddbb7f4308d38c98b47a133cf0a44afd5d520c969b8e9ed50c0570a12de"
+      "sha256": "9471216b52731464a370964bc3f15e7d17b32345c4e5495814bcc860b64e2a78"
     },
     {
       "path": "industrial_investment_1974_1981.json",
-      "sha256": "bf1514c13257071455e7d0b954e2aa31bfd3cda3c48530e3fc784b2ffa671b56"
+      "sha256": "855c529870d52f51f7b98f9e64ee4c1f89c090802af97460080ad711e009b5c8"
     },
     {
       "path": "roi_1974_1980.json",
-      "sha256": "b7b6e3e5a6e933c5f2785ef046c2bebff3e609b53b167a0b30ecab19946cd570"
+      "sha256": "c081e327480946cce3b53e2c863e27f7ba325ac1f7ec6d3b2a1504d798404ec8"
     },
     {
       "path": "sales_forecast.json",
-      "sha256": "abedf1d33cf42f5d9d331f336f86eb5e1b5deef2741c27f7b2646540b1d82ec6"
+      "sha256": "cc40245619e6f0bf8a4e2f9218be76f2f58cbf4001e07f7897907e4f849942eb"
     }
   ]
 }
