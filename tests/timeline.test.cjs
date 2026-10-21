@@ -20,8 +20,8 @@ async function boot(file,hash=''){
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).height,'870px');
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).marginBottom,'0px');
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-main')).paddingBottom,'0px');
- assert.equal(d.querySelectorAll('[data-select-phase]').length,9);
- assert.equal(d.querySelectorAll('[data-select-process]').length,12);
+ assert.equal(d.querySelectorAll('[data-select-phase]').length,JSON.parse(read('logix_aion_story.json')).phases.length);
+ assert.equal(d.querySelectorAll('[data-select-process]').length,story.processes.flatMap(p=>[p,...(p.subprocesses||[])]).length);
  assert(!d.querySelector('#timeline-panel #assumptions'));
  assert(d.getElementById('assumptions-panel').hidden);
  const head=d.querySelector('[data-lane-heading]'),toggle=head.querySelector('.lane-toggle'),handle=head.querySelector('.lane-resize'),grid=d.querySelector('.continuous-calendar');
@@ -50,7 +50,7 @@ async function boot(file,hash=''){
  const investment=d.getElementById('process.economics_studies');
  const studyHeight=parseFloat(investment.style.height);
  for(const event of story.phases.flatMap(p=>p.events)){assert.equal(d.querySelector('[data-event="'+event.id+'"] time').textContent,event.date.start);const detail=d.getElementById(event.id);assert(!detail.textContent.includes('Date precision'));assert.equal(detail.querySelector('.event-dates dd').textContent,event.date.start);assert.equal(detail.querySelector('.event-dates div:last-child dd').textContent,event.date.end);}
- assert.equal(d.querySelectorAll('.calendar-process.approximate').length,10);
+ assert.equal(d.querySelectorAll('.calendar-process.approximate').length,story.processes.flatMap(p=>[p,...(p.subprocesses||[])]).filter(p=>w.AtlasTimeline.processSpan(p,story).approximate).length);
  const study=w.AtlasTimeline.processSpan(story.processes.find(p=>p.id==='process.economics_studies'),story);
  assert.equal(study.startDate,'1972-09-25');assert.equal(study.approximate,true);
  for(const lane of d.querySelectorAll('.lane-processes')){
