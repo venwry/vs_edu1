@@ -79,7 +79,7 @@
       "id": "abacus",
       "path": "abacus.html",
       "title": "AION Abacus",
-      "description": "Spreadsheet and reporting software across the 8-bit and 32-bit generations.",
+      "description": "Spreadsheets and reports across generations; Abacus 3.0 adds typed columnar tables, queries, graphical reports and embedded Pulse.",
       "record_refs": [
         "software.abacus_1",
         "software.abacus_2",
@@ -92,7 +92,9 @@
         "computer.trs80_model_ii",
         "software.cpm_model_ii",
         "device.model_ii_flexibus",
-        "edition.abacus_1.model_ii"
+        "edition.abacus_1.model_ii",
+        "technology.abacus_formatted_tables",
+        "technology.abacus_embedded_pulse"
       ],
       "kind": "offering",
       "aliases": [
@@ -128,13 +130,14 @@
       "id": "pulse",
       "path": "pulse.html",
       "title": "AION Pulse",
-      "description": "Interactive programming and analysis, from the notebook edition to Artemis.",
+      "description": "Interactive notebook programming and offline document automation, plus embedded Pulse scripting in Abacus 3.0.",
       "record_refs": [
         "software.pulse_1",
         "software.pulse_3",
         "technology.pulse_notebook_model",
         "edition.pulse_1.z80",
-        "edition.pulse_3.era"
+        "edition.pulse_3.era",
+        "technology.abacus_embedded_pulse"
       ],
       "kind": "offering",
       "aliases": [
@@ -163,7 +166,7 @@
       "id": "c-development",
       "path": "c-development.html",
       "title": "C development",
-      "description": "C tools and the November 1981 AION Development System \u2014 Team Edition: shared projects, collaboration and two compilation targets.",
+      "description": "C tools and the November 1981 AION Development System — Team Edition: shared projects, collaboration and two compilation targets.",
       "record_refs": [
         "software.simple_c_z80",
         "software.aion_c_ide",
@@ -261,7 +264,7 @@
       "id": "peripherals",
       "path": "peripherals.html",
       "title": "Peripherals and displays",
-      "description": "Displays, printers, storage, and Logix-developed Apple II / S-100 expansion cards. Replaceable Artemis video and the 14-inch Mono Pro 640\u00d7400 progressive display.",
+      "description": "Displays, printers, storage, and Logix-developed Apple II / S-100 expansion cards. Replaceable Artemis video and the 14-inch Mono Pro 640×400 progressive display.",
       "record_refs": [
         "device.flexibus_keyboard",
         "device.mono_monitor_1",
@@ -370,7 +373,7 @@
       "id": "manufacturing-costs",
       "path": "manufacturing-costs.html",
       "title": "Manufacturing costs",
-      "description": "Recurring per-unit cost assessment for every June 15 offering, 1978\u20131981.",
+      "description": "Recurring per-unit cost assessment for every June 15 offering, 1978–1981.",
       "kind": "costs",
       "record_refs": [],
       "aliases": []
@@ -379,7 +382,7 @@
       "id": "pricing",
       "path": "pricing.html",
       "title": "Retail pricing",
-      "description": "Commercial offerings, competitive prices and contribution margins, June 15 1978\u20131981.",
+      "description": "Commercial offerings, competitive prices and contribution margins, June 15 1978–1981.",
       "record_refs": [],
       "kind": "pricing",
       "aliases": [
@@ -403,7 +406,7 @@
       "id": "industrial-investment",
       "path": "industrial_investment_1974_1981.html",
       "title": "Industrial investment",
-      "description": "Quarterly investment, operating costs, factories, logistics, semiconductor equipment and headcount, 1974\u20131982.",
+      "description": "Quarterly investment, operating costs, factories, logistics, semiconductor equipment and headcount, 1974–1982.",
       "kind": "report",
       "record_refs": [],
       "aliases": [
@@ -440,7 +443,7 @@
       "id": "ecosystem",
       "path": "ecosystem.html",
       "title": "Third-party ecosystem",
-      "description": "Quarterly applications, paid licences, independent manufacturers, models and device sales, 1978\u20131983.",
+      "description": "Quarterly applications, paid licences, independent manufacturers, models and device sales, 1978–1983.",
       "kind": "report",
       "record_refs": [],
       "aliases": [
@@ -451,7 +454,7 @@
     {
       "id": "market-outlook",
       "path": "market-outlook.html",
-      "title": "1980\u201382 market outlook",
+      "title": "1980–82 market outlook",
       "description": "Reassessed quarterly sales, 5% capacity headroom and ROI through 1982.",
       "kind": "report",
       "record_refs": [],
@@ -482,7 +485,7 @@
     "market-outlook"
   ],
   "labels": {
-    "loading": "Loading the product and story catalogs\u2026",
+    "loading": "Loading the product and story catalogs…",
     "load_error": "Catalogs could not be loaded. Retry or select the three accompanying JSON files.",
     "file_help": "For offline use, select logix_aion_technical_catalog_v2.json, logix_aion_story.json and site_pages.json together.",
     "retry": "Retry",
@@ -501,7 +504,7 @@
     "proposed": "Proposed bundles",
     "components": "Components",
     "back": "All offerings",
-    "fiction": "Alternative timeline \u00b7 Product and event catalogs",
+    "fiction": "Alternative timeline · Product and event catalogs",
     "event_count": "events",
     "phase_count": "phases"
   },
@@ -770,7 +773,7 @@
         ]
       }
     ],
-    "group_label": "events \u00b7 expand",
+    "group_label": "events · expand",
     "phase_aliases": {
       "phase.after_ncc78": "phase.ncc78",
       "phase.before_comdex79": "phase.ncc79",
