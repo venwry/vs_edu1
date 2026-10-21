@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Logix / AION technical catalog",
-    "version": "2.16",
+    "version": "2.17",
     "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
     "id_convention": "category.short_name.version_or_variant_when_needed",
     "schema_notes": {
@@ -108,7 +108,8 @@
         "device.flexidisk",
         "device.apple2_expansion_card",
         "device.flexidisk_ii",
-        "device.s100_flexibus_card"
+        "device.s100_flexibus_card",
+        "device.logix_mouse"
       ]
     },
     {
@@ -178,7 +179,7 @@
           "V-sync"
         ],
         "plus_base_or_reference_connection": true,
-        "monitor_palette_control": "Color/greyscale registers may be changed using Control commands during vertical retrace.",
+        "monitor_palette_control": "Baseline monitors accept vertical-retrace palette commands. From NCC June 1982, explicitly capable Color Pro monitors also accept bounded horizontal-retrace commands under technology.scanline_palette_list; do not send these to legacy monitors.",
         "control_channel": {
           "direction": "Half-duplex bidirectional Control pair",
           "implementation": "Host firmware performs selection using controller control-channel registers; monitor fixed capability ROM/straps and serializer.",
@@ -233,7 +234,8 @@
         ],
         "raster_status": "Legacy 200-line targets approximately 15.70 kHz / 59.92 Hz. Mono Pro 640×400 target 26.88 kHz / 60 Hz progressive. Porch/sync widths, polarity and analog qualification remain release gates.",
         "scaling": "Integer horizontal/vertical pixel repetition, including sprites. 160/320-wide logical modes can repeat to 320/640; 100 lines repeat to 200. Reject 640-wide graphics or 80-column text on a 320-only monitor; software viewport is a separately reported service. Artemis card repeats legacy pixels/lines to 640×400 for Mono Pro; never downscales 400 lines to an old monitor.",
-        "palette_mapping": "Explicit 1-bit and 2-bit pixel-to-output-index maps. Color indices are not brightness values. On grayscale displays map RGB palette entries to luminance; Mono I direct DAC requires host index mapping."
+        "palette_mapping": "Explicit 1-bit and 2-bit pixel-to-output-index maps. Color indices are not brightness values. On grayscale displays map RGB palette entries to luminance; Mono I direct DAC requires host index mapping.",
+        "horizontal_palette_extension_ref": "technology.scanline_palette_list"
       },
       "used_by": [
         "computer.aurelia",
@@ -244,7 +246,9 @@
         "device.mono_monitor_2",
         "device.color_monitor_2",
         "device.apple2_video_card",
-        "device.s100_video_card"
+        "device.s100_video_card",
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14"
       ]
     },
     {
@@ -329,7 +333,8 @@
           "Legacy CP/M console behavior is preserved; Logix-aware interfaces use the documented editing conventions.",
           "Artemis implementation mediates process access to shared clipboard and display services."
         ],
-        "keyboard_standard_ref": "technology.logix_tui_keyboard_standard"
+        "keyboard_standard_ref": "technology.logix_tui_keyboard_standard",
+        "mouse_extension_ref": "technology.logix_tui_mouse"
       },
       "used_by": [
         "software.cpm_aurelia",
@@ -1797,6 +1802,114 @@
         "technology.pulse_notebook_model",
         "technology.logix_tui_standard",
         "technology.logix_tui_keyboard_standard"
+      ]
+    },
+    {
+      "id": "technology.scanline_palette_list",
+      "name": "Logix horizontal-retrace colour addressing list",
+      "category": "video_communication_extension",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted implementation design; command timing and analog settling require measurement.",
+          "memory": {
+            "offset_hex": "0xFA00",
+            "size_bytes": 1536,
+            "entry_bytes": 3,
+            "max_entries": 512,
+            "count_register": "10-bit unsigned count, legal range 0..512; no in-band terminator consumes an entry.",
+            "encoding": "Byte 0: unsigned scanline delta 0..255. Byte 1: bits 7..4 palette register 0..15, bits 3..0 red. Byte 2: bits 7..4 green, bits 3..0 blue. Each RGB component is 4 bits."
+          },
+          "coordinates": "Offsets count physical active output scanlines, independent of logical mode scaling. Start accumulator at 0 each frame; add delta before applying entry. Delta 0 permits multiple writes before the same line, including line 0. Reject overflow, out-of-frame targets and excess writes per line; never wrap. Bridge gaps above 255 with an explicitly redundant write preserving the current register value.",
+          "execution": "Prefetch records into dedicated sequencer registers/FIFO, outside the 1536-byte allocation. Execute during blanking before the target active scanline; reset pointer/counter at frame start. Restore a saved 16-register base palette every vertical blank before replay. Line-0 entries follow base restoration.",
+          "updates": "Single list buffer. CPU writes only with sequencer disabled or after completion before the next frame; arm validated count/base palette at vertical blank. No implicit full-list double buffer; late/incomplete updates remain disabled.",
+          "wire": "Opt-in capability extension over the existing Control pair, host-to-monitor during the reserved blanking window, clocked from pixel Clock. No simultaneous capability readback. Proposed fixed 32-bit write: 4-bit opcode, 4-bit register, 12-bit RGB, 4 reserved zero bits, CRC-8 (poly 0x07, init 0, no reflection/xorout), MSB first. Reset command framing at blank start; specify setup/hold, turnaround and CRC failure behavior before release.",
+          "budget": "640x400 raster has 160 blank clocks = about 7.44 us. Target maximum four 32-bit commands per blank (128 clocks, about 5.95 us), leaving 32 clocks for guards/commit/settling. This is a qualification target, not an unconditional measured guarantee. Advertise the validated per-raster limit; 512 total entries does not allow 512 writes on one scanline.",
+          "commit": "Monitor validates complete commands into staging registers and commits together before active pixels. Reject invalid/late batches, retain previous palette and latch diagnostic status; never update midway through an active line.",
+          "scope": "For raster effects on Color Pro use the 640x400 physical raster, including line-doubled 640x200. Other raster/monitor combinations require their own advertised timing budget. Old monitors receive only supported vertical-retrace commands.",
+          "colour_semantics": "Palette is global to text, bitmap and sprites at each scanline. 2 bpp still selects only four background indices on a line; 4 bpp selects sixteen. More colours across different lines do not imply a larger per-pixel index or arbitrary 4096-colour bitmap.",
+          "validation": [
+            "Worst-case four-command blanking with DAC settling",
+            "All 512 records, same-line writes, delta 255 and frame bounds",
+            "DRAM refresh and host/DMA contention during prefetch",
+            "CRC errors, late packets and safe palette retention",
+            "Base palette restore and list restart without frame-to-frame drift"
+          ]
+        }
+      },
+      "used_by": [
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "part.artemis_graphics_chip_64kb",
+        "part.color_pro_monitor_controller"
+      ]
+    },
+    {
+      "id": "technology.flexibus_pointing_device",
+      "name": "FlexiBUS pointing-device class",
+      "category": "peripheral_protocol",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "owner": "Logix / AION Labs",
+      "specification": {
+        "status": "Accepted protocol requirements; wire identifiers, polling and electrical qualification pending.",
+        "transport_ref": "technology.flexibus",
+        "discovery": "Pointing-device class, two buttons, relative X/Y, two independent signed roller axes; versioned capability record. Use negotiated existing FlexiBUS rates, framing, CRC and request/response discipline.",
+        "report": "Sequenced bounded report: accumulated signed relative X/Y motion, signed vertical/horizontal roller deltas, current button mask and ordered button transitions. ACK/retry must not duplicate motion or clicks.",
+        "polling": "Host polls with a bounded service budget; device buffers events. Coalesce motion but preserve button transitions; report overflow and resynchronize button state on reset/removal.",
+        "default_mapping": "Primary button focuses/selects/activates; secondary opens context actions where provided. Middle-finger roller scrolls vertically; thumb roller scrolls horizontally. Wheels have no implicit press buttons.",
+        "compatibility": "Architecture-neutral class driver for Z80 CP/M Platform Extensions and ERA AIONix. Attach while port quiescent; no unsupported hot-plug claim."
+      },
+      "used_by": [
+        "device.logix_mouse",
+        "software.cpm_aurelia",
+        "software.aionix"
+      ]
+    },
+    {
+      "id": "technology.logix_tui_mouse",
+      "name": "Logix TUI mouse interaction update",
+      "category": "user_interface_extension",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "owner": "AION Software / DRI",
+      "specification": {
+        "status": "Accepted NCC 1982 update requirements; platform implementation and compatibility qualification pending.",
+        "base_standard_ref": "technology.logix_tui_standard",
+        "device_class_ref": "technology.flexibus_pointing_device",
+        "behaviour": [
+          "Hit-test visible enabled standard controls; primary click focuses fields/selects list items and activates buttons/menu actions.",
+          "Text widgets support click-to-place caret and drag selection; scrollbar and roller actions respect widget bounds.",
+          "Capture drags to their originating context, release on button-up/cancel/removal, respect modal dialogs and clipping.",
+          "Dispatch existing semantic actions to applications; keyboard shortcuts remain fully functional.",
+          "Vertical roller scrolls the hovered scrollable control, falling back to the focused control; thumb roller similarly scrolls horizontally."
+        ],
+        "compatibility": "No application source changes for standard controls managed by the TUI library. Existing binaries gain support only when they call replaceable/system TUI services; statically linked copies require relinking with the updated library. Custom drawing, direct console polling and non-TUI applications require explicit adaptation. No blanket mouse retrofit for all CP/M programs.",
+        "routing": "Aurelia has one foreground application; AIONix routes events only to the appropriate active/context-owned controls, with modal/capture rules and no input leakage.",
+        "cursor": "Library-managed pointer with bounded save/restore on software-rendered targets or optional sprite rendering; application code need not change. A hardware pointer consumes an existing sprite unless separately provisioned; no sixth sprite is implied.",
+        "validation": [
+          "Unchanged standard-control applications",
+          "Static-library relink and ABI conformance",
+          "Text and graphics cursor restore, clipping and scrolling",
+          "Button ordering, drag capture and removal",
+          "Keyboard-only use and 40/80-column layouts"
+        ]
+      },
+      "used_by": [
+        "software.cpm_aurelia",
+        "software.aionix",
+        "software.entertainment_suite"
       ]
     }
   ],
@@ -3502,6 +3615,83 @@
       "bom_assembly_refs": [
         "assembly.part.artemis_ram_module_128kb_aion"
       ]
+    },
+    {
+      "id": "part.artemis_graphics_chip_64kb",
+      "name": "AION 64 KiB Artemis graphics controller with palette sequencer",
+      "category": "graphics_controller_chip",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "card_ref": "device.artemis_video_card_64kb",
+        "base_controller_ref": "part.artemis_graphics_chip",
+        "palette_list_ref": "technology.scanline_palette_list",
+        "additions": [
+          "64 KiB display DRAM addressing",
+          "640x400x2 and 640x200x4 bitmap modes",
+          "bounded palette-list prefetch and horizontal-retrace command sequencer"
+        ],
+        "continuity": "Retain prior modes, five sprites with independent SRAM, pixel FIFO, character caches, refresh and host/DMA arbitration. Canonical detailed layout resides in the card specification."
+      },
+      "used_in": [
+        "device.artemis_video_card_64kb"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.nec_pc8853_display_assembly",
+      "name": "NEC PC-8853 / JC-1410P2-class colour display assembly",
+      "category": "crt_display_subassembly",
+      "origin": "external_oem",
+      "vendor": "NEC",
+      "introduced": {
+        "event_name": "Historical NEC shipment",
+        "event_start_date": "1982-02",
+        "date_precision": "month"
+      },
+      "specification": {
+        "diagonal_inches": 14,
+        "dot_pitch_mm": 0.31,
+        "historical_raster": "640x400, 24.83 kHz horizontal, 56.4/55.4 Hz vertical; stock digital RGB input.",
+        "source": "https://support.nec-lavie.jp/support/product/data/spec/dsp/d051-1.html",
+        "adaptation": "OEM tube/yoke/deflection assembly plus qualified 26.88 kHz/60 Hz progressive adaptation and AION palette/DAC electronics. Stock monitor is not plug-compatible; historical shipment does not prove OEM contract or modified timing qualification.",
+        "bare_tube_ordering_code": null
+      },
+      "used_in": [
+        "device.color_pro_14"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.color_pro_monitor_controller",
+      "name": "AION Color Pro digital-to-RGB monitor controller",
+      "category": "display_controller",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "palette_registers": 16,
+        "register_width_bits": 12,
+        "source_palette": "3 x 4-bit RGB",
+        "vertical_retrace_register_update": true,
+        "horizontal_retrace_register_update": true,
+        "conversion": "Logix 4-bit index -> 16 x 12-bit palette -> three 4-bit DAC channels -> RGB voltage amplifiers. DAC ladders, analog drivers, HV/deflection remain explicit board components; their integration on silicon is not assumed.",
+        "palette_list_ref": "technology.scanline_palette_list",
+        "bandwidth": "25–30 MHz RGB amplifier design target; verify DAC settling, text focus, convergence and line-boundary palette commits."
+      },
+      "used_in": [
+        "device.color_pro_14"
+      ],
+      "manufacturing_status": "incomplete_bom"
     }
   ],
   "devices": [
@@ -5221,6 +5411,674 @@
       "bom_assembly_refs": [
         "assembly.device.artemis_video_card_16kb"
       ]
+    },
+    {
+      "id": "device.artemis_video_card_64kb",
+      "name": "Logix Artemis 64 KiB video controller card",
+      "category": "video_card",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "technology_ref": "technology.logix_digital_video",
+        "api_ref": "technology.logix_display_api",
+        "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
+        "memory_layout": {
+          "policy_ref": "technology.logix_display_api",
+          "mode_exclusivity": "With palette-list mode enabled reserve 0xFA00–0xFFFF (1536 bytes); framebuffer/text/font allocations use 0x0000–0xF9FF. Text/font and bitmap layouts remain exclusive. Five sprites retain separate 1 KiB SRAM.",
+          "font_policy": "One shared 256-glyph bank per mode. Font allocation 2048 bytes at 8×8, 4096 at 8×16 or 8×10 (16-byte glyph stride). Font writes affect both pages.",
+          "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
+        },
+        "controller_ref": "part.artemis_graphics_chip_64kb",
+        "text_modes": [
+          {
+            "id": "text_40",
+            "columns": 40,
+            "rows": 25,
+            "width": 320,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 1024,
+            "attribute_map_bytes_per_buffer": 1024,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 5632,
+                "remaining_video_ram_bytes": 59904,
+                "palette_list_bytes": 1536
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 7680,
+                "remaining_video_ram_bytes": 57856,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "ram_bytes_per_page": 2048,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "text_80",
+            "columns": 80,
+            "rows": 25,
+            "width": 640,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 7680,
+                "remaining_video_ram_bytes": 57856,
+                "palette_list_bytes": 1536
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 11776,
+                "remaining_video_ram_bytes": 53760,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "ram_bytes_per_page": 4096,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "text_80_25_400",
+            "columns": 80,
+            "rows": 25,
+            "width": 640,
+            "height": 400,
+            "glyph_width": 8,
+            "glyph_height": 16,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 4096,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 9728,
+                "remaining_video_ram_bytes": 55808,
+                "palette_list_bytes": 1536
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 13824,
+                "remaining_video_ram_bytes": 51712,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "ram_bytes_per_page": 4096,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "text_80_40_400",
+            "columns": 80,
+            "rows": 40,
+            "width": 640,
+            "height": 400,
+            "glyph_width": 8,
+            "glyph_height": 10,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 4096,
+            "attribute_map_bytes_per_buffer": 4096,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 4096,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 13824,
+                "remaining_video_ram_bytes": 51712,
+                "palette_list_bytes": 1536
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 22016,
+                "remaining_video_ram_bytes": 43520,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "ram_bytes_per_page": 8192,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_400"
+            ]
+          }
+        ],
+        "bitmap_modes": [
+          {
+            "id": "graphics_a",
+            "width": 640,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 17536,
+                "remaining_video_ram_bytes": 48000,
+                "palette_list_bytes": 1536
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 33536,
+                "remaining_video_ram_bytes": 32000,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_b2",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 17536,
+                "remaining_video_ram_bytes": 48000,
+                "palette_list_bytes": 1536
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 33536,
+                "remaining_video_ram_bytes": 32000,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_b1",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 40,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 9536,
+                "remaining_video_ram_bytes": 56000,
+                "palette_list_bytes": 1536
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 17536,
+                "remaining_video_ram_bytes": 48000,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_c4",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 160,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 17536,
+                "remaining_video_ram_bytes": 48000,
+                "palette_list_bytes": 1536
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 33536,
+                "remaining_video_ram_bytes": 32000,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_c2",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 9536,
+                "remaining_video_ram_bytes": 56000,
+                "palette_list_bytes": 1536
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 17536,
+                "remaining_video_ram_bytes": 48000,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_legacy",
+            "width": 160,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 9536,
+                "remaining_video_ram_bytes": 56000,
+                "palette_list_bytes": 1536
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 17536,
+                "remaining_video_ram_bytes": 48000,
+                "palette_list_bytes": 1536
+              }
+            ],
+            "compatibility_mode": true,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_640_400_1",
+            "width": 640,
+            "height": 400,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 32000,
+            "stride_bytes": 80,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 33536,
+                "remaining_video_ram_bytes": 32000,
+                "palette_list_bytes": 1536
+              }
+            ]
+          },
+          {
+            "id": "graphics_640_200_2",
+            "width": 640,
+            "height": 200,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 32000,
+            "stride_bytes": 160,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_640_200",
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 33536,
+                "remaining_video_ram_bytes": 32000,
+                "palette_list_bytes": 1536
+              }
+            ]
+          },
+          {
+            "id": "graphics_320_400_2",
+            "width": 320,
+            "height": 400,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 32000,
+            "stride_bytes": 80,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 33536,
+                "remaining_video_ram_bytes": 32000,
+                "palette_list_bytes": 1536
+              }
+            ]
+          },
+          {
+            "id": "graphics_320_200_4",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 32000,
+            "stride_bytes": 160,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 33536,
+                "remaining_video_ram_bytes": 32000,
+                "palette_list_bytes": 1536
+              }
+            ]
+          },
+          {
+            "id": "graphics_640_400_2",
+            "width": 640,
+            "height": 400,
+            "bits_per_pixel": 2,
+            "stride_bytes": 160,
+            "bytes_per_framebuffer": 64000,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "framebuffer_bytes": 64000,
+                "palette_list_bytes": 1536,
+                "allocated_bytes": 65536,
+                "remaining_video_ram_bytes": 0
+              }
+            ]
+          },
+          {
+            "id": "graphics_640_200_4",
+            "width": 640,
+            "height": 200,
+            "bits_per_pixel": 4,
+            "stride_bytes": 320,
+            "bytes_per_framebuffer": 64000,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_640_200",
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "framebuffer_bytes": 64000,
+                "palette_list_bytes": 1536,
+                "allocated_bytes": 65536,
+                "remaining_video_ram_bytes": 0
+              }
+            ]
+          }
+        ],
+        "sprites": {
+          "count": 5,
+          "maximum_per_scanline": 5,
+          "width": 16,
+          "height": 16,
+          "bits_per_pixel": 4,
+          "pattern_bytes_per_sprite": 128,
+          "transparent_index": 0,
+          "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
+          "priority": "Lower sprite number wins; all sprites overlay background/text.",
+          "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
+          "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
+          "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
+          "pattern_bytes_total": 640,
+          "descriptor_bytes_per_sprite": 8,
+          "descriptor_bank_count": 2,
+          "descriptor_bytes_total": 128,
+          "reserved_sprite_sram_bytes": 1024,
+          "spare_sprite_sram_bytes": 256,
+          "available_in_all_modes": true,
+          "pattern_double_buffered": false,
+          "descriptor_allocation_note": "80 bytes of live two-bank descriptors within a 128-byte reserved area; 48 bytes padding. 640 pattern + 128 descriptor + 256 scratch bytes = 1024."
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        },
+        "video_ram_kb": 64,
+        "card_ref": "device.artemis_video_card_64kb",
+        "display_memory": {
+          "chip_ref": "part.aion_4116",
+          "chip_count": 32,
+          "capacity_bytes": 65536,
+          "bank_data_width_bits": 16,
+          "organization": "Two 16K x 16-bit banks; ordinary DRAM, not dual-port VRAM. Preserve independent refresh and bounded host access."
+        },
+        "pixel_buffer": {
+          "pages": 4,
+          "bytes_per_page": 160,
+          "total_bytes": 640,
+          "pixels_per_page": 320,
+          "bits_per_pixel": 4,
+          "location": "On video ASIC; SRAM banks with page ownership latches",
+          "page_states": [
+            "free",
+            "filling",
+            "ready",
+            "displaying"
+          ],
+          "policy": "Eight-pixel parallel renderer fills free pages; independent clocked serializer drains ready pages. Two pages per 640-pixel line; prefill before active display; never overwrite displaying pages. Underflow blanks pixels, preserves sync and sets sticky fault.",
+          "physical_organization": "Each 160-byte bank is 40 words × 32 bits. Load eight 4-bit pixels into a separate 32-bit serializer latch every eight dot clocks, then shift at 21.504 MHz. SRAM array reads run at 2.688 MHz, not one read per dot; filler and drain use different banks."
+        },
+        "character_row_cache": {
+          "banks": 2,
+          "bytes_per_bank": 160,
+          "total_bytes": 320,
+          "purpose": "Current and next 80-column character/attribute row; separate from 640-byte pixel FIFO."
+        },
+        "timing_budget": {
+          "pixel_clock_mhz": 21.504,
+          "renderer_pixels_per_step": 8,
+          "renderer_step_mhz": 2.688,
+          "page_drain_microseconds": 14.881,
+          "qualification": "Requalify existing renderer/FIFO and 16-bit DRAM organization for 640x400x2 and 640x200x4, refresh, sprite fetches, list prefetch and host/DMA stalls together. No greater upload throughput is promised by added capacity."
+        },
+        "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
+        "monitor_policy": "All earlier modes and sprite/host/API features retained subject to monitor capabilities. Color Pro 14 and Mono Pro support the 640x400 raster; older displays retain their declared raster limits. Horizontal-retrace palette lists require explicit monitor capability; otherwise use static/vertical-retrace palette updates. No forced high scan rate on old monitors.",
+        "palette_list_ref": "technology.scanline_palette_list",
+        "feature_continuity_ref": "device.artemis_video_card"
+      },
+      "offered_with": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "manufacturing_requirements": [
+        "New controller, 64 KiB DRAM decoding, palette sequencer and host/DMA arbitration require timing, power and release qualification. No unit cost or qualified production yield inferred."
+      ]
+    },
+    {
+      "id": "device.color_pro_14",
+      "name": "Logix Color Pro 14",
+      "category": "display",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "display_subassembly_ref": "part.nec_pc8853_display_assembly",
+        "controller_ref": "part.color_pro_monitor_controller",
+        "input": "Logix 4-bit digital video",
+        "displayed_color_registers": 16,
+        "source_palette": "4096 colours / 12-bit RGB",
+        "capabilities": {
+          "protocol_version": 2,
+          "raster_ids": [
+            "raster_640_400"
+          ],
+          "preferred_raster_id": "raster_640_400",
+          "maximum_pixel_clock_mhz": 21.504,
+          "color_model": "RGB",
+          "palette_precision_bits": 12,
+          "programmable_palette": true,
+          "horizontal_retrace_palette_updates": true,
+          "vertical_retrace_palette_updates": true,
+          "qualification_status": "Accepted offering; OEM assembly and digital/analog timing qualification pending."
+        },
+        "scan": "640x400 progressive, 26.88 kHz horizontal, 60 Hz; 21.504 MHz pixel clock. Integer-scale older modes in the card.",
+        "palette_list_ref": "technology.scanline_palette_list",
+        "compatibility": "Earlier 32 KiB Artemis card can use static/vertical-retrace colour at supported modes after monitor identification support. Horizontal list execution requires the new 64 KiB card."
+      },
+      "offered_with": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "device.logix_mouse",
+      "name": "Logix Mouse — two buttons and two rollers",
+      "category": "pointing_device",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "interface_ref": "technology.flexibus",
+        "class_protocol_ref": "technology.flexibus_pointing_device",
+        "buttons": 2,
+        "rollers": [
+          {
+            "position": "under middle finger",
+            "default_action": "vertical scrolling"
+          },
+          {
+            "position": "thumb side",
+            "default_action": "horizontal scrolling"
+          }
+        ],
+        "tracking": "Relative X/Y pointing; mechanical ball with quadrature encoders is the design baseline, subject to resolution and tracking qualification.",
+        "ergonomics": "Rollers are independent of primary/secondary buttons; qualify accidental actuation, handedness, detent force and reach. Side-wheel placement must be documented.",
+        "power": "Port-power target; current draw, connector and protection must be qualified.",
+        "history": "Deliberate alternate-history dual-roller mouse design, not a claim of a matching historical 1982 retail product."
+      },
+      "compatible_computers": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "technology_refs": [
+        "technology.flexibus_pointing_device",
+        "technology.logix_tui_mouse"
+      ],
+      "manufacturing_status": "incomplete_bom"
     }
   ],
   "computers": [
@@ -5689,7 +6547,8 @@
         "device.flexidisk_ii",
         "device.network_card_aurelia",
         "device.mono_monitor_2",
-        "device.color_monitor_2"
+        "device.color_monitor_2",
+        "device.logix_mouse"
       ],
       "compatible_software": [
         "software.cpm_aurelia",
@@ -5702,7 +6561,8 @@
         "software.bpi_suite",
         "software.cpm_aurelia_networking",
         "software.bpi_client_server",
-        "software.aion_development_team"
+        "software.aion_development_team",
+        "software.entertainment_suite"
       ],
       "software_compatibility": {
         "native_target": "z80_cpm",
@@ -6186,7 +7046,8 @@
         "device.flexiprint40",
         "device.flexidisk",
         "device.flexidisk_ii",
-        "device.network_card_aurelia"
+        "device.network_card_aurelia",
+        "device.logix_mouse"
       ],
       "compatible_software": [
         "software.cpm_aurelia",
@@ -6200,7 +7061,8 @@
         "software.cpm_aurelia_networking",
         "software.pulse_1",
         "software.bpi_client_server",
-        "software.aion_development_team"
+        "software.aion_development_team",
+        "software.entertainment_suite"
       ],
       "software_compatibility": {
         "native_target": "z80_cpm",
@@ -6962,7 +7824,10 @@
         "device.artemis_ram_256kb_bank_kit",
         "device.artemis_video_card",
         "device.mono_pro",
-        "device.artemis_video_card_16kb"
+        "device.artemis_video_card_16kb",
+        "device.logix_mouse",
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14"
       ],
       "compatible_software": [
         "software.abacus_2",
@@ -6975,7 +7840,8 @@
         "software.aionix",
         "software.aionix_server",
         "software.bpi_client_server",
-        "software.aion_development_team"
+        "software.aion_development_team",
+        "software.entertainment_suite"
       ],
       "software_compatibility": {
         "native_target": "era_aionix",
@@ -7896,7 +8762,13 @@
             "monitor_policy": "Read capability descriptor before enabling sync. Mono Pro accepts only raster_640_400; integer-scale legacy modes. Old monitors retain their advertised 200-line raster(s), never 640×400. Native 400-line modes require Mono Pro; new 200-line bitmap modes also work on capable older displays. This is display-mode/API compatibility, not Z80 binary compatibility."
           }
         }
-      ]
+      ],
+      "ncc_1982_display_upgrade": {
+        "available_from": "1982-06",
+        "card_ref": "device.artemis_video_card_64kb",
+        "monitor_ref": "device.color_pro_14",
+        "policy": "Optional replacement video card; existing configurations retain their installed card. Separate COMDEX high-resolution display is outside this release."
+      }
     },
     {
       "id": "computer.artemis_pro",
@@ -8613,7 +9485,10 @@
         "device.network_hub",
         "device.artemis_ram_256kb_bank_kit",
         "device.artemis_video_card",
-        "device.mono_pro"
+        "device.mono_pro",
+        "device.logix_mouse",
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14"
       ],
       "compatible_software": [
         "software.business_tools_artemis",
@@ -8623,7 +9498,8 @@
         "software.pulse_3",
         "software.aionix_server",
         "software.bpi_client_server",
-        "software.aion_development_team"
+        "software.aion_development_team",
+        "software.entertainment_suite"
       ],
       "software_compatibility": {
         "native_target": "era_aionix",
@@ -8647,7 +9523,13 @@
         "assembly.computer.artemis_pro.m128_512",
         "assembly.computer.artemis_pro.m128_768",
         "assembly.computer.artemis_pro.m128_1024"
-      ]
+      ],
+      "ncc_1982_display_upgrade": {
+        "available_from": "1982-06",
+        "card_ref": "device.artemis_video_card_64kb",
+        "monitor_ref": "device.color_pro_14",
+        "policy": "Optional replacement video card; existing configurations retain their installed card. Separate COMDEX high-resolution display is outside this release."
+      }
     }
   ],
   "software_products": [
@@ -8932,7 +9814,9 @@
         "technology.logix_c_api",
         "technology.logix_display_api",
         "technology.logix_tui_standard",
-        "technology.logix_tui_keyboard_standard"
+        "technology.logix_tui_keyboard_standard",
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device"
       ],
       "portable_runtime": {
         "api_ref": "technology.logix_c_api",
@@ -8983,6 +9867,12 @@
         "profiles": "Optional versioned extensions separate from the CP/M core; neither FlexiBUS nor Logix video is mandatory for all CP/M applications.",
         "continuity": "Fund CP/M maintenance alongside the next-generation programme; detailed duration and budget remain open.",
         "qualification": "Named host/ISA/TPA/application editions and file interchange; no universal Aurelia binary or disk compatibility promise."
+      },
+      "mouse_update": {
+        "available_from": "1982-06",
+        "technology_ref": "technology.logix_tui_mouse",
+        "driver_ref": "technology.flexibus_pointing_device",
+        "scope": "Driver and TUI library/service update; preserve existing OS/core identity and keyboard interface. Standard-control applications need no source edits, subject to linkage and runtime compatibility."
       }
     },
     {
@@ -9469,7 +10359,9 @@
         "technology.logix_c_api",
         "technology.logix_display_api",
         "technology.logix_tui_standard",
-        "technology.logix_tui_keyboard_standard"
+        "technology.logix_tui_keyboard_standard",
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device"
       ],
       "portable_runtime": {
         "api_ref": "technology.logix_c_api",
@@ -9489,6 +10381,12 @@
         "exclusions": "Undocumented hardware access, unqualified peripherals and unsupported interfaces; no promise of unchanged speed, unlimited memory, or every future device. Z80 programs use their separately qualified compatibility path.",
         "delivery_requirements": "Publish versioned ABI/API eligibility and conformance tests; preserve reference binaries and regression workloads; budget compatibility engineering, runtime distribution and support. Staffing, funding and validation remain explicit launch readiness gates.",
         "status": "Official scenario commitment at NCC 1980; future fulfilment is not established evidence."
+      },
+      "mouse_update": {
+        "available_from": "1982-06",
+        "technology_ref": "technology.logix_tui_mouse",
+        "driver_ref": "technology.flexibus_pointing_device",
+        "scope": "Driver and TUI library/service update; preserve existing OS/core identity and keyboard interface. Standard-control applications need no source edits, subject to linkage and runtime compatibility."
       }
     },
     {
@@ -10035,6 +10933,39 @@
         "edition.aion_development_team.era_client",
         "edition.aion_development_team.z80_client"
       ]
+    },
+    {
+      "id": "software.entertainment_suite",
+      "name": "AION Entertainment Suite",
+      "vendor": "AION Software",
+      "category": "mouse_training_games",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "features": [
+        "Sudoku",
+        "Solitaire (Klondike)",
+        "Spider",
+        "FreeCell",
+        "Mouse tutorials for pointing, clicking, dragging and both scrolling rollers",
+        "Keyboard alternatives, undo and clear rules"
+      ],
+      "positioning": "Mouse-focused recreational learning suite for the NCC 1982 mouse introduction; titles and release timing are deliberate alternate-history choices.",
+      "implementation": "Use standard TUI/display and pointing APIs. Colour distinguishes suits and selections but patterns/labels preserve monochrome usability; games remain usable on older supported monitors. Do not require the new 64 KiB card.",
+      "technology_refs": [
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device",
+        "technology.logix_tui_standard",
+        "technology.logix_display_api"
+      ],
+      "edition_refs": [
+        "edition.entertainment_suite.z80",
+        "edition.entertainment_suite.era"
+      ],
+      "delivery": "Diskette; final packaging and price unspecified.",
+      "validation": "Qualify puzzle validity/uniqueness, legal moves, deal generation, undo, input and resource budgets. Do not imply all randomly dealt card games are solvable."
     }
   ],
   "services": [
@@ -10373,7 +11304,19 @@
       "broadcast_policy": "Every Logix presentation at NCC 1978, including the premiere, both technical sessions, partner appearances, questions and any additional Logix sessions. Offer and supply the material free of charge to any television station wishing to broadcast it; Logix covers normal duplication and dispatch. Supply station-compatible broadcast copies on request.",
       "accounting": "No fabricated campaign total and no automatic per-unit allocation. Reuse existing recurring course costs; do not charge Academy teaching twice. Free station supply creates no content-license revenue; reach and uptake are not guaranteed."
     },
-    "competitor_reactions_file": "COMPETITOR_REACTIONS.md"
+    "competitor_reactions_file": "COMPETITOR_REACTIONS.md",
+    "ncc_1982_offering": {
+      "launch": "1982-06",
+      "event_ref": "event.ncc82_graphics_mouse",
+      "product_refs": [
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "device.logix_mouse",
+        "software.entertainment_suite"
+      ],
+      "positioning": "Colour business graphics and mouse interaction, with recreational tutorials. Later high-resolution second-display programme remains separate.",
+      "commercial_status": "Offering approved; detailed BOMs, prices, production qualification and forecasts not yet recalculated."
+    }
   },
   "offered_bundles": [
     {
@@ -12211,6 +13154,74 @@
       ],
       "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
       "support_status": "November 1981 scenario offering, subject to documented qualification gates."
+    },
+    {
+      "id": "edition.entertainment_suite.z80",
+      "name": "AION Entertainment Suite — z80",
+      "product_ref": "software.entertainment_suite",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1982-06"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1982-06"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Measured image/workspace budgets and minimum supported configurations pending."
+      },
+      "dependency_refs": [
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device"
+      ],
+      "delivery": "diskette",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured"
+    },
+    {
+      "id": "edition.entertainment_suite.era",
+      "name": "AION Entertainment Suite — era",
+      "product_ref": "software.entertainment_suite",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1982-06"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1982-06"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Measured image/workspace budgets and minimum supported configurations pending."
+      },
+      "dependency_refs": [
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device"
+      ],
+      "delivery": "diskette",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured"
     }
   ],
   "review_scope": {
