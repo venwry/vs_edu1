@@ -5614,7 +5614,8 @@
         "software.microsoft_basic_aurelia",
         "software.bpi_suite",
         "software.cpm_aurelia_networking",
-        "software.bpi_client_server"
+        "software.bpi_client_server",
+        "software.aion_development_team"
       ],
       "software_compatibility": {
         "native_target": "z80_cpm",
@@ -6111,7 +6112,8 @@
         "software.bpi_suite",
         "software.cpm_aurelia_networking",
         "software.pulse_1",
-        "software.bpi_client_server"
+        "software.bpi_client_server",
+        "software.aion_development_team"
       ],
       "software_compatibility": {
         "native_target": "z80_cpm",
@@ -6885,7 +6887,8 @@
         "software.pulse_3",
         "software.aionix",
         "software.aionix_server",
-        "software.bpi_client_server"
+        "software.bpi_client_server",
+        "software.aion_development_team"
       ],
       "software_compatibility": {
         "native_target": "era_aionix",
@@ -8532,7 +8535,8 @@
         "software.abacus_3",
         "software.pulse_3",
         "software.aionix_server",
-        "software.bpi_client_server"
+        "software.bpi_client_server",
+        "software.aion_development_team"
       ],
       "software_compatibility": {
         "native_target": "era_aionix",
@@ -9658,7 +9662,22 @@
       "network_link_policy": {
         "link_layer_ref": "technology.logix_lan100_link",
         "driver_contract": "Enforce host rate ceilings, report advertised and negotiated rates separately, process packet-level interrupts and receiver credits, and expose fallback/error diagnostics. TCP/IP application throughput is below shared raw line rate and requires measurement."
-      }
+      },
+      "dated_revisions": [
+        {
+          "effective_from": "1981-11-19",
+          "default_services": [
+            "user management",
+            "group management",
+            "authentication",
+            "project permissions",
+            "home directories",
+            "quotas",
+            "administration"
+          ],
+          "note": "OS facilities included by default; Team Edition repository and collaboration applications licensed separately as one package."
+        }
+      ]
     },
     {
       "id": "software.bpi_client_server",
@@ -9830,6 +9849,56 @@
         "delivery": "Printed manuals/source listings and disks; host/media conversion quoted separately.",
         "certification": "Optional, configuration- and version-specific. Manufacturer-declared compatibility is distinct from AION-tested application compatibility. FlexiBUS electrical/protocol and Logix display tests are separate claims."
       }
+    },
+    {
+      "id": "software.aion_development_team",
+      "name": "AION Development System — Team Edition",
+      "vendor": "AION Software",
+      "category": "development_toolchain",
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "COMDEX November 1981 — Team Edition premiere",
+        "event_start_date": "1981-11-19"
+      },
+      "description": "One Artemis PRO server entitlement and four concurrent network developer sessions. Hardware, network adapters, hub and backup media sold separately. C IDE version 2 runs locally after network loading; shared source/results live on the server.",
+      "features": [
+        "AIONix Server November 1981 services: users, groups, authentication, project permissions, home directories, quotas and administration",
+        "Repository: atomic multi-file commits, author/date/message, branches, release labels, diffs, rollback and comments tied to immutable revisions; isolated workspaces, saving is not committing",
+        "Collaboration: text channels, posts and replies with file/revision/commit references; shared calendar, meetings, invitations, tasks, owners, deadlines and milestones",
+        "C Development Environment 2: local Artemis ERA/Z80 builds; compact Aurelia/Aurelia+ TUI and local Z80 tools; queued server ERA/heavy builds",
+        "Initial targets CP/M/Z80 and AIONix/ERA with separate binaries, startup code and libraries; Breakthru TUI portability layer and target adapters",
+        "Reproducible builds record source revisions, compiler versions, build settings and target libraries",
+        "Network loader uses bounded transfers; acknowledged saves and recoverable workspaces after disconnect",
+        "Apple and Commodore target packages are future roadmap work; no launch support or binary compatibility claim"
+      ],
+      "specification": {
+        "server": "Artemis PRO, recommended 1 MiB; existing 5 MB disk supports bounded pilot projects only. Archive old history and rotate external floppy backups; larger qualified storage required for substantial projects and is not bundled or priced here.",
+        "clients": "Artemis, Aurelia and Aurelia+ with network upgrade; Aurelia compact tools use sequential overlays within its CP/M memory profile. No full suite resident in 48 KiB claim.",
+        "qualification": "Four concurrent developers is a validation target, not measured throughput. Gate release on commit recovery, access control, backup/restore, conflict handling and both target regression suites.",
+        "commercial_unit": {
+          "unit": "one server, four concurrent developer sessions",
+          "hardware_included": false,
+          "renewal": "No automatic paid renewal assumed; first-year support capped at 12 staff-hours. Further work quoted separately.",
+          "expansion": "Additional concurrency packs planned, not priced or counted as shipping offers."
+        },
+        "delivery_cost_assumptions": {
+          "disks": 12,
+          "printed_pages": 1000,
+          "onboarding_staff_hours": 20,
+          "first_year_support_staff_hours": 12,
+          "note": "One combined package; do not add its client/server editions or old IDE/SDK to its cost. Development/NRE excluded from unit cost."
+        }
+      },
+      "technology_refs": [
+        "technology.aion_c_portability_framework",
+        "technology.logix_tui_standard",
+        "technology.logix_tcpip_lan"
+      ],
+      "edition_refs": [
+        "edition.aion_development_team.server",
+        "edition.aion_development_team.era_client",
+        "edition.aion_development_team.z80_client"
+      ]
     }
   ],
   "services": [
@@ -11914,6 +11983,98 @@
       ],
       "delivery": "Model II-compatible eight-inch diskette through Radio Shack",
       "support_status": "Scenario-supported release; engineering gates include native UI, document interchange, printing, save/reopen, RAM and banking/ROM adaptation. AION corrects incompatibilities; no identical-capacity or binary-compatibility assumption."
+    },
+    {
+      "id": "edition.aion_development_team.server",
+      "name": "AION Development System — Team Edition — server",
+      "product_ref": "software.aion_development_team",
+      "execution_target": "era_aionix",
+      "role": "team_server",
+      "introduced": {
+        "event_name": "COMDEX November 1981 — Team Edition premiere",
+        "event_start_date": "1981-11-19"
+      },
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-11-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Release profiling required; server recommended 1 MiB, clients use existing platform memory profiles and bounded overlays. No measured minimum asserted."
+      },
+      "dependency_refs": [
+        "software.aionix_server"
+      ],
+      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
+      "support_status": "November 1981 scenario offering, subject to documented qualification gates."
+    },
+    {
+      "id": "edition.aion_development_team.era_client",
+      "name": "AION Development System — Team Edition — era client",
+      "product_ref": "software.aion_development_team",
+      "execution_target": "era_aionix",
+      "role": "development_client",
+      "introduced": {
+        "event_name": "COMDEX November 1981 — Team Edition premiere",
+        "event_start_date": "1981-11-19"
+      },
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1981-11-19"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-11-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Release profiling required; server recommended 1 MiB, clients use existing platform memory profiles and bounded overlays. No measured minimum asserted."
+      },
+      "dependency_refs": [
+        "software.aionix_server"
+      ],
+      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
+      "support_status": "November 1981 scenario offering, subject to documented qualification gates."
+    },
+    {
+      "id": "edition.aion_development_team.z80_client",
+      "name": "AION Development System — Team Edition — z80 client",
+      "product_ref": "software.aion_development_team",
+      "execution_target": "z80_cpm",
+      "role": "development_client",
+      "introduced": {
+        "event_name": "COMDEX November 1981 — Team Edition premiere",
+        "event_start_date": "1981-11-19"
+      },
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1981-11-19"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1981-11-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Release profiling required; server recommended 1 MiB, clients use existing platform memory profiles and bounded overlays. No measured minimum asserted."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia_networking"
+      ],
+      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
+      "support_status": "November 1981 scenario offering, subject to documented qualification gates."
     }
   ],
   "review_scope": {

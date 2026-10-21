@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=JSON.parse(read('pricing_results.json'));
 (async()=>{const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/pricing.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('pricing.js'));w.document.getElementById('app').innerHTML=w.pricingTemplate;w.fetch=async()=>({ok:true,json:async()=>model});await w.startPricing();const d=w.document;
-assert.equal(d.querySelectorAll('.pricing-row').length,model.products.length);assert.equal(d.querySelectorAll('.pricing-group').length,10);assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,24);
+assert.equal(d.querySelectorAll('.pricing-row').length,model.products.length);assert.equal(d.querySelectorAll('.pricing-group').length,10);assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,30);
 const style=d.createElement('style');style.textContent=read('pricing.css');d.head.append(style);const matrix=d.getElementById('pricing-matrix');assert.equal(w.getComputedStyle(matrix).resize,'both');assert.equal(w.getComputedStyle(matrix).overflow,'auto');matrix.style.width='640px';matrix.style.height='320px';
 const select=(id,value)=>{d.getElementById(id).value=value;d.getElementById(id).dispatchEvent(new w.Event('change'));};
 const first=d.querySelector('[data-product="bundle.aurelia_mono"][data-year="1978"]');first.click();assert(d.getElementById('pricing-detail').textContent.includes('North Star'));
@@ -11,7 +11,9 @@ const v=w.pricingCalculate(s,.30);assert.equal(Math.round(v.profit*100),Math.rou
 select('pricing-cost','cost_high_usd');assert(d.getElementById('pricing-detail').textContent.includes('selected cost'));
 select('pricing-year','1979');assert(!d.querySelector('[data-product="bundle.aurelia_plus_mono"]'));assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,6);
 select('pricing-year','1981');select('pricing-availability','available');assert(!d.querySelector('[data-product="bundle.artemis_pro_512_server"]'));
+select('pricing-year','1982');assert(d.querySelector('[data-product="software.aion_development_team"][data-year="1982"]'));
 select('pricing-type','Support');assert.equal(d.querySelectorAll('.pricing-row').length,4);assert(d.querySelector('.pricing-row').textContent.includes('0%'));
 d.getElementById('pricing-search').value='no such product';d.getElementById('pricing-search').dispatchEvent(new w.Event('input'));assert(d.getElementById('pricing-matrix').textContent.includes('No matching'));
 assert.equal(matrix.style.width,'640px');assert.equal(matrix.style.height,'320px');w.close();console.log('PASS: grouped annual matrix, source detail, fee/cost recalculation, service channels and availability filters.');})();
+
 
