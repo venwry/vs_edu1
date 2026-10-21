@@ -26,7 +26,7 @@ def snapshot(ref,y):
  if yy not in p['snapshots'] or p['snapshots'][yy].get('total_usd') is None:
   yy=next(k for k,v in p['snapshots'].items() if v.get('total_usd') is not None)
  return p['snapshots'][yy],int(yy)
-baskets=sales['comdex1980_policy']['components']
+inputs=load('sales_model_inputs');baskets=inputs['basket_components']
 # Conditional server production added only after an explicitly assumed qualification date.
 revision=load('artemis_display_revision'); pro_mix=revision['mono_pro_pro_console_share']
 baskets['artemis_pro']=[{'product_ref':'bundle.artemis_pro_512_server','quantity':.75*(1-pro_mix)},{'product_ref':'bundle.artemis_pro_1mb_server','quantity':.25*(1-pro_mix)},{'product_ref':'bundle.artemis_pro_512_mono_pro','quantity':.75*pro_mix},{'product_ref':'bundle.artemis_pro_1mb_mono_pro','quantity':.25*pro_mix}]
@@ -72,55 +72,12 @@ for work in memory_policy()['engineering_programs']:
  prog(work['id'],work['entity'],work['start'],work['end'],work['person_months'],work['product_refs'],work['scope'])
 # Recurring software support/compatibility sustaining engineering, separate from initial development.
 for e,pm in [('AION Software',210),('DRI',96),('BPI',90),('Logix',96)]:prog('sustain_'+e,e,'1978-Q3','1981-Q4',pm,[],'Maintenance, documentation, release engineering and compatibility stewardship through 1981 only; 1982 extension covered by retained payroll; further obligations excluded')
-source_refs=[dict(path=str(p.relative_to(S)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),url='https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/'+p.name) for p in [S/n for n in ['sales_forecast.json','manufacturing_costs.json','logix_aion_technical_catalog_v2.json','pricing_results.json','hardware_bom.json','logix_aion_story.json','manufacturing_programs.json','memory_manufacturing.json','memory_manufacturing_baseline.json','team_development_program.json','tools/market_outlook.py']]]
-monthly={}; sensitivities=[]
-for scenario in sales['scenarios']:
- data=defaultdict(lambda:defaultdict(float)); evidence={}
- for group in ['months','post_ncc_months','comdex_to_ncc1980_months','ncc_to_comdex1980_months']:
-  for row in scenario[group]:
-   m=row['month']; evidence[m]='repository:new demand, returning queues removed'
-   if group=='months':
-    # Unconstrained first-year pre-reaction demand spread by original ramp; retain explicit signed reactions.
-    n=row['units']+(scenario['unconstrained_demand_units']-scenario['pre_reaction_units'])*row['pre_reaction_units']/scenario['pre_reaction_units']
-    data[m]['aurelia']+=n
-   elif 'products' in row:
-    for f,v in row['products'].items():data[m][f]+=v['new_demand_units']
-   else:data[m]['aurelia']+=row['new_demand_units']
- # Extend November 19 onwards at the November 1–18 daily rate, then hold December run rate.
- last=scenario['ncc_to_comdex1980_months'][-1]
- for f,v in last['products'].items():
-  data['1980-11'][f]+=v['new_demand_units']*12/18; data['1980-12'][f]=v['new_demand_units']*30/18
- evidence['1980-11']='repository through Nov 18; remaining 12 days extrapolated';evidence['1980-12']='new planning extrapolation'
- base=sum(data['1980-12'].values())
- for m in range(1,13):
-  total=base*(1.04**m); pro=.02 if m>=7 else 0; ar=min(.60,.30+.025*m); old=max(.01,.04-.0025*m)
-  data[f'1981-{m:02}'].update({'aurelia':total*old,'aurelia_plus':total*(1-old-ar-pro),'artemis':total*ar,'artemis_pro':total*pro})
-  evidence[f'1981-{m:02}']='new extrapolation: 4% monthly growth; mix transition; conditional PRO shipping July 1'
- memory_baseline=load('memory_manufacturing_baseline')
- def basket_price(family, vintage, original=False):
-  total=0
-  for item in baskets[family]:
-   ref=item['product_ref'];price=(memory_baseline['prices'][ref][str(vintage)] if original else pp[ref]['snapshots'][str(vintage)]['retail_price_usd'])
-   total+=item['quantity']*price
-  return total
- for m in [m for m in data if m.startswith('1981')]:
-  vintage=1981 if m>='1981-06' else 1980
-  for family in data[m]:
-   if family=='artemis_pro' and not data[m][family]:continue
-   v=1981 if family=='artemis_pro' else vintage
-   relative=basket_price(family,v,True)/basket_price(family,v)
-   if family!='artemis_pro':relative/=basket_price(family,1980,True)/basket_price(family,1980)
-   data[m][family]*=relative**scenario['elasticity_assumption']
-  evidence[m]+='; incremental dated balanced-price response versus baseline, normalized for December 1980 price response; no marketing bonus'
- if scenario['id']=='central':monthly={m:{'products':{f:math.ceil(n) for f,n in v.items()},'basis':evidence[m]} for m,v in sorted(data.items())}
- sensitivities.append({'scenario':scenario['id'],'computer_demand_1978_1981':math.ceil(sum(sum(v.values()) for v in data.values())),'peak_month_computers':math.ceil(max(sum(v.values()) for v in data.values())),'capacity_with_reserve':math.ceil(max(sum(v.values()) for v in data.values())*1.05)})
-# Canonical reaction forecast replaces the old post-1980 extrapolation.
-legacy_monthly=monthly
-monthly=reassess(legacy_monthly)
+source_refs=[dict(path=str(p.relative_to(S)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),url='https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/'+p.name) for p in [S/n for n in ['sales_forecast.json','manufacturing_costs.json','logix_aion_technical_catalog_v2.json','pricing_results.json','hardware_bom.json','logix_aion_story.json','manufacturing_programs.json','memory_manufacturing.json','memory_manufacturing_baseline.json','team_development_program.json','tools/market_outlook.py','sales_model_inputs.json']]]
+monthly={r['month']:{'products':r['products'],'basis':r['basis']} for r in next(s for s in sales['scenarios'] if s['id']=='central')['monthly'] if r['computer_units']}
 sensitivities=[]
-for scenario,multiplier in POLICY['bounds'].items():
- demand=reassess(legacy_monthly,multiplier)
- sensitivities.append({'scenario':scenario,'computer_demand_1978_1981':sum(sum(r['products'].values()) for r in demand.values()),'horizon':'1978–1982 (legacy key retained)','peak_month_computers':max(sum(r['products'].values()) for r in demand.values()),'capacity_with_reserve':math.ceil(max(sum(r['products'].values()) for r in demand.values())*1.05)})
+for scenario in sales['scenarios']:
+ demand=scenario['monthly'];peak=max(r['computer_units'] for r in demand)
+ sensitivities.append({'scenario':scenario['id'],'computer_demand_1978_1981':sum(r['computer_units'] for r in demand),'horizon':'1978–1982 (stable report key)','peak_month_computers':peak,'capacity_with_reserve':math.ceil(peak*1.05)})
 # Cost and component links: each final sellable offering once, not every catalog row.
 chip_vintages=defaultdict(lambda:defaultdict(float))
 links=[]; chip_q=defaultdict(lambda:defaultdict(float)); q_units=defaultdict(float); q_month_peak=defaultdict(float)
@@ -132,7 +89,7 @@ for m,row in monthly.items():
   for b in baskets[family]:
    for ref,mult in expand(b['product_ref']):items[ref]+=n*b['quantity']*mult
  # Historical additional application cohorts, no inferred external OEM hardware.
- for r in sales['scenarios'][1]['comdex_to_ncc1980_months']:
+ for r in inputs['standalone_applications']:
   if r['month']==m:
    a=r.get('applications',{});items['software.abacus_2']+=a.get('existing_aurelia_abacus2_licenses',0);items['software.pulse_1']+=a.get('pulse_licenses_on_new_aurelia_plus',0)
  installs=sum(row['products'].values())*.2
@@ -245,9 +202,9 @@ for q in quarters:
  if reqarea>assembly_area:cap(q,'Logix','factory_fitout_and_equipment',(reqarea-assembly_area)*220*infl,'Leased industrial shell, ESD benches, through-hole wave solder, fixtures and burn-in; two-quarter look-ahead');assembly_area=max(assembly_area,reqarea)
  if reqdc>dc_area:cap(q,'Logix','distribution_fitout',(reqdc-dc_area)*90*infl,'Three regional nodes as demand grows; leased floor area, racking and handling');dc_area=max(dc_area,reqdc)
  enrol=0;days=0
- for r in sales['scenarios'][1]['academy_months']:
+ for r in inputs['academy_requests']:
   if quarter(r['month'])==q:
-   for name,v in r['courses'].items():days+=v['requested_enrolments']*sales['academy_demand_policy']['course_days'][name]/6
+   for name,v in r['courses'].items():days+=v['requested_enrolments']*inputs['academy_course_days'][name]/6
    enrol+=r['new_requests']
  if q>='1980-Q2':
   # Post-May training forecast is absent: use independent 30% new-system enrolments, five days each.
@@ -353,7 +310,7 @@ model['fab_recommendation']['public_process']+=' Memory recipe and repair revisi
 model['team_development_reconciliation']=team_reconciliation
 model['market_outlook_policy']=POLICY
 model['assumptions']['continued_support']='1982 maintenance continues through retained engineering payroll; new Team, memory and DRI port budgets credit only explicitly allocated capacity. Additional programme funding can buy contractor services and is not presented as permanent employee headcount.'
-model['assumptions']['demand']='Reassessed quarterly market-reaction forecast through 1982; monthly product counts match sales and ROI. Historical constrained forecast retained only as reference.'
+model['assumptions']['demand']='Reassessed quarterly market-reaction forecast through 1982; monthly product counts match sales and ROI. Only the current sales forecast is retained.'
 model['assumptions']['foresight']='Adam anticipates peaks: assembly uses a two-quarter look-ahead; fab expansion is ordered four quarters before commissioning. 5% is target commercial headroom, not a cap on indivisible equipment or installed idle capacity.'
 model['memory_manufacturing']['engineering_1982']={'gross_provision_usd':600000,'incremental_topup_usd':rnd(sum(r['cost_type_usd'].get('memory_1982_engineering_topup',0) for r in ledger)), 'basis':'Half of paid retained Labs engineering payroll is allocated first; remainder is incremental. Pilot nonpayroll is separate. June 1982 mature 3 um RAM unit costs retained for volume; 2 um output not credited before repeatability.'}
 model['open_gaps']=[x.replace('1982–2000','1983–2000').replace('1981 products','unmodeled products') for x in model['open_gaps']]

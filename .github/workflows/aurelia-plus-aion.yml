@@ -28,16 +28,8 @@ jobs:
           python -m pip install jsonschema==4.23.0
           npm install --prefix "$RUNNER_TEMP/atlas-tests" jsdom@26.1.0
           echo "NODE_PATH=$RUNNER_TEMP/atlas-tests/node_modules" >> "$GITHUB_ENV"
-      - name: Apply configuration migration when present
-        run: |
-          if [ -f tools/apply_aurelia_plus_aion.py ]; then python tools/apply_aurelia_plus_aion.py; fi
-      - name: Rebuild dependent models
-        run: |
-          python tools/build_cost_assessment.py
-          python tools/build_pricing.py
-          python tools/build_sales.py
-          python tools/build_investment_model.py
-          python tools/build_roi.py
+      - name: Rebuild current dependent models
+        run: python tools/rebuild_outlook.py
       - name: Validate data and pages
         run: |
           for test in tests/validate_*.py; do python "$test"; done
@@ -47,10 +39,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -u
-          if [ -f tools/apply_aurelia_plus_aion.py ]; then
-            git add AURELIA_PLUS_AION_MEMORY.md aurelia_plus_aion_memory.json
-          fi
           if ! git diff --cached --quiet; then
             git commit -m "Rebuild and validate Aurelia+ AION memory and demand-linked investment"
             git push origin HEAD:"${{ github.ref_name }}"
           fi
+

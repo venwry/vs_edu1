@@ -96,7 +96,7 @@
   ],
   "assumptions": {
     "reserve": "5% installed good-output headroom; not 5% extra sales or perpetual overproduction. One-month 5% reserve inventory funded separately. 5% additional fab engineering/monitor/training-equipment allowance. Tool one-down redundancy and OEE are separate availability protections.",
-    "demand": "Reassessed quarterly market-reaction forecast through 1982; monthly product counts match sales and ROI. Historical constrained forecast retained only as reference.",
+    "demand": "Reassessed quarterly market-reaction forecast through 1982; monthly product counts match sales and ROI. Only the current sales forecast is retained.",
     "1981_extension": "Superseded by market_outlook.py: explicit quarterly demand through 1982; PRO conditional from July 1981.",
     "unforecast_scope": "External OEM silicon licences are not chip orders. Tandy hardware excluded. Selected add-in cards have explicit 2% attach allowance; other unforecast products remain unquantified and are listed as gaps. Full demand claim applies to modeled baskets, not unknown catalog demand.",
     "geography": "Logix assembly San Jose; AION Labs Cambridge assumed Massachusetts (confirm); AION applications Copenhagen with OS group near DRI California. US distribution; Denmark costs are USD planning equivalents, not a local DKK payroll/FX forecast.",
@@ -113,7 +113,7 @@
   "sources": [
     {
       "path": "sales_forecast.json",
-      "sha256": "cc40245619e6f0bf8a4e2f9218be76f2f58cbf4001e07f7897907e4f849942eb",
+      "sha256": "4ba3bdd0b30ec3573f4fc420c29250d70a1938f255e7791bc16d9f604615c501",
       "url": "https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/sales_forecast.json"
     },
     {
@@ -138,7 +138,7 @@
     },
     {
       "path": "logix_aion_story.json",
-      "sha256": "43ce6e1317e341e716e1dfe09c51d8573d4bb40c2875761161c319220cc34cf8",
+      "sha256": "331fb4331a23f637fee1d7808821fd2582270bc52e5c45be6afca6fdf1f01eaf",
       "url": "https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/logix_aion_story.json"
     },
     {
@@ -153,7 +153,7 @@
     },
     {
       "path": "memory_manufacturing_baseline.json",
-      "sha256": "e05de863f00484bab039c78d01bbb9d662c71e3ffc190b4806d8b9746e3aa154",
+      "sha256": "a7b8c21773054279047fc7255b99dd7936947d28b7a2e8a318e0abf4f3580e9b",
       "url": "https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/memory_manufacturing_baseline.json"
     },
     {
@@ -163,8 +163,13 @@
     },
     {
       "path": "tools/market_outlook.py",
-      "sha256": "26419d4823a6561e73dd89e09ed4a3c3b69aa57d1259364b5a249361f565bb9c",
+      "sha256": "ec1338dec88fdfcbac7af1e71ae1a471ff7476033394197e4e1090028404c84b",
       "url": "https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/market_outlook.py"
+    },
+    {
+      "path": "sales_model_inputs.json",
+      "sha256": "3bd385f5764f5d6d5dad75b1bd7ea23812324bda19de1a99218ce7300a6da73d",
+      "url": "https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/sales_model_inputs.json"
     }
   ],
   "historical_anchors": [
@@ -839,144 +844,208 @@
   "monthly_demand": {
     "1978-06": {
       "products": {
-        "aurelia": 469
+        "aurelia": 469,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1978-07": {
       "products": {
-        "aurelia": 769
+        "aurelia": 769,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1978-08": {
       "products": {
-        "aurelia": 1050
+        "aurelia": 1050,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1978-09": {
       "products": {
-        "aurelia": 1434
+        "aurelia": 1434,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1978-10": {
       "products": {
-        "aurelia": 1818
+        "aurelia": 1818,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1978-11": {
       "products": {
-        "aurelia": 2099
+        "aurelia": 2099,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1978-12": {
       "products": {
-        "aurelia": 2434
+        "aurelia": 2434,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-01": {
       "products": {
-        "aurelia": 2758
+        "aurelia": 2758,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-02": {
       "products": {
-        "aurelia": 3009
+        "aurelia": 3009,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-03": {
       "products": {
-        "aurelia": 3323
+        "aurelia": 3323,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-04": {
       "products": {
-        "aurelia": 3731
+        "aurelia": 3731,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-05": {
       "products": {
-        "aurelia": 4586
+        "aurelia": 4586,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-06": {
       "products": {
-        "aurelia": 5386
+        "aurelia": 5386,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-07": {
       "products": {
-        "aurelia": 5447
+        "aurelia": 5447,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-08": {
       "products": {
-        "aurelia": 5665
+        "aurelia": 5665,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-09": {
       "products": {
-        "aurelia": 6057
+        "aurelia": 6057,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-10": {
       "products": {
-        "aurelia": 6299
+        "aurelia": 6299,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-11": {
       "products": {
-        "aurelia": 6554
+        "aurelia": 6554,
+        "aurelia_plus": 0,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1979-12": {
       "products": {
         "aurelia": 3214,
-        "aurelia_plus": 3044
+        "aurelia_plus": 3044,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "repository:new demand, returning queues removed"
     },
     "1980-01": {
       "products": {
         "aurelia": 1913,
-        "aurelia_plus": 3304
+        "aurelia_plus": 3304,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
     },
     "1980-02": {
       "products": {
         "aurelia": 1477,
-        "aurelia_plus": 3876
+        "aurelia_plus": 3876,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
     },
     "1980-03": {
       "products": {
         "aurelia": 1245,
-        "aurelia_plus": 4197
+        "aurelia_plus": 4197,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
     },
     "1980-04": {
       "products": {
         "aurelia": 1012,
-        "aurelia_plus": 4243
+        "aurelia_plus": 4243,
+        "artemis": 0,
+        "artemis_pro": 0
       },
       "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
     },
@@ -984,7 +1053,8 @@
       "products": {
         "aurelia": 777,
         "aurelia_plus": 4971,
-        "artemis": 252
+        "artemis": 252,
+        "artemis_pro": 0
       },
       "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
     },
@@ -992,7 +1062,8 @@
       "products": {
         "aurelia": 798,
         "aurelia_plus": 5851,
-        "artemis": 925
+        "artemis": 925,
+        "artemis_pro": 0
       },
       "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
     },
@@ -1000,7 +1071,8 @@
       "products": {
         "aurelia": 737,
         "aurelia_plus": 5751,
-        "artemis": 1230
+        "artemis": 1230,
+        "artemis_pro": 0
       },
       "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
     },
@@ -1008,7 +1080,8 @@
       "products": {
         "aurelia": 658,
         "aurelia_plus": 5517,
-        "artemis": 1524
+        "artemis": 1524,
+        "artemis_pro": 0
       },
       "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
     },
@@ -1016,7 +1089,8 @@
       "products": {
         "aurelia": 584,
         "aurelia_plus": 5363,
-        "artemis": 1861
+        "artemis": 1861,
+        "artemis_pro": 0
       },
       "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
     },
@@ -1024,7 +1098,8 @@
       "products": {
         "aurelia": 525,
         "aurelia_plus": 5495,
-        "artemis": 2248
+        "artemis": 2248,
+        "artemis_pro": 0
       },
       "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
     },
@@ -1032,7 +1107,8 @@
       "products": {
         "aurelia": 427,
         "aurelia_plus": 5392,
-        "artemis": 2472
+        "artemis": 2472,
+        "artemis_pro": 0
       },
       "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
     },
@@ -1040,7 +1116,8 @@
       "products": {
         "aurelia": 427,
         "aurelia_plus": 5392,
-        "artemis": 2472
+        "artemis": 2472,
+        "artemis_pro": 0
       },
       "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
     },
@@ -1264,22 +1341,22 @@
   "scenario_demand_sensitivity": [
     {
       "scenario": "conservative",
-      "computer_demand_1978_1981": 317554,
-      "horizon": "1978\u20131982 (legacy key retained)",
-      "peak_month_computers": 9085,
-      "capacity_with_reserve": 9540
+      "computer_demand_1978_1981": 303716,
+      "horizon": "1978\u20131982 (stable report key)",
+      "peak_month_computers": 9084,
+      "capacity_with_reserve": 9539
     },
     {
       "scenario": "central",
       "computer_demand_1978_1981": 379649,
-      "horizon": "1978\u20131982 (legacy key retained)",
+      "horizon": "1978\u20131982 (stable report key)",
       "peak_month_computers": 11355,
       "capacity_with_reserve": 11923
     },
     {
       "scenario": "strong",
-      "computer_demand_1978_1981": 441742,
-      "horizon": "1978\u20131982 (legacy key retained)",
+      "computer_demand_1978_1981": 455582,
+      "horizon": "1978\u20131982 (stable report key)",
       "peak_month_computers": 13626,
       "capacity_with_reserve": 14308
     }
@@ -153385,7 +153462,7 @@
       "central": 1.0,
       "strong": 1.2
     },
-    "method": "1980 factors are incremental to existing signed reaction/price effects. 1981\u201382 quarterly run rates are relative to reassessed December 1980, replacing 4% compounded monthly growth. Existing balanced prices are held; no second price-elasticity or marketing bonus. Bounds are judgement scenarios, not statistical intervals.",
+    "method": "Accepted 1980 factors are already incorporated in sales_model_inputs.json and are not applied again. 1981\u201382 quarterly run rates are relative to reassessed December 1980, replacing 4% compounded monthly growth. Existing balanced prices are held; no second price-elasticity or marketing bonus. Bounds are judgement scenarios, not statistical intervals.",
     "premises": [
       "CP/M-86 does not exist; DRI prioritizes CP/M-80/TUI and AIONix/PRO.",
       "Adam owns 30% of independent DRI; IBM sees a strategic conflict with competitor Logix.",

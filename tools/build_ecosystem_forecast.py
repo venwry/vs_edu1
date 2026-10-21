@@ -10,7 +10,6 @@ Q=[f'{y}-Q{q}' for y in range(1978,1984) for q in range(1,5) if (y,q)>=(1978,2)]
 S=read('sales_forecast.json');I=read('industrial_investment_1974_1981.json');P=read('ecosystem_forecast_policy.json')
 # Delivered units, not unconstrained buyer intent, establish the installed market.
 anchor=defaultdict(lambda:defaultdict(float))
-central=next(x for x in S['scenarios'] if x['id']=='central')
 for month,row in I['monthly_demand'].items():
  for family,n in row['products'].items():anchor[qtr(month)][family]+=n
 
