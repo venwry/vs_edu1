@@ -1,60 +1,41 @@
-#!/usr/bin/env python3
-"""Scenario forecast, not recorded sales. Run after build_pricing.py."""
-import json,hashlib,math
+"""Build the single current sales forecast from accepted demand and dated retail prices."""
+import json,hashlib,calendar
 from pathlib import Path
+from decimal import Decimal,ROUND_HALF_UP
+from market_outlook import POLICY,reassess,team_units,quarter
 R=Path(__file__).resolve().parents[1]
-reaction=json.loads((R/'market_reactions.json').read_text());adjustments=reaction['forecast_adjustments']
-p=json.loads((R/'pricing_results.json').read_text());offers={x['id']:x for x in p['products']}
-def snap(ref):return offers[ref]['snapshots']['1978']
-refs=['bundle.proposed_aurelia_office','device.flexidisk','device.flexiprint40']
-old=sum(snap(r)['pre_reduction']['retail_price_usd'] for r in refs);new=sum(snap(r)['retail_price_usd'] for r in refs);ratio=new/old
-# Mutually exclusive system choices; accessories are attach rates, not extra computers.
-mix=[('bundle.proposed_aurelia_office',.8),('bundle.aurelia_color',.2),('software.business_tools_aurelia',.2),('software.abacus_1',.2),('device.flexidisk',1),('device.flexiprint40',.7)]
-avg={k:round(sum(snap(r)[k]*q for r,q in mix),2) for k in ['retail_price_usd','manufacturing_cost_usd','computerland_fee_usd','revenue_after_fee_usd','unit_profit_usd']}
-months=['1978-06','1978-07','1978-08','1978-09','1978-10','1978-11','1978-12','1979-01','1979-02','1979-03','1979-04','1979-05']
-weights=[500,800,1100,1500,1900,2200,2600,3000,3300,3700,4200,5200]
+def read(n):return json.loads((R/n).read_text())
+def save(n,d):(R/n).write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n')
+def cents(n):return int((Decimal(str(n))*100).quantize(Decimal('1'),rounding=ROUND_HALF_UP))
+inputs=read('sales_model_inputs.json');prices={r['id']:r for r in read('pricing_results.json')['products']}
+F=['customer_retail_spend_usd','supplier_revenue_after_channel_usd','recurring_cost_usd','unit_contribution_total_usd'];families=['aurelia','aurelia_plus','artemis','artemis_pro']
+def snapshot(ref,year):
+ eligible={int(y):v for y,v in prices[ref]['snapshots'].items() if v.get('retail_price_usd') is not None}
+ y=max([y for y in eligible if y<=year],default=min(eligible))
+ return y,eligible[y]
+central=reassess(inputs['demand_anchor_months'])
 scenarios=[]
-for id,title,elasticity,cap,new_fraction,halo78,halo12 in [('conservative','Conservative',.8,26000,.5,600,2000),('central','Central',1.5,30000,.6,1000,4000),('strong','Strong',2,34000,.65,1500,6000)]:
- demand=22000*ratio**(-elasticity);units=min(round(demand/1000)*1000,cap)
- nums=[round(n*units/30000) for n in weights];nums[-1]+=units-sum(nums)
- base_nums=nums[:];mult=adjustments['scenario_multipliers'][id]
- apple=[round(x*mult['negative']) for x in adjustments['apple_monthly_displacement']]
- deferred=[round(x*mult['negative']) for x in adjustments['tandy_monthly_deferral']]
- gain=[round(x*mult['positive']) for x in adjustments['compatibility_monthly_gain']]
- bpi_requested=[round(x*mult['positive']) for x in adjustments['bpi_monthly_gain']]
- prior_nums=[max(0,n-a-d+g) for n,a,d,g in zip(nums,apple,deferred,gain)]
- room=max(0,cap-sum(prior_nums));bpi_gain=[]
- for wanted in bpi_requested:
-  delivered=min(wanted,room);bpi_gain.append(delivered);room-=delivered
- nums=[n+g for n,g in zip(prior_nums,bpi_gain)]
- units=sum(nums)
- rows=[];cum=0
- for i,(m,n) in enumerate(zip(months,nums)):
-  cum+=n;rows.append({'month':m,'pre_reaction_units':base_nums[i],'apple_displacement_units':apple[i],'tandy_deferred_units':deferred[i],'compatibility_gain_units':gain[i],'bpi_gain_units':bpi_gain[i],'units':n,'cumulative_units':cum,'customer_retail_spend_usd':round(n*avg['retail_price_usd'],2),'supplier_revenue_after_channel_usd':round(n*avg['revenue_after_fee_usd'],2),'recurring_cost_usd':round(n*avg['manufacturing_cost_usd'],2),'unit_contribution_total_usd':round(n*avg['unit_profit_usd'],2)})
- def aggregate(rows,baseline,halo):
-  n=sum(x['units'] for x in rows);incremental=round(n*new_fraction);halo+=round(sum(x['apple_displacement_units'] for x in rows)*new_fraction);market=baseline+incremental+halo
-  return {'units':n,'customer_retail_spend_usd':round(sum(x['customer_retail_spend_usd'] for x in rows),2),'supplier_revenue_after_channel_usd':round(sum(x['supplier_revenue_after_channel_usd'] for x in rows),2),'recurring_cost_usd':round(sum(x['recurring_cost_usd'] for x in rows),2),'unit_contribution_total_usd':round(sum(x['unit_contribution_total_usd'] for x in rows),2),'baseline_market_units':baseline,'new_or_accelerated_logix_purchases':incremental,'diverted_purchases':n-incremental,'halo_competitor_purchases':halo,'expanded_market_units':market,'market_expansion_pct':round((market/baseline-1)*100,2),'unit_market_share_pct':round(n/market*100,2)}
- scenarios.append({'id':id,'title':title,'elasticity_assumption':elasticity,'unconstrained_demand_units':round(demand),'delivery_capacity_units':cap,'pre_reaction_units':sum(base_nums),'reaction_delta_units':sum(nums)-sum(base_nums),'reaction_components':{'apple_displacement':sum(apple),'tandy_deferral':sum(deferred),'compatibility_gain':sum(gain),'bpi_incremental_deliveries':sum(bpi_gain),'bpi_requested_gain':sum(bpi_requested),'bpi_capacity_deferred':sum(bpi_requested)-sum(bpi_gain)},'months':rows,'calendar_1978':aggregate(rows[:7],180000,halo78),'launch_year':aggregate(rows,250000,halo12)})
-# Track independent BPI customer installations and receipts separately from computer sales.
-# Mutually exclusive first-purchase cohorts: one accounting module, four modules, or complete suite.
-for sc in scenarios:
- attach={'conservative':.15,'central':.20,'strong':.25}[sc['id']]
- prices=[snap('software.bpi_suite.bpi_general_accounting')['retail_price_usd'],
-         sum(snap('software.bpi_suite.'+x)['retail_price_usd'] for x in ['bpi_general_accounting','bpi_accounts_receivable','bpi_accounts_payable','bpi_inventory_control']),
-         snap('software.bpi_suite')['retail_price_usd']]
- for row in sc['months']:
-  count=round(row['units']*attach);four=round(count*.25);suite=round(count*.25);single=count-four-suite
-  spend=round(sum(n*p for n,p in zip([single,four,suite],prices)),2)
-  row['bpi']={'customer_installations':count,'single_accounting_licenses':single,'four_module_customers':four,'complete_suite_licenses':suite,'individual_module_licenses':single+4*four,'retail_spend_usd':spend,'bpi_receipts_after_channel_usd':round(spend*.75,2)}
- for key,rows in [('calendar_1978',sc['months'][:7]),('launch_year',sc['months'])]:
-  sc[key]['bpi']={k:round(sum(row['bpi'][k] for row in rows),2) for k in rows[0]['bpi']}
- sc['bpi_attachment_rate']=attach
-model={'metadata' :{'title':'Sales 1978','status':'Alternative-history planning forecast; not actual sales, firm orders or statistically calibrated probabilities.','geography':'United States','currency':'Nominal USD, before sales tax','calendar_period':'1978-01-01 to 1978-12-31; no pre-launch Aurelia sales, June–December shown','launch_year_period':'1978-06-05 to 1979-05-31; rounded planning proxy for sales by June 4 NCC 1979; June 1–3 omitted','source_reactions_sha256':hashlib.sha256((R/'market_reactions.json').read_bytes()).hexdigest(),'source_story_sha256':hashlib.sha256((R/'logix_aion_story.json').read_bytes()).hexdigest(),'source_pricing_sha256':hashlib.sha256((R/'pricing_results.json').read_bytes()).hexdigest(),'generated_by':'tools/build_sales.py'},'reaction_policy':adjustments,'pricing_comparison':{'references':refs,'previous_complete_package_usd':old,'revised_complete_package_usd':round(new,2),'reduction_pct':round((1-ratio)*100,2),'previous_disk_office_usd':old-snap('device.flexiprint40')['pre_reduction']['retail_price_usd'],'revised_disk_office_usd':round(new-snap('device.flexiprint40')['retail_price_usd'],2),'baseline_launch_year_units':22000},'assumptions':{'demand':'22,000 baseline launch-year sales × (revised complete-package price / old price)^(-elasticity), rounded to 1,000 and capped at the scenario delivery capacity, then adjusted by explicit dated competitor/partner effects in market_reactions.json. BPI gains are limited to remaining scenario delivery capacity, with excess demand shown as deferred. Elasticities are judgement assumptions, not historical measurements.','monthly_ramp':'Monthly weights are a production/distribution planning allocation, not measured seasonality. Prices held at June 1978 snapshot through May 1979; no use of June 1979 prices before NCC.','market_denominator':'180,000 US calendar-1978 purchases without Logix and 250,000 launch-year purchases without Logix are modelling assumptions, not sourced historical counts. Different periods must not be mixed. New/accelerated purchases plus competitor halo expand the denominator; diverted purchases do not.','mix':'80% Office grayscale bundle; 20% colour system plus separately purchased Business Tools and Abacus. One disk per computer, 70% printer attachment. All sales use baseline 25% dealer fee; no extra direct-sales margin is assumed.','accounting':'Customer retail spend is not manufacturer revenue. Supplier revenue combines Logix/AION offering receipts after channel fees; legal-entity allocation is not modelled. Contribution excludes campaign, Academy setup, credits, R&D, capital, finance and tax. Academy tuition revenue is excluded. BPI licence receipts are separately reported and excluded from Logix/AION totals; neither BPI specialist support costs nor corporate profit are estimated.','production':f"Central case needs {scenarios[1]['months'][-1]['units']:,} monthly customer deliveries by May 1979 plus demonstration/service/inventory stock. Existing manufacturing costs assume 10,000 annual units per hardware family and are held unchanged, not treated as proof of capacity or automatic scale savings.",'marketing':'Assumes qualified launch software, effective dealer demonstrations and campaign delivery. Free TV packages do not imply guaranteed airtime. Incremental Apple, public Tandy-announcement and compatibility-confidence effects are explicitly tabulated; private cooperation and later IBM actions have no early demand effect.','uncertainty':'Central estimate is a planning case. Demand response, manufacturing yield, disk/printer supply, channel reach and service quality dominate uncertainty.'},'bpi_policy':{'scope':'15/20/25% first-purchase attachment; scenario assumptions, not observed conversions. Existing BPI availability is already in baseline; only stronger execution adds hardware demand.','mix':'50% accounting-only, 25% four-module trading configuration, 25% complete suite; rounded per month. A suite is one licence entitlement covering five modules.','ownership':'BPI receipts belong to independent BPI Systems; not Logix/AION revenue or Adam personal income.','exclusions':'No Tandy BPI port, training, setup fees, support profit, equity income or upgrade revenue forecast. Upgrade credits are not hidden inside first-purchase cohorts. No extra RAM/drive sales assumed before configuration qualification.','capacity':'Use existing delivery caps; strong-case BPI demand above capacity is deferred beyond cutoff. Academy BPI enrolments are part of existing 10,000–13,000 capacity, not extra hardware sales.'},'average_sale':{'components':[{'product_ref':r,'quantity_per_computer':q} for r,q in mix],**avg},'scenarios':scenarios,'academy':{'launch_centres':5,'end_1978_centres_range':[8,10],'ncc1979_centres_range':[14,18],'ncc1979_rooms_range':[40,45],'ncc1979_instructors_range':[50,56],'first_year_course_enrolments_range':[10000,13000],'first_year_fundamentals_tuition_usd':snap('service.academy_regular_courses.course_1')['before_you_buy_variant']['retail_price_usd'],'fundamentals_credit_usd':snap('service.academy_regular_courses.course_1')['before_you_buy_variant']['voucher_face_value_usd'],'gates':'Expand after sustained 70–75% classroom occupancy or two-week waiting lists; use dealer-hosted/visiting classes before a permanent lease. Enrolments include repeat students, not additional computer sales. Target assumes eight learners per room and advance instructor recruitment.','status':'Recommended central-scenario capacity roadmap, not approved city selections or actual openings.'},'context_sources':[{'title':'Contemporary BYTE report of Dataquest 1978 market estimates','url':'https://vintageapple.org/byte/pdf/197905_Byte_Magazine_Vol_04-05_Computer_Generated_Maps.pdf','use':'Historical scale context only; not the numerical US denominators above.'},{'title':'Dan Bricklin: VisiCalc release history','url':'https://www.bricklin.com/history/saiproduct1_m.htm','use':'October 1979 release context for the earlier Abacus business proposition; not demand-elasticity evidence.'}]}
-from extend_sales import extend
-extend(model, offers, R)
-from extend_sales_ncc80 import extend_ncc80
-extend_ncc80(model, offers, R)
-from extend_sales_comdex80 import extend_comdex80
-extend_comdex80(model, offers, R)
-(R/'sales_forecast.json').write_text(json.dumps(model,indent=2,ensure_ascii=False)+'\n')
-print('Forecast central:',scenarios[1]['calendar_1978']['units'],'calendar 1978;',scenarios[1]['launch_year']['units'],'launch year')
+for name,mult in POLICY['bounds'].items():
+ rows=[]
+ for month in [f'1978-{m:02}' for m in range(1,6)]+list(central):
+  source=central.get(month,{'products':{},'basis':'Pre-launch: no computer sales.'})
+  products={f:round(source['products'].get(f,0)*mult) for f in families};year=max(1978,int(month[:4])-(int(month[5:])<6));links=[]
+  totals={f:0 for f in F}
+  for family,count in products.items():
+   if not count:continue
+   for item in inputs['basket_components'][family]:
+    ref=item['product_ref'];vintage,p=snapshot(ref,year);quantity=Decimal(str(item['quantity'])).quantize(Decimal('0.000000001'))*count
+    gross=cents(quantity*Decimal(str(p['retail_price_usd'])));net=cents(quantity*Decimal(str(p['revenue_after_fee_usd'])));cost=cents(quantity*Decimal(str(p['manufacturing_cost_usd'])))
+    vals=dict(zip(F,[gross,net,cost,net-cost]));totals={k:totals[k]+vals[k] for k in F}
+    links.append({'family':family,'product_ref':ref,'quantity':float(quantity),'snapshot_year':vintage,'snapshot_proxy':vintage>year,'unit_retail_usd':p['retail_price_usd'],'unit_after_channel_usd':p['revenue_after_fee_usd'],'unit_recurring_cost_usd':p['manufacturing_cost_usd'],**{k:v/100 for k,v in vals.items()}})
+  rows.append({'month':month,'period_start':month+'-01','period_end':month+'-'+str(calendar.monthrange(int(month[:4]),int(month[5:]))[1]),'products':products,'computer_units':sum(products.values()),'team_licenses':round(team_units(month)*mult),'basis':source['basis'],**{k:v/100 for k,v in totals.items()},'pricing_links':links})
+ def aggregate(key):
+  groups={}
+  for r in rows:groups.setdefault(key(r['month']),[]).append(r)
+  return [{'period':k,'products':{f:sum(r['products'][f] for r in rr) for f in families},'computer_units':sum(r['computer_units'] for r in rr),'team_licenses':sum(r['team_licenses'] for r in rr),**{f:sum(cents(r[f]) for r in rr)/100 for f in F}} for k,rr in groups.items()]
+ scenarios.append({'id':name,'title':name.title(),'monthly':rows,'quarterly':[dict(r,quarter=r['period']) for r in aggregate(quarter)],'annual':[dict(r,year=int(r['period'])) for r in aggregate(lambda m:m[:4])]})
+files=['pricing_results.json','sales_model_inputs.json','logix_aion_story.json','market_reactions.json','tools/market_outlook.py']
+metadata={'title':'Current computer sales and package financials','current_forecast_horizon':'1982-12-31','schema_version':2,'currency':'nominal USD','source_pricing_sha256':hashlib.sha256((R/files[0]).read_bytes()).hexdigest(),'source_story_sha256':hashlib.sha256((R/'logix_aion_story.json').read_bytes()).hexdigest(),'source_reactions_sha256':hashlib.sha256((R/'market_reactions.json').read_bytes()).hexdigest()}
+model={'metadata':metadata,'policy':POLICY,'financial_policy':{'scope':'Computer baskets only. Standalone Team Edition, BPI, cards, upgrades and Academy revenue remain separate in ROI. Bundle components appear once; their constituent editions are not additional sales.','retail_spend':'Quantity × dated retail_price_usd for every weighted basket offer.','after_channel_fees':'Quantity × dated revenue_after_fee_usd, already net of the modeled fee.','recurring_cost':'Quantity × dated manufacturing_cost_usd; includes the recurring contents and services defined in retail pricing.','contribution':'After channel fees minus recurring cost, before corporate development, marketing, capital/depreciation and tax.','timing':'Use June snapshot from June onward, prior-year snapshot January–May. First available snapshot is a labelled proxy for offers introduced after the prior snapshot. June snapshots proxy the whole month.','rounding':'Round each weighted offer line to cents, then sum lines, months, quarters and years. Contribution is net receipts minus recurring cost in integer cents.','demand':'Accepted central demand unchanged. Conservative/strong scale each product count by 0.8/1.2 once; these are scenario bounds, not separate historical versions.'},'scenarios':scenarios,'sources':[{'path':f,'sha256':hashlib.sha256((R/f).read_bytes()).hexdigest()} for f in files]}
+save('sales_forecast.json',model)
+print('Built current monthly sales and dated package financials, 1978–1982.')

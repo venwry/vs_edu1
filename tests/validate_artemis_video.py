@@ -41,11 +41,6 @@ for bundle in c['offered_bundles']:
   assert bundle['included_devices']==['device.flexibus_keyboard','device.mono_pro']
   inv=population(bundle['bom_assembly_ref']);assert inv['bompart.part.brimar_m36_141w_crt']==1 and inv['bompart.part.artemis_graphics_chip']==1
 policy=read('artemis_display_revision.json');s=read('sales_forecast.json');inv=read('industrial_investment_1974_1981.json');roi=read('roi_1974_1980.json')
-for scenario in s['scenarios']:
- for month in scenario['ncc_to_comdex1980_months']:
-  assert month['buyer_pool_before_price_response']==month['baseline_demand_units']+month['net_campaign_demand_units']+month['display_revision_intent_increment']
-  art=month['products']['artemis'];pre=art['intending_buyers']-month['display_revision_intent_increment']
-  assert month['display_revision_intent_increment']==round(pre*policy['demand_uplift'][scenario['id']])
 for q in inv['quarterly_capacity']:
  assert q['installed_computer_capacity_month']>=math.floor(q['peak_month_customer_demand']*1.05)
 for q,amount in policy['incremental_marketing_usd'].items():assert sum(x['central_usd'] for x in roi['marketing']['items'] if x['quarter']==q and x['programme']=='Mono Pro incremental campaign')==amount

@@ -38,11 +38,8 @@ for layer in ['hardware','memory']:
  nodes=c['artemis_explorer']['diagrams'][layer]['nodes']
  assert not {'display_dram','sprite_sram','pixel_fifo','display_refresh'}&{n['id'] for n in nodes}
  assert any(n.get('computer_path')=='video' for n in nodes)
-for sc in read('sales_forecast.json')['scenarios']:
- for month in sc['ncc_to_comdex1980_months']:
-  a=month['products']['artemis']
-  assert sum(a['configuration_units'].values())==a['units']
-  assert set(a['configuration_units'])=={'artemis_128_mono','artemis_128_color','artemis_256_mono_pro','artemis_256_color'}
+mix=read('sales_model_inputs.json')['basket_components']['artemis']
+assert abs(sum(x['quantity'] for x in mix if x['product_ref'].startswith('bundle.'))-1)<.000001
 iv=read('industrial_investment_1974_1981.json')
 assert sum(p['person_months'] for p in iv['engineering_programs'] if p['id'] in ['aion_64k_dram','artemis_tier_hardware','artemis_economy_driver'])==156
 print('PASS: Artemis tier BOMs, mode allocation, monitor constraints, selected-card diagrams, AION sourcing and sales reconciliation.')

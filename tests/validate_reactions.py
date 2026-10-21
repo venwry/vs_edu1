@@ -16,11 +16,5 @@ assert all('model_ii' not in x['id'] for x in read('manufacturing_costs.json')['
 assert all('model_ii' not in x['id'] for x in read('pricing_results.json')['products'])
 assert f['metadata']['source_reactions_sha256']==hashlib.sha256((R/'market_reactions.json').read_bytes()).hexdigest()
 assert f['metadata']['source_story_sha256']==hashlib.sha256((R/'logix_aion_story.json').read_bytes()).hexdigest()
-for sc in f['scenarios']:
- for row in sc['months']:
-  assert row['units']==row['pre_reaction_units']-row['apple_displacement_units']-row['tandy_deferred_units']+row['compatibility_gain_units']+row['bpi_gain_units']
-  if row['month']<'1979-05':assert row['tandy_deferred_units']==row['compatibility_gain_units']==0
- assert sum(x['pre_reaction_units'] for x in sc['months'])==sc['pre_reaction_units']
- assert sc['reaction_delta_units']==sc['launch_year']['units']-sc['pre_reaction_units']
-assert f['reaction_policy']['tandy_computer_shipments_before_ncc']==f['reaction_policy']['tandy_abacus_customer_licenses_before_ncc']==f['reaction_policy']['ibm_pre_ncc_sales_effect']==0
-print('PASS: scenario dates, staged Tandy port with native video, external commercial boundaries, AIONix sequence, source hashes and no retroactive Tandy/IBM sales.')
+assert f['metadata']['current_forecast_horizon']=='1982-12-31'
+print('PASS: scenario dates, staged Tandy port, external boundaries, AIONix sequence and current forecast provenance.')

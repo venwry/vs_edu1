@@ -23,7 +23,7 @@ POLICY = {
   'Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings.'
  ],
  'bounds':{'conservative':.8,'central':1.,'strong':1.2},
- 'method':'1980 factors are incremental to existing signed reaction/price effects. 1981–82 quarterly run rates are relative to reassessed December 1980, replacing 4% compounded monthly growth. Existing balanced prices are held; no second price-elasticity or marketing bonus. Bounds are judgement scenarios, not statistical intervals.',
+ 'method':'Accepted 1980 factors are already incorporated in sales_model_inputs.json and are not applied again. 1981–82 quarterly run rates are relative to reassessed December 1980, replacing 4% compounded monthly growth. Existing balanced prices are held; no second price-elasticity or marketing bonus. Bounds are judgement scenarios, not statistical intervals.',
  'premises':['CP/M-86 does not exist; DRI prioritizes CP/M-80/TUI and AIONix/PRO.', 'Adam owns 30% of independent DRI; IBM sees a strategic conflict with competitor Logix.', 'Paterson does not create QDOS; IBM commissions its own alternative disk OS, with qualification risk.', 'DRI non-ERA port rights activate in 1982; 68k requires suitable MMU/system design; 286 enables feasibility, not an immediate release.', 'ERAv1 remains 3 um. June 1982 repaired 3 um RAM costs remain the volume cost basis through year-end; 2 um pilot savings await repeatable-production approval.', 'Adam foresees demand peaks, not engineering success: reserve 5% commercial headroom, retain OEE, one-down redundancy and qualification gates.'],
  'team_licenses_1981':[0,0,0,0,0,0,0,0,0,0,12,24],
  'team_licenses_1982':[30,35,40,45,50,55,60,65,70,80,90,100],
@@ -40,7 +40,7 @@ def reassess(original, multiplier=1.):
  out={m:{'products':dict(r['products']),'basis':r['basis']} for m,r in original.items() if m<'1980-01'}
  for m,r in original.items():
   if not m.startswith('1980'):continue
-  factor=POLICY['1980_incremental_reaction_factors'][(int(m[5:])-1)//3]*multiplier
+  factor=multiplier
   out[m]={'products':allocate(round(sum(r['products'].values())*factor),r['products']), 'basis':POLICY['quarter_reasons'][(int(m[5:])-1)//3]}
  base=sum(out['1980-12']['products'].values())
  for i,factor in enumerate(POLICY['quarter_run_rate_vs_december_1980']):

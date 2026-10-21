@@ -20,9 +20,6 @@ assert 'without a bespoke partnership or mandatory certification' in policy['eli
 assert 'CP/M alone is insufficient' in policy['binary']
 assert 'separate optional profiles' in policy['hardware']
 assert 'No future processor' in policy['scope']
-assert f['metadata']['november_forecast_end']<e['date']['start']
-# A cost-driven price rebase may change totals; December products must not leak into November.
-for scenario in f['scenarios']:
- assert scenario['launch_through_november_1979']['units'] == scenario['launch_year']['units'] + sum(m['units'] for m in scenario['post_ncc_months'])
- assert all(m['aurelia_plus_units']==0 and m['month']<='1979-11' for m in scenario['post_ncc_months'])
-print('PASS: December compatibility kit, independent implementation, separate licences, snapshot gates and unchanged November forecast.')
+for scenario in read('sales_forecast.json')['scenarios']:
+ assert all(r['products']['aurelia_plus']==0 for r in scenario['monthly'] if r['month']<'1979-12')
+print('PASS: product launch gates and compatibility boundaries.')

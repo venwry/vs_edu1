@@ -5,59 +5,29 @@ from collections import defaultdict
 R=Path(__file__).resolve().parents[1]
 def read(f):return json.loads((R/f).read_text())
 I=read('industrial_investment_1974_1981.json');S=read('sales_forecast.json');P=read('pricing_results.json')
-prices={p['id']:p for p in P['products']}; Q=[f'{y}-Q{q}' for y in range(1974,1983) for q in range(1,5)];base=S['scenarios'][1]
+prices={p['id']:p for p in P['products']}; Q=[f'{y}-Q{q}' for y in range(1974,1983) for q in range(1,5)];base=next(x for x in S['scenarios'] if x['id']=='central');inputs=read('sales_model_inputs.json')
 def qr(m):return m[:4]+'-Q'+str((int(m[5:7])-1)//3+1)
 def snap(ref,year):
  d=prices[ref]['snapshots']; ys=[k for k,v in d.items() if v.get('retail_price_usd') is not None]
  eligible=[y for y in ys if int(y)<=year];return d[max(eligible or ys,key=int)]
 def money(x):return round(x,2)
-# Recorded per-family realized basket prices, with split-May periods kept distinct.
-periods=defaultdict(list);oldforecast=defaultdict(lambda:defaultdict(float))
-for g in ['months','post_ncc_months','comdex_to_ncc1980_months','ncc_to_comdex1980_months']:
- for r in base[g]:
-  periods[r['month']].append(r)
-  for k in ['units','customer_retail_spend_usd','supplier_revenue_after_channel_usd','recurring_cost_usd']:
-   oldforecast[qr(r['month'])][k]+=r[k]
-  oldforecast[qr(r['month'])]['bpi_receipts_after_channel_usd']+=r.get('bpi',{}).get('bpi_receipts_after_channel_usd',0)
-last=base['ncc_to_comdex1980_months'][-1]
 revenue=[];revenueq=defaultdict(lambda:defaultdict(float));revenue_entity=defaultdict(lambda:defaultdict(float))
 def rev(m,stream,gross,net,units,basis):
  revenue.append({'month':m,'quarter':qr(m),'stream':stream,'units':round(units,4),'customer_gross_usd':money(gross),'channel_fees_usd':money(gross-net),'supplier_net_usd':money(net),'basis':basis})
  revenueq[qr(m)]['gross']+=gross;revenueq[qr(m)]['channel']+=gross-net;revenueq[qr(m)]['net']+=net;revenueq[qr(m)][stream]+=net
 for m,md in I['monthly_demand'].items():
  if m>'1982-12':continue
- rs=periods.get(m,[] if m>='1981-01' else [last]);total=sum(md['products'].values())
- for f,n in md['products'].items():
-  weights=[]
-  for r in rs:
-   item=r.get('products',{}).get(f) if 'products'in r else (r if f=='aurelia' else None)
-   if item and item['units']:
-    w=item.get('new_demand_units',item['units']);weights.append((w,item['customer_retail_spend_usd']/item['units'],item['supplier_revenue_after_channel_usd']/item['units']))
-  if not weights and m>='1981-01':
-   # Dated, balanced 1981 basket prices; same units as the cost/investment model.
-   if f=='artemis_pro':
-    mix=read('artemis_display_revision.json')['mono_pro_pro_console_share']
-    basket=[{'product_ref':'bundle.artemis_pro_512_server','quantity':.75*(1-mix)},{'product_ref':'bundle.artemis_pro_1mb_server','quantity':.25*(1-mix)},{'product_ref':'bundle.artemis_pro_512_mono_pro','quantity':.75*mix},{'product_ref':'bundle.artemis_pro_1mb_mono_pro','quantity':.25*mix}]
-   else: basket=S['comdex1980_policy']['components'][f]
-   vintage=1982 if m>='1982-06' else 1981 if m>='1981-06' else 1980
-   gross=sum(x['quantity']*snap(x['product_ref'],vintage)['retail_price_usd'] for x in basket)
-   net=sum(x['quantity']*snap(x['product_ref'],vintage)['revenue_after_fee_usd'] for x in basket)
-   weights=[(1,gross,net)]
-  if not weights:raise ValueError((m,f))
-  denom=sum(w[0] for w in weights);gross=n*sum(w*g for w,g,v in weights)/denom;net=n*sum(w*v for w,g,v in weights)/denom
-  rev(m,'computer_baskets',gross,net,n,'Full-demand industrial model units × original forecast realized basket prices; May weighted by new demand; Nov–Dec held at final known price')
- # Original BPI installation realization retained, not repriced retroactively with later catalog snapshots.
- count=sum(r.get('bpi',{}).get('customer_installations',0) for r in rs)
- if count:
-  installations=total*.2;gross=sum(r['bpi']['retail_spend_usd'] for r in rs)/count*installations;net=sum(r['bpi']['bpi_receipts_after_channel_usd'] for r in rs)/count*installations
-  rev(m,'bpi_licenses',gross,net,installations,'20% attach; realized BPI price/mix from corresponding original period. Independent BPI receipts.')
- if m>='1981-01':
-  for l in I['product_cost_links']:
-   if l['month']==m and l['product_ref'].startswith('software.bpi'):
-    ps=snap(l['product_ref'],l['cost_snapshot_year']);rev(m,'bpi_licenses',l['units']*ps['retail_price_usd'],l['units']*ps['revenue_after_fee_usd'],l['units'],'1981 independent BPI licenses matched once to industrial plan costed quantities and dated prices, including conditional PRO client/server licenses')
- for r in rs:
-  if m in periods and r.get('applications'):
-   a=r['applications'];rev(m,'standalone_applications',a['customer_retail_spend_usd'],a['supplier_revenue_after_channel_usd'],a.get('existing_aurelia_abacus2_licenses',0)+a.get('pulse_licenses_on_new_aurelia_plus',0),'Original additional-application cohort; not added again to computer baskets')
+ row=next(r for r in base['monthly'] if r['month']==m)
+ rev(m,'computer_baskets',row['customer_retail_spend_usd'],row['supplier_revenue_after_channel_usd'],row['computer_units'],'Canonical current sales: weighted basket quantities × dated retail pricing; cents summed from offer lines.')
+ for l in I['product_cost_links']:
+  if l['month']==m and l['product_ref'].startswith('software.bpi'):
+   ps=snap(l['product_ref'],l['cost_snapshot_year']);rev(m,'bpi_licenses',l['units']*ps['retail_price_usd'],l['units']*ps['revenue_after_fee_usd'],l['units'],'Independent BPI licenses matched once to costed quantities and dated prices.')
+ for cohort in inputs['standalone_applications']:
+  if cohort['month']!=m:continue
+  for ref,key in [('software.abacus_2','existing_aurelia_abacus2_licenses'),('software.pulse_1','pulse_licenses_on_new_aurelia_plus')]:
+   n=cohort['applications'].get(key,0)
+   if n:
+    ps=snap(ref,max(1978,int(m[:4])-(int(m[5:])<6)));rev(m,'standalone_applications',n*ps['retail_price_usd'],n*ps['revenue_after_fee_usd'],n,'Additional application cohort, priced once from the dated retail model.')
  # Match separately costed card allowance from investment model.
  for l in I['product_cost_links']:
   if l['month']==m and l['product_ref'] in ['device.apple2_expansion_card','device.s100_flexibus_card','device.apple2_video_card','device.s100_video_card']:
@@ -77,7 +47,7 @@ for cap in I['quarterly_capacity']:
  q=cap['quarter']
  if q not in Q or not cap['course_enrolments']:continue
  yy=int(q[:4]);price_year=max(1978,yy-(q.endswith('Q1')));mix=defaultdict(float)
- for r in base['academy_months']:
+ for r in inputs['academy_requests']:
   if qr(r['month'])==q:
    for k,v in r['courses'].items():mix[k]+=v['requested_enrolments']
  if not sum(mix.values()):mix.update({'fundamentals':.35,'fundamentals_abacus':.25,'business_workflow':.15,'developer':.10,'bpi':.10,'pulse':.05 if yy>=1980 else 0})
@@ -171,7 +141,7 @@ for scenario in [{'id':'low_marketing','factor':.65},{'id':'central','factor':1}
   peakfunding=max(peakfunding,-cumulative_cash);endassets=cumulative_cap-cumulative_dep+inventory;avgassets=(previous_assets+endassets)/2
   if peakfunding>0 and cumulative_cash>=0 and payback is None:payback=q
   recost=sum(l['units']*l['unit_cost_usd'] for l in I['product_cost_links'] if l['quarter']==q)-internalroyalty
-  row={'quarter':q,'computer_units':capacity['customer_computers'],'customer_gross_usd':money(revenueq[q]['gross']),'channel_fees_usd':money(revenueq[q]['channel']),'promotional_credits_usd':money(credits),'net_revenue_usd':money(revenue_net),'revenue_streams_usd':{k:money(revenueq[q][k]) for k in ['computer_baskets','standalone_applications','standalone_cards','bpi_licenses','academy_tuition','team_and_network']},'source_operating_expenses_usd':money(sourceopex),'replaced_generic_marketing_usd':money(oldmarketing),'eliminated_internal_royalties_usd':money(internalroyalty),'recurring_product_cost_reference_usd':money(recost),'other_resource_costs_usd':money(opex-marketing-recost),'marketing_expense_usd':money(marketing),'total_marketing_and_credits_usd':money(marketing+credits),'operating_cash_cost_usd':money(opex),'ebitda_usd':money(ebitda),'depreciation_usd':money(depreciation),'operating_profit_ebit_usd':money(ebit),'capex_usd':money(capex),'inventory_balance_usd':money(inventory),'inventory_cash_change_usd':money(change),'free_cash_flow_usd':money(fcf),'cumulative_net_cash_usd':money(cumulative_cash),'cumulative_capex_usd':money(cumulative_cap),'cumulative_operating_profit_usd':money(cumulative_ebit),'cumulative_net_revenue_usd':money(cumulative_revenue),'end_operating_assets_usd':money(endassets),'average_operating_assets_usd':money(avgassets),'quarterly_pretax_roi_pct':round(ebit/avgassets*100,3) if avgassets>0 else None,'cumulative_accounting_roi_pct':round(cumulative_ebit/(cumulative_cap+inventory)*100,3) if cumulative_cap+inventory>0 else None,'peak_external_funding_usd':money(peakfunding),'cumulative_cash_return_on_peak_funding_pct':round(cumulative_cash/peakfunding*100,3) if peakfunding>0 else None,'original_forecast_reference':dict(oldforecast[q]),'period_status':'Extrapolated sales for November 19–December 31; 1981 inventory prebuild retained' if q=='1980-Q4' else 'Full-demand capacity scenario, not original constrained deliveries'}
+  row={'quarter':q,'computer_units':capacity['customer_computers'],'customer_gross_usd':money(revenueq[q]['gross']),'channel_fees_usd':money(revenueq[q]['channel']),'promotional_credits_usd':money(credits),'net_revenue_usd':money(revenue_net),'revenue_streams_usd':{k:money(revenueq[q][k]) for k in ['computer_baskets','standalone_applications','standalone_cards','bpi_licenses','academy_tuition','team_and_network']},'source_operating_expenses_usd':money(sourceopex),'replaced_generic_marketing_usd':money(oldmarketing),'eliminated_internal_royalties_usd':money(internalroyalty),'recurring_product_cost_reference_usd':money(recost),'other_resource_costs_usd':money(opex-marketing-recost),'marketing_expense_usd':money(marketing),'total_marketing_and_credits_usd':money(marketing+credits),'operating_cash_cost_usd':money(opex),'ebitda_usd':money(ebitda),'depreciation_usd':money(depreciation),'operating_profit_ebit_usd':money(ebit),'capex_usd':money(capex),'inventory_balance_usd':money(inventory),'inventory_cash_change_usd':money(change),'free_cash_flow_usd':money(fcf),'cumulative_net_cash_usd':money(cumulative_cash),'cumulative_capex_usd':money(cumulative_cap),'cumulative_operating_profit_usd':money(cumulative_ebit),'cumulative_net_revenue_usd':money(cumulative_revenue),'end_operating_assets_usd':money(endassets),'average_operating_assets_usd':money(avgassets),'quarterly_pretax_roi_pct':round(ebit/avgassets*100,3) if avgassets>0 else None,'cumulative_accounting_roi_pct':round(cumulative_ebit/(cumulative_cap+inventory)*100,3) if cumulative_cap+inventory>0 else None,'peak_external_funding_usd':money(peakfunding),'cumulative_cash_return_on_peak_funding_pct':round(cumulative_cash/peakfunding*100,3) if peakfunding>0 else None,'period_status':'Current demand, dated retail prices and matched manufacturing capacity'}
   rows.append(row);previous_assets=endassets;previous_inventory=inventory
  results.append({'id':scenario['id'],'marketing_multiplier':scenario['factor'],'quarterly':rows,'first_cash_payback_quarter':payback,'sales_uplift_from_marketing_budget':0,'sensitivity_basis':'Only marketing expense/credit budget changes. No invented causal sales response.'})
  if scenario['id']=='central':
@@ -185,18 +155,14 @@ M['memory_manufacturing']=I.get('memory_manufacturing',{})
 M['assumptions']['working_capital']='One-quarter-ahead inventory funding through 1982; terminal inventory retained without liquidation. Cash collection and no supplier credit remain planning assumptions.'
 M['assumptions']['matching']='Current 1980–82 reaction demand matches industrial production and revenue exactly. Earlier basket realization is retained; later prices use dated June snapshots. June snapshots proxy the whole June month. No historical 1982 competitor quote is asserted.'
 M['assumptions']['1981_extension']='Reassessed demand through December 1982 from market_outlook.py. Dated balanced prices, 1982 process investment and Team costs included. Initial Team price uses first available 1982 snapshot; no volume savings from the unproven 2 um ramp.'
-# Reproducible revision comparison; does not alter ROI accounting or historical demand anchors.
-previous_display=read('artemis_display_baseline.json')
-last=next(x for x in M['scenarios'] if x['id']=='central')['quarterly'][27]
-endyear=next(x for x in I['summary_annual'] if x['year']==1980)
-sales_display=read('sales_forecast.json')
-current_display={'aurelia_plus_deliveries_to_nov18':next(x for x in sales_display['scenarios'] if x['id']=='central')['ncc_to_comdex1980']['aurelia_plus_units'],'artemis_deliveries_to_nov18':next(x for x in sales_display['scenarios'] if x['id']=='central')['ncc_to_comdex1980']['artemis_units'],'full_demand_1980':endyear['computer_demand'],'end_1980_headcount':endyear['year_end_headcount'],**{k:last[k] for k in ['cumulative_accounting_roi_pct','cumulative_net_cash_usd','peak_external_funding_usd','cumulative_net_revenue_usd']}}
-M['display_revision']={'policy':display_revision,'baseline_commit':previous_display['source_commit'],'comparison':[{'metric':k,'previous':v,'revised':current_display[k],'change':round(current_display[k]-v,3)} for k,v in previous_display['metrics'].items()],'interpretation':'Aurelia+ now uses eight AION 64K DRAMs. Revised manufacturing costs flow through balanced prices and existing price elasticity; no additional marketing or demand bonus is invented. Shared chip development is advanced for December 1979, not duplicated. ROI uses expanded capacity for all modeled demand plus 5% reserve; sales page retains its constrained delivery forecast. PRO sales start conditionally in 1981 and add no 1980 revenue. ROI sensitivity controls vary marketing cost only; they do not re-estimate sales.'}
-M['display_revision']['interpretation']='Historical hardware revision comparison is retained. Current demand and financial totals now include the 1980–82 market reassessment with 5% capacity headroom. Marketing sensitivity varies expense only.'
+M['metadata']['scenario']='Single current sales forecast through 1982; matching quantities and prices across sales and ROI.'
+M['assumptions']['matching']='Computer-package revenue is read directly from current sales monthly totals. BPI and other non-basket streams are added separately once.'
+M['assumptions']['sales_end_1980']='All current monthly sales use dated retail pricing; no superseded constrained-delivery series is included.'
+M['display_revision']={'policy':display_revision,'interpretation':'Current hardware and manufacturing policy; ERAv1 remains at 3 um. Current sales and ROI use the same dated retail prices.'}
 (R/'artemis_display_impact.json').write_text(json.dumps(M['display_revision'],indent=2)+'\n')
 (R/'marketing_budget_1974_1980.json').write_text(json.dumps(marketing_model,indent=2)+'\n');(R/'roi_1974_1980.json').write_text(json.dumps(M,indent=2)+'\n')
 site=read('site_pages.json');pages={p['id']:p for p in site['pages']};nav=''.join('<a href="'+html.escape(pages[i]['path'])+'"'+(' aria-current="page"' if i=='roi' else '')+'>'+html.escape(pages[i]['title'])+'</a>' for i in site['navigation'])
-display_section='<section class="panel"><h2>Aurelia+ AION memory revision</h2><p>'+html.escape(M['display_revision']['interpretation'])+'</p><p>Previously budgeted display campaign: $435,000. Previously budgeted display/memory engineering: 306 person-months; the shared 120 PM 64K DRAM programme now completes in Q3 1979. Existing Aurelia+ board qualification covers integration. Mono Pro uptake: 24% of Artemis and 30% of conditional 1981 PRO sales. <a href="aurelia-plus.html">Aurelia+ hardware and qualification</a> · <a href="artemis_display_impact.json">Machine-readable assumptions and comparison</a></p><div class="table-wrap"><table><thead><tr><th>Central-case metric</th><th>Previous</th><th>Revised</th><th>Change</th></tr></thead><tbody>'+''.join('<tr><th>'+html.escape(x['metric'].replace('_',' '))+'</th>'+''.join('<td>'+format(x[k],',.3f' if x['metric'].endswith('_pct') else ',.2f' if x['metric'].endswith('_usd') else ',.0f')+'</td>' for k in ['previous','revised','change'])+'</tr>' for x in M['display_revision']['comparison'])+'</tbody></table></div><p>Figures in USD are nominal; ROI is percent. This comparison includes hardware, price, demand, capacity, engineering and campaign changes together, and is not causal marketing ROI.</p></section>'
+display_section='<section class="panel"><h2>Current sales and pricing</h2><p>Computer-package revenue matches the single current sales forecast. Standalone software, BPI, cards and Academy receipts are added separately. <a href="sales.html">Sales and contribution</a></p></section>'
 template=R/'tools/roi_template.html'
 if template.exists():(R/'roi.html').write_text(template.read_text().replace('__NAV__',nav).replace('__MODEL__',json.dumps(M).replace('</','<\\/')).replace('__DISPLAY_REVISION__',display_section))
 print(json.dumps({'annual':annual,'end_1981':results[1]['quarterly'][-1],'payback':results[1]['first_cash_payback_quarter'],'marketing_items':len(items)},indent=2))

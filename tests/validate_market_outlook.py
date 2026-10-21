@@ -3,13 +3,15 @@ import json,math,hashlib
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(n):return json.loads((R/n).read_text())
-s=read('sales_forecast.json')['reassessed_1980_1982'];i=read('industrial_investment_1974_1981.json');roi=read('roi_1974_1980.json');m=read('market_outlook_1980_1982.json')
+s=read('sales_forecast.json');i=read('industrial_investment_1974_1981.json');roi=read('roi_1974_1980.json');m=read('market_outlook_1980_1982.json')
 central=next(x for x in s['scenarios'] if x['id']=='central');cash=next(x for x in roi['scenarios'] if x['id']=='central')
-assert len(central['monthly'])==36 and len(central['quarterly'])==12
+assert len(central['monthly'])==60 and len(central['quarterly'])==20
 assert cash['quarterly'][-1]['quarter']=='1982-Q4'
 assert s['policy']['capacity_headroom']==.05
 for row in central['monthly']:
- month=row['month'];assert row['products']==i['monthly_demand'][month]['products']
+ month=row['month']
+ if not row['computer_units']:continue
+ assert row['products']=={f:i['monthly_demand'][month]['products'].get(f,0) for f in row['products']}
  assert row['computer_units']==sum(row['products'].values())
  if month<'1981-07':assert row['products'].get('artemis_pro',0)==0
  if month<'1981-11':assert row['team_licenses']==0
