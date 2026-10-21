@@ -104,5 +104,46 @@
     "campaign_reconciliation": "roi_1974_1980.json: team_campaign_reconciliation",
     "contingency": "Full budget provision included as conservative planned expense; not a claim of realized spending.",
     "launch_price": "Use first costed 1982 Team snapshot as explicit November 1981 launch-price proxy; existing catalog snapshots are preserved."
+  },
+  "autodesk_sponsored_deployment": {
+    "agreement_date": "1982-01-31",
+    "date_basis": "Selected alternate-history agreement day after the historical 30 January founding meeting; formally adopted by Autodesk after its 26 April incorporation.",
+    "objective": "Deliver AutoCAD 1.0 for Artemis/AIONix for the joint November 1982 COMDEX presentation; November release-quality build is the commitment, with commercial shipment subject to acceptance rather than automatically deferred to December.",
+    "sponsor": "Adam through Logix; AION Software and AION Labs provide development and hardware support.",
+    "commercial_terms": "Non-exclusive funded development. Autodesk retains its software ownership and cross-platform business; clear the underlying Interact contribution/porting rights with the founders, including Mike Riddle. Logix supplies distribution and joint marketing, without a source buyout or forced platform exclusivity.",
+    "team_environment": {
+      "workstations": "Supply an Artemis PRO with 1 MiB RAM, local storage and available display to each assigned developer, plus shared build/test and spare machines as the agreed staffing plan requires. No invented fixed team size.",
+      "software": "Install the entire AION Development System — Team Edition: C Development Environment 2, ERA compiler/linker/debugger and validated floating-point math library; source repository, branches/reviews, tasks, collaboration, reproducible builds, release labels and target testing.",
+      "network": "Supply network adapters, hub, cabling, configured accounts and project permissions, and dedicated Artemis PRO server capacity. Scale sponsored server/license deployments to the whole team within qualified concurrency; the retail four-session entitlement is not silently unlimited.",
+      "storage": "The standard 5 MB disk is inadequate as a presumed whole-team repository/build archive. Fund and qualify larger storage, additional volumes/servers, independent backup media, restore tests and off-machine source archives; capacities follow measured source/build/history budgets.",
+      "support": "Fund dedicated Autodesk engineering time, AION compiler/runtime and integration specialists, installation, training, documentation, replacement hardware, plotter access and on-site support through release. Retail onboarding/support-hour caps do not limit this separately sponsored agreement.",
+      "early_graphics": "January work uses available Artemis PRO displays and a stable software implementation of the graphics API. Supply 64 KiB/Color Pro engineering samples and mouse prototypes when qualified; do not make January work depend on the June professional hardware.",
+      "professional_handover": "Around June 1982 deliver the 128 KiB professional card and Logix Mono Pro 17 to the development and QA team, alongside the 64 KiB colour card/Color Pro 14 and mouse. This supersedes the earlier proposed January 17-inch prototype handover."
+    },
+    "acceptance": [
+      "Native AIONix/ERA build with reliable floating-point geometry and typed coordinate entry",
+      "Dual-display driver with colour command/status screen and 800x600 drawing canvas; independent palettes and explicit input focus",
+      "Explicit CAD mouse integration; standard TUI mouse support alone is insufficient",
+      "Drawing load/save and DXF exchange tests against the other supported AutoCAD builds",
+      "Supported pen-plotter output and physical drawing verification",
+      "Measured RAM, storage, redraw and stability requirements on the qualified configuration; backup/restore and reproducible release build",
+      "Feature baseline agreed with Autodesk; no automatic import of later AutoCAD dimensioning, object-snap or 3D features"
+    ],
+    "funding": "Adam commits to supplying the staffing, equipment, licences and integration resources required by the agreed delivery plan. No arbitrary dollar ceiling or fabricated cost estimate; procurement and staffing are reviewed against the November objective.",
+    "financial_boundary": "Sponsorship is incremental project work, not counted as retail Team Edition sales. Cost and investment reconciliation remains pending; do not silently add uncosted hardware, sponsorship expense or speculative CAD sales to existing financial totals.",
+    "historical_sources": [
+      "https://www.fourmilab.ch/fourmilog/archives/2017-01/001653.html",
+      "https://fourmilab.ch/autofile/e5/chapter2_11.html",
+      "https://fourmilab.ch/autofile/e5/chapter2_115.html"
+    ],
+    "historical_distinction": "Historical COMDEX introduction was 29 November; historical AutoCAD 1.0 shipment was December 1982. The funded Artemis release target is an explicit alternate-history acceleration.",
+    "product_refs": [
+      "computer.artemis_pro",
+      "software.aion_development_team",
+      "software.autocad_1_artemis",
+      "device.artemis_professional_video_128kb",
+      "device.mono_pro_17",
+      "device.logix_mouse"
+    ]
   }
 }

@@ -228,6 +228,13 @@
         "type": "company",
         "aliases": [],
         "description": "New UK distributor of Aurelia and Artemis in 1982, with local service and training; ownership and consolidation remain unspecified."
+      },
+      {
+        "id": "actor.autodesk",
+        "name": "Autodesk",
+        "type": "company",
+        "aliases": [],
+        "description": "Independent CAD software partner; January 1982 founders agreement adopted after April incorporation. Adam sponsors an entire Artemis PRO/Team Edition development deployment for November COMDEX."
       }
     ],
     "principles": [
@@ -462,6 +469,18 @@
           "actor.labs",
           "actor.sgs",
           "actor.smc"
+        ]
+      },
+      {
+        "id": "principle.autodesk_delivery_support",
+        "title": "Fund the complete Autodesk development capability",
+        "description": "Adam commits to supplying the staffing, equipment, licences and integration resources required by the agreed delivery plan. No arbitrary dollar ceiling or fabricated cost estimate; procurement and staffing are reviewed against the November objective. Non-exclusive funded development. Autodesk retains its software ownership and cross-platform business; clear the underlying Interact contribution/porting rights with the founders, including Mike Riddle. Logix supplies distribution and joint marketing, without a source buyout or forced platform exclusivity. Professional 17-inch/800x600 hardware becomes available around June, not January. See team_development_program.json for deployment and acceptance requirements. Sponsorship is incremental project work, not counted as retail Team Edition sales. Cost and investment reconciliation remains pending; do not silently add uncosted hardware, sponsorship expense or speculative CAD sales to existing financial totals.",
+        "actor_refs": [
+          "actor.adam",
+          "actor.logix",
+          "actor.aion",
+          "actor.labs",
+          "actor.autodesk"
         ]
       }
     ],
@@ -5755,6 +5774,69 @@
           "related_event_refs": []
         },
         {
+          "id": "event.clone_campaign_preview",
+          "title": "January launch campaign: partner preview and press preparation",
+          "event_type": "plan",
+          "date": {
+            "start": "1981-11-23",
+            "end": "1981-11-23"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion_tech_uk",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.northstar",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.vector",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.sks",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.goupil",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.eina",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.aion_tech_uk",
+                "actor.northstar",
+                "actor.vector",
+                "actor.sks",
+                "actor.goupil",
+                "actor.eina"
+              ],
+              "description": "Prepare translated trade-press material, dealer demonstrations, country catalogues and qualified application lists. Message: Your local computer. A shared software future. Present choice of brands, common applications, documented expansion, long-term Artemis continuity and two-source silicon programme; never claim every SGS part is already shipping. Publish availability by configuration. Matching campaign funds require a capped budget and evidence of partner expenditure."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
           "id": "event.team_followup",
           "title": "Team Edition 90-day workshops and trade campaign",
           "event_type": "development",
@@ -5782,6 +5864,79 @@
           "product_refs": [
             "software.aion_development_team"
           ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.clone_release_gate",
+          "title": "January launch release and supply readiness review",
+          "event_type": "development",
+          "date": {
+            "start": "1981-12-14",
+            "end": "1981-12-14"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.sgs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion_tech_uk",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.northstar",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.vector",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.sks",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.goupil",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.eina",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.labs",
+                "actor.sgs",
+                "actor.aion",
+                "actor.aion_tech_uk",
+                "actor.northstar",
+                "actor.vector",
+                "actor.sks",
+                "actor.goupil",
+                "actor.eina"
+              ],
+              "description": "Approve initial country configurations and local platform editions, complete warranty/support ownership, stock allocation, dealer/instructor readiness and country price sheets. Reserve production at demand plus 5% headroom once country demand is assessed; do not add 5% to sales. AION is the fallback for SGS-unqualified parts. Delay only failing configurations, keeping Logix/third-party complements available."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
           "related_event_refs": []
         },
         {
@@ -5878,6 +6033,192 @@
           "related_event_refs": []
         },
         {
+          "id": "event.clone_january_launch",
+          "title": "International Logix-compatible launch — five manufacturers and Aion Tech UK",
+          "event_type": "launch",
+          "date": {
+            "start": "1982-01-18",
+            "end": "1982-01-18"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.academy",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion_tech_uk",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.northstar",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.vector",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.sks",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.goupil",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.eina",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.academy",
+                "actor.aion_tech_uk",
+                "actor.northstar",
+                "actor.vector",
+                "actor.sks",
+                "actor.goupil",
+                "actor.eina"
+              ],
+              "description": "Accepted scenario: coordinated US, West German, French and Spanish premieres by North Star, Vector Graphic, SKS, SMT Goupil and EINA, plus Aion Tech UK retail introduction of Aurelia and Artemis. Release the initial qualified Aurelia/Artemis ranges and local platform editions. Live multi-brand document exchange, WordStar/dBASE on the assumed qualified licensed editions, Abacus/Pulse, peripheral compatibility and Team Edition demonstrations. Show BPI only on separately licensed and locally qualified configurations. Dealers can complete ranges with Logix or third-party products. Availability is configuration-specific; SGS full-portfolio qualification is not claimed. No shipment quantities are assigned by this event."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.autodesk_agreement",
+          "title": "Adam funds Autodesk founders and the entire Artemis development environment",
+          "event_type": "agreement",
+          "date": {
+            "start": "1982-01-31",
+            "end": "1982-01-31"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.autodesk",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.logix",
+                "actor.aion",
+                "actor.labs",
+                "actor.autodesk"
+              ],
+              "description": "Late-January founders agreement, selected scenario day after the 30 January organizing meeting. Adam supplies each assigned developer an Artemis PRO, the full Team Edition environment, shared build/test/server capacity, qualified storage and backups, toolchains, training and funded engineering support. Begin CAD work using available displays and software graphics fallback; professional 17-inch/800x600 hardware follows around June. November COMDEX is the delivery objective, not a January finished AutoCAD port. Programme details: team_development_program.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.artemis_pro",
+            "software.aion_development_team",
+            "software.autocad_1_artemis",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "device.logix_mouse"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.clone_campaign_roadshows",
+          "title": "International launch roadshows and Academy workshops",
+          "event_type": "action",
+          "date": {
+            "start": "1982-02-01",
+            "end": "1982-02-01"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.academy",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion_tech_uk",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.northstar",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.vector",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.sks",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.goupil",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.eina",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.academy",
+                "actor.logix",
+                "actor.aion_tech_uk",
+                "actor.northstar",
+                "actor.vector",
+                "actor.sks",
+                "actor.goupil",
+                "actor.eina"
+              ],
+              "description": "January–March campaign: local-language business press, hands-on dealer events, Academy sessions, customer-site demonstrations and specialist-developer workshops. Measure prospects, unique purchasing organisations, conversion, support wait times and sell-through separately. Partner sales and Logix sales remain distinct; no automatic campaign sales uplift."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
           "id": "event.x86_protection_review",
           "title": "80286 opens a protected x86 feasibility path",
           "event_type": "development",
@@ -5934,6 +6275,131 @@
           "related_event_refs": []
         },
         {
+          "id": "event.clone_90day_review",
+          "title": "Founding partner launch and SGS ramp review",
+          "event_type": "development",
+          "date": {
+            "start": "1982-04-19",
+            "end": "1982-04-19"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.sgs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion_tech_uk",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.northstar",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.vector",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.sks",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.goupil",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.eina",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.labs",
+                "actor.sgs",
+                "actor.aion_tech_uk",
+                "actor.northstar",
+                "actor.vector",
+                "actor.sks",
+                "actor.goupil",
+                "actor.eina"
+              ],
+              "description": "Review 90-day sales, returns, customer references, local software gaps and manufacturing yields. Reconcile existing OEM forecasts and new country demand, chip supply, campaign costs and training capacity before recalculating ROI. SGS expands only qualified parts; partners add products when supported by demand and service readiness."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.autodesk_incorporation",
+          "title": "Autodesk adopts the funded Artemis development agreement",
+          "event_type": "agreement",
+          "date": {
+            "start": "1982-04-26",
+            "end": "1982-04-26"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.autodesk",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.logix",
+                "actor.aion",
+                "actor.labs",
+                "actor.autodesk"
+              ],
+              "description": "After incorporation, Autodesk adopts the January founders agreement, confirms underlying source/porting rights and the non-exclusive licensing arrangement, and reviews compiler/math runtime, source control, backup recovery and graphics-driver milestones. Programme details: team_development_program.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.artemis_pro",
+            "software.aion_development_team",
+            "software.autocad_1_artemis",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "device.logix_mouse"
+          ],
+          "related_event_refs": [
+            "event.autodesk_agreement"
+          ]
+        },
+        {
           "id": "event.tandy_68k_review",
           "title": "68k OEMs assess an independent AIONix option",
           "event_type": "development",
@@ -5959,6 +6425,131 @@
           "agreement_terms": [],
           "metrics": [],
           "product_refs": [],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.autodesk_professional_handover",
+          "title": "Professional 800x600 hardware becomes available to Autodesk",
+          "event_type": "development",
+          "date": {
+            "start": "1982-06",
+            "end": "1982-06"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.autodesk",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.logix",
+                "actor.aion",
+                "actor.labs",
+                "actor.autodesk"
+              ],
+              "description": "Around June, deliver the 128 KiB professional video card and Logix Mono Pro 17 to Autodesk development and QA, with the 64 KiB colour card, Color Pro 14 and mouse. Four simultaneous shades are selected from 16 grayscale levels. Start full dual-display, acceleration and mouse integration; freeze qualified timing, bus and memory contracts. Programme details: team_development_program.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.artemis_pro",
+            "software.aion_development_team",
+            "software.autocad_1_artemis",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "device.logix_mouse"
+          ],
+          "related_event_refs": [
+            "event.autodesk_agreement"
+          ]
+        },
+        {
+          "id": "event.ncc82_graphics_mouse",
+          "title": "NCC 1982 — Color Pro, 64 KiB video and mouse interaction",
+          "event_type": "release_and_policy",
+          "date": {
+            "start": "1982-06",
+            "end": "1982-06"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "publisher"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "publisher"
+            },
+            {
+              "actor_ref": "actor.dri",
+              "role": "partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.labs"
+              ],
+              "description": "Introduce Color Pro 14 based on the February 1982 NEC PC-8853/JC-1410P2-class assembly, with AION digital-index/palette-to-RGB electronics and qualified 640x400 progressive Logix timing. New 64 KiB card retains previous features and adds 640x400x2 and 640x200x4; the remaining 1536 bytes hold up to 512 three-byte scanline palette entries. Horizontal and vertical retrace palette writes require explicit monitor capability and bounded timing."
+            },
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.dri"
+              ],
+              "description": "Launch the FlexiBUS two-button mouse with middle-finger vertical roller and thumb-side horizontal roller. Update AIONix and CP/M Platform Extensions/TUI to support pointing and standard-control activation without application source edits; statically linked libraries require relinking, and custom interfaces require adaptation."
+            },
+            {
+              "actor_refs": [
+                "actor.aion"
+              ],
+              "description": "Release AION Entertainment Suite: Sudoku, Klondike Solitaire, Spider and FreeCell, with mouse-learning tutorials, keyboard alternatives and monochrome-compatible presentation. These titles and the dual-roller mouse are deliberate alternate-history offerings."
+            }
+          ],
+          "outcomes": [
+            {
+              "description": "Demonstrate raster palette effects, unchanged standard-TUI controls with mouse input, and learning games. Keep later COMDEX high-resolution second-card/monitor plans separate; no unmeasured speed, cost or sales claims."
+            }
+          ],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "device.color_pro_14",
+            "device.artemis_video_card_64kb",
+            "device.logix_mouse",
+            "software.entertainment_suite",
+            "technology.scanline_palette_list",
+            "technology.logix_tui_mouse",
+            "software.cpm_aurelia",
+            "software.aionix"
+          ],
           "related_event_refs": []
         },
         {
@@ -6080,6 +6671,63 @@
           "related_event_refs": []
         },
         {
+          "id": "event.autodesk_beta",
+          "title": "AutoCAD Artemis beta and professional workflow qualification",
+          "event_type": "development",
+          "date": {
+            "start": "1982-09",
+            "end": "1982-09"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.autodesk",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.logix",
+                "actor.aion",
+                "actor.labs",
+                "actor.autodesk"
+              ],
+              "description": "Test representative drawings, numerical accuracy, dual displays, mouse routing, file/DXF exchange, plotter output, memory/storage limits, crash recovery and reproducible builds. Adam funds necessary engineering and equipment to remove delivery blockers; Autodesk retains ownership and other-platform support. Programme details: team_development_program.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.artemis_pro",
+            "software.aion_development_team",
+            "software.autocad_1_artemis",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "device.logix_mouse"
+          ],
+          "related_event_refs": [
+            "event.autodesk_agreement"
+          ]
+        },
+        {
           "id": "event.peak_readiness",
           "title": "Qualify capacity and supplier reservations before year-end peak",
           "event_type": "development",
@@ -6106,6 +6754,63 @@
           "metrics": [],
           "product_refs": [],
           "related_event_refs": []
+        },
+        {
+          "id": "event.autodesk_comdex",
+          "title": "Autodesk and Logix demonstrate AutoCAD on Artemis PRO at COMDEX",
+          "event_type": "launch",
+          "date": {
+            "start": "1982-11-29",
+            "end": "1982-11-29"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.adam",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.autodesk",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.adam",
+                "actor.logix",
+                "actor.aion",
+                "actor.labs",
+                "actor.autodesk"
+              ],
+              "description": "Jointly present the release-quality AutoCAD 1.0 Artemis/AIONix build on the professional dual-display system with mouse and physical plotted drawings. Target commercial readiness for COMDEX; ship only after acceptance. Historical AutoCAD 1.0 shipped in December; a November Artemis release is an explicit funded alternate-history acceleration, not a historical claim. Programme details: team_development_program.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "computer.artemis_pro",
+            "software.aion_development_team",
+            "software.autocad_1_artemis",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "device.logix_mouse"
+          ],
+          "related_event_refs": [
+            "event.autodesk_agreement"
+          ]
         },
         {
           "id": "event.mature_2",
@@ -6347,409 +7052,6 @@
           "metrics": [],
           "product_refs": [
             "technology.nmos_15um"
-          ],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.clone_campaign_preview",
-          "title": "January launch campaign: partner preview and press preparation",
-          "event_type": "plan",
-          "date": {
-            "start": "1981-11-23",
-            "end": "1981-11-23"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.aion_tech_uk",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.northstar",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.vector",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.sks",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.goupil",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.eina",
-              "role": "programme_partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.aion",
-                "actor.aion_tech_uk",
-                "actor.northstar",
-                "actor.vector",
-                "actor.sks",
-                "actor.goupil",
-                "actor.eina"
-              ],
-              "description": "Prepare translated trade-press material, dealer demonstrations, country catalogues and qualified application lists. Message: Your local computer. A shared software future. Present choice of brands, common applications, documented expansion, long-term Artemis continuity and two-source silicon programme; never claim every SGS part is already shipping. Publish availability by configuration. Matching campaign funds require a capped budget and evidence of partner expenditure."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.clone_release_gate",
-          "title": "January launch release and supply readiness review",
-          "event_type": "development",
-          "date": {
-            "start": "1981-12-14",
-            "end": "1981-12-14"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.labs",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.sgs",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.aion_tech_uk",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.northstar",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.vector",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.sks",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.goupil",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.eina",
-              "role": "programme_partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.labs",
-                "actor.sgs",
-                "actor.aion",
-                "actor.aion_tech_uk",
-                "actor.northstar",
-                "actor.vector",
-                "actor.sks",
-                "actor.goupil",
-                "actor.eina"
-              ],
-              "description": "Approve initial country configurations and local platform editions, complete warranty/support ownership, stock allocation, dealer/instructor readiness and country price sheets. Reserve production at demand plus 5% headroom once country demand is assessed; do not add 5% to sales. AION is the fallback for SGS-unqualified parts. Delay only failing configurations, keeping Logix/third-party complements available."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.clone_january_launch",
-          "title": "International Logix-compatible launch — five manufacturers and Aion Tech UK",
-          "event_type": "launch",
-          "date": {
-            "start": "1982-01-18",
-            "end": "1982-01-18"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.academy",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.aion_tech_uk",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.northstar",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.vector",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.sks",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.goupil",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.eina",
-              "role": "programme_partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.aion",
-                "actor.academy",
-                "actor.aion_tech_uk",
-                "actor.northstar",
-                "actor.vector",
-                "actor.sks",
-                "actor.goupil",
-                "actor.eina"
-              ],
-              "description": "Accepted scenario: coordinated US, West German, French and Spanish premieres by North Star, Vector Graphic, SKS, SMT Goupil and EINA, plus Aion Tech UK retail introduction of Aurelia and Artemis. Release the initial qualified Aurelia/Artemis ranges and local platform editions. Live multi-brand document exchange, WordStar/dBASE on the assumed qualified licensed editions, Abacus/Pulse, peripheral compatibility and Team Edition demonstrations. Show BPI only on separately licensed and locally qualified configurations. Dealers can complete ranges with Logix or third-party products. Availability is configuration-specific; SGS full-portfolio qualification is not claimed. No shipment quantities are assigned by this event."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.clone_campaign_roadshows",
-          "title": "International launch roadshows and Academy workshops",
-          "event_type": "action",
-          "date": {
-            "start": "1982-02-01",
-            "end": "1982-02-01"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.academy",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.logix",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.aion_tech_uk",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.northstar",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.vector",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.sks",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.goupil",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.eina",
-              "role": "programme_partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.academy",
-                "actor.logix",
-                "actor.aion_tech_uk",
-                "actor.northstar",
-                "actor.vector",
-                "actor.sks",
-                "actor.goupil",
-                "actor.eina"
-              ],
-              "description": "January–March campaign: local-language business press, hands-on dealer events, Academy sessions, customer-site demonstrations and specialist-developer workshops. Measure prospects, unique purchasing organisations, conversion, support wait times and sell-through separately. Partner sales and Logix sales remain distinct; no automatic campaign sales uplift."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.clone_90day_review",
-          "title": "Founding partner launch and SGS ramp review",
-          "event_type": "development",
-          "date": {
-            "start": "1982-04-19",
-            "end": "1982-04-19"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.labs",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.sgs",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.aion_tech_uk",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.northstar",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.vector",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.sks",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.goupil",
-              "role": "programme_partner"
-            },
-            {
-              "actor_ref": "actor.eina",
-              "role": "programme_partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.labs",
-                "actor.sgs",
-                "actor.aion_tech_uk",
-                "actor.northstar",
-                "actor.vector",
-                "actor.sks",
-                "actor.goupil",
-                "actor.eina"
-              ],
-              "description": "Review 90-day sales, returns, customer references, local software gaps and manufacturing yields. Reconcile existing OEM forecasts and new country demand, chip supply, campaign costs and training capacity before recalculating ROI. SGS expands only qualified parts; partners add products when supported by demand and service readiness."
-            }
-          ],
-          "outcomes": [],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [],
-          "related_event_refs": []
-        },
-        {
-          "id": "event.ncc82_graphics_mouse",
-          "title": "NCC 1982 — Color Pro, 64 KiB video and mouse interaction",
-          "event_type": "release_and_policy",
-          "date": {
-            "start": "1982-06",
-            "end": "1982-06"
-          },
-          "participants": [
-            {
-              "actor_ref": "actor.logix",
-              "role": "publisher"
-            },
-            {
-              "actor_ref": "actor.labs",
-              "role": "manufacturer"
-            },
-            {
-              "actor_ref": "actor.aion",
-              "role": "publisher"
-            },
-            {
-              "actor_ref": "actor.dri",
-              "role": "partner"
-            }
-          ],
-          "actions": [
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.labs"
-              ],
-              "description": "Introduce Color Pro 14 based on the February 1982 NEC PC-8853/JC-1410P2-class assembly, with AION digital-index/palette-to-RGB electronics and qualified 640x400 progressive Logix timing. New 64 KiB card retains previous features and adds 640x400x2 and 640x200x4; the remaining 1536 bytes hold up to 512 three-byte scanline palette entries. Horizontal and vertical retrace palette writes require explicit monitor capability and bounded timing."
-            },
-            {
-              "actor_refs": [
-                "actor.logix",
-                "actor.aion",
-                "actor.dri"
-              ],
-              "description": "Launch the FlexiBUS two-button mouse with middle-finger vertical roller and thumb-side horizontal roller. Update AIONix and CP/M Platform Extensions/TUI to support pointing and standard-control activation without application source edits; statically linked libraries require relinking, and custom interfaces require adaptation."
-            },
-            {
-              "actor_refs": [
-                "actor.aion"
-              ],
-              "description": "Release AION Entertainment Suite: Sudoku, Klondike Solitaire, Spider and FreeCell, with mouse-learning tutorials, keyboard alternatives and monochrome-compatible presentation. These titles and the dual-roller mouse are deliberate alternate-history offerings."
-            }
-          ],
-          "outcomes": [
-            {
-              "description": "Demonstrate raster palette effects, unchanged standard-TUI controls with mouse input, and learning games. Keep later COMDEX high-resolution second-card/monitor plans separate; no unmeasured speed, cost or sales claims."
-            }
-          ],
-          "agreement_terms": [],
-          "metrics": [],
-          "product_refs": [
-            "device.color_pro_14",
-            "device.artemis_video_card_64kb",
-            "device.logix_mouse",
-            "software.entertainment_suite",
-            "technology.scanline_palette_list",
-            "technology.logix_tui_mouse",
-            "software.cpm_aurelia",
-            "software.aionix"
           ],
           "related_event_refs": []
         }

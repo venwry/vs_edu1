@@ -1911,6 +1911,37 @@
         "software.aionix",
         "software.entertainment_suite"
       ]
+    },
+    {
+      "id": "technology.artemis_professional_graphics",
+      "name": "Artemis professional dual-display graphics",
+      "category": "graphics_and_display_interface",
+      "introduced": {
+        "event_name": "Professional graphics availability around June 1982",
+        "event_start_date": "1982-06"
+      },
+      "specification": {
+        "api_ref": "technology.logix_display_api",
+        "status": "Accepted alternate-history June 1982 availability target; engineering and manufacturing qualification required.",
+        "dual_display": "The 64 KiB card occupies the existing dedicated video slot; the 128 KiB professional card occupies one general 32-bit expansion slot. Independent framebuffers, clocks and palettes; freeze address windows, interrupts, DMA arbitration and power budget before release.",
+        "layout": "Colour display hosts commands/status; 800x600 monochrome display hosts the CAD canvas. Explicit display handles, coordinate transforms, keyboard/mouse focus and cursor ownership; no implicit shared framebuffer.",
+        "acceleration": [
+          "Overlap-safe rectangular copies with stride and clipping",
+          "Rectangle fills and masked Boolean raster operations",
+          "Integer all-octant line drawing",
+          "Optional lookup-table antialiased line drawing with four output shades"
+        ],
+        "rendering": "Keep vector geometry authoritative. CPU tessellates curves; redraw damaged regions and exposed pan strips. XOR is for temporary simple cursors, not erasing antialiased overlapping geometry. No full-frame 2bpp double buffer in 128 KiB.",
+        "bandwidth": "At 60 Hz visible framebuffer reads alone average 7.2 MB/s. Qualify banked/wide memory, line buffering, refresh priority and accelerator/host arbitration under worst-case drawing load.",
+        "portability": "Capability-query extension with software fallback for development on the existing display; later hardware accelerates the same semantics. CAD canvas requires explicit mouse adaptation."
+      },
+      "used_by": [
+        "software.autocad_1_artemis"
+      ],
+      "device_refs": [
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17"
+      ]
     }
   ],
   "base_parts": [
@@ -3690,6 +3721,46 @@
       },
       "used_in": [
         "device.color_pro_14"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.professional_graphics_controller",
+      "name": "AION professional 2D blitter and line controller",
+      "category": "graphics_controller",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "Professional graphics availability around June 1982",
+        "event_start_date": "1982-06"
+      },
+      "specification": {
+        "technology_ref": "technology.artemis_professional_graphics",
+        "memory_addressing_bytes": 131072,
+        "implementation": "Engineering prototypes may use discrete/microcoded logic; qualify production custom silicon, timing and memory arbitration before release. No unverified performance or process-node claim."
+      },
+      "used_in": [
+        "device.artemis_professional_video_128kb"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.mono_pro_17_controller",
+      "name": "AION Mono Pro 17 grayscale monitor controller",
+      "category": "display_controller",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "Professional graphics availability around June 1982",
+        "event_start_date": "1982-06"
+      },
+      "specification": {
+        "grayscale_levels": 16,
+        "conversion": "Four pixel codes map to four programmable values selected from a 16-level intensity range; custom controller plus 4-bit DAC and qualified linear video amplifier. CRT deflection and high-voltage electronics remain separate.",
+        "qualification": "Validate pixel-clock settling, grayscale distinguishability, geometry, corner focus, phosphor persistence and sync compatibility."
+      },
+      "used_in": [
+        "device.mono_pro_17"
       ],
       "manufacturing_status": "incomplete_bom"
     }
@@ -6079,6 +6150,76 @@
         "technology.logix_tui_mouse"
       ],
       "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "device.artemis_professional_video_128kb",
+      "name": "Logix Artemis Professional 128 KiB video card",
+      "category": "video_card",
+      "introduced": {
+        "event_name": "Professional graphics availability around June 1982",
+        "event_start_date": "1982-06"
+      },
+      "sold_separately": true,
+      "compatible_with": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "specification": {
+        "controller_ref": "part.professional_graphics_controller",
+        "technology_ref": "technology.artemis_professional_graphics",
+        "monitor_ref": "device.mono_pro_17",
+        "slot": "One general 32-bit expansion slot; coexists with the dedicated primary video card",
+        "video_ram_bytes": 131072,
+        "bitmap_modes": [
+          {
+            "id": "professional_800_600_2bpp",
+            "width": 800,
+            "height": 600,
+            "bits_per_pixel": 2,
+            "stride_bytes": 200,
+            "bytes_per_framebuffer": 120000,
+            "framebuffer_count": 1,
+            "remaining_video_ram_bytes": 11072,
+            "simultaneous_shades": 4,
+            "palette_grayscale_levels": 16,
+            "double_buffering": false
+          }
+        ],
+        "memory_policy": "11072 bytes remain for bounded scratch/cursor work; allocations must be accounted for. No second framebuffer or inherited five-sprite subsystem is promised.",
+        "availability": "Around June 1982, including Autodesk development-team delivery; joint AutoCAD showcase in November."
+      },
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "device.mono_pro_17",
+      "name": "Logix Mono Pro 17",
+      "category": "display",
+      "introduced": {
+        "event_name": "Professional graphics availability around June 1982",
+        "event_start_date": "1982-06"
+      },
+      "offered_with": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "specification": {
+        "controller_ref": "part.mono_pro_17_controller",
+        "diagonal_inches": 17,
+        "scan": "800x600 progressive; 60 Hz production target subject to OEM qualification",
+        "palette_grayscale_levels": 16,
+        "simultaneous_shades_with_128kb_card": 4,
+        "timing_target": {
+          "horizontal_total_pixels": 1024,
+          "vertical_total_lines": 625,
+          "refresh_hz": 60,
+          "horizontal_khz": 37.5,
+          "pixel_clock_mhz": 38.4
+        },
+        "oem_basis": "Period 17-inch monochrome OEM assembly, with Ball HD17H family as a candidate rather than a confirmed supplier. Published Ball HD 26-36 kHz range does not meet the 37.5 kHz target without modification. Its digital video amplifier is not evidence of grayscale support.",
+        "qualification": "Qualify revised deflection, analog grayscale amplifier and high-speed digital link; no stock-monitor plug compatibility or final OEM contract assumed.",
+        "availability": "Around June 1982; supersedes the proposed January prototype delivery."
+      },
+      "manufacturing_status": "incomplete_bom"
     }
   ],
   "computers": [
@@ -7841,7 +7982,8 @@
         "software.aionix_server",
         "software.bpi_client_server",
         "software.aion_development_team",
-        "software.entertainment_suite"
+        "software.entertainment_suite",
+        "software.autocad_1_artemis"
       ],
       "software_compatibility": {
         "native_target": "era_aionix",
@@ -9499,7 +9641,8 @@
         "software.aionix_server",
         "software.bpi_client_server",
         "software.aion_development_team",
-        "software.entertainment_suite"
+        "software.entertainment_suite",
+        "software.autocad_1_artemis"
       ],
       "software_compatibility": {
         "native_target": "era_aionix",
@@ -10921,7 +11064,8 @@
           "onboarding_staff_hours": 20,
           "first_year_support_staff_hours": 12,
           "note": "One combined package; do not add its client/server editions or old IDE/SDK to its cost. Development/NRE excluded from unit cost."
-        }
+        },
+        "sponsored_deployment": "Autodesk whole-team deployment from late January 1982: team_development_program.json/autodesk_sponsored_deployment. Sponsor supplies hardware, qualified concurrency/storage and dedicated support beyond retail caps; retail entitlement remains unchanged."
       },
       "technology_refs": [
         "technology.aion_c_portability_framework",
@@ -10966,6 +11110,41 @@
       ],
       "delivery": "Diskette; final packaging and price unspecified.",
       "validation": "Qualify puzzle validity/uniqueness, legal moves, deal generation, undo, input and resource budgets. Do not imply all randomly dealt card games are solvable."
+    },
+    {
+      "id": "software.autocad_1_artemis",
+      "name": "Autodesk AutoCAD 1.0 for Artemis",
+      "vendor": "Autodesk",
+      "category": "computer_aided_design",
+      "introduced": {
+        "event_name": "COMDEX 1982 — AutoCAD for Artemis target",
+        "event_start_date": "1982-11-29"
+      },
+      "product_status": "Accepted November 1982 COMDEX delivery target; release-quality demonstration and shipment acceptance are distinct gates.",
+      "sold_separately": true,
+      "description": "Independent Autodesk CAD product for AIONix/ERA, enabled by Adam-funded whole-team development equipment, Team Edition environment and integration support.",
+      "features": [
+        "Native 2D CAD with typed coordinate entry and validated numerical geometry",
+        "Dual-display commands/status and 800x600 drawing workspace",
+        "Explicit Logix Mouse integration and professional line/blit acceleration",
+        "Drawing exchange and supported pen-plotter output"
+      ],
+      "specification": {
+        "program_file": "team_development_program.json",
+        "program_key": "autodesk_sponsored_deployment",
+        "development_host": "Artemis PRO with 1 MiB RAM and qualified storage; whole-team workstations plus shared server/test capacity",
+        "minimum_shipping_configuration": "To be measured against representative drawings; do not advertise base 128/256 KiB Artemis as qualified automatically.",
+        "ownership": "Autodesk retains software ownership and non-exclusive cross-platform rights.",
+        "release_target": "1982-11-29; commercial shipment after acceptance, with any December fallback explicitly reported as schedule slippage, not the primary objective."
+      },
+      "technology_refs": [
+        "technology.artemis_professional_graphics",
+        "technology.logix_display_api",
+        "technology.flexibus_pointing_device"
+      ],
+      "edition_refs": [
+        "edition.autocad_1_artemis.era"
+      ]
     }
   ],
   "services": [
@@ -13222,6 +13401,42 @@
       ],
       "delivery": "diskette",
       "support_status": "declared compatible; implementation conformance and performance not yet measured"
+    },
+    {
+      "id": "edition.autocad_1_artemis.era",
+      "name": "AutoCAD 1.0 — Artemis/AIONix",
+      "product_ref": "software.autocad_1_artemis",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "introduced": {
+        "event_name": "COMDEX 1982 — AutoCAD for Artemis target",
+        "event_start_date": "1982-11-29"
+      },
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1982-11-29"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1982-11-29"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Targeted platform support; measured minimum pending. Development/reference configuration is Artemis PRO with 1 MiB and qualified disk storage."
+      },
+      "dependency_refs": [
+        "software.aionix",
+        "technology.artemis_professional_graphics",
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17",
+        "device.logix_mouse"
+      ],
+      "delivery": "diskette",
+      "support_status": "November COMDEX target, qualification and shipment acceptance pending"
     }
   ],
   "review_scope": {
