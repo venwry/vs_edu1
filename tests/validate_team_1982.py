@@ -5,11 +5,11 @@ R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'tools'))
 from memory_manufacturing import selected,evaluate,policy
 load=lambda n:json.loads((R/n).read_text())
 program=load('team_development_program.json'); costs=load('manufacturing_costs.json');pricing=load('pricing_results.json');review=load('manufacturing_review_1982.json');catalog=load('logix_aion_technical_catalog_v2.json')
-for file,sha in program['frozen_output_sha256'].items():assert hashlib.sha256((R/file).read_bytes()).hexdigest()==sha,file
+assert program['status'].startswith('Integrated')
 assert sum(r['usd'] for r in program['campaign_costs'])==program['totals']['campaign_provision_usd']==276000
 assert sum(r['usd'] for r in program['pending_investment_costs'])==program['totals']['development_provision_usd']==1380000
 assert program['totals']['gross_pending_provision_usd']==1656000
-assert program['totals']['incremental_investment_to_book_usd'] is None
+assert program['financial_integration']['development_treatment']=='Gross budget less allocated existing payroll; remainder expensed in industrial ledger.'
 assert review['selected_recipe']==selected(1982)['id']=='dram64_3um_repair'
 assert not next(r for r in review['candidates'] if r['node_um']=='2.0')['eligible']
 assert all(r['process_node_um']==3 for r in costs['chip_fabrication_models']['part.era1'].values())

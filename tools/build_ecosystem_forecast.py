@@ -11,15 +11,8 @@ S=read('sales_forecast.json');I=read('industrial_investment_1974_1981.json');P=r
 # Delivered units, not unconstrained buyer intent, establish the installed market.
 anchor=defaultdict(lambda:defaultdict(float))
 central=next(x for x in S['scenarios'] if x['id']=='central')
-for group in ['months','post_ncc_months','comdex_to_ncc1980_months','ncc_to_comdex1980_months']:
- for row in central[group]:
-  if 'products' in row:
-   for family,item in row['products'].items():anchor[qtr(row['month'])][family]+=item['units']
-  else:anchor[qtr(row['month'])]['aurelia']+=row['units']
 for month,row in I['monthly_demand'].items():
- if month<'1980-11':continue
- factor=12/30 if month=='1980-11' else 1
- for family,n in row['products'].items():anchor[qtr(month)][family]+=round(n*factor)
+ for family,n in row['products'].items():anchor[qtr(month)][family]+=n
 
 def allocate(total,weights):
  if not weights or total<=0:return {k:0 for k in weights}
@@ -31,8 +24,8 @@ scenarios=[]
 for spec in P['scenarios']:
  idx=spec['id'];rows=[];apps={};makers={};models={};base_c=base_a=external_base=0.;prior_logix=None;cum=defaultdict(int);prev_tui=[];previous_model_counts={};last_cpm=last_native=0
  for t,q in enumerate(Q):
-  # 1982–83 is a new, disclosed market continuation, not an extension of financial ROI.
-  if q<='1981-Q4':logix={k:round(v) for k,v in anchor[q].items()}
+  # 1983 is a new, disclosed market continuation, not an extension of financial ROI.
+  if q<='1982-Q4':logix={k:round(v) for k,v in anchor[q].items()}
   else:
    total=round(sum(prior_logix.values())*(1+spec['future_host_growth_per_quarter']))
    native_share=min(.85,sum(prior_logix.get(k,0) for k in ['artemis','artemis_pro'])/sum(prior_logix.values())+.035)
@@ -111,7 +104,7 @@ for spec in P['scenarios']:
    a.setdefault('cpm_quarterly_copies',{})[q]=c_sales.get(a['id'],0);a.setdefault('native_quarterly_copies',{})[q]=a_sales.get(a['id'],0)
   for key,value in [('cpm',cp_copies),('native',na_copies),('devices',hw_budget),('external_computers',new_external)]:cum[key]+=value
   ports=sum(a['cpm_first'] is not None for a in native)
-  rows.append(dict(quarter=q,host_basis='Delivered Logix forecast + conditional 1981 plan' if q<='1981-Q4' else 'New 1982–83 scenario continuation',logix_new_units=logix,logix_active_cpm=round(base_c),logix_active_aionix=round(base_a),external_active_cpm_tui=round(external_base),external_supported_manufacturers=len(external),external_computer_models=len(external),external_computers_sold=new_external,external_computers_cumulative=cum['external_computers'],external_oems=external,cpm_applications=len(cpm),tui_applications=len(tui),aionix_applications=len(native),cross_platform_families=ports,distinct_application_families=len(cpm)+len(native)-ports,cpm_copies_sold=cp_copies,tui_copies_sold=tui_copies,aionix_copies_sold=na_copies,cpm_cumulative_copies=cum['cpm'],aionix_cumulative_copies=cum['native'],device_manufacturers=len(makers),device_models=len(models),devices_sold=hw_budget,devices_cumulative=cum['devices'],all_hardware_manufacturers=len(makers)+len(external),all_hardware_models=len(models)+len(external),all_hardware_units=hw_budget+new_external))
+  rows.append(dict(quarter=q,host_basis='Current central delivered-demand plan through 1982' if q<='1982-Q4' else 'New 1983 scenario continuation',logix_new_units=logix,logix_active_cpm=round(base_c),logix_active_aionix=round(base_a),external_active_cpm_tui=round(external_base),external_supported_manufacturers=len(external),external_computer_models=len(external),external_computers_sold=new_external,external_computers_cumulative=cum['external_computers'],external_oems=external,cpm_applications=len(cpm),tui_applications=len(tui),aionix_applications=len(native),cross_platform_families=ports,distinct_application_families=len(cpm)+len(native)-ports,cpm_copies_sold=cp_copies,tui_copies_sold=tui_copies,aionix_copies_sold=na_copies,cpm_cumulative_copies=cum['cpm'],aionix_cumulative_copies=cum['native'],device_manufacturers=len(makers),device_models=len(models),devices_sold=hw_budget,devices_cumulative=cum['devices'],all_hardware_manufacturers=len(makers)+len(external),all_hardware_models=len(models)+len(external),all_hardware_units=hw_budget+new_external))
   prev_tui=[a['id'] for a in tui];last_cpm=len(cpm);last_native=len(native)
  scenarios.append(dict(id=idx,title=spec['title'],quarterly=rows,applications=list(apps.values()),device_manufacturers=list(makers.values()),device_models=list(models.values())))
 M=dict(metadata=dict(title='Third-party ecosystem',horizon='1978-Q2–1983-Q4',baseline_commit='1d6bfb9c2633d56d32b479723acd03ee0e100925',status='Alternative-history forecast, not observed third-party shipments',currency='Unit counts, not revenue',financial_treatment='No third-party receipts, costs, or speculative adoption feedback added to Logix sales or ROI'),policy=P,scenarios=scenarios,sources=[dict(path=n,sha256=hashlib.sha256((R/n).read_bytes()).hexdigest()) for n in ['ecosystem_forecast_policy.json','sales_forecast.json','industrial_investment_1974_1981.json','logix_aion_technical_catalog_v2.json','ncc_1979_campaign.json','ncc_1980_campaign.json']])

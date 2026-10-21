@@ -1,0 +1,470 @@
+{
+  "title": "Market reactions, demand and returns through 1982",
+  "status": "Alternative-history central forecast, not historical accounts",
+  "policy": {
+    "horizon": "1980-01 through 1982-12",
+    "capacity_headroom": 0.05,
+    "1980_incremental_reaction_factors": [
+      0.98,
+      0.94,
+      0.96,
+      1.0
+    ],
+    "quarter_run_rate_vs_december_1980": [
+      1.03,
+      1.1,
+      1.08,
+      1.14,
+      1.16,
+      1.17,
+      1.19,
+      1.28
+    ],
+    "native_share": [
+      0.34,
+      0.4,
+      0.44,
+      0.49,
+      0.53,
+      0.57,
+      0.61,
+      0.65
+    ],
+    "pro_share": [
+      0,
+      0,
+      0.018,
+      0.025,
+      0.03,
+      0.035,
+      0.04,
+      0.045
+    ],
+    "quarter_reasons": [
+      "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS.",
+      "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility.",
+      "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing.",
+      "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders.",
+      "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists.",
+      "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth.",
+      "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake.",
+      "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope.",
+      "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth.",
+      "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only.",
+      "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed.",
+      "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+    ],
+    "bounds": {
+      "conservative": 0.8,
+      "central": 1.0,
+      "strong": 1.2
+    },
+    "method": "1980 factors are incremental to existing signed reaction/price effects. 1981–82 quarterly run rates are relative to reassessed December 1980, replacing 4% compounded monthly growth. Existing balanced prices are held; no second price-elasticity or marketing bonus. Bounds are judgement scenarios, not statistical intervals.",
+    "premises": [
+      "CP/M-86 does not exist; DRI prioritizes CP/M-80/TUI and AIONix/PRO.",
+      "Adam owns 30% of independent DRI; IBM sees a strategic conflict with competitor Logix.",
+      "Paterson does not create QDOS; IBM commissions its own alternative disk OS, with qualification risk.",
+      "DRI non-ERA port rights activate in 1982; 68k requires suitable MMU/system design; 286 enables feasibility, not an immediate release.",
+      "ERAv1 remains 3 um. June 1982 repaired 3 um RAM costs remain the volume cost basis through year-end; 2 um pilot savings await repeatable-production approval.",
+      "Adam foresees demand peaks, not engineering success: reserve 5% commercial headroom, retain OEE, one-down redundancy and qualification gates."
+    ],
+    "team_licenses_1981": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      12,
+      24
+    ],
+    "team_licenses_1982": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      80,
+      90,
+      100
+    ],
+    "team_scope": "Small four-developer teams and pilots; existing 5 MB server constrains repositories. No large-storage product or enterprise-scale deployment assumed. Client and server purchases are contained in computer totals, not added again.",
+    "external_revenue_boundary": "No external OEM, 68k/x86 AIONix port or unpriced storage revenue; independent third-party sales are not Logix receipts."
+  },
+  "quarterly": [
+    {
+      "quarter": "1980-Q1",
+      "products": {
+        "aurelia": 4635,
+        "aurelia_plus": 11377,
+        "artemis": 0,
+        "artemis_pro": 0
+      },
+      "computer_units": 16012,
+      "team_licenses": 0,
+      "peak_month_demand": 5442,
+      "capacity_month": 8199,
+      "net_revenue_usd": 32793119.31,
+      "capex_usd": 402682.24,
+      "operating_profit_ebit_usd": 4448480.38,
+      "free_cash_flow_usd": 1990524.54,
+      "cumulative_accounting_roi_pct": 16.203
+    },
+    {
+      "quarter": "1980-Q2",
+      "products": {
+        "aurelia": 2587,
+        "aurelia_plus": 15065,
+        "artemis": 1177,
+        "artemis_pro": 0
+      },
+      "computer_units": 18829,
+      "team_licenses": 0,
+      "peak_month_demand": 7574,
+      "capacity_month": 8706,
+      "net_revenue_usd": 39779321.79,
+      "capex_usd": 454548.0,
+      "operating_profit_ebit_usd": 5428943.62,
+      "free_cash_flow_usd": 1282829.16,
+      "cumulative_accounting_roi_pct": 27.057
+    },
+    {
+      "quarter": "1980-Q3",
+      "products": {
+        "aurelia": 1979,
+        "aurelia_plus": 16631,
+        "artemis": 4615,
+        "artemis_pro": 0
+      },
+      "computer_units": 23225,
+      "team_licenses": 0,
+      "peak_month_demand": 7808,
+      "capacity_month": 9416,
+      "net_revenue_usd": 51147711.94,
+      "capex_usd": 585728.0,
+      "operating_profit_ebit_usd": 9830620.15,
+      "free_cash_flow_usd": 7890275.9,
+      "cumulative_accounting_roi_pct": 47.117
+    },
+    {
+      "quarter": "1980-Q4",
+      "products": {
+        "aurelia": 1379,
+        "aurelia_plus": 16279,
+        "artemis": 7192,
+        "artemis_pro": 0
+      },
+      "computer_units": 24850,
+      "team_licenses": 0,
+      "peak_month_demand": 8291,
+      "capacity_month": 10055,
+      "net_revenue_usd": 56810046.14,
+      "capex_usd": 431763.2,
+      "operating_profit_ebit_usd": 10901355.24,
+      "free_cash_flow_usd": 10085248.49,
+      "cumulative_accounting_roi_pct": 68.806
+    },
+    {
+      "quarter": "1981-Q1",
+      "products": {
+        "aurelia": 640,
+        "aurelia_plus": 16269,
+        "artemis": 8711,
+        "artemis_pro": 0
+      },
+      "computer_units": 25620,
+      "team_licenses": 0,
+      "peak_month_demand": 8967,
+      "capacity_month": 10055,
+      "net_revenue_usd": 59945189.83,
+      "capex_usd": 702508.01,
+      "operating_profit_ebit_usd": 11816992.89,
+      "free_cash_flow_usd": 9712787.93,
+      "cumulative_accounting_roi_pct": 88.658
+    },
+    {
+      "quarter": "1981-Q2",
+      "products": {
+        "aurelia": 683,
+        "aurelia_plus": 15732,
+        "artemis": 10945,
+        "artemis_pro": 0
+      },
+      "computer_units": 27360,
+      "team_licenses": 0,
+      "peak_month_demand": 9576,
+      "capacity_month": 10619,
+      "net_revenue_usd": 64435864.59,
+      "capex_usd": 1057682.54,
+      "operating_profit_ebit_usd": 11755298.06,
+      "free_cash_flow_usd": 11159503.74,
+      "cumulative_accounting_roi_pct": 109.372
+    },
+    {
+      "quarter": "1981-Q3",
+      "products": {
+        "aurelia": 672,
+        "aurelia_plus": 14371,
+        "artemis": 11337,
+        "artemis_pro": 483
+      },
+      "computer_units": 26863,
+      "team_licenses": 0,
+      "peak_month_demand": 9402,
+      "capacity_month": 10619,
+      "net_revenue_usd": 63662672.19,
+      "capex_usd": 1357775.97,
+      "operating_profit_ebit_usd": 11538008.39,
+      "free_cash_flow_usd": 9023797.35,
+      "cumulative_accounting_roi_pct": 124.089
+    },
+    {
+      "quarter": "1981-Q4",
+      "products": {
+        "aurelia": 709,
+        "aurelia_plus": 13753,
+        "artemis": 13185,
+        "artemis_pro": 708
+      },
+      "computer_units": 28355,
+      "team_licenses": 36,
+      "peak_month_demand": 10113,
+      "capacity_month": 10695,
+      "net_revenue_usd": 68923919.48,
+      "capex_usd": 1304302.45,
+      "operating_profit_ebit_usd": 12963765.12,
+      "free_cash_flow_usd": 11435529.5,
+      "cumulative_accounting_roi_pct": 142.063
+    },
+    {
+      "quarter": "1982-Q1",
+      "products": {
+        "aurelia": 288,
+        "aurelia_plus": 13272,
+        "artemis": 14427,
+        "artemis_pro": 866
+      },
+      "computer_units": 28853,
+      "team_licenses": 105,
+      "peak_month_demand": 10098,
+      "capacity_month": 10878,
+      "net_revenue_usd": 71720810.27,
+      "capex_usd": 194079.84,
+      "operating_profit_ebit_usd": 13374327.08,
+      "free_cash_flow_usd": 13286198.85,
+      "cumulative_accounting_roi_pct": 163.32
+    },
+    {
+      "quarter": "1982-Q2",
+      "products": {
+        "aurelia": 291,
+        "aurelia_plus": 12222,
+        "artemis": 15568,
+        "artemis_pro": 1019
+      },
+      "computer_units": 29100,
+      "team_licenses": 150,
+      "peak_month_demand": 10185,
+      "capacity_month": 11923,
+      "net_revenue_usd": 73827017.71,
+      "capex_usd": 464000.85,
+      "operating_profit_ebit_usd": 13264342.74,
+      "free_cash_flow_usd": 12773863.68,
+      "cumulative_accounting_roi_pct": 182.343
+    },
+    {
+      "quarter": "1982-Q3",
+      "products": {
+        "aurelia": 297,
+        "aurelia_plus": 11248,
+        "artemis": 16870,
+        "artemis_pro": 1184
+      },
+      "computer_units": 29599,
+      "team_licenses": 195,
+      "peak_month_demand": 10360,
+      "capacity_month": 11923,
+      "net_revenue_usd": 76571826.99,
+      "capex_usd": 264487.17,
+      "operating_profit_ebit_usd": 14735409.54,
+      "free_cash_flow_usd": 12658520.54,
+      "cumulative_accounting_roi_pct": 197.686
+    },
+    {
+      "quarter": "1982-Q4",
+      "products": {
+        "aurelia": 318,
+        "aurelia_plus": 10825,
+        "artemis": 19261,
+        "artemis_pro": 1433
+      },
+      "computer_units": 31837,
+      "team_licenses": 270,
+      "peak_month_demand": 11355,
+      "capacity_month": 11923,
+      "net_revenue_usd": 83890718.22,
+      "capex_usd": 459037.1,
+      "operating_profit_ebit_usd": 16673154.2,
+      "free_cash_flow_usd": 17037090.01,
+      "cumulative_accounting_roi_pct": 223.089
+    }
+  ],
+  "annual": [
+    {
+      "year": 1980,
+      "computer_units": 82916,
+      "team_licenses": 0
+    },
+    {
+      "year": 1981,
+      "computer_units": 108198,
+      "team_licenses": 36
+    },
+    {
+      "year": 1982,
+      "computer_units": 119389,
+      "team_licenses": 720
+    }
+  ],
+  "end_1982": {
+    "quarter": "1982-Q4",
+    "computer_units": 31837,
+    "customer_gross_usd": 111274362.99,
+    "channel_fees_usd": 27307030.96,
+    "promotional_credits_usd": 76613.81,
+    "net_revenue_usd": 83890718.22,
+    "revenue_streams_usd": {
+      "computer_baskets": 80455443.01,
+      "standalone_applications": 0.0,
+      "standalone_cards": 323712.25,
+      "bpi_licenses": 722030.02,
+      "academy_tuition": 2047222.85,
+      "team_and_network": 418923.9
+    },
+    "source_operating_expenses_usd": 63619650.99,
+    "replaced_generic_marketing_usd": 573066.0,
+    "eliminated_internal_royalties_usd": 141671.5,
+    "recurring_product_cost_reference_usd": 55207800.99,
+    "other_resource_costs_usd": 7697112.5,
+    "marketing_expense_usd": 3489677.62,
+    "total_marketing_and_credits_usd": 3566291.43,
+    "operating_cash_cost_usd": 66394591.11,
+    "ebitda_usd": 17496127.11,
+    "depreciation_usd": 822972.91,
+    "operating_profit_ebit_usd": 16673154.2,
+    "capex_usd": 459037.1,
+    "inventory_balance_usd": 31316577.59,
+    "inventory_cash_change_usd": 0.0,
+    "free_cash_flow_usd": 17037090.01,
+    "cumulative_net_cash_usd": 88153946.25,
+    "cumulative_capex_usd": 30745647.95,
+    "cumulative_operating_profit_usd": 138454238.52,
+    "cumulative_net_revenue_usd": 871594877.7,
+    "end_operating_assets_usd": 50300292.27,
+    "average_operating_assets_usd": 50482260.17,
+    "quarterly_pretax_roi_pct": 33.028,
+    "cumulative_accounting_roi_pct": 223.089,
+    "peak_external_funding_usd": 34921100.66,
+    "cumulative_cash_return_on_peak_funding_pct": 252.437,
+    "original_forecast_reference": {},
+    "period_status": "Full-demand capacity scenario, not original constrained deliveries"
+  },
+  "team_development_reconciliation": [
+    {
+      "quarter": "1980-Q4",
+      "gross_development_usd": 80000,
+      "existing_payroll_allocated_usd": 18637.41,
+      "incremental_development_usd": 61362.59,
+      "basis": "At most half of already paid retained sustaining capacity is reassigned; contingency is fully incremental. Initial network authentication/OS work is already funded and excluded from Team scope."
+    },
+    {
+      "quarter": "1981-Q1",
+      "gross_development_usd": 321000,
+      "existing_payroll_allocated_usd": 80489.6,
+      "incremental_development_usd": 240510.4,
+      "basis": "At most half of already paid retained sustaining capacity is reassigned; contingency is fully incremental. Initial network authentication/OS work is already funded and excluded from Team scope."
+    },
+    {
+      "quarter": "1981-Q2",
+      "gross_development_usd": 361500,
+      "existing_payroll_allocated_usd": 80489.6,
+      "incremental_development_usd": 281010.4,
+      "basis": "At most half of already paid retained sustaining capacity is reassigned; contingency is fully incremental. Initial network authentication/OS work is already funded and excluded from Team scope."
+    },
+    {
+      "quarter": "1981-Q3",
+      "gross_development_usd": 361500,
+      "existing_payroll_allocated_usd": 153972.8,
+      "incremental_development_usd": 207527.2,
+      "basis": "At most half of already paid retained sustaining capacity is reassigned; contingency is fully incremental. Initial network authentication/OS work is already funded and excluded from Team scope."
+    },
+    {
+      "quarter": "1981-Q4",
+      "gross_development_usd": 256000,
+      "existing_payroll_allocated_usd": 153972.8,
+      "incremental_development_usd": 102027.2,
+      "basis": "At most half of already paid retained sustaining capacity is reassigned; contingency is fully incremental. Initial network authentication/OS work is already funded and excluded from Team scope."
+    }
+  ],
+  "team_campaign_reconciliation": [
+    {
+      "quarter": "1981-Q3",
+      "gross_campaign_usd": 36000,
+      "existing_marketing_reallocated_usd": 36000,
+      "incremental_campaign_usd": 0
+    },
+    {
+      "quarter": "1981-Q4",
+      "gross_campaign_usd": 178000,
+      "existing_marketing_reallocated_usd": 37791.36,
+      "incremental_campaign_usd": 140208.64
+    },
+    {
+      "quarter": "1982-Q1",
+      "gross_campaign_usd": 62000,
+      "existing_marketing_reallocated_usd": 40814.67,
+      "incremental_campaign_usd": 21185.33
+    }
+  ],
+  "regeneration": [
+    "python3 tools/rebuild_outlook.py"
+  ],
+  "sources": [
+    {
+      "path": "sales_forecast.json",
+      "sha256": "cc40245619e6f0bf8a4e2f9218be76f2f58cbf4001e07f7897907e4f849942eb"
+    },
+    {
+      "path": "industrial_investment_1974_1981.json",
+      "sha256": "855c529870d52f51f7b98f9e64ee4c1f89c090802af97460080ad711e009b5c8"
+    },
+    {
+      "path": "roi_1974_1980.json",
+      "sha256": "c081e327480946cce3b53e2c863e27f7ba325ac1f7ec6d3b2a1504d798404ec8"
+    },
+    {
+      "path": "logix_aion_story.json",
+      "sha256": "43ce6e1317e341e716e1dfe09c51d8573d4bb40c2875761161c319220cc34cf8"
+    },
+    {
+      "path": "market_reactions.json",
+      "sha256": "86a3146541bb8ce45fdacdec3aeacfe87b902c3777d39d4a7db59b832915206d"
+    },
+    {
+      "path": "team_development_program.json",
+      "sha256": "8c179f3df0bf4379a4de2248c7183a6b3925ace4369fb1356260ee32d124672a"
+    },
+    {
+      "path": "tools/market_outlook.py",
+      "sha256": "26419d4823a6561e73dd89e09ed4a3c3b69aa57d1259364b5a249361f565bb9c"
+    }
+  ]
+}

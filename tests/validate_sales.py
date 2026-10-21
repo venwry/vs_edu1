@@ -9,7 +9,7 @@ b['products'].update(read('compatibility_pricing_baseline.json')['products'])
 for offer in p['products']:
  for year,x in offer['snapshots'].items():
   if x['retail_price_usd'] is None:continue
-  if offer['id'] not in b['products']:
+  if year not in b['products'].get(offer['id'],{}):
    assert x['baseline_status']=='new_offer_no_historical_sales_anchor'
    assert 'no historical' in x['pre_reduction']['basis'].lower()
    continue
@@ -38,3 +38,4 @@ for sc in s['scenarios']:
   assert row['units']==max(0,row['pre_reaction_units']-row['apple_displacement_units']-row['tandy_deferred_units']+row['compatibility_gain_units'])+row['bpi_gain_units']
 assert 'pricing' in site['navigation'] and 'sales' in site['navigation']
 print('PASS: balanced pricing against immutable demand baseline, explicit cost rebase and fee preservation, course variants, forecast hashes, period totals, capacity, market denominators and navigation configuration.')
+

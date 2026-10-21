@@ -2,18 +2,8 @@
   "title": "AION Development System — Team Edition",
   "launch_date": "1981-11-19",
   "date_basis": "Selected November 1981 scenario launch day; not a sourced historical COMDEX opening date.",
-  "status": "Offering and campaign accepted; market reaction and financial integration deferred.",
-  "financial_boundary": "Budgets below are proposed program investment inputs only. Do not add to existing totals until overlap with already funded software, marketing, equipment and support is reconciled. Sales, investment and ROI outputs remain frozen at 574ed9. Their source hashes intentionally describe the previous inputs.",
-  "frozen_output_sha256": {
-    "sales_forecast.json": "abedf1d33cf42f5d9d331f336f86eb5e1b5deef2741c27f7b2646540b1d82ec6",
-    "industrial_investment_1974_1981.json": "bf1514c13257071455e7d0b954e2aa31bfd3cda3c48530e3fc784b2ffa671b56",
-    "industrial_investment_1974_1981.html": "138a4bb48571ccf90b16de3438baa8a572d5b2df5dbcad2fde42a5a27703c6c9",
-    "roi_1974_1980.json": "b7b6e3e5a6e933c5f2785ef046c2bebff3e609b53b167a0b30ecab19946cd570",
-    "roi.html": "d4ad2e4d5bc22f8fd6dc7d2d45f53fb9deb9c6d3c8f817ed791029647984798b",
-    "marketing_budget_1974_1980.json": "e360207be0761dde215a41e1bfbab6ef8796858b3e9d654ccc2c8073aeecbbca",
-    "ecosystem_forecast.json": "d274c522b48a2ae149c9e7f93eb57e1f7dea61a4a1539bdff4001fdb5e27096a",
-    "ecosystem.html": "9c5bfb901d66952b4ffa3e468df2a3b04ddd05891dc9c4900dc4c4dca75627b2"
-  },
+  "status": "Integrated in reassessed sales, investment and ROI through December 1982.",
+  "financial_boundary": "The prior freeze is lifted by user authorization. Development and campaign provisions are reconciled against existing funded capacity; recurring delivery and support remain unit costs.",
   "license": {
     "unit": "one server, four concurrent developer sessions",
     "hardware_included": false,
@@ -105,7 +95,14 @@
     "development_provision_usd": 1380000,
     "campaign_provision_usd": 276000,
     "gross_pending_provision_usd": 1656000,
-    "incremental_investment_to_book_usd": null
+    "incremental_investment_to_book_usd": "Calculated in the linked reconciliations, not gross budget added twice."
   },
-  "assumptions": "All staffing, hours, prices and campaign allowances are explicit alternative-history planning assumptions, not supplier quotes or historical facts."
+  "assumptions": "All staffing, hours, prices and campaign allowances are explicit alternative-history planning assumptions, not supplier quotes or historical facts.",
+  "financial_integration": {
+    "development_treatment": "Gross budget less allocated existing payroll; remainder expensed in industrial ledger.",
+    "development_reconciliation": "industrial_investment_1974_1981.json: team_development_reconciliation",
+    "campaign_reconciliation": "roi_1974_1980.json: team_campaign_reconciliation",
+    "contingency": "Full budget provision included as conservative planned expense; not a claim of realized spending.",
+    "launch_price": "Use first costed 1982 Team snapshot as explicit November 1981 launch-price proxy; existing catalog snapshots are preserved."
+  }
 }

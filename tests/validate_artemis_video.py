@@ -47,9 +47,10 @@ for scenario in s['scenarios']:
   art=month['products']['artemis'];pre=art['intending_buyers']-month['display_revision_intent_increment']
   assert month['display_revision_intent_increment']==round(pre*policy['demand_uplift'][scenario['id']])
 for q in inv['quarterly_capacity']:
- assert q['installed_computer_capacity_month']>=math.floor(q['peak_month_customer_demand']*1.1)
+ assert q['installed_computer_capacity_month']>=math.floor(q['peak_month_customer_demand']*1.05)
 for q,amount in policy['incremental_marketing_usd'].items():assert sum(x['central_usd'] for x in roi['marketing']['items'] if x['quarter']==q and x['programme']=='Mono Pro incremental campaign')==amount
 assert all(not r['products'].get('artemis_pro') for m,r in inv['monthly_demand'].items() if m<'1981-07')
 assert sum(p['person_months'] for p in inv['engineering_programs'] if p['id'] in ['artemis_video_card_increment','mono_pro_receiver','mono_pro_card_board','artemis_display_drivers'])==150
 assert '__DISPLAY_REVISION__' not in (R/'roi.html').read_text()
 print('PASS: Artemis card modes, monitor compatibility, exclusive memory, bundle uniqueness, demand uplift, reserve capacity, NRE and marketing propagation.')
+

@@ -6,9 +6,9 @@
     "currency": "Nominal USD, before sales tax",
     "calendar_period": "1978-01-01 to 1978-12-31; no pre-launch Aurelia sales, June–December shown",
     "launch_year_period": "1978-06-05 to 1979-05-31; rounded planning proxy for sales by June 4 NCC 1979; June 1–3 omitted",
-    "source_reactions_sha256": "f42da35aaceac0d6c307fffde574046354036a67cbed2bed6778f910f9d59b85",
-    "source_story_sha256": "a53587f94d87bc9bb314fbff473c9a11e9065581f099f605ce3763964fe0f1a6",
-    "source_pricing_sha256": "df6dcddbb7f4308d38c98b47a133cf0a44afd5d520c969b8e9ed50c0570a12de",
+    "source_reactions_sha256": "86a3146541bb8ce45fdacdec3aeacfe87b902c3777d39d4a7db59b832915206d",
+    "source_story_sha256": "43ce6e1317e341e716e1dfe09c51d8573d4bb40c2875761161c319220cc34cf8",
+    "source_pricing_sha256": "9471216b52731464a370964bc3f15e7d17b32345c4e5495814bcc860b64e2a78",
     "generated_by": "tools/build_sales.py",
     "forecast_end": "1980-11-18",
     "aurelia_plus_launch": "1979-12-03",
@@ -18,7 +18,8 @@
     "source_comdex_campaign_sha256": "00db4d6d4e4fec1cb5232f30d5aad8bb25c36a4a508e4eacae2792e569370739",
     "ncc1980_forecast_end": "1980-05-18",
     "comdex1980_date": "1980-11-19",
-    "source_ncc1980_campaign_sha256": "7a1bb7694b91bbd6cd06497cb533f9e7e1f96429224b75a606fe90006b92e3b1"
+    "source_ncc1980_campaign_sha256": "7a1bb7694b91bbd6cd06497cb533f9e7e1f96429224b75a606fe90006b92e3b1",
+    "current_forecast_horizon": "1982-12-31"
   },
   "reaction_policy": {
     "boundary": "June 1978–May 1979 sell-through. The June 4 demonstration, October Tandy release, later Apple successor review and confidential July/December IBM actions add no pre-NCC shipments.",
@@ -7975,5 +7976,1825 @@
       "crt_status": "M36-141W period candidate; 640×400 qualification and purchase prices are assumptions, not supplier assurances."
     },
     "display_revision_sha256": "9b93d797feb0f4c73ca6f67f9519069e82e586d9cf580dc4df417865e109a9bf"
+  },
+  "reassessed_1980_1982": {
+    "status": "Canonical current forecast; older scenario sections retained as historical constrained-delivery references.",
+    "policy": {
+      "horizon": "1980-01 through 1982-12",
+      "capacity_headroom": 0.05,
+      "1980_incremental_reaction_factors": [
+        0.98,
+        0.94,
+        0.96,
+        1.0
+      ],
+      "quarter_run_rate_vs_december_1980": [
+        1.03,
+        1.1,
+        1.08,
+        1.14,
+        1.16,
+        1.17,
+        1.19,
+        1.28
+      ],
+      "native_share": [
+        0.34,
+        0.4,
+        0.44,
+        0.49,
+        0.53,
+        0.57,
+        0.61,
+        0.65
+      ],
+      "pro_share": [
+        0,
+        0,
+        0.018,
+        0.025,
+        0.03,
+        0.035,
+        0.04,
+        0.045
+      ],
+      "quarter_reasons": [
+        "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS.",
+        "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility.",
+        "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing.",
+        "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders.",
+        "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists.",
+        "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth.",
+        "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake.",
+        "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope.",
+        "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth.",
+        "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only.",
+        "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed.",
+        "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+      ],
+      "bounds": {
+        "conservative": 0.8,
+        "central": 1.0,
+        "strong": 1.2
+      },
+      "method": "1980 factors are incremental to existing signed reaction/price effects. 1981–82 quarterly run rates are relative to reassessed December 1980, replacing 4% compounded monthly growth. Existing balanced prices are held; no second price-elasticity or marketing bonus. Bounds are judgement scenarios, not statistical intervals.",
+      "premises": [
+        "CP/M-86 does not exist; DRI prioritizes CP/M-80/TUI and AIONix/PRO.",
+        "Adam owns 30% of independent DRI; IBM sees a strategic conflict with competitor Logix.",
+        "Paterson does not create QDOS; IBM commissions its own alternative disk OS, with qualification risk.",
+        "DRI non-ERA port rights activate in 1982; 68k requires suitable MMU/system design; 286 enables feasibility, not an immediate release.",
+        "ERAv1 remains 3 um. June 1982 repaired 3 um RAM costs remain the volume cost basis through year-end; 2 um pilot savings await repeatable-production approval.",
+        "Adam foresees demand peaks, not engineering success: reserve 5% commercial headroom, retain OEE, one-down redundancy and qualification gates."
+      ],
+      "team_licenses_1981": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        24
+      ],
+      "team_licenses_1982": [
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        80,
+        90,
+        100
+      ],
+      "team_scope": "Small four-developer teams and pilots; existing 5 MB server constrains repositories. No large-storage product or enterprise-scale deployment assumed. Client and server purchases are contained in computer totals, not added again.",
+      "external_revenue_boundary": "No external OEM, 68k/x86 AIONix port or unpriced storage revenue; independent third-party sales are not Logix receipts."
+    },
+    "scenarios": [
+      {
+        "id": "conservative",
+        "monthly": [
+          {
+            "month": "1980-01",
+            "products": {
+              "aurelia": 1530,
+              "aurelia_plus": 2643
+            },
+            "computer_units": 4173,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-02",
+            "products": {
+              "aurelia": 1182,
+              "aurelia_plus": 3101
+            },
+            "computer_units": 4283,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-03",
+            "products": {
+              "aurelia": 996,
+              "aurelia_plus": 3358
+            },
+            "computer_units": 4354,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-04",
+            "products": {
+              "aurelia": 810,
+              "aurelia_plus": 3394
+            },
+            "computer_units": 4204,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-05",
+            "products": {
+              "aurelia": 622,
+              "aurelia_plus": 3977,
+              "artemis": 202
+            },
+            "computer_units": 4801,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-06",
+            "products": {
+              "aurelia": 638,
+              "aurelia_plus": 4681,
+              "artemis": 740
+            },
+            "computer_units": 6059,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-07",
+            "products": {
+              "aurelia": 590,
+              "aurelia_plus": 4601,
+              "artemis": 984
+            },
+            "computer_units": 6175,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-08",
+            "products": {
+              "aurelia": 526,
+              "aurelia_plus": 4414,
+              "artemis": 1219
+            },
+            "computer_units": 6159,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-09",
+            "products": {
+              "aurelia": 467,
+              "aurelia_plus": 4290,
+              "artemis": 1489
+            },
+            "computer_units": 6246,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-10",
+            "products": {
+              "aurelia": 420,
+              "aurelia_plus": 4396,
+              "artemis": 1798
+            },
+            "computer_units": 6614,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1980-11",
+            "products": {
+              "aurelia": 342,
+              "aurelia_plus": 4314,
+              "artemis": 1978
+            },
+            "computer_units": 6634,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1980-12",
+            "products": {
+              "aurelia": 342,
+              "aurelia_plus": 4314,
+              "artemis": 1978
+            },
+            "computer_units": 6634,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1981-01",
+            "products": {
+              "aurelia": 162,
+              "aurelia_plus": 4122,
+              "artemis": 2206,
+              "artemis_pro": 0
+            },
+            "computer_units": 6490,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-02",
+            "products": {
+              "aurelia": 170,
+              "aurelia_plus": 4338,
+              "artemis": 2323,
+              "artemis_pro": 0
+            },
+            "computer_units": 6831,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-03",
+            "products": {
+              "aurelia": 179,
+              "aurelia_plus": 4555,
+              "artemis": 2439,
+              "artemis_pro": 0
+            },
+            "computer_units": 7173,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-04",
+            "products": {
+              "aurelia": 173,
+              "aurelia_plus": 3986,
+              "artemis": 2773,
+              "artemis_pro": 0
+            },
+            "computer_units": 6932,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-05",
+            "products": {
+              "aurelia": 182,
+              "aurelia_plus": 4195,
+              "artemis": 2918,
+              "artemis_pro": 0
+            },
+            "computer_units": 7295,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-06",
+            "products": {
+              "aurelia": 191,
+              "aurelia_plus": 4405,
+              "artemis": 3065,
+              "artemis_pro": 0
+            },
+            "computer_units": 7661,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-07",
+            "products": {
+              "aurelia": 170,
+              "aurelia_plus": 3641,
+              "artemis": 2872,
+              "artemis_pro": 122
+            },
+            "computer_units": 6805,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-08",
+            "products": {
+              "aurelia": 179,
+              "aurelia_plus": 3832,
+              "artemis": 3023,
+              "artemis_pro": 129
+            },
+            "computer_units": 7163,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-09",
+            "products": {
+              "aurelia": 188,
+              "aurelia_plus": 4024,
+              "artemis": 3174,
+              "artemis_pro": 135
+            },
+            "computer_units": 7521,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-10",
+            "products": {
+              "aurelia": 170,
+              "aurelia_plus": 3301,
+              "artemis": 3165,
+              "artemis_pro": 170
+            },
+            "computer_units": 6806,
+            "team_licenses": 0,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1981-11",
+            "products": {
+              "aurelia": 194,
+              "aurelia_plus": 3778,
+              "artemis": 3622,
+              "artemis_pro": 194
+            },
+            "computer_units": 7788,
+            "team_licenses": 10,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1981-12",
+            "products": {
+              "aurelia": 202,
+              "aurelia_plus": 3924,
+              "artemis": 3762,
+              "artemis_pro": 202
+            },
+            "computer_units": 8090,
+            "team_licenses": 19,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1982-01",
+            "products": {
+              "aurelia": 73,
+              "aurelia_plus": 3362,
+              "artemis": 3655,
+              "artemis_pro": 219
+            },
+            "computer_units": 7309,
+            "team_licenses": 24,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-02",
+            "products": {
+              "aurelia": 77,
+              "aurelia_plus": 3539,
+              "artemis": 3847,
+              "artemis_pro": 231
+            },
+            "computer_units": 7694,
+            "team_licenses": 28,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-03",
+            "products": {
+              "aurelia": 81,
+              "aurelia_plus": 3716,
+              "artemis": 4039,
+              "artemis_pro": 242
+            },
+            "computer_units": 8078,
+            "team_licenses": 32,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-04",
+            "products": {
+              "aurelia": 74,
+              "aurelia_plus": 3096,
+              "artemis": 3944,
+              "artemis_pro": 258
+            },
+            "computer_units": 7372,
+            "team_licenses": 36,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-05",
+            "products": {
+              "aurelia": 78,
+              "aurelia_plus": 3259,
+              "artemis": 4151,
+              "artemis_pro": 272
+            },
+            "computer_units": 7760,
+            "team_licenses": 40,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-06",
+            "products": {
+              "aurelia": 82,
+              "aurelia_plus": 3422,
+              "artemis": 4359,
+              "artemis_pro": 285
+            },
+            "computer_units": 8148,
+            "team_licenses": 44,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-07",
+            "products": {
+              "aurelia": 75,
+              "aurelia_plus": 2850,
+              "artemis": 4274,
+              "artemis_pro": 300
+            },
+            "computer_units": 7499,
+            "team_licenses": 48,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-08",
+            "products": {
+              "aurelia": 79,
+              "aurelia_plus": 2999,
+              "artemis": 4498,
+              "artemis_pro": 316
+            },
+            "computer_units": 7892,
+            "team_licenses": 52,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-09",
+            "products": {
+              "aurelia": 83,
+              "aurelia_plus": 3150,
+              "artemis": 4724,
+              "artemis_pro": 331
+            },
+            "computer_units": 8288,
+            "team_licenses": 56,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-10",
+            "products": {
+              "aurelia": 77,
+              "aurelia_plus": 2598,
+              "artemis": 4622,
+              "artemis_pro": 344
+            },
+            "computer_units": 7641,
+            "team_licenses": 64,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          },
+          {
+            "month": "1982-11",
+            "products": {
+              "aurelia": 87,
+              "aurelia_plus": 2974,
+              "artemis": 5290,
+              "artemis_pro": 394
+            },
+            "computer_units": 8745,
+            "team_licenses": 72,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          },
+          {
+            "month": "1982-12",
+            "products": {
+              "aurelia": 90,
+              "aurelia_plus": 3089,
+              "artemis": 5496,
+              "artemis_pro": 409
+            },
+            "computer_units": 9084,
+            "team_licenses": 80,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          }
+        ],
+        "quarterly": [
+          {
+            "quarter": "1980-Q1",
+            "products": {
+              "aurelia": 3708,
+              "aurelia_plus": 9102,
+              "artemis": 0,
+              "artemis_pro": 0
+            },
+            "computer_units": 12810,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q2",
+            "products": {
+              "aurelia": 2070,
+              "aurelia_plus": 12052,
+              "artemis": 942,
+              "artemis_pro": 0
+            },
+            "computer_units": 15064,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q3",
+            "products": {
+              "aurelia": 1583,
+              "aurelia_plus": 13305,
+              "artemis": 3692,
+              "artemis_pro": 0
+            },
+            "computer_units": 18580,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q4",
+            "products": {
+              "aurelia": 1104,
+              "aurelia_plus": 13024,
+              "artemis": 5754,
+              "artemis_pro": 0
+            },
+            "computer_units": 19882,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q1",
+            "products": {
+              "aurelia": 511,
+              "aurelia_plus": 13015,
+              "artemis": 6968,
+              "artemis_pro": 0
+            },
+            "computer_units": 20494,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q2",
+            "products": {
+              "aurelia": 546,
+              "aurelia_plus": 12586,
+              "artemis": 8756,
+              "artemis_pro": 0
+            },
+            "computer_units": 21888,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q3",
+            "products": {
+              "aurelia": 537,
+              "aurelia_plus": 11497,
+              "artemis": 9069,
+              "artemis_pro": 386
+            },
+            "computer_units": 21489,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q4",
+            "products": {
+              "aurelia": 566,
+              "aurelia_plus": 11003,
+              "artemis": 10549,
+              "artemis_pro": 566
+            },
+            "computer_units": 22684,
+            "team_licenses": 29
+          },
+          {
+            "quarter": "1982-Q1",
+            "products": {
+              "aurelia": 231,
+              "aurelia_plus": 10617,
+              "artemis": 11541,
+              "artemis_pro": 692
+            },
+            "computer_units": 23081,
+            "team_licenses": 84
+          },
+          {
+            "quarter": "1982-Q2",
+            "products": {
+              "aurelia": 234,
+              "aurelia_plus": 9777,
+              "artemis": 12454,
+              "artemis_pro": 815
+            },
+            "computer_units": 23280,
+            "team_licenses": 120
+          },
+          {
+            "quarter": "1982-Q3",
+            "products": {
+              "aurelia": 237,
+              "aurelia_plus": 8999,
+              "artemis": 13496,
+              "artemis_pro": 947
+            },
+            "computer_units": 23679,
+            "team_licenses": 156
+          },
+          {
+            "quarter": "1982-Q4",
+            "products": {
+              "aurelia": 254,
+              "aurelia_plus": 8661,
+              "artemis": 15408,
+              "artemis_pro": 1147
+            },
+            "computer_units": 25470,
+            "team_licenses": 216
+          }
+        ],
+        "annual": [
+          {
+            "year": 1980,
+            "computer_units": 66336,
+            "team_licenses": 0
+          },
+          {
+            "year": 1981,
+            "computer_units": 86555,
+            "team_licenses": 29
+          },
+          {
+            "year": 1982,
+            "computer_units": 95510,
+            "team_licenses": 576
+          }
+        ]
+      },
+      {
+        "id": "central",
+        "monthly": [
+          {
+            "month": "1980-01",
+            "products": {
+              "aurelia": 1913,
+              "aurelia_plus": 3304
+            },
+            "computer_units": 5217,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-02",
+            "products": {
+              "aurelia": 1477,
+              "aurelia_plus": 3876
+            },
+            "computer_units": 5353,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-03",
+            "products": {
+              "aurelia": 1245,
+              "aurelia_plus": 4197
+            },
+            "computer_units": 5442,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-04",
+            "products": {
+              "aurelia": 1012,
+              "aurelia_plus": 4243
+            },
+            "computer_units": 5255,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-05",
+            "products": {
+              "aurelia": 777,
+              "aurelia_plus": 4971,
+              "artemis": 252
+            },
+            "computer_units": 6000,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-06",
+            "products": {
+              "aurelia": 798,
+              "aurelia_plus": 5851,
+              "artemis": 925
+            },
+            "computer_units": 7574,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-07",
+            "products": {
+              "aurelia": 737,
+              "aurelia_plus": 5751,
+              "artemis": 1230
+            },
+            "computer_units": 7718,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-08",
+            "products": {
+              "aurelia": 658,
+              "aurelia_plus": 5517,
+              "artemis": 1524
+            },
+            "computer_units": 7699,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-09",
+            "products": {
+              "aurelia": 584,
+              "aurelia_plus": 5363,
+              "artemis": 1861
+            },
+            "computer_units": 7808,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-10",
+            "products": {
+              "aurelia": 525,
+              "aurelia_plus": 5495,
+              "artemis": 2248
+            },
+            "computer_units": 8268,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1980-11",
+            "products": {
+              "aurelia": 427,
+              "aurelia_plus": 5392,
+              "artemis": 2472
+            },
+            "computer_units": 8291,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1980-12",
+            "products": {
+              "aurelia": 427,
+              "aurelia_plus": 5392,
+              "artemis": 2472
+            },
+            "computer_units": 8291,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1981-01",
+            "products": {
+              "aurelia": 203,
+              "aurelia_plus": 5152,
+              "artemis": 2758,
+              "artemis_pro": 0
+            },
+            "computer_units": 8113,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-02",
+            "products": {
+              "aurelia": 213,
+              "aurelia_plus": 5423,
+              "artemis": 2904,
+              "artemis_pro": 0
+            },
+            "computer_units": 8540,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-03",
+            "products": {
+              "aurelia": 224,
+              "aurelia_plus": 5694,
+              "artemis": 3049,
+              "artemis_pro": 0
+            },
+            "computer_units": 8967,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-04",
+            "products": {
+              "aurelia": 216,
+              "aurelia_plus": 4982,
+              "artemis": 3466,
+              "artemis_pro": 0
+            },
+            "computer_units": 8664,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-05",
+            "products": {
+              "aurelia": 228,
+              "aurelia_plus": 5244,
+              "artemis": 3648,
+              "artemis_pro": 0
+            },
+            "computer_units": 9120,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-06",
+            "products": {
+              "aurelia": 239,
+              "aurelia_plus": 5506,
+              "artemis": 3831,
+              "artemis_pro": 0
+            },
+            "computer_units": 9576,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-07",
+            "products": {
+              "aurelia": 213,
+              "aurelia_plus": 4551,
+              "artemis": 3590,
+              "artemis_pro": 153
+            },
+            "computer_units": 8507,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-08",
+            "products": {
+              "aurelia": 224,
+              "aurelia_plus": 4790,
+              "artemis": 3779,
+              "artemis_pro": 161
+            },
+            "computer_units": 8954,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-09",
+            "products": {
+              "aurelia": 235,
+              "aurelia_plus": 5030,
+              "artemis": 3968,
+              "artemis_pro": 169
+            },
+            "computer_units": 9402,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-10",
+            "products": {
+              "aurelia": 213,
+              "aurelia_plus": 4126,
+              "artemis": 3956,
+              "artemis_pro": 212
+            },
+            "computer_units": 8507,
+            "team_licenses": 0,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1981-11",
+            "products": {
+              "aurelia": 243,
+              "aurelia_plus": 4722,
+              "artemis": 4527,
+              "artemis_pro": 243
+            },
+            "computer_units": 9735,
+            "team_licenses": 12,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1981-12",
+            "products": {
+              "aurelia": 253,
+              "aurelia_plus": 4905,
+              "artemis": 4702,
+              "artemis_pro": 253
+            },
+            "computer_units": 10113,
+            "team_licenses": 24,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1982-01",
+            "products": {
+              "aurelia": 91,
+              "aurelia_plus": 4203,
+              "artemis": 4569,
+              "artemis_pro": 274
+            },
+            "computer_units": 9137,
+            "team_licenses": 30,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-02",
+            "products": {
+              "aurelia": 96,
+              "aurelia_plus": 4424,
+              "artemis": 4809,
+              "artemis_pro": 289
+            },
+            "computer_units": 9618,
+            "team_licenses": 35,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-03",
+            "products": {
+              "aurelia": 101,
+              "aurelia_plus": 4645,
+              "artemis": 5049,
+              "artemis_pro": 303
+            },
+            "computer_units": 10098,
+            "team_licenses": 40,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-04",
+            "products": {
+              "aurelia": 92,
+              "aurelia_plus": 3870,
+              "artemis": 4930,
+              "artemis_pro": 323
+            },
+            "computer_units": 9215,
+            "team_licenses": 45,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-05",
+            "products": {
+              "aurelia": 97,
+              "aurelia_plus": 4074,
+              "artemis": 5189,
+              "artemis_pro": 340
+            },
+            "computer_units": 9700,
+            "team_licenses": 50,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-06",
+            "products": {
+              "aurelia": 102,
+              "aurelia_plus": 4278,
+              "artemis": 5449,
+              "artemis_pro": 356
+            },
+            "computer_units": 10185,
+            "team_licenses": 55,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-07",
+            "products": {
+              "aurelia": 94,
+              "aurelia_plus": 3562,
+              "artemis": 5342,
+              "artemis_pro": 375
+            },
+            "computer_units": 9373,
+            "team_licenses": 60,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-08",
+            "products": {
+              "aurelia": 99,
+              "aurelia_plus": 3749,
+              "artemis": 5623,
+              "artemis_pro": 395
+            },
+            "computer_units": 9866,
+            "team_licenses": 65,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-09",
+            "products": {
+              "aurelia": 104,
+              "aurelia_plus": 3937,
+              "artemis": 5905,
+              "artemis_pro": 414
+            },
+            "computer_units": 10360,
+            "team_licenses": 70,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-10",
+            "products": {
+              "aurelia": 96,
+              "aurelia_plus": 3247,
+              "artemis": 5778,
+              "artemis_pro": 430
+            },
+            "computer_units": 9551,
+            "team_licenses": 80,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          },
+          {
+            "month": "1982-11",
+            "products": {
+              "aurelia": 109,
+              "aurelia_plus": 3717,
+              "artemis": 6613,
+              "artemis_pro": 492
+            },
+            "computer_units": 10931,
+            "team_licenses": 90,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          },
+          {
+            "month": "1982-12",
+            "products": {
+              "aurelia": 113,
+              "aurelia_plus": 3861,
+              "artemis": 6870,
+              "artemis_pro": 511
+            },
+            "computer_units": 11355,
+            "team_licenses": 100,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          }
+        ],
+        "quarterly": [
+          {
+            "quarter": "1980-Q1",
+            "products": {
+              "aurelia": 4635,
+              "aurelia_plus": 11377,
+              "artemis": 0,
+              "artemis_pro": 0
+            },
+            "computer_units": 16012,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q2",
+            "products": {
+              "aurelia": 2587,
+              "aurelia_plus": 15065,
+              "artemis": 1177,
+              "artemis_pro": 0
+            },
+            "computer_units": 18829,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q3",
+            "products": {
+              "aurelia": 1979,
+              "aurelia_plus": 16631,
+              "artemis": 4615,
+              "artemis_pro": 0
+            },
+            "computer_units": 23225,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q4",
+            "products": {
+              "aurelia": 1379,
+              "aurelia_plus": 16279,
+              "artemis": 7192,
+              "artemis_pro": 0
+            },
+            "computer_units": 24850,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q1",
+            "products": {
+              "aurelia": 640,
+              "aurelia_plus": 16269,
+              "artemis": 8711,
+              "artemis_pro": 0
+            },
+            "computer_units": 25620,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q2",
+            "products": {
+              "aurelia": 683,
+              "aurelia_plus": 15732,
+              "artemis": 10945,
+              "artemis_pro": 0
+            },
+            "computer_units": 27360,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q3",
+            "products": {
+              "aurelia": 672,
+              "aurelia_plus": 14371,
+              "artemis": 11337,
+              "artemis_pro": 483
+            },
+            "computer_units": 26863,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q4",
+            "products": {
+              "aurelia": 709,
+              "aurelia_plus": 13753,
+              "artemis": 13185,
+              "artemis_pro": 708
+            },
+            "computer_units": 28355,
+            "team_licenses": 36
+          },
+          {
+            "quarter": "1982-Q1",
+            "products": {
+              "aurelia": 288,
+              "aurelia_plus": 13272,
+              "artemis": 14427,
+              "artemis_pro": 866
+            },
+            "computer_units": 28853,
+            "team_licenses": 105
+          },
+          {
+            "quarter": "1982-Q2",
+            "products": {
+              "aurelia": 291,
+              "aurelia_plus": 12222,
+              "artemis": 15568,
+              "artemis_pro": 1019
+            },
+            "computer_units": 29100,
+            "team_licenses": 150
+          },
+          {
+            "quarter": "1982-Q3",
+            "products": {
+              "aurelia": 297,
+              "aurelia_plus": 11248,
+              "artemis": 16870,
+              "artemis_pro": 1184
+            },
+            "computer_units": 29599,
+            "team_licenses": 195
+          },
+          {
+            "quarter": "1982-Q4",
+            "products": {
+              "aurelia": 318,
+              "aurelia_plus": 10825,
+              "artemis": 19261,
+              "artemis_pro": 1433
+            },
+            "computer_units": 31837,
+            "team_licenses": 270
+          }
+        ],
+        "annual": [
+          {
+            "year": 1980,
+            "computer_units": 82916,
+            "team_licenses": 0
+          },
+          {
+            "year": 1981,
+            "computer_units": 108198,
+            "team_licenses": 36
+          },
+          {
+            "year": 1982,
+            "computer_units": 119389,
+            "team_licenses": 720
+          }
+        ]
+      },
+      {
+        "id": "strong",
+        "monthly": [
+          {
+            "month": "1980-01",
+            "products": {
+              "aurelia": 2296,
+              "aurelia_plus": 3965
+            },
+            "computer_units": 6261,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-02",
+            "products": {
+              "aurelia": 1772,
+              "aurelia_plus": 4651
+            },
+            "computer_units": 6423,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-03",
+            "products": {
+              "aurelia": 1494,
+              "aurelia_plus": 5036
+            },
+            "computer_units": 6530,
+            "team_licenses": 0,
+            "basis": "Apple business bundles and Tandy CP/M alternatives modestly displace demand; IBM has no qualified disk OS."
+          },
+          {
+            "month": "1980-04",
+            "products": {
+              "aurelia": 1214,
+              "aurelia_plus": 5092
+            },
+            "computer_units": 6306,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-05",
+            "products": {
+              "aurelia": 932,
+              "aurelia_plus": 5965,
+              "artemis": 302
+            },
+            "computer_units": 7199,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-06",
+            "products": {
+              "aurelia": 958,
+              "aurelia_plus": 7021,
+              "artemis": 1110
+            },
+            "computer_units": 9089,
+            "team_licenses": 0,
+            "basis": "Artemis qualification and native application availability constrain adoption; C source portability is not binary compatibility."
+          },
+          {
+            "month": "1980-07",
+            "products": {
+              "aurelia": 884,
+              "aurelia_plus": 6901,
+              "artemis": 1476
+            },
+            "computer_units": 9261,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-08",
+            "products": {
+              "aurelia": 790,
+              "aurelia_plus": 6620,
+              "artemis": 1829
+            },
+            "computer_units": 9239,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-09",
+            "products": {
+              "aurelia": 701,
+              "aurelia_plus": 6436,
+              "artemis": 2233
+            },
+            "computer_units": 9370,
+            "team_licenses": 0,
+            "basis": "Peripheral adapters and developer ports support demand, offset by selective enterprise purchasing."
+          },
+          {
+            "month": "1980-10",
+            "products": {
+              "aurelia": 630,
+              "aurelia_plus": 6594,
+              "artemis": 2698
+            },
+            "computer_units": 9922,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1980-11",
+            "products": {
+              "aurelia": 512,
+              "aurelia_plus": 6470,
+              "artemis": 2966
+            },
+            "computer_units": 9948,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1980-12",
+            "products": {
+              "aurelia": 512,
+              "aurelia_plus": 6470,
+              "artemis": 2966
+            },
+            "computer_units": 9948,
+            "team_licenses": 0,
+            "basis": "Native applications mature; independent OEM agreements remain qualification prospects, not automatic orders."
+          },
+          {
+            "month": "1981-01",
+            "products": {
+              "aurelia": 244,
+              "aurelia_plus": 6182,
+              "artemis": 3310,
+              "artemis_pro": 0
+            },
+            "computer_units": 9736,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-02",
+            "products": {
+              "aurelia": 256,
+              "aurelia_plus": 6508,
+              "artemis": 3485,
+              "artemis_pro": 0
+            },
+            "computer_units": 10249,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-03",
+            "products": {
+              "aurelia": 269,
+              "aurelia_plus": 6833,
+              "artemis": 3659,
+              "artemis_pro": 0
+            },
+            "computer_units": 10761,
+            "team_licenses": 0,
+            "basis": "CP/M/TUI installed base and documented interfaces sustain demand; no CP/M-86 competitor exists."
+          },
+          {
+            "month": "1981-04",
+            "products": {
+              "aurelia": 259,
+              "aurelia_plus": 5978,
+              "artemis": 4159,
+              "artemis_pro": 0
+            },
+            "computer_units": 10396,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-05",
+            "products": {
+              "aurelia": 274,
+              "aurelia_plus": 6293,
+              "artemis": 4378,
+              "artemis_pro": 0
+            },
+            "computer_units": 10945,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-06",
+            "products": {
+              "aurelia": 287,
+              "aurelia_plus": 6607,
+              "artemis": 4597,
+              "artemis_pro": 0
+            },
+            "computer_units": 11491,
+            "team_licenses": 0,
+            "basis": "Network launch and BPI pilots increase interest; portable CP/M competitors limit workstation growth."
+          },
+          {
+            "month": "1981-07",
+            "products": {
+              "aurelia": 256,
+              "aurelia_plus": 5461,
+              "artemis": 4308,
+              "artemis_pro": 184
+            },
+            "computer_units": 10209,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-08",
+            "products": {
+              "aurelia": 269,
+              "aurelia_plus": 5748,
+              "artemis": 4535,
+              "artemis_pro": 193
+            },
+            "computer_units": 10745,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-09",
+            "products": {
+              "aurelia": 282,
+              "aurelia_plus": 6036,
+              "artemis": 4762,
+              "artemis_pro": 203
+            },
+            "computer_units": 11283,
+            "team_licenses": 0,
+            "basis": "Recession and cautious dealer inventory offset conditional PRO availability; storage and recovery gates constrain server uptake."
+          },
+          {
+            "month": "1981-10",
+            "products": {
+              "aurelia": 256,
+              "aurelia_plus": 4951,
+              "artemis": 4747,
+              "artemis_pro": 254
+            },
+            "computer_units": 10208,
+            "team_licenses": 0,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1981-11",
+            "products": {
+              "aurelia": 292,
+              "aurelia_plus": 5666,
+              "artemis": 5432,
+              "artemis_pro": 292
+            },
+            "computer_units": 11682,
+            "team_licenses": 14,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1981-12",
+            "products": {
+              "aurelia": 304,
+              "aurelia_plus": 5886,
+              "artemis": 5642,
+              "artemis_pro": 304
+            },
+            "computer_units": 12136,
+            "team_licenses": 29,
+            "basis": "Team Edition pilots and developer interest support a modest spike; four-seat teams and 5 MB storage limit initial scope."
+          },
+          {
+            "month": "1982-01",
+            "products": {
+              "aurelia": 109,
+              "aurelia_plus": 5044,
+              "artemis": 5483,
+              "artemis_pro": 329
+            },
+            "computer_units": 10965,
+            "team_licenses": 36,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-02",
+            "products": {
+              "aurelia": 115,
+              "aurelia_plus": 5309,
+              "artemis": 5771,
+              "artemis_pro": 347
+            },
+            "computer_units": 11542,
+            "team_licenses": 42,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-03",
+            "products": {
+              "aurelia": 121,
+              "aurelia_plus": 5574,
+              "artemis": 6059,
+              "artemis_pro": 364
+            },
+            "computer_units": 12118,
+            "team_licenses": 48,
+            "basis": "IBM independent disk-OS launch assumed March 1982; recession and buyer waiting constrain growth."
+          },
+          {
+            "month": "1982-04",
+            "products": {
+              "aurelia": 110,
+              "aurelia_plus": 4644,
+              "artemis": 5916,
+              "artemis_pro": 388
+            },
+            "computer_units": 11058,
+            "team_licenses": 54,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-05",
+            "products": {
+              "aurelia": 116,
+              "aurelia_plus": 4889,
+              "artemis": 6227,
+              "artemis_pro": 408
+            },
+            "computer_units": 11640,
+            "team_licenses": 60,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-06",
+            "products": {
+              "aurelia": 122,
+              "aurelia_plus": 5134,
+              "artemis": 6539,
+              "artemis_pro": 427
+            },
+            "computer_units": 12222,
+            "team_licenses": 66,
+            "basis": "IBM business-channel credibility offsets cheaper Logix RAM and platform maturity; 286 availability starts port feasibility only."
+          },
+          {
+            "month": "1982-07",
+            "products": {
+              "aurelia": 113,
+              "aurelia_plus": 4274,
+              "artemis": 6410,
+              "artemis_pro": 450
+            },
+            "computer_units": 11247,
+            "team_licenses": 72,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-08",
+            "products": {
+              "aurelia": 119,
+              "aurelia_plus": 4499,
+              "artemis": 6748,
+              "artemis_pro": 474
+            },
+            "computer_units": 11840,
+            "team_licenses": 78,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-09",
+            "products": {
+              "aurelia": 125,
+              "aurelia_plus": 4724,
+              "artemis": 7086,
+              "artemis_pro": 497
+            },
+            "computer_units": 12432,
+            "team_licenses": 84,
+            "basis": "DRI 68k prototype work and third-party drivers support confidence; no production 68k AIONix or x86 AIONix revenue assumed."
+          },
+          {
+            "month": "1982-10",
+            "products": {
+              "aurelia": 115,
+              "aurelia_plus": 3896,
+              "artemis": 6934,
+              "artemis_pro": 516
+            },
+            "computer_units": 11461,
+            "team_licenses": 96,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          },
+          {
+            "month": "1982-11",
+            "products": {
+              "aurelia": 131,
+              "aurelia_plus": 4460,
+              "artemis": 7936,
+              "artemis_pro": 590
+            },
+            "computer_units": 13117,
+            "team_licenses": 108,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          },
+          {
+            "month": "1982-12",
+            "products": {
+              "aurelia": 136,
+              "aurelia_plus": 4633,
+              "artemis": 8244,
+              "artemis_pro": 613
+            },
+            "computer_units": 13626,
+            "team_licenses": 120,
+            "basis": "Late-year recovery, qualified compatibility and developer references support a forecast demand spike; no unqualified process savings."
+          }
+        ],
+        "quarterly": [
+          {
+            "quarter": "1980-Q1",
+            "products": {
+              "aurelia": 5562,
+              "aurelia_plus": 13652,
+              "artemis": 0,
+              "artemis_pro": 0
+            },
+            "computer_units": 19214,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q2",
+            "products": {
+              "aurelia": 3104,
+              "aurelia_plus": 18078,
+              "artemis": 1412,
+              "artemis_pro": 0
+            },
+            "computer_units": 22594,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q3",
+            "products": {
+              "aurelia": 2375,
+              "aurelia_plus": 19957,
+              "artemis": 5538,
+              "artemis_pro": 0
+            },
+            "computer_units": 27870,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1980-Q4",
+            "products": {
+              "aurelia": 1654,
+              "aurelia_plus": 19534,
+              "artemis": 8630,
+              "artemis_pro": 0
+            },
+            "computer_units": 29818,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q1",
+            "products": {
+              "aurelia": 769,
+              "aurelia_plus": 19523,
+              "artemis": 10454,
+              "artemis_pro": 0
+            },
+            "computer_units": 30746,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q2",
+            "products": {
+              "aurelia": 820,
+              "aurelia_plus": 18878,
+              "artemis": 13134,
+              "artemis_pro": 0
+            },
+            "computer_units": 32832,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q3",
+            "products": {
+              "aurelia": 807,
+              "aurelia_plus": 17245,
+              "artemis": 13605,
+              "artemis_pro": 580
+            },
+            "computer_units": 32237,
+            "team_licenses": 0
+          },
+          {
+            "quarter": "1981-Q4",
+            "products": {
+              "aurelia": 852,
+              "aurelia_plus": 16503,
+              "artemis": 15821,
+              "artemis_pro": 850
+            },
+            "computer_units": 34026,
+            "team_licenses": 43
+          },
+          {
+            "quarter": "1982-Q1",
+            "products": {
+              "aurelia": 345,
+              "aurelia_plus": 15927,
+              "artemis": 17313,
+              "artemis_pro": 1040
+            },
+            "computer_units": 34625,
+            "team_licenses": 126
+          },
+          {
+            "quarter": "1982-Q2",
+            "products": {
+              "aurelia": 348,
+              "aurelia_plus": 14667,
+              "artemis": 18682,
+              "artemis_pro": 1223
+            },
+            "computer_units": 34920,
+            "team_licenses": 180
+          },
+          {
+            "quarter": "1982-Q3",
+            "products": {
+              "aurelia": 357,
+              "aurelia_plus": 13497,
+              "artemis": 20244,
+              "artemis_pro": 1421
+            },
+            "computer_units": 35519,
+            "team_licenses": 234
+          },
+          {
+            "quarter": "1982-Q4",
+            "products": {
+              "aurelia": 382,
+              "aurelia_plus": 12989,
+              "artemis": 23114,
+              "artemis_pro": 1719
+            },
+            "computer_units": 38204,
+            "team_licenses": 324
+          }
+        ],
+        "annual": [
+          {
+            "year": 1980,
+            "computer_units": 99496,
+            "team_licenses": 0
+          },
+          {
+            "year": 1981,
+            "computer_units": 129841,
+            "team_licenses": 43
+          },
+          {
+            "year": 1982,
+            "computer_units": 143268,
+            "team_licenses": 864
+          }
+        ]
+      }
+    ],
+    "financial_case": "Central demand funds the industrial plan and ROI; conservative/strong sales bounds are not recomputed financial scenarios."
   }
 }

@@ -25,14 +25,14 @@ for ref,count in [('bundle.artemis_pro_512_server',64),('bundle.artemis_pro_1mb_
  assert parts['bompart.part.aion_4164']==count
  assert 'bompart.part.dram_64kbit' not in parts
 for row in i['quarterly_wafer_loading']:
- if row['chip_ref']=='part.aion_4164' and row['quarter']=='1980-Q1':assert row['cost_snapshot_year']==1979
+ if row['chip_ref']=='part.aion_4164' and row['quarter']=='1980-Q1':assert row['cost_snapshot_year']==1980 # Matches first available Aurelia+ cost snapshot; no mixed-vintage wafer credit.
 for src in impact['sources']:assert hashlib.sha256((R/src['path']).read_bytes()).hexdigest()==src['sha256']
-assert impact['investment']['included_process_capital_usd']==sum(x['usd'] for x in p['capital_schedule'] if x['quarter']<='1981-Q4')==2225000
-assert impact['forward_budget_total_usd']==2880000
+assert impact['investment']['included_process_capital_usd']==sum(x['usd'] for x in p['capital_schedule'] if x['quarter']<='1982-Q4')==2925000
+assert impact['forward_budget_total_usd']==1580000
 assert len(baseline['roi_central'])==32
 roi=read('roi_1974_1980.json');central=next(x for x in roi['scenarios'] if x['id']=='central')
-assert central['quarterly'][-1]['quarter']=='1981-Q4'
-assert math.isclose(impact['cash_after_reserving_forward_budgets_usd'],central['quarterly'][-1]['cumulative_net_cash_usd']-2880000,abs_tol=.01)
+assert central['quarterly'][-1]['quarter']=='1982-Q4'
+assert math.isclose(impact['cash_after_reserving_forward_budgets_usd'],central['quarterly'][-1]['cumulative_net_cash_usd']-1580000,abs_tol=.01)
 assert any(x['month']=='1981-07' and x['stream']=='bpi_licenses' for x in roi['monthly_revenue_links'])
 assert i['memory_manufacturing']['development_line']['production_output_credited']==0
 print('PASS: RAM release gates, repair bounds, least-cost selection, frozen ERA1, PRO population, investment boundaries and report source hashes')
