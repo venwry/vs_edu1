@@ -1,0 +1,13 @@
+const {JSDOM}=require('jsdom'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'ecosystem.html'),'utf8');
+const dom=new JSDOM(html,{url:'https://atlas.test/ecosystem.html',runScripts:'outside-only'}),w=dom.window,d=w.document;
+w.eval(d.querySelector('script:not([type])').textContent);
+const $=id=>d.getElementById(id);
+assert.equal($('softwareTable').querySelectorAll('tbody tr').length,23);assert.equal($('hardwareTable').querySelectorAll('tbody tr').length,23);
+assert($('market').textContent.includes('1981-Q4'));assert($('appsChart').querySelectorAll('svg circle').length===46);
+let base=$('kpis').textContent;$('scenario').value='conservative';$('scenario').onchange();assert.notEqual($('kpis').textContent,base);
+$('quarter').value='1978-Q2';$('quarter').onchange();assert($('oems').textContent.includes('No supported external'));assert(!$('popularApps').textContent.includes('WordStar'));
+$('quarter').value='1983-Q4';$('quarter').onchange();assert($('popularApps').textContent.includes('WordStar'));assert($('deviceLedger').querySelectorAll('tbody tr').length>0);
+$('year').value='1980';$('year').onchange();assert.equal($('softwareTable').querySelectorAll('tbody tr').length,4);
+let blob;w.URL.createObjectURL=b=>(blob=b,'blob:export');w.URL.revokeObjectURL=()=>{};w.HTMLAnchorElement.prototype.click=function(){};$('export').onclick();assert(blob.size>100);
+assert(!/NaN|undefined/.test(d.body.textContent));dom.window.close();console.log('PASS: ecosystem scenario, quarter/year filtering, SVG data, dated candidate list, device ledger and CSV export');
