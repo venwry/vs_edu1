@@ -10,7 +10,7 @@ for group in ['computers','devices','software_products','services','offered_bund
 assert {e['id'] for e in c['platform_editions']}<=by.keys()|excluded
 assert all(p['id'] in by for p in c['offered_bundles'])
 for p in rows:
- assert set(p['snapshots'])=={'1978','1979','1980','1981'}
+ assert set(p['snapshots'])=={'1978','1979','1980','1981','1982'}
  for year,s in p['snapshots'].items():
   if p['available_from']>year+'-06-15':assert s['status']=='not_yet_offered' and s['total_usd'] is None
   elif s['total_usd'] is not None:

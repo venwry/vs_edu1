@@ -3,7 +3,7 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 p=json.loads((R/'pricing_results.json').read_text());c=json.loads((R/'manufacturing_costs.json').read_text());costs={x['id']:x for x in c['products']}
 rows={x['id']:x for x in p['products']}
-assert len(rows)==len(p['products'])==90
+assert len(rows)==len(p['products'])==91
 assert p['metadata']['cost_model_sha256']==hashlib.sha256((R/'manufacturing_costs.json').read_bytes()).hexdigest()
 count=0
 for x in rows.values():
@@ -45,7 +45,7 @@ for x in rows.values():
    e=p['competitor_evidence'][eid];assert p['sources'][e['source_ref']]['date']<=s['date'],(eid,y)
   if x['announced_only']:assert s['status']=='announced_shipping_unconfirmed'
   if x['channel']=='direct':assert fee==0
-assert count==232
+assert count==323
 assert rows['bundle.aurelia_plus_mono']['snapshots']['1979']['retail_price_usd'] is None
 assert rows['software.abacus_3']['snapshots']['1980']['retail_price_usd'] is None
 assert rows['bundle.proposed_artemis_office']['snapshots']['1980']['cost_components'][-1]['cost_ref']=='edition.abacus_2.era'
@@ -55,5 +55,6 @@ assert {x['cost_ref']:x['quantity'] for x in network['cost_components']}['bundle
 assert all(x['cost_ref']!='device.network_card_artemis' for x in network['cost_components'])
 assert rows['service.academy_customer_site']['snapshots']['1981']['manufacturing_cost_usd']==round(73.85*8,2)
 assert not any(x.startswith('part.') or x.startswith('computer.') for x in rows)
-print('PASS: 90 offers / 232 snapshots; date gates, source chronology, exact cost reconciliation, fees, margins, stress and bundle dependencies.')
+print('PASS: 91 offers / 323 snapshots; date gates, source chronology, exact cost reconciliation, fees, margins, stress and bundle dependencies.')
+
 

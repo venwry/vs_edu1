@@ -7,8 +7,8 @@ R=Path(__file__).resolve().parents[1]
 C=json.loads((R/'logix_aion_technical_catalog_v2.json').read_text()); B=json.loads((R/'hardware_bom.json').read_text())
 records={x['id']:x for v in C.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id' in x}
 assemblies={x['id']:x for x in B['assemblies']}; components={x['id']:x for x in B['components']}
-years=[1978,1979,1980,1981]; snapshots=[f'{y}-06-15' for y in years]
-wages=[5.99,6.54,7.08,7.85]; electricity=[.028,.031,.037,.043]; overhead=[1,1.09,1.2,1.32]
+years=[1978,1979,1980,1981,1982]; snapshots=[f'{y}-06-15' for y in years]
+wages=[5.99,6.54,7.08,7.85,8.30]; electricity=[.028,.031,.037,.043,.047]; overhead=[1,1.09,1.2,1.32,1.43]
 K=['bom_materials','workforce','energy','consumables','operating_overhead','yield_and_rework','instructions','packaging','logistics','recurring_licenses','included_service_delivery']
 def vec():return dict.fromkeys(K,0.)
 def add(a,b,n=1):
@@ -19,6 +19,8 @@ prices={'part.z80a':[18,14,11,9],'part.z80b':[35,30,24,18],'part.dram_16kbit':[6
 # Area is an engineering assumption; video RAM/video areas follow catalog planning ranges.
 chip_area={'part.era1':55,'part.flexibus_host_controller':12,'part.flexibus_device_controller':10,'part.aurelia_video_chip':52,'part.aion_2114':20,'part.aurelia_system_controller':30,'part.aurelia_monitor_dac':6,'part.color_monitor_controller':14,'part.mono_monitor2_controller':9,'part.artemis_dma':18,'part.artemis_mmu':30,'part.artemis_graphics_chip':80,'part.mono_pro_controller':12,'part.artemis_fdd_hdd_controller':22,'part.aion_4116':18,'part.aion_4164':45}
 prices['part.brimar_m36_141w_crt']=[95,92,90,85] # Bare tube, unquoted nominal planning purchase price.
+# 1982 OEM estimates, not verified quotes; hardware BOM quantities unchanged.
+for ref,value in {'part.z80a':8,'part.z80b':16,'part.dram_16kbit':1.75,'part.dram_64kbit':18,'part.ball_tv90_crt':41,'part.sony_kv1204_display_assembly':114,'part.motorola_ds3000_140a_crt':53,'part.medium_resolution_rgb_crt':150,'part.mpi_mp40_mechanism':100,'part.hdd_5mb':850,'part.brimar_m36_141w_crt':82}.items():prices[ref].append(value)
 custom=set(chip_area)
 # Functional-set allowances for the NCC 1979 cards; component-level selections remain unresolved.
 card_allowances={'apple_expansion_pcb':5,'s100_expansion_pcb':8,'apple_host_interface':7,'s100_host_interface':10,'video_ram_window_and_bus_arbitration':8,'video_clock_reset':3,'digital_video_transceivers_and_connector':8,'flexibus_two_port_transceivers_connectors':8}
@@ -30,8 +32,8 @@ allowances.update({'artemis_video_card_pcb':12,'artemis_video_slot_connector':8,
 allowances.update({'sprite_interface_package_pcb_test':7.4,'system_controller_interface_pcb_test':11.5,'clock_reset_interrupts_and_bus_buffers':13})
 inputs={}; chip_models={}
 def chip_cost(ref,i):
- area=chip_area[ref];diameter=75;usable=.9*(math.pi*(diameter/2)**2/area-math.pi*diameter/math.sqrt(2*area));d=[2.8,2.4,2.,1.7][i];maturity=.72 if ref.startswith('part.artemis') or ref=='part.era1' else 1
- if i==3 and maturity<1:maturity=.86
+ area=chip_area[ref];diameter=75;usable=.9*(math.pi*(diameter/2)**2/area-math.pi*diameter/math.sqrt(2*area));d=[2.8,2.4,2.,1.7,1.6][i];maturity=.72 if ref.startswith('part.artemis') or ref=='part.era1' else 1
+ if i>=3 and maturity<1:maturity=.86
  if ref=='part.aion_4164':maturity=.85
  memory_recipe=None
  if ref=='part.aion_4164' and i>=2:
@@ -40,7 +42,7 @@ def chip_cost(ref,i):
   yield_die=memory_evaluate(memory_recipe)['die_yield']
  else:yield_die=max(.08,math.exp(-d*area/100)*.85*maturity)
  good=usable*yield_die
- wafer=[210,220,235,255][i];package=4 if ref=='part.artemis_graphics_chip' else 3 if ref=='part.aurelia_system_controller' else 2.5 if ref in ['part.era1','part.artemis_mmu'] else .65;test=1.3 if area>=30 else .35;py=.93
+ wafer=[210,220,235,255,276][i];package=4 if ref=='part.artemis_graphics_chip' else 3 if ref=='part.aurelia_system_controller' else 2.5 if ref in ['part.era1','part.artemis_mmu'] else .65;test=1.3 if area>=30 else .35;py=.93
  if memory_recipe:
   wafer=memory_policy()['wafer_cost_by_year'][str(years[i])][memory_recipe['node_um']]+memory_recipe.get('repair_cost_per_wafer_usd',0)
  v=vec();v['bom_materials']=(wafer*.18/good+package)/py;v['workforce']=(wafer*.36/good+test)/py;v['energy']=wafer*.10/good/py;v['consumables']=wafer*.24/good/py;v['operating_overhead']=wafer*.12/good/py
@@ -51,16 +53,16 @@ def chip_cost(ref,i):
  return v
 for cid,comp in components.items():
  ref=comp.get('catalog_ref');key=cid.split('.')[-1];costs=[];note='One functional set; allowance is a modeling assumption, not an exact released component list.'
- for i in range(4):
+ for i in range(len(years)):
   v=vec()
   if ref in custom:v=chip_cost(ref,i);note='Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.'
   elif ref in prices:v['bom_materials']=prices[ref][i];note='Assumed OEM purchase price; supplier manufacturing overhead/profit remains embedded.'
   elif key=='local_64_kib_ram_implementation':v['bom_materials']=8*prices['part.dram_64kbit'][i];note='Assumes eight purchased 64Kx1 DRAMs for local 64 KiB.'
   elif key=='rom_eprom_eeprom_or_media_selection':
-   v['bom_materials']=({'cpm_aurelia':6,'business_tools_aurelia':6,'aionix':18,'business_tools_artemis':12,'aionix_server':24,'cpm_aurelia_networking':10}[cid.split('.')[2]])*[1,.93,.86,.8][i];note='Provisionally mask-ROM cartridge population; recurring mask replication included, original design/mask NRE excluded. EEPROM substitute would cost more.'
+   v['bom_materials']=({'cpm_aurelia':6,'business_tools_aurelia':6,'aionix':18,'business_tools_artemis':12,'aionix_server':24,'cpm_aurelia_networking':10}[cid.split('.')[2]])*[1,.93,.86,.8,.76][i];note='Provisionally mask-ROM cartridge population; recurring mask replication included, original design/mask NRE excluded. EEPROM substitute would cost more.'
   else:
    if key not in allowances:raise ValueError('No cost assumption for '+cid)
-   base=allowances[key];factor=[1,.96,.9,.85][i] if key in ['sprite_interface_package_pcb_test','system_controller_interface_pcb_test'] or any(x in key for x in ['floppy','ram','rom','controller','logic','buffer','firmware','pcb']) else overhead[i]
+   base=allowances[key];factor=[1,.96,.9,.85,.81][i] if key in ['sprite_interface_package_pcb_test','system_controller_interface_pcb_test'] or any(x in key for x in ['floppy','ram','rom','controller','logic','buffer','firmware','pcb']) else overhead[i]
    if '.computer.artemis' in cid and key in ['mainboard_pcb','psu','enclosure_and_chassis','connectors_passives_fasteners_and_harnesses']:base*=1.7
    if '.computer.artemis_pro' in cid and key in ['psu','enclosure_and_chassis']:base*=1.25
    if 'color_monitor' in cid and key=='monitor_enclosure':base*=1.5
@@ -128,8 +130,11 @@ for ref in sorted(custom):
  x=records[ref];row(ref,ref,x['name'],'OEM chips','one tested packaged chip, bulk shipment',date(x),assembly_ref='assembly.'+ref)
 # Software production excludes development; platform variants retain distinct availability.
 software_profiles={'aurelia_compatibility_kit':(5,800),'abacus_1':(1,80),'simple_c_z80':(3,220),'aurelia_sdk':(5,800),'bpi_suite':(5,700),'microsoft_basic_aurelia':(1,180),'pulse_1':(3,240),'abacus_2':(2,160),'aion_c_ide':(6,400),'artemis_sdk':(8,1000),'abacus_3':(4,280),'pulse_3':(4,300),'bpi_client_server':(8,800)}
+team_delivery=json.loads((R/'team_development_program.json').read_text())['delivery']
+software_profiles['aion_development_team']=(team_delivery['disks'],team_delivery['printed_pages'])
 for x in C['software_products']:
  a='assembly.media.'+x['id'];kwargs={'assembly_ref':a} if a in assemblies else {'software_profile':software_profiles[x['id'].split('.')[1]]}
+ if x['id']=='software.aion_development_team':kwargs['service_hours']=team_delivery['onboarding_staff_hours']+team_delivery['first_year_support_staff_hours']
  row(x['id'],x['id'],x['name'],'Software','one media/manual set; bundled editions are not separate purchases',date(x),**kwargs,assumptions=['Media count and printed pages are planning allowances; software-development costs excluded.','Generic BPI suite denotes the five-module set; separately costed module rows below are alternatives, not additions.'] if x['id']=='software.bpi_suite' else ['Media and documentation reproduction only, plus an explicit recurring third-party license allowance where applicable.'])
 # Individual BPI offerings and native/client/server distribution variants.
 for m in records['software.bpi_suite']['modules']:row('software.bpi_suite.'+m['name'].lower().replace(' ','_'),'software.bpi_suite',m['name'],'Software','one module media/manual set','1978-06-05',software_profile=[1,140])
@@ -174,7 +179,7 @@ def estimate(r,i,source_inputs=None):
   if variant['effective_from']<=snapshot:a=variant['assembly_ref']
  if a:v,flat=rollup(a,i,source_inputs)
  if r.get('software_profile'):
-  disks,pages=r['software_profile'];v['bom_materials']=disks*[1.6,1.5,1.4,1.3][i];v['instructions']=(pages*.018+1.2)*overhead[i];v['workforce']=(.08+.025*disks)*wages[i]*1.35;v['energy']=.1*electricity[i];v['consumables']=.1*overhead[i];v['operating_overhead']=v['workforce']*.25
+  disks,pages=r['software_profile'];v['bom_materials']=disks*[1.6,1.5,1.4,1.3,1.2][i];v['instructions']=(pages*.018+1.2)*overhead[i];v['workforce']=(.08+.025*disks)*wages[i]*1.35;v['energy']=.1*electricity[i];v['consumables']=.1*overhead[i];v['operating_overhead']=v['workforce']*.25
  if r['group'] in ['Software','Software editions'] and a:v['instructions']+=3*overhead[i]
  # Third-party rights are uncertain but recurring royalty costs are not software development.
  ref=r['catalog_ref']
@@ -199,6 +204,11 @@ for r in rows:
   low,high=(.55,1.9) if r['group']=='Services' else (.5,2.5) if r['group']=='OEM chips' else (.7,1.6)
   if 'artemis_pro' in r['id']:low,high=.65,1.75
   r['snapshots'][str(y)]={'status':'announced_shipping_unconfirmed' if r.get('announced_only') else 'offered_estimate','total_usd':total,'low_usd':round(total*low,2),'high_usd':round(total*high,2),'breakdown_usd':breakdown,'bom_assembly_ref':a,'bom_lines':[{'component_ref':k,'quantity':n,'extended_recurring_cost_usd':round(n*sum(inputs[k]['annual_cost_buckets_usd'][str(y)].values()),2)} for k,n in sorted(flat.items())],'confidence':'low','range_basis':'Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development.'}
+# Team license includes capped services; editions are alternative distributions, never additive sales.
+for r in rows:
+ if r['id']=='software.aion_development_team':
+  r['unit']='one server / four-concurrent-developer license, media, 20h onboarding and 12h first-year support'
+  r['assumptions']=['12 disks, 1000 printed pages and 32 staff-hours are planning allowances. Hardware, development/NRE, marketing and capital excluded; no recurring royalty for owned software.']
 # Coverage ledger deliberately includes internal/superseded records without pretending they are products.
 covered={r['catalog_ref'] for r in rows};excluded=[{'catalog_ref':x['id'],'reason':'External partner offering; manufacturing/media boundary and OEM terms not costed.'} for x in C.get('external_platforms',[])+C.get('external_partner_products',[])+external_editions]
 for cat in ['computers','devices','software_products','services','offered_bundles','base_parts','technologies','proposed_bundles']:
@@ -235,6 +245,8 @@ model['supplier_scenarios']={'supplier':'SMC','basis':'Illustrative purchased-pr
 model['assumptions']['second_source']='June 1979 cards use AION chips. SMC procurement is a separate conditional scenario from October 1979; June 1980/1981 comparisons do not assert a purchasing switch or a price reduction.'
 model['assumptions']['joint_dri']='DRI remains a separately owned licensor despite Adam’s minority stake. Existing provisional per-copy CP/M allowance remains; the $250,000 founder capital commitment is excluded from unit costs.'
 
+model['assumptions']['extension_1982']='June 15 1982: nominal planning wage $8.30/h, power $0.047/kWh, overhead index 1.43; OEM prices are estimates. 3 µm non-memory defect density 1.6/cm², maturity .86 for ERA/Artemis; memory uses dated existing recipe policy. No new line investment, demand or total profit inferred.'
+model['metadata']['source_sha256']['team_development_program.json']=hashlib.sha256((R/'team_development_program.json').read_bytes()).hexdigest()
 (R/'manufacturing_costs.json').write_text(json.dumps(model,indent=2,ensure_ascii=False)+'\n')
 print('Rows:',len(rows),'components:',len(inputs),'unknown BOM quantities assumed:',len(quantity_assumptions))
 for r in rows:

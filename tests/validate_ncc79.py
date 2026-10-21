@@ -6,7 +6,7 @@ def read(n):return json.loads((R/n).read_text())
 c=read('ncc_1979_campaign.json');s=read('logix_aion_story.json');t=read('logix_aion_technical_catalog_v2.json');f=read('sales_forecast.json')
 e={x['id']:x for p in s['phases'] for x in p['events']}
 r={x['id']:x for v in t.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id' in x}
-assert len(e)==85
+assert len(e)==90
 assert sum(x['minutes'] for x in c['premiere']['stages'])==c['premiere']['duration_minutes_before_questions']==50
 assert read('aurelia_1978_campaign.json')['premiere']['duration_minutes_before_questions']==44
 ids=[x['id'] for x in c['premiere']['stages']]
