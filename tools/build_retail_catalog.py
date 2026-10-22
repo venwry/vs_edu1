@@ -1,4 +1,4 @@
-"""Build current and five dated retail views without rewriting historical pricing snapshots."""
+"""Build current and ten dated retail views without rewriting historical pricing snapshots."""
 import hashlib
 import json
 from decimal import Decimal, ROUND_HALF_UP
@@ -121,6 +121,97 @@ for year in map(str,range(1978,1983)):
         view['secondary_sections'].append(group)
     view['announced_offers'] = [p['name'] for p in model['products'] if p['offering_start'] <= view['effective_from'] and p['snapshots'][year].get('status')=='announced_shipping_unconfirmed']
     output['snapshots'][view['effective_from']] = view
+# December views expose COMDEX releases. Price dates remain explicit: new releases
+# without a launch assessment use the first matching later June assessment only
+# as a retrospective planning proxy, never as a claimed December quotation.
+def december_assessment(ref, date):
+    p = annual[ref]
+    if p['offering_start'] > date or (p.get('offering_end') and p['offering_end'] < date) or p.get('announced_only'):
+        return None
+    launch = p.get('launch_snapshot')
+    if launch and launch['date'] <= date:
+        return launch, 'Launch price; '+launch.get('cost_date_basis','dated launch assessment')
+    expected = {c['cost_ref']:c['quantity'] for c in p['components']}
+    for variant in sorted(p.get('component_variants',[]),key=lambda v:v['effective_from']):
+        if variant['effective_from'] <= date:
+            for old,new in variant['replace'].items():
+                if old in expected: expected[new]=expected.pop(old)
+    candidates=[]
+    for snap in p['snapshots'].values():
+        if snap.get('retail_price_usd') is None or snap.get('status')!='available_proposal':continue
+        actual={c['cost_ref']:c['quantity'] for c in snap['cost_components']}
+        if actual != expected:continue
+        if any(ref in annual and annual[ref]['offering_start'] > date for ref in actual):continue
+        candidates.append(snap)
+    prior=[snap for snap in candidates if snap['date']<=date]
+    if prior:return max(prior,key=lambda v:v['date']), 'Earlier assessment carried forward; no December repricing assumed'
+    if candidates:return min(candidates,key=lambda v:v['date']), 'Retrospective planning proxy from the first matching later assessment; December price not recorded'
+    return None
+
+def december_line(ref,date):
+    assessment=december_assessment(ref,date)
+    if not assessment:return None
+    snap,basis=assessment
+    return {'ref':ref,'name':annual[ref]['name'],'retail':snap['retail_price_usd'],'cost':snap['manufacturing_cost_usd'],
+      'fee':snap['computerland_fee_usd'],'date':snap['date'],'basis':basis,'availability':'catalogued; qualification requirements apply',
+      'original_retail':snap['retail_price_usd']}
+
+def december_card(template,ref,date):
+    snap,basis=december_assessment(ref,date)
+    result=deepcopy(template)
+    result.update(components=[{'ref':ref,'quantity':1}],includes=[str(c['quantity'])+' × '+cost_names.get(c['cost_ref'],c['cost_ref']) for c in snap['cost_components']],
+      options=[],unpriced_requirements=[],purpose='Dated configuration: '+annual[ref]['name']+'.',variants=[])
+    result['pricing']={'amount_usd':snap['retail_price_usd'],'label':'Reference price — '+basis,
+      'cost_usd':snap['manufacturing_cost_usd'],'dealer_fee_usd':snap['computerland_fee_usd'],'contribution_usd':snap['unit_profit_usd'],
+      'component_retail_sum_usd':snap.get('separate_purchase_price_usd'),'lines':[dict(december_line(ref,date),quantity=1)],'complete_price':True}
+    result['scope_note']='Price covers the listed configuration only. Assessment date and any retrospective proxy are shown explicitly.'
+    return result
+
+for year in map(str,range(1978,1983)):
+    date=year+'-12-15'
+    if year=='1982':
+        # Accepted November catalogue, including the jointly presented AutoCAD system.
+        view=deepcopy({k:v for k,v in output.items() if k!='snapshots'})
+        view['effective_from']=date
+        view['historical_snapshot']=False
+        view['solutions']=[p for p in view['solutions'] if p['id'] not in ['connected_office','development_team']]
+        view['current_offer_prices']=[p for p in view['current_offer_prices'] if not annual[p['ref']].get('announced_only')]
+        # Include independent Autodesk licensing in the dated software choices.
+        view['current_offer_prices'].append(resolve('software.autocad_1_artemis'))
+    else:
+        view=deepcopy(output['snapshots'][year+'-06-15'])
+        view['effective_from']=date
+        view['solutions'],view['upgrades']=[],[]
+        for field,mapping in [('solutions',families),('upgrades',upgrade_refs)]:
+            for template in config[field]:
+                refs=[ref for ref in mapping.get(template['id'],[]) if december_assessment(ref,date)]
+                if not refs:continue
+                card=december_card(template,refs[0],date)
+                card['variants']=[december_card(template,ref,date) for ref in refs[1:]]
+                if template['id']=='cpm_migration':card['name']='Move from CP/M to Artemis — complete system'
+                if template['id']=='connect_office':card['name']='Connect an existing workstation'
+                view[field].append(card)
+        view['current_offer_prices']=[line for ref in annual if (line:=december_line(ref,date))]
+    # Team software is available from COMDEX 1981; don't imply its server bundle has shipped.
+    if year in ['1981','1982']:
+        template=next(p for p in config['solutions'] if p['id']=='development_team')
+        card=december_card(template,'software.aion_development_team',date)
+        card.update(name='AION Development System — Team Edition',includes=['One server / four concurrent developers; hardware excluded','20 onboarding hours and 12 first-year support hours','C IDE, repository and collaboration tools'])
+        view['solutions'].append(card)
+    available_refs={p['ref'] for p in view['current_offer_prices']}
+    view['secondary_sections']=[]
+    for group in config['secondary_sections']:
+        group=deepcopy(group)
+        group['refs']=[ref for ref in group['refs'] if ref in available_refs]
+        if not group['refs']:continue
+        if year!='1982':
+            group['name']={'value_legacy':'Other system configurations','legacy_software':'Additional software and displays'}.get(group['id'],group['name'])
+            group['description']='Offerings introduced by the selected date; later retirement policies are not applied.'
+        view['secondary_sections'].append(group)
+    view['announced_offers']=[p['name'] for p in model['products'] if p['offering_start']<=date and p.get('announced_only')]
+    view['price_date_notice']='December prices use dated launch or November assessments when present, otherwise an explicitly labelled carry-forward or retrospective planning proxy. No new December cost survey is implied.'
+    output['snapshots'][date]=view
+output['snapshots']=dict(sorted(output['snapshots'].items()))
 output['provenance'] = {p:hashlib.sha256((R/p).read_bytes()).hexdigest() for p in ['retail_catalog_1982.json','pricing_results.json']}
 (R/'retail_catalog_1982_results.json').write_text(json.dumps(output,indent=2,ensure_ascii=False)+'\n')
-print('Built current catalogue and five June 15 views; historical prices unchanged.')
+print('Built current catalogue and June 15 and December 15 views for 1978–1982; historical prices unchanged.')
