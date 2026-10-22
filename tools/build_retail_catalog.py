@@ -1,4 +1,4 @@
-"""Build the current retail view without rewriting historical pricing snapshots."""
+"""Build current and five dated retail views without rewriting historical pricing snapshots."""
 import hashlib
 import json
 from decimal import Decimal, ROUND_HALF_UP
@@ -12,18 +12,18 @@ model = load('pricing_results.json')
 annual = {p['id']: p for p in model['products']}
 dated = {p['id']: p for a in sorted(model.get('dated_assessments', []), key=lambda a:a['date']) if a['date'] <= config['effective_from'] for p in a['products']}
 
-def resolve(ref):
-    if ref in dated:
+def resolve(ref, year=None):
+    if year is None and ref in dated:
         p = dated[ref]
         return {'ref':ref, 'name':p['name'], 'retail':p['retail_price_usd'], 'cost':p['manufacturing_cost_usd'], 'fee':p['dealer_fee_usd'], 'date':p['date'], 'basis':p['pricing_status'], 'availability':'planning estimate; confirm shipment', 'original_retail':p['retail_price_usd']}
     p = annual[ref]
-    s = p['snapshots']['1982']
+    s = p['snapshots'][year or '1982']
     price = s['retail_price_usd']
     assert price is not None, ref
     ceiling = s.get('separate_purchase_price_usd')
-    if ceiling is not None: price = min(price, ceiling)
+    if year is None and ceiling is not None: price = min(price, ceiling)
     fee = money(D(price) * D(p['computerland_fee_rate']))
-    return {'ref':ref, 'name':p['name'], 'retail':price, 'cost':s['manufacturing_cost_usd'], 'fee':fee, 'date':s['date'], 'basis':'current catalogue ceiling' if price < s['retail_price_usd'] else 'June estimate carried forward', 'availability':'shipment unconfirmed' if p.get('announced_only') else 'catalogued; qualification requirements apply', 'original_retail':s['retail_price_usd']}
+    return {'ref':ref, 'name':p['name'], 'retail':price, 'cost':s['manufacturing_cost_usd'], 'fee':fee, 'date':s['date'], 'basis':'current catalogue ceiling' if price < s['retail_price_usd'] else ('June estimate carried forward' if year is None else 'Recorded June 15 snapshot'), 'availability':'shipment unconfirmed' if p.get('announced_only') else 'catalogued; qualification requirements apply', 'original_retail':s['retail_price_usd']}
 
 def price_offer(p):
     lines = [dict(resolve(c['ref']),quantity=c['quantity']) for c in p['components']]
@@ -42,6 +42,85 @@ def price_offer(p):
 
 output = {**config,'solutions':[price_offer(p) for p in config['solutions']],'upgrades':[price_offer(p) for p in config['upgrades']]}
 output['current_offer_prices'] = [resolve(ref) for ref in annual if annual[ref]['snapshots']['1982']['retail_price_usd'] is not None and ref not in {x['ref'] for x in config['superseded_current_offers']}]
+# Build historical purpose-oriented views from dated package definitions, not November contents.
+# No later bundle ceiling, revision or software edition is backdated into these snapshots.
+from copy import deepcopy
+cost_names = {}
+for product in model['products']:
+    cost_names[product['id']] = product['name']
+
+def available(ref, year):
+    p = annual.get(ref)
+    if not p: return False
+    date = year + '-06-15'
+    s = p['snapshots'].get(year, {})
+    return bool(p['offering_start'] <= date and (not p.get('offering_end') or date <= p['offering_end'])
+                and s.get('retail_price_usd') is not None
+                and s.get('status') == 'available_proposal' and not p.get('announced_only'))
+
+def historical_offer(template, ref, year):
+    p = annual[ref]
+    snap = p['snapshots'][year]
+    line = dict(resolve(ref,year), quantity=1)
+    result = deepcopy(template)
+    result['components'] = [{'ref':ref,'quantity':1}]
+    result['includes'] = [str(c['quantity'])+' × '+cost_names.get(c['cost_ref'],c['cost_ref']) for c in snap['cost_components']]
+    result['unpriced_requirements'] = []
+    result['options'] = []
+    result['purpose'] = 'Dated configuration: '+p['name']+'.'
+    result['pricing'] = {'amount_usd':snap['retail_price_usd'], 'label':'June 15 reference configuration price',
+      'cost_usd':snap['manufacturing_cost_usd'], 'dealer_fee_usd':snap['computerland_fee_usd'],
+      'contribution_usd':snap['unit_profit_usd'], 'component_retail_sum_usd':snap.get('separate_purchase_price_usd'),
+      'lines':[line], 'complete_price':True}
+    result['scope_note'] = 'Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included.'
+    return result
+
+families = {
+ 'office_essentials':['bundle.proposed_aurelia_plus_office','bundle.proposed_aurelia_office'],
+ 'office_professional':['bundle.proposed_artemis_office','bundle.proposed_artemis_office_color','bundle.proposed_artemis_analysis','bundle.proposed_aurelia_plus_analysis'],
+ 'business_accounts':['bundle.proposed_artemis_accounts','bundle.proposed_aurelia_plus_accounts','bundle.proposed_aurelia_accounts'],
+ 'developer_workstation':['bundle.proposed_artemis_developer','bundle.proposed_artemis_developer_color','bundle.proposed_aurelia_plus_developer','bundle.proposed_aurelia_developer'],
+ 'connected_office':['bundle.proposed_artemis_pro_small_office'],
+}
+upgrade_refs = {
+ 'colour_reports':['offer.ncc82_colour_upgrade'],
+ 'professional_drawing':['offer.ncc82_professional_graphics'],
+ 'mouse_starter':['offer.ncc82_mouse_learning'],
+ 'connect_office':['bundle.artemis_network_upgrade','bundle.aurelia_network_upgrade'],
+ 'cpm_migration':['bundle.proposed_artemis_migration','bundle.proposed_artemis_migration_color'],
+}
+output['snapshots'] = {}
+for year in map(str,range(1978,1983)):
+    view = deepcopy(config)
+    view['effective_from'] = year+'-06-15'
+    view['historical_snapshot'] = True
+    view['solutions'],view['upgrades'] = [],[]
+    for field,mapping in [('solutions',families),('upgrades',upgrade_refs)]:
+        for template in config[field]:
+            refs = [ref for ref in mapping.get(template['id'],[]) if available(ref,year)]
+            if not refs: continue
+            card = historical_offer(template,refs[0],year)
+            card['variants'] = [historical_offer(template,ref,year) for ref in refs[1:]]
+            if template['id']=='cpm_migration':card['name']='Move from CP/M to Artemis — complete system'
+            if template['id']=='connect_office':card['name']='Connect an existing workstation'
+            view[field].append(card)
+    view['current_offer_prices'] = [resolve(ref,year) for ref in annual if available(ref,year)]
+    current_refs = {p['ref'] for p in view['current_offer_prices']}
+    view['secondary_sections'] = []
+    for group in config['secondary_sections']:
+        group = deepcopy(group)
+        group['refs'] = [ref for ref in group['refs'] if ref in current_refs]
+        if not group['refs']: continue
+        if group['id']=='value_legacy':
+            group['name']='Other system configurations'
+            group['description']='Systems offered at the selected date; no later clearance or retirement policy is applied.'
+        elif group['id']=='legacy_software':
+            group['name']='Additional software and displays'
+            group['description']='Editions and displays offered at the selected date, including earlier compatible versions.'
+        else: group['description']='Available catalogue entries at the selected date; confirm compatibility for the selected system.'
+        view['secondary_sections'].append(group)
+    view['announced_offers'] = [p['name'] for p in model['products'] if p['offering_start'] <= view['effective_from'] and p['snapshots'][year].get('status')=='announced_shipping_unconfirmed']
+    output['snapshots'][view['effective_from']] = view
 output['provenance'] = {p:hashlib.sha256((R/p).read_bytes()).hexdigest() for p in ['retail_catalog_1982.json','pricing_results.json']}
 (R/'retail_catalog_1982_results.json').write_text(json.dumps(output,indent=2,ensure_ascii=False)+'\n')
-print('Built seven solution families, five upgrades and current offer prices; history unchanged.')
+print('Built current catalogue and five June 15 views; historical prices unchanged.')

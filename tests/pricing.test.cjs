@@ -2,8 +2,24 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=JSON.parse(read('pricing_results.json'));
 (async()=>{const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/pricing.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('pricing.js'));w.document.getElementById('app').innerHTML=w.pricingTemplate;w.fetch=async url=>({ok:true,json:async()=>url.includes('retail_catalog')?JSON.parse(read('retail_catalog_1982_results.json')):model});await w.startPricing();const d=w.document;
 assert(d.getElementById('dated-prices').textContent.includes('November'));assert(d.getElementById('dated-prices').textContent.includes('461.30'));
-assert.equal(d.querySelectorAll('.pricing-row').length,model.products.length);assert.equal(d.querySelectorAll('.pricing-group').length,10);assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,30);
-assert.equal(d.querySelectorAll('#solutions + p + .solution-grid .solution-card').length,7);assert.equal(d.querySelectorAll('#solution-upgrades + .solution-grid .solution-card').length,5);assert.equal(d.getElementById('historical-pricing').open,false);assert(d.getElementById('solution-professional_cad').textContent.includes('$9,909.72'));assert(d.getElementById('solution-connected_office').textContent.includes('final quotation required'));assert(!d.getElementById('retail-catalog').textContent.includes('Could not load'));
+assert.equal(d.querySelectorAll('.pricing-row').length,model.products.length);assert.equal(d.querySelectorAll('.pricing-group').length,10);assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,6);
+assert.equal(d.getElementById('catalog-date').value,'1982-06-15');
+assert.equal(d.getElementById('catalog-date').options.length,5);
+assert.equal(d.querySelectorAll('#solutions + p + .solution-grid .solution-card').length,4);
+assert.equal(d.querySelectorAll('#solution-upgrades + .solution-grid .solution-card').length,5);
+assert.equal(d.getElementById('historical-pricing').open,false);
+assert(!d.getElementById('solution-professional_cad'));
+assert(d.getElementById('solution-professional_drawing').textContent.includes('$1,496.62'));
+assert(!d.getElementById('retail-catalog').textContent.includes('Could not load'));
+for(const year of ['1978','1979','1980','1981','1982']){
+ d.getElementById('catalog-date').value=year+'-06-15';d.getElementById('catalog-date').dispatchEvent(new w.Event('change'));
+ assert(d.getElementById('catalog-date-status').textContent.includes(year+'-06-15'));
+ assert.equal(d.getElementById('pricing-year').value,year);
+ assert.equal(!!d.getElementById('solution-mouse_starter'),year==='1982');
+ assert.equal(!!d.getElementById('solution-office_professional'),Number(year)>=1980);
+ if(Number(year)<1980)assert(!d.getElementById('solution-office_essentials').textContent.includes('Aurelia+'));
+}
+d.getElementById('pricing-year').value='';d.getElementById('pricing-year').dispatchEvent(new w.Event('change'));
 const style=d.createElement('style');style.textContent=read('pricing.css');d.head.append(style);const matrix=d.getElementById('pricing-matrix');assert.equal(w.getComputedStyle(matrix).resize,'both');assert.equal(w.getComputedStyle(matrix).overflow,'auto');matrix.style.width='640px';matrix.style.height='320px';
 const select=(id,value)=>{d.getElementById(id).value=value;d.getElementById(id).dispatchEvent(new w.Event('change'));};
 const first=d.querySelector('[data-product="bundle.aurelia_mono"][data-year="1978"]');first.click();assert(d.getElementById('pricing-detail').textContent.includes('North Star'));
