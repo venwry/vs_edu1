@@ -89,6 +89,29 @@
       "explorer_family": "artemis"
     },
     {
+      "id": "athena",
+      "path": "athena.html",
+      "title": "Logix Athena and ERA²",
+      "description": "NCC 1983 planned platform: 256 KiB desktop or 1 MiB server, 2 µm ERA² and 4164 memory, disk-based software and EEPROM BIOS. AIONix 2 specifications pending.",
+      "record_refs": [
+        "computer.athena",
+        "computer.athena_server",
+        "part.era2",
+        "technology.era2_architecture",
+        "part.aion_4164_2um",
+        "part.athena_ram_module_128kb",
+        "part.athena_ram_module_256kb",
+        "software.aionix2"
+      ],
+      "kind": "offering",
+      "aliases": [
+        "Athena",
+        "Athena Server",
+        "ERA²",
+        "ERA^2"
+      ]
+    },
+    {
       "id": "abacus",
       "path": "abacus.html",
       "title": "AION Abacus",
@@ -515,6 +538,7 @@
     "aurelia-plus",
     "artemis",
     "artemis-pro",
+    "athena",
     "abacus",
     "bpi",
     "business-tools",
@@ -631,10 +655,13 @@
           "event.ncc82_developer_sessions",
           "event.ncc82_followup",
           "event.ncc82_case_studies",
-          "event.artemis_budget_range"
+          "event.artemis_budget_range",
+          "event.ncc83_athena_premiere",
+          "event.athena_production_review"
         ],
         "process_refs": [
-          "process.artemis_engineering"
+          "process.artemis_engineering",
+          "process.athena_integration"
         ]
       },
       {
@@ -833,7 +860,8 @@
           "process.dram_repair",
           "process.process_2",
           "process.process_15",
-          "process.sgs_transfer"
+          "process.sgs_transfer",
+          "process.era2_development"
         ]
       }
     ],

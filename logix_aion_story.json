@@ -482,6 +482,16 @@
           "actor.labs",
           "actor.autodesk"
         ]
+      },
+      {
+        "id": "assumption.athena_1983_baseline",
+        "title": "ERA² / Athena NCC 1983 planning baseline",
+        "description": "Athena base: 2 × 128 KiB 2 µm 4164 modules and 5 MB HDD. Server: 4 × 256 KiB modules and 20 MB HDD. Both: ERA², 64 KiB graphics, one 5.25-inch DS/DD FDD, NIC and EEPROM BIOS; no ROM cards. AIONix 2 specification pending. All ERA² architectural numbers are engineering targets, with 16 MHz a stretch bin. AION Labs alone manufactures ERA² initially; SGS-ATES excluded for at least 12–18 months after initial commercial availability. Development dates are provisional; cost and financial forecasts remain unchanged.",
+        "actor_refs": [
+          "actor.logix",
+          "actor.labs",
+          "actor.aion"
+        ]
       }
     ],
     "conventions": {
@@ -7462,6 +7472,94 @@
           "related_event_refs": []
         },
         {
+          "id": "event.ncc83_athena_premiere",
+          "title": "NCC 1983: planned ERA² and Logix Athena premiere",
+          "event_type": "plan",
+          "date": {
+            "start": "1983-05-16",
+            "end": "1983-05-16"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.labs",
+                "actor.aion"
+              ],
+              "description": "Present ERA² at 12 MHz target (16 MHz stretch), Athena 256 KiB / 5 MB HDD and Athena Server 1 MiB / 20 MB HDD. Both include 64 KiB graphics, one 5.25-inch DS/DD floppy and one network card. EEPROM BIOS only; no OS/application ROM cards. AIONix 2 specification remains pending. Conference runs 16–19 May in Anaheim; premiere does not certify volume shipments."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "part.era2",
+            "computer.athena",
+            "computer.athena_server",
+            "software.aionix2"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.athena_production_review",
+          "title": "Athena post-NCC production-readiness review",
+          "event_type": "plan",
+          "date": {
+            "start": "1983-06-01",
+            "end": "1983-06-01"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.labs",
+              "role": "programme_partner"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "programme_partner"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.labs",
+                "actor.aion"
+              ],
+              "description": "Provisional review date for gradual commercial ramp after NCC. Gate shipments on ERA² silicon, memory/board retention and timing, graphics/NIC integration, BIOS/storage boot, and separately specified AIONix 2 readiness. No automatic shipment volume or financial impact. AION Labs is the only initial ERA² manufacturer; SGS-ATES excluded for at least 12–18 months after first commercial availability."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "part.era2",
+            "computer.athena",
+            "computer.athena_server",
+            "software.aionix2"
+          ],
+          "related_event_refs": [
+            "event.ncc83_athena_premiere"
+          ]
+        },
+        {
           "id": "event.production_15",
           "title": "Selected 1.5 µm process release review",
           "event_type": "development",
@@ -8342,6 +8440,109 @@
         "precision": "range",
         "qualifier": "Accepted alternative-scenario dates; exact days selected for scheduling",
         "display": "1981-11-23 to 1982-03-31"
+      },
+      "phase_refs": [
+        "phase.manufacturing_1981_1983"
+      ],
+      "date_basis": "provisional"
+    },
+    {
+      "id": "process.era2_development",
+      "title": "ERA² architecture, silicon and qualification",
+      "participants": [
+        {
+          "actor_ref": "actor.logix",
+          "role": "programme_partner"
+        },
+        {
+          "actor_ref": "actor.labs",
+          "role": "programme_partner"
+        },
+        {
+          "actor_ref": "actor.aion",
+          "role": "programme_partner"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.logix",
+            "actor.labs",
+            "actor.aion"
+          ],
+          "description": "Provisional development interval: preserve ERAv1 documented binary semantics, implement the accepted ERA² performance/memory targets and qualify 2 µm silicon. Detailed layout and measured performance remain gates."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "part.era2",
+        "technology.era2_architecture"
+      ],
+      "related_event_refs": [
+        "event.ncc83_athena_premiere",
+        "event.athena_production_review"
+      ],
+      "period": {
+        "start": "1982-01-01",
+        "end": "1983-05-15",
+        "precision": "range",
+        "qualifier": "Provisional planning dates, not completed work",
+        "display": "1982-01-01 to 1983-05-15"
+      },
+      "phase_refs": [
+        "phase.manufacturing_1981_1983"
+      ],
+      "date_basis": "provisional"
+    },
+    {
+      "id": "process.athena_integration",
+      "title": "Athena hardware integration and launch preparation",
+      "participants": [
+        {
+          "actor_ref": "actor.logix",
+          "role": "programme_partner"
+        },
+        {
+          "actor_ref": "actor.labs",
+          "role": "programme_partner"
+        },
+        {
+          "actor_ref": "actor.aion",
+          "role": "programme_partner"
+        }
+      ],
+      "actions": [
+        {
+          "actor_refs": [
+            "actor.logix",
+            "actor.labs",
+            "actor.aion"
+          ],
+          "description": "Provisional integration interval: qualify 128/256 KiB 2 µm 4164 modules, base/server boards, 64 KiB graphics, NIC, HDD/FDD and EEPROM boot. Prepare NCC demonstration; AIONix 2 scope is deliberately pending."
+        }
+      ],
+      "outcomes": [],
+      "agreement_terms": [],
+      "metrics": [],
+      "product_refs": [
+        "computer.athena",
+        "computer.athena_server",
+        "part.athena_ram_module_128kb",
+        "part.athena_ram_module_256kb",
+        "software.aionix2"
+      ],
+      "related_event_refs": [
+        "event.ncc83_athena_premiere",
+        "event.athena_production_review"
+      ],
+      "period": {
+        "start": "1982-07-01",
+        "end": "1983-06-01",
+        "precision": "range",
+        "qualifier": "Provisional planning dates, not completed work",
+        "display": "1982-07-01 to 1983-06-01"
       },
       "phase_refs": [
         "phase.manufacturing_1981_1983"
