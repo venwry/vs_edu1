@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.pulse_1.z80",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.pulse_1.z80",
+    "name": "AION Pulse — z80",
+    "product_ref": "software.pulse_1",
+    "execution_target": "z80_cpm",
+    "role": "application",
+    "introduced": {
+      "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+      "event_start_date": "1979-12-03",
+      "date_precision": "day",
+      "timeline_note": "Author-confirmed introduction date."
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.aurelia_plus",
+        "available_from": "1979-12-03"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": 64,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [
+      "software.cpm_aurelia"
+    ],
+    "delivery": "Not yet specified",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+  }
+}

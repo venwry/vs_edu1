@@ -1,0 +1,106 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.logix_display_api",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.logix_display_api",
+    "name": "Logix capability-based display and graphics API",
+    "category": "graphics_and_display_interface",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "specification": {
+      "mode_policy": "Enumerate usable configurations; optional stable names supplement opaque mode identifiers and descriptive properties. Do not assume every named mode is supported.",
+      "functions": [
+        {
+          "name": "lx_display_query",
+          "purpose": "Query display capabilities and limits"
+        },
+        {
+          "name": "lx_text_query",
+          "purpose": "Query current usable rows, columns and text attributes"
+        },
+        {
+          "name": "lx_mode_enum",
+          "purpose": "Return one usable mode descriptor into a caller-provided buffer"
+        },
+        {
+          "name": "lx_mode_test",
+          "purpose": "Validate a requested configuration without changing display state"
+        },
+        {
+          "name": "lx_mode_set",
+          "purpose": "Request activation and report success or a defined failure"
+        },
+        {
+          "name": "lx_mode_current",
+          "purpose": "Report the actual active mode"
+        }
+      ],
+      "mode_descriptor_fields": [
+        "descriptor size/version",
+        "opaque mode identifier",
+        "width",
+        "height",
+        "pixel format",
+        "bits per pixel",
+        "simultaneously addressable colors",
+        "palette capabilities",
+        "pixel aspect",
+        "buffering capabilities",
+        "native or emulated implementation",
+        "sprite count and per-scanline limit",
+        "valid buffer/sprite combinations",
+        "output raster ID",
+        "logical-to-output integer scaling"
+      ],
+      "selection_sequence": [
+        "Query capabilities",
+        "Choose a suitable descriptor",
+        "Request the mode",
+        "Check success or failure",
+        "Query and use the actual configuration"
+      ],
+      "monitor_policy": "Identify monitor through Logix bidirectional Control; use an explicit configured profile on identification failure. Report the intersection of host, monitor and memory-allocation capabilities.",
+      "future_modes": "New identifiers may be selected by descriptor properties without changing an older application. Unsupported requests fail cleanly.",
+      "drawing_operations": [
+        "Create/destroy drawing context",
+        "Set clipping and drawing attributes",
+        "Draw pixel, line, rectangle and filled region",
+        "Transfer bitmap using a documented portable format",
+        "Draw text through display/font services",
+        "Query/control palette when supported",
+        "Begin/end update and request presentation"
+      ],
+      "framebuffer_policy": "Application code uses drawing operations rather than native video RAM addresses, stride or pixel packing.",
+      "compatibility_canvas": "Optional later service: preserve a logical canvas and convert to available output. Not guaranteed at launch; report emulation and validate RAM, quality and speed.",
+      "text_mode_policy": "Aurelia/Aurelia+ and Artemis 128 economy card: native 40×25 and 80×25 with 8×8 cells. Artemis 256/PRO professional card adds 80×25 at 8×16 and 80×40 at 8×10 with Mono Pro. Intersect card and monitor capabilities.",
+      "video_ram_storage_policy": {
+        "status": "Accepted design baseline; capacities are arithmetic allocations, not measured timing guarantees.",
+        "allocation_model": "Text and bitmap modes reuse the same video RAM. Do not reserve all text maps, font storage and a full bitmap simultaneously.",
+        "mode_switch": [
+          "Validate the requested mode and resource allocation before changing the display.",
+          "Quiesce rendering and blank or synchronize the change to avoid scanning partially reconfigured memory.",
+          "Reconfigure the video RAM layout. Reload the font and initialize text maps when entering text mode.",
+          "Notify the application/context of the changed mode and request a redraw from its document state."
+        ],
+        "preservation": "Previous screen pixels are not preserved by default. An explicit preservation request may use a system-RAM buffer only if allocation succeeds; unsupported or unaffordable requests return a defined error before changing the mode.",
+        "graphics_buffering": "Aurelia family and Artemis economy card: 16 KiB, two 8000-byte bitmap pages or one 16000-byte page. Artemis professional card: 32 KiB, two 8000/16000-byte pages or one 32000-byte page. All text modes support two pages and one shared font; five sprites use separate SRAM.",
+        "graphics_text": "Draw glyphs from ROM/system resources into the bitmap; bitmap mode does not require a complete resident character-generator table in video RAM.",
+        "boundary": "Application documents remain in application RAM or files; a mode switch does not discard document state.",
+        "presentation": "Latch page and sprite positions during vertical blank; shared-font and sprite-pattern changes need separate synchronization."
+      },
+      "keyboard_standard_ref": "technology.logix_tui_keyboard_standard"
+    },
+    "used_by": [
+      "computer.aurelia",
+      "computer.aurelia_plus",
+      "computer.artemis",
+      "computer.artemis_pro",
+      "software.cpm_aurelia",
+      "software.aionix"
+    ]
+  }
+}

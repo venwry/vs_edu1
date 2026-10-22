@@ -3,8 +3,8 @@ import json,math
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(f):return json.loads((R/f).read_text())
-c=read('logix_aion_technical_catalog_v2.json');r={x['id']:x for a in c.values() if isinstance(a,list) for x in a if isinstance(x,dict) and 'id'in x}
-b=read('hardware_bom.json');assemblies={x['id']:x for x in b['assemblies']}
+c=read('generated/catalogs/logix-aion-technical-catalog-v2.json');r={x['id']:x for a in c.values() if isinstance(a,list) for x in a if isinstance(x,dict) and 'id'in x}
+b=read('generated/catalogs/hardware-bom.json');assemblies={x['id']:x for x in b['assemblies']}
 def population(id):
  out={}
  for x in assemblies[id]['lines']:
@@ -40,7 +40,7 @@ for bundle in c['offered_bundles']:
  if bundle['id'].endswith('_mono_pro'):
   assert bundle['included_devices']==['device.flexibus_keyboard','device.mono_pro']
   inv=population(bundle['bom_assembly_ref']);assert inv['bompart.part.brimar_m36_141w_crt']==1 and inv['bompart.part.artemis_graphics_chip']==1
-policy=read('artemis_display_revision.json');s=read('sales_forecast.json');inv=read('industrial_investment_1974_1981.json');roi=read('roi_1974_1980.json')
+policy=read('generated/catalogs/artemis-display-revision.json');s=read('generated/models/sales-forecast.json');inv=read('generated/models/industrial-investment-1974-1981.json');roi=read('generated/models/roi-1974-1980.json')
 for q in inv['quarterly_capacity']:
  assert q['installed_computer_capacity_month']>=math.floor(q['peak_month_customer_demand']*1.05)
 for q,amount in policy['incremental_marketing_usd'].items():assert sum(x['central_usd'] for x in roi['marketing']['items'] if x['quarter']==q and x['programme']=='Mono Pro incremental campaign')==amount

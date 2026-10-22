@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.cpm80_virtual_peripheral_bridge",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.cpm80_virtual_peripheral_bridge",
+    "name": "Artemis CP/M-80 compatibility / virtual peripheral bridge",
+    "category": "backward_compatibility",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "owner": "Logix with Digital Research",
+    "specification": {
+      "execution": "Qualified Z80 binaries execute on the Z80 guest processor, not natively on the new host ISA; OS/memory/peripheral bridging remains required.",
+      "peripheral_model": "the ERA host exposes Artemis peripherals through a virtual peripheral bridge",
+      "goal": "preserve the Aurelia software investment while transitioning to the 32-bit platform",
+      "api_discovery": "Return the display/input/service capabilities actually implemented by the compatibility environment.",
+      "implementation_design": {
+        "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+        "title": "Z80 compatibility module and host driver",
+        "execution": "Z80 executes the enhanced CP/M environment in its local 64 KB RAM; ERA executes the AIONix host driver. This is neither ERA execution of Z80 instructions nor a C-source port.",
+        "module_requirements": [
+          "Local boot/system ROM or a host-uploaded system image",
+          "Bank/window emulation sufficient for documented Logix CP/M service entry points",
+          "A bounded shared mailbox or dual-ported transfer window and interrupt/doorbell signals; reserve its CP/M-side RAM before advertising TPA"
+        ],
+        "software_split": {
+          "guest": "CP/M BIOS and Logix TUI/device stubs marshal requests; applications using these interfaces do not access Artemis registers.",
+          "host": "A privileged AIONix driver validates guest buffer offsets and lengths, copies data and dispatches console/display, file, printer and clock operations.",
+          "ownership": "Guest-visible drive images preserve CP/M semantics. Host filesystem translation is a separate explicit mode, not transparent raw-volume sharing."
+        },
+        "mailbox": [
+          "version",
+          "request ID",
+          "opcode",
+          "buffer offset and length",
+          "completion status",
+          "transferred byte count"
+        ],
+        "scheduling": "One outstanding synchronous guest request initially; host completes then signals the guest. Add polling fallback and timeout/reset recovery. Never allow a guest to supply an unchecked ERA pointer.",
+        "display": "Render an isolated guest text surface through host display services. Capability queries describe that guest surface, not every ERA capability.",
+        "scope": "Support documented enhanced CP/M/Logix API applications. Arbitrary direct Aurelia hardware access, undocumented mapper use, timing-sensitive code and unvirtualized expansion ROMs are not guaranteed.",
+        "qualification": "Artemis PRO support remains unclaimed until its compatibility list and tests explicitly add the module."
+      }
+    },
+    "used_by": [
+      "device.artemis_cpm80_module",
+      "computer.artemis"
+    ]
+  }
+}

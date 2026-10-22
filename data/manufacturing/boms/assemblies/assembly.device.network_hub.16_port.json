@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.network_hub.16_port",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.network_hub.16_port",
+    "name": "16-port Logix hub",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.device.network_hub.network_connector",
+        "quantity": 16,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.network_hub.per_port_transceiver_termination_and_protection_assembly",
+        "quantity": 16,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.network_hub.shared_arbiter_clock_and_firmware",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.network_hub.16_port_pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.network_hub.16_port_psu",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.network_hub.16_port_enclosure",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Qualify 4-, 8- and 16-port SKUs with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

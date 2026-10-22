@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.tandy_port_review",
+  "record_type": "event",
+  "data": {
+    "id": "event.tandy_port_review",
+    "title": "Model II CP/M and Abacus prototype review",
+    "event_type": "development",
+    "date": {
+      "start": "1979-02-19",
+      "end": "1979-02-19"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.tandy",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.dri",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.tandy",
+          "actor.dri",
+          "actor.aion",
+          "actor.logix"
+        ],
+        "description": "Review prototype CP/M boot, Tandy disk/printer BIOS, native TUI adapter and Abacus document interchange. Resolve ROM/banking assumptions and measure available RAM on the 64 KB target. FlexiBUS prototype is specific to the Tandy bus, not a plug-in S-100 card."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.trs80_model_ii",
+      "software.cpm_model_ii",
+      "device.model_ii_flexibus",
+      "edition.abacus_1.model_ii"
+    ],
+    "related_event_refs": [
+      "event.tandy_design_review"
+    ]
+  }
+}

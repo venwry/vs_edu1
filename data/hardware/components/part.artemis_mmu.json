@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.artemis_mmu",
+  "record_type": "component",
+  "data": {
+    "id": "part.artemis_mmu",
+    "name": "Artemis MMU chip",
+    "category": "memory_management_chip",
+    "origin": "custom_aion_labs",
+    "specification_ref": "technology.artemis_memory_model",
+    "used_in": [
+      "computer.artemis",
+      "computer.artemis_pro"
+    ],
+    "vendor": "AION Labs",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "manufacturing_requirements": [
+      "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.artemis_mmu"
+    ]
+  }
+}

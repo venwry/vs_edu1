@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "bom-assemblies",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "bom-assemblies"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "cost_rollup_status",
+        "id",
+        "lines",
+        "name",
+        "requirements",
+        "routing",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "cost_rollup_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "effective_from": {
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "lines": {
+          "type": [
+            "array"
+          ]
+        },
+        "name": {
+          "type": [
+            "string"
+          ]
+        },
+        "ram_configuration_id": {
+          "type": [
+            "string"
+          ]
+        },
+        "requirements": {
+          "type": [
+            "array"
+          ]
+        },
+        "routing": {
+          "type": [
+            "object"
+          ]
+        },
+        "shipping_configuration": {
+          "type": [
+            "boolean"
+          ]
+        },
+        "status": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    }
+  }
+}

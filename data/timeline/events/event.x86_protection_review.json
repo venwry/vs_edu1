@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.x86_protection_review",
+  "record_type": "event",
+  "data": {
+    "id": "event.x86_protection_review",
+    "title": "80286 opens a protected x86 feasibility path",
+    "event_type": "development",
+    "date": {
+      "start": "1982-02-01",
+      "end": "1982-02-01"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.dri",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.dri"
+        ],
+        "description": "February 1982 availability of 80286 protected mode changes feasibility. Segmented memory, toolchains, drivers, target hardware and validation still require work. No full AIONix port to 8086/8088, immediate 286 release or port revenue is assumed."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": []
+  }
+}

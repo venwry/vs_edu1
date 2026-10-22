@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.abacus_sparse_model",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.abacus_sparse_model",
+    "name": "Abacus sparse spreadsheet storage model",
+    "category": "spreadsheet_data_structure",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "owner": "AION Software",
+    "specification": {
+      "sparse_matrix_representation": [
+        "hash maps or quadtrees"
+      ],
+      "cell_encoding": "variable-length tagged encapsulation",
+      "goal": "handle larger documents than conventional dense memory organization on constrained 8-bit hardware"
+    },
+    "used_by": [
+      "software.abacus_1",
+      "software.abacus_2",
+      "software.abacus_3"
+    ]
+  }
+}

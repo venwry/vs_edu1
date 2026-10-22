@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.device.network_card_aurelia",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "device.network_card_aurelia",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.device.network_card_aurelia"
+    ],
+    "requirements": [
+      "Host bus/mapper interface, controller or sequencer, serial framing/CRC logic, RAM/FIFO, firmware ROM, differential data and clock transceivers, port connector, protection/termination and cable. Specify Z80 CPU-service latency and buffers",
+      "bind the supplied OS media and any RAM prerequisite to the kit BOM.",
+      "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+    ]
+  }
+}

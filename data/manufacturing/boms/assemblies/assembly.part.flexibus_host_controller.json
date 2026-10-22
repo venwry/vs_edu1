@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.part.flexibus_host_controller",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.part.flexibus_host_controller",
+    "name": "FlexiBUS computer/host controller",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.flexibus_host_controller",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
+      "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

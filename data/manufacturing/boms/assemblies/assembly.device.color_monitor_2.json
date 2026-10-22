@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.color_monitor_2",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.color_monitor_2",
+    "name": "Logix Color Monitor II 12-inch",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.medium_resolution_rgb_crt",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.color_monitor_controller",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.color_monitor_2.video_receiver_and_rgb_amplifiers",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.color_monitor_2.hv_deflection_and_psu_not_included_by_oem",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.color_monitor_2.monitor_enclosure",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.color_monitor_2.passives_protection_and_internal_harnesses",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.color_monitor_2.external_cable_and_regional_mains_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "Name an OEM/model and electrical/raster specification",
+      "define whether HV/yoke/deflection/PSU are included",
+      "verify 80-column and 640-pixel modes on the chosen raster. Add receiver/analog electronics, cable, case and calibration. Reusing a palette controller does not prove display bandwidth compatibility.",
+      "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

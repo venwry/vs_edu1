@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.ncc_1982_campaign data/business/marketing",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "budget_rows",
+        "financial_boundary",
+        "budget_subtotal_usd",
+        "contingency_rate",
+        "contingency_usd",
+        "budget_total_usd"
+      ],
+      "properties": {
+        "budget_rows": {
+          "type": "array"
+        },
+        "financial_boundary": {
+          "type": "string"
+        },
+        "budget_subtotal_usd": {
+          "type": "number"
+        },
+        "contingency_rate": {
+          "type": "number"
+        },
+        "contingency_usd": {
+          "type": "number"
+        },
+        "budget_total_usd": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

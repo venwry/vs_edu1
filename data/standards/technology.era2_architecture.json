@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.era2_architecture",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.era2_architecture",
+    "name": "ERA² architecture and compatibility targets",
+    "category": "processor_architecture",
+    "introduced": {
+      "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+      "event_start_date": "1983-05-16",
+      "date_precision": "day",
+      "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+    },
+    "specification": {
+      "status": "Accepted planning baseline; production and electrical qualification pending.",
+      "baseline_ref": "technology.era1_isa",
+      "system_bus_bits": 32,
+      "virtual_address_bits": 32,
+      "physical_address_bits": 32,
+      "physical_address_space_gib": 4,
+      "register_compatibility": "Preserve documented ERAv1 R0–R15/CPSR, instruction semantics, data formats and calling conventions.",
+      "execution_improvements": "Faster common instructions and effective-address calculation; improved prefetch scheduling over ERAv1’s existing four-word prefetch buffer. Detailed instruction timings pending.",
+      "instruction_cache_bytes_target": 512,
+      "external_cache_kb_options": [
+        8,
+        16
+      ],
+      "external_cache_policy": "Interface support target only; no external cache included in the Athena base BOM until selected. DMA coherency must be specified.",
+      "tlb": {
+        "entries_target": 64,
+        "associativity": 2,
+        "address_space_identifiers": true,
+        "asid_width": null
+      },
+      "faults": "Precisely defined restartable faults for demand paging. ERAv1 already has Data Abort and Prefetch Abort; ERA² strengthens the restart contract rather than introducing aborts for the first time.",
+      "floating_point": "Optional external FPU interface; no integrated or bundled FPU promised.",
+      "performance_target": "Approximately 2–3× an 8 MHz ERAv1 system on suitable workloads; unmeasured objective, dependent on cache, clock and memory timing.",
+      "compatibility": "Documented ERAv1 user binaries retain an execution path. New privileged/MMU features require OS support; no socket, mainboard or unqualified peripheral compatibility implied.",
+      "open_design_items": [
+        "Package/pinout and supply rails",
+        "Instruction timings and pipeline details",
+        "Cache coherency and DMA protocol",
+        "MMU/TLB implementation and transistor allocation",
+        "Board memory timing and qualified speed bins"
+      ]
+    },
+    "used_by": [
+      "computer.athena",
+      "computer.athena_server"
+    ]
+  }
+}

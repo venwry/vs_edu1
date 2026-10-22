@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.bundle.artemis_pro_512_mono_pro",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.bundle.artemis_pro_512_mono_pro",
+    "name": "Artemis PRO 512 KB server with Mono Pro console",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "assembly.computer.artemis_pro.m128_512",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included assembled computer",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.media.software.aionix_server",
+        "quantity": 1,
+        "unit": "each",
+        "role": "physical software delivery only; license separate",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.bundle.artemis_pro_512_server.bundle_cables_media_manuals_and_carton_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "avoid double counting accessory supplied cables",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "assembly.device.flexibus_keyboard",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.device.mono_pro",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.mono_pro_17",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.mono_pro_17",
+    "name": "Logix Mono Pro 17",
+    "category": "display",
+    "introduced": {
+      "event_name": "Professional graphics availability around June 1982",
+      "event_start_date": "1982-06"
+    },
+    "offered_with": [
+      "computer.artemis",
+      "computer.artemis_pro"
+    ],
+    "specification": {
+      "controller_ref": "part.mono_pro_17_controller",
+      "diagonal_inches": 17,
+      "scan": "800x600 progressive; 60 Hz production target subject to OEM qualification",
+      "palette_grayscale_levels": 16,
+      "simultaneous_shades_with_128kb_card": 4,
+      "timing_target": {
+        "horizontal_total_pixels": 1024,
+        "vertical_total_lines": 625,
+        "refresh_hz": 60,
+        "horizontal_khz": 37.5,
+        "pixel_clock_mhz": 38.4
+      },
+      "oem_basis": "Period 17-inch monochrome OEM assembly, with Ball HD17H family as a candidate rather than a confirmed supplier. Published Ball HD 26-36 kHz range does not meet the 37.5 kHz target without modification. Its digital video amplifier is not evidence of grayscale support.",
+      "qualification": "Qualify revised deflection, analog grayscale amplifier and high-speed digital link; no stock-monitor plug compatibility or final OEM contract assumed.",
+      "availability": "Around June 1982; supersedes the proposed January prototype delivery."
+    },
+    "manufacturing_status": "design_baseline_costed_unqualified",
+    "bom_assembly_refs": [
+      "assembly.device.mono_pro_17"
+    ],
+    "dated_revisions": [
+      {
+        "effective_from": "1982-11-29",
+        "name": "Logix Mono Pro 17 — HD17H analog OEM configuration",
+        "oem": "Ball HD-series HD17H, 17-inch horizontal-format OEM assembly, analog/linear-video option",
+        "grayscale_levels": 16,
+        "simultaneous_shades_at_800_600_2bpp": 4,
+        "simultaneous_shades_at_640_200_4bpp": 16,
+        "signal_path": "Logix digital pixel index -> AION palette/controller -> 4-bit intensity DAC -> level-matched Ball analog input and linear amplifier. TTL/ECL-only input is not sufficient.",
+        "rgb_palette_mapping": "Preserve the 12-bit RGB command format. For grayscale, equal-channel values 000,111,...,FFF map to the corresponding 16 intensity codes. Other RGB values use a documented fixed luminance mapping, with DAC/gamma calibration qualified on the actual CRT.",
+        "native_raster": {
+          "width": 800,
+          "height": 600,
+          "progressive": true,
+          "refresh_hz_target": 60,
+          "total_pixels": 1024,
+          "total_lines": 625,
+          "pixel_clock_mhz": 38.4,
+          "horizontal_khz": 37.5
+        },
+        "qualification": "Ball documents 26-36 kHz horizontal and 40-80 Hz vertical; optional linear amplifier is 35 MHz typical. 60 Hz at the selected totals needs a qualified OEM deflection revision. Pixel clock is not analog bandwidth: test actual contrast, grayscale settling, geometry and corner focus. 56 Hz/35 kHz is a fallback engineering option, not a silently substituted retail specification.",
+        "sources": [
+          "https://www.bitsavers.org/pdf/ballBrothers/5-17-1047A_CRT_Data_Displays_HD_Series_Service_Manual_198107.pdf",
+          "https://www.manualslib.com/manual/3426964/Ball-Hd-Series.html?page=6"
+        ],
+        "supplier_status": "Selected OEM design basis in the alternative timeline; actual ordering code and commercial supply terms remain unspecified.",
+        "bom_assembly_ref": "assembly.device.mono_pro_17.comdex82",
+        "cost_review_ref": "comdex_1982_cost_review.json"
+      }
+    ]
+  }
+}

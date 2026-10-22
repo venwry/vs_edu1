@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "offer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "offer"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "acceptance": {
+          "type": [
+            "array"
+          ]
+        },
+        "also_compatible_with": {
+          "type": [
+            "array"
+          ]
+        },
+        "availability": {
+          "type": [
+            "string"
+          ]
+        },
+        "availability_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "base_bundle_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "bom_assembly_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "campaign_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "category": {
+          "type": [
+            "string"
+          ]
+        },
+        "commercial_routes": {
+          "type": [
+            "array"
+          ]
+        },
+        "component_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "computer_configuration": {
+          "type": [
+            "object"
+          ]
+        },
+        "computer_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "configuration": {
+          "type": [
+            "object"
+          ]
+        },
+        "description": {
+          "type": [
+            "string"
+          ]
+        },
+        "earliest_offer_date": {
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "included_devices": {
+          "type": [
+            "array"
+          ]
+        },
+        "included_services": {
+          "type": [
+            "array"
+          ]
+        },
+        "included_software": {
+          "type": [
+            "array"
+          ]
+        },
+        "introduced": {
+          "type": [
+            "object"
+          ]
+        },
+        "manufacturing_variants": {
+          "type": [
+            "array"
+          ]
+        },
+        "name": {
+          "type": [
+            "string"
+          ]
+        },
+        "notes": {
+          "type": [
+            "array"
+          ]
+        },
+        "pricing": {
+          "type": [
+            "string"
+          ]
+        },
+        "shipping_date": {
+          "type": [
+            "null"
+          ]
+        },
+        "software_variants": {
+          "type": [
+            "array"
+          ]
+        },
+        "status": {
+          "type": [
+            "string"
+          ]
+        },
+        "storage": {
+          "type": [
+            "object"
+          ]
+        },
+        "support_split": {
+          "type": [
+            "object"
+          ]
+        },
+        "timeline": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    }
+  }
+}

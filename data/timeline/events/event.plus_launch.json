@@ -1,0 +1,99 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.plus_launch",
+  "record_type": "event",
+  "data": {
+    "id": "event.plus_launch",
+    "title": "Aurelia+, Pulse, Abacus 2.0 and manufacturer compatibility kit arrive",
+    "event_type": "launch",
+    "date": {
+      "start": "1979-12-03",
+      "end": "1979-12-03"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "presenter"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "presenter"
+      },
+      {
+        "actor_ref": "actor.academy",
+        "role": "training_provider"
+      },
+      {
+        "actor_ref": "actor.adam",
+        "role": "keynote presenter"
+      },
+      {
+        "actor_ref": "actor.bpi",
+        "role": "independent partner; head of BPI presents"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix"
+        ],
+        "description": "Launches Aurelia+."
+      },
+      {
+        "actor_refs": [
+          "actor.aion"
+        ],
+        "description": "Presents Pulse and Abacus 2.0."
+      },
+      {
+        "actor_refs": [
+          "actor.academy"
+        ],
+        "description": "Makes corresponding training available."
+      },
+      {
+        "actor_refs": [
+          "actor.aion"
+        ],
+        "description": "Launch the Aurelia Software Compatibility Kit with published contracts, reference runtime adapters, diagnostics and application acceptance tests. Manufacturers may independently implement the released environment; optional paid support and certification use standard terms. Application redistribution remains separately licensed."
+      },
+      {
+        "actor_refs": [
+          "actor.logix"
+        ],
+        "description": "Shift new hardware development and promotion to Aurelia+ while enabling independent Aurelia-class clones. Continue installed-base support and compatible software; do not impose an immediate Aurelia withdrawal. FlexiBUS and Logix video adoption remain separate choices. Future architecture details remain undisclosed until NCC 1980."
+      },
+      {
+        "actor_refs": [
+          "actor.adam",
+          "actor.logix",
+          "actor.aion"
+        ],
+        "description": "Present the 45-minute COMDEX campaign plus questions: More room to work. More freedom to choose. Run identical live calculated shaded-cube and Abacus workloads on Aurelia and Aurelia+ under equivalent conditions; show measured results without an unverified speed multiplier. See comdex_1979_campaign.json."
+      },
+      {
+        "actor_refs": [
+          "actor.aion",
+          "actor.bpi"
+        ],
+        "description": "Demonstrate Abacus 2.0 charts and spreadsheet-linked layouts using precalculated fictitious employee values, then preview and print a complete payslip batch. The head of independent BPI follows Abacus with the source payroll and reconciled file-exchange workflow, and joins the partner segment. Abacus 2.0 also serves existing Aurelia owners."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.aurelia_plus",
+      "software.pulse_1",
+      "software.abacus_2",
+      "service.pulse_training",
+      "software.aurelia_compatibility_kit",
+      "service.aurelia_compatibility_support",
+      "service.aurelia_compatibility_certification",
+      "computer.aurelia",
+      "software.bpi_suite"
+    ],
+    "related_event_refs": []
+  }
+}

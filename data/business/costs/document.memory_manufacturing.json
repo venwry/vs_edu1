@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/documents/document.memory_manufacturing-data-business-costs.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.memory_manufacturing",
+  "record_type": "document-section",
+  "data": {
+    "financial_horizon": "Recurring prices/costs through June 1981; industrial cash and ROI through 1981 Q4. Later recipe economics and budgets are prospective; no invented 1982–83 company sales.",
+    "wafer_cost_by_year": {
+      "1978": {
+        "3.0": 210
+      },
+      "1979": {
+        "3.0": 220
+      },
+      "1980": {
+        "3.0": 235
+      },
+      "1981": {
+        "3.0": 255,
+        "2.75": 285
+      },
+      "1982": {
+        "3.0": 276,
+        "2.75": 308,
+        "2.0": 340
+      },
+      "1983": {
+        "3.0": 298,
+        "2.75": 333,
+        "2.0": 360,
+        "1.5": 400
+      }
+    },
+    "pilot_operations": {
+      "from_quarter": "1979-Q4",
+      "through_quarter": "1981-Q4",
+      "wafers_per_month": 20,
+      "processed_wafer_usd": 300,
+      "nonpayroll_operations_usd_per_quarter": 18000,
+      "basis": "Dedicated development line. 60 pilot wafers/quarter plus utilities, service and consumables; programme engineering payroll separate. No pilot saleable output credited."
+    }
+  }
+}

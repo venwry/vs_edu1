@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.flexibus_host_controller",
+  "record_type": "component",
+  "data": {
+    "id": "part.flexibus_host_controller",
+    "name": "FlexiBUS computer/host controller",
+    "category": "io_controller_chip",
+    "origin": "custom_logix_aion",
+    "specification_ref": "technology.flexibus",
+    "used_in": [
+      "computer.aurelia",
+      "computer.aurelia_plus",
+      "computer.artemis",
+      "device.s100_flexibus_card",
+      "device.apple2_expansion_card"
+    ],
+    "vendor": "AION Labs",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "manufacturing_requirements": [
+      "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
+      "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.flexibus_host_controller"
+    ],
+    "second_source": {
+      "manufacturer": "Standard Microsystems Corporation (SMC)",
+      "agreement_date": "1978-07",
+      "earliest_commercial_availability": "1979-10",
+      "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+      "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+      "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+    }
+  }
+}

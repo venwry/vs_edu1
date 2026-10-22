@@ -3,7 +3,7 @@ import json, math
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(n):return json.loads((R/n).read_text())
-c=read('aurelia_1978_campaign.json');s=read('site_pages.json');p=read('pricing_results.json');f=read('sales_forecast.json');t=read('logix_aion_technical_catalog_v2.json')
+c=read('generated/catalogs/aurelia-1978-campaign.json');s=read('generated/catalogs/site-pages.json');p=read('generated/models/pricing-results.json');f=read('generated/models/sales-forecast.json');t=read('generated/catalogs/logix-aion-technical-catalog-v2.json')
 ids=[x['id'] for x in c['premiere']['stages']]
 assert ids.index('bpi')==ids.index('abacus')+1
 assert ids.index('partners')==ids.index('bpi')+1

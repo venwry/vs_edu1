@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.artemis_ram_64kb_bank_kit",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.artemis_ram_64kb_bank_kit",
+    "name": "Artemis 64 KiB matched RAM bank kit",
+    "category": "memory_expansion",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "capacity_kb": 64,
+    "module_ref": "part.artemis_ram_module_32kb_x16",
+    "module_quantity": 2,
+    "bank_count": 1,
+    "data_width_bits": 32,
+    "compatible_with": [
+      "computer.artemis"
+    ],
+    "sold_separately": true,
+    "installation": "Matched pair only, with power off. Do not mix module densities in one chassis. High-density conversion replaces all low-density modules.",
+    "qualification_status": "Accepted offering baseline; host revision and electrical qualification pending.",
+    "manufacturing_requirements": [
+      "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.device.artemis_ram_64kb_bank_kit"
+    ]
+  }
+}

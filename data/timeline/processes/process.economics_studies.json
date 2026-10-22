@@ -1,0 +1,188 @@
+{
+  "$schema": "../../../schemas/records/process.schema.json",
+  "schema_version": "1.0.0",
+  "id": "process.economics_studies",
+  "record_type": "process",
+  "data": {
+    "id": "process.economics_studies",
+    "title": "Economics studies",
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "student"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam"
+        ],
+        "description": "Studies for a bachelor degree in economics at Harvard."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.us_nyse_start"
+    ],
+    "period": {
+      "start": "1972-09-25",
+      "end": "1976-06-17",
+      "precision": "range",
+      "display": "1972-09-25 – 1976-06-17",
+      "qualifier": "Provisional fall start: inferred from the contemporary late-September calendar; exact 1972/1973 opening day remains unverified. Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
+    },
+    "phase_refs": [
+      "phase.foundations",
+      "phase.prepare_aurelia"
+    ],
+    "date_basis": "provisional",
+    "subprocesses": [
+      {
+        "id": "process.harvard_year_1",
+        "title": "Harvard Economics Bachelor Yr 1",
+        "participants": [
+          {
+            "actor_ref": "actor.adam",
+            "role": "student"
+          }
+        ],
+        "actions": [
+          {
+            "actor_refs": [
+              "actor.adam"
+            ],
+            "description": "Completes year 1 of the Harvard economics bachelor program (1972–1973)."
+          }
+        ],
+        "outcomes": [],
+        "agreement_terms": [],
+        "metrics": [],
+        "product_refs": [],
+        "related_event_refs": [
+          "event.us_nyse_start"
+        ],
+        "period": {
+          "start": "1972-09-25",
+          "end": "1973-06-14",
+          "precision": "range",
+          "display": "1972-09-25 – 1973-06-14",
+          "qualifier": "Provisional fall start: inferred from the contemporary late-September calendar; exact 1972/1973 opening day remains unverified. Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
+        },
+        "phase_refs": [
+          "phase.foundations"
+        ],
+        "date_basis": "provisional"
+      },
+      {
+        "id": "process.harvard_year_2",
+        "title": "Harvard Economics Bachelor Yr 2",
+        "participants": [
+          {
+            "actor_ref": "actor.adam",
+            "role": "student"
+          }
+        ],
+        "actions": [
+          {
+            "actor_refs": [
+              "actor.adam"
+            ],
+            "description": "Completes year 2 of the Harvard economics bachelor program (1973–1974)."
+          }
+        ],
+        "outcomes": [],
+        "agreement_terms": [],
+        "metrics": [],
+        "product_refs": [],
+        "related_event_refs": [
+          "event.us_nyse_start"
+        ],
+        "period": {
+          "start": "1973-09-24",
+          "end": "1974-06-13",
+          "precision": "range",
+          "display": "1973-09-24 – 1974-06-13",
+          "qualifier": "Provisional fall start: inferred from the contemporary late-September calendar; exact 1972/1973 opening day remains unverified. Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
+        },
+        "phase_refs": [
+          "phase.foundations"
+        ],
+        "date_basis": "provisional"
+      },
+      {
+        "id": "process.harvard_year_3",
+        "title": "Harvard Economics Bachelor Yr 3",
+        "participants": [
+          {
+            "actor_ref": "actor.adam",
+            "role": "student"
+          }
+        ],
+        "actions": [
+          {
+            "actor_refs": [
+              "actor.adam"
+            ],
+            "description": "Completes year 3 of the Harvard economics bachelor program (1974–1975)."
+          }
+        ],
+        "outcomes": [],
+        "agreement_terms": [],
+        "metrics": [],
+        "product_refs": [],
+        "related_event_refs": [
+          "event.us_nyse_start"
+        ],
+        "period": {
+          "start": "1974-09-23",
+          "end": "1975-06-12",
+          "precision": "range",
+          "display": "1974-09-23 – 1975-06-12",
+          "qualifier": "Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
+        },
+        "phase_refs": [
+          "phase.foundations",
+          "phase.prepare_aurelia"
+        ]
+      },
+      {
+        "id": "process.harvard_year_4",
+        "title": "Harvard Economics Bachelor Yr 4",
+        "participants": [
+          {
+            "actor_ref": "actor.adam",
+            "role": "student"
+          }
+        ],
+        "actions": [
+          {
+            "actor_refs": [
+              "actor.adam"
+            ],
+            "description": "Completes year 4 of the Harvard economics bachelor program (1975–1976)."
+          }
+        ],
+        "outcomes": [],
+        "agreement_terms": [],
+        "metrics": [],
+        "product_refs": [],
+        "related_event_refs": [
+          "event.us_nyse_start"
+        ],
+        "period": {
+          "start": "1975-09-22",
+          "end": "1976-06-17",
+          "precision": "range",
+          "display": "1975-09-22 – 1976-06-17",
+          "qualifier": "Academic year runs from fall classes through June commencement. See HARVARD_ACADEMIC_DATES.md."
+        },
+        "phase_refs": [
+          "phase.prepare_aurelia"
+        ]
+      }
+    ]
+  }
+}

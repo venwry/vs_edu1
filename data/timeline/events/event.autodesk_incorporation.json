@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.autodesk_incorporation",
+  "record_type": "event",
+  "data": {
+    "id": "event.autodesk_incorporation",
+    "title": "Autodesk adopts the funded Artemis development agreement",
+    "event_type": "agreement",
+    "date": {
+      "start": "1982-04-26",
+      "end": "1982-04-26"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.labs",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.autodesk",
+        "role": "programme_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam",
+          "actor.logix",
+          "actor.aion",
+          "actor.labs",
+          "actor.autodesk"
+        ],
+        "description": "After incorporation, Autodesk adopts the January founders agreement, confirms underlying source/porting rights and the non-exclusive licensing arrangement, and reviews compiler/math runtime, source control, backup recovery and graphics-driver milestones. Programme details: team_development_program.json."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.artemis_pro",
+      "software.aion_development_team",
+      "software.autocad_1_artemis",
+      "device.artemis_professional_video_128kb",
+      "device.mono_pro_17",
+      "device.logix_mouse"
+    ],
+    "related_event_refs": [
+      "event.autodesk_agreement"
+    ]
+  }
+}

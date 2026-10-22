@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../schemas/records/software-product.schema.json",
+  "schema_version": "1.0.0",
+  "id": "software.abacus_2",
+  "record_type": "software-product",
+  "data": {
+    "id": "software.abacus_2",
+    "name": "AION Abacus 2.0",
+    "vendor": "AION Software",
+    "category": "spreadsheet_and_reporting",
+    "introduced": {
+      "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+      "event_start_date": "1979-12-03",
+      "date_precision": "day",
+      "timeline_note": "Author-confirmed introduction date."
+    },
+    "features": [
+      "text-mode vertical or horizontal bar charts",
+      "report/document layouts",
+      "layouts can use spreadsheet field values",
+      "layouts can contain charts",
+      "one-off and repeating sections"
+    ],
+    "artemis_native_extensions": [
+      "multiple tabs",
+      "cross-tab references"
+    ],
+    "delivery_on_artemis": "diskette",
+    "sold_separately": true,
+    "technology_refs": [
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "portability_contract": {
+      "api_ref": "technology.logix_c_api",
+      "shared_logic": "Separate application/document algorithms from platform adapters.",
+      "display": "Query dimensions and attributes; use semantic colors and clipping.",
+      "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+      "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+      "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+    },
+    "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
+    "edition_refs": [
+      "edition.abacus_2.z80",
+      "edition.abacus_2.era"
+    ],
+    "data_interchange": {
+      "partner": "BPI Systems",
+      "available_from": "1979-12-03",
+      "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+      "status": "Accepted requirement; measured implementation qualification pending.",
+      "export_definition_ref": "software.bpi_suite"
+    }
+  }
+}

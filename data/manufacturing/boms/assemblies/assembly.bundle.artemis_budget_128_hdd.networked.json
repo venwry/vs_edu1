@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.bundle.artemis_budget_128_hdd.networked",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.bundle.artemis_budget_128_hdd.networked",
+    "name": "bundle.artemis_budget_128_hdd",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "assembly.computer.artemis.m32_128.networked",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included assembled computer",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.device.flexibus_keyboard",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included accessory",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.device.color_monitor_2",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included accessory",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.media.software.aionix",
+        "quantity": 1,
+        "unit": "each",
+        "role": "physical software delivery only; license separate",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "avoid double counting accessory supplied cables",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.hdd_5mb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "5 MB drive; external enclosure, power and interface costed separately in budget assessment",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

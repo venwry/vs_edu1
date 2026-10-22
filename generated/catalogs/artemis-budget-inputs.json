@@ -1,0 +1,1107 @@
+{
+  "launch_date": "1980-05-19",
+  "basis": "Author-requested budget range from NCC 1980 onward. Costs are engineering allowances, not supplier quotations. No historical IBM-PC competition is assumed before 1982.",
+  "base_cost_snapshots": {
+    "1978": {
+      "status": "not_yet_offered",
+      "total_usd": null
+    },
+    "1979": {
+      "status": "not_yet_offered",
+      "total_usd": null
+    },
+    "1980": {
+      "status": "offered_estimate",
+      "total_usd": 1381.34,
+      "low_usd": 966.94,
+      "high_usd": 2210.14,
+      "breakdown_usd": {
+        "bom_materials": 1067.4,
+        "workforce": 100.2,
+        "energy": 8.8,
+        "consumables": 27.03,
+        "operating_overhead": 25.09,
+        "yield_and_rework": 49.79,
+        "instructions": 9.6,
+        "packaging": 21.6,
+        "logistics": 28.8,
+        "recurring_licenses": 0.0,
+        "included_service_delivery": 43.03
+      },
+      "bom_assembly_ref": "assembly.bundle.artemis_128_color",
+      "bom_lines": [
+        {
+          "component_ref": "bompart.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 0
+        },
+        {
+          "component_ref": "bompart.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "extended_recurring_cost_usd": 225.0
+        },
+        {
+          "component_ref": "bompart.computer.artemis.boot_rom_chips",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 7.2
+        },
+        {
+          "component_ref": "bompart.computer.artemis.clock_reset_interrupts_mapper_and_bus_buffers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 16.2
+        },
+        {
+          "component_ref": "bompart.computer.artemis.connectors_passives_fasteners_and_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 36.72
+        },
+        {
+          "component_ref": "bompart.computer.artemis.enclosure_and_chassis",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 48.96
+        },
+        {
+          "component_ref": "bompart.computer.artemis.mainboard_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 30.6
+        },
+        {
+          "component_ref": "bompart.computer.artemis.paired_bank_dram_controller_refresh_and_data_buffers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 21.6
+        },
+        {
+          "component_ref": "bompart.computer.artemis.psu",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 57.12
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_card_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 10.8
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_clock_transceivers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 12.0
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_host_interface",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 10.8
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_slot_connector",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 9.6
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card_16kb.economy_video_byte_bridge",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 7.8
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.4
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.hv_deflection_and_psu_not_included_by_oem",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 0
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.monitor_enclosure",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 21.6
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 4.8
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.video_receiver_and_rgb_amplifiers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 15.6
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.4
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.flexibus_interface_electronics",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 6.0
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.key_switches",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 21.6
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_cable",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.4
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_enclosure",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 7.2
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 3.6
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keycaps",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 6.0
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.matrix_diodes",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 1.8
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 4.8
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.scan_controller_and_firmware_storage",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 3.6
+        },
+        {
+          "component_ref": "bompart.part.aion_2114",
+          "quantity": 2,
+          "extended_recurring_cost_usd": 7.52
+        },
+        {
+          "component_ref": "bompart.part.aion_4116",
+          "quantity": 8,
+          "extended_recurring_cost_usd": 26.97
+        },
+        {
+          "component_ref": "bompart.part.artemis_dma",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 4.26
+        },
+        {
+          "component_ref": "bompart.part.artemis_fdd_hdd_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.38
+        },
+        {
+          "component_ref": "bompart.part.artemis_mmu",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 11.24
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.capacity_identification_straps",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 0.72
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.data_buffers_and_byte_enable_logic",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 14.4
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.decoupling_and_bulk_capacitors",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 4.8
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.module_connector_contacts",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 9.6
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.module_pcb",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 10.8
+        },
+        {
+          "component_ref": "bompart.part.aurelia_video_chip",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 17.21
+        },
+        {
+          "component_ref": "bompart.part.color_monitor_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.69
+        },
+        {
+          "component_ref": "bompart.part.dram_16kbit",
+          "quantity": 64,
+          "extended_recurring_cost_usd": 208.0
+        },
+        {
+          "component_ref": "bompart.part.era1",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 27.91
+        },
+        {
+          "component_ref": "bompart.part.flexibus_host_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.39
+        },
+        {
+          "component_ref": "bompart.part.medium_resolution_rgb_crt",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 170
+        },
+        {
+          "component_ref": "bompart.software.aionix.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.7
+        },
+        {
+          "component_ref": "bompart.software.aionix.cartridge_shell_label_and_instructions",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.4
+        },
+        {
+          "component_ref": "bompart.software.aionix.rom_eprom_eeprom_or_media_selection",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 15.48
+        }
+      ],
+      "confidence": "low",
+      "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+    },
+    "1981": {
+      "status": "offered_estimate",
+      "total_usd": 1408.52,
+      "low_usd": 985.96,
+      "high_usd": 2253.63,
+      "breakdown_usd": {
+        "bom_materials": 1067.35,
+        "workforce": 105.43,
+        "energy": 8.18,
+        "consumables": 26.53,
+        "operating_overhead": 26.16,
+        "yield_and_rework": 61.2,
+        "instructions": 10.56,
+        "packaging": 23.76,
+        "logistics": 31.68,
+        "recurring_licenses": 0.0,
+        "included_service_delivery": 47.67
+      },
+      "bom_assembly_ref": "assembly.bundle.artemis_128_color.networked",
+      "bom_lines": [
+        {
+          "component_ref": "bompart.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 0
+        },
+        {
+          "component_ref": "bompart.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "extended_recurring_cost_usd": 212.5
+        },
+        {
+          "component_ref": "bompart.computer.artemis.boot_rom_chips",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 6.8
+        },
+        {
+          "component_ref": "bompart.computer.artemis.clock_reset_interrupts_mapper_and_bus_buffers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 15.3
+        },
+        {
+          "component_ref": "bompart.computer.artemis.connectors_passives_fasteners_and_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 40.39
+        },
+        {
+          "component_ref": "bompart.computer.artemis.enclosure_and_chassis",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 53.86
+        },
+        {
+          "component_ref": "bompart.computer.artemis.mainboard_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 28.9
+        },
+        {
+          "component_ref": "bompart.computer.artemis.paired_bank_dram_controller_refresh_and_data_buffers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 20.4
+        },
+        {
+          "component_ref": "bompart.computer.artemis.psu",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 62.83
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_card_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 10.2
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_clock_transceivers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 13.2
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_host_interface",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 11.88
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_slot_connector",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 10.56
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card_16kb.economy_video_byte_bridge",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 8.58
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.64
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.hv_deflection_and_psu_not_included_by_oem",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 0
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.monitor_enclosure",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 23.76
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.28
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.video_receiver_and_rgb_amplifiers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 17.16
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.64
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.flexibus_interface_electronics",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 6.6
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.key_switches",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 23.76
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_cable",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.64
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_enclosure",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 7.92
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 3.4
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keycaps",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 6.6
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.matrix_diodes",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 1.98
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.28
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.scan_controller_and_firmware_storage",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 3.4
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.32_bit_slot_interface_and_pio_dma_selection",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 15.84
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.differential_data_and_clock_transceivers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 7.92
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.64
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.firmware_rom",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.55
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.network_card_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.95
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.network_controller_framing_crc_and_buffers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 20.4
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.network_port_connector",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.64
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.28
+        },
+        {
+          "component_ref": "bompart.part.aion_2114",
+          "quantity": 2,
+          "extended_recurring_cost_usd": 7.63
+        },
+        {
+          "component_ref": "bompart.part.aion_4116",
+          "quantity": 8,
+          "extended_recurring_cost_usd": 27.49
+        },
+        {
+          "component_ref": "bompart.part.artemis_dma",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 3.82
+        },
+        {
+          "component_ref": "bompart.part.artemis_fdd_hdd_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 4.74
+        },
+        {
+          "component_ref": "bompart.part.artemis_mmu",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 10.03
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.capacity_identification_straps",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 0.79
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.data_buffers_and_byte_enable_logic",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 13.6
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.decoupling_and_bulk_capacitors",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 5.28
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.module_connector_contacts",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 10.56
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.module_pcb",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 10.2
+        },
+        {
+          "component_ref": "bompart.part.aurelia_video_chip",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 16.12
+        },
+        {
+          "component_ref": "bompart.part.color_monitor_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.75
+        },
+        {
+          "component_ref": "bompart.part.dram_16kbit",
+          "quantity": 64,
+          "extended_recurring_cost_usd": 144.0
+        },
+        {
+          "component_ref": "bompart.part.era1",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 22.43
+        },
+        {
+          "component_ref": "bompart.part.flexibus_host_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.45
+        },
+        {
+          "component_ref": "bompart.part.medium_resolution_rgb_crt",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 158
+        },
+        {
+          "component_ref": "bompart.software.aionix_server.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.55
+        },
+        {
+          "component_ref": "bompart.software.aionix_server.cartridge_shell_label_and_instructions",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.64
+        },
+        {
+          "component_ref": "bompart.software.aionix_server.rom_eprom_eeprom_or_media_selection",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 19.2
+        }
+      ],
+      "confidence": "low",
+      "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+    },
+    "1982": {
+      "status": "offered_estimate",
+      "total_usd": 1391.27,
+      "low_usd": 973.89,
+      "high_usd": 2226.03,
+      "breakdown_usd": {
+        "bom_materials": 1040.31,
+        "workforce": 106.26,
+        "energy": 8.59,
+        "consumables": 28.08,
+        "operating_overhead": 26.46,
+        "yield_and_rework": 59.53,
+        "instructions": 11.44,
+        "packaging": 25.74,
+        "logistics": 34.32,
+        "recurring_licenses": 0.0,
+        "included_service_delivery": 50.54
+      },
+      "bom_assembly_ref": "assembly.bundle.artemis_128_color.networked",
+      "bom_lines": [
+        {
+          "component_ref": "bompart.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 0
+        },
+        {
+          "component_ref": "bompart.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "extended_recurring_cost_usd": 202.5
+        },
+        {
+          "component_ref": "bompart.computer.artemis.boot_rom_chips",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 6.48
+        },
+        {
+          "component_ref": "bompart.computer.artemis.clock_reset_interrupts_mapper_and_bus_buffers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 14.58
+        },
+        {
+          "component_ref": "bompart.computer.artemis.connectors_passives_fasteners_and_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 43.76
+        },
+        {
+          "component_ref": "bompart.computer.artemis.enclosure_and_chassis",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 58.34
+        },
+        {
+          "component_ref": "bompart.computer.artemis.mainboard_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 27.54
+        },
+        {
+          "component_ref": "bompart.computer.artemis.paired_bank_dram_controller_refresh_and_data_buffers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 19.44
+        },
+        {
+          "component_ref": "bompart.computer.artemis.psu",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 68.07
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_card_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 9.72
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_clock_transceivers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 14.3
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_host_interface",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 12.87
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card.artemis_video_slot_connector",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 11.44
+        },
+        {
+          "component_ref": "bompart.device.artemis_video_card_16kb.economy_video_byte_bridge",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 9.29
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.86
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.hv_deflection_and_psu_not_included_by_oem",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 0
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.monitor_enclosure",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 25.74
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.72
+        },
+        {
+          "component_ref": "bompart.device.color_monitor_2.video_receiver_and_rgb_amplifiers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 18.59
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.86
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.flexibus_interface_electronics",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 7.15
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.key_switches",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 25.74
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_cable",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.86
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_enclosure",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 8.58
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keyboard_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 3.24
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.keycaps",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 7.15
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.matrix_diodes",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.15
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.72
+        },
+        {
+          "component_ref": "bompart.device.flexibus_keyboard.scan_controller_and_firmware_storage",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 3.24
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.32_bit_slot_interface_and_pio_dma_selection",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 17.16
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.differential_data_and_clock_transceivers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 8.58
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.86
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.firmware_rom",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.43
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.network_card_pcb",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.67
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.network_controller_framing_crc_and_buffers",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 19.44
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.network_port_connector",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.86
+        },
+        {
+          "component_ref": "bompart.device.network_card_artemis.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 5.72
+        },
+        {
+          "component_ref": "bompart.part.aion_2114",
+          "quantity": 2,
+          "extended_recurring_cost_usd": 7.97
+        },
+        {
+          "component_ref": "bompart.part.aion_4116",
+          "quantity": 8,
+          "extended_recurring_cost_usd": 28.68
+        },
+        {
+          "component_ref": "bompart.part.artemis_dma",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 3.99
+        },
+        {
+          "component_ref": "bompart.part.artemis_fdd_hdd_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 4.96
+        },
+        {
+          "component_ref": "bompart.part.artemis_mmu",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 10.33
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.capacity_identification_straps",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 0.86
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.data_buffers_and_byte_enable_logic",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 12.96
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.decoupling_and_bulk_capacitors",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 5.72
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.module_connector_contacts",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 11.44
+        },
+        {
+          "component_ref": "bompart.part.artemis_ram_module_32kb_x16.module_pcb",
+          "quantity": 4,
+          "extended_recurring_cost_usd": 9.72
+        },
+        {
+          "component_ref": "bompart.part.aurelia_video_chip",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 16.51
+        },
+        {
+          "component_ref": "bompart.part.color_monitor_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.87
+        },
+        {
+          "component_ref": "bompart.part.dram_16kbit",
+          "quantity": 64,
+          "extended_recurring_cost_usd": 112.0
+        },
+        {
+          "component_ref": "bompart.part.era1",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 22.88
+        },
+        {
+          "component_ref": "bompart.part.flexibus_host_controller",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.54
+        },
+        {
+          "component_ref": "bompart.part.medium_resolution_rgb_crt",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 150
+        },
+        {
+          "component_ref": "bompart.software.aionix_server.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.43
+        },
+        {
+          "component_ref": "bompart.software.aionix_server.cartridge_shell_label_and_instructions",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 2.86
+        },
+        {
+          "component_ref": "bompart.software.aionix_server.rom_eprom_eeprom_or_media_selection",
+          "quantity": 1,
+          "extended_recurring_cost_usd": 18.24
+        }
+      ],
+      "confidence": "low",
+      "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+    }
+  },
+  "software_cost_snapshots": {
+    "software.business_tools_artemis": {
+      "1978": {
+        "status": "not_yet_offered",
+        "total_usd": null
+      },
+      "1979": {
+        "status": "not_yet_offered",
+        "total_usd": null
+      },
+      "1980": {
+        "status": "offered_estimate",
+        "total_usd": 23.52,
+        "low_usd": 16.46,
+        "high_usd": 37.63,
+        "breakdown_usd": {
+          "bom_materials": 15.42,
+          "workforce": 0.69,
+          "energy": 0.0,
+          "consumables": 0.1,
+          "operating_overhead": 0.17,
+          "yield_and_rework": 0.3,
+          "instructions": 3.6,
+          "packaging": 1.44,
+          "logistics": 1.8,
+          "recurring_licenses": 0.0,
+          "included_service_delivery": 0.0
+        },
+        "bom_assembly_ref": "assembly.media.software.business_tools_artemis",
+        "bom_lines": [
+          {
+            "component_ref": "bompart.software.business_tools_artemis.cartridge_pcb_and_connector_if_cartridge_delivered",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 2.7
+          },
+          {
+            "component_ref": "bompart.software.business_tools_artemis.cartridge_shell_label_and_instructions",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 2.4
+          },
+          {
+            "component_ref": "bompart.software.business_tools_artemis.rom_eprom_eeprom_or_media_selection",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 10.32
+          }
+        ],
+        "confidence": "low",
+        "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+      },
+      "1981": {
+        "status": "offered_estimate",
+        "total_usd": 23.61,
+        "low_usd": 16.53,
+        "high_usd": 37.78,
+        "breakdown_usd": {
+          "bom_materials": 14.79,
+          "workforce": 0.72,
+          "energy": 0.0,
+          "consumables": 0.11,
+          "operating_overhead": 0.18,
+          "yield_and_rework": 0.29,
+          "instructions": 3.96,
+          "packaging": 1.58,
+          "logistics": 1.98,
+          "recurring_licenses": 0.0,
+          "included_service_delivery": 0.0
+        },
+        "bom_assembly_ref": "assembly.media.software.business_tools_artemis",
+        "bom_lines": [
+          {
+            "component_ref": "bompart.software.business_tools_artemis.cartridge_pcb_and_connector_if_cartridge_delivered",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 2.55
+          },
+          {
+            "component_ref": "bompart.software.business_tools_artemis.cartridge_shell_label_and_instructions",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 2.64
+          },
+          {
+            "component_ref": "bompart.software.business_tools_artemis.rom_eprom_eeprom_or_media_selection",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 9.6
+          }
+        ],
+        "confidence": "low",
+        "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+      },
+      "1982": {
+        "status": "offered_estimate",
+        "total_usd": 23.87,
+        "low_usd": 16.71,
+        "high_usd": 38.19,
+        "breakdown_usd": {
+          "bom_materials": 14.41,
+          "workforce": 0.72,
+          "energy": 0.0,
+          "consumables": 0.11,
+          "operating_overhead": 0.18,
+          "yield_and_rework": 0.29,
+          "instructions": 4.29,
+          "packaging": 1.72,
+          "logistics": 2.15,
+          "recurring_licenses": 0.0,
+          "included_service_delivery": 0.0
+        },
+        "bom_assembly_ref": "assembly.media.software.business_tools_artemis",
+        "bom_lines": [
+          {
+            "component_ref": "bompart.software.business_tools_artemis.cartridge_pcb_and_connector_if_cartridge_delivered",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 2.43
+          },
+          {
+            "component_ref": "bompart.software.business_tools_artemis.cartridge_shell_label_and_instructions",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 2.86
+          },
+          {
+            "component_ref": "bompart.software.business_tools_artemis.rom_eprom_eeprom_or_media_selection",
+            "quantity": 1,
+            "extended_recurring_cost_usd": 9.12
+          }
+        ],
+        "confidence": "low",
+        "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+      }
+    },
+    "software.abacus_3": {
+      "1978": {
+        "status": "not_yet_offered",
+        "total_usd": null
+      },
+      "1979": {
+        "status": "not_yet_offered",
+        "total_usd": null
+      },
+      "1980": {
+        "status": "not_yet_offered",
+        "total_usd": null
+      },
+      "1981": {
+        "status": "offered_estimate",
+        "total_usd": 19.52,
+        "low_usd": 13.66,
+        "high_usd": 31.23,
+        "breakdown_usd": {
+          "bom_materials": 5.2,
+          "workforce": 1.91,
+          "energy": 0.0,
+          "consumables": 0.13,
+          "operating_overhead": 0.48,
+          "yield_and_rework": 0.0,
+          "instructions": 8.24,
+          "packaging": 1.58,
+          "logistics": 1.98,
+          "recurring_licenses": 0.0,
+          "included_service_delivery": 0.0
+        },
+        "bom_assembly_ref": null,
+        "bom_lines": [],
+        "confidence": "low",
+        "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+      },
+      "1982": {
+        "status": "offered_estimate",
+        "total_usd": 20.25,
+        "low_usd": 14.17,
+        "high_usd": 32.4,
+        "breakdown_usd": {
+          "bom_materials": 4.8,
+          "workforce": 2.02,
+          "energy": 0.0,
+          "consumables": 0.14,
+          "operating_overhead": 0.5,
+          "yield_and_rework": 0.0,
+          "instructions": 8.92,
+          "packaging": 1.72,
+          "logistics": 2.15,
+          "recurring_licenses": 0.0,
+          "included_service_delivery": 0.0
+        },
+        "bom_assembly_ref": null,
+        "bom_lines": [],
+        "confidence": "low",
+        "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+      }
+    }
+  },
+  "hdd_subsystem_additions_usd": {
+    "1980": {
+      "bom_materials": 1300,
+      "workforce": 35,
+      "yield_and_rework": 65,
+      "logistics": 25
+    },
+    "1981": {
+      "bom_materials": 1050,
+      "workforce": 30,
+      "yield_and_rework": 55,
+      "logistics": 20
+    },
+    "1982": {
+      "bom_materials": 950,
+      "workforce": 30,
+      "yield_and_rework": 50,
+      "logistics": 20
+    }
+  },
+  "hdd_basis": "Existing model drive allowances $1150/$950/$850 in 1980/81/82 plus $150/$100/$100 enclosure, supply, interface and cabling. Early 5 MB subsystem may use an external enclosure; exact OEM remains an engineering qualification assumption. Two floppies retained.",
+  "pricing": {
+    "dealer_fee": 0.25,
+    "fallback_net_contribution_margin": 0.25,
+    "comparator_1982_floppy_usd": 3299,
+    "comparator_1982_hdd_usd": 4995,
+    "balance_formula": "Retail = sqrt(recurring_cost * comparable_price / (1-dealer_fee)). Equalises contribution/net-revenue and discount/comparable-price. 1980–81 have no verified comparable basket: use 25% net contribution fallback. 1982 IBM baskets are reference assumptions, with substitute OS qualification in this story."
+  },
+  "software_timing": "Business Tools and AIONix from May 1980; Abacus 3 added only from November 19 1980. No early native Abacus 2, compatibility card, mouse, networking or later graphics implied. Budget systems retain 16 KiB video and Color II 640x200; network included from May 1981 as in the existing base bundle.",
+  "source_urls": [
+    "https://thecomputerarchive.com/archivemain/Catalogs%20and%20Price%20Lists/Mail%20Order/Olympic%20Sales%20%281982%29%20Wholesale%20Price%20List%20pages%20051-075.pdf"
+  ]
+}

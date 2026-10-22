@@ -1,11 +1,12 @@
+from data_paths import resolve_path
 from pathlib import Path
 import json,hashlib,re,math
 R=Path(__file__).resolve().parents[1]
 def read(n):return json.loads((R/n).read_text())
-m=read('ecosystem_forecast.json');text=(R/'ecosystem.html').read_text()
+m=read('generated/models/ecosystem-forecast.json');text=(R/'ecosystem.html').read_text()
 embedded=json.loads(re.search(r'<script type="application/json" id="ecosystem-model">(.*?)</script>',text,re.S).group(1))
 assert embedded==m
-for src in m['sources']:assert hashlib.sha256((R/src['path']).read_bytes()).hexdigest()==src['sha256'],src['path']
+for src in m['sources']:assert hashlib.sha256((R/resolve_path(src['path'])).read_bytes()).hexdigest()==src['sha256'],src['path']
 for s in m['scenarios']:
  assert len(s['quarterly'])==23
  cumulative_c=cumulative_a=cumulative_d=cumulative_o=0
@@ -35,7 +36,7 @@ for s in m['scenarios']:
   for q,n in a['native_quarterly_copies'].items():assert n>=0 and (not n or a['native_first']<=q)
  for key in ['wordstar','dbase','supercalc','bdsc']:assert next(a for a in apps if a['id']==key)['native_first'] is None
 # Match each reassessed scenario, not the frozen industrial baseline.
-sales=read('sales_forecast.json')
+sales=read('generated/models/sales-forecast.json')
 for scenario in m['scenarios']:
  current=next(s for s in sales['scenarios'] if s['id']==scenario['id'])
  for row in scenario['quarterly']:

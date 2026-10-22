@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../schemas/records/bom-supplier_programs.schema.json",
+  "schema_version": "1.0.0",
+  "id": "supplier.smc",
+  "record_type": "bom-supplier_programs",
+  "data": {
+    "id": "supplier.smc",
+    "manufacturer": "Standard Microsystems Corporation",
+    "agreement_date": "1978-07",
+    "initial_sales_date": "1979-10",
+    "date_precision": "month",
+    "part_refs": [
+      "part.flexibus_host_controller",
+      "part.flexibus_device_controller",
+      "part.aurelia_video_chip",
+      "part.aion_4116"
+    ],
+    "launch_source": "AION Labs",
+    "qualification_status": "Initial sales are a story event; individual part release codes, tested margins and production yields remain unmeasured engineering inputs.",
+    "rights": "Non-exclusive independent wafer fabrication and external sales; no ERA CPU license.",
+    "transfer_deliverables": [
+      "SMC process/lithography requirements",
+      "AION-prepared SMC-compatible ready-to-use masks and revisions",
+      "Known-good reference silicon and characterization",
+      "Process recipes/adaptation know-how and on-site engineering assistance",
+      "Wafer test structures, probe/final-test programs, reliability acceptance criteria"
+    ],
+    "qualification_gates": [
+      "Process/mask compatibility",
+      "DRAM retention, sensing and refresh; pixel FIFO and renderer timing",
+      "Controller speed, electrical equivalence and system validation",
+      "Independent wafer fabrication, packaging, final test and reliability",
+      "Qualified order codes and capacity before substitution"
+    ],
+    "cost_boundary": "AION internal recurring fabrication remains the base case. SMC purchased-chip scenarios include supplier margin and contractual royalty allowance; transfer engineering/masks/qualification are one-time costs outside unit manufacturing totals. Exact supplier quotations and royalties remain unknown."
+  }
+}

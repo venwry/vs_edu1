@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.device.aurelia_ram_16kb_card",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "device.aurelia_ram_16kb_card",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.device.aurelia_ram_16kb_card"
+    ],
+    "requirements": [
+      "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/video RAM.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+    ]
+  }
+}

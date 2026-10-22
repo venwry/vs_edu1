@@ -2,8 +2,8 @@
 import json
 from pathlib import Path
 root = Path(__file__).resolve().parents[1]
-catalog = json.loads((root / 'logix_aion_technical_catalog_v2.json').read_text())
-plan = json.loads((root / 'athena_1983_program.json').read_text())
+catalog = json.loads((root / 'generated/catalogs/logix-aion-technical-catalog-v2.json').read_text())
+plan = json.loads((root / 'generated/catalogs/athena-1983-program.json').read_text())
 records = {r['id']: r for values in catalog.values() if isinstance(values, list)
            for r in values if isinstance(r, dict) and 'id' in r}
 for product, capacity, modules, module_size, disk in [

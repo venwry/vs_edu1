@@ -4,7 +4,7 @@ from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-review = json.loads((ROOT / 'comdex_1982_cost_review.json').read_text())
+review = json.loads((ROOT / 'generated/models/comdex-1982-cost-review.json').read_text())
 rows = {p['id']: p for p in review['prices']}
 money = lambda n: Decimal(str(n)).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
 assert review['date'] == '1982-11-29'
@@ -24,6 +24,6 @@ card = next(p for p in review['cost_assessment']['products'] if p['id'] == 'devi
 assert next(p for p in card['bom_lines'] if p['component_ref'] == 'bompart.part.aion_2114')['quantity'] == 2
 for filename in ('market-outlook.html', 'memory-manufacturing.html'):
     assert not (ROOT / filename).exists()
-    for path in [ROOT / 'site_pages.json', *ROOT.glob('*.html'), *ROOT.glob('*.js'), *ROOT.glob('tools/*template.html')]:
+    for path in [ROOT / 'generated/catalogs/site-pages.json', *ROOT.glob('*.html'), *ROOT.glob('*.js'), *ROOT.glob('tools/*template.html')]:
         assert filename not in path.read_text(), (path, filename)
 print('PASS: November pricing arithmetic, independent Autodesk costs, sprite RAM and retired-page links.')

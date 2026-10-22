@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.aionix_agreement",
+  "record_type": "event",
+  "data": {
+    "id": "event.aionix_agreement",
+    "title": "AIONix development programme and ownership formalised",
+    "event_type": "agreement",
+    "date": {
+      "start": "1978-09-12",
+      "end": "1978-09-12"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "negotiator"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "partner"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "owner_and_funder"
+      },
+      {
+        "actor_ref": "actor.dri",
+        "role": "development_partner"
+      },
+      {
+        "actor_ref": "actor.kildall",
+        "role": "equity_recipient"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam",
+          "actor.logix",
+          "actor.aion",
+          "actor.dri"
+        ],
+        "description": "Formalise the AIONix programme begun in February 1978: joint ERA development in assembler and C, funded by AION. Existing ownership, equity and future porting-right terms remain."
+      }
+    ],
+    "outcomes": [],
+    "metrics": [],
+    "product_refs": [
+      "software.aionix",
+      "computer.artemis"
+    ],
+    "related_event_refs": [
+      "event.dri_founding",
+      "event.aionix_preliminary"
+    ]
+  }
+}

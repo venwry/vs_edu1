@@ -7,8 +7,8 @@ R = Path(__file__).resolve().parents[1]
 load = lambda p: json.loads((R / p).read_text())
 D = lambda n: Decimal(str(n))
 money = lambda n: float(D(n).quantize(D('.01'), rounding=ROUND_HALF_UP))
-config = load('retail_catalog_1982.json')
-model = load('pricing_results.json')
+config = load('generated/catalogs/retail-catalog-1982.json')
+model = load('generated/models/pricing-results.json')
 annual = {p['id']: p for p in model['products']}
 dated = {p['id']: p for a in sorted(model.get('dated_assessments', []), key=lambda a:a['date']) if a['date'] <= config['effective_from'] for p in a['products']}
 
@@ -225,6 +225,6 @@ for date,view in output['snapshots'].items():
    if date>='1981-05-04':card['includes'].append('Standard network interface')
    if card['id']=='budget_hdd':card['includes'].append('5 MB qualified hard-disk subsystem with enclosure, power and interface')
 output['snapshots']=dict(sorted(output['snapshots'].items()))
-output['provenance'] = {p:hashlib.sha256((R/p).read_bytes()).hexdigest() for p in ['retail_catalog_1982.json','pricing_results.json']}
-(R/'retail_catalog_1982_results.json').write_text(json.dumps(output,indent=2,ensure_ascii=False)+'\n')
+output['provenance'] = {p:hashlib.sha256((R/p).read_bytes()).hexdigest() for p in ['generated/catalogs/retail-catalog-1982.json','generated/models/pricing-results.json']}
+(R/'generated/models/retail-catalog-1982-results.json').write_text(json.dumps(output,indent=2,ensure_ascii=False)+'\n')
 print('Built current catalogue and June 15 and December 15 views for 1978–1982; historical prices unchanged.')

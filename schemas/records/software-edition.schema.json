@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "software-edition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "software-edition"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "delivery",
+        "dependency_refs",
+        "execution_target",
+        "id",
+        "introduced",
+        "minimum_resources",
+        "name",
+        "platform_support",
+        "product_ref",
+        "role",
+        "support_status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "delivery": {
+          "type": [
+            "array",
+            "string"
+          ]
+        },
+        "dependency_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "execution_target": {
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "introduced": {
+          "type": [
+            "object"
+          ]
+        },
+        "minimum_resources": {
+          "type": [
+            "object"
+          ]
+        },
+        "name": {
+          "type": [
+            "string"
+          ]
+        },
+        "platform_support": {
+          "type": [
+            "array"
+          ]
+        },
+        "product_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "role": {
+          "type": [
+            "string"
+          ]
+        },
+        "support_status": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    }
+  }
+}

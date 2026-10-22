@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../schemas/records/service.schema.json",
+  "schema_version": "1.0.0",
+  "id": "service.academy_before_you_buy",
+  "record_type": "service",
+  "data": {
+    "id": "service.academy_before_you_buy",
+    "name": "Logix Computer Academy - before-you-buy training",
+    "category": "training",
+    "introduced": {
+      "event_name": "Logix Computer Academy launch",
+      "event_start_date": "1978-03-25",
+      "date_precision": "day"
+    },
+    "courses": [
+      {
+        "name": "Aurelia Fundamentals",
+        "days": 2,
+        "curriculum": [
+          "Business-computer capabilities and appropriate configuration selection",
+          "Hands-on common editing, Business Tools and introductory Abacus",
+          "Purchasing advice without obligation"
+        ]
+      },
+      {
+        "name": "Aurelia Fundamentals + Abacus",
+        "days": 5
+      },
+      {
+        "name": "Aurelia Fundamentals + Abacus + Business Tools",
+        "days": 6
+      },
+      {
+        "name": "Aurelia + C (IDE + TUI library)",
+        "days": 5
+      }
+    ],
+    "completion": {
+      "credential": "Aurelia Driving License",
+      "fundamentals_purchase_credit": {
+        "eligible_course": "Aurelia Fundamentals",
+        "tuition_fraction": 0.5,
+        "validity_months": 6,
+        "systems_per_credit": 1,
+        "redemption_channels": [
+          "Academy direct sales",
+          "participating authorised dealers"
+        ],
+        "dealer_reimbursement": "Logix reimburses participating dealers; do not deduct the credit from their agreed margin.",
+        "purchase_obligation": false,
+        "scope": "Standalone two-day Fundamentals. Existing $150 vouchers for the other before-you-buy courses remain unchanged; no stacking or extension to other courses is implied.",
+        "accounting": "Reserve the redeemed credit once as promotional expense across the course and computer sale, outside recurring manufacturing costs."
+      },
+      "other_before_you_buy_courses_voucher_usd": 150
+    },
+    "launch_program": {
+      "established_date": "1978-03-25",
+      "public_announcement_date": "1978-06-05",
+      "launch_city_count": 5,
+      "city_names": null,
+      "first_course_dates": null,
+      "tuition_usd": null,
+      "tuition_positioning": "A modest fraction of an Aurelia package price; publish exact tuition and a named package comparison when commercial prices are selected. Generated pricing proposals are not approved tuition.",
+      "teaching": "Small classes, substantial hands-on time, ideally one machine per participant or pair; business tools, introductory Abacus and advice on appropriate configurations and unnecessary purchases."
+    }
+  }
+}

@@ -1,9 +1,10 @@
+from data_paths import resolve_path
 """Cross-model gates for the 1980–82 reassessment; do not merely test rendering."""
 import json,math,hashlib
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(n):return json.loads((R/n).read_text())
-s=read('sales_forecast.json');i=read('industrial_investment_1974_1981.json');roi=read('roi_1974_1980.json');m=read('market_outlook_1980_1982.json')
+s=read('generated/models/sales-forecast.json');i=read('generated/models/industrial-investment-1974-1981.json');roi=read('generated/models/roi-1974-1980.json');m=read('generated/models/market-outlook-1980-1982.json')
 central=next(x for x in s['scenarios'] if x['id']=='central');cash=next(x for x in roi['scenarios'] if x['id']=='central')
 assert len(central['monthly'])==60 and len(central['quarterly'])==20
 assert cash['quarterly'][-1]['quarter']=='1982-Q4'
@@ -38,6 +39,6 @@ assert sum(x['usd'] for x in i['capital_schedule'] if x['quarter'].startswith('1
 assert all(a['service_quarter']=='1983-Q3' for a in roi['asset_depreciation_schedule'] if a['quarter'] in ['1982-Q3','1982-Q4'] and a['cost_type']=='memory_process_equipment')
 assert i['memory_manufacturing']['development_line']['production_output_credited']==0
 assert not any(x['path'].endswith('.md') for x in m['sources'])
-for src in m['sources']:assert hashlib.sha256((R/src['path']).read_bytes()).hexdigest()==src['sha256'],src['path']
+for src in m['sources']:assert hashlib.sha256((R/resolve_path(src['path'])).read_bytes()).hexdigest()==src['sha256'],src['path']
 assert not list(R.rglob('*.md'))
 print('PASS: 36 months, quarterly sales/production/ROI matching, launch gates, 5% headroom, Team cost reconciliation, forward capital and provenance.')

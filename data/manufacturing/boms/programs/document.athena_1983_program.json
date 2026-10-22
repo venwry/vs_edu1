@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../../schemas/documents/document.athena_1983_program-data-manufacturing-boms-programs.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.athena_1983_program",
+  "record_type": "document-section",
+  "data": {
+    "module_boms": [
+      {
+        "module_ref": "part.athena_ram_module_128kb",
+        "lines": [
+          {
+            "ref": "part.aion_4164_2um",
+            "quantity": 16,
+            "unit": "each"
+          }
+        ],
+        "additional_functional_sets": [
+          "PCB and connector",
+          "Decoupling and bulk capacitors",
+          "Address/control buffers and capacity identification",
+          "Rank decode for 256 KiB module"
+        ],
+        "cost_status": "Uncosted 1983 module; assembly/test and component selections pending."
+      },
+      {
+        "module_ref": "part.athena_ram_module_256kb",
+        "lines": [
+          {
+            "ref": "part.aion_4164_2um",
+            "quantity": 32,
+            "unit": "each"
+          }
+        ],
+        "additional_functional_sets": [
+          "PCB and connector",
+          "Decoupling and bulk capacitors",
+          "Address/control buffers and capacity identification",
+          "Rank decode for 256 KiB module"
+        ],
+        "cost_status": "Uncosted 1983 module; assembly/test and component selections pending."
+      }
+    ],
+    "computer_boms": [
+      {
+        "computer_ref": "computer.athena",
+        "lines": [
+          {
+            "ref": "part.era2",
+            "quantity": 1,
+            "unit": "each"
+          },
+          {
+            "ref": "part.athena_ram_module_128kb",
+            "quantity": 2,
+            "unit": "each"
+          },
+          {
+            "ref": "device.artemis_video_card_64kb",
+            "quantity": 1,
+            "unit": "each"
+          },
+          {
+            "ref": "device.network_card_artemis",
+            "quantity": 1,
+            "unit": "each"
+          }
+        ],
+        "functional_components": [
+          {
+            "name": "Internal HDD",
+            "quantity": 1,
+            "capacity_mb": 5
+          },
+          {
+            "name": "5.25-inch DS/DD FDD",
+            "quantity": 1
+          },
+          {
+            "name": "EEPROM BIOS",
+            "quantity": 1,
+            "capacity_kb": null
+          },
+          {
+            "name": "Mainboard, controllers, power supply, chassis and wiring",
+            "quantity": 1,
+            "unit": "functional set"
+          }
+        ],
+        "rom_card_count": 0,
+        "status": "Functional BOM only; not an exhaustive released production BOM."
+      },
+      {
+        "computer_ref": "computer.athena_server",
+        "lines": [
+          {
+            "ref": "part.era2",
+            "quantity": 1,
+            "unit": "each"
+          },
+          {
+            "ref": "part.athena_ram_module_256kb",
+            "quantity": 4,
+            "unit": "each"
+          },
+          {
+            "ref": "device.artemis_video_card_64kb",
+            "quantity": 1,
+            "unit": "each"
+          },
+          {
+            "ref": "device.network_card_artemis",
+            "quantity": 1,
+            "unit": "each"
+          }
+        ],
+        "functional_components": [
+          {
+            "name": "Internal HDD",
+            "quantity": 1,
+            "capacity_mb": 20
+          },
+          {
+            "name": "5.25-inch DS/DD FDD",
+            "quantity": 1
+          },
+          {
+            "name": "EEPROM BIOS",
+            "quantity": 1,
+            "capacity_kb": null
+          },
+          {
+            "name": "Mainboard, controllers, power supply, chassis and wiring",
+            "quantity": 1,
+            "unit": "functional set"
+          }
+        ],
+        "rom_card_count": 0,
+        "status": "Functional BOM only; not an exhaustive released production BOM."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schemas/documents/document.artemis_tiers-data-hardware-configurations.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.artemis_tiers",
+  "record_type": "document-section",
+  "data": {
+    "status": "Accepted planning scenario; electrical qualification pending",
+    "artemis_128": {
+      "system_ram_kib": 128,
+      "video_card_ref": "device.artemis_video_card_16kb",
+      "monitor_refs": [
+        "device.mono_monitor_2",
+        "device.color_monitor_2"
+      ]
+    },
+    "artemis_256": {
+      "system_ram_kib": 256,
+      "system_ram_chip_ref": "part.aion_4164",
+      "system_ram_chip_count": 32,
+      "video_card_ref": "device.artemis_video_card",
+      "monitor_refs": [
+        "device.mono_pro",
+        "device.color_monitor_2"
+      ]
+    },
+    "pro_sourcing_changed": false
+  }
+}

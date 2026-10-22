@@ -1,0 +1,127 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.artemis_memory_model",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.artemis_memory_model",
+    "name": "Artemis 32-bit virtual / 24-bit physical memory model",
+    "category": "memory_management",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "owner": "Logix / AION Labs",
+    "specification": {
+      "virtual_address_bits": 32,
+      "physical_address_bits": 24,
+      "page_table_goal": "Use compact software-managed mapping records and a 32-entry translation cache; do not allocate a flat table for the entire 32-bit virtual address space.",
+      "implementation_design": {
+        "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+        "title": "ERA MMU v1",
+        "addressing": {
+          "virtual_bits": 32,
+          "physical_bits": 24,
+          "page_bytes": 4096,
+          "physical_frame_count": 4096
+        },
+        "translation_cache": {
+          "entries": 32,
+          "associativity": "fully associative",
+          "replacement": "software-controlled round-robin among unlocked entries",
+          "entry_fields": [
+            "20-bit virtual page number",
+            "12-bit physical frame number",
+            "valid",
+            "user accessible",
+            "writable",
+            "referenced",
+            "dirty",
+            "locked"
+          ],
+          "context_policy": "No ASIDs in v1. Flush unlocked user translations at each address-space switch; retain wired kernel translations."
+        },
+        "backing_map": {
+          "organization": "One compact record per allocated virtual mapping, indexed by virtual page; stored in kernel-owned RAM. Software resolves misses. No flat 4 GB page table.",
+          "entry_bytes_budget": 8,
+          "example": "128 mapped pages require 1024 bytes of mapping records per process, plus indexing and process metadata. This is an illustrative budget, not a measured total.",
+          "kernel_access": "Keep trap vectors, refill routine, kernel stack and map-access window permanently translatable; refill must not depend on an unresolved user mapping."
+        },
+        "faults": [
+          "Translation miss traps before a memory side effect; software finds the mapping, fills an entry and retries.",
+          "Writes to a copy-on-write mapping cause a protection fault; allocate/copy a page, update mappings and retry.",
+          "Unmapped or unauthorized addresses cause a process fault. Allocation failure returns a defined error or terminates the offending process according to the fault contract.",
+          "No demand paging or implicit swap is introduced."
+        ],
+        "cpu_contract": [
+          "Instruction restart must preserve exact state; multi-register loads/stores need defined restart semantics or restrictions.",
+          "Kernel instructions update translations, invalidate entries and control protection.",
+          "DMA uses physical addresses with pinned buffers or bounded bounce buffers; never translate arbitrary user pointers asynchronously.",
+          "Harvest referenced/dirty bits before replacing or flushing translation entries; merge them into kernel mapping metadata.",
+          "Maintain physical-frame reference counts for shared and copy-on-write pages; invalidate stale writable translations before sharing a frame."
+        ],
+        "timing": {
+          "baseline": "Begin with a conservative registered translation stage and an explicit wait/ready handshake. Do not promise zero wait states.",
+          "optional_double_clock": "Evaluate 12 MHz MMU at 6 MHz CPU and 16 MHz MMU at 8 MHz CPU, phase-locked to the CPU clock. A two-phase translation/permission lookup may reduce hit latency only if address setup, comparison and output timing close.",
+          "validation": "Measure hit/miss latency, context-switch cost, DMA contention and workload hit rate. A faster MMU clock cannot remove DRAM wait time or software refill cost."
+        },
+        "open_items": [
+          "Physical address map",
+          "Silicon timing and area",
+          "TLB entry count tuning",
+          "Final mapping-record layout",
+          "DMA interface and electrical implementation of the specified paired-bank memory organization"
+        ]
+      },
+      "physical_memory_design": {
+        "status": "Accepted banked-memory design baseline; electrical implementation and validation pending.",
+        "ram_slots": 8,
+        "banks": 4,
+        "modules_per_bank": 2,
+        "module_data_width_bits": 16,
+        "bank_data_width_bits": 32,
+        "supported_module_refs": [
+          "part.artemis_ram_module_32kb_x16",
+          "part.artemis_ram_module_128kb",
+          "part.artemis_ram_module_128kb_aion"
+        ],
+        "mixed_density_allowed": false,
+        "physical_limit_kb": 1024,
+        "physical_map_status": "RAM base, ROM, video RAM, I/O and reset overlays remain to be assigned; 24-bit physical addressing is unchanged.",
+        "requirements": [
+          "Independent bank selection with row/column address multiplexing.",
+          "Four byte write enables per 32-bit bank; defined aligned byte/halfword/word access and alignment faults.",
+          "RAS/CAS/WE timing, data buffers, refresh arbitration and DMA contention handling.",
+          "Explicit READY/wait handshake; full-width data transfer is not a zero-wait guarantee.",
+          "Capacity straps, pair matching, boot memory test and incomplete-bank rejection.",
+          "Shared module edge interface with separate board routing for selected DRAM rails; no chip-footprint interchangeability assumption."
+        ],
+        "open_items": [
+          "Exact controller ASIC versus discrete logic partition and physical component counts",
+          "Connector/pinout/keying and rails",
+          "Supplier-specific refresh and speed grades",
+          "Contiguous physical bank decoding and reset ROM map",
+          "Worst-case loading and power with eight modules",
+          "Optional server byte-parity variant"
+        ]
+      },
+      "display_memory_design": {
+        "card_ref": "device.artemis_video_card_16kb",
+        "display_dram_bytes": "16384 on Artemis 128; 32768 on Artemis 256 and PRO",
+        "sprite_sram_bytes": 1024,
+        "on_chip_pixel_fifo_bytes": "160 on economy; 640 on professional",
+        "on_chip_row_cache_bytes": 320,
+        "host_access": "Separate physical apertures/registers, mapped by system MMU; address numbers remain unresolved. System DMA uses pinned physical buffers and bounded card-ready handshakes.",
+        "refresh": "Display DRAM refreshed by card independently of host CPU/DMA. System DRAM refresh remains in host bank controller; no duplicate charge for a second system controller.",
+        "card_variants": [
+          "device.artemis_video_card_16kb",
+          "device.artemis_video_card"
+        ]
+      }
+    },
+    "used_by": [
+      "computer.artemis",
+      "software.aionix"
+    ]
+  }
+}

@@ -1,9 +1,10 @@
+from data_paths import resolve_path
 """Validate revised pre-tax cash/asset bridge; the old industrial plan is a baseline."""
 import json,re,hashlib
 from pathlib import Path
-R=Path(__file__).resolve().parents[1];m=json.loads((R/'roi_1974_1980.json').read_text());report=(R/'roi.html').read_text();close=lambda a,b:abs(a-b)<.25
+R=Path(__file__).resolve().parents[1];m=json.loads((R/'generated/models/roi-1974-1980.json').read_text());report=(R/'roi.html').read_text();close=lambda a,b:abs(a-b)<.25
 assert json.loads(re.search(r'<script id="roi-model" type="application/json">(.*?)</script>',report,re.S).group(1))==m
-for source in m['sources']:assert hashlib.sha256((R/source['path']).read_bytes()).hexdigest()==source['sha256']
+for source in m['sources']:assert hashlib.sha256((R/resolve_path(source['path'])).read_bytes()).hexdigest()==source['sha256']
 for scenario in m['scenarios']:
  rows=scenario['quarterly'];assert len(rows)==40 and len({r['quarter'] for r in rows})==40
  cash=cap=dep=ebit=peak=prior_inventory=prior_assets=0

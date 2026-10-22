@@ -2,7 +2,7 @@
 
 Accepted correction: May 1980 launch, not December 1979. Both configurations remain available in December 1982. Existing 12-inch Color II limits apply; no 1982 Color Pro feature is backdated. Initial packages include AIONix/Business Tools; Abacus 3 is included only from November 1980 and NIC from May 1981. The HDD configuration keeps both floppies and adds a complete 5 MB subsystem, external where necessary.
 
-The cost overlay uses frozen source breakdowns in `artemis_budget_inputs.json`; update those inputs deliberately after a new base-cost assessment. No supplier quote is claimed. 1980–81 use a 25% contribution margin after the 25% dealer fee. 1982 uses the balanced percentage principle against $3,299 and $4,995 hardware reference baskets: retail = sqrt(cost × comparator / 0.75). IBM’s substitute OS and narrower software portfolio remain story assumptions. No earlier IBM-PC comparison is used.
+The cost overlay uses frozen source breakdowns in `generated/catalogs/artemis-budget-inputs.json`; update those inputs deliberately after a new base-cost assessment. No supplier quote is claimed. 1980–81 use a 25% contribution margin after the 25% dealer fee. 1982 uses the balanced percentage principle against $3,299 and $4,995 hardware reference baskets: retail = sqrt(cost × comparator / 0.75). IBM’s substitute OS and narrower software portfolio remain story assumptions. No earlier IBM-PC comparison is used.
 
 Run after base cost and pricing builds, in this order:
 

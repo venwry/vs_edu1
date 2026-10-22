@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.paterson",
+  "record_type": "event",
+  "data": {
+    "id": "event.paterson",
+    "title": "Tim Paterson recruited",
+    "event_type": "recruitment",
+    "date": {
+      "start": "1977-07-15",
+      "end": "1977-07-15"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "recruiter"
+      },
+      {
+        "actor_ref": "actor.paterson",
+        "role": "recruit"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam"
+        ],
+        "description": "Recruits Tim Paterson."
+      }
+    ],
+    "outcomes": [
+      {
+        "description": "Paterson does not develop QDOS and is unavailable to Microsoft."
+      }
+    ],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": []
+  }
+}

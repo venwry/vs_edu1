@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../../schemas/records/bom-offers.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.offers.bundle.artemis_128_color",
+  "record_type": "bom-offers",
+  "data": {
+    "catalog_ref": "bundle.artemis_128_color",
+    "kind": "system_bundle",
+    "assembly_ref": "assembly.bundle.artemis_128_color",
+    "compatible_host_ref": "computer.artemis",
+    "included_host": true,
+    "effective_from": "1980-05-19",
+    "shipping_date": null,
+    "availability_status": "catalog_offer",
+    "requirements": [
+      "Same RAM/host revision with Color II; distinguish display and packout costs."
+    ],
+    "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
+    "variants": [
+      {
+        "effective_from": "1981-05-04",
+        "assembly_ref": "assembly.bundle.artemis_128_color.networked"
+      }
+    ]
+  }
+}

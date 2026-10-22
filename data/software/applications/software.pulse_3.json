@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../schemas/records/software-product.schema.json",
+  "schema_version": "1.0.0",
+  "id": "software.pulse_3",
+  "record_type": "software-product",
+  "data": {
+    "id": "software.pulse_3",
+    "name": "AION Pulse 3.0",
+    "vendor": "AION Software",
+    "category": "32_bit_scripting_and_interactive_programming_environment",
+    "introduced": {
+      "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+      "event_start_date": "1980-11-19"
+    },
+    "platform_policy": "Artemis-exclusive / 32-bit primary development line",
+    "features": [
+      "native 32-bit product",
+      "designed to fully use the potential of the 32-bit platform",
+      "embedded scripting runtime for Abacus 3.0 through its document API; standalone notebook and offline file editing remain available"
+    ],
+    "design_continuity_with": "software.pulse_1",
+    "technology_refs": [
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard",
+      "technology.abacus_embedded_pulse"
+    ],
+    "portability_contract": {
+      "api_ref": "technology.logix_c_api",
+      "shared_logic": "Separate application/document algorithms from platform adapters.",
+      "display": "Query dimensions and attributes; use semantic colors and clipping.",
+      "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+      "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+      "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+    },
+    "abacus_file_integration": {
+      "model": "Standalone mode: read/edit/write supported closed Abacus document files. Separate embedded mode in Abacus 3.0 is specified by technology.abacus_embedded_pulse.",
+      "concurrency": "Exclusive writer ownership. Do not edit a file concurrently in Pulse and Abacus.",
+      "format_policy": "Check format version and supported features before writing; reject unsupported edits without silently dropping data.",
+      "save_policy": "Write a replacement file, validate it, then perform a recoverable replacement retaining the prior version until success.",
+      "formula_policy": "Preserve formula text/encoding. Mark cached results invalid after edits; Abacus recalculates on opening unless Pulse has the matching evaluation library.",
+      "memory_policy": "Bounded record/cell iteration; whole-document duplication in RAM is not required.",
+      "cross_version_policy": "Each edition declares supported document-format versions. Later Artemis features are not implicitly writable by the Z80 edition."
+    },
+    "edition_refs": [
+      "edition.pulse_3.era"
+    ],
+    "embedded_abacus_integration_ref": "technology.abacus_embedded_pulse"
+  }
+}

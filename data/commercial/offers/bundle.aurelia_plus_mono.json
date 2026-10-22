@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schemas/records/offer.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bundle.aurelia_plus_mono",
+  "record_type": "offer",
+  "data": {
+    "id": "bundle.aurelia_plus_mono",
+    "name": "Logix Aurelia+ — Monochrome system",
+    "introduced": {
+      "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+      "event_start_date": "1979-12-03",
+      "date_precision": "day",
+      "timeline_note": "Author-confirmed introduction date."
+    },
+    "computer_ref": "computer.aurelia_plus",
+    "included_devices": [
+      "device.flexibus_keyboard",
+      "device.mono_monitor_2"
+    ],
+    "included_software": [
+      "software.cpm_aurelia"
+    ],
+    "included_services": [
+      {
+        "service_ref": "service.regular_support",
+        "duration_years": 1
+      }
+    ],
+    "bom_assembly_ref": "assembly.bundle.aurelia_plus_mono"
+  }
+}

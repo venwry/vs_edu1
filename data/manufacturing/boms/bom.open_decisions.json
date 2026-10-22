@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/records/bom-policy.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.open_decisions",
+  "record_type": "bom-policy",
+  "data": [
+    {
+      "id": "dram_supplier",
+      "status": "open",
+      "description": "Qualify exact 16Kx1/64Kx1 suppliers, speed, rails, refresh and period volume supply, especially December 1979."
+    },
+    {
+      "id": "memory_electrical",
+      "status": "open",
+      "description": "Freeze DRAM controller implementation, connector, pinout, rails, byte enables and timing; full-width does not mean zero waits."
+    },
+    {
+      "id": "physical_map",
+      "status": "open",
+      "description": "Assign RAM/ROM/video RAM/I/O/reset address ranges without changing 24-bit physical addressing."
+    },
+    {
+      "id": "pro_parity",
+      "status": "open",
+      "description": "Baseline has no parity; optional 18-chip modules need a separately approved BOM and error path."
+    },
+    {
+      "id": "drive_oem",
+      "status": "open",
+      "description": "Select exact FDD/HDD mechanisms, interfaces, formats, OEM assembly boundaries and incoming test."
+    },
+    {
+      "id": "display_oem",
+      "status": "open",
+      "description": "Freeze display OEM kits, receiver/DAC/analog boundaries, raster and calibration."
+    },
+    {
+      "id": "video_ram_rom",
+      "status": "open",
+      "description": "Aurelia family video RAM organization and count fixed: eight AION 4116-equivalent 16Kx1 DRAM chips. Qualify memory process, pinout, rails, timing, refresh and tests. Cartridge capacities remain open."
+    },
+    {
+      "id": "flexibus_ports",
+      "status": "open",
+      "description": "Aurelia and Aurelia+ each have three independent point-to-point ports. Qualify simultaneous keyboard/disk/printer service, port power and transceivers; freeze controller ports per die and resulting die quantity."
+    },
+    {
+      "id": "video_link",
+      "status": "open",
+      "description": "Qualify fixed 320/640 raster profiles and bidirectional Control identification. Freeze sync/porches, electrical levels, termination, connector and capability packet encoding."
+    },
+    {
+      "id": "pro_console",
+      "status": "open",
+      "description": "Mono Pro console offers explicitly include keyboard/monitor; original server-only offers still require validated headless operation or a separately purchased console."
+    },
+    {
+      "id": "custom_silicon",
+      "status": "open",
+      "description": "Specify die/package/process, fabrication versus outsource, yield, test and NRE for every custom chip."
+    },
+    {
+      "id": "smc_process_transfer",
+      "status": "open",
+      "description": "Agreement and staged October 1979 sales are story commitments, not measured engineering proof. Freeze SMC process/mask compatibility, part-specific qualification dates, video RAM process margins, order codes, NRE and independent purchase quotes."
+    }
+  ]
+}

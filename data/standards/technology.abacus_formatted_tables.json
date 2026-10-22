@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.abacus_formatted_tables",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.abacus_formatted_tables",
+    "name": "Abacus formatted tables and columnar storage",
+    "category": "structured_data_and_query_model",
+    "introduced": {
+      "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+      "event_start_date": "1980-11-19"
+    },
+    "owner": "AION Software",
+    "specification": {
+      "implementation_design": {
+        "status": "Accepted design baseline; implementation, resource budgets and performance qualification pending.",
+        "scope": "Formatted-table tabs coexist with freeform sparse worksheet tabs. Independently implemented historical Abacus format; no dependency on modern Parquet libraries or claim of Parquet compatibility.",
+        "schema": {
+          "column_identity": "Stable column ID, name, declared data type and nullability; stable row IDs survive sorting/filtering.",
+          "launch_types": [
+            "text",
+            "integer",
+            "decimal with declared precision/scale",
+            "date",
+            "Boolean"
+          ],
+          "rules": "Specify rounding, collation, overflow, null/error semantics and checked conversions; preserve leading-zero identifiers as text."
+        },
+        "storage": {
+          "hierarchy": [
+            "row groups",
+            "column chunks",
+            "pages"
+          ],
+          "page_role": "Smallest compression/encoding unit; byte-bounded buffers and dictionaries. Group/page sizes require measurement on target RAM and disks.",
+          "footer": "Versioned schema, chunk/page locations and supported min/max/null-count statistics. Bound metadata memory and permit incremental access.",
+          "column_pruning": "Read output columns plus all predicate, join and formula dependencies.",
+          "block_skipping": "Skip only when valid conservative statistics prove no match; handle nulls, sort order and pending edits. Predicate pushdown evaluates filters early and is distinct from statistics-based skipping.",
+          "encoding": "Dictionary, RLE, bit packing and suitable numeric encodings with uncompressed fallback. Compression is dataset-dependent; no guaranteed 75–90% reduction or heavy codec requirement.",
+          "execution": "Stream and batch scans; bound dictionaries, query state and join memory. Use temporary disk storage or report resource limits; do not require whole tables or row groups resident.",
+          "editing": "Use a bounded edit buffer/change log with stable row IDs; merge pending changes into reads. Rewrite affected storage on save/compaction, update or invalidate statistics and preserve a consistent visible snapshot.",
+          "recovery": "Validate replacement data and footer before recoverable replacement; retain prior valid version until success. Do not publish incomplete metadata or silently skip corrupt blocks."
+        },
+        "calculation": {
+          "syntax": "Abacus native expressions or documented SQL expression subset with shared type, decimal, null and error rules.",
+          "virtual_columns": "Side-effect-free row expressions; track dependencies and reject cycles. Values computed on demand; persisted statistics require valid materialization.",
+          "lookups": "Scalar lookup requires unique-key relationship; missing keys and duplicate keys have explicit behavior, never arbitrary first-match selection.",
+          "joins": "One-to-many/many-to-many joins produce derived query tables rather than silently changing scalar column cardinality.",
+          "sql_scope": "Read-only SELECT projections, WHERE filters, GROUP BY aggregates and equijoins over local formatted tables; document supported syntax and resource limits. No claim of complete SQL standard or general transaction engine."
+        },
+        "nested_data": {
+          "launch": "Flat typed columns; reserve versioned extension points for nested values.",
+          "later": "Bounded arrays, maps and structs with explicit depth/size limits, expandable presentation, indexing, null and aggregation semantics; implementation milestone not yet dated."
+        }
+      }
+    },
+    "used_by": [
+      "software.abacus_3"
+    ]
+  }
+}

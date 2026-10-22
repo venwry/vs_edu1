@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.flexidisk_ii",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.flexidisk_ii",
+    "name": "Logix FlexiDisk II",
+    "category": "external_floppy_drive",
+    "specification": {
+      "media": "5.25-inch FDD",
+      "connection": "FlexiBUS",
+      "disk_formats": [
+        "Aurelia",
+        "Apple II-compatible"
+      ],
+      "usable_from": [
+        "Logix Aurelia",
+        "Apple II with Logix Apple II Expansion Card"
+      ]
+    },
+    "price_usd": 595,
+    "sold_separately": true,
+    "introduced": {
+      "event_name": "NCC 1979 — Apple II extensions",
+      "event_start_date": "1979-06-04"
+    },
+    "manufacturing_requirements": [
+      "Exact mechanism/media geometry",
+      "controller and firmware able to handle each specified encoding/format, sector/track buffering, local CPU/ROM/RAM, PSU/enclosure and separate format-interchange tests. Define formatting and read/write capability explicitly. Avoid silently using the standard FlexiDisk BOM if its controller cannot implement both formats."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.device.flexidisk_ii"
+    ]
+  }
+}

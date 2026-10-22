@@ -1,0 +1,115 @@
+{
+  "$schema": "../../../schemas/documents/document.ncc_1982_campaign-data-marketing-campaigns.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.ncc_1982_campaign",
+  "record_type": "document-section",
+  "data": {
+    "id": "campaign.ncc1982",
+    "title": "NCC 1982 — Pointy ideas with a solid point.",
+    "headline": "Pointy ideas with a solid point.",
+    "subheadline": "Introducing the Logix Mouse. Point, select, and get to work.",
+    "hands_on_invitation": "Make your first point.",
+    "conference": {
+      "start": "1982-06-07",
+      "end": "1982-06-10",
+      "venue": "Astrodomain, Houston, Texas",
+      "date_source": "https://www.bitsavers.org/magazines/Datamation/198203.pdf"
+    },
+    "cost_snapshot": "1982-06-15",
+    "status": "Accepted alternative-history offering and planned campaign; budgets are planning provisions, not observed spending.",
+    "messages": [
+      "Point directly to your work: keyboard and mouse work together.",
+      "See more in your information: colour Abacus reports and professional drawings.",
+      "Choose a platform that grows with you: upgrades, independent software and compatible manufacturers."
+    ],
+    "offering_refs": [
+      "device.artemis_video_card_64kb",
+      "device.color_pro_14",
+      "device.logix_mouse",
+      "device.artemis_professional_video_128kb",
+      "device.mono_pro_17",
+      "software.entertainment_suite",
+      "technology.logix_tui_mouse"
+    ],
+    "availability": "June colour/mouse offering and around-June professional hardware availability. AutoCAD is a November COMDEX development target, not a June shipping application.",
+    "software_update_policy": "CP/M and AIONix TUI mouse updates carry no new licence fee for existing licensed users; fulfillment media ships with mouse/upgrade kits (costed in mouse pack). Standalone replacement media and installation are quoted separately. Replaceable TUI services can update existing binaries; static libraries require relinking, custom drawing requires adaptation.",
+    "presentation": [
+      "Open a familiar Abacus worksheet and edit with keyboard.",
+      "Use the mouse to select a field, activate a button and scroll with both rollers.",
+      "Show a colour report with labels/patterns preserving monochrome meaning.",
+      "Demonstrate a supported older application and explain its exact update path.",
+      "Show the colour upgrade for an existing compatible Artemis.",
+      "Close with qualified 800x600 professional graphics and the Autodesk November target."
+    ],
+    "booth_zones": [
+      {
+        "name": "Try it yourself",
+        "demo": "Two-minute mouse tutorial, then Solitaire/FreeCell and the same actions in a business application.",
+        "conversion": "Book an Academy/dealer demonstration."
+      },
+      {
+        "name": "Your business at work",
+        "demo": "Abacus and supported business applications with realistic data.",
+        "conversion": "Configured quotation or upgrade order."
+      },
+      {
+        "name": "Professional graphics",
+        "demo": "Dual displays and engineering line/curve tests; distinguish Logix diagnostics from an actual AutoCAD preview.",
+        "conversion": "Professional evaluation / November AutoCAD invitation."
+      },
+      {
+        "name": "One platform, several suppliers",
+        "demo": "Named partner systems and explicitly tested application configurations.",
+        "conversion": "Developer, manufacturer and dealer meetings."
+      }
+    ],
+    "packages": [
+      {
+        "id": "offer.ncc82_colour_upgrade",
+        "name": "Artemis Colour Upgrade",
+        "components": [
+          "device.artemis_video_card_64kb",
+          "device.color_pro_14",
+          "device.logix_mouse"
+        ],
+        "notes": "For a compatible existing Artemis; replaces its primary video card. TUI update licence included. Installation/training separately quoted, no automatic trade-in credit."
+      },
+      {
+        "id": "offer.ncc82_professional_graphics",
+        "name": "Artemis Professional Graphics extension",
+        "components": [
+          "device.artemis_professional_video_128kb",
+          "device.mono_pro_17",
+          "device.logix_mouse"
+        ],
+        "notes": "Requires a qualified host and existing primary display/card. AutoCAD not included. If a mouse is already owned, quote components without a second mouse."
+      },
+      {
+        "id": "offer.ncc82_mouse_learning",
+        "name": "Logix Mouse Learning Pack",
+        "components": [
+          "device.logix_mouse",
+          "software.entertainment_suite"
+        ],
+        "notes": "One mouse, its driver/update media and one Entertainment Suite copy; existing computer/display required."
+      }
+    ],
+    "office_configuration": "Dealer-quoted Artemis Office Graphics configuration with Abacus and the Colour Upgrade. Replace included primary card/monitor in the base system BOM and quote once; do not sell a base bundle plus another full display/card without crediting removed parts. No invented fixed-price complete-system SKU.",
+    "developer_program": "Demonstrate task -> branch -> discussion -> target build -> test -> labelled release. Promote $745.23 Team Edition with clear one-server/four-concurrent-user entitlement; hardware separate. Offer scheduled porting clinics and documented compatibility testing.",
+    "autodesk_claim": "Autodesk is developing AutoCAD for Artemis with a complete Logix-funded development environment; joint November COMDEX presentation is the target. Show an early Autodesk build only if approved and stable, labelled development software.",
+    "claim_controls": [
+      "Four simultaneous grays selected from 16 levels on the 128 KiB card.",
+      "No universal mouse retrofit or blanket CP/M binary-compatibility claim.",
+      "Professional monitor timing, grayscale and blitter performance require measured qualification.",
+      "Do not imply NCC prices guarantee supplier quotes or completed manufacturing qualification."
+    ],
+    "metrics": [
+      "Qualified demonstrations and scheduled follow-up appointments",
+      "Confirmed upgrade orders by SKU; separate from free demonstrations",
+      "Independent developer projects started and target tests completed",
+      "Partner participation with actual supported configurations",
+      "Professional evaluation requests and later AutoCAD invitations"
+    ],
+    "followup": "Assign an owner to every qualified enquiry; telephone or postal follow-up within five business days. Measure 30/60/90-day conversion without assuming automatic sales uplift."
+  }
+}

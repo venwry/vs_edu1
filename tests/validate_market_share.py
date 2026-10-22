@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-R=Path(__file__).resolve().parents[1];read=lambda n:json.loads((R/n).read_text());m=read('quarterly_market_share.json');sales=read('sales_forecast.json');eco=read('ecosystem_forecast.json')
+R=Path(__file__).resolve().parents[1];read=lambda n:json.loads((R/n).read_text());m=read('generated/models/quarterly-market-share.json');sales=read('generated/models/sales-forecast.json');eco=read('generated/models/ecosystem-forecast.json')
 for s in m['scenarios']:
  assert len(s['quarterly'])==12
  forecasts=next(x for x in sales['scenarios'] if x['id']==s['id']);contracts=next(x for x in sales['contract_scenarios'] if x['id']==s['id'])['quarterly']
@@ -17,5 +17,5 @@ for s in m['scenarios']:
    assert c['computer_units']==r['manufacturers'][c['manufacturer_id']]['units']
    assert len([o for o in eq['external_oems'] if o['manufacturer']==c['manufacturer']])==1
   if r['quarter']<'1982-Q1':assert r['platform_units']==r['manufacturers']['logix']['units']
-assert 'market-share' in read('site_pages.json')['navigation']
+assert 'market-share' in read('generated/catalogs/site-pages.json')['navigation']
 print('PASS: market denominators, 100% shares, Logix/clone reconciliation, UK subset and no duplicated contracted OEMs.')

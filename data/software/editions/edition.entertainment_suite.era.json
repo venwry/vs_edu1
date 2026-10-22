@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.entertainment_suite.era",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.entertainment_suite.era",
+    "name": "AION Entertainment Suite — era",
+    "product_ref": "software.entertainment_suite",
+    "execution_target": "era_aionix",
+    "role": "application",
+    "introduced": {
+      "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+      "event_start_date": "1982-06",
+      "date_precision": "month"
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.artemis",
+        "available_from": "1982-06"
+      },
+      {
+        "computer_ref": "computer.artemis_pro",
+        "available_from": "1982-06"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": null,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Measured image/workspace budgets and minimum supported configurations pending."
+    },
+    "dependency_refs": [
+      "technology.logix_tui_mouse",
+      "technology.flexibus_pointing_device"
+    ],
+    "delivery": "diskette",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+  }
+}

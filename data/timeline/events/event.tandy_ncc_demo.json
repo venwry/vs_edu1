@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.tandy_ncc_demo",
+  "record_type": "event",
+  "data": {
+    "id": "event.tandy_ncc_demo",
+    "title": "Model II CP/M, FlexiBUS and Abacus demonstrated at NCC",
+    "event_type": "action",
+    "date": {
+      "start": "1979-06-04",
+      "end": "1979-06-04"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.tandy",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.dri",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.tandy",
+          "actor.dri",
+          "actor.aion",
+          "actor.logix"
+        ],
+        "description": "Demonstrate Abacus using the native Model II display/keyboard, a CP/M disk build and qualified prototype FlexiBUS peripherals. Distinguish demonstrations from customer releases; announce an autumn supported 64 KB configuration. No Logix video subsystem is required."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.trs80_model_ii",
+      "software.cpm_model_ii",
+      "device.model_ii_flexibus",
+      "edition.abacus_1.model_ii"
+    ],
+    "related_event_refs": [
+      "event.tandy_announcement"
+    ]
+  }
+}

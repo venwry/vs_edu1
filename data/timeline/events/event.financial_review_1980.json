@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.financial_review_1980",
+  "record_type": "event",
+  "data": {
+    "id": "event.financial_review_1980",
+    "title": "1980 sales, capacity and investment review",
+    "event_type": "development",
+    "date": {
+      "start": "1980-12-31",
+      "end": "1980-12-31"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix"
+        ],
+        "description": "Scenario financial checkpoint. Forecast sales match costed production; capacity includes 5% commercial headroom. Details and assumptions are in market_outlook_1980_1982.json."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [
+      {
+        "name": "annual_computer_sales",
+        "value": 82916,
+        "unit": "computers",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "annual_net_revenue",
+        "value": 180558189.45,
+        "unit": "USD",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "annual_capital_investment",
+        "value": 1874721.44,
+        "unit": "USD",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "annual_operating_profit",
+        "value": 30637169.41,
+        "unit": "USD",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "cumulative_accounting_roi",
+        "value": 68.638,
+        "unit": "percent",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "cumulative_free_cash",
+        "value": -9012531.33,
+        "unit": "USD",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      }
+    ],
+    "product_refs": [],
+    "related_event_refs": []
+  }
+}

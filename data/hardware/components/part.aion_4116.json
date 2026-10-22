@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.aion_4116",
+  "record_type": "component",
+  "data": {
+    "id": "part.aion_4116",
+    "name": "AION 4116-equivalent 16Kx1 NMOS DRAM",
+    "category": "memory_chip",
+    "origin": "custom_logix_aion",
+    "vendor": "AION Labs",
+    "used_in": [
+      "computer.aurelia",
+      "computer.aurelia_plus",
+      "device.apple2_video_card",
+      "device.s100_video_card"
+    ],
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "specification": {
+      "capacity_kbit": 16,
+      "organization_words": 16384,
+      "data_width_bits": 1,
+      "ports": [
+        "single random read/write port"
+      ],
+      "array_rows": 128,
+      "array_columns": 128,
+      "random_cycle_target_ns": 375,
+      "serial_register_bits": 0,
+      "refresh": "Controller refreshes all 128 rows including hidden pages. Retention interval, refresh scheduling and speed grade require silicon qualification.",
+      "package": "16-pin DIP target; qualified ordering code pending",
+      "supply_rails_v": [
+        12,
+        5,
+        -5
+      ],
+      "qualification_status": "Accepted design baseline; AION manufacture and 4116 electrical compatibility require qualification, not a purchased supplier quote.",
+      "manufacturing_planning": {
+        "die_area_mm2_range": [
+          16,
+          20
+        ],
+        "die_area_mm2_central": 18,
+        "die_yield_fraction_1978_central": 0.5135,
+        "saleable_yield_fraction_1978_central": 0.4775,
+        "recurring_chip_cost_1978_usd": 3.4452,
+        "eight_chip_cost_1978_usd": 27.5618,
+        "status": "Planning estimate at 3 micron, not layout-derived. Ordinary DRAM still requires capacitor, sense-amplifier, retention, refresh and speed qualification; no custom serial-output register."
+      }
+    },
+    "manufacturing_requirements": [
+      "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
+      "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.aion_4116"
+    ],
+    "second_source": {
+      "manufacturer": "Standard Microsystems Corporation (SMC)",
+      "agreement_date": "1978-07",
+      "earliest_commercial_availability": "1979-10",
+      "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+      "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+      "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+    }
+  }
+}

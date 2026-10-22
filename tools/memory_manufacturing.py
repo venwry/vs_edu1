@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 def policy():
-    return json.loads((ROOT / 'memory_manufacturing.json').read_text())
+    return json.loads((ROOT / 'generated/catalogs/memory-manufacturing.json').read_text())
 
 def evaluate(recipe, wafer_cost=None):
     a = recipe['die_area_mm2']

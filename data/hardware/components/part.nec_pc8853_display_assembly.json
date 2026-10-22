@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.nec_pc8853_display_assembly",
+  "record_type": "component",
+  "data": {
+    "id": "part.nec_pc8853_display_assembly",
+    "name": "NEC PC-8853 / JC-1410P2-class colour display assembly",
+    "category": "crt_display_subassembly",
+    "origin": "external_oem",
+    "vendor": "NEC",
+    "introduced": {
+      "event_name": "Historical NEC shipment",
+      "event_start_date": "1982-02",
+      "date_precision": "month"
+    },
+    "specification": {
+      "diagonal_inches": 14,
+      "dot_pitch_mm": 0.31,
+      "historical_raster": "640x400, 24.83 kHz horizontal, 56.4/55.4 Hz vertical; stock digital RGB input.",
+      "source": "https://support.nec-lavie.jp/support/product/data/spec/dsp/d051-1.html",
+      "adaptation": "OEM tube/yoke/deflection assembly plus qualified 26.88 kHz/60 Hz progressive adaptation and AION palette/DAC electronics. Stock monitor is not plug-compatible; historical shipment does not prove OEM contract or modified timing qualification.",
+      "bare_tube_ordering_code": null
+    },
+    "used_in": [
+      "device.color_pro_14"
+    ],
+    "manufacturing_status": "incomplete_bom"
+  }
+}

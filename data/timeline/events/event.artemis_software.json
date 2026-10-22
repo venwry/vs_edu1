@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.artemis_software",
+  "record_type": "event",
+  "data": {
+    "id": "event.artemis_software",
+    "title": "Confidential next-generation software and tool preparation",
+    "event_type": "development",
+    "date": {
+      "start": "1979-07-01",
+      "end": "1979-07-01"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.aion",
+        "role": "developer"
+      },
+      {
+        "actor_ref": "actor.dri",
+        "role": "os_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.aion",
+          "actor.dri"
+        ],
+        "description": "Prepare future system software internally; publish no names or architectural details before NCC 1980."
+      },
+      {
+        "actor_refs": [
+          "actor.aion"
+        ],
+        "description": "Prepare application migration and future C tools internally. Public 1979 clinics use the established C environment and documented interfaces only; no future-target binaries, compiler output or SDK are distributed."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": []
+  }
+}

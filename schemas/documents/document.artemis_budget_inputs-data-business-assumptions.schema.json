@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.artemis_budget_inputs data/business/assumptions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "launch_date",
+        "basis",
+        "base_cost_snapshots",
+        "software_cost_snapshots",
+        "hdd_subsystem_additions_usd",
+        "hdd_basis",
+        "pricing",
+        "software_timing",
+        "source_urls"
+      ],
+      "properties": {
+        "launch_date": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "base_cost_snapshots": {
+          "type": "object"
+        },
+        "software_cost_snapshots": {
+          "type": "object"
+        },
+        "hdd_subsystem_additions_usd": {
+          "type": "object"
+        },
+        "hdd_basis": {
+          "type": "string"
+        },
+        "pricing": {
+          "type": "object"
+        },
+        "software_timing": {
+          "type": "string"
+        },
+        "source_urls": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

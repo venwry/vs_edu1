@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.computer.aurelia",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "computer.aurelia",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.computer.aurelia.base"
+    ],
+    "requirements": [
+      "Populate 24 system DRAMs; AION system controller owns decode and refresh",
+      "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
+      "motherboard ROM capacity/package/count and cartridge connectors",
+      "AION system controller owns mapper registers/logic",
+      "clock/reset/interrupt circuitry",
+      "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
+      "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
+      "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+      "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+      "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+      "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+      "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+      "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
+    ]
+  }
+}

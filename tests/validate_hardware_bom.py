@@ -5,8 +5,8 @@ from collections import Counter
 import jsonschema
 root=Path(__file__).resolve().parents[1]
 def read(name):return json.loads((root/name).read_text())
-t=read('logix_aion_technical_catalog_v2.json');bom=read('hardware_bom.json')
-jsonschema.Draft202012Validator(read('hardware_bom.schema.json')).validate(bom)
+t=read('generated/catalogs/logix-aion-technical-catalog-v2.json');bom=read('generated/catalogs/hardware-bom.json')
+jsonschema.Draft202012Validator(read('schemas/legacy/hardware_bom.schema.json')).validate(bom)
 records={r['id']:r for v in t.values() if isinstance(v,list) for r in v if isinstance(r,dict) and 'id'in r}
 products={r['catalog_ref']:r for r in bom['products']};components={r['id']:r for r in bom['components']};assemblies={r['id']:r for r in bom['assemblies']}
 assert len(products)==len(bom['products']);assert len(components)==len(bom['components']);assert len(assemblies)==len(bom['assemblies'])

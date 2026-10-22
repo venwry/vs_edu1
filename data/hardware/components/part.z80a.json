@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.z80a",
+  "record_type": "component",
+  "data": {
+    "id": "part.z80a",
+    "name": "Zilog Z80A",
+    "category": "cpu",
+    "origin": "historical_external_component",
+    "specification": {
+      "clock_mhz": 4,
+      "data_width_bits": 8
+    },
+    "used_in": [
+      "computer.aurelia",
+      "device.artemis_cpm80_module"
+    ],
+    "vendor": "Zilog",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "manufacturing_requirements": [
+      "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.z80a"
+    ]
+  }
+}

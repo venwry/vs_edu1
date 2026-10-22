@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.aion_development_team.z80_client",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.aion_development_team.z80_client",
+    "name": "AION Development System — Team Edition — z80 client",
+    "product_ref": "software.aion_development_team",
+    "execution_target": "z80_cpm",
+    "role": "development_client",
+    "introduced": {
+      "event_name": "COMDEX November 1981 — Team Edition premiere",
+      "event_start_date": "1981-11-19"
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.aurelia",
+        "available_from": "1981-11-19"
+      },
+      {
+        "computer_ref": "computer.aurelia_plus",
+        "available_from": "1981-11-19"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": null,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Release profiling required; server recommended 1 MiB, clients use existing platform memory profiles and bounded overlays. No measured minimum asserted."
+    },
+    "dependency_refs": [
+      "software.cpm_aurelia_networking"
+    ],
+    "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
+    "support_status": "November 1981 scenario offering, subject to documented qualification gates."
+  }
+}

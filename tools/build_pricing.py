@@ -4,7 +4,7 @@ import json, math, hashlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 load=lambda n:json.loads((ROOT/n).read_text())
-costs=load('manufacturing_costs.json'); catalog=load('logix_aion_technical_catalog_v2.json')
+costs=load('generated/models/manufacturing-costs.json'); catalog=load('generated/catalogs/logix-aion-technical-catalog-v2.json')
 C={p['id']:p for p in costs['products']}; YEARS=range(1978,1983)
 sources={}
 for y,title in [(1978,'Natural_Language'),(1979,'Artificial_Intelligence'),(1980,'Inter_Computer_Communications'),(1981,'Operating_Systems')]:
@@ -144,10 +144,10 @@ for id in ['software.aurelia_compatibility_kit','service.aurelia_compatibility_s
  add(id,group='Developer programs',direct=True,note='COMDEX 1979 manufacturer programme; optional support/certification, no per-machine runtime royalty. Cost-based annual planning price; launch and extra-work quotations are separate. Development/NRE excluded.')
 add('software.aion_development_team',group='Software and developer tools',unit='one server / four concurrent developers; hardware excluded',note='November 1981 Team Edition: C IDE 2, repository and collaboration. Includes 20 staff-hours onboarding and 12 first-year support hours. User-authorized 50% adoption-price exception; original entitlements and support retained. Negative unit contribution is explicit. No development or campaign amortization; aggregate demand/ROI reassessment pending.')
 # NCC 1982 products: no verified like-for-like comparator by the cutoff.
-for id in load('ncc_1982_campaign.json')['offering_refs']:
+for id in load('generated/catalogs/ncc-1982-campaign.json')['offering_refs']:
  if id.startswith('device.') or id=='software.entertainment_suite':
   add(id,group='Software and developer tools' if id.startswith('software.') else 'Peripherals and expansion',note='June 1982 launch estimate; no matched comparator. Existing 25% net-contribution fallback; unqualified procurement/routing assumptions remain visible.')
-for pack in load('ncc_1982_campaign.json')['packages']:
+for pack in load('generated/catalogs/ncc-1982-campaign.json')['packages']:
  add(pack['id'],name=pack['name'],group='Application bundles',start='1982-06-07',parts=[{'cost_ref':r,'quantity':1} for r in pack['components']],unit='one upgrade package; host excluded',note=pack['notes'])
 # Approved use-case bundles, both generations, use exact component references.
 for b in catalog['proposed_bundles']:
@@ -264,14 +264,14 @@ for p in P:
 # Group consistently without affecting dependencies.
 groups=['Complete computer systems','Application bundles','Network installation bundles','Peripherals and expansion','Networking','Software and developer tools','Business applications','Support','Training','Developer programs']
 P.sort(key=lambda p:groups.index(p['type']))
-model={'metadata':{'title':'Logix / AION retail pricing assessment','schema_version':'1.0','currency':'USD','price_basis':'Nominal US retail prices before sales tax; June 15 snapshots, 1978–1982','source_commit':'47177a6a75b07f0c2a9a00aedf2a30a9793cb1de','cost_model_file':'manufacturing_costs.json','cost_model_sha256':hashlib.sha256((ROOT/'manufacturing_costs.json').read_bytes()).hexdigest(),'snapshots':[f'{y}-06-15' for y in YEARS],'status':'Recommended pricing scenario; does not overwrite historical catalog price fields'},'policy':{'target_discount_pct':25,'acceptable_discount_band_pct':[20,30],'default_computerland_fee_pct':25,'catalog_fee_range_pct':[20,30],'fee_basis':'Percent of retail selling price; assumption interpreting catalog retailer-margin term. Hardware/software via ComputerLand; services direct with zero fee. Service channel is a proposal.','minimum_margin_on_net_revenue_at_max_fee_pct':25,'rounding':'Round upward to $4/$9 endings below $100; $9 endings above. Prevent annual increases unless required by cost floor.','formula':'fee=retail*rate; revenue=retail-fee; profit=revenue-recurring_cost; retail_floor=cost/((1-max_fee)*0.75)','profit_definition':'Unit contribution, not net corporate profit. Excludes R&D, capital/depreciation, marketing/vouchers, software development, tax and finance. Costs include modeled logistics and service delivery.','risk':'25% net margin at 30% fee approximately covers simultaneous 10% retail markdown and 20% cost overrun. It does not cover unsold stock, actual warranty failures or the entire original high-cost envelope.','availability':'No documented withdrawal dates: offering_end=null. Announced PRO products retain provisional prices, excluded from available-only filters. No 1979 June prices for December Aurelia+; no 1980 June prices for November Abacus/Pulse 3.','benchmark_policy':'Primary period advertisements; itemized baskets and judgment adjustments labeled estimates. No later IBM PC, 1982 networks or later warranty prices used retroactively. Observed mail-order prices are included as competitive pressure. No exact benchmark means no substantiated discount claim.','bundle_policy':'Base-system costs already include keyboard, display, OS and one-year support. 1981 Artemis includes NIC and Server edition automatically. BPI suite and developer registration already include their respective contents. Composite rows are alternative purchase units, not additive sales totals.','service_scope':'On-site support is a proposed capped eight-hour engagement with modeled travel, not unlimited annual repairs. Training prices assume eight learners; customer-site sold as class ×8 with travel extra. BPI/Pulse course durations remain model assumptions.'},'sources':sources,'competitor_evidence':E,'additional_cost_assumptions':extra,'types':groups,'products':P,'excluded':['OEM chips and licensing','Bare computer chassis and internal assemblies','Standalone NICs replaced by complete network upgrade offerings','Bundled operating systems','Prototype/superseded RAM','Duplicate platform editions except separately selectable Abacus 2 platform SKUs','Academy direct-sales channel record']}
+model={'metadata':{'title':'Logix / AION retail pricing assessment','schema_version':'1.0','currency':'USD','price_basis':'Nominal US retail prices before sales tax; June 15 snapshots, 1978–1982','source_commit':'47177a6a75b07f0c2a9a00aedf2a30a9793cb1de','cost_model_file':'generated/models/manufacturing-costs.json','cost_model_sha256':hashlib.sha256((ROOT/'generated/models/manufacturing-costs.json').read_bytes()).hexdigest(),'snapshots':[f'{y}-06-15' for y in YEARS],'status':'Recommended pricing scenario; does not overwrite historical catalog price fields'},'policy':{'target_discount_pct':25,'acceptable_discount_band_pct':[20,30],'default_computerland_fee_pct':25,'catalog_fee_range_pct':[20,30],'fee_basis':'Percent of retail selling price; assumption interpreting catalog retailer-margin term. Hardware/software via ComputerLand; services direct with zero fee. Service channel is a proposal.','minimum_margin_on_net_revenue_at_max_fee_pct':25,'rounding':'Round upward to $4/$9 endings below $100; $9 endings above. Prevent annual increases unless required by cost floor.','formula':'fee=retail*rate; revenue=retail-fee; profit=revenue-recurring_cost; retail_floor=cost/((1-max_fee)*0.75)','profit_definition':'Unit contribution, not net corporate profit. Excludes R&D, capital/depreciation, marketing/vouchers, software development, tax and finance. Costs include modeled logistics and service delivery.','risk':'25% net margin at 30% fee approximately covers simultaneous 10% retail markdown and 20% cost overrun. It does not cover unsold stock, actual warranty failures or the entire original high-cost envelope.','availability':'No documented withdrawal dates: offering_end=null. Announced PRO products retain provisional prices, excluded from available-only filters. No 1979 June prices for December Aurelia+; no 1980 June prices for November Abacus/Pulse 3.','benchmark_policy':'Primary period advertisements; itemized baskets and judgment adjustments labeled estimates. No later IBM PC, 1982 networks or later warranty prices used retroactively. Observed mail-order prices are included as competitive pressure. No exact benchmark means no substantiated discount claim.','bundle_policy':'Base-system costs already include keyboard, display, OS and one-year support. 1981 Artemis includes NIC and Server edition automatically. BPI suite and developer registration already include their respective contents. Composite rows are alternative purchase units, not additive sales totals.','service_scope':'On-site support is a proposed capped eight-hour engagement with modeled travel, not unlimited annual repairs. Training prices assume eight learners; customer-site sold as class ×8 with travel extra. BPI/Pulse course durations remain model assumptions.'},'sources':sources,'competitor_evidence':E,'additional_cost_assumptions':extra,'types':groups,'products':P,'excluded':['OEM chips and licensing','Bare computer chassis and internal assemblies','Standalone NICs replaced by complete network upgrade offerings','Bundled operating systems','Prototype/superseded RAM','Duplicate platform editions except separately selectable Abacus 2 platform SKUs','Academy direct-sales channel record']}
 # Balance contribution/net revenue against the discount to the dated proxy.
 # Frozen baselines remain audit/demand anchors; no compounded price reductions.
 from decimal import Decimal, ROUND_HALF_UP, ROUND_CEILING
 def cents(value):return float(Decimal(str(value)).quantize(Decimal('0.01'),rounding=ROUND_HALF_UP))
 def ceil_cents(value):return float(Decimal(str(value)).quantize(Decimal('0.01'),rounding=ROUND_CEILING))
-baseline=load('pricing_baseline.json');oem_path=ROOT/'compatibility_pricing_baseline.json'
-oem_baseline=load('compatibility_pricing_baseline.json')
+baseline=load('baselines/pricing-baseline.json');oem_path=ROOT/'baselines/compatibility-pricing-baseline.json'
+oem_baseline=load('baselines/compatibility-pricing-baseline.json')
 assert not set(baseline['products']) & set(oem_baseline['products'])
 baseline['products'].update(oem_baseline['products'])
 model['metadata']['compatibility_baseline_sha256']=hashlib.sha256(oem_path.read_bytes()).hexdigest()
@@ -309,7 +309,7 @@ for offer in P:
   assert fee==old['computerland_fee_rate']
   s['cost_revision']={'reason':'Current accepted hardware and delivery costs; frozen original costs retained for audit.', 'baseline_manufacturing_cost_usd':old['manufacturing_cost_usd'], 'current_manufacturing_cost_usd':cost, 'delta_usd':cents(cost-old['manufacturing_cost_usd'])}
   price,status=balanced_price(cost,fee,benchmark)
-  adoption=load('team_development_program.json')['adoption_pricing'] if offer['id']=='software.aion_development_team' else None
+  adoption=load('generated/catalogs/team-development-program.json')['adoption_pricing'] if offer['id']=='software.aion_development_team' else None
   if adoption:price=adoption['retail_usd'];status='adoption_subsidy_50_percent'
   commission=cents(price*fee);revenue=cents(price-commission);profit=cents(revenue-cost)
   margin=cents(profit/revenue*100);discount=cents((1-price/benchmark)*100) if benchmark else None
@@ -348,7 +348,7 @@ for offer in P:
    else:total+=q*round_price(extra[ref]['cost_usd']/.525)
   s['separate_purchase_price_usd']=cents(total)
   if s['retail_price_usd']>total:s['warnings'].append('Bundle price exceeds revised separate components; compare both purchase routes.')
-model['metadata'].update(schema_version='1.2',source_commit=baseline['metadata']['source_commit'],baseline_file='pricing_baseline.json',baseline_sha256=hashlib.sha256((ROOT/'pricing_baseline.json').read_bytes()).hexdigest())
+model['metadata'].update(schema_version='1.2',source_commit=baseline['metadata']['source_commit'],baseline_file='baselines/pricing-baseline.json',baseline_sha256=hashlib.sha256((ROOT/'baselines/pricing-baseline.json').read_bytes()).hexdigest())
 model['policy'].update(target_discount_pct=None,acceptable_discount_band_pct=None,minimum_margin_on_net_revenue_at_max_fee_pct=None,rounding='Nearest cent; adjacent-cent check minimizes the percentage gap. Nonnegative central contribution takes precedence.',formula='For proxy B, cost C and fee f: P=sqrt(C*B/(1-f)); contribution/net=1-C/(P*(1-f)) equals proxy discount=1-P/B. If C/(1-f)>B use break-even. Without a proxy use C/((1-f)*0.75).',risk='Stress losses remain visible. Equality is calibrated to central costs and baseline fees; interactive fee/cost scenarios retain prices and may diverge.',baseline='Frozen original baselines retained only for audit and demand anchoring. The former 40% contribution-reduction policy is superseded; each rebuild uses current costs and unchanged dated proxies.',scope='All priced offers and annual snapshots. Promotional course variants balance after full voucher provision; partner baskets remain component sums.',price_floor='Central-cost break-even at baseline fee.',fallback_margin_on_net_revenue_pct=25,matching_tolerance_percentage_points=.1,course_variant='Balance contribution after full voucher redemption against the course proxy. Fundamentals credit remains 50% of tuition; other regular-course credit $150. Reserve redemption once in marketing.',bundle_balance='Each offered bundle uses its own proxy and costs. Exact percentage matching can exceed separate component prices; both routes are disclosed, with no invented discount cap.')
 
 # Independent partner baskets are component sums, outside the immutable SKU baseline.
@@ -372,17 +372,17 @@ for product in P:
 
 model['policy']['extension_1982']='Existing comparator amounts carried forward nominally as unverified 1982 planning proxies; no 1982 historical quote or sales reaction claimed. Balanced percentages applied to new June 15 recurring costs. New NCC products without a matched proxy use the 25% net-contribution fallback. Team Edition is the explicitly authorized 50% adoption-price exception with visible unit loss. Development/campaign provisions are not amortized into recurring cost.'
 
-model['policy']['team_adoption_exception']=load('team_development_program.json')['adoption_pricing']['rationale']
+model['policy']['team_adoption_exception']=load('generated/catalogs/team-development-program.json')['adoption_pricing']['rationale']
 model['policy']['scope']+=' Team Edition alone overrides the cost floor with its approved $745.23 adoption price.'
 team_offer=by_id['software.aion_development_team']
 import copy
 team_offer['launch_snapshot']=copy.deepcopy(team_offer['snapshots']['1982'])
-team_offer['launch_snapshot'].update(date='1981-11-19',status='launch_price_with_june_1982_cost_proxy',cost_date='1982-06-15',cost_date_basis=load('team_development_program.json')['adoption_pricing']['launch_cost_basis'])
-model['metadata']['ncc_inputs_sha256']=hashlib.sha256((ROOT/'ncc_1982_inputs.json').read_bytes()).hexdigest()
-model['metadata']['team_program_sha256']=hashlib.sha256((ROOT/'team_development_program.json').read_bytes()).hexdigest()
+team_offer['launch_snapshot'].update(date='1981-11-19',status='launch_price_with_june_1982_cost_proxy',cost_date='1982-06-15',cost_date_basis=load('generated/catalogs/team-development-program.json')['adoption_pricing']['launch_cost_basis'])
+model['metadata']['ncc_inputs_sha256']=hashlib.sha256((ROOT/'generated/catalogs/ncc-1982-inputs.json').read_bytes()).hexdigest()
+model['metadata']['team_program_sha256']=hashlib.sha256((ROOT/'generated/catalogs/team-development-program.json').read_bytes()).hexdigest()
 model['metadata']['forecast_status']='Existing sales/investment/ROI forecasts predate the NCC offering and Team adoption-price policy; no automatic demand uplift or recalculated aggregate totals are claimed.'
 
-(ROOT/'pricing_results.json').write_text(json.dumps(model,indent=2,ensure_ascii=False)+'\n')
+(ROOT/'generated/models/pricing-results.json').write_text(json.dumps(model,indent=2,ensure_ascii=False)+'\n')
 print(f'{len(P)} products; '+str(sum(s['retail_price_usd'] is not None for p in P for s in p['snapshots'].values()))+' assessed snapshots')
 
 

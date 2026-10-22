@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.abacus_2.era",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.abacus_2.era",
+    "name": "AION Abacus 2.0 — era",
+    "product_ref": "software.abacus_2",
+    "execution_target": "era_aionix",
+    "role": "application",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.artemis",
+        "available_from": "1980-05-19"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": null,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [
+      "technology.aionix_os_model"
+    ],
+    "delivery": "Not yet specified",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+  }
+}

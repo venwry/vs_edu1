@@ -1,0 +1,98 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.artemis_cpm80_module",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.artemis_cpm80_module",
+    "name": "Artemis CP/M-80 backward-compatibility expansion module",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.z80a",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_cpm80_module.local_64_kib_ram_implementation",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.artemis_cpm80_module.local_refresh_controller",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.artemis_cpm80_module.boot_rom_or_host_upload_implementation",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.artemis_cpm80_module.mailbox_window_arbitration_and_doorbells",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.artemis_cpm80_module.bus_width_conversion_and_clock_reset",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.artemis_cpm80_module.compatibility_card_pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_cpm80_module.passives_protection_and_internal_harnesses",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.artemis_cpm80_module.external_cable_and_regional_mains_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "Choose eight 64K×1 data DRAMs as a candidate, or another explicitly costed organization",
+      "add refresh, ROM or host-upload boot logic, mailbox RAM/window and arbitration (dual-port is not mandatory), bus transceivers/width conversion, doorbells, clock/reset, mapper emulation, connector and diagnostics. Count its RAM separately from system modules. PRO compatibility is not currently promised."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

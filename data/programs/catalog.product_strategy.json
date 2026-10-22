@@ -1,0 +1,64 @@
+{
+  "$schema": "../../schemas/records/configuration.schema.json",
+  "schema_version": "1.0.0",
+  "id": "catalog.product_strategy",
+  "record_type": "configuration",
+  "data": {
+    "software_platform_policy_from_november_1980": {
+      "primary_focus": "32-bit Artemis software",
+      "8_bit_policy": "Aurelia/Aurelia+ receive simplified refreshes and maintenance rather than equal-feature major releases.",
+      "flagship_products": [
+        "software.abacus_3",
+        "software.pulse_3"
+      ]
+    },
+    "aurelia_1978_campaign": {
+      "definition_file": "aurelia_1978_campaign.json",
+      "tagline": "Logix Aurelia—a computer like no other. Your personal assistant in business.",
+      "event_refs": [
+        "event.aurelia_campaign_teaser",
+        "event.aurelia_campaign_advert",
+        "event.aurelia_campaign_preparation",
+        "event.aurelia_launch",
+        "event.ncc78_sessions_media",
+        "event.ncc78_sessions_media"
+      ],
+      "broadcast_policy": "Every Logix presentation at NCC 1978, including the premiere, both technical sessions, partner appearances, questions and any additional Logix sessions. Offer and supply the material free of charge to any television station wishing to broadcast it; Logix covers normal duplication and dispatch. Supply station-compatible broadcast copies on request.",
+      "accounting": "No fabricated campaign total and no automatic per-unit allocation. Reuse existing recurring course costs; do not charge Academy teaching twice. Free station supply creates no content-license revenue; reach and uptake are not guaranteed."
+    },
+    "competitor_reactions_file": "COMPETITOR_REACTIONS.md",
+    "ncc_1982_offering": {
+      "launch": "1982-06",
+      "event_ref": "event.ncc82_graphics_mouse",
+      "product_refs": [
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "device.logix_mouse",
+        "software.entertainment_suite"
+      ],
+      "positioning": "Colour business graphics and mouse interaction, with recreational tutorials. Later high-resolution second-display programme remains separate.",
+      "commercial_status": "Offering approved; detailed BOMs, prices, production qualification and forecasts not yet recalculated."
+    },
+    "ncc_1982": {
+      "campaign_file": "ncc_1982_campaign.json",
+      "headline": "Pointy ideas with a solid point.",
+      "offering_refs": [
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "device.logix_mouse",
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17",
+        "software.entertainment_suite",
+        "technology.logix_tui_mouse"
+      ],
+      "pricing_review": "ncc_1982_review.json",
+      "availability": "June colour/mouse offering and around-June professional hardware availability. AutoCAD is a November COMDEX development target, not a June shipping application."
+    },
+    "comdex_1982": {
+      "offering_ref": "offer.comdex82_artemis_autocad",
+      "campaign_file": "comdex_1982_campaign.json",
+      "report_page": "comdex-1982.html",
+      "cost_status": "November recurring costs and retail planning prices assessed separately; see comdex_1982_cost_review.json."
+    }
+  }
+}

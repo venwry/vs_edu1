@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.tandy_announcement",
+  "record_type": "event",
+  "data": {
+    "id": "event.tandy_announcement",
+    "title": "Model II announced with planned CP/M, FlexiBUS and Abacus offering",
+    "event_type": "plan",
+    "date": {
+      "start": "1979-05-30",
+      "end": "1979-05-30"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.tandy",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.dri",
+        "role": "participant"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.tandy",
+          "actor.logix",
+          "actor.dri",
+          "actor.aion"
+        ],
+        "description": "Publicly announce Model II and the planned officially supported CP/M/Abacus configuration and FlexiBUS option. Preserve the historical late-May announcement window, June NCC demonstrations and October US delivery window. Announcements and orders are not completed computer or Abacus sales."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.trs80_model_ii",
+      "software.cpm_model_ii",
+      "device.model_ii_flexibus",
+      "edition.abacus_1.model_ii"
+    ],
+    "related_event_refs": [
+      "event.tandy_port_review"
+    ]
+  }
+}

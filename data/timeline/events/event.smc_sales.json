@@ -1,0 +1,55 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.smc_sales",
+  "record_type": "event",
+  "data": {
+    "id": "event.smc_sales",
+    "title": "SMC begins licensed chip sales",
+    "event_type": "release",
+    "date": {
+      "start": "1979-10",
+      "end": "1979-10"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.smc",
+        "role": "partner"
+      },
+      {
+        "actor_ref": "actor.labs",
+        "role": "partner"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.smc",
+          "actor.labs",
+          "actor.logix"
+        ],
+        "description": "Initial qualified SMC-manufactured chips become commercially available in the alternate timeline. This begins staged availability, not guaranteed release of every chip or mature yields; video RAM retains a separate qualification gate. SMC performs wafer fabrication rather than merely packaging AION dies."
+      }
+    ],
+    "outcomes": [
+      {
+        "description": "AION remains the launch supplier for June 1979 cards. Qualified SMC parts become independently purchasable alternatives; no automatic procurement switch, price reduction or high-volume yield is asserted."
+      }
+    ],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "part.flexibus_host_controller",
+      "part.flexibus_device_controller",
+      "part.aurelia_video_chip",
+      "part.aion_4116"
+    ],
+    "related_event_refs": [
+      "event.smc_agreement"
+    ]
+  }
+}

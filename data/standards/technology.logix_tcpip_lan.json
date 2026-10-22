@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.logix_tcpip_lan",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.logix_tcpip_lan",
+    "name": "Logix TCP/IP local-area networking solution",
+    "category": "networking_standard_and_product_architecture",
+    "introduced": {
+      "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+      "event_start_date": "1981-05-04"
+    },
+    "owner": "Logix / AION",
+    "specification": {
+      "network_protocol": "TCP/IP",
+      "link_layer_ref": "technology.logix_lan100_link",
+      "design_goal": "common network protocol stack across Aurelia CP/M and Artemis/AIONix clients and servers",
+      "interoperability_model": "IP is kept above the Logix-specific physical/data-link layer so future faster link technologies can preserve higher-level software."
+    },
+    "used_by": [
+      "software.cpm_aurelia_networking",
+      "software.aionix_server",
+      "software.bpi_client_server",
+      "computer.artemis",
+      "computer.artemis_pro"
+    ]
+  }
+}

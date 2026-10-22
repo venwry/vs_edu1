@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.bundle.artemis_network_upgrade",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.bundle.artemis_network_upgrade",
+    "name": "Existing Artemis networking upgrade",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "assembly.device.network_card_artemis",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included accessory",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.media.software.aionix_server",
+        "quantity": 1,
+        "unit": "each",
+        "role": "physical software delivery only; license separate",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.bundle.artemis_network_upgrade.bundle_cables_media_manuals_and_carton_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "avoid double counting accessory supplied cables",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "NIC plus complete Server OS cartridge/media, cable policy and install kit. Do not count a second base OS cartridge unless actually included. No new host or hub."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

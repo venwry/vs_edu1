@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.abacus_embedded_pulse",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.abacus_embedded_pulse",
+    "name": "Embedded Pulse in Abacus",
+    "category": "application_scripting",
+    "introduced": {
+      "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+      "event_start_date": "1980-11-19"
+    },
+    "owner": "AION Software",
+    "specification": {
+      "implementation_design": {
+        "status": "Accepted design baseline; implementation and qualification pending.",
+        "modes": "Standalone offline document access remains available; embedded Pulse 3.0 is a separate mode hosted by Abacus 3.0.",
+        "ownership": "Abacus owns the open document and file writer. Scripts use its API; no concurrent independent Pulse writer.",
+        "api": "Bounded iteration and operations on cells, tables, formulas, queries and report layouts; reuse Pulse language/runtime semantics.",
+        "execution": "Explicit script actions may modify documents; ordinary formula/virtual-column evaluation is side-effect-free. Define cancellation, error recovery, grouped undo and recalculation boundaries.",
+        "consistency": "Track changed dependencies, invalidate stale caches and recalculate through the matching Abacus evaluator. Avoid whole-document duplication in RAM.",
+        "compatibility": "Preserve standalone version checks, recoverable replacement saves and older edition restrictions. Embedding does not backport 3.0 features to Z80 editions."
+      }
+    },
+    "used_by": [
+      "software.abacus_3",
+      "software.pulse_3"
+    ],
+    "technology_refs": [
+      "technology.pulse_notebook_model",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard"
+    ]
+  }
+}

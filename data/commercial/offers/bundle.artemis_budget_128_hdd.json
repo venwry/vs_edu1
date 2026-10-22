@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schemas/records/offer.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bundle.artemis_budget_128_hdd",
+  "record_type": "offer",
+  "data": {
+    "id": "bundle.artemis_budget_128_hdd",
+    "name": "Artemis 128 — Budget Hard-Disk Office",
+    "introduced": {
+      "event_name": "NCC 1980 — Artemis budget range",
+      "event_start_date": "1980-05-19"
+    },
+    "computer_ref": "computer.artemis",
+    "computer_configuration": {
+      "ram_kb": 128,
+      "ram_configuration_id": "m32_128",
+      "module_ref": "part.artemis_ram_module_32kb_x16",
+      "populated_modules": 4,
+      "populated_banks": 2,
+      "video_card_ref": "device.artemis_video_card_16kb",
+      "network_included_from": "1981-05-04"
+    },
+    "included_devices": [
+      "device.flexibus_keyboard",
+      "device.color_monitor_2"
+    ],
+    "included_software": [
+      "software.aionix",
+      "software.business_tools_artemis"
+    ],
+    "included_services": [
+      {
+        "service_ref": "service.regular_support",
+        "duration_years": 1
+      }
+    ],
+    "bom_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
+    "manufacturing_variants": [
+      {
+        "effective_from": "1981-05-04",
+        "assembly_ref": "assembly.bundle.artemis_budget_128_hdd.networked"
+      }
+    ],
+    "storage": {
+      "floppies": 2,
+      "hard_disk_mb": 5,
+      "hard_disk_enclosure": "external qualified subsystem"
+    },
+    "software_variants": [
+      {
+        "effective_from": "1980-11-19",
+        "add": [
+          "software.abacus_3"
+        ]
+      }
+    ],
+    "notes": [
+      "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
+      "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
+    ]
+  }
+}

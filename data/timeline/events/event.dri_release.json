@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.dri_release",
+  "record_type": "event",
+  "data": {
+    "id": "event.dri_release",
+    "title": "Portable CP/M extensions released",
+    "event_type": "release",
+    "date": {
+      "start": "1979-05-05",
+      "end": "1979-05-05"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.dri",
+        "role": "publisher"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.dri"
+        ],
+        "description": "Release documented, optional CP/M Platform Extensions for non-Logix manufacturers: TUI, capability discovery and FlexiBUS adapters. Ordinary CP/M remains usable without these facilities; hardware and application resource requirements still apply."
+      }
+    ],
+    "outcomes": [
+      {
+        "description": "The CP/M ecosystem retains an opportunity to expand."
+      }
+    ],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "software.cpm_aurelia",
+      "technology.logix_tui_standard",
+      "technology.flexibus"
+    ],
+    "related_event_refs": [
+      "event.dri_portable"
+    ]
+  }
+}

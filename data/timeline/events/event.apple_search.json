@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.apple_search",
+  "record_type": "event",
+  "data": {
+    "id": "event.apple_search",
+    "title": "Apple seeks business-software partners",
+    "event_type": "market_response",
+    "date": {
+      "start": "1978-10-15",
+      "end": "1978-10-15"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.apple",
+        "role": "competitor"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.apple"
+        ],
+        "description": "Expand the July business-software initiative into partner negotiations for disk-based accounting, spreadsheets and databases; seek independent software alternatives to AION."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.apple_business_initiative"
+    ]
+  }
+}

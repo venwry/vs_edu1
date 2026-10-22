@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.ncc83_athena_premiere",
+  "record_type": "event",
+  "data": {
+    "id": "event.ncc83_athena_premiere",
+    "title": "NCC 1983: planned ERA² and Logix Athena premiere",
+    "event_type": "plan",
+    "date": {
+      "start": "1983-05-16",
+      "end": "1983-05-16"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.labs",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "programme_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix",
+          "actor.labs",
+          "actor.aion"
+        ],
+        "description": "Present ERA² at 12 MHz target (16 MHz stretch), Athena 256 KiB / 5 MB HDD and Athena Server 1 MiB / 20 MB HDD. Both include 64 KiB graphics, one 5.25-inch DS/DD floppy and one network card. EEPROM BIOS only; no OS/application ROM cards. AIONix 2 specification remains pending. Conference runs 16–19 May in Anaheim; premiere does not certify volume shipments."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "part.era2",
+      "computer.athena",
+      "computer.athena_server",
+      "software.aionix2"
+    ],
+    "related_event_refs": []
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../schemas/records/process.schema.json",
+  "schema_version": "1.0.0",
+  "id": "process.clone_product_preparation",
+  "record_type": "process",
+  "data": {
+    "id": "process.clone_product_preparation",
+    "title": "Five manufacturer product and production preparation",
+    "participants": [
+      {
+        "actor_ref": "actor.northstar",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.vector",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.sks",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.goupil",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.eina",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.northstar",
+          "actor.vector",
+          "actor.sks",
+          "actor.goupil",
+          "actor.eina",
+          "actor.logix"
+        ],
+        "description": "Audit partners, agree terms, prototype and qualify local products, arrange contracted manufacturing and build launch stock. Initial ranges remain narrow; Logix and third-party complements are always allowed."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.clone_january_launch"
+    ],
+    "period": {
+      "start": "1981-01-12",
+      "end": "1981-12-31",
+      "precision": "range",
+      "qualifier": "Accepted alternative-scenario dates; exact days selected for scheduling",
+      "display": "1981-01-12 to 1981-12-31"
+    },
+    "phase_refs": [
+      "phase.comdex80",
+      "phase.ncc81",
+      "phase.manufacturing_1981_1983"
+    ],
+    "date_basis": "provisional"
+  }
+}

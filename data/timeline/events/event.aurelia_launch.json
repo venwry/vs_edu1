@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.aurelia_launch",
+  "record_type": "event",
+  "data": {
+    "id": "event.aurelia_launch",
+    "title": "Aurelia platform launches",
+    "event_type": "launch",
+    "date": {
+      "start": "1978-06-05",
+      "end": "1978-06-05"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "presenter"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "software_partner"
+      },
+      {
+        "actor_ref": "actor.academy",
+        "role": "training_partner"
+      },
+      {
+        "actor_ref": "actor.adam",
+        "role": "host"
+      },
+      {
+        "actor_ref": "actor.kildall",
+        "role": "CP/M_presenter"
+      },
+      {
+        "actor_ref": "actor.mpi",
+        "role": "printer_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix"
+        ],
+        "description": "Premieres Aurelia: startup, common editing, safe peripheral attachment, Business Tools, eight-minute Abacus demonstration, then seven-minute BPI partner demonstration. DRI, MPI and the head of BPI speak in the seven-minute partners section. Academy and dealer configurations follow. Total 44 minutes before questions; see aurelia_1978_campaign.json."
+      }
+    ],
+    "outcomes": [
+      {
+        "description": "Platform includes AION software, peripherals, support, developer programs and Academy training."
+      },
+      {
+        "description": "Academy Fundamentals offers two days of hands-on learning before purchase; 50% tuition credit valid six months toward one Aurelia, redeemable at Academy or participating dealers reimbursed by Logix. Orders accepted at training; no purchase obligation. Locations, tuition and first class dates must be published once selected."
+      }
+    ],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.aurelia",
+      "software.business_tools_aurelia",
+      "software.abacus_1",
+      "software.cpm_aurelia",
+      "service.academy_before_you_buy",
+      "service.academy_direct_sales",
+      "device.flexiprint40",
+      "software.aurelia_sdk",
+      "software.aion_c_ide"
+    ],
+    "related_event_refs": [
+      "event.academy",
+      "event.aurelia_campaign_advert",
+      "event.ncc78_sessions_media"
+    ]
+  }
+}

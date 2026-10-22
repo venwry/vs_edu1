@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.part.medium_resolution_rgb_crt",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.part.medium_resolution_rgb_crt",
+    "name": "12-inch medium-resolution RGB CRT display assembly",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.medium_resolution_rgb_crt",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

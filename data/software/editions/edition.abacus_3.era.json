@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.abacus_3.era",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.abacus_3.era",
+    "name": "AION Abacus 3.0 — era",
+    "product_ref": "software.abacus_3",
+    "execution_target": "era_aionix",
+    "role": "application",
+    "introduced": {
+      "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+      "event_start_date": "1980-11-19"
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.artemis",
+        "available_from": "1980-11-19"
+      },
+      {
+        "computer_ref": "computer.artemis_pro",
+        "available_from": "1981-05-04"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": null,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [
+      "technology.aionix_os_model"
+    ],
+    "delivery": "Not yet specified",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+  }
+}

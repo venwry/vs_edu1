@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.ncc82_followup",
+  "record_type": "event",
+  "data": {
+    "id": "event.ncc82_followup",
+    "title": "NCC dealer and Academy follow-up programme",
+    "event_type": "development",
+    "date": {
+      "start": "1982-06-14",
+      "end": "1982-06-14"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "organizer"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "organizer"
+      },
+      {
+        "actor_ref": "actor.academy",
+        "role": "organizer"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix",
+          "actor.aion",
+          "actor.academy"
+        ],
+        "description": "June-July regional demonstrations and upgrade fulfillment. Assign enquiry owners and follow up by telephone/post within five business days; track orders and evaluations separately from booth traffic. Budget and campaign plan: ncc_1982_campaign.json."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "device.artemis_video_card_64kb",
+      "device.color_pro_14",
+      "device.logix_mouse",
+      "device.artemis_professional_video_128kb",
+      "device.mono_pro_17",
+      "software.entertainment_suite",
+      "technology.logix_tui_mouse"
+    ],
+    "related_event_refs": [
+      "event.ncc82_graphics_mouse"
+    ]
+  }
+}

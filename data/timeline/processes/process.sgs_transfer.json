@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/records/process.schema.json",
+  "schema_version": "1.0.0",
+  "id": "process.sgs_transfer",
+  "record_type": "process",
+  "data": {
+    "id": "process.sgs_transfer",
+    "title": "SGS process, controller and ERAv1 transfer",
+    "participants": [
+      {
+        "actor_ref": "actor.labs",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.sgs",
+        "role": "programme_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.labs",
+          "actor.sgs"
+        ],
+        "description": "Fund feasibility, process adaptation, masks, test engineering and per-part pilot/production qualification; transfer all agreed controllers and 3 µm ERAv1. Initial controller and ERA schedules are targets, not simultaneous availability. AION launch supply remains available."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.clone_january_launch"
+    ],
+    "period": {
+      "start": "1981-01-19",
+      "end": "1982-06-30",
+      "precision": "range",
+      "qualifier": "Accepted alternative-scenario dates; exact days selected for scheduling",
+      "display": "1981-01-19 to 1982-06-30"
+    },
+    "phase_refs": [
+      "phase.comdex80",
+      "phase.ncc81",
+      "phase.manufacturing_1981_1983"
+    ],
+    "date_basis": "provisional"
+  }
+}

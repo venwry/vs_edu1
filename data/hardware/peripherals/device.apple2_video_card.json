@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.apple2_video_card",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.apple2_video_card",
+    "name": "Logix Video Card for Apple II",
+    "category": "third_party_host_expansion_card",
+    "introduced": {
+      "event_name": "NCC 1979 — Apple II and S-100 expansion launch",
+      "event_start_date": "1979-06-04"
+    },
+    "sold_separately": true,
+    "vendor": "Logix",
+    "description": "Logix-developed open-ecosystem expansion, independent of DRI’s development obligations.",
+    "specification": {
+      "host": "Apple II",
+      "host_interface": "Apple II slot decode and driver ROM; preserve native memory map and avoid other cards.",
+      "software": "Native Apple II 6502 drivers, callable libraries and examples; applications must use the card API. No CP/M port, Z80 CPU or transparent redirection of existing graphics.",
+      "sourcing": "AION silicon at June 1979 launch; qualified SMC equivalents eligible only after the relevant part release, no earlier than October 1979.",
+      "display_controller_ref": "part.aurelia_video_chip",
+      "video_ram_kb": 16,
+      "video_ram_chip_ref": "part.aion_4116",
+      "video_ram_chip_count": 8,
+      "video_link_ref": "technology.logix_digital_video",
+      "host_access": "Windowed/addressed access to onboard video RAM; onboard display refresh continues independently. No extra general-purpose host RAM is implied.",
+      "display_modes": "Reuse Aurelia controller text/bitmap capabilities subject to card/monitor qualification. 80-column output requires a compatible 640-pixel monitor. Host CPU determines drawing throughput.",
+      "included_monitor": false,
+      "flexibus_ports": 0,
+      "sprite_memory": {
+        "chip_ref": "part.aion_2114",
+        "chip_count": 2,
+        "bank_data_width_bits": 8,
+        "capacity_bytes": 1024,
+        "separate_bus": true,
+        "separate_from_system_and_display_ram": true
+      },
+      "sprite_policy": "All five sprites in every supported Aurelia-family mode using exclusive 1 KiB SRAM; host-specific upload interface. No Aurelia system DMA controller on this card."
+    },
+    "manufacturing_requirements": [
+      "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
+      "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
+      "Release assembly routing, test fixtures and procurement specifications.",
+      "Qualify 16 KiB video RAM window access, controller arbitration, monitor capability negotiation and maximum supported video mode."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.device.apple2_video_card"
+    ]
+  }
+}

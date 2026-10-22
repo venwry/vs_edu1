@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.sony_kv1204_display_assembly",
+  "record_type": "component",
+  "data": {
+    "id": "part.sony_kv1204_display_assembly",
+    "name": "Sony KV-1204 12-inch color display components",
+    "category": "crt_display_subassembly",
+    "origin": "historical_external_component",
+    "specification": {
+      "reused_elements": [
+        "color tube",
+        "deflection yoke",
+        "convergence circuitry",
+        "HV supply",
+        "deflection circuitry"
+      ]
+    },
+    "used_in": [
+      "device.color_monitor_1"
+    ],
+    "vendor": "Sony",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "manufacturing_requirements": [
+      "Exact OEM supply boundary and permitted purchasable kit, with included component list",
+      "quantify RGB-interface modifications, mechanical fit, yield and calibration."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.sony_kv1204_display_assembly"
+    ]
+  }
+}

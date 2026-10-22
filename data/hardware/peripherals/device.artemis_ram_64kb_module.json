@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.artemis_ram_64kb_module",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.artemis_ram_64kb_module",
+    "name": "Logix Artemis additional 64 KB RAM module",
+    "category": "memory_expansion",
+    "part_ref": "part.artemis_ram_module_64kb",
+    "compatible_with": [
+      "computer.artemis"
+    ],
+    "sold_separately": false,
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "product_status": "Superseded standalone 8-bit module offer; use matched bank kits.",
+    "superseded_by": [
+      "device.artemis_ram_64kb_bank_kit",
+      "device.artemis_ram_256kb_bank_kit"
+    ],
+    "manufacturing_requirements": [
+      "Retire/revise this offering to a matched-pair kit. Define separate 64 KiB low-density and 256 KiB high-density bank kits, included modules, compatible host revisions, installation instructions, spares and kit packaging. The old eight-chip module cannot remain under the new electrical rule."
+    ],
+    "manufacturing_status": "excluded_from_active_production"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../schemas/records/configuration.schema.json",
+  "schema_version": "1.0.0",
+  "id": "catalog.aurelia_explorer",
+  "record_type": "configuration",
+  "data": {
+    "computer_refs": [
+      "computer.aurelia",
+      "computer.aurelia_plus"
+    ],
+    "memory_ref": "technology.aurelia_memory_model",
+    "os_ref": "software.cpm_aurelia",
+    "introduction": "Explore the 8-bit platform that starts the Logix story. From its processor to its peripheral ecosystem, one connected system at a time.",
+    "context": "Logix launches Aurelia as a complete personal-computing platform: hardware, enhanced CP/M, AION applications, developer programs, support and the Computer Academy.",
+    "timeline": [
+      {
+        "date": "1978-06-05",
+        "title": "NCC 1978",
+        "description": "Aurelia launches with FlexiBUS, enhanced CP/M 1.4 and the separately offered BPI business suite."
+      },
+      {
+        "date": "1979-06-04",
+        "title": "NCC 1979",
+        "description": "Microsoft BASIC for Aurelia premieres alongside the Apple II interoperability products."
+      },
+      {
+        "date": "1979-12-03",
+        "title": "COMDEX 1979",
+        "description": "Aurelia+ arrives alongside Pulse and Abacus 2.0; Monitor II options become available."
+      },
+      {
+        "date": "1980-11",
+        "title": "Software direction",
+        "description": "Artemis becomes the primary AION software platform; Aurelia receives maintenance and simplified refreshes."
+      },
+      {
+        "date": "1981-05-04",
+        "title": "NCC 1981",
+        "description": "An optional network adapter and CP/M upgrade add business networking."
+      }
+    ],
+    "notes": {
+      "hardware": "AION system controller contains DMA, bank control and independent system refresh. Video uses 16 KiB DRAM plus exclusive 1 KiB sprite SRAM.",
+      "peripherals": "Compatible choices, not simultaneous port occupancy. Later accessories show their introduction dates; they were not included at the original launch.",
+      "software": "Explore system internals, the Business Tools cartridge and independent software offerings. Introduction dates are shown; later editions are not implied at launch.",
+      "memory": "Logical CPU windows map physical banks. DMA latches physical banks; all installed DRAM is refreshed. Sprite SRAM uses separate video ports and is not application RAM.",
+      "bundles": "Bundle decomposition. Existing offers and proposed packages are labeled separately. Listed dates prevent later software from being implied at launch; prices are not assumed.",
+      "portability": "Shared application code and C APIs; separate target binaries, startup code and libraries. Optional emulator/debugging features are not guaranteed launch components."
+    },
+    "portability_refs": {
+      "api": "technology.logix_c_api",
+      "display": "technology.logix_display_api",
+      "language": "technology.logix_c_target_contract",
+      "tui": "technology.logix_tui_standard",
+      "framework": "technology.aion_c_portability_framework",
+      "aurelia_tools": "software.simple_c_z80",
+      "artemis_tools": "software.aion_c_ide"
+    }
+  }
+}

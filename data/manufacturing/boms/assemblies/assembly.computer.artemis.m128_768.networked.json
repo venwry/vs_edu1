@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.computer.artemis.m128_768.networked",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.computer.artemis.m128_768.networked",
+    "name": "Logix Artemis m128_768 networking-era",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "assembly.computer.artemis.m128_768",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.device.network_card_artemis",
+        "quantity": 1,
+        "unit": "each",
+        "role": "one fitted NIC",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Effective from 1981-05-04; consumes one general expansion slot."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+    "effective_from": "1981-05-04"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.apple_business_initiative",
+  "record_type": "event",
+  "data": {
+    "id": "event.apple_business_initiative",
+    "title": "Apple coordinates business-software recruitment",
+    "event_type": "action",
+    "date": {
+      "start": "1978-07-17",
+      "end": "1978-07-17"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.apple",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.apple"
+        ],
+        "description": "Respond to Aurelia with a coordinated search for accounting, spreadsheet and database partners, engineering access and demonstration systems. Disk II development already predates Aurelia; this is a change in software/commercial priority, not the invention of disk support."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.aurelia"
+    ],
+    "related_event_refs": [
+      "event.aurelia_launch"
+    ]
+  }
+}
