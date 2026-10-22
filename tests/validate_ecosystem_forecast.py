@@ -34,13 +34,17 @@ for s in m['scenarios']:
   for q,n in a['cpm_quarterly_copies'].items():assert n>=0 and (not n or a['cpm_first']<=q)
   for q,n in a['native_quarterly_copies'].items():assert n>=0 and (not n or a['native_first']<=q)
  for key in ['wordstar','dbase','supercalc','bdsc']:assert next(a for a in apps if a['id']==key)['native_first'] is None
-# Anchor exactly the existing 1981 plan; no accidental double counting of partial months.
-i=read('industrial_investment_1974_1981.json')
-for s in m['scenarios']:
- assert sum(sum(r['logix_new_units'].values()) for r in s['quarterly'] if r['quarter'].startswith('1981'))==sum(sum(v['products'].values()) for month,v in i['monthly_demand'].items() if month.startswith('1981'))
+# Match each reassessed scenario, not the frozen industrial baseline.
+sales=read('sales_forecast.json')
+for scenario in m['scenarios']:
+ current=next(s for s in sales['scenarios'] if s['id']==scenario['id'])
+ for row in scenario['quarterly']:
+  match=next(r for r in current['quarterly'] if r['quarter']==row['quarter'])
+  assert row['logix_new_units']==match['products']
 central=next(s for s in m['scenarios'] if s['id']=='central')
 assert 3<=next(r for r in central['quarterly'] if r['quarter']=='1980-Q2')['external_supported_manufacturers']<=5
 for k in ['cpm_applications','aionix_applications','devices_sold','cpm_copies_sold']:
  assert m['scenarios'][0]['quarterly'][-1][k]<central['quarterly'][-1][k]<m['scenarios'][2]['quarterly'][-1][k]
 assert '__MODEL__' not in text and '__NAV__' not in text
 print('PASS: 3 scenarios × 23 quarters; dated releases, deduplicated titles, licences, manufacturer/model ledgers, sales reconciliation, host anchors and source hashes')
+
