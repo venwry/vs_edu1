@@ -76,6 +76,8 @@ def historical_offer(template, ref, year):
     return result
 
 families = {
+ 'budget_colour':['bundle.artemis_budget_128'],
+ 'budget_hdd':['bundle.artemis_budget_128_hdd'],
  'office_essentials':['bundle.proposed_aurelia_plus_office','bundle.proposed_aurelia_office'],
  'office_professional':['bundle.proposed_artemis_office','bundle.proposed_artemis_office_color','bundle.proposed_artemis_analysis','bundle.proposed_aurelia_plus_analysis'],
  'business_accounts':['bundle.proposed_artemis_accounts','bundle.proposed_aurelia_plus_accounts','bundle.proposed_aurelia_accounts'],
@@ -128,6 +130,9 @@ def december_assessment(ref, date):
     p = annual[ref]
     if p['offering_start'] > date or (p.get('offering_end') and p['offering_end'] < date) or p.get('announced_only'):
         return None
+    if ref.startswith('bundle.artemis_budget_128'):
+        choices=[v for v in list(p['snapshots'].values())+[p['launch_snapshot']]+p.get('dated_snapshots',[]) if v.get('retail_price_usd') is not None and v['date']<=date]
+        return max(choices,key=lambda v:v['date']), 'Dated budget-system assessment carried forward'
     launch = p.get('launch_snapshot')
     if launch and launch['date'] <= date:
         return launch, 'Launch price; '+launch.get('cost_date_basis','dated launch assessment')
@@ -211,6 +216,14 @@ for year in map(str,range(1978,1983)):
     view['announced_offers']=[p['name'] for p in model['products'] if p['offering_start']<=date and p.get('announced_only')]
     view['price_date_notice']='December prices use dated launch or November assessments when present, otherwise an explicitly labelled carry-forward or retrospective planning proxy. No new December cost survey is implied.'
     output['snapshots'][date]=view
+# Show actual dated budget contents rather than an opaque self-reference.
+for date,view in output['snapshots'].items():
+ for card in view['solutions']:
+  if card['id'] in ['budget_colour','budget_hdd']:
+   card['includes']=['Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard','AIONix, Business Tools and one-year Regular Support']
+   if date>='1980-11-19':card['includes'].append('Abacus 3; bounded 128 KiB workloads')
+   if date>='1981-05-04':card['includes'].append('Standard network interface')
+   if card['id']=='budget_hdd':card['includes'].append('5 MB qualified hard-disk subsystem with enclosure, power and interface')
 output['snapshots']=dict(sorted(output['snapshots'].items()))
 output['provenance'] = {p:hashlib.sha256((R/p).read_bytes()).hexdigest() for p in ['retail_catalog_1982.json','pricing_results.json']}
 (R/'retail_catalog_1982_results.json').write_text(json.dumps(output,indent=2,ensure_ascii=False)+'\n')

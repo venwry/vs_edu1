@@ -5,9 +5,9 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 x=json.loads((R/'retail_catalog_1982_results.json').read_text())
 m=json.loads((R/'pricing_results.json').read_text())
-assert len(x['solutions'])==7 and len(x['upgrades'])==5
+assert len(x['solutions'])==9 and len(x['upgrades'])==5
 assert x['effective_from']=='1982-11-29'
-assert len({p['id'] for p in x['solutions']+x['upgrades']})==12
+assert len({p['id'] for p in x['solutions']+x['upgrades']})==14
 for filename,digest in x['provenance'].items():
     assert hashlib.sha256((R/filename).read_bytes()).hexdigest()==digest
 for p in x['solutions']+x['upgrades']:

@@ -5,7 +5,7 @@ assert(d.getElementById('dated-prices').textContent.includes('November'));assert
 assert.equal(d.querySelectorAll('.pricing-row').length,model.products.length);assert.equal(d.querySelectorAll('.pricing-group').length,10);assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,6);
 assert.equal(d.getElementById('catalog-date').value,'1982-06-15');
 assert.equal(d.getElementById('catalog-date').options.length,10);
-assert.equal(d.querySelectorAll('#solutions + p + .solution-grid .solution-card').length,4);
+assert.equal(d.querySelectorAll('#solutions + p + .solution-grid .solution-card').length,6);
 assert.equal(d.querySelectorAll('#solution-upgrades + .solution-grid .solution-card').length,5);
 assert.equal(d.getElementById('historical-pricing').open,false);
 assert(!d.getElementById('solution-professional_cad'));
