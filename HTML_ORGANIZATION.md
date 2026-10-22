@@ -3,7 +3,12 @@
 The primary navigation has 19 destinations in five sections. Its authoritative
 source is `site/config/document.site_pages.json`; `tools/build_site.py` generates
 one identical header for all primary pages, legacy redirects and financial report
-templates. The compact header uses five bordered section cells, inline slash-separated\nlinks, 12px type and shortened navigation labels; full page titles remain unchanged.\nThere is no separate brand/title row. Run catalogue assembly before this builder. Financial pipelines run
+templates. The compact header uses five bordered section cells, inline slash-separated
+links, 12px type and shortened navigation labels; full page titles remain unchanged.
+There is no separate brand/title row. The header spans the viewport without a
+maximum-width cap or outer padding. Navigation uses automatic table layout so
+cell widths follow their text content rather than equal columns. Below 540px,
+the five-cell row scrolls horizontally to keep links readable. Run catalogue assembly before this builder. Financial pipelines run
 the site builder before publishing their staged output.
 
 | Previous pages | Current destination |
@@ -109,7 +114,10 @@ node tests/page-content.test.cjs
 
 The organisation test checks identical headers, all cost rows, redirects, both
 family models/configuration selectors, campaign grouping and ecosystem accounting.
-The page-content test normalises only the shared header to the frozen\n`tests/fixtures/page-baseline-navigation.html` before comparing the existing body\nsnapshots. The organisation test checks the actual current header separately.\nThe original migration snapshot remains `tests/page-content-baseline.json`.
+The page-content test normalises only the shared header to the frozen
+`tests/fixtures/page-baseline-navigation.html` before comparing the existing body
+snapshots. The organisation test checks the actual current header separately.
+The original migration snapshot remains `tests/page-content-baseline.json`.
 The intentional new UI uses `tests/page-content-reorganized.json`; updating it
 requires reviewing the organisation/content coverage tests, not merely accepting
 a changed hash. Existing domain tests continue to test diagrams, BOMs, financial
