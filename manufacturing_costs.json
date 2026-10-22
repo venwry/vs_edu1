@@ -7570,6 +7570,22 @@
         0.7,
         1.55
       ]
+    },
+    "budgetcost.bundle.artemis_128_color": {
+      "name": "bundle.artemis_128_color",
+      "basis": "Complete subassembly/software allocation from artemis_budget_inputs.json; do not add again to total."
+    },
+    "budgetcost.software.business_tools_artemis": {
+      "name": "software.business_tools_artemis",
+      "basis": "Complete subassembly/software allocation from artemis_budget_inputs.json; do not add again to total."
+    },
+    "budgetcost.software.abacus_3": {
+      "name": "software.abacus_3",
+      "basis": "Complete subassembly/software allocation from artemis_budget_inputs.json; do not add again to total."
+    },
+    "budgetcost.allowance.artemis_budget_5mb_subsystem": {
+      "name": "allowance.artemis_budget_5mb_subsystem",
+      "basis": "Complete subassembly/software allocation from artemis_budget_inputs.json; do not add again to total."
     }
   },
   "chip_fabrication_models": {
@@ -41277,6 +41293,400 @@
         }
       },
       "service_hours": 8
+    },
+    {
+      "id": "bundle.artemis_budget_128",
+      "catalog_ref": "bundle.artemis_budget_128",
+      "name": "Artemis 128 — Budget Colour Office",
+      "group": "Bundles",
+      "unit": "complete system, two floppies, 12-inch Color II, dated software and support",
+      "available_from": "1980-05-19",
+      "assumptions": [
+        "Author-requested budget range from NCC 1980 onward. Costs are engineering allowances, not supplier quotations. No historical IBM-PC competition is assumed before 1982."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null,
+          "low_usd": null,
+          "high_usd": null,
+          "breakdown_usd": {},
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128",
+          "bom_lines": []
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null,
+          "low_usd": null,
+          "high_usd": null,
+          "breakdown_usd": {},
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128",
+          "bom_lines": []
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 1404.86,
+          "low_usd": 1123.89,
+          "high_usd": 1826.32,
+          "breakdown_usd": {
+            "bom_materials": 1082.82,
+            "workforce": 100.89,
+            "energy": 8.8,
+            "consumables": 27.13,
+            "operating_overhead": 25.26,
+            "yield_and_rework": 50.09,
+            "instructions": 13.2,
+            "packaging": 23.04,
+            "logistics": 30.6,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 43.03
+          },
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128",
+          "bom_lines": [
+            {
+              "component_ref": "budgetcost.bundle.artemis_128_color",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1381.34
+            },
+            {
+              "component_ref": "budgetcost.software.business_tools_artemis",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 23.52
+            }
+          ]
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 1451.65,
+          "low_usd": 1161.32,
+          "high_usd": 1887.15,
+          "breakdown_usd": {
+            "bom_materials": 1087.34,
+            "workforce": 108.06,
+            "energy": 8.18,
+            "consumables": 26.77,
+            "operating_overhead": 26.82,
+            "yield_and_rework": 61.49,
+            "instructions": 22.76,
+            "packaging": 26.92,
+            "logistics": 35.64,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 47.67
+          },
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128",
+          "bom_lines": [
+            {
+              "component_ref": "budgetcost.bundle.artemis_128_color",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1408.52
+            },
+            {
+              "component_ref": "budgetcost.software.business_tools_artemis",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 23.61
+            },
+            {
+              "component_ref": "budgetcost.software.abacus_3",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 19.52
+            }
+          ]
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 1435.39,
+          "low_usd": 1148.31,
+          "high_usd": 1866.01,
+          "breakdown_usd": {
+            "bom_materials": 1059.52,
+            "workforce": 109.0,
+            "energy": 8.59,
+            "consumables": 28.33,
+            "operating_overhead": 27.14,
+            "yield_and_rework": 59.82,
+            "instructions": 24.65,
+            "packaging": 29.18,
+            "logistics": 38.62,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 50.54
+          },
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128",
+          "bom_lines": [
+            {
+              "component_ref": "budgetcost.bundle.artemis_128_color",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1391.27
+            },
+            {
+              "component_ref": "budgetcost.software.business_tools_artemis",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 23.87
+            },
+            {
+              "component_ref": "budgetcost.software.abacus_3",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 20.25
+            }
+          ]
+        }
+      },
+      "launch_assessment": {
+        "date": "1980-05-19",
+        "status": "available_proposal",
+        "retail_price_usd": 2497.53,
+        "manufacturing_cost_usd": 1404.86,
+        "cost_low_usd": 1123.89,
+        "cost_high_usd": 1826.32,
+        "cost_breakdown_usd": {
+          "bom_materials": 1082.82,
+          "workforce": 100.89,
+          "energy": 8.8,
+          "consumables": 27.13,
+          "operating_overhead": 25.26,
+          "yield_and_rework": 50.09,
+          "instructions": 13.2,
+          "packaging": 23.04,
+          "logistics": 30.6,
+          "recurring_licenses": 0.0,
+          "included_service_delivery": 43.03
+        },
+        "cost_components": [
+          {
+            "cost_ref": "bundle.artemis_budget_128",
+            "quantity": 1,
+            "unit_cost_usd": 1404.86,
+            "extended_cost_usd": 1404.86
+          }
+        ],
+        "computerland_fee_rate": 0.25,
+        "computerland_fee_usd": 624.38,
+        "revenue_after_fee_usd": 1873.15,
+        "unit_profit_usd": 468.29,
+        "contribution_margin_on_net_revenue_pct": 25.0,
+        "separate_purchase_price_usd": null,
+        "price_floor_usd": 1873.15,
+        "competitor": {
+          "normalized_price_usd": null,
+          "discount_pct": null,
+          "assessment_type": "cost_based_fallback",
+          "assessment": "IBM reference configuration only in 1982; substitute OS/software qualification required. No anachronistic IBM competitor before 1982."
+        },
+        "pricing_balance": {
+          "status": "fallback",
+          "margin_pct": 25.0,
+          "discount_pct": null
+        },
+        "warnings": [
+          "Engineering estimate, not a supplier quote or guaranteed margin.",
+          "128 KiB workloads require qualification; later application versions are not backdated."
+        ],
+        "cost_date_basis": "Dated cost overlay; HDD enclosure, integration and support included"
+      }
+    },
+    {
+      "id": "bundle.artemis_budget_128_hdd",
+      "catalog_ref": "bundle.artemis_budget_128_hdd",
+      "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+      "group": "Bundles",
+      "unit": "complete system, two floppies, 12-inch Color II, dated software and support",
+      "available_from": "1980-05-19",
+      "assumptions": [
+        "Author-requested budget range from NCC 1980 onward. Costs are engineering allowances, not supplier quotations. No historical IBM-PC competition is assumed before 1982.",
+        "Existing model drive allowances $1150/$950/$850 in 1980/81/82 plus $150/$100/$100 enclosure, supply, interface and cabling. Early 5 MB subsystem may use an external enclosure; exact OEM remains an engineering qualification assumption. Two floppies retained."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null,
+          "low_usd": null,
+          "high_usd": null,
+          "breakdown_usd": {},
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
+          "bom_lines": []
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null,
+          "low_usd": null,
+          "high_usd": null,
+          "breakdown_usd": {},
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
+          "bom_lines": []
+        },
+        "1980": {
+          "status": "offered_estimate",
+          "total_usd": 2829.86,
+          "low_usd": 2263.89,
+          "high_usd": 3678.82,
+          "breakdown_usd": {
+            "bom_materials": 2382.82,
+            "workforce": 135.89,
+            "energy": 8.8,
+            "consumables": 27.13,
+            "operating_overhead": 25.26,
+            "yield_and_rework": 115.09,
+            "instructions": 13.2,
+            "packaging": 23.04,
+            "logistics": 55.6,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 43.03
+          },
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
+          "bom_lines": [
+            {
+              "component_ref": "budgetcost.bundle.artemis_128_color",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1381.34
+            },
+            {
+              "component_ref": "budgetcost.software.business_tools_artemis",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 23.52
+            },
+            {
+              "component_ref": "budgetcost.allowance.artemis_budget_5mb_subsystem",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1425
+            }
+          ]
+        },
+        "1981": {
+          "status": "offered_estimate",
+          "total_usd": 2606.65,
+          "low_usd": 2085.32,
+          "high_usd": 3388.65,
+          "breakdown_usd": {
+            "bom_materials": 2137.34,
+            "workforce": 138.06,
+            "energy": 8.18,
+            "consumables": 26.77,
+            "operating_overhead": 26.82,
+            "yield_and_rework": 116.49,
+            "instructions": 22.76,
+            "packaging": 26.92,
+            "logistics": 55.64,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 47.67
+          },
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
+          "bom_lines": [
+            {
+              "component_ref": "budgetcost.bundle.artemis_128_color",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1408.52
+            },
+            {
+              "component_ref": "budgetcost.software.business_tools_artemis",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 23.61
+            },
+            {
+              "component_ref": "budgetcost.software.abacus_3",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 19.52
+            },
+            {
+              "component_ref": "budgetcost.allowance.artemis_budget_5mb_subsystem",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1155
+            }
+          ]
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 2485.39,
+          "low_usd": 1988.31,
+          "high_usd": 3231.01,
+          "breakdown_usd": {
+            "bom_materials": 2009.52,
+            "workforce": 139.0,
+            "energy": 8.59,
+            "consumables": 28.33,
+            "operating_overhead": 27.14,
+            "yield_and_rework": 109.82,
+            "instructions": 24.65,
+            "packaging": 29.18,
+            "logistics": 58.62,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 50.54
+          },
+          "bom_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
+          "bom_lines": [
+            {
+              "component_ref": "budgetcost.bundle.artemis_128_color",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1391.27
+            },
+            {
+              "component_ref": "budgetcost.software.business_tools_artemis",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 23.87
+            },
+            {
+              "component_ref": "budgetcost.software.abacus_3",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 20.25
+            },
+            {
+              "component_ref": "budgetcost.allowance.artemis_budget_5mb_subsystem",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1050
+            }
+          ]
+        }
+      },
+      "launch_assessment": {
+        "date": "1980-05-19",
+        "status": "available_proposal",
+        "retail_price_usd": 5030.86,
+        "manufacturing_cost_usd": 2829.86,
+        "cost_low_usd": 2263.89,
+        "cost_high_usd": 3678.82,
+        "cost_breakdown_usd": {
+          "bom_materials": 2382.82,
+          "workforce": 135.89,
+          "energy": 8.8,
+          "consumables": 27.13,
+          "operating_overhead": 25.26,
+          "yield_and_rework": 115.09,
+          "instructions": 13.2,
+          "packaging": 23.04,
+          "logistics": 55.6,
+          "recurring_licenses": 0.0,
+          "included_service_delivery": 43.03
+        },
+        "cost_components": [
+          {
+            "cost_ref": "bundle.artemis_budget_128_hdd",
+            "quantity": 1,
+            "unit_cost_usd": 2829.86,
+            "extended_cost_usd": 2829.86
+          }
+        ],
+        "computerland_fee_rate": 0.25,
+        "computerland_fee_usd": 1257.71,
+        "revenue_after_fee_usd": 3773.15,
+        "unit_profit_usd": 943.29,
+        "contribution_margin_on_net_revenue_pct": 25.0,
+        "separate_purchase_price_usd": null,
+        "price_floor_usd": 3773.15,
+        "competitor": {
+          "normalized_price_usd": null,
+          "discount_pct": null,
+          "assessment_type": "cost_based_fallback",
+          "assessment": "IBM reference configuration only in 1982; substitute OS/software qualification required. No anachronistic IBM competitor before 1982."
+        },
+        "pricing_balance": {
+          "status": "fallback",
+          "margin_pct": 25.0,
+          "discount_pct": null
+        },
+        "warnings": [
+          "Engineering estimate, not a supplier quote or guaranteed margin.",
+          "128 KiB workloads require qualification; later application versions are not backdated."
+        ],
+        "cost_date_basis": "Dated cost overlay; HDD enclosure, integration and support included"
+      }
     }
   ],
   "coverage_exclusions": [
@@ -42303,5 +42713,6 @@
         }
       ]
     }
-  ]
+  ],
+  "budget_inputs_sha256": "de5903db39cfd628da4b7153f50aefc3f9a20782c47bfe94ea23f3d77469c85f"
 }

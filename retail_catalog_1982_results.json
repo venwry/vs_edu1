@@ -57,6 +57,97 @@
       }
     },
     {
+      "id": "budget_colour",
+      "name": "Logix Budget Colour Office",
+      "purpose": "Affordable native Artemis business workstation.",
+      "includes": [
+        "Artemis 128 KiB, two floppy drives, keyboard and Color Monitor II 12-inch",
+        "AIONix, Business Tools and Abacus 3 (from November 1980)",
+        "One-year Regular Support"
+      ],
+      "components": [
+        {
+          "ref": "bundle.artemis_budget_128",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [
+        "Memory expansion for larger workloads",
+        "Printer and network upgrade",
+        "Backup media and installation quoted separately"
+      ],
+      "pricing": {
+        "amount_usd": 2512.73,
+        "label": "Reference configuration price",
+        "cost_usd": 1435.39,
+        "dealer_fee_usd": 628.18,
+        "contribution_usd": 449.16,
+        "component_retail_sum_usd": 2512.73,
+        "lines": [
+          {
+            "ref": "bundle.artemis_budget_128",
+            "name": "Artemis 128 — Budget Colour Office",
+            "retail": 2512.73,
+            "cost": 1435.39,
+            "fee": 628.18,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 2512.73,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    },
+    {
+      "id": "budget_hdd",
+      "name": "Logix Budget Hard-Disk Office",
+      "purpose": "Affordable native Artemis business workstation with 5 MB storage.",
+      "includes": [
+        "Artemis 128 KiB, two floppy drives, keyboard and Color Monitor II 12-inch",
+        "AIONix, Business Tools and Abacus 3 (from November 1980)",
+        "One-year Regular Support",
+        "5 MB hard disk with qualified enclosure, power and interface"
+      ],
+      "components": [
+        {
+          "ref": "bundle.artemis_budget_128_hdd",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [
+        "Memory expansion for larger workloads",
+        "Printer and network upgrade",
+        "Backup media and installation quoted separately"
+      ],
+      "pricing": {
+        "amount_usd": 4068.5,
+        "label": "Reference configuration price",
+        "cost_usd": 2485.39,
+        "dealer_fee_usd": 1017.13,
+        "contribution_usd": 565.98,
+        "component_retail_sum_usd": 4068.5,
+        "lines": [
+          {
+            "ref": "bundle.artemis_budget_128_hdd",
+            "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+            "retail": 4068.5,
+            "cost": 2485.39,
+            "fee": 1017.13,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 4068.5,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    },
+    {
       "id": "office_professional",
       "name": "Logix Office Professional",
       "purpose": "Work with larger spreadsheets, typed tables and graphical reports.",
@@ -1772,6 +1863,28 @@
       "basis": "June estimate carried forward",
       "availability": "catalogued; qualification requirements apply",
       "original_retail": 263.83
+    },
+    {
+      "ref": "bundle.artemis_budget_128",
+      "name": "Artemis 128 — Budget Colour Office",
+      "retail": 2512.73,
+      "cost": 1435.39,
+      "fee": 628.18,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2512.73
+    },
+    {
+      "ref": "bundle.artemis_budget_128_hdd",
+      "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+      "retail": 4068.5,
+      "cost": 2485.39,
+      "fee": 1017.13,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 4068.5
     }
   ],
   "snapshots": {
@@ -4522,6 +4635,91 @@
           ]
         },
         {
+          "id": "budget_colour",
+          "name": "Logix Budget Colour Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Colour Office.",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "pricing": {
+            "amount_usd": 2497.53,
+            "label": "June 15 reference configuration price",
+            "cost_usd": 1404.86,
+            "dealer_fee_usd": 624.38,
+            "contribution_usd": 468.29,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128",
+                "name": "Artemis 128 — Budget Colour Office",
+                "retail": 2497.53,
+                "cost": 1404.86,
+                "fee": 624.38,
+                "date": "1980-06-15",
+                "basis": "Recorded June 15 snapshot",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 2497.53,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included.",
+          "variants": []
+        },
+        {
+          "id": "budget_hdd",
+          "name": "Logix Budget Hard-Disk Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Hard-Disk Office (5 MB).",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "5 MB qualified hard-disk subsystem with enclosure, power and interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128_hdd",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "pricing": {
+            "amount_usd": 5030.86,
+            "label": "June 15 reference configuration price",
+            "cost_usd": 2829.86,
+            "dealer_fee_usd": 1257.71,
+            "contribution_usd": 943.29,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128_hdd",
+                "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+                "retail": 5030.86,
+                "cost": 2829.86,
+                "fee": 1257.72,
+                "date": "1980-06-15",
+                "basis": "Recorded June 15 snapshot",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 5030.86,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included.",
+          "variants": []
+        },
+        {
           "id": "office_professional",
           "name": "Logix Office Professional",
           "purpose": "Dated configuration: Artemis — Office productivity.",
@@ -5926,6 +6124,28 @@
           "basis": "Recorded June 15 snapshot",
           "availability": "catalogued; qualification requirements apply",
           "original_retail": 224.71
+        },
+        {
+          "ref": "bundle.artemis_budget_128",
+          "name": "Artemis 128 — Budget Colour Office",
+          "retail": 2497.53,
+          "cost": 1404.86,
+          "fee": 624.38,
+          "date": "1980-06-15",
+          "basis": "Recorded June 15 snapshot",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 2497.53
+        },
+        {
+          "ref": "bundle.artemis_budget_128_hdd",
+          "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+          "retail": 5030.86,
+          "cost": 2829.86,
+          "fee": 1257.72,
+          "date": "1980-06-15",
+          "basis": "Recorded June 15 snapshot",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 5030.86
         }
       ],
       "announced_offers": []
@@ -6024,6 +6244,93 @@
                 "basis": "Earlier assessment carried forward; no December repricing assumed",
                 "availability": "catalogued; qualification requirements apply",
                 "original_retail": 2038.99,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers the listed configuration only. Assessment date and any retrospective proxy are shown explicitly."
+        },
+        {
+          "id": "budget_colour",
+          "name": "Logix Budget Colour Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Colour Office.",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "variants": [],
+          "pricing": {
+            "amount_usd": 2532.23,
+            "label": "Reference price — Dated budget-system assessment carried forward",
+            "cost_usd": 1424.38,
+            "dealer_fee_usd": 633.06,
+            "contribution_usd": 474.79,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128",
+                "name": "Artemis 128 — Budget Colour Office",
+                "retail": 2532.23,
+                "cost": 1424.38,
+                "fee": 633.06,
+                "date": "1980-11-19",
+                "basis": "Dated budget-system assessment carried forward",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 2532.23,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers the listed configuration only. Assessment date and any retrospective proxy are shown explicitly."
+        },
+        {
+          "id": "budget_hdd",
+          "name": "Logix Budget Hard-Disk Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Hard-Disk Office (5 MB).",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "5 MB qualified hard-disk subsystem with enclosure, power and interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128_hdd",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "variants": [],
+          "pricing": {
+            "amount_usd": 5065.56,
+            "label": "Reference price — Dated budget-system assessment carried forward",
+            "cost_usd": 2849.38,
+            "dealer_fee_usd": 1266.39,
+            "contribution_usd": 949.79,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128_hdd",
+                "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+                "retail": 5065.56,
+                "cost": 2849.38,
+                "fee": 1266.39,
+                "date": "1980-11-19",
+                "basis": "Dated budget-system assessment carried forward",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 5065.56,
                 "quantity": 1
               }
             ],
@@ -7521,6 +7828,28 @@
           "basis": "Earlier assessment carried forward; no December repricing assumed",
           "availability": "catalogued; qualification requirements apply",
           "original_retail": 224.71
+        },
+        {
+          "ref": "bundle.artemis_budget_128",
+          "name": "Artemis 128 — Budget Colour Office",
+          "retail": 2532.23,
+          "cost": 1424.38,
+          "fee": 633.06,
+          "date": "1980-11-19",
+          "basis": "Dated budget-system assessment carried forward",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 2532.23
+        },
+        {
+          "ref": "bundle.artemis_budget_128_hdd",
+          "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+          "retail": 5065.56,
+          "cost": 2849.38,
+          "fee": 1266.39,
+          "date": "1980-11-19",
+          "basis": "Dated budget-system assessment carried forward",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 5065.56
         }
       ],
       "announced_offers": [],
@@ -7625,6 +7954,95 @@
               "scope_note": "Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included."
             }
           ]
+        },
+        {
+          "id": "budget_colour",
+          "name": "Logix Budget Colour Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Colour Office.",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "Standard network interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "pricing": {
+            "amount_usd": 2580.71,
+            "label": "June 15 reference configuration price",
+            "cost_usd": 1451.65,
+            "dealer_fee_usd": 645.18,
+            "contribution_usd": 483.88,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128",
+                "name": "Artemis 128 — Budget Colour Office",
+                "retail": 2580.71,
+                "cost": 1451.65,
+                "fee": 645.18,
+                "date": "1981-06-15",
+                "basis": "Recorded June 15 snapshot",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 2580.71,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included.",
+          "variants": []
+        },
+        {
+          "id": "budget_hdd",
+          "name": "Logix Budget Hard-Disk Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Hard-Disk Office (5 MB).",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "Standard network interface",
+            "5 MB qualified hard-disk subsystem with enclosure, power and interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128_hdd",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "pricing": {
+            "amount_usd": 4634.04,
+            "label": "June 15 reference configuration price",
+            "cost_usd": 2606.65,
+            "dealer_fee_usd": 1158.51,
+            "contribution_usd": 868.88,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128_hdd",
+                "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+                "retail": 4634.04,
+                "cost": 2606.65,
+                "fee": 1158.51,
+                "date": "1981-06-15",
+                "basis": "Recorded June 15 snapshot",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 4634.04,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included.",
+          "variants": []
         },
         {
           "id": "office_professional",
@@ -9280,6 +9698,28 @@
           "basis": "Recorded June 15 snapshot",
           "availability": "catalogued; qualification requirements apply",
           "original_retail": 248.96
+        },
+        {
+          "ref": "bundle.artemis_budget_128",
+          "name": "Artemis 128 — Budget Colour Office",
+          "retail": 2580.71,
+          "cost": 1451.65,
+          "fee": 645.18,
+          "date": "1981-06-15",
+          "basis": "Recorded June 15 snapshot",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 2580.71
+        },
+        {
+          "ref": "bundle.artemis_budget_128_hdd",
+          "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+          "retail": 4634.04,
+          "cost": 2606.65,
+          "fee": 1158.51,
+          "date": "1981-06-15",
+          "basis": "Recorded June 15 snapshot",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 4634.04
         }
       ],
       "announced_offers": [
@@ -9384,6 +9824,95 @@
                 "basis": "Earlier assessment carried forward; no December repricing assumed",
                 "availability": "catalogued; qualification requirements apply",
                 "original_retail": 1953.95,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers the listed configuration only. Assessment date and any retrospective proxy are shown explicitly."
+        },
+        {
+          "id": "budget_colour",
+          "name": "Logix Budget Colour Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Colour Office.",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "Standard network interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "variants": [],
+          "pricing": {
+            "amount_usd": 2580.71,
+            "label": "Reference price — Dated budget-system assessment carried forward",
+            "cost_usd": 1451.65,
+            "dealer_fee_usd": 645.18,
+            "contribution_usd": 483.88,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128",
+                "name": "Artemis 128 — Budget Colour Office",
+                "retail": 2580.71,
+                "cost": 1451.65,
+                "fee": 645.18,
+                "date": "1981-06-15",
+                "basis": "Dated budget-system assessment carried forward",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 2580.71,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers the listed configuration only. Assessment date and any retrospective proxy are shown explicitly."
+        },
+        {
+          "id": "budget_hdd",
+          "name": "Logix Budget Hard-Disk Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Hard-Disk Office (5 MB).",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "Standard network interface",
+            "5 MB qualified hard-disk subsystem with enclosure, power and interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128_hdd",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "variants": [],
+          "pricing": {
+            "amount_usd": 4634.04,
+            "label": "Reference price — Dated budget-system assessment carried forward",
+            "cost_usd": 2606.65,
+            "dealer_fee_usd": 1158.51,
+            "contribution_usd": 868.88,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128_hdd",
+                "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+                "retail": 4634.04,
+                "cost": 2606.65,
+                "fee": 1158.51,
+                "date": "1981-06-15",
+                "basis": "Dated budget-system assessment carried forward",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 4634.04,
                 "quantity": 1
               }
             ],
@@ -11109,6 +11638,28 @@
           "basis": "Earlier assessment carried forward; no December repricing assumed",
           "availability": "catalogued; qualification requirements apply",
           "original_retail": 248.96
+        },
+        {
+          "ref": "bundle.artemis_budget_128",
+          "name": "Artemis 128 — Budget Colour Office",
+          "retail": 2580.71,
+          "cost": 1451.65,
+          "fee": 645.18,
+          "date": "1981-06-15",
+          "basis": "Dated budget-system assessment carried forward",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 2580.71
+        },
+        {
+          "ref": "bundle.artemis_budget_128_hdd",
+          "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+          "retail": 4634.04,
+          "cost": 2606.65,
+          "fee": 1158.51,
+          "date": "1981-06-15",
+          "basis": "Dated budget-system assessment carried forward",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 4634.04
         }
       ],
       "announced_offers": [
@@ -11219,6 +11770,95 @@
               "scope_note": "Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included."
             }
           ]
+        },
+        {
+          "id": "budget_colour",
+          "name": "Logix Budget Colour Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Colour Office.",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "Standard network interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "pricing": {
+            "amount_usd": 2512.73,
+            "label": "June 15 reference configuration price",
+            "cost_usd": 1435.39,
+            "dealer_fee_usd": 628.18,
+            "contribution_usd": 449.16,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128",
+                "name": "Artemis 128 — Budget Colour Office",
+                "retail": 2512.73,
+                "cost": 1435.39,
+                "fee": 628.18,
+                "date": "1982-06-15",
+                "basis": "Recorded June 15 snapshot",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 2512.73,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included.",
+          "variants": []
+        },
+        {
+          "id": "budget_hdd",
+          "name": "Logix Budget Hard-Disk Office",
+          "purpose": "Dated configuration: Artemis 128 — Budget Hard-Disk Office (5 MB).",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "Standard network interface",
+            "5 MB qualified hard-disk subsystem with enclosure, power and interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128_hdd",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [],
+          "pricing": {
+            "amount_usd": 4068.5,
+            "label": "June 15 reference configuration price",
+            "cost_usd": 2485.39,
+            "dealer_fee_usd": 1017.12,
+            "contribution_usd": 565.99,
+            "component_retail_sum_usd": null,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128_hdd",
+                "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+                "retail": 4068.5,
+                "cost": 2485.39,
+                "fee": 1017.13,
+                "date": "1982-06-15",
+                "basis": "Recorded June 15 snapshot",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 4068.5,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          },
+          "scope_note": "Price covers this dated package only. Optional installation, training, backup supplies and output equipment are additional unless explicitly included.",
+          "variants": []
         },
         {
           "id": "office_professional",
@@ -13117,6 +13757,28 @@
           "basis": "Recorded June 15 snapshot",
           "availability": "catalogued; qualification requirements apply",
           "original_retail": 263.83
+        },
+        {
+          "ref": "bundle.artemis_budget_128",
+          "name": "Artemis 128 — Budget Colour Office",
+          "retail": 2512.73,
+          "cost": 1435.39,
+          "fee": 628.18,
+          "date": "1982-06-15",
+          "basis": "Recorded June 15 snapshot",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 2512.73
+        },
+        {
+          "ref": "bundle.artemis_budget_128_hdd",
+          "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+          "retail": 4068.5,
+          "cost": 2485.39,
+          "fee": 1017.13,
+          "date": "1982-06-15",
+          "basis": "Recorded June 15 snapshot",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 4068.5
         }
       ],
       "announced_offers": [
@@ -13179,6 +13841,99 @@
                 "basis": "current catalogue ceiling",
                 "availability": "catalogued; qualification requirements apply",
                 "original_retail": 1969.15,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          }
+        },
+        {
+          "id": "budget_colour",
+          "name": "Logix Budget Colour Office",
+          "purpose": "Affordable native Artemis business workstation.",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "Standard network interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [
+            "Memory expansion for larger workloads",
+            "Printer and network upgrade",
+            "Backup media and installation quoted separately"
+          ],
+          "pricing": {
+            "amount_usd": 2512.73,
+            "label": "Reference configuration price",
+            "cost_usd": 1435.39,
+            "dealer_fee_usd": 628.18,
+            "contribution_usd": 449.16,
+            "component_retail_sum_usd": 2512.73,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128",
+                "name": "Artemis 128 — Budget Colour Office",
+                "retail": 2512.73,
+                "cost": 1435.39,
+                "fee": 628.18,
+                "date": "1982-06-15",
+                "basis": "June estimate carried forward",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 2512.73,
+                "quantity": 1
+              }
+            ],
+            "complete_price": true
+          }
+        },
+        {
+          "id": "budget_hdd",
+          "name": "Logix Budget Hard-Disk Office",
+          "purpose": "Affordable native Artemis business workstation with 5 MB storage.",
+          "includes": [
+            "Artemis 128 KiB, two floppies, Color II 12-inch 640×200 display and keyboard",
+            "AIONix, Business Tools and one-year Regular Support",
+            "Abacus 3; bounded 128 KiB workloads",
+            "Standard network interface",
+            "5 MB qualified hard-disk subsystem with enclosure, power and interface"
+          ],
+          "components": [
+            {
+              "ref": "bundle.artemis_budget_128_hdd",
+              "quantity": 1
+            }
+          ],
+          "unpriced_requirements": [],
+          "options": [
+            "Memory expansion for larger workloads",
+            "Printer and network upgrade",
+            "Backup media and installation quoted separately"
+          ],
+          "pricing": {
+            "amount_usd": 4068.5,
+            "label": "Reference configuration price",
+            "cost_usd": 2485.39,
+            "dealer_fee_usd": 1017.13,
+            "contribution_usd": 565.98,
+            "component_retail_sum_usd": 4068.5,
+            "lines": [
+              {
+                "ref": "bundle.artemis_budget_128_hdd",
+                "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+                "retail": 4068.5,
+                "cost": 2485.39,
+                "fee": 1017.13,
+                "date": "1982-06-15",
+                "basis": "June estimate carried forward",
+                "availability": "catalogued; qualification requirements apply",
+                "original_retail": 4068.5,
                 "quantity": 1
               }
             ],
@@ -14751,6 +15506,28 @@
           "original_retail": 263.83
         },
         {
+          "ref": "bundle.artemis_budget_128",
+          "name": "Artemis 128 — Budget Colour Office",
+          "retail": 2512.73,
+          "cost": 1435.39,
+          "fee": 628.18,
+          "date": "1982-06-15",
+          "basis": "June estimate carried forward",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 2512.73
+        },
+        {
+          "ref": "bundle.artemis_budget_128_hdd",
+          "name": "Artemis 128 — Budget Hard-Disk Office (5 MB)",
+          "retail": 4068.5,
+          "cost": 2485.39,
+          "fee": 1017.13,
+          "date": "1982-06-15",
+          "basis": "June estimate carried forward",
+          "availability": "catalogued; qualification requirements apply",
+          "original_retail": 4068.5
+        },
+        {
           "ref": "software.autocad_1_artemis",
           "name": "Autodesk AutoCAD 1.0 — Artemis licence",
           "retail": 1000,
@@ -14774,7 +15551,7 @@
     }
   },
   "provenance": {
-    "retail_catalog_1982.json": "c898e3c85a3b19f7126e0f5cd1179ce80f91115cae84e2dda891fb79871f6129",
-    "pricing_results.json": "e74e910ee8407d2d4e3a0026743bdc2401f12142229853b836d99503e07fd5fe"
+    "retail_catalog_1982.json": "2f670081f5262352fe28c159fd7868b78fe63d94984fe015b1fd3f74f91df12c",
+    "pricing_results.json": "d4d09952bdc2cd0480ae897cab510b7dfb3a28b55279218a94985805d573a4d8"
   }
 }

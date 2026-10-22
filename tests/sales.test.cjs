@@ -20,7 +20,7 @@ for(const sc of model.scenarios){
 }
 let exported;w.Blob=Blob;w.URL.createObjectURL=b=>{exported=b;return 'blob:test';};w.URL.revokeObjectURL=()=>{};w.HTMLAnchorElement.prototype.click=function(){};
 change('sales-scenario','central');change('sales-year','1982');change('sales-period','quarter');d.getElementById('sales-export').click();
-const csv=await exported.text(),records=csv.split('\r\n').slice(1).map(r=>r.split(','));assert.equal(records.length,4);assert(csv.includes('artemis_pro'));assert.equal(records.reduce((n,r)=>n+Number(r[8]),0),129645);
+const csv=await exported.text(),records=csv.split('\r\n').slice(1).map(r=>r.split(','));assert.equal(records.length,4);assert(csv.includes('artemis_pro'));assert.equal(records.reduce((n,r)=>n+Number(r[8]),0),202412);
 const annual=model.scenarios.find(s=>s.id==='central').annual.find(r=>r.year===1982);for(let k=0;k<4;k++)assert.equal(records.reduce((n,r)=>n+Math.round(Number(r[10+k])*100),0),Math.round(annual[fields[k]]*100));
 w.fetch=async()=>({ok:false,status:503});await w.startSales();assert(d.getElementById('sales-retry'));w.fetch=async()=>({ok:true,json:async()=>model});await w.startSales();assert(!d.getElementById('sales-retry'));w.close();console.log('PASS: current-only sales, all years/scenarios/periods, priced financial columns, exact CSV totals and fetch recovery.');})();
 

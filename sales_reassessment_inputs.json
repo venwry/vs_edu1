@@ -1,35 +1,41 @@
 {
-  "version": 1,
-  "horizon": "1981-Q1\u20131983-Q4",
+  "version": 2,
+  "horizon": "1980-Q1\u20131983-Q4",
   "currency": "nominal USD",
   "status": "Alternative-history planning forecast, not observed market data or negotiated price schedule",
   "geography": "Worldwide microcomputer unit shipments; Logix includes UK distributor shipments. Five clone brands counted only for their compatible product lines. Other legacy products of those brands remain in other manufacturers.",
   "logix_gross_factors_vs_baseline": {
+    "1980": [
+      1,
+      1.04,
+      1.08,
+      1.12
+    ],
     "1981": [
-      1,
-      1,
-      1,
-      1.03
+      1.2,
+      1.25,
+      1.3,
+      1.35
     ],
     "1982": [
-      1.03,
-      1.1,
-      1.14,
-      1.18
+      1.5,
+      1.65,
+      1.8,
+      1.95
     ],
     "1983": [
-      1.22,
-      1.28,
-      1.34,
-      1.4
+      2.1,
+      2.25,
+      2.4,
+      2.55
     ]
   },
   "demand_basis": [
-    "1981 unchanged until Team launch; 3% Q4 incremental intent reflects the adoption-price programme, bounded by support capacity.",
-    "1982 ramps reflect colour/mouse availability, native applications and local channel reach; no blanket multiplier is applied for signing clone contracts.",
-    "1983 factors apply to original same-quarter 1982 Logix demand, not compounded monthly growth; rising IBM/DOS competition is reflected by a modest growth path.",
-    "Deduct 35% of US clone shipments and 10% of continental clone shipments from gross Logix demand; these are explicit cannibalisation assumptions.",
-    "UK distribution is a subset of Logix units, never a seventh manufacturer. CAD hosts replace ordinary PRO purchases inside computer totals."
+    "Author assumption: foresight aligns production and purchased components with finite customer demand. No factory bottleneck or lost sales; no infinite demand, automatic sell-through of arbitrary production, or zero capital costs.",
+    "Budget colour and 5 MB configurations enter in May 1980. Native application value, two drives and complete-package pricing improve new-business conversion; IBM has a March 1982 substitute-OS launch, not the historical DOS ecosystem.",
+    "Gross factors are explicit low-confidence scenario judgements relative to the frozen same-quarter 1980/81/82 baseline, not measured price elasticities. 1983 uses original 1982 quarters. No historical Apple/IBM dominance is imposed.",
+    "Budget purchases substitute for existing Artemis configurations inside the family total; 10/15 percentage points of 1981/82 Logix mix shift from Aurelia+ to Artemis. Clone cannibalisation is deducted once.",
+    "Demand scenarios remain finite; capacity follows each scenario. Actual support and supplier qualification are assumed funded, not free. 1983 holds 1982 pricing/costs."
   ],
   "clones": [
     {
@@ -38,16 +44,16 @@
       "country": "US",
       "launch": "1982-01-18",
       "quarterly_units": {
-        "1982-Q1": 600,
-        "1982-Q2": 900,
-        "1982-Q3": 1300,
-        "1982-Q4": 1800,
-        "1983-Q1": 2200,
-        "1983-Q2": 2700,
-        "1983-Q3": 3200,
-        "1983-Q4": 3700
+        "1982-Q1": 750,
+        "1982-Q2": 1125,
+        "1982-Q3": 1625,
+        "1982-Q4": 2250,
+        "1983-Q1": 3300,
+        "1983-Q2": 4050,
+        "1983-Q3": 4800,
+        "1983-Q4": 5550
       },
-      "basis": "Bottom-up launch ramp assumption: qualified local dealer reach and service capacity; not a contractual minimum or automatic multiplier."
+      "basis": "Revised scenario: 25%/50% more compatible units in 1982/83 than prior launch ramp, reflecting native-platform value; all support/supply qualification assumed funded. Not a contractual minimum."
     },
     {
       "id": "vector",
@@ -55,16 +61,16 @@
       "country": "US",
       "launch": "1982-01-18",
       "quarterly_units": {
-        "1982-Q1": 400,
-        "1982-Q2": 650,
-        "1982-Q3": 900,
-        "1982-Q4": 1200,
-        "1983-Q1": 1500,
-        "1983-Q2": 1800,
-        "1983-Q3": 2100,
-        "1983-Q4": 2400
+        "1982-Q1": 500,
+        "1982-Q2": 812,
+        "1982-Q3": 1125,
+        "1982-Q4": 1500,
+        "1983-Q1": 2250,
+        "1983-Q2": 2700,
+        "1983-Q3": 3150,
+        "1983-Q4": 3600
       },
-      "basis": "Bottom-up launch ramp assumption: qualified local dealer reach and service capacity; not a contractual minimum or automatic multiplier."
+      "basis": "Revised scenario: 25%/50% more compatible units in 1982/83 than prior launch ramp, reflecting native-platform value; all support/supply qualification assumed funded. Not a contractual minimum."
     },
     {
       "id": "sks",
@@ -72,16 +78,16 @@
       "country": "West Germany",
       "launch": "1982-01-18",
       "quarterly_units": {
-        "1982-Q1": 350,
-        "1982-Q2": 600,
-        "1982-Q3": 900,
-        "1982-Q4": 1250,
-        "1983-Q1": 1600,
-        "1983-Q2": 2000,
-        "1983-Q3": 2400,
-        "1983-Q4": 2800
+        "1982-Q1": 438,
+        "1982-Q2": 750,
+        "1982-Q3": 1125,
+        "1982-Q4": 1562,
+        "1983-Q1": 2400,
+        "1983-Q2": 3000,
+        "1983-Q3": 3600,
+        "1983-Q4": 4200
       },
-      "basis": "Bottom-up launch ramp assumption: qualified local dealer reach and service capacity; not a contractual minimum or automatic multiplier."
+      "basis": "Revised scenario: 25%/50% more compatible units in 1982/83 than prior launch ramp, reflecting native-platform value; all support/supply qualification assumed funded. Not a contractual minimum."
     },
     {
       "id": "goupil",
@@ -89,16 +95,16 @@
       "country": "France",
       "launch": "1982-01-18",
       "quarterly_units": {
-        "1982-Q1": 300,
-        "1982-Q2": 500,
-        "1982-Q3": 800,
-        "1982-Q4": 1100,
-        "1983-Q1": 1450,
-        "1983-Q2": 1800,
-        "1983-Q3": 2200,
-        "1983-Q4": 2600
+        "1982-Q1": 375,
+        "1982-Q2": 625,
+        "1982-Q3": 1000,
+        "1982-Q4": 1375,
+        "1983-Q1": 2175,
+        "1983-Q2": 2700,
+        "1983-Q3": 3300,
+        "1983-Q4": 3900
       },
-      "basis": "Bottom-up launch ramp assumption: qualified local dealer reach and service capacity; not a contractual minimum or automatic multiplier."
+      "basis": "Revised scenario: 25%/50% more compatible units in 1982/83 than prior launch ramp, reflecting native-platform value; all support/supply qualification assumed funded. Not a contractual minimum."
     },
     {
       "id": "eina",
@@ -106,16 +112,16 @@
       "country": "Spain",
       "launch": "1982-01-18",
       "quarterly_units": {
-        "1982-Q1": 100,
-        "1982-Q2": 180,
-        "1982-Q3": 300,
-        "1982-Q4": 450,
-        "1983-Q1": 600,
-        "1983-Q2": 800,
-        "1983-Q3": 1000,
-        "1983-Q4": 1250
+        "1982-Q1": 125,
+        "1982-Q2": 225,
+        "1982-Q3": 375,
+        "1982-Q4": 562,
+        "1983-Q1": 900,
+        "1983-Q2": 1200,
+        "1983-Q3": 1500,
+        "1983-Q4": 1875
       },
-      "basis": "Bottom-up launch ramp assumption: qualified local dealer reach and service capacity; not a contractual minimum or automatic multiplier."
+      "basis": "Revised scenario: 25%/50% more compatible units in 1982/83 than prior launch ramp, reflecting native-platform value; all support/supply qualification assumed funded. Not a contractual minimum."
     }
   ],
   "cannibalisation": {
@@ -137,10 +143,10 @@
     ]
   },
   "native_share_1983": [
-    0.68,
-    0.7,
-    0.72,
-    0.74
+    0.76,
+    0.78,
+    0.8,
+    0.82
   ],
   "pro_share_1983": [
     0.06,
@@ -269,7 +275,7 @@
     "inventory_months": 2,
     "baseline_resource_inflation_1983": 0.06,
     "variable_share_of_other_resources": 0.35,
-    "basis": "Resource planning allowance, not a newly qualified fab/tool plan. Existing 3um costs retained, no unqualified process savings. Clone chip demand included on AION-supplied fraction; SGS owns its general fab infrastructure."
+    "basis": "Adam foresees volumes. Incremental capacity is funded one quarter before use, with 5% headroom; no production cap clips sales. Engineering cost allowance, not a released equipment plan."
   },
   "scenarios": {
     "conservative": {
@@ -294,7 +300,8 @@
   "market": {
     "historical_calibration_units": {
       "1981": 1400000,
-      "1982": 2800000
+      "1982": 2800000,
+      "1980": 1100000
     },
     "1983_planning_units": 5000000,
     "quarter_weights": [
@@ -307,7 +314,8 @@
     "definition": "Complete microcomputers, including home/business models; exclude peripherals, terminals, upgrades and software. Shipment-unit share, not revenue or installed-base share.",
     "basis": "1981/1982 contemporaneous Dataquest estimates reported by TIME; scope comparability is approximate. 1983 round planning assumption, not a sourced historical count. Quarterly allocation 21/23/25/31 is modelled, not observed. Add only 20% of Logix+clone demand to the calibrated market; the remainder displaces other suppliers.",
     "source_url": "https://time.com/archive/6699317/the-computer-moves-in/",
-    "source_title": "TIME, The Computer Moves In, January 1983"
+    "source_title": "TIME, The Computer Moves In, January 1983",
+    "1980_basis": "1.1m worldwide planning denominator for added 1980 views; not a sourced historical total."
   },
   "programme_costs": [
     {
@@ -638,6 +646,70 @@
       "amount_usd": 75000.0,
       "category": "expense",
       "basis": "Driver/application integration support after launch; Autodesk owns and funds its own independent product business."
+    },
+    {
+      "id": "budget_hdd_qualification",
+      "quarter": "1980-Q2",
+      "amount_usd": 180000,
+      "category": "expense",
+      "basis": "HDD integration, firmware, burn-in and service training; incremental budget assumption."
+    },
+    {
+      "id": "budget_hdd_launch",
+      "quarter": "1980-Q3",
+      "amount_usd": 120000,
+      "category": "expense",
+      "basis": "Dealer demonstration, documentation and rollout beyond original base launch."
     }
-  ]
+  ],
+  "budget_mix": {
+    "1980": {
+      "floppy": 0.25,
+      "hdd": 0.1
+    },
+    "1981": {
+      "floppy": 0.3,
+      "hdd": 0.15
+    },
+    "1982": {
+      "floppy": 0.3,
+      "hdd": 0.2
+    },
+    "1983": {
+      "floppy": 0.28,
+      "hdd": 0.22
+    }
+  },
+  "business_market": {
+    "annual_baseline_units": {
+      "1980": 450000,
+      "1981": 650000,
+      "1982": 950000,
+      "1983": 1500000
+    },
+    "quarter_weights": [
+      0.23,
+      0.24,
+      0.25,
+      0.28
+    ],
+    "definition": "Disk-equipped computers bought for business use, worldwide; exclude home/education purchases even if disk-equipped. All modelled Logix/clone systems allocated to business for this segment estimate.",
+    "basis": "Illustrative addressable-market assumptions, not observed counts. All-vendor retail datasets do not establish business-use classification. 20% of platform volume expands baseline; remainder displaces competitors. Rival weights distribute only residual business demand.",
+    "rival_weights": {
+      "apple": 0.22,
+      "ibm": 0.2,
+      "tandy": 0.18,
+      "commodore": 0.08,
+      "nec": 0.08,
+      "osborne": 0.07,
+      "other_business": 0.17
+    },
+    "ibm_launch": "1982-03-15",
+    "ibm_1982_ramp": [
+      0.15,
+      0.5,
+      0.75,
+      1
+    ]
+  }
 }

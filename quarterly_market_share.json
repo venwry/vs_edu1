@@ -1,14 +1,15 @@
 {
   "metadata": {
     "title": "Quarterly microcomputer market share",
-    "period": "1981-Q1–1983-Q4",
+    "period": "1980-Q1–1983-Q4",
     "status": "Alternative-history unit-shipment scenario; quarterly market totals are modelled, not observed",
     "scope": "Worldwide microcomputer unit shipments; Logix includes UK distributor shipments. Five clone brands counted only for their compatible product lines. Other legacy products of those brands remain in other manufacturers."
   },
   "methodology": {
     "historical_calibration_units": {
       "1981": 1400000,
-      "1982": 2800000
+      "1982": 2800000,
+      "1980": 1100000
     },
     "1983_planning_units": 5000000,
     "quarter_weights": [
@@ -21,7 +22,8 @@
     "definition": "Complete microcomputers, including home/business models; exclude peripherals, terminals, upgrades and software. Shipment-unit share, not revenue or installed-base share.",
     "basis": "1981/1982 contemporaneous Dataquest estimates reported by TIME; scope comparability is approximate. 1983 round planning assumption, not a sourced historical count. Quarterly allocation 21/23/25/31 is modelled, not observed. Add only 20% of Logix+clone demand to the calibrated market; the remainder displaces other suppliers.",
     "source_url": "https://time.com/archive/6699317/the-computer-moves-in/",
-    "source_title": "TIME, The Computer Moves In, January 1983"
+    "source_title": "TIME, The Computer Moves In, January 1983",
+    "1980_basis": "1.1m worldwide planning denominator for added 1980 views; not a sourced historical total."
   },
   "manufacturers": [
     {
@@ -58,12 +60,12 @@
       "id": "conservative",
       "quarterly": [
         {
-          "quarter": "1981-Q1",
-          "total_market_units": 268699,
+          "quarter": "1980-Q1",
+          "total_market_units": 211102,
           "manufacturers": {
             "logix": {
-              "units": 20496,
-              "share_pct": 7.627866125292614
+              "units": 16012,
+              "share_pct": 7.584958929806445
             },
             "northstar": {
               "units": 0,
@@ -86,13 +88,197 @@
               "share_pct": 0.0
             },
             "other_manufacturers": {
-              "units": 248203,
-              "share_pct": 92.37213387470739
+              "units": 195090,
+              "share_pct": 92.41504107019355
             }
           },
-          "platform_units": 20496,
-          "platform_share_pct": 7.627866125292614,
-          "gross_logix_intent": 20496,
+          "platform_units": 16012,
+          "platform_share_pct": 7.584958929806445,
+          "gross_logix_intent": 16012,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q2",
+          "total_market_units": 230833,
+          "manufacturers": {
+            "logix": {
+              "units": 15666,
+              "share_pct": 6.786724601768378
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 215167,
+              "share_pct": 93.21327539823162
+            }
+          },
+          "platform_units": 15666,
+          "platform_share_pct": 6.786724601768378,
+          "gross_logix_intent": 15666,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q3",
+          "total_market_units": 251513,
+          "manufacturers": {
+            "logix": {
+              "units": 20066,
+              "share_pct": 7.9781164393093
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 231447,
+              "share_pct": 92.0218835606907
+            }
+          },
+          "platform_units": 20066,
+          "platform_share_pct": 7.9781164393093,
+          "gross_logix_intent": 20066,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q4",
+          "total_market_units": 311353,
+          "manufacturers": {
+            "logix": {
+              "units": 22266,
+              "share_pct": 7.151368382511169
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 289087,
+              "share_pct": 92.84863161748883
+            }
+          },
+          "platform_units": 22266,
+          "platform_share_pct": 7.151368382511169,
+          "gross_logix_intent": 22266,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1981-Q1",
+          "total_market_units": 269519,
+          "manufacturers": {
+            "logix": {
+              "units": 24595,
+              "share_pct": 9.12551619737384
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 244924,
+              "share_pct": 90.87448380262616
+            }
+          },
+          "platform_units": 24595,
+          "platform_share_pct": 9.12551619737384,
+          "gross_logix_intent": 24595,
           "cannibalised_by_clones": 0,
           "clone_units": {
             "northstar": 0,
@@ -105,568 +291,11 @@
         },
         {
           "quarter": "1981-Q2",
-          "total_market_units": 294178,
-          "manufacturers": {
-            "logix": {
-              "units": 21888,
-              "share_pct": 7.440393231308935
-            },
-            "northstar": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "vector": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "sks": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "goupil": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "eina": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "other_manufacturers": {
-              "units": 272290,
-              "share_pct": 92.55960676869105
-            }
-          },
-          "platform_units": 21888,
-          "platform_share_pct": 7.440393231308935,
-          "gross_logix_intent": 21888,
-          "cannibalised_by_clones": 0,
-          "clone_units": {
-            "northstar": 0,
-            "vector": 0,
-            "sks": 0,
-            "goupil": 0,
-            "eina": 0
-          },
-          "aion_tech_uk_subset": 0
-        },
-        {
-          "quarter": "1981-Q3",
-          "total_market_units": 319298,
-          "manufacturers": {
-            "logix": {
-              "units": 21490,
-              "share_pct": 6.730389792607533
-            },
-            "northstar": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "vector": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "sks": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "goupil": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "eina": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "other_manufacturers": {
-              "units": 297808,
-              "share_pct": 93.26961020739247
-            }
-          },
-          "platform_units": 21490,
-          "platform_share_pct": 6.730389792607533,
-          "gross_logix_intent": 21490,
-          "cannibalised_by_clones": 0,
-          "clone_units": {
-            "northstar": 0,
-            "vector": 0,
-            "sks": 0,
-            "goupil": 0,
-            "eina": 0
-          },
-          "aion_tech_uk_subset": 0
-        },
-        {
-          "quarter": "1981-Q4",
-          "total_market_units": 395273,
-          "manufacturers": {
-            "logix": {
-              "units": 23365,
-              "share_pct": 5.911104477158824
-            },
-            "northstar": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "vector": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "sks": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "goupil": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "eina": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "other_manufacturers": {
-              "units": 371908,
-              "share_pct": 94.08889552284117
-            }
-          },
-          "platform_units": 23365,
-          "platform_share_pct": 5.911104477158824,
-          "gross_logix_intent": 23365,
-          "cannibalised_by_clones": 0,
-          "clone_units": {
-            "northstar": 0,
-            "vector": 0,
-            "sks": 0,
-            "goupil": 0,
-            "eina": 0
-          },
-          "aion_tech_uk_subset": 0
-        },
-        {
-          "quarter": "1982-Q1",
-          "total_market_units": 534167,
-          "manufacturers": {
-            "logix": {
-              "units": 23435,
-              "share_pct": 4.387204750574258
-            },
-            "northstar": {
-              "units": 480,
-              "share_pct": 0.08985953830918046
-            },
-            "vector": {
-              "units": 320,
-              "share_pct": 0.059906358872786974
-            },
-            "sks": {
-              "units": 280,
-              "share_pct": 0.052418064013688606
-            },
-            "goupil": {
-              "units": 240,
-              "share_pct": 0.04492976915459023
-            },
-            "eina": {
-              "units": 80,
-              "share_pct": 0.014976589718196744
-            },
-            "other_manufacturers": {
-              "units": 509332,
-              "share_pct": 95.3507049293573
-            }
-          },
-          "platform_units": 24835,
-          "platform_share_pct": 4.649295070642702,
-          "gross_logix_intent": 23775,
-          "cannibalised_by_clones": 340,
-          "clone_units": {
-            "northstar": 480,
-            "vector": 320,
-            "sks": 280,
-            "goupil": 240,
-            "eina": 80
-          },
-          "aion_tech_uk_subset": 240
-        },
-        {
-          "quarter": "1982-Q2",
-          "total_market_units": 585067,
-          "manufacturers": {
-            "logix": {
-              "units": 25072,
-              "share_pct": 4.285321168344822
-            },
-            "northstar": {
-              "units": 720,
-              "share_pct": 0.12306282870167007
-            },
-            "vector": {
-              "units": 520,
-              "share_pct": 0.08887870961787282
-            },
-            "sks": {
-              "units": 480,
-              "share_pct": 0.08204188580111338
-            },
-            "goupil": {
-              "units": 400,
-              "share_pct": 0.06836823816759448
-            },
-            "eina": {
-              "units": 144,
-              "share_pct": 0.024612565740334012
-            },
-            "other_manufacturers": {
-              "units": 557731,
-              "share_pct": 95.32771460362659
-            }
-          },
-          "platform_units": 27336,
-          "platform_share_pct": 4.672285396373407,
-          "gross_logix_intent": 25608,
-          "cannibalised_by_clones": 536,
-          "clone_units": {
-            "northstar": 720,
-            "vector": 520,
-            "sks": 480,
-            "goupil": 400,
-            "eina": 144
-          },
-          "aion_tech_uk_subset": 480
-        },
-        {
-          "quarter": "1982-Q3",
-          "total_market_units": 635916,
-          "manufacturers": {
-            "logix": {
-              "units": 26218,
-              "share_pct": 4.122871574233075
-            },
-            "northstar": {
-              "units": 1040,
-              "share_pct": 0.16354361267840406
-            },
-            "vector": {
-              "units": 720,
-              "share_pct": 0.11322250108504897
-            },
-            "sks": {
-              "units": 720,
-              "share_pct": 0.11322250108504897
-            },
-            "goupil": {
-              "units": 640,
-              "share_pct": 0.1006422231867102
-            },
-            "eina": {
-              "units": 240,
-              "share_pct": 0.037740833695016324
-            },
-            "other_manufacturers": {
-              "units": 606338,
-              "share_pct": 95.3487567540367
-            }
-          },
-          "platform_units": 29578,
-          "platform_share_pct": 4.651243245963303,
-          "gross_logix_intent": 26994,
-          "cannibalised_by_clones": 776,
-          "clone_units": {
-            "northstar": 1040,
-            "vector": 720,
-            "sks": 720,
-            "goupil": 640,
-            "eina": 240
-          },
-          "aion_tech_uk_subset": 720
-        },
-        {
-          "quarter": "1982-Q4",
-          "total_market_units": 787926,
-          "manufacturers": {
-            "logix": {
-              "units": 28990,
-              "share_pct": 3.679279526249927
-            },
-            "northstar": {
-              "units": 1440,
-              "share_pct": 0.1827582793308001
-            },
-            "vector": {
-              "units": 960,
-              "share_pct": 0.12183885288720006
-            },
-            "sks": {
-              "units": 1000,
-              "share_pct": 0.12691547175750006
-            },
-            "goupil": {
-              "units": 880,
-              "share_pct": 0.11168561514660005
-            },
-            "eina": {
-              "units": 360,
-              "share_pct": 0.045689569832700026
-            },
-            "other_manufacturers": {
-              "units": 754296,
-              "share_pct": 95.73183268479526
-            }
-          },
-          "platform_units": 33630,
-          "platform_share_pct": 4.268167315204727,
-          "gross_logix_intent": 30054,
-          "cannibalised_by_clones": 1064,
-          "clone_units": {
-            "northstar": 1440,
-            "vector": 960,
-            "sks": 1000,
-            "goupil": 880,
-            "eina": 360
-          },
-          "aion_tech_uk_subset": 960
-        },
-        {
-          "quarter": "1983-Q1",
-          "total_market_units": 951543,
-          "manufacturers": {
-            "logix": {
-              "units": 26833,
-              "share_pct": 2.81994612960213
-            },
-            "northstar": {
-              "units": 1760,
-              "share_pct": 0.18496273946631944
-            },
-            "vector": {
-              "units": 1200,
-              "share_pct": 0.12611095872703598
-            },
-            "sks": {
-              "units": 1280,
-              "share_pct": 0.13451835597550504
-            },
-            "goupil": {
-              "units": 1160,
-              "share_pct": 0.12190726010280145
-            },
-            "eina": {
-              "units": 480,
-              "share_pct": 0.0504443834908144
-            },
-            "other_manufacturers": {
-              "units": 918830,
-              "share_pct": 96.5621101726354
-            }
-          },
-          "platform_units": 32713,
-          "platform_share_pct": 3.437889827364607,
-          "gross_logix_intent": 28161,
-          "cannibalised_by_clones": 1328,
-          "clone_units": {
-            "northstar": 1760,
-            "vector": 1200,
-            "sks": 1280,
-            "goupil": 1160,
-            "eina": 480
-          },
-          "aion_tech_uk_subset": 1040
-        },
-        {
-          "quarter": "1983-Q2",
-          "total_market_units": 1042090,
-          "manufacturers": {
-            "logix": {
-              "units": 28170,
-              "share_pct": 2.7032214108186436
-            },
-            "northstar": {
-              "units": 2160,
-              "share_pct": 0.20727576312986404
-            },
-            "vector": {
-              "units": 1440,
-              "share_pct": 0.13818384208657603
-            },
-            "sks": {
-              "units": 1600,
-              "share_pct": 0.1535376023184178
-            },
-            "goupil": {
-              "units": 1440,
-              "share_pct": 0.13818384208657603
-            },
-            "eina": {
-              "units": 640,
-              "share_pct": 0.06141504092736712
-            },
-            "other_manufacturers": {
-              "units": 1006640,
-              "share_pct": 96.59818249863255
-            }
-          },
-          "platform_units": 35450,
-          "platform_share_pct": 3.4018175013674443,
-          "gross_logix_intent": 29798,
-          "cannibalised_by_clones": 1628,
-          "clone_units": {
-            "northstar": 2160,
-            "vector": 1440,
-            "sks": 1600,
-            "goupil": 1440,
-            "eina": 640
-          },
-          "aion_tech_uk_subset": 1280
-        },
-        {
-          "quarter": "1983-Q3",
-          "total_market_units": 1132704,
-          "manufacturers": {
-            "logix": {
-              "units": 29798,
-              "share_pct": 2.6306961041896204
-            },
-            "northstar": {
-              "units": 2560,
-              "share_pct": 0.22600785377291863
-            },
-            "vector": {
-              "units": 1680,
-              "share_pct": 0.14831765403847783
-            },
-            "sks": {
-              "units": 1920,
-              "share_pct": 0.16950589032968894
-            },
-            "goupil": {
-              "units": 1760,
-              "share_pct": 0.15538039946888155
-            },
-            "eina": {
-              "units": 800,
-              "share_pct": 0.07062745430403707
-            },
-            "other_manufacturers": {
-              "units": 1094186,
-              "share_pct": 96.59946464389637
-            }
-          },
-          "platform_units": 38518,
-          "platform_share_pct": 3.400535356103625,
-          "gross_logix_intent": 31730,
-          "cannibalised_by_clones": 1932,
-          "clone_units": {
-            "northstar": 2560,
-            "vector": 1680,
-            "sks": 1920,
-            "goupil": 1760,
-            "eina": 800
-          },
-          "aion_tech_uk_subset": 1520
-        },
-        {
-          "quarter": "1983-Q4",
-          "total_market_units": 1403723,
-          "manufacturers": {
-            "logix": {
-              "units": 33417,
-              "share_pct": 2.3805978814908637
-            },
-            "northstar": {
-              "units": 2960,
-              "share_pct": 0.21086781366409182
-            },
-            "vector": {
-              "units": 1920,
-              "share_pct": 0.13677912237670822
-            },
-            "sks": {
-              "units": 2240,
-              "share_pct": 0.15957564277282626
-            },
-            "goupil": {
-              "units": 2080,
-              "share_pct": 0.14817738257476726
-            },
-            "eina": {
-              "units": 1000,
-              "share_pct": 0.07123912623786886
-            },
-            "other_manufacturers": {
-              "units": 1360106,
-              "share_pct": 96.89276303088288
-            }
-          },
-          "platform_units": 43617,
-          "platform_share_pct": 3.1072369691171264,
-          "gross_logix_intent": 35657,
-          "cannibalised_by_clones": 2240,
-          "clone_units": {
-            "northstar": 2960,
-            "vector": 1920,
-            "sks": 2240,
-            "goupil": 2080,
-            "eina": 1000
-          },
-          "aion_tech_uk_subset": 1760
-        }
-      ]
-    },
-    {
-      "id": "central",
-      "quarterly": [
-        {
-          "quarter": "1981-Q1",
-          "total_market_units": 299124,
-          "manufacturers": {
-            "logix": {
-              "units": 25620,
-              "share_pct": 8.565009828699804
-            },
-            "northstar": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "vector": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "sks": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "goupil": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "eina": {
-              "units": 0,
-              "share_pct": 0.0
-            },
-            "other_manufacturers": {
-              "units": 273504,
-              "share_pct": 91.4349901713002
-            }
-          },
-          "platform_units": 25620,
-          "platform_share_pct": 8.565009828699804,
-          "gross_logix_intent": 25620,
-          "cannibalised_by_clones": 0,
-          "clone_units": {
-            "northstar": 0,
-            "vector": 0,
-            "sks": 0,
-            "goupil": 0,
-            "eina": 0
-          },
-          "aion_tech_uk_subset": 0
-        },
-        {
-          "quarter": "1981-Q2",
-          "total_market_units": 327472,
+          "total_market_units": 295272,
           "manufacturers": {
             "logix": {
               "units": 27360,
-              "share_pct": 8.354912786436703
+              "share_pct": 9.266032674957328
             },
             "northstar": {
               "units": 0,
@@ -689,12 +318,12 @@
               "share_pct": 0.0
             },
             "other_manufacturers": {
-              "units": 300112,
-              "share_pct": 91.64508721356329
+              "units": 267912,
+              "share_pct": 90.73396732504267
             }
           },
           "platform_units": 27360,
-          "platform_share_pct": 8.354912786436703,
+          "platform_share_pct": 9.266032674957328,
           "gross_logix_intent": 27360,
           "cannibalised_by_clones": 0,
           "clone_units": {
@@ -708,11 +337,11 @@
         },
         {
           "quarter": "1981-Q3",
-          "total_market_units": 355373,
+          "total_market_units": 320588,
           "manufacturers": {
             "logix": {
-              "units": 26863,
-              "share_pct": 7.559099875342246
+              "units": 27938,
+              "share_pct": 8.714611900632589
             },
             "northstar": {
               "units": 0,
@@ -735,13 +364,13 @@
               "share_pct": 0.0
             },
             "other_manufacturers": {
-              "units": 328510,
-              "share_pct": 92.44090012465776
+              "units": 292650,
+              "share_pct": 91.28538809936741
             }
           },
-          "platform_units": 26863,
-          "platform_share_pct": 7.559099875342246,
-          "gross_logix_intent": 26863,
+          "platform_units": 27938,
+          "platform_share_pct": 8.714611900632589,
+          "gross_logix_intent": 27938,
           "cannibalised_by_clones": 0,
           "clone_units": {
             "northstar": 0,
@@ -754,11 +383,11 @@
         },
         {
           "quarter": "1981-Q4",
-          "total_market_units": 439841,
+          "total_market_units": 396725,
           "manufacturers": {
             "logix": {
-              "units": 29206,
-              "share_pct": 6.64012677308391
+              "units": 30623,
+              "share_pct": 7.7189488940702
             },
             "northstar": {
               "units": 0,
@@ -781,13 +410,13 @@
               "share_pct": 0.0
             },
             "other_manufacturers": {
-              "units": 410635,
-              "share_pct": 93.3598732269161
+              "units": 366102,
+              "share_pct": 92.2810511059298
             }
           },
-          "platform_units": 29206,
-          "platform_share_pct": 6.64012677308391,
-          "gross_logix_intent": 29206,
+          "platform_units": 30623,
+          "platform_share_pct": 7.7189488940702,
+          "gross_logix_intent": 30623,
           "cannibalised_by_clones": 0,
           "clone_units": {
             "northstar": 0,
@@ -800,40 +429,40 @@
         },
         {
           "quarter": "1982-Q1",
-          "total_market_units": 594209,
+          "total_market_units": 536390,
           "manufacturers": {
             "logix": {
-              "units": 29294,
-              "share_pct": 4.929915231846034
+              "units": 34199,
+              "share_pct": 6.37577136039076
             },
             "northstar": {
               "units": 600,
-              "share_pct": 0.10097457291962927
+              "share_pct": 0.11185890862991481
             },
             "vector": {
               "units": 400,
-              "share_pct": 0.06731638194641952
+              "share_pct": 0.07457260575327654
             },
             "sks": {
               "units": 350,
-              "share_pct": 0.05890183420311708
+              "share_pct": 0.06525103003411697
             },
             "goupil": {
               "units": 300,
-              "share_pct": 0.05048728645981464
+              "share_pct": 0.055929454314957404
             },
             "eina": {
               "units": 100,
-              "share_pct": 0.01682909548660488
+              "share_pct": 0.018643151438319135
             },
             "other_manufacturers": {
-              "units": 563165,
-              "share_pct": 94.77557559713838
+              "units": 500441,
+              "share_pct": 93.29797348943866
             }
           },
-          "platform_units": 31044,
-          "platform_share_pct": 5.22442440286162,
-          "gross_logix_intent": 29719,
+          "platform_units": 35949,
+          "platform_share_pct": 6.702026510561346,
+          "gross_logix_intent": 34624,
           "cannibalised_by_clones": 425,
           "clone_units": {
             "northstar": 600,
@@ -842,44 +471,44 @@
             "goupil": 300,
             "eina": 100
           },
-          "aion_tech_uk_subset": 300
+          "aion_tech_uk_subset": 240
         },
         {
           "quarter": "1982-Q2",
-          "total_market_units": 650834,
+          "total_market_units": 587714,
           "manufacturers": {
             "logix": {
-              "units": 31340,
-              "share_pct": 4.815359984266341
+              "units": 37742,
+              "share_pct": 6.421831026655822
             },
             "northstar": {
               "units": 900,
-              "share_pct": 0.13828410931205193
+              "share_pct": 0.15313570886519634
             },
             "vector": {
               "units": 650,
-              "share_pct": 0.09987185672537084
+              "share_pct": 0.11059801195819735
             },
             "sks": {
               "units": 600,
-              "share_pct": 0.0921894062080346
+              "share_pct": 0.10209047257679757
             },
             "goupil": {
               "units": 500,
-              "share_pct": 0.07682450517336219
+              "share_pct": 0.08507539381399797
             },
             "eina": {
               "units": 180,
-              "share_pct": 0.027656821862410384
+              "share_pct": 0.030627141773039268
             },
             "other_manufacturers": {
-              "units": 616664,
-              "share_pct": 94.74981331645242
+              "units": 547142,
+              "share_pct": 93.09664224435696
             }
           },
-          "platform_units": 34170,
-          "platform_share_pct": 5.250186683547571,
-          "gross_logix_intent": 32010,
+          "platform_units": 40572,
+          "platform_share_pct": 6.903357755643051,
+          "gross_logix_intent": 38412,
           "cannibalised_by_clones": 670,
           "clone_units": {
             "northstar": 900,
@@ -888,44 +517,44 @@
             "goupil": 500,
             "eina": 180
           },
-          "aion_tech_uk_subset": 600
+          "aion_tech_uk_subset": 480
         },
         {
           "quarter": "1982-Q3",
-          "total_market_units": 707395,
+          "total_market_units": 639171,
           "manufacturers": {
             "logix": {
-              "units": 32773,
-              "share_pct": 4.632913718643756
+              "units": 41653,
+              "share_pct": 6.516722442038203
             },
             "northstar": {
               "units": 1300,
-              "share_pct": 0.18377285674905816
+              "share_pct": 0.20338845160371793
             },
             "vector": {
               "units": 900,
-              "share_pct": 0.1272273623647326
+              "share_pct": 0.14080738957180472
             },
             "sks": {
               "units": 900,
-              "share_pct": 0.1272273623647326
+              "share_pct": 0.14080738957180472
             },
             "goupil": {
               "units": 800,
-              "share_pct": 0.11309098876865117
+              "share_pct": 0.12516212406382643
             },
             "eina": {
               "units": 300,
-              "share_pct": 0.042409120788244194
+              "share_pct": 0.04693579652393491
             },
             "other_manufacturers": {
-              "units": 670422,
-              "share_pct": 94.77335859032083
+              "units": 593318,
+              "share_pct": 92.8261764066267
             }
           },
-          "platform_units": 36973,
-          "platform_share_pct": 5.226641409679175,
-          "gross_logix_intent": 33743,
+          "platform_units": 45853,
+          "platform_share_pct": 7.173823593373291,
+          "gross_logix_intent": 42623,
           "cannibalised_by_clones": 970,
           "clone_units": {
             "northstar": 1300,
@@ -934,44 +563,44 @@
             "goupil": 800,
             "eina": 300
           },
-          "aion_tech_uk_subset": 900
+          "aion_tech_uk_subset": 720
         },
         {
           "quarter": "1982-Q4",
-          "total_market_units": 876408,
+          "total_market_units": 792027,
           "manufacturers": {
             "logix": {
-              "units": 36238,
-              "share_pct": 4.1348321786200035
+              "units": 48336,
+              "share_pct": 6.102822252271703
             },
             "northstar": {
               "units": 1800,
-              "share_pct": 0.20538379384944
+              "share_pct": 0.22726497960296807
             },
             "vector": {
               "units": 1200,
-              "share_pct": 0.13692252923296
+              "share_pct": 0.1515099864019787
             },
             "sks": {
               "units": 1250,
-              "share_pct": 0.14262763461766664
+              "share_pct": 0.15782290250206116
             },
             "goupil": {
               "units": 1100,
-              "share_pct": 0.12551231846354666
+              "share_pct": 0.13888415420181383
             },
             "eina": {
               "units": 450,
-              "share_pct": 0.05134594846236
+              "share_pct": 0.05681624490074202
             },
             "other_manufacturers": {
-              "units": 834370,
-              "share_pct": 95.20337559675403
+              "units": 737891,
+              "share_pct": 93.16487948011873
             }
           },
-          "platform_units": 42038,
-          "platform_share_pct": 4.796624403245977,
-          "gross_logix_intent": 37568,
+          "platform_units": 54136,
+          "platform_share_pct": 6.835120519881268,
+          "gross_logix_intent": 49666,
           "cannibalised_by_clones": 1330,
           "clone_units": {
             "northstar": 1800,
@@ -980,204 +609,204 @@
             "goupil": 1100,
             "eina": 450
           },
-          "aion_tech_uk_subset": 1200
+          "aion_tech_uk_subset": 960
         },
         {
           "quarter": "1983-Q1",
-          "total_market_units": 1058178,
+          "total_market_units": 956060,
           "manufacturers": {
             "logix": {
-              "units": 33541,
-              "share_pct": 3.169693567622839
+              "units": 46481,
+              "share_pct": 4.861724159571575
             },
             "northstar": {
-              "units": 2200,
-              "share_pct": 0.20790453023971392
+              "units": 2640,
+              "share_pct": 0.27613329707340545
             },
             "vector": {
-              "units": 1500,
-              "share_pct": 0.14175308879980494
+              "units": 1800,
+              "share_pct": 0.18827270255004916
             },
             "sks": {
-              "units": 1600,
-              "share_pct": 0.15120329471979194
+              "units": 1920,
+              "share_pct": 0.2008242160533858
             },
             "goupil": {
-              "units": 1450,
-              "share_pct": 0.13702798583981146
+              "units": 1740,
+              "share_pct": 0.18199694579838085
             },
             "eina": {
-              "units": 600,
-              "share_pct": 0.056701235519921976
+              "units": 720,
+              "share_pct": 0.07530908102001967
             },
             "other_manufacturers": {
-              "units": 1017287,
-              "share_pct": 96.13571629725813
+              "units": 900759,
+              "share_pct": 94.21573959793318
             }
           },
-          "platform_units": 40891,
-          "platform_share_pct": 3.864283702741883,
-          "gross_logix_intent": 35201,
-          "cannibalised_by_clones": 1660,
+          "platform_units": 55301,
+          "platform_share_pct": 5.784260402066816,
+          "gross_logix_intent": 48473,
+          "cannibalised_by_clones": 1992,
           "clone_units": {
-            "northstar": 2200,
-            "vector": 1500,
-            "sks": 1600,
-            "goupil": 1450,
-            "eina": 600
+            "northstar": 2640,
+            "vector": 1800,
+            "sks": 1920,
+            "goupil": 1740,
+            "eina": 720
           },
-          "aion_tech_uk_subset": 1300
+          "aion_tech_uk_subset": 1040
         },
         {
           "quarter": "1983-Q2",
-          "total_market_units": 1158863,
+          "total_market_units": 1047172,
           "manufacturers": {
             "logix": {
-              "units": 35213,
-              "share_pct": 3.0385817823159424
+              "units": 49938,
+              "share_pct": 4.7688440867402875
             },
             "northstar": {
-              "units": 2700,
-              "share_pct": 0.23298698810817153
+              "units": 3240,
+              "share_pct": 0.30940475872158535
             },
             "vector": {
-              "units": 1800,
-              "share_pct": 0.15532465873878104
+              "units": 2160,
+              "share_pct": 0.2062698391477236
             },
             "sks": {
-              "units": 2000,
-              "share_pct": 0.17258295415420113
+              "units": 2400,
+              "share_pct": 0.2291887101641373
             },
             "goupil": {
-              "units": 1800,
-              "share_pct": 0.15532465873878104
+              "units": 2160,
+              "share_pct": 0.2062698391477236
             },
             "eina": {
-              "units": 800,
-              "share_pct": 0.06903318166168046
+              "units": 960,
+              "share_pct": 0.09167548406565493
             },
             "other_manufacturers": {
-              "units": 1114550,
-              "share_pct": 96.17616577628245
+              "units": 986314,
+              "share_pct": 94.18834728201288
             }
           },
-          "platform_units": 44313,
-          "platform_share_pct": 3.823834223717558,
-          "gross_logix_intent": 37248,
-          "cannibalised_by_clones": 2035,
+          "platform_units": 60858,
+          "platform_share_pct": 5.811652717987112,
+          "gross_logix_intent": 52380,
+          "cannibalised_by_clones": 2442,
           "clone_units": {
-            "northstar": 2700,
-            "vector": 1800,
-            "sks": 2000,
-            "goupil": 1800,
-            "eina": 800
+            "northstar": 3240,
+            "vector": 2160,
+            "sks": 2400,
+            "goupil": 2160,
+            "eina": 960
           },
-          "aion_tech_uk_subset": 1600
+          "aion_tech_uk_subset": 1280
         },
         {
           "quarter": "1983-Q3",
-          "total_market_units": 1259630,
+          "total_market_units": 1138402,
           "manufacturers": {
             "logix": {
-              "units": 37248,
-              "share_pct": 2.9570588188595064
+              "units": 53932,
+              "share_pct": 4.737518029659118
             },
             "northstar": {
-              "units": 3200,
-              "share_pct": 0.25404285385390946
+              "units": 3840,
+              "share_pct": 0.33731493795689044
             },
             "vector": {
-              "units": 2100,
-              "share_pct": 0.1667156228416281
+              "units": 2520,
+              "share_pct": 0.22136292803420937
             },
             "sks": {
-              "units": 2400,
-              "share_pct": 0.19053214039043212
+              "units": 2880,
+              "share_pct": 0.25298620346766787
             },
             "goupil": {
-              "units": 2200,
-              "share_pct": 0.17465446202456278
+              "units": 2640,
+              "share_pct": 0.23190401984536216
             },
             "eina": {
-              "units": 1000,
-              "share_pct": 0.0793883918293467
+              "units": 1200,
+              "share_pct": 0.10541091811152827
             },
             "other_manufacturers": {
-              "units": 1211482,
-              "share_pct": 96.17760771020062
+              "units": 1071390,
+              "share_pct": 94.11350296292522
             }
           },
-          "platform_units": 48148,
-          "platform_share_pct": 3.822392289799385,
-          "gross_logix_intent": 39663,
-          "cannibalised_by_clones": 2415,
+          "platform_units": 67012,
+          "platform_share_pct": 5.8864970370747765,
+          "gross_logix_intent": 56830,
+          "cannibalised_by_clones": 2898,
           "clone_units": {
-            "northstar": 3200,
-            "vector": 2100,
-            "sks": 2400,
-            "goupil": 2200,
-            "eina": 1000
+            "northstar": 3840,
+            "vector": 2520,
+            "sks": 2880,
+            "goupil": 2640,
+            "eina": 1200
           },
-          "aion_tech_uk_subset": 1900
+          "aion_tech_uk_subset": 1520
         },
         {
           "quarter": "1983-Q4",
-          "total_market_units": 1560904,
+          "total_market_units": 1410377,
           "manufacturers": {
             "logix": {
-              "units": 41772,
-              "share_pct": 2.676141517992138
+              "units": 61587,
+              "share_pct": 4.366704788861417
             },
             "northstar": {
-              "units": 3700,
-              "share_pct": 0.23704212430745258
+              "units": 4440,
+              "share_pct": 0.3148094445669491
             },
             "vector": {
-              "units": 2400,
-              "share_pct": 0.1537570536048341
+              "units": 2880,
+              "share_pct": 0.2042007208001832
             },
             "sks": {
-              "units": 2800,
-              "share_pct": 0.17938322920563982
+              "units": 3360,
+              "share_pct": 0.2382341742668804
             },
             "goupil": {
-              "units": 2600,
-              "share_pct": 0.16657014140523696
+              "units": 3120,
+              "share_pct": 0.22121744753353184
             },
             "eina": {
-              "units": 1250,
-              "share_pct": 0.08008179875251778
+              "units": 1500,
+              "share_pct": 0.10635454208342875
             },
             "other_manufacturers": {
-              "units": 1506382,
-              "share_pct": 96.50702413473218
+              "units": 1333490,
+              "share_pct": 94.5484788818876
             }
           },
-          "platform_units": 54522,
-          "platform_share_pct": 3.4929758652678196,
-          "gross_logix_intent": 44572,
-          "cannibalised_by_clones": 2800,
+          "platform_units": 76887,
+          "platform_share_pct": 5.4515211181123915,
+          "gross_logix_intent": 64947,
+          "cannibalised_by_clones": 3360,
           "clone_units": {
-            "northstar": 3700,
-            "vector": 2400,
-            "sks": 2800,
-            "goupil": 2600,
-            "eina": 1250
+            "northstar": 4440,
+            "vector": 2880,
+            "sks": 3360,
+            "goupil": 3120,
+            "eina": 1500
           },
-          "aion_tech_uk_subset": 2200
+          "aion_tech_uk_subset": 1760
         }
       ]
     },
     {
-      "id": "strong",
+      "id": "central",
       "quarterly": [
         {
-          "quarter": "1981-Q1",
-          "total_market_units": 329549,
+          "quarter": "1980-Q1",
+          "total_market_units": 234202,
           "manufacturers": {
             "logix": {
-              "units": 30744,
-              "share_pct": 9.32911342471074
+              "units": 16012,
+              "share_pct": 6.836833161117325
             },
             "northstar": {
               "units": 0,
@@ -1200,12 +829,196 @@
               "share_pct": 0.0
             },
             "other_manufacturers": {
-              "units": 298805,
-              "share_pct": 90.67088657528926
+              "units": 218190,
+              "share_pct": 93.16316683888267
+            }
+          },
+          "platform_units": 16012,
+          "platform_share_pct": 6.836833161117325,
+          "gross_logix_intent": 16012,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q2",
+          "total_market_units": 256916,
+          "manufacturers": {
+            "logix": {
+              "units": 19582,
+              "share_pct": 7.621946472777094
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 237334,
+              "share_pct": 92.3780535272229
+            }
+          },
+          "platform_units": 19582,
+          "platform_share_pct": 7.621946472777094,
+          "gross_logix_intent": 19582,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q3",
+          "total_market_units": 280017,
+          "manufacturers": {
+            "logix": {
+              "units": 25083,
+              "share_pct": 8.957670427152637
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 254934,
+              "share_pct": 91.04232957284736
+            }
+          },
+          "platform_units": 25083,
+          "platform_share_pct": 8.957670427152637,
+          "gross_logix_intent": 25083,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q4",
+          "total_market_units": 346566,
+          "manufacturers": {
+            "logix": {
+              "units": 27832,
+              "share_pct": 8.030793557359926
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 318734,
+              "share_pct": 91.96920644264007
+            }
+          },
+          "platform_units": 27832,
+          "platform_share_pct": 8.030793557359926,
+          "gross_logix_intent": 27832,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1981-Q1",
+          "total_market_units": 300149,
+          "manufacturers": {
+            "logix": {
+              "units": 30744,
+              "share_pct": 10.24291268669894
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 269405,
+              "share_pct": 89.75708731330107
             }
           },
           "platform_units": 30744,
-          "platform_share_pct": 9.32911342471074,
+          "platform_share_pct": 10.24291268669894,
           "gross_logix_intent": 30744,
           "cannibalised_by_clones": 0,
           "clone_units": {
@@ -1219,11 +1032,11 @@
         },
         {
           "quarter": "1981-Q2",
-          "total_market_units": 360766,
+          "total_market_units": 328840,
           "manufacturers": {
             "logix": {
-              "units": 32832,
-              "share_pct": 9.100635869233798
+              "units": 34200,
+              "share_pct": 10.400194623525119
             },
             "northstar": {
               "units": 0,
@@ -1246,13 +1059,13 @@
               "share_pct": 0.0
             },
             "other_manufacturers": {
-              "units": 327934,
-              "share_pct": 90.8993641307662
+              "units": 294640,
+              "share_pct": 89.59980537647489
             }
           },
-          "platform_units": 32832,
-          "platform_share_pct": 9.100635869233798,
-          "gross_logix_intent": 32832,
+          "platform_units": 34200,
+          "platform_share_pct": 10.400194623525119,
+          "gross_logix_intent": 34200,
           "cannibalised_by_clones": 0,
           "clone_units": {
             "northstar": 0,
@@ -1265,11 +1078,11 @@
         },
         {
           "quarter": "1981-Q3",
-          "total_market_units": 391447,
+          "total_market_units": 356984,
           "manufacturers": {
             "logix": {
-              "units": 32236,
-              "share_pct": 8.235086742266514
+              "units": 34922,
+              "share_pct": 9.782511261008898
             },
             "northstar": {
               "units": 0,
@@ -1292,13 +1105,13 @@
               "share_pct": 0.0
             },
             "other_manufacturers": {
-              "units": 359211,
-              "share_pct": 91.76491325773348
+              "units": 322062,
+              "share_pct": 90.21748873899111
             }
           },
-          "platform_units": 32236,
-          "platform_share_pct": 8.235086742266514,
-          "gross_logix_intent": 32236,
+          "platform_units": 34922,
+          "platform_share_pct": 9.782511261008898,
+          "gross_logix_intent": 34922,
           "cannibalised_by_clones": 0,
           "clone_units": {
             "northstar": 0,
@@ -1311,11 +1124,11 @@
         },
         {
           "quarter": "1981-Q4",
-          "total_market_units": 484409,
+          "total_market_units": 441656,
           "manufacturers": {
             "logix": {
-              "units": 35047,
-              "share_pct": 7.235001826968533
+              "units": 38279,
+              "share_pct": 8.667152716141068
             },
             "northstar": {
               "units": 0,
@@ -1338,13 +1151,13 @@
               "share_pct": 0.0
             },
             "other_manufacturers": {
-              "units": 449362,
-              "share_pct": 92.76499817303147
+              "units": 403377,
+              "share_pct": 91.33284728385892
             }
           },
-          "platform_units": 35047,
-          "platform_share_pct": 7.235001826968533,
-          "gross_logix_intent": 35047,
+          "platform_units": 38279,
+          "platform_share_pct": 8.667152716141068,
+          "gross_logix_intent": 38279,
           "cannibalised_by_clones": 0,
           "clone_units": {
             "northstar": 0,
@@ -1357,369 +1170,1110 @@
         },
         {
           "quarter": "1982-Q1",
-          "total_market_units": 654250,
+          "total_market_units": 596987,
           "manufacturers": {
             "logix": {
-              "units": 35152,
-              "share_pct": 5.3728696981276265
+              "units": 42749,
+              "share_pct": 7.160792446066664
             },
             "northstar": {
-              "units": 720,
-              "share_pct": 0.11004967520061139
+              "units": 750,
+              "share_pct": 0.1256308763842429
             },
             "vector": {
-              "units": 480,
-              "share_pct": 0.07336645013374093
+              "units": 500,
+              "share_pct": 0.08375391758949524
             },
             "sks": {
-              "units": 420,
-              "share_pct": 0.06419564386702331
+              "units": 438,
+              "share_pct": 0.07336843180839783
             },
             "goupil": {
-              "units": 360,
-              "share_pct": 0.055024837600305694
+              "units": 375,
+              "share_pct": 0.06281543819212144
             },
             "eina": {
-              "units": 120,
-              "share_pct": 0.018341612533435234
+              "units": 125,
+              "share_pct": 0.02093847939737381
             },
             "other_manufacturers": {
-              "units": 616998,
-              "share_pct": 94.30615208253725
+              "units": 552050,
+              "share_pct": 92.4727004105617
             }
           },
-          "platform_units": 37252,
-          "platform_share_pct": 5.693847917462744,
-          "gross_logix_intent": 35662,
-          "cannibalised_by_clones": 510,
+          "platform_units": 44937,
+          "platform_share_pct": 7.527299589438297,
+          "gross_logix_intent": 43280,
+          "cannibalised_by_clones": 531,
           "clone_units": {
-            "northstar": 720,
-            "vector": 480,
-            "sks": 420,
-            "goupil": 360,
-            "eina": 120
+            "northstar": 750,
+            "vector": 500,
+            "sks": 438,
+            "goupil": 375,
+            "eina": 125
+          },
+          "aion_tech_uk_subset": 300
+        },
+        {
+          "quarter": "1982-Q2",
+          "total_market_units": 654143,
+          "manufacturers": {
+            "logix": {
+              "units": 47177,
+              "share_pct": 7.212031619997463
+            },
+            "northstar": {
+              "units": 1125,
+              "share_pct": 0.1719807442715125
+            },
+            "vector": {
+              "units": 812,
+              "share_pct": 0.12413187942086057
+            },
+            "sks": {
+              "units": 750,
+              "share_pct": 0.11465382951434165
+            },
+            "goupil": {
+              "units": 625,
+              "share_pct": 0.09554485792861805
+            },
+            "eina": {
+              "units": 225,
+              "share_pct": 0.0343961488543025
+            },
+            "other_manufacturers": {
+              "units": 603429,
+              "share_pct": 92.2472609200129
+            }
+          },
+          "platform_units": 50714,
+          "platform_share_pct": 7.752739079987098,
+          "gross_logix_intent": 48015,
+          "cannibalised_by_clones": 838,
+          "clone_units": {
+            "northstar": 1125,
+            "vector": 812,
+            "sks": 750,
+            "goupil": 625,
+            "eina": 225
+          },
+          "aion_tech_uk_subset": 600
+        },
+        {
+          "quarter": "1982-Q3",
+          "total_market_units": 711463,
+          "manufacturers": {
+            "logix": {
+              "units": 52066,
+              "share_pct": 7.3181599043098515
+            },
+            "northstar": {
+              "units": 1625,
+              "share_pct": 0.22840260140021335
+            },
+            "vector": {
+              "units": 1125,
+              "share_pct": 0.1581248778924554
+            },
+            "sks": {
+              "units": 1125,
+              "share_pct": 0.1581248778924554
+            },
+            "goupil": {
+              "units": 1000,
+              "share_pct": 0.14055544701551592
+            },
+            "eina": {
+              "units": 375,
+              "share_pct": 0.05270829263081847
+            },
+            "other_manufacturers": {
+              "units": 654147,
+              "share_pct": 91.9439239988587
+            }
+          },
+          "platform_units": 57316,
+          "platform_share_pct": 8.05607600114131,
+          "gross_logix_intent": 53278,
+          "cannibalised_by_clones": 1212,
+          "clone_units": {
+            "northstar": 1625,
+            "vector": 1125,
+            "sks": 1125,
+            "goupil": 1000,
+            "eina": 375
+          },
+          "aion_tech_uk_subset": 900
+        },
+        {
+          "quarter": "1982-Q4",
+          "total_market_units": 881534,
+          "manufacturers": {
+            "logix": {
+              "units": 60420,
+              "share_pct": 6.853961390031468
+            },
+            "northstar": {
+              "units": 2250,
+              "share_pct": 0.25523689386909637
+            },
+            "vector": {
+              "units": 1500,
+              "share_pct": 0.17015792924606424
+            },
+            "sks": {
+              "units": 1562,
+              "share_pct": 0.17719112365490158
+            },
+            "goupil": {
+              "units": 1375,
+              "share_pct": 0.1559781018088922
+            },
+            "eina": {
+              "units": 562,
+              "share_pct": 0.06375250415752541
+            },
+            "other_manufacturers": {
+              "units": 813865,
+              "share_pct": 92.32372205723205
+            }
+          },
+          "platform_units": 67669,
+          "platform_share_pct": 7.676277942767948,
+          "gross_logix_intent": 62082,
+          "cannibalised_by_clones": 1662,
+          "clone_units": {
+            "northstar": 2250,
+            "vector": 1500,
+            "sks": 1562,
+            "goupil": 1375,
+            "eina": 562
+          },
+          "aion_tech_uk_subset": 1200
+        },
+        {
+          "quarter": "1983-Q1",
+          "total_market_units": 1063825,
+          "manufacturers": {
+            "logix": {
+              "units": 58101,
+              "share_pct": 5.461518576833596
+            },
+            "northstar": {
+              "units": 3300,
+              "share_pct": 0.3102013959062816
+            },
+            "vector": {
+              "units": 2250,
+              "share_pct": 0.2115009517542829
+            },
+            "sks": {
+              "units": 2400,
+              "share_pct": 0.22560101520456843
+            },
+            "goupil": {
+              "units": 2175,
+              "share_pct": 0.20445092002914014
+            },
+            "eina": {
+              "units": 900,
+              "share_pct": 0.08460038070171316
+            },
+            "other_manufacturers": {
+              "units": 994699,
+              "share_pct": 93.50212675957042
+            }
+          },
+          "platform_units": 69126,
+          "platform_share_pct": 6.497873240429581,
+          "gross_logix_intent": 60591,
+          "cannibalised_by_clones": 2490,
+          "clone_units": {
+            "northstar": 3300,
+            "vector": 2250,
+            "sks": 2400,
+            "goupil": 2175,
+            "eina": 900
+          },
+          "aion_tech_uk_subset": 1300
+        },
+        {
+          "quarter": "1983-Q2",
+          "total_market_units": 1165215,
+          "manufacturers": {
+            "logix": {
+              "units": 62423,
+              "share_pct": 5.35720875546573
+            },
+            "northstar": {
+              "units": 4050,
+              "share_pct": 0.34757534017327274
+            },
+            "vector": {
+              "units": 2700,
+              "share_pct": 0.2317168934488485
+            },
+            "sks": {
+              "units": 3000,
+              "share_pct": 0.257463214943165
+            },
+            "goupil": {
+              "units": 2700,
+              "share_pct": 0.2317168934488485
+            },
+            "eina": {
+              "units": 1200,
+              "share_pct": 0.10298528597726599
+            },
+            "other_manufacturers": {
+              "units": 1089142,
+              "share_pct": 93.47133361654288
+            }
+          },
+          "platform_units": 76073,
+          "platform_share_pct": 6.5286663834571295,
+          "gross_logix_intent": 65475,
+          "cannibalised_by_clones": 3052,
+          "clone_units": {
+            "northstar": 4050,
+            "vector": 2700,
+            "sks": 3000,
+            "goupil": 2700,
+            "eina": 1200
+          },
+          "aion_tech_uk_subset": 1600
+        },
+        {
+          "quarter": "1983-Q3",
+          "total_market_units": 1266753,
+          "manufacturers": {
+            "logix": {
+              "units": 67416,
+              "share_pct": 5.321953056357474
+            },
+            "northstar": {
+              "units": 4800,
+              "share_pct": 0.3789215419264845
+            },
+            "vector": {
+              "units": 3150,
+              "share_pct": 0.24866726188925545
+            },
+            "sks": {
+              "units": 3600,
+              "share_pct": 0.28419115644486337
+            },
+            "goupil": {
+              "units": 3300,
+              "share_pct": 0.2605085600744581
+            },
+            "eina": {
+              "units": 1500,
+              "share_pct": 0.11841298185202641
+            },
+            "other_manufacturers": {
+              "units": 1182987,
+              "share_pct": 93.38734544145544
+            }
+          },
+          "platform_units": 83766,
+          "platform_share_pct": 6.612654558544562,
+          "gross_logix_intent": 71038,
+          "cannibalised_by_clones": 3622,
+          "clone_units": {
+            "northstar": 4800,
+            "vector": 3150,
+            "sks": 3600,
+            "goupil": 3300,
+            "eina": 1500
+          },
+          "aion_tech_uk_subset": 1900
+        },
+        {
+          "quarter": "1983-Q4",
+          "total_market_units": 1569222,
+          "manufacturers": {
+            "logix": {
+              "units": 76984,
+              "share_pct": 4.905870552413871
+            },
+            "northstar": {
+              "units": 5550,
+              "share_pct": 0.35367844702661577
+            },
+            "vector": {
+              "units": 3600,
+              "share_pct": 0.22941304671996698
+            },
+            "sks": {
+              "units": 4200,
+              "share_pct": 0.2676485545066281
+            },
+            "goupil": {
+              "units": 3900,
+              "share_pct": 0.24853080061329755
+            },
+            "eina": {
+              "units": 1875,
+              "share_pct": 0.11948596183331613
+            },
+            "other_manufacturers": {
+              "units": 1473113,
+              "share_pct": 93.8753726368863
+            }
+          },
+          "platform_units": 96109,
+          "platform_share_pct": 6.124627363113696,
+          "gross_logix_intent": 81184,
+          "cannibalised_by_clones": 4200,
+          "clone_units": {
+            "northstar": 5550,
+            "vector": 3600,
+            "sks": 4200,
+            "goupil": 3900,
+            "eina": 1875
+          },
+          "aion_tech_uk_subset": 2200
+        }
+      ]
+    },
+    {
+      "id": "strong",
+      "quarterly": [
+        {
+          "quarter": "1980-Q1",
+          "total_market_units": 257302,
+          "manufacturers": {
+            "logix": {
+              "units": 16012,
+              "share_pct": 6.223037520112553
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 241290,
+              "share_pct": 93.77696247988744
+            }
+          },
+          "platform_units": 16012,
+          "platform_share_pct": 6.223037520112553,
+          "gross_logix_intent": 16012,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q2",
+          "total_market_units": 283000,
+          "manufacturers": {
+            "logix": {
+              "units": 23499,
+              "share_pct": 8.303533568904593
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 259501,
+              "share_pct": 91.6964664310954
+            }
+          },
+          "platform_units": 23499,
+          "platform_share_pct": 8.303533568904593,
+          "gross_logix_intent": 23499,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q3",
+          "total_market_units": 308520,
+          "manufacturers": {
+            "logix": {
+              "units": 30100,
+              "share_pct": 9.75625567224167
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 278420,
+              "share_pct": 90.24374432775834
+            }
+          },
+          "platform_units": 30100,
+          "platform_share_pct": 9.75625567224167,
+          "gross_logix_intent": 30100,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1980-Q4",
+          "total_market_units": 381780,
+          "manufacturers": {
+            "logix": {
+              "units": 33398,
+              "share_pct": 8.747970035098747
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 348382,
+              "share_pct": 91.25202996490125
+            }
+          },
+          "platform_units": 33398,
+          "platform_share_pct": 8.747970035098747,
+          "gross_logix_intent": 33398,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1981-Q1",
+          "total_market_units": 330779,
+          "manufacturers": {
+            "logix": {
+              "units": 36893,
+              "share_pct": 11.153368260983921
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 293886,
+              "share_pct": 88.84663173901608
+            }
+          },
+          "platform_units": 36893,
+          "platform_share_pct": 11.153368260983921,
+          "gross_logix_intent": 36893,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1981-Q2",
+          "total_market_units": 362408,
+          "manufacturers": {
+            "logix": {
+              "units": 41040,
+              "share_pct": 11.32425332774111
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 321368,
+              "share_pct": 88.6757466722589
+            }
+          },
+          "platform_units": 41040,
+          "platform_share_pct": 11.32425332774111,
+          "gross_logix_intent": 41040,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1981-Q3",
+          "total_market_units": 393381,
+          "manufacturers": {
+            "logix": {
+              "units": 41906,
+              "share_pct": 10.652776824503471
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 351475,
+              "share_pct": 89.34722317549652
+            }
+          },
+          "platform_units": 41906,
+          "platform_share_pct": 10.652776824503471,
+          "gross_logix_intent": 41906,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1981-Q4",
+          "total_market_units": 486587,
+          "manufacturers": {
+            "logix": {
+              "units": 45935,
+              "share_pct": 9.440243985145514
+            },
+            "northstar": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "vector": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "sks": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "goupil": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "eina": {
+              "units": 0,
+              "share_pct": 0.0
+            },
+            "other_manufacturers": {
+              "units": 440652,
+              "share_pct": 90.55975601485449
+            }
+          },
+          "platform_units": 45935,
+          "platform_share_pct": 9.440243985145514,
+          "gross_logix_intent": 45935,
+          "cannibalised_by_clones": 0,
+          "clone_units": {
+            "northstar": 0,
+            "vector": 0,
+            "sks": 0,
+            "goupil": 0,
+            "eina": 0
+          },
+          "aion_tech_uk_subset": 0
+        },
+        {
+          "quarter": "1982-Q1",
+          "total_market_units": 657585,
+          "manufacturers": {
+            "logix": {
+              "units": 51297,
+              "share_pct": 7.8008166244667985
+            },
+            "northstar": {
+              "units": 900,
+              "share_pct": 0.1368644357763635
+            },
+            "vector": {
+              "units": 600,
+              "share_pct": 0.09124295718424234
+            },
+            "sks": {
+              "units": 526,
+              "share_pct": 0.07998965913151912
+            },
+            "goupil": {
+              "units": 450,
+              "share_pct": 0.06843221788818175
+            },
+            "eina": {
+              "units": 150,
+              "share_pct": 0.022810739296060586
+            },
+            "other_manufacturers": {
+              "units": 603662,
+              "share_pct": 91.79984336625684
+            }
+          },
+          "platform_units": 53923,
+          "platform_share_pct": 8.200156633743166,
+          "gross_logix_intent": 51935,
+          "cannibalised_by_clones": 638,
+          "clone_units": {
+            "northstar": 900,
+            "vector": 600,
+            "sks": 526,
+            "goupil": 450,
+            "eina": 150
           },
           "aion_tech_uk_subset": 360
         },
         {
           "quarter": "1982-Q2",
-          "total_market_units": 716601,
+          "total_market_units": 720571,
           "manufacturers": {
             "logix": {
-              "units": 37607,
-              "share_pct": 5.2479692325296785
+              "units": 56613,
+              "share_pct": 7.85668587828264
             },
             "northstar": {
-              "units": 1080,
-              "share_pct": 0.15071148379642227
+              "units": 1350,
+              "share_pct": 0.1873514199155947
             },
             "vector": {
-              "units": 780,
-              "share_pct": 0.10884718274186053
+              "units": 974,
+              "share_pct": 0.1351705799983624
             },
             "sks": {
-              "units": 720,
-              "share_pct": 0.10047432253094818
+              "units": 900,
+              "share_pct": 0.12490094661039648
             },
             "goupil": {
-              "units": 600,
-              "share_pct": 0.08372860210912349
+              "units": 750,
+              "share_pct": 0.10408412217533039
             },
             "eina": {
-              "units": 216,
-              "share_pct": 0.030142296759284457
+              "units": 270,
+              "share_pct": 0.03747028398311894
             },
             "other_manufacturers": {
-              "units": 675598,
-              "share_pct": 94.27812687953269
+              "units": 659714,
+              "share_pct": 91.55433676903456
             }
           },
-          "platform_units": 41003,
-          "platform_share_pct": 5.7218731204673166,
-          "gross_logix_intent": 38412,
-          "cannibalised_by_clones": 805,
+          "platform_units": 60857,
+          "platform_share_pct": 8.445663230965444,
+          "gross_logix_intent": 57618,
+          "cannibalised_by_clones": 1005,
           "clone_units": {
-            "northstar": 1080,
-            "vector": 780,
-            "sks": 720,
-            "goupil": 600,
-            "eina": 216
+            "northstar": 1350,
+            "vector": 974,
+            "sks": 900,
+            "goupil": 750,
+            "eina": 270
           },
           "aion_tech_uk_subset": 720
         },
         {
           "quarter": "1982-Q3",
-          "total_market_units": 778873,
+          "total_market_units": 783756,
           "manufacturers": {
             "logix": {
-              "units": 39327,
-              "share_pct": 5.049218550392682
+              "units": 62479,
+              "share_pct": 7.971741205170997
             },
             "northstar": {
-              "units": 1560,
-              "share_pct": 0.20028939249402664
+              "units": 1950,
+              "share_pct": 0.24880192304747906
             },
             "vector": {
-              "units": 1080,
-              "share_pct": 0.13866188711124922
+              "units": 1350,
+              "share_pct": 0.1722474851867163
             },
             "sks": {
-              "units": 1080,
-              "share_pct": 0.13866188711124922
+              "units": 1350,
+              "share_pct": 0.1722474851867163
             },
             "goupil": {
-              "units": 960,
-              "share_pct": 0.12325501076555485
+              "units": 1200,
+              "share_pct": 0.15310887572152557
             },
             "eina": {
-              "units": 360,
-              "share_pct": 0.046220629037083065
+              "units": 450,
+              "share_pct": 0.05741582839557209
             },
             "other_manufacturers": {
-              "units": 734506,
-              "share_pct": 94.30369264308816
+              "units": 714977,
+              "share_pct": 91.224437197291
             }
           },
-          "platform_units": 44367,
-          "platform_share_pct": 5.696307356911846,
-          "gross_logix_intent": 40491,
-          "cannibalised_by_clones": 1164,
+          "platform_units": 68779,
+          "platform_share_pct": 8.775562802709008,
+          "gross_logix_intent": 63934,
+          "cannibalised_by_clones": 1455,
           "clone_units": {
-            "northstar": 1560,
-            "vector": 1080,
-            "sks": 1080,
-            "goupil": 960,
-            "eina": 360
+            "northstar": 1950,
+            "vector": 1350,
+            "sks": 1350,
+            "goupil": 1200,
+            "eina": 450
           },
           "aion_tech_uk_subset": 1080
         },
         {
           "quarter": "1982-Q4",
-          "total_market_units": 964889,
+          "total_market_units": 971040,
           "manufacturers": {
             "logix": {
-              "units": 43485,
-              "share_pct": 4.506736007976047
+              "units": 72504,
+              "share_pct": 7.466633712308453
             },
             "northstar": {
-              "units": 2160,
-              "share_pct": 0.22385994658452943
+              "units": 2700,
+              "share_pct": 0.27805239742956006
             },
             "vector": {
-              "units": 1440,
-              "share_pct": 0.14923996438968629
+              "units": 1800,
+              "share_pct": 0.18536826495304004
             },
             "sks": {
-              "units": 1500,
-              "share_pct": 0.15545829623925653
+              "units": 1874,
+              "share_pct": 0.19298896028999835
             },
             "goupil": {
-              "units": 1320,
-              "share_pct": 0.13680330069054575
+              "units": 1650,
+              "share_pct": 0.16992090954028669
             },
             "eina": {
-              "units": 540,
-              "share_pct": 0.05596498664613236
+              "units": 674,
+              "share_pct": 0.06941011698797166
             },
             "other_manufacturers": {
-              "units": 914444,
-              "share_pct": 94.7719374974738
+              "units": 889838,
+              "share_pct": 91.63762563849069
             }
           },
-          "platform_units": 50445,
-          "platform_share_pct": 5.228062502526197,
-          "gross_logix_intent": 45081,
-          "cannibalised_by_clones": 1596,
+          "platform_units": 81202,
+          "platform_share_pct": 8.36237436150931,
+          "gross_logix_intent": 74499,
+          "cannibalised_by_clones": 1995,
           "clone_units": {
-            "northstar": 2160,
-            "vector": 1440,
-            "sks": 1500,
-            "goupil": 1320,
-            "eina": 540
+            "northstar": 2700,
+            "vector": 1800,
+            "sks": 1874,
+            "goupil": 1650,
+            "eina": 674
           },
           "aion_tech_uk_subset": 1440
         },
         {
           "quarter": "1983-Q1",
-          "total_market_units": 1164814,
+          "total_market_units": 1171590,
           "manufacturers": {
             "logix": {
-              "units": 40249,
-              "share_pct": 3.4554014632379073
+              "units": 69722,
+              "share_pct": 5.951057963963502
             },
             "northstar": {
-              "units": 2640,
-              "share_pct": 0.22664562754225137
+              "units": 3960,
+              "share_pct": 0.33800220213555937
             },
             "vector": {
-              "units": 1800,
-              "share_pct": 0.15453110968789868
+              "units": 2700,
+              "share_pct": 0.23045604691060867
             },
             "sks": {
-              "units": 1920,
-              "share_pct": 0.16483318366709193
+              "units": 2880,
+              "share_pct": 0.24581978337131588
             },
             "goupil": {
-              "units": 1740,
-              "share_pct": 0.14938007269830203
+              "units": 2610,
+              "share_pct": 0.22277417868025504
             },
             "eina": {
-              "units": 720,
-              "share_pct": 0.06181244387515947
+              "units": 1080,
+              "share_pct": 0.09218241876424346
             },
             "other_manufacturers": {
-              "units": 1115745,
-              "share_pct": 95.78739609929139
+              "units": 1088638,
+              "share_pct": 92.91970740617451
             }
           },
-          "platform_units": 49069,
-          "platform_share_pct": 4.2126039007086105,
-          "gross_logix_intent": 42241,
-          "cannibalised_by_clones": 1992,
+          "platform_units": 82952,
+          "platform_share_pct": 7.080292593825485,
+          "gross_logix_intent": 72710,
+          "cannibalised_by_clones": 2988,
           "clone_units": {
-            "northstar": 2640,
-            "vector": 1800,
-            "sks": 1920,
-            "goupil": 1740,
-            "eina": 720
+            "northstar": 3960,
+            "vector": 2700,
+            "sks": 2880,
+            "goupil": 2610,
+            "eina": 1080
           },
           "aion_tech_uk_subset": 1560
         },
         {
           "quarter": "1983-Q2",
-          "total_market_units": 1275635,
+          "total_market_units": 1283257,
           "manufacturers": {
             "logix": {
-              "units": 42256,
-              "share_pct": 3.3125463004699625
+              "units": 74907,
+              "share_pct": 5.837256293945796
             },
             "northstar": {
-              "units": 3240,
-              "share_pct": 0.2539911495059324
+              "units": 4860,
+              "share_pct": 0.3787238253911726
             },
             "vector": {
-              "units": 2160,
-              "share_pct": 0.1693274330039549
+              "units": 3240,
+              "share_pct": 0.25248255026078176
             },
             "sks": {
-              "units": 2400,
-              "share_pct": 0.18814159222661656
+              "units": 3600,
+              "share_pct": 0.28053616695642414
             },
             "goupil": {
-              "units": 2160,
-              "share_pct": 0.1693274330039549
+              "units": 3240,
+              "share_pct": 0.25248255026078176
             },
             "eina": {
-              "units": 960,
-              "share_pct": 0.07525663689064663
+              "units": 1440,
+              "share_pct": 0.11221446678256967
             },
             "other_manufacturers": {
-              "units": 1222459,
-              "share_pct": 95.83140945489893
+              "units": 1191970,
+              "share_pct": 92.88630414640248
             }
           },
-          "platform_units": 53176,
-          "platform_share_pct": 4.168590545101067,
-          "gross_logix_intent": 44698,
-          "cannibalised_by_clones": 2442,
+          "platform_units": 91287,
+          "platform_share_pct": 7.113695853597525,
+          "gross_logix_intent": 78570,
+          "cannibalised_by_clones": 3663,
           "clone_units": {
-            "northstar": 3240,
-            "vector": 2160,
-            "sks": 2400,
-            "goupil": 2160,
-            "eina": 960
+            "northstar": 4860,
+            "vector": 3240,
+            "sks": 3600,
+            "goupil": 3240,
+            "eina": 1440
           },
           "aion_tech_uk_subset": 1920
         },
         {
           "quarter": "1983-Q3",
-          "total_market_units": 1386555,
+          "total_market_units": 1395104,
           "manufacturers": {
             "logix": {
-              "units": 44697,
-              "share_pct": 3.223600939017926
+              "units": 80898,
+              "share_pct": 5.798707479872468
             },
             "northstar": {
-              "units": 3840,
-              "share_pct": 0.27694537901489663
+              "units": 5760,
+              "share_pct": 0.41287244535174433
             },
             "vector": {
-              "units": 2520,
-              "share_pct": 0.1817454049785259
+              "units": 3780,
+              "share_pct": 0.2709475422620823
             },
             "sks": {
-              "units": 2880,
-              "share_pct": 0.2077090342611725
+              "units": 4320,
+              "share_pct": 0.30965433401380826
             },
             "goupil": {
-              "units": 2640,
-              "share_pct": 0.19039994807274144
+              "units": 3960,
+              "share_pct": 0.28384980617932426
             },
             "eina": {
-              "units": 1200,
-              "share_pct": 0.0865454309421552
+              "units": 1800,
+              "share_pct": 0.12902263917242013
             },
             "other_manufacturers": {
-              "units": 1328778,
-              "share_pct": 95.83305386371258
+              "units": 1294586,
+              "share_pct": 92.79494575314816
             }
           },
-          "platform_units": 57777,
-          "platform_share_pct": 4.166946136287417,
-          "gross_logix_intent": 47595,
-          "cannibalised_by_clones": 2898,
+          "platform_units": 100518,
+          "platform_share_pct": 7.205054246851847,
+          "gross_logix_intent": 85245,
+          "cannibalised_by_clones": 4347,
           "clone_units": {
-            "northstar": 3840,
-            "vector": 2520,
-            "sks": 2880,
-            "goupil": 2640,
-            "eina": 1200
+            "northstar": 5760,
+            "vector": 3780,
+            "sks": 4320,
+            "goupil": 3960,
+            "eina": 1800
           },
           "aion_tech_uk_subset": 2280
         },
         {
           "quarter": "1983-Q4",
-          "total_market_units": 1718085,
+          "total_market_units": 1728066,
           "manufacturers": {
             "logix": {
-              "units": 50126,
-              "share_pct": 2.9175506450495754
+              "units": 92381,
+              "share_pct": 5.3459185007980015
             },
             "northstar": {
-              "units": 4440,
-              "share_pct": 0.2584272605837313
+              "units": 6660,
+              "share_pct": 0.38540194645343406
             },
             "vector": {
-              "units": 2880,
-              "share_pct": 0.1676284933516095
+              "units": 4320,
+              "share_pct": 0.24999045175357884
             },
             "sks": {
-              "units": 3360,
-              "share_pct": 0.19556657557687776
+              "units": 5040,
+              "share_pct": 0.29165552704584197
             },
             "goupil": {
-              "units": 3120,
-              "share_pct": 0.18159753446424362
+              "units": 4680,
+              "share_pct": 0.2708229893997104
             },
             "eina": {
-              "units": 1500,
-              "share_pct": 0.08730650695396328
+              "units": 2250,
+              "share_pct": 0.1302033602883223
             },
             "other_manufacturers": {
-              "units": 1652659,
-              "share_pct": 96.19192298402
+              "units": 1612735,
+              "share_pct": 93.3260072242611
             }
           },
-          "platform_units": 65426,
-          "platform_share_pct": 3.808077015980001,
-          "gross_logix_intent": 53486,
-          "cannibalised_by_clones": 3360,
+          "platform_units": 115331,
+          "platform_share_pct": 6.673992775738889,
+          "gross_logix_intent": 97421,
+          "cannibalised_by_clones": 5040,
           "clone_units": {
-            "northstar": 4440,
-            "vector": 2880,
-            "sks": 3360,
-            "goupil": 3120,
-            "eina": 1500
+            "northstar": 6660,
+            "vector": 4320,
+            "sks": 5040,
+            "goupil": 4680,
+            "eina": 2250
           },
           "aion_tech_uk_subset": 2640
         }
@@ -1733,23 +2287,3488 @@
     },
     {
       "path": "sales_reassessment_inputs.json",
-      "sha256": "ac3a0a935eb59c1d2a26f62eeb6338cdd014d9e1d9c640e41b9c536743082ad7"
+      "sha256": "2e6c1ca7b6d81b9f9593d81eab9b36d1a2d323f5646ef13f5ffc5740675a4176"
     },
     {
       "path": "sales_forecast.json",
-      "sha256": "216440d3704e9dc5297813b1866a661f18e07f5542ec1dcc69ba5a51c39fb004"
+      "sha256": "40ce5cd1f95183305b3039d611dbf467d3f986bf3cae34b1e67374eea395ed5b"
     },
     {
       "path": "pricing_results.json",
-      "sha256": "e74e910ee8407d2d4e3a0026743bdc2401f12142229853b836d99503e07fd5fe"
+      "sha256": "d4d09952bdc2cd0480ae897cab510b7dfb3a28b55279218a94985805d573a4d8"
     },
     {
       "path": "retail_catalog_1982_results.json",
-      "sha256": "591f4b2b01426d2957d308284396ec07ac784e96f9b403b5ab58310412e300e5"
+      "sha256": "bbdb312f01f4792cfd793d40aabc1e7841aa4ec45d34c294625faaa775d142d0"
     },
     {
       "path": "logix_aion_story.json",
-      "sha256": "aa3816b4217fc567b63e7bf91f082e9b2afcf918838bdd1346e57738c55d6c02"
+      "sha256": "d79233250f85399b95ddc6092a145a1ff80f88c7bfb2be8907a6825d7f36bdb2"
     }
-  ]
+  ],
+  "business_market": {
+    "methodology": {
+      "annual_baseline_units": {
+        "1980": 450000,
+        "1981": 650000,
+        "1982": 950000,
+        "1983": 1500000
+      },
+      "quarter_weights": [
+        0.23,
+        0.24,
+        0.25,
+        0.28
+      ],
+      "definition": "Disk-equipped computers bought for business use, worldwide; exclude home/education purchases even if disk-equipped. All modelled Logix/clone systems allocated to business for this segment estimate.",
+      "basis": "Illustrative addressable-market assumptions, not observed counts. All-vendor retail datasets do not establish business-use classification. 20% of platform volume expands baseline; remainder displaces competitors. Rival weights distribute only residual business demand.",
+      "rival_weights": {
+        "apple": 0.22,
+        "ibm": 0.2,
+        "tandy": 0.18,
+        "commodore": 0.08,
+        "nec": 0.08,
+        "osborne": 0.07,
+        "other_business": 0.17
+      },
+      "ibm_launch": "1982-03-15",
+      "ibm_1982_ramp": [
+        0.15,
+        0.5,
+        0.75,
+        1
+      ]
+    },
+    "manufacturers": [
+      {
+        "id": "logix",
+        "name": "Logix (including UK distribution)"
+      },
+      {
+        "id": "northstar",
+        "name": "North Star Computers — compatible line"
+      },
+      {
+        "id": "vector",
+        "name": "Vector Graphic — compatible line"
+      },
+      {
+        "id": "sks",
+        "name": "SKS — compatible line"
+      },
+      {
+        "id": "goupil",
+        "name": "SMT Goupil — compatible line"
+      },
+      {
+        "id": "eina",
+        "name": "EINA Informática — compatible line"
+      },
+      {
+        "id": "apple",
+        "name": "Apple"
+      },
+      {
+        "id": "ibm",
+        "name": "IBM — substitute OS"
+      },
+      {
+        "id": "tandy",
+        "name": "Tandy / Radio Shack"
+      },
+      {
+        "id": "commodore",
+        "name": "Commodore business systems"
+      },
+      {
+        "id": "nec",
+        "name": "NEC business systems"
+      },
+      {
+        "id": "osborne",
+        "name": "Osborne"
+      },
+      {
+        "id": "other_business",
+        "name": "Other business suppliers"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "conservative",
+        "quarterly": [
+          {
+            "quarter": "1980-Q1",
+            "total_market_units": 96352,
+            "manufacturers": {
+              "logix": {
+                "units": 16012,
+                "share_pct": 16.618233145134507
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 24212,
+                "share_pct": 25.128694785785456
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 19810,
+                "share_pct": 20.56002989040186
+              },
+              "commodore": {
+                "units": 8805,
+                "share_pct": 9.138367651942875
+              },
+              "nec": {
+                "units": 8804,
+                "share_pct": 9.137329790767188
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 18709,
+                "share_pct": 19.41734473596812
+              }
+            },
+            "platform_units": 16012,
+            "platform_share_pct": 16.618233145134507,
+            "gross_logix_intent": 16012,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q2",
+            "total_market_units": 100333,
+            "manufacturers": {
+              "logix": {
+                "units": 15666,
+                "share_pct": 15.61400536214406
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 25516,
+                "share_pct": 25.431313725294768
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 20877,
+                "share_pct": 20.80771032461902
+              },
+              "commodore": {
+                "units": 9279,
+                "share_pct": 9.248203482403596
+              },
+              "nec": {
+                "units": 9278,
+                "share_pct": 9.2472068013515
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 19717,
+                "share_pct": 19.651560304187058
+              }
+            },
+            "platform_units": 15666,
+            "platform_share_pct": 15.61400536214406,
+            "gross_logix_intent": 15666,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q3",
+            "total_market_units": 105263,
+            "manufacturers": {
+              "logix": {
+                "units": 20066,
+                "share_pct": 19.06272859409289
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 25676,
+                "share_pct": 24.392236588354884
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 21007,
+                "share_pct": 19.956679935019903
+              },
+              "commodore": {
+                "units": 9337,
+                "share_pct": 8.870163305244958
+              },
+              "nec": {
+                "units": 9337,
+                "share_pct": 8.870163305244958
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 19840,
+                "share_pct": 18.84802827204241
+              }
+            },
+            "platform_units": 20066,
+            "platform_share_pct": 19.06272859409289,
+            "gross_logix_intent": 20066,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q4",
+            "total_market_units": 117853,
+            "manufacturers": {
+              "logix": {
+                "units": 22266,
+                "share_pct": 18.89302775491502
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 28807,
+                "share_pct": 24.443162244491017
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 23570,
+                "share_pct": 19.999490891194963
+              },
+              "commodore": {
+                "units": 10475,
+                "share_pct": 8.888191221267173
+              },
+              "nec": {
+                "units": 10475,
+                "share_pct": 8.888191221267173
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 22260,
+                "share_pct": 18.887936666864654
+              }
+            },
+            "platform_units": 22266,
+            "platform_share_pct": 18.89302775491502,
+            "gross_logix_intent": 22266,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q1",
+            "total_market_units": 139469,
+            "manufacturers": {
+              "logix": {
+                "units": 24595,
+                "share_pct": 17.6347432045831
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 34620,
+                "share_pct": 24.822720461177752
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 28325,
+                "share_pct": 20.30917264768515
+              },
+              "commodore": {
+                "units": 12589,
+                "share_pct": 9.026378621772581
+              },
+              "nec": {
+                "units": 12589,
+                "share_pct": 9.026378621772581
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 26751,
+                "share_pct": 19.18060644300884
+              }
+            },
+            "platform_units": 24595,
+            "platform_share_pct": 17.6347432045831,
+            "gross_logix_intent": 24595,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q2",
+            "total_market_units": 145872,
+            "manufacturers": {
+              "logix": {
+                "units": 27360,
+                "share_pct": 18.756169792694966
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 32591,
+                "share_pct": 22.342190413513215
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 26665,
+                "share_pct": 18.2797246901393
+              },
+              "commodore": {
+                "units": 11851,
+                "share_pct": 8.12424591422617
+              },
+              "nec": {
+                "units": 11851,
+                "share_pct": 8.12424591422617
+              },
+              "osborne": {
+                "units": 10370,
+                "share_pct": 7.108972249643523
+              },
+              "other_business": {
+                "units": 25184,
+                "share_pct": 17.264451025556653
+              }
+            },
+            "platform_units": 27360,
+            "platform_share_pct": 18.756169792694966,
+            "gross_logix_intent": 27360,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q3",
+            "total_market_units": 151838,
+            "manufacturers": {
+              "logix": {
+                "units": 27938,
+                "share_pct": 18.39987354944085
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 34073,
+                "share_pct": 22.440364072234882
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 27877,
+                "share_pct": 18.35969915304469
+              },
+              "commodore": {
+                "units": 12390,
+                "share_pct": 8.160012645055916
+              },
+              "nec": {
+                "units": 12390,
+                "share_pct": 8.160012645055916
+              },
+              "osborne": {
+                "units": 10841,
+                "share_pct": 7.139846415258368
+              },
+              "other_business": {
+                "units": 26329,
+                "share_pct": 17.340191519909375
+              }
+            },
+            "platform_units": 27938,
+            "platform_share_pct": 18.39987354944085,
+            "gross_logix_intent": 27938,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q4",
+            "total_market_units": 169925,
+            "manufacturers": {
+              "logix": {
+                "units": 30623,
+                "share_pct": 18.02148006473444
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 38308,
+                "share_pct": 22.544063557451818
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 31343,
+                "share_pct": 18.445196410180962
+              },
+              "commodore": {
+                "units": 13930,
+                "share_pct": 8.19773429454171
+              },
+              "nec": {
+                "units": 13930,
+                "share_pct": 8.19773429454171
+              },
+              "osborne": {
+                "units": 12189,
+                "share_pct": 7.1731646314550535
+              },
+              "other_business": {
+                "units": 29602,
+                "share_pct": 17.420626747094307
+              }
+            },
+            "platform_units": 30623,
+            "platform_share_pct": 18.02148006473444,
+            "gross_logix_intent": 30623,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1982-Q1",
+            "total_market_units": 203840,
+            "manufacturers": {
+              "logix": {
+                "units": 34199,
+                "share_pct": 16.777374411302983
+              },
+              "northstar": {
+                "units": 600,
+                "share_pct": 0.29434850863422296
+              },
+              "vector": {
+                "units": 400,
+                "share_pct": 0.19623233908948193
+              },
+              "sks": {
+                "units": 350,
+                "share_pct": 0.1717032967032967
+              },
+              "goupil": {
+                "units": 300,
+                "share_pct": 0.14717425431711148
+              },
+              "eina": {
+                "units": 100,
+                "share_pct": 0.04905808477237048
+              },
+              "apple": {
+                "units": 44501,
+                "share_pct": 21.83133830455259
+              },
+              "ibm": {
+                "units": 6069,
+                "share_pct": 2.9773351648351647
+              },
+              "tandy": {
+                "units": 36410,
+                "share_pct": 17.862048665620094
+              },
+              "commodore": {
+                "units": 16182,
+                "share_pct": 7.938579277864992
+              },
+              "nec": {
+                "units": 16182,
+                "share_pct": 7.938579277864992
+              },
+              "osborne": {
+                "units": 14160,
+                "share_pct": 6.94662480376766
+              },
+              "other_business": {
+                "units": 34387,
+                "share_pct": 16.86960361067504
+              }
+            },
+            "platform_units": 35949,
+            "platform_share_pct": 17.635890894819468,
+            "gross_logix_intent": 34624,
+            "cannibalised_by_clones": 425,
+            "clone_units": {
+              "northstar": 600,
+              "vector": 400,
+              "sks": 350,
+              "goupil": 300,
+              "eina": 100
+            },
+            "aion_tech_uk_subset": 240
+          },
+          {
+            "quarter": "1982-Q2",
+            "total_market_units": 213314,
+            "manufacturers": {
+              "logix": {
+                "units": 37742,
+                "share_pct": 17.6931659431636
+              },
+              "northstar": {
+                "units": 900,
+                "share_pct": 0.42191323588700225
+              },
+              "vector": {
+                "units": 650,
+                "share_pct": 0.3047151148072794
+              },
+              "sks": {
+                "units": 600,
+                "share_pct": 0.28127549059133483
+              },
+              "goupil": {
+                "units": 500,
+                "share_pct": 0.2343962421594457
+              },
+              "eina": {
+                "units": 180,
+                "share_pct": 0.08438264717740045
+              },
+              "apple": {
+                "units": 42226,
+                "share_pct": 19.79523144284951
+              },
+              "ibm": {
+                "units": 19194,
+                "share_pct": 8.998002944016802
+              },
+              "tandy": {
+                "units": 34548,
+                "share_pct": 16.19584274824906
+              },
+              "commodore": {
+                "units": 15355,
+                "share_pct": 7.198308596716578
+              },
+              "nec": {
+                "units": 15355,
+                "share_pct": 7.198308596716578
+              },
+              "osborne": {
+                "units": 13435,
+                "share_pct": 6.298227026824306
+              },
+              "other_business": {
+                "units": 32629,
+                "share_pct": 15.296229970841107
+              }
+            },
+            "platform_units": 40572,
+            "platform_share_pct": 19.01984867378606,
+            "gross_logix_intent": 38412,
+            "cannibalised_by_clones": 670,
+            "clone_units": {
+              "northstar": 900,
+              "vector": 650,
+              "sks": 600,
+              "goupil": 500,
+              "eina": 180
+            },
+            "aion_tech_uk_subset": 480
+          },
+          {
+            "quarter": "1982-Q3",
+            "total_market_units": 222921,
+            "manufacturers": {
+              "logix": {
+                "units": 41653,
+                "share_pct": 18.685094719654046
+              },
+              "northstar": {
+                "units": 1300,
+                "share_pct": 0.5831662337778853
+              },
+              "vector": {
+                "units": 900,
+                "share_pct": 0.4037304695385361
+              },
+              "sks": {
+                "units": 900,
+                "share_pct": 0.4037304695385361
+              },
+              "goupil": {
+                "units": 800,
+                "share_pct": 0.35887152847869874
+              },
+              "eina": {
+                "units": 300,
+                "share_pct": 0.13457682317951203
+              },
+              "apple": {
+                "units": 41005,
+                "share_pct": 18.394408781586304
+              },
+              "ibm": {
+                "units": 27958,
+                "share_pct": 12.541662741509324
+              },
+              "tandy": {
+                "units": 33550,
+                "share_pct": 15.050174725575427
+              },
+              "commodore": {
+                "units": 14911,
+                "share_pct": 6.688916701432346
+              },
+              "nec": {
+                "units": 14911,
+                "share_pct": 6.688916701432346
+              },
+              "osborne": {
+                "units": 13047,
+                "share_pct": 5.852746040076978
+              },
+              "other_business": {
+                "units": 31686,
+                "share_pct": 14.21400406422006
+              }
+            },
+            "platform_units": 45853,
+            "platform_share_pct": 20.569170244167218,
+            "gross_logix_intent": 42623,
+            "cannibalised_by_clones": 970,
+            "clone_units": {
+              "northstar": 1300,
+              "vector": 900,
+              "sks": 900,
+              "goupil": 800,
+              "eina": 300
+            },
+            "aion_tech_uk_subset": 720
+          },
+          {
+            "quarter": "1982-Q4",
+            "total_market_units": 250227,
+            "manufacturers": {
+              "logix": {
+                "units": 48336,
+                "share_pct": 19.316860290855903
+              },
+              "northstar": {
+                "units": 1800,
+                "share_pct": 0.7193468330755673
+              },
+              "vector": {
+                "units": 1200,
+                "share_pct": 0.4795645553837116
+              },
+              "sks": {
+                "units": 1250,
+                "share_pct": 0.49954641185803295
+              },
+              "goupil": {
+                "units": 1100,
+                "share_pct": 0.439600842435069
+              },
+              "eina": {
+                "units": 450,
+                "share_pct": 0.17983670826889184
+              },
+              "apple": {
+                "units": 43140,
+                "share_pct": 17.24034576604443
+              },
+              "ibm": {
+                "units": 39218,
+                "share_pct": 15.672968944198667
+              },
+              "tandy": {
+                "units": 35297,
+                "share_pct": 14.10599175948239
+              },
+              "commodore": {
+                "units": 15687,
+                "share_pct": 6.269107650253569
+              },
+              "nec": {
+                "units": 15687,
+                "share_pct": 6.269107650253569
+              },
+              "osborne": {
+                "units": 13726,
+                "share_pct": 5.485419239330688
+              },
+              "other_business": {
+                "units": 33336,
+                "share_pct": 13.322303348559508
+              }
+            },
+            "platform_units": 54136,
+            "platform_share_pct": 21.634755641877177,
+            "gross_logix_intent": 49666,
+            "cannibalised_by_clones": 1330,
+            "clone_units": {
+              "northstar": 1800,
+              "vector": 1200,
+              "sks": 1250,
+              "goupil": 1100,
+              "eina": 450
+            },
+            "aion_tech_uk_subset": 960
+          },
+          {
+            "quarter": "1983-Q1",
+            "total_market_units": 321560,
+            "manufacturers": {
+              "logix": {
+                "units": 46481,
+                "share_pct": 14.454845129991293
+              },
+              "northstar": {
+                "units": 2640,
+                "share_pct": 0.8209976365219555
+              },
+              "vector": {
+                "units": 1800,
+                "share_pct": 0.5597711158104242
+              },
+              "sks": {
+                "units": 1920,
+                "share_pct": 0.5970891901977857
+              },
+              "goupil": {
+                "units": 1740,
+                "share_pct": 0.5411120786167434
+              },
+              "eina": {
+                "units": 720,
+                "share_pct": 0.22390844632416967
+              },
+              "apple": {
+                "units": 58577,
+                "share_pct": 18.216507028237345
+              },
+              "ibm": {
+                "units": 53252,
+                "share_pct": 16.56051747729817
+              },
+              "tandy": {
+                "units": 47926,
+                "share_pct": 14.904216942405771
+              },
+              "commodore": {
+                "units": 21301,
+                "share_pct": 6.624269187709913
+              },
+              "nec": {
+                "units": 21301,
+                "share_pct": 6.624269187709913
+              },
+              "osborne": {
+                "units": 18638,
+                "share_pct": 5.796118920263715
+              },
+              "other_business": {
+                "units": 45264,
+                "share_pct": 14.0763776589128
+              }
+            },
+            "platform_units": 55301,
+            "platform_share_pct": 17.19772359746237,
+            "gross_logix_intent": 48473,
+            "cannibalised_by_clones": 1992,
+            "clone_units": {
+              "northstar": 2640,
+              "vector": 1800,
+              "sks": 1920,
+              "goupil": 1740,
+              "eina": 720
+            },
+            "aion_tech_uk_subset": 1040
+          },
+          {
+            "quarter": "1983-Q2",
+            "total_market_units": 336172,
+            "manufacturers": {
+              "logix": {
+                "units": 49938,
+                "share_pct": 14.8548957081494
+              },
+              "northstar": {
+                "units": 3240,
+                "share_pct": 0.9637923443951311
+              },
+              "vector": {
+                "units": 2160,
+                "share_pct": 0.642528229596754
+              },
+              "sks": {
+                "units": 2400,
+                "share_pct": 0.7139202551075045
+              },
+              "goupil": {
+                "units": 2160,
+                "share_pct": 0.642528229596754
+              },
+              "eina": {
+                "units": 960,
+                "share_pct": 0.2855681020430018
+              },
+              "apple": {
+                "units": 60569,
+                "share_pct": 18.017264971502684
+              },
+              "ibm": {
+                "units": 55063,
+                "share_pct": 16.379412919576883
+              },
+              "tandy": {
+                "units": 49557,
+                "share_pct": 14.741560867651081
+              },
+              "commodore": {
+                "units": 22025,
+                "share_pct": 6.55170567447616
+              },
+              "nec": {
+                "units": 22025,
+                "share_pct": 6.55170567447616
+              },
+              "osborne": {
+                "units": 19272,
+                "share_pct": 5.732779648513261
+              },
+              "other_business": {
+                "units": 46803,
+                "share_pct": 13.922337374915223
+              }
+            },
+            "platform_units": 60858,
+            "platform_share_pct": 18.103232868888544,
+            "gross_logix_intent": 52380,
+            "cannibalised_by_clones": 2442,
+            "clone_units": {
+              "northstar": 3240,
+              "vector": 2160,
+              "sks": 2400,
+              "goupil": 2160,
+              "eina": 960
+            },
+            "aion_tech_uk_subset": 1280
+          },
+          {
+            "quarter": "1983-Q3",
+            "total_market_units": 350902,
+            "manufacturers": {
+              "logix": {
+                "units": 53932,
+                "share_pct": 15.36953337399046
+              },
+              "northstar": {
+                "units": 3840,
+                "share_pct": 1.0943226313899608
+              },
+              "vector": {
+                "units": 2520,
+                "share_pct": 0.7181492268496618
+              },
+              "sks": {
+                "units": 2880,
+                "share_pct": 0.8207419735424706
+              },
+              "goupil": {
+                "units": 2640,
+                "share_pct": 0.752346809080598
+              },
+              "eina": {
+                "units": 1200,
+                "share_pct": 0.3419758223093627
+              },
+              "apple": {
+                "units": 62456,
+                "share_pct": 17.798701631794632
+              },
+              "ibm": {
+                "units": 56778,
+                "share_pct": 16.180586032567497
+              },
+              "tandy": {
+                "units": 51100,
+                "share_pct": 14.562470433340364
+              },
+              "commodore": {
+                "units": 22711,
+                "share_pct": 6.472177417056614
+              },
+              "nec": {
+                "units": 22711,
+                "share_pct": 6.472177417056614
+              },
+              "osborne": {
+                "units": 19873,
+                "share_pct": 5.663404597294972
+              },
+              "other_business": {
+                "units": 48261,
+                "share_pct": 13.753412633726795
+              }
+            },
+            "platform_units": 67012,
+            "platform_share_pct": 19.09706983716251,
+            "gross_logix_intent": 56830,
+            "cannibalised_by_clones": 2898,
+            "clone_units": {
+              "northstar": 3840,
+              "vector": 2520,
+              "sks": 2880,
+              "goupil": 2640,
+              "eina": 1200
+            },
+            "aion_tech_uk_subset": 1520
+          },
+          {
+            "quarter": "1983-Q4",
+            "total_market_units": 393377,
+            "manufacturers": {
+              "logix": {
+                "units": 61587,
+                "share_pct": 15.65597378596105
+              },
+              "northstar": {
+                "units": 4440,
+                "share_pct": 1.1286882557953313
+              },
+              "vector": {
+                "units": 2880,
+                "share_pct": 0.7321221118672419
+              },
+              "sks": {
+                "units": 3360,
+                "share_pct": 0.8541424638451155
+              },
+              "goupil": {
+                "units": 3120,
+                "share_pct": 0.7931322878561787
+              },
+              "eina": {
+                "units": 1500,
+                "share_pct": 0.3813135999308551
+              },
+              "apple": {
+                "units": 69628,
+                "share_pct": 17.700068890657054
+              },
+              "ibm": {
+                "units": 63298,
+                "share_pct": 16.090925498948845
+              },
+              "tandy": {
+                "units": 56968,
+                "share_pct": 14.481782107240637
+              },
+              "commodore": {
+                "units": 25319,
+                "share_pct": 6.436319357766214
+              },
+              "nec": {
+                "units": 25319,
+                "share_pct": 6.436319357766214
+              },
+              "osborne": {
+                "units": 22155,
+                "share_pct": 5.632001870978731
+              },
+              "other_business": {
+                "units": 53803,
+                "share_pct": 13.67721041138653
+              }
+            },
+            "platform_units": 76887,
+            "platform_share_pct": 19.545372505255774,
+            "gross_logix_intent": 64947,
+            "cannibalised_by_clones": 3360,
+            "clone_units": {
+              "northstar": 4440,
+              "vector": 2880,
+              "sks": 3360,
+              "goupil": 3120,
+              "eina": 1500
+            },
+            "aion_tech_uk_subset": 1760
+          }
+        ]
+      },
+      {
+        "id": "central",
+        "quarterly": [
+          {
+            "quarter": "1980-Q1",
+            "total_market_units": 106702,
+            "manufacturers": {
+              "logix": {
+                "units": 16012,
+                "share_pct": 15.00627917002493
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 27331,
+                "share_pct": 25.61432775393151
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 22362,
+                "share_pct": 20.957432850368317
+              },
+              "commodore": {
+                "units": 9939,
+                "share_pct": 9.31472699668235
+              },
+              "nec": {
+                "units": 9939,
+                "share_pct": 9.31472699668235
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 21119,
+                "share_pct": 19.792506232310547
+              }
+            },
+            "platform_units": 16012,
+            "platform_share_pct": 15.00627917002493,
+            "gross_logix_intent": 16012,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q2",
+            "total_market_units": 111916,
+            "manufacturers": {
+              "logix": {
+                "units": 19582,
+                "share_pct": 17.497051359948532
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 27827,
+                "share_pct": 24.864183852174847
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 22767,
+                "share_pct": 20.342935773258517
+              },
+              "commodore": {
+                "units": 10119,
+                "share_pct": 9.041602630544336
+              },
+              "nec": {
+                "units": 10119,
+                "share_pct": 9.041602630544336
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 21502,
+                "share_pct": 19.21262375352943
+              }
+            },
+            "platform_units": 19582,
+            "platform_share_pct": 17.497051359948532,
+            "gross_logix_intent": 19582,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q3",
+            "total_market_units": 117517,
+            "manufacturers": {
+              "logix": {
+                "units": 25083,
+                "share_pct": 21.34414595335143
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 27857,
+                "share_pct": 23.704655496651547
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 22792,
+                "share_pct": 19.394640775377177
+              },
+              "commodore": {
+                "units": 10130,
+                "share_pct": 8.620029442548738
+              },
+              "nec": {
+                "units": 10130,
+                "share_pct": 8.620029442548738
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 21525,
+                "share_pct": 18.316498889522368
+              }
+            },
+            "platform_units": 25083,
+            "platform_share_pct": 21.34414595335143,
+            "gross_logix_intent": 25083,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q4",
+            "total_market_units": 131566,
+            "manufacturers": {
+              "logix": {
+                "units": 27832,
+                "share_pct": 21.154401593116763
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 31263,
+                "share_pct": 23.762218202271104
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 25578,
+                "share_pct": 19.441193013392517
+              },
+              "commodore": {
+                "units": 11368,
+                "share_pct": 8.640530228174452
+              },
+              "nec": {
+                "units": 11368,
+                "share_pct": 8.640530228174452
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 24157,
+                "share_pct": 18.361126734870712
+              }
+            },
+            "platform_units": 27832,
+            "platform_share_pct": 21.154401593116763,
+            "gross_logix_intent": 27832,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q1",
+            "total_market_units": 155649,
+            "manufacturers": {
+              "logix": {
+                "units": 30744,
+                "share_pct": 19.75213461056608
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 37643,
+                "share_pct": 24.184543427840847
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 30799,
+                "share_pct": 19.787470526633644
+              },
+              "commodore": {
+                "units": 13688,
+                "share_pct": 8.794145802414405
+              },
+              "nec": {
+                "units": 13688,
+                "share_pct": 8.794145802414405
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 29087,
+                "share_pct": 18.687559830130613
+              }
+            },
+            "platform_units": 30744,
+            "platform_share_pct": 19.75213461056608,
+            "gross_logix_intent": 30744,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q2",
+            "total_market_units": 162840,
+            "manufacturers": {
+              "logix": {
+                "units": 34200,
+                "share_pct": 21.002210759027264
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 35376,
+                "share_pct": 21.7243920412675
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 28944,
+                "share_pct": 17.774502579218865
+              },
+              "commodore": {
+                "units": 12864,
+                "share_pct": 7.899778924097274
+              },
+              "nec": {
+                "units": 12864,
+                "share_pct": 7.899778924097274
+              },
+              "osborne": {
+                "units": 11256,
+                "share_pct": 6.912306558585114
+              },
+              "other_business": {
+                "units": 27336,
+                "share_pct": 16.787030213706704
+              }
+            },
+            "platform_units": 34200,
+            "platform_share_pct": 21.002210759027264,
+            "gross_logix_intent": 34200,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q3",
+            "total_market_units": 169484,
+            "manufacturers": {
+              "logix": {
+                "units": 34922,
+                "share_pct": 20.604894857331665
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 37005,
+                "share_pct": 21.833919426022515
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 30277,
+                "share_pct": 17.864223171508815
+              },
+              "commodore": {
+                "units": 13456,
+                "share_pct": 7.939392509027401
+              },
+              "nec": {
+                "units": 13456,
+                "share_pct": 7.939392509027401
+              },
+              "osborne": {
+                "units": 11774,
+                "share_pct": 6.9469684453989755
+              },
+              "other_business": {
+                "units": 28594,
+                "share_pct": 16.87120908168323
+              }
+            },
+            "platform_units": 34922,
+            "platform_share_pct": 20.604894857331665,
+            "gross_logix_intent": 34922,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q4",
+            "total_market_units": 189656,
+            "manufacturers": {
+              "logix": {
+                "units": 38279,
+                "share_pct": 20.18338465432151
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 41629,
+                "share_pct": 21.949740582950184
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 34060,
+                "share_pct": 17.95883072510229
+              },
+              "commodore": {
+                "units": 15138,
+                "share_pct": 7.981819715695786
+              },
+              "nec": {
+                "units": 15138,
+                "share_pct": 7.981819715695786
+              },
+              "osborne": {
+                "units": 13245,
+                "share_pct": 6.98369679841397
+              },
+              "other_business": {
+                "units": 32167,
+                "share_pct": 16.960707807820473
+              }
+            },
+            "platform_units": 38279,
+            "platform_share_pct": 20.18338465432151,
+            "gross_logix_intent": 38279,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1982-Q1",
+            "total_market_units": 227487,
+            "manufacturers": {
+              "logix": {
+                "units": 42749,
+                "share_pct": 18.79184305037211
+              },
+              "northstar": {
+                "units": 750,
+                "share_pct": 0.3296891690514183
+              },
+              "vector": {
+                "units": 500,
+                "share_pct": 0.21979277936761224
+              },
+              "sks": {
+                "units": 438,
+                "share_pct": 0.1925384747260283
+              },
+              "goupil": {
+                "units": 375,
+                "share_pct": 0.16484458452570916
+              },
+              "eina": {
+                "units": 125,
+                "share_pct": 0.05494819484190306
+              },
+              "apple": {
+                "units": 48387,
+                "share_pct": 21.270226430521305
+              },
+              "ibm": {
+                "units": 6598,
+                "share_pct": 2.9003855165350108
+              },
+              "tandy": {
+                "units": 39589,
+                "share_pct": 17.4027526847688
+              },
+              "commodore": {
+                "units": 17595,
+                "share_pct": 7.734507905946273
+              },
+              "nec": {
+                "units": 17595,
+                "share_pct": 7.734507905946273
+              },
+              "osborne": {
+                "units": 15396,
+                "share_pct": 6.767859262287515
+              },
+              "other_business": {
+                "units": 37390,
+                "share_pct": 16.436104041110042
+              }
+            },
+            "platform_units": 44937,
+            "platform_share_pct": 19.75365625288478,
+            "gross_logix_intent": 43280,
+            "cannibalised_by_clones": 531,
+            "clone_units": {
+              "northstar": 750,
+              "vector": 500,
+              "sks": 438,
+              "goupil": 375,
+              "eina": 125
+            },
+            "aion_tech_uk_subset": 300
+          },
+          {
+            "quarter": "1982-Q2",
+            "total_market_units": 238143,
+            "manufacturers": {
+              "logix": {
+                "units": 47177,
+                "share_pct": 19.810366040572262
+              },
+              "northstar": {
+                "units": 1125,
+                "share_pct": 0.4724052355097567
+              },
+              "vector": {
+                "units": 812,
+                "share_pct": 0.34097160109681995
+              },
+              "sks": {
+                "units": 750,
+                "share_pct": 0.31493682367317116
+              },
+              "goupil": {
+                "units": 625,
+                "share_pct": 0.262447353060976
+              },
+              "eina": {
+                "units": 225,
+                "share_pct": 0.09448104710195135
+              },
+              "apple": {
+                "units": 45816,
+                "share_pct": 19.23886068454668
+              },
+              "ibm": {
+                "units": 20826,
+                "share_pct": 8.745165719756617
+              },
+              "tandy": {
+                "units": 37486,
+                "share_pct": 15.740962362949992
+              },
+              "commodore": {
+                "units": 16660,
+                "share_pct": 6.9957966431933745
+              },
+              "nec": {
+                "units": 16660,
+                "share_pct": 6.9957966431933745
+              },
+              "osborne": {
+                "units": 14578,
+                "share_pct": 6.121532020676653
+              },
+              "other_business": {
+                "units": 35403,
+                "share_pct": 14.866277824668373
+              }
+            },
+            "platform_units": 50714,
+            "platform_share_pct": 21.29560810101494,
+            "gross_logix_intent": 48015,
+            "cannibalised_by_clones": 838,
+            "clone_units": {
+              "northstar": 1125,
+              "vector": 812,
+              "sks": 750,
+              "goupil": 625,
+              "eina": 225
+            },
+            "aion_tech_uk_subset": 600
+          },
+          {
+            "quarter": "1982-Q3",
+            "total_market_units": 248963,
+            "manufacturers": {
+              "logix": {
+                "units": 52066,
+                "share_pct": 20.9131477368123
+              },
+              "northstar": {
+                "units": 1625,
+                "share_pct": 0.6527074304213879
+              },
+              "vector": {
+                "units": 1125,
+                "share_pct": 0.45187437490711474
+              },
+              "sks": {
+                "units": 1125,
+                "share_pct": 0.45187437490711474
+              },
+              "goupil": {
+                "units": 1000,
+                "share_pct": 0.40166611102854644
+              },
+              "eina": {
+                "units": 375,
+                "share_pct": 0.1506247916357049
+              },
+              "apple": {
+                "units": 44381,
+                "share_pct": 17.82634367355792
+              },
+              "ibm": {
+                "units": 30260,
+                "share_pct": 12.154416519723814
+              },
+              "tandy": {
+                "units": 36312,
+                "share_pct": 14.585299823668576
+              },
+              "commodore": {
+                "units": 16139,
+                "share_pct": 6.482489365889712
+              },
+              "nec": {
+                "units": 16139,
+                "share_pct": 6.482489365889712
+              },
+              "osborne": {
+                "units": 14121,
+                "share_pct": 5.671927153834104
+              },
+              "other_business": {
+                "units": 34295,
+                "share_pct": 13.775139277724
+              }
+            },
+            "platform_units": 57316,
+            "platform_share_pct": 23.021894819712166,
+            "gross_logix_intent": 53278,
+            "cannibalised_by_clones": 1212,
+            "clone_units": {
+              "northstar": 1625,
+              "vector": 1125,
+              "sks": 1125,
+              "goupil": 1000,
+              "eina": 375
+            },
+            "aion_tech_uk_subset": 900
+          },
+          {
+            "quarter": "1982-Q4",
+            "total_market_units": 279534,
+            "manufacturers": {
+              "logix": {
+                "units": 60420,
+                "share_pct": 21.614544205713795
+              },
+              "northstar": {
+                "units": 2250,
+                "share_pct": 0.804911030500762
+              },
+              "vector": {
+                "units": 1500,
+                "share_pct": 0.5366073536671747
+              },
+              "sks": {
+                "units": 1562,
+                "share_pct": 0.5587871242854179
+              },
+              "goupil": {
+                "units": 1375,
+                "share_pct": 0.49189007419491004
+              },
+              "eina": {
+                "units": 562,
+                "share_pct": 0.20104888850730143
+              },
+              "apple": {
+                "units": 46610,
+                "share_pct": 16.674179169618007
+              },
+              "ibm": {
+                "units": 42373,
+                "share_pct": 15.15844226462613
+              },
+              "tandy": {
+                "units": 38136,
+                "share_pct": 13.642705359634249
+              },
+              "commodore": {
+                "units": 16949,
+                "share_pct": 6.063305358203295
+              },
+              "nec": {
+                "units": 16949,
+                "share_pct": 6.063305358203295
+              },
+              "osborne": {
+                "units": 14831,
+                "share_pct": 5.305615774825244
+              },
+              "other_business": {
+                "units": 36017,
+                "share_pct": 12.884658038020419
+              }
+            },
+            "platform_units": 67669,
+            "platform_share_pct": 24.20778867686936,
+            "gross_logix_intent": 62082,
+            "cannibalised_by_clones": 1662,
+            "clone_units": {
+              "northstar": 2250,
+              "vector": 1500,
+              "sks": 1562,
+              "goupil": 1375,
+              "eina": 562
+            },
+            "aion_tech_uk_subset": 1200
+          },
+          {
+            "quarter": "1983-Q1",
+            "total_market_units": 358825,
+            "manufacturers": {
+              "logix": {
+                "units": 58101,
+                "share_pct": 16.192015606493413
+              },
+              "northstar": {
+                "units": 3300,
+                "share_pct": 0.9196683620149098
+              },
+              "vector": {
+                "units": 2250,
+                "share_pct": 0.6270466104647112
+              },
+              "sks": {
+                "units": 2400,
+                "share_pct": 0.6688497178290254
+              },
+              "goupil": {
+                "units": 2175,
+                "share_pct": 0.6061450567825541
+              },
+              "eina": {
+                "units": 900,
+                "share_pct": 0.2508186441858845
+              },
+              "apple": {
+                "units": 63733,
+                "share_pct": 17.761582944332197
+              },
+              "ibm": {
+                "units": 57940,
+                "share_pct": 16.147146937922386
+              },
+              "tandy": {
+                "units": 52146,
+                "share_pct": 14.532432244130147
+              },
+              "commodore": {
+                "units": 23176,
+                "share_pct": 6.458858775168955
+              },
+              "nec": {
+                "units": 23176,
+                "share_pct": 6.458858775168955
+              },
+              "osborne": {
+                "units": 20279,
+                "share_pct": 5.651501428272835
+              },
+              "other_business": {
+                "units": 49249,
+                "share_pct": 13.725074897234027
+              }
+            },
+            "platform_units": 69126,
+            "platform_share_pct": 19.2645439977705,
+            "gross_logix_intent": 60591,
+            "cannibalised_by_clones": 2490,
+            "clone_units": {
+              "northstar": 3300,
+              "vector": 2250,
+              "sks": 2400,
+              "goupil": 2175,
+              "eina": 900
+            },
+            "aion_tech_uk_subset": 1300
+          },
+          {
+            "quarter": "1983-Q2",
+            "total_market_units": 375215,
+            "manufacturers": {
+              "logix": {
+                "units": 62423,
+                "share_pct": 16.636595018855857
+              },
+              "northstar": {
+                "units": 4050,
+                "share_pct": 1.0793811548045789
+              },
+              "vector": {
+                "units": 2700,
+                "share_pct": 0.7195874365363858
+              },
+              "sks": {
+                "units": 3000,
+                "share_pct": 0.7995415961515397
+              },
+              "goupil": {
+                "units": 2700,
+                "share_pct": 0.7195874365363858
+              },
+              "eina": {
+                "units": 1200,
+                "share_pct": 0.3198166384606159
+              },
+              "apple": {
+                "units": 65811,
+                "share_pct": 17.539543994776327
+              },
+              "ibm": {
+                "units": 59829,
+                "share_pct": 15.945258052050157
+              },
+              "tandy": {
+                "units": 53846,
+                "share_pct": 14.350705595458605
+              },
+              "commodore": {
+                "units": 23931,
+                "share_pct": 6.377943312500833
+              },
+              "nec": {
+                "units": 23931,
+                "share_pct": 6.377943312500833
+              },
+              "osborne": {
+                "units": 20940,
+                "share_pct": 5.580800341137747
+              },
+              "other_business": {
+                "units": 50854,
+                "share_pct": 13.553296110230134
+              }
+            },
+            "platform_units": 76073,
+            "platform_share_pct": 20.274509281345363,
+            "gross_logix_intent": 65475,
+            "cannibalised_by_clones": 3052,
+            "clone_units": {
+              "northstar": 4050,
+              "vector": 2700,
+              "sks": 3000,
+              "goupil": 2700,
+              "eina": 1200
+            },
+            "aion_tech_uk_subset": 1600
+          },
+          {
+            "quarter": "1983-Q3",
+            "total_market_units": 391753,
+            "manufacturers": {
+              "logix": {
+                "units": 67416,
+                "share_pct": 17.208802485239424
+              },
+              "northstar": {
+                "units": 4800,
+                "share_pct": 1.2252618359017033
+              },
+              "vector": {
+                "units": 3150,
+                "share_pct": 0.8040780798104928
+              },
+              "sks": {
+                "units": 3600,
+                "share_pct": 0.9189463769262776
+              },
+              "goupil": {
+                "units": 3300,
+                "share_pct": 0.8423675121824211
+              },
+              "eina": {
+                "units": 1500,
+                "share_pct": 0.38289432371928234
+              },
+              "apple": {
+                "units": 67757,
+                "share_pct": 17.29584712816494
+              },
+              "ibm": {
+                "units": 61597,
+                "share_pct": 15.723427772091089
+              },
+              "tandy": {
+                "units": 55438,
+                "share_pct": 14.151263678899713
+              },
+              "commodore": {
+                "units": 24639,
+                "share_pct": 6.289422161412932
+              },
+              "nec": {
+                "units": 24639,
+                "share_pct": 6.289422161412932
+              },
+              "osborne": {
+                "units": 21559,
+                "share_pct": 5.5032124833760045
+              },
+              "other_business": {
+                "units": 52358,
+                "share_pct": 13.36505400086279
+              }
+            },
+            "platform_units": 83766,
+            "platform_share_pct": 21.382350613779604,
+            "gross_logix_intent": 71038,
+            "cannibalised_by_clones": 3622,
+            "clone_units": {
+              "northstar": 4800,
+              "vector": 3150,
+              "sks": 3600,
+              "goupil": 3300,
+              "eina": 1500
+            },
+            "aion_tech_uk_subset": 1900
+          },
+          {
+            "quarter": "1983-Q4",
+            "total_market_units": 439222,
+            "manufacturers": {
+              "logix": {
+                "units": 76984,
+                "share_pct": 17.52735518712633
+              },
+              "northstar": {
+                "units": 5550,
+                "share_pct": 1.2635979072086552
+              },
+              "vector": {
+                "units": 3600,
+                "share_pct": 0.8196310749461548
+              },
+              "sks": {
+                "units": 4200,
+                "share_pct": 0.9562362541038473
+              },
+              "goupil": {
+                "units": 3900,
+                "share_pct": 0.887933664525001
+              },
+              "eina": {
+                "units": 1875,
+                "share_pct": 0.42689118486778893
+              },
+              "apple": {
+                "units": 75485,
+                "share_pct": 17.186069914530695
+              },
+              "ibm": {
+                "units": 68623,
+                "share_pct": 15.623762015563884
+              },
+              "tandy": {
+                "units": 61760,
+                "share_pct": 14.061226441298476
+              },
+              "commodore": {
+                "units": 27449,
+                "share_pct": 6.249459271165834
+              },
+              "nec": {
+                "units": 27449,
+                "share_pct": 6.249459271165834
+              },
+              "osborne": {
+                "units": 24018,
+                "share_pct": 5.46830532168243
+              },
+              "other_business": {
+                "units": 58329,
+                "share_pct": 13.280072491815073
+              }
+            },
+            "platform_units": 96109,
+            "platform_share_pct": 21.881645272777774,
+            "gross_logix_intent": 81184,
+            "cannibalised_by_clones": 4200,
+            "clone_units": {
+              "northstar": 5550,
+              "vector": 3600,
+              "sks": 4200,
+              "goupil": 3900,
+              "eina": 1875
+            },
+            "aion_tech_uk_subset": 2200
+          }
+        ]
+      },
+      {
+        "id": "strong",
+        "quarterly": [
+          {
+            "quarter": "1980-Q1",
+            "total_market_units": 117052,
+            "manufacturers": {
+              "logix": {
+                "units": 16012,
+                "share_pct": 13.679390356422786
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 30450,
+                "share_pct": 26.01407921265762
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 24914,
+                "share_pct": 21.28455729077675
+              },
+              "commodore": {
+                "units": 11073,
+                "share_pct": 9.459898164918155
+              },
+              "nec": {
+                "units": 11073,
+                "share_pct": 9.459898164918155
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 23530,
+                "share_pct": 20.10217681030653
+              }
+            },
+            "platform_units": 16012,
+            "platform_share_pct": 13.679390356422786,
+            "gross_logix_intent": 16012,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q2",
+            "total_market_units": 123500,
+            "manufacturers": {
+              "logix": {
+                "units": 23499,
+                "share_pct": 19.02753036437247
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 30137,
+                "share_pct": 24.402429149797573
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 24658,
+                "share_pct": 19.965991902834006
+              },
+              "commodore": {
+                "units": 10959,
+                "share_pct": 8.873684210526315
+              },
+              "nec": {
+                "units": 10959,
+                "share_pct": 8.873684210526315
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 23288,
+                "share_pct": 18.85668016194332
+              }
+            },
+            "platform_units": 23499,
+            "platform_share_pct": 19.02753036437247,
+            "gross_logix_intent": 23499,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q3",
+            "total_market_units": 129770,
+            "manufacturers": {
+              "logix": {
+                "units": 30100,
+                "share_pct": 23.1948832549896
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 30037,
+                "share_pct": 23.146335824921014
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 24576,
+                "share_pct": 18.93812129151576
+              },
+              "commodore": {
+                "units": 10923,
+                "share_pct": 8.417199660938584
+              },
+              "nec": {
+                "units": 10923,
+                "share_pct": 8.417199660938584
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 23211,
+                "share_pct": 17.886260306696464
+              }
+            },
+            "platform_units": 30100,
+            "platform_share_pct": 23.1948832549896,
+            "gross_logix_intent": 30100,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1980-Q4",
+            "total_market_units": 145280,
+            "manufacturers": {
+              "logix": {
+                "units": 33398,
+                "share_pct": 22.988711453744493
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 33718,
+                "share_pct": 23.20897577092511
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 27587,
+                "share_pct": 18.98884911894273
+              },
+              "commodore": {
+                "units": 12261,
+                "share_pct": 8.439564977973568
+              },
+              "nec": {
+                "units": 12261,
+                "share_pct": 8.439564977973568
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 26055,
+                "share_pct": 17.934333700440526
+              }
+            },
+            "platform_units": 33398,
+            "platform_share_pct": 22.988711453744493,
+            "gross_logix_intent": 33398,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q1",
+            "total_market_units": 171829,
+            "manufacturers": {
+              "logix": {
+                "units": 36893,
+                "share_pct": 21.470764539163937
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 40666,
+                "share_pct": 23.666552211791956
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 33272,
+                "share_pct": 19.36343690529538
+              },
+              "commodore": {
+                "units": 14788,
+                "share_pct": 8.60623061299315
+              },
+              "nec": {
+                "units": 14787,
+                "share_pct": 8.605648639053944
+              },
+              "osborne": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "other_business": {
+                "units": 31423,
+                "share_pct": 18.287367091701633
+              }
+            },
+            "platform_units": 36893,
+            "platform_share_pct": 21.470764539163937,
+            "gross_logix_intent": 36893,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q2",
+            "total_market_units": 179808,
+            "manufacturers": {
+              "logix": {
+                "units": 41040,
+                "share_pct": 22.824345969033637
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 38161,
+                "share_pct": 21.223193628759564
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 31223,
+                "share_pct": 17.364633386723614
+              },
+              "commodore": {
+                "units": 13877,
+                "share_pct": 7.717676632852822
+              },
+              "nec": {
+                "units": 13877,
+                "share_pct": 7.717676632852822
+              },
+              "osborne": {
+                "units": 12142,
+                "share_pct": 6.752758497953372
+              },
+              "other_business": {
+                "units": 29488,
+                "share_pct": 16.39971525182417
+              }
+            },
+            "platform_units": 41040,
+            "platform_share_pct": 22.824345969033637,
+            "gross_logix_intent": 41040,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q3",
+            "total_market_units": 187131,
+            "manufacturers": {
+              "logix": {
+                "units": 41906,
+                "share_pct": 22.39393793652575
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 39937,
+                "share_pct": 21.341733865580796
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 32676,
+                "share_pct": 17.46156435865784
+              },
+              "commodore": {
+                "units": 14523,
+                "share_pct": 7.7608733988489345
+              },
+              "nec": {
+                "units": 14522,
+                "share_pct": 7.760339013845916
+              },
+              "osborne": {
+                "units": 12707,
+                "share_pct": 6.790430233365931
+              },
+              "other_business": {
+                "units": 30860,
+                "share_pct": 16.491121193174834
+              }
+            },
+            "platform_units": 41906,
+            "platform_share_pct": 22.39393793652575,
+            "gross_logix_intent": 41906,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1981-Q4",
+            "total_market_units": 209387,
+            "manufacturers": {
+              "logix": {
+                "units": 45935,
+                "share_pct": 21.937847144283072
+              },
+              "northstar": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "vector": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "sks": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "goupil": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "eina": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "apple": {
+                "units": 44949,
+                "share_pct": 21.466948759951666
+              },
+              "ibm": {
+                "units": 0,
+                "share_pct": 0.0
+              },
+              "tandy": {
+                "units": 36777,
+                "share_pct": 17.564127667906796
+              },
+              "commodore": {
+                "units": 16345,
+                "share_pct": 7.806119768658035
+              },
+              "nec": {
+                "units": 16345,
+                "share_pct": 7.806119768658035
+              },
+              "osborne": {
+                "units": 14302,
+                "share_pct": 6.830414495646816
+              },
+              "other_business": {
+                "units": 34734,
+                "share_pct": 16.588422394895577
+              }
+            },
+            "platform_units": 45935,
+            "platform_share_pct": 21.937847144283072,
+            "gross_logix_intent": 45935,
+            "cannibalised_by_clones": 0,
+            "clone_units": {
+              "northstar": 0,
+              "vector": 0,
+              "sks": 0,
+              "goupil": 0,
+              "eina": 0
+            },
+            "aion_tech_uk_subset": 0
+          },
+          {
+            "quarter": "1982-Q1",
+            "total_market_units": 251135,
+            "manufacturers": {
+              "logix": {
+                "units": 51297,
+                "share_pct": 20.426065661894995
+              },
+              "northstar": {
+                "units": 900,
+                "share_pct": 0.3583729866406515
+              },
+              "vector": {
+                "units": 600,
+                "share_pct": 0.23891532442710095
+              },
+              "sks": {
+                "units": 526,
+                "share_pct": 0.20944910108109185
+              },
+              "goupil": {
+                "units": 450,
+                "share_pct": 0.17918649332032574
+              },
+              "eina": {
+                "units": 150,
+                "share_pct": 0.05972883110677524
+              },
+              "apple": {
+                "units": 52273,
+                "share_pct": 20.814701256296413
+              },
+              "ibm": {
+                "units": 7128,
+                "share_pct": 2.8383140541939595
+              },
+              "tandy": {
+                "units": 42769,
+                "share_pct": 17.030282517371134
+              },
+              "commodore": {
+                "units": 19009,
+                "share_pct": 7.569235670057937
+              },
+              "nec": {
+                "units": 19008,
+                "share_pct": 7.5688374778505585
+              },
+              "osborne": {
+                "units": 16632,
+                "share_pct": 6.622732793119239
+              },
+              "other_business": {
+                "units": 40393,
+                "share_pct": 16.084177832639813
+              }
+            },
+            "platform_units": 53923,
+            "platform_share_pct": 21.471718398470944,
+            "gross_logix_intent": 51935,
+            "cannibalised_by_clones": 638,
+            "clone_units": {
+              "northstar": 900,
+              "vector": 600,
+              "sks": 526,
+              "goupil": 450,
+              "eina": 150
+            },
+            "aion_tech_uk_subset": 360
+          },
+          {
+            "quarter": "1982-Q2",
+            "total_market_units": 262971,
+            "manufacturers": {
+              "logix": {
+                "units": 56613,
+                "share_pct": 21.528229348483293
+              },
+              "northstar": {
+                "units": 1350,
+                "share_pct": 0.5133645915329067
+              },
+              "vector": {
+                "units": 974,
+                "share_pct": 0.3703830460392971
+              },
+              "sks": {
+                "units": 900,
+                "share_pct": 0.3422430610219378
+              },
+              "goupil": {
+                "units": 750,
+                "share_pct": 0.28520255085161483
+              },
+              "eina": {
+                "units": 270,
+                "share_pct": 0.10267291830658133
+              },
+              "apple": {
+                "units": 49405,
+                "share_pct": 18.787242699765375
+              },
+              "ibm": {
+                "units": 22457,
+                "share_pct": 8.539724912632952
+              },
+              "tandy": {
+                "units": 40423,
+                "share_pct": 15.371656950766436
+              },
+              "commodore": {
+                "units": 17966,
+                "share_pct": 6.831932038133483
+              },
+              "nec": {
+                "units": 17966,
+                "share_pct": 6.831932038133483
+              },
+              "osborne": {
+                "units": 15720,
+                "share_pct": 5.977845465849847
+              },
+              "other_business": {
+                "units": 38177,
+                "share_pct": 14.5175703784828
+              }
+            },
+            "platform_units": 60857,
+            "platform_share_pct": 23.14209551623563,
+            "gross_logix_intent": 57618,
+            "cannibalised_by_clones": 1005,
+            "clone_units": {
+              "northstar": 1350,
+              "vector": 974,
+              "sks": 900,
+              "goupil": 750,
+              "eina": 270
+            },
+            "aion_tech_uk_subset": 720
+          },
+          {
+            "quarter": "1982-Q3",
+            "total_market_units": 275006,
+            "manufacturers": {
+              "logix": {
+                "units": 62479,
+                "share_pct": 22.7191406732944
+              },
+              "northstar": {
+                "units": 1950,
+                "share_pct": 0.7090754383540723
+              },
+              "vector": {
+                "units": 1350,
+                "share_pct": 0.4908983803989731
+              },
+              "sks": {
+                "units": 1350,
+                "share_pct": 0.4908983803989731
+              },
+              "goupil": {
+                "units": 1200,
+                "share_pct": 0.43635411591019835
+              },
+              "eina": {
+                "units": 450,
+                "share_pct": 0.16363279346632437
+              },
+              "apple": {
+                "units": 47758,
+                "share_pct": 17.366166556366043
+              },
+              "ibm": {
+                "units": 32562,
+                "share_pct": 11.840468935223232
+              },
+              "tandy": {
+                "units": 39075,
+                "share_pct": 14.208780899325832
+              },
+              "commodore": {
+                "units": 17366,
+                "share_pct": 6.31477131408042
+              },
+              "nec": {
+                "units": 17366,
+                "share_pct": 6.31477131408042
+              },
+              "osborne": {
+                "units": 15196,
+                "share_pct": 5.525697621142812
+              },
+              "other_business": {
+                "units": 36904,
+                "share_pct": 13.419343577958298
+              }
+            },
+            "platform_units": 68779,
+            "platform_share_pct": 25.009999781822945,
+            "gross_logix_intent": 63934,
+            "cannibalised_by_clones": 1455,
+            "clone_units": {
+              "northstar": 1950,
+              "vector": 1350,
+              "sks": 1350,
+              "goupil": 1200,
+              "eina": 450
+            },
+            "aion_tech_uk_subset": 1080
+          },
+          {
+            "quarter": "1982-Q4",
+            "total_market_units": 308840,
+            "manufacturers": {
+              "logix": {
+                "units": 72504,
+                "share_pct": 23.476233648491128
+              },
+              "northstar": {
+                "units": 2700,
+                "share_pct": 0.8742390882010103
+              },
+              "vector": {
+                "units": 1800,
+                "share_pct": 0.5828260588006734
+              },
+              "sks": {
+                "units": 1874,
+                "share_pct": 0.606786685662479
+              },
+              "goupil": {
+                "units": 1650,
+                "share_pct": 0.534257220567284
+              },
+              "eina": {
+                "units": 674,
+                "share_pct": 0.2182359797953633
+              },
+              "apple": {
+                "units": 50080,
+                "share_pct": 16.215516124854293
+              },
+              "ibm": {
+                "units": 45528,
+                "share_pct": 14.741613780598367
+              },
+              "tandy": {
+                "units": 40975,
+                "share_pct": 13.267387644087552
+              },
+              "commodore": {
+                "units": 18211,
+                "share_pct": 5.896580753788369
+              },
+              "nec": {
+                "units": 18211,
+                "share_pct": 5.896580753788369
+              },
+              "osborne": {
+                "units": 15935,
+                "share_pct": 5.159629581660407
+              },
+              "other_business": {
+                "units": 38698,
+                "share_pct": 12.530112679704702
+              }
+            },
+            "platform_units": 81202,
+            "platform_share_pct": 26.292578681517938,
+            "gross_logix_intent": 74499,
+            "cannibalised_by_clones": 1995,
+            "clone_units": {
+              "northstar": 2700,
+              "vector": 1800,
+              "sks": 1874,
+              "goupil": 1650,
+              "eina": 674
+            },
+            "aion_tech_uk_subset": 1440
+          },
+          {
+            "quarter": "1983-Q1",
+            "total_market_units": 396090,
+            "manufacturers": {
+              "logix": {
+                "units": 69722,
+                "share_pct": 17.602565073594384
+              },
+              "northstar": {
+                "units": 3960,
+                "share_pct": 0.9997727789138832
+              },
+              "vector": {
+                "units": 2700,
+                "share_pct": 0.6816632583503749
+              },
+              "sks": {
+                "units": 2880,
+                "share_pct": 0.7271074755737332
+              },
+              "goupil": {
+                "units": 2610,
+                "share_pct": 0.6589411497386958
+              },
+              "eina": {
+                "units": 1080,
+                "share_pct": 0.27266530334015
+              },
+              "apple": {
+                "units": 68890,
+                "share_pct": 17.392511802873084
+              },
+              "ibm": {
+                "units": 62628,
+                "share_pct": 15.81155797924714
+              },
+              "tandy": {
+                "units": 56365,
+                "share_pct": 14.230351687747733
+              },
+              "commodore": {
+                "units": 25051,
+                "share_pct": 6.324572698124163
+              },
+              "nec": {
+                "units": 25051,
+                "share_pct": 6.324572698124163
+              },
+              "osborne": {
+                "units": 21920,
+                "share_pct": 5.534095786311192
+              },
+              "other_business": {
+                "units": 53233,
+                "share_pct": 13.439622308061299
+              }
+            },
+            "platform_units": 82952,
+            "platform_share_pct": 20.942715039511224,
+            "gross_logix_intent": 72710,
+            "cannibalised_by_clones": 2988,
+            "clone_units": {
+              "northstar": 3960,
+              "vector": 2700,
+              "sks": 2880,
+              "goupil": 2610,
+              "eina": 1080
+            },
+            "aion_tech_uk_subset": 1560
+          },
+          {
+            "quarter": "1983-Q2",
+            "total_market_units": 414257,
+            "manufacturers": {
+              "logix": {
+                "units": 74907,
+                "share_pct": 18.082253287210595
+              },
+              "northstar": {
+                "units": 4860,
+                "share_pct": 1.1731847621162708
+              },
+              "vector": {
+                "units": 3240,
+                "share_pct": 0.7821231747441806
+              },
+              "sks": {
+                "units": 3600,
+                "share_pct": 0.8690257497157562
+              },
+              "goupil": {
+                "units": 3240,
+                "share_pct": 0.7821231747441806
+              },
+              "eina": {
+                "units": 1440,
+                "share_pct": 0.3476102998863025
+              },
+              "apple": {
+                "units": 71053,
+                "share_pct": 17.151912942931563
+              },
+              "ibm": {
+                "units": 64594,
+                "share_pct": 15.592735910316543
+              },
+              "tandy": {
+                "units": 58134,
+                "share_pct": 14.033317481659935
+              },
+              "commodore": {
+                "units": 25838,
+                "share_pct": 6.2371909225432525
+              },
+              "nec": {
+                "units": 25838,
+                "share_pct": 6.2371909225432525
+              },
+              "osborne": {
+                "units": 22608,
+                "share_pct": 5.4574817082149485
+              },
+              "other_business": {
+                "units": 54905,
+                "share_pct": 13.253849663373222
+              }
+            },
+            "platform_units": 91287,
+            "platform_share_pct": 22.03632044841729,
+            "gross_logix_intent": 78570,
+            "cannibalised_by_clones": 3663,
+            "clone_units": {
+              "northstar": 4860,
+              "vector": 3240,
+              "sks": 3600,
+              "goupil": 3240,
+              "eina": 1440
+            },
+            "aion_tech_uk_subset": 1920
+          },
+          {
+            "quarter": "1983-Q3",
+            "total_market_units": 432604,
+            "manufacturers": {
+              "logix": {
+                "units": 80898,
+                "share_pct": 18.70024317851892
+              },
+              "northstar": {
+                "units": 5760,
+                "share_pct": 1.3314717385877153
+              },
+              "vector": {
+                "units": 3780,
+                "share_pct": 0.8737783284481881
+              },
+              "sks": {
+                "units": 4320,
+                "share_pct": 0.9986038039407865
+              },
+              "goupil": {
+                "units": 3960,
+                "share_pct": 0.9153868202790542
+              },
+              "eina": {
+                "units": 1800,
+                "share_pct": 0.41608491830866107
+              },
+              "apple": {
+                "units": 73059,
+                "share_pct": 16.888193359284703
+              },
+              "ibm": {
+                "units": 66417,
+                "share_pct": 15.352840010725743
+              },
+              "tandy": {
+                "units": 59775,
+                "share_pct": 13.817486662166786
+              },
+              "commodore": {
+                "units": 26567,
+                "share_pct": 6.141182235947888
+              },
+              "nec": {
+                "units": 26567,
+                "share_pct": 6.141182235947888
+              },
+              "osborne": {
+                "units": 23246,
+                "share_pct": 5.373505561668408
+              },
+              "other_business": {
+                "units": 56455,
+                "share_pct": 13.050041146175257
+              }
+            },
+            "platform_units": 100518,
+            "platform_share_pct": 23.235568788083327,
+            "gross_logix_intent": 85245,
+            "cannibalised_by_clones": 4347,
+            "clone_units": {
+              "northstar": 5760,
+              "vector": 3780,
+              "sks": 4320,
+              "goupil": 3960,
+              "eina": 1800
+            },
+            "aion_tech_uk_subset": 2280
+          },
+          {
+            "quarter": "1983-Q4",
+            "total_market_units": 485066,
+            "manufacturers": {
+              "logix": {
+                "units": 92381,
+                "share_pct": 19.04503717019952
+              },
+              "northstar": {
+                "units": 6660,
+                "share_pct": 1.3730090338222014
+              },
+              "vector": {
+                "units": 4320,
+                "share_pct": 0.8906004543711578
+              },
+              "sks": {
+                "units": 5040,
+                "share_pct": 1.0390338634330174
+              },
+              "goupil": {
+                "units": 4680,
+                "share_pct": 0.9648171589020876
+              },
+              "eina": {
+                "units": 2250,
+                "share_pct": 0.4638544033183113
+              },
+              "apple": {
+                "units": 81342,
+                "share_pct": 16.76926438876359
+              },
+              "ibm": {
+                "units": 73947,
+                "share_pct": 15.244729583190741
+              },
+              "tandy": {
+                "units": 66552,
+                "share_pct": 13.720194777617891
+              },
+              "commodore": {
+                "units": 29579,
+                "share_pct": 6.097933064778814
+              },
+              "nec": {
+                "units": 29579,
+                "share_pct": 6.097933064778814
+              },
+              "osborne": {
+                "units": 25881,
+                "share_pct": 5.335562583236095
+              },
+              "other_business": {
+                "units": 62855,
+                "share_pct": 12.95803045358776
+              }
+            },
+            "platform_units": 115331,
+            "platform_share_pct": 23.776352084046295,
+            "gross_logix_intent": 97421,
+            "cannibalised_by_clones": 5040,
+            "clone_units": {
+              "northstar": 6660,
+              "vector": 4320,
+              "sks": 5040,
+              "goupil": 4680,
+              "eina": 2250
+            },
+            "aion_tech_uk_subset": 2640
+          }
+        ]
+      }
+    ]
+  }
 }
