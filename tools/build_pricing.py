@@ -142,7 +142,13 @@ for id in ['aurelia_commercial_developer_license','artemis_commercial_developer_
 # New manufacturer kit and optional services; cost-based, no asserted competitor discount.
 for id in ['software.aurelia_compatibility_kit','service.aurelia_compatibility_support','service.aurelia_compatibility_certification']:
  add(id,group='Developer programs',direct=True,note='COMDEX 1979 manufacturer programme; optional support/certification, no per-machine runtime royalty. Cost-based annual planning price; launch and extra-work quotations are separate. Development/NRE excluded.')
-add('software.aion_development_team',group='Software and developer tools',unit='one server / four concurrent developers; hardware excluded',note='November 1981 Team Edition: C IDE 2, repository and collaboration. Includes 20 staff-hours onboarding and 12 first-year support hours. No matched integrated-suite comparator: apply 25% contribution fallback. No development or campaign amortization; financial integration deferred.')
+add('software.aion_development_team',group='Software and developer tools',unit='one server / four concurrent developers; hardware excluded',note='November 1981 Team Edition: C IDE 2, repository and collaboration. Includes 20 staff-hours onboarding and 12 first-year support hours. User-authorized 50% adoption-price exception; original entitlements and support retained. Negative unit contribution is explicit. No development or campaign amortization; aggregate demand/ROI reassessment pending.')
+# NCC 1982 products: no verified like-for-like comparator by the cutoff.
+for id in load('ncc_1982_campaign.json')['offering_refs']:
+ if id.startswith('device.') or id=='software.entertainment_suite':
+  add(id,group='Software and developer tools' if id.startswith('software.') else 'Peripherals and expansion',note='June 1982 launch estimate; no matched comparator. Existing 25% net-contribution fallback; unqualified procurement/routing assumptions remain visible.')
+for pack in load('ncc_1982_campaign.json')['packages']:
+ add(pack['id'],name=pack['name'],group='Application bundles',start='1982-06-07',parts=[{'cost_ref':r,'quantity':1} for r in pack['components']],unit='one upgrade package; host excluded',note=pack['notes'])
 # Approved use-case bundles, both generations, use exact component references.
 for b in catalog['proposed_bundles']:
  add(b['id'],b['name'],'Application bundles',start=b['earliest_offer_date'],parts=[{'cost_ref':r,'quantity':1} for r in [b['base_bundle_ref']]+b['included_software']+b['included_devices']],note='Approved commercial bundle. Base system includes one year Regular Support; no second support charge.')
@@ -303,12 +309,17 @@ for offer in P:
   assert fee==old['computerland_fee_rate']
   s['cost_revision']={'reason':'Current accepted hardware and delivery costs; frozen original costs retained for audit.', 'baseline_manufacturing_cost_usd':old['manufacturing_cost_usd'], 'current_manufacturing_cost_usd':cost, 'delta_usd':cents(cost-old['manufacturing_cost_usd'])}
   price,status=balanced_price(cost,fee,benchmark)
+  adoption=load('team_development_program.json')['adoption_pricing'] if offer['id']=='software.aion_development_team' else None
+  if adoption:price=adoption['retail_usd'];status='adoption_subsidy_50_percent'
   commission=cents(price*fee);revenue=cents(price-commission);profit=cents(revenue-cost)
   margin=cents(profit/revenue*100);discount=cents((1-price/benchmark)*100) if benchmark else None
   s['pre_reduction']={**old,'retail_reduction_pct':cents((1-price/old['retail_price_usd'])*100),'basis':'Initial cost-based assessment only; no historical price or demand anchor exists.' if new_offer else 'Frozen original audit and sales-demand anchor; old 40% contribution policy superseded.'}
   s.update(retail_price_usd=price,computerland_fee_usd=commission,revenue_after_fee_usd=revenue,unit_profit_usd=profit,contribution_margin_on_net_revenue_pct=margin,legacy_price_floor_usd=s['price_floor_usd'],price_floor_usd=ceil_cents(cost/(1-fee)))
   s['competitor']['discount_pct']=discount
-  s['pricing_balance']={'status':status,'margin_pct':margin,'discount_pct':discount,'gap_percentage_points':cents(abs(margin-discount)) if discount is not None else None,'fallback_margin_pct':25 if benchmark is None else None}
+  s['pricing_balance']={'status':status,'margin_pct':margin,'discount_pct':discount,'gap_percentage_points':cents(abs(margin-discount)) if discount is not None else None,'fallback_margin_pct':25 if benchmark is None and not adoption else None}
+  if adoption:
+   s['adoption_pricing']={**adoption,'unit_subsidy_usd':max(0,-profit),'unsubsidized_fallback_retail_usd':balanced_price(cost,fee,None)[0]}
+   s['warnings'].append('Explicit rapid-adoption subsidy: retail is 50% of frozen $1490.45 reference, below delivered cost after fees. Do not double-count unit losses as marketing expense.')
   stress=s['stress'];stress['profit_usd']=cents(price*.9*(1-stress['fee_rate'])-cost*1.2);stress['high_cost_profit_usd']=cents(price*.9*(1-stress['fee_rate'])-s['cost_high_usd'])
   s['warnings']=[w for w in s['warnings'] if not w.startswith(('Cannot','High cost','Bundle cost'))]
   if status=='cost_floor_above_proxy':s['warnings'].append('Cannot balance nonnegative contribution with a discount: central-cost break-even exceeds the proxy. Price held at break-even; negative discount shown as a premium.')
@@ -359,8 +370,20 @@ for product in P:
  if product['id'].startswith('software.bpi') or product['id']=='offer.bpi_client':
   product['notes'].append('Independent BPI Systems software: separately licensed, BPI-owned and supported. Displayed receipts/contribution are BPI estimates, not Logix income; specialist support and development budgets excluded.')
 
-model['policy']['extension_1982']='Existing comparator amounts carried forward nominally as unverified 1982 planning proxies; no 1982 historical quote or sales reaction claimed. Balanced percentages applied to new June 15 recurring costs. New Team Edition has no matched proxy and uses the existing 25% net-contribution fallback. Development/campaign provisions are not amortized into recurring cost.'
+model['policy']['extension_1982']='Existing comparator amounts carried forward nominally as unverified 1982 planning proxies; no 1982 historical quote or sales reaction claimed. Balanced percentages applied to new June 15 recurring costs. New NCC products without a matched proxy use the 25% net-contribution fallback. Team Edition is the explicitly authorized 50% adoption-price exception with visible unit loss. Development/campaign provisions are not amortized into recurring cost.'
+
+model['policy']['team_adoption_exception']=load('team_development_program.json')['adoption_pricing']['rationale']
+model['policy']['scope']+=' Team Edition alone overrides the cost floor with its approved $745.23 adoption price.'
+team_offer=by_id['software.aion_development_team']
+import copy
+team_offer['launch_snapshot']=copy.deepcopy(team_offer['snapshots']['1982'])
+team_offer['launch_snapshot'].update(date='1981-11-19',status='launch_price_with_june_1982_cost_proxy',cost_date='1982-06-15',cost_date_basis=load('team_development_program.json')['adoption_pricing']['launch_cost_basis'])
+model['metadata']['ncc_inputs_sha256']=hashlib.sha256((ROOT/'ncc_1982_inputs.json').read_bytes()).hexdigest()
+model['metadata']['team_program_sha256']=hashlib.sha256((ROOT/'team_development_program.json').read_bytes()).hexdigest()
+model['metadata']['forecast_status']='Existing sales/investment/ROI forecasts predate the NCC offering and Team adoption-price policy; no automatic demand uplift or recalculated aggregate totals are claimed.'
+
 (ROOT/'pricing_results.json').write_text(json.dumps(model,indent=2,ensure_ascii=False)+'\n')
 print(f'{len(P)} products; '+str(sum(s['retail_price_usd'] is not None for p in P for s in p['snapshots'].values()))+' assessed snapshots')
+
 
 

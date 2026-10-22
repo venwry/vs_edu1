@@ -12,8 +12,11 @@ select('pricing-cost','cost_high_usd');assert(d.getElementById('pricing-detail')
 select('pricing-year','1979');assert(!d.querySelector('[data-product="bundle.aurelia_plus_mono"]'));assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,6);
 select('pricing-year','1981');select('pricing-availability','available');assert(!d.querySelector('[data-product="bundle.artemis_pro_512_server"]'));
 select('pricing-year','1982');assert(d.querySelector('[data-product="software.aion_development_team"][data-year="1982"]'));
+assert(d.getElementById('team-adoption').textContent.includes('$745.23'));
+d.querySelector('[data-product="software.aion_development_team"][data-year="1982"]').click();assert(d.getElementById('pricing-detail').textContent.includes('approved below-cost adoption price'));assert(!d.getElementById('pricing-detail').textContent.includes('target contribution margin is 25%'));
 select('pricing-type','Support');assert.equal(d.querySelectorAll('.pricing-row').length,4);assert(d.querySelector('.pricing-row').textContent.includes('0%'));
 d.getElementById('pricing-search').value='no such product';d.getElementById('pricing-search').dispatchEvent(new w.Event('input'));assert(d.getElementById('pricing-matrix').textContent.includes('No matching'));
 assert.equal(matrix.style.width,'640px');assert.equal(matrix.style.height,'320px');w.close();console.log('PASS: grouped annual matrix, source detail, fee/cost recalculation, service channels and availability filters.');})();
+
 
 

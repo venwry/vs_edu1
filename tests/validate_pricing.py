@@ -3,7 +3,7 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 p=json.loads((R/'pricing_results.json').read_text());c=json.loads((R/'manufacturing_costs.json').read_text());costs={x['id']:x for x in c['products']}
 rows={x['id']:x for x in p['products']}
-assert len(rows)==len(p['products'])==91
+assert len(rows)==len(p['products'])==100
 assert p['metadata']['cost_model_sha256']==hashlib.sha256((R/'manufacturing_costs.json').read_bytes()).hexdigest()
 count=0
 for x in rows.values():
@@ -15,12 +15,17 @@ for x in rows.values():
   assert abs(s['computerland_fee_usd']-round(price*fee,2))<.011
   assert abs(s['revenue_after_fee_usd']-(price-s['computerland_fee_usd']))<.011
   assert abs(s['unit_profit_usd']-(s['revenue_after_fee_usd']-cost))<.011
-  assert price+0.01>=s['price_floor_usd']
+  if x['id']!='software.aion_development_team':assert price+0.01>=s['price_floor_usd']
+  else:assert price==745.23 and s['unit_profit_usd']<0
   assert abs(s['stress']['profit_usd']-round(price*.9*(1-s['stress']['fee_rate'])-cost*1.2,2))<.011
   proxy=s['competitor']['normalized_price_usd']; balance=s['pricing_balance']
   margin=100*s['unit_profit_usd']/s['revenue_after_fee_usd']
   assert abs(margin-balance['margin_pct'])<.011
-  if proxy and cost/(1-fee)<=proxy:
+  if x['id']=='software.aion_development_team':
+   assert balance['status']=='adoption_subsidy_50_percent'
+   assert s['adoption_pricing']['reference_retail_usd']==1490.45
+   assert s['adoption_pricing']['unit_subsidy_usd']==-s['unit_profit_usd']
+  elif proxy and cost/(1-fee)<=proxy:
    assert balance['status']=='balanced_proxy'
    assert abs(margin-100*(1-price/proxy))<=.1
    assert abs(price-math.sqrt(cost*proxy/(1-fee)))<=.02
@@ -45,7 +50,7 @@ for x in rows.values():
    e=p['competitor_evidence'][eid];assert p['sources'][e['source_ref']]['date']<=s['date'],(eid,y)
   if x['announced_only']:assert s['status']=='announced_shipping_unconfirmed'
   if x['channel']=='direct':assert fee==0
-assert count==323
+assert count==332
 assert rows['bundle.aurelia_plus_mono']['snapshots']['1979']['retail_price_usd'] is None
 assert rows['software.abacus_3']['snapshots']['1980']['retail_price_usd'] is None
 assert rows['bundle.proposed_artemis_office']['snapshots']['1980']['cost_components'][-1]['cost_ref']=='edition.abacus_2.era'
@@ -55,6 +60,12 @@ assert {x['cost_ref']:x['quantity'] for x in network['cost_components']}['bundle
 assert all(x['cost_ref']!='device.network_card_artemis' for x in network['cost_components'])
 assert rows['service.academy_customer_site']['snapshots']['1981']['manufacturing_cost_usd']==round(73.85*8,2)
 assert not any(x.startswith('part.') or x.startswith('computer.') for x in rows)
-print('PASS: 91 offers / 323 snapshots; date gates, source chronology, exact cost reconciliation, fees, margins, stress and bundle dependencies.')
+print('PASS: 100 offers / 332 snapshots; date gates, source chronology, exact cost reconciliation, fees, margins, stress and bundle dependencies.')
 
 
+
+
+team=rows['software.aion_development_team']
+assert team['launch_snapshot']['date']=='1981-11-19'
+assert team['launch_snapshot']['retail_price_usd']==745.23
+assert team['snapshots']['1981']['retail_price_usd'] is None
