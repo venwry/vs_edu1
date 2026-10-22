@@ -5763,6 +5763,12 @@
                 "actor.aion"
               ],
               "description": "COMDEX November 1981 scenario launch: Complex products. Whole teams. One development environment. Demonstrate task → branch → code discussion → conflict resolution → CP/M and AIONix builds → target testing → labelled release. Campaign budget is staged in team_development_program.json; the accepted budgets are now reconciled into the investment and ROI models through 1982."
+            },
+            {
+              "actor_refs": [
+                "actor.aion"
+              ],
+              "description": "Rapid adoption price $745.23, 50% below the frozen $1490.45 launch proxy, with original four-user entitlement, 20h onboarding and 12h first-year support preserved. Explicit below-cost exception, losses disclosed in pricing_results.json and team_development_program.json."
             }
           ],
           "outcomes": [],
@@ -6275,6 +6281,54 @@
           "related_event_refs": []
         },
         {
+          "id": "event.ncc82_dealer_preparation",
+          "title": "NCC 1982 dealer and demonstration preparation",
+          "event_type": "development",
+          "date": {
+            "start": "1982-04",
+            "end": "1982-04"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.academy",
+              "role": "organizer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.academy"
+              ],
+              "description": "Train dealers and Academy instructors, prepare supported mouse workflows and qualified displays, and reserve partner demonstration slots. Budget and campaign plan: ncc_1982_campaign.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "device.artemis_video_card_64kb",
+            "device.color_pro_14",
+            "device.logix_mouse",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "software.entertainment_suite",
+            "technology.logix_tui_mouse"
+          ],
+          "related_event_refs": [
+            "event.ncc82_graphics_mouse"
+          ]
+        },
+        {
           "id": "event.clone_90day_review",
           "title": "Founding partner launch and SGS ramp review",
           "event_type": "development",
@@ -6400,6 +6454,54 @@
           ]
         },
         {
+          "id": "event.ncc82_press_preview",
+          "title": "NCC 1982 press and partner previews",
+          "event_type": "development",
+          "date": {
+            "start": "1982-05",
+            "end": "1982-05"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.academy",
+              "role": "organizer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.academy"
+              ],
+              "description": "Embargoed press briefings and partner rehearsals using the headline Pointy ideas with a solid point. Prepare the Abacus workflow, printed price lists and accurate compatibility directory. Budget and campaign plan: ncc_1982_campaign.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "device.artemis_video_card_64kb",
+            "device.color_pro_14",
+            "device.logix_mouse",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "software.entertainment_suite",
+            "technology.logix_tui_mouse"
+          ],
+          "related_event_refs": [
+            "event.ncc82_graphics_mouse"
+          ]
+        },
+        {
           "id": "event.tandy_68k_review",
           "title": "68k OEMs assess an independent AIONix option",
           "event_type": "development",
@@ -6485,12 +6587,42 @@
           ]
         },
         {
-          "id": "event.ncc82_graphics_mouse",
-          "title": "NCC 1982 — Color Pro, 64 KiB video and mouse interaction",
-          "event_type": "release_and_policy",
+          "id": "event.production_2",
+          "title": "Selected 2.0 µm process release review",
+          "event_type": "development",
           "date": {
             "start": "1982-06",
             "end": "1982-06"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.labs",
+              "role": "manufacturer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.labs"
+              ],
+              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "technology.nmos_2um"
+          ],
+          "related_event_refs": []
+        },
+        {
+          "id": "event.ncc82_graphics_mouse",
+          "title": "NCC 1982 — Pointy ideas with a solid point.",
+          "event_type": "release_and_policy",
+          "date": {
+            "start": "1982-06-07",
+            "end": "1982-06-07"
           },
           "participants": [
             {
@@ -6531,6 +6663,13 @@
                 "actor.aion"
               ],
               "description": "Release AION Entertainment Suite: Sudoku, Klondike Solitaire, Spider and FreeCell, with mouse-learning tutorials, keyboard alternatives and monochrome-compatible presentation. These titles and the dual-roller mouse are deliberate alternate-history offerings."
+            },
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion"
+              ],
+              "description": "June 7-10 Houston campaign: Pointy ideas with a solid point. Introducing the Logix Mouse. Point, select, and get to work. Colour business reports, hands-on mouse learning, partner compatibility demonstrations and professional graphics; AutoCAD remains a November target. Campaign plan and staged budget: ncc_1982_campaign.json."
             }
           ],
           "outcomes": [
@@ -6548,39 +6687,107 @@
             "technology.scanline_palette_list",
             "technology.logix_tui_mouse",
             "software.cpm_aurelia",
-            "software.aionix"
+            "software.aionix",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17"
           ],
           "related_event_refs": []
         },
         {
-          "id": "event.production_2",
-          "title": "Selected 2.0 µm process release review",
+          "id": "event.ncc82_developer_sessions",
+          "title": "NCC developer and independent manufacturer sessions",
           "event_type": "development",
           "date": {
-            "start": "1982-06",
-            "end": "1982-06"
+            "start": "1982-06-08",
+            "end": "1982-06-08"
           },
           "participants": [
             {
-              "actor_ref": "actor.labs",
-              "role": "manufacturer"
+              "actor_ref": "actor.logix",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.academy",
+              "role": "organizer"
             }
           ],
           "actions": [
             {
               "actor_refs": [
-                "actor.labs"
+                "actor.logix",
+                "actor.aion",
+                "actor.academy"
               ],
-              "description": "Selected alternative-history milestone; qualify measured process, retention/speed, tool matching and cost before release. Existing processors retain their current process. See memory_manufacturing.json."
+              "description": "Demonstrate Team Edition at its $745.23 adoption price, provide target/API documentation, porting clinics and partner compatibility demonstrations. Funding does not imply exclusive software ownership. Budget and campaign plan: ncc_1982_campaign.json."
             }
           ],
           "outcomes": [],
           "agreement_terms": [],
           "metrics": [],
           "product_refs": [
-            "technology.nmos_2um"
+            "device.artemis_video_card_64kb",
+            "device.color_pro_14",
+            "device.logix_mouse",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "software.entertainment_suite",
+            "technology.logix_tui_mouse"
           ],
-          "related_event_refs": []
+          "related_event_refs": [
+            "event.ncc82_graphics_mouse"
+          ]
+        },
+        {
+          "id": "event.ncc82_followup",
+          "title": "NCC dealer and Academy follow-up programme",
+          "event_type": "development",
+          "date": {
+            "start": "1982-06-14",
+            "end": "1982-06-14"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.academy",
+              "role": "organizer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.academy"
+              ],
+              "description": "June-July regional demonstrations and upgrade fulfillment. Assign enquiry owners and follow up by telephone/post within five business days; track orders and evaluations separately from booth traffic. Budget and campaign plan: ncc_1982_campaign.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "device.artemis_video_card_64kb",
+            "device.color_pro_14",
+            "device.logix_mouse",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "software.entertainment_suite",
+            "technology.logix_tui_mouse"
+          ],
+          "related_event_refs": [
+            "event.ncc82_graphics_mouse"
+          ]
         },
         {
           "id": "event.cost_review_1982",
@@ -6641,6 +6848,54 @@
             "part.aion_4164"
           ],
           "related_event_refs": []
+        },
+        {
+          "id": "event.ncc82_case_studies",
+          "title": "NCC customer results and professional beta preparation",
+          "event_type": "development",
+          "date": {
+            "start": "1982-08",
+            "end": "1982-08"
+          },
+          "participants": [
+            {
+              "actor_ref": "actor.logix",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.aion",
+              "role": "organizer"
+            },
+            {
+              "actor_ref": "actor.academy",
+              "role": "organizer"
+            }
+          ],
+          "actions": [
+            {
+              "actor_refs": [
+                "actor.logix",
+                "actor.aion",
+                "actor.academy"
+              ],
+              "description": "August-September: publish approved customer examples with measured results; qualified professional enquiries feed Autodesk beta evaluation and the November invitation list. Budget and campaign plan: ncc_1982_campaign.json."
+            }
+          ],
+          "outcomes": [],
+          "agreement_terms": [],
+          "metrics": [],
+          "product_refs": [
+            "device.artemis_video_card_64kb",
+            "device.color_pro_14",
+            "device.logix_mouse",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "software.entertainment_suite",
+            "technology.logix_tui_mouse"
+          ],
+          "related_event_refs": [
+            "event.ncc82_graphics_mouse"
+          ]
         },
         {
           "id": "event.application_competition",

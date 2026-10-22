@@ -103,7 +103,7 @@
     "development_reconciliation": "industrial_investment_1974_1981.json: team_development_reconciliation",
     "campaign_reconciliation": "roi_1974_1980.json: team_campaign_reconciliation",
     "contingency": "Full budget provision included as conservative planned expense; not a claim of realized spending.",
-    "launch_price": "Use first costed 1982 Team snapshot as explicit November 1981 launch-price proxy; existing catalog snapshots are preserved."
+    "launch_price": "Explicit $745.23 launch and 1982 adoption price: 50% of frozen $1490.45 prior June-1982/November-launch proxy. Delivery costs unchanged; unit loss is disclosed; existing demand and ROI outputs predate this policy."
   },
   "autodesk_sponsored_deployment": {
     "agreement_date": "1982-01-31",
@@ -145,5 +145,18 @@
       "device.mono_pro_17",
       "device.logix_mouse"
     ]
+  },
+  "adoption_pricing": {
+    "effective_from": "1981-11-19",
+    "reference_retail_usd": 1490.45,
+    "reference_basis": "Pre-change June 15 1982 Team Edition retail, previously used as the explicit November 1981 launch-price proxy. Not a historical market quotation.",
+    "reduction_pct": 50,
+    "retail_usd": 745.23,
+    "rounding": "1490.45 x 0.5, half-up to cents",
+    "scope": "Launch and subsequent modelled snapshots through 1982; no change to June 1981 prelaunch availability. No automatic expiry or second compounded reduction.",
+    "included_services_unchanged": true,
+    "rationale": "User-authorized rapid-adoption price; explicit exception to balanced pricing and the cost floor. Preserve one server/four concurrent users, 20h onboarding, 12h first-year support, media and documentation. Hardware remains separate.",
+    "loss_treatment": "Show actual negative unit contribution after dealer fees. Do not add the same shortfall a second time as a marketing expense in a future P&L. Forecast quantities and aggregate subsidy exposure require a separate demand review.",
+    "launch_cost_basis": "Use the first costed June 1982 delivery snapshot as a disclosed proxy for November 1981; no fabricated November cost study."
   }
 }

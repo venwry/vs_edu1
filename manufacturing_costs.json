@@ -14,11 +14,12 @@
     "source_commit": "c4567d340882e132ca92671861487af453dafc80",
     "source_note": "Baseline commit; source hashes identify the edited inputs used for this build.",
     "source_sha256": {
-      "logix_aion_technical_catalog_v2.json": "f3d557c4d6de6a9dcb96483a788135b2e8be25c8258d987a40a88e7fe65af755",
-      "hardware_bom.json": "de0ed6369789ee04b439d71efd2fc28a868afaa202d01a6de536351006f1b6bf",
-      "manufacturing_programs.json": "03af88047b06a556acf892db0f32ca94d81dc2ff54805a488c75a0d902590a5e",
+      "logix_aion_technical_catalog_v2.json": "afa7ad4986cb617e5caed7c83d40c04a0555521d3e1026b050ea9da84aa88275",
+      "hardware_bom.json": "7df61a3b5dd779954f5aa1d5050da709e6649814bbaaf911152652e35c3fdb34",
+      "manufacturing_programs.json": "3456986dd3396ac5c2e965898ea10edcbaccd661be7ab62285e8be47ad344c98",
       "memory_manufacturing.json": "16082a08f95d55769f0444be95938db44e18b8f6181bbc93f61e2e43ea9086e9",
-      "team_development_program.json": "8c179f3df0bf4379a4de2248c7183a6b3925ace4369fb1356260ee32d124672a"
+      "ncc_1982_inputs.json": "908ef27737da19c2cd29a97d70d3d1c74229a71d179cc93d1d1a3c936ffe1a14",
+      "team_development_program.json": "ef3973bcea4b41e93cd39c55cc6a781e38ce799af92622f2c9aac0e30d1a9bc4"
     },
     "estimate_status": "engineering planning scenario; no supplier quotes; not audited manufacturing accounts",
     "generated_by": "tools/build_cost_assessment.py"
@@ -75,7 +76,8 @@
     "double_counting": "Nested BOMs count each component once. Final manuals/cartons/freight applied only at the top-level offer. Chip fabrication labor/energy is categorized inside the breakdown; extended BOM line costs include these internal conversion costs and must not be added to the total again.",
     "second_source": "June 1979 cards use AION chips. SMC procurement is a separate conditional scenario from October 1979; June 1980/1981 comparisons do not assert a purchasing switch or a price reduction.",
     "joint_dri": "DRI remains a separately owned licensor despite Adam’s minority stake. Existing provisional per-copy CP/M allowance remains; the $250,000 founder capital commitment is excluded from unit costs.",
-    "extension_1982": "June 15 1982: nominal planning wage $8.30/h, power $0.047/kWh, overhead index 1.43; OEM prices are estimates. 3 µm non-memory defect density 1.6/cm², maturity .86 for ERA/Artemis; memory uses dated existing recipe policy. No new line investment, demand or total profit inferred."
+    "extension_1982": "June 15 1982: nominal planning wage $8.30/h, power $0.047/kWh, overhead index 1.43; OEM prices are estimates. 3 µm non-memory defect density 1.6/cm², maturity .86 for ERA/Artemis; memory uses dated existing recipe policy. No new line investment, demand or total profit inferred.",
+    "ncc_1982": "New products use itemized June-dollar allowances, dedicated launch routing without prior-year learning, conservative new-logic yields, and dated qualified RAM. Estimates do not certify production readiness. Updates have no extra licence fee; driver media is included in mouse BOM. Autodesk future royalties are uncosted."
   },
   "sources": [
     {
@@ -6603,6 +6605,970 @@
         0.7,
         1.55
       ]
+    },
+    "bompart.part.artemis_graphics_chip_64kb": {
+      "name": "AION 64 KiB Artemis graphics controller with palette sequencer",
+      "basis": "Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 22.23921,
+          "workforce": 36.19885,
+          "energy": 9.66694,
+          "consumables": 23.20067,
+          "operating_overhead": 11.60033
+        },
+        "1979": {
+          "bom_materials": 23.0678,
+          "workforce": 37.85604,
+          "energy": 10.12728,
+          "consumables": 24.30546,
+          "operating_overhead": 12.15273
+        },
+        "1980": {
+          "bom_materials": 19.63344,
+          "workforce": 30.98732,
+          "energy": 8.2193,
+          "consumables": 19.72631,
+          "operating_overhead": 9.86316
+        },
+        "1981": {
+          "bom_materials": 17.16765,
+          "workforce": 26.05573,
+          "energy": 6.84941,
+          "consumables": 16.43859,
+          "operating_overhead": 8.21929
+        },
+        "1982": {
+          "bom_materials": 17.05886,
+          "workforce": 25.83816,
+          "energy": 6.78897,
+          "consumables": 16.29354,
+          "operating_overhead": 8.14677
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.5,
+        2.5
+      ]
+    },
+    "bompart.part.color_pro_monitor_controller": {
+      "name": "AION Color Pro digital-to-RGB monitor controller",
+      "basis": "Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 1.78293,
+          "workforce": 1.36156,
+          "energy": 0.27367,
+          "consumables": 0.65681,
+          "operating_overhead": 0.32841
+        },
+        "1979": {
+          "bom_materials": 1.77439,
+          "workforce": 1.34449,
+          "energy": 0.26893,
+          "consumables": 0.64543,
+          "operating_overhead": 0.32271
+        },
+        "1980": {
+          "bom_materials": 1.77534,
+          "workforce": 1.34639,
+          "energy": 0.26946,
+          "consumables": 0.64669,
+          "operating_overhead": 0.32335
+        },
+        "1981": {
+          "bom_materials": 1.79196,
+          "workforce": 1.37961,
+          "energy": 0.27869,
+          "consumables": 0.66885,
+          "operating_overhead": 0.33442
+        },
+        "1982": {
+          "bom_materials": 1.82465,
+          "workforce": 1.445,
+          "energy": 0.29685,
+          "consumables": 0.71244,
+          "operating_overhead": 0.35622
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.5,
+        2.5
+      ]
+    },
+    "bompart.part.professional_graphics_controller": {
+      "name": "AION professional 2D blitter and line controller",
+      "basis": "Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 26.96617,
+          "workforce": 42.42696,
+          "energy": 11.39697,
+          "consumables": 27.35274,
+          "operating_overhead": 13.67637
+        },
+        "1979": {
+          "bom_materials": 27.94305,
+          "workforce": 44.38072,
+          "energy": 11.93969,
+          "consumables": 28.65525,
+          "operating_overhead": 14.32763
+        },
+        "1980": {
+          "bom_materials": 28.62531,
+          "workforce": 45.74525,
+          "energy": 12.31872,
+          "consumables": 29.56493,
+          "operating_overhead": 14.78247
+        },
+        "1981": {
+          "bom_materials": 24.27631,
+          "workforce": 37.04724,
+          "energy": 9.90261,
+          "consumables": 23.76626,
+          "operating_overhead": 11.88313
+        },
+        "1982": {
+          "bom_materials": 23.90829,
+          "workforce": 36.31121,
+          "energy": 9.69815,
+          "consumables": 23.27557,
+          "operating_overhead": 11.63779
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.5,
+        2.5
+      ]
+    },
+    "bompart.part.mono_pro_17_controller": {
+      "name": "AION Mono Pro 17 grayscale monitor controller",
+      "basis": "Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 1.61295,
+          "workforce": 1.02161,
+          "energy": 0.17924,
+          "consumables": 0.43018,
+          "operating_overhead": 0.21509
+        },
+        "1979": {
+          "bom_materials": 1.61248,
+          "workforce": 1.02065,
+          "energy": 0.17897,
+          "consumables": 0.42954,
+          "operating_overhead": 0.21477
+        },
+        "1980": {
+          "bom_materials": 1.61831,
+          "workforce": 1.03233,
+          "energy": 0.18222,
+          "consumables": 0.43732,
+          "operating_overhead": 0.21866
+        },
+        "1981": {
+          "bom_materials": 1.63364,
+          "workforce": 1.06299,
+          "energy": 0.19073,
+          "consumables": 0.45776,
+          "operating_overhead": 0.22888
+        },
+        "1982": {
+          "bom_materials": 1.65748,
+          "workforce": 1.11067,
+          "energy": 0.20398,
+          "consumables": 0.48955,
+          "operating_overhead": 0.24477
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.5,
+        2.5
+      ]
+    },
+    "bompart.part.nec_pc8853_display_assembly": {
+      "name": "NEC PC-8853 / JC-1410P2-class colour display assembly",
+      "basis": "Complete NEC-class 14-inch OEM display core, tube/yoke/HV/deflection/PSU; excludes AION adapter and final Logix cabinet. $280 is a volume procurement scenario, not a quote. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 280
+        },
+        "1979": {
+          "bom_materials": 280
+        },
+        "1980": {
+          "bom_materials": 280
+        },
+        "1981": {
+          "bom_materials": 280
+        },
+        "1982": {
+          "bom_materials": 280
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_video_card_64kb.pcb": {
+      "name": "pcb",
+      "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 14
+        },
+        "1979": {
+          "bom_materials": 14
+        },
+        "1980": {
+          "bom_materials": 14
+        },
+        "1981": {
+          "bom_materials": 14
+        },
+        "1982": {
+          "bom_materials": 14
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_video_card_64kb.slot_connector": {
+      "name": "slot connector",
+      "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 7
+        },
+        "1979": {
+          "bom_materials": 7
+        },
+        "1980": {
+          "bom_materials": 7
+        },
+        "1981": {
+          "bom_materials": 7
+        },
+        "1982": {
+          "bom_materials": 7
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_video_card_64kb.host_buffers_byte_enables": {
+      "name": "host buffers byte enables",
+      "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 12
+        },
+        "1979": {
+          "bom_materials": 12
+        },
+        "1980": {
+          "bom_materials": 12
+        },
+        "1981": {
+          "bom_materials": 12
+        },
+        "1982": {
+          "bom_materials": 12
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_video_card_64kb.clock_fifo_transceivers": {
+      "name": "clock fifo transceivers",
+      "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 14
+        },
+        "1979": {
+          "bom_materials": 14
+        },
+        "1980": {
+          "bom_materials": 14
+        },
+        "1981": {
+          "bom_materials": 14
+        },
+        "1982": {
+          "bom_materials": 14
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_video_card_64kb.passives_power_filtering": {
+      "name": "passives power filtering",
+      "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4
+        },
+        "1979": {
+          "bom_materials": 4
+        },
+        "1980": {
+          "bom_materials": 4
+        },
+        "1981": {
+          "bom_materials": 4
+        },
+        "1982": {
+          "bom_materials": 4
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.color_pro_14.rgb_dac_amplifiers": {
+      "name": "rgb dac amplifiers",
+      "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 22
+        },
+        "1979": {
+          "bom_materials": 22
+        },
+        "1980": {
+          "bom_materials": 22
+        },
+        "1981": {
+          "bom_materials": 22
+        },
+        "1982": {
+          "bom_materials": 22
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.color_pro_14.digital_receiver_pcb": {
+      "name": "digital receiver pcb",
+      "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 16
+        },
+        "1979": {
+          "bom_materials": 16
+        },
+        "1980": {
+          "bom_materials": 16
+        },
+        "1981": {
+          "bom_materials": 16
+        },
+        "1982": {
+          "bom_materials": 16
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.color_pro_14.timing_adaptation_components": {
+      "name": "timing adaptation components",
+      "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 18
+        },
+        "1979": {
+          "bom_materials": 18
+        },
+        "1980": {
+          "bom_materials": 18
+        },
+        "1981": {
+          "bom_materials": 18
+        },
+        "1982": {
+          "bom_materials": 18
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.color_pro_14.enclosure": {
+      "name": "enclosure",
+      "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 22
+        },
+        "1979": {
+          "bom_materials": 22
+        },
+        "1980": {
+          "bom_materials": 22
+        },
+        "1981": {
+          "bom_materials": 22
+        },
+        "1982": {
+          "bom_materials": 22
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.color_pro_14.cables_regional_mains": {
+      "name": "cables regional mains",
+      "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 8
+        },
+        "1980": {
+          "bom_materials": 8
+        },
+        "1981": {
+          "bom_materials": 8
+        },
+        "1982": {
+          "bom_materials": 8
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.logix_mouse.ball_xy_encoder_mechanism": {
+      "name": "ball xy encoder mechanism",
+      "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 8
+        },
+        "1980": {
+          "bom_materials": 8
+        },
+        "1981": {
+          "bom_materials": 8
+        },
+        "1982": {
+          "bom_materials": 8
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.logix_mouse.two_roller_encoders_detents": {
+      "name": "two roller encoders detents",
+      "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 6
+        },
+        "1979": {
+          "bom_materials": 6
+        },
+        "1980": {
+          "bom_materials": 6
+        },
+        "1981": {
+          "bom_materials": 6
+        },
+        "1982": {
+          "bom_materials": 6
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.logix_mouse.two_button_switches": {
+      "name": "two button switches",
+      "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 1.2
+        },
+        "1979": {
+          "bom_materials": 1.2
+        },
+        "1980": {
+          "bom_materials": 1.2
+        },
+        "1981": {
+          "bom_materials": 1.2
+        },
+        "1982": {
+          "bom_materials": 1.2
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.logix_mouse.pcb_mcu_firmware": {
+      "name": "pcb mcu firmware",
+      "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 5
+        },
+        "1979": {
+          "bom_materials": 5
+        },
+        "1980": {
+          "bom_materials": 5
+        },
+        "1981": {
+          "bom_materials": 5
+        },
+        "1982": {
+          "bom_materials": 5
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.logix_mouse.enclosure": {
+      "name": "enclosure",
+      "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 3.5
+        },
+        "1979": {
+          "bom_materials": 3.5
+        },
+        "1980": {
+          "bom_materials": 3.5
+        },
+        "1981": {
+          "bom_materials": 3.5
+        },
+        "1982": {
+          "bom_materials": 3.5
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.logix_mouse.cable_connector": {
+      "name": "cable connector",
+      "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 3
+        },
+        "1979": {
+          "bom_materials": 3
+        },
+        "1980": {
+          "bom_materials": 3
+        },
+        "1981": {
+          "bom_materials": 3
+        },
+        "1982": {
+          "bom_materials": 3
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.logix_mouse.passives_protection": {
+      "name": "passives protection",
+      "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 1.5
+        },
+        "1979": {
+          "bom_materials": 1.5
+        },
+        "1980": {
+          "bom_materials": 1.5
+        },
+        "1981": {
+          "bom_materials": 1.5
+        },
+        "1982": {
+          "bom_materials": 1.5
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.logix_mouse.driver_disks_quickstart": {
+      "name": "driver disks quickstart",
+      "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 4.5
+        },
+        "1979": {
+          "bom_materials": 4.5
+        },
+        "1980": {
+          "bom_materials": 4.5
+        },
+        "1981": {
+          "bom_materials": 4.5
+        },
+        "1982": {
+          "bom_materials": 4.5
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_professional_video_128kb.pcb": {
+      "name": "pcb",
+      "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 20
+        },
+        "1979": {
+          "bom_materials": 20
+        },
+        "1980": {
+          "bom_materials": 20
+        },
+        "1981": {
+          "bom_materials": 20
+        },
+        "1982": {
+          "bom_materials": 20
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_professional_video_128kb.slot_connector": {
+      "name": "slot connector",
+      "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 8
+        },
+        "1980": {
+          "bom_materials": 8
+        },
+        "1981": {
+          "bom_materials": 8
+        },
+        "1982": {
+          "bom_materials": 8
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_professional_video_128kb.host_dma_arbitration_buffers": {
+      "name": "host dma arbitration buffers",
+      "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 20
+        },
+        "1979": {
+          "bom_materials": 20
+        },
+        "1980": {
+          "bom_materials": 20
+        },
+        "1981": {
+          "bom_materials": 20
+        },
+        "1982": {
+          "bom_materials": 20
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_professional_video_128kb.line_fifo_clock_link": {
+      "name": "line fifo clock link",
+      "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 24
+        },
+        "1979": {
+          "bom_materials": 24
+        },
+        "1980": {
+          "bom_materials": 24
+        },
+        "1981": {
+          "bom_materials": 24
+        },
+        "1982": {
+          "bom_materials": 24
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.artemis_professional_video_128kb.passives_power_filtering": {
+      "name": "passives power filtering",
+      "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 6
+        },
+        "1979": {
+          "bom_materials": 6
+        },
+        "1980": {
+          "bom_materials": 6
+        },
+        "1981": {
+          "bom_materials": 6
+        },
+        "1982": {
+          "bom_materials": 6
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.mono_pro_17.oem_17inch_core": {
+      "name": "oem 17inch core",
+      "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 210
+        },
+        "1979": {
+          "bom_materials": 210
+        },
+        "1980": {
+          "bom_materials": 210
+        },
+        "1981": {
+          "bom_materials": 210
+        },
+        "1982": {
+          "bom_materials": 210
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.mono_pro_17.deflection_60hz_upgrade": {
+      "name": "deflection 60hz upgrade",
+      "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 25
+        },
+        "1979": {
+          "bom_materials": 25
+        },
+        "1980": {
+          "bom_materials": 25
+        },
+        "1981": {
+          "bom_materials": 25
+        },
+        "1982": {
+          "bom_materials": 25
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.mono_pro_17.grayscale_dac_linear_amplifier": {
+      "name": "grayscale dac linear amplifier",
+      "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 20
+        },
+        "1979": {
+          "bom_materials": 20
+        },
+        "1980": {
+          "bom_materials": 20
+        },
+        "1981": {
+          "bom_materials": 20
+        },
+        "1982": {
+          "bom_materials": 20
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.mono_pro_17.highspeed_link_pcb": {
+      "name": "highspeed link pcb",
+      "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 18
+        },
+        "1979": {
+          "bom_materials": 18
+        },
+        "1980": {
+          "bom_materials": 18
+        },
+        "1981": {
+          "bom_materials": 18
+        },
+        "1982": {
+          "bom_materials": 18
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.mono_pro_17.enclosure": {
+      "name": "enclosure",
+      "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 28
+        },
+        "1979": {
+          "bom_materials": 28
+        },
+        "1980": {
+          "bom_materials": 28
+        },
+        "1981": {
+          "bom_materials": 28
+        },
+        "1982": {
+          "bom_materials": 28
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
+    },
+    "bompart.device.mono_pro_17.cables_regional_mains": {
+      "name": "cables regional mains",
+      "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment. June 1982 allowance only; prelaunch cost rows are unavailable.",
+      "annual_cost_buckets_usd": {
+        "1978": {
+          "bom_materials": 8
+        },
+        "1979": {
+          "bom_materials": 8
+        },
+        "1980": {
+          "bom_materials": 8
+        },
+        "1981": {
+          "bom_materials": 8
+        },
+        "1982": {
+          "bom_materials": 8
+        }
+      },
+      "confidence": "low",
+      "price_range_multipliers": [
+        0.7,
+        1.55
+      ]
     }
   },
   "chip_fabrication_models": {
@@ -7689,6 +8655,274 @@
         "repair_fraction_of_spatial_failures": 0.35,
         "repair_cost_per_wafer_usd": 12
       }
+    },
+    "part.artemis_graphics_chip_64kb": {
+      "1978": {
+        "die_area_mm2": 88,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 29.2,
+        "die_yield": 0.08,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 210,
+        "package_usd": 4.5,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 102.906,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1979": {
+        "die_area_mm2": 88,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 29.2,
+        "die_yield": 0.08,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 220,
+        "package_usd": 4.5,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 107.5093,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1980": {
+        "die_area_mm2": 88,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 29.2,
+        "die_yield": 0.1053,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 235,
+        "package_usd": 4.5,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 88.4295,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1981": {
+        "die_area_mm2": 88,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 29.2,
+        "die_yield": 0.1371,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 255,
+        "package_usd": 4.5,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 74.7307,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1982": {
+        "die_area_mm2": 88,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 29.2,
+        "die_yield": 0.1497,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 276,
+        "package_usd": 4.5,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 74.1263,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      }
+    },
+    "part.color_pro_monitor_controller": {
+      "1978": {
+        "die_area_mm2": 16,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 211.02,
+        "die_yield": 0.391,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 210,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 4.4034,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1979": {
+        "die_area_mm2": 16,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 211.02,
+        "die_yield": 0.4169,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 220,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 4.356,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1980": {
+        "die_area_mm2": 16,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 211.02,
+        "die_yield": 0.4444,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 235,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 4.3612,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1981": {
+        "die_area_mm2": 16,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 211.02,
+        "die_yield": 0.4663,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 255,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 4.4535,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1982": {
+        "die_area_mm2": 16,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 211.02,
+        "die_yield": 0.4738,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 276,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 4.6351,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      }
+    },
+    "part.professional_graphics_controller": {
+      "1978": {
+        "die_area_mm2": 100,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 24.77,
+        "die_yield": 0.08,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 210,
+        "package_usd": 6,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 121.8192,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1979": {
+        "die_area_mm2": 100,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 24.77,
+        "die_yield": 0.08,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 220,
+        "package_usd": 6,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 127.2463,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1980": {
+        "die_area_mm2": 100,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 24.77,
+        "die_yield": 0.0828,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 235,
+        "package_usd": 6,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 131.0367,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1981": {
+        "die_area_mm2": 100,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 24.77,
+        "die_yield": 0.1118,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 255,
+        "package_usd": 6,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 106.8756,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1982": {
+        "die_area_mm2": 100,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 24.77,
+        "die_yield": 0.1236,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 276,
+        "package_usd": 6,
+        "test_labor_usd": 1.3,
+        "good_packaged_chip_cost_usd": 104.831,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      }
+    },
+    "part.mono_pro_17_controller": {
+      "1978": {
+        "die_area_mm2": 12,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 288.05,
+        "die_yield": 0.4373,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 210,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.4591,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1979": {
+        "die_area_mm2": 12,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 288.05,
+        "die_yield": 0.4589,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 220,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.4564,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1980": {
+        "die_area_mm2": 12,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 288.05,
+        "die_yield": 0.4814,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 235,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.4888,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1981": {
+        "die_area_mm2": 12,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 288.05,
+        "die_yield": 0.4991,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 255,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.574,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      },
+      "1982": {
+        "die_area_mm2": 12,
+        "wafer_diameter_mm": 75,
+        "gross_usable_dies": 288.05,
+        "die_yield": 0.5051,
+        "packaging_test_yield": 0.93,
+        "recurring_processed_wafer_cost_usd": 276,
+        "package_usd": 1.2,
+        "test_labor_usd": 0.35,
+        "good_packaged_chip_cost_usd": 3.7065,
+        "cost_status": "engineering scenario, not supplier quote or proven silicon yield",
+        "process_node_um": 3.0
+      }
     }
   },
   "assembly_routing_assumptions": {
@@ -8480,6 +9714,86 @@
       "assembly_hours_1978": 0.6,
       "kwh_1978": 1,
       "consumables_usd_1978": 0.7,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0.015
+    },
+    "assembly.part.artemis_graphics_chip_64kb": {
+      "assembly_hours_1978": 0,
+      "kwh_1978": 0,
+      "consumables_usd_1978": 0,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0
+    },
+    "assembly.part.color_pro_monitor_controller": {
+      "assembly_hours_1978": 0,
+      "kwh_1978": 0,
+      "consumables_usd_1978": 0,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0
+    },
+    "assembly.part.professional_graphics_controller": {
+      "assembly_hours_1978": 0,
+      "kwh_1978": 0,
+      "consumables_usd_1978": 0,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0
+    },
+    "assembly.part.mono_pro_17_controller": {
+      "assembly_hours_1978": 0,
+      "kwh_1978": 0,
+      "consumables_usd_1978": 0,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0
+    },
+    "assembly.part.nec_pc8853_display_assembly": {
+      "assembly_hours_1978": 0,
+      "kwh_1978": 0,
+      "consumables_usd_1978": 0,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0
+    },
+    "assembly.device.artemis_video_card_64kb": {
+      "assembly_hours_1978": 0.9,
+      "kwh_1978": 1.5,
+      "consumables_usd_1978": 1.0,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0.015
+    },
+    "assembly.device.color_pro_14": {
+      "assembly_hours_1978": 2.0,
+      "kwh_1978": 7,
+      "consumables_usd_1978": 2.5,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0.015
+    },
+    "assembly.device.logix_mouse": {
+      "assembly_hours_1978": 0.45,
+      "kwh_1978": 0.1,
+      "consumables_usd_1978": 0.35,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0.015
+    },
+    "assembly.device.artemis_professional_video_128kb": {
+      "assembly_hours_1978": 1.25,
+      "kwh_1978": 2,
+      "consumables_usd_1978": 1.5,
+      "operating_overhead_fraction_of_loaded_labor": 0.25,
+      "rework_allowance_fraction_of_labor": 0.1,
+      "incremental_material_scrap_rate": 0.015
+    },
+    "assembly.device.mono_pro_17": {
+      "assembly_hours_1978": 2.5,
+      "kwh_1978": 9,
+      "consumables_usd_1978": 3,
       "operating_overhead_fraction_of_loaded_labor": 0.25,
       "rework_allowance_fraction_of_labor": 0.1,
       "incremental_material_scrap_rate": 0.015
@@ -18800,6 +20114,456 @@
       "assembly_ref": "assembly.device.artemis_video_card_16kb"
     },
     {
+      "id": "device.artemis_video_card_64kb",
+      "catalog_ref": "device.artemis_video_card_64kb",
+      "name": "Logix Artemis 64 KiB video controller card",
+      "group": "Peripherals",
+      "unit": "one finished accessory",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 255.23,
+          "low_usd": 178.66,
+          "high_usd": 408.37,
+          "breakdown_usd": {
+            "bom_materials": 90.68,
+            "workforce": 79.12,
+            "energy": 15.54,
+            "consumables": 38.57,
+            "operating_overhead": 21.09,
+            "yield_and_rework": 2.37,
+            "instructions": 1.72,
+            "packaging": 2.57,
+            "logistics": 3.57,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.artemis_video_card_64kb",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.artemis_video_card_64kb.clock_fifo_transceivers",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 14
+            },
+            {
+              "component_ref": "bompart.device.artemis_video_card_64kb.host_buffers_byte_enables",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 12
+            },
+            {
+              "component_ref": "bompart.device.artemis_video_card_64kb.passives_power_filtering",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4
+            },
+            {
+              "component_ref": "bompart.device.artemis_video_card_64kb.pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 14
+            },
+            {
+              "component_ref": "bompart.device.artemis_video_card_64kb.slot_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 7
+            },
+            {
+              "component_ref": "bompart.part.aion_2114",
+              "quantity": 2,
+              "extended_recurring_cost_usd": 7.97
+            },
+            {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 8,
+              "extended_recurring_cost_usd": 97.81
+            },
+            {
+              "component_ref": "bompart.part.artemis_graphics_chip_64kb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 74.13
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.device.artemis_video_card_64kb"
+    },
+    {
+      "id": "device.color_pro_14",
+      "catalog_ref": "device.color_pro_14",
+      "name": "Logix Color Pro 14",
+      "group": "Peripherals",
+      "unit": "one finished accessory",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 432.06,
+          "low_usd": 302.44,
+          "high_usd": 691.3,
+          "breakdown_usd": {
+            "bom_materials": 367.82,
+            "workforce": 23.86,
+            "energy": 0.63,
+            "consumables": 4.29,
+            "operating_overhead": 5.96,
+            "yield_and_rework": 7.76,
+            "instructions": 1.72,
+            "packaging": 8.58,
+            "logistics": 11.44,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.color_pro_14",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.color_pro_14.cables_regional_mains",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8
+            },
+            {
+              "component_ref": "bompart.device.color_pro_14.digital_receiver_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 16
+            },
+            {
+              "component_ref": "bompart.device.color_pro_14.enclosure",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 22
+            },
+            {
+              "component_ref": "bompart.device.color_pro_14.rgb_dac_amplifiers",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 22
+            },
+            {
+              "component_ref": "bompart.device.color_pro_14.timing_adaptation_components",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 18
+            },
+            {
+              "component_ref": "bompart.part.color_pro_monitor_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.64
+            },
+            {
+              "component_ref": "bompart.part.nec_pc8853_display_assembly",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 280
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.device.color_pro_14"
+    },
+    {
+      "id": "device.logix_mouse",
+      "catalog_ref": "device.logix_mouse",
+      "name": "Logix Mouse — two buttons and two rollers",
+      "group": "Peripherals",
+      "unit": "one finished accessory",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 50.62,
+          "low_usd": 35.43,
+          "high_usd": 80.99,
+          "breakdown_usd": {
+            "bom_materials": 33.61,
+            "workforce": 5.84,
+            "energy": 0.12,
+            "consumables": 0.78,
+            "operating_overhead": 1.4,
+            "yield_and_rework": 1.01,
+            "instructions": 1.72,
+            "packaging": 2.57,
+            "logistics": 3.57,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.logix_mouse",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.logix_mouse.ball_xy_encoder_mechanism",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8
+            },
+            {
+              "component_ref": "bompart.device.logix_mouse.cable_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3
+            },
+            {
+              "component_ref": "bompart.device.logix_mouse.driver_disks_quickstart",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.5
+            },
+            {
+              "component_ref": "bompart.device.logix_mouse.enclosure",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.5
+            },
+            {
+              "component_ref": "bompart.device.logix_mouse.passives_protection",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1.5
+            },
+            {
+              "component_ref": "bompart.device.logix_mouse.pcb_mcu_firmware",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 5
+            },
+            {
+              "component_ref": "bompart.device.logix_mouse.two_button_switches",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 1.2
+            },
+            {
+              "component_ref": "bompart.device.logix_mouse.two_roller_encoders_detents",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6
+            },
+            {
+              "component_ref": "bompart.part.flexibus_device_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 2.25
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.device.logix_mouse"
+    },
+    {
+      "id": "device.artemis_professional_video_128kb",
+      "catalog_ref": "device.artemis_professional_video_128kb",
+      "name": "Logix Artemis Professional 128 KiB video card",
+      "group": "Peripherals",
+      "unit": "one finished accessory",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 409.59,
+          "low_usd": 266.23,
+          "high_usd": 716.78,
+          "breakdown_usd": {
+            "bom_materials": 142.26,
+            "workforce": 131.03,
+            "energy": 26.0,
+            "consumables": 64.32,
+            "operating_overhead": 34.59,
+            "yield_and_rework": 3.53,
+            "instructions": 1.72,
+            "packaging": 2.57,
+            "logistics": 3.57,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.artemis_professional_video_128kb",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.artemis_professional_video_128kb.host_dma_arbitration_buffers",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 20
+            },
+            {
+              "component_ref": "bompart.device.artemis_professional_video_128kb.line_fifo_clock_link",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 24
+            },
+            {
+              "component_ref": "bompart.device.artemis_professional_video_128kb.passives_power_filtering",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 6
+            },
+            {
+              "component_ref": "bompart.device.artemis_professional_video_128kb.pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 20
+            },
+            {
+              "component_ref": "bompart.device.artemis_professional_video_128kb.slot_connector",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8
+            },
+            {
+              "component_ref": "bompart.part.aion_4164",
+              "quantity": 16,
+              "extended_recurring_cost_usd": 195.62
+            },
+            {
+              "component_ref": "bompart.part.professional_graphics_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 104.83
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.device.artemis_professional_video_128kb"
+    },
+    {
+      "id": "device.mono_pro_17",
+      "catalog_ref": "device.mono_pro_17",
+      "name": "Logix Mono Pro 17",
+      "group": "Peripherals",
+      "unit": "one finished accessory",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 381.64,
+          "low_usd": 267.15,
+          "high_usd": 610.62,
+          "breakdown_usd": {
+            "bom_materials": 310.66,
+            "workforce": 29.12,
+            "energy": 0.63,
+            "consumables": 4.78,
+            "operating_overhead": 7.25,
+            "yield_and_rework": 7.46,
+            "instructions": 1.72,
+            "packaging": 8.58,
+            "logistics": 11.44,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.device.mono_pro_17",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.device.mono_pro_17.cables_regional_mains",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 8
+            },
+            {
+              "component_ref": "bompart.device.mono_pro_17.deflection_60hz_upgrade",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 25
+            },
+            {
+              "component_ref": "bompart.device.mono_pro_17.enclosure",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 28
+            },
+            {
+              "component_ref": "bompart.device.mono_pro_17.grayscale_dac_linear_amplifier",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 20
+            },
+            {
+              "component_ref": "bompart.device.mono_pro_17.highspeed_link_pcb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 18
+            },
+            {
+              "component_ref": "bompart.device.mono_pro_17.oem_17inch_core",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 210
+            },
+            {
+              "component_ref": "bompart.part.mono_pro_17_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.71
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.device.mono_pro_17"
+    },
+    {
       "id": "part.aion_2114",
       "catalog_ref": "part.aion_2114",
       "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
@@ -19542,6 +21306,63 @@
       "assembly_ref": "assembly.part.artemis_graphics_chip"
     },
     {
+      "id": "part.artemis_graphics_chip_64kb",
+      "catalog_ref": "part.artemis_graphics_chip_64kb",
+      "name": "AION 64 KiB Artemis graphics controller with palette sequencer",
+      "group": "OEM chips",
+      "unit": "one tested packaged chip, bulk shipment",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 74.54,
+          "low_usd": 37.27,
+          "high_usd": 186.35,
+          "breakdown_usd": {
+            "bom_materials": 17.06,
+            "workforce": 25.84,
+            "energy": 6.79,
+            "consumables": 16.29,
+            "operating_overhead": 8.15,
+            "yield_and_rework": 0.0,
+            "instructions": 0.03,
+            "packaging": 0.17,
+            "logistics": 0.21,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.artemis_graphics_chip_64kb",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.artemis_graphics_chip_64kb",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 74.13
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.part.artemis_graphics_chip_64kb"
+    },
+    {
       "id": "part.artemis_mmu",
       "catalog_ref": "part.artemis_mmu",
       "name": "Artemis MMU chip",
@@ -20277,6 +22098,63 @@
       "assembly_ref": "assembly.part.color_monitor_controller"
     },
     {
+      "id": "part.color_pro_monitor_controller",
+      "catalog_ref": "part.color_pro_monitor_controller",
+      "name": "AION Color Pro digital-to-RGB monitor controller",
+      "group": "OEM chips",
+      "unit": "one tested packaged chip, bulk shipment",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 5.05,
+          "low_usd": 2.52,
+          "high_usd": 12.62,
+          "breakdown_usd": {
+            "bom_materials": 1.82,
+            "workforce": 1.45,
+            "energy": 0.3,
+            "consumables": 0.71,
+            "operating_overhead": 0.36,
+            "yield_and_rework": 0.0,
+            "instructions": 0.03,
+            "packaging": 0.17,
+            "logistics": 0.21,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.color_pro_monitor_controller",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.color_pro_monitor_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 4.64
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.part.color_pro_monitor_controller"
+    },
+    {
       "id": "part.era1",
       "catalog_ref": "part.era1",
       "name": "ERA1 processor",
@@ -20805,6 +22683,63 @@
       "assembly_ref": "assembly.part.mono_monitor2_controller"
     },
     {
+      "id": "part.mono_pro_17_controller",
+      "catalog_ref": "part.mono_pro_17_controller",
+      "name": "AION Mono Pro 17 grayscale monitor controller",
+      "group": "OEM chips",
+      "unit": "one tested packaged chip, bulk shipment",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 4.11,
+          "low_usd": 2.06,
+          "high_usd": 10.28,
+          "breakdown_usd": {
+            "bom_materials": 1.66,
+            "workforce": 1.11,
+            "energy": 0.2,
+            "consumables": 0.49,
+            "operating_overhead": 0.24,
+            "yield_and_rework": 0.0,
+            "instructions": 0.03,
+            "packaging": 0.17,
+            "logistics": 0.21,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.mono_pro_17_controller",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.mono_pro_17_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 3.71
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.part.mono_pro_17_controller"
+    },
+    {
       "id": "part.mono_pro_controller",
       "catalog_ref": "part.mono_pro_controller",
       "name": "AION Mono Pro receiver and grayscale palette controller",
@@ -20910,6 +22845,63 @@
         }
       },
       "assembly_ref": "assembly.part.mono_pro_controller"
+    },
+    {
+      "id": "part.professional_graphics_controller",
+      "catalog_ref": "part.professional_graphics_controller",
+      "name": "AION professional 2D blitter and line controller",
+      "group": "OEM chips",
+      "unit": "one tested packaged chip, bulk shipment",
+      "available_from": "1982-06",
+      "assumptions": [],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 105.25,
+          "low_usd": 52.62,
+          "high_usd": 263.12,
+          "breakdown_usd": {
+            "bom_materials": 23.91,
+            "workforce": 36.31,
+            "energy": 9.7,
+            "consumables": 23.28,
+            "operating_overhead": 11.64,
+            "yield_and_rework": 0.0,
+            "instructions": 0.03,
+            "packaging": 0.17,
+            "logistics": 0.21,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": "assembly.part.professional_graphics_controller",
+          "bom_lines": [
+            {
+              "component_ref": "bompart.part.professional_graphics_controller",
+              "quantity": 1,
+              "extended_recurring_cost_usd": 104.83
+            }
+          ],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "assembly_ref": "assembly.part.professional_graphics_controller"
     },
     {
       "id": "software.cpm_aurelia",
@@ -23208,6 +25200,100 @@
         1000
       ],
       "service_hours": 32
+    },
+    {
+      "id": "software.entertainment_suite",
+      "catalog_ref": "software.entertainment_suite",
+      "name": "AION Entertainment Suite",
+      "group": "Software",
+      "unit": "one media/manual set; bundled editions are not separate purchases",
+      "available_from": "1982-06",
+      "assumptions": [
+        "Media and documentation reproduction only, plus an explicit recurring third-party license allowance where applicable."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 11.59,
+          "low_usd": 8.11,
+          "high_usd": 18.54,
+          "breakdown_usd": {
+            "bom_materials": 2.4,
+            "workforce": 1.46,
+            "energy": 0.0,
+            "consumables": 0.14,
+            "operating_overhead": 0.36,
+            "yield_and_rework": 0.0,
+            "instructions": 3.36,
+            "packaging": 1.72,
+            "logistics": 2.15,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "software_profile": [
+        2,
+        64
+      ]
+    },
+    {
+      "id": "software.autocad_1_artemis",
+      "catalog_ref": "software.autocad_1_artemis",
+      "name": "Autodesk AutoCAD 1.0 for Artemis",
+      "group": "Software",
+      "unit": "one media/manual set; bundled editions are not separate purchases",
+      "available_from": "1982-11-29",
+      "assumptions": [
+        "Media and documentation reproduction only, plus an explicit recurring third-party license allowance where applicable."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        }
+      },
+      "software_profile": [
+        0,
+        0
+      ],
+      "not_costed_reason": "Future independent Autodesk product; distribution and licence terms not costed."
     },
     {
       "id": "software.bpi_suite.bpi_general_accounting",
@@ -26509,6 +28595,155 @@
       "software_profile": [
         12,
         1000
+      ]
+    },
+    {
+      "id": "edition.entertainment_suite.z80",
+      "catalog_ref": "software.entertainment_suite",
+      "name": "AION Entertainment Suite — z80",
+      "group": "Software editions",
+      "unit": "one platform-specific media/manual set",
+      "available_from": "1982-06",
+      "assumptions": [
+        "Alternative distribution of the parent software product; do not add parent and edition rows."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 11.59,
+          "low_usd": 8.11,
+          "high_usd": 18.54,
+          "breakdown_usd": {
+            "bom_materials": 2.4,
+            "workforce": 1.46,
+            "energy": 0.0,
+            "consumables": 0.14,
+            "operating_overhead": 0.36,
+            "yield_and_rework": 0.0,
+            "instructions": 3.36,
+            "packaging": 1.72,
+            "logistics": 2.15,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "software_profile": [
+        2,
+        64
+      ]
+    },
+    {
+      "id": "edition.entertainment_suite.era",
+      "catalog_ref": "software.entertainment_suite",
+      "name": "AION Entertainment Suite — era",
+      "group": "Software editions",
+      "unit": "one platform-specific media/manual set",
+      "available_from": "1982-06",
+      "assumptions": [
+        "Alternative distribution of the parent software product; do not add parent and edition rows."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "offered_estimate",
+          "total_usd": 11.59,
+          "low_usd": 8.11,
+          "high_usd": 18.54,
+          "breakdown_usd": {
+            "bom_materials": 2.4,
+            "workforce": 1.46,
+            "energy": 0.0,
+            "consumables": 0.14,
+            "operating_overhead": 0.36,
+            "yield_and_rework": 0.0,
+            "instructions": 3.36,
+            "packaging": 1.72,
+            "logistics": 2.15,
+            "recurring_licenses": 0.0,
+            "included_service_delivery": 0.0
+          },
+          "bom_assembly_ref": null,
+          "bom_lines": [],
+          "confidence": "low",
+          "range_basis": "Scenario envelope, not statistical confidence interval; excludes capital, R&D and software development."
+        }
+      },
+      "software_profile": [
+        2,
+        64
+      ]
+    },
+    {
+      "id": "edition.autocad_1_artemis.era",
+      "catalog_ref": "software.autocad_1_artemis",
+      "name": "AutoCAD 1.0 — Artemis/AIONix",
+      "group": "Software editions",
+      "unit": "one platform-specific media/manual set",
+      "available_from": "1982-11-29",
+      "assumptions": [
+        "Alternative distribution of the parent software product; do not add parent and edition rows."
+      ],
+      "snapshots": {
+        "1978": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1979": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1980": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1981": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        },
+        "1982": {
+          "status": "not_yet_offered",
+          "total_usd": null
+        }
+      },
+      "software_profile": [
+        0,
+        0
       ]
     },
     {
@@ -39117,6 +41352,10 @@
       "reason": "Purchased/internal component; included in end-product BOM, not a separate Logix offering"
     },
     {
+      "catalog_ref": "part.nec_pc8853_display_assembly",
+      "reason": "Purchased/internal component; included in end-product BOM, not a separate Logix offering"
+    },
+    {
       "catalog_ref": "technology.flexibus",
       "reason": "Technology/specification, not separately sold"
     },
@@ -39210,6 +41449,30 @@
     },
     {
       "catalog_ref": "technology.nmos_15um",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.abacus_formatted_tables",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.abacus_embedded_pulse",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.scanline_palette_list",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.flexibus_pointing_device",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.logix_tui_mouse",
+      "reason": "Technology/specification, not separately sold"
+    },
+    {
+      "catalog_ref": "technology.artemis_professional_graphics",
       "reason": "Technology/specification, not separately sold"
     },
     {
