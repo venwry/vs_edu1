@@ -29,8 +29,9 @@ assert next(p for p in x['solutions'] if p['id']=='office_essentials')['pricing'
 assert annual['bundle.proposed_aurelia_plus_office']['snapshots']['1982']['retail_price_usd']==1969.15
 print('PASS: references, provenance, current ceilings, original history, supplier unknowns and quotation gates.')
 
-assert set(x['snapshots'])=={f'{y}-06-15' for y in range(1978,1983)}
+assert set(x['snapshots'])=={f'{y}-{month}-15' for y in range(1978,1983) for month in ['06','12']}
 for date,view in x['snapshots'].items():
+    if '-12-' in date: continue
     year=date[:4]
     for row in view['current_offer_prices']:
         product=annual[row['ref']]
@@ -50,3 +51,22 @@ for year in ['1978','1979','1980','1981']:
 assert not any('Abacus 3' in item for p in x['snapshots']['1980-06-15']['solutions'] for item in p['includes'])
 assert any('Abacus 3' in item for p in x['snapshots']['1981-06-15']['solutions'] for item in p['includes'])
 print('PASS: five dated views, exact historical prices, introduction gates and June/November separation.')
+
+for date,view in x['snapshots'].items():
+    if '-12-' not in date:continue
+    for row in view['current_offer_prices']:
+        if row['ref'] in annual:assert annual[row['ref']]['offering_start']<=date
+        if row['date']>date:assert 'proxy' in row['basis'].lower()
+    if date<'1982-12-15':assert not any(p['id']=='professional_cad' for p in view['solutions'])
+d79=x['snapshots']['1979-12-15']
+assert next(p for p in d79['solutions'] if p['id']=='office_essentials')['components'][0]['ref']=='bundle.proposed_aurelia_plus_office'
+assert any(p['ref']=='software.abacus_2' for p in d79['current_offer_prices'])
+assert not any(p['ref']=='software.abacus_3' for p in d79['current_offer_prices'])
+d80=x['snapshots']['1980-12-15']
+assert any('Abacus 3' in item for p in d80['solutions'] for item in p['includes'])
+assert next(p for p in x['snapshots']['1981-12-15']['solutions'] if p['id']=='development_team')['pricing']['amount_usd']==745.23
+d82=x['snapshots']['1982-12-15']
+assert next(p for p in d82['solutions'] if p['id']=='professional_cad')['pricing']['amount_usd']==9909.72
+assert next(p for p in d82['upgrades'] if p['id']=='professional_drawing')['pricing']['amount_usd']==1604.8
+assert any(p['ref']=='software.autocad_1_artemis' for p in d82['current_offer_prices'])
+print('PASS: December COMDEX availability, assessment provenance, Team launch and November CAD prices.')

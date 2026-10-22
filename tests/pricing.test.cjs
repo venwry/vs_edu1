@@ -4,7 +4,7 @@ const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n
 assert(d.getElementById('dated-prices').textContent.includes('November'));assert(d.getElementById('dated-prices').textContent.includes('461.30'));
 assert.equal(d.querySelectorAll('.pricing-row').length,model.products.length);assert.equal(d.querySelectorAll('.pricing-group').length,10);assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,6);
 assert.equal(d.getElementById('catalog-date').value,'1982-06-15');
-assert.equal(d.getElementById('catalog-date').options.length,5);
+assert.equal(d.getElementById('catalog-date').options.length,10);
 assert.equal(d.querySelectorAll('#solutions + p + .solution-grid .solution-card').length,4);
 assert.equal(d.querySelectorAll('#solution-upgrades + .solution-grid .solution-card').length,5);
 assert.equal(d.getElementById('historical-pricing').open,false);
@@ -18,6 +18,16 @@ for(const year of ['1978','1979','1980','1981','1982']){
  assert.equal(!!d.getElementById('solution-mouse_starter'),year==='1982');
  assert.equal(!!d.getElementById('solution-office_professional'),Number(year)>=1980);
  if(Number(year)<1980)assert(!d.getElementById('solution-office_essentials').textContent.includes('Aurelia+'));
+}
+for(const year of ['1978','1979','1980','1981','1982']){
+ d.getElementById('catalog-date').value=year+'-12-15';d.getElementById('catalog-date').dispatchEvent(new w.Event('change'));
+ assert(d.getElementById('catalog-date-status').textContent.includes(year+'-12-15'));
+ assert(!d.getElementById('catalog-retry'));
+ assert.equal(!!d.getElementById('solution-professional_cad'),year==='1982');
+ assert.equal(!!d.getElementById('solution-development_team'),Number(year)>=1981);
+ if(year==='1979')assert(d.getElementById('solution-office_essentials').textContent.includes('Aurelia+'));
+ if(year==='1980')assert(d.getElementById('solution-office_professional').textContent.includes('Abacus 3'));
+ if(year==='1982')assert(d.getElementById('solution-professional_drawing').textContent.includes('$1,604.80'));
 }
 d.getElementById('pricing-year').value='';d.getElementById('pricing-year').dispatchEvent(new w.Event('change'));
 const style=d.createElement('style');style.textContent=read('pricing.css');d.head.append(style);const matrix=d.getElementById('pricing-matrix');assert.equal(w.getComputedStyle(matrix).resize,'both');assert.equal(w.getComputedStyle(matrix).overflow,'auto');matrix.style.width='640px';matrix.style.height='320px';
