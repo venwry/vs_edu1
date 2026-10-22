@@ -59,3 +59,12 @@ The source mutation bridge validates all proposed records before writing, distri
 owned fields to canonical files, and rejects unregistered IDs/fields. When adding a
 new entity, register it in the manifest before invoking a legacy transformer. New
 code should edit domain records directly and use the assembler for projections.
+
+## Shared HTML assembly
+
+After data assembly or report regeneration, run `python tools/build_site.py`.
+It installs common navigation and relocated content on all pages and report
+templates and rebuilds redirects. The financial orchestrator invokes it inside
+its staging checkout before publishing, so later report builds retain navigation.
+An ecosystem-only revision can run `run_pipeline([['build_ecosystem_forecast.py']])`
+using current committed sales inputs; it does not publish a new sales/ROI result.

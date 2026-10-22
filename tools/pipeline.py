@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def run_pipeline(steps):
     from data_catalog import build
     build(check=True)
-    with tempfile.TemporaryDirectory(prefix='logix-model-') as tmp:
+    with tempfile.TemporaryDirectory(prefix='logix-model-',dir=ROOT.parent) as tmp:
         stage=Path(tmp)/'project'
         shutil.copytree(ROOT,stage,ignore=shutil.ignore_patterns('.git','__pycache__','node_modules','.venv'))
         for step in steps:
@@ -15,6 +15,7 @@ def run_pipeline(steps):
                 print(result.stdout);print(result.stderr,file=sys.stderr)
                 raise RuntimeError('Stage failed; current outputs unchanged: '+' '.join(step))
             print('Staged',*step)
+        subprocess.run([sys.executable,str(stage/'tools/build_site.py')],cwd=stage,check=True)
         subprocess.run([sys.executable,str(stage/'tests/validate_data_structure.py')],cwd=stage,check=True)
         candidates=[]
         for folder in ('generated','data','site/config'):

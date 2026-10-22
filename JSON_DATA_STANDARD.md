@@ -219,3 +219,22 @@ not a permanent prohibition on intentional data edits. Likewise, update page-con
 fixtures only when an intentional content/UI change has been reviewed; never refresh
 snapshots simply to hide a reorganisation regression. The fixture normalises moved
 JSON paths but preserves visible content, tables and link targets.
+
+## Site organisation additions
+
+`navigation_sections` contains ordered `{title, page_refs}` groups; each page ID
+must exist in `pages` and appear exactly once. `navigation` is the matching flattened
+order. `redirects` maps retired relative HTML paths to canonical destinations.
+`record_page_links` gives the primary page ID for a stable technical record ID;
+shared details may appear elsewhere but links resolve to the primary owner.
+`campaign_groups` associates an `event_ref`, dated `step_refs`, and a relative
+`content_path`. Grouping is presentation-only: never delete the underlying events.
+Computer page `model_refs` identify selectable models, not newly invented variants.
+These are additive version-1 fields; schemas and consumers are updated together.
+
+The ecosystem policy's `compatibility_pool` documents annual discoverable-family
+assumptions, scenario qualification fractions, lag, counting and sales treatment,
+partner support and historical-source claims. Counts are distinct application
+families; fractions are 0–1 and lag is quarters. Named examples, qualified families,
+native editions and paid licences must remain separate concepts. See
+`HTML_ORGANIZATION.md` for ownership, formulas and maintenance commands.

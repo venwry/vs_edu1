@@ -113,6 +113,72 @@
         },
         "historical_sources": {
           "type": "array"
+        },
+        "compatibility_pool": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "basis",
+            "annual_discoverable_families",
+            "qualification_fraction",
+            "qualification_delay_quarters",
+            "counting",
+            "sales_treatment",
+            "partner_support",
+            "historical_sources"
+          ],
+          "properties": {
+            "basis": {
+              "type": "string"
+            },
+            "annual_discoverable_families": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "qualification_fraction": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "qualification_delay_quarters": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "counting": {
+              "type": "string"
+            },
+            "sales_treatment": {
+              "type": "string"
+            },
+            "partner_support": {
+              "type": "string"
+            },
+            "historical_sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "url",
+                  "claim"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "claim": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

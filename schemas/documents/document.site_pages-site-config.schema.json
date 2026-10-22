@@ -61,6 +61,66 @@
         },
         "timeline_view": {
           "type": "object"
+        },
+        "navigation_sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "page_refs"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "page_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "redirects": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "record_page_links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "campaign_groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "event_ref",
+              "step_refs",
+              "content_path"
+            ],
+            "properties": {
+              "event_ref": {
+                "type": "string"
+              },
+              "step_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "content_path": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }

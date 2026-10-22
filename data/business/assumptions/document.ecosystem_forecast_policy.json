@@ -363,6 +363,36 @@
         "title": "WordStar history",
         "use": "Background for WordStar as an existing CP/M candidate; all Logix qualification dates and forecast ranks are counterfactual."
       }
-    ]
+    ],
+    "compatibility_pool": {
+      "basis": "Scenario assumptions for discoverable distinct CP/M application families, not measured historical totals or confirmed Logix qualifications. Historical CP/M software is available beyond explicitly named products.",
+      "annual_discoverable_families": {
+        "1978": 250,
+        "1979": 450,
+        "1980": 750,
+        "1981": 1200,
+        "1982": 1800,
+        "1983": 2500
+      },
+      "qualification_fraction": {
+        "conservative": 0.2,
+        "central": 0.4,
+        "strong": 0.6
+      },
+      "qualification_delay_quarters": 1,
+      "counting": "Use max(existing installed-base qualification curve, qualified legacy pool), never add the pools. TUI is a subset; an ERA native port is a separate edition of the same family. Source rights, disk/terminal compatibility, RAM and support are required.",
+      "sales_treatment": "Application availability is not an extra paid licence or hardware sale. Existing purchase budgets and Logix demand factors already recognise compatibility and software benefits; no second blanket sales multiplier.",
+      "partner_support": "Published interfaces, sample drivers, conformance tests, loan hardware, joint demonstrations, Academy training and stable C/TUI APIs support the qualification fraction. Higher fraction represents stronger execution, not signed deals with the illustrative vendors.",
+      "historical_sources": [
+        {
+          "url": "https://www.cpm.z80.de/manuals/archive/cpm22htm/index.htm",
+          "claim": "CP/M interface and system conventions underpin compatibility assessment, not automatic hardware-independent execution."
+        },
+        {
+          "url": "https://www.bdsoft.com/resources/bdsc.html",
+          "claim": "BDS C author records a CP/M C compiler from 1979; this supports a contemporary developer base, not measured Logix compiler superiority."
+        }
+      ]
+    }
   }
 }

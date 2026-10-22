@@ -3,50 +3,79 @@
   "description": "Products, architecture and alternative-history timeline",
   "pages": [
     {
-      "id": "index",
-      "path": "index.html",
-      "title": "Logix / AION",
-      "description": "Explore the companies, products and events of an alternative computing history.",
+      "id": "timeline",
+      "path": "timeline.html",
+      "title": "Timeline",
+      "description": "Explore events, continuous phases and ongoing processes across the calendar.",
       "record_refs": [],
-      "kind": "home",
+      "kind": "timeline",
       "aliases": [
-        "Logix Tech",
-        "AION Labs",
-        "AION Software",
-        "Logix / AION"
+        "timeline"
+      ]
+    },
+    {
+      "id": "ecosystem",
+      "path": "ecosystem.html",
+      "title": "Third-party ecosystem",
+      "description": "Quarterly applications, paid licences, independent manufacturers, models and device sales, 1978–1983.",
+      "kind": "report",
+      "record_refs": [
+        "software.microsoft_basic_aurelia",
+        "edition.microsoft_basic_aurelia.z80",
+        "software.autocad_1_artemis",
+        "edition.autocad_1_artemis.era",
+        "software.bpi_suite",
+        "software.bpi_client_server"
+      ],
+      "aliases": [
+        "Ecosystem forecast",
+        "Third-party software and devices"
       ]
     },
     {
       "id": "aurelia",
       "path": "aurelia.html",
       "title": "Logix Aurelia",
-      "description": "The original 1978 platform: hardware, memory, software and commercial offerings.",
+      "description": "Explore models, documented configurations, software, components and manufacturing costs.",
       "record_refs": [
-        "computer.aurelia"
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "part.z80a",
+        "part.z80b",
+        "part.dram_16kbit",
+        "part.flexibus_host_controller",
+        "part.aurelia_video_chip",
+        "part.aion_4116",
+        "part.aion_2114",
+        "part.aurelia_system_controller",
+        "part.aion_4164",
+        "device.flexibus_keyboard",
+        "device.mono_monitor_1",
+        "device.color_monitor_1",
+        "device.mono_monitor_2",
+        "device.color_monitor_2",
+        "device.aurelia_ram_16kb_card",
+        "device.flexiprint40",
+        "device.flexidisk",
+        "device.flexidisk_ii",
+        "device.network_card_aurelia",
+        "device.logix_mouse"
       ],
       "kind": "explorer",
       "aliases": [
-        "Aurelia"
-      ]
-    },
-    {
-      "id": "aurelia-plus",
-      "path": "aurelia-plus.html",
-      "title": "Logix Aurelia+",
-      "description": "The 1979 successor: a faster Z80, more memory and an 80-column display.",
-      "record_refs": [
-        "computer.aurelia_plus"
-      ],
-      "kind": "explorer",
-      "aliases": [
+        "Aurelia",
         "Aurelia+"
+      ],
+      "model_refs": [
+        "computer.aurelia",
+        "computer.aurelia_plus"
       ]
     },
     {
       "id": "artemis",
       "path": "artemis.html",
       "title": "Logix Artemis",
-      "description": "The ERA-based system and its native software and compatibility environment.",
+      "description": "Explore models, documented configurations, software, components and manufacturing costs.",
       "record_refs": [
         "computer.artemis",
         "part.era1",
@@ -59,34 +88,49 @@
         "device.artemis_professional_video_128kb",
         "device.mono_pro_17",
         "bundle.artemis_budget_128",
-        "bundle.artemis_budget_128_hdd"
-      ],
-      "kind": "explorer",
-      "aliases": [
-        "Artemis"
-      ],
-      "explorer_family": "artemis"
-    },
-    {
-      "id": "artemis-pro",
-      "path": "artemis-pro.html",
-      "title": "Logix Artemis PRO",
-      "description": "The server platform for networked business computing.",
-      "record_refs": [
+        "bundle.artemis_budget_128_hdd",
         "computer.artemis_pro",
-        "device.artemis_video_card_64kb",
-        "device.color_pro_14",
-        "device.artemis_professional_video_128kb",
-        "device.mono_pro_17",
         "software.autocad_1_artemis",
         "edition.autocad_1_artemis.era",
-        "offer.comdex82_artemis_autocad"
+        "offer.comdex82_artemis_autocad",
+        "part.artemis_ram_module_128kb",
+        "part.flexibus_host_controller",
+        "part.aurelia_video_chip",
+        "part.artemis_dma",
+        "part.artemis_mmu",
+        "part.artemis_graphics_chip",
+        "part.artemis_fdd_hdd_controller",
+        "part.hdd_5mb",
+        "part.artemis_ram_module_32kb_x16",
+        "part.aion_4116",
+        "part.aion_2114",
+        "part.aion_4164",
+        "part.artemis_ram_module_128kb_aion",
+        "device.flexibus_keyboard",
+        "device.mono_monitor_2",
+        "device.color_monitor_2",
+        "device.flexiprint40",
+        "device.flexidisk",
+        "device.flexidisk_ii",
+        "device.network_card_artemis",
+        "device.network_hub",
+        "device.artemis_ram_64kb_bank_kit",
+        "device.artemis_ram_256kb_bank_kit",
+        "device.artemis_video_card",
+        "device.mono_pro",
+        "device.artemis_video_card_16kb",
+        "device.logix_mouse"
       ],
       "kind": "explorer",
       "aliases": [
+        "Artemis",
         "Artemis PRO"
       ],
-      "explorer_family": "artemis"
+      "explorer_family": "artemis",
+      "model_refs": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ]
     },
     {
       "id": "athena",
@@ -101,7 +145,14 @@
         "part.aion_4164_2um",
         "part.athena_ram_module_128kb",
         "part.athena_ram_module_256kb",
-        "software.aionix2"
+        "software.aionix2",
+        "part.artemis_graphics_chip",
+        "part.aion_4116",
+        "part.aion_2114",
+        "part.artemis_graphics_chip_64kb",
+        "device.network_card_artemis",
+        "device.artemis_video_card",
+        "device.artemis_video_card_64kb"
       ],
       "kind": "offering",
       "aliases": [
@@ -112,10 +163,37 @@
       ]
     },
     {
-      "id": "abacus",
-      "path": "abacus.html",
-      "title": "AION Abacus",
-      "description": "Spreadsheets and reports across generations; Abacus 3.0 adds typed columnar tables, queries, graphical reports and embedded Pulse.",
+      "id": "operating-systems",
+      "path": "operating-systems.html",
+      "title": "Operating Systems",
+      "description": "Enhanced CP/M, AIONix, server and networking editions, compatibility and the planned AIONix 2 platform.",
+      "record_refs": [
+        "software.cpm_aurelia",
+        "software.cpm_aurelia_networking",
+        "edition.cpm_aurelia.z80",
+        "edition.cpm_aurelia_networking.z80",
+        "technology.logix_tui_mouse",
+        "software.entertainment_suite",
+        "software.aionix",
+        "software.aionix_server",
+        "technology.aionix_os_model",
+        "edition.aionix.standard",
+        "edition.aionix_server.server",
+        "software.aionix2"
+      ],
+      "kind": "offering",
+      "aliases": [
+        "CP/M",
+        "Aurelia CP/M",
+        "CP/M 1.4",
+        "AIONix"
+      ]
+    },
+    {
+      "id": "business-software",
+      "path": "business-software.html",
+      "title": "AION Business Software",
+      "description": "AION Abacus and AION Business Tools: spreadsheets, reports, application cartridges, features and platform editions.",
       "record_refs": [
         "software.abacus_1",
         "software.abacus_2",
@@ -130,13 +208,20 @@
         "device.model_ii_flexibus",
         "edition.abacus_1.model_ii",
         "technology.abacus_formatted_tables",
-        "technology.abacus_embedded_pulse"
+        "technology.abacus_embedded_pulse",
+        "software.business_tools_aurelia",
+        "software.business_tools_artemis",
+        "edition.business_tools_aurelia.z80",
+        "edition.business_tools_artemis.era",
+        "software.entertainment_suite"
       ],
       "kind": "offering",
       "aliases": [
         "Abacus",
         "Abacus 2.0",
-        "Abacus 3.0"
+        "Abacus 3.0",
+        "Business Tools",
+        "Business Tools cartridge"
       ]
     },
     {
@@ -163,47 +248,10 @@
       ]
     },
     {
-      "id": "pulse",
-      "path": "pulse.html",
-      "title": "AION Pulse",
-      "description": "Interactive notebook programming and offline document automation, plus embedded Pulse scripting in Abacus 3.0.",
-      "record_refs": [
-        "software.pulse_1",
-        "software.pulse_3",
-        "technology.pulse_notebook_model",
-        "edition.pulse_1.z80",
-        "edition.pulse_3.era",
-        "technology.abacus_embedded_pulse"
-      ],
-      "kind": "offering",
-      "aliases": [
-        "Pulse",
-        "Pulse 3.0"
-      ]
-    },
-    {
-      "id": "business-tools",
-      "path": "business-tools.html",
-      "title": "AION Business Tools",
-      "description": "Application cartridges that use shared platform TUI services.",
-      "record_refs": [
-        "software.business_tools_aurelia",
-        "software.business_tools_artemis",
-        "edition.business_tools_aurelia.z80",
-        "edition.business_tools_artemis.era",
-        "software.entertainment_suite"
-      ],
-      "kind": "offering",
-      "aliases": [
-        "Business Tools",
-        "Business Tools cartridge"
-      ]
-    },
-    {
-      "id": "c-development",
-      "path": "c-development.html",
-      "title": "C development",
-      "description": "C tools and the November 1981 AION Development System — Team Edition: shared projects, collaboration and two compilation targets.",
+      "id": "software-development",
+      "path": "software-development.html",
+      "title": "Software Development",
+      "description": "AION C tools, SDKs, portability, Team Edition and Pulse notebook programming and automation.",
       "record_refs": [
         "software.simple_c_z80",
         "software.aion_c_ide",
@@ -218,73 +266,21 @@
         "software.aurelia_compatibility_kit",
         "software.aion_development_team",
         "software.autocad_1_artemis",
-        "edition.autocad_1_artemis.era"
+        "edition.autocad_1_artemis.era",
+        "software.pulse_1",
+        "software.pulse_3",
+        "technology.pulse_notebook_model",
+        "edition.pulse_1.z80",
+        "edition.pulse_3.era",
+        "technology.abacus_embedded_pulse"
       ],
       "kind": "offering",
       "aliases": [
         "C development",
         "Artemis C IDE",
-        "Aurelia SDK"
-      ]
-    },
-    {
-      "id": "cpm",
-      "path": "cpm.html",
-      "title": "Enhanced CP/M",
-      "description": "CP/M core, optional platform extensions, independent compatibility programmes and the 1979 migration commitment.",
-      "record_refs": [
-        "software.cpm_aurelia",
-        "software.cpm_aurelia_networking",
-        "edition.cpm_aurelia.z80",
-        "edition.cpm_aurelia_networking.z80",
-        "technology.logix_tui_mouse",
-        "software.entertainment_suite"
-      ],
-      "kind": "offering",
-      "aliases": [
-        "CP/M",
-        "Aurelia CP/M",
-        "CP/M 1.4"
-      ]
-    },
-    {
-      "id": "aionix",
-      "path": "aionix.html",
-      "title": "AIONix",
-      "description": "The ERA operating system and its evolving networking services.",
-      "record_refs": [
-        "software.aionix",
-        "software.aionix_server",
-        "technology.aionix_os_model",
-        "edition.aionix.standard",
-        "edition.aionix_server.server",
-        "technology.logix_tui_mouse",
-        "software.entertainment_suite"
-      ],
-      "kind": "offering",
-      "aliases": [
-        "AIONix"
-      ]
-    },
-    {
-      "id": "tui-graphics",
-      "path": "tui-graphics.html",
-      "title": "TUI and graphics APIs",
-      "description": "Shared services, capability discovery and portable application contracts.",
-      "record_refs": [
-        "technology.logix_tui_standard",
-        "technology.logix_tui_keyboard_standard",
-        "technology.logix_display_api",
-        "technology.logix_c_api",
-        "technology.scanline_palette_list",
-        "technology.logix_tui_mouse",
-        "technology.flexibus_pointing_device",
-        "technology.artemis_professional_graphics"
-      ],
-      "kind": "offering",
-      "aliases": [
-        "Logix TUI",
-        "TUI & services"
+        "Aurelia SDK",
+        "Pulse",
+        "Pulse 3.0"
       ]
     },
     {
@@ -299,7 +295,12 @@
         "part.flexibus_host_controller",
         "part.flexibus_device_controller",
         "device.s100_flexibus_card",
-        "service.component_licensing"
+        "service.component_licensing",
+        "device.flexibus_keyboard",
+        "device.flexiprint40",
+        "device.flexidisk",
+        "device.flexidisk_ii",
+        "device.logix_mouse"
       ],
       "kind": "offering",
       "aliases": [
@@ -308,47 +309,30 @@
       ]
     },
     {
-      "id": "peripherals",
-      "path": "peripherals.html",
-      "title": "Peripherals and displays",
-      "description": "Displays, printers, storage, and Logix-developed Apple II / S-100 expansion cards. Replaceable Artemis video and the 14-inch Mono Pro 640×400 progressive display.",
+      "id": "video-system",
+      "path": "video-system.html",
+      "title": "Video system",
+      "description": "Display hardware, video modes, TUI and graphics APIs, mouse integration and professional graphics revisions.",
       "record_refs": [
-        "device.flexibus_keyboard",
-        "device.mono_monitor_1",
-        "device.color_monitor_1",
-        "device.mono_monitor_2",
-        "device.color_monitor_2",
-        "device.aurelia_ram_16kb_card",
-        "device.flexiprint40",
-        "device.flexidisk",
-        "device.apple2_expansion_card",
-        "device.flexidisk_ii",
-        "device.artemis_ram_64kb_module",
-        "device.artemis_ram_64kb_bank_kit",
-        "device.artemis_ram_256kb_bank_kit",
-        "part.artemis_ram_module_32kb_x16",
-        "part.artemis_ram_module_128kb",
-        "device.s100_flexibus_card",
-        "device.apple2_video_card",
-        "device.s100_video_card",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard",
+        "technology.logix_display_api",
+        "technology.logix_c_api",
+        "technology.scanline_palette_list",
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device",
+        "technology.artemis_professional_graphics",
         "device.artemis_video_card",
-        "device.mono_pro",
         "device.artemis_video_card_16kb",
-        "device.color_pro_14",
         "device.artemis_video_card_64kb",
-        "device.logix_mouse",
         "device.artemis_professional_video_128kb",
-        "device.mono_pro_17",
-        "offer.comdex82_artemis_autocad"
+        "device.color_pro_14",
+        "device.mono_pro_17"
       ],
       "kind": "offering",
       "aliases": [
-        "FlexiDisk II",
-        "FlexiDisk",
-        "FlexiPrint40",
-        "Monitor II",
-        "Apple II Expansion Card",
-        "Mono Pro"
+        "Logix TUI",
+        "TUI & services"
       ]
     },
     {
@@ -398,38 +382,32 @@
       ]
     },
     {
-      "id": "basic",
-      "path": "basic.html",
-      "title": "Microsoft BASIC for Aurelia",
-      "description": "The licensed third-party programming offering.",
+      "id": "peripherals",
+      "path": "peripherals.html",
+      "title": "Other peripherals",
+      "description": "Displays, printers, storage, and Logix-developed Apple II / S-100 expansion cards. Replaceable Artemis video and the 14-inch Mono Pro 640×400 progressive display.",
       "record_refs": [
-        "software.microsoft_basic_aurelia",
-        "edition.microsoft_basic_aurelia.z80"
+        "device.mono_monitor_1",
+        "device.color_monitor_1",
+        "device.mono_monitor_2",
+        "device.color_monitor_2",
+        "device.apple2_expansion_card",
+        "device.apple2_video_card",
+        "device.s100_video_card",
+        "device.mono_pro",
+        "device.color_pro_14",
+        "device.mono_pro_17",
+        "offer.comdex82_artemis_autocad"
       ],
       "kind": "offering",
       "aliases": [
-        "Microsoft BASIC"
+        "FlexiDisk II",
+        "FlexiDisk",
+        "FlexiPrint40",
+        "Monitor II",
+        "Apple II Expansion Card",
+        "Mono Pro"
       ]
-    },
-    {
-      "id": "timeline",
-      "path": "timeline.html",
-      "title": "Timeline (original)",
-      "description": "Explore events, continuous phases and ongoing processes across the calendar.",
-      "record_refs": [],
-      "kind": "timeline",
-      "aliases": [
-        "timeline"
-      ]
-    },
-    {
-      "id": "manufacturing-costs",
-      "path": "manufacturing-costs.html",
-      "title": "Manufacturing costs",
-      "description": "Recurring per-unit cost assessment for every June 15 offering, 1978–1981.",
-      "kind": "costs",
-      "record_refs": [],
-      "aliases": []
     },
     {
       "id": "pricing",
@@ -482,44 +460,6 @@
       ]
     },
     {
-      "id": "ecosystem",
-      "path": "ecosystem.html",
-      "title": "Third-party ecosystem",
-      "description": "Quarterly applications, paid licences, independent manufacturers, models and device sales, 1978–1983.",
-      "kind": "report",
-      "record_refs": [],
-      "aliases": [
-        "Ecosystem forecast",
-        "Third-party software and devices"
-      ]
-    },
-    {
-      "id": "ncc-1982",
-      "path": "ncc-1982.html",
-      "title": "NCC 1982 offering & campaign",
-      "description": "Pointy ideas with a solid point.",
-      "kind": "report",
-      "record_refs": [],
-      "aliases": [
-        "NCC 1982",
-        "Pointy ideas"
-      ]
-    },
-    {
-      "id": "comdex-1982",
-      "path": "comdex-1982.html",
-      "title": "COMDEX 1982 — Professional CAD",
-      "description": "Logix professional graphics, Autodesk AutoCAD and proposed joint campaign.",
-      "kind": "report",
-      "record_refs": [
-        "offer.comdex82_artemis_autocad"
-      ],
-      "aliases": [
-        "COMDEX 1982",
-        "AutoCAD professional offering"
-      ]
-    },
-    {
       "id": "market-share",
       "path": "market-share.html",
       "title": "Quarterly microcomputer market share",
@@ -533,26 +473,25 @@
     }
   ],
   "navigation": [
-    "index",
-    "aurelia",
-    "aurelia-plus",
-    "artemis",
-    "artemis-pro",
-    "athena",
-    "abacus",
-    "bpi",
-    "business-tools",
-    "c-development",
     "timeline",
-    "manufacturing-costs",
+    "ecosystem",
+    "aurelia",
+    "artemis",
+    "athena",
+    "operating-systems",
+    "business-software",
+    "bpi",
+    "software-development",
+    "flexibus",
+    "video-system",
+    "networking",
+    "academy",
+    "peripherals",
     "pricing",
     "sales",
-    "market-share",
     "industrial-investment",
     "roi",
-    "ecosystem",
-    "ncc-1982",
-    "comdex-1982"
+    "market-share"
   ],
   "labels": {
     "loading": "Loading the product and story catalogs…",
@@ -579,13 +518,13 @@
     "phase_count": "phases"
   },
   "entity_page_links": {
-    "actor.adam": "index",
-    "actor.logix": "index",
-    "actor.labs": "index",
-    "actor.aion": "index",
+    "actor.adam": "timeline",
+    "actor.logix": "timeline",
+    "actor.labs": "timeline",
+    "actor.aion": "timeline",
     "actor.bpi": "bpi",
     "actor.academy": "academy",
-    "actor.autodesk": "artemis-pro"
+    "actor.autodesk": "artemis"
   },
   "rendering_notes": "Display text and product facts come from these JSON catalogs. HTML files are page shells; shared scripts render and link their content.",
   "timeline_view": {
@@ -883,5 +822,243 @@
       "process.market_monitoring": "assumption.market_monitoring",
       "process.market_expansion": "assumption.market_expansion"
     }
-  }
+  },
+  "navigation_sections": [
+    {
+      "title": "Events",
+      "page_refs": [
+        "timeline",
+        "ecosystem"
+      ]
+    },
+    {
+      "title": "Computers",
+      "page_refs": [
+        "aurelia",
+        "artemis",
+        "athena"
+      ]
+    },
+    {
+      "title": "Software",
+      "page_refs": [
+        "operating-systems",
+        "business-software",
+        "bpi",
+        "software-development"
+      ]
+    },
+    {
+      "title": "Standards & services",
+      "page_refs": [
+        "flexibus",
+        "video-system",
+        "networking",
+        "academy",
+        "peripherals"
+      ]
+    },
+    {
+      "title": "Financial",
+      "page_refs": [
+        "pricing",
+        "sales",
+        "industrial-investment",
+        "roi",
+        "market-share"
+      ]
+    }
+  ],
+  "redirects": {
+    "index.html": "timeline.html",
+    "aurelia-plus.html": "aurelia.html#computer.aurelia_plus",
+    "artemis-pro.html": "artemis.html#computer.artemis_pro",
+    "abacus.html": "business-software.html#software.abacus_1",
+    "business-tools.html": "business-software.html#software.business_tools_aurelia",
+    "pulse.html": "software-development.html#software.pulse_1",
+    "c-development.html": "software-development.html#software.aion_c_ide",
+    "cpm.html": "operating-systems.html#software.cpm_aurelia",
+    "aionix.html": "operating-systems.html#software.aionix",
+    "tui-graphics.html": "video-system.html",
+    "basic.html": "ecosystem.html#software.microsoft_basic_aurelia",
+    "manufacturing-costs.html": "industrial_investment_1974_1981.html#manufacturing-method",
+    "ncc-1982.html": "timeline.html#event.ncc82_graphics_mouse",
+    "comdex-1982.html": "timeline.html#event.autodesk_comdex"
+  },
+  "record_page_links": {
+    "software.microsoft_basic_aurelia": "ecosystem",
+    "edition.microsoft_basic_aurelia.z80": "ecosystem",
+    "software.autocad_1_artemis": "ecosystem",
+    "edition.autocad_1_artemis.era": "ecosystem",
+    "software.bpi_suite": "ecosystem",
+    "software.bpi_client_server": "ecosystem",
+    "computer.aurelia": "aurelia",
+    "computer.aurelia_plus": "aurelia",
+    "part.z80a": "aurelia",
+    "part.z80b": "aurelia",
+    "part.dram_16kbit": "aurelia",
+    "part.flexibus_host_controller": "aurelia",
+    "part.aurelia_video_chip": "aurelia",
+    "part.aion_4116": "aurelia",
+    "part.aion_2114": "aurelia",
+    "part.aurelia_system_controller": "aurelia",
+    "part.aion_4164": "aurelia",
+    "device.flexibus_keyboard": "flexibus",
+    "device.mono_monitor_1": "aurelia",
+    "device.color_monitor_1": "aurelia",
+    "device.mono_monitor_2": "aurelia",
+    "device.color_monitor_2": "aurelia",
+    "device.aurelia_ram_16kb_card": "aurelia",
+    "device.flexiprint40": "flexibus",
+    "device.flexidisk": "flexibus",
+    "device.flexidisk_ii": "flexibus",
+    "device.network_card_aurelia": "aurelia",
+    "device.logix_mouse": "flexibus",
+    "computer.artemis": "artemis",
+    "part.era1": "artemis",
+    "technology.era1_isa": "artemis",
+    "technology.artemis_memory_model": "artemis",
+    "device.artemis_cpm80_module": "artemis",
+    "technology.cpm80_virtual_peripheral_bridge": "artemis",
+    "device.artemis_video_card_64kb": "artemis",
+    "device.color_pro_14": "artemis",
+    "device.artemis_professional_video_128kb": "artemis",
+    "device.mono_pro_17": "artemis",
+    "bundle.artemis_budget_128": "artemis",
+    "bundle.artemis_budget_128_hdd": "artemis",
+    "computer.artemis_pro": "artemis",
+    "offer.comdex82_artemis_autocad": "artemis",
+    "part.artemis_ram_module_128kb": "artemis",
+    "part.artemis_dma": "artemis",
+    "part.artemis_mmu": "artemis",
+    "part.artemis_graphics_chip": "artemis",
+    "part.artemis_fdd_hdd_controller": "artemis",
+    "part.hdd_5mb": "artemis",
+    "part.artemis_ram_module_32kb_x16": "artemis",
+    "part.artemis_ram_module_128kb_aion": "artemis",
+    "device.network_card_artemis": "artemis",
+    "device.network_hub": "artemis",
+    "device.artemis_ram_64kb_bank_kit": "artemis",
+    "device.artemis_ram_256kb_bank_kit": "artemis",
+    "device.artemis_video_card": "artemis",
+    "device.mono_pro": "artemis",
+    "device.artemis_video_card_16kb": "artemis",
+    "computer.athena": "athena",
+    "computer.athena_server": "athena",
+    "part.era2": "athena",
+    "technology.era2_architecture": "athena",
+    "part.aion_4164_2um": "athena",
+    "part.athena_ram_module_128kb": "athena",
+    "part.athena_ram_module_256kb": "athena",
+    "software.aionix2": "athena",
+    "part.artemis_graphics_chip_64kb": "athena",
+    "software.cpm_aurelia": "operating-systems",
+    "software.cpm_aurelia_networking": "operating-systems",
+    "edition.cpm_aurelia.z80": "operating-systems",
+    "edition.cpm_aurelia_networking.z80": "operating-systems",
+    "technology.logix_tui_mouse": "operating-systems",
+    "software.entertainment_suite": "operating-systems",
+    "software.aionix": "operating-systems",
+    "software.aionix_server": "operating-systems",
+    "technology.aionix_os_model": "operating-systems",
+    "edition.aionix.standard": "operating-systems",
+    "edition.aionix_server.server": "operating-systems",
+    "software.abacus_1": "business-software",
+    "software.abacus_2": "business-software",
+    "software.abacus_3": "business-software",
+    "technology.abacus_sparse_model": "business-software",
+    "edition.abacus_1.z80": "business-software",
+    "edition.abacus_2.z80": "business-software",
+    "edition.abacus_2.era": "business-software",
+    "edition.abacus_3.era": "business-software",
+    "computer.trs80_model_ii": "business-software",
+    "software.cpm_model_ii": "business-software",
+    "device.model_ii_flexibus": "business-software",
+    "edition.abacus_1.model_ii": "business-software",
+    "technology.abacus_formatted_tables": "business-software",
+    "technology.abacus_embedded_pulse": "business-software",
+    "software.business_tools_aurelia": "business-software",
+    "software.business_tools_artemis": "business-software",
+    "edition.business_tools_aurelia.z80": "business-software",
+    "edition.business_tools_artemis.era": "business-software",
+    "technology.bpi_relational_database": "bpi",
+    "edition.bpi_suite.z80": "bpi",
+    "edition.bpi_suite.era": "bpi",
+    "edition.bpi_client_server.z80_client": "bpi",
+    "edition.bpi_client_server.era_client": "bpi",
+    "edition.bpi_client_server.era_server": "bpi",
+    "service.bpi_training": "bpi",
+    "software.simple_c_z80": "software-development",
+    "software.aion_c_ide": "software-development",
+    "software.aurelia_sdk": "software-development",
+    "software.artemis_sdk": "software-development",
+    "technology.logix_c_target_contract": "software-development",
+    "technology.aion_c_portability_framework": "software-development",
+    "edition.simple_c_z80.z80": "software-development",
+    "edition.aurelia_sdk.z80": "software-development",
+    "edition.aion_c_ide.era": "software-development",
+    "edition.artemis_sdk.era": "software-development",
+    "software.aurelia_compatibility_kit": "software-development",
+    "software.aion_development_team": "software-development",
+    "software.pulse_1": "software-development",
+    "software.pulse_3": "software-development",
+    "technology.pulse_notebook_model": "software-development",
+    "edition.pulse_1.z80": "software-development",
+    "edition.pulse_3.era": "software-development",
+    "technology.flexibus": "flexibus",
+    "technology.plug_and_execute": "flexibus",
+    "technology.xip_rom_platform": "flexibus",
+    "part.flexibus_device_controller": "flexibus",
+    "device.s100_flexibus_card": "flexibus",
+    "service.component_licensing": "flexibus",
+    "technology.logix_tui_standard": "video-system",
+    "technology.logix_tui_keyboard_standard": "video-system",
+    "technology.logix_display_api": "video-system",
+    "technology.logix_c_api": "video-system",
+    "technology.scanline_palette_list": "video-system",
+    "technology.flexibus_pointing_device": "video-system",
+    "technology.artemis_professional_graphics": "video-system",
+    "technology.logix_tcpip_lan": "networking",
+    "technology.logix_lan100_link": "networking",
+    "service.customer_care": "academy",
+    "service.regular_support": "academy",
+    "service.professional_support": "academy",
+    "service.professional_business_onsite": "academy",
+    "service.academy_before_you_buy": "academy",
+    "service.academy_regular_courses": "academy",
+    "service.academy_customer_site": "academy",
+    "service.academy_direct_sales": "academy",
+    "service.pulse_training": "academy",
+    "service.aurelia_commercial_developer_license": "academy",
+    "service.artemis_commercial_developer_license": "academy",
+    "service.aurelia_compatibility_support": "academy",
+    "service.aurelia_compatibility_certification": "academy",
+    "device.apple2_expansion_card": "peripherals",
+    "device.artemis_ram_64kb_module": "peripherals",
+    "device.apple2_video_card": "peripherals",
+    "device.s100_video_card": "peripherals"
+  },
+  "campaign_groups": [
+    {
+      "event_ref": "event.ncc82_graphics_mouse",
+      "step_refs": [
+        "event.ncc82_dealer_preparation",
+        "event.ncc82_press_preview",
+        "event.ncc82_developer_sessions",
+        "event.ncc82_followup",
+        "event.ncc82_case_studies"
+      ],
+      "content_path": "site/content/ncc-1982-timeline.html"
+    },
+    {
+      "event_ref": "event.autodesk_comdex",
+      "step_refs": [
+        "event.comdex82_dealer_readiness",
+        "event.comdex82_press_invitations",
+        "event.comdex82_customer_followup",
+        "event.comdex82_reference_cases"
+      ],
+      "content_path": "site/content/comdex-1982-timeline.html"
+    }
+  ]
 }

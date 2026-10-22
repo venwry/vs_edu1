@@ -1,7 +1,7 @@
 const {JSDOM}=require('jsdom'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'ecosystem.html'),'utf8');
 const dom=new JSDOM(html,{url:'https://atlas.test/ecosystem.html',runScripts:'outside-only'}),w=dom.window,d=w.document;
-w.eval(d.querySelector('script:not([type])').textContent);
+w.eval(d.querySelector('script:not([type]):not([src])').textContent);
 const $=id=>d.getElementById(id);
 assert.equal($('softwareTable').querySelectorAll('tbody tr').length,23);assert.equal($('hardwareTable').querySelectorAll('tbody tr').length,23);
 assert($('market').textContent.includes('1981-Q4'));assert($('appsChart').querySelectorAll('svg circle').length===46);

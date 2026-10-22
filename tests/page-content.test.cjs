@@ -4,7 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const {JSDOM,VirtualConsole}=require('jsdom');
 const root=path.resolve(__dirname,'..'),input=process.env.BASELINE_ROOT||root;
 const paths=JSON.parse(fs.readFileSync(path.join(root,'data/manifest.json'),'utf8')).paths;
-const baselinePath=path.join(__dirname,'page-content-baseline.json');
+const baselinePath=path.join(__dirname,'page-content-reorganized.json');
 const normalize=s=>{for(const [old,current] of Object.entries(paths))s=s.split(current).join(old);return s.replace(/\s+/g,' ').trim();};
 async function inspect(file){
  const errors=[],requests=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));
@@ -12,7 +12,7 @@ async function inspect(file){
  w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};
  w.fetch=async url=>{const name=String(url).replace(/^\.\//,'');requests.push(name);return {ok:fs.existsSync(path.join(input,name)),json:async()=>JSON.parse(fs.readFileSync(path.join(input,name),'utf8'))};};
  for(const script of w.document.querySelectorAll('script')){
-  if(script.type&&script.type!=='text/javascript')continue;
+  if(script.type&&script.type!=='text/javascript')continue;if(script.textContent.includes('location.replace(target.href)'))continue;
   if(script.src){const name=new URL(script.src).pathname.slice(1);w.eval(fs.readFileSync(path.join(input,name),'utf8'));}else w.eval(script.textContent);
  }
  await new Promise(r=>setTimeout(r,150));
@@ -26,6 +26,6 @@ async function inspect(file){
 }
 (async()=>{
  const result={};for(const file of fs.readdirSync(input).filter(f=>f.endsWith('.html')).sort())result[file]=await inspect(file);
- if(process.env.UPDATE_PAGE_BASELINE==='1'){assert(process.env.BASELINE_ROOT,'Capture only against the original checkout');fs.writeFileSync(baselinePath,JSON.stringify(result,null,2)+'\n');console.log('Captured',Object.keys(result).length,'original pages');}
+ if(process.env.UPDATE_PAGE_BASELINE==='1'){assert(process.env.BASELINE_ROOT,'Specify the explicitly reviewed UI checkout');fs.writeFileSync(baselinePath,JSON.stringify(result,null,2)+'\n');console.log('Captured',Object.keys(result).length,'reviewed pages');}
  else{const baseline=JSON.parse(fs.readFileSync(baselinePath,'utf8'));for(const [file,value] of Object.entries(result))assert.deepEqual(value,baseline[file],file+' content changed');assert.deepEqual(Object.keys(result),Object.keys(baseline));console.log('PASS:',Object.keys(result).length,'HTML pages retain text, tables and links');}
 })().catch(e=>{console.error(e);process.exitCode=1;});

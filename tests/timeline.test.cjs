@@ -49,7 +49,8 @@ async function boot(file,hash=''){
  assert(!d.getElementById('process.international_investment'));
  const investment=d.getElementById('process.economics_studies');
  const studyHeight=parseFloat(investment.style.height);
- for(const event of story.phases.flatMap(p=>p.events)){assert.equal(d.querySelector('[data-event="'+event.id+'"] time').textContent,event.date.start);const detail=d.getElementById(event.id);assert(!detail.textContent.includes('Date precision'));assert.equal(detail.querySelector('.event-dates dd').textContent,event.date.start);assert.equal(detail.querySelector('.event-dates div:last-child dd').textContent,event.date.end);}
+ const campaignSteps=JSON.parse(read('generated/catalogs/site-pages.json')).campaign_groups.flatMap(g=>g.step_refs);
+ for(const event of story.phases.flatMap(p=>p.events)){if(campaignSteps.includes(event.id))assert.equal(d.querySelector('[data-event="'+event.id+'"]'),null);else assert.equal(d.querySelector('[data-event="'+event.id+'"] time').textContent,event.date.start);const detail=d.getElementById(event.id);assert(!detail.textContent.includes('Date precision'));assert.equal(detail.querySelector('.event-dates dd').textContent,event.date.start);assert.equal(detail.querySelector('.event-dates div:last-child dd').textContent,event.date.end);}
  assert.equal(d.querySelectorAll('.calendar-process.approximate').length,story.processes.flatMap(p=>[p,...(p.subprocesses||[])]).filter(p=>w.AtlasTimeline.processSpan(p,story).approximate).length);
  const study=w.AtlasTimeline.processSpan(story.processes.find(p=>p.id==='process.economics_studies'),story);
  assert.equal(study.startDate,'1972-09-25');assert.equal(study.approximate,true);
