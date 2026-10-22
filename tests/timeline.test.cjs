@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {JSDOM,VirtualConsole}=require('jsdom');
 const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8');
-const story=JSON.parse(read('logix_aion_story.json'));
+const story=JSON.parse(read('generated/catalogs/logix-aion-story.json'));
 const tick=()=>new Promise(resolve=>setTimeout(resolve,60));
 async function boot(file,hash=''){
  const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
@@ -20,7 +20,7 @@ async function boot(file,hash=''){
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).height,'870px');
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).marginBottom,'0px');
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-main')).paddingBottom,'0px');
- assert.equal(d.querySelectorAll('[data-select-phase]').length,JSON.parse(read('logix_aion_story.json')).phases.length);
+ assert.equal(d.querySelectorAll('[data-select-phase]').length,JSON.parse(read('generated/catalogs/logix-aion-story.json')).phases.length);
  assert.equal(d.querySelectorAll('[data-select-process]').length,story.processes.flatMap(p=>[p,...(p.subprocesses||[])]).length);
  assert(!d.querySelector('#timeline-panel #assumptions'));
  assert(d.getElementById('assumptions-panel').hidden);

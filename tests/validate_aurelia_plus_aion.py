@@ -3,7 +3,7 @@ import json,math
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def load(f):return json.loads((R/f).read_text())
-c=load('logix_aion_technical_catalog_v2.json');b=load('hardware_bom.json')
+c=load('generated/catalogs/logix-aion-technical-catalog-v2.json');b=load('generated/catalogs/hardware-bom.json')
 r={x['id']:x for a in c.values() if isinstance(a,list) for x in a if isinstance(x,dict) and 'id'in x}
 h=r['computer.aurelia_plus'];p=h['memory']['physical_population']
 assert p['chip_ref']=='part.aion_4164' and p['data_chip_count']==8 and p['data_ram_kb']==64
@@ -13,10 +13,10 @@ a=next(x for x in b['assemblies'] if x['id']=='assembly.computer.aurelia_plus.ba
 lines={l['ref']:l['quantity'] for l in a['lines']}
 assert lines['bompart.part.aion_4164']==8 and 'bompart.part.dram_64kbit' not in lines
 assert lines['bompart.part.aion_4116']==8 and lines['bompart.part.aion_2114']==2
-m=load('manufacturing_costs.json')['chip_fabrication_models']['part.aion_4164']
+m=load('generated/models/manufacturing-costs.json')['chip_fabrication_models']['part.aion_4164']
 assert abs(m['1980']['good_packaged_chip_cost_usd']*8-115.2448)<.01
 assert abs(m['1981']['good_packaged_chip_cost_usd']*8-91.8992)<.01
-iv=load('industrial_investment_1974_1981.json')
+iv=load('generated/models/industrial-investment-1974-1981.json')
 prog=[p for p in iv['engineering_programs'] if p['id']=='aion_64k_dram']
 assert len(prog)==1 and prog[0]['person_months']==120 and prog[0]['end']=='1979-Q3'
 assert any(x['quarter']=='1979-Q4' and x['chip_ref']=='part.aion_4164' and x['good_chips']>0 for x in iv['quarterly_wafer_loading'])

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "bom-supplier_programs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "bom-supplier_programs"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "agreement_date",
+        "cost_boundary",
+        "date_precision",
+        "id",
+        "initial_sales_date",
+        "launch_source",
+        "manufacturer",
+        "part_refs",
+        "qualification_gates",
+        "qualification_status",
+        "rights",
+        "transfer_deliverables"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "agreement_date": {
+          "type": [
+            "string"
+          ]
+        },
+        "cost_boundary": {
+          "type": [
+            "string"
+          ]
+        },
+        "date_precision": {
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "initial_sales_date": {
+          "type": [
+            "string"
+          ]
+        },
+        "launch_source": {
+          "type": [
+            "string"
+          ]
+        },
+        "manufacturer": {
+          "type": [
+            "string"
+          ]
+        },
+        "part_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "qualification_gates": {
+          "type": [
+            "array"
+          ]
+        },
+        "qualification_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "rights": {
+          "type": [
+            "string"
+          ]
+        },
+        "transfer_deliverables": {
+          "type": [
+            "array"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/records/software-product.schema.json",
+  "schema_version": "1.0.0",
+  "id": "software.pulse_1",
+  "record_type": "software-product",
+  "data": {
+    "id": "software.pulse_1",
+    "name": "AION Pulse",
+    "version": "initial notebook edition",
+    "vendor": "AION Software",
+    "category": "scripting_language_and_ide",
+    "introduced": {
+      "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+      "event_start_date": "1979-12-03",
+      "date_precision": "day",
+      "timeline_note": "Author-confirmed introduction date."
+    },
+    "features_ref": "technology.pulse_notebook_model",
+    "positioning": "Easy-to-learn notebook scripting environment and BASIC competitor; programmatic editing of Abacus document files.",
+    "training_available": true,
+    "sold_separately": true,
+    "technology_refs": [
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "portability_contract": {
+      "api_ref": "technology.logix_c_api",
+      "shared_logic": "Separate application/document algorithms from platform adapters.",
+      "display": "Query dimensions and attributes; use semantic colors and clipping.",
+      "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+      "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+      "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+    },
+    "abacus_file_integration": {
+      "model": "Read/edit/write Abacus document files; not live application integration.",
+      "concurrency": "Exclusive writer ownership. Do not edit a file concurrently in Pulse and Abacus.",
+      "format_policy": "Check format version and supported features before writing; reject unsupported edits without silently dropping data.",
+      "save_policy": "Write a replacement file, validate it, then perform a recoverable replacement retaining the prior version until success.",
+      "formula_policy": "Preserve formula text/encoding. Mark cached results invalid after edits; Abacus recalculates on opening unless Pulse has the matching evaluation library.",
+      "memory_policy": "Bounded record/cell iteration; whole-document duplication in RAM is not required.",
+      "cross_version_policy": "Each edition declares supported document-format versions. Later Artemis features are not implicitly writable by the Z80 edition."
+    },
+    "edition_refs": [
+      "edition.pulse_1.z80"
+    ]
+  }
+}

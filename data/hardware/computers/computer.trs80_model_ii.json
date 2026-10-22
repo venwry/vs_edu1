@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schemas/records/computer.schema.json",
+  "schema_version": "1.0.0",
+  "id": "computer.trs80_model_ii",
+  "record_type": "computer",
+  "data": {
+    "id": "computer.trs80_model_ii",
+    "name": "Tandy TRS-80 Model II — CP/M partner configuration",
+    "category": "external_partner_computer",
+    "vendor": "Tandy / Radio Shack",
+    "introduced": {
+      "event_name": "Model II announcement",
+      "event_start_date": "1979-05-30"
+    },
+    "customer_release_date": "1979-10-15",
+    "specification": {
+      "cpu": "Z80, 4 MHz",
+      "supported_installed_ram_kb": 64,
+      "display": "Native Tandy 80-column display; no Logix controller, video RAM or monitor required.",
+      "storage": "Native eight-inch disk subsystem; Model II BIOS and delivery media.",
+      "expansion": "Model II-specific internal FlexiBUS option; retain original interfaces.",
+      "support": "Tandy first-line hardware/customer support; DRI OS and AION application escalation."
+    },
+    "compatible_software": [
+      "software.cpm_model_ii",
+      "software.abacus_1"
+    ],
+    "commercial_boundary": "External Tandy hardware: no Logix BOM, manufacturing-cost rollup, retail price or computer revenue assigned."
+  }
+}

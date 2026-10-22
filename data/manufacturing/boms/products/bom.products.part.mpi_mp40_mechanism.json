@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.part.mpi_mp40_mechanism",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "part.mpi_mp40_mechanism",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.part.mpi_mp40_mechanism"
+    ],
+    "requirements": [
+      "Orderable revision and contents: head, motors, sensors, frame, carriage/platen, ribbon system, wiring",
+      "define excluded controller/PSU/case and incoming tests.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+    ]
+  }
+}

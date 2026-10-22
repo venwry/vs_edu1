@@ -1,0 +1,110 @@
+{
+  "$schema": "../../../schemas/records/software-product.schema.json",
+  "schema_version": "1.0.0",
+  "id": "software.bpi_client_server",
+  "record_type": "software-product",
+  "data": {
+    "id": "software.bpi_client_server",
+    "name": "BPI client-server business suite / RDBMS edition",
+    "vendor": "BPI Systems",
+    "category": "client_server_business_software",
+    "introduced": {
+      "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+      "event_start_date": "1981-05-04"
+    },
+    "architecture": {
+      "client_server": true,
+      "server": "computer.artemis_pro",
+      "database": "Relational engine with the specified transaction, logging, checkpoint and recovery design; robustness and capacity remain subject to acceptance testing.",
+      "network_ref": "technology.logix_tcpip_lan",
+      "server_edition_ref": "edition.bpi_client_server.era_server"
+    },
+    "unspecified": [
+      "Final wire encoding and implementation language for queries",
+      "Measured transaction throughput and database size limits",
+      "Final disk durability implementation"
+    ],
+    "business_module_lineage": "software.bpi_suite",
+    "technology_refs": [
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "portability_contract": {
+      "api_ref": "technology.logix_c_api",
+      "shared_logic": "Separate application/document algorithms from platform adapters.",
+      "display": "Query dimensions and attributes; use semantic colors and clipping.",
+      "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+      "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+      "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+    },
+    "edition_refs": [
+      "edition.bpi_client_server.z80_client",
+      "edition.bpi_client_server.era_client",
+      "edition.bpi_client_server.era_server"
+    ],
+    "specification": {
+      "implementation_design": {
+        "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+        "title": "BPI transactional client/server v1",
+        "architecture": "Thin Z80/ERA clients send bounded business operations to an Artemis PRO server. Query evaluation, indexes, validation, accounting posting and transactions execute on the server; clients do not fetch arbitrary database pages.",
+        "transactions": {
+          "concurrency": "Single serialized writer for v1 with short transactions and bounded reader locks; no long interactive transaction while a user edits a form.",
+          "commit": "Append checked log records and a commit marker, force them to durable storage, then acknowledge. Apply/replay committed changes idempotently.",
+          "recovery": "On startup validate checksums and recover committed log records; incomplete transactions never become visible. Use shadow page/index replacement or another explicitly validated torn-write-safe method.",
+          "failure": "Do not claim durable commit until disk/controller completion semantics are proven; no battery-backed cache is assumed.",
+          "log_format": "Redo-only changed-record/page after-images with transaction ID, sequence, length and checksum; the commit marker covers transaction record count and checksum. Persist duplicate-suppression outcomes in the same transaction.",
+          "buffer_policy": "Do not write uncommitted changes to database files (no-steal); cap transaction size to available transaction buffers.",
+          "checkpoint": "Write replacement pages and indexes to new locations, force them, then alternate checksummed generation-numbered root/checkpoint records. Retain the preceding valid root and necessary redo log until the new checkpoint is durable."
+        },
+        "protocol": {
+          "transport": "Length-framed requests over TCP; bounded messages and chunked results.",
+          "fields": [
+            "protocol version",
+            "authenticated session",
+            "durable request ID",
+            "operation",
+            "payload length",
+            "payload"
+          ],
+          "operations": [
+            "login",
+            "lookup",
+            "paged query",
+            "validate draft",
+            "post invoice/payment/journal",
+            "transaction status",
+            "report job",
+            "logout"
+          ],
+          "duplicate_suppression": "Store committed write request IDs and outcomes durably. After reconnect, clients query status or retry with the same ID; never post the same payment twice."
+        },
+        "data_integrity": [
+          "Amounts use explicitly scaled integers/decimal rules, never unspecified binary floating-point rounding.",
+          "Record currency, rounding, posting dates, account periods and unique document IDs.",
+          "Cross-module posting is atomic and produces an append-only audit record."
+        ],
+        "operations": [
+          "Role-based authorization and server-side input validation",
+          "Backup captures a consistent checkpoint plus required logs; test restoration onto a clean disk.",
+          "Bounded log growth, disk-full handling and operator-visible recovery status",
+          "Plan backups and report traffic around the negotiated shared 100/250/500/1000 kbit/s raw LAN budget and measured payload throughput; slower admitted hosts limit the whole network."
+        ],
+        "initial_limits": {
+          "server_ram_kb": 512,
+          "concurrent_sessions_target": 4,
+          "status": "Specified acceptance target, not measured capacity.",
+          "client_policy": "Bounded pages of results and forms; no entire-table download or whole-document duplication."
+        },
+        "acceptance_tests": [
+          "Power loss before/after commit acknowledgement",
+          "Lost acknowledgement and duplicate retry",
+          "Concurrent invoice/payment updates",
+          "Full disk, corrupt log tail and failed backup restore",
+          "48 KB Aurelia client resource budget"
+        ]
+      }
+    }
+  }
+}

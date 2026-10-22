@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.office",
+  "record_type": "event",
+  "data": {
+    "id": "event.office",
+    "title": "Investment-data office established",
+    "event_type": "organization",
+    "date": {
+      "start": "1973-01-01",
+      "end": "1973-01-01"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "founder"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam"
+        ],
+        "description": "Starts an office with three workers, a PDP-11/40 and three terminals. Workers manually capture New York Times stock prices, sales, other statistics and company/market sentiment measures."
+      }
+    ],
+    "outcomes": [
+      {
+        "description": "Data supports analysis and prediction; algorithms serve as a cover for unusual investment success."
+      }
+    ],
+    "agreement_terms": [],
+    "metrics": [
+      {
+        "name": "workers",
+        "value": 3,
+        "unit": "people",
+        "qualifier": ""
+      },
+      {
+        "name": "terminals",
+        "value": 3,
+        "unit": "units",
+        "qualifier": ""
+      }
+    ],
+    "product_refs": [],
+    "related_event_refs": []
+  }
+}

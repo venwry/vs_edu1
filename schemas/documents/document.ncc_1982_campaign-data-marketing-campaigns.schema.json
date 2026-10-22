@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.ncc_1982_campaign data/marketing/campaigns",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "headline",
+        "subheadline",
+        "hands_on_invitation",
+        "conference",
+        "cost_snapshot",
+        "status",
+        "messages",
+        "offering_refs",
+        "availability",
+        "software_update_policy",
+        "presentation",
+        "booth_zones",
+        "packages",
+        "office_configuration",
+        "developer_program",
+        "autodesk_claim",
+        "claim_controls",
+        "metrics",
+        "followup"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "subheadline": {
+          "type": "string"
+        },
+        "hands_on_invitation": {
+          "type": "string"
+        },
+        "conference": {
+          "type": "object"
+        },
+        "cost_snapshot": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array"
+        },
+        "offering_refs": {
+          "type": "array"
+        },
+        "availability": {
+          "type": "string"
+        },
+        "software_update_policy": {
+          "type": "string"
+        },
+        "presentation": {
+          "type": "array"
+        },
+        "booth_zones": {
+          "type": "array"
+        },
+        "packages": {
+          "type": "array"
+        },
+        "office_configuration": {
+          "type": "string"
+        },
+        "developer_program": {
+          "type": "string"
+        },
+        "autodesk_claim": {
+          "type": "string"
+        },
+        "claim_controls": {
+          "type": "array"
+        },
+        "metrics": {
+          "type": "array"
+        },
+        "followup": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

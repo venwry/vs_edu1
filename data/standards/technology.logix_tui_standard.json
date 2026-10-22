@@ -1,0 +1,102 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.logix_tui_standard",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.logix_tui_standard",
+    "name": "Logix common TUI and editing standard",
+    "category": "user_interface_standard",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "owner": "Logix / AION Software; portable CP/M extension developed with DRI",
+    "specification": {
+      "common_components": [
+        "text editing",
+        "disk/file browsing",
+        "forms",
+        "lists",
+        "popup windows"
+      ],
+      "common_interaction": {
+        "cursor": "moves by character",
+        "control_cursor": "moves by whole word",
+        "shift": "select text",
+        "Ctrl-C": "copy",
+        "Ctrl-V": "paste",
+        "Ctrl-X": "cut"
+      },
+      "system_clipboard": true,
+      "consistent_across": [
+        "text editor",
+        "C compiler/IDE",
+        "Abacus",
+        "command line",
+        "business applications"
+      ],
+      "developer_api": true,
+      "portability_goal": "DRI is encouraged and later assumed to distribute the TUI extension for other CP/M computers.",
+      "api_ref": "technology.logix_c_api",
+      "display_api_ref": "technology.logix_display_api",
+      "services": [
+        {
+          "name": "Layout and screen",
+          "description": "Query usable dimensions, clip and scroll; separate document coordinates from screen coordinates."
+        },
+        {
+          "name": "Adaptive layouts",
+          "description": "Compact 40-column and expanded 80-column layouts; dialogs, long names and errors fit either width."
+        },
+        {
+          "name": "Semantic colors",
+          "description": "Normal text, selection and warning roles map to color or monochrome attributes."
+        },
+        {
+          "name": "Input",
+          "description": "Structured character, function/navigation key and modifier events; blocking input and polling."
+        },
+        {
+          "name": "Controls",
+          "description": "Fields, lists, menus, dialogs, popup windows and consistent focus movement."
+        },
+        {
+          "name": "Editing",
+          "description": "Common selection, insertion/deletion and clipboard commands."
+        },
+        {
+          "name": "Clipboard",
+          "description": "Explicit formats, lengths, bounded capacity, ownership and errors."
+        },
+        {
+          "name": "Context lifecycle",
+          "description": "Create/destroy and activate/deactivate contexts; redraw when needed. A context describes an assigned display region, which may be the full Aurelia screen."
+        },
+        {
+          "name": "Timing",
+          "description": "System timing and keyboard-repeat services replace CPU-speed-dependent loops."
+        }
+      ],
+      "state_model": "Per-application context state; no accidental shared cursor, selection or editing globals. Aurelia remains single-foreground; Artemis may manage multiple isolated application contexts.",
+      "compatibility_rules": [
+        "Keep the same API behavior across Aurelia, Aurelia+ and Artemis.",
+        "Do not assume display stride, video RAM address, last column or direct peripheral registers.",
+        "Legacy CP/M console behavior is preserved; Logix-aware interfaces use the documented editing conventions.",
+        "Artemis implementation mediates process access to shared clipboard and display services."
+      ],
+      "keyboard_standard_ref": "technology.logix_tui_keyboard_standard",
+      "mouse_extension_ref": "technology.logix_tui_mouse"
+    },
+    "used_by": [
+      "software.cpm_aurelia",
+      "software.business_tools_aurelia",
+      "software.abacus_1",
+      "software.abacus_2",
+      "software.bpi_suite",
+      "software.pulse_1",
+      "software.aionix",
+      "software.aion_c_ide"
+    ]
+  }
+}

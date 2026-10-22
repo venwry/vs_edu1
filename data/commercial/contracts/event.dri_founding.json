@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../schemas/records/contract-terms.schema.json",
+  "schema_version": "1.0.0",
+  "id": "contract.event.dri_founding",
+  "record_type": "contract-terms",
+  "data": [
+    {
+      "type": "ownership",
+      "description": "DRI owns CP/M and DRI-funded improvements; licenses competing OEMs on predictable non-exclusive terms. Logix later pays OEM license and platform-engineering charges.",
+      "actor_refs": [
+        "actor.dri"
+      ],
+      "value": null,
+      "unit": null,
+      "effective_date": null
+    },
+    {
+      "type": "equity",
+      "description": "Gary and Dorothy together retain 60% on a fully diluted basis; their internal allocation is unspecified.",
+      "actor_refs": [
+        "actor.kildall",
+        "actor.dorothy"
+      ],
+      "value": 60,
+      "unit": "percent",
+      "effective_date": null
+    },
+    {
+      "type": "equity",
+      "description": "Adam receives 30% for his capital commitment and founding contribution.",
+      "actor_refs": [
+        "actor.adam"
+      ],
+      "value": 30,
+      "unit": "percent",
+      "effective_date": null
+    },
+    {
+      "type": "equity",
+      "description": "Reserve for future employees; not an issued voting block.",
+      "actor_refs": [
+        "actor.dri"
+      ],
+      "value": 10,
+      "unit": "percent",
+      "effective_date": null
+    },
+    {
+      "type": "funding",
+      "description": "Adam commits $250,000 nominal 1974 USD over two years: $150,000 at formation and $100,000 in scheduled installments. Company capital, not a CP/M purchase price or per-copy manufacturing cost.",
+      "actor_refs": [
+        "actor.adam",
+        "actor.dri"
+      ],
+      "value": 250000,
+      "unit": "USD",
+      "effective_date": null
+    },
+    {
+      "type": "responsibility",
+      "description": "Technical leadership and neutral licensing protected; Logix-related transactions independently reviewed. Expansion cards and chip licensing remain Logix/AION work, not DRI deliverables.",
+      "actor_refs": [
+        "actor.adam",
+        "actor.kildall",
+        "actor.dorothy",
+        "actor.dri"
+      ],
+      "value": null,
+      "unit": null,
+      "effective_date": null
+    }
+  ]
+}

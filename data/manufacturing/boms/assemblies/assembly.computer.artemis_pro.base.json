@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.computer.artemis_pro.base",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.computer.artemis_pro.base",
+    "name": "Logix Artemis PRO base hardware without modular RAM, cartridges or NIC",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.era1",
+        "quantity": 1,
+        "unit": "each",
+        "role": "CPU",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.artemis_dma",
+        "quantity": null,
+        "unit": "each",
+        "role": "chipset quantity/integration pending",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.artemis_mmu",
+        "quantity": null,
+        "unit": "each",
+        "role": "chipset quantity/integration pending",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.artemis_fdd_hdd_controller",
+        "quantity": null,
+        "unit": "each",
+        "role": "chipset quantity/integration pending",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.flexibus_host_controller",
+        "quantity": null,
+        "unit": "each",
+        "role": "chipset quantity/integration pending",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.computer.artemis_pro.paired_bank_dram_controller_refresh_and_data_buffers",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.computer.artemis_pro.mainboard_pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.computer.artemis_pro.psu",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.computer.artemis_pro.enclosure_and_chassis",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.computer.artemis_pro.boot_rom_chips",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.computer.artemis_pro.clock_reset_interrupts_mapper_and_bus_buffers",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.computer.artemis_pro.connectors_passives_fasteners_and_harnesses",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+        "quantity": 2,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.hdd_5mb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.device.artemis_video_card",
+        "quantity": 1,
+        "unit": "each",
+        "role": "Included replaceable video card; dedicated slot",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Remove 128 Kbit dependency",
+      "use four/eight high-density modules and two/four banks. Specify 8 MHz die/speed-bin and MMU timing, power and cooling at full population, exact HDD model and interface/format, network integration boundary, optional parity policy, RTC/battery need, and boot/service-console policy. Original server-only bundles exclude keyboard/monitor and still require validated headless operation or an optional console. New Mono Pro console bundles explicitly include both. Announcement is recorded for 1981-05-04",
+      "actual shipping date remains unspecified.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

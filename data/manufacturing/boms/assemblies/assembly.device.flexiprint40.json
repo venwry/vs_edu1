@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.flexiprint40",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.flexiprint40",
+    "name": "Logix FlexiPrint40",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.mpi_mp40_mechanism",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.flexibus_device_controller",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.flexiprint40.motor_and_printhead_drivers_excluded_by_mechanism",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.flexiprint40.local_sequencer_firmware_font_rom_and_buffer_ram",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.flexiprint40.printer_psu",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.flexiprint40.printer_enclosure",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.flexiprint40.initial_ribbon",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.flexiprint40.passives_protection_and_internal_harnesses",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.flexiprint40.external_cable_and_regional_mains_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "Establish which motors, printhead, sensors and cable harnesses the purchased mechanism includes. Add motor/head drivers, power supply, local sequencer/MCU, RAM input buffer, font/firmware ROM, paper controls/path, ribbon/consumables, case, interface cable and print/registration test. A bus controller alone is not a complete printer controller."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.flexidisk",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.flexidisk",
+    "name": "Logix FlexiDisk",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.device.flexidisk.525_inch_floppy_mechanism",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.flexidisk.floppy_controller_and_data_separator",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.flexibus_device_controller",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.flexidisk.local_firmware_processor_and_sector_ram",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.flexidisk.drive_psu",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.flexidisk.drive_enclosure",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.flexidisk.passives_protection_and_internal_harnesses",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.flexidisk.external_cable_and_regional_mains_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "Exact mechanism, number of drives, sides/tracks/density/format and usable capacity",
+      "floppy controller, data separator, sector buffer, local firmware/processor, interface electronics, PSU, enclosure, cable and alignment/read-write tests. The transport controller is not implicitly the disk controller."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

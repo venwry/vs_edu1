@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.open80_results",
+  "record_type": "event",
+  "data": {
+    "id": "event.open80_results",
+    "title": "Customer evidence and compatibility programme review",
+    "event_type": "plan",
+    "date": {
+      "start": "1980-01-14",
+      "end": "1980-01-14"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme organiser"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "programme organiser"
+      },
+      {
+        "actor_ref": "actor.dri",
+        "role": "programme organiser"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix",
+          "actor.aion",
+          "actor.dri"
+        ],
+        "description": "Publish verified customer examples, compatibility results and partner configurations. Target three to five non-Logix manufacturers with supported configurations by NCC 1980, counting Tandy once and excluding duplicate dealer builds. Do not disclose the new processor architecture early. This day is a selected scenario milestone."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "technology.flexibus",
+      "technology.logix_tui_standard",
+      "software.aurelia_sdk"
+    ],
+    "related_event_refs": [
+      "event.dri_release"
+    ]
+  }
+}

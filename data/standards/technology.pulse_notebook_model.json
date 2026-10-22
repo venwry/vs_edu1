@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.pulse_notebook_model",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.pulse_notebook_model",
+    "name": "Pulse interactive notebook scripting model",
+    "category": "programming_environment",
+    "introduced": {
+      "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+      "event_start_date": "1979-12-03",
+      "date_precision": "day",
+      "timeline_note": "Author-confirmed introduction date."
+    },
+    "owner": "AION Software",
+    "specification": {
+      "code_organization": "sequential independently executable sections/cells",
+      "fundamental_types": [
+        "integers",
+        "text strings",
+        "booleans",
+        "lists"
+      ],
+      "language_features": [
+        "loops",
+        "conditions",
+        "reusable functions",
+        "text tools",
+        "list tools"
+      ],
+      "abacus_integration": "Standalone file-based integration remains the baseline: Pulse reads and edits supported closed Abacus documents with exclusive writer ownership. Pulse 3.0 additionally supports embedded scripting in Abacus 3.0 under technology.abacus_embedded_pulse; this does not change Pulse 1.x."
+    },
+    "used_by": [
+      "software.pulse_1",
+      "software.pulse_3"
+    ]
+  }
+}

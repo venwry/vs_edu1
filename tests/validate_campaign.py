@@ -4,7 +4,7 @@ from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(n):return json.loads((R/n).read_text())
-c=read('aurelia_1978_campaign.json');s=read('logix_aion_story.json');t=read('logix_aion_technical_catalog_v2.json');p=read('pricing_results.json')
+c=read('generated/catalogs/aurelia-1978-campaign.json');s=read('generated/catalogs/logix-aion-story.json');t=read('generated/catalogs/logix-aion-technical-catalog-v2.json');p=read('generated/models/pricing-results.json')
 e={e['id']:e for phase in s['phases'] for e in phase['events']}
 r={x['id']:x for v in t.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id'in x}
 assert e['event.academy']['date']['start']==c['academy']['established_date']=='1978-03-25'

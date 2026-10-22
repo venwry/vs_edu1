@@ -3,8 +3,8 @@ from pathlib import Path
 import json, jsonschema
 root=Path(__file__).resolve().parents[1]
 def read(n):return json.loads((root/n).read_text())
-story=read('logix_aion_story.json');tech=read('logix_aion_technical_catalog_v2.json');site=read('site_pages.json')
-jsonschema.Draft202012Validator(read('logix_aion_story.schema.json')).validate(story)
+story=read('generated/catalogs/logix-aion-story.json');tech=read('generated/catalogs/logix-aion-technical-catalog-v2.json');site=read('generated/catalogs/site-pages.json')
+jsonschema.Draft202012Validator(read('schemas/legacy/logix_aion_story.schema.json')).validate(story)
 records={x['id']:x for v in tech.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id'in x}
 import re
 def check_refs(value):

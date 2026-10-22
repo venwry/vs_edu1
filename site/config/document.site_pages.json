@@ -1,0 +1,893 @@
+{
+  "$schema": "../../schemas/documents/document.site_pages-site-config.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.site_pages",
+  "record_type": "document-section",
+  "data": {
+    "title": "Logix / AION Atlas",
+    "description": "Products, architecture and alternative-history timeline",
+    "pages": [
+      {
+        "id": "index",
+        "path": "index.html",
+        "title": "Logix / AION",
+        "description": "Explore the companies, products and events of an alternative computing history.",
+        "record_refs": [],
+        "kind": "home",
+        "aliases": [
+          "Logix Tech",
+          "AION Labs",
+          "AION Software",
+          "Logix / AION"
+        ]
+      },
+      {
+        "id": "aurelia",
+        "path": "aurelia.html",
+        "title": "Logix Aurelia",
+        "description": "The original 1978 platform: hardware, memory, software and commercial offerings.",
+        "record_refs": [
+          "computer.aurelia"
+        ],
+        "kind": "explorer",
+        "aliases": [
+          "Aurelia"
+        ]
+      },
+      {
+        "id": "aurelia-plus",
+        "path": "aurelia-plus.html",
+        "title": "Logix Aurelia+",
+        "description": "The 1979 successor: a faster Z80, more memory and an 80-column display.",
+        "record_refs": [
+          "computer.aurelia_plus"
+        ],
+        "kind": "explorer",
+        "aliases": [
+          "Aurelia+"
+        ]
+      },
+      {
+        "id": "artemis",
+        "path": "artemis.html",
+        "title": "Logix Artemis",
+        "description": "The ERA-based system and its native software and compatibility environment.",
+        "record_refs": [
+          "computer.artemis",
+          "part.era1",
+          "technology.era1_isa",
+          "technology.artemis_memory_model",
+          "device.artemis_cpm80_module",
+          "technology.cpm80_virtual_peripheral_bridge",
+          "device.artemis_video_card_64kb",
+          "device.color_pro_14",
+          "device.artemis_professional_video_128kb",
+          "device.mono_pro_17",
+          "bundle.artemis_budget_128",
+          "bundle.artemis_budget_128_hdd"
+        ],
+        "kind": "explorer",
+        "aliases": [
+          "Artemis"
+        ],
+        "explorer_family": "artemis"
+      },
+      {
+        "id": "artemis-pro",
+        "path": "artemis-pro.html",
+        "title": "Logix Artemis PRO",
+        "description": "The server platform for networked business computing.",
+        "record_refs": [
+          "computer.artemis_pro",
+          "device.artemis_video_card_64kb",
+          "device.color_pro_14",
+          "device.artemis_professional_video_128kb",
+          "device.mono_pro_17",
+          "software.autocad_1_artemis",
+          "edition.autocad_1_artemis.era",
+          "offer.comdex82_artemis_autocad"
+        ],
+        "kind": "explorer",
+        "aliases": [
+          "Artemis PRO"
+        ],
+        "explorer_family": "artemis"
+      },
+      {
+        "id": "athena",
+        "path": "athena.html",
+        "title": "Logix Athena and ERA²",
+        "description": "NCC 1983 planned platform: 256 KiB desktop or 1 MiB server, 2 µm ERA² and 4164 memory, disk-based software and EEPROM BIOS. AIONix 2 specifications pending.",
+        "record_refs": [
+          "computer.athena",
+          "computer.athena_server",
+          "part.era2",
+          "technology.era2_architecture",
+          "part.aion_4164_2um",
+          "part.athena_ram_module_128kb",
+          "part.athena_ram_module_256kb",
+          "software.aionix2"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "Athena",
+          "Athena Server",
+          "ERA²",
+          "ERA^2"
+        ]
+      },
+      {
+        "id": "abacus",
+        "path": "abacus.html",
+        "title": "AION Abacus",
+        "description": "Spreadsheets and reports across generations; Abacus 3.0 adds typed columnar tables, queries, graphical reports and embedded Pulse.",
+        "record_refs": [
+          "software.abacus_1",
+          "software.abacus_2",
+          "software.abacus_3",
+          "technology.abacus_sparse_model",
+          "edition.abacus_1.z80",
+          "edition.abacus_2.z80",
+          "edition.abacus_2.era",
+          "edition.abacus_3.era",
+          "computer.trs80_model_ii",
+          "software.cpm_model_ii",
+          "device.model_ii_flexibus",
+          "edition.abacus_1.model_ii",
+          "technology.abacus_formatted_tables",
+          "technology.abacus_embedded_pulse"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "Abacus",
+          "Abacus 2.0",
+          "Abacus 3.0"
+        ]
+      },
+      {
+        "id": "bpi",
+        "path": "bpi.html",
+        "title": "BPI Systems",
+        "description": "Independent business-software partner: BPI products, cooperation, support, training and later client-server applications.",
+        "record_refs": [
+          "software.bpi_suite",
+          "software.bpi_client_server",
+          "technology.bpi_relational_database",
+          "edition.bpi_suite.z80",
+          "edition.bpi_suite.era",
+          "edition.bpi_client_server.z80_client",
+          "edition.bpi_client_server.era_client",
+          "edition.bpi_client_server.era_server",
+          "service.bpi_training"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "BPI",
+          "BPI Systems",
+          "BPI Products"
+        ]
+      },
+      {
+        "id": "pulse",
+        "path": "pulse.html",
+        "title": "AION Pulse",
+        "description": "Interactive notebook programming and offline document automation, plus embedded Pulse scripting in Abacus 3.0.",
+        "record_refs": [
+          "software.pulse_1",
+          "software.pulse_3",
+          "technology.pulse_notebook_model",
+          "edition.pulse_1.z80",
+          "edition.pulse_3.era",
+          "technology.abacus_embedded_pulse"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "Pulse",
+          "Pulse 3.0"
+        ]
+      },
+      {
+        "id": "business-tools",
+        "path": "business-tools.html",
+        "title": "AION Business Tools",
+        "description": "Application cartridges that use shared platform TUI services.",
+        "record_refs": [
+          "software.business_tools_aurelia",
+          "software.business_tools_artemis",
+          "edition.business_tools_aurelia.z80",
+          "edition.business_tools_artemis.era",
+          "software.entertainment_suite"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "Business Tools",
+          "Business Tools cartridge"
+        ]
+      },
+      {
+        "id": "c-development",
+        "path": "c-development.html",
+        "title": "C development",
+        "description": "C tools and the November 1981 AION Development System — Team Edition: shared projects, collaboration and two compilation targets.",
+        "record_refs": [
+          "software.simple_c_z80",
+          "software.aion_c_ide",
+          "software.aurelia_sdk",
+          "software.artemis_sdk",
+          "technology.logix_c_target_contract",
+          "technology.aion_c_portability_framework",
+          "edition.simple_c_z80.z80",
+          "edition.aurelia_sdk.z80",
+          "edition.aion_c_ide.era",
+          "edition.artemis_sdk.era",
+          "software.aurelia_compatibility_kit",
+          "software.aion_development_team",
+          "software.autocad_1_artemis",
+          "edition.autocad_1_artemis.era"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "C development",
+          "Artemis C IDE",
+          "Aurelia SDK"
+        ]
+      },
+      {
+        "id": "cpm",
+        "path": "cpm.html",
+        "title": "Enhanced CP/M",
+        "description": "CP/M core, optional platform extensions, independent compatibility programmes and the 1979 migration commitment.",
+        "record_refs": [
+          "software.cpm_aurelia",
+          "software.cpm_aurelia_networking",
+          "edition.cpm_aurelia.z80",
+          "edition.cpm_aurelia_networking.z80",
+          "technology.logix_tui_mouse",
+          "software.entertainment_suite"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "CP/M",
+          "Aurelia CP/M",
+          "CP/M 1.4"
+        ]
+      },
+      {
+        "id": "aionix",
+        "path": "aionix.html",
+        "title": "AIONix",
+        "description": "The ERA operating system and its evolving networking services.",
+        "record_refs": [
+          "software.aionix",
+          "software.aionix_server",
+          "technology.aionix_os_model",
+          "edition.aionix.standard",
+          "edition.aionix_server.server",
+          "technology.logix_tui_mouse",
+          "software.entertainment_suite"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "AIONix"
+        ]
+      },
+      {
+        "id": "tui-graphics",
+        "path": "tui-graphics.html",
+        "title": "TUI and graphics APIs",
+        "description": "Shared services, capability discovery and portable application contracts.",
+        "record_refs": [
+          "technology.logix_tui_standard",
+          "technology.logix_tui_keyboard_standard",
+          "technology.logix_display_api",
+          "technology.logix_c_api",
+          "technology.scanline_palette_list",
+          "technology.logix_tui_mouse",
+          "technology.flexibus_pointing_device",
+          "technology.artemis_professional_graphics"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "Logix TUI",
+          "TUI & services"
+        ]
+      },
+      {
+        "id": "flexibus",
+        "path": "flexibus.html",
+        "title": "FlexiBUS and expansion",
+        "description": "Peripheral and expansion standards with their host and device controllers.",
+        "record_refs": [
+          "technology.flexibus",
+          "technology.plug_and_execute",
+          "technology.xip_rom_platform",
+          "part.flexibus_host_controller",
+          "part.flexibus_device_controller",
+          "device.s100_flexibus_card",
+          "service.component_licensing"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "FlexiBUS",
+          "Plug and Execute"
+        ]
+      },
+      {
+        "id": "peripherals",
+        "path": "peripherals.html",
+        "title": "Peripherals and displays",
+        "description": "Displays, printers, storage, and Logix-developed Apple II / S-100 expansion cards. Replaceable Artemis video and the 14-inch Mono Pro 640×400 progressive display.",
+        "record_refs": [
+          "device.flexibus_keyboard",
+          "device.mono_monitor_1",
+          "device.color_monitor_1",
+          "device.mono_monitor_2",
+          "device.color_monitor_2",
+          "device.aurelia_ram_16kb_card",
+          "device.flexiprint40",
+          "device.flexidisk",
+          "device.apple2_expansion_card",
+          "device.flexidisk_ii",
+          "device.artemis_ram_64kb_module",
+          "device.artemis_ram_64kb_bank_kit",
+          "device.artemis_ram_256kb_bank_kit",
+          "part.artemis_ram_module_32kb_x16",
+          "part.artemis_ram_module_128kb",
+          "device.s100_flexibus_card",
+          "device.apple2_video_card",
+          "device.s100_video_card",
+          "device.artemis_video_card",
+          "device.mono_pro",
+          "device.artemis_video_card_16kb",
+          "device.color_pro_14",
+          "device.artemis_video_card_64kb",
+          "device.logix_mouse",
+          "device.artemis_professional_video_128kb",
+          "device.mono_pro_17",
+          "offer.comdex82_artemis_autocad"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "FlexiDisk II",
+          "FlexiDisk",
+          "FlexiPrint40",
+          "Monitor II",
+          "Apple II Expansion Card",
+          "Mono Pro"
+        ]
+      },
+      {
+        "id": "networking",
+        "path": "networking.html",
+        "title": "Logix networking",
+        "description": "The network platform, adapters, hubs and system upgrades.",
+        "record_refs": [
+          "technology.logix_tcpip_lan",
+          "technology.logix_lan100_link",
+          "device.network_card_aurelia",
+          "device.network_card_artemis",
+          "device.network_hub"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "LogixLAN-100",
+          "TCP/IP networking"
+        ]
+      },
+      {
+        "id": "academy",
+        "path": "academy.html",
+        "title": "Logix Computer Academy",
+        "description": "Five-city learn-before-you-decide programme, Fundamentals 50% tuition purchase credit, direct ordering, developer courses and support.",
+        "record_refs": [
+          "service.customer_care",
+          "service.regular_support",
+          "service.professional_support",
+          "service.professional_business_onsite",
+          "service.academy_before_you_buy",
+          "service.academy_regular_courses",
+          "service.academy_customer_site",
+          "service.academy_direct_sales",
+          "service.pulse_training",
+          "service.bpi_training",
+          "service.aurelia_commercial_developer_license",
+          "service.artemis_commercial_developer_license",
+          "service.component_licensing",
+          "service.aurelia_compatibility_support",
+          "service.aurelia_compatibility_certification"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "Logix Computer Academy",
+          "Computer Academy"
+        ]
+      },
+      {
+        "id": "basic",
+        "path": "basic.html",
+        "title": "Microsoft BASIC for Aurelia",
+        "description": "The licensed third-party programming offering.",
+        "record_refs": [
+          "software.microsoft_basic_aurelia",
+          "edition.microsoft_basic_aurelia.z80"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "Microsoft BASIC"
+        ]
+      },
+      {
+        "id": "timeline",
+        "path": "timeline.html",
+        "title": "Timeline (original)",
+        "description": "Explore events, continuous phases and ongoing processes across the calendar.",
+        "record_refs": [],
+        "kind": "timeline",
+        "aliases": [
+          "timeline"
+        ]
+      },
+      {
+        "id": "manufacturing-costs",
+        "path": "manufacturing-costs.html",
+        "title": "Manufacturing costs",
+        "description": "Recurring per-unit cost assessment for every June 15 offering, 1978–1981.",
+        "kind": "costs",
+        "record_refs": [],
+        "aliases": []
+      },
+      {
+        "id": "pricing",
+        "path": "pricing.html",
+        "title": "Retail pricing",
+        "description": "Commercial offerings, competitive prices and contribution margins, June 15 1978–1981.",
+        "record_refs": [],
+        "kind": "pricing",
+        "aliases": [
+          "Pricing",
+          "Retail prices"
+        ]
+      },
+      {
+        "id": "sales",
+        "path": "sales.html",
+        "title": "Logix computer demand and sales",
+        "description": "Logix computer sales through November 18, 1980: Aurelia, Aurelia+ and Artemis demand and capacity. Academy estimates retain the May 18 cutoff.",
+        "record_refs": [],
+        "kind": "sales",
+        "aliases": [
+          "Sales",
+          "Sales forecast"
+        ]
+      },
+      {
+        "id": "industrial-investment",
+        "path": "industrial_investment_1974_1981.html",
+        "title": "Industrial investment",
+        "description": "Quarterly investment, operating costs, factories, logistics, semiconductor equipment and headcount, 1974–1982.",
+        "kind": "report",
+        "record_refs": [],
+        "aliases": [
+          "Industrial investment",
+          "Factory capacity",
+          "Headcount"
+        ]
+      },
+      {
+        "id": "roi",
+        "path": "roi.html",
+        "title": "Quarterly ROI",
+        "description": "Quarterly revenue, investments, marketing, operating profit, ROI and cash recovery through 1982.",
+        "kind": "report",
+        "record_refs": [],
+        "aliases": [
+          "ROI",
+          "Return on investment",
+          "Marketing budget"
+        ]
+      },
+      {
+        "id": "ecosystem",
+        "path": "ecosystem.html",
+        "title": "Third-party ecosystem",
+        "description": "Quarterly applications, paid licences, independent manufacturers, models and device sales, 1978–1983.",
+        "kind": "report",
+        "record_refs": [],
+        "aliases": [
+          "Ecosystem forecast",
+          "Third-party software and devices"
+        ]
+      },
+      {
+        "id": "ncc-1982",
+        "path": "ncc-1982.html",
+        "title": "NCC 1982 offering & campaign",
+        "description": "Pointy ideas with a solid point.",
+        "kind": "report",
+        "record_refs": [],
+        "aliases": [
+          "NCC 1982",
+          "Pointy ideas"
+        ]
+      },
+      {
+        "id": "comdex-1982",
+        "path": "comdex-1982.html",
+        "title": "COMDEX 1982 — Professional CAD",
+        "description": "Logix professional graphics, Autodesk AutoCAD and proposed joint campaign.",
+        "kind": "report",
+        "record_refs": [
+          "offer.comdex82_artemis_autocad"
+        ],
+        "aliases": [
+          "COMDEX 1982",
+          "AutoCAD professional offering"
+        ]
+      },
+      {
+        "id": "market-share",
+        "path": "market-share.html",
+        "title": "Quarterly microcomputer market share",
+        "description": "1981–1983 Logix and five clone partners: shipment units, scenario shares and explicit market assumptions.",
+        "kind": "report",
+        "record_refs": [],
+        "aliases": [
+          "Market share",
+          "Clone manufacturer sales"
+        ]
+      }
+    ],
+    "navigation": [
+      "index",
+      "aurelia",
+      "aurelia-plus",
+      "artemis",
+      "artemis-pro",
+      "athena",
+      "abacus",
+      "bpi",
+      "business-tools",
+      "c-development",
+      "timeline",
+      "manufacturing-costs",
+      "pricing",
+      "sales",
+      "market-share",
+      "industrial-investment",
+      "roi",
+      "ecosystem",
+      "ncc-1982",
+      "comdex-1982"
+    ],
+    "labels": {
+      "loading": "Loading the product and story catalogs…",
+      "load_error": "Catalogs could not be loaded. Retry or select the three accompanying JSON files.",
+      "file_help": "For offline use, select logix_aion_technical_catalog_v2.json, logix_aion_story.json and site_pages.json together.",
+      "retry": "Retry",
+      "products": "Offerings",
+      "events": "Related events",
+      "details": "Explore product details",
+      "assumptions": "Scenario assumptions",
+      "phases": "Phases",
+      "all": "All",
+      "search": "Search events",
+      "actor": "Participant",
+      "type": "Event type",
+      "expand": "Show all event details",
+      "empty": "No events match these filters.",
+      "existing": "Existing bundles",
+      "proposed": "Proposed bundles",
+      "components": "Components",
+      "back": "All offerings",
+      "fiction": "Alternative timeline · Product and event catalogs",
+      "event_count": "events",
+      "phase_count": "phases"
+    },
+    "entity_page_links": {
+      "actor.adam": "index",
+      "actor.logix": "index",
+      "actor.labs": "index",
+      "actor.aion": "index",
+      "actor.bpi": "bpi",
+      "actor.academy": "academy",
+      "actor.autodesk": "artemis-pro"
+    },
+    "rendering_notes": "Display text and product facts come from these JSON catalogs. HTML files are page shells; shared scripts render and link their content.",
+    "timeline_view": {
+      "eyebrow": "Alternative history / Swimlane timeline",
+      "board_label": "Calendar timeline: equal years downward, parties across",
+      "axis_label": "Year / Phase",
+      "instructions": "Select an event, phase or process to read its details on the left. Scroll down through equal year sections, or sideways through the party lanes.",
+      "scale_note": "Every year has equal height. Phases and processes are single continuous blocks across year boundaries. Dashed process blocks are approximate display envelopes derived from phase context, not confirmed start/end dates. Event cards are spaced to avoid overlap; the 2025 origin is separate. Year/month-only milestones retain their recorded precision; placement within that period is indicative.",
+      "details_label": "Event, phase or process details",
+      "select_hint": "Select an event, phase or process on the right.",
+      "lanes": [
+        {
+          "id": "adam",
+          "title": "Adam & foundations",
+          "description": "Identity, financing and recruitment",
+          "actor_refs": [
+            "actor.adam",
+            "actor.original_adam",
+            "actor.letwin",
+            "actor.paterson"
+          ],
+          "event_refs": [
+            "event.power",
+            "event.identity",
+            "event.lottery",
+            "event.us_nyse_start",
+            "event.office",
+            "event.companies",
+            "event.facility",
+            "event.letwin",
+            "event.paterson"
+          ],
+          "process_refs": [
+            "process.economics_studies"
+          ]
+        },
+        {
+          "id": "logix",
+          "title": "Logix & hardware",
+          "description": "Platforms, peripherals and training",
+          "actor_refs": [
+            "actor.logix",
+            "actor.labs",
+            "actor.academy"
+          ],
+          "event_refs": [
+            "event.academy",
+            "event.aurelia_launch",
+            "event.bpi_training",
+            "event.apple_extensions",
+            "event.plus_launch",
+            "event.cpm_bridge",
+            "event.artemis_launch",
+            "event.network_launch",
+            "event.aurelia_campaign_teaser",
+            "event.aurelia_campaign_advert",
+            "event.aurelia_campaign_preparation",
+            "event.ncc78_sessions_media",
+            "event.ncc79_campaign",
+            "event.cost_review_1982",
+            "event.financial_review_1982",
+            "event.financial_review_1980",
+            "event.financial_review_1981",
+            "event.ncc82_graphics_mouse",
+            "event.ncc82_dealer_preparation",
+            "event.ncc82_press_preview",
+            "event.ncc82_developer_sessions",
+            "event.ncc82_followup",
+            "event.ncc82_case_studies",
+            "event.artemis_budget_range",
+            "event.ncc83_athena_premiere",
+            "event.athena_production_review"
+          ],
+          "process_refs": [
+            "process.artemis_engineering",
+            "process.athena_integration"
+          ]
+        },
+        {
+          "id": "aion",
+          "title": "AION Software",
+          "description": "Applications and software strategy",
+          "actor_refs": [
+            "actor.aion"
+          ],
+          "event_refs": [
+            "event.aionix_agreement",
+            "event.artemis_software",
+            "event.software32",
+            "event.aionix_preliminary",
+            "event.team_pilots",
+            "event.team_dealer_training",
+            "event.team_launch",
+            "event.team_followup",
+            "event.team_engineering"
+          ],
+          "process_refs": []
+        },
+        {
+          "id": "partners",
+          "title": "Partners",
+          "description": "Independent BPI, DRI, MPI, SMC, Microsoft, Tandy and distribution",
+          "actor_refs": [
+            "actor.dri",
+            "actor.kildall",
+            "actor.microsoft",
+            "actor.mpi",
+            "actor.computerland",
+            "actor.dorothy",
+            "actor.smc",
+            "actor.tandy",
+            "actor.bpi",
+            "actor.northstar",
+            "actor.vector",
+            "actor.sks",
+            "actor.goupil",
+            "actor.eina",
+            "actor.aion_tech_uk",
+            "actor.autodesk"
+          ],
+          "event_refs": [
+            "event.dri_cpm",
+            "event.mpi",
+            "event.retail",
+            "event.dri_portable",
+            "event.basic_launch",
+            "event.dri_release",
+            "event.dri_founding",
+            "event.smc_agreement",
+            "event.smc_sales",
+            "event.tandy_contact",
+            "event.tandy_agreement",
+            "event.tandy_design_review",
+            "event.tandy_port_review",
+            "event.tandy_announcement",
+            "event.tandy_ncc_demo",
+            "event.tandy_release",
+            "event.bpi_offer",
+            "event.bpi_launch",
+            "event.bpi_cooperation",
+            "event.bpi_pilot",
+            "event.bpi_qualification",
+            "event.bpi_dealer_program",
+            "event.bpi_year_end",
+            "event.bpi_expansion",
+            "event.oem79_briefings",
+            "event.open79_profiles",
+            "event.open79_workshop",
+            "event.open79_roadshows",
+            "event.open79_delivery",
+            "event.open79_targets",
+            "event.open80_results",
+            "event.tandy_response",
+            "event.adapter_response",
+            "event.network_pilots",
+            "event.dri_68k_program",
+            "event.x86_protection_review",
+            "event.tandy_68k_review",
+            "event.compatibility_review",
+            "event.clone_contacts",
+            "event.clone_agreement_northstar",
+            "event.clone_agreement_vector",
+            "event.clone_agreement_sks",
+            "event.clone_agreement_goupil",
+            "event.clone_agreement_eina",
+            "event.clone_design_freeze",
+            "event.aion_tech_uk_setup",
+            "event.clone_engineering_pilots",
+            "event.clone_customer_pilots",
+            "event.clone_campaign_preview",
+            "event.clone_release_gate",
+            "event.clone_january_launch",
+            "event.clone_campaign_roadshows",
+            "event.clone_90day_review",
+            "event.autodesk_agreement",
+            "event.autodesk_incorporation",
+            "event.autodesk_professional_handover",
+            "event.autodesk_beta",
+            "event.autodesk_comdex",
+            "event.comdex82_dealer_readiness",
+            "event.comdex82_press_invitations",
+            "event.comdex82_customer_followup",
+            "event.comdex82_reference_cases"
+          ],
+          "process_refs": [
+            "process.clone_product_preparation",
+            "process.clone_localisation",
+            "process.clone_channel_readiness",
+            "process.clone_launch_campaign"
+          ]
+        },
+        {
+          "id": "apple",
+          "title": "Apple & Peachtree",
+          "description": "Business software and cooperation",
+          "actor_refs": [
+            "actor.apple",
+            "actor.peachtree"
+          ],
+          "event_refs": [
+            "event.apple_search",
+            "event.apple_peachtree",
+            "event.apple_cooperation",
+            "event.apple_business",
+            "event.apple_business_initiative",
+            "event.apple_dealer_demos",
+            "event.apple_business_promotions",
+            "event.apple_compatibility_review"
+          ],
+          "process_refs": [
+            "process.apple_compatibility"
+          ]
+        },
+        {
+          "id": "market",
+          "title": "IBM & the market",
+          "description": "Competitor decisions and market effects",
+          "actor_refs": [
+            "actor.ibm",
+            "actor.others",
+            "actor.customers"
+          ],
+          "event_refs": [
+            "event.ibm_investigate",
+            "event.ibm_project",
+            "event.ibm_os_review",
+            "event.ibm_os_program",
+            "event.ibm_qualification",
+            "event.native_validation",
+            "event.portable_cpm_pressure",
+            "event.recession_response",
+            "event.unix_competition",
+            "event.ibm_alternative_launch",
+            "event.application_competition"
+          ],
+          "process_refs": []
+        },
+        {
+          "id": "manufacturing",
+          "title": "AION manufacturing",
+          "description": "Process development, RAM yield and release gates",
+          "actor_refs": [
+            "actor.labs",
+            "actor.logix",
+            "actor.sgs"
+          ],
+          "event_refs": [
+            "event.stepper_order",
+            "event.stepper_accept",
+            "event.pilot_275",
+            "event.production_275",
+            "event.dram_control_release",
+            "event.dram_repair_release",
+            "event.dram_275_review",
+            "event.pilot_2",
+            "event.production_2",
+            "event.dram_2_release",
+            "event.mature_2",
+            "event.pilot_15",
+            "event.production_15",
+            "event.dram_15_release",
+            "event.mature_15",
+            "event.capacity_orders_1982",
+            "event.peak_readiness",
+            "event.sgs_contacts",
+            "event.sgs_transfer_agreement",
+            "event.sgs_controller_gate"
+          ],
+          "process_refs": [
+            "process.stepper_install",
+            "process.process_275",
+            "process.dram_repair",
+            "process.process_2",
+            "process.process_15",
+            "process.sgs_transfer",
+            "process.era2_development"
+          ]
+        }
+      ],
+      "group_label": "events · expand",
+      "phase_aliases": {
+        "phase.after_ncc78": "phase.ncc78",
+        "phase.before_comdex79": "phase.ncc79",
+        "phase.before_ncc80": "phase.comdex79"
+      },
+      "item_aliases": {
+        "event.harvard": "process.economics_studies",
+        "event.setup": "assumption.organization_buildout",
+        "event.others_monitor": "assumption.market_monitoring",
+        "event.market_growth": "assumption.market_expansion",
+        "event.apple_policy": "process.apple_compatibility",
+        "event.artemis_engineering": "process.artemis_engineering",
+        "process.nyse_speculation": "event.us_nyse_start",
+        "process.organization_buildout": "assumption.organization_buildout",
+        "process.market_monitoring": "assumption.market_monitoring",
+        "process.market_expansion": "assumption.market_expansion"
+      }
+    }
+  }
+}

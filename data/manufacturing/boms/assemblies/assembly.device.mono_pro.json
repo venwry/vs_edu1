@@ -1,0 +1,113 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.mono_pro",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.mono_pro",
+    "name": "Logix Mono Pro 14-inch",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.brimar_m36_141w_crt",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.mono_pro_controller",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.mono_pro_yoke",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.mono_pro_hv_deflection_psu",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.mono_pro_precision_ladder",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.mono_pro_video_amplifier",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.mono_pro_link_receiver",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.mono_pro_pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.mono_pro_enclosure",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.passives_protection_and_internal_harnesses",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.mono_pro.external_cable_and_regional_mains_packout",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

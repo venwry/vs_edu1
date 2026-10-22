@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.device.mono_monitor_2",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "device.mono_monitor_2",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.device.mono_monitor_2"
+    ],
+    "requirements": [
+      "Resolve tube-versus-module purchase boundary",
+      "specify readable 80-column raster and video bandwidth, receiver, controller/DAC/analog path, sync, mains/PSU, case and alignment. Qualify all claimed old/new host modes.",
+      "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+    ]
+  }
+}

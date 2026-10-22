@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.dram_16kbit",
+  "record_type": "component",
+  "data": {
+    "id": "part.dram_16kbit",
+    "name": "16 Kbit RAM chip",
+    "category": "memory_chip",
+    "origin": "historical_external_component",
+    "used_in": [
+      "computer.aurelia",
+      "device.aurelia_ram_16kb_card",
+      "part.artemis_ram_module_32kb_x16",
+      "part.artemis_ram_module_prototype"
+    ],
+    "vendor": "unspecified commercial DRAM supplier",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "specification": {
+      "capacity_kbit": 16,
+      "organization_words": 16384,
+      "data_width_bits": 1,
+      "package": null,
+      "manufacturer_part_number": null,
+      "access_time_ns": null,
+      "cycle_time_ns": null,
+      "supply_rails_v": null,
+      "refresh_requirement": null,
+      "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
+    },
+    "manufacturing_requirements": [
+      "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and production M32-16",
+      "the current list only names the prototype."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.dram_16kbit"
+    ]
+  }
+}

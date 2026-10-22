@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.bundle.aurelia_network_upgrade",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.bundle.aurelia_network_upgrade",
+    "name": "Aurelia networking upgrade",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "assembly.device.network_card_aurelia",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included accessory",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.media.software.cpm_aurelia_networking",
+        "quantity": 1,
+        "unit": "each",
+        "role": "physical software delivery only; license separate",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.bundle.aurelia_network_upgrade.bundle_cables_media_manuals_and_carton_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "avoid double counting accessory supplied cables",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "NIC plus named OS upgrade medium and installation materials; decide included network cable and any required RAM upgrade. No new host, no implicit hub."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

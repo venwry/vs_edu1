@@ -1,0 +1,3228 @@
+{
+  "schema_version": "1.0.0",
+  "source_commit": "d7720e909ba28060538dfc5f9c7d50ff832f0eb6",
+  "documents": {
+    "generated/catalogs/artemis-budget-inputs.json": {
+      "$merge": [
+        {
+          "$source": "data/business/assumptions/document.artemis_budget_inputs.json"
+        }
+      ]
+    },
+    "generated/catalogs/artemis-display-revision.json": {
+      "$merge": [
+        {
+          "$source": "data/business/assumptions/document.artemis_display_revision.json"
+        }
+      ]
+    },
+    "generated/catalogs/artemis-tiers.json": {
+      "$merge": [
+        {
+          "$source": "data/hardware/configurations/document.artemis_tiers.json"
+        },
+        {
+          "$source": "data/business/demand/document.artemis_tiers.json"
+        }
+      ]
+    },
+    "generated/catalogs/athena-1983-program.json": {
+      "$merge": [
+        {
+          "$source": "data/programs/document.athena_1983_program.json"
+        },
+        {
+          "$source": "data/timeline/releases/document.athena_1983_program.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/programs/document.athena_1983_program.json"
+        },
+        {
+          "$source": "data/evidence/document.athena_1983_program.json"
+        }
+      ]
+    },
+    "generated/catalogs/aurelia-1978-campaign.json": {
+      "$merge": [
+        {
+          "$source": "data/marketing/campaigns/document.aurelia_1978_campaign.json"
+        },
+        {
+          "$source": "data/business/marketing/document.aurelia_1978_campaign.json"
+        }
+      ]
+    },
+    "generated/catalogs/aurelia-plus-aion-memory.json": {
+      "$merge": [
+        {
+          "$source": "data/programs/document.aurelia_plus_aion_memory.json"
+        },
+        {
+          "$source": "data/hardware/configurations/document.aurelia_plus_aion_memory.json"
+        },
+        {
+          "$source": "data/business/demand/document.aurelia_plus_aion_memory.json"
+        }
+      ]
+    },
+    "generated/catalogs/comdex-1979-campaign.json": {
+      "$merge": [
+        {
+          "$source": "data/marketing/campaigns/document.comdex_1979_campaign.json"
+        },
+        {
+          "$source": "data/business/marketing/document.comdex_1979_campaign.json"
+        }
+      ]
+    },
+    "generated/catalogs/comdex-1982-campaign.json": {
+      "$merge": [
+        {
+          "$source": "data/marketing/campaigns/document.comdex_1982_campaign.json"
+        },
+        {
+          "$source": "data/business/marketing/document.comdex_1982_campaign.json"
+        }
+      ]
+    },
+    "generated/catalogs/comdex-1982-cost-inputs.json": {
+      "$merge": [
+        {
+          "$source": "data/business/assumptions/document.comdex_1982_cost_inputs.json"
+        }
+      ]
+    },
+    "generated/catalogs/ecosystem-forecast-policy.json": {
+      "$merge": [
+        {
+          "$source": "data/business/assumptions/document.ecosystem_forecast_policy.json"
+        }
+      ]
+    },
+    "generated/catalogs/hardware-bom.json": {
+      "metadata": {
+        "$source": "data/manufacturing/boms/bom.metadata.json"
+      },
+      "components": [
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.z80a.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.z80b.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.era1.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.dram_16kbit.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.dram_64kbit.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_128kb.module_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_128kb.module_connector_contacts.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_128kb.capacity_identification_straps.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.flexibus_host_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.flexibus_device_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.aurelia_video_chip.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.aurelia_monitor_dac.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.color_monitor_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.mono_monitor2_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_dma.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_mmu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_graphics_chip.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_fdd_hdd_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.ball_tv90_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.sony_kv1204_display_assembly.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.motorola_ds3000_140a_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.medium_resolution_rgb_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.mpi_mp40_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.hdd_5mb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_32kb_x16.module_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_32kb_x16.module_connector_contacts.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_32kb_x16.decoupling_and_bulk_capacitors.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_32kb_x16.data_buffers_and_byte_enable_logic.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_ram_module_32kb_x16.capacity_identification_straps.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.key_switches.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.keycaps.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.matrix_diodes.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.scan_controller_and_firmware_storage.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.flexibus_interface_electronics.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.keyboard_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.keyboard_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.keyboard_cable.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexibus_keyboard.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_1.video_receiver_and_sync_circuitry.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_1.video_amplifier.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_1.hv_deflection_and_psu_not_included_by_oem.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_1.monitor_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_1.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_1.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_1.video_link_receiver.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_1.rgb_dac_and_amplifiers_not_included_by_oem.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_1.monitor_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_1.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_1.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_2.video_link_receiver_and_grayscale_amplifier.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_2.hv_deflection_and_psu_not_included_by_oem.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_2.monitor_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_2.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_monitor_2.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_2.video_receiver_and_rgb_amplifiers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_2.hv_deflection_and_psu_not_included_by_oem.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_2.monitor_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_2.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_monitor_2.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.aurelia_ram_16kb_card.ram_card_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.aurelia_ram_16kb_card.slot_connector_contacts.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.aurelia_ram_16kb_card.mapper_decode_and_refresh_interface.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.aurelia_ram_16kb_card.identification_storage_and_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.aurelia_ram_16kb_card.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.aurelia_ram_16kb_card.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexiprint40.motor_and_printhead_drivers_excluded_by_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexiprint40.local_sequencer_firmware_font_rom_and_buffer_ram.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexiprint40.printer_psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexiprint40.printer_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexiprint40.initial_ribbon.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexiprint40.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexiprint40.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk.525_inch_floppy_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk.floppy_controller_and_data_separator.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk.local_firmware_processor_and_sector_ram.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk.drive_psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk.drive_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_expansion_card.apple_ii_card_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_expansion_card.host_bus_decode_and_buffering.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_expansion_card.boot_and_driver_rom.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_expansion_card.disk_ii_sequencer_interface.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_expansion_card.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_expansion_card.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk_ii.525_inch_dual_format_floppy_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk_ii.aurelia_and_apple_ii_format_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk_ii.local_firmware_processor_and_sector_ram.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk_ii.drive_psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk_ii.drive_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk_ii.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.flexidisk_ii.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_cpm80_module.local_64_kib_ram_implementation.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_cpm80_module.local_refresh_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_cpm80_module.boot_rom_or_host_upload_implementation.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_cpm80_module.mailbox_window_arbitration_and_doorbells.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_cpm80_module.bus_width_conversion_and_clock_reset.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_cpm80_module.compatibility_card_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_cpm80_module.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_cpm80_module.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_aurelia.network_card_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_aurelia.z80_host_interface.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_aurelia.network_controller_framing_crc_and_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_aurelia.firmware_rom.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_aurelia.differential_data_and_clock_transceivers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_aurelia.network_port_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_aurelia.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_aurelia.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_artemis.network_card_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_artemis.32_bit_slot_interface_and_pio_dma_selection.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_artemis.network_controller_framing_crc_and_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_artemis.firmware_rom.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_artemis.differential_data_and_clock_transceivers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_artemis.network_port_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_artemis.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_card_artemis.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.network_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.per_port_transceiver_termination_and_protection_assembly.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.shared_arbiter_clock_and_firmware.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.4_port_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.4_port_psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.4_port_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.8_port_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.8_port_psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.8_port_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.16_port_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.16_port_psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.network_hub.16_port_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_ram_64kb_bank_kit.kit_packout_and_instructions.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_ram_256kb_bank_kit.kit_packout_and_instructions.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.floppy_controller_data_separator_and_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.mainboard_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.enclosure_and_chassis.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.boot_rom_chips.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.clock_reset_interrupts_and_bus_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.connectors_passives_fasteners_and_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.525_inch_single_density_floppy_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.floppy_controller_data_separator_and_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.mainboard_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.enclosure_and_chassis.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.boot_rom_chips.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.525_inch_double_density_floppy_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis.paired_bank_dram_controller_refresh_and_data_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis.mainboard_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis.psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis.enclosure_and_chassis.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis.boot_rom_chips.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis.clock_reset_interrupts_mapper_and_bus_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis.connectors_passives_fasteners_and_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis.525_inch_double_density_floppy_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis_pro.paired_bank_dram_controller_refresh_and_data_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis_pro.mainboard_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis_pro.psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis_pro.enclosure_and_chassis.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis_pro.boot_rom_chips.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis_pro.clock_reset_interrupts_mapper_and_bus_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis_pro.connectors_passives_fasteners_and_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.artemis_pro.525_inch_double_density_floppy_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.cpm_aurelia.rom_eprom_eeprom_or_media_selection.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.cpm_aurelia.cartridge_pcb_and_connector_if_cartridge_delivered.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.cpm_aurelia.cartridge_shell_label_and_instructions.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.business_tools_aurelia.rom_eprom_eeprom_or_media_selection.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.business_tools_aurelia.cartridge_pcb_and_connector_if_cartridge_delivered.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.business_tools_aurelia.cartridge_shell_label_and_instructions.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.aionix.rom_eprom_eeprom_or_media_selection.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.aionix.cartridge_pcb_and_connector_if_cartridge_delivered.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.aionix.cartridge_shell_label_and_instructions.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.business_tools_artemis.rom_eprom_eeprom_or_media_selection.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.business_tools_artemis.cartridge_pcb_and_connector_if_cartridge_delivered.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.business_tools_artemis.cartridge_shell_label_and_instructions.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.aionix_server.rom_eprom_eeprom_or_media_selection.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.aionix_server.cartridge_pcb_and_connector_if_cartridge_delivered.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.aionix_server.cartridge_shell_label_and_instructions.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.cpm_aurelia_networking.rom_eprom_eeprom_or_media_selection.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.cpm_aurelia_networking.cartridge_pcb_and_connector_if_cartridge_delivered.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.software.cpm_aurelia_networking.cartridge_shell_label_and_instructions.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.aurelia_mono.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.aurelia_color.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.aurelia_plus_mono.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.aurelia_plus_color.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.artemis_128_mono.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.artemis_256_mono.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.artemis_256_color.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.aurelia_network_upgrade.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.artemis_network_upgrade.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.artemis_pro_512_server.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.bundle.artemis_pro_1mb_server.bundle_cables_media_manuals_and_carton_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.aion_4116.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_flexibus_card.s100_expansion_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_flexibus_card.s100_host_interface.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_flexibus_card.boot_and_driver_rom.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_flexibus_card.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_flexibus_card.slot_connector_contacts.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_flexibus_card.flexibus_two_port_transceivers_connectors.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.apple_expansion_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.apple_host_interface.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.boot_and_driver_rom.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.slot_connector_contacts.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.video_ram_window_and_bus_arbitration.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.video_clock_reset.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.digital_video_transceivers_and_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.s100_expansion_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.s100_host_interface.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.boot_and_driver_rom.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.slot_connector_contacts.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.video_ram_window_and_bus_arbitration.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.video_clock_reset.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.digital_video_transceivers_and_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_expansion_card.flexibus_two_port_transceivers_connectors.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.aion_2114.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.aurelia_system_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.sprite_interface_package_pcb_test.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia.system_controller_interface_pcb_test.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.sprite_interface_package_pcb_test.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.computer.aurelia_plus.system_controller_interface_pcb_test.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.apple2_video_card.sprite_interface_package_pcb_test.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.s100_video_card.sprite_interface_package_pcb_test.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.brimar_m36_141w_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.mono_pro_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card.artemis_video_card_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card.artemis_video_slot_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card.artemis_video_host_interface.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card.artemis_video_clock_transceivers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.mono_pro_yoke.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.mono_pro_hv_deflection_psu.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.mono_pro_precision_ladder.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.mono_pro_video_amplifier.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.mono_pro_link_receiver.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.mono_pro_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.mono_pro_enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.passives_protection_and_internal_harnesses.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro.external_cable_and_regional_mains_packout.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.aion_4164.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card_16kb.economy_video_byte_bridge.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.artemis_graphics_chip_64kb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.color_pro_monitor_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.professional_graphics_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.mono_pro_17_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.nec_pc8853_display_assembly.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card_64kb.pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card_64kb.slot_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card_64kb.host_buffers_byte_enables.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card_64kb.clock_fifo_transceivers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_video_card_64kb.passives_power_filtering.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_pro_14.rgb_dac_amplifiers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_pro_14.digital_receiver_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_pro_14.timing_adaptation_components.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_pro_14.enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.color_pro_14.cables_regional_mains.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.logix_mouse.ball_xy_encoder_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.logix_mouse.two_roller_encoders_detents.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.logix_mouse.two_button_switches.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.logix_mouse.pcb_mcu_firmware.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.logix_mouse.enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.logix_mouse.cable_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.logix_mouse.passives_protection.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.logix_mouse.driver_disks_quickstart.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_professional_video_128kb.pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_professional_video_128kb.slot_connector.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_professional_video_128kb.host_dma_arbitration_buffers.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_professional_video_128kb.line_fifo_clock_link.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.artemis_professional_video_128kb.passives_power_filtering.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro_17.oem_17inch_core.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro_17.deflection_60hz_upgrade.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro_17.grayscale_dac_linear_amplifier.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro_17.highspeed_link_pcb.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro_17.enclosure.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.device.mono_pro_17.cables_regional_mains.json"
+        }
+      ],
+      "assemblies": [
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.z80a.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.z80b.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.era1.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.dram_16kbit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.dram_64kbit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_ram_module_128kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.flexibus_host_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.flexibus_device_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.aurelia_video_chip.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.aurelia_monitor_dac.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.color_monitor_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.mono_monitor2_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_dma.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_mmu.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_graphics_chip.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_fdd_hdd_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.ball_tv90_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.sony_kv1204_display_assembly.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.motorola_ds3000_140a_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.medium_resolution_rgb_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.mpi_mp40_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.hdd_5mb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_ram_module_32kb_x16.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.flexibus_keyboard.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.mono_monitor_1.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.color_monitor_1.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.mono_monitor_2.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.color_monitor_2.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.aurelia_ram_16kb_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.flexiprint40.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.flexidisk.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.apple2_expansion_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.flexidisk_ii.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_cpm80_module.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.network_card_aurelia.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.network_card_artemis.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.network_hub.4_port.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.network_hub.8_port.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.network_hub.16_port.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_ram_64kb_bank_kit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_ram_256kb_bank_kit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.aurelia.base.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.aurelia_plus.base.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.base.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_128.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_128.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_192.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_192.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_256.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_256.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m128_256.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m128_256.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m128_512.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m128_512.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m128_768.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m128_768.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m128_1024.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m128_1024.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis_pro.base.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis_pro.m128_512.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis_pro.m128_768.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis_pro.m128_1024.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.media.software.cpm_aurelia.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.media.software.business_tools_aurelia.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.media.software.aionix.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.media.software.business_tools_artemis.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.media.software.aionix_server.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.media.software.cpm_aurelia_networking.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.aurelia_mono.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.aurelia_color.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.aurelia_plus_mono.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.aurelia_plus_color.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_128_mono.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_128_mono.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_128_color.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_128_color.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_256_color.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_256_color.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.aurelia_network_upgrade.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_network_upgrade.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_pro_512_server.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_pro_1mb_server.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.aion_4116.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.s100_flexibus_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.apple2_video_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.s100_video_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.aion_2114.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.aurelia_system_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.brimar_m36_141w_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.mono_pro_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_video_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.mono_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_256_mono_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_256_mono_pro.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_pro_512_mono_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_pro_1mb_mono_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.aion_4164.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_ram_module_128kb_aion.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_video_card_16kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_graphics_chip_64kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.color_pro_monitor_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.professional_graphics_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.mono_pro_17_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.nec_pc8853_display_assembly.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_video_card_64kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.color_pro_14.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.logix_mouse.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_professional_video_128kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.mono_pro_17.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_professional_video_128kb.comdex82.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.device.mono_pro_17.comdex82.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_budget_128.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_budget_128_hdd.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_budget_128.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_budget_128_hdd.networked.json"
+        }
+      ],
+      "products": [
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.computer.aurelia.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.computer.aurelia_plus.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.computer.artemis.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.computer.artemis_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.flexibus_keyboard.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.mono_monitor_1.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.color_monitor_1.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.mono_monitor_2.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.color_monitor_2.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.aurelia_ram_16kb_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.flexiprint40.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.flexidisk.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.apple2_expansion_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.flexidisk_ii.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_cpm80_module.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_ram_64kb_module.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.network_card_aurelia.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.network_card_artemis.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.network_hub.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_ram_64kb_bank_kit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_ram_256kb_bank_kit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.z80a.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.z80b.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.era1.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.dram_16kbit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.dram_64kbit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.dram_128kbit.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_prototype.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_64kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_128kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.flexibus_host_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.flexibus_device_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.aurelia_video_chip.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.aurelia_monitor_dac.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.color_monitor_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.mono_monitor2_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_dma.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_mmu.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_graphics_chip.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_fdd_hdd_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.ball_tv90_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.sony_kv1204_display_assembly.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.motorola_ds3000_140a_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.medium_resolution_rgb_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.mpi_mp40_mechanism.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.hdd_5mb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_32kb_x16.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.aion_4116.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.s100_flexibus_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.apple2_video_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.s100_video_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.aion_2114.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.aurelia_system_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_video_card.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.mono_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.brimar_m36_141w_crt.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.mono_pro_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.aion_4164.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_128kb_aion.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_video_card_16kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_graphics_chip_64kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.color_pro_monitor_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.professional_graphics_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.mono_pro_17_controller.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.nec_pc8853_display_assembly.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_video_card_64kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.color_pro_14.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.logix_mouse.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_professional_video_128kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.device.mono_pro_17.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.era2.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.aion_4164_2um.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.athena_ram_module_128kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.athena_ram_module_256kb.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.computer.athena.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.computer.athena_server.json"
+        }
+      ],
+      "offers": [
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.aurelia_mono.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.aurelia_color.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.aurelia_plus_mono.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.aurelia_plus_color.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_128_mono.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_128_color.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_256_color.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.aurelia_network_upgrade.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_network_upgrade.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_pro_512_server.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_pro_1mb_server.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_256_mono_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_pro_512_mono_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_pro_1mb_mono_pro.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_budget_128.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/offers/bom.offers.bundle.artemis_budget_128_hdd.json"
+        }
+      ],
+      "open_decisions": {
+        "$source": "data/manufacturing/boms/bom.open_decisions.json"
+      },
+      "costing_inputs": {
+        "$source": "data/manufacturing/boms/bom.costing_inputs.json"
+      },
+      "proposed_offer_refs": {
+        "$source": "data/manufacturing/boms/bom.proposed_offer_refs.json"
+      },
+      "supplier_programs": [
+        {
+          "$source": "data/manufacturing/sourcing/supplier.smc.json"
+        }
+      ]
+    },
+    "generated/catalogs/logix-aion-story.json": {
+      "assumptions": {
+        "scenario": {
+          "$source": "data/world/world.scenario.json"
+        },
+        "entities": [
+          {
+            "$source": "data/world/actors/actor.adam.json"
+          },
+          {
+            "$source": "data/world/actors/actor.original_adam.json"
+          },
+          {
+            "$source": "data/world/actors/actor.logix.json"
+          },
+          {
+            "$source": "data/world/actors/actor.labs.json"
+          },
+          {
+            "$source": "data/world/actors/actor.aion.json"
+          },
+          {
+            "$source": "data/world/actors/actor.academy.json"
+          },
+          {
+            "$source": "data/world/actors/actor.bpi.json"
+          },
+          {
+            "$source": "data/world/actors/actor.dri.json"
+          },
+          {
+            "$source": "data/world/actors/actor.microsoft.json"
+          },
+          {
+            "$source": "data/world/actors/actor.apple.json"
+          },
+          {
+            "$source": "data/world/actors/actor.ibm.json"
+          },
+          {
+            "$source": "data/world/actors/actor.peachtree.json"
+          },
+          {
+            "$source": "data/world/actors/actor.mpi.json"
+          },
+          {
+            "$source": "data/world/actors/actor.computerland.json"
+          },
+          {
+            "$source": "data/world/actors/actor.letwin.json"
+          },
+          {
+            "$source": "data/world/actors/actor.paterson.json"
+          },
+          {
+            "$source": "data/world/actors/actor.kildall.json"
+          },
+          {
+            "$source": "data/world/actors/actor.others.json"
+          },
+          {
+            "$source": "data/world/actors/actor.customers.json"
+          },
+          {
+            "$source": "data/world/actors/actor.dorothy.json"
+          },
+          {
+            "$source": "data/world/actors/actor.smc.json"
+          },
+          {
+            "$source": "data/world/actors/actor.tandy.json"
+          },
+          {
+            "$source": "data/world/actors/actor.northstar.json"
+          },
+          {
+            "$source": "data/world/actors/actor.vector.json"
+          },
+          {
+            "$source": "data/world/actors/actor.sks.json"
+          },
+          {
+            "$source": "data/world/actors/actor.goupil.json"
+          },
+          {
+            "$source": "data/world/actors/actor.eina.json"
+          },
+          {
+            "$source": "data/world/actors/actor.sgs.json"
+          },
+          {
+            "$source": "data/world/actors/actor.aion_tech_uk.json"
+          },
+          {
+            "$source": "data/world/actors/actor.autodesk.json"
+          }
+        ],
+        "principles": {
+          "$source": "data/world/world.principles.json"
+        },
+        "conventions": {
+          "$source": "data/world/world.conventions.json"
+        }
+      },
+      "phases": [
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.foundations.json"
+            },
+            {
+              "events": [
+                {
+                  "$source": "data/timeline/events/event.identity.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.lottery.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.us_nyse_start.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.office.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.dri_founding.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.dri_founding.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.power.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.prepare_aurelia.json"
+            },
+            {
+              "events": [
+                {
+                  "$source": "data/timeline/events/event.companies.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.facility.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.dri_cpm.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.dri_cpm.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.bpi_offer.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.bpi_offer.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.bpi_cooperation.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.letwin.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.paterson.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.mpi.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.aionix_preliminary.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.retail.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.retail.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.bpi_pilot.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.academy.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.aurelia_campaign_teaser.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.aurelia_campaign_advert.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.aurelia_campaign_preparation.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.bpi_qualification.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.ncc78.json"
+            },
+            {
+              "events": [
+                {
+                  "$source": "data/timeline/events/event.aurelia_launch.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.bpi_launch.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc78_sessions_media.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.bpi_training.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.smc_agreement.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.smc_agreement.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.apple_business_initiative.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.bpi_dealer_program.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.aionix_agreement.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.aionix_agreement.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.apple_dealer_demos.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.apple_search.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.bpi_year_end.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.tandy_contact.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.dri_portable.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.tandy_agreement.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.tandy_agreement.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.tandy_design_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.stepper_order.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.bpi_expansion.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.apple_peachtree.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.apple_cooperation.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.apple_cooperation.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.tandy_port_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.oem79_briefings.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.apple_business_promotions.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.dri_release.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.open79_profiles.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.open79_workshop.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.tandy_announcement.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.ncc79.json"
+            },
+            {
+              "events": [
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.apple_extensions.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.apple_extensions.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.basic_launch.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.tandy_ncc_demo.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc79_campaign.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.cpm_bridge.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.artemis_software.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ibm_investigate.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.open79_roadshows.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.stepper_accept.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.apple_compatibility_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.smc_sales.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.tandy_release.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.open79_delivery.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.pilot_275.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.comdex79.json"
+            },
+            {
+              "events": [
+                {
+                  "$source": "data/timeline/events/event.plus_launch.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.ibm_project.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.ibm_project.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.open79_targets.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.open80_results.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ibm_os_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.apple_business.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.tandy_response.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.ncc80.json"
+            },
+            {
+              "events": [
+                {
+                  "$source": "data/timeline/events/event.artemis_launch.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.production_275.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.dram_control_release.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.native_validation.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ibm_os_program.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.adapter_response.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.artemis_budget_range.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.comdex80.json"
+            },
+            {
+              "events": [
+                {
+                  "$source": "data/timeline/events/event.software32.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.team_engineering.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.financial_review_1980.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.dram_repair_release.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.capacity_orders_1982.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.portable_cpm_pressure.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_contacts.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.sgs_contacts.json"
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.clone_agreement_northstar.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.clone_agreement_northstar.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.clone_agreement_vector.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.clone_agreement_vector.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.clone_agreement_sks.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.clone_agreement_sks.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.clone_agreement_goupil.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.clone_agreement_goupil.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.clone_agreement_eina.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.clone_agreement_eina.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$merge": [
+                    {
+                      "$source": "data/timeline/events/event.sgs_transfer_agreement.json"
+                    },
+                    {
+                      "agreement_terms": {
+                        "$source": "data/commercial/contracts/event.sgs_transfer_agreement.json"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_design_freeze.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.ncc81.json"
+            },
+            {
+              "events": [
+                {
+                  "$source": "data/timeline/events/event.network_launch.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.dram_275_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.network_pilots.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.recession_response.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ibm_qualification.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.pilot_2.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.team_pilots.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.team_dealer_training.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.unix_competition.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.aion_tech_uk_setup.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_engineering_pilots.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.sgs_controller_gate.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_customer_pilots.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "$merge": [
+            {
+              "$source": "data/timeline/phases/phase.manufacturing_1981_1983.json"
+            },
+            {
+              "events": [
+                {
+                  "$source": "data/timeline/events/event.team_launch.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_campaign_preview.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.team_followup.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_release_gate.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.financial_review_1981.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.dri_68k_program.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_january_launch.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.autodesk_agreement.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_campaign_roadshows.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.x86_protection_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ibm_alternative_launch.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc82_dealer_preparation.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.clone_90day_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.autodesk_incorporation.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc82_press_preview.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.tandy_68k_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.autodesk_professional_handover.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.production_2.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc82_graphics_mouse.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc82_developer_sessions.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc82_followup.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.cost_review_1982.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.dram_2_release.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc82_case_studies.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.application_competition.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.autodesk_beta.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.comdex82_dealer_readiness.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.peak_readiness.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.comdex82_press_invitations.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.autodesk_comdex.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.comdex82_customer_followup.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.mature_2.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.compatibility_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.financial_review_1982.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.comdex82_reference_cases.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.pilot_15.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.ncc83_athena_premiere.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.athena_production_review.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.production_15.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.dram_15_release.json"
+                },
+                {
+                  "$source": "data/timeline/events/event.mature_15.json"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "processes": [
+        {
+          "$source": "data/timeline/processes/process.economics_studies.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.apple_compatibility.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.artemis_engineering.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.stepper_install.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.process_275.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.dram_repair.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.process_2.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.process_15.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.clone_product_preparation.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.clone_localisation.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.sgs_transfer.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.clone_channel_readiness.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.clone_launch_campaign.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.era2_development.json"
+        },
+        {
+          "$source": "data/timeline/processes/process.athena_integration.json"
+        }
+      ]
+    },
+    "generated/catalogs/logix-aion-technical-catalog-v2.json": {
+      "metadata": {
+        "$source": "data/catalog/catalog.metadata.json"
+      },
+      "technologies": [
+        {
+          "$source": "data/standards/technology.flexibus.json"
+        },
+        {
+          "$source": "data/standards/technology.plug_and_execute.json"
+        },
+        {
+          "$source": "data/standards/technology.xip_rom_platform.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_digital_video.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_tui_standard.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_tui_keyboard_standard.json"
+        },
+        {
+          "$source": "data/standards/technology.abacus_sparse_model.json"
+        },
+        {
+          "$source": "data/standards/technology.pulse_notebook_model.json"
+        },
+        {
+          "$source": "data/standards/technology.aion_c_portability_framework.json"
+        },
+        {
+          "$source": "data/standards/technology.era1_isa.json"
+        },
+        {
+          "$source": "data/standards/technology.artemis_memory_model.json"
+        },
+        {
+          "$source": "data/standards/technology.aionix_os_model.json"
+        },
+        {
+          "$source": "data/standards/technology.cpm80_virtual_peripheral_bridge.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_tcpip_lan.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_lan100_link.json"
+        },
+        {
+          "$source": "data/standards/technology.bpi_relational_database.json"
+        },
+        {
+          "$source": "data/standards/technology.aurelia_memory_model.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_c_api.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_display_api.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_c_target_contract.json"
+        },
+        {
+          "$source": "data/manufacturing/processes/technology.nmos_3um.json"
+        },
+        {
+          "$source": "data/manufacturing/processes/technology.nmos_275um.json"
+        },
+        {
+          "$source": "data/manufacturing/processes/technology.nmos_2um.json"
+        },
+        {
+          "$source": "data/manufacturing/processes/technology.nmos_15um.json"
+        },
+        {
+          "$source": "data/standards/technology.abacus_formatted_tables.json"
+        },
+        {
+          "$source": "data/standards/technology.abacus_embedded_pulse.json"
+        },
+        {
+          "$source": "data/standards/technology.scanline_palette_list.json"
+        },
+        {
+          "$source": "data/standards/technology.flexibus_pointing_device.json"
+        },
+        {
+          "$source": "data/standards/technology.logix_tui_mouse.json"
+        },
+        {
+          "$source": "data/standards/technology.artemis_professional_graphics.json"
+        },
+        {
+          "$source": "data/standards/technology.era2_architecture.json"
+        }
+      ],
+      "base_parts": [
+        {
+          "$source": "data/hardware/components/part.z80a.json"
+        },
+        {
+          "$source": "data/hardware/components/part.z80b.json"
+        },
+        {
+          "$source": "data/hardware/components/part.era1.json"
+        },
+        {
+          "$source": "data/hardware/components/part.dram_16kbit.json"
+        },
+        {
+          "$source": "data/hardware/components/part.dram_64kbit.json"
+        },
+        {
+          "$source": "data/hardware/components/part.dram_128kbit.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_ram_module_prototype.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_ram_module_64kb.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_ram_module_128kb.json"
+        },
+        {
+          "$source": "data/hardware/components/part.flexibus_host_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.flexibus_device_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.aurelia_video_chip.json"
+        },
+        {
+          "$source": "data/hardware/components/part.aurelia_monitor_dac.json"
+        },
+        {
+          "$source": "data/hardware/components/part.color_monitor_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.mono_monitor2_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_dma.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_mmu.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_graphics_chip.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_fdd_hdd_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.ball_tv90_crt.json"
+        },
+        {
+          "$source": "data/hardware/components/part.sony_kv1204_display_assembly.json"
+        },
+        {
+          "$source": "data/hardware/components/part.motorola_ds3000_140a_crt.json"
+        },
+        {
+          "$source": "data/hardware/components/part.medium_resolution_rgb_crt.json"
+        },
+        {
+          "$source": "data/hardware/components/part.mpi_mp40_mechanism.json"
+        },
+        {
+          "$source": "data/hardware/components/part.hdd_5mb.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_ram_module_32kb_x16.json"
+        },
+        {
+          "$source": "data/hardware/components/part.aion_4116.json"
+        },
+        {
+          "$source": "data/hardware/components/part.aion_2114.json"
+        },
+        {
+          "$source": "data/hardware/components/part.aurelia_system_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.brimar_m36_141w_crt.json"
+        },
+        {
+          "$source": "data/hardware/components/part.mono_pro_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.aion_4164.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_ram_module_128kb_aion.json"
+        },
+        {
+          "$source": "data/hardware/components/part.artemis_graphics_chip_64kb.json"
+        },
+        {
+          "$source": "data/hardware/components/part.nec_pc8853_display_assembly.json"
+        },
+        {
+          "$source": "data/hardware/components/part.color_pro_monitor_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.professional_graphics_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.mono_pro_17_controller.json"
+        },
+        {
+          "$source": "data/hardware/components/part.era2.json"
+        },
+        {
+          "$source": "data/hardware/components/part.aion_4164_2um.json"
+        },
+        {
+          "$source": "data/hardware/components/part.athena_ram_module_128kb.json"
+        },
+        {
+          "$source": "data/hardware/components/part.athena_ram_module_256kb.json"
+        }
+      ],
+      "devices": [
+        {
+          "$source": "data/hardware/peripherals/device.flexibus_keyboard.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.mono_monitor_1.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.color_monitor_1.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.mono_monitor_2.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.color_monitor_2.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.aurelia_ram_16kb_card.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.flexiprint40.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.flexidisk.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.apple2_expansion_card.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.flexidisk_ii.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.artemis_cpm80_module.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.artemis_ram_64kb_module.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.network_card_aurelia.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.network_card_artemis.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.network_hub.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.artemis_ram_64kb_bank_kit.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.artemis_ram_256kb_bank_kit.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.s100_flexibus_card.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.apple2_video_card.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.s100_video_card.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.artemis_video_card.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.mono_pro.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.artemis_video_card_16kb.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.artemis_video_card_64kb.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.color_pro_14.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.logix_mouse.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.artemis_professional_video_128kb.json"
+        },
+        {
+          "$source": "data/hardware/peripherals/device.mono_pro_17.json"
+        }
+      ],
+      "computers": [
+        {
+          "$source": "data/hardware/computers/computer.aurelia.json"
+        },
+        {
+          "$source": "data/hardware/computers/computer.aurelia_plus.json"
+        },
+        {
+          "$source": "data/hardware/computers/computer.artemis.json"
+        },
+        {
+          "$source": "data/hardware/computers/computer.artemis_pro.json"
+        },
+        {
+          "$source": "data/hardware/computers/computer.athena.json"
+        },
+        {
+          "$source": "data/hardware/computers/computer.athena_server.json"
+        }
+      ],
+      "software_products": [
+        {
+          "$source": "data/software/operating-systems/software.cpm_aurelia.json"
+        },
+        {
+          "$source": "data/software/applications/software.business_tools_aurelia.json"
+        },
+        {
+          "$source": "data/software/applications/software.abacus_1.json"
+        },
+        {
+          "$source": "data/software/development-tools/software.simple_c_z80.json"
+        },
+        {
+          "$source": "data/software/development-tools/software.aurelia_sdk.json"
+        },
+        {
+          "$source": "data/software/applications/software.bpi_suite.json"
+        },
+        {
+          "$source": "data/software/applications/software.microsoft_basic_aurelia.json"
+        },
+        {
+          "$source": "data/software/development-tools/software.pulse_1.json"
+        },
+        {
+          "$source": "data/software/applications/software.abacus_2.json"
+        },
+        {
+          "$source": "data/software/operating-systems/software.aionix.json"
+        },
+        {
+          "$source": "data/software/applications/software.business_tools_artemis.json"
+        },
+        {
+          "$source": "data/software/development-tools/software.aion_c_ide.json"
+        },
+        {
+          "$source": "data/software/development-tools/software.artemis_sdk.json"
+        },
+        {
+          "$source": "data/software/applications/software.abacus_3.json"
+        },
+        {
+          "$source": "data/software/applications/software.pulse_3.json"
+        },
+        {
+          "$source": "data/software/operating-systems/software.aionix_server.json"
+        },
+        {
+          "$source": "data/software/applications/software.bpi_client_server.json"
+        },
+        {
+          "$source": "data/software/operating-systems/software.cpm_aurelia_networking.json"
+        },
+        {
+          "$source": "data/software/development-tools/software.aurelia_compatibility_kit.json"
+        },
+        {
+          "$source": "data/software/development-tools/software.aion_development_team.json"
+        },
+        {
+          "$source": "data/software/applications/software.entertainment_suite.json"
+        },
+        {
+          "$source": "data/software/development-tools/software.autocad_1_artemis.json"
+        },
+        {
+          "$source": "data/software/operating-systems/software.aionix2.json"
+        }
+      ],
+      "services": [
+        {
+          "$source": "data/commercial/services/service.customer_care.json"
+        },
+        {
+          "$source": "data/commercial/services/service.regular_support.json"
+        },
+        {
+          "$source": "data/commercial/services/service.professional_support.json"
+        },
+        {
+          "$source": "data/commercial/services/service.professional_business_onsite.json"
+        },
+        {
+          "$source": "data/commercial/services/service.academy_before_you_buy.json"
+        },
+        {
+          "$source": "data/commercial/services/service.academy_regular_courses.json"
+        },
+        {
+          "$source": "data/commercial/services/service.academy_customer_site.json"
+        },
+        {
+          "$source": "data/commercial/services/service.academy_direct_sales.json"
+        },
+        {
+          "$source": "data/commercial/services/service.pulse_training.json"
+        },
+        {
+          "$source": "data/commercial/services/service.bpi_training.json"
+        },
+        {
+          "$source": "data/commercial/services/service.aurelia_commercial_developer_license.json"
+        },
+        {
+          "$source": "data/commercial/services/service.artemis_commercial_developer_license.json"
+        },
+        {
+          "$source": "data/commercial/services/service.component_licensing.json"
+        },
+        {
+          "$source": "data/commercial/services/service.aurelia_compatibility_support.json"
+        },
+        {
+          "$source": "data/commercial/services/service.aurelia_compatibility_certification.json"
+        }
+      ],
+      "product_strategy": {
+        "$source": "data/programs/catalog.product_strategy.json"
+      },
+      "offered_bundles": [
+        {
+          "$source": "data/commercial/offers/bundle.aurelia_mono.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.aurelia_color.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.aurelia_plus_mono.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.aurelia_plus_color.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_128_mono.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_128_color.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_256_color.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.aurelia_network_upgrade.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_network_upgrade.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_pro_512_server.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_pro_1mb_server.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_256_mono_pro.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_pro_512_mono_pro.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_pro_1mb_mono_pro.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_budget_128.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.artemis_budget_128_hdd.json"
+        }
+      ],
+      "aurelia_explorer": {
+        "$source": "site/config/explorers/catalog.aurelia_explorer.json"
+      },
+      "proposed_bundles": [
+        {
+          "$source": "data/commercial/offers/bundle.proposed_aurelia_office.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.proposed_aurelia_accounts.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.proposed_aurelia_developer.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.proposed_aurelia_plus_office.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.proposed_aurelia_plus_accounts.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.proposed_aurelia_plus_developer.json"
+        },
+        {
+          "$source": "data/commercial/offers/bundle.proposed_aurelia_plus_analysis.json"
+        }
+      ],
+      "artemis_explorer": {
+        "$source": "site/config/explorers/catalog.artemis_explorer.json"
+      },
+      "platform_editions": [
+        {
+          "$source": "data/software/editions/edition.cpm_aurelia.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.business_tools_aurelia.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.abacus_1.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.abacus_2.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.simple_c_z80.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.aurelia_sdk.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.microsoft_basic_aurelia.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.bpi_suite.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.cpm_aurelia_networking.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.pulse_1.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.abacus_2.era.json"
+        },
+        {
+          "$source": "data/software/editions/edition.bpi_suite.era.json"
+        },
+        {
+          "$source": "data/software/editions/edition.business_tools_artemis.era.json"
+        },
+        {
+          "$source": "data/software/editions/edition.aion_c_ide.era.json"
+        },
+        {
+          "$source": "data/software/editions/edition.artemis_sdk.era.json"
+        },
+        {
+          "$source": "data/software/editions/edition.abacus_3.era.json"
+        },
+        {
+          "$source": "data/software/editions/edition.pulse_3.era.json"
+        },
+        {
+          "$source": "data/software/editions/edition.aionix.standard.json"
+        },
+        {
+          "$source": "data/software/editions/edition.aionix_server.server.json"
+        },
+        {
+          "$source": "data/software/editions/edition.bpi_client_server.z80_client.json"
+        },
+        {
+          "$source": "data/software/editions/edition.bpi_client_server.era_client.json"
+        },
+        {
+          "$source": "data/software/editions/edition.bpi_client_server.era_server.json"
+        },
+        {
+          "$source": "data/software/editions/edition.abacus_1.model_ii.json"
+        },
+        {
+          "$source": "data/software/editions/edition.aion_development_team.server.json"
+        },
+        {
+          "$source": "data/software/editions/edition.aion_development_team.era_client.json"
+        },
+        {
+          "$source": "data/software/editions/edition.aion_development_team.z80_client.json"
+        },
+        {
+          "$source": "data/software/editions/edition.entertainment_suite.z80.json"
+        },
+        {
+          "$source": "data/software/editions/edition.entertainment_suite.era.json"
+        },
+        {
+          "$source": "data/software/editions/edition.autocad_1_artemis.era.json"
+        }
+      ],
+      "review_scope": {
+        "$source": "data/evidence/catalog.review_scope.json"
+      },
+      "external_platforms": [
+        {
+          "$source": "data/hardware/computers/computer.trs80_model_ii.json"
+        }
+      ],
+      "external_partner_products": [
+        {
+          "$source": "data/software/operating-systems/software.cpm_model_ii.json"
+        },
+        {
+          "$source": "data/software/applications/device.model_ii_flexibus.json"
+        }
+      ],
+      "commercial_offerings": [
+        {
+          "$source": "data/commercial/offers/offer.comdex82_artemis_autocad.json"
+        }
+      ]
+    },
+    "generated/catalogs/manufacturing-programs.json": {
+      "$merge": [
+        {
+          "$source": "data/programs/document.manufacturing_programs.json"
+        },
+        {
+          "$source": "data/business/funding/document.manufacturing_programs.json"
+        }
+      ]
+    },
+    "generated/catalogs/market-reactions.json": {
+      "$merge": [
+        {
+          "$source": "data/evidence/document.market_reactions.json"
+        },
+        {
+          "$source": "data/timeline/reactions/document.market_reactions.json"
+        },
+        {
+          "$source": "data/business/demand/document.market_reactions.json"
+        }
+      ]
+    },
+    "generated/catalogs/memory-manufacturing.json": {
+      "$merge": [
+        {
+          "$source": "data/manufacturing/processes/document.memory_manufacturing.json"
+        },
+        {
+          "$source": "data/business/costs/document.memory_manufacturing.json"
+        },
+        {
+          "$source": "data/business/investment/document.memory_manufacturing.json"
+        },
+        {
+          "$source": "data/evidence/document.memory_manufacturing.json"
+        }
+      ]
+    },
+    "generated/catalogs/ncc-1979-campaign.json": {
+      "$merge": [
+        {
+          "$source": "data/marketing/campaigns/document.ncc_1979_campaign.json"
+        },
+        {
+          "$source": "data/business/marketing/document.ncc_1979_campaign.json"
+        }
+      ]
+    },
+    "generated/catalogs/ncc-1980-campaign.json": {
+      "$merge": [
+        {
+          "$source": "data/marketing/campaigns/document.ncc_1980_campaign.json"
+        }
+      ]
+    },
+    "generated/catalogs/ncc-1982-campaign.json": {
+      "$merge": [
+        {
+          "$source": "data/marketing/campaigns/document.ncc_1982_campaign.json"
+        },
+        {
+          "$source": "data/business/marketing/document.ncc_1982_campaign.json"
+        }
+      ]
+    },
+    "generated/catalogs/ncc-1982-inputs.json": {
+      "$merge": [
+        {
+          "$source": "data/business/assumptions/document.ncc_1982_inputs.json"
+        }
+      ]
+    },
+    "generated/catalogs/retail-catalog-1982.json": {
+      "$merge": [
+        {
+          "$source": "data/commercial/catalogs/document.retail_catalog_1982.json"
+        }
+      ]
+    },
+    "generated/catalogs/sales-model-inputs.json": {
+      "$merge": [
+        {
+          "$source": "data/business/assumptions/document.sales_model_inputs.json"
+        }
+      ]
+    },
+    "generated/catalogs/sales-reassessment-inputs.json": {
+      "$merge": [
+        {
+          "$source": "data/business/assumptions/document.sales_reassessment_inputs.json"
+        }
+      ]
+    },
+    "generated/catalogs/site-pages.json": {
+      "$merge": [
+        {
+          "$source": "site/config/document.site_pages.json"
+        }
+      ]
+    },
+    "generated/catalogs/team-development-program.json": {
+      "$merge": [
+        {
+          "$source": "data/programs/document.team_development_program.json"
+        },
+        {
+          "$source": "data/business/programs/document.team_development_program.json"
+        },
+        {
+          "$source": "data/commercial/services/document.team_development_program.json"
+        },
+        {
+          "$source": "data/marketing/campaigns/document.team_development_program.json"
+        }
+      ]
+    }
+  },
+  "paths": {
+    "artemis_budget_inputs.json": "generated/catalogs/artemis-budget-inputs.json",
+    "artemis_budget_review.json": "generated/models/artemis-budget-review.json",
+    "artemis_display_baseline.json": "baselines/artemis-display-baseline.json",
+    "artemis_display_impact.json": "generated/models/artemis-display-impact.json",
+    "artemis_display_revision.json": "generated/catalogs/artemis-display-revision.json",
+    "artemis_tiers.json": "generated/catalogs/artemis-tiers.json",
+    "athena_1983_program.json": "generated/catalogs/athena-1983-program.json",
+    "aurelia_1978_campaign.json": "generated/catalogs/aurelia-1978-campaign.json",
+    "aurelia_plus_aion_memory.json": "generated/catalogs/aurelia-plus-aion-memory.json",
+    "comdex_1979_campaign.json": "generated/catalogs/comdex-1979-campaign.json",
+    "comdex_1982_campaign.json": "generated/catalogs/comdex-1982-campaign.json",
+    "comdex_1982_cost_inputs.json": "generated/catalogs/comdex-1982-cost-inputs.json",
+    "comdex_1982_cost_review.json": "generated/models/comdex-1982-cost-review.json",
+    "compatibility_pricing_baseline.json": "baselines/compatibility-pricing-baseline.json",
+    "ecosystem_forecast.json": "generated/models/ecosystem-forecast.json",
+    "ecosystem_forecast_policy.json": "generated/catalogs/ecosystem-forecast-policy.json",
+    "hardware_bom.json": "generated/catalogs/hardware-bom.json",
+    "hardware_bom.schema.json": "schemas/legacy/hardware_bom.schema.json",
+    "industrial_investment_1974_1981.json": "generated/models/industrial-investment-1974-1981.json",
+    "logix_aion_story.json": "generated/catalogs/logix-aion-story.json",
+    "logix_aion_story.schema.json": "schemas/legacy/logix_aion_story.schema.json",
+    "logix_aion_technical_catalog_v2.json": "generated/catalogs/logix-aion-technical-catalog-v2.json",
+    "manufacturing_costs.json": "generated/models/manufacturing-costs.json",
+    "manufacturing_programs.json": "generated/catalogs/manufacturing-programs.json",
+    "manufacturing_review_1982.json": "generated/models/manufacturing-review-1982.json",
+    "market_outlook_1980_1982.json": "generated/models/market-outlook-1980-1982.json",
+    "market_reactions.json": "generated/catalogs/market-reactions.json",
+    "marketing_budget_1974_1980.json": "generated/models/marketing-budget-1974-1980.json",
+    "memory_manufacturing.json": "generated/catalogs/memory-manufacturing.json",
+    "memory_manufacturing_baseline.json": "baselines/memory-manufacturing-baseline.json",
+    "memory_manufacturing_impact.json": "generated/models/memory-manufacturing-impact.json",
+    "ncc_1979_campaign.json": "generated/catalogs/ncc-1979-campaign.json",
+    "ncc_1980_campaign.json": "generated/catalogs/ncc-1980-campaign.json",
+    "ncc_1982_campaign.json": "generated/catalogs/ncc-1982-campaign.json",
+    "ncc_1982_inputs.json": "generated/catalogs/ncc-1982-inputs.json",
+    "ncc_1982_review.json": "generated/models/ncc-1982-review.json",
+    "pricing_baseline.json": "baselines/pricing-baseline.json",
+    "pricing_results.json": "generated/models/pricing-results.json",
+    "quarterly_market_share.json": "generated/models/quarterly-market-share.json",
+    "retail_catalog_1982.json": "generated/catalogs/retail-catalog-1982.json",
+    "retail_catalog_1982_results.json": "generated/models/retail-catalog-1982-results.json",
+    "roi_1974_1980.json": "generated/models/roi-1974-1980.json",
+    "sales_forecast.json": "generated/models/sales-forecast.json",
+    "sales_model_inputs.json": "generated/catalogs/sales-model-inputs.json",
+    "sales_reassessment_inputs.json": "generated/catalogs/sales-reassessment-inputs.json",
+    "sales_roi_baseline_1982.json": "baselines/sales-roi-baseline-1982.json",
+    "site_pages.json": "generated/catalogs/site-pages.json",
+    "team_development_program.json": "generated/catalogs/team-development-program.json"
+  }
+}

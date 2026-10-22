@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.comdex82_customer_followup",
+  "record_type": "event",
+  "data": {
+    "id": "event.comdex82_customer_followup",
+    "title": "Professional CAD evaluations and delivery follow-up",
+    "event_type": "plan",
+    "date": {
+      "start": "1982-12",
+      "end": "1982-12"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.autodesk",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.academy",
+        "role": "programme_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix",
+          "actor.autodesk",
+          "actor.academy"
+        ],
+        "description": "Contact qualified prospects within five business days; quote explicit hardware/software configurations, perform acceptance and train early customers. Do not count an enquiry as a sale. Proposed marketing plan: comdex_1982_campaign.json."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "offer.comdex82_artemis_autocad"
+    ],
+    "related_event_refs": [
+      "event.autodesk_comdex"
+    ]
+  }
+}

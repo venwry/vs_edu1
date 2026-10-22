@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.network_card_aurelia",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.network_card_aurelia",
+    "name": "Logix Aurelia network card",
+    "category": "network_interface_card",
+    "compatible_with": [
+      "computer.aurelia",
+      "computer.aurelia_plus"
+    ],
+    "sold_with": [
+      "software.cpm_aurelia_networking"
+    ],
+    "introduced": {
+      "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+      "event_start_date": "1981-05-04"
+    },
+    "technology_refs": [
+      "technology.logix_lan100_link",
+      "technology.logix_tcpip_lan"
+    ],
+    "manufacturing_requirements": [
+      "Host bus/mapper interface, controller or sequencer, serial framing/CRC logic, RAM/FIFO, firmware ROM, differential data and clock transceivers, port connector, protection/termination and cable. Specify Z80 CPU-service latency and buffers",
+      "bind the supplied OS media and any RAM prerequisite to the kit BOM.",
+      "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.device.network_card_aurelia"
+    ],
+    "specification": {
+      "link_layer_ref": "technology.logix_lan100_link",
+      "platform_rate_profiles": [
+        {
+          "computer_ref": "computer.aurelia",
+          "supported_rates_kbps": [
+            100,
+            250
+          ],
+          "qualified_max_rate_kbps": 250
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "supported_rates_kbps": [
+            100,
+            250,
+            500
+          ],
+          "qualified_max_rate_kbps": 500
+        }
+      ],
+      "startup_rate_kbps": 100,
+      "local_packet_ram_target_bytes": 4096,
+      "adapter_requirements": {
+        "hardware_services": [
+          "Serial framing and CRC generation/checking",
+          "Destination filtering before CPU interrupt",
+          "Complete-frame buffering",
+          "Packet-level interrupts and receiver-ready reporting"
+        ],
+        "local_packet_ram_target_bytes": 4096,
+        "buffer_policy": "Local adapter RAM, additional to host system RAM. Partition transmit/receive buffers and metadata; freeze maximum frame length and IP MTU to fit complete frames before implementation. Physical RAM chip count remains unresolved.",
+        "flow_control": "Grant unicast only when the destination advertises credit for a complete frame; reserve that credit until completion. Broadcast requires credit from all intended admitted receivers. Timeouts revoke stale credits; bounded queues and retry/error reporting prevent indefinite blocking. Use flow control first for receiver pressure, not automatic rate changes.",
+        "host_service": "No per-byte interrupt requirement. Aurelia at 250 kbit/s has 128 CPU clocks per raw byte at 4 MHz; Aurelia+ at 500 kbit/s has 96 at 6 MHz. Validate worst-case service latency. A persistently slow host may advertise a lower configured ceiling."
+      }
+    }
+  }
+}

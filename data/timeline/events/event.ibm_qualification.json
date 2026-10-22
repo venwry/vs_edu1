@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.ibm_qualification",
+  "record_type": "event",
+  "data": {
+    "id": "event.ibm_qualification",
+    "title": "IBM business-software qualification delays commercial release",
+    "event_type": "development",
+    "date": {
+      "start": "1981-08-17",
+      "end": "1981-08-17"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.ibm",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.ibm"
+        ],
+        "description": "OS integration, application qualification and support delay the substantially ready hardware. Central planning assumes a March 1982 commercial release; this is a scenario forecast, not historical fact or a CP/M-86 rescue. Qualification slippage is represented by the demand bounds."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.ibm_os_program"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.artemis_tiers data/hardware/configurations",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "artemis_128",
+        "artemis_256",
+        "pro_sourcing_changed"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "artemis_128": {
+          "type": "object"
+        },
+        "artemis_256": {
+          "type": "object"
+        },
+        "pro_sourcing_changed": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

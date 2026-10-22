@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.nmos_2um",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.nmos_2um",
+    "name": "2.0 µm NMOS manufacturing process",
+    "category": "semiconductor_manufacturing",
+    "owner": "AION Labs",
+    "introduced": {
+      "event_name": "Scenario process qualification target",
+      "event_start_date": "1982-07"
+    },
+    "specification": {
+      "node_um": 2,
+      "wafer_diameter_mm": 75,
+      "lithography": "GCA reduction stepper; tool/optics upgrades qualified per node",
+      "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+      "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+      "policy_file": "memory_manufacturing.json"
+    },
+    "used_by": [
+      "part.aion_4164"
+    ]
+  }
+}

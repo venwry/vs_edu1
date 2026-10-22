@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.manufacturing_programs data/programs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "smc_transfer",
+        "ncc1979_card_refs"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        },
+        "smc_transfer": {
+          "type": "object"
+        },
+        "ncc1979_card_refs": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

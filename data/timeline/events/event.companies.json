@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.companies",
+  "record_type": "event",
+  "data": {
+    "id": "event.companies",
+    "title": "Three technology companies founded",
+    "event_type": "organization",
+    "date": {
+      "start": "1975-01-01",
+      "end": "1975-01-01"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "founder"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "new_company"
+      },
+      {
+        "actor_ref": "actor.labs",
+        "role": "new_company"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "new_company"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam"
+        ],
+        "description": "Establishes Logix Tech in San Jose for software and computers, AION Labs in Cambridge for semiconductors, and AION Software in Copenhagen for business applications and compilers."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": []
+  }
+}

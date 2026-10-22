@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schemas/documents/document.ncc_1979_campaign-data-business-marketing.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.ncc_1979_campaign",
+  "record_type": "document-section",
+  "data": {
+    "economics": {
+      "budget_usd": null,
+      "costs": [
+        "OEM engineering kits and port assistance",
+        "Workshops, conformance engineering and directory maintenance",
+        "Venue, AV, demonstrations and rights-cleared recordings",
+        "Dealer roadshows, trade press and joint advertising",
+        "Developer migration clinics and ongoing CP/M support"
+      ],
+      "treatment": "Operating programme expenditure, not unit hardware BOM. No fabricated zero budget or assumed OEM sales receipts. BPI, Tandy and independent suppliers account for their own receipts.",
+      "forecast_cutoff": "The original forecast through May 31, 1979 remains unchanged. sales_forecast.json separately extends demand and delivery projections through November 30 with explicit June pricing, campaign effects, substitution and capacity assumptions. No effects are applied retroactively; OEM adoption targets are not shipments. A separate COMDEX-to-NCC 1980 extension now reaches May 18 with product-specific demand and Academy capacity; prior period forecasts are unchanged."
+    }
+  }
+}

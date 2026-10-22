@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/records/configuration.schema.json",
+  "schema_version": "1.0.0",
+  "id": "catalog.metadata",
+  "record_type": "configuration",
+  "data": {
+    "title": "Logix / AION technical catalog",
+    "version": "2.17",
+    "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
+    "id_convention": "category.short_name.version_or_variant_when_needed",
+    "schema_notes": {
+      "introduced": "Event name and event start date; month-only dates retain month precision.",
+      "computers": "Functional specifications with explicit RAM populations; manufacturing completeness is tracked in hardware_bom.json. Unknown suppliers, quantities and validation remain unresolved.",
+      "bundles": "Commercial packaging is represented separately in offered_bundles.",
+      "references": "Stable IDs link computers, technologies, components, devices and software.",
+      "architecture": "Architecture descriptions and relationships are shared with the interactive explorer.",
+      "platform_editions": "Canonical software compatibility records with per-platform availability, execution target, role, dependencies and resource limits. Computer lists are derived from them.",
+      "design_status": "Accepted implementation designs reside under specification.implementation_design. Numerical performance goals and pending validation are explicitly labeled; acceptance does not imply completed hardware/software.",
+      "graphics_storage": "Per-computer video.memory_layout supplies text and bitmap allocations; shared mode-switch and preservation behavior resides in the display API specification.",
+      "manufacturing": "hardware_bom.json separates recurring material, assembly requirements, variant packout and unresolved costing inputs. No prices or qualified supplier claims are invented.",
+      "second_source": "SMC transfer begins 1978-07; initial independent commercial sales 1979-10. Dates are month-precision; per-part qualification and supplier pricing remain engineering inputs.",
+      "video_memory": "Aurelia-family display storage is ordinary external AION 4116 DRAM. Retained video_ram_policy/reserved_video_ram_bytes/remaining_video_ram_bytes keys mean video RAM allocation, not dual-port hardware."
+    }
+  }
+}

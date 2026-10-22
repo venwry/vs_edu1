@@ -1,0 +1,87 @@
+{
+  "$schema": "../../schemas/documents/document.manufacturing_programs-data-programs.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.manufacturing_programs",
+  "record_type": "document-section",
+  "data": {
+    "metadata": {
+      "currency": "USD",
+      "basis": "Nominal 1978–1979 engineering planning allowances, not historical quotations or agreed contract prices. No present-value conversion.",
+      "scope": "One-time costs and optional supplier purchase scenarios separate from recurring product costs."
+    },
+    "smc_transfer": {
+      "agreement_date": "1978-07",
+      "initial_sales_date": "1979-10",
+      "licensed_part_refs": [
+        "part.flexibus_host_controller",
+        "part.flexibus_device_controller",
+        "part.aurelia_video_chip",
+        "part.aion_4116"
+      ],
+      "nre_status": "Illustrative budget, not a committed payment; AION/Logix fund transfer. No unit-cost allocation without production volumes.",
+      "nre_items": [
+        {
+          "name": "Process adaptation, layout and engineering support",
+          "low_usd": 90000,
+          "central_usd": 160000,
+          "high_usd": 280000
+        },
+        {
+          "name": "SMC-compatible mask sets, test structures and revisions",
+          "low_usd": 20000,
+          "central_usd": 40000,
+          "high_usd": 80000
+        },
+        {
+          "name": "Pilot wafers, characterization and corrective runs",
+          "low_usd": 30000,
+          "central_usd": 65000,
+          "high_usd": 130000
+        },
+        {
+          "name": "Probe/final-test development and reliability qualification",
+          "low_usd": 25000,
+          "central_usd": 45000,
+          "high_usd": 85000
+        },
+        {
+          "name": "Transfer documentation, training and travel",
+          "low_usd": 10000,
+          "central_usd": 20000,
+          "high_usd": 35000
+        }
+      ],
+      "nre_total_usd": {
+        "low": 175000,
+        "central": 330000,
+        "high": 610000
+      },
+      "nre_exclusions": [
+        "New fab equipment, facilities and major process-capacity expansion",
+        "Original AION chip development",
+        "Logix card design and driver development",
+        "Production inventory and working capital"
+      ],
+      "feasibility": "October 1979 initial sales plausible with characterized AION silicon, SMC-compatible masks by late 1978 and successful qualification. Family-wide availability/mature yield is not guaranteed. video RAM may require additional process investment beyond this allowance.",
+      "purchase_price_proxy": {
+        "central_multiplier": 1.6,
+        "low_multiplier": 1.2,
+        "high_multiplier": 2.4,
+        "inbound_freight_usd_per_chip": 0.25,
+        "basis": "Sensitivity relative to modeled AION internal cost, including SMC overhead/margin/capital recovery and embedded royalty. No exact royalty rate, quote or guaranteed cost advantage is inferred."
+      },
+      "sources": [
+        {
+          "url": "https://manuals.plus/m/e43becab466f1fc2ba1742e95b4f0645632eb5d5ac2aea60ac96975b1c99320c",
+          "use": "SMC 1979 catalog supports custom MOS, supplied-mask production and peripheral/display capability; does not substantiate these budgets or prove AION video RAM process compatibility."
+        }
+      ]
+    },
+    "ncc1979_card_refs": [
+      "device.apple2_expansion_card",
+      "device.s100_flexibus_card",
+      "device.apple2_video_card",
+      "device.s100_video_card"
+    ]
+  }
+}

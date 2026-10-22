@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.bpi_launch",
+  "record_type": "event",
+  "data": {
+    "id": "event.bpi_launch",
+    "title": "Independent BPI Systems launches Aurelia applications",
+    "event_type": "launch",
+    "date": {
+      "start": "1978-06-05",
+      "end": "1978-06-05"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "presenter"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "presenter"
+      },
+      {
+        "actor_ref": "actor.bpi",
+        "role": "presenter"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix",
+          "actor.aion",
+          "actor.bpi"
+        ],
+        "description": "BPI presents its separately licensed five-module application family immediately after Abacus. Its head then joins Gary Kildall and MPI in the partners section, explaining BPI ownership of products, independent management and cooperation with Adam, AION and Logix. No personal identity for the head is invented."
+      }
+    ],
+    "outcomes": [
+      {
+        "description": "Dealer configurations combine separately identified suppliers; BPI is not a Logix division. A documented BPI-to-Abacus summary export supports planning without modifying accounting records."
+      }
+    ],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "software.bpi_suite",
+      "computer.aurelia"
+    ],
+    "related_event_refs": []
+  }
+}

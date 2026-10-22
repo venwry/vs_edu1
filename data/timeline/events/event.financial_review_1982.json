@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.financial_review_1982",
+  "record_type": "event",
+  "data": {
+    "id": "event.financial_review_1982",
+    "title": "Close the revised 1982 sales, capacity and ROI scenario",
+    "event_type": "development",
+    "date": {
+      "start": "1982-12-31",
+      "end": "1982-12-31"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix"
+        ],
+        "description": "Reconcile monthly sales with BOM demand, dated balanced prices, Team expenses, 1982 manufacturing and port-development provisions, capex, depreciation and inventory. Report pre-tax five-entity project ROI; no shareholder ROI, terminal asset liquidation or 1983 revenue."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [
+      {
+        "name": "annual_computer_sales",
+        "value": 119389,
+        "unit": "computers",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "annual_net_revenue",
+        "value": 306010373.25,
+        "unit": "USD",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "annual_capital_investment",
+        "value": 1381604.96,
+        "unit": "USD",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "annual_operating_profit",
+        "value": 58047233.64,
+        "unit": "USD",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "cumulative_accounting_roi",
+        "value": 222.962,
+        "unit": "percent",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      },
+      {
+        "name": "cumulative_free_cash",
+        "value": 88074760.41,
+        "unit": "USD",
+        "qualifier": "Central alternative-history forecast; nominal, pre-tax five-entity project scope."
+      }
+    ],
+    "product_refs": [],
+    "related_event_refs": []
+  }
+}

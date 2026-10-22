@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.plug_and_execute",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.plug_and_execute",
+    "name": "Plug and Execute expansion standard",
+    "category": "expansion_bus_and_autoconfiguration",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "owner": "Logix",
+    "specification": {
+      "configuration_switches_required": false,
+      "driver_storage": "expansion device carries its driver/identification code in ROM",
+      "design_goal": "automatic identification and execution without manual switch configuration",
+      "forward_design_policy": "connector/pin standards may reserve unused capacity for later generations"
+    },
+    "used_by": [
+      "computer.aurelia",
+      "computer.aurelia_plus",
+      "computer.artemis"
+    ]
+  }
+}

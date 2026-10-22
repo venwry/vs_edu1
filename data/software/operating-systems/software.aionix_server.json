@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../schemas/records/software-product.schema.json",
+  "schema_version": "1.0.0",
+  "id": "software.aionix_server",
+  "record_type": "software-product",
+  "data": {
+    "id": "software.aionix_server",
+    "name": "AIONix Server edition",
+    "vendor": "AION Software",
+    "category": "operating_system_edition",
+    "introduced": {
+      "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+      "event_start_date": "1981-05-04"
+    },
+    "technology_refs": [
+      "technology.aionix_os_model",
+      "technology.logix_tcpip_lan",
+      "technology.logix_lan100_link",
+      "technology.logix_c_api",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "api_compatibility": "Retains the base platform C/TUI API; optional networking services are discovered through versioned capability checks.",
+    "version": "Server edition",
+    "delivery": "Complete system ROM/EEPROM cartridge image, including the base AIONix services and networking; not an incremental upgrade.",
+    "base_product_ref": "software.aionix",
+    "description": "Separate AIONix edition for networked Artemis and Artemis PRO systems. Includes the base operating system, TCP/IP and server-service interfaces. BPI server applications are separately licensed offerings.",
+    "edition_relationship": "Complete edition of the AIONix family; no prior base-OS installation is required.",
+    "bundled_with": [
+      "computer.artemis_pro"
+    ],
+    "features": [
+      "TCP/IP networking support for Logix LAN",
+      "Base AIONix process, file, device and TUI services",
+      "Network service lifecycle and server administration interfaces"
+    ],
+    "feature_status": "Server-service interfaces are part of the edition specification; implementation remains to be validated. Inclusion of an OS edition does not include a BPI application license.",
+    "edition_refs": [
+      "edition.aionix_server.server"
+    ],
+    "network_link_policy": {
+      "link_layer_ref": "technology.logix_lan100_link",
+      "driver_contract": "Enforce host rate ceilings, report advertised and negotiated rates separately, process packet-level interrupts and receiver credits, and expose fallback/error diagnostics. TCP/IP application throughput is below shared raw line rate and requires measurement."
+    },
+    "dated_revisions": [
+      {
+        "effective_from": "1981-11-19",
+        "default_services": [
+          "user management",
+          "group management",
+          "authentication",
+          "project permissions",
+          "home directories",
+          "quotas",
+          "administration"
+        ],
+        "note": "OS facilities included by default; Team Edition repository and collaboration applications licensed separately as one package."
+      }
+    ]
+  }
+}

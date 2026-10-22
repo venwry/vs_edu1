@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/records/offer.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bundle.artemis_128_mono",
+  "record_type": "offer",
+  "data": {
+    "id": "bundle.artemis_128_mono",
+    "name": "Logix Artemis 128 KB — Monochrome system",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "computer_ref": "computer.artemis",
+    "computer_configuration": {
+      "ram_kb": 128,
+      "ram_configuration_id": "m32_128",
+      "module_ref": "part.artemis_ram_module_32kb_x16",
+      "populated_modules": 4,
+      "populated_banks": 2,
+      "video_card_ref": "device.artemis_video_card_16kb"
+    },
+    "included_devices": [
+      "device.flexibus_keyboard",
+      "device.mono_monitor_2"
+    ],
+    "included_software": [
+      "software.aionix"
+    ],
+    "included_services": [
+      {
+        "service_ref": "service.regular_support",
+        "duration_years": 1
+      }
+    ],
+    "bom_assembly_ref": "assembly.bundle.artemis_128_mono",
+    "manufacturing_variants": [
+      {
+        "effective_from": "1981-05-04",
+        "assembly_ref": "assembly.bundle.artemis_128_mono.networked"
+      }
+    ]
+  }
+}

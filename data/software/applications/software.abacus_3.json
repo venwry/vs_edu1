@@ -1,0 +1,92 @@
+{
+  "$schema": "../../../schemas/records/software-product.schema.json",
+  "schema_version": "1.0.0",
+  "id": "software.abacus_3",
+  "record_type": "software-product",
+  "data": {
+    "id": "software.abacus_3",
+    "name": "AION Abacus 3.0",
+    "vendor": "AION Software",
+    "category": "32_bit_spreadsheet_and_business_analysis",
+    "introduced": {
+      "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+      "event_start_date": "1980-11-19"
+    },
+    "platform_policy": "Artemis-exclusive / 32-bit primary development line",
+    "features": [
+      "native 32-bit spreadsheet, structured-data analysis and reporting for Artemis",
+      "multiple tabs and cross-tab references; ordinary sparse worksheets coexist with schema-defined formatted-table tabs",
+      "typed columns, virtual calculated columns, unique-key lookups and read-only SQL queries",
+      "disk-backed columnar formatted-table storage with column pruning, conservative statistics-based block skipping and dataset-dependent encoding",
+      "graphical bar, line, pie and XY scatter charts in existing report layouts, with graphics preview and printing",
+      "embedded Pulse scripts through the Abacus document API",
+      "CSV and host-exported VSAM logical-record import into formatted tables"
+    ],
+    "explicitly_not_assumed": [
+      "background recalculation",
+      "unlimited document size or memory",
+      "guaranteed compression ratios or query throughput",
+      "full SQL database or transactional ledger engine",
+      "direct reading of arbitrary VSAM disk images",
+      "unrestricted nested-data support at the 3.0 launch"
+    ],
+    "technology_refs": [
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard",
+      "technology.abacus_sparse_model",
+      "technology.abacus_formatted_tables",
+      "technology.abacus_embedded_pulse"
+    ],
+    "portability_contract": {
+      "api_ref": "technology.logix_c_api",
+      "shared_logic": "Separate application/document algorithms from platform adapters.",
+      "display": "Query dimensions and attributes; use semantic colors and clipping.",
+      "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+      "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+      "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+    },
+    "programmatic_file_access": "Standalone Pulse retains exclusive offline read/edit/write access to supported document versions. Embedded Pulse 3.0 uses the Abacus-owned document API; never opens a second file writer. Preserve formulas and invalidate dependent cached results.",
+    "edition_refs": [
+      "edition.abacus_3.era"
+    ],
+    "positioning": "Integrated spreadsheet, structured-data analysis and reporting environment, programmable in Pulse. The November 1980 release serves contemporary business workflows; direct competition with the historical 1983 Lotus 1-2-3 belongs to a later Abacus version.",
+    "reporting": {
+      "continuity": "Extend Abacus 2.0 report/document layouts, spreadsheet fields and one-off/repeating sections.",
+      "chart_types": [
+        "bar",
+        "line",
+        "pie",
+        "XY scatter"
+      ],
+      "presentation": "Retain standard TUI editing/navigation; add capability-aware graphical preview with titles, axes and legends. Support monochrome patterns and available display modes through the display API.",
+      "output": "Print reports and charts through supported printer drivers; define pagination and refresh stale query/formula results before output.",
+      "sources": "Worksheet ranges, formatted tables and grouped query results; keep source references stable after sorting and filtering."
+    },
+    "data_interchange": {
+      "bpi_continuity": "Retain versioned BPI summary imports as independent planning inputs with reconciliation and decimal validation; no ledger write-back or live database connection.",
+      "csv": "Schema-mapped CSV import with quoted fields, delimiter/character encoding selection, explicit date and decimal conventions, null handling, text preservation for identifiers and rejected-record diagnostics. Provide value-only CSV export with explicit loss-of-formulas/types warning.",
+      "vsam": "Import host-exported sequential logical records from supported VSAM datasets using a supplied field/record layout. Host-side export (for example IDCAMS REPRO) and a documented transfer path are prerequisites; raw VSAM clusters, indexes and disk images are not desktop interchange formats.",
+      "vsam_conversion": "Declare supported record boundaries, lengths, offsets, keys and character encoding; convert EBCDIC, supported binary, packed-decimal and zoned-decimal fields explicitly. Reject unsupported layouts without silently changing values.",
+      "migration": "Versioned document format; preserve supported older worksheets and reports. Older Abacus/Pulse editions must reject unsupported new features before writing. Explicit value-only export is a lossy interchange option."
+    },
+    "release_scope": {
+      "status": "Author-approved offering requirements; implementation and measured qualification remain pending.",
+      "launch_date": "1980-11-19",
+      "launch": "Flat typed formatted tables, bounded columnar processing, virtual columns, unique-key lookups, a documented read-only SQL subset, graphical reports, embedded Pulse and mapped imports.",
+      "later_milestones": [
+        "Bounded nested arrays, maps and structs with explicit expansion/indexing and aggregation semantics; format extension points reserved in 3.0.",
+        "Broader query capabilities and competitive response to Lotus 1-2-3 in a later Abacus version."
+      ],
+      "later_version_and_date": "Not assigned; no later feature is represented as available at the 1980 launch.",
+      "resource_policy": "Qualify real Artemis 128/256 KiB configurations and later Artemis PRO separately. Record application/OS memory, storage, dataset size and timings; larger jobs may require expansion or disk-backed execution. No new minimum RAM or maximum row count is asserted.",
+      "acceptance_workflow": "Import sales records, join customer/product information, calculate margins, group by region, print a graphical report, save/reopen, then repeat using a Pulse script.",
+      "acceptance_requirements": [
+        "Measure memory, disk I/O, import/query/recalculation/report times and compression on named datasets.",
+        "Verify import conversion/rejections, decimal rounding, nulls, duplicate lookup keys and join cardinality.",
+        "Verify cancellation, grouped undo, edit visibility, dependency invalidation, save recovery and unsupported-version rejection."
+      ]
+    }
+  }
+}

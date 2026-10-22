@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../schemas/records/process.schema.json",
+  "schema_version": "1.0.0",
+  "id": "process.process_2",
+  "record_type": "process",
+  "data": {
+    "id": "process.process_2",
+    "title": "2.0 µm process and RAM shrink development",
+    "participants": [
+      {
+        "actor_ref": "actor.labs",
+        "role": "process_developer"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.labs"
+        ],
+        "description": "Develop and qualify the dated manufacturing scenario; ERA1 remains on 3 µm. Budgets, yields and release gates are in memory_manufacturing.json."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "technology.nmos_2um",
+      "part.aion_4164"
+    ],
+    "related_event_refs": [],
+    "period": {
+      "start": "1981-01-01",
+      "end": "1982-12-31",
+      "precision": "range",
+      "qualifier": "Selected scenario schedule, conditional on qualification",
+      "display": "1981-01-01 to 1982-12-31"
+    },
+    "phase_refs": [
+      "phase.comdex80",
+      "phase.ncc81",
+      "phase.manufacturing_1981_1983"
+    ],
+    "date_basis": "provisional"
+  }
+}

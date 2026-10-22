@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),dom=new JSDOM('<div id="inspector"></div>',{runScripts:'outside-only'}),w=dom.window;
 w.eval(fs.readFileSync(path.join(root,'architecture-explorer.js'),'utf8'));
-const catalog=JSON.parse(fs.readFileSync(path.join(root,'logix_aion_technical_catalog_v2.json'),'utf8')),records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(x=>x?.id).map(x=>[x.id,x]));
+const catalog=JSON.parse(fs.readFileSync(path.join(root,'generated/catalogs/logix-aion-technical-catalog-v2.json'),'utf8')),records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(x=>x?.id).map(x=>[x.id,x]));
 const mmu=Object.values(records).find(x=>x.specification?.implementation_design?.title==='ERA MMU v1');assert(mmu);
 const panel=w.document.getElementById('inspector');panel.innerHTML=w.renderSpecification(mmu.specification,records);w.bindSpecificationControls(panel);
 assert(panel.querySelectorAll('.spec-properties').length>2);assert(panel.querySelectorAll('details').length>5);assert(panel.textContent.includes('4096'));assert(!panel.textContent.includes('[object Object]'));

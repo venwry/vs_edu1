@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.aion_2114",
+  "record_type": "component",
+  "data": {
+    "id": "part.aion_2114",
+    "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
+    "category": "memory_chip",
+    "origin": "custom_logix_aion",
+    "vendor": "AION Labs",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "used_in": [
+      "computer.aurelia",
+      "computer.aurelia_plus",
+      "device.apple2_video_card",
+      "device.s100_video_card"
+    ],
+    "specification": {
+      "capacity_kbit": 4,
+      "organization_words": 1024,
+      "data_width_bits": 4,
+      "random_cycle_target_ns": 250,
+      "supply_rails_v": [
+        5
+      ],
+      "refresh_required": false,
+      "package": "18-pin DIP target; electrical qualification pending",
+      "manufacturing_planning": {
+        "die_area_mm2_range": [
+          16,
+          24
+        ],
+        "die_area_mm2_central": 20,
+        "status": "3 micron planning estimate; layout and speed-bin qualification pending"
+      }
+    },
+    "manufacturing_requirements": [
+      "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+      "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.aion_2114"
+    ]
+  }
+}

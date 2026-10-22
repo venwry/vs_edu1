@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.apple_business",
+  "record_type": "event",
+  "data": {
+    "id": "event.apple_business",
+    "title": "Apple–Peachtree small-business package starts",
+    "event_type": "launch",
+    "date": {
+      "start": "1980-03-15",
+      "end": "1980-03-15"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.apple",
+        "role": "partner"
+      },
+      {
+        "actor_ref": "actor.peachtree",
+        "role": "partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.apple",
+          "actor.peachtree"
+        ],
+        "description": "Start a package with simplified setup, Apple II-oriented interface, documentation and support."
+      }
+    ],
+    "outcomes": [
+      {
+        "description": "Accounting coverage potentially includes general ledger, receivables/payables, inventory, invoicing and payroll."
+      }
+    ],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.apple_peachtree"
+    ]
+  }
+}

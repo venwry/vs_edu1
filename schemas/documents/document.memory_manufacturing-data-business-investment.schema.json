@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.memory_manufacturing data/business/investment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capital_schedule",
+        "capital_basis",
+        "engineering_programs",
+        "future_engineering",
+        "future_engineering_basis"
+      ],
+      "properties": {
+        "capital_schedule": {
+          "type": "array"
+        },
+        "capital_basis": {
+          "type": "string"
+        },
+        "engineering_programs": {
+          "type": "array"
+        },
+        "future_engineering": {
+          "type": "array"
+        },
+        "future_engineering_basis": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

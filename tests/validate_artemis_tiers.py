@@ -3,9 +3,9 @@ import json
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(f):return json.loads((R/f).read_text())
-c=read('logix_aion_technical_catalog_v2.json')
+c=read('generated/catalogs/logix-aion-technical-catalog-v2.json')
 r={x['id']:x for a in c.values() if isinstance(a,list) for x in a if isinstance(x,dict) and 'id'in x}
-b=read('hardware_bom.json');aa={x['id']:x for x in b['assemblies']}
+b=read('generated/catalogs/hardware-bom.json');aa={x['id']:x for x in b['assemblies']}
 def pop(id):
  out={}
  for x in aa[id]['lines']:
@@ -38,9 +38,9 @@ for layer in ['hardware','memory']:
  nodes=c['artemis_explorer']['diagrams'][layer]['nodes']
  assert not {'display_dram','sprite_sram','pixel_fifo','display_refresh'}&{n['id'] for n in nodes}
  assert any(n.get('computer_path')=='video' for n in nodes)
-mix=read('sales_model_inputs.json')['basket_components']['artemis']
+mix=read('generated/catalogs/sales-model-inputs.json')['basket_components']['artemis']
 assert abs(sum(x['quantity'] for x in mix if x['product_ref'].startswith('bundle.'))-1)<.000001
-iv=read('industrial_investment_1974_1981.json')
+iv=read('generated/models/industrial-investment-1974-1981.json')
 assert sum(p['person_months'] for p in iv['engineering_programs'] if p['id'] in ['aion_64k_dram','artemis_tier_hardware','artemis_economy_driver'])==156
 print('PASS: Artemis tier BOMs, mode allocation, monitor constraints, selected-card diagrams, AION sourcing and sales reconciliation.')
 

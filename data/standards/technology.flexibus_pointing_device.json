@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.flexibus_pointing_device",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.flexibus_pointing_device",
+    "name": "FlexiBUS pointing-device class",
+    "category": "peripheral_protocol",
+    "introduced": {
+      "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+      "event_start_date": "1982-06",
+      "date_precision": "month"
+    },
+    "owner": "Logix / AION Labs",
+    "specification": {
+      "status": "Accepted protocol requirements; wire identifiers, polling and electrical qualification pending.",
+      "transport_ref": "technology.flexibus",
+      "discovery": "Pointing-device class, two buttons, relative X/Y, two independent signed roller axes; versioned capability record. Use negotiated existing FlexiBUS rates, framing, CRC and request/response discipline.",
+      "report": "Sequenced bounded report: accumulated signed relative X/Y motion, signed vertical/horizontal roller deltas, current button mask and ordered button transitions. ACK/retry must not duplicate motion or clicks.",
+      "polling": "Host polls with a bounded service budget; device buffers events. Coalesce motion but preserve button transitions; report overflow and resynchronize button state on reset/removal.",
+      "default_mapping": "Primary button focuses/selects/activates; secondary opens context actions where provided. Middle-finger roller scrolls vertically; thumb roller scrolls horizontally. Wheels have no implicit press buttons.",
+      "compatibility": "Architecture-neutral class driver for Z80 CP/M Platform Extensions and ERA AIONix. Attach while port quiescent; no unsupported hot-plug claim."
+    },
+    "used_by": [
+      "device.logix_mouse",
+      "software.cpm_aurelia",
+      "software.aionix"
+    ]
+  }
+}

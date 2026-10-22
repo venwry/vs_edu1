@@ -1,0 +1,32 @@
+name: Validate canonical data and static pages
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install validation dependencies
+        run: |
+          python -m pip install jsonschema==4.26.0
+          npm install --prefix "$RUNNER_TEMP/atlas-tests" jsdom@26.1.0
+          echo "NODE_PATH=$RUNNER_TEMP/atlas-tests/node_modules" >> "$GITHUB_ENV"
+      - name: Validate owned records, schemas, references and projections
+        run: |
+          python tools/data_catalog.py --check
+          python tests/validate_data_structure.py
+          python tests/validate_catalogs.py
+          python tests/validate_hardware_bom.py
+      - name: Check preserved page content and interactive consumers
+        run: |
+          node tests/page-content.test.cjs
+          node --test tests/architecture-layout.test.cjs tests/costs.test.cjs tests/ecosystem.test.cjs tests/market-share.test.cjs tests/pricing.test.cjs tests/roi.test.cjs tests/sales.test.cjs tests/specification.test.cjs tests/timeline.test.cjs

@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.comdex82_press_invitations",
+  "record_type": "event",
+  "data": {
+    "id": "event.comdex82_press_invitations",
+    "title": "Joint Autodesk/Logix press and customer invitations",
+    "event_type": "plan",
+    "date": {
+      "start": "1982-11-01",
+      "end": "1982-11-01"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.autodesk",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.academy",
+        "role": "programme_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix",
+          "actor.autodesk",
+          "actor.academy"
+        ],
+        "description": "Proposed campaign: A clear view of your next design. Issue approved technical press previews, schedule customer-drawing trials and prepare measured demonstration materials. Proposed marketing plan: comdex_1982_campaign.json."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "offer.comdex82_artemis_autocad"
+    ],
+    "related_event_refs": [
+      "event.autodesk_comdex"
+    ]
+  }
+}

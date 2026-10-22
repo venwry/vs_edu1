@@ -1,10 +1,11 @@
+from data_paths import resolve_path
 """Economic invariants and release gates for the RAM manufacturing revision."""
 from pathlib import Path
 import sys,json,hashlib,math
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'tools'))
 from memory_manufacturing import policy,evaluate,selected
 def read(n):return json.loads((R/n).read_text())
-p=policy();c=read('manufacturing_costs.json');i=read('industrial_investment_1974_1981.json');impact=read('memory_manufacturing_impact.json');baseline=read('memory_manufacturing_baseline.json')
+p=policy();c=read('generated/models/manufacturing-costs.json');i=read('generated/models/industrial-investment-1974-1981.json');impact=read('generated/models/memory-manufacturing-impact.json');baseline=read('baselines/memory-manufacturing-baseline.json')
 for r in p['memory_recipes']:
  v=evaluate(r)
  assert 0<v['raw_die_yield']<=v['die_yield']<=r['nonarea_yield']<=1
@@ -26,11 +27,11 @@ for ref,count in [('bundle.artemis_pro_512_server',64),('bundle.artemis_pro_1mb_
  assert 'bompart.part.dram_64kbit' not in parts
 for row in i['quarterly_wafer_loading']:
  if row['chip_ref']=='part.aion_4164' and row['quarter']=='1980-Q1':assert row['cost_snapshot_year']==1980 # Matches first available Aurelia+ cost snapshot; no mixed-vintage wafer credit.
-for src in impact['sources']:assert hashlib.sha256((R/src['path']).read_bytes()).hexdigest()==src['sha256']
+for src in impact['sources']:assert hashlib.sha256((R/resolve_path(src['path'])).read_bytes()).hexdigest()==src['sha256']
 assert impact['investment']['included_process_capital_usd']==sum(x['usd'] for x in p['capital_schedule'] if x['quarter']<='1982-Q4')==2925000
 assert impact['forward_budget_total_usd']==1580000
 assert len(baseline['roi_central'])==32
-roi=read('roi_1974_1980.json');central=next(x for x in roi['scenarios'] if x['id']=='central')
+roi=read('generated/models/roi-1974-1980.json');central=next(x for x in roi['scenarios'] if x['id']=='central')
 assert central['quarterly'][-1]['quarter']=='1982-Q4'
 assert math.isclose(impact['cash_after_reserving_forward_budgets_usd'],central['quarterly'][-1]['cumulative_net_cash_usd']-1580000,abs_tol=.01)
 assert any(x['month']=='1981-07' and x['stream']=='bpi_licenses' for x in roi['monthly_revenue_links'])

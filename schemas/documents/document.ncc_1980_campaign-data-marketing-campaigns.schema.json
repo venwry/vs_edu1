@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.ncc_1980_campaign data/marketing/campaigns",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "launch_date",
+        "event_ref",
+        "status",
+        "compatibility_policy",
+        "presentation",
+        "qa",
+        "claims",
+        "benchmark",
+        "activities",
+        "launch_gates",
+        "sales_measurement",
+        "mono_pro_campaign",
+        "artemis_configuration_policy"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "launch_date": {
+          "type": "string"
+        },
+        "event_ref": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "compatibility_policy": {
+          "type": "object"
+        },
+        "presentation": {
+          "type": "array"
+        },
+        "qa": {
+          "type": "string"
+        },
+        "claims": {
+          "type": "object"
+        },
+        "benchmark": {
+          "type": "object"
+        },
+        "activities": {
+          "type": "array"
+        },
+        "launch_gates": {
+          "type": "array"
+        },
+        "sales_measurement": {
+          "type": "string"
+        },
+        "mono_pro_campaign": {
+          "type": "object"
+        },
+        "artemis_configuration_policy": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

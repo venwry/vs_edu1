@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.part.artemis_ram_module_128kb_aion",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.part.artemis_ram_module_128kb_aion",
+    "name": "Artemis M128-16A 128 KiB / 16-bit AION RAM module",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.aion_4164",
+        "quantity": 16,
+        "unit": "each",
+        "role": "data DRAM",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "Sixteen AION 64K×1 chips per module; two modules provide Artemis 256 KiB with 32 chips. Electrical qualification pending."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

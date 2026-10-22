@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/documents/document.athena_1983_program-data-programs.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.athena_1983_program",
+  "record_type": "document-section",
+  "data": {
+    "status": "Accepted planning baseline; production and electrical qualification pending.",
+    "processor_ref": "part.era2",
+    "computer_refs": [
+      "computer.athena",
+      "computer.athena_server"
+    ],
+    "software_ref": "software.aionix2",
+    "scope": {
+      "no_rom_cards": true,
+      "sole_specified_rom_firmware": "EEPROM BIOS",
+      "os_specification": "Pending; do not infer virtual-memory, networking, GUI or minimum RAM specifications.",
+      "financial_policy": "No new retail prices, sales, investment or ROI calculated by this planning addition. Existing dated forecasts are unchanged.",
+      "memory_policy": "Use separate 64K-bit 4164 dies on 2 µm, not the discussed dual-array 128K-bit or 256K-bit alternatives."
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/records/software-product.schema.json",
+  "schema_version": "1.0.0",
+  "id": "software.autocad_1_artemis",
+  "record_type": "software-product",
+  "data": {
+    "id": "software.autocad_1_artemis",
+    "name": "Autodesk AutoCAD 1.0 for Artemis",
+    "vendor": "Autodesk",
+    "category": "computer_aided_design",
+    "introduced": {
+      "event_name": "COMDEX 1982 — AutoCAD for Artemis target",
+      "event_start_date": "1982-11-29"
+    },
+    "product_status": "Accepted November 1982 COMDEX delivery target; release-quality demonstration and shipment acceptance are distinct gates.",
+    "sold_separately": true,
+    "description": "Independent Autodesk CAD product for AIONix/ERA, enabled by Adam-funded whole-team development equipment, Team Edition environment and integration support.",
+    "features": [
+      "Native 2D CAD with typed coordinate entry and validated numerical geometry",
+      "Dual-display commands/status and 800x600 drawing workspace",
+      "Explicit Logix Mouse integration and professional line/blit acceleration",
+      "Drawing exchange and supported pen-plotter output"
+    ],
+    "specification": {
+      "program_file": "team_development_program.json",
+      "program_key": "autodesk_sponsored_deployment",
+      "development_host": "Artemis PRO with 1 MiB RAM and qualified storage; whole-team workstations plus shared server/test capacity",
+      "minimum_shipping_configuration": "To be measured against representative drawings; do not advertise base 128/256 KiB Artemis as qualified automatically.",
+      "ownership": "Autodesk retains software ownership and non-exclusive cross-platform rights.",
+      "release_target": "1982-11-29; commercial shipment after acceptance, with any December fallback explicitly reported as schedule slippage, not the primary objective.",
+      "comdex_offering_ref": "offer.comdex82_artemis_autocad",
+      "professional_revision_date": "1982-11-29"
+    },
+    "technology_refs": [
+      "technology.artemis_professional_graphics",
+      "technology.logix_display_api",
+      "technology.flexibus_pointing_device"
+    ],
+    "edition_refs": [
+      "edition.autocad_1_artemis.era"
+    ]
+  }
+}

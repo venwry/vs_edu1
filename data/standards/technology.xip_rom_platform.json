@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.xip_rom_platform",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.xip_rom_platform",
+    "name": "XIP ROM / cartridge software architecture",
+    "category": "system_software_distribution_and_execution",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "owner": "Logix / AION",
+    "specification": {
+      "execution_model": "system and application components may execute directly from ROM where practical",
+      "distribution_model": "replaceable ROM/EEPROM cartridges are used for system and application distribution",
+      "upgrade_model": "software/firmware can be upgraded by replacing the relevant cartridge",
+      "design_goal": "reduce RAM consumption and provide controlled, replaceable system images"
+    },
+    "used_by": [
+      "computer.aurelia",
+      "computer.aurelia_plus",
+      "computer.artemis",
+      "software.cpm_aurelia",
+      "software.aionix"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.mono_monitor2_controller",
+  "record_type": "component",
+  "data": {
+    "id": "part.mono_monitor2_controller",
+    "name": "Mono Monitor II custom controller",
+    "category": "display_controller",
+    "origin": "custom_logix_aion",
+    "specification": {
+      "palette_registers": 16,
+      "palette": "8-bit greyscale",
+      "vertical_retrace_register_update": true
+    },
+    "used_in": [
+      "device.mono_monitor_2"
+    ],
+    "vendor": "AION Labs",
+    "introduced": {
+      "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+      "event_start_date": "1979-12-03",
+      "date_precision": "day",
+      "timeline_note": "Author-confirmed introduction date."
+    },
+    "manufacturing_requirements": [
+      "Locate 16×8-bit palette storage, command decode, DAC and analog output",
+      "define clock/raster and custom-silicon parameters."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.mono_monitor2_controller"
+    ]
+  }
+}

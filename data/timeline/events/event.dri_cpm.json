@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.dri_cpm",
+  "record_type": "event",
+  "data": {
+    "id": "event.dri_cpm",
+    "title": "Aurelia CP/M implementation agreement",
+    "event_type": "agreement",
+    "date": {
+      "start": "1976-09-01",
+      "end": "1976-09-01"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "negotiator"
+      },
+      {
+        "actor_ref": "actor.dri",
+        "role": "partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam",
+          "actor.dri"
+        ],
+        "description": "Within the partnership founded in late 1974, agree the Aurelia OEM implementation and freeze ROM/banking, FlexiBUS, display and optional TUI interface requirements. This is not first contact with DRI."
+      }
+    ],
+    "outcomes": [],
+    "metrics": [],
+    "product_refs": [
+      "software.cpm_aurelia",
+      "technology.logix_tui_standard",
+      "technology.flexibus"
+    ],
+    "related_event_refs": [
+      "event.dri_founding"
+    ]
+  }
+}

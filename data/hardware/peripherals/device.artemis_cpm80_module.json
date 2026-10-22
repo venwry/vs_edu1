@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.artemis_cpm80_module",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.artemis_cpm80_module",
+    "name": "Artemis CP/M-80 backward-compatibility expansion module",
+    "category": "processor_expansion_card",
+    "specification": {
+      "cpu_ref": "part.z80a",
+      "local_ram_kb": 64,
+      "expansion_role": "Z80 executes qualified Aurelia/CP/M binaries in a separate guest environment; the new host processor does not execute them natively.",
+      "bridge_design_ref": "technology.cpm80_virtual_peripheral_bridge"
+    },
+    "compatible_with": [
+      "computer.artemis"
+    ],
+    "sold_separately": true,
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "compatibility_note": "Runs Z80 binaries through the peripheral bridge; distinct from recompiling to native ERA. Bridge capability queries must reflect the emulated CP/M environment, not expose unavailable ERA facilities.",
+    "manufacturing_requirements": [
+      "Choose eight 64K×1 data DRAMs as a candidate, or another explicitly costed organization",
+      "add refresh, ROM or host-upload boot logic, mailbox RAM/window and arbitration (dual-port is not mandatory), bus transceivers/width conversion, doorbells, clock/reset, mapper emulation, connector and diagnostics. Count its RAM separately from system modules. PRO compatibility is not currently promised."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.device.artemis_cpm80_module"
+    ],
+    "public_roadmap": {
+      "announced": "1979-06-04",
+      "development_milestone": "1979-07-01",
+      "introduced": "1980-05-19",
+      "status_at_announcement": "Planned separately sold Z80 legacy option; host architecture and word size undisclosed.",
+      "scope": "Qualified documented-interface applications only; no extension of compatibility to Artemis PRO or all future models."
+    }
+  }
+}

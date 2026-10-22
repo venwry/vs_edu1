@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.artemis_display_revision data/business/assumptions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "effective_from",
+        "mono_pro_artemis_bundle_share",
+        "mono_pro_pro_console_share",
+        "demand_uplift",
+        "demand_basis",
+        "engineering_person_months",
+        "incremental_marketing_usd",
+        "historical_anchor_url",
+        "crt_status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "effective_from": {
+          "type": "string"
+        },
+        "mono_pro_artemis_bundle_share": {
+          "type": "number"
+        },
+        "mono_pro_pro_console_share": {
+          "type": "number"
+        },
+        "demand_uplift": {
+          "type": "object"
+        },
+        "demand_basis": {
+          "type": "string"
+        },
+        "engineering_person_months": {
+          "type": "object"
+        },
+        "incremental_marketing_usd": {
+          "type": "object"
+        },
+        "historical_anchor_url": {
+          "type": "string"
+        },
+        "crt_status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.aionix_server.server",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.aionix_server.server",
+    "name": "AIONix Server edition — server",
+    "product_ref": "software.aionix_server",
+    "execution_target": "era_aionix",
+    "role": "operating_system",
+    "introduced": {
+      "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+      "event_start_date": "1981-05-04"
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.artemis",
+        "available_from": "1981-05-04"
+      },
+      {
+        "computer_ref": "computer.artemis_pro",
+        "available_from": "1981-05-04"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": null,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [
+      "device.network_card_artemis"
+    ],
+    "delivery": "Complete system ROM/EEPROM cartridge image, including the base AIONix services and networking; not an incremental upgrade.",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+  }
+}

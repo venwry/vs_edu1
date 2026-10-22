@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.era1_isa",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.era1_isa",
+    "name": "ERA1 / Extreme RISC Architecture",
+    "category": "processor_architecture",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "owner": "Logix / AION Labs implementation based on future-derived blueprint",
+    "specification": {
+      "system_bus_bits": 32,
+      "internal_paths": "separate instruction/data paths",
+      "multiply": "iterative multiplier with radix-4 Booth recoding",
+      "registers": "R0-R15 plus separate CPSR",
+      "conditional_instructions": true,
+      "abort_support": [
+        "Data Abort",
+        "Prefetch Abort"
+      ],
+      "prefetch_buffer_words": 4
+    },
+    "used_by": [
+      "computer.artemis",
+      "computer.artemis_pro"
+    ]
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "peripheral",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "peripheral"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "category",
+        "id",
+        "introduced",
+        "manufacturing_status",
+        "name"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "athena_qualification": {
+          "type": [
+            "string"
+          ]
+        },
+        "bank_count": {
+          "type": [
+            "number"
+          ]
+        },
+        "bom_assembly_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "bundled_with": {
+          "type": [
+            "array"
+          ]
+        },
+        "capacity_kb": {
+          "type": [
+            "number"
+          ]
+        },
+        "category": {
+          "type": [
+            "string"
+          ]
+        },
+        "compatibility_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "compatible_computers": {
+          "type": [
+            "array"
+          ]
+        },
+        "compatible_with": {
+          "type": [
+            "array"
+          ]
+        },
+        "connection": {
+          "type": [
+            "string"
+          ]
+        },
+        "data_width_bits": {
+          "type": [
+            "number"
+          ]
+        },
+        "dated_revisions": {
+          "type": [
+            "array"
+          ]
+        },
+        "description": {
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "installation": {
+          "type": [
+            "string"
+          ]
+        },
+        "introduced": {
+          "type": [
+            "object"
+          ]
+        },
+        "manufacturing_requirements": {
+          "type": [
+            "array"
+          ]
+        },
+        "manufacturing_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_mapping": {
+          "type": [
+            "object"
+          ]
+        },
+        "module_quantity": {
+          "type": [
+            "number"
+          ]
+        },
+        "module_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "name": {
+          "type": [
+            "string"
+          ]
+        },
+        "offered_with": {
+          "type": [
+            "array"
+          ]
+        },
+        "optional_with": {
+          "type": [
+            "array"
+          ]
+        },
+        "packaging": {
+          "type": [
+            "string"
+          ]
+        },
+        "part_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "physical_population": {
+          "type": [
+            "object"
+          ]
+        },
+        "planned_compatible_with": {
+          "type": [
+            "array"
+          ]
+        },
+        "price_usd": {
+          "type": [
+            "number"
+          ]
+        },
+        "product_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "public_roadmap": {
+          "type": [
+            "object"
+          ]
+        },
+        "qualification_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "slot_count": {
+          "type": [
+            "number"
+          ]
+        },
+        "sold_separately": {
+          "type": [
+            "boolean"
+          ]
+        },
+        "sold_with": {
+          "type": [
+            "array"
+          ]
+        },
+        "specification": {
+          "type": [
+            "object"
+          ]
+        },
+        "superseded_by": {
+          "type": [
+            "array"
+          ]
+        },
+        "technology_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "vendor": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../schemas/records/offer.schema.json",
+  "schema_version": "1.0.0",
+  "id": "offer.comdex82_artemis_autocad",
+  "record_type": "offer",
+  "data": {
+    "id": "offer.comdex82_artemis_autocad",
+    "name": "Logix Artemis PRO Professional CAD — Autodesk AutoCAD 1.0",
+    "category": "partner_professional_configuration",
+    "introduced": {
+      "event_name": "COMDEX November 1982 — Logix and Autodesk professional CAD presentation",
+      "event_start_date": "1982-11-29"
+    },
+    "status": "Accepted COMDEX presentation and commercial offering; shipment follows hardware/software acceptance.",
+    "description": "A jointly demonstrated professional CAD configuration combining Artemis PRO, the November professional graphics revision, Mono Pro 17, Logix Mouse and independently licensed Autodesk AutoCAD.",
+    "component_refs": [
+      "computer.artemis_pro",
+      "software.aionix",
+      "device.artemis_professional_video_128kb",
+      "device.mono_pro_17",
+      "device.artemis_video_card_64kb",
+      "device.color_pro_14",
+      "device.logix_mouse",
+      "software.autocad_1_artemis"
+    ],
+    "configuration": {
+      "host": "Artemis PRO, 1 MiB reference configuration, AIONix and qualified disk storage; final application minimum measured with representative drawings.",
+      "storage": "Standard 5 MB disk is not promised sufficient for every CAD workload. Quote a tested storage/backup configuration; do not invent a larger shipping accessory.",
+      "professional_display": "128 KiB professional card with separate 1 KiB sprite SRAM and Ball HD17H-based analog Mono Pro 17; use dated revision effective 1982-11-29.",
+      "secondary_display": "COMDEX reference station includes the existing 64 KiB card and Color Pro 14 for commands/status. Upgrade buyers may retain a compatible existing primary card/display.",
+      "software": "One separately identified Autodesk AutoCAD 1.0 Artemis/AIONix licence. Do not imply Logix ownership, a free licence, or later AutoCAD features.",
+      "pointing": "One Logix Mouse; typed coordinates remain available for numerical precision. Explicit Autodesk mouse and dual-display integration.",
+      "output": "Demonstrate a qualified pen plotter with a documented driver; plotter is optional and separately quoted. No unselected model is represented as bundled."
+    },
+    "commercial_routes": [
+      {
+        "name": "Complete professional CAD configuration",
+        "basis": "One host, one primary display/card, one professional display/card, one mouse and one AutoCAD licence. Remove/credit replaced base-system parts in the actual quote; never charge two primary cards."
+      },
+      {
+        "name": "Existing Artemis professional upgrade",
+        "basis": "November professional card, Mono Pro 17 and AutoCAD licence; add mouse only if needed. Verify RAM, OS, slot, storage and primary display compatibility before quoting."
+      }
+    ],
+    "pricing": "Dated November planning prices: comdex_1982_cost_review.json. Hardware at 25% net-contribution fallback; Autodesk licence uses a provisional $1000 historical anchor. Autodesk cost/channel terms remain unknown.",
+    "support_split": {
+      "logix": "Hardware, AIONix integration, drivers, installation and dealer coordination.",
+      "autodesk": "AutoCAD licence, application support and drawing-file compatibility.",
+      "joint": "Reference configuration testing, dealer training and escalation; define response commitments before quoting service."
+    },
+    "acceptance": [
+      "Run the agreed release-quality native AutoCAD build on the reference configuration",
+      "Load/save and exchange a representative drawing; verify numerical geometry",
+      "Use both displays and the mouse with correct focus and cursor restoration",
+      "Show readable antialiased lines and stable display refresh under accelerator load",
+      "Plot a physical drawing and verify scale and geometry",
+      "Recover from interrupted work and restore a backup",
+      "Document supported features; no automatic later-version dimensioning, object-snap or 3D claims"
+    ],
+    "timeline": "June remains initial hardware availability and Autodesk development handover. November 29 is the public joint CAD offering and expanded professional-card presentation, not a rewrite of June history.",
+    "campaign_ref": "comdex_1982_campaign.json"
+  }
+}

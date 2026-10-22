@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.artemis_ram_module_64kb",
+  "record_type": "component",
+  "data": {
+    "id": "part.artemis_ram_module_64kb",
+    "name": "Artemis RAM Module 1",
+    "category": "memory_module",
+    "origin": "custom_logix",
+    "specification": {
+      "capacity_kb": 64,
+      "chips": 8,
+      "chip_type_ref": "part.dram_64kbit",
+      "physical_arrangement": "2 rows x 4 chips"
+    },
+    "vendor": "Logix / AION Labs",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "product_status": "Superseded design assumption; excluded from active manufacturing BOMs.",
+    "superseded_by": [
+      "part.artemis_ram_module_32kb_x16",
+      "part.artemis_ram_module_128kb"
+    ],
+    "manufacturing_requirements": [
+      "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
+      "identify how existing prototypes/spares are handled."
+    ],
+    "manufacturing_status": "excluded_from_active_production"
+  }
+}

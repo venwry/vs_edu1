@@ -3,7 +3,7 @@ const {JSDOM,VirtualConsole}=require('jsdom');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
-const config=JSON.parse(read('site_pages.json')),story=JSON.parse(read('logix_aion_story.json'));
+const config=JSON.parse(read('generated/catalogs/site-pages.json')),story=JSON.parse(read('generated/catalogs/logix-aion-story.json'));
 const tick=()=>new Promise(r=>setTimeout(r,35));
 async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const errors=[],fetched=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
@@ -84,7 +84,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  for(const [source,href] of links){
   const u=new URL(href,'https://atlas.test/'+source),file=u.pathname.slice(1);
   if(u.origin!=='https://atlas.test')continue;
-  if(['ncc_1980_campaign.json','market_outlook_1980_1982.json','TEAM_EDITION_1982.md','ecosystem_forecast.json','ecosystem_forecast_policy.json','ECOSYSTEM_FORECAST.md','artemis_display_impact.json','memory_manufacturing_impact.json','MEMORY_MANUFACTURING.md','SALES_VIEW.md','roi_1974_1980.json','marketing_budget_1974_1980.json','ROI.md','industrial_investment_1974_1981.json','manufacturing_costs.json','pricing_results.json','sales_forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
+  if(['generated/catalogs/ncc-1980-campaign.json','generated/models/market-outlook-1980-1982.json','TEAM_EDITION_1982.md','generated/models/ecosystem-forecast.json','generated/catalogs/ecosystem-forecast-policy.json','ECOSYSTEM_FORECAST.md','generated/models/artemis-display-impact.json','generated/models/memory-manufacturing-impact.json','MEMORY_MANUFACTURING.md','SALES_VIEW.md','generated/models/roi-1974-1980.json','generated/models/marketing-budget-1974-1980.json','ROI.md','generated/models/industrial-investment-1974-1981.json','generated/models/manufacturing-costs.json','generated/models/pricing-results.json','generated/models/sales-forecast.json','NCC_1980_CAMPAIGN.md','SALES_COMDEX1980.md'].includes(file)){assert(fs.existsSync(path.join(root,file)));continue;}
   assert(targets.has(file),source+' -> '+href);
   if(u.hash)assert(targets.get(file).has(decodeURIComponent(u.hash.slice(1))),source+' -> missing '+href);
  }
@@ -149,7 +149,7 @@ async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  search.value='no event matches this query';search.dispatchEvent(new w.Event('input'));assert.equal(d.querySelectorAll('.event').length,0);
  dom.window.close();
  const changed=structuredClone(story);changed.phases[0].events[0].title='JSON update reaches the timeline';
- const dynamic=await boot(page,{'logix_aion_story.json':changed});assert(dynamic.d.body.textContent.includes('JSON update reaches the timeline'));dynamic.dom.window.close();
+ const dynamic=await boot(page,{'generated/catalogs/logix-aion-story.json':changed});assert(dynamic.d.body.textContent.includes('JSON update reaches the timeline'));dynamic.dom.window.close();
  const offline=await boot(page,{},'file:///atlas/timeline.html');assert(offline.d.querySelector('#catalogs'));offline.dom.window.close();
  console.log(`PASS: ${config.pages.length} pages, ${events.length} timeline events, ${links.length} links; four computer explorers, RAM expansion, networking, bundles, filters, JSON updates and offline recovery.`);
 })().catch(e=>{console.error(e);process.exitCode=1;});

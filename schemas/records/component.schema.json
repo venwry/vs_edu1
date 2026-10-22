@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "component",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "component"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "category",
+        "id",
+        "introduced",
+        "name",
+        "vendor"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "bom_assembly_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "category": {
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "introduced": {
+          "type": [
+            "object"
+          ]
+        },
+        "manufacturing_planning": {
+          "type": [
+            "object"
+          ]
+        },
+        "manufacturing_process_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "manufacturing_requirements": {
+          "type": [
+            "array"
+          ]
+        },
+        "manufacturing_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "type": [
+            "string"
+          ]
+        },
+        "origin": {
+          "type": [
+            "string"
+          ]
+        },
+        "product_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "revision": {
+          "type": [
+            "string"
+          ]
+        },
+        "second_source": {
+          "type": [
+            "object"
+          ]
+        },
+        "specification": {
+          "type": [
+            "object"
+          ]
+        },
+        "specification_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "superseded_by": {
+          "type": [
+            "array"
+          ]
+        },
+        "technology_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "used_in": {
+          "type": [
+            "array"
+          ]
+        },
+        "variants": {
+          "type": [
+            "array"
+          ]
+        },
+        "vendor": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    }
+  }
+}

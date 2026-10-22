@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "bom-components",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "bom-components"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "catalog_ref",
+        "category",
+        "currency",
+        "id",
+        "manufacturer",
+        "manufacturer_part_number",
+        "name",
+        "qualification_status",
+        "quantity_tier",
+        "quote_date",
+        "requirements",
+        "unit_cost"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "catalog_ref": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "category": {
+          "type": [
+            "string"
+          ]
+        },
+        "currency": {
+          "type": [
+            "null"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "manufacturer": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "manufacturer_part_number": {
+          "type": [
+            "null"
+          ]
+        },
+        "name": {
+          "type": [
+            "string"
+          ]
+        },
+        "qualification_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "quantity_tier": {
+          "type": [
+            "null"
+          ]
+        },
+        "quote_date": {
+          "type": [
+            "null"
+          ]
+        },
+        "requirements": {
+          "type": [
+            "array"
+          ]
+        },
+        "unit_cost": {
+          "type": [
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

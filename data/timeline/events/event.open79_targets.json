@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.open79_targets",
+  "record_type": "event",
+  "data": {
+    "id": "event.open79_targets",
+    "title": "Review end-1979 ecosystem adoption targets",
+    "event_type": "plan",
+    "date": {
+      "start": "1979-12-15",
+      "end": "1979-12-15"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme organiser"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "programme organiser"
+      },
+      {
+        "actor_ref": "actor.dri",
+        "role": "programme organiser"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix",
+          "actor.aion",
+          "actor.dri"
+        ],
+        "description": "Target Tandy shipping, one additional named OEM selling a supported CP/M-extension/FlexiBUS option, another OEM in qualification, dealer/integrator configurations and third-party devices in several categories. These are adoption targets, not recorded achievements or contracted orders. This day is a selected scenario milestone."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "technology.flexibus",
+      "technology.logix_tui_standard",
+      "software.aurelia_sdk"
+    ],
+    "related_event_refs": [
+      "event.dri_release"
+    ]
+  }
+}

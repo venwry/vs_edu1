@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../schemas/records/contract-terms.schema.json",
+  "schema_version": "1.0.0",
+  "id": "contract.event.smc_agreement",
+  "record_type": "contract-terms",
+  "data": [
+    {
+      "type": "reuse_right",
+      "description": "Non-exclusive independent manufacturing and sales rights for the four named chip types, including sales to Logix competitors. ERA CPU designs and unrelated chips are excluded.",
+      "actor_refs": [
+        "actor.labs",
+        "actor.logix",
+        "actor.smc"
+      ],
+      "value": null,
+      "unit": null,
+      "effective_date": null
+    },
+    {
+      "type": "responsibility",
+      "description": "AION adapts mask sets to SMC’s agreed process and lithography equipment, supplies revisions/test structures and sends engineers to assist DRAM retention, sensing, refresh and buffered-controller timing qualification. Masks alone do not transfer a process.",
+      "actor_refs": [
+        "actor.labs",
+        "actor.smc"
+      ],
+      "value": null,
+      "unit": null,
+      "effective_date": null
+    },
+    {
+      "type": "funding",
+      "description": "AION/Logix funds transfer engineering, mask revisions and qualification; SMC earns manufacturing margin and pays negotiated royalties on external sales. Amounts and minimum purchase volumes remain unspecified.",
+      "actor_refs": [
+        "actor.labs",
+        "actor.logix",
+        "actor.smc"
+      ],
+      "value": null,
+      "unit": null,
+      "effective_date": null
+    },
+    {
+      "type": "target_launch",
+      "description": "First qualified independent chip sales targeted for October 1979; family-wide timing depends on per-part qualification, especially video RAM. Volume/yield ramp continues into 1980.",
+      "actor_refs": [
+        "actor.smc"
+      ],
+      "value": null,
+      "unit": null,
+      "effective_date": null
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.autodesk_professional_handover",
+  "record_type": "event",
+  "data": {
+    "id": "event.autodesk_professional_handover",
+    "title": "Professional 800x600 hardware becomes available to Autodesk",
+    "event_type": "development",
+    "date": {
+      "start": "1982-06",
+      "end": "1982-06"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.labs",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.autodesk",
+        "role": "programme_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam",
+          "actor.logix",
+          "actor.aion",
+          "actor.labs",
+          "actor.autodesk"
+        ],
+        "description": "Around June, deliver the 128 KiB professional video card and Logix Mono Pro 17 to Autodesk development and QA, with the 64 KiB colour card, Color Pro 14 and mouse. Four simultaneous shades are selected from 16 grayscale levels. Start full dual-display, acceleration and mouse integration; freeze qualified timing, bus and memory contracts. Programme details: team_development_program.json."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.artemis_pro",
+      "software.aion_development_team",
+      "software.autocad_1_artemis",
+      "device.artemis_professional_video_128kb",
+      "device.mono_pro_17",
+      "device.logix_mouse"
+    ],
+    "related_event_refs": [
+      "event.autodesk_agreement"
+    ]
+  }
+}

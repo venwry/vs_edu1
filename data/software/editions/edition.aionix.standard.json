@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.aionix.standard",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.aionix.standard",
+    "name": "AIONix — standard",
+    "product_ref": "software.aionix",
+    "execution_target": "era_aionix",
+    "role": "operating_system",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.artemis",
+        "available_from": "1980-05-19"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": 128,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [],
+    "delivery": "System XIP ROM cartridge",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+  }
+}

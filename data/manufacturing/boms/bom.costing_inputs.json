@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../schemas/records/bom-policy.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.costing_inputs",
+  "record_type": "bom-policy",
+  "data": {
+    "materials": {
+      "status": "unresolved",
+      "required_fields": [
+        "dated supplier quote",
+        "currency",
+        "volume tier",
+        "MOQ",
+        "freight/duty",
+        "accepted-part yield"
+      ]
+    },
+    "conversion": {
+      "status": "unresolved",
+      "required_fields": [
+        "assembly operations",
+        "labor minutes",
+        "test/calibration minutes",
+        "programming",
+        "rework and scrap"
+      ]
+    },
+    "factory_overhead": {
+      "status": "unresolved",
+      "required_fields": [
+        "facilities",
+        "utilities",
+        "maintenance",
+        "supervision",
+        "capacity/utilization",
+        "allocation basis"
+      ]
+    },
+    "nre_and_capital": {
+      "status": "unresolved",
+      "required_fields": [
+        "masks",
+        "engineering",
+        "molds",
+        "fixtures",
+        "equipment",
+        "depreciation or amortization basis"
+      ]
+    },
+    "commercial": {
+      "status": "unresolved",
+      "required_fields": [
+        "warranty",
+        "support/training",
+        "distribution",
+        "retailer margin"
+      ]
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.lottery",
+  "record_type": "event",
+  "data": {
+    "id": "event.lottery",
+    "title": "Lottery win and US relocation preparations",
+    "event_type": "action",
+    "date": {
+      "start": "1972-02-06",
+      "end": "1972-02-06"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "protagonist"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam"
+        ],
+        "description": "Leaves the UK, wins Germany’s LOTTO 6aus49 using foreknowledge, exchanges the winnings and prepares to move to the US."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [
+      {
+        "name": "lottery_winnings",
+        "value": 1000000,
+        "unit": "DEM",
+        "qualifier": ""
+      },
+      {
+        "name": "converted_funds",
+        "value": 310000,
+        "unit": "USD",
+        "qualifier": "approximately"
+      }
+    ],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.identity"
+    ]
+  }
+}

@@ -3,8 +3,8 @@ import json
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-catalog = json.loads((root / 'logix_aion_technical_catalog_v2.json').read_text())
-bom = json.loads((root / 'hardware_bom.json').read_text())
+catalog = json.loads((root / 'generated/catalogs/logix-aion-technical-catalog-v2.json').read_text())
+bom = json.loads((root / 'generated/catalogs/hardware-bom.json').read_text())
 records = {r['id']: r for items in catalog.values() if isinstance(items, list)
            for r in items if isinstance(r, dict) and 'id' in r}
 hosts = ['computer.aurelia', 'computer.aurelia_plus']
@@ -35,7 +35,7 @@ assert ram_part['vendor'] == 'AION Labs'
 assert ram_part['specification']['ports'] == ['single random read/write port']
 assert ram_part['specification']['serial_register_bits'] == 0
 # Storage budgets and fabrication costs are separate: both must reference the same dies.
-costs = json.loads((root / 'manufacturing_costs.json').read_text())
+costs = json.loads((root / 'generated/models/manufacturing-costs.json').read_text())
 models = costs['chip_fabrication_models']
 assert models[chip['id']]['1978']['die_area_mm2'] == 52
 assert models[ram_part['id']]['1978']['die_area_mm2'] == 18

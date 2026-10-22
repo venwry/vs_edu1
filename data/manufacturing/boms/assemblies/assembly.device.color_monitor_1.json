@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.color_monitor_1",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.color_monitor_1",
+    "name": "Logix Color Monitor I 12-inch",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.sony_kv1204_display_assembly",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.color_monitor_controller",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.color_monitor_1.video_link_receiver",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.color_monitor_1.rgb_dac_and_amplifiers_not_included_by_oem",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.color_monitor_1.monitor_enclosure",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.color_monitor_1.passives_protection_and_internal_harnesses",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.color_monitor_1.external_cable_and_regional_mains_packout",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once.",
+      "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.peak_readiness",
+  "record_type": "event",
+  "data": {
+    "id": "event.peak_readiness",
+    "title": "Qualify capacity and supplier reservations before year-end peak",
+    "event_type": "development",
+    "date": {
+      "start": "1982-10-01",
+      "end": "1982-10-01"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix"
+        ],
+        "description": "Adam forecasts the Q4 spike. Fund inventory a quarter ahead and reserve 5% commercial output headroom; do not manufacture permanent extra stock. Monitor wafers, tool redundancy and supplier lead times remain separately funded protections."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": []
+  }
+}

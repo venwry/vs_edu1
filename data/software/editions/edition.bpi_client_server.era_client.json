@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.bpi_client_server.era_client",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.bpi_client_server.era_client",
+    "name": "BPI client-server business suite / RDBMS edition — era client",
+    "product_ref": "software.bpi_client_server",
+    "execution_target": "era_aionix",
+    "role": "client",
+    "introduced": {
+      "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+      "event_start_date": "1981-05-04"
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.artemis",
+        "available_from": "1981-05-04"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": null,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [
+      "software.aionix_server"
+    ],
+    "delivery": "Not yet specified",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+  }
+}

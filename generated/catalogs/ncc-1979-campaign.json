@@ -1,0 +1,325 @@
+{
+  "metadata": {
+    "title": "NCC 1979 open architecture and migration campaign",
+    "version": "1.0",
+    "status": "Accepted alternative-story programme; dates are scenario choices, adoption counts are targets, measurements and unsigned commercial agreements remain open.",
+    "timeline_source": "logix_aion_story.json"
+  },
+  "positioning": {
+    "message": "Choose your computer. Keep your investment.",
+    "objective": "Expand independent CP/M application compatibility and FlexiBUS peripheral adoption across competing vendors; video is optional. Ecosystem success can include lost Aurelia share.",
+    "openness": "Documented interfaces, non-exclusive implementation rights and predictable commercial access; CP/M remains commercially licensed, not automatically free or open-source."
+  },
+  "profiles": [
+    {
+      "id": "cpm_application",
+      "name": "CP/M application compatibility",
+      "required": "Named OS core version, optional extension version, ISA, TPA/resource budget, adapters and qualified application editions; common document formats and documented APIs.",
+      "optional": "FlexiBUS and Logix video; native host display, disks and conventional ports remain valid.",
+      "limits": "Standard CP/M availability does not guarantee every extended application, Z80-only binary, file system or floppy format."
+    },
+    {
+      "id": "flexibus_peripheral",
+      "name": "FlexiBUS peripheral compatibility",
+      "required": "Published electrical/transport rules plus device-class profile, host driver, diagnostics and named qualification.",
+      "optional": "CP/M and Logix video; other OS/CPU hosts can implement their own drivers.",
+      "limits": "Identification is not feature compatibility. V1 is one device per point-to-point host port, no implied passive hub or daisy chain; faster rate permits at most 50 KB/s before protocol overhead."
+    },
+    {
+      "id": "logix_display",
+      "name": "Logix display compatibility",
+      "required": "Distinguish software API conformance from optional controller/card, digital link and qualified monitor modes.",
+      "optional": "FlexiBUS and adoption of the full Aurelia architecture.",
+      "limits": "80-column display requires a qualified 640-pixel monitor; existing 320-pixel launch monitors do not gain it from a card alone."
+    }
+  ],
+  "governance": {
+    "software_lead": "Digital Research",
+    "hardware_contributor": "Logix",
+    "participants": "Independent computer, peripheral and software suppliers; prospective membership is not a signed agreement.",
+    "commitments": [
+      "Published specifications, versioning and backward-support policy",
+      "Reference drivers, conformance tests, configuration diagnostics and a certification dispute process",
+      "Non-exclusive implementation rights, own-brand products and published access terms",
+      "Equal access to qualified components and disclosed supply priorities",
+      "Manufacturer representation in a compatibility working group"
+    ],
+    "open_terms": [
+      "Final licence/royalty terms and reference-code redistribution rights",
+      "Support duration, staffing and legacy maintenance budget",
+      "Working-group charter, voting and certification operator",
+      "Certification fees, supply allocations, lead times and warranties"
+    ]
+  },
+  "schedule": [
+    {
+      "event_ref": "event.oem79_briefings",
+      "date": "1979-02-19",
+      "activity": "Begin confidential briefings and engineering-kit evaluations. Prioritise North Star and Vector Graphic as prospects; approach Cromemco, Altos, Intertec and Heath selectively. Invitations are not signed agreements or qualified products."
+    },
+    {
+      "event_ref": "event.open79_profiles",
+      "date": "1979-05-05",
+      "activity": "Alongside the existing DRI portable-extension release, publish separate CP/M application, FlexiBUS peripheral and optional Logix display compatibility profiles, reference-driver and test access, non-exclusive implementation principles and support-roadmap requirements. Exact fees and support duration remain to be settled."
+    },
+    {
+      "event_ref": "event.open79_workshop",
+      "date": "1979-05-21",
+      "activity": "Invite computer, software and peripheral suppliers to test named configurations and document failures before public demonstrations. Supplier attendance and passing results must be verified; no announcement of an unsigned OEM."
+    },
+    {
+      "event_ref": "event.ncc79_campaign",
+      "date": "1979-06-04",
+      "activity": "Present a 50-minute cross-vendor campaign before questions. Demonstrate applications/documents, then independent BPI, FlexiBUS, Apple native drivers and optional video. BPI management speaks with partners. State that the next generation breaks native Z80 binary compatibility; C source/API portability reduces migration work and a planned optional Z80 compatibility coprocessor supports qualified legacy software. Reveal neither processor word size nor architecture before NCC 1980. See ncc_1979_campaign.json."
+    },
+    {
+      "event_ref": "event.open79_roadshows",
+      "date": "1979-07-16",
+      "activity": "Run dealer demonstrations, joint trade-press activity and developer clinics. Teach documented APIs, file interchange, C portability boundaries and device-class drivers. Publish a directory distinguishing shipping, qualified and prototype configurations."
+    },
+    {
+      "event_ref": "event.open79_delivery",
+      "date": "1979-10-15",
+      "activity": "Promote the separately recorded Tandy customer release and only individually qualified SMC or peripheral products. Update directory evidence; do not imply all licensed chips, every peripheral class or new independent OEM systems are shipping."
+    },
+    {
+      "event_ref": "event.open79_targets",
+      "date": "1979-12-15",
+      "activity": "Target Tandy shipping, one additional named OEM selling a supported CP/M-extension/FlexiBUS option, another OEM in qualification, dealer/integrator configurations and third-party devices in several categories. These are adoption targets, not recorded achievements or contracted orders."
+    },
+    {
+      "event_ref": "event.open80_results",
+      "date": "1980-01-14",
+      "activity": "Publish verified customer examples, compatibility results and partner configurations. Target three to five non-Logix manufacturers with supported configurations by NCC 1980, counting Tandy once and excluding duplicate dealer builds. Do not disclose the new processor architecture early."
+    }
+  ],
+  "premiere": {
+    "date": "1979-06-04",
+    "duration_minutes_before_questions": 50,
+    "stages": [
+      {
+        "id": "opening",
+        "minutes": 4,
+        "description": "Explain customer investment and independent choices for software, peripherals and displays."
+      },
+      {
+        "id": "cross_vendor",
+        "minutes": 8,
+        "description": "Run supported application workflows on Aurelia and the Model II prototype. Use separately qualified host editions; preserve documents and supported semantics without promising identical binaries."
+      },
+      {
+        "id": "applications",
+        "minutes": 10,
+        "description": "Demonstrate Abacus first, then independent BPI business records and summary export. BPI remains an independent licensor; no BPI Model II port is implied."
+      },
+      {
+        "id": "flexibus",
+        "minutes": 7,
+        "description": "Operate a qualified peripheral sequentially on named hosts. Identification, driver support and application features are separately verified. Attach only at quiescent ports."
+      },
+      {
+        "id": "apple_video",
+        "minutes": 6,
+        "description": "Show native Apple II drivers and optional display cards separately. No Apple CP/M/Z80 execution or automatic adaptation of existing Apple graphics is implied."
+      },
+      {
+        "id": "partners",
+        "minutes": 7,
+        "description": "DRI, Tandy, Microsoft, BPI management and confirmed peripheral participants explain responsibilities and commercial access. No prospective OEM is presented as signed. SMC is a future qualified source, not June production supply."
+      },
+      {
+        "id": "migration",
+        "minutes": 5,
+        "description": "Adam states that the next generation will break native Z80 binary compatibility. Existing C tools and documented APIs reduce source migration effort; recompilation, adaptation and testing remain necessary. A planned optional Z80 coprocessor offers qualified legacy execution. Architecture and word size remain secret until NCC 1980. Eight-bit systems retain business uses and broaden into homes and education as prices fall. Adam forecasts that next-generation computers using an existing television and basic storage will remain above roughly $100 for about a decade; this is a strategic expectation, not a withdrawal date or price guarantee."
+      },
+      {
+        "id": "availability",
+        "minutes": 3,
+        "description": "Separate shipping products, prototypes, future plans and adoption targets; provide documented configurations, licence terms, directory and developer-registration contacts."
+      }
+    ],
+    "venue": "Booked presentation space; main-stage access, exact slot and AV qualification remain to be confirmed.",
+    "demonstration_protocol": [
+      "Aurelia-to-Model-II Abacus document round trip using qualified host editions and supported common features",
+      "Test actual transfer route and floppy/file formats; do not imply identical disk media support",
+      "Mark Model II as prototype until October customer release",
+      "Publish RAM, TPA, load/recalculation and document-capacity limits; no undocumented hardware access guarantee",
+      "Label prepared data and recordings; preserve independent BPI branding and partner clearances"
+    ]
+  },
+  "migration": {
+    "public_announcement": "1979-06-04",
+    "architecture_reveal": "1980-05-19",
+    "disclosure": "Public 1979 materials withhold word size, ISA details and architecture; full project technical catalog is an author-facing specification, not a 1979 press kit.",
+    "native_binary_compatibility": false,
+    "source_path": "Use the existing Z80 C environment, documented APIs, portable file formats and separated platform adapters. Recompile for the later target; review assembly, integer/pointer assumptions, memory banking and direct hardware access.",
+    "legacy_path": "Planned optional Z80 coprocessor for qualified legacy applications. Implementation details remain confidential; this is not a universal guarantee for hardware-dependent software.",
+    "public_status": "Future commitment, not a shipping or fully qualified June-1979 product.",
+    "support": "Maintain CP/M tools and applications alongside next-generation development; publish a funded duration before making a dated service guarantee."
+  },
+  "eight_bit_outlook": {
+    "status": "Adam strategic forecast, not an engineering or economic guarantee.",
+    "trajectory": "Continue useful business installations while declining costs broaden home, education and personal use; no fixed date when all business users switch.",
+    "threshold_usd": 100,
+    "price_basis": "Nominal future US retail dollars before tax for a next-generation computer using an existing television and basic storage; screen and complete disk/printer business configuration excluded. Exact basic-storage inclusion remains to be defined.",
+    "horizon_years_approximately": 10,
+    "reference_year": 1979,
+    "interpretation": "Adam does not expect the threshold within roughly a decade. This is not a discontinuation date, promise of each model remaining in production or automatic retirement when the threshold is crossed.",
+    "engineering_gap": "Current professional digital monitor interface does not provide consumer-TV output; a later TV-capable configuration would need separate engineering and costing."
+  },
+  "manufacturer_assessment": [
+    {
+      "manufacturer": "North Star",
+      "cpm_extensions": "high",
+      "flexibus": "medium-high",
+      "logix_video_hardware": "medium, optional",
+      "rationale": "First recruitment target with Lifeboat as a potential integration/distribution partner; official OEM support is separate from aftermarket compatibility.",
+      "status": "Qualitative counterfactual judgement; unsigned prospect, not a committed product."
+    },
+    {
+      "manufacturer": "Vector Graphic",
+      "cpm_extensions": "high",
+      "flexibus": "medium-high",
+      "logix_video_hardware": "low-medium",
+      "rationale": "Second priority; protect existing display investment and qualify software/interface options.",
+      "status": "Qualitative counterfactual judgement; unsigned prospect, not a committed product."
+    },
+    {
+      "manufacturer": "Cromemco",
+      "cpm_extensions": "medium",
+      "flexibus": "medium",
+      "logix_video_hardware": "low",
+      "rationale": "Selective compatibility programme; preserve its OS and graphics strategy.",
+      "status": "Qualitative counterfactual judgement; unsigned prospect, not a committed product."
+    },
+    {
+      "manufacturer": "Altos",
+      "cpm_extensions": "medium-high",
+      "flexibus": "medium",
+      "logix_video_hardware": "low",
+      "rationale": "Business-software and peripheral evaluation; no whole-platform redesign assumed.",
+      "status": "Qualitative counterfactual judgement; unsigned prospect, not a committed product."
+    },
+    {
+      "manufacturer": "Intertec",
+      "cpm_extensions": "medium-high",
+      "flexibus": "medium, host-specific work",
+      "logix_video_hardware": "low",
+      "rationale": "Late-1979 evaluation, potential 1980 qualification; later documentation does not establish June-1979 option availability.",
+      "status": "Qualitative counterfactual judgement; unsigned prospect, not a committed product."
+    },
+    {
+      "manufacturer": "Heath/Heathkit",
+      "cpm_extensions": "medium",
+      "flexibus": "medium, host-specific accessory",
+      "logix_video_hardware": "low",
+      "rationale": "Later feasibility programme, not a promised 1979 release.",
+      "status": "Qualitative counterfactual judgement; unsigned prospect, not a committed product."
+    }
+  ],
+  "existing_anchors": {
+    "Tandy": "Existing agreement: CP/M, native display adapter, FlexiBUS option and Abacus; no video requirement or BPI port.",
+    "Apple": "Existing native expansion cooperation and peripheral/display demonstrations; no Z80 or CP/M execution provided."
+  },
+  "peripheral_programme": [
+    {
+      "category": "printers",
+      "opportunity": "Wide carriage, letter quality, specialist forms and faster devices",
+      "requirement": "Status, character/graphics, paper and form controls; existing basic printer protocol is insufficient for every feature."
+    },
+    {
+      "category": "plotters",
+      "opportunity": "Business charts and engineering output",
+      "requirement": "New plotting profile and application support required."
+    },
+    {
+      "category": "modems",
+      "opportunity": "Communications and remote access",
+      "requirement": "Serial data, flow control, modem status/control profile and drivers required."
+    },
+    {
+      "category": "storage",
+      "opportunity": "Larger floppies, backup and selected hard disks",
+      "requirement": "Geometry, removable-media errors, durable flush, boot rules and measured throughput; native faster controllers remain legitimate."
+    },
+    {
+      "category": "specialist_devices",
+      "opportunity": "Instruments, readers and business input",
+      "requirement": "Published class/vendor extension profile and host drivers; no auto-executing foreign-ISA ROM drivers."
+    }
+  ],
+  "targets": {
+    "end_1979": {
+      "Tandy_shipping": true,
+      "additional_supported_oems": 1,
+      "additional_oems_in_qualification": 1,
+      "peripheral_categories": "Several, only counted after verified shipping",
+      "status": "Target, not an achieved market outcome."
+    },
+    "ncc1980": {
+      "supported_non_logix_manufacturers_range": [
+        3,
+        5
+      ],
+      "counting": "Count Tandy once; count distinct OEMs with official supported configurations, not multiple dealer builds or product SKUs.",
+      "status": "Target, not signed contracts or actual deliveries."
+    },
+    "metrics": [
+      "Independent OEM configurations and qualified application editions",
+      "Compatible computer sell-through by all vendors",
+      "Third-party peripheral shipments and supported device classes",
+      "Document-interchange success and support incidents",
+      "Supplier concentration and component availability"
+    ]
+  },
+  "evidence": [
+    {
+      "url": "https://deramp.com/downloads/north_star/software/manuals/Lifeboat%20CPM%2022.pdf",
+      "scope": "December 1979 primary manual supports North Star CP/M integration precedent, not an actual alternate partnership."
+    },
+    {
+      "url": "https://vintagecomputer.com/vector-graphic-inc-pricelist-1979.html",
+      "scope": "May 1979 reproduced Vector price list supports existing CP/M and display investment."
+    },
+    {
+      "url": "https://www.worldradiohistory.com/UK/Practical-Computing/70s/Practical-Computing-1979-09-S-OCR.pdf",
+      "scope": "Period advertising supports Cromemco independent OS/compatibility positioning."
+    },
+    {
+      "url": "https://www.bitsavers.org/pdf/intertec/Superbrain_Users_Manual_Sep80.pdf",
+      "scope": "Later primary manual; architecture precedent only, not proof of June 1979 adapter availability."
+    }
+  ],
+  "disclosure_policy": {
+    "embargo_until": "1980-05-19",
+    "scope": "Every 1979 keynote, Q&A, press release, advertisement, dealer script, sales proposal, partner/OEM briefing, roadshow, developer clinic and demonstration. Confidential internal engineering is not a public announcement.",
+    "public_name": "next-generation computers",
+    "permitted": [
+      "Native binary compatibility with existing Z80 applications will break.",
+      "The established C development environment and documented interfaces will minimise source migration effort; adaptation, recompilation and testing remain necessary.",
+      "An optional Z80 coprocessor is planned for qualified legacy applications; availability and compatibility are not guaranteed for every model.",
+      "Eight-bit systems retain years of business use and increasingly serve homes and education; the next-generation sub-$100 forecast is roughly a decade away, not a withdrawal deadline."
+    ],
+    "withheld": [
+      "Future product, processor and operating-system names.",
+      "Word size, instruction set, register model, execution design, address width, memory organisation and protection.",
+      "Clock rates, performance claims, chip counts, schematics, board photographs, bus topology and future display specifications.",
+      "Coprocessor implementation, interconnect, memory mapping and host integration.",
+      "Future-target SDKs, compiler output, binaries, benchmarks and demonstrations that allow architectural inference."
+    ],
+    "enforcement": "Use only released 8-bit products in 1979 demonstrations and clinics. Review slides, screenshots, captions, attachments and linked specifications as well as speech. Do not attach the all-years technical catalog or disclose future implementation details to prospective partners; current CP/M, FlexiBUS and optional video specifications remain available.",
+    "qa_response": "We will discuss the new architecture at NCC 1980. Today we can describe our C migration approach and planned optional Z80 compatibility path."
+  },
+  "economics": {
+    "budget_usd": null,
+    "costs": [
+      "OEM engineering kits and port assistance",
+      "Workshops, conformance engineering and directory maintenance",
+      "Venue, AV, demonstrations and rights-cleared recordings",
+      "Dealer roadshows, trade press and joint advertising",
+      "Developer migration clinics and ongoing CP/M support"
+    ],
+    "treatment": "Operating programme expenditure, not unit hardware BOM. No fabricated zero budget or assumed OEM sales receipts. BPI, Tandy and independent suppliers account for their own receipts.",
+    "forecast_cutoff": "The original forecast through May 31, 1979 remains unchanged. sales_forecast.json separately extends demand and delivery projections through November 30 with explicit June pricing, campaign effects, substitution and capacity assumptions. No effects are applied retroactively; OEM adoption targets are not shipments. A separate COMDEX-to-NCC 1980 extension now reaches May 18 with product-specific demand and Academy capacity; prior period forecasts are unchanged."
+  }
+}

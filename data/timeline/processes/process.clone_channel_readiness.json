@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../schemas/records/process.schema.json",
+  "schema_version": "1.0.0",
+  "id": "process.clone_channel_readiness",
+  "record_type": "process",
+  "data": {
+    "id": "process.clone_channel_readiness",
+    "title": "Dealer, service and Academy readiness",
+    "participants": [
+      {
+        "actor_ref": "actor.academy",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.logix",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.aion_tech_uk",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.northstar",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.vector",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.sks",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.goupil",
+        "role": "programme_partner"
+      },
+      {
+        "actor_ref": "actor.eina",
+        "role": "programme_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.academy",
+          "actor.logix",
+          "actor.aion_tech_uk",
+          "actor.northstar",
+          "actor.vector",
+          "actor.sks",
+          "actor.goupil",
+          "actor.eina"
+        ],
+        "description": "Train local instructors, installers and repair staff; establish spare stock and customer escalation. Reuse existing Academy/dealer programmes. New country rooms and staffing require costed incremental demand; existing US capacity is not counted twice."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.clone_january_launch"
+    ],
+    "period": {
+      "start": "1981-06-01",
+      "end": "1982-03-31",
+      "precision": "range",
+      "qualifier": "Accepted alternative-scenario dates; exact days selected for scheduling",
+      "display": "1981-06-01 to 1982-03-31"
+    },
+    "phase_refs": [
+      "phase.ncc81",
+      "phase.manufacturing_1981_1983"
+    ],
+    "date_basis": "provisional"
+  }
+}

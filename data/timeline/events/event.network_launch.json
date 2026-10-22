@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.network_launch",
+  "record_type": "event",
+  "data": {
+    "id": "event.network_launch",
+    "title": "Networked business-computing platform presented",
+    "event_type": "launch",
+    "date": {
+      "start": "1981-05-04",
+      "end": "1981-05-04"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.logix",
+        "role": "presenter"
+      },
+      {
+        "actor_ref": "actor.aion",
+        "role": "software_partner"
+      },
+      {
+        "actor_ref": "actor.bpi",
+        "role": "application_partner"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.logix"
+        ],
+        "description": "Presents TCP/IP networking, Artemis PRO and Aurelia/Artemis network upgrades."
+      },
+      {
+        "actor_refs": [
+          "actor.bpi"
+        ],
+        "description": "Introduces a client-server generation built around a robust relational database."
+      }
+    ],
+    "outcomes": [
+      {
+        "description": "Networking becomes the standard Artemis direction rather than an isolated peripheral."
+      }
+    ],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "computer.artemis_pro",
+      "technology.logix_tcpip_lan",
+      "software.cpm_aurelia_networking",
+      "software.aionix_server",
+      "software.bpi_client_server"
+    ],
+    "related_event_refs": []
+  }
+}

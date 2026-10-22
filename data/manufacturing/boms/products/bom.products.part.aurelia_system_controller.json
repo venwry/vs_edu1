@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.part.aurelia_system_controller",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "part.aurelia_system_controller",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.part.aurelia_system_controller"
+    ],
+    "requirements": [
+      "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+      "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+      "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
+    ]
+  }
+}

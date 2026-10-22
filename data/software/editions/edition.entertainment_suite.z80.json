@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "1.0.0",
+  "id": "edition.entertainment_suite.z80",
+  "record_type": "software-edition",
+  "data": {
+    "id": "edition.entertainment_suite.z80",
+    "name": "AION Entertainment Suite — z80",
+    "product_ref": "software.entertainment_suite",
+    "execution_target": "z80_cpm",
+    "role": "application",
+    "introduced": {
+      "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+      "event_start_date": "1982-06",
+      "date_precision": "month"
+    },
+    "platform_support": [
+      {
+        "computer_ref": "computer.aurelia",
+        "available_from": "1982-06"
+      },
+      {
+        "computer_ref": "computer.aurelia_plus",
+        "available_from": "1982-06"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": null,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Measured image/workspace budgets and minimum supported configurations pending."
+    },
+    "dependency_refs": [
+      "technology.logix_tui_mouse",
+      "technology.flexibus_pointing_device"
+    ],
+    "delivery": "diskette",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+  }
+}

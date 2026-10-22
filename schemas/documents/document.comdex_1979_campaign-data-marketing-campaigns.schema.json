@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.comdex_1979_campaign data/marketing/campaigns",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "messages",
+        "offering_refs",
+        "premiere",
+        "speed_demonstration",
+        "abacus_demonstration",
+        "partner_policy",
+        "activities",
+        "commercial_policy",
+        "strategy",
+        "disclosure",
+        "metrics"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        },
+        "messages": {
+          "type": "object"
+        },
+        "offering_refs": {
+          "type": "array"
+        },
+        "premiere": {
+          "type": "object"
+        },
+        "speed_demonstration": {
+          "type": "object"
+        },
+        "abacus_demonstration": {
+          "type": "object"
+        },
+        "partner_policy": {
+          "type": "object"
+        },
+        "activities": {
+          "type": "array"
+        },
+        "commercial_policy": {
+          "type": "object"
+        },
+        "strategy": {
+          "type": "string"
+        },
+        "disclosure": {
+          "type": "object"
+        },
+        "metrics": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

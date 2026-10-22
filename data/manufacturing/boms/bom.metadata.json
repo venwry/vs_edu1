@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schemas/records/bom-policy.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.metadata",
+  "record_type": "bom-policy",
+  "data": {
+    "version": "1.4",
+    "status": "Engineering BOM baseline; not released for purchase or unit-cost quotation.",
+    "source_catalog_version": "2.15",
+    "quantity_policy": "Known quantities are integers; unresolved quantities are null and block cost roll-up. Functional assembly placeholders are not purchasable IC selections.",
+    "cost_policy": "No prices invented. Separate recurring material, conversion, factory overhead, NRE/capital and commercial/service costs. Do not count an OEM subassembly and its included parts twice."
+  }
+}

@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
-const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=JSON.parse(read('manufacturing_costs.json'));
+const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=JSON.parse(read('generated/models/manufacturing-costs.json'));
 (async()=>{
  const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/manufacturing-costs.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('manufacturing-costs.js'));w.document.getElementById('app').innerHTML=w.costTemplate;w.fetch=async()=>({ok:true,json:async()=>model});await w.startCostAssessment();const d=w.document;
  assert(d.getElementById('dated-costs').textContent.includes('November'));assert(d.getElementById('dated-costs').textContent.includes('461.30'));

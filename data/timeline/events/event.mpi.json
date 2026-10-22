@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.mpi",
+  "record_type": "event",
+  "data": {
+    "id": "event.mpi",
+    "title": "OEM printer-mechanism agreement",
+    "event_type": "agreement",
+    "date": {
+      "start": "1977-09-01",
+      "end": "1977-09-01"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.adam",
+        "role": "buyer"
+      },
+      {
+        "actor_ref": "actor.mpi",
+        "role": "supplier"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.adam",
+          "actor.mpi"
+        ],
+        "description": "Agree OEM purchasing/manufacturing arrangements for bare MP-40 mechanisms to receive FlexiBUS controllers."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "device.flexiprint40",
+      "part.mpi_mp40_mechanism"
+    ],
+    "related_event_refs": []
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.apple_compatibility_review",
+  "record_type": "event",
+  "data": {
+    "id": "event.apple_compatibility_review",
+    "title": "Apple reviews successor-product compatibility requirements",
+    "event_type": "plan",
+    "date": {
+      "start": "1979-09-17",
+      "end": "1979-09-17"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.apple",
+        "role": "participant"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.apple"
+        ],
+        "description": "Competitive review increases priority for protecting existing software, peripherals and customer data in successor plans. This is a requirements decision, not a guaranteed technical fix or early Lisa/GUI shipment. Apple keeps its independent hardware roadmap."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [],
+    "related_event_refs": [
+      "event.apple_business_promotions",
+      "event.apple_extensions"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.computer.artemis.m128_1024",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.computer.artemis.m128_1024",
+    "name": "Logix Artemis m128_1024",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "assembly.computer.artemis.base",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.part.artemis_ram_module_128kb_aion",
+        "quantity": 8,
+        "unit": "each",
+        "role": "system RAM",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "assembly.device.artemis_video_card",
+        "quantity": 1,
+        "unit": "each",
+        "role": "Exactly one configured video card",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Expansion design target; qualification pending."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+    "ram_configuration_id": "m128_1024",
+    "shipping_configuration": false
+  }
+}

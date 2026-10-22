@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.sales_model_inputs data/business/assumptions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "demand_anchor_months",
+        "basket_components",
+        "academy_course_days",
+        "academy_requests",
+        "standalone_applications"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "demand_anchor_months": {
+          "type": "object"
+        },
+        "basket_components": {
+          "type": "object"
+        },
+        "academy_course_days": {
+          "type": "object"
+        },
+        "academy_requests": {
+          "type": "array"
+        },
+        "standalone_applications": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

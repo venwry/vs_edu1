@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.logix_mouse",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.logix_mouse",
+    "name": "Logix Mouse — two buttons and two rollers",
+    "category": "pointing_device",
+    "introduced": {
+      "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+      "event_start_date": "1982-06",
+      "date_precision": "month"
+    },
+    "specification": {
+      "interface_ref": "technology.flexibus",
+      "class_protocol_ref": "technology.flexibus_pointing_device",
+      "buttons": 2,
+      "rollers": [
+        {
+          "position": "under middle finger",
+          "default_action": "vertical scrolling"
+        },
+        {
+          "position": "thumb side",
+          "default_action": "horizontal scrolling"
+        }
+      ],
+      "tracking": "Relative X/Y pointing; mechanical ball with quadrature encoders is the design baseline, subject to resolution and tracking qualification.",
+      "ergonomics": "Rollers are independent of primary/secondary buttons; qualify accidental actuation, handedness, detent force and reach. Side-wheel placement must be documented.",
+      "power": "Port-power target; current draw, connector and protection must be qualified.",
+      "history": "Deliberate alternate-history dual-roller mouse design, not a claim of a matching historical 1982 retail product."
+    },
+    "compatible_computers": [
+      "computer.aurelia",
+      "computer.aurelia_plus",
+      "computer.artemis",
+      "computer.artemis_pro"
+    ],
+    "technology_refs": [
+      "technology.flexibus_pointing_device",
+      "technology.logix_tui_mouse"
+    ],
+    "manufacturing_status": "design_baseline_costed_unqualified",
+    "bom_assembly_refs": [
+      "assembly.device.logix_mouse"
+    ]
+  }
+}

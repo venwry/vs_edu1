@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.ncc_1979_campaign data/marketing/campaigns",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "positioning",
+        "profiles",
+        "governance",
+        "schedule",
+        "premiere",
+        "migration",
+        "eight_bit_outlook",
+        "manufacturer_assessment",
+        "existing_anchors",
+        "peripheral_programme",
+        "targets",
+        "evidence",
+        "disclosure_policy"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        },
+        "positioning": {
+          "type": "object"
+        },
+        "profiles": {
+          "type": "array"
+        },
+        "governance": {
+          "type": "object"
+        },
+        "schedule": {
+          "type": "array"
+        },
+        "premiere": {
+          "type": "object"
+        },
+        "migration": {
+          "type": "object"
+        },
+        "eight_bit_outlook": {
+          "type": "object"
+        },
+        "manufacturer_assessment": {
+          "type": "array"
+        },
+        "existing_anchors": {
+          "type": "object"
+        },
+        "peripheral_programme": {
+          "type": "array"
+        },
+        "targets": {
+          "type": "object"
+        },
+        "evidence": {
+          "type": "array"
+        },
+        "disclosure_policy": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

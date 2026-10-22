@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.artemis_professional_video_128kb",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.artemis_professional_video_128kb",
+    "name": "Logix Artemis Professional 128 KiB video card",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.professional_graphics_controller",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.aion_4164",
+        "quantity": 16,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_professional_video_128kb.pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_professional_video_128kb.slot_connector",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_professional_video_128kb.host_dma_arbitration_buffers",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_professional_video_128kb.line_fifo_clock_link",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_professional_video_128kb.passives_power_filtering",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

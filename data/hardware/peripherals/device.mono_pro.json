@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.mono_pro",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.mono_pro",
+    "name": "Logix Mono Pro 14-inch",
+    "category": "display",
+    "specification": {
+      "crt_ref": "part.brimar_m36_141w_crt",
+      "controller_ref": "part.mono_pro_controller",
+      "displayed_registers": 16,
+      "source_palette": "8-bit greyscale",
+      "capabilities": {
+        "protocol_version": 1,
+        "raster_ids": [
+          "raster_640_400"
+        ],
+        "preferred_raster_id": "raster_640_400",
+        "maximum_pixel_clock_mhz": 21.504,
+        "color_model": "grayscale",
+        "palette_precision_bits": 8,
+        "programmable_palette": true,
+        "qualification_status": "Engineering design target; tube/yoke/analog chain not yet production qualified."
+      },
+      "scan": "640×400 progressive, fixed frequency",
+      "analog_chain": "4-bit index → 16×8-bit palette → external precision DAC ladder → external 25–30 MHz target video amplifier → CRT; independent HV/deflection/PSU."
+    },
+    "offered_with": [
+      "computer.artemis",
+      "computer.artemis_pro"
+    ],
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "optional_with": [],
+    "manufacturing_requirements": [
+      "Qualify bare CRT and yoke at 26.88 kHz horizontal / 60 Hz progressive; geometry, focus, 25–30 MHz video amplifier, grayscale calibration, insulation, EMC and thermal tests."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.device.mono_pro"
+    ]
+  }
+}

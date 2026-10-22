@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.computer.artemis",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "computer.artemis",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.computer.artemis.m32_128",
+      "assembly.computer.artemis.m32_128.networked",
+      "assembly.computer.artemis.m32_192",
+      "assembly.computer.artemis.m32_192.networked",
+      "assembly.computer.artemis.m32_256",
+      "assembly.computer.artemis.m32_256.networked",
+      "assembly.computer.artemis.m128_256",
+      "assembly.computer.artemis.m128_256.networked",
+      "assembly.computer.artemis.m128_512",
+      "assembly.computer.artemis.m128_512.networked",
+      "assembly.computer.artemis.m128_768",
+      "assembly.computer.artemis.m128_768.networked",
+      "assembly.computer.artemis.m128_1024",
+      "assembly.computer.artemis.m128_1024.networked"
+    ],
+    "requirements": [
+      "Replace old module model with the two-density, four-bank architecture. Add DRAM controller/refresh/buffers and capacity straps, numeric physical map, boot/reset ROM path, bus width adapters and exact custom-chip quantities/packages. Define FDD mechanisms and HDD interface even when no HDD ships. Cost pre-1981 and networking-included 1981 revisions separately. Determine which chip implements four FlexiBUS ports.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.part.z80a",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "part.z80a",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.part.z80a"
+    ],
+    "requirements": [
+      "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+    ]
+  }
+}

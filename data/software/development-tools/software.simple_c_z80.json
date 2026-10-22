@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../schemas/records/software-product.schema.json",
+  "schema_version": "1.0.0",
+  "id": "software.simple_c_z80",
+  "record_type": "software-product",
+  "data": {
+    "id": "software.simple_c_z80",
+    "name": "Logix Simple C compiler for Z80 CP/M",
+    "vendor": "Logix",
+    "category": "development_tool",
+    "features": [
+      "basic C libraries",
+      "structures",
+      "typedef",
+      "function pointers",
+      "documented 32-bit integer arithmetic",
+      "shared string and stream-I/O contracts",
+      "Shared Logix C/TUI/graphics headers and target libraries",
+      "ROM-aware linker and cartridge/disk output",
+      "ROM, RAM and stack-budget reports",
+      "Portability diagnostics where feasible"
+    ],
+    "sold_separately": true,
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "description": "Aurelia-hosted C development package with the Z80 backend, assembler/linker, startup code and target libraries for enhanced CP/M. Builds applications that discover display and memory capabilities at runtime.",
+    "toolchain": {
+      "host": [
+        "computer.aurelia",
+        "computer.aurelia_plus"
+      ],
+      "targets": [
+        "z80_cpm"
+      ],
+      "profiles": [
+        "aurelia_compatible",
+        "aurelia_plus_required"
+      ],
+      "components": [
+        "C compiler Z80 backend",
+        "Z80 assembler",
+        "linker",
+        "CP/M startup code",
+        "target runtime libraries",
+        "ROM/cartridge image tools"
+      ],
+      "language_contract_ref": "technology.logix_c_target_contract",
+      "runtime_contract_ref": "technology.logix_c_api",
+      "layout_tests": [
+        "40x25",
+        "80x25",
+        "monochrome"
+      ],
+      "resource_tests": [
+        "48 KB installed RAM",
+        "64 KB installed RAM",
+        "reserved common RAM and resident workspace"
+      ]
+    },
+    "technology_refs": [
+      "technology.logix_c_target_contract",
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "edition_refs": [
+      "edition.simple_c_z80.z80"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.dram_64kbit",
+  "record_type": "component",
+  "data": {
+    "id": "part.dram_64kbit",
+    "name": "64 Kbit RAM chip",
+    "category": "memory_chip",
+    "origin": "historical_external_component",
+    "used_in": [],
+    "vendor": "unspecified commercial DRAM supplier",
+    "introduced": {
+      "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+      "event_start_date": "1979-12-03",
+      "date_precision": "day",
+      "timeline_note": "Author-confirmed introduction date."
+    },
+    "specification": {
+      "capacity_kbit": 64,
+      "organization_words": 65536,
+      "data_width_bits": 1,
+      "package": null,
+      "manufacturer_part_number": null,
+      "access_time_ns": null,
+      "cycle_time_ns": null,
+      "supply_rails_v": null,
+      "refresh_requirement": null,
+      "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
+    },
+    "manufacturing_requirements": [
+      "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.dram_64kbit"
+    ]
+  }
+}

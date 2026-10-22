@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.artemis_video_card_64kb",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.artemis_video_card_64kb",
+    "name": "Logix Artemis 64 KiB video controller card",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.artemis_graphics_chip_64kb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.aion_4164",
+        "quantity": 8,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.aion_2114",
+        "quantity": 2,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_video_card_64kb.pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_video_card_64kb.slot_connector",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_video_card_64kb.host_buffers_byte_enables",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_video_card_64kb.clock_fifo_transceivers",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_video_card_64kb.passives_power_filtering",
+        "quantity": 1,
+        "unit": "each",
+        "role": "included component",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "$schema": "../../../schemas/documents/document.ncc_1982_inputs-data-business-assumptions.schema.json",
+  "schema_version": "1.0.0",
+  "id": "document.ncc_1982_inputs",
+  "record_type": "document-section",
+  "data": {
+    "as_of": "1982-06-15",
+    "currency": "USD",
+    "basis": "Engineering planning estimates, not supplier quotes. Recurring unit costs exclude R&D, masks, tooling, capital, marketing and dealer commission. BOM remains an unqualified design baseline.",
+    "process": "Existing qualified 3 um logic and cheapest dated qualified AION 4164 recipe. Do not assume July 2 um RAM is available on June 15.",
+    "custom_die_area_mm2": {
+      "part.artemis_graphics_chip_64kb": 88,
+      "part.color_pro_monitor_controller": 16,
+      "part.professional_graphics_controller": 100,
+      "part.mono_pro_17_controller": 12
+    },
+    "custom_maturity": 0.72,
+    "package_usd": {
+      "part.artemis_graphics_chip_64kb": 4.5,
+      "part.color_pro_monitor_controller": 1.2,
+      "part.professional_graphics_controller": 6,
+      "part.mono_pro_17_controller": 1.2
+    },
+    "purchased_components": {
+      "bompart.part.nec_pc8853_display_assembly": {
+        "unit_cost_usd": 280,
+        "basis": "Complete NEC-class 14-inch OEM display core, tube/yoke/HV/deflection/PSU; excludes AION adapter and final Logix cabinet. $280 is a volume procurement scenario, not a quote.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_video_card_64kb.pcb": {
+        "unit_cost_usd": 14,
+        "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_video_card_64kb.slot_connector": {
+        "unit_cost_usd": 7,
+        "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_video_card_64kb.host_buffers_byte_enables": {
+        "unit_cost_usd": 12,
+        "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_video_card_64kb.clock_fifo_transceivers": {
+        "unit_cost_usd": 14,
+        "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_video_card_64kb.passives_power_filtering": {
+        "unit_cost_usd": 4,
+        "basis": "Eight 64Kx1 chips provide 64 KiB on an 8-bit local DRAM path with staged multi-byte host transfers and line buffering; two 2114 chips supply separate 1 KiB sprite SRAM. Timing/bandwidth qualification remains required.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.color_pro_14.rgb_dac_amplifiers": {
+        "unit_cost_usd": 22,
+        "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.color_pro_14.digital_receiver_pcb": {
+        "unit_cost_usd": 16,
+        "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.color_pro_14.timing_adaptation_components": {
+        "unit_cost_usd": 18,
+        "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.color_pro_14.enclosure": {
+        "unit_cost_usd": 22,
+        "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.color_pro_14.cables_regional_mains": {
+        "unit_cost_usd": 8,
+        "basis": "No second tube/HV/PSU charge. Timing adaptation and final focus/convergence/grayscale tests remain explicit.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.logix_mouse.ball_xy_encoder_mechanism": {
+        "unit_cost_usd": 8,
+        "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.logix_mouse.two_roller_encoders_detents": {
+        "unit_cost_usd": 6,
+        "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.logix_mouse.two_button_switches": {
+        "unit_cost_usd": 1.2,
+        "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.logix_mouse.pcb_mcu_firmware": {
+        "unit_cost_usd": 5,
+        "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.logix_mouse.enclosure": {
+        "unit_cost_usd": 3.5,
+        "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.logix_mouse.cable_connector": {
+        "unit_cost_usd": 3,
+        "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.logix_mouse.passives_protection": {
+        "unit_cost_usd": 1.5,
+        "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.logix_mouse.driver_disks_quickstart": {
+        "unit_cost_usd": 4.5,
+        "basis": "Mechanical tracking, two buttons, two rollers. Driver/update media and printed quickstart included; Entertainment Suite is a separately costed optional purchase or package component.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_professional_video_128kb.pcb": {
+        "unit_cost_usd": 20,
+        "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_professional_video_128kb.slot_connector": {
+        "unit_cost_usd": 8,
+        "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_professional_video_128kb.host_dma_arbitration_buffers": {
+        "unit_cost_usd": 20,
+        "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_professional_video_128kb.line_fifo_clock_link": {
+        "unit_cost_usd": 24,
+        "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.artemis_professional_video_128kb.passives_power_filtering": {
+        "unit_cost_usd": 6,
+        "basis": "Sixteen 64Kx1 DRAM chips provide 128 KiB on a 16-bit local bank. Framebuffer is 120000 bytes at 2bpp; 11072 remain. No second framebuffer or uncosted sprites.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.mono_pro_17.oem_17inch_core": {
+        "unit_cost_usd": 210,
+        "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.mono_pro_17.deflection_60hz_upgrade": {
+        "unit_cost_usd": 25,
+        "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.mono_pro_17.grayscale_dac_linear_amplifier": {
+        "unit_cost_usd": 20,
+        "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.mono_pro_17.highspeed_link_pcb": {
+        "unit_cost_usd": 18,
+        "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.mono_pro_17.enclosure": {
+        "unit_cost_usd": 28,
+        "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment.",
+        "quote_status": "unquoted_scenario_allowance"
+      },
+      "bompart.device.mono_pro_17.cables_regional_mains": {
+        "unit_cost_usd": 8,
+        "basis": "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment.",
+        "quote_status": "unquoted_scenario_allowance"
+      }
+    },
+    "routing": {
+      "assembly.device.artemis_video_card_64kb": {
+        "hours": 0.9,
+        "kwh": 1.5,
+        "consumables_usd": 1.0,
+        "basis": "June 1982 launch routing; no learning credit from years before this product existed."
+      },
+      "assembly.device.color_pro_14": {
+        "hours": 2.0,
+        "kwh": 7,
+        "consumables_usd": 2.5,
+        "basis": "June 1982 launch routing; no learning credit from years before this product existed."
+      },
+      "assembly.device.logix_mouse": {
+        "hours": 0.45,
+        "kwh": 0.1,
+        "consumables_usd": 0.35,
+        "basis": "June 1982 launch routing; no learning credit from years before this product existed."
+      },
+      "assembly.device.artemis_professional_video_128kb": {
+        "hours": 1.25,
+        "kwh": 2,
+        "consumables_usd": 1.5,
+        "basis": "June 1982 launch routing; no learning credit from years before this product existed."
+      },
+      "assembly.device.mono_pro_17": {
+        "hours": 2.5,
+        "kwh": 9,
+        "consumables_usd": 3,
+        "basis": "June 1982 launch routing; no learning credit from years before this product existed."
+      }
+    },
+    "software_profiles": {
+      "entertainment_suite": [
+        2,
+        64
+      ]
+    },
+    "comparators": {
+      "policy": "No verified same-date like-for-like comparator for the new dual-roller mouse, custom displays or cards. Use existing 25% net-contribution cost-based fallback, not a fabricated balanced discount.",
+      "excluded_anchors": [
+        "NEC domestic retail price is not an OEM assembly quote or normalized US equivalent.",
+        "Later-1982 mouse ads and later VGA products cannot establish June 15 equivalent prices."
+      ]
+    }
+  }
+}

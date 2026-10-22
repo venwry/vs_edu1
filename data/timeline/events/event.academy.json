@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../schemas/records/event.schema.json",
+  "schema_version": "1.0.0",
+  "id": "event.academy",
+  "record_type": "event",
+  "data": {
+    "id": "event.academy",
+    "title": "Logix Computer Academy established",
+    "event_type": "organization",
+    "date": {
+      "start": "1978-03-25",
+      "end": "1978-03-25"
+    },
+    "participants": [
+      {
+        "actor_ref": "actor.academy",
+        "role": "new_company"
+      }
+    ],
+    "actions": [
+      {
+        "actor_refs": [
+          "actor.academy"
+        ],
+        "description": "Establishes the Academy company and prepares rented facilities for an initial five-city US programme; publicly presented at the June 5 Aurelia premiere. City names and first course dates remain unspecified; capacity expands with demand."
+      }
+    ],
+    "outcomes": [],
+    "agreement_terms": [],
+    "metrics": [],
+    "product_refs": [
+      "service.academy_before_you_buy",
+      "service.academy_direct_sales"
+    ],
+    "related_event_refs": []
+  }
+}

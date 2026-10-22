@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.device.s100_flexibus_card",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.device.s100_flexibus_card",
+    "name": "Logix FlexiBUS Interface for S-100",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.flexibus_host_controller",
+        "quantity": null,
+        "unit": "each",
+        "role": "Two ports; cost model assumes two single-port dies until package is frozen",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.s100_flexibus_card.s100_expansion_pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.s100_flexibus_card.s100_host_interface",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.s100_flexibus_card.boot_and_driver_rom",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.s100_flexibus_card.passives_protection_and_internal_harnesses",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.device.s100_flexibus_card.slot_connector_contacts",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.s100_flexibus_card.flexibus_two_port_transceivers_connectors",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
+      "Release driver/ROM image and test on named host configurations; host and monitor sold separately.",
+      "Release assembly routing, test fixtures and procurement specifications."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../schemas/records/peripheral.schema.json",
+  "schema_version": "1.0.0",
+  "id": "device.color_monitor_1",
+  "record_type": "peripheral",
+  "data": {
+    "id": "device.color_monitor_1",
+    "name": "Logix Color Monitor I 12-inch",
+    "category": "display",
+    "specification": {
+      "display_subassembly_ref": "part.sony_kv1204_display_assembly",
+      "controller_ref": "part.color_monitor_controller",
+      "input": "Logix 4-bit digital video",
+      "displayed_color_registers": 16,
+      "source_palette": "4096-color / 12-bit RGB palette",
+      "capabilities": {
+        "protocol_version": 1,
+        "raster_ids": [
+          "raster_320_200"
+        ],
+        "preferred_raster_id": "raster_320_200",
+        "maximum_pixel_clock_mhz": 7.15909,
+        "color_model": "RGB",
+        "palette_precision_bits": 12,
+        "programmable_palette": true,
+        "qualification_status": "Required design capabilities; analog bandwidth, raster and readable text not yet qualified."
+      },
+      "mode_limit": "Only advertised legacy raster profiles. The 26.88 kHz 640×400 progressive profile is unsupported; host must reject it."
+    },
+    "offered_with": [
+      "computer.aurelia"
+    ],
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "manufacturing_requirements": [
+      "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once.",
+      "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.device.color_monitor_1"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "event"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "actions",
+        "date",
+        "event_type",
+        "id",
+        "metrics",
+        "outcomes",
+        "participants",
+        "product_refs",
+        "related_event_refs",
+        "title"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "actions": {
+          "type": [
+            "array"
+          ]
+        },
+        "agreement_terms": {
+          "type": [
+            "array"
+          ]
+        },
+        "date": {
+          "type": [
+            "object"
+          ]
+        },
+        "event_type": {
+          "type": [
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "string"
+          ]
+        },
+        "metrics": {
+          "type": [
+            "array"
+          ]
+        },
+        "outcomes": {
+          "type": [
+            "array"
+          ]
+        },
+        "participants": {
+          "type": [
+            "array"
+          ]
+        },
+        "product_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "related_event_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "title": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    }
+  }
+}

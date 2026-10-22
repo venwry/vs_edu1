@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.aurelia_1978_campaign data/marketing/campaigns",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "positioning",
+        "schedule",
+        "television_commercial",
+        "premiere",
+        "technical_sessions",
+        "academy",
+        "broadcast_program",
+        "acceptance_gates",
+        "business_sessions",
+        "commercial_configurations"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        },
+        "positioning": {
+          "type": "object"
+        },
+        "schedule": {
+          "type": "array"
+        },
+        "television_commercial": {
+          "type": "object"
+        },
+        "premiere": {
+          "type": "object"
+        },
+        "technical_sessions": {
+          "type": "array"
+        },
+        "academy": {
+          "type": "object"
+        },
+        "broadcast_program": {
+          "type": "object"
+        },
+        "acceptance_gates": {
+          "type": "array"
+        },
+        "business_sessions": {
+          "type": "array"
+        },
+        "commercial_configurations": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

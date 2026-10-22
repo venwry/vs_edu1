@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../../schemas/records/bom-offers.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.offers.bundle.artemis_256_color",
+  "record_type": "bom-offers",
+  "data": {
+    "catalog_ref": "bundle.artemis_256_color",
+    "kind": "system_bundle",
+    "assembly_ref": "assembly.bundle.artemis_256_color",
+    "compatible_host_ref": "computer.artemis",
+    "included_host": true,
+    "effective_from": "1980-05-19",
+    "shipping_date": null,
+    "availability_status": "catalog_offer",
+    "requirements": [
+      "Same high-density configuration with Color II; preserve configuration-specific module count."
+    ],
+    "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
+    "variants": [
+      {
+        "effective_from": "1981-05-04",
+        "assembly_ref": "assembly.bundle.artemis_256_color.networked"
+      }
+    ]
+  }
+}

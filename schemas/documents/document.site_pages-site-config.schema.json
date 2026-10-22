@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "document.site_pages site/config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "id",
+    "record_type",
+    "data"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "const": "document-section"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "description",
+        "pages",
+        "navigation",
+        "labels",
+        "entity_page_links",
+        "rendering_notes",
+        "timeline_view"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "array"
+        },
+        "navigation": {
+          "type": "array"
+        },
+        "labels": {
+          "type": "object"
+        },
+        "entity_page_links": {
+          "type": "object"
+        },
+        "rendering_notes": {
+          "type": "string"
+        },
+        "timeline_view": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

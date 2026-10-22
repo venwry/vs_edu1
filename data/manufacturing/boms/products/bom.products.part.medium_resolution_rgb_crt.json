@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../../schemas/records/bom-products.schema.json",
+  "schema_version": "1.0.0",
+  "id": "bom.products.part.medium_resolution_rgb_crt",
+  "record_type": "bom-products",
+  "data": {
+    "catalog_ref": "part.medium_resolution_rgb_crt",
+    "production_status": "design_baseline",
+    "assembly_refs": [
+      "assembly.part.medium_resolution_rgb_crt"
+    ],
+    "requirements": [
+      "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis.",
+      "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+      "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+      "Power per rail, startup/thermal limits and region-specific power configuration",
+      "Firmware image capacity/revision, programming and verification",
+      "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+    ]
+  }
+}

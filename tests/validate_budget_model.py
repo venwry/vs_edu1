@@ -3,7 +3,7 @@ import json, math
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 read=lambda n:json.loads((R/n).read_text())
-p=read('pricing_results.json');c=read('retail_catalog_1982_results.json');s=read('sales_forecast.json');r=read('roi_1974_1980.json');m=read('quarterly_market_share.json')
+p=read('generated/models/pricing-results.json');c=read('generated/models/retail-catalog-1982-results.json');s=read('generated/models/sales-forecast.json');r=read('generated/models/roi-1974-1980.json');m=read('generated/models/quarterly-market-share.json')
 close=lambda a,b:abs(a-b)<.06
 for ref,comp in [('bundle.artemis_budget_128',3299),('bundle.artemis_budget_128_hdd',4995)]:
  x=next(p for p in p['products'] if p['id']==ref)

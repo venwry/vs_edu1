@@ -1,0 +1,41 @@
+{
+  "$schema": "../../schemas/records/technology.schema.json",
+  "schema_version": "1.0.0",
+  "id": "technology.bpi_relational_database",
+  "record_type": "technology",
+  "data": {
+    "id": "technology.bpi_relational_database",
+    "name": "BPI relational database platform",
+    "category": "database_technology",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "owner": "BPI Systems",
+    "specification": {
+      "model": "relational database engine used as the common data foundation for BPI business applications",
+      "design_goal": "shared, structured business data across accounting, receivables, payables, inventory and payroll"
+    },
+    "used_by": [
+      "software.bpi_suite",
+      "software.bpi_client_server",
+      "computer.artemis_pro"
+    ],
+    "milestones": [
+      {
+        "event": {
+          "event_name": "NCC 1978 — Logix Aurelia launch",
+          "event_start_date": "1978-06-05"
+        },
+        "change": "Relational engine introduced with the AION C/TUI BPI application family."
+      },
+      {
+        "event": {
+          "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+          "event_start_date": "1981-05-04"
+        },
+        "change": "Evolves into a multiuser client-server RDBMS used by networked BPI clients."
+      }
+    ]
+  }
+}

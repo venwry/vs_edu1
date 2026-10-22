@@ -1,0 +1,132 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "1.0.0",
+  "id": "part.aurelia_video_chip",
+  "record_type": "component",
+  "data": {
+    "id": "part.aurelia_video_chip",
+    "name": "Aurelia / Aurelia+ shared video controller",
+    "category": "video_controller_chip",
+    "origin": "custom_logix_aion",
+    "specification": {
+      "digital_output_bits": 4,
+      "video_ram_kb": 16,
+      "video_ram_chip_ref": "part.aion_4116",
+      "video_ram_chip_count": 8,
+      "implementation_design": {
+        "status": "Accepted design baseline; electrical timing, layout, fabrication and monitor qualification remain pending.",
+        "internal_buffers": {
+          "character_attribute_row_cache_bytes": 160,
+          "next_character_attribute_row_cache_bytes": 160,
+          "sprite_row_shifters_bytes": 40,
+          "sprite_staging_bytes": 40,
+          "pixel_fifo_page_count": 4,
+          "pixel_fifo_page_bytes": 40,
+          "pixel_fifo_bytes": 160,
+          "pixel_bits": 4,
+          "total_storage_bytes": 560,
+          "included_in_die_estimates": true
+        },
+        "arbitration": "Independent display-DRAM and sprite-SRAM buses. Display reads and full-array refresh have bounded host/DMA backpressure. Sprite fetches use the separate SRAM bus and existing staging/shifters; completed FIFO banks preserve raster order.",
+        "text_fetch": "Cache 80 character codes and 80 attributes; prefetch the next row into the second 160-byte cache over eight glyph scanlines. Expand each glyph byte to eight 4-bit pixels; prefetch sprite rows and apply fixed priority before publishing pixels.",
+        "line_repeat": "Re-fetch repeated bitmap lines; FIFO capacity is not an additional framebuffer or guaranteed retained scanline. Validate 320x100x4 bandwidth and refresh at the selected DRAM grade.",
+        "clock_targets": {
+          "master_mhz": 14.31818,
+          "high_resolution_pixel_mhz": 14.31818,
+          "low_resolution_pixel_mhz": 7.15909,
+          "scope": "14.31818 MHz short scanout/counter path; renderer uses block expansion and clock enables, not a full CPU at pixel rate. Process-corner qualification required.",
+          "maximum_pixel_fifo_output_mbytes_per_second": 7.15909
+        },
+        "manufacturing_planning": {
+          "status": "Engineering estimates, not measured yields or released costs.",
+          "process": "3–3.5 micron NMOS; laser-written process-matched masks from secret facility; wafer fabrication at AION Labs.",
+          "transistors_range": [
+            44000,
+            56000
+          ],
+          "transistors_central": 49000,
+          "die_area_mm2_at_3um_range": [
+            44,
+            64
+          ],
+          "die_area_mm2_at_3_5um_range": [
+            60,
+            87
+          ],
+          "die_area_mm2_central_at_3um": 52,
+          "die_area_mm2_central_at_3_5um": 71,
+          "saleable_yield_fraction_range": [
+            0.132,
+            0.231
+          ],
+          "saleable_yield_fraction_central": 0.1843,
+          "yield_note": "3 micron planning model: 0.85*exp(-2.8*area_mm2/100), then 0.93 package/test yield. 52 mm2 central die; speed-bin and pinout qualification pending.",
+          "recurring_controller_cost_1978_usd": 22.5629,
+          "external_functions": [
+            "Eight AION 4116-equivalent DRAM chips",
+            "cable line drivers/transceivers",
+            "monitor palette and DACs",
+            "Two AION 2114-equivalent SRAM chips on a separate sprite bus; enlarged interface package/PCB allowance costed at assembly level"
+          ]
+        },
+        "engines": {
+          "renderer": "Dedicated fetch/address, eight-pixel glyph expansion, colour selection and fixed-priority sprite compositor; not a general-purpose CPU. Runs when a free FIFO bank and source data are available.",
+          "scanout": "Independent fixed-raster sequencer reads completed 4-bit pixels and generates sync. Both engines use the same master clock with clock enables.",
+          "fifo": "Four 40-byte addressed banks with output latches; ordered circular FREE/FILLING/READY/READING ownership. Publish complete banks only; backpressure on full FIFO; prefill before active display.",
+          "underrun": "Continue sync, emit border colour and latch diagnostic status; never read a partially rendered bank."
+        },
+        "timing_budget": {
+          "status": "Analytical planning bounds only; not a cycle-accurate proof.",
+          "dram_random_cycle_target_ns": 375,
+          "text_glyph_reads_per_scanline": 80,
+          "next_row_prefetch_average_bytes_per_scanline": 20,
+          "maximum_sprite_row_bytes_per_scanline": 40,
+          "illustrative_total_reads_per_scanline": 100,
+          "illustrative_read_time_us": 37.5,
+          "fifo_total_pixels": 320,
+          "fifo_total_drain_time_us_at_high_resolution": 22.349,
+          "two_ready_pages_drain_time_us": 11.175,
+          "qualification": "100 display-DRAM reads average 37.5 us; 40 sprite bytes take 10 us on a separate bus. Descriptor reads and row transitions also need scheduling. Prove local FIFO deadlines, refresh, repeated bitmap lines and uploads; these averages are not a timing proof.",
+          "sprite_sram_cycle_target_ns": 250,
+          "sprite_pattern_fetch_time_us": 10
+        },
+        "sprite_access": "Two AION 2114-equivalent chips form an exclusive 1 KiB 8-bit SRAM bank. Auto-increment upload ports arbitrate CPU/DMA writes against sprite reads; descriptor-bank selection latches at vertical blank."
+      },
+      "sprite_memory": {
+        "chip_ref": "part.aion_2114",
+        "chip_count": 2,
+        "bank_data_width_bits": 8,
+        "capacity_bytes": 1024,
+        "separate_bus": true,
+        "separate_from_system_and_display_ram": true
+      }
+    },
+    "used_in": [
+      "computer.aurelia",
+      "computer.aurelia_plus",
+      "device.apple2_video_card",
+      "device.s100_video_card"
+    ],
+    "vendor": "AION Labs",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "manufacturing_requirements": [
+      "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
+      "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.aurelia_video_chip"
+    ],
+    "second_source": {
+      "manufacturer": "Standard Microsystems Corporation (SMC)",
+      "agreement_date": "1978-07",
+      "earliest_commercial_availability": "1979-10",
+      "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+      "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+      "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+    }
+  }
+}
