@@ -486,7 +486,7 @@
       {
         "id": "assumption.athena_1983_baseline",
         "title": "ERA² / Athena NCC 1983 planning baseline",
-        "description": "Athena base: 2 × 128 KiB 2 µm 4164 modules and 5 MB HDD. Server: 4 × 256 KiB modules and 20 MB HDD. Both: ERA², 64 KiB graphics, one 5.25-inch DS/DD FDD, NIC and EEPROM BIOS; no ROM cards. AIONix 2 specification pending. All ERA² architectural numbers are engineering targets, with 16 MHz a stretch bin. AION Labs alone manufactures ERA² initially; SGS-ATES excluded for at least 12–18 months after initial commercial availability. Development dates are provisional; cost and financial forecasts remain unchanged.",
+        "description": "Athena base: 2 × 128 KiB 2 µm 4164 modules and 5 MB HDD. Server: 4 × 256 KiB modules and 20 MB HDD. Both: ERA², 64 KiB graphics, one 5.25-inch DS/DD FDD, NIC, EEPROM BIOS and 256 KiB directly executable AIONix2 system ROM. No external application cartridge slots are added. AIONix2 has an accepted phased design baseline; implementation and measured fit remain qualification gates. All ERA² architectural numbers are engineering targets, with 16 MHz a stretch bin. AION Labs alone manufactures ERA² initially; SGS-ATES excluded for at least 12–18 months after initial commercial availability. Development dates are provisional; cost and financial forecasts remain unchanged.",
         "actor_refs": [
           "actor.logix",
           "actor.labs",
@@ -7500,7 +7500,7 @@
                 "actor.labs",
                 "actor.aion"
               ],
-              "description": "Present ERA² at 12 MHz target (16 MHz stretch), Athena 256 KiB / 5 MB HDD and Athena Server 1 MiB / 20 MB HDD. Both include 64 KiB graphics, one 5.25-inch DS/DD floppy and one network card. EEPROM BIOS only; no OS/application ROM cards. AIONix 2 specification remains pending. Conference runs 16–19 May in Anaheim; premiere does not certify volume shipments."
+              "description": "Present ERA² at 12 MHz target (16 MHz stretch), Athena 256 KiB / 5 MB HDD and Athena Server 1 MiB / 20 MB HDD. Both include 64 KiB graphics, one 5.25-inch DS/DD floppy and one network card. EEPROM BIOS plus 256 KiB directly executable AIONix2 system ROM. Protected multitasking, legacy ERA ABI, recoverable HDD storage, users and layered TUI are accepted design targets, pending implementation qualification. Conference runs 16–19 May in Anaheim; premiere does not certify volume shipments."
             }
           ],
           "outcomes": [],
@@ -8520,7 +8520,7 @@
             "actor.labs",
             "actor.aion"
           ],
-          "description": "Provisional integration interval: qualify 128/256 KiB 2 µm 4164 modules, base/server boards, 64 KiB graphics, NIC, HDD/FDD and EEPROM boot. Prepare NCC demonstration; AIONix 2 scope is deliberately pending."
+          "description": "Provisional integration interval: qualify 128/256 KiB 2 µm 4164 modules, base/server boards, 64 KiB graphics, NIC, HDD/FDD, EEPROM boot and 256 KiB executable system ROM. Prepare NCC demonstration and qualify the accepted phased AIONix2 scope; no completed implementation or shipment claimed."
         }
       ],
       "outcomes": [],

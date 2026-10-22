@@ -13,13 +13,255 @@
       "date_precision": "day",
       "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
     },
-    "product_status": "Planned for Athena; specification pending author decision.",
-    "description": "Placeholder only. Features, editions, licensing, minimum RAM, compatibility implementation and delivery schedule are not yet specified.",
-    "delivery": "Disk-loaded system; EEPROM BIOS is the only specified ROM/EEPROM firmware in Athena. No OS/application ROM cards.",
+    "product_status": "Accepted 1983 planning baseline; implementation, memory fit and release qualification pending.",
+    "description": "ROM-backed successor to AIONix: protected preemptive multitasking, documented ERA ABI compatibility, recoverable HDD storage, user access management and an event-driven TUI designed for later graphical windowing.",
+    "delivery": "At least 256 KiB directly executable shared OS ROM, alongside at least 256 KiB DRAM. EEPROM BIOS remains boot/diagnostic firmware. Optional services, larger utilities and patches load from disk; do not copy the entire OS ROM into RAM.",
     "planned_for": [
       "computer.athena",
       "computer.athena_server"
     ],
-    "edition_refs": []
+    "edition_refs": [],
+    "specification": {
+      "status": {
+        "editorial_status": "accepted",
+        "engineering_readiness": "design",
+        "commercial_availability": "not_committed",
+        "evidence_basis": "story_assumption"
+      },
+      "baseline_ref": "technology.aionix_os_model",
+      "processor_architecture_ref": "technology.era2_architecture",
+      "portable_api_ref": "technology.logix_c_api",
+      "rom_execution": {
+        "code": [
+          "Stable kernel code",
+          "Core libraries",
+          "Small shell and basic utilities",
+          "Recovery tools"
+        ],
+        "mapping": "Shared read-only executable mappings; private writable data per process. Cacheable ROM with independently qualified timing.",
+        "updates": "Versioned dispatch tables and page-sized RAM patch overlays; ROM version/checksum checks and recovery boot bypassing disk patches. Patched pages consume DRAM.",
+        "physical_implementation": "256 KiB minimum system ROM bank; chip organization, package count, board mounting and timing remain qualification decisions."
+      },
+      "compatibility": {
+        "scope": "Documented ERA AIONix user binaries, instruction semantics and C ABI; not Z80 binary compatibility.",
+        "preserve": [
+          "System-call entry and numbers",
+          "Calling conventions and structure layouts",
+          "Executable loading",
+          "Errors and legacy signal conventions"
+        ],
+        "mechanism": "Executable ABI version selects legacy adapters; stable library dispatch and capability discovery.",
+        "limits": "Undocumented kernel dependencies, privileged drivers and direct hardware access require separate qualification; portable Z80 C applications require recompilation."
+      },
+      "multitasking": {
+        "kernel": "Compact monolithic kernel; timer-preempted user processes, bounded non-preemptible kernel critical sections.",
+        "requirements": [
+          "Fair scheduling with priority aging",
+          "Sleeping I/O and atomic sleep/wakeup",
+          "Checked user pointers and protected kernel/device mappings",
+          "Process-exit cleanup of files, memory, locks and child state",
+          "Per-process memory, file and request limits",
+          "Driver timeouts and bounded retries",
+          "Short interrupt handlers with deferred work",
+          "Responsive administrative termination path",
+          "Kernel-controlled DMA with checked pinned buffers"
+        ],
+        "limits": "Process isolation does not isolate kernel/driver faults or independently constrain DMA. Fully preemptible kernel and application threads are not initial requirements."
+      },
+      "posix_direction": {
+        "reference": "POSIX.1-2024 / Issue 8, used as an out-of-world future-informed design reference, not a 1983 certification claim.",
+        "initial_target": [
+          "Consistent open/read/write/close/lseek/stat and descriptor duplication, inheritance and errors",
+          "Reliable existing copy-on-write fork, exec, wait, exit status and environment",
+          "Defined signal delivery, masks, dispositions and interrupted-call semantics",
+          "Canonical/raw terminal modes, terminal attributes and foreground process groups",
+          "Hierarchical paths, working directories, hard links and symbolic links",
+          "Pipes with EOF/broken-pipe semantics and readiness multiplexing",
+          "Shell quoting, redirection, pipelines, variables and exit statuses",
+          "Wall clock, monotonic elapsed time and explicit timestamp formats"
+        ],
+        "later": [
+          "Efficient spawn without replacing fork semantics",
+          "Broader file control and memory mapping",
+          "Complete job control and pseudo-terminals",
+          "Sockets and additional IPC",
+          "Broader utilities, locales, threads and timers"
+        ],
+        "conformance": "Publish per-interface implemented/partial/absent matrix and unsupported-operation errors; names alone do not establish conformance.",
+        "source_url": "https://pubs.opengroup.org/onlinepubs/9799919799/"
+      },
+      "filesystem": {
+        "design": "Versioned inode-based filesystem; directory entries separate from metadata.",
+        "allocation_block_bytes": 1024,
+        "block_identifier_bits": 32,
+        "initial_qualification_volume_mb": [
+          20,
+          100
+        ],
+        "qualification_note": "Testing range, not capacity ceiling or a change to bundled HDD sizes.",
+        "requirements": [
+          "Direct and indirect block pointers",
+          "Ownership, permissions, link counts and timestamps",
+          "Bounded metadata/data cache",
+          "Mount support and logical-sector driver interface with CHS translation when required",
+          "Clean/dirty volume state and consistency checker",
+          "Ordered metadata writes and explicit synchronization",
+          "Backup/restore utilities and defined durable-save ordering"
+        ],
+        "later": "Small metadata journal after write-order and power-loss testing; journal does not by itself guarantee application-data durability.",
+        "open_items": [
+          "Exact on-disk format and limits",
+          "File-offset and timestamp representation",
+          "Legacy filesystem import/mount compatibility",
+          "Controller persistence guarantees"
+        ]
+      },
+      "user_access": {
+        "initial_target": [
+          "Numeric users and groups",
+          "Owner/group/other read/write/execute and directory search permissions",
+          "Creation masks",
+          "Real/effective credentials",
+          "Login sessions and home directories",
+          "Protected password database with salted costed hashing selected against CPU budget",
+          "Administrative control of devices, mounts and configuration",
+          "Kernel enforcement on all relevant operations",
+          "Protected administrative audit records"
+        ],
+        "privilege": "Qualify credential and exec transitions before enabling set-user-ID programs. Server authenticates identity rather than trusting client-supplied UID.",
+        "later": "Extended ACLs and more elaborate policies."
+      },
+      "ui_layers": [
+        {
+          "layer": 1,
+          "name": "Application layer",
+          "responsibility": "Business logic and semantic commands such as Open, Save, Select and Cancel, independent of rendering."
+        },
+        {
+          "layer": 2,
+          "name": "Abstraction layer",
+          "responsibility": "Events, menus, forms, lists, focus, layout, text measurement and drawing contexts."
+        },
+        {
+          "layer": 3,
+          "name": "Translation and compatibility layer",
+          "responsibility": "Existing TUI adapters, terminal rendering, device backends and legacy ABI behavior; later graphical renderers."
+        },
+        {
+          "layer": 4,
+          "name": "OS native API",
+          "responsibility": "Processes, files, IPC, timers, input devices and controlled display access."
+        }
+      ],
+      "ui_contract": {
+        "implementation": "Logical layers primarily in shared libraries plus a small UI service; not four mandatory processes or IPC crossings. Extend the existing portable C API.",
+        "initial_target": [
+          "Unified bounded event queue for keys, timers, focus, redraw and future pointer events",
+          "Semantic commands separated from physical keys",
+          "Opaque window/view handles initially representing text regions",
+          "Clipping, invalidation and repaint requests",
+          "Layout constraints and explicit text measurement",
+          "Separate cell and pixel coordinates",
+          "Bounded clipboard and selection ownership",
+          "Capability/version discovery for graphics, fonts, color and pointer input"
+        ],
+        "memory": "Compact text state, dirty regions and redraw callbacks; no mandatory full-screen RAM backing bitmap.",
+        "next_generation": "Windowed GUI; legacy character applications run in terminal windows. Adapters do not automatically redesign old UIs."
+      },
+      "memory_management": {
+        "initial": "Shared ROM code, sparse page tables, small kernel stacks, reliable copy-on-write and graceful allocation failure.",
+        "later": "Controlled disk-backed paging/swap only after restart, locking and I/O qualification; keep fault handlers and essential paging state resident.",
+        "policy": "Swap handles occasional pressure, not a routinely oversized working set; ROM does not replace writable RAM."
+      },
+      "qualification": [
+        "Legacy binary regression suite",
+        "CPU-bound application fairness and termination",
+        "Fault injection and resource cleanup",
+        "Concurrent disk/terminal/DMA I/O",
+        "Filesystem power-loss and durable-save tests",
+        "Credential and permission checks",
+        "Measured ROM/RAM footprint and Abacus/compiler/server workloads",
+        "TUI capability fallback and legacy terminal behavior"
+      ],
+      "priority_assessment": [
+        {
+          "priority": 1,
+          "area": "ROM execution and ABI",
+          "necessity": "essential",
+          "complexity": "medium",
+          "feasibility": "Strong existing foundation; fit and patch behavior must be measured."
+        },
+        {
+          "priority": 2,
+          "area": "Resilient multitasking",
+          "necessity": "essential",
+          "complexity": "high",
+          "feasibility": "Feasible with ERA protection and restart rules; extensive verification."
+        },
+        {
+          "priority": 3,
+          "area": "Recoverable HDD filesystem",
+          "necessity": "essential",
+          "complexity": "high",
+          "feasibility": "20–100 MB addressing is straightforward; crash recovery is the main risk."
+        },
+        {
+          "priority": 4,
+          "area": "Users and access enforcement",
+          "necessity": "essential",
+          "complexity": "medium-high",
+          "feasibility": "Feasible after process/filesystem isolation."
+        },
+        {
+          "priority": 5,
+          "area": "POSIX-oriented subset",
+          "necessity": "high",
+          "complexity": "medium-high",
+          "feasibility": "Phase interfaces; full contemporary conformance excluded."
+        },
+        {
+          "priority": 6,
+          "area": "Layered event-driven TUI",
+          "necessity": "high",
+          "complexity": "medium",
+          "feasibility": "Feasible groundwork; windowed GUI later."
+        },
+        {
+          "priority": 7,
+          "area": "Paging and swap",
+          "necessity": "useful later",
+          "complexity": "high",
+          "feasibility": "Depends on proven faults and I/O; not initial release gate."
+        },
+        {
+          "priority": 8,
+          "area": "Threads, broader networking and GUI",
+          "necessity": "selective later",
+          "complexity": "high",
+          "feasibility": "Not required in the minimum 1983 configuration."
+        }
+      ]
+    },
+    "release_scope": {
+      "initial": "ROM execution, documented legacy ABI, protected preemptive processes, recoverable HDD storage, users/permissions, POSIX-oriented subset and event-driven TUI groundwork.",
+      "later": "Paging/swap, metadata journal, broader networking/threads/locales and full windowed GUI.",
+      "schedule": "Retain planned NCC announcement; no new shipment date or completed implementation claimed."
+    },
+    "architecture": {
+      "resource_planning": {
+        "minimum_dram_bytes": 262144,
+        "minimum_os_rom_bytes": 262144,
+        "preferred_dram_bytes": 524288,
+        "basis": "Engineering allocation target, not a measured fit or maximum. Server retains its existing 1 MiB configuration.",
+        "illustrative_dram_budget_bytes": {
+          "kernel_state_tables_stacks": 40960,
+          "filesystem_buffers": 24576,
+          "process_translation_metadata": 16384,
+          "terminal_ui_input": 12288,
+          "services_patches_reserve": 20480,
+          "applications": 147456
+        }
+      }
+    }
   }
 }

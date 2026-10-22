@@ -27,13 +27,24 @@ for product, capacity, modules, module_size, disk in [
     assert computer['network']['included'] and computer['network']['card_count'] == 1
     assert computer['io_and_expansion']['rom_eeprom_cartridge_slots']['count'] == 0
     assert computer['io_and_expansion']['eeprom_bios']['included']
+    assert computer['memory']['os_rom']['capacity_bytes'] == 262144
     assert not config['shipping_configuration']
     bom = next(b for b in plan['computer_boms'] if b['computer_ref'] == product)
+    rom = next(c for c in bom['functional_components'] if c['name'] == 'Directly executable AIONix2 system ROM bank')
+    assert rom['quantity'] == 1 and rom['capacity_bytes'] == computer['memory']['os_rom']['capacity_bytes']
     counts = {line['ref']: line['quantity'] for line in bom['lines']}
     assert counts[config['module_ref']] == modules
     assert counts['part.era2'] == counts['device.artemis_video_card_64kb'] == counts['device.network_card_artemis'] == 1
 assert records['part.era1']['manufacturing_planning']['node_um'] == 3
 assert records['part.era2']['manufacturing_planning']['initial_manufacturer'] == 'AION Labs only'
 assert records['software.aionix2']['edition_refs'] == []
+os = records['software.aionix2']
+resources = os['architecture']['resource_planning']
+assert resources['minimum_dram_bytes'] == resources['minimum_os_rom_bytes'] == 262144
+assert sum(resources['illustrative_dram_budget_bytes'].values()) == resources['minimum_dram_bytes']
+assert [layer['layer'] for layer in os['specification']['ui_layers']] == [1, 2, 3, 4]
+assert os['specification']['status']['engineering_readiness'] == 'design'
+assert records['technology.era2_architecture']['specification']['instruction_cache_bytes_target'] == 512
+assert records['part.aion_4164_2um']['specification']['access_time_ns'] is None
 assert plan['launch']['premiere_date'] == '1983-05-16'
-print('PASS: Athena base/server RAM, 2 µm chips, storage, graphics, NIC, EEPROM-only boot and planning status.')
+print('PASS: Athena base/server RAM, 2 µm chips, storage, graphics, NIC, ROM-backed AIONix2, memory budgets, ERA² targets and planning status.')

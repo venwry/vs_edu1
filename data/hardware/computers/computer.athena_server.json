@@ -44,7 +44,12 @@
           "validation_status": "Accepted planning baseline; production and electrical qualification pending."
         }
       ],
-      "default_configuration": "base"
+      "default_configuration": "base",
+      "os_rom": {
+        "capacity_bytes": 262144,
+        "execution": "Directly executable shared read-only AIONix2 code; private writable data and patch overlays in DRAM.",
+        "implementation": "System ROM bank; physical mounting, chip organization and access timing pending qualification."
+      }
     },
     "storage": {
       "internal_fdd": {
@@ -649,14 +654,14 @@
       "eeprom_bios": {
         "included": true,
         "capacity_kb": null,
-        "purpose": "Boot, hardware initialization and diagnostics; OS and applications loaded from writable storage."
+        "purpose": "Boot, hardware initialization, diagnostics and selection of ROM-backed AIONix2/recovery or disk patches."
       },
       "graphics_card_count": 1,
       "general_expansion_slot_count": null
     },
     "operating_system_ref": "software.aionix2",
     "compatible_software": [],
-    "software_policy": "AIONix 2 specifications and edition support to be defined. Preserve the established supported Artemis binary execution commitment; no unverified per-application qualification claimed.",
+    "software_policy": "Accepted AIONix2 ROM-backed planning baseline. Preserve documented ERA AIONix binaries through versioned compatibility; individual applications and editions require qualification. External application ROM cartridges are not added by the internal system ROM decision.",
     "positioning": "Server configuration",
     "monitor_and_keyboard_bundle": "Not specified; do not assume included models or pricing.",
     "planning_file": "athena_1983_program.json"

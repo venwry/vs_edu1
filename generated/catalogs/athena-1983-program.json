@@ -7,11 +7,11 @@
   ],
   "software_ref": "software.aionix2",
   "scope": {
-    "no_rom_cards": true,
-    "sole_specified_rom_firmware": "EEPROM BIOS",
-    "os_specification": "Pending; do not infer virtual-memory, networking, GUI or minimum RAM specifications.",
+    "os_specification": "Accepted phased AIONix2 specification in software.aionix2; implementation and 256 KiB DRAM fit pending qualification.",
     "financial_policy": "No new retail prices, sales, investment or ROI calculated by this planning addition. Existing dated forecasts are unchanged.",
-    "memory_policy": "Use separate 64K-bit 4164 dies on 2 µm, not the discussed dual-array 128K-bit or 256K-bit alternatives."
+    "memory_policy": "Use separate 64K-bit 4164 dies on 2 µm, not the discussed dual-array 128K-bit or 256K-bit alternatives.",
+    "system_rom": "256 KiB minimum directly executable AIONix2 ROM bank plus separate EEPROM BIOS; physical assembly pending.",
+    "external_application_rom_cards": "No external cartridge slots added; system ROM is distinct from optional application cartridges."
   },
   "launch": {
     "event_ref": "event.ncc83_athena_premiere",
@@ -103,10 +103,16 @@
           "name": "Mainboard, controllers, power supply, chassis and wiring",
           "quantity": 1,
           "unit": "functional set"
+        },
+        {
+          "name": "Directly executable AIONix2 system ROM bank",
+          "quantity": 1,
+          "capacity_bytes": 262144,
+          "implementation_status": "Functional set; chip count, organization, mounting, timing and cost unqualified."
         }
       ],
       "rom_card_count": 0,
-      "status": "Functional BOM only; not an exhaustive released production BOM."
+      "status": "Functional BOM only; system ROM included as uncosted functional set. No exhaustive production BOM or complete cost roll-up."
     },
     {
       "computer_ref": "computer.athena_server",
@@ -151,10 +157,16 @@
           "name": "Mainboard, controllers, power supply, chassis and wiring",
           "quantity": 1,
           "unit": "functional set"
+        },
+        {
+          "name": "Directly executable AIONix2 system ROM bank",
+          "quantity": 1,
+          "capacity_bytes": 262144,
+          "implementation_status": "Functional set; chip count, organization, mounting, timing and cost unqualified."
         }
       ],
       "rom_card_count": 0,
-      "status": "Functional BOM only; not an exhaustive released production BOM."
+      "status": "Functional BOM only; system ROM included as uncosted functional set. No exhaustive production BOM or complete cost roll-up."
     }
   ],
   "open_decisions": [
@@ -165,7 +177,9 @@
     "Graphics/NIC compatibility on ERA²",
     "External cache choice and DMA coherency",
     "Monitor/keyboard bundles",
-    "AIONix 2 specification and fit within 256 KiB base configuration",
-    "1983 manufacturing costs, investments and retail pricing"
+    "AIONix2 implementation, legacy ABI qualification and measured fit within 256 KiB DRAM plus 256 KiB OS ROM",
+    "1983 manufacturing costs, investments and retail pricing",
+    "System ROM chip organization, assembly, access timing and patch/recovery qualification",
+    "Filesystem on-disk limits and power-loss recovery; user credential transitions"
   ]
 }
