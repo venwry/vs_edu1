@@ -6,8 +6,8 @@ import json,re,html
 ROOT=Path(__file__).resolve().parents[1]
 def build():
  site=json.loads((ROOT/'generated/catalogs/site-pages.json').read_text());pages={p['id']:p for p in site['pages']};esc=html.escape
- labels={'aurelia':'Aurelia','artemis':'Artemis','athena':'Athena','bpi':'BPI','flexibus':'FlexiBUS','networking':'Networking','academy':'Logix Computer Academy','pricing':'Retail pricing','sales':'Sales','industrial-investment':'Investment','roi':'ROI','market-share':'Market Share'}
- header='<header class="atlas-header"><a class="atlas-brand" href="timeline.html">Logix / AION</a><nav aria-label="Main navigation">'+''.join('<section><h2>'+esc(group['title'])+'</h2>'+''.join('<a href="'+pages[i]['path']+'">'+esc(labels.get(i,pages[i]['title']))+'</a>' for i in group['page_refs'])+'</section>' for group in site['navigation_sections'])+'</nav></header>'
+ labels={'timeline':'Timeline','ecosystem':'3rd Party','operating-systems':'OS','business-software':'Business','software-development':'Dev','video-system':'Video','peripherals':'Peripherals','aurelia':'Aurelia','artemis':'Artemis','athena':'Athena','bpi':'BPI','flexibus':'FlexiBUS','networking':'Network','academy':'Academy','pricing':'Pricing','sales':'Sales','industrial-investment':'Investment','roi':'ROI','market-share':'Share'}
+ header='<header class="atlas-header"><nav aria-label="Main navigation">'+''.join('<section><h2>'+esc(group['title'])+'</h2>'+''.join('<a href="'+pages[i]['path']+'">'+esc(labels.get(i,pages[i]['title']))+'</a>' for i in group['page_refs'])+'</section>' for group in site['navigation_sections'])+'</nav></header>'
  (ROOT/'site/navigation.html').write_text(header+'\n')
  for path in list(ROOT.glob('*.html'))+list((ROOT/'tools').glob('*template.html')):
   if path.name in site['redirects']:continue
