@@ -1,0 +1,1781 @@
+{
+  "effective_from": "1982-11-29",
+  "status": "adopted_catalogue_structure",
+  "currency": "USD",
+  "pricing_policy": {
+    "historical_snapshots": "Preserve June snapshots and historical offerings unchanged. Current catalogue applies from November 29, 1982.",
+    "existing_packages": "Use latest dated recommendation, capped at separately purchased identical contents.",
+    "new_packages": "Office Professional uses the 25% contribution fallback after 25% dealer fee, capped at identical component retail sum. Other assembled quotations preserve constituent package/service prices while unpriced scope is resolved; no complete-package discount is claimed.",
+    "services": "Preserve quoted direct-channel service prices and entitlements; do not apply hardware dealer margins to training.",
+    "availability": "Known subtotals are not complete-package prices. Resolve all unpriced requirements and availability gates before accepting a complete-system order.",
+    "team": "Preserve $745.23 Team Edition and its explicit adoption subsidy; no automatic additional discount.",
+    "support": "Count base-system support and Team onboarding/support once. Optional services are additional only if outside included entitlements."
+  },
+  "solutions": [
+    {
+      "id": "office_essentials",
+      "name": "Logix Office Essentials",
+      "purpose": "Write correspondence, prepare budgets and run everyday administration.",
+      "includes": [
+        "Aurelia+ with monochrome display and keyboard",
+        "CP/M & TUI, Business Tools and Abacus 2",
+        "Base-system support entitlement"
+      ],
+      "components": [
+        {
+          "ref": "bundle.proposed_aurelia_plus_office",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [
+        "Printer",
+        "Mouse Starter Pack"
+      ],
+      "pricing": {
+        "amount_usd": 1961.08,
+        "label": "Reference configuration price",
+        "cost_usd": 962.97,
+        "dealer_fee_usd": 490.27,
+        "contribution_usd": 507.84,
+        "component_retail_sum_usd": 1961.08,
+        "lines": [
+          {
+            "ref": "bundle.proposed_aurelia_plus_office",
+            "name": "Aurelia+ — Office productivity",
+            "retail": 1961.08,
+            "cost": 962.97,
+            "fee": 490.27,
+            "date": "1982-06-15",
+            "basis": "current catalogue ceiling",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 1969.15,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    },
+    {
+      "id": "office_professional",
+      "name": "Logix Office Professional",
+      "purpose": "Work with larger spreadsheets, typed tables and graphical reports.",
+      "includes": [
+        "Artemis 256 KiB with Mono Pro display and keyboard",
+        "Business Tools, Abacus 3 and mouse",
+        "Current compatible TUI updates"
+      ],
+      "components": [
+        {
+          "ref": "bundle.artemis_256_mono_pro",
+          "quantity": 1
+        },
+        {
+          "ref": "software.business_tools_artemis",
+          "quantity": 1
+        },
+        {
+          "ref": "software.abacus_3",
+          "quantity": 1
+        },
+        {
+          "ref": "device.logix_mouse",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [
+        "Colour Reports configuration: replace the standard display/controller; do not add a second primary display",
+        "Standalone Pulse 3 for notebook workflows; embedded Abacus scripting does not require a second runtime purchase"
+      ],
+      "pricing": {
+        "amount_usd": 3254.51,
+        "label": "Reference configuration price",
+        "cost_usd": 1830.66,
+        "dealer_fee_usd": 813.63,
+        "contribution_usd": 610.22,
+        "component_retail_sum_usd": 3786.52,
+        "lines": [
+          {
+            "ref": "bundle.artemis_256_mono_pro",
+            "name": "Logix Artemis 256 KB — Mono Pro system",
+            "retail": 3566.63,
+            "cost": 1735.92,
+            "fee": 891.66,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 3566.63,
+            "quantity": 1
+          },
+          {
+            "ref": "software.business_tools_artemis",
+            "name": "AION Business Tools / Office Suite for Artemis",
+            "retail": 56.42,
+            "cost": 23.87,
+            "fee": 14.11,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 56.42,
+            "quantity": 1
+          },
+          {
+            "ref": "software.abacus_3",
+            "name": "AION Abacus 3.0",
+            "retail": 73.48,
+            "cost": 20.25,
+            "fee": 18.37,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 73.48,
+            "quantity": 1
+          },
+          {
+            "ref": "device.logix_mouse",
+            "name": "Logix Mouse — two buttons and two rollers",
+            "retail": 89.99,
+            "cost": 50.62,
+            "fee": 22.5,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 89.99,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    },
+    {
+      "id": "business_accounts",
+      "name": "Logix Business Accounts",
+      "purpose": "Manage bookkeeping, invoicing, inventory and payroll.",
+      "includes": [
+        "Artemis accounting configuration with BPI complete suite",
+        "FlexiPrint40 printer",
+        "Initial BPI training"
+      ],
+      "components": [
+        {
+          "ref": "bundle.proposed_artemis_accounts",
+          "quantity": 1
+        },
+        {
+          "ref": "service.bpi_training",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [
+        "Backup media and tested recovery procedure",
+        "Workload and printer qualification; final setup scope"
+      ],
+      "options": [
+        "Select BPI modules instead of the complete suite; never charge both",
+        "Aurelia+ entry configuration subject to workload qualification"
+      ],
+      "pricing": {
+        "amount_usd": 4355.9,
+        "label": "Known items subtotal — final quotation required",
+        "cost_usd": 2117.3,
+        "dealer_fee_usd": 1046.11,
+        "contribution_usd": 1192.49,
+        "component_retail_sum_usd": 4355.9,
+        "lines": [
+          {
+            "ref": "bundle.proposed_artemis_accounts",
+            "name": "Artemis — Small-business accounting",
+            "retail": 4184.44,
+            "cost": 2018.07,
+            "fee": 1046.11,
+            "date": "1982-06-15",
+            "basis": "current catalogue ceiling",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 4337.18,
+            "quantity": 1
+          },
+          {
+            "ref": "service.bpi_training",
+            "name": "BPI Products training",
+            "retail": 171.46,
+            "cost": 99.23,
+            "fee": 0.0,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 171.46,
+            "quantity": 1
+          }
+        ],
+        "complete_price": false
+      }
+    },
+    {
+      "id": "connected_office",
+      "name": "Logix Connected Office",
+      "purpose": "Share business records and a printer between two workstations.",
+      "includes": [
+        "Artemis PRO 512 KiB / 5 MB server and two Artemis workstations",
+        "Four-port hub, three cables, BPI server and two client licences",
+        "Two Office Suite copies and shared printer"
+      ],
+      "components": [
+        {
+          "ref": "bundle.proposed_artemis_pro_small_office",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [
+        "Installation, backup media and recovery setup",
+        "Administrator training",
+        "Confirm Artemis PRO shipment availability"
+      ],
+      "options": [],
+      "pricing": {
+        "amount_usd": 10307.77,
+        "label": "Known items subtotal — final quotation required",
+        "cost_usd": 5798.12,
+        "dealer_fee_usd": 2576.94,
+        "contribution_usd": 1932.71,
+        "component_retail_sum_usd": 10307.77,
+        "lines": [
+          {
+            "ref": "bundle.proposed_artemis_pro_small_office",
+            "name": "Artemis PRO — Small-office business network",
+            "retail": 10307.77,
+            "cost": 5798.12,
+            "fee": 2576.94,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "shipment unconfirmed",
+            "original_retail": 10307.77,
+            "quantity": 1
+          }
+        ],
+        "complete_price": false
+      }
+    },
+    {
+      "id": "developer_workstation",
+      "name": "Logix Developer Workstation",
+      "purpose": "Build native Artemis and Z80-compatible applications.",
+      "includes": [
+        "Artemis 256 KiB with readable Mono Pro display",
+        "C IDE with native and Z80 cross-compilers",
+        "SDK, TUI libraries, documentation and Business Tools"
+      ],
+      "components": [
+        {
+          "ref": "bundle.proposed_artemis_developer",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [
+        "CP/M-80 compatibility module and testing service",
+        "Commercial developer licence where required"
+      ],
+      "pricing": {
+        "amount_usd": 3850.67,
+        "label": "Reference configuration price",
+        "cost_usd": 1831.22,
+        "dealer_fee_usd": 962.67,
+        "contribution_usd": 1056.78,
+        "component_retail_sum_usd": 3850.67,
+        "lines": [
+          {
+            "ref": "bundle.proposed_artemis_developer",
+            "name": "Artemis — C development",
+            "retail": 3850.67,
+            "cost": 1831.22,
+            "fee": 962.67,
+            "date": "1982-06-15",
+            "basis": "current catalogue ceiling",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 3905.18,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    },
+    {
+      "id": "development_team",
+      "name": "Logix Development Team",
+      "purpose": "Equip four concurrent developers for collaborative development.",
+      "includes": [
+        "Artemis PRO 1 MiB / 5 MB server",
+        "Four Artemis 256 KiB developer workstations and eight-port hub",
+        "Team Edition: one server / four concurrent users, 20 onboarding hours and 12 first-year support hours"
+      ],
+      "components": [
+        {
+          "ref": "bundle.artemis_pro_1mb_server",
+          "quantity": 1
+        },
+        {
+          "ref": "bundle.artemis_256_mono_pro",
+          "quantity": 4
+        },
+        {
+          "ref": "device.network_hub.8_port",
+          "quantity": 1
+        },
+        {
+          "ref": "software.aion_development_team",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [
+        "Five network cables, installation and backup equipment/media",
+        "Validate shared compiler/SDK workstation entitlements; add only licences not covered by Team Edition",
+        "Confirm server shipment availability and storage capacity for the selected projects"
+      ],
+      "options": [
+        "Larger storage sized to project workload"
+      ],
+      "pricing": {
+        "amount_usd": 23782.23,
+        "label": "Known items subtotal — final quotation required",
+        "cost_usd": 11514.36,
+        "dealer_fee_usd": 5945.57,
+        "contribution_usd": 6322.3,
+        "component_retail_sum_usd": 23782.23,
+        "lines": [
+          {
+            "ref": "bundle.artemis_pro_1mb_server",
+            "name": "Artemis PRO 1 MB server",
+            "retail": 8385.2,
+            "cost": 3515.58,
+            "fee": 2096.3,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "shipment unconfirmed",
+            "original_retail": 8385.2,
+            "quantity": 1
+          },
+          {
+            "ref": "bundle.artemis_256_mono_pro",
+            "name": "Logix Artemis 256 KB — Mono Pro system",
+            "retail": 3566.63,
+            "cost": 1735.92,
+            "fee": 891.66,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 3566.63,
+            "quantity": 4
+          },
+          {
+            "ref": "device.network_hub.8_port",
+            "name": "Logix network hub/repeater — 8 port",
+            "retail": 385.28,
+            "cost": 216.72,
+            "fee": 96.32,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 385.28,
+            "quantity": 1
+          },
+          {
+            "ref": "software.aion_development_team",
+            "name": "AION Development System — Team Edition",
+            "retail": 745.23,
+            "cost": 838.38,
+            "fee": 186.31,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 745.23,
+            "quantity": 1
+          }
+        ],
+        "complete_price": false
+      }
+    },
+    {
+      "id": "professional_cad",
+      "name": "Logix Professional CAD — with Autodesk AutoCAD",
+      "purpose": "Create and edit professional technical drawings.",
+      "includes": [
+        "Artemis PRO 1 MiB / 5 MB reference system",
+        "Color Pro 14 primary display and additional 800×600 Mono Pro 17",
+        "November professional graphics controller, keyboard, mouse and AutoCAD 1.0"
+      ],
+      "components": [
+        {
+          "ref": "offer.comdex82_artemis_autocad",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [
+        "Installation and AutoCAD training",
+        "Compatible plotter and consumables",
+        "Larger storage; validate drawing workload"
+      ],
+      "pricing": {
+        "amount_usd": 9909.72,
+        "label": "Reference configuration price",
+        "cost_usd": null,
+        "dealer_fee_usd": null,
+        "contribution_usd": null,
+        "component_retail_sum_usd": 9909.72,
+        "lines": [
+          {
+            "ref": "offer.comdex82_artemis_autocad",
+            "name": "Artemis PRO Professional CAD — hardware and AutoCAD",
+            "retail": 9909.72,
+            "cost": null,
+            "fee": null,
+            "date": "1982-11-29",
+            "basis": "mixed_supplier_component_sum",
+            "availability": "planning estimate; confirm shipment",
+            "original_retail": 9909.72,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "colour_reports",
+      "name": "Colour Reports Upgrade",
+      "purpose": "Add colour graphical reports to a compatible Artemis.",
+      "includes": [
+        "64 KiB primary controller, Color Pro 14 and mouse",
+        "Required compatible TUI updates"
+      ],
+      "components": [
+        {
+          "ref": "offer.ncc82_colour_upgrade",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [
+        "Installation; remove/replace existing primary controller"
+      ],
+      "pricing": {
+        "amount_usd": 1311.84,
+        "label": "Reference configuration price",
+        "cost_usd": 737.91,
+        "dealer_fee_usd": 327.96,
+        "contribution_usd": 245.97,
+        "component_retail_sum_usd": 1311.84,
+        "lines": [
+          {
+            "ref": "offer.ncc82_colour_upgrade",
+            "name": "Artemis Colour Upgrade",
+            "retail": 1311.84,
+            "cost": 737.91,
+            "fee": 327.96,
+            "date": "1982-06-15",
+            "basis": "June estimate carried forward",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 1311.84,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    },
+    {
+      "id": "professional_drawing",
+      "name": "Professional Drawing Upgrade",
+      "purpose": "Add a second high-resolution drawing display.",
+      "includes": [
+        "November 128 KiB professional controller, Mono Pro 17 and mouse"
+      ],
+      "components": [
+        {
+          "ref": "offer.comdex82_professional_hardware",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [
+        "AutoCAD licence: $1,000 planning anchor; combined reference $2,604.80",
+        "Installation; existing compatible Artemis and primary display required"
+      ],
+      "pricing": {
+        "amount_usd": 1604.8,
+        "label": "Reference configuration price",
+        "cost_usd": 902.7,
+        "dealer_fee_usd": 401.2,
+        "contribution_usd": 300.9,
+        "component_retail_sum_usd": 1604.8,
+        "lines": [
+          {
+            "ref": "offer.comdex82_professional_hardware",
+            "name": "November professional graphics upgrade with mouse",
+            "retail": 1604.8,
+            "cost": 902.7,
+            "fee": 401.2,
+            "date": "1982-11-29",
+            "basis": "no_proxy_cost_based",
+            "availability": "planning estimate; confirm shipment",
+            "original_retail": 1604.8,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    },
+    {
+      "id": "connect_office",
+      "name": "Connect My Office",
+      "purpose": "Connect existing compatible machines.",
+      "includes": [
+        "Interfaces only where absent, sized hub, cables and setup"
+      ],
+      "components": [],
+      "unpriced_requirements": [
+        "Survey machine count, built-in interfaces, link rates, cable lengths and installation"
+      ],
+      "options": [],
+      "pricing": {
+        "amount_usd": null,
+        "label": "Known items subtotal — final quotation required",
+        "cost_usd": null,
+        "dealer_fee_usd": null,
+        "contribution_usd": null,
+        "component_retail_sum_usd": null,
+        "lines": [],
+        "complete_price": false
+      }
+    },
+    {
+      "id": "cpm_migration",
+      "name": "Move from CP/M to Artemis",
+      "purpose": "Preserve compatible applications and move business data.",
+      "includes": [
+        "CP/M-80 module where required, data transfer and application qualification"
+      ],
+      "components": [],
+      "unpriced_requirements": [
+        "Inventory applications, rights, file formats and target hardware before quoting"
+      ],
+      "options": [],
+      "pricing": {
+        "amount_usd": null,
+        "label": "Known items subtotal — final quotation required",
+        "cost_usd": null,
+        "dealer_fee_usd": null,
+        "contribution_usd": null,
+        "component_retail_sum_usd": null,
+        "lines": [],
+        "complete_price": false
+      }
+    },
+    {
+      "id": "mouse_starter",
+      "name": "Mouse Starter Pack",
+      "purpose": "Learn pointing, selection and mouse-based controls.",
+      "includes": [
+        "Two-button, two-roller mouse, learning games and compatible TUI updates"
+      ],
+      "components": [
+        {
+          "ref": "offer.ncc82_mouse_learning",
+          "quantity": 1
+        }
+      ],
+      "unpriced_requirements": [],
+      "options": [],
+      "pricing": {
+        "amount_usd": 110.59,
+        "label": "Reference configuration price",
+        "cost_usd": 62.21,
+        "dealer_fee_usd": 27.65,
+        "contribution_usd": 20.73,
+        "component_retail_sum_usd": 110.59,
+        "lines": [
+          {
+            "ref": "offer.ncc82_mouse_learning",
+            "name": "Logix Mouse Learning Pack",
+            "retail": 110.59,
+            "cost": 62.21,
+            "fee": 27.65,
+            "date": "1982-06-15",
+            "basis": "current catalogue ceiling",
+            "availability": "catalogued; qualification requirements apply",
+            "original_retail": 110.6,
+            "quantity": 1
+          }
+        ],
+        "complete_price": true
+      }
+    }
+  ],
+  "secondary_sections": [
+    {
+      "id": "value_legacy",
+      "name": "Value and legacy systems",
+      "description": "Original Aurelia systems and their task variants move out of standard new-system promotion. Available for value/clearance enquiries; support continues. No manufacturing end date is implied.",
+      "refs": [
+        "bundle.aurelia_mono",
+        "bundle.aurelia_color",
+        "bundle.proposed_aurelia_office",
+        "bundle.proposed_aurelia_accounts",
+        "bundle.proposed_aurelia_developer"
+      ]
+    },
+    {
+      "id": "legacy_software",
+      "name": "Legacy software and replacement displays",
+      "description": "Abacus 1, Artemis Abacus 2 and Monitor I are retained for existing installations. Abacus 2 and Pulse 1 remain current for compatible Z80 systems.",
+      "refs": [
+        "software.abacus_1",
+        "edition.abacus_2.era",
+        "device.mono_monitor_1",
+        "device.color_monitor_1"
+      ]
+    },
+    {
+      "id": "ecosystem",
+      "name": "Connect other computers",
+      "description": "Apple II and S-100 adapters continue to spread Logix standards. FlexiDisk and FlexiDisk II remain distinct pending format/mechanism qualification.",
+      "refs": [
+        "device.apple2_expansion_card",
+        "device.apple2_video_card",
+        "device.s100_flexibus_card",
+        "device.s100_video_card",
+        "device.flexidisk",
+        "device.flexidisk_ii"
+      ]
+    },
+    {
+      "id": "parts",
+      "name": "Expand or repair your system",
+      "description": "Controllers, memory, monitors, keyboards, interfaces and hubs remain available to dealers and existing owners. Use the technical catalogue for individual specifications.",
+      "refs": [
+        "device.mono_pro",
+        "device.artemis_video_card_16kb",
+        "device.artemis_video_card",
+        "device.flexibus_keyboard",
+        "device.mono_monitor_2",
+        "device.color_monitor_2",
+        "device.aurelia_ram_16kb_card",
+        "device.flexiprint40",
+        "device.artemis_cpm80_module",
+        "device.artemis_ram_64kb_bank_kit",
+        "device.artemis_ram_256kb_bank_kit",
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "device.logix_mouse",
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17",
+        "device.network_hub.4_port",
+        "device.network_hub.8_port",
+        "device.network_hub.16_port"
+      ]
+    }
+  ],
+  "superseded_current_offers": [
+    {
+      "ref": "offer.ncc82_professional_graphics",
+      "replacement": "professional_drawing",
+      "reason": "November revision replaces June professional extension for new configurations; historical price retained."
+    }
+  ],
+  "current_offer_prices": [
+    {
+      "ref": "bundle.aurelia_mono",
+      "name": "Logix Aurelia — Monochrome system",
+      "retail": 1351.43,
+      "cost": 731.32,
+      "fee": 337.86,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 1351.43
+    },
+    {
+      "ref": "bundle.aurelia_color",
+      "name": "Logix Aurelia — Color system",
+      "retail": 1510.89,
+      "cost": 828.3,
+      "fee": 377.72,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 1510.89
+    },
+    {
+      "ref": "bundle.aurelia_plus_mono",
+      "name": "Logix Aurelia+ — Monochrome system",
+      "retail": 1863.0,
+      "cost": 929.67,
+      "fee": 465.75,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 1863.0
+    },
+    {
+      "ref": "bundle.aurelia_plus_color",
+      "name": "Logix Aurelia+ — Color system",
+      "retail": 2054.28,
+      "cost": 1048.03,
+      "fee": 513.57,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2054.28
+    },
+    {
+      "ref": "bundle.artemis_128_mono",
+      "name": "Logix Artemis 128 KB — Monochrome system",
+      "retail": 2605.55,
+      "cost": 1272.92,
+      "fee": 651.39,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2605.55
+    },
+    {
+      "ref": "bundle.artemis_128_color",
+      "name": "Logix Artemis 128 KB — Color system",
+      "retail": 2797.9,
+      "cost": 1391.27,
+      "fee": 699.48,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2797.9
+    },
+    {
+      "ref": "bundle.artemis_256_color",
+      "name": "Logix Artemis 256 KB — Color system",
+      "retail": 3498.97,
+      "cost": 1694.11,
+      "fee": 874.74,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 3498.97
+    },
+    {
+      "ref": "bundle.artemis_pro_512_server",
+      "name": "Artemis PRO 512 KB server",
+      "retail": 6258.49,
+      "cost": 2670.59,
+      "fee": 1564.62,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "shipment unconfirmed",
+      "original_retail": 6258.49
+    },
+    {
+      "ref": "bundle.artemis_pro_1mb_server",
+      "name": "Artemis PRO 1 MB server",
+      "retail": 8385.2,
+      "cost": 3515.58,
+      "fee": 2096.3,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "shipment unconfirmed",
+      "original_retail": 8385.2
+    },
+    {
+      "ref": "bundle.artemis_256_mono_pro",
+      "name": "Logix Artemis 256 KB — Mono Pro system",
+      "retail": 3566.63,
+      "cost": 1735.92,
+      "fee": 891.66,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 3566.63
+    },
+    {
+      "ref": "bundle.artemis_pro_512_mono_pro",
+      "name": "Artemis PRO 512 KB server with Mono Pro console",
+      "retail": 6831.14,
+      "cost": 3018.4,
+      "fee": 1707.79,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "shipment unconfirmed",
+      "original_retail": 6831.14
+    },
+    {
+      "ref": "bundle.artemis_pro_1mb_mono_pro",
+      "name": "Artemis PRO 1 MB server with Mono Pro console",
+      "retail": 8962.89,
+      "cost": 3863.42,
+      "fee": 2240.72,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "shipment unconfirmed",
+      "original_retail": 8962.89
+    },
+    {
+      "ref": "offer.ncc82_colour_upgrade",
+      "name": "Artemis Colour Upgrade",
+      "retail": 1311.84,
+      "cost": 737.91,
+      "fee": 327.96,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 1311.84
+    },
+    {
+      "ref": "offer.ncc82_mouse_learning",
+      "name": "Logix Mouse Learning Pack",
+      "retail": 110.59,
+      "cost": 62.21,
+      "fee": 27.65,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 110.6
+    },
+    {
+      "ref": "bundle.proposed_aurelia_office",
+      "name": "Aurelia — Office productivity",
+      "retail": 1442.99,
+      "cost": 761.02,
+      "fee": 360.75,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 1457.31
+    },
+    {
+      "ref": "bundle.proposed_aurelia_accounts",
+      "name": "Aurelia — Small-business accounting",
+      "retail": 1963.47,
+      "cost": 1008.84,
+      "fee": 490.87,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2128.47
+    },
+    {
+      "ref": "bundle.proposed_aurelia_developer",
+      "name": "Aurelia — C development",
+      "retail": 1524.06,
+      "cost": 802.91,
+      "fee": 381.02,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 1533.97
+    },
+    {
+      "ref": "bundle.proposed_aurelia_plus_office",
+      "name": "Aurelia+ — Office productivity",
+      "retail": 1961.08,
+      "cost": 962.97,
+      "fee": 490.27,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 1969.15
+    },
+    {
+      "ref": "bundle.proposed_aurelia_plus_accounts",
+      "name": "Aurelia+ — Small-business accounting",
+      "retail": 2475.04,
+      "cost": 1207.19,
+      "fee": 618.76,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2629.29
+    },
+    {
+      "ref": "bundle.proposed_aurelia_plus_developer",
+      "name": "Aurelia+ — C development",
+      "retail": 2035.63,
+      "cost": 1001.26,
+      "fee": 508.91,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2042.53
+    },
+    {
+      "ref": "bundle.proposed_aurelia_plus_analysis",
+      "name": "Aurelia+ — Interactive analysis",
+      "retail": 2029.72,
+      "cost": 980.64,
+      "fee": 507.43,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2051.88
+    },
+    {
+      "ref": "bundle.proposed_artemis_office",
+      "name": "Artemis — Office productivity",
+      "retail": 2735.45,
+      "cost": 1317.04,
+      "fee": 683.86,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2747.91
+    },
+    {
+      "ref": "bundle.proposed_artemis_accounts",
+      "name": "Artemis — Small-business accounting",
+      "retail": 4184.44,
+      "cost": 2018.07,
+      "fee": 1046.11,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 4337.18
+    },
+    {
+      "ref": "bundle.proposed_artemis_developer",
+      "name": "Artemis — C development",
+      "retail": 3850.67,
+      "cost": 1831.22,
+      "fee": 962.67,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 3905.18
+    },
+    {
+      "ref": "bundle.proposed_artemis_analysis",
+      "name": "Artemis — Interactive analysis",
+      "retail": 3720.02,
+      "cost": 1759.0,
+      "fee": 930.01,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 3757.51
+    },
+    {
+      "ref": "bundle.proposed_artemis_migration",
+      "name": "Artemis — CP/M migration",
+      "retail": 3607.34,
+      "cost": 2029.13,
+      "fee": 901.84,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 3607.34
+    },
+    {
+      "ref": "bundle.proposed_artemis_network_workstation",
+      "name": "Artemis — Network business workstation",
+      "retail": 3199.34,
+      "cost": 1799.63,
+      "fee": 799.84,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 3199.34
+    },
+    {
+      "ref": "bundle.proposed_artemis_office_color",
+      "name": "Artemis — Office productivity / Color II",
+      "retail": 2927.8,
+      "cost": 1435.39,
+      "fee": 731.95,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 2941.19
+    },
+    {
+      "ref": "bundle.proposed_artemis_developer_color",
+      "name": "Artemis — C development / Color II",
+      "retail": 3783.01,
+      "cost": 1789.41,
+      "fee": 945.75,
+      "date": "1982-06-15",
+      "basis": "current catalogue ceiling",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 3836.78
+    },
+    {
+      "ref": "bundle.proposed_artemis_migration_color",
+      "name": "Artemis — CP/M migration / Color II",
+      "retail": 3533.01,
+      "cost": 1987.32,
+      "fee": 883.25,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 3533.01
+    },
+    {
+      "ref": "bundle.proposed_artemis_pro_small_office",
+      "name": "Artemis PRO — Small-office business network",
+      "retail": 10307.77,
+      "cost": 5798.12,
+      "fee": 2576.94,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "shipment unconfirmed",
+      "original_retail": 10307.77
+    },
+    {
+      "ref": "device.mono_pro",
+      "name": "Logix Mono Pro 14-inch",
+      "retail": 402.29,
+      "cost": 285.59,
+      "fee": 100.57,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 402.29
+    },
+    {
+      "ref": "device.artemis_video_card_16kb",
+      "name": "Logix Artemis 16 KiB economy video card",
+      "retail": 227.63,
+      "cost": 128.04,
+      "fee": 56.91,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 227.63
+    },
+    {
+      "ref": "device.artemis_video_card",
+      "name": "Logix Artemis 32 KiB professional video card",
+      "retail": 321.92,
+      "cost": 181.08,
+      "fee": 80.48,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 321.92
+    },
+    {
+      "ref": "device.flexibus_keyboard",
+      "name": "Logix FlexiBUS keyboard",
+      "retail": 140.61,
+      "cost": 87.23,
+      "fee": 35.15,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 140.61
+    },
+    {
+      "ref": "device.mono_monitor_1",
+      "name": "Logix Monochrome Monitor I 9-inch",
+      "retail": 157.31,
+      "cost": 117.98,
+      "fee": 39.33,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 157.31
+    },
+    {
+      "ref": "device.color_monitor_1",
+      "name": "Logix Color Monitor I 12-inch",
+      "retail": 315.25,
+      "cost": 213.57,
+      "fee": 78.81,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 315.25
+    },
+    {
+      "ref": "device.mono_monitor_2",
+      "name": "Logix Mono Monitor II 12-inch",
+      "retail": 170.21,
+      "cost": 127.65,
+      "fee": 42.55,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 170.21
+    },
+    {
+      "ref": "device.color_monitor_2",
+      "name": "Logix Color Monitor II 12-inch",
+      "retail": 337.17,
+      "cost": 244.31,
+      "fee": 84.29,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 337.17
+    },
+    {
+      "ref": "device.aurelia_ram_16kb_card",
+      "name": "Logix Aurelia 16 KB RAM expansion card",
+      "retail": 106.79,
+      "cost": 50.61,
+      "fee": 26.7,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 106.79
+    },
+    {
+      "ref": "device.flexiprint40",
+      "name": "Logix FlexiPrint40",
+      "retail": 355.49,
+      "cost": 225.67,
+      "fee": 88.87,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 355.49
+    },
+    {
+      "ref": "device.flexidisk",
+      "name": "Logix FlexiDisk",
+      "retail": 274.74,
+      "cost": 180.29,
+      "fee": 68.69,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 274.74
+    },
+    {
+      "ref": "device.apple2_expansion_card",
+      "name": "Logix Apple II Expansion Card",
+      "retail": 121.67,
+      "cost": 63.44,
+      "fee": 30.42,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 121.67
+    },
+    {
+      "ref": "device.flexidisk_ii",
+      "name": "Logix FlexiDisk II",
+      "retail": 371.73,
+      "cost": 195.91,
+      "fee": 92.93,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 371.73
+    },
+    {
+      "ref": "device.artemis_cpm80_module",
+      "name": "Artemis CP/M-80 backward-compatibility expansion module",
+      "retail": 358.32,
+      "cost": 219.85,
+      "fee": 89.58,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 358.32
+    },
+    {
+      "ref": "device.artemis_ram_64kb_bank_kit",
+      "name": "Artemis 64 KiB matched RAM bank kit",
+      "retail": 273.97,
+      "cost": 93.98,
+      "fee": 68.49,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 273.97
+    },
+    {
+      "ref": "device.artemis_ram_256kb_bank_kit",
+      "name": "Artemis 256 KiB matched RAM bank kit",
+      "retail": 1171.97,
+      "cost": 429.94,
+      "fee": 292.99,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 1171.97
+    },
+    {
+      "ref": "device.s100_flexibus_card",
+      "name": "Logix FlexiBUS Interface for S-100",
+      "retail": 112.11,
+      "cost": 63.06,
+      "fee": 28.03,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 112.11
+    },
+    {
+      "ref": "device.apple2_video_card",
+      "name": "Logix Video Card for Apple II",
+      "retail": 215.98,
+      "cost": 121.49,
+      "fee": 54.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 215.98
+    },
+    {
+      "ref": "device.s100_video_card",
+      "name": "Logix Video Card for S-100",
+      "retail": 228.11,
+      "cost": 128.31,
+      "fee": 57.03,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 228.11
+    },
+    {
+      "ref": "device.artemis_video_card_64kb",
+      "name": "Logix Artemis 64 KiB video controller card",
+      "retail": 453.74,
+      "cost": 255.23,
+      "fee": 113.44,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 453.74
+    },
+    {
+      "ref": "device.color_pro_14",
+      "name": "Logix Color Pro 14",
+      "retail": 768.11,
+      "cost": 432.06,
+      "fee": 192.03,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 768.11
+    },
+    {
+      "ref": "device.logix_mouse",
+      "name": "Logix Mouse — two buttons and two rollers",
+      "retail": 89.99,
+      "cost": 50.62,
+      "fee": 22.5,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 89.99
+    },
+    {
+      "ref": "device.artemis_professional_video_128kb",
+      "name": "Logix Artemis Professional 128 KiB video card — November revision",
+      "retail": 820.09,
+      "cost": 461.3,
+      "fee": 205.02,
+      "date": "1982-11-29",
+      "basis": "no_proxy_cost_based",
+      "availability": "planning estimate; confirm shipment",
+      "original_retail": 820.09
+    },
+    {
+      "ref": "device.mono_pro_17",
+      "name": "Logix Mono Pro 17 — November revision",
+      "retail": 694.72,
+      "cost": 390.78,
+      "fee": 173.68,
+      "date": "1982-11-29",
+      "basis": "no_proxy_cost_based",
+      "availability": "planning estimate; confirm shipment",
+      "original_retail": 694.72
+    },
+    {
+      "ref": "bundle.aurelia_network_upgrade",
+      "name": "Aurelia networking upgrade",
+      "retail": 179.68,
+      "cost": 101.07,
+      "fee": 44.92,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 179.68
+    },
+    {
+      "ref": "bundle.artemis_network_upgrade",
+      "name": "Existing Artemis networking upgrade",
+      "retail": 205.99,
+      "cost": 115.87,
+      "fee": 51.5,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 205.99
+    },
+    {
+      "ref": "device.network_hub.4_port",
+      "name": "Logix network hub/repeater — 4 port",
+      "retail": 255.57,
+      "cost": 143.76,
+      "fee": 63.89,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 255.57
+    },
+    {
+      "ref": "device.network_hub.8_port",
+      "name": "Logix network hub/repeater — 8 port",
+      "retail": 385.28,
+      "cost": 216.72,
+      "fee": 96.32,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 385.28
+    },
+    {
+      "ref": "device.network_hub.16_port",
+      "name": "Logix network hub/repeater — 16 port",
+      "retail": 639.52,
+      "cost": 359.73,
+      "fee": 159.88,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 639.52
+    },
+    {
+      "ref": "software.business_tools_aurelia",
+      "name": "AION Software Business Tools expansion",
+      "retail": 50.65,
+      "cost": 19.24,
+      "fee": 12.66,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 50.65
+    },
+    {
+      "ref": "software.abacus_1",
+      "name": "AION Abacus",
+      "retail": 40.91,
+      "cost": 10.46,
+      "fee": 10.23,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 40.91
+    },
+    {
+      "ref": "software.simple_c_z80",
+      "name": "Logix Simple C compiler for Z80 CP/M",
+      "retail": 53.48,
+      "cost": 17.16,
+      "fee": 13.37,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 53.48
+    },
+    {
+      "ref": "software.aurelia_sdk",
+      "name": "Logix Aurelia Developer Package Complete SDK",
+      "retail": 68.5,
+      "cost": 35.19,
+      "fee": 17.13,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 68.5
+    },
+    {
+      "ref": "software.microsoft_basic_aurelia",
+      "name": "Microsoft BASIC for Aurelia",
+      "retail": 119.64,
+      "cost": 33.03,
+      "fee": 29.91,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 119.64
+    },
+    {
+      "ref": "software.pulse_1",
+      "name": "AION Pulse",
+      "retail": 68.64,
+      "cost": 17.67,
+      "fee": 17.16,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 68.64
+    },
+    {
+      "ref": "software.abacus_2",
+      "name": "AION Abacus 2.0",
+      "retail": 47.43,
+      "cost": 14.06,
+      "fee": 11.86,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 47.43
+    },
+    {
+      "ref": "software.business_tools_artemis",
+      "name": "AION Business Tools / Office Suite for Artemis",
+      "retail": 56.42,
+      "cost": 23.87,
+      "fee": 14.11,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 56.42
+    },
+    {
+      "ref": "software.aion_c_ide",
+      "name": "AION C IDE with ERA native and Z80 cross-compilers",
+      "retail": 132.76,
+      "cost": 26.44,
+      "fee": 33.19,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 132.76
+    },
+    {
+      "ref": "software.artemis_sdk",
+      "name": "Logix Artemis Developer Package Complete SDK",
+      "retail": 94.86,
+      "cost": 44.99,
+      "fee": 23.72,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 94.86
+    },
+    {
+      "ref": "software.abacus_3",
+      "name": "AION Abacus 3.0",
+      "retail": 73.48,
+      "cost": 20.25,
+      "fee": 18.37,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 73.48
+    },
+    {
+      "ref": "software.pulse_3",
+      "name": "AION Pulse 3.0",
+      "retail": 91.15,
+      "cost": 20.77,
+      "fee": 22.79,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 91.15
+    },
+    {
+      "ref": "edition.abacus_2.era",
+      "name": "Abacus 2.0 — Artemis edition",
+      "retail": 47.43,
+      "cost": 14.06,
+      "fee": 11.86,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 47.43
+    },
+    {
+      "ref": "software.aion_development_team",
+      "name": "AION Development System — Team Edition",
+      "retail": 745.23,
+      "cost": 838.38,
+      "fee": 186.31,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 745.23
+    },
+    {
+      "ref": "software.entertainment_suite",
+      "name": "AION Entertainment Suite",
+      "retail": 20.6,
+      "cost": 11.59,
+      "fee": 5.15,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 20.6
+    },
+    {
+      "ref": "software.bpi_suite.bpi_general_accounting",
+      "name": "BPI General Accounting",
+      "retail": 55.86,
+      "cost": 12.0,
+      "fee": 13.97,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 55.86
+    },
+    {
+      "ref": "software.bpi_suite.bpi_accounts_receivable",
+      "name": "BPI Accounts Receivable",
+      "retail": 55.86,
+      "cost": 12.0,
+      "fee": 13.97,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 55.86
+    },
+    {
+      "ref": "software.bpi_suite.bpi_accounts_payable",
+      "name": "BPI Accounts Payable",
+      "retail": 55.86,
+      "cost": 12.0,
+      "fee": 13.97,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 55.86
+    },
+    {
+      "ref": "software.bpi_suite.bpi_inventory_control",
+      "name": "BPI Inventory Control",
+      "retail": 55.86,
+      "cost": 12.0,
+      "fee": 13.97,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 55.86
+    },
+    {
+      "ref": "software.bpi_suite.bpi_payroll",
+      "name": "BPI Payroll",
+      "retail": 55.86,
+      "cost": 12.0,
+      "fee": 13.97,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 55.86
+    },
+    {
+      "ref": "software.bpi_suite",
+      "name": "BPI complete five-application bundle",
+      "retail": 205.9,
+      "cost": 32.61,
+      "fee": 51.48,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 205.9
+    },
+    {
+      "ref": "software.bpi_client_server",
+      "name": "BPI client-server — server package",
+      "retail": 70.83,
+      "cost": 39.84,
+      "fee": 17.71,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 70.83
+    },
+    {
+      "ref": "offer.bpi_client",
+      "name": "BPI client-server — additional client",
+      "retail": 70.83,
+      "cost": 39.84,
+      "fee": 17.71,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 70.83
+    },
+    {
+      "ref": "service.customer_care",
+      "name": "Logix Customer Care",
+      "retail": 21.56,
+      "cost": 16.17,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 21.56
+    },
+    {
+      "ref": "service.regular_support",
+      "name": "Logix Regular Support Service",
+      "retail": 67.39,
+      "cost": 50.54,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 67.39
+    },
+    {
+      "ref": "service.professional_support",
+      "name": "Logix Professional Support Service",
+      "retail": 132.87,
+      "cost": 99.65,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 132.87
+    },
+    {
+      "ref": "service.professional_business_onsite",
+      "name": "Logix Professional Business On-site",
+      "retail": 454.49,
+      "cost": 340.87,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 454.49
+    },
+    {
+      "ref": "service.academy_regular_courses.course_1",
+      "name": "Logix Computer Academy - regular courses — Aurelia Fundamentals",
+      "retail": 114.31,
+      "cost": 66.16,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 114.31
+    },
+    {
+      "ref": "service.academy_regular_courses.course_2",
+      "name": "Logix Computer Academy - regular courses — Aurelia Fundamentals + Abacus",
+      "retail": 285.76,
+      "cost": 165.39,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 285.76
+    },
+    {
+      "ref": "service.academy_regular_courses.course_3",
+      "name": "Logix Computer Academy - regular courses — Aurelia Fundamentals + Abacus + Business Tools",
+      "retail": 342.92,
+      "cost": 198.47,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 342.92
+    },
+    {
+      "ref": "service.academy_regular_courses.course_4",
+      "name": "Logix Computer Academy - regular courses — Aurelia + C (IDE + TUI library)",
+      "retail": 285.76,
+      "cost": 165.39,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 285.76
+    },
+    {
+      "ref": "service.academy_customer_site",
+      "name": "Logix Computer Academy - customer-site courses",
+      "retail": 997.19,
+      "cost": 629.36,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 997.19
+    },
+    {
+      "ref": "service.bpi_training",
+      "name": "BPI Products training",
+      "retail": 171.46,
+      "cost": 99.23,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 171.46
+    },
+    {
+      "ref": "service.pulse_training",
+      "name": "AION Pulse training",
+      "retail": 114.31,
+      "cost": 66.16,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 114.31
+    },
+    {
+      "ref": "service.aurelia_commercial_developer_license",
+      "name": "Logix Aurelia Commercial Developer License",
+      "retail": 114.31,
+      "cost": 85.73,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 114.31
+    },
+    {
+      "ref": "service.artemis_commercial_developer_license",
+      "name": "Logix Artemis Commercial Developer License",
+      "retail": 127.37,
+      "cost": 95.53,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 127.37
+    },
+    {
+      "ref": "software.aurelia_compatibility_kit",
+      "name": "Aurelia Software Compatibility Kit",
+      "retail": 46.92,
+      "cost": 35.19,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 46.92
+    },
+    {
+      "ref": "service.aurelia_compatibility_support",
+      "name": "Aurelia compatibility engineering support",
+      "retail": 329.31,
+      "cost": 246.98,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 329.31
+    },
+    {
+      "ref": "service.aurelia_compatibility_certification",
+      "name": "Aurelia application compatibility certification",
+      "retail": 263.83,
+      "cost": 197.87,
+      "fee": 0.0,
+      "date": "1982-06-15",
+      "basis": "June estimate carried forward",
+      "availability": "catalogued; qualification requirements apply",
+      "original_retail": 263.83
+    }
+  ],
+  "provenance": {
+    "retail_catalog_1982.json": "c898e3c85a3b19f7126e0f5cd1179ce80f91115cae84e2dda891fb79871f6129",
+    "pricing_results.json": "e74e910ee8407d2d4e3a0026743bdc2401f12142229853b836d99503e07fd5fe"
+  }
+}
