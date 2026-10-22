@@ -131,10 +131,10 @@ assert phase_by_event['event.aionix_agreement']=='phase.ncc78'
 assert all(target in {p['id'] for p in phases} for target in site['timeline_view']['phase_aliases'].values())
 print('Validated nine consecutive phases, confirmed-date placement, processes and legacy phase aliases.')
 
-assert len(events)==143
+assert len(events)==145
 assert 'event.basic_develop' not in event_ids
 processes=[p for parent in story['processes'] for p in [parent]+parent.get('subprocesses',[])];process_ids={p['id'] for p in processes}
-assert len(process_ids)==len(processes)==17
+assert len(process_ids)==len(processes)==19
 for proc in processes:
  assert set(proc['phase_refs'])<={p['id'] for p in phases}
  assert set(proc['related_event_refs'])<=event_ids

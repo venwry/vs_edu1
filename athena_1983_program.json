@@ -1,0 +1,171 @@
+{
+  "status": "Accepted planning baseline; production and electrical qualification pending.",
+  "launch": {
+    "event_ref": "event.ncc83_athena_premiere",
+    "conference": "NCC 1983",
+    "location": "Anaheim, California",
+    "conference_start": "1983-05-16",
+    "conference_end": "1983-05-19",
+    "premiere_date": "1983-05-16",
+    "date_source": "https://vtda.org/pubs/InformationDisplay_SIDJournal/V00N00-1982%20November.pdf",
+    "commercial_availability": "Gradual production after the conference; exact first shipment date pending qualification."
+  },
+  "processor_ref": "part.era2",
+  "computer_refs": [
+    "computer.athena",
+    "computer.athena_server"
+  ],
+  "software_ref": "software.aionix2",
+  "module_boms": [
+    {
+      "module_ref": "part.athena_ram_module_128kb",
+      "lines": [
+        {
+          "ref": "part.aion_4164_2um",
+          "quantity": 16,
+          "unit": "each"
+        }
+      ],
+      "additional_functional_sets": [
+        "PCB and connector",
+        "Decoupling and bulk capacitors",
+        "Address/control buffers and capacity identification",
+        "Rank decode for 256 KiB module"
+      ],
+      "cost_status": "Uncosted 1983 module; assembly/test and component selections pending."
+    },
+    {
+      "module_ref": "part.athena_ram_module_256kb",
+      "lines": [
+        {
+          "ref": "part.aion_4164_2um",
+          "quantity": 32,
+          "unit": "each"
+        }
+      ],
+      "additional_functional_sets": [
+        "PCB and connector",
+        "Decoupling and bulk capacitors",
+        "Address/control buffers and capacity identification",
+        "Rank decode for 256 KiB module"
+      ],
+      "cost_status": "Uncosted 1983 module; assembly/test and component selections pending."
+    }
+  ],
+  "computer_boms": [
+    {
+      "computer_ref": "computer.athena",
+      "lines": [
+        {
+          "ref": "part.era2",
+          "quantity": 1,
+          "unit": "each"
+        },
+        {
+          "ref": "part.athena_ram_module_128kb",
+          "quantity": 2,
+          "unit": "each"
+        },
+        {
+          "ref": "device.artemis_video_card_64kb",
+          "quantity": 1,
+          "unit": "each"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each"
+        }
+      ],
+      "functional_components": [
+        {
+          "name": "Internal HDD",
+          "quantity": 1,
+          "capacity_mb": 5
+        },
+        {
+          "name": "5.25-inch DS/DD FDD",
+          "quantity": 1
+        },
+        {
+          "name": "EEPROM BIOS",
+          "quantity": 1,
+          "capacity_kb": null
+        },
+        {
+          "name": "Mainboard, controllers, power supply, chassis and wiring",
+          "quantity": 1,
+          "unit": "functional set"
+        }
+      ],
+      "rom_card_count": 0,
+      "status": "Functional BOM only; not an exhaustive released production BOM."
+    },
+    {
+      "computer_ref": "computer.athena_server",
+      "lines": [
+        {
+          "ref": "part.era2",
+          "quantity": 1,
+          "unit": "each"
+        },
+        {
+          "ref": "part.athena_ram_module_256kb",
+          "quantity": 4,
+          "unit": "each"
+        },
+        {
+          "ref": "device.artemis_video_card_64kb",
+          "quantity": 1,
+          "unit": "each"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each"
+        }
+      ],
+      "functional_components": [
+        {
+          "name": "Internal HDD",
+          "quantity": 1,
+          "capacity_mb": 20
+        },
+        {
+          "name": "5.25-inch DS/DD FDD",
+          "quantity": 1
+        },
+        {
+          "name": "EEPROM BIOS",
+          "quantity": 1,
+          "capacity_kb": null
+        },
+        {
+          "name": "Mainboard, controllers, power supply, chassis and wiring",
+          "quantity": 1,
+          "unit": "functional set"
+        }
+      ],
+      "rom_card_count": 0,
+      "status": "Functional BOM only; not an exhaustive released production BOM."
+    }
+  ],
+  "scope": {
+    "no_rom_cards": true,
+    "sole_specified_rom_firmware": "EEPROM BIOS",
+    "os_specification": "Pending; do not infer virtual-memory, networking, GUI or minimum RAM specifications.",
+    "financial_policy": "No new retail prices, sales, investment or ROI calculated by this planning addition. Existing dated forecasts are unchanged.",
+    "memory_policy": "Use separate 64K-bit 4164 dies on 2 µm, not the discussed dual-array 128K-bit or 256K-bit alternatives."
+  },
+  "open_decisions": [
+    "Athena maximum RAM and total sockets",
+    "CPU and board pinout, timing, power and thermal budget",
+    "BIOS capacity and firmware",
+    "Storage mechanisms, interface and formatted floppy capacity",
+    "Graphics/NIC compatibility on ERA²",
+    "External cache choice and DMA coherency",
+    "Monitor/keyboard bundles",
+    "AIONix 2 specification and fit within 256 KiB base configuration",
+    "1983 manufacturing costs, investments and retail pricing"
+  ]
+}
