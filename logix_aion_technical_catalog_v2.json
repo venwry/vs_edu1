@@ -6200,6 +6200,80 @@
       "manufacturing_status": "design_baseline_costed_unqualified",
       "bom_assembly_refs": [
         "assembly.device.artemis_professional_video_128kb"
+      ],
+      "dated_revisions": [
+        {
+          "effective_from": "1982-11-29",
+          "name": "COMDEX 1982 professional graphics revision",
+          "status": "Accepted offering specification; production and driver acceptance required before shipment. June specifications and cost snapshot remain the earlier baseline.",
+          "video_ram_bytes": 131072,
+          "separate_sprite_sram_bytes": 1024,
+          "mode_policy": "Retain the June 64 KiB card text/bitmap modes and five-sprite behaviour, with explicit per-mode allocation and monitor capability checks. The 640x400x2 and 640x200x4 modes are inherited; 800x600x2 is the professional drawing mode.",
+          "legacy_card_ref": "device.artemis_video_card_64kb",
+          "modes": [
+            {
+              "id": "professional_800_600_2bpp",
+              "width": 800,
+              "height": 600,
+              "bits_per_pixel": 2,
+              "stride_bytes": 200,
+              "framebuffer_bytes": 120000,
+              "framebuffer_count": 1,
+              "simultaneous_values": 4,
+              "palette_list_bytes": 1536,
+              "remaining_bytes": 9536
+            },
+            {
+              "id": "compatibility_640_400_2bpp",
+              "width": 640,
+              "height": 400,
+              "bits_per_pixel": 2,
+              "stride_bytes": 160,
+              "framebuffer_bytes": 64000,
+              "framebuffer_count": 2,
+              "simultaneous_values": 4,
+              "palette_list_bytes": 1536,
+              "remaining_bytes": 1536
+            },
+            {
+              "id": "compatibility_640_200_4bpp",
+              "width": 640,
+              "height": 200,
+              "bits_per_pixel": 4,
+              "stride_bytes": 320,
+              "framebuffer_bytes": 64000,
+              "framebuffer_count": 2,
+              "simultaneous_values": 16,
+              "palette_list_bytes": 1536,
+              "remaining_bytes": 1536
+            }
+          ],
+          "palette_list": {
+            "base_address": "0x1FA00",
+            "end_address": "0x1FFFF",
+            "reserved_bytes": 1536,
+            "maximum_commands": 512,
+            "command_bytes": 3,
+            "encoding": "Byte 0: unsigned scanline delta; byte 1: palette-register index in high nibble, R in low nibble; byte 2: G in high nibble, B in low nibble. RGB components are 4 bits each.",
+            "register_count": 16,
+            "execution": "Deltas accumulate from output active-line zero. Delta zero applies another write at the same boundary. Execute in preceding horizontal blank and latch before the target active line. Explicit count 0..512; a 10-bit count register avoids ambiguous terminators.",
+            "long_gaps": "Split gaps over 255 lines using harmless writes of an unchanged palette entry. These consume list entries.",
+            "frame_state": "Restore initial palette and reset list position at vertical blank. Software swaps or edits the active list only in a defined safe interval.",
+            "write_limit": "Design target at most four palette writes per output-line boundary, inherited from the June list budget; qualify transfer/settling against the faster raster before guaranteeing it. Reject over-budget lists rather than silently changing their timing.",
+            "cad_policy": "Static grayscale palette is the CAD default. Per-line palette changes are optional; 512 writes do not mean 512 distinct lines or 16 independent pixel shades in a 2bpp mode."
+          },
+          "acceleration": [
+            "Overlap-safe rectangle copies with stride and clipping",
+            "Rectangle fills and masked Boolean raster operations",
+            "All-octant integer line drawing",
+            "Optional lookup-table antialiased lines with four output shades at 800x600"
+          ],
+          "redraw": "Retain vector geometry; regenerate dirty regions and exposed pan strips. XOR may serve temporary simple cursors, not deletion of overlapping antialiased geometry. No 800x600 2bpp full-frame double buffering.",
+          "sprites": "Five legacy sprites use separate 1 KiB SRAM (two AION 2114 chips), outside the 128 KiB framebuffer/list allocation. Extend coordinate/addressing and line-budget validation to the 800x600 raster; no automatic sixth pointer sprite.",
+          "monitor_modes": "Mono Pro 17 uses a qualified fixed 800x600 raster. Older modes can be centered without scaling; the card reports presentation geometry and logical/output coordinate mapping. Older full-screen timings are enabled only for a monitor profile explicitly supporting them. No automatic multisync claim.",
+          "host_integration": "One general 32-bit Artemis slot for the additional professional card; the primary 64 KiB colour card keeps the dedicated video slot. Independent display handles, palettes, clocks, DMA/address resources and input focus.",
+          "cost_boundary": "June prices do not cover this expanded November revision automatically. Re-cost added sprite SRAM, legacy-compatible logic, selected analog HD17H core and qualified timing adaptation before fixing November retail. No retrospective change to June cost rows."
+        }
       ]
     },
     {
@@ -6234,6 +6308,34 @@
       "manufacturing_status": "design_baseline_costed_unqualified",
       "bom_assembly_refs": [
         "assembly.device.mono_pro_17"
+      ],
+      "dated_revisions": [
+        {
+          "effective_from": "1982-11-29",
+          "name": "Logix Mono Pro 17 — HD17H analog OEM configuration",
+          "oem": "Ball HD-series HD17H, 17-inch horizontal-format OEM assembly, analog/linear-video option",
+          "grayscale_levels": 16,
+          "simultaneous_shades_at_800_600_2bpp": 4,
+          "simultaneous_shades_at_640_200_4bpp": 16,
+          "signal_path": "Logix digital pixel index -> AION palette/controller -> 4-bit intensity DAC -> level-matched Ball analog input and linear amplifier. TTL/ECL-only input is not sufficient.",
+          "rgb_palette_mapping": "Preserve the 12-bit RGB command format. For grayscale, equal-channel values 000,111,...,FFF map to the corresponding 16 intensity codes. Other RGB values use a documented fixed luminance mapping, with DAC/gamma calibration qualified on the actual CRT.",
+          "native_raster": {
+            "width": 800,
+            "height": 600,
+            "progressive": true,
+            "refresh_hz_target": 60,
+            "total_pixels": 1024,
+            "total_lines": 625,
+            "pixel_clock_mhz": 38.4,
+            "horizontal_khz": 37.5
+          },
+          "qualification": "Ball documents 26-36 kHz horizontal and 40-80 Hz vertical; optional linear amplifier is 35 MHz typical. 60 Hz at the selected totals needs a qualified OEM deflection revision. Pixel clock is not analog bandwidth: test actual contrast, grayscale settling, geometry and corner focus. 56 Hz/35 kHz is a fallback engineering option, not a silently substituted retail specification.",
+          "sources": [
+            "https://www.bitsavers.org/pdf/ballBrothers/5-17-1047A_CRT_Data_Displays_HD_Series_Service_Manual_198107.pdf",
+            "https://www.manualslib.com/manual/3426964/Ball-Hd-Series.html?page=6"
+          ],
+          "supplier_status": "Selected OEM design basis in the alternative timeline; actual ordering code and commercial supply terms remain unspecified."
+        }
       ]
     }
   ],
@@ -11163,7 +11265,9 @@
         "development_host": "Artemis PRO with 1 MiB RAM and qualified storage; whole-team workstations plus shared server/test capacity",
         "minimum_shipping_configuration": "To be measured against representative drawings; do not advertise base 128/256 KiB Artemis as qualified automatically.",
         "ownership": "Autodesk retains software ownership and non-exclusive cross-platform rights.",
-        "release_target": "1982-11-29; commercial shipment after acceptance, with any December fallback explicitly reported as schedule slippage, not the primary objective."
+        "release_target": "1982-11-29; commercial shipment after acceptance, with any December fallback explicitly reported as schedule slippage, not the primary objective.",
+        "comdex_offering_ref": "offer.comdex82_artemis_autocad",
+        "professional_revision_date": "1982-11-29"
       },
       "technology_refs": [
         "technology.artemis_professional_graphics",
@@ -11538,6 +11642,12 @@
       ],
       "pricing_review": "ncc_1982_review.json",
       "availability": "June colour/mouse offering and around-June professional hardware availability. AutoCAD is a November COMDEX development target, not a June shipping application."
+    },
+    "comdex_1982": {
+      "offering_ref": "offer.comdex82_artemis_autocad",
+      "campaign_file": "comdex_1982_campaign.json",
+      "report_page": "comdex-1982.html",
+      "cost_status": "June prices do not cover this expanded November revision automatically. Re-cost added sprite SRAM, legacy-compatible logic, selected analog HD17H core and qualified timing adaptation before fixing November retail. No retrospective change to June cost rows."
     }
   },
   "offered_bundles": [
@@ -13549,6 +13659,65 @@
         "supply": "Initial AION chips; SMC substitution only after per-part qualification."
       },
       "manufacturing_boundary": "Tandy-owned board; full BOM and OEM costs remain unspecified and excluded from Logix unit-cost totals."
+    }
+  ],
+  "commercial_offerings": [
+    {
+      "id": "offer.comdex82_artemis_autocad",
+      "name": "Logix Artemis PRO Professional CAD — Autodesk AutoCAD 1.0",
+      "category": "partner_professional_configuration",
+      "introduced": {
+        "event_name": "COMDEX November 1982 — Logix and Autodesk professional CAD presentation",
+        "event_start_date": "1982-11-29"
+      },
+      "status": "Accepted COMDEX presentation and commercial offering; shipment follows hardware/software acceptance.",
+      "description": "A jointly demonstrated professional CAD configuration combining Artemis PRO, the November professional graphics revision, Mono Pro 17, Logix Mouse and independently licensed Autodesk AutoCAD.",
+      "component_refs": [
+        "computer.artemis_pro",
+        "software.aionix",
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17",
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "device.logix_mouse",
+        "software.autocad_1_artemis"
+      ],
+      "configuration": {
+        "host": "Artemis PRO, 1 MiB reference configuration, AIONix and qualified disk storage; final application minimum measured with representative drawings.",
+        "storage": "Standard 5 MB disk is not promised sufficient for every CAD workload. Quote a tested storage/backup configuration; do not invent a larger shipping accessory.",
+        "professional_display": "128 KiB professional card with separate 1 KiB sprite SRAM and Ball HD17H-based analog Mono Pro 17; use dated revision effective 1982-11-29.",
+        "secondary_display": "COMDEX reference station includes the existing 64 KiB card and Color Pro 14 for commands/status. Upgrade buyers may retain a compatible existing primary card/display.",
+        "software": "One separately identified Autodesk AutoCAD 1.0 Artemis/AIONix licence. Do not imply Logix ownership, a free licence, or later AutoCAD features.",
+        "pointing": "One Logix Mouse; typed coordinates remain available for numerical precision. Explicit Autodesk mouse and dual-display integration.",
+        "output": "Demonstrate a qualified pen plotter with a documented driver; plotter is optional and separately quoted. No unselected model is represented as bundled."
+      },
+      "commercial_routes": [
+        {
+          "name": "Complete professional CAD configuration",
+          "basis": "One host, one primary display/card, one professional display/card, one mouse and one AutoCAD licence. Remove/credit replaced base-system parts in the actual quote; never charge two primary cards."
+        },
+        {
+          "name": "Existing Artemis professional upgrade",
+          "basis": "November professional card, Mono Pro 17 and AutoCAD licence; add mouse only if needed. Verify RAM, OS, slot, storage and primary display compatibility before quoting."
+        }
+      ],
+      "pricing": "November package price and Autodesk licence/channel terms pending agreement and revised hardware costing. June hardware prices are historical planning snapshots, not a quote for this revision.",
+      "support_split": {
+        "logix": "Hardware, AIONix integration, drivers, installation and dealer coordination.",
+        "autodesk": "AutoCAD licence, application support and drawing-file compatibility.",
+        "joint": "Reference configuration testing, dealer training and escalation; define response commitments before quoting service."
+      },
+      "acceptance": [
+        "Run the agreed release-quality native AutoCAD build on the reference configuration",
+        "Load/save and exchange a representative drawing; verify numerical geometry",
+        "Use both displays and the mouse with correct focus and cursor restoration",
+        "Show readable antialiased lines and stable display refresh under accelerator load",
+        "Plot a physical drawing and verify scale and geometry",
+        "Recover from interrupted work and restore a backup",
+        "Document supported features; no automatic later-version dimensioning, object-snap or 3D claims"
+      ],
+      "timeline": "June remains initial hardware availability and Autodesk development handover. November 29 is the public joint CAD offering and expanded professional-card presentation, not a rewrite of June history.",
+      "campaign_ref": "comdex_1982_campaign.json"
     }
   ]
 }
