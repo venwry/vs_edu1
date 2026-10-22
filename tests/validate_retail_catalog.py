@@ -28,3 +28,25 @@ assert next(p for p in x['solutions'] if p['id']=='professional_cad')['pricing']
 assert next(p for p in x['solutions'] if p['id']=='office_essentials')['pricing']['amount_usd']==1961.08
 assert annual['bundle.proposed_aurelia_plus_office']['snapshots']['1982']['retail_price_usd']==1969.15
 print('PASS: references, provenance, current ceilings, original history, supplier unknowns and quotation gates.')
+
+assert set(x['snapshots'])=={f'{y}-06-15' for y in range(1978,1983)}
+for date,view in x['snapshots'].items():
+    year=date[:4]
+    for row in view['current_offer_prices']:
+        product=annual[row['ref']]
+        assert product['offering_start']<=date
+        assert not product.get('announced_only')
+        assert row['date']==date
+        assert row['retail']==product['snapshots'][year]['retail_price_usd']
+    for card in view['solutions']+view['upgrades']:
+        for variant in [card]+card['variants']:
+            ref=variant['components'][0]['ref']
+            assert variant['pricing']['amount_usd']==annual[ref]['snapshots'][year]['retail_price_usd']
+            assert variant['pricing']['lines'][0]['date']==date
+    assert not any(p['id']=='professional_cad' for p in view['solutions'])
+assert next(p for p in x['snapshots']['1982-06-15']['upgrades'] if p['id']=='professional_drawing')['pricing']['amount_usd']==1496.62
+for year in ['1978','1979','1980','1981']:
+    assert not any(p['id'] in ['mouse_starter','professional_drawing','colour_reports'] for p in x['snapshots'][year+'-06-15']['upgrades'])
+assert not any('Abacus 3' in item for p in x['snapshots']['1980-06-15']['solutions'] for item in p['includes'])
+assert any('Abacus 3' in item for p in x['snapshots']['1981-06-15']['solutions'] for item in p['includes'])
+print('PASS: five dated views, exact historical prices, introduction gates and June/November separation.')
