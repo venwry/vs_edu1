@@ -6,7 +6,7 @@
     "price_basis": "Nominal US retail prices before sales tax; June 15 snapshots, 1978–1982",
     "source_commit": "3751194e197330e228a7fdf26df5b30c4c46d1ee",
     "cost_model_file": "manufacturing_costs.json",
-    "cost_model_sha256": "a4c816b7acc7f6c6671ec8d7f7dcb46521fd4b19fb00922a1fe88b83948d1840",
+    "cost_model_sha256": "051ae02b9cdc236d9c47351538029a983cf78a4dd1bf6be6aa3dac1671865fee",
     "snapshots": [
       "1978-06-15",
       "1979-06-15",
@@ -19,7 +19,7 @@
     "baseline_file": "pricing_baseline.json",
     "baseline_sha256": "eefbb029974cbd5f8ed277e6252d859faa66474286f13602e86335eb5a0272ce",
     "ncc_inputs_sha256": "908ef27737da19c2cd29a97d70d3d1c74229a71d179cc93d1d1a3c936ffe1a14",
-    "team_program_sha256": "ef3973bcea4b41e93cd39c55cc6a781e38ce799af92622f2c9aac0e30d1a9bc4",
+    "team_program_sha256": "9026fa535b4da302974479c64e6c0f6eeadd99063ff135e1c516b17e61cc778e",
     "forecast_status": "Existing sales/investment/ROI forecasts predate the NCC offering and Team adoption-price policy; no automatic demand uplift or recalculated aggregate totals are claimed."
   },
   "policy": {
@@ -32718,6 +32718,133 @@
           "unit_profit_usd": 520.48
         }
       }
+    }
+  ],
+  "dated_assessments": [
+    {
+      "date": "1982-11-29",
+      "basis": "Provisional nominal USD engineering estimates for accepted November revision. Unchanged component/labor/energy/RAM rates explicitly carried forward from June 15; no claimed November vendor quotes. Capital, design/mask NRE and marketing excluded.",
+      "products": [
+        {
+          "id": "device.artemis_professional_video_128kb",
+          "name": "Logix Artemis Professional 128 KiB video card — November revision",
+          "date": "1982-11-29",
+          "retail_price_usd": 820.09,
+          "manufacturing_cost_usd": 461.3,
+          "dealer_fee_rate": 0.25,
+          "dealer_fee_usd": 205.02,
+          "net_revenue_usd": 615.07,
+          "unit_contribution_usd": 153.77,
+          "margin_pct": 25.0,
+          "pricing_status": "no_proxy_cost_based",
+          "basis": "No verified equivalent comparator: existing 25% net-contribution fallback. Retail is a planning estimate, not a supplier quote.",
+          "cost_low_usd": 322.91,
+          "cost_high_usd": 738.08
+        },
+        {
+          "id": "device.mono_pro_17",
+          "name": "Logix Mono Pro 17 — November revision",
+          "date": "1982-11-29",
+          "retail_price_usd": 694.72,
+          "manufacturing_cost_usd": 390.78,
+          "dealer_fee_rate": 0.25,
+          "dealer_fee_usd": 173.68,
+          "net_revenue_usd": 521.04,
+          "unit_contribution_usd": 130.26,
+          "margin_pct": 25.0,
+          "pricing_status": "no_proxy_cost_based",
+          "basis": "No verified equivalent comparator: existing 25% net-contribution fallback. Retail is a planning estimate, not a supplier quote.",
+          "cost_low_usd": 273.55,
+          "cost_high_usd": 625.25
+        },
+        {
+          "id": "offer.comdex82_reference_hardware",
+          "name": "Artemis PRO 1 MiB dual-display reference hardware",
+          "date": "1982-11-29",
+          "retail_price_usd": 8909.72,
+          "manufacturing_cost_usd": 5011.72,
+          "dealer_fee_rate": 0.25,
+          "dealer_fee_usd": 2227.43,
+          "net_revenue_usd": 6682.29,
+          "unit_contribution_usd": 1670.57,
+          "margin_pct": 25.0,
+          "pricing_status": "no_proxy_cost_based",
+          "basis": "No verified equivalent comparator: existing 25% net-contribution fallback. Retail is a planning estimate, not a supplier quote.",
+          "cost_low_usd": 3508.2,
+          "cost_high_usd": 8018.75
+        },
+        {
+          "id": "offer.comdex82_professional_hardware",
+          "name": "November professional graphics upgrade with mouse",
+          "date": "1982-11-29",
+          "retail_price_usd": 1604.8,
+          "manufacturing_cost_usd": 902.7,
+          "dealer_fee_rate": 0.25,
+          "dealer_fee_usd": 401.2,
+          "net_revenue_usd": 1203.6,
+          "unit_contribution_usd": 300.9,
+          "margin_pct": 25.0,
+          "pricing_status": "no_proxy_cost_based",
+          "basis": "No verified equivalent comparator: existing 25% net-contribution fallback. Retail is a planning estimate, not a supplier quote.",
+          "cost_low_usd": 631.89,
+          "cost_high_usd": 1444.32
+        },
+        {
+          "id": "software.autocad_1_artemis",
+          "name": "Autodesk AutoCAD 1.0 — Artemis licence",
+          "date": "1982-11-29",
+          "retail_price_usd": 1000,
+          "manufacturing_cost_usd": null,
+          "dealer_fee_rate": null,
+          "dealer_fee_usd": null,
+          "net_revenue_usd": null,
+          "unit_contribution_usd": null,
+          "margin_pct": null,
+          "pricing_status": "independent_vendor_historical_price_anchor",
+          "basis": "Original AutoCAD 1.0 US list price $1000, reused as a provisional alternate-history Artemis licence price. Autodesk costs, reseller terms and royalties unknown; no Logix software margin inferred.",
+          "source": "https://www.autodesk.com/blogs/autocad/autocad-trivia-in-the-beginning/"
+        },
+        {
+          "id": "offer.comdex82_artemis_autocad",
+          "name": "Artemis PRO Professional CAD — hardware and AutoCAD",
+          "date": "1982-11-29",
+          "retail_price_usd": 9909.72,
+          "manufacturing_cost_usd": null,
+          "dealer_fee_rate": null,
+          "dealer_fee_usd": null,
+          "net_revenue_usd": null,
+          "unit_contribution_usd": null,
+          "margin_pct": null,
+          "pricing_status": "mixed_supplier_component_sum",
+          "components": [
+            "offer.comdex82_reference_hardware",
+            "software.autocad_1_artemis"
+          ],
+          "known_logix_hardware_cost_usd": 5011.72,
+          "known_logix_hardware_contribution_usd": 1670.57,
+          "basis": "Sum of hardware and separately owned Autodesk licence. Total manufacturing cost/contribution unknown; never treat the $1000 licence as free-cost Logix revenue."
+        },
+        {
+          "id": "offer.comdex82_upgrade_autocad",
+          "name": "Professional graphics upgrade and AutoCAD",
+          "date": "1982-11-29",
+          "retail_price_usd": 2604.8,
+          "manufacturing_cost_usd": null,
+          "dealer_fee_rate": null,
+          "dealer_fee_usd": null,
+          "net_revenue_usd": null,
+          "unit_contribution_usd": null,
+          "margin_pct": null,
+          "pricing_status": "mixed_supplier_component_sum",
+          "components": [
+            "offer.comdex82_professional_hardware",
+            "software.autocad_1_artemis"
+          ],
+          "known_logix_hardware_cost_usd": 902.7,
+          "known_logix_hardware_contribution_usd": 300.9,
+          "basis": "Sum of hardware and separately owned Autodesk licence. Total manufacturing cost/contribution unknown; never treat the $1000 licence as free-cost Logix revenue."
+        }
+      ]
     }
   ]
 }
