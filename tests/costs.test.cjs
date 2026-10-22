@@ -2,7 +2,8 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=JSON.parse(read('manufacturing_costs.json'));
 (async()=>{
  const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/manufacturing-costs.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('manufacturing-costs.js'));w.document.getElementById('app').innerHTML=w.costTemplate;w.fetch=async()=>({ok:true,json:async()=>model});await w.startCostAssessment();const d=w.document;
- assert.equal(d.querySelectorAll('.cost-table tbody tr').length,model.products.length);assert.equal(d.querySelectorAll('.cost-table thead th').length,6);
+ assert(d.getElementById('dated-costs').textContent.includes('November'));assert(d.getElementById('dated-costs').textContent.includes('461.30'));
+assert.equal(d.querySelectorAll('.cost-table tbody tr').length,model.products.length);assert.equal(d.querySelectorAll('.cost-table thead th').length,6);
  assert(d.getElementById('cost-sourcing').textContent.includes('1979-10'));assert(d.getElementById('cost-sourcing').textContent.includes('330,000'));assert(d.querySelector('[data-cost-row="device.apple2_video_card"][data-cost-year="1979"]'));
  const button=d.querySelector('[data-cost-row="computer.aurelia"][data-cost-year="1978"]');button.click();assert(!d.getElementById('cost-detail').hidden);assert(d.getElementById('cost-detail').textContent.includes('Workforce'));assert(d.getElementById('cost-detail').textContent.includes('Freight'));assert(d.getElementById('cost-detail').textContent.includes('24'));
  d.getElementById('cost-close').click();assert(d.getElementById('cost-detail').hidden);

@@ -6272,7 +6272,9 @@
           "sprites": "Five legacy sprites use separate 1 KiB SRAM (two AION 2114 chips), outside the 128 KiB framebuffer/list allocation. Extend coordinate/addressing and line-budget validation to the 800x600 raster; no automatic sixth pointer sprite.",
           "monitor_modes": "Mono Pro 17 uses a qualified fixed 800x600 raster. Older modes can be centered without scaling; the card reports presentation geometry and logical/output coordinate mapping. Older full-screen timings are enabled only for a monitor profile explicitly supporting them. No automatic multisync claim.",
           "host_integration": "One general 32-bit Artemis slot for the additional professional card; the primary 64 KiB colour card keeps the dedicated video slot. Independent display handles, palettes, clocks, DMA/address resources and input focus.",
-          "cost_boundary": "June prices do not cover this expanded November revision automatically. Re-cost added sprite SRAM, legacy-compatible logic, selected analog HD17H core and qualified timing adaptation before fixing November retail. No retrospective change to June cost rows."
+          "cost_boundary": "November revision assessed separately in comdex_1982_cost_review.json. June cost rows unchanged; quotes and production qualification pending.",
+          "bom_assembly_ref": "assembly.device.artemis_professional_video_128kb.comdex82",
+          "cost_review_ref": "comdex_1982_cost_review.json"
         }
       ]
     },
@@ -6334,7 +6336,9 @@
             "https://www.bitsavers.org/pdf/ballBrothers/5-17-1047A_CRT_Data_Displays_HD_Series_Service_Manual_198107.pdf",
             "https://www.manualslib.com/manual/3426964/Ball-Hd-Series.html?page=6"
           ],
-          "supplier_status": "Selected OEM design basis in the alternative timeline; actual ordering code and commercial supply terms remain unspecified."
+          "supplier_status": "Selected OEM design basis in the alternative timeline; actual ordering code and commercial supply terms remain unspecified.",
+          "bom_assembly_ref": "assembly.device.mono_pro_17.comdex82",
+          "cost_review_ref": "comdex_1982_cost_review.json"
         }
       ]
     }
@@ -11647,7 +11651,7 @@
       "offering_ref": "offer.comdex82_artemis_autocad",
       "campaign_file": "comdex_1982_campaign.json",
       "report_page": "comdex-1982.html",
-      "cost_status": "June prices do not cover this expanded November revision automatically. Re-cost added sprite SRAM, legacy-compatible logic, selected analog HD17H core and qualified timing adaptation before fixing November retail. No retrospective change to June cost rows."
+      "cost_status": "November recurring costs and retail planning prices assessed separately; see comdex_1982_cost_review.json."
     }
   },
   "offered_bundles": [
@@ -13701,7 +13705,7 @@
           "basis": "November professional card, Mono Pro 17 and AutoCAD licence; add mouse only if needed. Verify RAM, OS, slot, storage and primary display compatibility before quoting."
         }
       ],
-      "pricing": "November package price and Autodesk licence/channel terms pending agreement and revised hardware costing. June hardware prices are historical planning snapshots, not a quote for this revision.",
+      "pricing": "Dated November planning prices: comdex_1982_cost_review.json. Hardware at 25% net-contribution fallback; Autodesk licence uses a provisional $1000 historical anchor. Autodesk cost/channel terms remain unknown.",
       "support_split": {
         "logix": "Hardware, AIONix integration, drivers, installation and dealer coordination.",
         "autodesk": "AutoCAD licence, application support and drawing-file compatibility.",
