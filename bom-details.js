@@ -3,6 +3,15 @@
 'use strict';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=v=>Number.isFinite(v)?'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Unknown';
+// Prefer explicit attribution; editions and BOM parts may inherit from their linked record.
+function vendorName(record,records={},seen=new Set()){
+ if(!record||seen.has(record))return 'Unknown';seen.add(record);
+ for(const key of ['vendor','provider','manufacturer','owner','publisher','developer','supplier']){
+  const value=record[key];if(typeof value==='string'&&value.trim())return value.trim();
+ }
+ for(const key of ['product_ref','catalog_ref'])if(records[record[key]]){const value=vendorName(records[record[key]],records,seen);if(value!=='Unknown')return value;}
+ return 'Unknown';
+}
 function createModel(catalog,bom,cost){
  const records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(r=>r?.id).map(r=>[r.id,r]));
  const assemblies=new Map(bom.assemblies.map(r=>[r.id,r])),components=new Map(bom.components.map(r=>[r.id,r]));
@@ -56,5 +65,5 @@ function createModel(catalog,bom,cost){
  function bind(host){for(const d of host.querySelectorAll('[data-bom-cost]'))d.addEventListener('toggle',()=>{if(!d.open||d.dataset.loaded)return;d.dataset.loaded='true';const p=cost.products.find(p=>p.id===d.dataset.bomCost);d.insertAdjacentHTML('beforeend',root.renderSpecification(p,records));root.bindSpecificationControls(d);});}
  return {bind,records,items:[...items.values()].sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id)),assemblies,components,assemblyIds,rows,render,renderBOM,renderCosts};
 }
-root.BomDetails={createModel,esc};if(typeof module!=='undefined')module.exports=root.BomDetails;
+root.BomDetails={createModel,esc,vendorName};if(typeof module!=='undefined')module.exports=root.BomDetails;
 })(typeof window==='undefined'?globalThis:window);
