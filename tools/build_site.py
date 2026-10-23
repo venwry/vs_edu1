@@ -22,7 +22,7 @@ def build():
   text=re.sub(r'(<body\b[^>]*>)',lambda m:m[1]+'<!-- shared-navigation -->'+header+'<!-- /shared-navigation -->',text,count=1)
   text=re.sub(r'<!-- relocated-content -->.*?<!-- /relocated-content -->','',text,flags=re.S)
   page=next((p for p in site['pages'] if p['path']==path.name),None)
-  if page and page['id'] not in ['bom-navigator','artemis','aurelia','athena']:
+  if page and page['id'] not in ['bom-navigator','technology','trainings-and-services','artemis','aurelia','athena']:
    content=''
    for fragment in sorted((ROOT/'site/content').glob('*-'+page['id']+'.html')):
     if page['id'] in ['video-system','software-development']:continue
@@ -32,7 +32,16 @@ def build():
     else:content+='<section class="relocated-section">'+fragment.read_text()+'</section>'
    text=text.replace('</body>','<!-- relocated-content --><div id="site-details" class="site-details" data-page="'+page['id']+'">'+content+'</div><!-- /relocated-content --></body>')
   # Retain specific anchors; redirects are only for incoming old URLs.
-  text=re.sub(r'href="([^"#?]+\.html)(#[^"]*)?"',lambda m:'href="'+(site['redirects'][m[1]].split('#')[0]+(m[2] or ('#'+site['redirects'][m[1]].split('#')[1] if '#' in site['redirects'][m[1]] else '')) if m[1] in site['redirects'] else m[1]+(m[2] or ''))+'"',text)
+  def rewrite_link(m):
+   source,anchor=m[1],m[2] or ''
+   if source not in site['redirects']:return m[0]
+   ref=anchor.lstrip('#')
+   if ref in site['record_page_links']:target=pages[site['record_page_links'][ref]]['path']+anchor
+   else:
+    target=site['redirects'][source]
+    if anchor:target=target.split('#')[0]+anchor
+   return 'href="'+target+'"'
+  text=re.sub(r'href="([^"#?]+\.html)(#[^"]*)?"',rewrite_link,text)
   path.write_text(text)
  deep_links={ref:pages[pg]['path']+'#'+ref for ref,pg in site['record_page_links'].items()}
  deep_links['november-prices']='pricing.html#november-prices'
