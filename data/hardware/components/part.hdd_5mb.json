@@ -5,22 +5,23 @@
   "record_type": "component",
   "data": {
     "id": "part.hdd_5mb",
-    "name": "5 MB hard disk drive",
+    "name": "Seagate ST506 5 MB hard disk drive",
     "category": "hard_disk_drive",
-    "origin": "unspecified_supplier",
+    "origin": "historical_external_component",
     "specification": {
       "capacity_mb": 5
     },
     "used_in": [
       "computer.artemis_pro"
     ],
-    "vendor": "unspecified HDD supplier",
+    "vendor": "Seagate Technology",
     "introduced": {
       "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
       "event_start_date": "1981-05-04"
     },
     "manufacturing_requirements": [
-      "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in."
+      "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in.",
+      "Selected ST506: 5.0 MB formatted / 6.38 MB unformatted, MFM 5 Mbit/s, 34-pin control and 20-pin data. Budget +12 V 4.5 A startup and +5 V 1 A maximum; qualify controller, spin-up, airflow, harness and mounting. Seagate preliminary OEM manual, April 1981. No cost or qualification claim."
     ],
     "manufacturing_status": "incomplete_bom",
     "bom_assembly_refs": [

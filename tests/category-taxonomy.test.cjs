@@ -17,6 +17,6 @@ assert.equal(details.vendorName(m.records['software.aionix2'],m.records),'AION S
 assert.equal(details.vendorName(m.records['software.microsoft_basic_aurelia'],m.records),'Microsoft');
 const core=item('bompart.device.mono_pro_17.oem_17inch_core').record;
 assert.equal(core.manufacturer,null);assert.equal(core.qualification_status,'unresolved');assert.equal(details.vendorName(core),'Ball Brothers (candidate)');
-assert.equal(m.items.filter(x=>details.vendorName(x.record,m.records)==='Unknown').length,247);
+assert.equal(m.items.filter(x=>details.vendorName(x.record,m.records)==='Unknown').length,11);
 for(const review of Object.values(cost.reviews))for(const row of review.products||review.prices||[])assert(m.records[row.id],row.id+' has a canonical identity');
 console.log('PASS: 398 canonical categories, parent inheritance, hardware groups, reviewed offers and qualified vendor attribution');

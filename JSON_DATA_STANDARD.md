@@ -141,6 +141,16 @@ Calendar order and narrative order are independent. In particular, the protagoni
 2025 event may belong to an early narrative phase. Do not validate phase membership
 by assuming all events lie inside the phase's calendar interval.
 
+For BOM first-use metadata, reuse `introduced.event_name` and
+`introduced.event_start_date`. An unused element or unoffered proposal uses
+`{"event_name": "no release", "event_start_date": null}`; the navigator renders
+this as `no release`, distinct from an unknown date. Preserve existing dates and
+their precision. First use follows forward offering/BOM links and effective dates,
+not reverse `used_in` lists or a proposal's earliest possible offer date. Combined
+elements retain their identity and name Logix as assembler in `manufacturer` (or
+the catalogue's existing `vendor`); constituent sourcing proposals belong in
+existing requirements. See `BOM_METADATA_UPDATE.md` for examples and evidence.
+
 New status fields must separate editorial status (`proposed`, `accepted`,
 `superseded`), engineering readiness (`design`, `qualification_pending`, `qualified`),
 commercial availability and evidence basis (`historical_source`, `story_assumption`,

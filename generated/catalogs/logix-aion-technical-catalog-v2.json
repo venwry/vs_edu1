@@ -2262,7 +2262,7 @@
         "capacity_kb": 32,
         "data_width_bits": 16
       },
-      "vendor": "Logix / AION Labs",
+      "vendor": "Logix",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2285,7 +2285,7 @@
         "chip_type_ref": "part.dram_64kbit",
         "physical_arrangement": "2 rows x 4 chips"
       },
-      "vendor": "Logix / AION Labs",
+      "vendor": "Logix",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -3295,22 +3295,23 @@
     },
     {
       "id": "part.hdd_5mb",
-      "name": "5 MB hard disk drive",
+      "name": "Seagate ST506 5 MB hard disk drive",
       "category": "hard_disk_drive",
-      "origin": "unspecified_supplier",
+      "origin": "historical_external_component",
       "specification": {
         "capacity_mb": 5
       },
       "used_in": [
         "computer.artemis_pro"
       ],
-      "vendor": "unspecified HDD supplier",
+      "vendor": "Seagate Technology",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
       },
       "manufacturing_requirements": [
-        "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in."
+        "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in.",
+        "Selected ST506: 5.0 MB formatted / 6.38 MB unformatted, MFM 5 Mbit/s, 34-pin control and 20-pin data. Budget +12 V 4.5 A startup and +5 V 1 A maximum; qualify controller, spin-up, airflow, harness and mounting. Seagate preliminary OEM manual, April 1981. No cost or qualification claim."
       ],
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
@@ -3853,7 +3854,7 @@
     {
       "id": "part.ram_64kb_x32",
       "name": "Logix 64 KB 32-bit DRAM module",
-      "vendor": "Logix / AION Labs",
+      "vendor": "Logix",
       "category": "memory_module",
       "origin": "custom_logix",
       "introduced": {
@@ -3890,7 +3891,7 @@
     {
       "id": "part.ram_128kb_x32",
       "name": "Logix 128 KB 32-bit DRAM module",
-      "vendor": "Logix / AION Labs",
+      "vendor": "Logix",
       "category": "memory_module",
       "origin": "custom_logix",
       "introduced": {
@@ -3927,7 +3928,7 @@
     {
       "id": "part.ram_256kb_x32",
       "name": "Logix 256 KB 32-bit DRAM module",
-      "vendor": "Logix / AION Labs",
+      "vendor": "Logix",
       "category": "memory_module",
       "origin": "custom_logix",
       "introduced": {
@@ -3964,7 +3965,7 @@
     {
       "id": "part.ram_256kb_x32_2um",
       "name": "Logix 256 KB 32-bit DRAM module (2 µm)",
-      "vendor": "Logix / AION Labs",
+      "vendor": "Logix",
       "category": "memory_module",
       "origin": "custom_logix",
       "introduced": {
@@ -9990,8 +9991,8 @@
         "internal_hdd": {
           "count": 1,
           "capacity_mb": 5,
-          "interface": null,
-          "supplier": null
+          "interface": "ST-506 MFM interface",
+          "supplier": "Seagate Technology"
         }
       },
       "video": {
@@ -10594,7 +10595,10 @@
       "monitor_and_keyboard_bundle": "Not specified; do not assume included models or pricing.",
       "planning_file": "athena_1983_program.json",
       "vendor": "Logix",
-      "category": "computer"
+      "category": "computer",
+      "manufacturing_requirements": [
+        "Storage sourcing: Seagate ST506 5 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
+      ]
     },
     {
       "id": "computer.athena_server",
@@ -10674,8 +10678,8 @@
         "internal_hdd": {
           "count": 1,
           "capacity_mb": 20,
-          "interface": null,
-          "supplier": null
+          "interface": "ST-506-style MFM interface",
+          "supplier": "Rodime"
         }
       },
       "video": {
@@ -11278,7 +11282,10 @@
       "monitor_and_keyboard_bundle": "Not specified; do not assume included models or pricing.",
       "planning_file": "athena_1983_program.json",
       "vendor": "Logix",
-      "category": "computer"
+      "category": "computer",
+      "manufacturing_requirements": [
+        "Storage sourcing: Rodime RO202E 20 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
+      ]
     }
   ],
   "software_products": [
@@ -11327,7 +11334,8 @@
         "software.aionix",
         "software.aionix_server",
         "software.aionix2"
-      ]
+      ],
+      "vendor": "AION Software"
     },
     {
       "id": "software.product.cpm",
@@ -11341,7 +11349,8 @@
         "software.cpm_aurelia",
         "software.cpm_aurelia_networking",
         "software.cpm_model_ii"
-      ]
+      ],
+      "vendor": "Digital Research"
     },
     {
       "id": "software.product.bpi",
@@ -12458,7 +12467,11 @@
         "These are proposed commercial packages, not additional software compatibility requirements."
       ],
       "vendor": "Logix",
-      "category": "system_bundle"
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      }
     },
     {
       "id": "bundle.proposed_aurelia_accounts",
@@ -12481,7 +12494,11 @@
         "These are proposed commercial packages, not additional software compatibility requirements."
       ],
       "vendor": "Logix",
-      "category": "system_bundle"
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      }
     },
     {
       "id": "bundle.proposed_aurelia_developer",
@@ -12503,7 +12520,11 @@
         "These are proposed commercial packages, not additional software compatibility requirements."
       ],
       "vendor": "Logix",
-      "category": "system_bundle"
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      }
     },
     {
       "id": "bundle.proposed_aurelia_plus_office",
@@ -12524,7 +12545,11 @@
         "These are proposed commercial packages, not additional software compatibility requirements."
       ],
       "vendor": "Logix",
-      "category": "system_bundle"
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      }
     },
     {
       "id": "bundle.proposed_aurelia_plus_accounts",
@@ -12547,7 +12572,11 @@
         "These are proposed commercial packages, not additional software compatibility requirements."
       ],
       "vendor": "Logix",
-      "category": "system_bundle"
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      }
     },
     {
       "id": "bundle.proposed_aurelia_plus_developer",
@@ -12569,7 +12598,11 @@
         "These are proposed commercial packages, not additional software compatibility requirements."
       ],
       "vendor": "Logix",
-      "category": "system_bundle"
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      }
     },
     {
       "id": "bundle.proposed_aurelia_plus_analysis",
@@ -12591,7 +12624,11 @@
         "These are proposed commercial packages, not additional software compatibility requirements."
       ],
       "vendor": "Logix",
-      "category": "system_bundle"
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      }
     }
   ],
   "artemis_explorer": {
