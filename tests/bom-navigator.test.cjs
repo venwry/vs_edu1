@@ -1,0 +1,26 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {JSDOM,VirtualConsole}=require('jsdom'),root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),json=p=>JSON.parse(read(p));
+const catalog=json('generated/catalogs/logix-aion-technical-catalog-v2.json'),bom=json('generated/catalogs/hardware-bom.json'),cost=json('generated/models/manufacturing-costs.json');
+const model=require('../bom-details.js').createModel(catalog,bom,cost);
+for(const key of ['base_parts','devices','computers','software_products','platform_editions','offered_bundles','proposed_bundles','commercial_offerings'])for(const r of catalog[key]||[])assert(model.items.some(i=>i.id===r.id),'Missing '+r.id);
+for(const c of bom.components)assert(model.items.some(i=>i.id===c.id||i.id===c.catalog_ref),'Missing manufacturing part '+c.id);
+assert.equal(new Set(model.items.map(x=>x.id)).size,model.items.length);
+assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Computer','Expansion','Software','Bundle']));
+assert(model.items.filter(x=>x.category==='Proposed bundle').every(x=>!x.release));
+for(const id of ['computer.artemis','bundle.artemis_128_mono','device.artemis_video_card_64kb'])assert(model.assemblyIds(id).length,id+' has assemblies');
+assert(model.rows(model.assemblyIds('bundle.artemis_128_mono')[0]).some(x=>x.depth>0));
+assert(model.render('bompart.computer.artemis.boot_rom_chips').includes('Unknown'));
+(async()=>{
+ const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));
+ const dom=new JSDOM(read('bom-navigator.html'),{url:'https://atlas.test/bom-navigator.html?element=device.artemis_video_card_64kb',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc}),w=dom.window,d=w.document;
+ w.fetch=async p=>({ok:true,json:async()=>json(p)});for(const s of d.scripts)w.eval(read(new URL(s.src).pathname.slice(1)));
+ for(let i=0;i<60&&!d.querySelector('main[data-ready]');i++)await new Promise(r=>setTimeout(r,10));
+ assert(d.querySelector('main[data-ready]'));assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.length);assert(d.querySelector('[data-element="device.artemis_video_card_64kb"][aria-pressed=true]'));assert(d.getElementById('bom-inspector').textContent.includes('Bill of materials'));
+ const change=(id,value)=>{d.getElementById(id).value=value;d.getElementById(id).dispatchEvent(new w.Event('change'));};
+ change('bom-class','Software');assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.filter(x=>x.class==='Software').length);
+ const category=model.items.find(x=>x.class==='Software'&&x.release).category;change('bom-category',category);const date=model.items.find(x=>x.class==='Software'&&x.category===category&&x.release).release;change('bom-release',date);assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.filter(x=>x.class==='Software'&&x.category===category&&x.release===date).length);
+ change('bom-class','Computer');assert.equal(d.querySelectorAll('#bom-rows tr').length,0);assert(d.getElementById('bom-inspector').textContent.includes('No elements'));
+ d.getElementById('bom-reset').click();assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.length);
+ change('bom-release','Unknown');assert([...d.querySelectorAll('#bom-rows tr')].every(tr=>tr.lastElementChild.textContent==='Unknown'));
+ assert.deepEqual(errors,[]);dom.window.close();console.log('PASS: BOM Navigator coverage, deep link, combined filters, empty/reset states and component BOMs');
+})().catch(e=>{console.error(e);process.exitCode=1;});
