@@ -1,12 +1,12 @@
 {
   "$schema": "../../../schemas/records/peripheral.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "device.artemis_video_card_16kb",
   "record_type": "peripheral",
   "data": {
     "id": "device.artemis_video_card_16kb",
     "name": "Logix Artemis 16 KiB economy video card",
-    "category": "video_card",
+    "category": "video_expansion_card",
     "introduced": {
       "event_name": "NCC 1980 — Logix Artemis launch",
       "event_start_date": "1980-05-19"
@@ -398,6 +398,7 @@
     ],
     "bom_assembly_refs": [
       "assembly.device.artemis_video_card_16kb"
-    ]
+    ],
+    "vendor": "Logix"
   }
 }

@@ -1,6 +1,7 @@
 /* Shared read-only BOM presentation. Unknowns and saved estimate boundaries are preserved. */
 (function(root){
 'use strict';
+const categories=typeof module!=='undefined'&&module.exports?require('./catalog-categories.js'):root.CatalogCategories;
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=v=>Number.isFinite(v)?'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Unknown';
 // Prefer explicit attribution; editions and BOM parts may inherit from their linked record.
@@ -10,21 +11,22 @@ function vendorName(record,records={},seen=new Set()){
   const value=record[key];if(typeof value==='string'&&value.trim())return value.trim();
  }
  for(const key of ['product_ref','catalog_ref'])if(records[record[key]]){const value=vendorName(records[record[key]],records,seen);if(value!=='Unknown')return value;}
+ if(record.candidate_manufacturers?.length)return record.candidate_manufacturers.map(x=>x.name+' (candidate)').join(' / ');
  return 'Unknown';
 }
 function createModel(catalog,bom,cost){
  const records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(r=>r?.id).map(r=>[r.id,r]));
  const assemblies=new Map(bom.assemblies.map(r=>[r.id,r])),components=new Map(bom.components.map(r=>[r.id,r]));
  const items=new Map();
- function add(r,cl,category){items.set(r.id,{id:r.id,name:r.name||r.id,class:cl,category:r.category||category,release:r.introduced?.event_start_date||r.available_from||'',record:r});}
- for(const r of catalog.base_parts||[])add(r,'Part','Component');
- for(const r of catalog.devices||[])add(r,/expansion|video_card|network.*card|compatibility/.test(r.category||'')||/cpm80_module/.test(r.id)?'Expansion':'Peripheral','Peripheral');
- for(const r of catalog.computers||[])add(r,'Computer','Computer');
- for(const key of ['software_products','platform_editions','external_partner_products'])for(const r of catalog[key]||[])add(r,'Software',key==='platform_editions'?'Platform edition':'Software');
- for(const key of ['offered_bundles','proposed_bundles','commercial_offerings'])for(const r of catalog[key]||[])add(r,'Bundle',key==='proposed_bundles'?'Proposed bundle':key==='commercial_offerings'?'Commercial offering':'Catalogue bundle');
- for(const r of bom.components)if(!r.catalog_ref||!items.has(r.catalog_ref))add(r,'Part','Manufacturing component');
+ function add(r,cl){const category=categories.category(r,records);if(!category)throw Error('Missing canonical category: '+r.id);items.set(r.id,{id:r.id,name:r.name||r.id,class:cl,category,release:r.introduced?.event_start_date||r.available_from||'',record:r});}
+ for(const r of catalog.base_parts||[])add(r,'Part');
+ for(const r of catalog.devices||[])add(r,categories.isExpansion(r)?'Expansion':'Peripheral');
+ for(const r of catalog.computers||[])add(r,'Computer');
+ for(const key of ['software_products','platform_editions','external_partner_products'])for(const r of catalog[key]||[])add(r,'Software');
+ for(const key of ['offered_bundles','proposed_bundles','commercial_offerings'])for(const r of catalog[key]||[])add(r,'Bundle');
+ for(const r of bom.components)if(!r.catalog_ref||!items.has(r.catalog_ref))add(r,'Part');
  const reviewRows=Object.entries(cost.reviews||{}).flatMap(([key,r])=>[...(r.products||r.prices||[]),...(key==='ncc-1982'?[{id:'software.aion_development_team',name:'AION Development Team',...r.team_launch_price},{id:'software.aion_development_team',name:'AION Development Team',...r.team_1982_price}]:[])].map(row=>({...row,review:key})));
- for(const r of reviewRows)if(!items.has(r.id))add({id:r.id,name:r.name,available_from:r.date,description:'Dated commercial review; technical specification not separately recorded.'},r.id.startsWith('software.')?'Software':'Bundle','Reviewed offering');
+ for(const r of reviewRows)if(!items.has(r.id))throw Error('Missing canonical record for reviewed offering: '+r.id);
  function assemblyIds(id){const r=records[id];return [...new Set([
  ...(assemblies.has(id)?[id]:[]),...(bom.products||[]).filter(p=>p.catalog_ref===id).flatMap(p=>p.assembly_refs||[]),
  ...(bom.offers||[]).filter(p=>p.catalog_ref===id).map(p=>p.assembly_ref),r?.bom_assembly_ref,

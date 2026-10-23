@@ -1,7 +1,9 @@
 # JSON schema and documentation standard
 
 This document is the normative authoring contract for the Logix / AION project.
-Read it before changing any data, schema, model or page. Schema version: **1.0.0**.
+Read it before changing any data, schema, model or page. Record versions are specified
+by each schema: **2.0.0** for components, BOM components, peripherals, computers,
+software products and offers; other record types retain **1.0.0**.
 
 ## Ownership and directories
 
@@ -81,6 +83,33 @@ keep two editable fields representing the same fact. Newly introduced domains
 must use the conventions below from the start.
 
 ## Identity and relationships
+
+### Canonical product categories (version 2)
+
+`category` describes function using one lowercase `snake_case` vocabulary enforced
+by `schemas/category.schema.json`. It is not a display alias, record type, platform,
+availability status or qualification status. The shared schema is registered locally
+by `tools/schema_validation.py`; schema validation does not retrieve remote files.
+
+For example a finished monitor uses `monitor`, its controller IC uses
+`display_controller_ic`, and a host video card uses `video_expansion_card`. Previously
+generic `catalog_component` and `unresolved_component` records now use functional
+categories such as `printed_circuit_board`. Their unknown manufacturer, quantities,
+prices and `qualification_status` remain unchanged.
+
+Software editions inherit the parent product's category through `product_ref`; do
+not add a second editable category to the edition. Linked BOM component categories
+must match their `catalog_ref`. `catalog-categories.js` supplies explicit hardware
+group predicates for consumers, without old-code aliases or a second label map.
+Services, technologies and accounting categories are separate domains and are not
+silently converted to the BOM product vocabulary.
+
+`candidate_manufacturers`, when present on a BOM component, is an array of
+`{name, basis}` objects identifying unqualified candidates. It never replaces a
+null `manufacturer` or implies a procurement commitment. Vendor means the selling
+brand/publisher; it does not automatically identify the physical manufacturer.
+
+See `CATEGORY_MIGRATION.md` for conversion rules, affected sources and verification.
 
 - Keep stable IDs such as `computer.aurelia`, `part.era1`, `actor.logix` and
   `event.artemis_launch`, even when names or paths change.

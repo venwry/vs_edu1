@@ -2067,7 +2067,7 @@
     {
       "id": "part.z80a",
       "name": "Zilog Z80A",
-      "category": "cpu",
+      "category": "processor_ic",
       "origin": "historical_external_component",
       "specification": {
         "clock_mhz": 4,
@@ -2093,7 +2093,7 @@
     {
       "id": "part.z80b",
       "name": "Zilog Z80B",
-      "category": "cpu",
+      "category": "processor_ic",
       "vendor": "Zilog",
       "origin": "base_scenario_commercial_part",
       "introduced": {
@@ -2120,7 +2120,7 @@
     {
       "id": "part.era1",
       "name": "ERA1 processor",
-      "category": "cpu",
+      "category": "processor_ic",
       "origin": "custom_aion_labs",
       "specification_ref": "technology.era1_isa",
       "variants": [
@@ -2161,7 +2161,7 @@
     {
       "id": "part.dram_16kbit",
       "name": "16 Kbit RAM chip",
-      "category": "memory_chip",
+      "category": "memory_ic",
       "origin": "historical_external_component",
       "used_in": [
         "computer.aurelia",
@@ -2198,7 +2198,7 @@
     {
       "id": "part.dram_64kbit",
       "name": "64 Kbit RAM chip",
-      "category": "memory_chip",
+      "category": "memory_ic",
       "origin": "historical_external_component",
       "used_in": [],
       "vendor": "unspecified commercial DRAM supplier",
@@ -2231,7 +2231,7 @@
     {
       "id": "part.dram_128kbit",
       "name": "128 Kbit RAM chip",
-      "category": "memory_chip",
+      "category": "memory_ic",
       "origin": "custom_specified_component",
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
@@ -2343,7 +2343,7 @@
     {
       "id": "part.flexibus_host_controller",
       "name": "FlexiBUS computer/host controller",
-      "category": "io_controller_chip",
+      "category": "io_controller_ic",
       "origin": "custom_logix_aion",
       "specification_ref": "technology.flexibus",
       "used_in": [
@@ -2378,7 +2378,7 @@
     {
       "id": "part.flexibus_device_controller",
       "name": "FlexiBUS peripheral/device controller",
-      "category": "io_controller_chip",
+      "category": "io_controller_ic",
       "origin": "custom_logix_aion",
       "specification_ref": "technology.flexibus",
       "used_in": [
@@ -2411,7 +2411,7 @@
     {
       "id": "part.aurelia_video_chip",
       "name": "Aurelia / Aurelia+ shared video controller",
-      "category": "video_controller_chip",
+      "category": "graphics_controller_ic",
       "origin": "custom_logix_aion",
       "specification": {
         "digital_output_bits": 4,
@@ -2537,7 +2537,7 @@
     {
       "id": "part.aurelia_monitor_dac",
       "name": "Aurelia monochrome monitor custom D/A chip",
-      "category": "display_component",
+      "category": "video_dac_ic",
       "origin": "custom_logix_aion",
       "specification": {
         "input_bits": 4,
@@ -2562,7 +2562,7 @@
     {
       "id": "part.color_monitor_controller",
       "name": "Logix color monitor custom controller",
-      "category": "display_controller",
+      "category": "display_controller_ic",
       "origin": "custom_logix_aion",
       "specification": {
         "palette_registers": 16,
@@ -2591,7 +2591,7 @@
     {
       "id": "part.mono_monitor2_controller",
       "name": "Mono Monitor II custom controller",
-      "category": "display_controller",
+      "category": "display_controller_ic",
       "origin": "custom_logix_aion",
       "specification": {
         "palette_registers": 16,
@@ -2620,7 +2620,7 @@
     {
       "id": "part.artemis_dma",
       "name": "Artemis DMA chip",
-      "category": "dma_controller_chip",
+      "category": "dma_controller_ic",
       "origin": "custom_aion_labs",
       "used_in": [
         "computer.artemis",
@@ -2643,7 +2643,7 @@
     {
       "id": "part.artemis_mmu",
       "name": "Artemis MMU chip",
-      "category": "memory_management_chip",
+      "category": "memory_management_ic",
       "origin": "custom_aion_labs",
       "specification_ref": "technology.artemis_memory_model",
       "used_in": [
@@ -2666,7 +2666,7 @@
     {
       "id": "part.artemis_graphics_chip",
       "name": "AION Artemis buffered video controller",
-      "category": "graphics_controller_chip",
+      "category": "graphics_controller_ic",
       "origin": "custom_aion_labs",
       "specification": {
         "technology_ref": "technology.logix_digital_video",
@@ -3184,7 +3184,7 @@
     {
       "id": "part.artemis_fdd_hdd_controller",
       "name": "Artemis custom FDD/HDD controller",
-      "category": "storage_controller_chip",
+      "category": "storage_controller_ic",
       "origin": "custom_aion_labs",
       "specification": {
         "supported_fdd_count": 2,
@@ -3214,7 +3214,7 @@
     {
       "id": "part.ball_tv90_crt",
       "name": "Ball Brothers TV-90 CRT display",
-      "category": "crt_display_component",
+      "category": "crt_display_assembly",
       "origin": "historical_external_component",
       "used_in": [
         "device.mono_monitor_1"
@@ -3235,7 +3235,7 @@
     {
       "id": "part.sony_kv1204_display_assembly",
       "name": "Sony KV-1204 12-inch color display components",
-      "category": "crt_display_subassembly",
+      "category": "crt_display_assembly",
       "origin": "historical_external_component",
       "specification": {
         "reused_elements": [
@@ -3266,7 +3266,7 @@
     {
       "id": "part.motorola_ds3000_140a_crt",
       "name": "Motorola DS3000-140A CRT display",
-      "category": "crt_display_component",
+      "category": "crt_display_assembly",
       "origin": "historical_external_component",
       "used_in": [
         "device.mono_monitor_2"
@@ -3290,7 +3290,7 @@
     {
       "id": "part.medium_resolution_rgb_crt",
       "name": "12-inch medium-resolution RGB CRT display assembly",
-      "category": "crt_display_component",
+      "category": "crt_display_assembly",
       "origin": "historical_external_or_unspecified_component",
       "used_in": [
         "device.color_monitor_2"
@@ -3335,7 +3335,7 @@
     {
       "id": "part.hdd_5mb",
       "name": "5 MB hard disk drive",
-      "category": "storage_component",
+      "category": "hard_disk_drive",
       "origin": "unspecified_supplier",
       "specification": {
         "capacity_mb": 5
@@ -3396,7 +3396,7 @@
     {
       "id": "part.aion_4116",
       "name": "AION 4116-equivalent 16Kx1 NMOS DRAM",
-      "category": "memory_chip",
+      "category": "memory_ic",
       "origin": "custom_logix_aion",
       "vendor": "AION Labs",
       "used_in": [
@@ -3461,7 +3461,7 @@
     {
       "id": "part.aion_2114",
       "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
-      "category": "memory_chip",
+      "category": "memory_ic",
       "origin": "custom_logix_aion",
       "vendor": "AION Labs",
       "introduced": {
@@ -3505,7 +3505,7 @@
     {
       "id": "part.aurelia_system_controller",
       "name": "AION Aurelia system controller (DMA, banking and refresh)",
-      "category": "system_controller_chip",
+      "category": "system_controller_ic",
       "origin": "custom_logix_aion",
       "vendor": "AION Labs",
       "introduced": {
@@ -3581,7 +3581,7 @@
     {
       "id": "part.brimar_m36_141w_crt",
       "name": "Thorn–Brimar M36-141W 14-inch monochrome CRT",
-      "category": "crt",
+      "category": "crt_tube",
       "vendor": "Thorn–Brimar",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -3609,7 +3609,7 @@
     {
       "id": "part.mono_pro_controller",
       "name": "AION Mono Pro receiver and grayscale palette controller",
-      "category": "custom_chip",
+      "category": "display_controller_ic",
       "vendor": "AION Labs",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
@@ -3637,7 +3637,7 @@
     {
       "id": "part.aion_4164",
       "name": "AION 64 Kbit DRAM (4164-equivalent)",
-      "category": "memory_chip",
+      "category": "memory_ic",
       "origin": "custom_logix_aion",
       "vendor": "AION Labs",
       "used_in": [
@@ -3769,7 +3769,7 @@
     {
       "id": "part.artemis_graphics_chip_64kb",
       "name": "AION 64 KiB Artemis graphics controller with palette sequencer",
-      "category": "graphics_controller_chip",
+      "category": "graphics_controller_ic",
       "origin": "custom_aion_labs",
       "vendor": "AION Labs",
       "introduced": {
@@ -3796,7 +3796,7 @@
     {
       "id": "part.nec_pc8853_display_assembly",
       "name": "NEC PC-8853 / JC-1410P2-class colour display assembly",
-      "category": "crt_display_subassembly",
+      "category": "crt_display_assembly",
       "origin": "external_oem",
       "vendor": "NEC",
       "introduced": {
@@ -3820,7 +3820,7 @@
     {
       "id": "part.color_pro_monitor_controller",
       "name": "AION Color Pro digital-to-RGB monitor controller",
-      "category": "display_controller",
+      "category": "display_controller_ic",
       "origin": "custom_aion_labs",
       "vendor": "AION Labs",
       "introduced": {
@@ -3846,7 +3846,7 @@
     {
       "id": "part.professional_graphics_controller",
       "name": "AION professional 2D blitter and line controller",
-      "category": "graphics_controller",
+      "category": "graphics_controller_ic",
       "origin": "custom_aion_labs",
       "vendor": "AION Labs",
       "introduced": {
@@ -3866,7 +3866,7 @@
     {
       "id": "part.mono_pro_17_controller",
       "name": "AION Mono Pro 17 grayscale monitor controller",
-      "category": "display_controller",
+      "category": "display_controller_ic",
       "origin": "custom_aion_labs",
       "vendor": "AION Labs",
       "introduced": {
@@ -3886,7 +3886,7 @@
     {
       "id": "part.era2",
       "name": "ERA² processor",
-      "category": "cpu",
+      "category": "processor_ic",
       "origin": "custom_aion_labs",
       "vendor": "AION Labs",
       "introduced": {
@@ -3927,7 +3927,7 @@
     {
       "id": "part.aion_4164_2um",
       "name": "AION 4164 — 2 µm revision",
-      "category": "memory_chip",
+      "category": "memory_ic",
       "origin": "custom_aion_labs",
       "vendor": "AION Labs",
       "introduced": {
@@ -4035,7 +4035,7 @@
     {
       "id": "device.flexibus_keyboard",
       "name": "Logix FlexiBUS keyboard",
-      "category": "input_device",
+      "category": "keyboard",
       "connection": "FlexiBUS",
       "specification": {
         "function_keys": "F1-F12",
@@ -4064,12 +4064,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.flexibus_keyboard"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.mono_monitor_1",
       "name": "Logix Monochrome Monitor I 9-inch",
-      "category": "display",
+      "category": "monitor",
       "specification": {
         "crt_ref": "part.ball_tv90_crt",
         "controller_ref": "part.aurelia_monitor_dac",
@@ -4104,12 +4105,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.mono_monitor_1"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.color_monitor_1",
       "name": "Logix Color Monitor I 12-inch",
-      "category": "display",
+      "category": "monitor",
       "specification": {
         "display_subassembly_ref": "part.sony_kv1204_display_assembly",
         "controller_ref": "part.color_monitor_controller",
@@ -4144,12 +4146,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.color_monitor_1"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.mono_monitor_2",
       "name": "Logix Mono Monitor II 12-inch",
-      "category": "display",
+      "category": "monitor",
       "specification": {
         "crt_ref": "part.motorola_ds3000_140a_crt",
         "controller_ref": "part.mono_monitor2_controller",
@@ -4191,12 +4194,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.mono_monitor_2"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.color_monitor_2",
       "name": "Logix Color Monitor II 12-inch",
-      "category": "display",
+      "category": "monitor",
       "specification": {
         "crt_ref": "part.medium_resolution_rgb_crt",
         "controller_ref": "part.color_monitor_controller",
@@ -4239,12 +4243,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.color_monitor_2"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.aurelia_ram_16kb_card",
       "name": "Logix Aurelia 16 KB RAM expansion card",
-      "category": "expansion_card",
+      "category": "memory_expansion",
       "capacity_kb": 16,
       "compatible_with": [
         "computer.aurelia"
@@ -4279,7 +4284,8 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.aurelia_ram_16kb_card"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.flexiprint40",
@@ -4301,7 +4307,8 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.flexiprint40"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.flexidisk",
@@ -4324,12 +4331,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.flexidisk"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.apple2_expansion_card",
       "name": "Logix Apple II Expansion Card",
-      "category": "third_party_host_expansion_card",
+      "category": "io_interface_expansion",
       "specification": {
         "host": "Apple II",
         "flexibus_ports": 2,
@@ -4349,7 +4357,8 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.apple2_expansion_card"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.flexidisk_ii",
@@ -4380,12 +4389,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.flexidisk_ii"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.artemis_cpm80_module",
       "name": "Artemis CP/M-80 backward-compatibility expansion module",
-      "category": "processor_expansion_card",
+      "category": "processor_expansion",
       "specification": {
         "cpu_ref": "part.z80a",
         "local_ram_kb": 64,
@@ -4415,7 +4425,8 @@
         "introduced": "1980-05-19",
         "status_at_announcement": "Planned separately sold Z80 legacy option; host architecture and word size undisclosed.",
         "scope": "Qualified documented-interface applications only; no extension of compatibility to Artemis PRO or all future models."
-      }
+      },
+      "vendor": "Logix"
     },
     {
       "id": "device.artemis_ram_64kb_module",
@@ -4438,7 +4449,8 @@
       "manufacturing_requirements": [
         "Retire/revise this offering to a matched-pair kit. Define separate 64 KiB low-density and 256 KiB high-density bank kits, included modules, compatible host revisions, installation instructions, spares and kit packaging. The old eight-chip module cannot remain under the new electrical rule."
       ],
-      "manufacturing_status": "excluded_from_active_production"
+      "manufacturing_status": "excluded_from_active_production",
+      "vendor": "Logix"
     },
     {
       "id": "device.network_card_aurelia",
@@ -4503,7 +4515,8 @@
           "flow_control": "Grant unicast only when the destination advertises credit for a complete frame; reserve that credit until completion. Broadcast requires credit from all intended admitted receivers. Timeouts revoke stale credits; bounded queues and retry/error reporting prevent indefinite blocking. Use flow control first for receiver pressure, not automatic rate changes.",
           "host_service": "No per-byte interrupt requirement. Aurelia at 250 kbit/s has 128 CPU clocks per raw byte at 4 MHz; Aurelia+ at 500 kbit/s has 96 at 6 MHz. Validate worst-case service latency. A persistently slow host may advertise a lower configured ceiling."
         }
-      }
+      },
+      "vendor": "Logix"
     },
     {
       "id": "device.network_card_artemis",
@@ -4575,12 +4588,13 @@
         "computer.athena",
         "computer.athena_server"
       ],
-      "athena_qualification": "Existing card baseline selected; Athena host electrical/firmware compatibility remains a release gate."
+      "athena_qualification": "Existing card baseline selected; Athena host electrical/firmware compatibility remains a release gate.",
+      "vendor": "Logix"
     },
     {
       "id": "device.network_hub",
       "name": "Logix network hub/repeater",
-      "category": "network_repeater_hub",
+      "category": "network_hub_repeater",
       "specification": {
         "port_count_options": [
           4,
@@ -4617,7 +4631,8 @@
         "assembly.device.network_hub.4_port",
         "assembly.device.network_hub.8_port",
         "assembly.device.network_hub.16_port"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.artemis_ram_64kb_bank_kit",
@@ -4644,7 +4659,8 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.artemis_ram_64kb_bank_kit"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.artemis_ram_256kb_bank_kit",
@@ -4672,12 +4688,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.artemis_ram_256kb_bank_kit"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.s100_flexibus_card",
       "name": "Logix FlexiBUS Interface for S-100",
-      "category": "third_party_host_expansion_card",
+      "category": "io_interface_expansion",
       "introduced": {
         "event_name": "NCC 1979 — Apple II and S-100 expansion launch",
         "event_start_date": "1979-06-04"
@@ -4711,7 +4728,7 @@
     {
       "id": "device.apple2_video_card",
       "name": "Logix Video Card for Apple II",
-      "category": "third_party_host_expansion_card",
+      "category": "video_expansion_card",
       "introduced": {
         "event_name": "NCC 1979 — Apple II and S-100 expansion launch",
         "event_start_date": "1979-06-04"
@@ -4757,7 +4774,7 @@
     {
       "id": "device.s100_video_card",
       "name": "Logix Video Card for S-100",
-      "category": "third_party_host_expansion_card",
+      "category": "video_expansion_card",
       "introduced": {
         "event_name": "NCC 1979 — Apple II and S-100 expansion launch",
         "event_start_date": "1979-06-04"
@@ -4803,7 +4820,7 @@
     {
       "id": "device.artemis_video_card",
       "name": "Logix Artemis 32 KiB professional video card",
-      "category": "video_card",
+      "category": "video_expansion_card",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -5314,12 +5331,13 @@
       ],
       "bom_assembly_refs": [
         "assembly.device.artemis_video_card"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.mono_pro",
       "name": "Logix Mono Pro 14-inch",
-      "category": "display",
+      "category": "monitor",
       "specification": {
         "crt_ref": "part.brimar_m36_141w_crt",
         "controller_ref": "part.mono_pro_controller",
@@ -5355,12 +5373,13 @@
       "manufacturing_status": "incomplete_bom",
       "bom_assembly_refs": [
         "assembly.device.mono_pro"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.artemis_video_card_16kb",
       "name": "Logix Artemis 16 KiB economy video card",
-      "category": "video_card",
+      "category": "video_expansion_card",
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -5752,12 +5771,13 @@
       ],
       "bom_assembly_refs": [
         "assembly.device.artemis_video_card_16kb"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.artemis_video_card_64kb",
       "name": "Logix Artemis 64 KiB video controller card",
-      "category": "video_card",
+      "category": "video_expansion_card",
       "introduced": {
         "event_name": "NCC June 1982 — colour graphics and mouse interaction",
         "event_start_date": "1982-06",
@@ -6349,12 +6369,13 @@
         "computer.athena",
         "computer.athena_server"
       ],
-      "athena_qualification": "Existing card baseline selected; Athena host electrical/firmware compatibility remains a release gate."
+      "athena_qualification": "Existing card baseline selected; Athena host electrical/firmware compatibility remains a release gate.",
+      "vendor": "Logix"
     },
     {
       "id": "device.color_pro_14",
       "name": "Logix Color Pro 14",
-      "category": "display",
+      "category": "monitor",
       "introduced": {
         "event_name": "NCC June 1982 — colour graphics and mouse interaction",
         "event_start_date": "1982-06",
@@ -6391,12 +6412,13 @@
       "manufacturing_status": "design_baseline_costed_unqualified",
       "bom_assembly_refs": [
         "assembly.device.color_pro_14"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.logix_mouse",
       "name": "Logix Mouse — two buttons and two rollers",
-      "category": "pointing_device",
+      "category": "mouse",
       "introduced": {
         "event_name": "NCC June 1982 — colour graphics and mouse interaction",
         "event_start_date": "1982-06",
@@ -6434,12 +6456,13 @@
       "manufacturing_status": "design_baseline_costed_unqualified",
       "bom_assembly_refs": [
         "assembly.device.logix_mouse"
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.artemis_professional_video_128kb",
       "name": "Logix Artemis Professional 128 KiB video card",
-      "category": "video_card",
+      "category": "video_expansion_card",
       "introduced": {
         "event_name": "Professional graphics availability around June 1982",
         "event_start_date": "1982-06"
@@ -6552,12 +6575,13 @@
           "bom_assembly_ref": "assembly.device.artemis_professional_video_128kb.comdex82",
           "cost_review_ref": "comdex_1982_cost_review.json"
         }
-      ]
+      ],
+      "vendor": "Logix"
     },
     {
       "id": "device.mono_pro_17",
       "name": "Logix Mono Pro 17",
-      "category": "display",
+      "category": "monitor",
       "introduced": {
         "event_name": "Professional graphics availability around June 1982",
         "event_start_date": "1982-06"
@@ -6616,7 +6640,8 @@
           "bom_assembly_ref": "assembly.device.mono_pro_17.comdex82",
           "cost_review_ref": "comdex_1982_cost_review.json"
         }
-      ]
+      ],
+      "vendor": "Logix"
     }
   ],
   "computers": [
@@ -7147,7 +7172,9 @@
         "qualified_max_rate_kbps": 250,
         "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link."
       },
-      "lifecycle_policy": "From COMDEX 1979 Logix focuses new hardware development and promotion on Aurelia+. Existing Aurelia support and compatible software continue; independent manufacturers may develop Aurelia-class clones through published interfaces and appropriate software licences. No immediate withdrawal or shutdown date is imposed."
+      "lifecycle_policy": "From COMDEX 1979 Logix focuses new hardware development and promotion on Aurelia+. Existing Aurelia support and compatible software continue; independent manufacturers may develop Aurelia-class clones through published interfaces and appropriate software licences. No immediate withdrawal or shutdown date is imposed.",
+      "vendor": "Logix",
+      "category": "computer"
     },
     {
       "id": "computer.aurelia_plus",
@@ -7643,7 +7670,9 @@
         ],
         "qualified_max_rate_kbps": 500,
         "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link."
-      }
+      },
+      "vendor": "Logix",
+      "category": "computer"
     },
     {
       "id": "computer.artemis",
@@ -9307,7 +9336,9 @@
         "card_ref": "device.artemis_video_card_64kb",
         "monitor_ref": "device.color_pro_14",
         "policy": "Optional replacement video card; existing configurations retain their installed card. Separate COMDEX high-resolution display is outside this release."
-      }
+      },
+      "vendor": "Logix",
+      "category": "computer"
     },
     {
       "id": "computer.artemis_pro",
@@ -10069,7 +10100,9 @@
         "card_ref": "device.artemis_video_card_64kb",
         "monitor_ref": "device.color_pro_14",
         "policy": "Optional replacement video card; existing configurations retain their installed card. Separate COMDEX high-resolution display is outside this release."
-      }
+      },
+      "vendor": "Logix",
+      "category": "computer"
     },
     {
       "id": "computer.athena",
@@ -10732,7 +10765,9 @@
       "software_policy": "Accepted AIONix2 ROM-backed planning baseline. Preserve documented ERA AIONix binaries through versioned compatibility; individual applications and editions require qualification. External application ROM cartridges are not added by the internal system ROM decision.",
       "positioning": "Lowest-cost Athena configuration: 2 × 128 KiB modules, 256 KiB total.",
       "monitor_and_keyboard_bundle": "Not specified; do not assume included models or pricing.",
-      "planning_file": "athena_1983_program.json"
+      "planning_file": "athena_1983_program.json",
+      "vendor": "Logix",
+      "category": "computer"
     },
     {
       "id": "computer.athena_server",
@@ -11395,7 +11430,9 @@
       "software_policy": "Accepted AIONix2 ROM-backed planning baseline. Preserve documented ERA AIONix binaries through versioned compatibility; individual applications and editions require qualification. External application ROM cartridges are not added by the internal system ROM decision.",
       "positioning": "Server configuration",
       "monitor_and_keyboard_bundle": "Not specified; do not assume included models or pricing.",
-      "planning_file": "athena_1983_program.json"
+      "planning_file": "athena_1983_program.json",
+      "vendor": "Logix",
+      "category": "computer"
     }
   ],
   "software_products": [
@@ -11745,7 +11782,7 @@
       "id": "software.business_tools_aurelia",
       "name": "AION Software Business Tools expansion",
       "vendor": "AION Software",
-      "category": "productivity_suite",
+      "category": "office_suite",
       "delivery": "16 KB XIP ROM system overlay / expansion cartridge",
       "features": [
         "text editor",
@@ -11821,7 +11858,7 @@
       "name": "AION Abacus",
       "version": "1.x",
       "vendor": "AION Software",
-      "category": "spreadsheet",
+      "category": "spreadsheet_software",
       "delivery": "diskette",
       "features": [
         "one tab per document",
@@ -11889,7 +11926,7 @@
       "id": "software.simple_c_z80",
       "name": "Logix Simple C compiler for Z80 CP/M",
       "vendor": "Logix",
-      "category": "development_tool",
+      "category": "compiler",
       "features": [
         "basic C libraries",
         "structures",
@@ -11956,7 +11993,7 @@
       "id": "software.aurelia_sdk",
       "name": "Logix Aurelia Developer Package Complete SDK",
       "vendor": "Logix",
-      "category": "sdk_and_documentation",
+      "category": "software_development_kit",
       "contents": [
         "Aurelia Technical Reference",
         "Aurelia Programmer's Manual",
@@ -12118,7 +12155,7 @@
       "name": "AION Pulse",
       "version": "initial notebook edition",
       "vendor": "AION Software",
-      "category": "scripting_language_and_ide",
+      "category": "scripting_environment",
       "introduced": {
         "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-12-03",
@@ -12160,7 +12197,7 @@
       "id": "software.abacus_2",
       "name": "AION Abacus 2.0",
       "vendor": "AION Software",
-      "category": "spreadsheet_and_reporting",
+      "category": "spreadsheet_software",
       "introduced": {
         "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
         "event_start_date": "1979-12-03",
@@ -12259,7 +12296,7 @@
       "id": "software.business_tools_artemis",
       "name": "AION Business Tools / Office Suite for Artemis",
       "vendor": "AION Software",
-      "category": "productivity_suite",
+      "category": "office_suite",
       "delivery": "Office Suite cartridge / Business Tools expansion cartridge",
       "features": [
         "file explorer",
@@ -12297,7 +12334,7 @@
       "id": "software.aion_c_ide",
       "name": "AION C IDE with ERA native and Z80 cross-compilers",
       "vendor": "AION Software",
-      "category": "development_toolchain",
+      "category": "development_environment",
       "features": [
         "C compiler",
         "optimizer",
@@ -12363,7 +12400,7 @@
       "id": "software.artemis_sdk",
       "name": "Logix Artemis Developer Package Complete SDK",
       "vendor": "Logix",
-      "category": "sdk_and_documentation",
+      "category": "software_development_kit",
       "contents": [
         "Artemis Technical Reference",
         "Artemis Programmer's Manual",
@@ -12398,7 +12435,7 @@
       "id": "software.abacus_3",
       "name": "AION Abacus 3.0",
       "vendor": "AION Software",
-      "category": "32_bit_spreadsheet_and_business_analysis",
+      "category": "spreadsheet_software",
       "introduced": {
         "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
         "event_start_date": "1980-11-19"
@@ -12484,7 +12521,7 @@
       "id": "software.pulse_3",
       "name": "AION Pulse 3.0",
       "vendor": "AION Software",
-      "category": "32_bit_scripting_and_interactive_programming_environment",
+      "category": "scripting_environment",
       "introduced": {
         "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
         "event_start_date": "1980-11-19"
@@ -12529,7 +12566,7 @@
       "id": "software.aionix_server",
       "name": "AIONix Server edition",
       "vendor": "AION Software",
-      "category": "operating_system_edition",
+      "category": "operating_system",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
@@ -12583,7 +12620,7 @@
       "id": "software.bpi_client_server",
       "name": "BPI client-server business suite / RDBMS edition",
       "vendor": "BPI Systems",
-      "category": "client_server_business_software",
+      "category": "business_application_suite",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
@@ -12687,7 +12724,7 @@
       "id": "software.cpm_aurelia_networking",
       "name": "Enhanced CP/M networking upgrade for Aurelia",
       "vendor": "Logix / AION Software / Digital Research cooperation",
-      "category": "operating_system_networking_upgrade",
+      "category": "operating_system_networking_extension",
       "introduced": {
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
@@ -12719,7 +12756,7 @@
       "id": "software.aurelia_compatibility_kit",
       "name": "Aurelia Software Compatibility Kit",
       "vendor": "AION Software",
-      "category": "sdk_and_documentation",
+      "category": "software_development_kit",
       "sold_separately": true,
       "introduced": {
         "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
@@ -12754,7 +12791,7 @@
       "id": "software.aion_development_team",
       "name": "AION Development System — Team Edition",
       "vendor": "AION Software",
-      "category": "development_toolchain",
+      "category": "development_environment",
       "sold_separately": true,
       "introduced": {
         "event_name": "COMDEX November 1981 — Team Edition premiere",
@@ -12818,7 +12855,7 @@
       "id": "software.entertainment_suite",
       "name": "AION Entertainment Suite",
       "vendor": "AION Software",
-      "category": "mouse_training_games",
+      "category": "educational_and_entertainment_software",
       "introduced": {
         "event_name": "NCC June 1982 — colour graphics and mouse interaction",
         "event_start_date": "1982-06",
@@ -12851,7 +12888,7 @@
       "id": "software.autocad_1_artemis",
       "name": "Autodesk AutoCAD 1.0 for Artemis",
       "vendor": "Autodesk",
-      "category": "computer_aided_design",
+      "category": "cad_software",
       "introduced": {
         "event_name": "COMDEX 1982 — AutoCAD for Artemis target",
         "event_start_date": "1982-11-29"
@@ -13143,7 +13180,8 @@
             "applications": 147456
           }
         }
-      }
+      },
+      "vendor": "AION Software"
     }
   ],
   "services": [
@@ -13539,7 +13577,9 @@
           "duration_years": 1
         }
       ],
-      "bom_assembly_ref": "assembly.bundle.aurelia_mono"
+      "bom_assembly_ref": "assembly.bundle.aurelia_mono",
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.aurelia_color",
@@ -13562,7 +13602,9 @@
           "duration_years": 1
         }
       ],
-      "bom_assembly_ref": "assembly.bundle.aurelia_color"
+      "bom_assembly_ref": "assembly.bundle.aurelia_color",
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.aurelia_plus_mono",
@@ -13587,7 +13629,9 @@
           "duration_years": 1
         }
       ],
-      "bom_assembly_ref": "assembly.bundle.aurelia_plus_mono"
+      "bom_assembly_ref": "assembly.bundle.aurelia_plus_mono",
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.aurelia_plus_color",
@@ -13612,7 +13656,9 @@
           "duration_years": 1
         }
       ],
-      "bom_assembly_ref": "assembly.bundle.aurelia_plus_color"
+      "bom_assembly_ref": "assembly.bundle.aurelia_plus_color",
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_128_mono",
@@ -13649,7 +13695,9 @@
           "effective_from": "1981-05-04",
           "assembly_ref": "assembly.bundle.artemis_128_mono.networked"
         }
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_128_color",
@@ -13686,7 +13734,9 @@
           "effective_from": "1981-05-04",
           "assembly_ref": "assembly.bundle.artemis_128_color.networked"
         }
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_256_color",
@@ -13723,7 +13773,9 @@
           "effective_from": "1981-05-04",
           "assembly_ref": "assembly.bundle.artemis_256_color.networked"
         }
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.aurelia_network_upgrade",
@@ -13742,7 +13794,9 @@
       "included_software": [
         "software.cpm_aurelia_networking"
       ],
-      "bom_assembly_ref": "assembly.bundle.aurelia_network_upgrade"
+      "bom_assembly_ref": "assembly.bundle.aurelia_network_upgrade",
+      "vendor": "Logix",
+      "category": "upgrade_bundle"
     },
     {
       "id": "bundle.artemis_network_upgrade",
@@ -13758,7 +13812,9 @@
       "included_software": [
         "software.aionix_server"
       ],
-      "bom_assembly_ref": "assembly.bundle.artemis_network_upgrade"
+      "bom_assembly_ref": "assembly.bundle.artemis_network_upgrade",
+      "vendor": "Logix",
+      "category": "upgrade_bundle"
     },
     {
       "id": "bundle.artemis_pro_512_server",
@@ -13782,7 +13838,9 @@
       "availability": "Announced at NCC 1981; shipment date not separately specified.",
       "availability_status": "announced",
       "shipping_date": null,
-      "bom_assembly_ref": "assembly.bundle.artemis_pro_512_server"
+      "bom_assembly_ref": "assembly.bundle.artemis_pro_512_server",
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_pro_1mb_server",
@@ -13806,7 +13864,9 @@
       "availability": "Announced at NCC 1981; shipment date not separately specified.",
       "availability_status": "announced",
       "shipping_date": null,
-      "bom_assembly_ref": "assembly.bundle.artemis_pro_1mb_server"
+      "bom_assembly_ref": "assembly.bundle.artemis_pro_1mb_server",
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_256_mono_pro",
@@ -13843,7 +13903,9 @@
           "effective_from": "1981-05-04",
           "assembly_ref": "assembly.bundle.artemis_256_mono_pro.networked"
         }
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_pro_512_mono_pro",
@@ -13871,7 +13933,9 @@
       "included_devices": [
         "device.flexibus_keyboard",
         "device.mono_pro"
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_pro_1mb_mono_pro",
@@ -13899,7 +13963,9 @@
       "included_devices": [
         "device.flexibus_keyboard",
         "device.mono_pro"
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_budget_128",
@@ -13955,7 +14021,9 @@
       "notes": [
         "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
         "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.artemis_budget_128_hdd",
@@ -14011,7 +14079,9 @@
       "notes": [
         "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
         "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     }
   ],
   "aurelia_explorer": {
@@ -14086,7 +14156,9 @@
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
         "These are proposed commercial packages, not additional software compatibility requirements."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.proposed_aurelia_accounts",
@@ -14107,7 +14179,9 @@
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
         "These are proposed commercial packages, not additional software compatibility requirements."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.proposed_aurelia_developer",
@@ -14127,7 +14201,9 @@
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
         "These are proposed commercial packages, not additional software compatibility requirements."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.proposed_aurelia_plus_office",
@@ -14146,7 +14222,9 @@
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
         "These are proposed commercial packages, not additional software compatibility requirements."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.proposed_aurelia_plus_accounts",
@@ -14167,7 +14245,9 @@
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
         "These are proposed commercial packages, not additional software compatibility requirements."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.proposed_aurelia_plus_developer",
@@ -14187,7 +14267,9 @@
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
         "These are proposed commercial packages, not additional software compatibility requirements."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     },
     {
       "id": "bundle.proposed_aurelia_plus_analysis",
@@ -14207,7 +14289,9 @@
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
         "These are proposed commercial packages, not additional software compatibility requirements."
-      ]
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle"
     }
   ],
   "artemis_explorer": {
@@ -15585,7 +15669,7 @@
     {
       "id": "computer.trs80_model_ii",
       "name": "Tandy TRS-80 Model II — CP/M partner configuration",
-      "category": "external_partner_computer",
+      "category": "computer",
       "vendor": "Tandy / Radio Shack",
       "introduced": {
         "event_name": "Model II announcement",
@@ -15611,7 +15695,7 @@
     {
       "id": "software.cpm_model_ii",
       "name": "CP/M for Tandy Model II with required platform services",
-      "category": "external_partner_operating_system",
+      "category": "operating_system",
       "vendor": "DRI / Tandy",
       "introduced": {
         "event_name": "Model II CP/M qualified configuration",
@@ -15623,7 +15707,7 @@
     {
       "id": "device.model_ii_flexibus",
       "name": "Tandy Model II FlexiBUS option",
-      "category": "external_partner_interface",
+      "category": "io_interface_expansion",
       "vendor": "Tandy with Logix engineering support",
       "introduced": {
         "event_name": "Model II qualified FlexiBUS option",
@@ -15644,7 +15728,7 @@
     {
       "id": "offer.comdex82_artemis_autocad",
       "name": "Logix Artemis PRO Professional CAD — Autodesk AutoCAD 1.0",
-      "category": "partner_professional_configuration",
+      "category": "system_bundle",
       "introduced": {
         "event_name": "COMDEX November 1982 — Logix and Autodesk professional CAD presentation",
         "event_start_date": "1982-11-29"
@@ -15696,7 +15780,98 @@
         "Document supported features; no automatic later-version dimensioning, object-snap or 3D claims"
       ],
       "timeline": "June remains initial hardware availability and Autodesk development handover. November 29 is the public joint CAD offering and expanded professional-card presentation, not a rewrite of June history.",
-      "campaign_ref": "comdex_1982_campaign.json"
+      "campaign_ref": "comdex_1982_campaign.json",
+      "vendor": "Logix"
+    },
+    {
+      "id": "offer.ncc82_colour_upgrade",
+      "name": "Artemis Colour Upgrade",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1982 cost review",
+        "event_start_date": "1982-06-15"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ]
+    },
+    {
+      "id": "offer.comdex82_reference_hardware",
+      "name": "Artemis PRO 1 MiB dual-display reference hardware",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX 1982 cost review",
+        "event_start_date": "1982-11-29"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ]
+    },
+    {
+      "id": "offer.ncc82_professional_graphics",
+      "name": "Artemis Professional Graphics extension",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1982 cost review",
+        "event_start_date": "1982-06-15"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ]
+    },
+    {
+      "id": "offer.ncc82_mouse_learning",
+      "name": "Logix Mouse Learning Pack",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1982 cost review",
+        "event_start_date": "1982-06-15"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ]
+    },
+    {
+      "id": "offer.comdex82_professional_hardware",
+      "name": "November professional graphics upgrade with mouse",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX 1982 cost review",
+        "event_start_date": "1982-11-29"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ]
+    },
+    {
+      "id": "offer.comdex82_upgrade_autocad",
+      "name": "Professional graphics upgrade and AutoCAD",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX 1982 cost review",
+        "event_start_date": "1982-11-29"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ]
     }
   ]
 }

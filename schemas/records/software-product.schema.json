@@ -15,7 +15,7 @@
       "type": "string"
     },
     "schema_version": {
-      "const": "1.0.0"
+      "const": "2.0.0"
     },
     "id": {
       "type": "string",
@@ -86,9 +86,7 @@
           ]
         },
         "category": {
-          "type": [
-            "string"
-          ]
+          "$ref": "urn:logix-aion:category:2"
         },
         "compatibility_notes": {
           "type": [

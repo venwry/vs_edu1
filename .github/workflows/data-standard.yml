@@ -24,6 +24,7 @@ jobs:
         run: |
           python tools/data_catalog.py --check
           python tests/validate_data_structure.py
+          python tests/validate_category_taxonomy.py
           python tests/validate_catalogs.py
           python tests/validate_hardware_bom.py
           python tests/validate_cost_consolidation.py
@@ -35,6 +36,7 @@ jobs:
           node tests/artemis-configurator.test.cjs
           node tests/computer-families.test.cjs
           node tests/bom-navigator.test.cjs
+          node tests/category-taxonomy.test.cjs
           node tests/domain-navigators.test.cjs
           node tests/navigator-table.test.cjs
           node tests/page-content.test.cjs

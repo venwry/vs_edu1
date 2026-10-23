@@ -1,12 +1,12 @@
 {
   "$schema": "../../../schemas/records/peripheral.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "device.flexibus_keyboard",
   "record_type": "peripheral",
   "data": {
     "id": "device.flexibus_keyboard",
     "name": "Logix FlexiBUS keyboard",
-    "category": "input_device",
+    "category": "keyboard",
     "connection": "FlexiBUS",
     "specification": {
       "function_keys": "F1-F12",
@@ -35,6 +35,7 @@
     "manufacturing_status": "incomplete_bom",
     "bom_assembly_refs": [
       "assembly.device.flexibus_keyboard"
-    ]
+    ],
+    "vendor": "Logix"
   }
 }

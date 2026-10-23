@@ -15,6 +15,7 @@ def build():
    continue
   text=path.read_text();
   if 'atlas.js' in text and 'catalog-navigation.js' not in text:text=text.replace('<head>','<head><script defer src="catalog-navigation.js"></script>',1)
+  if any(name in text for name in ('bom-details.js','architecture-explorer.js','artemis-explorer.js')) and 'catalog-categories.js' not in text:text=text.replace('<head>','<head><script defer src="catalog-categories.js"></script>',1)
   if not re.search(r'<body\b',text):
    text=re.sub(r'(<html[^>]*>)',r'\1<head>',text,count=1);text=text.replace('</style>','</style></head><body>',1);text=text.replace('</html>','</body></html>')
   text=re.sub(r'<!-- shared-navigation -->.*?<!-- /shared-navigation -->','',text,flags=re.S)

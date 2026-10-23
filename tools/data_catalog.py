@@ -102,7 +102,8 @@ def store_document(path, value):
     import jsonschema
     for name, record in changes.items():
         schema = (ROOT/name).parent / record['$schema']
-        jsonschema.Draft202012Validator(json.loads(schema.read_text())).validate(record)
+        from schema_validation import record_validator
+        record_validator(json.loads(schema.read_text())).validate(record)
     for name, record in changes.items():
         write(name, record)
     write('data/manifest.json', m)

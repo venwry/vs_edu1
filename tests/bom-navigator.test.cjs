@@ -6,7 +6,7 @@ for(const key of ['base_parts','devices','computers','software_products','platfo
 for(const c of bom.components)assert(model.items.some(i=>i.id===c.id||i.id===c.catalog_ref),'Missing manufacturing part '+c.id);
 assert.equal(new Set(model.items.map(x=>x.id)).size,model.items.length);
 assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Computer','Expansion','Software','Bundle']));
-assert(model.items.filter(x=>x.category==='Proposed bundle').every(x=>!x.release));
+assert(model.items.filter(x=>x.id.startsWith('bundle.proposed_')).every(x=>!x.release));
 for(const id of ['computer.artemis','bundle.artemis_128_mono','device.artemis_video_card_64kb'])assert(model.assemblyIds(id).length,id+' has assemblies');
 assert(model.rows(model.assemblyIds('bundle.artemis_128_mono')[0]).some(x=>x.depth>0));
 assert(model.render('bompart.computer.artemis.boot_rom_chips').includes('Unknown'));

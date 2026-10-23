@@ -165,7 +165,8 @@ for x in C['services']:
  elif category=='compatibility_engineering':args={'service_hours':x['engineering_hours']};unit=x['delivery_unit']
  elif category=='support':args={'service_hours':{'service.customer_care':.6,'service.regular_support':2,'service.professional_support':4,'service.professional_business_onsite':8}[id],'travel':100 if 'onsite' in id else 0};unit='one customer-year'
  elif category=='developer_program_and_license':args={'developer_sdk':'software.aurelia_sdk' if 'aurelia' in id else 'software.artemis_sdk','service_hours':2};unit='one registration with SDK'
- else:args={'course_days':2 if 'pulse' in id else 3 if 'bpi' in id else 2,'onsite':'customer_site' in id};unit='one learner-course (8 learners, 6 contact hours/day)'
+ elif category=='training':args={'course_days':2 if 'pulse' in id else 3 if 'bpi' in id else 2,'onsite':'customer_site' in id};unit='one learner-course (8 learners, 6 contact hours/day)'
+ else:raise ValueError('Unsupported service category '+category+' for '+id)
  row(id,id,x['name'],'Services',unit,date(x),**args,assumptions=['Course duration and service usage are explicit planning units, not established contractual limits. Free promotional vouchers are excluded as marketing.'])
  if id in ['service.academy_before_you_buy','service.academy_regular_courses']:
   for n,course in enumerate(records['service.academy_before_you_buy']['courses']):row(id+'.course_'+str(n+1),id,x['name']+' — '+course['name'],'Services','one learner-course (8 learners)',date(x),course_days=course['days'],assumptions=['No voucher/promotion charge; same physical delivery cost for regular and before-you-buy courses.'])
