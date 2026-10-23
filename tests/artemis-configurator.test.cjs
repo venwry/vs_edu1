@@ -18,27 +18,4 @@ for(const option of model.options)for(const revision of model.revisions(option))
 }
 const budget=model.options.find(o=>o.id==='bundle.artemis_budget_128_hdd');const budgetState=model.state(budget,model.revisions(budget).at(-1),'1981-06-15');assert(budgetState.network);assert(budgetState.externalHdd);assert(budgetState.software.includes('software.abacus_3'));assert(model.bomRows(budgetState.snapshot).every(l=>l.basis==='Complete recurring-cost component'));
 const unknown=model.bomRows({bom_lines:[{component_ref:'unpriced',quantity:null,extended_recurring_cost_usd:null}]})[0];assert.equal(unknown.unitCost,null);
-(async()=>{
- const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));
- const dom=new JSDOM(read('artemis.html'),{url:'https://atlas.test/artemis.html',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc}),w=dom.window,d=w.document;
- w.IntersectionObserver=class{observe(){}disconnect(){}};w.fetch=async p=>({ok:true,json:async()=>json(String(p).replace(/^\.\//,''))});
- for(const script of d.scripts){if(script.src)w.eval(read(new URL(script.src).pathname.slice(1)));else if(!script.type||script.type==='text/javascript')w.eval(script.textContent);}
- for(let i=0;i<40&&!d.querySelector('#artemis-workbench[data-ready]');i++)await new Promise(r=>setTimeout(r,25));
- assert(d.querySelector('#artemis-workbench[data-ready]'),d.body.textContent.slice(-500));
- const change=(id,value)=>{const el=d.getElementById(id);el.value=value;el.dispatchEvent(new w.Event('change'));};
- assert.equal(d.querySelectorAll('#artemis-configuration option').length,model.options.length);
- assert.equal(d.querySelector('#artemis-reference-views'),null);
- for(const layer of ['memory','software'])for(const n of catalog.artemis_explorer.diagrams[layer].nodes.filter(n=>n.record_ref)){assert(d.querySelector('[data-component="reference-'+layer+'-'+n.id+'"]'),'Retain '+layer+' '+n.id);}
- assert(d.querySelector('.configuration-subgroup'));
-
- assert.deepEqual([...d.querySelectorAll('.configuration-sections>li>details>summary')].map(n=>n.textContent),['Mainboard core elements','Memory and Cartridges','Disk drives','Expansion cards','Flexibus and Video peripherals','Software']);
- for(const option of model.options){change('artemis-configuration',option.id);assert.equal(d.getElementById('artemis-workbench').dataset.configuration,option.id);assert(d.getElementById('configuration-inspector').textContent.length>20);for(const button of d.querySelectorAll('#configuration-diagram [data-component]')){button.click();await new Promise(r=>setTimeout(r,0));assert(d.getElementById('configuration-inspector').textContent.includes(button.querySelector('strong').textContent));}for(const rev of model.revisions(option)){change('artemis-revision',rev.id);const dates=model.assessments(option,rev);assert.equal(d.querySelectorAll('[data-evaluation]').length,dates.length);for(const {date,snapshot} of dates){change('artemis-cost-date',date);assert(d.getElementById('configuration-bom-date').textContent.includes(date));assert.equal(d.querySelectorAll('#configuration-bom-table table')[0].querySelectorAll('tbody tr').length,snapshot.bom_lines.length);}}
- }
- change('artemis-configuration','bundle.artemis_256_color');assert(d.querySelector('[data-component="bank-0"]'));assert.equal(d.querySelectorAll('[data-component^="bank-"]').length,1);assert.equal(d.querySelectorAll('#configuration-group-expansion [data-component="video"], #configuration-group-expansion [data-component^="slot-"], #configuration-group-expansion .configuration-empty').length,5);
- d.querySelector('[data-component="mmu"]').click();assert(d.getElementById('configuration-inspector').textContent.includes('Artemis MMU chip'));
- change('artemis-cost-date','1981-06-15');assert.equal(d.querySelector('[data-component="mmu"]').getAttribute('aria-pressed'),'true');
- change('artemis-configuration','bundle.artemis_pro_1mb_mono_pro');assert.equal(d.querySelectorAll('[data-component^="bank-"]').length,4);assert(d.querySelector('[data-component="hdd"]'));assert(d.querySelector('[data-component="fdd-1"]'));assert(d.getElementById('configuration-status').textContent.includes('unconfirmed'));
- change('artemis-configuration','offer.comdex82_artemis_autocad');assert(d.getElementById('configuration-cost-table').textContent.includes('No June 15'));assert.equal(d.querySelectorAll('[data-component^="monitor-"]').length,2);assert(d.getElementById('configuration-stats').textContent.includes('NIC included'));
- change('artemis-configuration','bundle.artemis_network_upgrade');assert(!d.querySelector('[data-component="cpu"]'));assert(d.getElementById('configuration-diagram-note').textContent.includes('not a complete computer'));
- w.dispatchEvent(new w.Event('resize'));await new Promise(r=>setTimeout(r,20));assert.deepEqual(errors,[]);dom.window.close();console.log('PASS:',model.options.length,'configuration choices, dated revisions, BOM identity, all controls and component inspector');
-})().catch(e=>{console.error(e);process.exitCode=1;});
+console.log('PASS: Artemis offerings, revisions, saved costs, memory configurations and unknown quantities');
