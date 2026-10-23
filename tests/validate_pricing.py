@@ -1,10 +1,11 @@
+from data_paths import read_document, document_bytes, document_text
 import json, math, hashlib
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-p=json.loads((R/'generated/models/pricing-results.json').read_text());c=json.loads((R/'generated/models/manufacturing-costs.json').read_text());costs={x['id']:x for x in c['products']}
+p=read_document('generated/models/pricing-results.json', root=R);c=read_document('generated/models/manufacturing-costs.json', root=R);costs={x['id']:x for x in c['products']}
 rows={x['id']:x for x in p['products']}
 assert len(rows)==len(p['products'])==100
-assert p['metadata']['cost_model_sha256']==hashlib.sha256((R/'generated/models/manufacturing-costs.json').read_bytes()).hexdigest()
+assert p['metadata']['cost_model_sha256']==hashlib.sha256(document_bytes('generated/models/manufacturing-costs.json', root=R)).hexdigest()
 count=0
 for x in rows.values():
  assert x['offering_end'] is None

@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "phases",
+    "processes"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/timeline-structure.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "kind",
+              "period",
+              "title",
+              "event_refs"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "kind": {
+                "type": [
+                  "string"
+                ]
+              },
+              "period": {
+                "type": [
+                  "object"
+                ]
+              },
+              "title": {
+                "type": [
+                  "string"
+                ]
+              },
+              "event_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "actions",
+              "agreement_terms",
+              "id",
+              "metrics",
+              "outcomes",
+              "participants",
+              "period",
+              "phase_refs",
+              "product_refs",
+              "related_event_refs",
+              "title"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "actions": {
+                "type": [
+                  "array"
+                ]
+              },
+              "agreement_terms": {
+                "type": [
+                  "array"
+                ]
+              },
+              "date_basis": {
+                "type": [
+                  "string"
+                ]
+              },
+              "id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "metrics": {
+                "type": [
+                  "array"
+                ]
+              },
+              "outcomes": {
+                "type": [
+                  "array"
+                ]
+              },
+              "participants": {
+                "type": [
+                  "array"
+                ]
+              },
+              "period": {
+                "type": [
+                  "object"
+                ]
+              },
+              "phase_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "product_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "related_event_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "subprocesses": {
+                "type": [
+                  "array"
+                ]
+              },
+              "title": {
+                "type": [
+                  "string"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

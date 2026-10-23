@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "components",
+    "supplier_programs"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/sourcing.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "catalog_ref",
+              "category",
+              "currency",
+              "id",
+              "manufacturer",
+              "manufacturer_part_number",
+              "name",
+              "qualification_status",
+              "quantity_tier",
+              "quote_date",
+              "requirements",
+              "unit_cost"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "catalog_ref": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "category": {
+                "$ref": "urn:logix-aion:category:2"
+              },
+              "currency": {
+                "type": [
+                  "null"
+                ]
+              },
+              "id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "manufacturer": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "manufacturer_part_number": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string"
+                ]
+              },
+              "qualification_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "quantity_tier": {
+                "type": [
+                  "null"
+                ]
+              },
+              "quote_date": {
+                "type": [
+                  "null"
+                ]
+              },
+              "requirements": {
+                "type": [
+                  "array"
+                ]
+              },
+              "unit_cost": {
+                "type": [
+                  "null"
+                ]
+              },
+              "candidate_manufacturers": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "name",
+                    "basis"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "basis": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              },
+              "introduced": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "event_name",
+                  "event_start_date"
+                ],
+                "properties": {
+                  "event_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "event_start_date": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[0-9]{4}(-[0-9]{2})?(-[0-9]{2})?$"
+                  }
+                },
+                "oneOf": [
+                  {
+                    "properties": {
+                      "event_name": {
+                        "const": "no release"
+                      },
+                      "event_start_date": {
+                        "type": "null"
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "event_name": {
+                        "not": {
+                          "const": "no release"
+                        }
+                      },
+                      "event_start_date": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "supplier_programs": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "agreement_date",
+              "cost_boundary",
+              "date_precision",
+              "id",
+              "initial_sales_date",
+              "launch_source",
+              "manufacturer",
+              "part_refs",
+              "qualification_gates",
+              "qualification_status",
+              "rights",
+              "transfer_deliverables"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "agreement_date": {
+                "type": [
+                  "string"
+                ]
+              },
+              "cost_boundary": {
+                "type": [
+                  "string"
+                ]
+              },
+              "date_precision": {
+                "type": [
+                  "string"
+                ]
+              },
+              "id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "initial_sales_date": {
+                "type": [
+                  "string"
+                ]
+              },
+              "launch_source": {
+                "type": [
+                  "string"
+                ]
+              },
+              "manufacturer": {
+                "type": [
+                  "string"
+                ]
+              },
+              "part_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "qualification_gates": {
+                "type": [
+                  "array"
+                ]
+              },
+              "qualification_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "rights": {
+                "type": [
+                  "string"
+                ]
+              },
+              "transfer_deliverables": {
+                "type": [
+                  "array"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

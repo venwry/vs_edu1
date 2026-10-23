@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
-const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=JSON.parse(read('generated/models/manufacturing-costs.json'));
+const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=require('../data-store.js').read('generated/models/manufacturing-costs.json');
 (async()=>{
- const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/manufacturing-costs.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('manufacturing-costs.js'));w.document.getElementById('app').innerHTML=w.costTemplate;w.fetch=async()=>({ok:true,json:async()=>model});await w.startCostAssessment();const d=w.document;
+ const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/manufacturing-costs.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('data-store.js'));w.eval(read('manufacturing-costs.js'));w.document.getElementById('app').innerHTML=w.costTemplate;w.fetch=async()=>({ok:true,json:async()=>model});await w.startCostAssessment();const d=w.document;
  assert(d.getElementById('dated-costs').textContent.includes('November'));assert(d.getElementById('dated-costs').textContent.includes('461.30'));
 assert.equal(d.querySelectorAll('.cost-table tbody tr').length,model.products.length);assert.equal(d.querySelectorAll('.cost-table thead th').length,6);
  assert(d.getElementById('cost-sourcing').textContent.includes('1979-10'));assert(d.getElementById('cost-sourcing').textContent.includes('330,000'));assert(d.querySelector('[data-cost-row="device.apple2_video_card"][data-cost-year="1979"]'));

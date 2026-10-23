@@ -1,9 +1,10 @@
+from data_store import read_document, document_bytes, document_text
 """Apply the accepted RAM-focused manufacturing roadmap idempotently."""
 import json, copy
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def load(n): return json.loads((R/n).read_text())
-from data_catalog import store_document
+def load(n): return read_document(n, root=R)
+from data_store import store_document
 def save(n,v): store_document(n,v)
 
 policy={

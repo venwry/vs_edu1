@@ -1,7 +1,8 @@
+from data_paths import read_document, document_bytes, document_text
 from pathlib import Path
 import json,math,subprocess,sys
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 d=read('generated/models/manufacturing-costs.json');c=read('generated/catalogs/logix-aion-technical-catalog-v2.json');b=read('generated/catalogs/hardware-bom.json')
 rows=d['products'];by={p['id']:p for p in rows};assert len(by)==len(rows)
 covered={p['catalog_ref'] for p in rows};excluded={p['catalog_ref'] for p in d['coverage_exclusions']}

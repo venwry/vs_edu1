@@ -1,0 +1,1940 @@
+{
+  "$schema": "../schemas/collections/components.schema.json",
+  "schema_version": "3.0.0",
+  "base_parts": [
+    {
+      "id": "part.z80a",
+      "name": "Zilog Z80A",
+      "category": "processor_ic",
+      "origin": "historical_external_component",
+      "specification": {
+        "clock_mhz": 4,
+        "data_width_bits": 8
+      },
+      "used_in": [
+        "computer.aurelia",
+        "device.artemis_cpm80_module"
+      ],
+      "vendor": "Zilog",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.z80a"
+      ]
+    },
+    {
+      "id": "part.z80b",
+      "name": "Zilog Z80B",
+      "category": "processor_ic",
+      "vendor": "Zilog",
+      "origin": "base_scenario_commercial_part",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "specification": {
+        "clock_mhz": 6
+      },
+      "used_in": [
+        "computer.aurelia_plus"
+      ],
+      "manufacturing_requirements": [
+        "Same, with 6 MHz timing and December 1979 sourcing qualification",
+        "distinguish speed-bin procurement from a new CPU design."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.z80b"
+      ]
+    },
+    {
+      "id": "part.era1",
+      "name": "ERA1 processor",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "specification_ref": "technology.era1_isa",
+      "variants": [
+        {
+          "name": "ERA1 initial",
+          "clock_mhz": 6,
+          "used_in": [
+            "computer.artemis"
+          ]
+        },
+        {
+          "name": "ERA upgraded",
+          "clock_mhz": 8,
+          "used_in": [
+            "computer.artemis_pro"
+          ]
+        }
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_requirements": [
+        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.era1"
+      ],
+      "manufacturing_process_ref": "technology.nmos_3um",
+      "manufacturing_planning": {
+        "node_um": 3,
+        "die_area_mm2": 55,
+        "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
+      }
+    },
+    {
+      "id": "part.dram_16kbit",
+      "name": "16 Kbit RAM chip",
+      "category": "memory_ic",
+      "origin": "historical_external_component",
+      "used_in": [
+        "computer.aurelia",
+        "device.aurelia_ram_16kb_card",
+        "part.artemis_ram_module_prototype",
+        "part.ram_64kb_x32",
+        "part.ram_128kb_x32"
+      ],
+      "vendor": "unspecified commercial DRAM supplier",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "capacity_kbit": 16,
+        "organization_words": 16384,
+        "data_width_bits": 1,
+        "package": null,
+        "manufacturer_part_number": null,
+        "access_time_ns": null,
+        "cycle_time_ns": null,
+        "supply_rails_v": null,
+        "refresh_requirement": null,
+        "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
+      },
+      "manufacturing_requirements": [
+        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
+        "the current list only names the prototype."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.dram_16kbit"
+      ]
+    },
+    {
+      "id": "part.dram_64kbit",
+      "name": "64 Kbit RAM chip",
+      "category": "memory_ic",
+      "origin": "historical_external_component",
+      "used_in": [],
+      "vendor": "unspecified commercial DRAM supplier",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "specification": {
+        "capacity_kbit": 64,
+        "organization_words": 65536,
+        "data_width_bits": 1,
+        "package": null,
+        "manufacturer_part_number": null,
+        "access_time_ns": null,
+        "cycle_time_ns": null,
+        "supply_rails_v": null,
+        "refresh_requirement": null,
+        "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
+      },
+      "manufacturing_requirements": [
+        "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.dram_64kbit"
+      ]
+    },
+    {
+      "id": "part.dram_128kbit",
+      "name": "128 Kbit RAM chip",
+      "category": "memory_ic",
+      "origin": "custom_specified_component",
+      "vendor": "unspecified commercial DRAM supplier",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "product_status": "Superseded design assumption; excluded from active manufacturing BOMs.",
+      "superseded_by": [
+        "part.dram_64kbit"
+      ],
+      "manufacturing_requirements": [
+        "Remove from active production BOMs. Preserve only as a superseded design assumption if history is retained",
+        "it is not a qualified purchased component."
+      ],
+      "manufacturing_status": "excluded_from_active_production"
+    },
+    {
+      "id": "part.artemis_ram_module_prototype",
+      "name": "Artemis prototype RAM module",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "specification": {
+        "chips": 16,
+        "chip_type_ref": "part.dram_16kbit",
+        "physical_arrangement": "4 rows x 4 chips",
+        "capacity_kb": 32,
+        "data_width_bits": 16
+      },
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "product_status": "Historical pre-release engineering subassembly; not a commercial offering. Production replacement is a separate qualified design record.",
+      "manufacturing_requirements": [
+        "Retain noncommercial engineering status. Its chip count implies 32 KiB",
+        "define width/PCB/connectors separately from a new shared 64/128 KB 32-bit modules."
+      ],
+      "manufacturing_status": "excluded_from_active_production"
+    },
+    {
+      "id": "part.artemis_ram_module_64kb",
+      "name": "Artemis RAM Module 1",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "specification": {
+        "capacity_kb": 64,
+        "chips": 8,
+        "chip_type_ref": "part.dram_64kbit",
+        "physical_arrangement": "2 rows x 4 chips"
+      },
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "product_status": "Superseded design assumption; excluded from active manufacturing BOMs.",
+      "superseded_by": [
+        "part.ram_64kb_x32",
+        "part.ram_128kb_x32"
+      ],
+      "manufacturing_requirements": [
+        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
+        "identify how existing prototypes/spares are handled."
+      ],
+      "manufacturing_status": "excluded_from_active_production"
+    },
+    {
+      "id": "part.flexibus_host_controller",
+      "name": "FlexiBUS computer/host controller",
+      "category": "io_controller_ic",
+      "origin": "custom_logix_aion",
+      "specification_ref": "technology.flexibus",
+      "used_in": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "computer.artemis",
+        "device.s100_flexibus_card",
+        "device.apple2_expansion_card"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
+        "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.flexibus_host_controller"
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
+    },
+    {
+      "id": "part.flexibus_device_controller",
+      "name": "FlexiBUS peripheral/device controller",
+      "category": "io_controller_ic",
+      "origin": "custom_logix_aion",
+      "specification_ref": "technology.flexibus",
+      "used_in": [
+        "device.flexiprint40",
+        "device.flexidisk",
+        "device.flexidisk_ii"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Specify whether it is a transport-only state machine or programmable controller",
+        "CPU/ROM/RAM integration, peripheral interfaces, external drivers and power. Define keyboard use explicitly if adopted."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.flexibus_device_controller"
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
+    },
+    {
+      "id": "part.aurelia_video_chip",
+      "name": "Aurelia / Aurelia+ shared video controller",
+      "category": "graphics_controller_ic",
+      "origin": "custom_logix_aion",
+      "specification": {
+        "digital_output_bits": 4,
+        "video_ram_kb": 16,
+        "video_ram_chip_ref": "part.aion_4116",
+        "video_ram_chip_count": 8,
+        "implementation_design": {
+          "status": "Accepted design baseline; electrical timing, layout, fabrication and monitor qualification remain pending.",
+          "internal_buffers": {
+            "character_attribute_row_cache_bytes": 160,
+            "next_character_attribute_row_cache_bytes": 160,
+            "sprite_row_shifters_bytes": 40,
+            "sprite_staging_bytes": 40,
+            "pixel_fifo_page_count": 4,
+            "pixel_fifo_page_bytes": 40,
+            "pixel_fifo_bytes": 160,
+            "pixel_bits": 4,
+            "total_storage_bytes": 560,
+            "included_in_die_estimates": true
+          },
+          "arbitration": "Independent display-DRAM and sprite-SRAM buses. Display reads and full-array refresh have bounded host/DMA backpressure. Sprite fetches use the separate SRAM bus and existing staging/shifters; completed FIFO banks preserve raster order.",
+          "text_fetch": "Cache 80 character codes and 80 attributes; prefetch the next row into the second 160-byte cache over eight glyph scanlines. Expand each glyph byte to eight 4-bit pixels; prefetch sprite rows and apply fixed priority before publishing pixels.",
+          "line_repeat": "Re-fetch repeated bitmap lines; FIFO capacity is not an additional framebuffer or guaranteed retained scanline. Validate 320x100x4 bandwidth and refresh at the selected DRAM grade.",
+          "clock_targets": {
+            "master_mhz": 14.31818,
+            "high_resolution_pixel_mhz": 14.31818,
+            "low_resolution_pixel_mhz": 7.15909,
+            "scope": "14.31818 MHz short scanout/counter path; renderer uses block expansion and clock enables, not a full CPU at pixel rate. Process-corner qualification required.",
+            "maximum_pixel_fifo_output_mbytes_per_second": 7.15909
+          },
+          "manufacturing_planning": {
+            "status": "Engineering estimates, not measured yields or released costs.",
+            "process": "3–3.5 micron NMOS; laser-written process-matched masks from secret facility; wafer fabrication at AION Labs.",
+            "transistors_range": [
+              44000,
+              56000
+            ],
+            "transistors_central": 49000,
+            "die_area_mm2_at_3um_range": [
+              44,
+              64
+            ],
+            "die_area_mm2_at_3_5um_range": [
+              60,
+              87
+            ],
+            "die_area_mm2_central_at_3um": 52,
+            "die_area_mm2_central_at_3_5um": 71,
+            "saleable_yield_fraction_range": [
+              0.132,
+              0.231
+            ],
+            "saleable_yield_fraction_central": 0.1843,
+            "yield_note": "3 micron planning model: 0.85*exp(-2.8*area_mm2/100), then 0.93 package/test yield. 52 mm2 central die; speed-bin and pinout qualification pending.",
+            "recurring_controller_cost_1978_usd": 22.5629,
+            "external_functions": [
+              "Eight AION 4116-equivalent DRAM chips",
+              "cable line drivers/transceivers",
+              "monitor palette and DACs",
+              "Two AION 2114-equivalent SRAM chips on a separate sprite bus; enlarged interface package/PCB allowance costed at assembly level"
+            ]
+          },
+          "engines": {
+            "renderer": "Dedicated fetch/address, eight-pixel glyph expansion, colour selection and fixed-priority sprite compositor; not a general-purpose CPU. Runs when a free FIFO bank and source data are available.",
+            "scanout": "Independent fixed-raster sequencer reads completed 4-bit pixels and generates sync. Both engines use the same master clock with clock enables.",
+            "fifo": "Four 40-byte addressed banks with output latches; ordered circular FREE/FILLING/READY/READING ownership. Publish complete banks only; backpressure on full FIFO; prefill before active display.",
+            "underrun": "Continue sync, emit border colour and latch diagnostic status; never read a partially rendered bank."
+          },
+          "timing_budget": {
+            "status": "Analytical planning bounds only; not a cycle-accurate proof.",
+            "dram_random_cycle_target_ns": 375,
+            "text_glyph_reads_per_scanline": 80,
+            "next_row_prefetch_average_bytes_per_scanline": 20,
+            "maximum_sprite_row_bytes_per_scanline": 40,
+            "illustrative_total_reads_per_scanline": 100,
+            "illustrative_read_time_us": 37.5,
+            "fifo_total_pixels": 320,
+            "fifo_total_drain_time_us_at_high_resolution": 22.349,
+            "two_ready_pages_drain_time_us": 11.175,
+            "qualification": "100 display-DRAM reads average 37.5 us; 40 sprite bytes take 10 us on a separate bus. Descriptor reads and row transitions also need scheduling. Prove local FIFO deadlines, refresh, repeated bitmap lines and uploads; these averages are not a timing proof.",
+            "sprite_sram_cycle_target_ns": 250,
+            "sprite_pattern_fetch_time_us": 10
+          },
+          "sprite_access": "Two AION 2114-equivalent chips form an exclusive 1 KiB 8-bit SRAM bank. Auto-increment upload ports arbitrate CPU/DMA writes against sprite reads; descriptor-bank selection latches at vertical blank."
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        }
+      },
+      "used_in": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "device.apple2_video_card",
+        "device.s100_video_card"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
+        "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aurelia_video_chip"
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
+    },
+    {
+      "id": "part.aurelia_monitor_dac",
+      "name": "Aurelia monochrome monitor custom D/A chip",
+      "category": "video_dac_ic",
+      "origin": "custom_logix_aion",
+      "specification": {
+        "input_bits": 4,
+        "beam_voltage_levels": 16
+      },
+      "used_in": [
+        "device.mono_monitor_1"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Specify reference, transfer function/linearity, output range, settling time, package and required analog stages. Decide custom silicon versus a discrete implementation before assigning die cost."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aurelia_monitor_dac"
+      ]
+    },
+    {
+      "id": "part.color_monitor_controller",
+      "name": "Logix color monitor custom controller",
+      "category": "display_controller_ic",
+      "origin": "custom_logix_aion",
+      "specification": {
+        "palette_registers": 16,
+        "register_width_bits": 12,
+        "source_palette": "3x4-bit RGB",
+        "vertical_retrace_register_update": true
+      },
+      "used_in": [
+        "device.color_monitor_1",
+        "device.color_monitor_2"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Locate the 16×12-bit palette storage, command decoder, clocking, RGB conversion and external analog drivers",
+        "establish whether Monitor I/II share silicon but differ in bandwidth/output stages."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.color_monitor_controller"
+      ]
+    },
+    {
+      "id": "part.mono_monitor2_controller",
+      "name": "Mono Monitor II custom controller",
+      "category": "display_controller_ic",
+      "origin": "custom_logix_aion",
+      "specification": {
+        "palette_registers": 16,
+        "palette": "8-bit greyscale",
+        "vertical_retrace_register_update": true
+      },
+      "used_in": [
+        "device.mono_monitor_2"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "manufacturing_requirements": [
+        "Locate 16×8-bit palette storage, command decode, DAC and analog output",
+        "define clock/raster and custom-silicon parameters."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.mono_monitor2_controller"
+      ]
+    },
+    {
+      "id": "part.artemis_dma",
+      "name": "Artemis DMA chip",
+      "category": "dma_controller_ic",
+      "origin": "custom_aion_labs",
+      "used_in": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_requirements": [
+        "Channels, bus-master handshake, byte/word widths, counters, request lines, priority, refresh interaction and external buffering",
+        "freeze die/package/test design."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_dma"
+      ]
+    },
+    {
+      "id": "part.artemis_mmu",
+      "name": "Artemis MMU chip",
+      "category": "memory_management_ic",
+      "origin": "custom_aion_labs",
+      "specification_ref": "technology.artemis_memory_model",
+      "used_in": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_requirements": [
+        "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_mmu"
+      ]
+    },
+    {
+      "id": "part.artemis_graphics_chip",
+      "name": "AION Artemis buffered video controller",
+      "category": "graphics_controller_ic",
+      "origin": "custom_aion_labs",
+      "specification": {
+        "technology_ref": "technology.logix_digital_video",
+        "api_ref": "technology.logix_display_api",
+        "mode_discovery": "Enumerate controller modes intersected with identified or configured monitor raster capabilities and available buffering/sprite allocations. Reject unsupported downscaling.",
+        "memory_layout": {
+          "policy_ref": "technology.logix_display_api",
+          "mode_exclusivity": "Text/font and bitmap allocations are alternative uses of 32 KiB display DRAM. Exclusive 1 KiB sprite SRAM is available in every mode.",
+          "font_policy": "One shared 256-glyph bank per mode. Font allocation 2048 bytes at 8×8, 4096 at 8×16 or 8×10 (16-byte glyph stride). Font writes affect both pages.",
+          "page_flip": "Latch selected page during vertical blank; drawing throughput is not guaranteed by double buffering."
+        },
+        "controller_ref": "part.artemis_graphics_chip",
+        "text_modes": [
+          {
+            "id": "text_40",
+            "columns": 40,
+            "rows": 25,
+            "width": 320,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 1024,
+            "attribute_map_bytes_per_buffer": 1024,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 4096,
+                "remaining_video_ram_bytes": 28672
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 26624
+              }
+            ],
+            "ram_bytes_per_page": 2048,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "text_80",
+            "columns": 80,
+            "rows": 25,
+            "width": 640,
+            "height": 200,
+            "glyph_width": 8,
+            "glyph_height": 8,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 2048,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 6144,
+                "remaining_video_ram_bytes": 26624
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 10240,
+                "remaining_video_ram_bytes": 22528
+              }
+            ],
+            "ram_bytes_per_page": 4096,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "text_80_25_400",
+            "columns": 80,
+            "rows": 25,
+            "width": 640,
+            "height": 400,
+            "glyph_width": 8,
+            "glyph_height": 16,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 2048,
+            "attribute_map_bytes_per_buffer": 2048,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 4096,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8192,
+                "remaining_video_ram_bytes": 24576
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 12288,
+                "remaining_video_ram_bytes": 20480
+              }
+            ],
+            "ram_bytes_per_page": 4096,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "text_80_40_400",
+            "columns": 80,
+            "rows": 40,
+            "width": 640,
+            "height": 400,
+            "glyph_width": 8,
+            "glyph_height": 10,
+            "character_count": 256,
+            "character_map_bytes_per_buffer": 4096,
+            "attribute_map_bytes_per_buffer": 4096,
+            "attribute_format": "4-bit foreground index + 4-bit background index",
+            "font_bytes": 4096,
+            "configurations": [
+              {
+                "text_buffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 12288,
+                "remaining_video_ram_bytes": 20480
+              },
+              {
+                "text_buffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 20480,
+                "remaining_video_ram_bytes": 12288
+              }
+            ],
+            "ram_bytes_per_page": 8192,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_400"
+            ]
+          }
+        ],
+        "bitmap_modes": [
+          {
+            "id": "graphics_a",
+            "width": 640,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 16768
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 32000,
+                "remaining_video_ram_bytes": 768
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_b2",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 16768
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 32000,
+                "remaining_video_ram_bytes": 768
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_b1",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 40,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 24768
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 16768
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_c4",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 16000,
+            "stride_bytes": 160,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 16768
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 32000,
+                "remaining_video_ram_bytes": 768
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_c2",
+            "width": 320,
+            "height": 100,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 24768
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 16768
+              }
+            ],
+            "compatibility_mode": false,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_legacy",
+            "width": 160,
+            "height": 100,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 8000,
+            "stride_bytes": 80,
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 8000,
+                "remaining_video_ram_bytes": 24768
+              },
+              {
+                "framebuffer_count": 2,
+                "sprite_count": 5,
+                "allocated_bytes": 16000,
+                "remaining_video_ram_bytes": 16768
+              }
+            ],
+            "compatibility_mode": true,
+            "double_buffering": true,
+            "sprites_available": 5,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ]
+          },
+          {
+            "id": "graphics_640_400_1",
+            "width": 640,
+            "height": 400,
+            "bits_per_pixel": 1,
+            "bytes_per_framebuffer": 32000,
+            "stride_bytes": 80,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 32000,
+                "remaining_video_ram_bytes": 768
+              }
+            ]
+          },
+          {
+            "id": "graphics_640_200_2",
+            "width": 640,
+            "height": 200,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 32000,
+            "stride_bytes": 160,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_640_200",
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 32000,
+                "remaining_video_ram_bytes": 768
+              }
+            ]
+          },
+          {
+            "id": "graphics_320_400_2",
+            "width": 320,
+            "height": 400,
+            "bits_per_pixel": 2,
+            "bytes_per_framebuffer": 32000,
+            "stride_bytes": 80,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 32000,
+                "remaining_video_ram_bytes": 768
+              }
+            ]
+          },
+          {
+            "id": "graphics_320_200_4",
+            "width": 320,
+            "height": 200,
+            "bits_per_pixel": 4,
+            "bytes_per_framebuffer": 32000,
+            "stride_bytes": 160,
+            "compatibility_mode": false,
+            "sprites_available": 5,
+            "double_buffering": false,
+            "required_raster_ids": [
+              "raster_320_200",
+              "raster_640_200",
+              "raster_640_400"
+            ],
+            "configurations": [
+              {
+                "framebuffer_count": 1,
+                "sprite_count": 5,
+                "allocated_bytes": 32000,
+                "remaining_video_ram_bytes": 768
+              }
+            ]
+          }
+        ],
+        "sprites": {
+          "count": 5,
+          "maximum_per_scanline": 5,
+          "width": 16,
+          "height": 16,
+          "bits_per_pixel": 4,
+          "pattern_bytes_per_sprite": 128,
+          "transparent_index": 0,
+          "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
+          "priority": "Lower sprite number wins; all sprites overlay background/text.",
+          "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
+          "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
+          "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
+          "pattern_bytes_total": 640,
+          "descriptor_bytes_per_sprite": 8,
+          "descriptor_bank_count": 2,
+          "descriptor_bytes_total": 128,
+          "reserved_sprite_sram_bytes": 1024,
+          "spare_sprite_sram_bytes": 256,
+          "available_in_all_modes": true,
+          "pattern_double_buffered": false,
+          "descriptor_allocation_note": "80 bytes of live two-bank descriptors within a 128-byte reserved area; 48 bytes padding. 640 pattern + 128 descriptor + 256 scratch bytes = 1024."
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        },
+        "video_ram_kb": 32,
+        "card_ref": "device.artemis_video_card",
+        "display_memory": {
+          "chip_ref": "part.aion_4116",
+          "chip_count": 16,
+          "capacity_bytes": 32768,
+          "bank_data_width_bits": 16,
+          "organization": "16K × 16 bits; ordinary external DRAM, independent display refresh sequencer."
+        },
+        "pixel_buffer": {
+          "pages": 4,
+          "bytes_per_page": 160,
+          "total_bytes": 640,
+          "pixels_per_page": 320,
+          "bits_per_pixel": 4,
+          "location": "On video ASIC; SRAM banks with page ownership latches",
+          "page_states": [
+            "free",
+            "filling",
+            "ready",
+            "displaying"
+          ],
+          "policy": "Eight-pixel parallel renderer fills free pages; independent clocked serializer drains ready pages. Two pages per 640-pixel line; prefill before active display; never overwrite displaying pages. Underflow blanks pixels, preserves sync and sets sticky fault.",
+          "physical_organization": "Each 160-byte bank is 40 words × 32 bits. Load eight 4-bit pixels into a separate 32-bit serializer latch every eight dot clocks, then shift at 21.504 MHz. SRAM array reads run at 2.688 MHz, not one read per dot; filler and drain use different banks."
+        },
+        "character_row_cache": {
+          "banks": 2,
+          "bytes_per_bank": 160,
+          "total_bytes": 320,
+          "purpose": "Current and next 80-column character/attribute row; separate from 640-byte pixel FIFO."
+        },
+        "timing_budget": {
+          "pixel_clock_mhz": 21.504,
+          "renderer_pixels_per_step": 8,
+          "renderer_step_mhz": 2.688,
+          "page_drain_microseconds": 14.881,
+          "qualification": "At 250 ns conservative DRAM cycle, 80 glyph fetches consume 20 microseconds per active line; 160-byte row prefetch amortizes across 8/10/16 scanlines. Two row caches and 16-bit reads cover text-row transitions. Verify sprites, refresh and bounded host/DMA slots together at voltage/temperature corners; no guaranteed maximum CPU upload rate."
+        },
+        "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
+        "monitor_policy": "Read capability descriptor before enabling sync. Mono Pro accepts only raster_640_400; integer-scale legacy modes. Old monitors retain their advertised 200-line raster(s), never 640×400. Native 400-line modes require Mono Pro; new 200-line bitmap modes also work on capable older displays. This is display-mode/API compatibility, not Z80 binary compatibility.",
+        "die_area_planning_mm2": 80
+      },
+      "used_in": [
+        "device.artemis_video_card"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_requirements": [
+        "External 16×4116 DRAM and 2×2114 sprite SRAM; integrated 640-byte pixel FIFO and 320-byte row cache. Die-area estimate 80 mm² (60–110), about 65,000–95,000 transistors including SRAM; not a released layout. Qualify timing, large-package pin count, analog-free digital logic and one respin."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_graphics_chip"
+      ]
+    },
+    {
+      "id": "part.artemis_fdd_hdd_controller",
+      "name": "Artemis custom FDD/HDD controller",
+      "category": "storage_controller_ic",
+      "origin": "custom_aion_labs",
+      "specification": {
+        "supported_fdd_count": 2,
+        "fdd_size_inch": 5.25,
+        "fdd_density": "double density",
+        "hdd_interface_supported": true,
+        "hdd_bundled_with_standard_artemis": false
+      },
+      "used_in": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ],
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_requirements": [
+        "Define exact floppy and HDD electrical interfaces, encodings, data separator/PLL, DMA/FIFO and firmware split. Specify what remains external",
+        "“HDD supported” is not a complete controller."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.artemis_fdd_hdd_controller"
+      ]
+    },
+    {
+      "id": "part.ball_tv90_crt",
+      "name": "Ball Brothers TV-90 CRT display",
+      "category": "crt_display_assembly",
+      "origin": "historical_external_component",
+      "used_in": [
+        "device.mono_monitor_1"
+      ],
+      "vendor": "Ball Brothers",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Exact OEM orderable part, supplied assembly boundary, screen/phosphor, scan requirements, life/acceptance limits and what analog/HV components remain to buy."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.ball_tv90_crt"
+      ]
+    },
+    {
+      "id": "part.sony_kv1204_display_assembly",
+      "name": "Sony KV-1204 12-inch color display components",
+      "category": "crt_display_assembly",
+      "origin": "historical_external_component",
+      "specification": {
+        "reused_elements": [
+          "color tube",
+          "deflection yoke",
+          "convergence circuitry",
+          "HV supply",
+          "deflection circuitry"
+        ]
+      },
+      "used_in": [
+        "device.color_monitor_1"
+      ],
+      "vendor": "Sony",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Exact OEM supply boundary and permitted purchasable kit, with included component list",
+        "quantify RGB-interface modifications, mechanical fit, yield and calibration."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.sony_kv1204_display_assembly"
+      ]
+    },
+    {
+      "id": "part.motorola_ds3000_140a_crt",
+      "name": "Motorola DS3000-140A CRT display",
+      "category": "crt_display_assembly",
+      "origin": "historical_external_component",
+      "used_in": [
+        "device.mono_monitor_2"
+      ],
+      "vendor": "Motorola",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "manufacturing_requirements": [
+        "Exact tube or monitor-assembly identification, included electronics, raster/bandwidth and acceptance test",
+        "prevent tube-plus-complete-monitor double counting."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.motorola_ds3000_140a_crt"
+      ]
+    },
+    {
+      "id": "part.medium_resolution_rgb_crt",
+      "name": "12-inch medium-resolution RGB CRT display assembly",
+      "category": "crt_display_assembly",
+      "origin": "historical_external_or_unspecified_component",
+      "used_in": [
+        "device.color_monitor_2"
+      ],
+      "vendor": "unspecified display OEM",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "manufacturing_requirements": [
+        "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.medium_resolution_rgb_crt"
+      ]
+    },
+    {
+      "id": "part.mpi_mp40_mechanism",
+      "name": "Micro Peripherals MP-40 bare printer mechanism",
+      "category": "printer_mechanism",
+      "origin": "historical_external_component",
+      "used_in": [
+        "device.flexiprint40"
+      ],
+      "vendor": "Micro Peripherals, Inc.",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_requirements": [
+        "Orderable revision and contents: head, motors, sensors, frame, carriage/platen, ribbon system, wiring",
+        "define excluded controller/PSU/case and incoming tests."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.mpi_mp40_mechanism"
+      ]
+    },
+    {
+      "id": "part.hdd_5mb",
+      "name": "Seagate ST506 5 MB hard disk drive",
+      "category": "hard_disk_drive",
+      "origin": "historical_external_component",
+      "specification": {
+        "capacity_mb": 5
+      },
+      "used_in": [
+        "computer.artemis_pro"
+      ],
+      "vendor": "Seagate Technology",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "manufacturing_requirements": [
+        "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in.",
+        "Selected ST506: 5.0 MB formatted / 6.38 MB unformatted, MFM 5 Mbit/s, 34-pin control and 20-pin data. Budget +12 V 4.5 A startup and +5 V 1 A maximum; qualify controller, spin-up, airflow, harness and mounting. Seagate preliminary OEM manual, April 1981. No cost or qualification claim."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.hdd_5mb"
+      ]
+    },
+    {
+      "id": "part.aion_4116",
+      "name": "AION 4116-equivalent 16Kx1 NMOS DRAM",
+      "category": "memory_ic",
+      "origin": "custom_logix_aion",
+      "vendor": "AION Labs",
+      "used_in": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "device.apple2_video_card",
+        "device.s100_video_card"
+      ],
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "capacity_kbit": 16,
+        "organization_words": 16384,
+        "data_width_bits": 1,
+        "ports": [
+          "single random read/write port"
+        ],
+        "array_rows": 128,
+        "array_columns": 128,
+        "random_cycle_target_ns": 375,
+        "serial_register_bits": 0,
+        "refresh": "Controller refreshes all 128 rows including hidden pages. Retention interval, refresh scheduling and speed grade require silicon qualification.",
+        "package": "16-pin DIP target; qualified ordering code pending",
+        "supply_rails_v": [
+          12,
+          5,
+          -5
+        ],
+        "qualification_status": "Accepted design baseline; AION manufacture and 4116 electrical compatibility require qualification, not a purchased supplier quote.",
+        "manufacturing_planning": {
+          "die_area_mm2_range": [
+            16,
+            20
+          ],
+          "die_area_mm2_central": 18,
+          "die_yield_fraction_1978_central": 0.5135,
+          "saleable_yield_fraction_1978_central": 0.4775,
+          "recurring_chip_cost_1978_usd": 3.4452,
+          "eight_chip_cost_1978_usd": 27.5618,
+          "status": "Planning estimate at 3 micron, not layout-derived. Ordinary DRAM still requires capacitor, sense-amplifier, retention, refresh and speed qualification; no custom serial-output register."
+        }
+      },
+      "manufacturing_requirements": [
+        "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
+        "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aion_4116"
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
+    },
+    {
+      "id": "part.aion_2114",
+      "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
+      "category": "memory_ic",
+      "origin": "custom_logix_aion",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "used_in": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "device.apple2_video_card",
+        "device.s100_video_card"
+      ],
+      "specification": {
+        "capacity_kbit": 4,
+        "organization_words": 1024,
+        "data_width_bits": 4,
+        "random_cycle_target_ns": 250,
+        "supply_rails_v": [
+          5
+        ],
+        "refresh_required": false,
+        "package": "18-pin DIP target; electrical qualification pending",
+        "manufacturing_planning": {
+          "die_area_mm2_range": [
+            16,
+            24
+          ],
+          "die_area_mm2_central": 20,
+          "status": "3 micron planning estimate; layout and speed-bin qualification pending"
+        }
+      },
+      "manufacturing_requirements": [
+        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aion_2114"
+      ]
+    },
+    {
+      "id": "part.aurelia_system_controller",
+      "name": "AION Aurelia system controller (DMA, banking and refresh)",
+      "category": "system_controller_ic",
+      "origin": "custom_logix_aion",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "used_in": [
+        "computer.aurelia",
+        "computer.aurelia_plus"
+      ],
+      "specification": {
+        "host_clock_mhz": [
+          4,
+          6
+        ],
+        "cpu_address_bits": 16,
+        "data_width_bits": 8,
+        "page_size_kb": 4,
+        "dma": {
+          "transfer_contexts": 2,
+          "active_transfer_engines": 1,
+          "source_address_bits": 16,
+          "destination_address_bits": 16,
+          "length_bits": 16,
+          "operations": [
+            "memory-to-memory",
+            "memory-to-I/O",
+            "I/O-to-memory"
+          ],
+          "address_steps": [
+            "fixed",
+            "increment",
+            "decrement"
+          ],
+          "bank_selection": "Latch physical source/destination bank and offsets on start. CPU mapping changes cannot redirect an active transfer; split logical buffers at 4 KiB boundaries before programming physical segments. Reject ROM writes, unmapped banks and out-of-range lengths.",
+          "arbitration": "Bounded bursts with guaranteed CPU and refresh service; device-ready/WAIT handshake; video uploads yield to video-controller fetch deadlines. Numeric grant limits require cycle-level validation.",
+          "completion": "Completion/error interrupt, readable remaining count, controlled abort; reset disables DMA.",
+          "video_endpoint": "Auto-incrementing upload ports for display DRAM or dedicated sprite SRAM; target-ready backpressure.",
+          "peripheral_scope": "Disk/FlexiBUS DMA requires qualified request/ready or FIFO endpoints and drivers; legacy programmed I/O remains supported."
+        },
+        "refresh": {
+          "independent_of_cpu": true,
+          "all_installed_banks": true,
+          "scope": "System DRAM only, including hidden banks and expansion. Video controller refreshes display DRAM; sprite SRAM needs no refresh.",
+          "scheduler": "Always-running timer, row counter and refresh arbitration during CPU execution, HALT and DMA; initialize before enabling RAM use. Match row count and retention deadlines to each qualified system DRAM type.",
+          "supported_populations": [
+            "48 KiB: three banks of eight 16Kx1 DRAMs",
+            "64 KiB expanded Aurelia: four banks of eight 16Kx1 DRAMs",
+            "64 KiB Aurelia+: one bank of eight 64Kx1 DRAMs"
+          ]
+        },
+        "bank_control": "0000–6FFF fixed lower RAM; 7000–EFFF switchable in 4 KiB pages; F000–FFFF common RAM. Boot ROM at zero until normal-map release.",
+        "manufacturing_planning": {
+          "die_area_mm2_range": [
+            26,
+            34
+          ],
+          "die_area_mm2_central": 30,
+          "package_allowance_usd": 3,
+          "status": "3 micron planning estimate; pin count, layout, timing and speed-bin yield pending"
+        }
+      },
+      "manufacturing_requirements": [
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aurelia_system_controller"
+      ]
+    },
+    {
+      "id": "part.brimar_m36_141w_crt",
+      "name": "Thorn–Brimar M36-141W 14-inch monochrome CRT",
+      "category": "crt_tube",
+      "vendor": "Thorn–Brimar",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "manufacturer": "Thorn–Brimar",
+        "model": "M36-141W",
+        "diagonal_inch": 14,
+        "purchase_boundary": "Bare CRT; yoke, HV, deflection, PSU and amplifier purchased separately.",
+        "historical_source": "https://www.worldradiohistory.com/Archive-Catalogs/Suppliers/Brimar-Industrial-Cathode-Ray-Tubes-1978-Volume-2.pdf",
+        "qualification": "Period catalog candidate, not proof of 640×400 system performance or supplier availability at modeled prices."
+      },
+      "used_in": [
+        "device.mono_pro"
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "manufacturing_requirements": [
+        "Supplier and production qualification pending."
+      ],
+      "bom_assembly_refs": [
+        "assembly.part.brimar_m36_141w_crt"
+      ]
+    },
+    {
+      "id": "part.mono_pro_controller",
+      "name": "AION Mono Pro receiver and grayscale palette controller",
+      "category": "display_controller_ic",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "input_bits": 4,
+        "palette_entries": 16,
+        "palette_entry_bits": 8,
+        "pixel_clock_mhz": 21.504,
+        "output": "8-bit DAC switching outputs to external precision resistor ladder and wideband analog amplifier; separate HV/deflection/PSU.",
+        "die_area_planning_mm2": 12
+      },
+      "used_in": [
+        "device.mono_pro"
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "manufacturing_requirements": [
+        "Supplier and production qualification pending."
+      ],
+      "bom_assembly_refs": [
+        "assembly.part.mono_pro_controller"
+      ]
+    },
+    {
+      "id": "part.aion_4164",
+      "name": "AION 64 Kbit DRAM (4164-equivalent)",
+      "category": "memory_ic",
+      "origin": "custom_logix_aion",
+      "vendor": "AION Labs",
+      "used_in": [
+        "computer.artemis_pro",
+        "computer.aurelia_plus",
+        "part.ram_256kb_x32"
+      ],
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "specification": {
+        "capacity_kbit": 64,
+        "organization_words": 65536,
+        "data_width_bits": 1,
+        "package": null,
+        "manufacturer_part_number": null,
+        "access_time_ns": null,
+        "cycle_time_ns": null,
+        "supply_rails_v": null,
+        "refresh_requirement": null,
+        "qualification_status": "AION-owned part; released package, speed grade, rails, refresh and production yield require qualification before December 1979.",
+        "organization": "64K × 1",
+        "manufacturing_planning": {
+          "die_area_mm2": 45,
+          "wafer_mm": 75,
+          "maturity_multiplier": 0.85,
+          "cost_1980_usd": 14.4056,
+          "cost_1981_usd": 11.4874,
+          "status": "Accepted RAM process/repair scenario, not proven yield. Spare structures, retention, repair coverage and speed require qualification; recipe details in memory_manufacturing.json.",
+          "boundary": "Recurring fabricated/package/test cost; development, masks and fab capital budgeted separately.",
+          "policy_file": "memory_manufacturing.json",
+          "revision_policy": "1980 process-control improvement; 1981 repaired 3 um die includes 5% spare area. Evaluate 2.75 um against repaired 3 um; apply only if cheaper. Later 2/1.5 um releases are prospective.",
+          "production_revisions": {
+            "1980": {
+              "id": "dram64_3um_control",
+              "node_um": "3.0",
+              "available_from": "1980-06-01",
+              "die_area_mm2": 45,
+              "defect_density_cm2": 2,
+              "nonarea_yield": 0.765,
+              "processed_wafer_usd": 235,
+              "repair_fraction_of_spatial_failures": 0,
+              "gross_usable_dies": 66.00446978417172,
+              "raw_die_yield": 0.3110257897015583,
+              "die_yield": 0.3110257897015583,
+              "good_packaged_dies_per_wafer": 19.092055874762828,
+              "recurring_processed_wafer_cost_usd": 235,
+              "good_packaged_chip_cost_usd": 14.405558618940674
+            },
+            "1981": {
+              "id": "dram64_3um_repair",
+              "node_um": "3.0",
+              "available_from": "1981-01-01",
+              "die_area_mm2": 47.25,
+              "defect_density_cm2": 1.7,
+              "nonarea_yield": 0.765,
+              "processed_wafer_usd": 255,
+              "repair_fraction_of_spatial_failures": 0.35,
+              "repair_cost_per_wafer_usd": 12,
+              "gross_usable_dies": 62.33568104122106,
+              "raw_die_yield": 0.34262132680681845,
+              "die_yield": 0.490453862424432,
+              "good_packaged_dies_per_wafer": 28.43268124617761,
+              "recurring_processed_wafer_cost_usd": 267,
+              "good_packaged_chip_cost_usd": 11.487376426529654
+            }
+          },
+          "legacy_fields_scope": "Top-level die area and maturity describe the original launch revision only; production_revisions are authoritative for dated 1980/81 economics."
+        },
+        "electrical_contract": "64K x 1; released pinout/rails/timing/refresh remain gates. Common module interface only after retention, speed and all-bank qualification; no capacity or bus-width change."
+      },
+      "manufacturing_requirements": [
+        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.aion_4164"
+      ],
+      "second_source": {
+        "manufacturer": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "earliest_commercial_availability": "1979-10",
+        "qualification_status": "Alternate-story staged release; exact per-part date and approved ordering code unresolved.",
+        "transfer": "AION delivers process-compatible mask sets, reference silicon, manufacturing know-how, tests and qualification support.",
+        "procurement": "AION remains launch source. No substitution before per-part electrical/reliability qualification."
+      }
+    },
+    {
+      "id": "part.artemis_graphics_chip_64kb",
+      "name": "AION 64 KiB Artemis graphics controller with palette sequencer",
+      "category": "graphics_controller_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "card_ref": "device.artemis_video_card_64kb",
+        "base_controller_ref": "part.artemis_graphics_chip",
+        "palette_list_ref": "technology.scanline_palette_list",
+        "additions": [
+          "64 KiB display DRAM addressing",
+          "640x400x2 and 640x200x4 bitmap modes",
+          "bounded palette-list prefetch and horizontal-retrace command sequencer"
+        ],
+        "continuity": "Retain prior modes, five sprites with independent SRAM, pixel FIFO, character caches, refresh and host/DMA arbitration. Canonical detailed layout resides in the card specification."
+      },
+      "used_in": [
+        "device.artemis_video_card_64kb"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.nec_pc8853_display_assembly",
+      "name": "NEC PC-8853 / JC-1410P2-class colour display assembly",
+      "category": "crt_display_assembly",
+      "origin": "external_oem",
+      "vendor": "NEC",
+      "introduced": {
+        "event_name": "Historical NEC shipment",
+        "event_start_date": "1982-02",
+        "date_precision": "month"
+      },
+      "specification": {
+        "diagonal_inches": 14,
+        "dot_pitch_mm": 0.31,
+        "historical_raster": "640x400, 24.83 kHz horizontal, 56.4/55.4 Hz vertical; stock digital RGB input.",
+        "source": "https://support.nec-lavie.jp/support/product/data/spec/dsp/d051-1.html",
+        "adaptation": "OEM tube/yoke/deflection assembly plus qualified 26.88 kHz/60 Hz progressive adaptation and AION palette/DAC electronics. Stock monitor is not plug-compatible; historical shipment does not prove OEM contract or modified timing qualification.",
+        "bare_tube_ordering_code": null
+      },
+      "used_in": [
+        "device.color_pro_14"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.color_pro_monitor_controller",
+      "name": "AION Color Pro digital-to-RGB monitor controller",
+      "category": "display_controller_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "palette_registers": 16,
+        "register_width_bits": 12,
+        "source_palette": "3 x 4-bit RGB",
+        "vertical_retrace_register_update": true,
+        "horizontal_retrace_register_update": true,
+        "conversion": "Logix 4-bit index -> 16 x 12-bit palette -> three 4-bit DAC channels -> RGB voltage amplifiers. DAC ladders, analog drivers, HV/deflection remain explicit board components; their integration on silicon is not assumed.",
+        "palette_list_ref": "technology.scanline_palette_list",
+        "bandwidth": "25–30 MHz RGB amplifier design target; verify DAC settling, text focus, convergence and line-boundary palette commits."
+      },
+      "used_in": [
+        "device.color_pro_14"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.professional_graphics_controller",
+      "name": "AION professional 2D blitter and line controller",
+      "category": "graphics_controller_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "Professional graphics availability around June 1982",
+        "event_start_date": "1982-06"
+      },
+      "specification": {
+        "technology_ref": "technology.artemis_professional_graphics",
+        "memory_addressing_bytes": 131072,
+        "implementation": "Engineering prototypes may use discrete/microcoded logic; qualify production custom silicon, timing and memory arbitration before release. No unverified performance or process-node claim."
+      },
+      "used_in": [
+        "device.artemis_professional_video_128kb"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.mono_pro_17_controller",
+      "name": "AION Mono Pro 17 grayscale monitor controller",
+      "category": "display_controller_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "Professional graphics availability around June 1982",
+        "event_start_date": "1982-06"
+      },
+      "specification": {
+        "grayscale_levels": 16,
+        "conversion": "Four pixel codes map to four programmable values selected from a 16-level intensity range; custom controller plus 4-bit DAC and qualified linear video amplifier. CRT deflection and high-voltage electronics remain separate.",
+        "qualification": "Validate pixel-clock settling, grayscale distinguishability, geometry, corner focus, phosphor persistence and sync compatibility."
+      },
+      "used_in": [
+        "device.mono_pro_17"
+      ],
+      "manufacturing_status": "incomplete_bom"
+    },
+    {
+      "id": "part.era2",
+      "name": "ERA² processor",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
+      "specification_ref": "technology.era2_architecture",
+      "manufacturing_process_ref": "technology.nmos_2um",
+      "variants": [
+        {
+          "name": "ERA² baseline target",
+          "clock_mhz": 12,
+          "used_in": [
+            "computer.athena",
+            "computer.athena_server"
+          ]
+        },
+        {
+          "name": "ERA² stretch speed bin",
+          "clock_mhz": 16,
+          "status": "Uncommitted; depends on timing, power and yield qualification."
+        }
+      ],
+      "manufacturing_planning": {
+        "node_um": 2,
+        "wafer_diameter_mm": 75,
+        "die_area_mm2_target": 90,
+        "transistor_budget_target": 142000,
+        "initial_die_yield_acceptable": 0.1,
+        "status": "Planning envelope, not a completed layout or measured yield. Cache/MMU allocation must fit this budget.",
+        "initial_manufacturer": "AION Labs only",
+        "second_source_policy": "No SGS-ATES ERA² manufacture for at least 12–18 months after initial commercial availability; transfer is not automatic."
+      }
+    },
+    {
+      "id": "part.aion_4164_2um",
+      "name": "AION 4164 — 2 µm revision",
+      "category": "memory_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "Planned 2 µm 4164 process qualification",
+        "event_start_date": "1982-07-01",
+        "timeline_note": "Existing manufacturing roadmap target; Athena modules require separate board qualification."
+      },
+      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
+      "specification": {
+        "capacity_kbit": 64,
+        "organization": "64K × 1",
+        "organization_words": 65536,
+        "data_width_bits": 1,
+        "base_product_ref": "part.aion_4164",
+        "manufacturing_recipe": "dram64_2um_repair",
+        "policy_file": "memory_manufacturing.json",
+        "node_um": 2,
+        "die_area_mm2": 28,
+        "access_time_ns": null,
+        "refresh_requirement": null,
+        "electrical_contract": "Qualify package, speed, rails, retention and refresh; same capacity as 4164. Neither dual-array 128K-bit nor 256K-bit silicon.",
+        "speed_qualification_targets": {
+          "basis": "Engineering targets; access_time_ns remains unknown until qualified.",
+          "preferred_row_access_ns": 120,
+          "preferred_random_cycle_ns": 240,
+          "fallback_row_access_ns": 150,
+          "fallback_random_cycle_ns_range": [
+            270,
+            300
+          ],
+          "stretch_row_access_ns": 100,
+          "conditions": "Qualify voltage, temperature, loading, page timing, retention, refresh and yield independently; 100 ns is not launch baseline."
+        }
+      },
+      "manufacturing_process_ref": "technology.nmos_2um"
+    },
+    {
+      "id": "part.ram_64kb_x32",
+      "name": "Logix 64 KB 32-bit DRAM module",
+      "vendor": "Logix",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "introduced": {
+        "event_name": "Shared module specification migration; original availability retained",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "capacity_kb": 64,
+        "data_width_bits": 32,
+        "chips": 32,
+        "chip_type_ref": "part.dram_16kbit",
+        "chip_organization": "16K × 1",
+        "ranks": 1,
+        "chips_per_rank": 32,
+        "rank_capacity_kb": 64,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 128,
+        "parity_bits": 0,
+        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+      },
+      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+      "manufacturing_requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.ram_64kb_x32"
+      ]
+    },
+    {
+      "id": "part.ram_128kb_x32",
+      "name": "Logix 128 KB 32-bit DRAM module",
+      "vendor": "Logix",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "introduced": {
+        "event_name": "Shared module specification migration; original availability retained",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "capacity_kb": 128,
+        "data_width_bits": 32,
+        "chips": 64,
+        "chip_type_ref": "part.dram_16kbit",
+        "chip_organization": "16K × 1",
+        "ranks": 2,
+        "chips_per_rank": 32,
+        "rank_capacity_kb": 64,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 256,
+        "parity_bits": 0,
+        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+      },
+      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+      "manufacturing_requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.ram_128kb_x32"
+      ]
+    },
+    {
+      "id": "part.ram_256kb_x32",
+      "name": "Logix 256 KB 32-bit DRAM module",
+      "vendor": "Logix",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "introduced": {
+        "event_name": "Shared module specification migration; original availability retained",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "capacity_kb": 256,
+        "data_width_bits": 32,
+        "chips": 32,
+        "chip_type_ref": "part.aion_4164",
+        "chip_organization": "64K × 1",
+        "ranks": 1,
+        "chips_per_rank": 32,
+        "rank_capacity_kb": 256,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 512,
+        "parity_bits": 0,
+        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+      },
+      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+      "manufacturing_requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.ram_256kb_x32"
+      ]
+    },
+    {
+      "id": "part.ram_256kb_x32_2um",
+      "name": "Logix 256 KB 32-bit DRAM module (2 µm)",
+      "vendor": "Logix",
+      "category": "memory_module",
+      "origin": "custom_logix",
+      "introduced": {
+        "event_name": "Shared module specification migration; original availability retained",
+        "event_start_date": "1983-05-16"
+      },
+      "specification": {
+        "capacity_kb": 256,
+        "data_width_bits": 32,
+        "chips": 32,
+        "chip_type_ref": "part.aion_4164_2um",
+        "chip_organization": "64K × 1",
+        "ranks": 1,
+        "chips_per_rank": 32,
+        "rank_capacity_kb": 256,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 512,
+        "parity_bits": 0,
+        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+      },
+      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+      "manufacturing_requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "manufacturing_status": "incomplete_bom",
+      "bom_assembly_refs": [
+        "assembly.part.ram_256kb_x32_2um"
+      ]
+    }
+  ]
+}

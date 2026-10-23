@@ -1,9 +1,10 @@
+from data_store import read_document, document_bytes, document_text
 """Build the RAM revision comparison from the same committed financial models."""
 import json, html, hashlib
 from pathlib import Path
 from memory_manufacturing import policy, evaluate, selected
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 b=read('baselines/memory-manufacturing-baseline.json');p=policy()
 c=read('generated/models/manufacturing-costs.json');prices=read('generated/models/pricing-results.json');i=read('generated/models/industrial-investment-1974-1981.json');roi=read('generated/models/roi-1974-1980.json');sales=read('generated/models/sales-forecast.json')
 cp={x['id']:x for x in c['products']};pp={x['id']:x for x in prices['products']}
@@ -27,6 +28,6 @@ demand=[]
 future_cap=sum(x['usd'] for x in p['capital_schedule'] if x['quarter']>'1982-Q4')
 future_eng=sum(x['loaded_payroll_and_validation_usd'] for x in p['future_engineering'] if int(x['period'])>1982)
 m=dict(status=p['status'],baseline_commit=b['source_commit'],era_policy=p['era_policy'],products=products,recipes=recipes,roi=roi_changes,investment=i['memory_manufacturing'],forward_budget_total_usd=future_cap+future_eng,forward_budget_basis='Capital plus stated engineering/validation budgets after 1982; excludes future production operating costs. Not a complete 1983 cash forecast.',cash_after_reserving_forward_budgets_usd=round(central['quarterly'][-1]['cumulative_net_cash_usd']-future_cap-future_eng,2),first_cash_payback_quarter=central['first_cash_payback_quarter'])
-m['sources']=[dict(path=f,sha256=hashlib.sha256((R/f).read_bytes()).hexdigest()) for f in ['generated/catalogs/memory-manufacturing.json','baselines/memory-manufacturing-baseline.json','generated/models/manufacturing-costs.json','generated/models/pricing-results.json','generated/models/industrial-investment-1974-1981.json','generated/models/roi-1974-1980.json','generated/models/sales-forecast.json']]
+m['sources']=[dict(path=f,sha256=hashlib.sha256(document_bytes(f, root=R)).hexdigest()) for f in ['generated/catalogs/memory-manufacturing.json','baselines/memory-manufacturing-baseline.json','generated/models/manufacturing-costs.json','generated/models/pricing-results.json','generated/models/industrial-investment-1974-1981.json','generated/models/roi-1974-1980.json','generated/models/sales-forecast.json']]
 (R/'generated/models/memory-manufacturing-impact.json').write_text(json.dumps(m,indent=2)+'\n')
 # The RAM manufacturing HTML page has been retired.

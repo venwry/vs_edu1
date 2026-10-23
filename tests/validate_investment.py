@@ -1,9 +1,10 @@
+from data_paths import read_document, document_bytes
 from data_paths import resolve_path
 """Validate published industrial assets and their repository integration."""
 from pathlib import Path
 import hashlib,json,re
 root=Path(__file__).resolve().parents[1]
-model=json.loads((root/'generated/models/industrial-investment-1974-1981.json').read_text())
+model=read_document('generated/models/industrial-investment-1974-1981.json', root=root)
 report=(root/'industrial_investment_1974_1981.html').read_text()
 embedded=json.loads(re.search(r'<script id="model" type="application/json">(.*?)</script>',report,re.S).group(1))
 assert embedded==model,'Published HTML and JSON differ: regenerate both'
@@ -17,8 +18,8 @@ for r in model['quarterly_capacity']:
  assert r['installed_computer_capacity_month']>=r['peak_month_customer_demand']*1.05-.001
  assert r['fab_capacity_month']>=r['fab_wafer_starts_required_month']
 for source in model['sources']:
- assert hashlib.sha256((root/resolve_path(source['path'])).read_bytes()).hexdigest()==source['sha256'],source['path']+' changed: regenerate model'
-site=json.loads((root/'generated/catalogs/site-pages.json').read_text());pages={x['id']:x for x in site['pages']}
+ assert hashlib.sha256(document_bytes(resolve_path(source['path']), root=root)).hexdigest()==source['sha256'],source['path']+' changed: regenerate model'
+site=read_document('generated/catalogs/site-pages.json', root=root);pages={x['id']:x for x in site['pages']}
 assert 'industrial-investment' in site['navigation']
 assert pages['industrial-investment']['path']=='industrial_investment_1974_1981.html'
 for id in site['navigation']:assert 'href="'+pages[id]['path']+'"' in report

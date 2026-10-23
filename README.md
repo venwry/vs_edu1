@@ -5,23 +5,24 @@ with static HTML explorers and financial reports.
 
 - **Authoring contract:** [JSON_DATA_STANDARD.md](JSON_DATA_STANDARD.md)
 - **Build ownership:** [BUILD_PIPELINE.md](BUILD_PIPELINE.md)
-- **Migration audit and test results:** [MIGRATION_VALIDATION.md](MIGRATION_VALIDATION.md)
-- **Source/projection registry:** [data/manifest.json](data/manifest.json)
+- **Migration audit and test results:** [SINGLE_DATA_MIGRATION.md](SINGLE_DATA_MIGRATION.md)
+- **Source/projection registry:** [schemas/data-registry.json](schemas/data-registry.json)
 
-Edit authoritative records under `data/` or `site/config/`, then run:
+Edit the 24 authoritative collections under `data/`, then run:
 
 ```sh
-python tools/data_catalog.py
+python tools/validate_data.py
 python tests/validate_data_structure.py
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000/`. Existing HTML page URLs are unchanged. Generated
-catalogue views are committed so hosting requires no backend. Financial output
-snapshots are preserved under `generated/models/`; rebuilding catalogue views does
-not alter prices, sales, forecasts or ROI. Python validation needs `jsonschema`.
+Open `http://localhost:8000/`. Existing page URLs are unchanged. Pages read the
+collections directly through `data-store.js`; there is no catalogue build step.
+Saved numerical outputs remain under `generated/models/` and are unchanged by
+source validation. Python validation needs `jsonschema`; browser tests need `jsdom`.
 
-For offline file selection, choose the three files in `generated/catalogs/`:
-`logix-aion-technical-catalog-v2.json`, `logix-aion-story.json` and `site-pages.json`.
+Use HTTP hosting, including for local offline work. The retired three-catalogue
+file picker is replaced with local-server instructions. The source-view links on
+pages show transient JSON and link to its authoritative collections.
 
 See the standard before adding a record, changing a schema or recalculating models.

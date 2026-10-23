@@ -1,0 +1,485 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "aurelia_explorer",
+    "artemis_explorer",
+    "site_pages"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/site.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "aurelia_explorer": {
+      "type": "object",
+      "required": [],
+      "additionalProperties": false,
+      "properties": {
+        "aurelia_1978_campaign": {
+          "type": [
+            "object"
+          ]
+        },
+        "bundle_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "business_tools_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "comdex_1982": {
+          "type": [
+            "object"
+          ]
+        },
+        "compatibility_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "competitor_reactions_file": {
+          "type": [
+            "string"
+          ]
+        },
+        "completed_assessments": {
+          "type": [
+            "string"
+          ]
+        },
+        "computer_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        },
+        "deferred": {
+          "type": [
+            "array"
+          ]
+        },
+        "diagrams": {
+          "type": [
+            "object"
+          ]
+        },
+        "era_area_assumption": {
+          "type": [
+            "string"
+          ]
+        },
+        "id_convention": {
+          "type": [
+            "string"
+          ]
+        },
+        "introduction": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "ncc_1982": {
+          "type": [
+            "object"
+          ]
+        },
+        "ncc_1982_offering": {
+          "type": [
+            "object"
+          ]
+        },
+        "network_adapter_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "network_software_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "notes": {
+          "type": [
+            "object"
+          ]
+        },
+        "os_model_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "os_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "page_ids": {
+          "type": [
+            "array"
+          ]
+        },
+        "portability_refs": {
+          "type": [
+            "object"
+          ]
+        },
+        "purpose": {
+          "type": [
+            "string"
+          ]
+        },
+        "ram_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "schema_notes": {
+          "type": [
+            "object"
+          ]
+        },
+        "software_platform_policy_from_november_1980": {
+          "type": [
+            "object"
+          ]
+        },
+        "software_views": {
+          "type": [
+            "array"
+          ]
+        },
+        "timeline": {
+          "type": [
+            "array"
+          ]
+        },
+        "title": {
+          "type": [
+            "string"
+          ]
+        },
+        "version": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    },
+    "artemis_explorer": {
+      "type": "object",
+      "required": [],
+      "additionalProperties": false,
+      "properties": {
+        "aurelia_1978_campaign": {
+          "type": [
+            "object"
+          ]
+        },
+        "bundle_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "business_tools_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "comdex_1982": {
+          "type": [
+            "object"
+          ]
+        },
+        "compatibility_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "competitor_reactions_file": {
+          "type": [
+            "string"
+          ]
+        },
+        "completed_assessments": {
+          "type": [
+            "string"
+          ]
+        },
+        "computer_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        },
+        "deferred": {
+          "type": [
+            "array"
+          ]
+        },
+        "diagrams": {
+          "type": [
+            "object"
+          ]
+        },
+        "era_area_assumption": {
+          "type": [
+            "string"
+          ]
+        },
+        "id_convention": {
+          "type": [
+            "string"
+          ]
+        },
+        "introduction": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "ncc_1982": {
+          "type": [
+            "object"
+          ]
+        },
+        "ncc_1982_offering": {
+          "type": [
+            "object"
+          ]
+        },
+        "network_adapter_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "network_software_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "notes": {
+          "type": [
+            "object"
+          ]
+        },
+        "os_model_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "os_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "page_ids": {
+          "type": [
+            "array"
+          ]
+        },
+        "portability_refs": {
+          "type": [
+            "object"
+          ]
+        },
+        "purpose": {
+          "type": [
+            "string"
+          ]
+        },
+        "ram_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "schema_notes": {
+          "type": [
+            "object"
+          ]
+        },
+        "software_platform_policy_from_november_1980": {
+          "type": [
+            "object"
+          ]
+        },
+        "software_views": {
+          "type": [
+            "array"
+          ]
+        },
+        "timeline": {
+          "type": [
+            "array"
+          ]
+        },
+        "title": {
+          "type": [
+            "string"
+          ]
+        },
+        "version": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    },
+    "site_pages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "description",
+        "pages",
+        "navigation",
+        "labels",
+        "entity_page_links",
+        "rendering_notes",
+        "timeline_view"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "array"
+        },
+        "navigation": {
+          "type": "array"
+        },
+        "labels": {
+          "type": "object"
+        },
+        "entity_page_links": {
+          "type": "object"
+        },
+        "rendering_notes": {
+          "type": "string"
+        },
+        "timeline_view": {
+          "type": "object"
+        },
+        "navigation_sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "page_refs"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "page_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "redirects": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "record_page_links": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "campaign_groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "event_ref",
+              "step_refs",
+              "content_path"
+            ],
+            "properties": {
+              "event_ref": {
+                "type": "string"
+              },
+              "step_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "content_path": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "record_redirects": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

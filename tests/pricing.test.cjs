@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
-const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=JSON.parse(read('generated/models/pricing-results.json'));
-(async()=>{const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/pricing.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('pricing.js'));w.document.getElementById('app').innerHTML=w.pricingTemplate;w.fetch=async url=>({ok:true,json:async()=>url.includes('retail-catalog')?JSON.parse(read('generated/models/retail-catalog-1982-results.json')):model});await w.startPricing();const d=w.document;
+const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8'),model=require('../data-store.js').read('generated/models/pricing-results.json');
+(async()=>{const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/pricing.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('data-store.js'));w.eval(read('pricing.js'));w.document.getElementById('app').innerHTML=w.pricingTemplate;w.fetch=async url=>({ok:true,json:async()=>url.includes('retail-catalog')?require('../data-store.js').read('generated/models/retail-catalog-1982-results.json'):model});await w.startPricing();const d=w.document;
 assert(d.getElementById('dated-prices').textContent.includes('November'));assert(d.getElementById('dated-prices').textContent.includes('461.30'));
 assert.equal(d.querySelectorAll('.pricing-row').length,model.products.length);assert.equal(d.querySelectorAll('.pricing-group').length,10);assert.equal(d.querySelectorAll('.pricing-table thead tr:nth-child(2) th').length,6);
 assert.equal(d.getElementById('catalog-date').value,'1982-06-15');

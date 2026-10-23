@@ -1,0 +1,404 @@
+{
+  "version": 1,
+  "files": [
+    "data/assemblies.json",
+    "data/campaigns.json",
+    "data/components.json",
+    "data/computers.json",
+    "data/contracts.json",
+    "data/cost-inputs.json",
+    "data/demand-inputs.json",
+    "data/ecosystem-inputs.json",
+    "data/events.json",
+    "data/investment-inputs.json",
+    "data/manufacturing-processes.json",
+    "data/offers.json",
+    "data/peripherals.json",
+    "data/product-boms.json",
+    "data/programmes.json",
+    "data/retail-catalog.json",
+    "data/services.json",
+    "data/site.json",
+    "data/software-editions.json",
+    "data/software-products.json",
+    "data/sourcing.json",
+    "data/standards.json",
+    "data/timeline-structure.json",
+    "data/world.json"
+  ],
+  "views": {
+    "artemis-budget-inputs": {
+      "merge": [
+        {
+          "file": "data/cost-inputs.json",
+          "key": "artemis_budget_inputs"
+        }
+      ]
+    },
+    "artemis-display-revision": {
+      "merge": [
+        {
+          "file": "data/investment-inputs.json",
+          "key": "artemis_display_revision"
+        }
+      ]
+    },
+    "artemis-tiers": {
+      "merge": [
+        {
+          "file": "data/programmes.json",
+          "key": "artemis_tiers"
+        },
+        {
+          "file": "data/demand-inputs.json",
+          "key": "artemis_tiers"
+        }
+      ]
+    },
+    "athena-1983-program": {
+      "merge": [
+        {
+          "file": "data/programmes.json",
+          "key": "athena_1983_program"
+        }
+      ]
+    },
+    "aurelia-1978-campaign": {
+      "merge": [
+        {
+          "file": "data/campaigns.json",
+          "key": "aurelia_1978_campaign"
+        }
+      ]
+    },
+    "aurelia-plus-aion-memory": {
+      "merge": [
+        {
+          "file": "data/programmes.json",
+          "key": "aurelia_plus_aion_memory"
+        },
+        {
+          "file": "data/demand-inputs.json",
+          "key": "aurelia_plus_aion_memory"
+        }
+      ]
+    },
+    "comdex-1979-campaign": {
+      "merge": [
+        {
+          "file": "data/campaigns.json",
+          "key": "comdex_1979_campaign"
+        }
+      ]
+    },
+    "comdex-1982-campaign": {
+      "merge": [
+        {
+          "file": "data/campaigns.json",
+          "key": "comdex_1982_campaign"
+        }
+      ]
+    },
+    "comdex-1982-cost-inputs": {
+      "merge": [
+        {
+          "file": "data/cost-inputs.json",
+          "key": "comdex_1982_cost_inputs"
+        }
+      ]
+    },
+    "ecosystem-forecast-policy": {
+      "merge": [
+        {
+          "file": "data/ecosystem-inputs.json",
+          "key": "ecosystem_forecast_policy"
+        }
+      ]
+    },
+    "hardware-bom": {
+      "metadata": {
+        "file": "data/product-boms.json",
+        "key": "metadata"
+      },
+      "components": {
+        "file": "data/sourcing.json",
+        "key": "components"
+      },
+      "assemblies": {
+        "file": "data/assemblies.json",
+        "key": "assemblies"
+      },
+      "products": {
+        "file": "data/product-boms.json",
+        "key": "products"
+      },
+      "offers": {
+        "file": "data/product-boms.json",
+        "key": "offers"
+      },
+      "open_decisions": {
+        "file": "data/product-boms.json",
+        "key": "open_decisions"
+      },
+      "costing_inputs": {
+        "file": "data/product-boms.json",
+        "key": "costing_inputs"
+      },
+      "proposed_offer_refs": {
+        "file": "data/product-boms.json",
+        "key": "proposed_offer_refs"
+      },
+      "supplier_programs": {
+        "file": "data/sourcing.json",
+        "key": "supplier_programs"
+      }
+    },
+    "logix-aion-story": {
+      "story": true
+    },
+    "logix-aion-technical-catalog-v2": {
+      "metadata": {
+        "file": "data/world.json",
+        "key": "metadata"
+      },
+      "technologies": {
+        "file": "data/standards.json",
+        "key": "technologies"
+      },
+      "base_parts": {
+        "file": "data/components.json",
+        "key": "base_parts"
+      },
+      "devices": {
+        "file": "data/peripherals.json",
+        "key": "devices"
+      },
+      "computers": {
+        "file": "data/computers.json",
+        "key": "computers"
+      },
+      "software_products": {
+        "file": "data/software-products.json",
+        "key": "software_products"
+      },
+      "services": {
+        "file": "data/services.json",
+        "key": "services"
+      },
+      "product_strategy": {
+        "file": "data/programmes.json",
+        "key": "product_strategy"
+      },
+      "offered_bundles": {
+        "file": "data/offers.json",
+        "key": "offered_bundles"
+      },
+      "aurelia_explorer": {
+        "file": "data/site.json",
+        "key": "aurelia_explorer"
+      },
+      "proposed_bundles": {
+        "file": "data/offers.json",
+        "key": "proposed_bundles"
+      },
+      "artemis_explorer": {
+        "file": "data/site.json",
+        "key": "artemis_explorer"
+      },
+      "platform_editions": {
+        "file": "data/software-editions.json",
+        "key": "platform_editions"
+      },
+      "review_scope": {
+        "file": "data/programmes.json",
+        "key": "review_scope"
+      },
+      "external_platforms": {
+        "file": "data/computers.json",
+        "key": "external_platforms"
+      },
+      "external_partner_products": {
+        "file": "data/software-products.json",
+        "key": "external_partner_products"
+      },
+      "commercial_offerings": {
+        "file": "data/offers.json",
+        "key": "commercial_offerings"
+      }
+    },
+    "manufacturing-programs": {
+      "merge": [
+        {
+          "file": "data/programmes.json",
+          "key": "manufacturing_programs"
+        },
+        {
+          "file": "data/investment-inputs.json",
+          "key": "manufacturing_programs"
+        }
+      ]
+    },
+    "market-reactions": {
+      "merge": [
+        {
+          "file": "data/programmes.json",
+          "key": "market_reactions"
+        },
+        {
+          "file": "data/demand-inputs.json",
+          "key": "market_reactions"
+        }
+      ]
+    },
+    "memory-manufacturing": {
+      "merge": [
+        {
+          "file": "data/manufacturing-processes.json",
+          "key": "memory_manufacturing"
+        },
+        {
+          "file": "data/cost-inputs.json",
+          "key": "memory_manufacturing"
+        },
+        {
+          "file": "data/investment-inputs.json",
+          "key": "memory_manufacturing"
+        },
+        {
+          "file": "data/programmes.json",
+          "key": "memory_manufacturing"
+        }
+      ]
+    },
+    "ncc-1979-campaign": {
+      "merge": [
+        {
+          "file": "data/campaigns.json",
+          "key": "ncc_1979_campaign"
+        }
+      ]
+    },
+    "ncc-1980-campaign": {
+      "merge": [
+        {
+          "file": "data/campaigns.json",
+          "key": "ncc_1980_campaign"
+        }
+      ]
+    },
+    "ncc-1982-campaign": {
+      "merge": [
+        {
+          "file": "data/campaigns.json",
+          "key": "ncc_1982_campaign"
+        }
+      ]
+    },
+    "ncc-1982-inputs": {
+      "merge": [
+        {
+          "file": "data/cost-inputs.json",
+          "key": "ncc_1982_inputs"
+        }
+      ]
+    },
+    "retail-catalog-1982": {
+      "merge": [
+        {
+          "file": "data/retail-catalog.json",
+          "key": "retail_catalog_1982"
+        }
+      ]
+    },
+    "sales-model-inputs": {
+      "merge": [
+        {
+          "file": "data/demand-inputs.json",
+          "key": "sales_model_inputs"
+        }
+      ]
+    },
+    "sales-reassessment-inputs": {
+      "merge": [
+        {
+          "file": "data/demand-inputs.json",
+          "key": "sales_reassessment_inputs"
+        }
+      ]
+    },
+    "site-pages": {
+      "merge": [
+        {
+          "file": "data/site.json",
+          "key": "site_pages"
+        }
+      ]
+    },
+    "team-development-program": {
+      "merge": [
+        {
+          "file": "data/programmes.json",
+          "key": "team_development_program"
+        },
+        {
+          "file": "data/services.json",
+          "key": "team_development_program"
+        },
+        {
+          "file": "data/campaigns.json",
+          "key": "team_development_program"
+        }
+      ]
+    }
+  },
+  "legacy_paths": {
+    "artemis_budget_inputs.json": "generated/catalogs/artemis-budget-inputs.json",
+    "artemis_budget_review.json": "generated/models/artemis-budget-review.json",
+    "artemis_display_baseline.json": "baselines/artemis-display-baseline.json",
+    "artemis_display_impact.json": "generated/models/artemis-display-impact.json",
+    "artemis_display_revision.json": "generated/catalogs/artemis-display-revision.json",
+    "artemis_tiers.json": "generated/catalogs/artemis-tiers.json",
+    "athena_1983_program.json": "generated/catalogs/athena-1983-program.json",
+    "aurelia_1978_campaign.json": "generated/catalogs/aurelia-1978-campaign.json",
+    "aurelia_plus_aion_memory.json": "generated/catalogs/aurelia-plus-aion-memory.json",
+    "comdex_1979_campaign.json": "generated/catalogs/comdex-1979-campaign.json",
+    "comdex_1982_campaign.json": "generated/catalogs/comdex-1982-campaign.json",
+    "comdex_1982_cost_inputs.json": "generated/catalogs/comdex-1982-cost-inputs.json",
+    "comdex_1982_cost_review.json": "generated/models/manufacturing-costs.json",
+    "compatibility_pricing_baseline.json": "baselines/compatibility-pricing-baseline.json",
+    "ecosystem_forecast.json": "generated/models/ecosystem-forecast.json",
+    "ecosystem_forecast_policy.json": "generated/catalogs/ecosystem-forecast-policy.json",
+    "hardware_bom.json": "generated/catalogs/hardware-bom.json",
+    "hardware_bom.schema.json": "schemas/legacy/hardware_bom.schema.json",
+    "industrial_investment_1974_1981.json": "generated/models/industrial-investment-1974-1981.json",
+    "logix_aion_story.json": "generated/catalogs/logix-aion-story.json",
+    "logix_aion_story.schema.json": "schemas/legacy/logix_aion_story.schema.json",
+    "logix_aion_technical_catalog_v2.json": "generated/catalogs/logix-aion-technical-catalog-v2.json",
+    "manufacturing_costs.json": "generated/models/manufacturing-costs.json",
+    "manufacturing_programs.json": "generated/catalogs/manufacturing-programs.json",
+    "manufacturing_review_1982.json": "generated/models/manufacturing-review-1982.json",
+    "market_outlook_1980_1982.json": "generated/models/market-outlook-1980-1982.json",
+    "market_reactions.json": "generated/catalogs/market-reactions.json",
+    "marketing_budget_1974_1980.json": "generated/models/marketing-budget-1974-1980.json",
+    "memory_manufacturing.json": "generated/catalogs/memory-manufacturing.json",
+    "memory_manufacturing_baseline.json": "baselines/memory-manufacturing-baseline.json",
+    "memory_manufacturing_impact.json": "generated/models/memory-manufacturing-impact.json",
+    "ncc_1979_campaign.json": "generated/catalogs/ncc-1979-campaign.json",
+    "ncc_1980_campaign.json": "generated/catalogs/ncc-1980-campaign.json",
+    "ncc_1982_campaign.json": "generated/catalogs/ncc-1982-campaign.json",
+    "ncc_1982_inputs.json": "generated/catalogs/ncc-1982-inputs.json",
+    "ncc_1982_review.json": "generated/models/manufacturing-costs.json",
+    "pricing_baseline.json": "baselines/pricing-baseline.json",
+    "pricing_results.json": "generated/models/pricing-results.json",
+    "quarterly_market_share.json": "generated/models/quarterly-market-share.json",
+    "retail_catalog_1982.json": "generated/catalogs/retail-catalog-1982.json",
+    "retail_catalog_1982_results.json": "generated/models/retail-catalog-1982-results.json",
+    "roi_1974_1980.json": "generated/models/roi-1974-1980.json",
+    "sales_forecast.json": "generated/models/sales-forecast.json",
+    "sales_model_inputs.json": "generated/catalogs/sales-model-inputs.json",
+    "sales_reassessment_inputs.json": "generated/catalogs/sales-reassessment-inputs.json",
+    "sales_roi_baseline_1982.json": "baselines/sales-roi-baseline-1982.json",
+    "site_pages.json": "generated/catalogs/site-pages.json",
+    "team_development_program.json": "generated/catalogs/team-development-program.json"
+  }
+}

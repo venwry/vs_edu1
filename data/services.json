@@ -1,0 +1,332 @@
+{
+  "$schema": "../schemas/collections/services.schema.json",
+  "schema_version": "3.0.0",
+  "services": [
+    {
+      "id": "service.customer_care",
+      "name": "Logix Customer Care",
+      "category": "support",
+      "features": [
+        "telephone access during business hours",
+        "documentation",
+        "basic software assistance"
+      ],
+      "exclusions": [
+        "priority handling",
+        "included hardware repair"
+      ],
+      "pricing_history_usd_per_year": [
+        {
+          "era": "Aurelia / 1978",
+          "price": 49
+        },
+        {
+          "era": "Artemis / 1980",
+          "price": 49
+        }
+      ],
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      }
+    },
+    {
+      "id": "service.regular_support",
+      "name": "Logix Regular Support Service",
+      "category": "support",
+      "features": [
+        "toll-free telephone line",
+        "unlimited reasonable telephone support",
+        "assistance and troubleshooting",
+        "software/firmware maintenance releases",
+        "10% discount on depot repairs"
+      ],
+      "pricing_history_usd_per_year": [
+        {
+          "era": "Aurelia / 1978",
+          "price": 99
+        },
+        {
+          "era": "Artemis / 1980",
+          "price": 149
+        }
+      ],
+      "bundled_for_one_year_with": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "computer.artemis"
+      ],
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      }
+    },
+    {
+      "id": "service.professional_support",
+      "name": "Logix Professional Support Service",
+      "category": "support",
+      "features": [
+        "Regular Support features",
+        "preferential repair turnaround",
+        "discounted training",
+        "advance notice of new products",
+        "priority telephone queue"
+      ],
+      "pricing_history_usd_per_year": [
+        {
+          "era": "Aurelia / 1978",
+          "price": 249
+        },
+        {
+          "era": "Artemis / 1980",
+          "price": 299
+        }
+      ],
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      }
+    },
+    {
+      "id": "service.professional_business_onsite",
+      "name": "Logix Professional Business On-site",
+      "category": "support",
+      "price_usd": 449,
+      "details": "Additional scope is unspecified.",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      }
+    },
+    {
+      "id": "service.academy_before_you_buy",
+      "name": "Logix Computer Academy - before-you-buy training",
+      "category": "training",
+      "introduced": {
+        "event_name": "Logix Computer Academy launch",
+        "event_start_date": "1978-03-25",
+        "date_precision": "day"
+      },
+      "courses": [
+        {
+          "name": "Aurelia Fundamentals",
+          "days": 2,
+          "curriculum": [
+            "Business-computer capabilities and appropriate configuration selection",
+            "Hands-on common editing, Business Tools and introductory Abacus",
+            "Purchasing advice without obligation"
+          ]
+        },
+        {
+          "name": "Aurelia Fundamentals + Abacus",
+          "days": 5
+        },
+        {
+          "name": "Aurelia Fundamentals + Abacus + Business Tools",
+          "days": 6
+        },
+        {
+          "name": "Aurelia + C (IDE + TUI library)",
+          "days": 5
+        }
+      ],
+      "completion": {
+        "credential": "Aurelia Driving License",
+        "fundamentals_purchase_credit": {
+          "eligible_course": "Aurelia Fundamentals",
+          "tuition_fraction": 0.5,
+          "validity_months": 6,
+          "systems_per_credit": 1,
+          "redemption_channels": [
+            "Academy direct sales",
+            "participating authorised dealers"
+          ],
+          "dealer_reimbursement": "Logix reimburses participating dealers; do not deduct the credit from their agreed margin.",
+          "purchase_obligation": false,
+          "scope": "Standalone two-day Fundamentals. Existing $150 vouchers for the other before-you-buy courses remain unchanged; no stacking or extension to other courses is implied.",
+          "accounting": "Reserve the redeemed credit once as promotional expense across the course and computer sale, outside recurring manufacturing costs."
+        },
+        "other_before_you_buy_courses_voucher_usd": 150
+      },
+      "launch_program": {
+        "established_date": "1978-03-25",
+        "public_announcement_date": "1978-06-05",
+        "launch_city_count": 5,
+        "city_names": null,
+        "first_course_dates": null,
+        "tuition_usd": null,
+        "tuition_positioning": "A modest fraction of an Aurelia package price; publish exact tuition and a named package comparison when commercial prices are selected. Generated pricing proposals are not approved tuition.",
+        "teaching": "Small classes, substantial hands-on time, ideally one machine per participant or pair; business tools, introductory Abacus and advice on appropriate configurations and unnecessary purchases."
+      }
+    },
+    {
+      "id": "service.academy_regular_courses",
+      "name": "Logix Computer Academy - regular courses",
+      "category": "training",
+      "pricing_rule": "$30 cheaper than before-you-buy course after proportional 40% pre-voucher contribution reduction, subject to cent rounding; no voucher. Original surcharge was $50.",
+      "introduced": {
+        "event_name": "Logix Computer Academy launch",
+        "event_start_date": "1978-03-25",
+        "date_precision": "day"
+      }
+    },
+    {
+      "id": "service.academy_customer_site",
+      "name": "Logix Computer Academy - customer-site courses",
+      "category": "training",
+      "delivery": "at customer premises",
+      "introduced": {
+        "event_name": "Logix Computer Academy launch",
+        "event_start_date": "1978-03-25",
+        "date_precision": "day"
+      }
+    },
+    {
+      "id": "service.academy_direct_sales",
+      "name": "Logix Computer Academy direct product sales",
+      "category": "sales_channel",
+      "description": "Order and pay at training centres; immediate collection only where stock is available. No purchase obligation. Accept Fundamentals purchase credit; participating dealers can redeem it with Logix reimbursement.",
+      "introduced": {
+        "event_name": "Logix Computer Academy launch",
+        "event_start_date": "1978-03-25",
+        "date_precision": "day"
+      }
+    },
+    {
+      "id": "service.pulse_training",
+      "name": "AION Pulse training",
+      "category": "training",
+      "delivery": "Logix Computer Academy",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      }
+    },
+    {
+      "id": "service.bpi_training",
+      "name": "BPI Products training",
+      "category": "training",
+      "delivery": "Logix Computer Academy teaches BPI-authorised courses under a cooperation agreement; BPI retains software and specialist support. Start June 12, 1978.",
+      "introduced": {
+        "event_name": "BPI training and direct sales begin",
+        "event_start_date": "1978-06-12",
+        "date_precision": "day"
+      },
+      "availability_note": "BPI courses and direct sales begin June 12, 1978, after the NCC premiere; this is separate from the March Academy establishment and June 5 five-city public announcement."
+    },
+    {
+      "id": "service.aurelia_commercial_developer_license",
+      "name": "Logix Aurelia Commercial Developer License",
+      "category": "developer_program_and_license",
+      "includes": [
+        "software.aurelia_sdk",
+        "permission to distribute Aurelia-compatible software",
+        "ROM/cartridge certification guidelines",
+        "developer identification number",
+        "ability to submit products for Aurelia Compatible designation",
+        "published interfaces and affordable support/certification access for compatible cards, peripherals and monitors",
+        "third-party implementations may use licensed chips from AION or qualified independent suppliers"
+      ],
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "openness_policy": "Basic published interfaces are accessible without mandatory certification. Developer fees cover the SDK, support and optional compatibility designation; competitors can implement compatible hardware and software. From COMDEX 1979, the separate manufacturer compatibility kit and optional support/testing services assist whole-computer implementations; the older developer registration is not a prerequisite."
+    },
+    {
+      "id": "service.artemis_commercial_developer_license",
+      "name": "Logix Artemis Commercial Developer License",
+      "category": "developer_program_and_license",
+      "includes": [
+        "software.artemis_sdk",
+        "permission to distribute Artemis-compatible software",
+        "ROM/cartridge certification guidelines",
+        "developer identification number",
+        "ability to submit products for Artemis Compatible designation"
+      ],
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      }
+    },
+    {
+      "id": "service.component_licensing",
+      "name": "Logix custom-chip licensing / supply to other manufacturers",
+      "category": "oem_licensing",
+      "scope": "All custom chips except ROMs, especially FlexiBUS computer and device controllers, are available to other computer manufacturers under individually negotiated contracts.",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "second_source_program": {
+        "partner": "Standard Microsystems Corporation (SMC)",
+        "agreement_date": "1978-07",
+        "initial_sales_date": "1979-10",
+        "date_precision": "month",
+        "licensed_part_refs": [
+          "part.flexibus_host_controller",
+          "part.flexibus_device_controller",
+          "part.aurelia_video_chip",
+          "part.aion_4116"
+        ],
+        "rights": "Independent manufacture and sale to competing OEMs; non-exclusive; ERA CPU excluded from this agreement.",
+        "transfer": "SMC-compatible ready-to-use masks, revisions, process know-how, known-good reference chips, wafer-test structures, test programs and on-site engineering assistance.",
+        "release_policy": "Initial qualified sales in October; individual part qualification and volume ramp separate. video RAM is the highest-risk gate.",
+        "economics": "Transfer/NRE funded by AION/Logix; external-sales royalties and minimum orders negotiated, not priced facts.",
+        "historical_basis": "https://manuals.plus/m/e43becab466f1fc2ba1742e95b4f0645632eb5d5ac2aea60ac96975b1c99320c"
+      }
+    },
+    {
+      "id": "service.aurelia_compatibility_support",
+      "name": "Aurelia compatibility engineering support",
+      "category": "compatibility_engineering",
+      "introduced": {
+        "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
+        "event_start_date": "1979-12-03"
+      },
+      "includes": [
+        "Ten remote engineering hours by correspondence or telephone",
+        "Documentation and test-suite updates during subscription",
+        "Extra hours, media conversion and site visits quoted separately; no unlimited support"
+      ],
+      "delivery_unit": "one manufacturer-year",
+      "engineering_hours": 10,
+      "commercial_policy": "Optional standard agreement; implementation is not conditional on purchase. AION-funded ports, proprietary source access and OEM application redistribution require separate agreements."
+    },
+    {
+      "id": "service.aurelia_compatibility_certification",
+      "name": "Aurelia application compatibility certification",
+      "category": "compatibility_engineering",
+      "introduced": {
+        "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
+        "event_start_date": "1979-12-03"
+      },
+      "includes": [
+        "Eight engineering hours for review and application acceptance testing",
+        "Versioned configuration report and optional designation on passing",
+        "Failures returned for correction; additional work and incremental retests quoted separately",
+        "Relevant hardware, OS or adapter changes require scoped retesting; manufacturer supports its own machines"
+      ],
+      "delivery_unit": "one named configuration submission",
+      "engineering_hours": 8,
+      "commercial_policy": "Optional standard agreement; implementation is not conditional on purchase. AION-funded ports, proprietary source access and OEM application redistribution require separate agreements."
+    }
+  ],
+  "team_development_program": {
+    "license": {
+      "unit": "one server, four concurrent developer sessions",
+      "hardware_included": false,
+      "renewal": "No automatic paid renewal assumed; first-year support capped at 12 staff-hours. Further work quoted separately.",
+      "expansion": "Additional concurrency packs planned, not priced or counted as shipping offers."
+    },
+    "delivery": {
+      "disks": 12,
+      "printed_pages": 1000,
+      "onboarding_staff_hours": 20,
+      "first_year_support_staff_hours": 12,
+      "note": "One combined package; do not add its client/server editions or old IDE/SDK to its cost. Development/NRE excluded from unit cost."
+    }
+  }
+}

@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
-const read=p=>JSON.parse(fs.readFileSync(path.join(__dirname,'..',p),'utf8'));
+const read=p=>require('../data-store.js').read(p);
 const c=read('generated/catalogs/logix-aion-technical-catalog-v2.json'),b=read('generated/catalogs/hardware-bom.json'),cost=read('generated/models/manufacturing-costs.json');
 const allowed=new Set(read('schemas/category.schema.json').enum),categories=require('../catalog-categories.js'),details=require('../bom-details.js');
 const m=details.createModel(c,b,cost),item=id=>m.items.find(x=>x.id===id);

@@ -1,0 +1,500 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "aurelia_1978_campaign",
+    "ncc_1979_campaign",
+    "ncc_1980_campaign",
+    "comdex_1979_campaign",
+    "comdex_1982_campaign",
+    "ncc_1982_campaign",
+    "team_development_program"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/campaigns.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "aurelia_1978_campaign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "positioning",
+        "schedule",
+        "television_commercial",
+        "premiere",
+        "technical_sessions",
+        "academy",
+        "broadcast_program",
+        "acceptance_gates",
+        "business_sessions",
+        "commercial_configurations",
+        "cost_boundary"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        },
+        "positioning": {
+          "type": "object"
+        },
+        "schedule": {
+          "type": "array"
+        },
+        "television_commercial": {
+          "type": "object"
+        },
+        "premiere": {
+          "type": "object"
+        },
+        "technical_sessions": {
+          "type": "array"
+        },
+        "academy": {
+          "type": "object"
+        },
+        "broadcast_program": {
+          "type": "object"
+        },
+        "acceptance_gates": {
+          "type": "array"
+        },
+        "business_sessions": {
+          "type": "array"
+        },
+        "commercial_configurations": {
+          "type": "object"
+        },
+        "cost_boundary": {
+          "type": "object"
+        }
+      }
+    },
+    "ncc_1979_campaign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "positioning",
+        "profiles",
+        "governance",
+        "schedule",
+        "premiere",
+        "migration",
+        "eight_bit_outlook",
+        "manufacturer_assessment",
+        "existing_anchors",
+        "peripheral_programme",
+        "targets",
+        "evidence",
+        "disclosure_policy",
+        "economics"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        },
+        "positioning": {
+          "type": "object"
+        },
+        "profiles": {
+          "type": "array"
+        },
+        "governance": {
+          "type": "object"
+        },
+        "schedule": {
+          "type": "array"
+        },
+        "premiere": {
+          "type": "object"
+        },
+        "migration": {
+          "type": "object"
+        },
+        "eight_bit_outlook": {
+          "type": "object"
+        },
+        "manufacturer_assessment": {
+          "type": "array"
+        },
+        "existing_anchors": {
+          "type": "object"
+        },
+        "peripheral_programme": {
+          "type": "array"
+        },
+        "targets": {
+          "type": "object"
+        },
+        "evidence": {
+          "type": "array"
+        },
+        "disclosure_policy": {
+          "type": "object"
+        },
+        "economics": {
+          "type": "object"
+        }
+      }
+    },
+    "ncc_1980_campaign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "launch_date",
+        "event_ref",
+        "status",
+        "compatibility_policy",
+        "presentation",
+        "qa",
+        "claims",
+        "benchmark",
+        "activities",
+        "launch_gates",
+        "sales_measurement",
+        "mono_pro_campaign",
+        "artemis_configuration_policy"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "launch_date": {
+          "type": "string"
+        },
+        "event_ref": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "compatibility_policy": {
+          "type": "object"
+        },
+        "presentation": {
+          "type": "array"
+        },
+        "qa": {
+          "type": "string"
+        },
+        "claims": {
+          "type": "object"
+        },
+        "benchmark": {
+          "type": "object"
+        },
+        "activities": {
+          "type": "array"
+        },
+        "launch_gates": {
+          "type": "array"
+        },
+        "sales_measurement": {
+          "type": "string"
+        },
+        "mono_pro_campaign": {
+          "type": "object"
+        },
+        "artemis_configuration_policy": {
+          "type": "string"
+        }
+      }
+    },
+    "comdex_1979_campaign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "messages",
+        "offering_refs",
+        "premiere",
+        "speed_demonstration",
+        "abacus_demonstration",
+        "partner_policy",
+        "activities",
+        "commercial_policy",
+        "strategy",
+        "disclosure",
+        "metrics",
+        "economics"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        },
+        "messages": {
+          "type": "object"
+        },
+        "offering_refs": {
+          "type": "array"
+        },
+        "premiere": {
+          "type": "object"
+        },
+        "speed_demonstration": {
+          "type": "object"
+        },
+        "abacus_demonstration": {
+          "type": "object"
+        },
+        "partner_policy": {
+          "type": "object"
+        },
+        "activities": {
+          "type": "array"
+        },
+        "commercial_policy": {
+          "type": "object"
+        },
+        "strategy": {
+          "type": "string"
+        },
+        "disclosure": {
+          "type": "object"
+        },
+        "metrics": {
+          "type": "object"
+        },
+        "economics": {
+          "type": "object"
+        }
+      }
+    },
+    "comdex_1982_campaign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "headline",
+        "subheadline",
+        "continuity",
+        "presentation_date",
+        "location",
+        "historical_date_source",
+        "offering_ref",
+        "primary_audiences",
+        "secondary_audiences",
+        "messages",
+        "hero_demo",
+        "booth_zones",
+        "press_kit",
+        "schedule",
+        "call_to_action",
+        "commercial_tactics",
+        "measurement",
+        "claim_limits",
+        "budget"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "subheadline": {
+          "type": "string"
+        },
+        "continuity": {
+          "type": "string"
+        },
+        "presentation_date": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "historical_date_source": {
+          "type": "string"
+        },
+        "offering_ref": {
+          "type": "string"
+        },
+        "primary_audiences": {
+          "type": "array"
+        },
+        "secondary_audiences": {
+          "type": "array"
+        },
+        "messages": {
+          "type": "array"
+        },
+        "hero_demo": {
+          "type": "object"
+        },
+        "booth_zones": {
+          "type": "array"
+        },
+        "press_kit": {
+          "type": "array"
+        },
+        "schedule": {
+          "type": "array"
+        },
+        "call_to_action": {
+          "type": "string"
+        },
+        "commercial_tactics": {
+          "type": "array"
+        },
+        "measurement": {
+          "type": "array"
+        },
+        "claim_limits": {
+          "type": "array"
+        },
+        "budget": {
+          "type": "object"
+        }
+      }
+    },
+    "ncc_1982_campaign": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "headline",
+        "subheadline",
+        "hands_on_invitation",
+        "conference",
+        "cost_snapshot",
+        "status",
+        "messages",
+        "offering_refs",
+        "availability",
+        "software_update_policy",
+        "presentation",
+        "booth_zones",
+        "packages",
+        "office_configuration",
+        "developer_program",
+        "autodesk_claim",
+        "claim_controls",
+        "metrics",
+        "followup",
+        "budget_rows",
+        "financial_boundary",
+        "budget_subtotal_usd",
+        "contingency_rate",
+        "contingency_usd",
+        "budget_total_usd"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "subheadline": {
+          "type": "string"
+        },
+        "hands_on_invitation": {
+          "type": "string"
+        },
+        "conference": {
+          "type": "object"
+        },
+        "cost_snapshot": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array"
+        },
+        "offering_refs": {
+          "type": "array"
+        },
+        "availability": {
+          "type": "string"
+        },
+        "software_update_policy": {
+          "type": "string"
+        },
+        "presentation": {
+          "type": "array"
+        },
+        "booth_zones": {
+          "type": "array"
+        },
+        "packages": {
+          "type": "array"
+        },
+        "office_configuration": {
+          "type": "string"
+        },
+        "developer_program": {
+          "type": "string"
+        },
+        "autodesk_claim": {
+          "type": "string"
+        },
+        "claim_controls": {
+          "type": "array"
+        },
+        "metrics": {
+          "type": "array"
+        },
+        "followup": {
+          "type": "string"
+        },
+        "budget_rows": {
+          "type": "array"
+        },
+        "financial_boundary": {
+          "type": "string"
+        },
+        "budget_subtotal_usd": {
+          "type": "number"
+        },
+        "contingency_rate": {
+          "type": "number"
+        },
+        "contingency_usd": {
+          "type": "number"
+        },
+        "budget_total_usd": {
+          "type": "number"
+        }
+      }
+    },
+    "team_development_program": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "campaign_message",
+        "campaign_promise",
+        "claim_policy"
+      ],
+      "properties": {
+        "campaign_message": {
+          "type": "string"
+        },
+        "campaign_promise": {
+          "type": "string"
+        },
+        "claim_policy": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

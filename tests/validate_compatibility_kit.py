@@ -1,8 +1,9 @@
+from data_paths import read_document, document_bytes, document_text
 """December launch, open implementation, pricing gates and unaffected November sales."""
 import json,hashlib,subprocess
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 c=read('generated/catalogs/logix-aion-technical-catalog-v2.json');s=read('generated/catalogs/logix-aion-story.json');p=read('generated/models/pricing-results.json');f=read('generated/models/sales-forecast.json')
 r={x['id']:x for v in c.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id' in x}
 e=next(e for phase in s['phases'] for e in phase['events'] if e['id']=='event.plus_launch')
@@ -14,7 +15,7 @@ for ref in ids:
  assert offer['snapshots']['1979']['retail_price_usd'] is None
  assert offer['snapshots']['1980']['retail_price_usd']>0 and offer['channel']=='direct'
 assert not set(read('baselines/pricing-baseline.json')['products']) & set(read('baselines/compatibility-pricing-baseline.json')['products'])
-assert p['metadata']['compatibility_baseline_sha256']==hashlib.sha256((R/'baselines/compatibility-pricing-baseline.json').read_bytes()).hexdigest()
+assert p['metadata']['compatibility_baseline_sha256']==hashlib.sha256(document_bytes('baselines/compatibility-pricing-baseline.json', root=R)).hexdigest()
 policy=r[ids[0]]['compatibility_policy']
 assert 'without a bespoke partnership or mandatory certification' in policy['eligibility']
 assert 'CP/M alone is insufficient' in policy['binary']

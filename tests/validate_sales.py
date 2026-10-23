@@ -1,13 +1,14 @@
+from data_paths import read_document, document_bytes, document_text
 from data_paths import resolve_path
 """Reconcile revised sales, clone contracts, date gates and unit-price arithmetic."""
 import json,hashlib
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-read=lambda n:json.loads((R/n).read_text())
+read=lambda n:read_document(n, root=R)
 s=read('generated/models/sales-forecast.json');roi=read('generated/models/roi-1974-1980.json');inputs=read('generated/catalogs/sales-reassessment-inputs.json');baseline=read('baselines/sales-roi-baseline-1982.json')
 F=['customer_retail_spend_usd','supplier_revenue_after_channel_usd','recurring_cost_usd','unit_contribution_total_usd']
 close=lambda a,b:abs(a-b)<.05
-for source in s['sources']:assert hashlib.sha256((R/resolve_path(source['path'])).read_bytes()).hexdigest()==source['sha256']
+for source in s['sources']:assert hashlib.sha256(document_bytes(resolve_path(source['path']), root=R)).hexdigest()==source['sha256']
 for case in s['scenarios']:
  assert len(case['monthly'])==72 and len(case['quarterly'])==24 and len(case['annual'])==6
  for r in case['monthly']:

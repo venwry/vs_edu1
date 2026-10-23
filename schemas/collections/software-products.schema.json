@@ -1,0 +1,849 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "software_products",
+    "external_partner_products"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/software-products.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "software_products": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "category",
+              "id",
+              "introduced",
+              "name"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "abacus_file_integration": {
+                "type": [
+                  "object"
+                ]
+              },
+              "adds": {
+                "type": [
+                  "array"
+                ]
+              },
+              "alternate_history_roadmap": {
+                "type": [
+                  "array"
+                ]
+              },
+              "api_compatibility": {
+                "type": [
+                  "string"
+                ]
+              },
+              "architecture": {
+                "type": [
+                  "object"
+                ]
+              },
+              "artemis_native_extensions": {
+                "type": [
+                  "array"
+                ]
+              },
+              "base_product_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "base_version": {
+                "type": [
+                  "string"
+                ]
+              },
+              "bundled_with": {
+                "type": [
+                  "array"
+                ]
+              },
+              "business_module_lineage": {
+                "type": [
+                  "string"
+                ]
+              },
+              "category": {
+                "$ref": "urn:logix-aion:category:2"
+              },
+              "compatibility_notes": {
+                "type": [
+                  "array"
+                ]
+              },
+              "compatibility_policy": {
+                "type": [
+                  "object"
+                ]
+              },
+              "components": {
+                "type": [
+                  "object"
+                ]
+              },
+              "contents": {
+                "type": [
+                  "array"
+                ]
+              },
+              "data_interchange": {
+                "type": [
+                  "object"
+                ]
+              },
+              "dated_revisions": {
+                "type": [
+                  "array"
+                ]
+              },
+              "delivery": {
+                "type": [
+                  "array",
+                  "string"
+                ]
+              },
+              "delivery_on_artemis": {
+                "type": [
+                  "string"
+                ]
+              },
+              "description": {
+                "type": [
+                  "string"
+                ]
+              },
+              "design_continuity_with": {
+                "type": [
+                  "string"
+                ]
+              },
+              "development_lineage": {
+                "type": [
+                  "string"
+                ]
+              },
+              "ecosystem_policy": {
+                "type": [
+                  "object"
+                ]
+              },
+              "edition_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "edition_relationship": {
+                "type": [
+                  "string"
+                ]
+              },
+              "embedded_abacus_integration_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "explicitly_not_assumed": {
+                "type": [
+                  "array"
+                ]
+              },
+              "extensions": {
+                "type": [
+                  "array"
+                ]
+              },
+              "feature_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "features": {
+                "type": [
+                  "array"
+                ]
+              },
+              "features_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "forward_compatibility_commitment": {
+                "type": [
+                  "object"
+                ]
+              },
+              "id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "implementation": {
+                "type": [
+                  "object",
+                  "string"
+                ]
+              },
+              "independent_implementation_policy": {
+                "type": [
+                  "string"
+                ]
+              },
+              "internal_organization": {
+                "type": [
+                  "array"
+                ]
+              },
+              "internal_relationships": {
+                "type": [
+                  "array"
+                ]
+              },
+              "introduced": {
+                "type": [
+                  "object"
+                ]
+              },
+              "launch_acceptance_requirements": {
+                "type": [
+                  "object"
+                ]
+              },
+              "launch_positioning": {
+                "type": [
+                  "string"
+                ]
+              },
+              "licensing": {
+                "type": [
+                  "string"
+                ]
+              },
+              "logix_requirements": {
+                "type": [
+                  "array"
+                ]
+              },
+              "manufacturing_boundary": {
+                "type": [
+                  "string"
+                ]
+              },
+              "memory_discovery_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "modules": {
+                "type": [
+                  "array"
+                ]
+              },
+              "mouse_update": {
+                "type": [
+                  "object"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string"
+                ]
+              },
+              "network_link_policy": {
+                "type": [
+                  "object"
+                ]
+              },
+              "partner_distribution": {
+                "type": [
+                  "object"
+                ]
+              },
+              "planned_for": {
+                "type": [
+                  "array"
+                ]
+              },
+              "platform_policy": {
+                "type": [
+                  "string"
+                ]
+              },
+              "portability_contract": {
+                "type": [
+                  "object"
+                ]
+              },
+              "portable_runtime": {
+                "type": [
+                  "object"
+                ]
+              },
+              "positioning": {
+                "type": [
+                  "string"
+                ]
+              },
+              "product_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "programmatic_file_access": {
+                "type": [
+                  "string"
+                ]
+              },
+              "relationship": {
+                "type": [
+                  "string"
+                ]
+              },
+              "release_scope": {
+                "type": [
+                  "object"
+                ]
+              },
+              "reporting": {
+                "type": [
+                  "object"
+                ]
+              },
+              "roadmap_1979": {
+                "type": [
+                  "string"
+                ]
+              },
+              "runtime_notes": {
+                "type": [
+                  "array"
+                ]
+              },
+              "sold_separately": {
+                "type": [
+                  "boolean"
+                ]
+              },
+              "sources": {
+                "type": [
+                  "array"
+                ]
+              },
+              "specification": {
+                "type": [
+                  "object",
+                  "string"
+                ]
+              },
+              "subcomponents": {
+                "type": [
+                  "array"
+                ]
+              },
+              "system_dependencies": {
+                "type": [
+                  "array"
+                ]
+              },
+              "technology_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "technology_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "toolchain": {
+                "type": [
+                  "object"
+                ]
+              },
+              "training_available": {
+                "type": [
+                  "boolean"
+                ]
+              },
+              "tui_features": {
+                "type": [
+                  "array"
+                ]
+              },
+              "tui_integration": {
+                "type": [
+                  "string"
+                ]
+              },
+              "tui_ownership": {
+                "type": [
+                  "object"
+                ]
+              },
+              "unspecified": {
+                "type": [
+                  "array"
+                ]
+              },
+              "validation": {
+                "type": [
+                  "string"
+                ]
+              },
+              "vanilla_architecture": {
+                "type": [
+                  "object"
+                ]
+              },
+              "vendor": {
+                "type": [
+                  "string"
+                ]
+              },
+              "version": {
+                "type": [
+                  "string"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "external_partner_products": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "category",
+              "id",
+              "introduced",
+              "name"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "abacus_file_integration": {
+                "type": [
+                  "object"
+                ]
+              },
+              "adds": {
+                "type": [
+                  "array"
+                ]
+              },
+              "alternate_history_roadmap": {
+                "type": [
+                  "array"
+                ]
+              },
+              "api_compatibility": {
+                "type": [
+                  "string"
+                ]
+              },
+              "architecture": {
+                "type": [
+                  "object"
+                ]
+              },
+              "artemis_native_extensions": {
+                "type": [
+                  "array"
+                ]
+              },
+              "base_product_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "base_version": {
+                "type": [
+                  "string"
+                ]
+              },
+              "bundled_with": {
+                "type": [
+                  "array"
+                ]
+              },
+              "business_module_lineage": {
+                "type": [
+                  "string"
+                ]
+              },
+              "category": {
+                "$ref": "urn:logix-aion:category:2"
+              },
+              "compatibility_notes": {
+                "type": [
+                  "array"
+                ]
+              },
+              "compatibility_policy": {
+                "type": [
+                  "object"
+                ]
+              },
+              "components": {
+                "type": [
+                  "object"
+                ]
+              },
+              "contents": {
+                "type": [
+                  "array"
+                ]
+              },
+              "data_interchange": {
+                "type": [
+                  "object"
+                ]
+              },
+              "dated_revisions": {
+                "type": [
+                  "array"
+                ]
+              },
+              "delivery": {
+                "type": [
+                  "array",
+                  "string"
+                ]
+              },
+              "delivery_on_artemis": {
+                "type": [
+                  "string"
+                ]
+              },
+              "description": {
+                "type": [
+                  "string"
+                ]
+              },
+              "design_continuity_with": {
+                "type": [
+                  "string"
+                ]
+              },
+              "development_lineage": {
+                "type": [
+                  "string"
+                ]
+              },
+              "ecosystem_policy": {
+                "type": [
+                  "object"
+                ]
+              },
+              "edition_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "edition_relationship": {
+                "type": [
+                  "string"
+                ]
+              },
+              "embedded_abacus_integration_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "explicitly_not_assumed": {
+                "type": [
+                  "array"
+                ]
+              },
+              "extensions": {
+                "type": [
+                  "array"
+                ]
+              },
+              "feature_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "features": {
+                "type": [
+                  "array"
+                ]
+              },
+              "features_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "forward_compatibility_commitment": {
+                "type": [
+                  "object"
+                ]
+              },
+              "id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "implementation": {
+                "type": [
+                  "object",
+                  "string"
+                ]
+              },
+              "independent_implementation_policy": {
+                "type": [
+                  "string"
+                ]
+              },
+              "internal_organization": {
+                "type": [
+                  "array"
+                ]
+              },
+              "internal_relationships": {
+                "type": [
+                  "array"
+                ]
+              },
+              "introduced": {
+                "type": [
+                  "object"
+                ]
+              },
+              "launch_acceptance_requirements": {
+                "type": [
+                  "object"
+                ]
+              },
+              "launch_positioning": {
+                "type": [
+                  "string"
+                ]
+              },
+              "licensing": {
+                "type": [
+                  "string"
+                ]
+              },
+              "logix_requirements": {
+                "type": [
+                  "array"
+                ]
+              },
+              "manufacturing_boundary": {
+                "type": [
+                  "string"
+                ]
+              },
+              "memory_discovery_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "modules": {
+                "type": [
+                  "array"
+                ]
+              },
+              "mouse_update": {
+                "type": [
+                  "object"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string"
+                ]
+              },
+              "network_link_policy": {
+                "type": [
+                  "object"
+                ]
+              },
+              "partner_distribution": {
+                "type": [
+                  "object"
+                ]
+              },
+              "planned_for": {
+                "type": [
+                  "array"
+                ]
+              },
+              "platform_policy": {
+                "type": [
+                  "string"
+                ]
+              },
+              "portability_contract": {
+                "type": [
+                  "object"
+                ]
+              },
+              "portable_runtime": {
+                "type": [
+                  "object"
+                ]
+              },
+              "positioning": {
+                "type": [
+                  "string"
+                ]
+              },
+              "product_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "programmatic_file_access": {
+                "type": [
+                  "string"
+                ]
+              },
+              "relationship": {
+                "type": [
+                  "string"
+                ]
+              },
+              "release_scope": {
+                "type": [
+                  "object"
+                ]
+              },
+              "reporting": {
+                "type": [
+                  "object"
+                ]
+              },
+              "roadmap_1979": {
+                "type": [
+                  "string"
+                ]
+              },
+              "runtime_notes": {
+                "type": [
+                  "array"
+                ]
+              },
+              "sold_separately": {
+                "type": [
+                  "boolean"
+                ]
+              },
+              "sources": {
+                "type": [
+                  "array"
+                ]
+              },
+              "specification": {
+                "type": [
+                  "object",
+                  "string"
+                ]
+              },
+              "subcomponents": {
+                "type": [
+                  "array"
+                ]
+              },
+              "system_dependencies": {
+                "type": [
+                  "array"
+                ]
+              },
+              "technology_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "technology_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "toolchain": {
+                "type": [
+                  "object"
+                ]
+              },
+              "training_available": {
+                "type": [
+                  "boolean"
+                ]
+              },
+              "tui_features": {
+                "type": [
+                  "array"
+                ]
+              },
+              "tui_integration": {
+                "type": [
+                  "string"
+                ]
+              },
+              "tui_ownership": {
+                "type": [
+                  "object"
+                ]
+              },
+              "unspecified": {
+                "type": [
+                  "array"
+                ]
+              },
+              "validation": {
+                "type": [
+                  "string"
+                ]
+              },
+              "vanilla_architecture": {
+                "type": [
+                  "object"
+                ]
+              },
+              "vendor": {
+                "type": [
+                  "string"
+                ]
+              },
+              "version": {
+                "type": [
+                  "string"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

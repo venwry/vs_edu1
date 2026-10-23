@@ -1,0 +1,525 @@
+{
+  "$schema": "../schemas/collections/world.schema.json",
+  "schema_version": "3.0.0",
+  "metadata": {
+    "title": "Logix / AION technical catalog",
+    "version": "2.17",
+    "purpose": "Product, technology and architecture definitions for the Logix / AION alternative timeline.",
+    "id_convention": "category.short_name.version_or_variant_when_needed",
+    "schema_notes": {
+      "introduced": "Event name and event start date; month-only dates retain month precision.",
+      "computers": "Functional specifications with explicit RAM populations; manufacturing completeness is tracked in hardware_bom.json. Unknown suppliers, quantities and validation remain unresolved.",
+      "bundles": "Commercial packaging is represented separately in offered_bundles.",
+      "references": "Stable IDs link computers, technologies, components, devices and software.",
+      "architecture": "Architecture descriptions and relationships are shared with the interactive explorer.",
+      "platform_editions": "Canonical software compatibility records with per-platform availability, execution target, role, dependencies and resource limits. Computer lists are derived from them.",
+      "design_status": "Accepted implementation designs reside under specification.implementation_design. Numerical performance goals and pending validation are explicitly labeled; acceptance does not imply completed hardware/software.",
+      "graphics_storage": "Per-computer video.memory_layout supplies text and bitmap allocations; shared mode-switch and preservation behavior resides in the display API specification.",
+      "manufacturing": "hardware_bom.json separates recurring material, assembly requirements, variant packout and unresolved costing inputs. No prices or qualified supplier claims are invented.",
+      "second_source": "SMC transfer begins 1978-07; initial independent commercial sales 1979-10. Dates are month-precision; per-part qualification and supplier pricing remain engineering inputs.",
+      "video_memory": "Aurelia-family display storage is ordinary external AION 4116 DRAM. Retained video_ram_policy/reserved_video_ram_bytes/remaining_video_ram_bytes keys mean video RAM allocation, not dual-port hardware."
+    }
+  },
+  "scenario": {
+    "name": "Logix / AION alternative history",
+    "base_scenario": "Real-world history",
+    "alternative_scenario": "The events and market outcomes described here belong to the fictional alternative timeline.",
+    "time_model": "A time traveler can use future knowledge and equipment to intervene in earlier decades."
+  },
+  "entities": [
+    {
+      "id": "actor.adam",
+      "name": "Adam Pleskot",
+      "type": "person",
+      "aliases": [
+        "Vincent"
+      ],
+      "description": "Time traveler operating under Adam Pleskot’s identity."
+    },
+    {
+      "id": "actor.original_adam",
+      "name": "Adam Pleskot (original identity holder)",
+      "type": "person",
+      "aliases": [],
+      "description": "The deceased nineteen-year-old whose identity Vincent assumes."
+    },
+    {
+      "id": "actor.logix",
+      "name": "Logix Tech",
+      "type": "company",
+      "aliases": [
+        "Logix"
+      ],
+      "description": "Computer manufacturing, architecture and software development in San Jose, US."
+    },
+    {
+      "id": "actor.labs",
+      "name": "AION Labs",
+      "type": "company",
+      "aliases": [],
+      "description": "Conservative semiconductor operation in Cambridge, UK, intended to grow toward fabrication."
+    },
+    {
+      "id": "actor.aion",
+      "name": "AION Software",
+      "type": "company",
+      "aliases": [],
+      "description": "Business applications and compiler development, initially in Copenhagen."
+    },
+    {
+      "id": "actor.academy",
+      "name": "Logix Computer Academy",
+      "type": "company",
+      "aliases": [],
+      "description": "Training and direct product sales in US cities."
+    },
+    {
+      "id": "actor.bpi",
+      "name": "BPI Systems",
+      "type": "company",
+      "aliases": [
+        "BPI"
+      ],
+      "description": "Separately incorporated and independently operated business-software partner. BPI retains its brand, management, application ownership, licences and specialist support. Adam proposes investment and AION supplies engineering assistance; operational independence does not imply unrelated ownership."
+    },
+    {
+      "id": "actor.dri",
+      "name": "Digital Research",
+      "type": "company",
+      "aliases": [
+        "DRI"
+      ],
+      "description": "Independent CP/M company jointly founded by Gary, Dorothy and Adam in late 1974; broadly licenses OEMs and separately cooperates on AIONix."
+    },
+    {
+      "id": "actor.microsoft",
+      "name": "Microsoft",
+      "type": "company",
+      "aliases": [],
+      "description": "BASIC partner and competitor in the wider software market."
+    },
+    {
+      "id": "actor.apple",
+      "name": "Apple Computer",
+      "type": "company",
+      "aliases": [
+        "Apple"
+      ],
+      "description": "Competitor and limited technical-cooperation partner."
+    },
+    {
+      "id": "actor.ibm",
+      "name": "IBM",
+      "type": "company",
+      "aliases": [],
+      "description": "Business-computing competitor."
+    },
+    {
+      "id": "actor.peachtree",
+      "name": "Peachtree Software",
+      "type": "company",
+      "aliases": [],
+      "description": "Apple business-software partner."
+    },
+    {
+      "id": "actor.mpi",
+      "name": "Micro Peripherals, Inc.",
+      "type": "company",
+      "aliases": [],
+      "description": "OEM printer-mechanism supplier."
+    },
+    {
+      "id": "actor.computerland",
+      "name": "ComputerLand",
+      "type": "company",
+      "aliases": [
+        "Computerland"
+      ],
+      "description": "Primary planned retail sales channel."
+    },
+    {
+      "id": "actor.letwin",
+      "name": "Gordon Letwin",
+      "type": "person",
+      "aliases": [],
+      "description": "Recruited by Adam in June 1977."
+    },
+    {
+      "id": "actor.paterson",
+      "name": "Tim Paterson",
+      "type": "person",
+      "aliases": [
+        "Tim Patterson"
+      ],
+      "description": "Recruited by Adam in 1977."
+    },
+    {
+      "id": "actor.kildall",
+      "name": "Gary Kildall",
+      "type": "person",
+      "aliases": [
+        "Gary Kildal"
+      ],
+      "description": "DRI principal named in the AIONix agreement."
+    },
+    {
+      "id": "actor.others",
+      "name": "Other computer companies",
+      "type": "group",
+      "aliases": [],
+      "description": "Unspecified companies monitoring the market."
+    },
+    {
+      "id": "actor.customers",
+      "name": "US personal-computer market",
+      "type": "market",
+      "aliases": [],
+      "description": "Market whose size changes in the alternative scenario."
+    },
+    {
+      "id": "actor.dorothy",
+      "name": "Dorothy McEwen",
+      "type": "person",
+      "aliases": [],
+      "description": "DRI cofounder and operating principal."
+    },
+    {
+      "id": "actor.smc",
+      "name": "Standard Microsystems Corporation",
+      "type": "company",
+      "aliases": [],
+      "description": "Independent licensed second-source manufacturer and seller of the selected AION peripheral/display chipset."
+    },
+    {
+      "id": "actor.tandy",
+      "name": "Tandy / Radio Shack",
+      "type": "company",
+      "aliases": [
+        "Tandy",
+        "Radio Shack"
+      ],
+      "description": "Independent computer manufacturer and retail/service operator; Model II CP/M and FlexiBUS cooperation partner, retaining native display and customer relationship."
+    },
+    {
+      "id": "actor.northstar",
+      "name": "North Star Computers",
+      "type": "company",
+      "aliases": [],
+      "description": "US founding clone manufacturer; existing ecosystem prospect becomes a contracted partner in this scenario."
+    },
+    {
+      "id": "actor.vector",
+      "name": "Vector Graphic",
+      "type": "company",
+      "aliases": [],
+      "description": "US founding clone manufacturer."
+    },
+    {
+      "id": "actor.sks",
+      "name": "SKS — Steinmetz Krischke Systemtechnik",
+      "type": "company",
+      "aliases": [],
+      "description": "West German founding partner; engineering and contracted production."
+    },
+    {
+      "id": "actor.goupil",
+      "name": "SMT Goupil",
+      "type": "company",
+      "aliases": [],
+      "description": "French founding clone manufacturer."
+    },
+    {
+      "id": "actor.eina",
+      "name": "EINA Informática",
+      "type": "company",
+      "aliases": [],
+      "description": "Spanish founding clone manufacturer; staged production and working-capital support."
+    },
+    {
+      "id": "actor.sgs",
+      "name": "SGS-ATES",
+      "type": "company",
+      "aliases": [],
+      "description": "Italian licensed second source for ERAv1 and the enumerated custom-controller portfolio."
+    },
+    {
+      "id": "actor.aion_tech_uk",
+      "name": "Aion Tech",
+      "type": "company",
+      "aliases": [],
+      "description": "New UK distributor of Aurelia and Artemis in 1982, with local service and training; ownership and consolidation remain unspecified."
+    },
+    {
+      "id": "actor.autodesk",
+      "name": "Autodesk",
+      "type": "company",
+      "aliases": [],
+      "description": "Independent CAD software partner; January 1982 founders agreement adopted after April incorporation. Adam sponsors an entire Artemis PRO/Team Edition development deployment for November COMDEX."
+    }
+  ],
+  "principles": [
+    {
+      "id": "assumption.identity",
+      "title": "Identity and future knowledge",
+      "description": "Vincent gains time-travel powers at age nineteen in 2025 and operates in the past as Adam Pleskot. His foreknowledge remains secret.",
+      "actor_refs": [
+        "actor.adam"
+      ]
+    },
+    {
+      "id": "assumption.finance",
+      "title": "Investment advantage concealed by analysis",
+      "description": "Foreknowledge drives unusually successful investments; data analysis and prediction algorithms provide a public explanation.",
+      "actor_refs": [
+        "actor.adam"
+      ]
+    },
+    {
+      "id": "assumption.strategy",
+      "title": "Compete for the personal-computing standard",
+      "description": "Compete with IBM, present products at NCC from 1978 and COMDEX from 1979 onward, and manufacture at the maximum feasible scale to achieve standard-setting market coverage.",
+      "actor_refs": [
+        "actor.adam",
+        "actor.logix",
+        "actor.labs",
+        "actor.aion",
+        "actor.ibm"
+      ]
+    },
+    {
+      "id": "assumption.ecosystem",
+      "title": "Build a complete platform",
+      "description": "Develop customer trust and a loyal network of users, software developers and peripheral manufacturers through integrated hardware, software, training and support.",
+      "actor_refs": [
+        "actor.logix",
+        "actor.aion",
+        "actor.academy"
+      ]
+    },
+    {
+      "id": "assumption.secret_facility",
+      "title": "Separate future-equipped facility",
+      "description": "A secret facility outside the three companies uses equipment brought from the 2020s for chip design and lithography.",
+      "actor_refs": [
+        "actor.adam"
+      ],
+      "equipment": [
+        {
+          "name": "CAD workstation",
+          "components": [
+            "Virtuoso",
+            "Spectre",
+            "Xcelium",
+            "Genus",
+            "Innovus",
+            "Tempus",
+            "Quantus",
+            "Pegasus"
+          ]
+        },
+        {
+          "name": "HEIDELBERG DWL 66+",
+          "components": [
+            "Laser Lithography System"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "assumption.people",
+      "title": "Changed availability of historical personnel",
+      "description": "Gordon Letwin never joins Microsoft; Tim Paterson never develops QDOS or becomes available to Microsoft in this timeline.",
+      "actor_refs": [
+        "actor.letwin",
+        "actor.paterson",
+        "actor.microsoft"
+      ]
+    },
+    {
+      "id": "assumption.organization_buildout",
+      "title": "Engineering and manufacturing organization buildout",
+      "description": "Hire staff, establish software-development environments, computer manufacturing and R&D, and a conservative semiconductor operation.",
+      "actor_refs": [
+        "actor.adam",
+        "actor.logix",
+        "actor.labs",
+        "actor.aion"
+      ],
+      "context": {
+        "period": {
+          "start": null,
+          "end": null,
+          "precision": "unspecified",
+          "qualifier": "Before NCC 1978",
+          "display": "Before NCC 1978"
+        },
+        "phase_refs": [
+          "phase.prepare_aurelia"
+        ],
+        "outcomes": [],
+        "agreement_terms": [],
+        "metrics": [],
+        "product_refs": [
+          "computer.aurelia"
+        ],
+        "related_event_refs": []
+      }
+    },
+    {
+      "id": "assumption.market_monitoring",
+      "title": "Other companies monitor the market",
+      "description": "Actively monitor Logix/AION without significant decisions or actions yet.",
+      "actor_refs": [
+        "actor.others"
+      ],
+      "context": {
+        "period": {
+          "start": null,
+          "end": null,
+          "precision": "unspecified",
+          "qualifier": "Post-NCC 1978 response period",
+          "display": "Post-NCC 1978 response period"
+        },
+        "phase_refs": [
+          "phase.ncc78"
+        ],
+        "outcomes": [],
+        "agreement_terms": [],
+        "metrics": [],
+        "product_refs": [],
+        "related_event_refs": []
+      }
+    },
+    {
+      "id": "assumption.market_expansion",
+      "title": "US personal-computer market expansion",
+      "description": "Contribute through product availability, computer popularization, seamless peripherals and accessible interfaces.",
+      "actor_refs": [
+        "actor.customers",
+        "actor.logix",
+        "actor.academy"
+      ],
+      "context": {
+        "period": {
+          "start": null,
+          "end": null,
+          "precision": "unspecified",
+          "qualifier": "Post-NCC 1978 response period",
+          "display": "Post-NCC 1978 response period"
+        },
+        "phase_refs": [
+          "phase.ncc78"
+        ],
+        "outcomes": [
+          {
+            "description": "US personal-computer market is larger than in the base scenario."
+          }
+        ],
+        "agreement_terms": [],
+        "metrics": [
+          {
+            "name": "market_size_increase",
+            "value": {
+              "minimum": 10,
+              "maximum": 15
+            },
+            "unit": "percent",
+            "qualifier": "relative to base scenario"
+          }
+        ],
+        "product_refs": [],
+        "related_event_refs": []
+      }
+    },
+    {
+      "id": "assumption.open_ecosystem",
+      "title": "Open platform and independent suppliers",
+      "description": "Logix alone develops the Apple II and S-100 expansion cards; these demonstrate Adam’s ecosystem intentions and are not DRI obligations. Apple cards expose FlexiBUS and video to native Apple software. CP/M-6502 is deferred, with no product, schedule or cost commitment. Published interfaces and affordable developer access permit competing software, cards, peripherals and monitors. AION retains Abacus, C tools, Business Tools, AIONix and the existing Pulse offering; DRI licenses CP/M independently. BPI operates independently under its own brand from the cooperation period. Any further ownership separation around 1985 remains a future transaction, not the beginning of operational independence or a completed buyout.",
+      "actor_refs": [
+        "actor.adam",
+        "actor.logix",
+        "actor.aion",
+        "actor.dri",
+        "actor.bpi"
+      ]
+    },
+    {
+      "id": "principle.clone_sourcing",
+      "title": "Flexible independent clone manufacturing",
+      "description": "Five partners begin preparation in January 1981 for a January 1982 coordinated launch. They retain their brands and may build mainboards, contract manufacture or buy Logix boards; buy custom chips from AION or qualified SGS; source qualified RAM freely; design local chassis/keyboards; and buy conforming monitors from Logix or others. Anything outside an initial range may be supplied by Logix or third parties, with clear warranty and integration ownership. No partner must manufacture a complete catalogue.",
+      "actor_refs": [
+        "actor.northstar",
+        "actor.vector",
+        "actor.sks",
+        "actor.goupil",
+        "actor.eina",
+        "actor.logix",
+        "actor.labs"
+      ]
+    },
+    {
+      "id": "principle.clone_localisation",
+      "title": "Common platform with country-specific editions",
+      "description": "AION Software delivers and maintains German, French and Spanish CP/M/TUI, AIONix, Business Tools, Abacus and programming environments, coordinating underlying OS rights and release approval with independent DRI. Use common APIs, document formats and shared cores with local resources. Validate keyboards, accents, fonts, printing, sorting, numbers, currency and dates. Clone manufacturers separately license other publishers including WordStar, dBASE and BPI; statutory accounting/payroll adaptation requires separate local qualification. UK English editions and support serve Aion Tech. Localisation is not a national software fork.",
+      "actor_refs": [
+        "actor.aion",
+        "actor.dri",
+        "actor.northstar",
+        "actor.vector",
+        "actor.sks",
+        "actor.goupil",
+        "actor.eina"
+      ]
+    },
+    {
+      "id": "principle.clone_economics",
+      "title": "Partner launch and forecast reconciliation",
+      "description": "These agreements, preparations and January 1982 launches are accepted narrative additions. Existing ecosystem projections already include North Star and Vector; replace their unsigned-prospect assumptions in the next numerical reassessment, never add their sales twice. Germany, France, Spain and Aion Tech require country forecasts. No automatic sales multiplier is awarded for the launch. Transfer funding, localisation, pilot lots, marketing, Academy staffing, working capital and chip capacity must be costed before a revised investment/ROI claim; The 1981–1983 numerical planning reassessment is recorded in sales_reassessment_inputs.json, sales_forecast.json and roi_1974_1980.json; provisional transfer prices and capacity allowances are not signed contract terms. Aion Tech ownership and consolidation remain open.",
+      "actor_refs": [
+        "actor.logix",
+        "actor.labs",
+        "actor.aion"
+      ]
+    },
+    {
+      "id": "principle.sgs_scope",
+      "title": "Independent second-source production",
+      "description": "SGS receives a non-exclusive independent manufacture-and-sale licence for ERAv1 and all agreed custom controllers, including MMU, system, bus, storage, network and video controllers. Each part and speed grade qualifies separately. ERAv1 stays on 3 µm; no shrink is implied. Preserve existing SMC rights. AION provides launch supply for parts not yet qualified at SGS, so January clone delivery does not depend on simultaneous qualification of the entire portfolio.",
+      "actor_refs": [
+        "actor.labs",
+        "actor.sgs",
+        "actor.smc"
+      ]
+    },
+    {
+      "id": "principle.autodesk_delivery_support",
+      "title": "Fund the complete Autodesk development capability",
+      "description": "Adam commits to supplying the staffing, equipment, licences and integration resources required by the agreed delivery plan. No arbitrary dollar ceiling or fabricated cost estimate; procurement and staffing are reviewed against the November objective. Non-exclusive funded development. Autodesk retains its software ownership and cross-platform business; clear the underlying Interact contribution/porting rights with the founders, including Mike Riddle. Logix supplies distribution and joint marketing, without a source buyout or forced platform exclusivity. Professional 17-inch/800x600 hardware becomes available around June, not January. See team_development_program.json for deployment and acceptance requirements. Sponsorship is incremental project work, not counted as retail Team Edition sales. The 1981–1983 reassessment includes an explicit planning provision for sponsorship and conditional CAD demand; see sales_reassessment_inputs.json. This is not a contractual funding ceiling, supplier quotation or confirmed shipment count.",
+      "actor_refs": [
+        "actor.adam",
+        "actor.logix",
+        "actor.aion",
+        "actor.labs",
+        "actor.autodesk"
+      ]
+    },
+    {
+      "id": "assumption.athena_1983_baseline",
+      "title": "ERA² / Athena NCC 1983 planning baseline",
+      "description": "Athena base: 2 × 128 KiB 2 µm 4164 modules and 5 MB HDD. Server: 4 × 256 KiB modules and 20 MB HDD. Both: ERA², 64 KiB graphics, one 5.25-inch DS/DD FDD, NIC, EEPROM BIOS and 256 KiB directly executable AIONix2 system ROM. No external application cartridge slots are added. AIONix2 has an accepted phased design baseline; implementation and measured fit remain qualification gates. All ERA² architectural numbers are engineering targets, with 16 MHz a stretch bin. AION Labs alone manufactures ERA² initially; SGS-ATES excluded for at least 12–18 months after initial commercial availability. Development dates are provisional; cost and financial forecasts remain unchanged.",
+      "actor_refs": [
+        "actor.logix",
+        "actor.labs",
+        "actor.aion"
+      ]
+    }
+  ],
+  "conventions": {
+    "dates": "Previously confirmed events retain exact days. New 1974 DRI founding retains year precision (late-year qualifier in its title); SMC agreement and initial sales retain month precision. Equal start/end partial dates identify one milestone within that period, not a whole-period process. Never infer a confirmed day from plotting geometry.",
+    "plans": "Targets, offers and future rights are distinguished from completed actions.",
+    "naming": "Stable actor/product identifiers; aliases retain spelling variants.",
+    "event_structure": "Events use date, participants, actions, outcomes, agreement_terms, metrics, product_refs and related_event_refs. Processes use period and phase_refs instead of event_type/date; phase_refs identify narrative context, not asserted start/end dates.",
+    "provenance": "This JSON structures the narrative; product specifications remain in the technical catalog. The technical catalog is an author-facing, all-years reference, not a contemporaneous press kit. All 1979 public and partner-facing next-generation references must follow the disclosure policy in ncc_1979_campaign.json; internal identifiers do not establish public product names.",
+    "phase_order": "Nine consecutive phases from 1972-01-01 through 1983-12-31; later manufacturing roadmap is provisional and does not establish later product sales."
+  }
+}

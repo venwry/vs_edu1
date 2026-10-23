@@ -1,3 +1,4 @@
+from data_store import read_document, document_bytes, document_text
 """Reproducible budget-system overlay. Run after base costs/pricing, before retail and sales.
 Frozen component estimates in generated/catalogs/artemis-budget-inputs.json avoid recursive repricing.
 """
@@ -5,7 +6,7 @@ import json,math,hashlib
 from copy import deepcopy
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-load=lambda n:json.loads((R/n).read_text())
+load=lambda n:read_document(n, root=R)
 def save(n,x):(R/n).write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n')
 I=load('generated/catalogs/artemis-budget-inputs.json');M=load('generated/models/manufacturing-costs.json');P=load('generated/models/pricing-results.json')
 refs=['bundle.artemis_budget_128','bundle.artemis_budget_128_hdd']
@@ -44,6 +45,6 @@ for disk,ref in zip([False,True],refs):
   for l in row.get('cost_components',[]):M['component_cost_assumptions']['budgetcost.'+l['cost_ref']]={'name':l['cost_ref'],'basis':'Complete subassembly/software allocation from generated/catalogs/artemis-budget-inputs.json; do not add again to total.'}
  M['products'].append({'id':ref,'catalog_ref':ref,'name':name,'group':'Bundles','unit':p['unit'],'available_from':'1980-05-19','assumptions':[I['basis'],I['hdd_basis']] if disk else [I['basis']],'snapshots':ms,'launch_assessment':launch})
  report['products'].append(detailed)
-M['budget_inputs_sha256']=P['budget_inputs_sha256']=hashlib.sha256((R/'generated/catalogs/artemis-budget-inputs.json').read_bytes()).hexdigest()
+M['budget_inputs_sha256']=P['budget_inputs_sha256']=hashlib.sha256(document_bytes('generated/catalogs/artemis-budget-inputs.json', root=R)).hexdigest()
 save('generated/models/artemis-budget-review.json',report);save('generated/models/manufacturing-costs.json',M);save('generated/models/pricing-results.json',P)
 print([(p['id'],p['snapshots']['1982']['manufacturing_cost_usd'],p['snapshots']['1982']['retail_price_usd']) for p in P['products'] if p['id'] in refs])

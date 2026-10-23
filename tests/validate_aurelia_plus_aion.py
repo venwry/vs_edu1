@@ -1,8 +1,9 @@
+from data_paths import read_document, document_bytes, document_text
 """Aurelia+ sourcing, shared programme, and demand-driven fab capacity."""
 import json,math
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def load(f):return json.loads((R/f).read_text())
+def load(f):return read_document(f, root=R)
 c=load('generated/catalogs/logix-aion-technical-catalog-v2.json');b=load('generated/catalogs/hardware-bom.json')
 r={x['id']:x for a in c.values() if isinstance(a,list) for x in a if isinstance(x,dict) and 'id'in x}
 h=r['computer.aurelia_plus'];p=h['memory']['physical_population']

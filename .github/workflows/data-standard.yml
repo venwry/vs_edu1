@@ -22,7 +22,7 @@ jobs:
           echo "NODE_PATH=$RUNNER_TEMP/atlas-tests/node_modules" >> "$GITHUB_ENV"
       - name: Validate owned records, schemas, references and projections
         run: |
-          python tools/data_catalog.py --check
+          python tools/validate_data.py
           python tests/validate_data_structure.py
           python tests/validate_category_taxonomy.py
           python tests/validate_catalogs.py

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "assemblies"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/assemblies.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "assemblies": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "cost_rollup_status",
+              "id",
+              "lines",
+              "name",
+              "requirements",
+              "routing",
+              "status"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "cost_rollup_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "effective_from": {
+                "type": [
+                  "string"
+                ]
+              },
+              "id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "lines": {
+                "type": [
+                  "array"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string"
+                ]
+              },
+              "ram_configuration_id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "requirements": {
+                "type": [
+                  "array"
+                ]
+              },
+              "routing": {
+                "type": [
+                  "object"
+                ]
+              },
+              "shipping_configuration": {
+                "type": [
+                  "boolean"
+                ]
+              },
+              "status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "cost_assessment_status": {
+                "enum": [
+                  "pending_reassessment",
+                  "assessed"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

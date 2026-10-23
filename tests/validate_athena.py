@@ -1,9 +1,10 @@
+from data_paths import read_document, document_bytes
 """Validate the planned Athena configurations independently of historical forecasts."""
 import json
 from pathlib import Path
 root = Path(__file__).resolve().parents[1]
-catalog = json.loads((root / 'generated/catalogs/logix-aion-technical-catalog-v2.json').read_text())
-plan = json.loads((root / 'generated/catalogs/athena-1983-program.json').read_text())
+catalog = read_document('generated/catalogs/logix-aion-technical-catalog-v2.json', root=root)
+plan = read_document('generated/catalogs/athena-1983-program.json', root=root)
 records = {r['id']: r for values in catalog.values() if isinstance(values, list)
            for r in values if isinstance(r, dict) and 'id' in r}
 for product, capacity, modules, module_size, disk in [

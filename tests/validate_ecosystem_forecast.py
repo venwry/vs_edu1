@@ -1,12 +1,13 @@
+from data_paths import read_document, document_bytes, document_text
 from data_paths import resolve_path
 from pathlib import Path
 import json,hashlib,re,math
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 m=read('generated/models/ecosystem-forecast.json');text=(R/'ecosystem.html').read_text()
 embedded=json.loads(re.search(r'<script type="application/json" id="ecosystem-model">(.*?)</script>',text,re.S).group(1))
 assert embedded==m
-for src in m['sources']:assert hashlib.sha256((R/resolve_path(src['path'])).read_bytes()).hexdigest()==src['sha256'],src['path']
+for src in m['sources']:assert hashlib.sha256(document_bytes(resolve_path(src['path']), root=R)).hexdigest()==src['sha256'],src['path']
 for s in m['scenarios']:
  assert len(s['quarterly'])==23
  cumulative_c=cumulative_a=cumulative_d=cumulative_o=0

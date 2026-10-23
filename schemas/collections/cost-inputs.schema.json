@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "artemis_budget_inputs",
+    "ncc_1982_inputs",
+    "comdex_1982_cost_inputs",
+    "memory_manufacturing"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/cost-inputs.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "artemis_budget_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "launch_date",
+        "basis",
+        "base_cost_snapshots",
+        "software_cost_snapshots",
+        "hdd_subsystem_additions_usd",
+        "hdd_basis",
+        "pricing",
+        "software_timing",
+        "source_urls"
+      ],
+      "properties": {
+        "launch_date": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "base_cost_snapshots": {
+          "type": "object"
+        },
+        "software_cost_snapshots": {
+          "type": "object"
+        },
+        "hdd_subsystem_additions_usd": {
+          "type": "object"
+        },
+        "hdd_basis": {
+          "type": "string"
+        },
+        "pricing": {
+          "type": "object"
+        },
+        "software_timing": {
+          "type": "string"
+        },
+        "source_urls": {
+          "type": "array"
+        }
+      }
+    },
+    "ncc_1982_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "as_of",
+        "currency",
+        "basis",
+        "process",
+        "custom_die_area_mm2",
+        "custom_maturity",
+        "package_usd",
+        "purchased_components",
+        "routing",
+        "software_profiles",
+        "comparators"
+      ],
+      "properties": {
+        "as_of": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "process": {
+          "type": "string"
+        },
+        "custom_die_area_mm2": {
+          "type": "object"
+        },
+        "custom_maturity": {
+          "type": "number"
+        },
+        "package_usd": {
+          "type": "object"
+        },
+        "purchased_components": {
+          "type": "object"
+        },
+        "routing": {
+          "type": "object"
+        },
+        "software_profiles": {
+          "type": "object"
+        },
+        "comparators": {
+          "type": "object"
+        }
+      }
+    },
+    "comdex_1982_cost_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "basis",
+        "graphics_controller_die_area_mm2",
+        "graphics_area_basis",
+        "monitor_component_overrides_usd",
+        "monitor_basis",
+        "routing",
+        "autocad_price_source",
+        "autocad_price_basis"
+      ],
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "graphics_controller_die_area_mm2": {
+          "type": "number"
+        },
+        "graphics_area_basis": {
+          "type": "string"
+        },
+        "monitor_component_overrides_usd": {
+          "type": "object"
+        },
+        "monitor_basis": {
+          "type": "string"
+        },
+        "routing": {
+          "type": "string"
+        },
+        "autocad_price_source": {
+          "type": "string"
+        },
+        "autocad_price_basis": {
+          "type": "string"
+        }
+      }
+    },
+    "memory_manufacturing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "financial_horizon",
+        "wafer_cost_by_year",
+        "pilot_operations"
+      ],
+      "properties": {
+        "financial_horizon": {
+          "type": "string"
+        },
+        "wafer_cost_by_year": {
+          "type": "object"
+        },
+        "pilot_operations": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

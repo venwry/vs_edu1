@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM,VirtualConsole}=require('jsdom');
-const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),json=p=>JSON.parse(read(p));
+const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),json=p=>require('../data-store.js').read(p);
 const {vendorName}=require('../bom-details.js');
 assert.equal(vendorName({vendor:'Vendor',owner:'Owner'}),'Vendor');
 assert.equal(vendorName({product_ref:'software.parent'},{'software.parent':{vendor:'Publisher'}}),'Publisher');

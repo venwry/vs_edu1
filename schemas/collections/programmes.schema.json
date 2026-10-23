@@ -1,0 +1,604 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "product_strategy",
+    "review_scope",
+    "market_reactions",
+    "memory_manufacturing",
+    "athena_1983_program",
+    "manufacturing_programs",
+    "aurelia_plus_aion_memory",
+    "team_development_program",
+    "artemis_tiers"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/programmes.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "product_strategy": {
+      "type": "object",
+      "required": [],
+      "additionalProperties": false,
+      "properties": {
+        "aurelia_1978_campaign": {
+          "type": [
+            "object"
+          ]
+        },
+        "bundle_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "business_tools_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "comdex_1982": {
+          "type": [
+            "object"
+          ]
+        },
+        "compatibility_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "competitor_reactions_file": {
+          "type": [
+            "string"
+          ]
+        },
+        "completed_assessments": {
+          "type": [
+            "string"
+          ]
+        },
+        "computer_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        },
+        "deferred": {
+          "type": [
+            "array"
+          ]
+        },
+        "diagrams": {
+          "type": [
+            "object"
+          ]
+        },
+        "era_area_assumption": {
+          "type": [
+            "string"
+          ]
+        },
+        "id_convention": {
+          "type": [
+            "string"
+          ]
+        },
+        "introduction": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "ncc_1982": {
+          "type": [
+            "object"
+          ]
+        },
+        "ncc_1982_offering": {
+          "type": [
+            "object"
+          ]
+        },
+        "network_adapter_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "network_software_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "notes": {
+          "type": [
+            "object"
+          ]
+        },
+        "os_model_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "os_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "page_ids": {
+          "type": [
+            "array"
+          ]
+        },
+        "portability_refs": {
+          "type": [
+            "object"
+          ]
+        },
+        "purpose": {
+          "type": [
+            "string"
+          ]
+        },
+        "ram_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "schema_notes": {
+          "type": [
+            "object"
+          ]
+        },
+        "software_platform_policy_from_november_1980": {
+          "type": [
+            "object"
+          ]
+        },
+        "software_views": {
+          "type": [
+            "array"
+          ]
+        },
+        "timeline": {
+          "type": [
+            "array"
+          ]
+        },
+        "title": {
+          "type": [
+            "string"
+          ]
+        },
+        "version": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    },
+    "review_scope": {
+      "type": "object",
+      "required": [],
+      "additionalProperties": false,
+      "properties": {
+        "aurelia_1978_campaign": {
+          "type": [
+            "object"
+          ]
+        },
+        "bundle_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "business_tools_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "comdex_1982": {
+          "type": [
+            "object"
+          ]
+        },
+        "compatibility_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "competitor_reactions_file": {
+          "type": [
+            "string"
+          ]
+        },
+        "completed_assessments": {
+          "type": [
+            "string"
+          ]
+        },
+        "computer_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        },
+        "deferred": {
+          "type": [
+            "array"
+          ]
+        },
+        "diagrams": {
+          "type": [
+            "object"
+          ]
+        },
+        "era_area_assumption": {
+          "type": [
+            "string"
+          ]
+        },
+        "id_convention": {
+          "type": [
+            "string"
+          ]
+        },
+        "introduction": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "memory_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "ncc_1982": {
+          "type": [
+            "object"
+          ]
+        },
+        "ncc_1982_offering": {
+          "type": [
+            "object"
+          ]
+        },
+        "network_adapter_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "network_software_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "notes": {
+          "type": [
+            "object"
+          ]
+        },
+        "os_model_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "os_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "page_ids": {
+          "type": [
+            "array"
+          ]
+        },
+        "portability_refs": {
+          "type": [
+            "object"
+          ]
+        },
+        "purpose": {
+          "type": [
+            "string"
+          ]
+        },
+        "ram_note": {
+          "type": [
+            "string"
+          ]
+        },
+        "schema_notes": {
+          "type": [
+            "object"
+          ]
+        },
+        "software_platform_policy_from_november_1980": {
+          "type": [
+            "object"
+          ]
+        },
+        "software_views": {
+          "type": [
+            "array"
+          ]
+        },
+        "timeline": {
+          "type": [
+            "array"
+          ]
+        },
+        "title": {
+          "type": [
+            "string"
+          ]
+        },
+        "version": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    },
+    "market_reactions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        }
+      }
+    },
+    "memory_manufacturing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sources"
+      ],
+      "properties": {
+        "sources": {
+          "type": "array"
+        }
+      }
+    },
+    "athena_1983_program": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "open_decisions",
+        "status",
+        "processor_ref",
+        "computer_refs",
+        "software_ref",
+        "scope",
+        "module_boms",
+        "computer_boms",
+        "launch"
+      ],
+      "properties": {
+        "open_decisions": {
+          "type": "array"
+        },
+        "status": {
+          "type": "string"
+        },
+        "processor_ref": {
+          "type": "string"
+        },
+        "computer_refs": {
+          "type": "array"
+        },
+        "software_ref": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "object"
+        },
+        "module_boms": {
+          "type": "array"
+        },
+        "computer_boms": {
+          "type": "array"
+        },
+        "launch": {
+          "type": "object"
+        }
+      }
+    },
+    "manufacturing_programs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "smc_transfer",
+        "ncc1979_card_refs"
+      ],
+      "properties": {
+        "metadata": {
+          "type": "object"
+        },
+        "smc_transfer": {
+          "type": "object"
+        },
+        "ncc1979_card_refs": {
+          "type": "array"
+        }
+      }
+    },
+    "aurelia_plus_aion_memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "source_commit",
+        "maturity_multiplier",
+        "development",
+        "capacity",
+        "effective_from",
+        "computer_ref",
+        "system_ram_chip_ref",
+        "chip_count",
+        "system_ram_kib",
+        "die_area_mm2"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "source_commit": {
+          "type": "string"
+        },
+        "maturity_multiplier": {
+          "type": "number"
+        },
+        "development": {
+          "type": "string"
+        },
+        "capacity": {
+          "type": "string"
+        },
+        "effective_from": {
+          "type": "string"
+        },
+        "computer_ref": {
+          "type": "string"
+        },
+        "system_ram_chip_ref": {
+          "type": "string"
+        },
+        "chip_count": {
+          "type": "number"
+        },
+        "system_ram_kib": {
+          "type": "number"
+        },
+        "die_area_mm2": {
+          "type": "number"
+        }
+      }
+    },
+    "team_development_program": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "launch_date",
+        "date_basis",
+        "status",
+        "autodesk_sponsored_deployment",
+        "financial_boundary",
+        "pending_investment_costs",
+        "campaign_costs",
+        "totals",
+        "assumptions",
+        "financial_integration",
+        "adoption_pricing"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "launch_date": {
+          "type": "string"
+        },
+        "date_basis": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "autodesk_sponsored_deployment": {
+          "type": "object"
+        },
+        "financial_boundary": {
+          "type": "string"
+        },
+        "pending_investment_costs": {
+          "type": "array"
+        },
+        "campaign_costs": {
+          "type": "array"
+        },
+        "totals": {
+          "type": "object"
+        },
+        "assumptions": {
+          "type": "string"
+        },
+        "financial_integration": {
+          "type": "object"
+        },
+        "adoption_pricing": {
+          "type": "object"
+        }
+      }
+    },
+    "artemis_tiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "artemis_128",
+        "artemis_256",
+        "pro_sourcing_changed"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "artemis_128": {
+          "type": "object"
+        },
+        "artemis_256": {
+          "type": "object"
+        },
+        "pro_sourcing_changed": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

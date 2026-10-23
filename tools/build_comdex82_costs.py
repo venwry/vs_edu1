@@ -1,9 +1,10 @@
+from data_store import read_document, document_bytes, document_text
 """Append dated November revision costs and prices; preserve annual June snapshots."""
 from pathlib import Path
 import json,copy,math,runpy,hashlib
 from decimal import Decimal,ROUND_HALF_UP
 R=Path(__file__).resolve().parents[1]
-load=lambda n:json.loads((R/n).read_text())
+load=lambda n:read_document(n, root=R)
 def save(n,x):(R/n).write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n')
 def cents(x):return float(Decimal(str(x)).quantize(Decimal('.01'),rounding=ROUND_HALF_UP))
 # Load the common engine; its deterministic output remains the annual baseline.
@@ -53,11 +54,11 @@ software={'id':'software.autocad_1_artemis','name':'Autodesk AutoCAD 1.0 — Art
 by={x['id']:x for x in priced}
 for id,hw,name in [('offer.comdex82_artemis_autocad','offer.comdex82_reference_hardware','Artemis PRO Professional CAD — hardware and AutoCAD'),('offer.comdex82_upgrade_autocad','offer.comdex82_professional_hardware','Professional graphics upgrade and AutoCAD')]:
  priced.append({'id':id,'name':name,'date':'1982-11-29','retail_price_usd':cents(by[hw]['retail_price_usd']+1000),'manufacturing_cost_usd':None,'dealer_fee_rate':None,'dealer_fee_usd':None,'net_revenue_usd':None,'unit_contribution_usd':None,'margin_pct':None,'pricing_status':'mixed_supplier_component_sum','components':[hw,'software.autocad_1_artemis'],'known_logix_hardware_cost_usd':by[hw]['manufacturing_cost_usd'],'known_logix_hardware_contribution_usd':by[hw]['unit_contribution_usd'],'basis':'Sum of hardware and separately owned Autodesk licence. Total manufacturing cost/contribution unknown; never treat the $1000 licence as free-cost Logix revenue.'})
-assessment={'date':'1982-11-29','inputs_file':'generated/catalogs/comdex-1982-cost-inputs.json','inputs_sha256':hashlib.sha256((R/'generated/catalogs/comdex-1982-cost-inputs.json').read_bytes()).hexdigest(),'basis':policy['basis'],'controller_model':copy.deepcopy(g['chip_models']['part.professional_graphics_controller']['1982']),'products':rows}
+assessment={'date':'1982-11-29','inputs_file':'generated/catalogs/comdex-1982-cost-inputs.json','inputs_sha256':hashlib.sha256(document_bytes('generated/catalogs/comdex-1982-cost-inputs.json', root=R)).hexdigest(),'basis':policy['basis'],'controller_model':copy.deepcopy(g['chip_models']['part.professional_graphics_controller']['1982']),'products':rows}
 costs['dated_assessments']=[assessment];costs['metadata']['source_sha256']['generated/catalogs/comdex-1982-cost-inputs.json']=assessment['inputs_sha256']
 prices['dated_assessments']=[{'date':'1982-11-29','basis':policy['basis'],'products':priced}]
 review={'date':'1982-11-29','cost_assessment':assessment,'prices':priced,'financial_boundary':'Unit estimates only; June snapshots and Team adoption price retained. No sales-volume, ROI or investment update inferred.'}
 costs.setdefault('reviews',{})['comdex-1982']=review;save('generated/models/manufacturing-costs.json',costs)
-prices['metadata']['cost_model_sha256']=hashlib.sha256((R/'generated/models/manufacturing-costs.json').read_bytes()).hexdigest();save('generated/models/pricing-results.json',prices)
+prices['metadata']['cost_model_sha256']=hashlib.sha256(document_bytes('generated/models/manufacturing-costs.json', root=R)).hexdigest();save('generated/models/pricing-results.json',prices)
 # Pricing and Navigator render the generated models; the retired report is not emitted.
 print('Updated November costs and retail prices:',[(x['id'],x['retail_price_usd']) for x in priced])

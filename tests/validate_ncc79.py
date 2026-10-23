@@ -1,8 +1,9 @@
+from data_paths import read_document, document_bytes, document_text
 """Campaign separation, migration timing and no retroactive forecasts."""
 import json
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 c=read('generated/catalogs/ncc-1979-campaign.json');s=read('generated/catalogs/logix-aion-story.json');t=read('generated/catalogs/logix-aion-technical-catalog-v2.json');f=read('generated/models/sales-forecast.json')
 e={x['id']:x for p in s['phases'] for x in p['events']}
 r={x['id']:x for v in t.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id' in x}

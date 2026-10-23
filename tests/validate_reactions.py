@@ -1,8 +1,9 @@
+from data_paths import read_document, document_bytes, document_text
 """Prevent retroactive sales, accidental video requirements and date/source conflation."""
 import json,hashlib
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 s=read('generated/catalogs/logix-aion-story.json');t=read('generated/catalogs/logix-aion-technical-catalog-v2.json');m=read('generated/catalogs/market-reactions.json');f=read('generated/models/sales-forecast.json')
 e={e['id']:e for p in s['phases'] for e in p['events']};r={x['id']:x for v in t.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id'in x}
 for x in m['events']:assert e[x['event_ref']]['date']['start']==x['date']
@@ -14,7 +15,7 @@ assert r['edition.abacus_1.model_ii']['dependency_refs']==['software.cpm_model_i
 assert r['device.model_ii_flexibus']['specification']['video_requirement']=='None; native Tandy video retained.'
 assert all('model_ii' not in x['id'] for x in read('generated/models/manufacturing-costs.json')['products'])
 assert all('model_ii' not in x['id'] for x in read('generated/models/pricing-results.json')['products'])
-assert f['metadata']['source_reactions_sha256']==hashlib.sha256((R/'generated/catalogs/market-reactions.json').read_bytes()).hexdigest()
-assert f['metadata']['source_story_sha256']==hashlib.sha256((R/'generated/catalogs/logix-aion-story.json').read_bytes()).hexdigest()
+assert f['metadata']['source_reactions_sha256']==hashlib.sha256(document_bytes('generated/catalogs/market-reactions.json', root=R)).hexdigest()
+assert f['metadata']['source_story_sha256']==hashlib.sha256(document_bytes('generated/catalogs/logix-aion-story.json', root=R)).hexdigest()
 assert f['metadata']['current_forecast_horizon']=='1982-12-31'
 print('PASS: scenario dates, staged Tandy port, external boundaries, AIONix sequence and current forecast provenance.')

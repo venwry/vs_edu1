@@ -1,5 +1,5 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM,VirtualConsole}=require('jsdom');
-const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),json=p=>JSON.parse(read(p));
+const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),json=p=>require('../data-store.js').read(p);
 const site=json('generated/catalogs/site-pages.json'),catalog=json('generated/catalogs/logix-aion-technical-catalog-v2.json'),story=json('generated/catalogs/logix-aion-story.json');
 const records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(r=>r?.id).map(r=>[r.id,r]));
 const bom=require('../bom-details.js').createModel(catalog,json('generated/catalogs/hardware-bom.json'),json('generated/models/manufacturing-costs.json'));
@@ -17,7 +17,7 @@ for(const page of [tech,services])for(const id of page.record_refs)assert.equal(
   for(const s of d.scripts)w.eval(read(new URL(s.src).pathname.slice(1)));
   for(let i=0;i<100&&!d.querySelector('main[data-ready]');i++)await new Promise(r=>setTimeout(r,10));
   assert(d.querySelector('main[data-ready]'));assert.equal(d.querySelectorAll('#bom-rows tr').length,page.record_refs.length);assert(d.querySelector('[data-element="'+deep+'"][aria-pressed=true]'));
-  assert.deepEqual(requests.sort(),['generated/catalogs/logix-aion-story.json','generated/catalogs/logix-aion-technical-catalog-v2.json','generated/catalogs/site-pages.json'].sort());
+  const reg=json('schemas/data-registry.json');const expected=new Set(['schemas/data-registry.json',...['logix-aion-story','logix-aion-technical-catalog-v2','site-pages'].flatMap(n=>require('../data-store.js').filesFor(n,reg))]);assert.deepEqual(requests.sort(),[...expected].sort());
   assert.equal(d.querySelectorAll('[role=tab]').length,2);
   for(const id of page.record_refs){d.querySelector('[data-element="'+id+'"]').click();d.getElementById('tab-details').click();assert(d.getElementById('bom-inspector').textContent.includes(records[id].name));d.getElementById('tab-events').click();const events=story.phases.flatMap(p=>p.events).filter(e=>(e.product_refs||[]).includes(id));assert.equal(d.querySelectorAll('#panel-events article').length,events.length);}
   d.getElementById('tab-events').dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));assert.equal(d.activeElement.id,'tab-details');

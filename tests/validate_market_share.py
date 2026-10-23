@@ -1,6 +1,7 @@
+from data_paths import read_document, document_bytes, document_text
 import json
 from pathlib import Path
-R=Path(__file__).resolve().parents[1];read=lambda n:json.loads((R/n).read_text());m=read('generated/models/quarterly-market-share.json');sales=read('generated/models/sales-forecast.json');eco=read('generated/models/ecosystem-forecast.json')
+R=Path(__file__).resolve().parents[1];read=lambda n:read_document(n, root=R);m=read('generated/models/quarterly-market-share.json');sales=read('generated/models/sales-forecast.json');eco=read('generated/models/ecosystem-forecast.json')
 for s in m['scenarios']:
  assert len(s['quarterly'])==12
  forecasts=next(x for x in sales['scenarios'] if x['id']==s['id']);contracts=next(x for x in sales['contract_scenarios'] if x['id']==s['id'])['quarterly']

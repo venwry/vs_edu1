@@ -1,8 +1,9 @@
+from data_paths import read_document, document_bytes, document_text
 """Cross-model checks for dated offerings, finite shipments, capacity funding and returns."""
 import json, math
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-read=lambda n:json.loads((R/n).read_text())
+read=lambda n:read_document(n, root=R)
 p=read('generated/models/pricing-results.json');c=read('generated/models/retail-catalog-1982-results.json');s=read('generated/models/sales-forecast.json');r=read('generated/models/roi-1974-1980.json');m=read('generated/models/quarterly-market-share.json')
 close=lambda a,b:abs(a-b)<.06
 for ref,comp in [('bundle.artemis_budget_128',3299),('bundle.artemis_budget_128_hdd',4995)]:
