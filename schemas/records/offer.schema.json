@@ -15,7 +15,7 @@
       "type": "string"
     },
     "schema_version": {
-      "const": "1.0.0"
+      "const": "2.0.0"
     },
     "id": {
       "type": "string",
@@ -28,7 +28,8 @@
       "type": "object",
       "required": [
         "id",
-        "name"
+        "name",
+        "category"
       ],
       "additionalProperties": false,
       "properties": {
@@ -71,9 +72,7 @@
           "minLength": 1
         },
         "category": {
-          "type": [
-            "string"
-          ]
+          "$ref": "urn:logix-aion:category:2"
         },
         "commercial_routes": {
           "type": [
@@ -185,6 +184,10 @@
           "type": [
             "string"
           ]
+        },
+        "vendor": {
+          "type": "string",
+          "minLength": 1
         }
       }
     }

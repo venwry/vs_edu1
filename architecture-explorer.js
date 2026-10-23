@@ -58,7 +58,7 @@ function build(){
  product('device.flexibus_keyboard',1,1);product('device.flexiprint40',3,1,true);product('device.flexidisk',1,2,true);product('device.flexidisk_ii',3,2,true);
  add('link',rec(c.video.technology_ref).name,'Display interface',2,3,'Video',rec(c.video.technology_ref).specification,facts(rec(c.video.technology_ref).specification));
  const bundled=new Set(catalog.offered_bundles.filter(x=>x.computer_ref===c.id).flatMap(x=>x.included_devices||[]));
- const displays=c.compatible_devices.map(rec).filter(x=>x?.category==='display');
+ const displays=c.compatible_devices.map(rec).filter(x=>window.CatalogCategories.isMonitor(x));
  displays.forEach((r,i)=>{const positions=[[1,3],[3,3],[1,4],[3,4]], [col,row]=positions[i];product(r.id,col,row,!bundled.has(r.id));const n=nodes[nodes.length-1];n.sub=(bundled.has(r.id)?'Bundle option':'Optional')+' · '+r.introduced.event_start_date;edges.push(['link',r.id,!bundled.has(r.id)]);});
  edges.push(['host','flex'],['flex','device.flexibus_keyboard'],['flex','device.flexiprint40',true],['flex','device.flexidisk',true],['flex','device.flexidisk_ii',true],['host','link']);
  if(net){product('device.network_card_aurelia',2,4,true);edges.push(['host','device.network_card_aurelia',true]);}

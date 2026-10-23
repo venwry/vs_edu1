@@ -1,12 +1,12 @@
 {
   "$schema": "../../../schemas/records/bom-components.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "bompart.device.mono_pro_17.oem_17inch_core",
   "record_type": "bom-components",
   "data": {
     "id": "bompart.device.mono_pro_17.oem_17inch_core",
     "name": "oem 17inch core",
-    "category": "catalog_component",
+    "category": "crt_display_assembly",
     "catalog_ref": null,
     "manufacturer": null,
     "manufacturer_part_number": null,
@@ -17,6 +17,12 @@
     "qualification_status": "unresolved",
     "requirements": [
       "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment."
+    ],
+    "candidate_manufacturers": [
+      {
+        "name": "Ball Brothers",
+        "basis": "Source specifies a candidate Ball-class core; supplier commitment and qualification remain unresolved."
+      }
     ]
   }
 }

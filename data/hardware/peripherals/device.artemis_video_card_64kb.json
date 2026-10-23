@@ -1,12 +1,12 @@
 {
   "$schema": "../../../schemas/records/peripheral.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "device.artemis_video_card_64kb",
   "record_type": "peripheral",
   "data": {
     "id": "device.artemis_video_card_64kb",
     "name": "Logix Artemis 64 KiB video controller card",
-    "category": "video_card",
+    "category": "video_expansion_card",
     "introduced": {
       "event_name": "NCC June 1982 — colour graphics and mouse interaction",
       "event_start_date": "1982-06",
@@ -598,6 +598,7 @@
       "computer.athena",
       "computer.athena_server"
     ],
-    "athena_qualification": "Existing card baseline selected; Athena host electrical/firmware compatibility remains a release gate."
+    "athena_qualification": "Existing card baseline selected; Athena host electrical/firmware compatibility remains a release gate.",
+    "vendor": "Logix"
   }
 }

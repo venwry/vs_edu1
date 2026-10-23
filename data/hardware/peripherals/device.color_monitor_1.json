@@ -1,12 +1,12 @@
 {
   "$schema": "../../../schemas/records/peripheral.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "device.color_monitor_1",
   "record_type": "peripheral",
   "data": {
     "id": "device.color_monitor_1",
     "name": "Logix Color Monitor I 12-inch",
-    "category": "display",
+    "category": "monitor",
     "specification": {
       "display_subassembly_ref": "part.sony_kv1204_display_assembly",
       "controller_ref": "part.color_monitor_controller",
@@ -41,6 +41,7 @@
     "manufacturing_status": "incomplete_bom",
     "bom_assembly_refs": [
       "assembly.device.color_monitor_1"
-    ]
+    ],
+    "vendor": "Logix"
   }
 }

@@ -5,6 +5,7 @@ import jsonschema
 R=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(R/'tools'))
 from data_catalog import build, manifest, read, resolve
+from schema_validation import record_validator
 m=manifest();build(check=True)
 seen={};sources=set()
 def visit(x):
@@ -23,7 +24,7 @@ for name in sorted(sources):
   seen[key]=name
  schema=((R/name).parent/record['$schema']).resolve()
  assert schema.is_relative_to(R/'schemas'),name
- validator=jsonschema.Draft202012Validator(json.loads(schema.read_text()))
+ validator=record_validator(json.loads(schema.read_text()))
  validator.validate(record)
 for folder in ('data','site/config'):
  for path in (R/folder).rglob('*.json'):

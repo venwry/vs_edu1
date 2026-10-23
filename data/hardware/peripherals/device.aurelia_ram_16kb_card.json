@@ -1,12 +1,12 @@
 {
   "$schema": "../../../schemas/records/peripheral.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "device.aurelia_ram_16kb_card",
   "record_type": "peripheral",
   "data": {
     "id": "device.aurelia_ram_16kb_card",
     "name": "Logix Aurelia 16 KB RAM expansion card",
-    "category": "expansion_card",
+    "category": "memory_expansion",
     "capacity_kb": 16,
     "compatible_with": [
       "computer.aurelia"
@@ -41,6 +41,7 @@
     "manufacturing_status": "incomplete_bom",
     "bom_assembly_refs": [
       "assembly.device.aurelia_ram_16kb_card"
-    ]
+    ],
+    "vendor": "Logix"
   }
 }

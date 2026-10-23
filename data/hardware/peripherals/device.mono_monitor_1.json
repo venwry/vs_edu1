@@ -1,12 +1,12 @@
 {
   "$schema": "../../../schemas/records/peripheral.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "device.mono_monitor_1",
   "record_type": "peripheral",
   "data": {
     "id": "device.mono_monitor_1",
     "name": "Logix Monochrome Monitor I 9-inch",
-    "category": "display",
+    "category": "monitor",
     "specification": {
       "crt_ref": "part.ball_tv90_crt",
       "controller_ref": "part.aurelia_monitor_dac",
@@ -41,6 +41,7 @@
     "manufacturing_status": "incomplete_bom",
     "bom_assembly_refs": [
       "assembly.device.mono_monitor_1"
-    ]
+    ],
+    "vendor": "Logix"
   }
 }

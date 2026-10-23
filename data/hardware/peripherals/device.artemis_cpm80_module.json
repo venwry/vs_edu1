@@ -1,12 +1,12 @@
 {
   "$schema": "../../../schemas/records/peripheral.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "device.artemis_cpm80_module",
   "record_type": "peripheral",
   "data": {
     "id": "device.artemis_cpm80_module",
     "name": "Artemis CP/M-80 backward-compatibility expansion module",
-    "category": "processor_expansion_card",
+    "category": "processor_expansion",
     "specification": {
       "cpu_ref": "part.z80a",
       "local_ram_kb": 64,
@@ -36,6 +36,7 @@
       "introduced": "1980-05-19",
       "status_at_announcement": "Planned separately sold Z80 legacy option; host architecture and word size undisclosed.",
       "scope": "Qualified documented-interface applications only; no extension of compatibility to Artemis PRO or all future models."
-    }
+    },
+    "vendor": "Logix"
   }
 }

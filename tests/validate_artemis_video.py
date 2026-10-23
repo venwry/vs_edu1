@@ -35,7 +35,7 @@ for host in ['computer.artemis_pro']:
  assert r[host]['io_and_expansion']['expansion_slots']['count']==4
  assert r[host]['io_and_expansion']['dedicated_video_slot']['general_purpose_slots_consumed']==0
 for d in c['devices']:
- if d['category']=='display':assert ('raster_640_400' in d['specification']['capabilities']['raster_ids'])==(d['id']=='device.mono_pro')
+ if d['category']=='monitor':assert ('raster_640_400' in d['specification']['capabilities']['raster_ids'])==(d['id']=='device.mono_pro')
 for bundle in c['offered_bundles']:
  if bundle['id'].endswith('_mono_pro'):
   assert bundle['included_devices']==['device.flexibus_keyboard','device.mono_pro']

@@ -2,6 +2,7 @@
    remain authoritative; this module selects and presents them without recosting. */
 (function(root){
 'use strict';
+const categories=typeof module!=='undefined'&&module.exports?require('./catalog-categories.js'):root.CatalogCategories;
 const family=['computer.artemis','computer.artemis_pro'];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const human=v=>String(v).replace(/_/g,' ');
@@ -52,13 +53,13 @@ function createModel(catalog,bom,cost){
   for(const id of option.offer?.included_software||[])if(!/^software\.aionix/.test(id))refs.add(id);
   for(const v of option.offer?.software_variants||[])if(v.effective_from<=date)for(const id of v.add||[])refs.add(id);
   const dedicated=host.video_variants?.find(v=>v.configuration_ids.includes(ram.id))?.specification||host.video;
-  const videoRefs=[...refs].filter(id=>records[id]?.category==='video_card'||/device\.artemis.*video/.test(id));
+  const videoRefs=[...refs].filter(id=>categories.isVideoCard(records[id]));
   if(!videoRefs.length&&!option.upgrade)videoRefs.push(option.offer?.computer_configuration?.video_card_ref||dedicated.card_ref||host.io_and_expansion.dedicated_video_slot.included_card_ref);
   // Professional CAD replaces the base primary card; do not count both.
   const primary=videoRefs.find(id=>id==='device.artemis_video_card_64kb')||videoRefs.find(id=>id!=='device.artemis_professional_video_128kb');
   const additional=videoRefs.filter(id=>id!==primary);
   const network=refs.has('device.network_card_artemis')||(!option.upgrade&&Boolean(host.networking?.included_by_default));
-  const displays=[...refs].filter(id=>records[id]?.category==='display');
+  const displays=[...refs].filter(id=>categories.isMonitor(records[id]));
   const peripherals=[...refs].filter(id=>id.startsWith('device.')&&!displays.includes(id)&&!videoRefs.includes(id)&&id!=='device.network_card_artemis'&&id!=='device.artemis_cpm80_module'&&!/ram_/.test(id));
   return {option,revision,date,host,ram,tree,refs,primary,additional,network,displays,peripherals,software:[...refs].filter(id=>id.startsWith('software.')),externalHdd:option.offer?.storage?.hard_disk_enclosure==='external qualified subsystem',snapshot:assessments(option,revision).find(x=>x.date===date)?.snapshot};
  }
@@ -92,7 +93,7 @@ function createFamilyModel(catalog,bom,cost,familyId){
   if(option.upgradeOffer){for(const id of option.upgradeOffer.included_devices||[])refs.add(id);for(const id of option.upgradeOffer.included_software||[])refs.add(id);refs.delete(host.rom_and_cartridges?.system_cartridge_ref);}
   const primary=host.graphics_card_ref||host.video?.card_ref;
   const network=[...refs].some(id=>/^device.network_card/.test(id));
-  return {option,revision,date,host,ram,tree,refs,primary,network,displays:[...refs].filter(id=>records[id]?.category==='display'),peripherals:[...refs].filter(id=>id.startsWith('device.')),software:[...refs].filter(id=>id.startsWith('software.')),snapshot:model.assessments(option,revision).find(x=>x.date===date)?.snapshot};
+  return {option,revision,date,host,ram,tree,refs,primary,network,displays:[...refs].filter(id=>categories.isMonitor(records[id])),peripherals:[...refs].filter(id=>id.startsWith('device.')),software:[...refs].filter(id=>id.startsWith('software.')),snapshot:model.assessments(option,revision).find(x=>x.date===date)?.snapshot};
  }
  return {...model,options,state};
 }
@@ -167,7 +168,7 @@ root.setupArtemisWorkbench=function(catalog,page){
    software+=references('software');
    software+=Object.entries(settings.portability_refs).map(([key,id])=>recordButton('portability-'+key,id,null,'Development / portability reference')).join('');
    const present=new Set([...nodes.values()].map(n=>n.ref));
-   for(const id of host.compatible_devices||[]){if(present.has(id)||!records[id])continue;const r=records[id],entry=recordButton('optional-'+id,id,null,'Compatible option — not fitted · '+(r.introduced?.event_start_date||'date unknown'));if(/memory/.test(r.category))memory+=entry;else if(/video|network_card|cpm80/.test(id))expansion+=entry;else ports+=entry;present.add(id);}
+   for(const id of host.compatible_devices||[]){if(present.has(id)||!records[id])continue;const r=records[id],entry=recordButton('optional-'+id,id,null,'Compatible option — not fitted · '+(r.introduced?.event_start_date||'date unknown'));if(categories.isMemory(r))memory+=entry;else if(categories.isExpansion(r))expansion+=entry;else ports+=entry;present.add(id);}
    // Full platform records previously exposed in the reference accordion remain reachable.
    for(const id of page.record_refs){if(id===host.id||present.has(id)||!records[id]||family.includes(id)||id.startsWith('bundle.')||id.startsWith('offer.'))continue;
     const entry=recordButton('platform-'+id,id,null,'Platform reference — not an included item');
@@ -200,10 +201,10 @@ root.setupArtemisWorkbench=function(catalog,page){
     const hdd=host.storage.internal_hdd;if(hdd)add('disks','hdd',hdd.part_ref,'Internal hard disk',hdd.capacity_mb+' MB',hdd);
     if(s.primary)add('expansion','video',s.primary,'Video card',records[s.primary].name);
    }
-   for(const ref of s.refs){const r=records[ref];if(!r||(included.has(ref)&&!ref.startsWith('software.')))continue;if(ref.startsWith('software.'))add('software','included-'+ref,ref,'Included software',r.name);else if(ref.startsWith('device.')){const expansion=/card|expansion/.test(r.category||'');add(expansion?'expansion':'ports','included-'+ref,ref,human(r.category||'Peripheral'),r.name);}}
+   for(const ref of s.refs){const r=records[ref];if(!r||(included.has(ref)&&!ref.startsWith('software.')))continue;if(ref.startsWith('software.'))add('software','included-'+ref,ref,'Included software',r.name);else if(ref.startsWith('device.')){const expansion=categories.isExpansion(r);add(expansion?'expansion':'ports','included-'+ref,ref,human(r.category||'Peripheral'),r.name);}}
    if(!s.option.upgrade){
-    for(const ref of s.refs){const r=records[ref];if(ref.startsWith('part.')&&!included.has(ref)&&r&&!/ram|memory|hdd|disk/.test(r.category||'')){add('core','fitted-'+ref,ref,human(r.category||'Component'),r.name);}}
-    for(const ref of host.compatible_devices||[]){if(included.has(ref))continue;const r=records[ref];if(!r)continue;const group=/memory/.test(r.category)?'memory':/card|expansion/.test(r.category)?'expansion':'ports';groups[group].push(recordButton('optional-'+ref,ref,null,'Compatible option — not fitted'));included.add(ref);}
+    for(const ref of s.refs){const r=records[ref];if(ref.startsWith('part.')&&!included.has(ref)&&r&&!categories.isMemory(r)&&!categories.isDisk(r)){add('core','fitted-'+ref,ref,human(r.category||'Component'),r.name);}}
+    for(const ref of host.compatible_devices||[]){if(included.has(ref))continue;const r=records[ref];if(!r)continue;const group=categories.hardwareGroup(r);groups[group].push(recordButton('optional-'+ref,ref,null,'Compatible option — not fitted'));included.add(ref);}
     for(const ref of host.compatible_software||[]){if(included.has(ref))continue;groups.software.push(recordButton('compatible-'+ref,ref,null,'Compatible / separately supplied'));included.add(ref);}
     const refs=new Set([...(host.technology_refs||[]),...page.record_refs]);
     for(const ref of refs){if(included.has(ref)||!records[ref]||ref.startsWith('computer.')||ref.startsWith('bundle.'))continue;const group=/memory|ram|xip/.test(ref)?'memory':/^(software|edition)\.|api|abi|os_model|portability|tui/.test(ref)?'software':/video|display|monitor/.test(ref)?'ports':'core';groups[group].push(recordButton('reference-'+ref,ref,null,'Architecture reference'));}
