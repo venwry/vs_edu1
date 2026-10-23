@@ -26,7 +26,7 @@ for(const page of [tech,services])for(const id of page.record_refs)assert.equal(
   const categories=[...d.getElementById('bom-category').options].slice(1);for(const option of categories){d.getElementById('bom-category').value=option.value;d.getElementById('bom-category').dispatchEvent(new w.Event('change'));assert([...d.querySelectorAll('#bom-rows tr')].every(tr=>tr.children[2].textContent===option.value.replace(/_/g,' ')));}
   assert.deepEqual(errors,[]);dom.window.close();
  }
- // Old URLs are redirect-only documents; every known record anchor has a direct canonical route.
- for(const name of ['academy','operating-systems','business-software','bpi','software-development','flexibus','video-system','networking','peripherals']){assert(!site.pages.some(p=>p.id===name));const text=read(name+'.html');assert(text.includes('id="redirect-target"'));assert(!text.includes('src="atlas.js"'));}
+ // Retired pages are absent; their records remain in the canonical navigators.
+ for(const name of ['academy','operating-systems','business-software','bpi','software-development','flexibus','video-system','networking','peripherals']){assert(!site.pages.some(p=>p.id===name));assert(!fs.existsSync(path.join(root,name+'.html')));}
  console.log('PASS: 22 technologies/platforms and 15 services, lossless/disjoint membership, all details/events, filters, keyboard tabs, old anchors and light data loading');
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,4 +1,4 @@
-"""Build common navigation, content placement and legacy redirects from site config.
+"""Build navigation and content; rewrite legacy links and retain only the index redirect.
 Run after catalogue assembly and after any financial HTML builder.
 """
 from pathlib import Path
@@ -10,7 +10,9 @@ def build():
  header='<header class="atlas-header"><nav aria-label="Main navigation">'+''.join('<section><h2>'+esc(group['title'])+'</h2>'+''.join('<a href="'+pages[i]['path']+'">'+esc(labels.get(i,pages[i]['title']))+'</a>' for i in group['page_refs'])+'</section>' for group in site['navigation_sections'])+'</nav></header>'
  (ROOT/'site/navigation.html').write_text(header+'\n')
  for path in list(ROOT.glob('*.html'))+list((ROOT/'tools').glob('*template.html')):
-  if path.name in site['redirects']:continue
+  if path.name in site['redirects']:
+   if path.name!='index.html':path.unlink()
+   continue
   text=path.read_text();
   if 'atlas.js' in text and 'catalog-navigation.js' not in text:text=text.replace('<head>','<head><script defer src="catalog-navigation.js"></script>',1)
   if not re.search(r'<body\b',text):
@@ -46,6 +48,8 @@ def build():
  deep_links={ref:pages[pg]['path']+'#'+ref for ref,pg in site['record_page_links'].items()}
  deep_links['november-prices']='pricing.html#november-prices'
  for source,target in site['redirects'].items():
+  # Retired aliases remain useful for rewriting builder output, not as hosted pages.
+  if source!='index.html':continue
   (ROOT/source).write_text('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page moved · Logix / AION</title><link rel="stylesheet" href="site-shell.css"><script defer src="site-shell.js"></script></head><body>'+header+'<main class="site-details"><h1>Page moved</h1><p><a id="redirect-target" href="'+target+'">Continue to the reorganised page</a></p></main><script>const routes='+json.dumps(deep_links)+';const target=new URL(routes[decodeURIComponent(location.hash.slice(1))]||document.getElementById("redirect-target").href,location.href);if(location.hash)target.hash=location.hash;if(location.pathname.endsWith("comdex-1982.html")&&location.hash==="#november-prices"){target.pathname=target.pathname.replace("timeline.html","pricing.html");}target.search=location.search;location.replace(target.href);</script></body></html>\n')
  return len(pages)
 if __name__=='__main__':print('Built navigation and content for',build(),'primary pages')
