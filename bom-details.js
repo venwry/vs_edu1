@@ -14,6 +14,8 @@ function createModel(catalog,bom,cost){
  for(const key of ['software_products','platform_editions','external_partner_products'])for(const r of catalog[key]||[])add(r,'Software',key==='platform_editions'?'Platform edition':'Software');
  for(const key of ['offered_bundles','proposed_bundles','commercial_offerings'])for(const r of catalog[key]||[])add(r,'Bundle',key==='proposed_bundles'?'Proposed bundle':key==='commercial_offerings'?'Commercial offering':'Catalogue bundle');
  for(const r of bom.components)if(!r.catalog_ref||!items.has(r.catalog_ref))add(r,'Part','Manufacturing component');
+ const reviewRows=Object.entries(cost.reviews||{}).flatMap(([key,r])=>[...(r.products||r.prices||[]),...(key==='ncc-1982'?[{id:'software.aion_development_team',name:'AION Development Team',...r.team_launch_price},{id:'software.aion_development_team',name:'AION Development Team',...r.team_1982_price}]:[])].map(row=>({...row,review:key})));
+ for(const r of reviewRows)if(!items.has(r.id))add({id:r.id,name:r.name,available_from:r.date,description:'Dated commercial review; technical specification not separately recorded.'},r.id.startsWith('software.')?'Software':'Bundle','Reviewed offering');
  function assemblyIds(id){const r=records[id];return [...new Set([
  ...(assemblies.has(id)?[id]:[]),...(bom.products||[]).filter(p=>p.catalog_ref===id).flatMap(p=>p.assembly_refs||[]),
  ...(bom.offers||[]).filter(p=>p.catalog_ref===id).map(p=>p.assembly_ref),r?.bom_assembly_ref,
@@ -22,17 +24,37 @@ function createModel(catalog,bom,cost){
  ...['assembly.'+id,'assembly.media.'+id].filter(x=>assemblies.has(x))
  ].filter(x=>assemblies.has(x)))];}
  function rows(id,seen=new Set(),depth=0){if(seen.has(id))return [];const a=assemblies.get(id);if(!a)return [];const next=new Set(seen).add(id);return (a.lines||[]).flatMap(l=>[{...l,depth,name:assemblies.get(l.ref)?.name||components.get(l.ref)?.name||records[l.ref]?.name||l.ref},...rows(l.ref,next,depth+1)]);}
- function render(id,opts={}){
+ function renderBOM(id,opts={}){
   const ids=opts.assemblyRef?(assemblies.has(opts.assemblyRef)?[opts.assemblyRef]:[]):assemblyIds(id);
   let html='<section class="bom-detail"><h3>Bill of materials</h3>';
   if(!ids.length){const parts=components.has(id)?[components.get(id)]:bom.components.filter(p=>p.catalog_ref===id);html+='<p>No constituent assembly BOM is recorded for this element.</p>';if(parts.length)html+='<p>Component unit cost: '+parts.map(p=>Number.isFinite(p.unit_cost)?esc(p.unit_cost+' '+(p.currency||'(currency unspecified)')):'Unknown').join(' / ')+'. Supplier qualification and pricing remain as recorded in the specification.</p>';}
   for(const aid of ids){const a=assemblies.get(aid);html+='<details'+(ids.length===1?' open':'')+'><summary>'+esc(a.name||aid)+'</summary><p>'+esc(a.status||'')+' · Quantities below are per parent assembly; nested rows are not additional totals.</p><div class="bom-table-scroll"><table><thead><tr><th>Element</th><th>Quantity</th><th>Unit</th><th>Role / condition</th></tr></thead><tbody>'+rows(aid).map(l=>'<tr><td style="padding-left:'+(.5+l.depth)+'rem">'+esc(l.name)+'</td><td>'+esc(l.quantity??'Unknown')+'</td><td>'+esc(l.unit||'—')+'</td><td>'+esc([l.role,l.condition,l.quantity_status].filter(Boolean).join(' · '))+'</td></tr>').join('')+'</tbody></table></div></details>';}
-  const products=cost.products.filter(p=>p.id===id||p.catalog_ref===id);
-  if(products.length){html+='<h3>Recorded costs</h3><p>Nominal USD engineering estimates. Software costs may include media, licensing and delivery. Component and assembly costs overlap; do not add them together.</p>';for(const p of products){html+='<details data-bom-cost="'+esc(p.id)+'" data-cost-id="'+esc(p.id)+'"><summary>'+esc(p.name)+'</summary><div class="bom-table-scroll"><table><thead><tr><th>June 15 evaluation</th><th>Total recurring cost</th><th>Range</th><th>Status</th></tr></thead><tbody>'+Object.entries(p.snapshots||{}).filter(([y,s])=>s.status!=='not_yet_offered'&&(cost.metadata.snapshots||[]).includes(y+'-06-15')).map(([y,s])=>'<tr><td>'+esc(y+'-06-15')+'</td><td>'+money(s.total_usd)+'</td><td>'+money(s.low_usd)+' – '+money(s.high_usd)+'</td><td>'+esc(s.status)+'</td></tr>').join('')+'</tbody></table></div>'+'</details>';}}
+  if(opts.fullRecords&&typeof root.renderSpecification==='function'){
+   const assemblySet=new Set(ids);for(const aid of ids)for(const row of rows(aid))if(assemblies.has(row.ref))assemblySet.add(row.ref);
+   const partIds=new Set([...assemblySet].flatMap(aid=>rows(aid).map(l=>l.ref)));
+   const source={requirements:(bom.products||[]).filter(p=>p.catalog_ref===id),offers:(bom.offers||[]).filter(p=>p.catalog_ref===id),assemblies:[...assemblySet].map(aid=>assemblies.get(aid)),components:[...components.values()].filter(p=>p.id===id||p.catalog_ref===id||partIds.has(p.id))};
+   html+='<details><summary>Full BOM records and qualification</summary>'+root.renderSpecification(source,records)+'</details>';
+  }
   return html+'</section>';
  }
- function bind(host){for(const d of host.querySelectorAll('[data-bom-cost]'))d.addEventListener('toggle',()=>{if(!d.open||d.dataset.loaded)return;d.dataset.loaded='true';const p=cost.products.find(p=>p.id===d.dataset.bomCost);d.insertAdjacentHTML('beforeend',root.renderSpecification({assumptions:p.assumptions,snapshots:p.snapshots},records));root.bindSpecificationControls(d);});}
- return {bind,records,items:[...items.values()].sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id)),assemblies,components,assemblyIds,rows,render};
+ function renderCosts(id,opts={}){
+  let html='<section class="bom-detail">';
+  const products=cost.products.filter(p=>p.id===id||p.catalog_ref===id);
+  if(products.length){html+='<h3>Recorded costs</h3><p>Nominal USD engineering estimates. Software costs may include media, licensing and delivery. Component and assembly costs overlap; do not add them together.</p>';for(const p of products){html+='<details data-bom-cost="'+esc(p.id)+'" data-cost-id="'+esc(p.id)+'"><summary>'+esc(p.name)+'</summary><div class="bom-table-scroll"><table><thead><tr><th>June 15 evaluation</th><th>Total recurring cost</th><th>Range</th><th>Status</th></tr></thead><tbody>'+Object.entries(p.snapshots||{}).filter(([y,s])=>s.status!=='not_yet_offered'&&(cost.metadata.snapshots||[]).includes(y+'-06-15')).map(([y,s])=>'<tr><td>'+esc(y+'-06-15')+'</td><td>'+money(s.total_usd)+'</td><td>'+money(s.low_usd)+' – '+money(s.high_usd)+'</td><td>'+esc(s.status)+'</td></tr>').join('')+'</tbody></table></div>'+'</details>';}}
+  const dated=(cost.dated_assessments||[]).flatMap(a=>(a.products||[]).filter(p=>p.id===id).map(p=>({date:a.date,basis:a.basis,...p})));
+  const reviews=reviewRows.filter(p=>p.id===id);
+  if(dated.length||reviews.length){html+='<h3>Dated reviews</h3><p>Separate evaluations; do not add review totals to annual estimates. Unknown costs remain unknown.</p><div class="bom-table-scroll"><table><thead><tr><th>Evaluation</th><th>Source</th><th>Recurring cost</th><th>Range</th></tr></thead><tbody>'+reviews.map(p=>'<tr><td>'+esc(p.date||p.cost_date||'Unknown')+'</td><td>'+esc(p.review)+'</td><td>'+money(p.manufacturing_cost_usd)+'</td><td>'+money(p.cost_low_usd)+' – '+money(p.cost_high_usd)+'</td></tr>').join('')+'</tbody></table></div>';
+   if(typeof root.renderSpecification==='function')html+='<details><summary>Dated cost decomposition, pricing and assumptions</summary>'+root.renderSpecification({cost_assessments:dated,reviews,review_context:Object.fromEntries([...new Set(reviews.map(r=>r.review))].map(key=>[key,Object.fromEntries(Object.entries(cost.reviews[key]).filter(([k])=>!['products','prices','cost_assessment','team_launch_price','team_1982_price'].includes(k)))]))},records)+'</details>';
+  }
+  const componentIds=[...new Set([id,...[...components.values()].filter(p=>p.catalog_ref===id).map(p=>p.id)])];
+  const componentInputs=Object.fromEntries((opts.fullRecords?componentIds:[]).filter(key=>cost.component_cost_assumptions?.[key]).map(key=>[key,cost.component_cost_assumptions[key]]));
+  if(Object.keys(componentInputs).length&&typeof root.renderSpecification==='function')html+='<details><summary>Component cost assumptions by year</summary><p>Recorded unit input allowances; these are not additional complete-product costs.</p>'+root.renderSpecification(componentInputs,records)+'</details>';
+  if(!products.length&&!dated.length&&!reviews.length&&!Object.keys(componentInputs).length)html+='<p>No manufacturing cost assessment is recorded for this element.</p>';
+  return html+'</section>';
+ }
+ function render(id,opts={}){return renderBOM(id,opts)+renderCosts(id);}
+ function bind(host){for(const d of host.querySelectorAll('[data-bom-cost]'))d.addEventListener('toggle',()=>{if(!d.open||d.dataset.loaded)return;d.dataset.loaded='true';const p=cost.products.find(p=>p.id===d.dataset.bomCost);d.insertAdjacentHTML('beforeend',root.renderSpecification(p,records));root.bindSpecificationControls(d);});}
+ return {bind,records,items:[...items.values()].sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id)),assemblies,components,assemblyIds,rows,render,renderBOM,renderCosts};
 }
 root.BomDetails={createModel,esc};if(typeof module!=='undefined')module.exports=root.BomDetails;
 })(typeof window==='undefined'?globalThis:window);

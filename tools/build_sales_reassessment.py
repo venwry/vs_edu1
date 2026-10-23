@@ -15,7 +15,7 @@ def allocate(n,weights):
  total=sum(weights.values());raw={k:n*v/total for k,v in weights.items()};a={k:int(v) for k,v in raw.items()}
  for k in sorted(raw,key=lambda k:raw[k]-a[k],reverse=True)[:n-sum(a.values())]:a[k]+=1
  return a
-B=read('baselines/sales-roi-baseline-1982.json');I=read('generated/catalogs/sales-reassessment-inputs.json');P=read('generated/models/pricing-results.json');C=read('generated/models/retail-catalog-1982-results.json');D=read('generated/models/comdex-1982-cost-review.json')
+B=read('baselines/sales-roi-baseline-1982.json');I=read('generated/catalogs/sales-reassessment-inputs.json');P=read('generated/models/pricing-results.json');C=read('generated/models/retail-catalog-1982-results.json');D=read('generated/models/manufacturing-costs.json')['reviews']['comdex-1982']
 oldS=next(s for s in B['sales']['scenarios'] if s['id']=='central');oldR=next(s for s in B['roi']['scenarios'] if s['id']=='central')
 oldmonths={r['month']:r for r in oldS['monthly']};oldquarters={r['quarter']:r for r in oldS['quarterly']};oldroi={r['quarter']:r for r in oldR['quarterly']};annual={p['id']:p for p in P['products']};nov={p['id']:p for p in D['prices']}
 F=['customer_retail_spend_usd','supplier_revenue_after_channel_usd','recurring_cost_usd','unit_contribution_total_usd'];families=['aurelia','aurelia_plus','artemis','artemis_pro']

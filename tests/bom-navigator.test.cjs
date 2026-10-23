@@ -15,7 +15,14 @@ assert(model.render('bompart.computer.artemis.boot_rom_chips').includes('Unknown
  const dom=new JSDOM(read('bom-navigator.html'),{url:'https://atlas.test/bom-navigator.html?element=device.artemis_video_card_64kb',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc}),w=dom.window,d=w.document;
  w.fetch=async p=>({ok:true,json:async()=>json(p)});for(const s of d.scripts)w.eval(read(new URL(s.src).pathname.slice(1)));
  for(let i=0;i<60&&!d.querySelector('main[data-ready]');i++)await new Promise(r=>setTimeout(r,10));
- assert(d.querySelector('main[data-ready]'));assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.length);assert(d.querySelector('[data-element="device.artemis_video_card_64kb"][aria-pressed=true]'));assert(d.getElementById('bom-inspector').textContent.includes('Bill of materials'));
+ assert(d.querySelector('main[data-ready]'));assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.length);assert(d.querySelector('[data-element="device.artemis_video_card_64kb"][aria-pressed=true]'));assert.equal(d.querySelectorAll('[role=tab]').length,4);
+ assert.equal(d.querySelector('[role=tab][aria-selected=true]').textContent,'Details');
+ d.getElementById('tab-bom').click();assert(!d.getElementById('panel-bom').hidden);assert(d.getElementById('panel-bom').textContent.includes('Bill of materials'));
+ d.getElementById('tab-costs').click();assert(d.getElementById('panel-costs').textContent.includes('1982-06-15'));assert(d.getElementById('panel-costs').textContent.includes('ncc-1982'));
+ d.getElementById('tab-costs').dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));assert.equal(d.activeElement.id,'tab-events');assert(!d.getElementById('panel-events').hidden);assert(d.querySelector('#panel-events a[href^="timeline.html#"]'));
+ d.querySelector('[data-element="offer.comdex82_artemis_autocad"]').click();d.getElementById('tab-costs').click();assert(d.getElementById('panel-costs').textContent.includes('Unknown'));assert(d.getElementById('panel-costs').textContent.includes('1982-11-29'));
+ d.getElementById('tab-costs').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Home',bubbles:true}));assert.equal(d.activeElement.id,'tab-details');
+
  const change=(id,value)=>{d.getElementById(id).value=value;d.getElementById(id).dispatchEvent(new w.Event('change'));};
  change('bom-class','Software');assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.filter(x=>x.class==='Software').length);
  const category=model.items.find(x=>x.class==='Software'&&x.release).category;change('bom-category',category);const date=model.items.find(x=>x.class==='Software'&&x.category===category&&x.release).release;change('bom-release',date);assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.filter(x=>x.class==='Software'&&x.category===category&&x.release===date).length);

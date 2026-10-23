@@ -13,6 +13,7 @@ async function boot(file,suffix=''){
  for(const n of d.querySelectorAll('[data-cost-id]'))coverage.add(n.dataset.costId);
  if(p.id==='bom-navigator'){const ids=new Set([...d.querySelectorAll('[data-catalog-id]')].map(n=>n.dataset.catalogId));for(const row of costs.products)if(ids.has(row.catalog_ref)||ids.has(row.id))coverage.add(row.id);}
  if(['aurelia','artemis','athena'].includes(p.id)){assert(d.querySelector('#artemis-configuration'));assert(!d.querySelector('#artemis-revision'));assert(!d.querySelector('#artemis-cost-date'));}
+ if(dom.window.CatalogNavigation?.pages.includes(p.id)){const tech=JSON.parse(read('generated/catalogs/logix-aion-technical-catalog-v2.json'));const moved=dom.window.CatalogNavigation.ids(tech);for(const id of p.record_refs){if(moved.has(id)){assert(!d.querySelector('article.record[id="'+id+'"]'),'Duplicate '+id);assert(d.querySelector('a[href="bom-navigator.html?element='+encodeURIComponent(id)+'"]'),'Missing link '+id);}else assert(d.getElementById(id),'Unique record lost '+id);}assert(!d.querySelector('#dated-reviews'));}
  if(p.id==='timeline'){for(const group of site.campaign_groups){assert(d.getElementById(group.event_ref));for(const id of group.step_refs){assert(d.getElementById(group.event_ref).contains(d.getElementById(id)));assert(!d.querySelector('[data-event="'+id+'"]'));}}assert(d.getElementById('entities'));}
  dom.window.close();}
  assert(costs.products.every(p=>coverage.has(p.id)),'every manufacturing/commercial cost row has a visible destination');

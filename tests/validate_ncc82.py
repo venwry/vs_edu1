@@ -4,13 +4,17 @@ from pathlib import Path
 import json,hashlib
 R=Path(__file__).resolve().parents[1]
 load=lambda n:json.loads((R/n).read_text())
-campaign=load('generated/catalogs/ncc-1982-campaign.json');review=load('generated/models/ncc-1982-review.json');catalog=load('generated/catalogs/logix-aion-technical-catalog-v2.json');costs={x['id']:x for x in load('generated/models/manufacturing-costs.json')['products']};prices={x['id']:x for x in load('generated/models/pricing-results.json')['products']}
+campaign=load('generated/catalogs/ncc-1982-campaign.json');review=load('generated/models/manufacturing-costs.json')['reviews']['ncc-1982'];catalog=load('generated/catalogs/logix-aion-technical-catalog-v2.json');costs={x['id']:x for x in load('generated/models/manufacturing-costs.json')['products']};prices={x['id']:x for x in load('generated/models/pricing-results.json')['products']}
 assert campaign['headline']=='Pointy ideas with a solid point.'
 assert campaign['conference']['start']=='1982-06-07' and campaign['conference']['end']=='1982-06-10'
 subtotal=sum(x['usd'] for x in campaign['budget_rows'])
 assert subtotal==campaign['budget_subtotal_usd']
 assert abs(campaign['budget_total_usd']-subtotal*1.15)<.001
-for n,h in review['source_sha256'].items():assert hashlib.sha256((R/resolve_path(n)).read_bytes()).hexdigest()==h,n
+for n,h in review['source_sha256'].items():
+ source=(R/resolve_path(n)).read_bytes()
+ if review.get('source_hash_scopes',{}).get(n)=='canonical_json_without_reviews':
+  source=json.dumps({k:v for k,v in json.loads(source).items() if k!='reviews'},sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+ assert hashlib.sha256(source).hexdigest()==h,n
 for id,n in [('device.artemis_video_card_64kb',8),('device.artemis_professional_video_128kb',16)]:
  row=costs[id];v={x['component_ref']:x['quantity'] for x in row['snapshots']['1982']['bom_lines']}
  assert v['bompart.part.aion_4164']==n
