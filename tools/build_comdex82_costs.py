@@ -59,10 +59,5 @@ prices['dated_assessments']=[{'date':'1982-11-29','basis':policy['basis'],'produ
 review={'date':'1982-11-29','cost_assessment':assessment,'prices':priced,'financial_boundary':'Unit estimates only; June snapshots and Team adoption price retained. No sales-volume, ROI or investment update inferred.'}
 costs.setdefault('reviews',{})['comdex-1982']=review;save('generated/models/manufacturing-costs.json',costs)
 prices['metadata']['cost_model_sha256']=hashlib.sha256((R/'generated/models/manufacturing-costs.json').read_bytes()).hexdigest();save('generated/models/pricing-results.json',prices)
-# Refresh the offering report's generated price section reproducibly.
-from html import escape
-htmlrows=''.join('<tr><th>'+escape(x['name'])+'</th><td>'+('$'+format(x['manufacturing_cost_usd'],',.2f') if x['manufacturing_cost_usd'] is not None else 'Unknown / mixed suppliers')+'</td><td>$'+format(x['retail_price_usd'],',.2f')+'</td></tr>' for x in priced)
-section='<section id="november-prices"><h2>29 November 1982 cost and retail estimates</h2><p>Nominal USD. Hardware uses the existing 25% net-contribution fallback where no matched comparator exists. AutoCAD uses a provisional $1,000 historical list-price anchor; Autodesk margin is unknown. June input prices are explicitly carried forward for unchanged parts. Qualification, installation, larger storage and plotter costs remain separate.</p><div class="table"><table><thead><tr><th>Offering</th><th>Recurring cost</th><th>Retail estimate</th></tr></thead><tbody>'+htmlrows+'</tbody></table></div><p><a href="generated/models/manufacturing-costs.json">Dated cost and price assessment</a> · <a href="generated/catalogs/comdex-1982-cost-inputs.json">Assumptions</a></p></section>'
-import re
-f=R/'comdex-1982.html';h=f.read_text();h=re.sub(r'<section id="november-prices">.*?</section>','',h,flags=re.S);h=h.replace('</body>',section+'</body>');f.write_text(h)
+# Pricing and Navigator render the generated models; the retired report is not emitted.
 print('Updated November costs and retail prices:',[(x['id'],x['retail_price_usd']) for x in priced])
