@@ -21,7 +21,7 @@ def build():
   text=re.sub(r'(<body\b[^>]*>)',lambda m:m[1]+'<!-- shared-navigation -->'+header+'<!-- /shared-navigation -->',text,count=1)
   text=re.sub(r'<!-- relocated-content -->.*?<!-- /relocated-content -->','',text,flags=re.S)
   page=next((p for p in site['pages'] if p['path']==path.name),None)
-  if page:
+  if page and page['id'] not in ['bom-navigator','artemis']:
    content=''
    for fragment in sorted((ROOT/'site/content').glob('*-'+page['id']+'.html')):
     if page['id']=='timeline':

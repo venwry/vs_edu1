@@ -1,3 +1,7 @@
+# Current presentation
+
+The combined diagram prototype is superseded by the nested list and shared BOM inspector described in [BOM_NAVIGATOR.md](BOM_NAVIGATOR.md). The configuration model and saved-cost rules below remain in use; diagram and secondary-accordion layout descriptions are historical.
+
 # Artemis configuration workbench
 
 The Artemis page combines hardware and fitted peripherals in one grouped diagram.
