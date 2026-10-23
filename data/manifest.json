@@ -937,6 +937,9 @@
         },
         {
           "$source": "data/manufacturing/sourcing/bompart.device.mono_pro_17.cables_regional_mains.json"
+        },
+        {
+          "$source": "data/manufacturing/sourcing/bompart.part.aion_4164_2um.json"
         }
       ],
       "assemblies": [
@@ -954,9 +957,6 @@
         },
         {
           "$source": "data/manufacturing/boms/assemblies/assembly.part.dram_64kbit.json"
-        },
-        {
-          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_ram_module_128kb.json"
         },
         {
           "$source": "data/manufacturing/boms/assemblies/assembly.part.flexibus_host_controller.json"
@@ -1007,9 +1007,6 @@
           "$source": "data/manufacturing/boms/assemblies/assembly.part.hdd_5mb.json"
         },
         {
-          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_ram_module_32kb_x16.json"
-        },
-        {
           "$source": "data/manufacturing/boms/assemblies/assembly.device.flexibus_keyboard.json"
         },
         {
@@ -1058,12 +1055,6 @@
           "$source": "data/manufacturing/boms/assemblies/assembly.device.network_hub.16_port.json"
         },
         {
-          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_ram_64kb_bank_kit.json"
-        },
-        {
-          "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_ram_256kb_bank_kit.json"
-        },
-        {
           "$source": "data/manufacturing/boms/assemblies/assembly.computer.aurelia.base.json"
         },
         {
@@ -1077,12 +1068,6 @@
         },
         {
           "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_128.networked.json"
-        },
-        {
-          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_192.json"
-        },
-        {
-          "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_192.networked.json"
         },
         {
           "$source": "data/manufacturing/boms/assemblies/assembly.computer.artemis.m32_256.json"
@@ -1232,9 +1217,6 @@
           "$source": "data/manufacturing/boms/assemblies/assembly.part.aion_4164.json"
         },
         {
-          "$source": "data/manufacturing/boms/assemblies/assembly.part.artemis_ram_module_128kb_aion.json"
-        },
-        {
           "$source": "data/manufacturing/boms/assemblies/assembly.device.artemis_video_card_16kb.json"
         },
         {
@@ -1284,6 +1266,24 @@
         },
         {
           "$source": "data/manufacturing/boms/assemblies/assembly.bundle.artemis_budget_128_hdd.networked.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.ram_64kb_x32.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.ram_128kb_x32.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.ram_256kb_x32.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.part.ram_256kb_x32_2um.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.offer.ram_64kb_module.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/assemblies/assembly.offer.ram_256kb_bank.json"
         }
       ],
       "products": [
@@ -1345,12 +1345,6 @@
           "$source": "data/manufacturing/boms/products/bom.products.device.network_hub.json"
         },
         {
-          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_ram_64kb_bank_kit.json"
-        },
-        {
-          "$source": "data/manufacturing/boms/products/bom.products.device.artemis_ram_256kb_bank_kit.json"
-        },
-        {
           "$source": "data/manufacturing/boms/products/bom.products.part.z80a.json"
         },
         {
@@ -1373,9 +1367,6 @@
         },
         {
           "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_64kb.json"
-        },
-        {
-          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_128kb.json"
         },
         {
           "$source": "data/manufacturing/boms/products/bom.products.part.flexibus_host_controller.json"
@@ -1426,9 +1417,6 @@
           "$source": "data/manufacturing/boms/products/bom.products.part.hdd_5mb.json"
         },
         {
-          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_32kb_x16.json"
-        },
-        {
           "$source": "data/manufacturing/boms/products/bom.products.part.aion_4116.json"
         },
         {
@@ -1460,9 +1448,6 @@
         },
         {
           "$source": "data/manufacturing/boms/products/bom.products.part.aion_4164.json"
-        },
-        {
-          "$source": "data/manufacturing/boms/products/bom.products.part.artemis_ram_module_128kb_aion.json"
         },
         {
           "$source": "data/manufacturing/boms/products/bom.products.device.artemis_video_card_16kb.json"
@@ -1504,16 +1489,22 @@
           "$source": "data/manufacturing/boms/products/bom.products.part.aion_4164_2um.json"
         },
         {
-          "$source": "data/manufacturing/boms/products/bom.products.part.athena_ram_module_128kb.json"
-        },
-        {
-          "$source": "data/manufacturing/boms/products/bom.products.part.athena_ram_module_256kb.json"
-        },
-        {
           "$source": "data/manufacturing/boms/products/bom.products.computer.athena.json"
         },
         {
           "$source": "data/manufacturing/boms/products/bom.products.computer.athena_server.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.ram_64kb_x32.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.ram_128kb_x32.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.ram_256kb_x32.json"
+        },
+        {
+          "$source": "data/manufacturing/boms/products/bom.products.part.ram_256kb_x32_2um.json"
         }
       ],
       "offers": [
@@ -2538,9 +2529,6 @@
           "$source": "data/hardware/components/part.artemis_ram_module_64kb.json"
         },
         {
-          "$source": "data/hardware/components/part.artemis_ram_module_128kb.json"
-        },
-        {
           "$source": "data/hardware/components/part.flexibus_host_controller.json"
         },
         {
@@ -2589,9 +2577,6 @@
           "$source": "data/hardware/components/part.hdd_5mb.json"
         },
         {
-          "$source": "data/hardware/components/part.artemis_ram_module_32kb_x16.json"
-        },
-        {
           "$source": "data/hardware/components/part.aion_4116.json"
         },
         {
@@ -2608,9 +2593,6 @@
         },
         {
           "$source": "data/hardware/components/part.aion_4164.json"
-        },
-        {
-          "$source": "data/hardware/components/part.artemis_ram_module_128kb_aion.json"
         },
         {
           "$source": "data/hardware/components/part.artemis_graphics_chip_64kb.json"
@@ -2634,10 +2616,16 @@
           "$source": "data/hardware/components/part.aion_4164_2um.json"
         },
         {
-          "$source": "data/hardware/components/part.athena_ram_module_128kb.json"
+          "$source": "data/hardware/components/part.ram_64kb_x32.json"
         },
         {
-          "$source": "data/hardware/components/part.athena_ram_module_256kb.json"
+          "$source": "data/hardware/components/part.ram_128kb_x32.json"
+        },
+        {
+          "$source": "data/hardware/components/part.ram_256kb_x32.json"
+        },
+        {
+          "$source": "data/hardware/components/part.ram_256kb_x32_2um.json"
         }
       ],
       "devices": [
@@ -2685,12 +2673,6 @@
         },
         {
           "$source": "data/hardware/peripherals/device.network_hub.json"
-        },
-        {
-          "$source": "data/hardware/peripherals/device.artemis_ram_64kb_bank_kit.json"
-        },
-        {
-          "$source": "data/hardware/peripherals/device.artemis_ram_256kb_bank_kit.json"
         },
         {
           "$source": "data/hardware/peripherals/device.s100_flexibus_card.json"
@@ -2748,73 +2730,46 @@
       ],
       "software_products": [
         {
-          "$source": "data/software/operating-systems/software.cpm_aurelia.json"
+          "$source": "data/software/products/software.product.abacus.json"
         },
         {
-          "$source": "data/software/applications/software.business_tools_aurelia.json"
+          "$source": "data/software/products/software.product.pulse.json"
         },
         {
-          "$source": "data/software/applications/software.abacus_1.json"
+          "$source": "data/software/products/software.product.aionix.json"
         },
         {
-          "$source": "data/software/development-tools/software.simple_c_z80.json"
+          "$source": "data/software/products/software.product.cpm.json"
         },
         {
-          "$source": "data/software/development-tools/software.aurelia_sdk.json"
+          "$source": "data/software/products/software.product.bpi.json"
         },
         {
-          "$source": "data/software/applications/software.bpi_suite.json"
+          "$source": "data/software/products/software.product.business_tools.json"
         },
         {
-          "$source": "data/software/applications/software.microsoft_basic_aurelia.json"
+          "$source": "data/software/products/software.product.simple_c_z80.json"
         },
         {
-          "$source": "data/software/development-tools/software.pulse_1.json"
+          "$source": "data/software/products/software.product.developer_sdk.json"
         },
         {
-          "$source": "data/software/applications/software.abacus_2.json"
+          "$source": "data/software/products/software.product.microsoft_basic_aurelia.json"
         },
         {
-          "$source": "data/software/operating-systems/software.aionix.json"
+          "$source": "data/software/products/software.product.aion_c_ide.json"
         },
         {
-          "$source": "data/software/applications/software.business_tools_artemis.json"
+          "$source": "data/software/products/software.product.aurelia_compatibility_kit.json"
         },
         {
-          "$source": "data/software/development-tools/software.aion_c_ide.json"
+          "$source": "data/software/products/software.product.aion_development_team.json"
         },
         {
-          "$source": "data/software/development-tools/software.artemis_sdk.json"
+          "$source": "data/software/products/software.product.entertainment_suite.json"
         },
         {
-          "$source": "data/software/applications/software.abacus_3.json"
-        },
-        {
-          "$source": "data/software/applications/software.pulse_3.json"
-        },
-        {
-          "$source": "data/software/operating-systems/software.aionix_server.json"
-        },
-        {
-          "$source": "data/software/applications/software.bpi_client_server.json"
-        },
-        {
-          "$source": "data/software/operating-systems/software.cpm_aurelia_networking.json"
-        },
-        {
-          "$source": "data/software/development-tools/software.aurelia_compatibility_kit.json"
-        },
-        {
-          "$source": "data/software/development-tools/software.aion_development_team.json"
-        },
-        {
-          "$source": "data/software/applications/software.entertainment_suite.json"
-        },
-        {
-          "$source": "data/software/development-tools/software.autocad_1_artemis.json"
-        },
-        {
-          "$source": "data/software/operating-systems/software.aionix2.json"
+          "$source": "data/software/products/software.product.autocad_1_artemis.json"
         }
       ],
       "services": [
@@ -2948,64 +2903,52 @@
       },
       "platform_editions": [
         {
-          "$source": "data/software/editions/edition.cpm_aurelia.z80.json"
+          "$source": "data/software/editions/software.abacus_1.json"
         },
         {
-          "$source": "data/software/editions/edition.business_tools_aurelia.z80.json"
+          "$source": "data/software/editions/edition.abacus_1.model_ii.json"
         },
         {
-          "$source": "data/software/editions/edition.abacus_1.z80.json"
-        },
-        {
-          "$source": "data/software/editions/edition.abacus_2.z80.json"
-        },
-        {
-          "$source": "data/software/editions/edition.simple_c_z80.z80.json"
-        },
-        {
-          "$source": "data/software/editions/edition.aurelia_sdk.z80.json"
-        },
-        {
-          "$source": "data/software/editions/edition.microsoft_basic_aurelia.z80.json"
-        },
-        {
-          "$source": "data/software/editions/edition.bpi_suite.z80.json"
-        },
-        {
-          "$source": "data/software/editions/edition.cpm_aurelia_networking.z80.json"
-        },
-        {
-          "$source": "data/software/editions/edition.pulse_1.z80.json"
+          "$source": "data/software/editions/software.abacus_2.json"
         },
         {
           "$source": "data/software/editions/edition.abacus_2.era.json"
         },
         {
+          "$source": "data/software/editions/software.abacus_3.json"
+        },
+        {
+          "$source": "data/software/editions/software.pulse_1.json"
+        },
+        {
+          "$source": "data/software/editions/software.pulse_3.json"
+        },
+        {
+          "$source": "data/software/editions/software.aionix.json"
+        },
+        {
+          "$source": "data/software/editions/software.aionix_server.json"
+        },
+        {
+          "$source": "data/software/editions/software.aionix2.json"
+        },
+        {
+          "$source": "data/software/editions/software.cpm_aurelia.json"
+        },
+        {
+          "$source": "data/software/editions/software.cpm_aurelia_networking.json"
+        },
+        {
+          "$source": "data/software/editions/software.cpm_model_ii.json"
+        },
+        {
+          "$source": "data/software/editions/software.bpi_suite.json"
+        },
+        {
           "$source": "data/software/editions/edition.bpi_suite.era.json"
         },
         {
-          "$source": "data/software/editions/edition.business_tools_artemis.era.json"
-        },
-        {
-          "$source": "data/software/editions/edition.aion_c_ide.era.json"
-        },
-        {
-          "$source": "data/software/editions/edition.artemis_sdk.era.json"
-        },
-        {
-          "$source": "data/software/editions/edition.abacus_3.era.json"
-        },
-        {
-          "$source": "data/software/editions/edition.pulse_3.era.json"
-        },
-        {
-          "$source": "data/software/editions/edition.aionix.standard.json"
-        },
-        {
-          "$source": "data/software/editions/edition.aionix_server.server.json"
-        },
-        {
-          "$source": "data/software/editions/edition.bpi_client_server.z80_client.json"
+          "$source": "data/software/editions/software.bpi_client_server.json"
         },
         {
           "$source": "data/software/editions/edition.bpi_client_server.era_client.json"
@@ -3014,10 +2957,31 @@
           "$source": "data/software/editions/edition.bpi_client_server.era_server.json"
         },
         {
-          "$source": "data/software/editions/edition.abacus_1.model_ii.json"
+          "$source": "data/software/editions/software.business_tools_aurelia.json"
         },
         {
-          "$source": "data/software/editions/edition.aion_development_team.server.json"
+          "$source": "data/software/editions/software.business_tools_artemis.json"
+        },
+        {
+          "$source": "data/software/editions/software.simple_c_z80.json"
+        },
+        {
+          "$source": "data/software/editions/software.aurelia_sdk.json"
+        },
+        {
+          "$source": "data/software/editions/software.microsoft_basic_aurelia.json"
+        },
+        {
+          "$source": "data/software/editions/software.aion_c_ide.json"
+        },
+        {
+          "$source": "data/software/editions/software.artemis_sdk.json"
+        },
+        {
+          "$source": "data/software/editions/software.aurelia_compatibility_kit.json"
+        },
+        {
+          "$source": "data/software/editions/software.aion_development_team.json"
         },
         {
           "$source": "data/software/editions/edition.aion_development_team.era_client.json"
@@ -3026,13 +2990,13 @@
           "$source": "data/software/editions/edition.aion_development_team.z80_client.json"
         },
         {
-          "$source": "data/software/editions/edition.entertainment_suite.z80.json"
+          "$source": "data/software/editions/software.entertainment_suite.json"
         },
         {
           "$source": "data/software/editions/edition.entertainment_suite.era.json"
         },
         {
-          "$source": "data/software/editions/edition.autocad_1_artemis.era.json"
+          "$source": "data/software/editions/software.autocad_1_artemis.json"
         }
       ],
       "review_scope": {
@@ -3044,9 +3008,6 @@
         }
       ],
       "external_partner_products": [
-        {
-          "$source": "data/software/operating-systems/software.cpm_model_ii.json"
-        },
         {
           "$source": "data/software/applications/device.model_ii_flexibus.json"
         }
@@ -3072,6 +3033,12 @@
         },
         {
           "$source": "data/commercial/offers/offer.comdex82_upgrade_autocad.json"
+        },
+        {
+          "$source": "data/commercial/offers/offer.ram_64kb_module.json"
+        },
+        {
+          "$source": "data/commercial/offers/offer.ram_256kb_bank.json"
         }
       ]
     },

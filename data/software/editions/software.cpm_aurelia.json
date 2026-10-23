@@ -1,0 +1,370 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "2.0.0",
+  "id": "software.cpm_aurelia",
+  "record_type": "software-edition",
+  "data": {
+    "vendor": "Digital Research / Logix OEM implementation",
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "delivery": [
+      "mainboard XIP ROM",
+      "System ROM cartridge"
+    ],
+    "components": {
+      "mainboard_rom": [
+        "Boot",
+        "Monitor",
+        "BIOS",
+        "Hardware Drivers"
+      ],
+      "system_cartridge": [
+        "CP/M CCP",
+        "CP/M BDOS",
+        "Aurelia BIOS extension",
+        "Utilities",
+        "Version Info"
+      ]
+    },
+    "extensions": [
+      "FlexiBUS support",
+      "Aurelia video support",
+      "system clipboard",
+      "Business Tools workspace when resident",
+      "common command-line editing behavior",
+      "TUI libraries/API"
+    ],
+    "bundled_with": [
+      "computer.aurelia",
+      "computer.aurelia_plus"
+    ],
+    "base_version": "CP/M 1.4",
+    "development_lineage": "Joint DRI founded in late 1974; earlier documented hardware abstraction. September 1976 is the Aurelia implementation agreement. Alternate 1.4-derived core retains ordinary CP/M interfaces; Platform Extensions 1.0 are an optional, versioned layer, not features claimed for historical CP/M 1.4.",
+    "description": "A ROM-adapted CP/M 1.4 platform combining the standard application and file-service interfaces with Logix memory, peripheral and TUI services. The same architecture supports Aurelia and Aurelia+.",
+    "vanilla_architecture": {
+      "execution_model": "Single user, one foreground application; conventional operating-system and application images execute in RAM.",
+      "memory_layout": [
+        {
+          "region": "0000H–00FFH",
+          "purpose": "System vectors, default file-control information and command/disk buffer"
+        },
+        {
+          "region": "From 0100H",
+          "purpose": "Transient Program Area (TPA): application code and data"
+        },
+        {
+          "region": "Above TPA",
+          "purpose": "CCP, then BDOS, then machine-specific BIOS at the high end of configured memory"
+        }
+      ],
+      "application_entry": "CALL 0005H",
+      "program_load_address": "0100H",
+      "components": [
+        {
+          "id": "ccp",
+          "name": "CCP — Console Command Processor",
+          "description": "Reads commands, executes built-in commands and loads transient programs. Uses BDOS services."
+        },
+        {
+          "id": "bdos",
+          "name": "BDOS — Basic Disk Operating System",
+          "description": "Provides console and file services, directory/allocation management and record operations. Calls BIOS for hardware operations."
+        },
+        {
+          "id": "bios",
+          "name": "BIOS — Basic Input/Output System",
+          "description": "Machine-specific console, printer and disk primitives, including startup and sector transfers."
+        },
+        {
+          "id": "tpa",
+          "name": "TPA — Transient Program Area",
+          "description": "Application code and data in RAM. A memory region, not an executable OS module."
+        },
+        {
+          "id": "utilities",
+          "name": "Transient utilities",
+          "description": "Separate editing, copying, assembly, debugging and maintenance programs loaded when needed."
+        }
+      ],
+      "changes_from_1_3": [
+        "Four logical disk drives; BIOS drive selection accepts 0–3.",
+        "Disk-sector translation moves into BIOS.",
+        "Drive selection can maintain additional disk state.",
+        "BDOS begins one 256-byte page lower; CCP and BIOS bases remain unchanged.",
+        "Revised disk-error handling interface.",
+        "DE returns the same value as HL.",
+        "BDOS implementation is divided into a PL/M main body and an assembly interface module."
+      ],
+      "limits": [
+        "No built-in banked-ROM runtime, cartridge manager or dynamic driver registry.",
+        "No shared TUI widgets, clipboard or resident Business Tools workspace.",
+        "The generalized CP/M 2.0 disk-parameter-block model is not part of vanilla 1.4."
+      ]
+    },
+    "internal_organization": [
+      {
+        "id": "boot",
+        "name": "Boot and recovery firmware",
+        "responsibility": "Logix",
+        "residence": "Motherboard ROM",
+        "description": "Initialize hardware, discover the system cartridge and provide diagnostics/recovery.",
+        "diagram_label": "Boot & recovery"
+      },
+      {
+        "id": "runtime",
+        "name": "Memory / cartridge runtime",
+        "responsibility": "Logix",
+        "residence": "Stable common-memory entry routines plus ROM services",
+        "description": "Select banks, preserve mappings and stacks, support nested calls and execute cartridge components.",
+        "diagram_label": "Memory runtime"
+      },
+      {
+        "id": "drivers",
+        "name": "Hardware drivers and device registry",
+        "responsibility": "Logix",
+        "residence": "Motherboard ROM, device ROM and replaceable extensions",
+        "description": "Operate video, keyboard, floppy and FlexiBUS hardware; discover devices and register compatible drivers.",
+        "diagram_label": "Drivers & registry"
+      },
+      {
+        "id": "bios",
+        "name": "CP/M BIOS adapter",
+        "responsibility": "Customized CP/M interface",
+        "residence": "Stable firmware primitives plus system-cartridge adaptation",
+        "description": "Translate CP/M console, printer and disk operations into Logix driver calls.",
+        "diagram_label": "BIOS adapter"
+      },
+      {
+        "id": "bdos",
+        "name": "CP/M 1.4-derived BDOS",
+        "responsibility": "DRI / Logix adaptation",
+        "residence": "System cartridge; mutable state in RAM",
+        "description": "Preserve file/application services; adapt disk-format assumptions and code for banked ROM execution.",
+        "diagram_label": "BDOS"
+      },
+      {
+        "id": "ccp",
+        "name": "CP/M 1.4-derived CCP",
+        "responsibility": "DRI / Logix adaptation",
+        "residence": "System cartridge; command buffers in RAM",
+        "description": "Interpret commands, launch disk/cartridge applications and use shared command-line editing.",
+        "diagram_label": "CCP"
+      },
+      {
+        "id": "tui",
+        "name": "Logix TUI and shared services",
+        "responsibility": "Logix / AION",
+        "residence": "CP/M system cartridge; mutable state in reserved RAM; hardware operations delegated to drivers",
+        "description": "Own the shared application-facing screen and keyboard API, editing controls, menus, forms, lists, popup windows, clipboard service and workspace entry/return support. Business Tools and other compatible applications call these services rather than carrying a second shared TUI library.",
+        "diagram_label": "TUI & services"
+      },
+      {
+        "id": "apps",
+        "name": "Utilities and applications",
+        "responsibility": "Platform software",
+        "residence": "RAM or optional application cartridges",
+        "description": "Use standard CP/M calls and, when Logix-aware, the versioned extension interface.",
+        "diagram_label": "Applications"
+      }
+    ],
+    "internal_relationships": [
+      [
+        "apps",
+        "bdos"
+      ],
+      [
+        "apps",
+        "tui"
+      ],
+      [
+        "ccp",
+        "bdos"
+      ],
+      [
+        "ccp",
+        "tui"
+      ],
+      [
+        "bdos",
+        "bios"
+      ],
+      [
+        "bios",
+        "drivers"
+      ],
+      [
+        "tui",
+        "drivers"
+      ],
+      [
+        "boot",
+        "runtime"
+      ],
+      [
+        "runtime",
+        "drivers"
+      ]
+    ],
+    "logix_requirements": [
+      "Preserve standard CP/M entry points, loading conventions and available-memory boundaries.",
+      "Adapt both BIOS and relevant BDOS assumptions to Aurelia floppy formats.",
+      "Keep bank-switching entry code, stack and critical interrupt handling permanently accessible.",
+      "Separate ROM code/constants from RAM state; adapt self-modifying routines.",
+      "Discover cartridge/device ROMs through defined, versioned interfaces.",
+      "Map Logix peripherals to standard CP/M console, printer and disk services.",
+      "Provide a separate versioned Logix service interface and C bindings.",
+      "Drivers use bounded DMA transfers with physical-bank descriptors and device-ready handshakes; abort/drain transfers before warm boot or reusing buffers.",
+      "Video API exposes dedicated sprite SRAM, atomic descriptor swaps and upload-port backpressure; use programmed I/O fallback where peripherals lack DMA endpoints."
+    ],
+    "tui_features": [
+      {
+        "name": "Layout and screen",
+        "description": "Query usable dimensions, clip and scroll; separate document coordinates from screen coordinates."
+      },
+      {
+        "name": "Adaptive layouts",
+        "description": "Compact 40-column and expanded 80-column layouts; dialogs, long names and errors fit either width."
+      },
+      {
+        "name": "Semantic colors",
+        "description": "Normal text, selection and warning roles map to color or monochrome attributes."
+      },
+      {
+        "name": "Input",
+        "description": "Structured character, function/navigation key and modifier events; blocking input and polling."
+      },
+      {
+        "name": "Controls",
+        "description": "Fields, lists, menus, dialogs, popup windows and consistent focus movement."
+      },
+      {
+        "name": "Editing",
+        "description": "Common selection, insertion/deletion and clipboard commands."
+      },
+      {
+        "name": "Clipboard",
+        "description": "Explicit formats, lengths, bounded capacity, ownership and errors."
+      },
+      {
+        "name": "Context lifecycle",
+        "description": "Create/destroy and activate/deactivate contexts; redraw when needed. A context describes an assigned display region, which may be the full Aurelia screen."
+      },
+      {
+        "name": "Timing",
+        "description": "System timing and keyboard-repeat services replace CPU-speed-dependent loops."
+      }
+    ],
+    "compatibility_notes": [
+      "Ordinary CP/M applications keep character/file services; rich TUI behavior requires use of Logix APIs.",
+      "Shared TUI routines do not require multitasking; applications may remain sequential.",
+      "Clipboard capacity, exact widgets and workspace behavior remain implementation decisions.",
+      "Keep the same API behavior across Aurelia, Aurelia+ and Artemis.",
+      "Do not assume display stride, video RAM address, last column or direct peripheral registers.",
+      "Legacy CP/M console behavior is preserved; Logix-aware interfaces use the documented editing conventions.",
+      "Artemis implementation mediates process access to shared clipboard and display services."
+    ],
+    "tui_ownership": {
+      "owner": "System TUI & services",
+      "interface_ref": "technology.logix_tui_standard",
+      "consumers": [
+        "software.business_tools_aurelia",
+        "software.abacus_1",
+        "software.abacus_2",
+        "software.bpi_suite",
+        "software.pulse_1"
+      ],
+      "boundary": "System services supply reusable controls and clipboard/workspace mechanisms. Applications own their documents, calculations, file-management workflows and calendar records."
+    },
+    "technology_refs": [
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard",
+      "technology.logix_tui_mouse",
+      "technology.flexibus_pointing_device"
+    ],
+    "portable_runtime": {
+      "api_ref": "technology.logix_c_api",
+      "display_ref": "technology.logix_display_api",
+      "implementation_target": "z80_cpm",
+      "ownership": "System owns shared TUI implementation; Business Tools applications consume it.",
+      "capability_discovery": "Report supported services, limits and usable display configurations.",
+      "abi_policy": "Stable binary interfaces within this target; shared C API across targets."
+    },
+    "memory_discovery_ref": "technology.aurelia_memory_model",
+    "alternate_history_roadmap": [
+      {
+        "period": "1974–1975",
+        "base_scenario": "Prototype and first commercial licenses; BIOS separation not yet released.",
+        "alternative_scenario": "Funded commercialization and earlier hardware-dependent layer/API discipline; rich services remain future work."
+      },
+      {
+        "period": "1976",
+        "base_scenario": "CP/M 1.3 introduces the separate BIOS.",
+        "alternative_scenario": "Existing abstraction work underlies the September Aurelia OEM requirements milestone."
+      },
+      {
+        "period": "1977–1978",
+        "base_scenario": "Conventional CP/M 1.4 without Logix ROM, banking or TUI facilities.",
+        "alternative_scenario": "Alternate 1.4-derived core plus optional Platform Extensions 1.0; Aurelia release June 5, 1978."
+      },
+      {
+        "period": "1979",
+        "base_scenario": "CP/M 2.x/2.2 general-purpose development.",
+        "alternative_scenario": "General-purpose CP/M development continues independently; portable extension package released May 5. No unsupported claim that Aurelia automatically upgrades to 2.2."
+      },
+      {
+        "period": "1980",
+        "base_scenario": "Processor transitions require architecture-specific software work.",
+        "alternative_scenario": "Shared C APIs support source recompilation to ERA; separate Z80 module executes supported existing binaries."
+      }
+    ],
+    "sources": [
+      "https://computerhistory.org/blog/early-digital-research-cpm-source-code/",
+      "https://computerhistory.org/blog/in-his-own-words-gary-kildall/"
+    ],
+    "ecosystem_policy": {
+      "programme_file": "ncc_1979_campaign.json",
+      "public_date": "1979-06-04",
+      "profiles": "Optional versioned extensions separate from the CP/M core; neither FlexiBUS nor Logix video is mandatory for all CP/M applications.",
+      "continuity": "Fund CP/M maintenance alongside the next-generation programme; detailed duration and budget remain open.",
+      "qualification": "Named host/ISA/TPA/application editions and file interchange; no universal Aurelia binary or disk compatibility promise."
+    },
+    "mouse_update": {
+      "available_from": "1982-06",
+      "technology_ref": "technology.logix_tui_mouse",
+      "driver_ref": "technology.flexibus_pointing_device",
+      "scope": "Driver and TUI library/service update; preserve existing OS/core identity and keyboard interface. Standard-control applications need no source edits, subject to linkage and runtime compatibility."
+    },
+    "id": "software.cpm_aurelia",
+    "name": "CP/M 1.4-derived / Platform Extensions 1.0 (Aurelia edition)",
+    "product_ref": "software.product.cpm",
+    "execution_target": "z80_cpm",
+    "role": "operating_system",
+    "platform_support": [
+      {
+        "computer_ref": "computer.aurelia",
+        "available_from": "1978-06-05"
+      },
+      {
+        "computer_ref": "computer.aurelia_plus",
+        "available_from": "1979-12-03"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": 48,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [],
+    "support_status": "declared compatible; implementation conformance and performance not yet measured",
+    "version": "1.4-derived / Platform Extensions 1.0",
+    "edition": "Aurelia",
+    "bom_assembly_refs": [
+      "assembly.media.software.cpm_aurelia"
+    ]
+  }
+}

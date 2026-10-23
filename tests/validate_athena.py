@@ -17,8 +17,9 @@ for product, capacity, modules, module_size, disk in [
     assert config['ram_kb'] == capacity == modules * module_size
     assert config['populated_modules'] == modules
     assert module['capacity_kb'] == module_size == module['chips'] * chip['capacity_kbit'] // 8
-    assert chip['node_um'] == 2 and chip['capacity_kbit'] == 64
-    assert module['chips'] == module['ranks'] * 16
+    if product=='computer.athena_server':assert chip['node_um']==2 and chip['capacity_kbit']==64
+    else:assert chip['capacity_kbit']==16 and module['ranks']==2
+    assert module['chips'] == module['ranks'] * 32
     assert config['populated_banks'] * 2 == modules
     assert computer['memory']['video_ram_kb'] == 64
     assert computer['storage']['internal_hdd']['capacity_mb'] == disk
@@ -37,7 +38,7 @@ for product, capacity, modules, module_size, disk in [
     assert counts['part.era2'] == counts['device.artemis_video_card_64kb'] == counts['device.network_card_artemis'] == 1
 assert records['part.era1']['manufacturing_planning']['node_um'] == 3
 assert records['part.era2']['manufacturing_planning']['initial_manufacturer'] == 'AION Labs only'
-assert records['software.aionix2']['edition_refs'] == []
+assert records['software.aionix2']['product_ref']=='software.product.aionix'
 os = records['software.aionix2']
 resources = os['architecture']['resource_planning']
 assert resources['minimum_dram_bytes'] == resources['minimum_os_rom_bytes'] == 262144

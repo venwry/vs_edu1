@@ -69,7 +69,7 @@
       "quantity_tier": null,
       "qualification_status": "unresolved",
       "requirements": [
-        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and production M32-16",
+        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
         "the current list only names the prototype."
       ]
     },
@@ -4092,6 +4092,22 @@
       "requirements": [
         "OEM monochrome core includes CRT/yoke/HV/PSU/basic deflection; grayscale and 37.5kHz adaptation are separate. Candidate Ball-class core, not a supplier commitment."
       ]
+    },
+    {
+      "id": "bompart.part.aion_4164_2um",
+      "name": "AION 4164 64K×1 DRAM (2 µm)",
+      "category": "memory_ic",
+      "catalog_ref": "part.aion_4164_2um",
+      "manufacturer": "AION Labs",
+      "manufacturer_part_number": null,
+      "unit_cost": null,
+      "currency": null,
+      "quote_date": null,
+      "quantity_tier": null,
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Planned 2 µm process; supplier, electrical qualification, yield and current unit cost remain unqualified."
+      ]
     }
   ],
   "assemblies": [
@@ -4192,7 +4208,7 @@
         }
       ],
       "requirements": [
-        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and production M32-16",
+        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
         "the current list only names the prototype."
       ],
       "routing": {
@@ -4221,74 +4237,6 @@
       ],
       "requirements": [
         "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.artemis_ram_module_128kb",
-      "name": "Artemis M128-16 128 KiB / 16-bit RAM module",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "bompart.part.aion_4164",
-          "quantity": 16,
-          "unit": "each",
-          "role": "AION 64K x 1 data DRAM; PRO-qualified grade",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        }
-      ],
-      "requirements": [
-        "Redefine/revise as sixteen 64K×1 chips, ×16 data width",
-        "add PCB, two byte lanes, buffers/straps/connectors, decoupling and test."
       ],
       "routing": {
         "operations": [],
@@ -4731,73 +4679,6 @@
       ],
       "requirements": [
         "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.artemis_ram_module_32kb_x16",
-      "name": "Artemis M32-16 32 KiB / 16-bit RAM module",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "bompart.part.dram_16kbit",
-          "quantity": 16,
-          "unit": "each",
-          "role": "data DRAM",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_32kb_x16.module_pcb",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_32kb_x16.module_connector_contacts",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_32kb_x16.decoupling_and_bulk_capacitors",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_32kb_x16.data_buffers_and_byte_enable_logic",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_32kb_x16.capacity_identification_straps",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        }
-      ],
-      "requirements": [
-        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests."
       ],
       "routing": {
         "operations": [],
@@ -6105,76 +5986,6 @@
       "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
-      "id": "assembly.device.artemis_ram_64kb_bank_kit",
-      "name": "Artemis 64 KiB matched RAM bank kit",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "assembly.part.artemis_ram_module_32kb_x16",
-          "quantity": 2,
-          "unit": "each",
-          "role": "matched modules",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.device.artemis_ram_64kb_bank_kit.kit_packout_and_instructions",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.device.artemis_ram_256kb_bank_kit",
-      "name": "Artemis 256 KiB matched RAM bank kit",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "assembly.part.artemis_ram_module_128kb",
-          "quantity": 2,
-          "unit": "each",
-          "role": "matched modules",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.device.artemis_ram_256kb_bank_kit.kit_packout_and_instructions",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
       "id": "assembly.computer.aurelia.base",
       "name": "Logix Aurelia base hardware without modular RAM, cartridges or NIC",
       "status": "incomplete",
@@ -6656,8 +6467,8 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_32kb_x16",
-          "quantity": 4,
+          "ref": "assembly.part.ram_64kb_x32",
+          "quantity": 2,
           "unit": "each",
           "role": "system RAM",
           "condition": "always",
@@ -6724,87 +6535,6 @@
       "effective_from": "1981-05-04"
     },
     {
-      "id": "assembly.computer.artemis.m32_192",
-      "name": "Logix Artemis m32_192",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "assembly.computer.artemis.base",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.part.artemis_ram_module_32kb_x16",
-          "quantity": 6,
-          "unit": "each",
-          "role": "system RAM",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.artemis_video_card_16kb",
-          "quantity": 1,
-          "unit": "each",
-          "role": "Exactly one configured video card",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Expansion design target; qualification pending."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
-      "ram_configuration_id": "m32_192",
-      "shipping_configuration": false
-    },
-    {
-      "id": "assembly.computer.artemis.m32_192.networked",
-      "name": "Logix Artemis m32_192 networking-era",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "assembly.computer.artemis.m32_192",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "assembly.device.network_card_artemis",
-          "quantity": 1,
-          "unit": "each",
-          "role": "one fitted NIC",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Effective from 1981-05-04; consumes one general expansion slot."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
-      "effective_from": "1981-05-04"
-    },
-    {
       "id": "assembly.computer.artemis.m32_256",
       "name": "Logix Artemis m32_256",
       "status": "incomplete",
@@ -6818,8 +6548,8 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_32kb_x16",
-          "quantity": 8,
+          "ref": "assembly.part.ram_64kb_x32",
+          "quantity": 4,
           "unit": "each",
           "role": "system RAM",
           "condition": "always",
@@ -6899,7 +6629,7 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb_aion",
+          "ref": "assembly.part.ram_128kb_x32",
           "quantity": 2,
           "unit": "each",
           "role": "system RAM",
@@ -6980,8 +6710,8 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb_aion",
-          "quantity": 4,
+          "ref": "assembly.part.ram_256kb_x32",
+          "quantity": 2,
           "unit": "each",
           "role": "system RAM",
           "condition": "always",
@@ -7061,7 +6791,7 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb_aion",
+          "ref": "assembly.part.ram_128kb_x32",
           "quantity": 6,
           "unit": "each",
           "role": "system RAM",
@@ -7142,8 +6872,8 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb_aion",
-          "quantity": 8,
+          "ref": "assembly.part.ram_256kb_x32",
+          "quantity": 4,
           "unit": "each",
           "role": "system RAM",
           "condition": "always",
@@ -7369,8 +7099,8 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb",
-          "quantity": 4,
+          "ref": "assembly.part.ram_256kb_x32",
+          "quantity": 2,
           "unit": "each",
           "role": "system RAM",
           "condition": "always",
@@ -7414,7 +7144,7 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb",
+          "ref": "assembly.part.ram_128kb_x32",
           "quantity": 6,
           "unit": "each",
           "role": "system RAM",
@@ -7459,8 +7189,8 @@
           "quantity_status": "defined"
         },
         {
-          "ref": "assembly.part.artemis_ram_module_128kb",
-          "quantity": 8,
+          "ref": "assembly.part.ram_256kb_x32",
+          "quantity": 4,
           "unit": "each",
           "role": "system RAM",
           "condition": "always",
@@ -8038,7 +7768,7 @@
         }
       ],
       "requirements": [
-        "Four M32-16 modules/two banks, Mono II, keyboard and AIONix cartridge; define pre-/post-1981 networking contents."
+        "Two 64 KB 32-bit modules/one bank, Mono II, keyboard and AIONix cartridge; define pre-/post-1981 networking contents."
       ],
       "routing": {
         "operations": [],
@@ -8465,7 +8195,7 @@
         }
       ],
       "requirements": [
-        "Four M128-16 modules, one HDD, two FDDs, one network interface, Server OS; explicitly decide console keyboard/monitor, cables and headless service tools. Hub not specified. Shipment date unconfirmed."
+        "Two 256 KB 32-bit modules, one HDD, two FDDs, one network interface, Server OS; explicitly decide console keyboard/monitor, cables and headless service tools. Hub not specified. Shipment date unconfirmed."
       ],
       "routing": {
         "operations": [],
@@ -8508,7 +8238,7 @@
         }
       ],
       "requirements": [
-        "Eight M128-16 modules/four banks; otherwise same explicit inclusions and unresolved console/hub/shipment policy. Higher power and full-population testing are configuration-specific."
+        "Four 256 KB 32-bit modules/two banks; otherwise same explicit inclusions and unresolved console/hub/shipment policy. Higher power and full-population testing are configuration-specific."
       ],
       "routing": {
         "operations": [],
@@ -9410,73 +9140,6 @@
       ],
       "requirements": [
         "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.artemis_ram_module_128kb_aion",
-      "name": "Artemis M128-16A 128 KiB / 16-bit AION RAM module",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "bompart.part.aion_4164",
-          "quantity": 16,
-          "unit": "each",
-          "role": "data DRAM",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        },
-        {
-          "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
-          "quantity": null,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "unresolved"
-        }
-      ],
-      "requirements": [
-        "Sixteen AION 64K×1 chips per module; two modules provide Artemis 256 KiB with 32 chips. Electrical qualification pending."
       ],
       "routing": {
         "operations": [],
@@ -10516,6 +10179,352 @@
         "fixture_refs": []
       },
       "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "assembly.part.ram_64kb_x32",
+      "name": "Logix 64 KB 32-bit DRAM module",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.dram_16kbit",
+          "quantity": 32,
+          "unit": "each",
+          "role": "32 data chips per rank; 1 rank(s)",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "cost_assessment_status": "pending_reassessment"
+    },
+    {
+      "id": "assembly.part.ram_128kb_x32",
+      "name": "Logix 128 KB 32-bit DRAM module",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.dram_16kbit",
+          "quantity": 64,
+          "unit": "each",
+          "role": "32 data chips per rank; 2 rank(s)",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "cost_assessment_status": "pending_reassessment"
+    },
+    {
+      "id": "assembly.part.ram_256kb_x32",
+      "name": "Logix 256 KB 32-bit DRAM module",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.aion_4164",
+          "quantity": 32,
+          "unit": "each",
+          "role": "32 data chips per rank; 1 rank(s)",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "cost_assessment_status": "pending_reassessment"
+    },
+    {
+      "id": "assembly.part.ram_256kb_x32_2um",
+      "name": "Logix 256 KB 32-bit DRAM module (2 µm)",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "bompart.part.aion_4164_2um",
+          "quantity": 32,
+          "unit": "each",
+          "role": "32 data chips per rank; 1 rank(s)",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "cost_assessment_status": "pending_reassessment"
+    },
+    {
+      "id": "assembly.offer.ram_64kb_module",
+      "name": "Logix 64 KB RAM module",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "assembly.part.ram_64kb_x32",
+          "quantity": 1,
+          "unit": "each",
+          "role": "matched modules",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.artemis_ram_64kb_bank_kit.kit_packout_and_instructions",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "requirements": [
+        "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "assembly.offer.ram_256kb_bank",
+      "name": "Logix 256 KB RAM bank (two modules)",
+      "status": "incomplete",
+      "lines": [
+        {
+          "ref": "assembly.part.ram_128kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "matched modules",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "bompart.device.artemis_ram_256kb_bank_kit.kit_packout_and_instructions",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "requirements": [
+        "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending."
+      ],
+      "routing": {
+        "operations": [],
+        "minutes_per_unit": null,
+        "first_pass_yield": null,
+        "rework_rate": null,
+        "scrap_rate": null,
+        "fixture_refs": []
+      },
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     }
   ],
   "products": [
@@ -10575,8 +10584,6 @@
       "assembly_refs": [
         "assembly.computer.artemis.m32_128",
         "assembly.computer.artemis.m32_128.networked",
-        "assembly.computer.artemis.m32_192",
-        "assembly.computer.artemis.m32_192.networked",
         "assembly.computer.artemis.m32_256",
         "assembly.computer.artemis.m32_256.networked",
         "assembly.computer.artemis.m128_256",
@@ -10857,36 +10864,6 @@
       ]
     },
     {
-      "catalog_ref": "device.artemis_ram_64kb_bank_kit",
-      "production_status": "design_baseline",
-      "assembly_refs": [
-        "assembly.device.artemis_ram_64kb_bank_kit"
-      ],
-      "requirements": [
-        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests.",
-        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
-        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
-        "Power per rail, startup/thermal limits and region-specific power configuration",
-        "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
-      ]
-    },
-    {
-      "catalog_ref": "device.artemis_ram_256kb_bank_kit",
-      "production_status": "design_baseline",
-      "assembly_refs": [
-        "assembly.device.artemis_ram_256kb_bank_kit"
-      ],
-      "requirements": [
-        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests.",
-        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
-        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
-        "Power per rail, startup/thermal limits and region-specific power configuration",
-        "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
-      ]
-    },
-    {
       "catalog_ref": "part.z80a",
       "production_status": "design_baseline",
       "assembly_refs": [
@@ -10939,7 +10916,7 @@
         "assembly.part.dram_16kbit"
       ],
       "requirements": [
-        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and production M32-16",
+        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
         "the current list only names the prototype.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
@@ -10984,7 +10961,7 @@
       "assembly_refs": [],
       "requirements": [
         "Retain noncommercial engineering status. Its chip count implies 32 KiB",
-        "define width/PCB/connectors separately from a new production M32-16.",
+        "define width/PCB/connectors separately from a new shared 64/128 KB 32-bit modules.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -10999,22 +10976,6 @@
       "requirements": [
         "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
         "identify how existing prototypes/spares are handled.",
-        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
-        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
-        "Power per rail, startup/thermal limits and region-specific power configuration",
-        "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
-      ]
-    },
-    {
-      "catalog_ref": "part.artemis_ram_module_128kb",
-      "production_status": "design_baseline",
-      "assembly_refs": [
-        "assembly.part.artemis_ram_module_128kb"
-      ],
-      "requirements": [
-        "Redefine/revise as sixteen 64K×1 chips, ×16 data width",
-        "add PCB, two byte lanes, buffers/straps/connectors, decoupling and test.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -11273,21 +11234,6 @@
       ]
     },
     {
-      "catalog_ref": "part.artemis_ram_module_32kb_x16",
-      "production_status": "design_baseline",
-      "assembly_refs": [
-        "assembly.part.artemis_ram_module_32kb_x16"
-      ],
-      "requirements": [
-        "New production RAM assembly: freeze connector, PCB, power rails, qualified speed, identification and electrical tests.",
-        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
-        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
-        "Power per rail, startup/thermal limits and region-specific power configuration",
-        "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
-      ]
-    },
-    {
       "catalog_ref": "part.aion_4116",
       "production_status": "design_baseline",
       "assembly_refs": [
@@ -11404,16 +11350,6 @@
       "production_status": "design_baseline",
       "assembly_refs": [
         "assembly.part.aion_4164"
-      ],
-      "requirements": [
-        "Accepted planning design; qualification pending."
-      ]
-    },
-    {
-      "catalog_ref": "part.artemis_ram_module_128kb_aion",
-      "production_status": "design_baseline",
-      "assembly_refs": [
-        "assembly.part.artemis_ram_module_128kb_aion"
       ],
       "requirements": [
         "Accepted planning design; qualification pending."
@@ -11548,24 +11484,6 @@
       ]
     },
     {
-      "catalog_ref": "part.athena_ram_module_128kb",
-      "production_status": "excluded",
-      "assembly_refs": [],
-      "requirements": [
-        "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
-        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
-      ]
-    },
-    {
-      "catalog_ref": "part.athena_ram_module_256kb",
-      "production_status": "excluded",
-      "assembly_refs": [],
-      "requirements": [
-        "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
-        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
-      ]
-    },
-    {
       "catalog_ref": "computer.athena",
       "production_status": "excluded",
       "assembly_refs": [],
@@ -11581,6 +11499,48 @@
       "requirements": [
         "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
         "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
+      ]
+    },
+    {
+      "catalog_ref": "part.ram_64kb_x32",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.part.ram_64kb_x32"
+      ],
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ]
+    },
+    {
+      "catalog_ref": "part.ram_128kb_x32",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.part.ram_128kb_x32"
+      ],
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ]
+    },
+    {
+      "catalog_ref": "part.ram_256kb_x32",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.part.ram_256kb_x32"
+      ],
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ]
+    },
+    {
+      "catalog_ref": "part.ram_256kb_x32_2um",
+      "production_status": "excluded",
+      "assembly_refs": [],
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
       ]
     }
   ],
@@ -11651,7 +11611,7 @@
       "shipping_date": null,
       "availability_status": "catalog_offer",
       "requirements": [
-        "Four M32-16 modules/two banks, Mono II, keyboard and AIONix cartridge; define pre-/post-1981 networking contents."
+        "Two 64 KB 32-bit modules/one bank, Mono II, keyboard and AIONix cartridge; define pre-/post-1981 networking contents."
       ],
       "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
       "variants": [
@@ -11739,7 +11699,7 @@
       "shipping_date": null,
       "availability_status": "announced",
       "requirements": [
-        "Four M128-16 modules, one HDD, two FDDs, one network interface, Server OS; explicitly decide console keyboard/monitor, cables and headless service tools. Hub not specified. Shipment date unconfirmed."
+        "Two 256 KB 32-bit modules, one HDD, two FDDs, one network interface, Server OS; explicitly decide console keyboard/monitor, cables and headless service tools. Hub not specified. Shipment date unconfirmed."
       ],
       "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
     },
@@ -11753,7 +11713,7 @@
       "shipping_date": null,
       "availability_status": "announced",
       "requirements": [
-        "Eight M128-16 modules/four banks; otherwise same explicit inclusions and unresolved console/hub/shipment policy. Higher power and full-population testing are configuration-specific."
+        "Four 256 KB 32-bit modules/two banks; otherwise same explicit inclusions and unresolved console/hub/shipment policy. Higher power and full-population testing are configuration-specific."
       ],
       "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
     },

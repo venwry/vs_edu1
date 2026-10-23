@@ -1,18 +1,53 @@
 {
   "$schema": "../../../schemas/records/software-edition.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "edition.abacus_2.era",
   "record_type": "software-edition",
   "data": {
-    "id": "edition.abacus_2.era",
-    "name": "AION Abacus 2.0 — era",
-    "product_ref": "software.abacus_2",
-    "execution_target": "era_aionix",
-    "role": "application",
     "introduced": {
       "event_name": "NCC 1980 — Logix Artemis launch",
       "event_start_date": "1980-05-19"
     },
+    "features": [
+      "text-mode vertical or horizontal bar charts",
+      "report/document layouts",
+      "layouts can use spreadsheet field values",
+      "layouts can contain charts",
+      "one-off and repeating sections"
+    ],
+    "artemis_native_extensions": [
+      "multiple tabs",
+      "cross-tab references"
+    ],
+    "delivery_on_artemis": "diskette",
+    "sold_separately": true,
+    "technology_refs": [
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "portability_contract": {
+      "api_ref": "technology.logix_c_api",
+      "shared_logic": "Separate application/document algorithms from platform adapters.",
+      "display": "Query dimensions and attributes; use semantic colors and clipping.",
+      "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+      "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+      "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+    },
+    "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
+    "data_interchange": {
+      "partner": "BPI Systems",
+      "available_from": "1979-12-03",
+      "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+      "status": "Accepted requirement; measured implementation qualification pending.",
+      "export_definition_ref": "software.bpi_suite"
+    },
+    "id": "edition.abacus_2.era",
+    "name": "Abacus 2.0 (AIONix edition)",
+    "product_ref": "software.product.abacus",
+    "execution_target": "era_aionix",
+    "role": "application",
     "platform_support": [
       {
         "computer_ref": "computer.artemis",
@@ -29,6 +64,8 @@
       "technology.aionix_os_model"
     ],
     "delivery": "Not yet specified",
-    "support_status": "declared compatible; implementation conformance and performance not yet measured"
+    "support_status": "declared compatible; implementation conformance and performance not yet measured",
+    "version": "2.0",
+    "edition": "AIONix"
   }
 }

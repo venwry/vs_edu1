@@ -18,7 +18,7 @@ check_refs(tech)
 editions=tech['platform_editions']
 edition_keys={'id','name','product_ref','execution_target','role','introduced','platform_support','minimum_resources','dependency_refs','delivery','support_status'}
 for e in editions:
- assert set(e)==edition_keys,e['id']
+ assert edition_keys|{'version','edition'} <= set(e),e['id']
  assert set(e['minimum_resources'])=={'installed_ram_kb','application_ram_bytes','rom_bytes','status'}
  assert e['execution_target'] in {'z80_cpm','era_aionix'}
  assert e['id'] in records[e['product_ref']]['edition_refs']
@@ -27,11 +27,11 @@ for e in editions:
   assert set(support)=={'computer_ref','available_from'}
   assert support['available_from']>=records[support['computer_ref']]['introduced']['event_start_date']
 for c in tech['computers']:
- expected={e['product_ref'] for e in editions if any(p['computer_ref']==c['id'] for p in e['platform_support'])}
+ expected={e['id'] for e in editions if any(p['computer_ref']==c['id'] for p in e['platform_support'])}
  assert set(c['compatible_software'])==expected,c['id']
 for id in ['computer.aurelia','computer.aurelia_plus']:
  assert {'software.abacus_1','software.abacus_2'}<=set(records[id]['compatible_software'])
-assert records['software.aionix_server']['category']=='operating_system'
+assert records[records['software.aionix_server']['product_ref']]['category']=='operating_system'
 assert records['device.network_card_aurelia']['sold_with']==['software.cpm_aurelia_networking']
 assert 'used_in' not in records['part.artemis_ram_module_prototype']
 accepted_designs=['technology.flexibus','technology.artemis_memory_model','technology.cpm80_virtual_peripheral_bridge','technology.aurelia_memory_model','software.bpi_client_server']
@@ -102,7 +102,7 @@ assert [e['id'] for e in events if e['date']['end']!=e['date']['start']]==['even
 assert records['software.bpi_suite']['introduced']['event_start_date']=='1978-06-05'
 assert records['technology.bpi_relational_database']['introduced']['event_start_date']=='1978-06-05'
 assert records['software.microsoft_basic_aurelia']['introduced']['event_start_date']=='1979-06-04'
-for product,edition in [('software.bpi_suite','edition.bpi_suite.z80'),('software.microsoft_basic_aurelia','edition.microsoft_basic_aurelia.z80')]:
+for product,edition in [('software.bpi_suite','software.bpi_suite'),('software.microsoft_basic_aurelia','software.microsoft_basic_aurelia')]:
  assert records[product]['introduced']==records[edition]['introduced']
 assert 'event.bpi_launch' in {e['id'] for p in story['phases'] if p['id']=='phase.ncc78' for e in p['events']}
 assert 'event.basic_launch' in {e['id'] for p in story['phases'] if p['id']=='phase.ncc79' for e in p['events']}

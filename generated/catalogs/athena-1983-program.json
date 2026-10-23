@@ -9,7 +9,7 @@
   "scope": {
     "os_specification": "Accepted phased AIONix2 specification in software.aionix2; implementation and 256 KiB DRAM fit pending qualification.",
     "financial_policy": "No new retail prices, sales, investment or ROI calculated by this planning addition. Existing dated forecasts are unchanged.",
-    "memory_policy": "Use separate 64K-bit 4164 dies on 2 µm, not the discussed dual-array 128K-bit or 256K-bit alternatives.",
+    "memory_policy": "Shared 32-bit modules: 128 KiB two-rank 16K×1 modules preserve Athena 256 KiB; 256 KiB single-rank 2 µm 64K×1 modules preserve Server 1 MiB. Two modules per independently selected 32-bit capacity bank; qualification pending.",
     "system_rom": "256 KiB minimum directly executable AIONix2 ROM bank plus separate EEPROM BIOS; physical assembly pending.",
     "external_application_rom_cards": "No external cartridge slots added; system ROM is distinct from optional application cartridges."
   },
@@ -25,24 +25,23 @@
   },
   "module_boms": [
     {
-      "module_ref": "part.athena_ram_module_128kb",
+      "module_ref": "part.ram_128kb_x32",
       "lines": [
         {
-          "ref": "part.aion_4164_2um",
-          "quantity": 16,
+          "ref": "part.dram_16kbit",
+          "quantity": 64,
           "unit": "each"
         }
       ],
       "additional_functional_sets": [
         "PCB and connector",
         "Decoupling and bulk capacitors",
-        "Address/control buffers and capacity identification",
-        "Rank decode for 256 KiB module"
+        "Module/rank selection, address/control buffers and capacity identification"
       ],
-      "cost_status": "Uncosted 1983 module; assembly/test and component selections pending."
+      "cost_status": "Shared 32-bit module revision; current cost assessment and electrical qualification pending."
     },
     {
-      "module_ref": "part.athena_ram_module_256kb",
+      "module_ref": "part.ram_256kb_x32_2um",
       "lines": [
         {
           "ref": "part.aion_4164_2um",
@@ -53,10 +52,9 @@
       "additional_functional_sets": [
         "PCB and connector",
         "Decoupling and bulk capacitors",
-        "Address/control buffers and capacity identification",
-        "Rank decode for 256 KiB module"
+        "Module/rank selection, address/control buffers and capacity identification"
       ],
-      "cost_status": "Uncosted 1983 module; assembly/test and component selections pending."
+      "cost_status": "Shared 32-bit module revision; current cost assessment and electrical qualification pending."
     }
   ],
   "computer_boms": [
@@ -69,7 +67,7 @@
           "unit": "each"
         },
         {
-          "ref": "part.athena_ram_module_128kb",
+          "ref": "part.ram_128kb_x32",
           "quantity": 2,
           "unit": "each"
         },
@@ -123,7 +121,7 @@
           "unit": "each"
         },
         {
-          "ref": "part.athena_ram_module_256kb",
+          "ref": "part.ram_256kb_x32_2um",
           "quantity": 4,
           "unit": "each"
         },

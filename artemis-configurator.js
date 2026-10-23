@@ -3,6 +3,7 @@
 (function(root){
 'use strict';
 const categories=typeof module!=='undefined'&&module.exports?require('./catalog-categories.js'):root.CatalogCategories;
+const pendingCostReason=(typeof module!=='undefined'&&module.exports?require('./bom-details.js'):root.BomDetails).pendingCostReason;
 const family=['computer.artemis','computer.artemis_pro'];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const human=v=>String(v).replace(/_/g,' ');
@@ -29,6 +30,7 @@ function createModel(catalog,bom,cost){
  function revisions(option){return [{id:option.assemblyRef||option.id,from:option.available,label:'Original configuration · '+option.available},...(option.offer?.manufacturing_variants||[]).map(v=>({id:v.assembly_ref,from:v.effective_from,label:'Networking revision · '+v.effective_from}))];}
  function revisionAt(option,date){return revisions(option).filter(r=>r.from<=date).at(-1);}
  function assessments(option,revision){
+  if(pendingCostReason(assemblies,[revision.id]))return [];
   return (cost.metadata.snapshots||[]).filter(d=>d.endsWith('-06-15')).flatMap(date=>{
    const snapshot=option.cost?.snapshots?.[date.slice(0,4)],r=revisionAt(option,date);
    if(!r||r.id!==revision.id||!snapshot||snapshot.status==='not_yet_offered')return [];
@@ -61,7 +63,7 @@ function createModel(catalog,bom,cost){
   const network=refs.has('device.network_card_artemis')||(!option.upgrade&&Boolean(host.networking?.included_by_default));
   const displays=[...refs].filter(id=>categories.isMonitor(records[id]));
   const peripherals=[...refs].filter(id=>id.startsWith('device.')&&!displays.includes(id)&&!videoRefs.includes(id)&&id!=='device.network_card_artemis'&&id!=='device.artemis_cpm80_module'&&!/ram_/.test(id));
-  return {option,revision,date,host,ram,tree,refs,primary,additional,network,displays,peripherals,software:[...refs].filter(id=>id.startsWith('software.')),externalHdd:option.offer?.storage?.hard_disk_enclosure==='external qualified subsystem',snapshot:assessments(option,revision).find(x=>x.date===date)?.snapshot};
+  return {option,revision,date,host,ram,tree,refs,primary,additional,network,displays,peripherals,software:[...refs].filter(id=>id.startsWith('software.')||id.startsWith('edition.')),externalHdd:option.offer?.storage?.hard_disk_enclosure==='external qualified subsystem',snapshot:assessments(option,revision).find(x=>x.date===date)?.snapshot};
  }
  function bomRows(snapshot){
   return (snapshot?.bom_lines||[]).map(line=>{
@@ -93,7 +95,7 @@ function createFamilyModel(catalog,bom,cost,familyId){
   if(option.upgradeOffer){for(const id of option.upgradeOffer.included_devices||[])refs.add(id);for(const id of option.upgradeOffer.included_software||[])refs.add(id);refs.delete(host.rom_and_cartridges?.system_cartridge_ref);}
   const primary=host.graphics_card_ref||host.video?.card_ref;
   const network=[...refs].some(id=>/^device.network_card/.test(id));
-  return {option,revision,date,host,ram,tree,refs,primary,network,displays:[...refs].filter(id=>categories.isMonitor(records[id])),peripherals:[...refs].filter(id=>id.startsWith('device.')),software:[...refs].filter(id=>id.startsWith('software.')),snapshot:model.assessments(option,revision).find(x=>x.date===date)?.snapshot};
+  return {option,revision,date,host,ram,tree,refs,primary,network,displays:[...refs].filter(id=>categories.isMonitor(records[id])),peripherals:[...refs].filter(id=>id.startsWith('device.')),software:[...refs].filter(id=>id.startsWith('software.')||id.startsWith('edition.')),snapshot:model.assessments(option,revision).find(x=>x.date===date)?.snapshot};
  }
  return {...model,options,state};
 }
@@ -227,6 +229,7 @@ root.setupArtemisWorkbench=function(catalog,page){
   function renderCosts(s){
    const rows=model.assessments(option,revision);
    $('configuration-cost-table').innerHTML=rows.length?table(['Evaluation','BOM materials','Manufacturing & fulfillment¹','Licences & services','Total recurring cost','Recorded total range','Status'],rows.map(({date,snapshot:r})=>{const b=r.breakdown_usd||{},extras=Number.isFinite(b.recurring_licenses)&&Number.isFinite(b.included_service_delivery)?b.recurring_licenses+b.included_service_delivery:null,physical=Number.isFinite(r.total_usd)&&extras!==null?r.total_usd-extras:null;return '<tr'+(date===chosenDate?' class="selected-evaluation"':'')+'><th scope="row"><button type="button" data-evaluation="'+date+'" aria-pressed="'+(date===chosenDate)+'">15 June '+date.slice(0,4)+'</button></th>'+td(money(b.bom_materials))+td(money(physical))+td(money(extras))+td(money(r.total_usd))+td(Number.isFinite(r.low_usd)&&Number.isFinite(r.high_usd)?money(r.low_usd)+' – '+money(r.high_usd):'Not recorded')+td(human(r.status))+'</tr>';}),'Cost of '+option.name+' · '+revision.label)+'<p class="configuration-footnote">¹ Physical materials, production, media, packaging and logistics; excludes separately identified recurring licences and service delivery. Ranges apply to the complete recurring estimate. Figures are planning estimates, not supplier quotes. No later-year costs are extrapolated.</p>':'<p class="configuration-empty-state">No June 15 evaluation is recorded for this configuration and revision. '+(option.professional?'The CAD offering starts after the last annual snapshot; its November review is linked below.':option.target?'This is an unqualified expansion design target.':'Unknown costs have not been replaced with zero.')+'</p>';
+   const blocked=pendingCostReason(model.assemblies,[revision.id]);if(blocked)$('configuration-cost-table').innerHTML='<p class="cost-reassessment-pending">'+esc(blocked)+'</p>';
    for(const b of $('configuration-cost-table').querySelectorAll('[data-evaluation]'))b.onclick=()=>{chosenDate=b.dataset.evaluation;render();};
    $('configuration-bom-date').textContent=s.snapshot?'Evaluation · '+chosenDate:'Configuration · '+revision.from;
    const lines=model.bomRows(s.snapshot),aggregate=lines.some(l=>l.basis!=='BOM material');

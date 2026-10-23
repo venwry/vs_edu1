@@ -24,7 +24,7 @@
       "ram_kb": 1024,
       "video_ram_kb": 64,
       "module_refs": [
-        "part.athena_ram_module_256kb"
+        "part.ram_256kb_x32_2um"
       ],
       "modules_per_bank": 2,
       "bank_data_width_bits": 32,
@@ -35,13 +35,29 @@
         {
           "id": "base",
           "ram_kb": 1024,
-          "module_ref": "part.athena_ram_module_256kb",
+          "module_ref": "part.ram_256kb_x32_2um",
           "populated_modules": 4,
           "populated_banks": 2,
           "data_chip_count": 128,
           "shipping_configuration": false,
           "planned_standard_configuration": true,
-          "validation_status": "Accepted planning baseline; production and electrical qualification pending."
+          "validation_status": "Accepted planning baseline; production and electrical qualification pending.",
+          "bank_population": [
+            {
+              "bank": 0,
+              "slots": [
+                0,
+                1
+              ]
+            },
+            {
+              "bank": 1,
+              "slots": [
+                2,
+                3
+              ]
+            }
+          ]
         }
       ],
       "default_configuration": "base",
@@ -49,7 +65,8 @@
         "capacity_bytes": 262144,
         "execution": "Directly executable shared read-only AIONix2 code; private writable data and patch overlays in DRAM.",
         "implementation": "System ROM bank; physical mounting, chip organization and access timing pending qualification."
-      }
+      },
+      "population_policy": "Two matched 32-bit modules per capacity bank, selected independently on the 32-bit bus. Fill banks in order; all ranks require decoding and refresh. Cross-host connector/timing qualification pending."
     },
     "storage": {
       "internal_fdd": {
@@ -660,7 +677,9 @@
       "general_expansion_slot_count": null
     },
     "operating_system_ref": "software.aionix2",
-    "compatible_software": [],
+    "compatible_software": [
+      "software.aionix2"
+    ],
     "software_policy": "Accepted AIONix2 ROM-backed planning baseline. Preserve documented ERA AIONix binaries through versioned compatibility; individual applications and editions require qualification. External application ROM cartridges are not added by the internal system ROM decision.",
     "positioning": "Server configuration",
     "monitor_and_keyboard_bundle": "Not specified; do not assume included models or pricing.",

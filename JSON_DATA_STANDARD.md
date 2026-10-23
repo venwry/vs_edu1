@@ -3,7 +3,7 @@
 This document is the normative authoring contract for the Logix / AION project.
 Read it before changing any data, schema, model or page. Record versions are specified
 by each schema: **2.0.0** for components, BOM components, peripherals, computers,
-software products and offers; other record types retain **1.0.0**.
+offers and software editions; software products use **3.0.0** (the legacy partner-hardware envelope remains v2); other record types retain **1.0.0**.
 
 ## Ownership and directories
 
@@ -115,8 +115,10 @@ See `CATEGORY_MIGRATION.md` for conversion rules, affected sources and verificat
   `event.artemis_launch`, even when names or paths change.
 - Use `*_ref` and `*_refs` for domain relationships. Reference the authoritative ID,
   not a display label or file path. Keep source-file references in provenance.
-- A software product and its platform edition are distinct. Editions own execution
-  targets, platform support dates, dependencies and resource requirements.
+- A software product groups versions and targets (for example Abacus). Concrete
+  editions own nullable `version`, `edition`, execution targets, platform support
+  dates, dependencies, rich specifications and resource requirements. See
+  `SOFTWARE_RAM_MIGRATION.md` for identity consolidation and cost boundaries.
 - A computer design, manufactured assembly and commercial offer are distinct.
   Offers own included hardware/software/services; BOMs own physical quantities.
 - An event references a campaign, offer or contract. It must not copy their full
@@ -267,3 +269,8 @@ partner support and historical-source claims. Counts are distinct application
 families; fractions are 0–1 and lag is quarters. Named examples, qualified families,
 native editions and paid licences must remain separate concepts. See
 `HTML_ORGANIZATION.md` for ownership, formulas and maintenance commands.
+
+`record_redirects` in site configuration maps retired identities to live records.
+No redirect target may itself be retired. BOM assemblies may declare
+`cost_assessment_status` (`pending_reassessment` or `assessed`); pending status
+propagates to all containing assemblies/offers and blocks current cost publication.

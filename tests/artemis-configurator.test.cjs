@@ -8,8 +8,10 @@ const family=['computer.artemis','computer.artemis_pro'];
 for(const offer of catalog.offered_bundles.filter(o=>family.includes(o.computer_ref)))assert(model.options.some(o=>o.id===offer.id),'missing offer '+offer.id);
 for(const host of catalog.computers.filter(x=>family.includes(x.id)))for(const cfg of host.memory.configurations)assert(model.options.some(o=>o.hostRef===host.id&&o.ramId===cfg.id),'missing memory option '+cfg.id);
 const mono=model.options.find(o=>o.id==='bundle.artemis_128_mono'),[launch,network]=model.revisions(mono);
-assert.deepEqual(model.assessments(mono,launch).map(x=>x.date),['1980-06-15']);
-assert.deepEqual(model.assessments(mono,network).map(x=>x.date),['1981-06-15','1982-06-15']);
+assert.deepEqual(model.assessments(mono,launch).map(x=>x.date),[]);
+assert.deepEqual(model.assessments(mono,network).map(x=>x.date),[]);
+assert(require('../bom-details.js').pendingCostReason(model.assemblies,[launch.id]).includes('pending reassessment'));
+assert.equal(mono.cost.snapshots['1980'].total_usd,cost.products.find(x=>x.id===mono.id).snapshots['1980'].total_usd);
 const base=model.state(mono,launch,'1980-06-15'),net=model.state(mono,network,'1981-06-15');
 assert.equal(base.network,false);assert.equal(net.network,true);assert(base.software.includes('software.aionix'));assert(net.software.includes('software.aionix_server'));assert(!net.software.includes('software.aionix'));assert.equal(net.primary,'device.artemis_video_card_16kb');assert.deepEqual(net.displays,['device.mono_monitor_2']);
 for(const option of model.options)for(const revision of model.revisions(option)){

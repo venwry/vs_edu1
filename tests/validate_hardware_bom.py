@@ -32,11 +32,13 @@ def explode(id,stack=()):
   if l['quantity'] is not None:out.update({k:v*l['quantity'] for k,v in child.items()})
  return out # known-quantity inventory ONLY, never a price for unresolved lines
 for id in assemblies:explode(id)
-for id,size,density in [('part.artemis_ram_module_32kb_x16',32,16),('part.artemis_ram_module_128kb',128,64)]:
+for id in ['part.ram_64kb_x32','part.ram_128kb_x32','part.ram_256kb_x32','part.ram_256kb_x32_2um']:
  s=records[id]['specification'];chip=records[s['chip_type_ref']]['specification']
- assert s['chips']==16 and s['data_width_bits']==16
- assert chip['capacity_kbit']==density and chip['data_width_bits']==1
- assert s['chips']*chip['capacity_kbit']/8==s['capacity_kb']==size
+ assert s['data_width_bits']==32 and s['chips_per_rank']==32
+ assert s['chips']==s['ranks']*32 and chip['data_width_bits']==1
+ assert s['chips']*chip['capacity_kbit']/8==s['capacity_kb']
+ assert s['bank_capacity_kb']==2*s['capacity_kb'] and s['bank_data_width_bits']==32
+ inv=explode('assembly.'+id);assert inv['bompart.'+s['chip_type_ref']]==s['chips']
 for id in ['computer.artemis','computer.artemis_pro']:
  mem=records[id]['memory'];assert 'module_ref' not in mem
  assert mem['ram_sockets']==8 and mem['bank_count']==4
@@ -53,12 +55,13 @@ for id in ['computer.artemis','computer.artemis_pro']:
   inv=explode('assembly.'+id+'.'+cfg['id'])
   assert inv['bompart.'+module['chip_type_ref']]==cfg['data_chip_count']
 shipping={id:{c['ram_kb']:(c['populated_modules'],c['populated_banks'],c['data_chip_count']) for c in records[id]['memory']['configurations'] if c['shipping_configuration']} for id in ['computer.artemis','computer.artemis_pro']}
-assert shipping['computer.artemis']=={128:(4,2,64),256:(2,1,32)}
-assert shipping['computer.artemis_pro']=={512:(4,2,64),1024:(8,4,128)}
+assert shipping['computer.artemis']=={128:(2,1,64),256:(2,1,128)}
+assert shipping['computer.artemis_pro']=={512:(2,1,64),1024:(4,2,128)}
 for id,expected in [('computer.aurelia',48),('computer.aurelia_plus',64)]:
  pop=records[id]['memory']['physical_population'];assert pop['data_chip_count']*records[pop['chip_ref']]['specification']['capacity_kbit']/8==expected
-for id in ['device.artemis_ram_64kb_bank_kit','device.artemis_ram_256kb_bank_kit']:
- kit=records[id];assert kit['module_quantity']==2 and kit['capacity_kb']==2*records[kit['module_ref']]['specification']['capacity_kb']
+for id in ['offer.ram_64kb_module','offer.ram_256kb_bank']:
+ offer=records[id];cfg=offer['configuration'];assert sum(records[m['module_ref']]['specification']['capacity_kb']*m['quantity'] for m in cfg['modules'])==cfg['capacity_kb']
+ assert records['device.aurelia_ram_16kb_card']['category']=='memory_expansion'
 for b in t['offered_bundles']:
  cfg=b.get('computer_configuration',{})
  if cfg.get('ram_configuration_id'):

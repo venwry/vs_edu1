@@ -14,6 +14,13 @@ function vendorName(record,records={},seen=new Set()){
  if(record.candidate_manufacturers?.length)return record.candidate_manufacturers.map(x=>x.name+' (candidate)').join(' / ');
  return 'Unknown';
 }
+function pendingCostReason(assemblies,ids,seen=new Set()){
+ for(const id of ids){if(seen.has(id))continue;seen.add(id);const a=assemblies.get(id);if(!a)continue;
+  if(a.cost_assessment_status==='pending_reassessment')return 'The 32-bit RAM module revision changes the physical BOM. Current manufacturing costs are unknown pending reassessment; previous evaluations describe the superseded design.';
+  const reason=pendingCostReason(assemblies,(a.lines||[]).map(l=>l.ref),seen);if(reason)return reason;
+ }
+ return '';
+}
 function createModel(catalog,bom,cost){
  const records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(r=>r?.id).map(r=>[r.id,r]));
  const assemblies=new Map(bom.assemblies.map(r=>[r.id,r])),components=new Map(bom.components.map(r=>[r.id,r]));
@@ -22,14 +29,16 @@ function createModel(catalog,bom,cost){
  for(const r of catalog.base_parts||[])add(r,'Part');
  for(const r of catalog.devices||[])add(r,categories.isExpansion(r)?'Expansion':'Peripheral');
  for(const r of catalog.computers||[])add(r,'Computer');
- for(const key of ['software_products','platform_editions','external_partner_products'])for(const r of catalog[key]||[])add(r,'Software');
+ for(const r of catalog.software_products||[])add(r,'Software product');
+ for(const r of catalog.platform_editions||[])add(r,'Software edition');
+ for(const r of catalog.external_partner_products||[])add(r,'Software');
  for(const key of ['offered_bundles','proposed_bundles','commercial_offerings'])for(const r of catalog[key]||[])add(r,'Bundle');
  for(const r of bom.components)if(!r.catalog_ref||!items.has(r.catalog_ref))add(r,'Part');
  const reviewRows=Object.entries(cost.reviews||{}).flatMap(([key,r])=>[...(r.products||r.prices||[]),...(key==='ncc-1982'?[{id:'software.aion_development_team',name:'AION Development Team',...r.team_launch_price},{id:'software.aion_development_team',name:'AION Development Team',...r.team_1982_price}]:[])].map(row=>({...row,review:key})));
  for(const r of reviewRows)if(!items.has(r.id))throw Error('Missing canonical record for reviewed offering: '+r.id);
  function assemblyIds(id){const r=records[id];return [...new Set([
  ...(assemblies.has(id)?[id]:[]),...(bom.products||[]).filter(p=>p.catalog_ref===id).flatMap(p=>p.assembly_refs||[]),
- ...(bom.offers||[]).filter(p=>p.catalog_ref===id).map(p=>p.assembly_ref),r?.bom_assembly_ref,
+ ...(bom.offers||[]).filter(p=>p.catalog_ref===id).map(p=>p.assembly_ref),r?.bom_assembly_ref,...(r?.bom_assembly_refs||[]),
  ...(r?.manufacturing_variants||[]).map(v=>v.assembly_ref),
  ...cost.products.filter(p=>p.catalog_ref===id||p.id===id).map(p=>p.assembly_ref),
  ...['assembly.'+id,'assembly.media.'+id].filter(x=>assemblies.has(x))
@@ -50,6 +59,7 @@ function createModel(catalog,bom,cost){
  }
  function renderCosts(id,opts={}){
   let html='<section class="bom-detail">';
+  const blocked=pendingCostReason(assemblies,assemblyIds(id));if(blocked)return html+'<p class="cost-reassessment-pending">'+esc(blocked)+'</p><p><a href="generated/models/manufacturing-costs.json">Archived evaluations of the superseded design</a></p></section>';
   const products=cost.products.filter(p=>p.id===id||p.catalog_ref===id);
   if(products.length){html+='<h3>Recorded costs</h3><p>Nominal USD engineering estimates. Software costs may include media, licensing and delivery. Component and assembly costs overlap; do not add them together.</p>';for(const p of products){html+='<details data-bom-cost="'+esc(p.id)+'" data-cost-id="'+esc(p.id)+'"><summary>'+esc(p.name)+'</summary><div class="bom-table-scroll"><table><thead><tr><th>June 15 evaluation</th><th>Total recurring cost</th><th>Range</th><th>Status</th></tr></thead><tbody>'+Object.entries(p.snapshots||{}).filter(([y,s])=>s.status!=='not_yet_offered'&&(cost.metadata.snapshots||[]).includes(y+'-06-15')).map(([y,s])=>'<tr><td>'+esc(y+'-06-15')+'</td><td>'+money(s.total_usd)+'</td><td>'+money(s.low_usd)+' – '+money(s.high_usd)+'</td><td>'+esc(s.status)+'</td></tr>').join('')+'</tbody></table></div>'+'</details>';}}
   const dated=(cost.dated_assessments||[]).flatMap(a=>(a.products||[]).filter(p=>p.id===id).map(p=>({date:a.date,basis:a.basis,...p})));
@@ -67,5 +77,5 @@ function createModel(catalog,bom,cost){
  function bind(host){for(const d of host.querySelectorAll('[data-bom-cost]'))d.addEventListener('toggle',()=>{if(!d.open||d.dataset.loaded)return;d.dataset.loaded='true';const p=cost.products.find(p=>p.id===d.dataset.bomCost);d.insertAdjacentHTML('beforeend',root.renderSpecification(p,records));root.bindSpecificationControls(d);});}
  return {bind,records,items:[...items.values()].sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id)),assemblies,components,assemblyIds,rows,render,renderBOM,renderCosts};
 }
-root.BomDetails={createModel,esc,vendorName};if(typeof module!=='undefined')module.exports=root.BomDetails;
+root.BomDetails={createModel,esc,vendorName,pendingCostReason};if(typeof module!=='undefined')module.exports=root.BomDetails;
 })(typeof window==='undefined'?globalThis:window);

@@ -27,15 +27,16 @@
       "physical_capacity_limit_kb": 1024,
       "capacity_limit_status": "Design target; all-bank timing, loading and power qualification pending.",
       "module_refs": [
-        "part.artemis_ram_module_128kb"
+        "part.ram_256kb_x32",
+        "part.ram_128kb_x32"
       ],
       "configurations": [
         {
           "id": "m128_512",
           "ram_kb": 512,
-          "module_ref": "part.artemis_ram_module_128kb",
-          "populated_modules": 4,
-          "populated_banks": 2,
+          "module_ref": "part.ram_256kb_x32",
+          "populated_modules": 2,
+          "populated_banks": 1,
           "data_chip_count": 64,
           "shipping_configuration": true,
           "validation_status": "Specified baseline; electrical qualification pending.",
@@ -46,23 +47,16 @@
                 0,
                 1
               ]
-            },
-            {
-              "bank": 1,
-              "slots": [
-                2,
-                3
-              ]
             }
           ]
         },
         {
           "id": "m128_768",
           "ram_kb": 768,
-          "module_ref": "part.artemis_ram_module_128kb",
+          "module_ref": "part.ram_128kb_x32",
           "populated_modules": 6,
           "populated_banks": 3,
-          "data_chip_count": 96,
+          "data_chip_count": 384,
           "shipping_configuration": false,
           "validation_status": "Expansion design target; qualification pending.",
           "bank_population": [
@@ -92,9 +86,9 @@
         {
           "id": "m128_1024",
           "ram_kb": 1024,
-          "module_ref": "part.artemis_ram_module_128kb",
-          "populated_modules": 8,
-          "populated_banks": 4,
+          "module_ref": "part.ram_256kb_x32",
+          "populated_modules": 4,
+          "populated_banks": 2,
           "data_chip_count": 128,
           "shipping_configuration": true,
           "validation_status": "Specified baseline; electrical qualification pending.",
@@ -112,31 +106,17 @@
                 2,
                 3
               ]
-            },
-            {
-              "bank": 2,
-              "slots": [
-                4,
-                5
-              ]
-            },
-            {
-              "bank": 3,
-              "slots": [
-                6,
-                7
-              ]
             }
           ]
         }
       ],
       "default_configuration": "m128_512",
-      "population_policy": "Matched pairs fill B0–B3 in order. One density per chassis in v1. Capacity straps identify modules; firmware rejects incomplete/mismatched pairs. RAM is contiguous within the physical RAM region; base address still requires a frozen map.",
-      "upgrade_policy": "Low-density 128 KiB can expand to 256 KiB with four additional M32-16 modules. Transition to high density replaces all low-density modules. High-density expansion uses complete 256 KiB banks.",
-      "reliability_policy": "Baseline has no parity or ECC. PRO byte parity is an unimplemented option requiring 18-chip modules and generation/check/reporting logic; never count it as fitted.",
+      "population_policy": "Two matched 32-bit modules per capacity bank, selected independently on the 32-bit bus. Fill banks in order; all ranks require decoding and refresh. Cross-host connector/timing qualification pending.",
+      "upgrade_policy": "Use the shared module catalogue. Install matched pairs; preserve specified capacity. Replace all modules when changing density. Previous 16-bit population recipes are superseded.",
+      "reliability_policy": "No parity or ECC is fitted; any future parity design requires a separate qualified BOM.",
       "video_ram_kb": 32,
       "sprite_sram_kb": 1,
-      "sourcing_policy": "AION 64K x 1 production grade after server qualification; 64/128 chips for 512 KiB/1 MiB. Existing 32-bit bank widths, capacities and populations unchanged."
+      "sourcing_policy": "Qualified AION 64K×1 grades for 256 KB modules: 64/128 chips for the 512 KB/1 MB shipping capacities. The 768 KB target uses paired 128 KB two-rank 16K×1 modules. Shared interface and full-population qualification pending."
     },
     "storage": {
       "internal_fdd": {
@@ -716,7 +696,7 @@
       "device.flexidisk_ii",
       "device.network_card_artemis",
       "device.network_hub",
-      "device.artemis_ram_256kb_bank_kit",
+      "part.ram_128kb_x32",
       "device.artemis_video_card",
       "device.mono_pro",
       "device.logix_mouse",
@@ -724,15 +704,16 @@
       "device.color_pro_14"
     ],
     "compatible_software": [
-      "software.business_tools_artemis",
-      "software.aion_c_ide",
-      "software.artemis_sdk",
       "software.abacus_3",
       "software.pulse_3",
       "software.aionix_server",
-      "software.bpi_client_server",
+      "edition.bpi_client_server.era_server",
+      "software.business_tools_artemis",
+      "software.aion_c_ide",
+      "software.artemis_sdk",
       "software.aion_development_team",
-      "software.entertainment_suite",
+      "edition.aion_development_team.era_client",
+      "edition.entertainment_suite.era",
       "software.autocad_1_artemis"
     ],
     "software_compatibility": {

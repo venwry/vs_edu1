@@ -26,16 +26,17 @@
       "physical_capacity_limit_kb": 1024,
       "capacity_limit_status": "Design target; all-bank timing, loading and power qualification pending.",
       "module_refs": [
-        "part.artemis_ram_module_32kb_x16",
-        "part.artemis_ram_module_128kb_aion"
+        "part.ram_64kb_x32",
+        "part.ram_128kb_x32",
+        "part.ram_256kb_x32"
       ],
       "configurations": [
         {
           "id": "m32_128",
           "ram_kb": 128,
-          "module_ref": "part.artemis_ram_module_32kb_x16",
-          "populated_modules": 4,
-          "populated_banks": 2,
+          "module_ref": "part.ram_64kb_x32",
+          "populated_modules": 2,
+          "populated_banks": 1,
           "data_chip_count": 64,
           "shipping_configuration": true,
           "validation_status": "Specified baseline; electrical qualification pending.",
@@ -46,55 +47,15 @@
                 0,
                 1
               ]
-            },
-            {
-              "bank": 1,
-              "slots": [
-                2,
-                3
-              ]
-            }
-          ]
-        },
-        {
-          "id": "m32_192",
-          "ram_kb": 192,
-          "module_ref": "part.artemis_ram_module_32kb_x16",
-          "populated_modules": 6,
-          "populated_banks": 3,
-          "data_chip_count": 96,
-          "shipping_configuration": false,
-          "validation_status": "Expansion design target; qualification pending.",
-          "bank_population": [
-            {
-              "bank": 0,
-              "slots": [
-                0,
-                1
-              ]
-            },
-            {
-              "bank": 1,
-              "slots": [
-                2,
-                3
-              ]
-            },
-            {
-              "bank": 2,
-              "slots": [
-                4,
-                5
-              ]
             }
           ]
         },
         {
           "id": "m32_256",
           "ram_kb": 256,
-          "module_ref": "part.artemis_ram_module_32kb_x16",
-          "populated_modules": 8,
-          "populated_banks": 4,
+          "module_ref": "part.ram_64kb_x32",
+          "populated_modules": 4,
+          "populated_banks": 2,
           "data_chip_count": 128,
           "shipping_configuration": false,
           "validation_status": "Expansion design target; qualification pending.",
@@ -112,30 +73,16 @@
                 2,
                 3
               ]
-            },
-            {
-              "bank": 2,
-              "slots": [
-                4,
-                5
-              ]
-            },
-            {
-              "bank": 3,
-              "slots": [
-                6,
-                7
-              ]
             }
           ]
         },
         {
           "id": "m128_256",
           "ram_kb": 256,
-          "module_ref": "part.artemis_ram_module_128kb_aion",
+          "module_ref": "part.ram_128kb_x32",
           "populated_modules": 2,
           "populated_banks": 1,
-          "data_chip_count": 32,
+          "data_chip_count": 128,
           "shipping_configuration": true,
           "validation_status": "Specified baseline; electrical qualification pending.",
           "bank_population": [
@@ -151,9 +98,9 @@
         {
           "id": "m128_512",
           "ram_kb": 512,
-          "module_ref": "part.artemis_ram_module_128kb_aion",
-          "populated_modules": 4,
-          "populated_banks": 2,
+          "module_ref": "part.ram_256kb_x32",
+          "populated_modules": 2,
+          "populated_banks": 1,
           "data_chip_count": 64,
           "shipping_configuration": false,
           "validation_status": "Expansion design target; qualification pending.",
@@ -164,23 +111,16 @@
                 0,
                 1
               ]
-            },
-            {
-              "bank": 1,
-              "slots": [
-                2,
-                3
-              ]
             }
           ]
         },
         {
           "id": "m128_768",
           "ram_kb": 768,
-          "module_ref": "part.artemis_ram_module_128kb_aion",
+          "module_ref": "part.ram_128kb_x32",
           "populated_modules": 6,
           "populated_banks": 3,
-          "data_chip_count": 96,
+          "data_chip_count": 384,
           "shipping_configuration": false,
           "validation_status": "Expansion design target; qualification pending.",
           "bank_population": [
@@ -210,9 +150,9 @@
         {
           "id": "m128_1024",
           "ram_kb": 1024,
-          "module_ref": "part.artemis_ram_module_128kb_aion",
-          "populated_modules": 8,
-          "populated_banks": 4,
+          "module_ref": "part.ram_256kb_x32",
+          "populated_modules": 4,
+          "populated_banks": 2,
           "data_chip_count": 128,
           "shipping_configuration": false,
           "validation_status": "Expansion design target; qualification pending.",
@@ -230,28 +170,14 @@
                 2,
                 3
               ]
-            },
-            {
-              "bank": 2,
-              "slots": [
-                4,
-                5
-              ]
-            },
-            {
-              "bank": 3,
-              "slots": [
-                6,
-                7
-              ]
             }
           ]
         }
       ],
       "default_configuration": "m32_128",
-      "population_policy": "Matched pairs fill B0–B3 in order. One density per chassis in v1. Capacity straps identify modules; firmware rejects incomplete/mismatched pairs. RAM is contiguous within the physical RAM region; base address still requires a frozen map.",
-      "upgrade_policy": "Low-density 128 KiB can expand to 256 KiB with four additional M32-16 modules. Transition to high density replaces all low-density modules. High-density expansion uses complete 256 KiB banks.",
-      "reliability_policy": "Baseline has no parity or ECC. PRO byte parity is an unimplemented option requiring 18-chip modules and generation/check/reporting logic; never count it as fitted.",
+      "population_policy": "Two matched 32-bit modules per capacity bank, selected independently on the 32-bit bus. Fill banks in order; all ranks require decoding and refresh. Cross-host connector/timing qualification pending.",
+      "upgrade_policy": "Use the shared module catalogue. Install matched pairs; preserve specified capacity. Replace all modules when changing density. Previous 16-bit population recipes are superseded.",
+      "reliability_policy": "No parity or ECC is fitted; any future parity design requires a separate qualified BOM.",
       "video_ram_kb": 16,
       "sprite_sram_kb": 1,
       "video_ram_policy": "16 KiB with the 128 KiB low-density configuration; 32 KiB with the 256 KiB AION high-density configuration. Expanding a low-density machine does not automatically replace its card."
@@ -716,8 +642,8 @@
       "device.flexidisk_ii",
       "device.network_card_artemis",
       "device.network_hub",
-      "device.artemis_ram_64kb_bank_kit",
-      "device.artemis_ram_256kb_bank_kit",
+      "part.ram_64kb_x32",
+      "part.ram_128kb_x32",
       "device.artemis_video_card",
       "device.mono_pro",
       "device.artemis_video_card_16kb",
@@ -726,18 +652,18 @@
       "device.color_pro_14"
     ],
     "compatible_software": [
-      "software.abacus_2",
-      "software.bpi_suite",
-      "software.business_tools_artemis",
-      "software.aion_c_ide",
-      "software.artemis_sdk",
+      "edition.abacus_2.era",
       "software.abacus_3",
       "software.pulse_3",
       "software.aionix",
       "software.aionix_server",
-      "software.bpi_client_server",
-      "software.aion_development_team",
-      "software.entertainment_suite",
+      "edition.bpi_suite.era",
+      "edition.bpi_client_server.era_client",
+      "software.business_tools_artemis",
+      "software.aion_c_ide",
+      "software.artemis_sdk",
+      "edition.aion_development_team.era_client",
+      "edition.entertainment_suite.era",
       "software.autocad_1_artemis"
     ],
     "software_compatibility": {
@@ -754,8 +680,6 @@
     "bom_assembly_refs": [
       "assembly.computer.artemis.m32_128",
       "assembly.computer.artemis.m32_128.networked",
-      "assembly.computer.artemis.m32_192",
-      "assembly.computer.artemis.m32_192.networked",
       "assembly.computer.artemis.m32_256",
       "assembly.computer.artemis.m32_256.networked",
       "assembly.computer.artemis.m128_256",
@@ -772,7 +696,6 @@
         "card_ref": "device.artemis_video_card_16kb",
         "configuration_ids": [
           "m32_128",
-          "m32_192",
           "m32_256"
         ],
         "specification": {

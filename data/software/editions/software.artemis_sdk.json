@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "2.0.0",
+  "id": "software.artemis_sdk",
+  "record_type": "software-edition",
+  "data": {
+    "contents": [
+      "Artemis Technical Reference",
+      "Artemis Programmer's Manual",
+      "Video Programmer's Guide",
+      "FlexiBUS Developer Guide",
+      "Expansion Card Developer Guide",
+      "Cartridge Developer Guide",
+      "SDK tools/software",
+      "Portable C language/ABI contract",
+      "Logix API v1 headers and service discovery guide",
+      "Capability-based display and TUI guide",
+      "Portable file-format and memory-handle conventions",
+      "40/80-column and monochrome examples",
+      "Target conformance and resource-budget test guidance"
+    ],
+    "sold_separately": true,
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "technology_refs": [
+      "technology.logix_c_target_contract",
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "id": "software.artemis_sdk",
+    "name": "Logix Developer Package SDK (AIONix edition)",
+    "product_ref": "software.product.developer_sdk",
+    "execution_target": "era_aionix",
+    "role": "development_tools",
+    "platform_support": [
+      {
+        "computer_ref": "computer.artemis",
+        "available_from": "1980-05-19"
+      },
+      {
+        "computer_ref": "computer.artemis_pro",
+        "available_from": "1981-05-04"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": null,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [
+      "technology.aionix_os_model"
+    ],
+    "delivery": "Not yet specified",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured",
+    "version": null,
+    "edition": "AIONix"
+  }
+}

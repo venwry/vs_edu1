@@ -19,7 +19,7 @@ assert any('no silent frame skipping' in x for x in d['controls'])
 a=c['abacus_demonstration'];assert 'text-mode' in a['chart_scope']
 r={x['id']:x for v in t.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id'in x}
 assert all(ref in r for ref in c['offering_refs'])
-assert {x['computer_ref'] for x in r['edition.abacus_2.z80']['platform_support']}==set(d['computer_refs'])
+assert {x['computer_ref'] for x in r['software.abacus_2']['platform_support']}==set(d['computer_refs'])
 assert c['disclosure']['architecture_reveal']==read('generated/catalogs/ncc-1979-campaign.json')['migration']['architecture_reveal']
 for scenario in read('generated/models/sales-forecast.json')['scenarios']:
  assert all(r['products']['aurelia_plus']==0 for r in scenario['monthly'] if r['month']<'1979-12')

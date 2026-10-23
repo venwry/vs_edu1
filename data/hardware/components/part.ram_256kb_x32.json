@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schemas/records/component.schema.json",
+  "schema_version": "2.0.0",
+  "id": "part.ram_256kb_x32",
+  "record_type": "component",
+  "data": {
+    "id": "part.ram_256kb_x32",
+    "name": "Logix 256 KB 32-bit DRAM module",
+    "vendor": "Logix / AION Labs",
+    "category": "memory_module",
+    "origin": "custom_logix",
+    "introduced": {
+      "event_name": "Shared module specification migration; original availability retained",
+      "event_start_date": "1980-05-19"
+    },
+    "specification": {
+      "capacity_kb": 256,
+      "data_width_bits": 32,
+      "chips": 32,
+      "chip_type_ref": "part.aion_4164",
+      "chip_organization": "64K × 1",
+      "ranks": 1,
+      "chips_per_rank": 32,
+      "rank_capacity_kb": 256,
+      "modules_per_bank": 2,
+      "bank_data_width_bits": 32,
+      "bank_capacity_kb": 512,
+      "parity_bits": 0,
+      "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+      "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+      "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+    },
+    "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+    "manufacturing_requirements": [
+      "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+      "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+    ],
+    "manufacturing_status": "incomplete_bom",
+    "bom_assembly_refs": [
+      "assembly.part.ram_256kb_x32"
+    ]
+  }
+}
