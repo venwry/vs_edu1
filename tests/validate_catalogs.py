@@ -1,8 +1,9 @@
+from data_paths import read_document, document_bytes
 """Run from any directory: python tests/validate_catalogs.py (requires jsonschema)."""
 from pathlib import Path
 import json, jsonschema
 root=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((root/n).read_text())
+def read(n):return read_document(n, root=root)
 story=read('generated/catalogs/logix-aion-story.json');tech=read('generated/catalogs/logix-aion-technical-catalog-v2.json');site=read('generated/catalogs/site-pages.json')
 jsonschema.Draft202012Validator(read('schemas/legacy/logix_aion_story.schema.json')).validate(story)
 records={x['id']:x for v in tech.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id'in x}

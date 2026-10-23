@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
-const R=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(R,n),'utf8'),model=JSON.parse(read('generated/models/sales-forecast.json'));
-(async()=>{const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/sales.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('sales.js'));w.document.getElementById('app').innerHTML=w.salesTemplate;w.fetch=async()=>({ok:true,json:async()=>model});await w.startSales();const d=w.document;
+const R=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(R,n),'utf8'),model=require('../data-store.js').read('generated/models/sales-forecast.json');
+(async()=>{const dom=new JSDOM('<div id="app"></div>',{url:'https://atlas.test/sales.html',runScripts:'outside-only'}),w=dom.window;w.eval(read('data-store.js'));w.eval(read('sales.js'));w.document.getElementById('app').innerHTML=w.salesTemplate;w.fetch=async()=>({ok:true,json:async()=>model});await w.startSales();const d=w.document;
 const change=(id,v)=>{d.getElementById(id).value=v;d.getElementById(id).dispatchEvent(new w.Event('change'));};
 const fields=['customer_retail_spend_usd','supplier_revenue_after_channel_usd','recurring_cost_usd','unit_contribution_total_usd'];
 assert(!d.getElementById('sales-basis'));assert(!d.getElementById('sales-source-details'));assert.equal(d.querySelectorAll('#sales-calendar tbody tr').length,72);

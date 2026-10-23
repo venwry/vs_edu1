@@ -1,10 +1,11 @@
+from data_store import read_document, document_bytes, document_text
 """Shared RAM process economics. Assumptions are scenario inputs, not measured yields."""
 import json, math
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 def policy():
-    return json.loads((ROOT / 'generated/catalogs/memory-manufacturing.json').read_text())
+    return read_document('generated/catalogs/memory-manufacturing.json', root=ROOT)
 
 def evaluate(recipe, wafer_cost=None):
     a = recipe['die_area_mm2']

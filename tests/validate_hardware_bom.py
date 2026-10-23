@@ -1,10 +1,11 @@
+from data_paths import read_document, document_bytes
 """Validate hardware arithmetic, population rules and BOM cost boundaries."""
 import json
 from pathlib import Path
 from collections import Counter
 import jsonschema
 root=Path(__file__).resolve().parents[1]
-def read(name):return json.loads((root/name).read_text())
+def read(name):return read_document(name, root=root)
 t=read('generated/catalogs/logix-aion-technical-catalog-v2.json');bom=read('generated/catalogs/hardware-bom.json')
 jsonschema.Draft202012Validator(read('schemas/legacy/hardware_bom.schema.json')).validate(bom)
 records={r['id']:r for v in t.values() if isinstance(v,list) for r in v if isinstance(r,dict) and 'id'in r}

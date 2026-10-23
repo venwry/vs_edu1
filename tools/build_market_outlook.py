@@ -1,11 +1,12 @@
+from data_store import read_document, document_bytes, document_text
 """Publish the canonical reaction forecast and its cross-model reconciliation."""
 import json,hashlib,html,sys
 from pathlib import Path
 from collections import defaultdict
 from market_outlook import POLICY,quarter,team_units
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
-from data_catalog import store_document
+def read(n):return read_document(n, root=R)
+from data_store import store_document
 def write(n,d): store_document(n,d)
 I=read('generated/models/industrial-investment-1974-1981.json');S=read('generated/models/sales-forecast.json')
 ROI=read('generated/models/roi-1974-1980.json');sc=next(x for x in S['scenarios'] if x['id']=='central');fin=next(x for x in ROI['scenarios'] if x['id']=='central');cap={r['quarter']:r for r in I['quarterly_capacity']};finq={r['quarter']:r for r in fin['quarterly']}
@@ -27,7 +28,7 @@ if '--timeline' in sys.argv:
  write('generated/catalogs/logix-aion-story.json',story);write('generated/catalogs/site-pages.json',site)
  sys.exit()
 
-M={'title':'Market reactions, demand and returns through 1982','status':'Alternative-history central forecast, not historical accounts','policy':POLICY,'quarterly':rows,'annual':[a for a in sc['annual'] if a['year']>=1980],'end_1982':end,'team_development_reconciliation':I['team_development_reconciliation'],'team_campaign_reconciliation':ROI['team_campaign_reconciliation'],'regeneration':['python3 tools/rebuild_outlook.py'],'sources':[{'path':f,'sha256':hashlib.sha256((R/f).read_bytes()).hexdigest()} for f in ['generated/models/sales-forecast.json','generated/models/industrial-investment-1974-1981.json','generated/models/roi-1974-1980.json','generated/catalogs/logix-aion-story.json','generated/catalogs/market-reactions.json','generated/catalogs/team-development-program.json','tools/market_outlook.py']]}
+M={'title':'Market reactions, demand and returns through 1982','status':'Alternative-history central forecast, not historical accounts','policy':POLICY,'quarterly':rows,'annual':[a for a in sc['annual'] if a['year']>=1980],'end_1982':end,'team_development_reconciliation':I['team_development_reconciliation'],'team_campaign_reconciliation':ROI['team_campaign_reconciliation'],'regeneration':['python3 tools/rebuild_outlook.py'],'sources':[{'path':f,'sha256':hashlib.sha256(document_bytes(f, root=R)).hexdigest()} for f in ['generated/models/sales-forecast.json','generated/models/industrial-investment-1974-1981.json','generated/models/roi-1974-1980.json','generated/catalogs/logix-aion-story.json','generated/catalogs/market-reactions.json','generated/catalogs/team-development-program.json','tools/market_outlook.py']]}
 write('generated/models/market-outlook-1980-1982.json',M)
 
 # HTML report retired; canonical forecast JSON remains available to dependent models.

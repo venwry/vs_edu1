@@ -3,14 +3,14 @@ const {JSDOM,VirtualConsole}=require('jsdom');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
-const config=JSON.parse(read('generated/catalogs/site-pages.json')),story=JSON.parse(read('generated/catalogs/logix-aion-story.json'));
+const config=require('../data-store.js').read('generated/catalogs/site-pages.json'),story=require('../data-store.js').read('generated/catalogs/logix-aion-story.json');
 const tick=()=>new Promise(r=>setTimeout(r,35));
 async function boot(page,overrides={},url='https://atlas.test/'+page.path){
  const errors=[],fetched=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(read(page.path),{url,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});
- const w=dom.window;w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||JSON.parse(read(name))};};
+ const w=dom.window;w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>{const name=p.replace('./','');fetched.push(name);return {ok:true,json:async()=>overrides[name]||require('../data-store.js').read(name)};};
  if(page.kind==='report'){const script=w.document.querySelector('script:not([type]):not([src])');if(script)w.eval(script.textContent);return {dom,w,d:w.document,errors,fetched};}
- w.eval(read('sales.js'));w.eval(read('pricing.js'));w.eval(read('manufacturing-costs.js'));w.eval(read('timeline-model.js'));w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('catalog-navigation.js'));w.eval(read('atlas.js'));await tick();
+ w.eval(read('data-store.js'));w.eval(read('sales.js'));w.eval(read('pricing.js'));w.eval(read('manufacturing-costs.js'));w.eval(read('timeline-model.js'));w.eval(read('architecture-explorer.js'));w.eval(read('artemis-explorer.js'));w.eval(read('catalog-navigation.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors,fetched};
 }

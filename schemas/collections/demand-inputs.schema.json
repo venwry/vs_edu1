@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "market_reactions",
+    "sales_reassessment_inputs",
+    "sales_model_inputs",
+    "aurelia_plus_aion_memory",
+    "artemis_tiers"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/demand-inputs.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "market_reactions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "date_policy",
+        "forecast_adjustments"
+      ],
+      "properties": {
+        "events": {
+          "type": "array"
+        },
+        "date_policy": {
+          "type": "string"
+        },
+        "forecast_adjustments": {
+          "type": "object"
+        }
+      }
+    },
+    "sales_reassessment_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "horizon",
+        "currency",
+        "status",
+        "geography",
+        "logix_gross_factors_vs_baseline",
+        "demand_basis",
+        "clones",
+        "cannibalisation",
+        "aion_tech_uk_subset",
+        "native_share_1983",
+        "pro_share_1983",
+        "cad_new_systems",
+        "cad_upgrade_licenses",
+        "colour_upgrade_units",
+        "mouse_only_learning_units",
+        "team_paid_licenses",
+        "clone_native_share",
+        "oem_economics",
+        "capacity",
+        "scenarios",
+        "market",
+        "programme_costs",
+        "budget_mix",
+        "business_market"
+      ],
+      "properties": {
+        "version": {
+          "type": "number"
+        },
+        "horizon": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "geography": {
+          "type": "string"
+        },
+        "logix_gross_factors_vs_baseline": {
+          "type": "object"
+        },
+        "demand_basis": {
+          "type": "array"
+        },
+        "clones": {
+          "type": "array"
+        },
+        "cannibalisation": {
+          "type": "object"
+        },
+        "aion_tech_uk_subset": {
+          "type": "object"
+        },
+        "native_share_1983": {
+          "type": "array"
+        },
+        "pro_share_1983": {
+          "type": "array"
+        },
+        "cad_new_systems": {
+          "type": "object"
+        },
+        "cad_upgrade_licenses": {
+          "type": "object"
+        },
+        "colour_upgrade_units": {
+          "type": "object"
+        },
+        "mouse_only_learning_units": {
+          "type": "object"
+        },
+        "team_paid_licenses": {
+          "type": "object"
+        },
+        "clone_native_share": {
+          "type": "object"
+        },
+        "oem_economics": {
+          "type": "object"
+        },
+        "capacity": {
+          "type": "object"
+        },
+        "scenarios": {
+          "type": "object"
+        },
+        "market": {
+          "type": "object"
+        },
+        "programme_costs": {
+          "type": "array"
+        },
+        "budget_mix": {
+          "type": "object"
+        },
+        "business_market": {
+          "type": "object"
+        }
+      }
+    },
+    "sales_model_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "demand_anchor_months",
+        "basket_components",
+        "academy_course_days",
+        "academy_requests",
+        "standalone_applications"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "demand_anchor_months": {
+          "type": "object"
+        },
+        "basket_components": {
+          "type": "object"
+        },
+        "academy_course_days": {
+          "type": "object"
+        },
+        "academy_requests": {
+          "type": "array"
+        },
+        "standalone_applications": {
+          "type": "array"
+        }
+      }
+    },
+    "aurelia_plus_aion_memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "demand"
+      ],
+      "properties": {
+        "demand": {
+          "type": "string"
+        }
+      }
+    },
+    "artemis_tiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sales_mix"
+      ],
+      "properties": {
+        "sales_mix": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

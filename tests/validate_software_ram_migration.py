@@ -1,8 +1,9 @@
+from data_paths import read_document, document_bytes, document_text
 """Semantic regression checks for product editions and shared physical modules."""
 import json, hashlib, subprocess, sys
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def read(p):return json.loads((R/p).read_text())
+def read(p):return read_document(p, root=R)
 c=read('generated/catalogs/logix-aion-technical-catalog-v2.json');b=read('generated/catalogs/hardware-bom.json');site=read('generated/catalogs/site-pages.json')
 records={r['id']:r for v in c.values() if isinstance(v,list) for r in v if isinstance(r,dict) and 'id' in r}
 products={r['id']:r for r in c['software_products']};editions={r['id']:r for r in c['platform_editions']}

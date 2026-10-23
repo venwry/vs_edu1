@@ -1,3 +1,4 @@
+from data_paths import read_document, document_bytes, document_text
 """Reject unrecognised categories in source schemas and service costing."""
 import ast, copy, json, sys
 from pathlib import Path
@@ -5,12 +6,12 @@ import jsonschema
 R=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(R/'tools'))
 from schema_validation import record_validator
-def read(p):return json.loads((R/p).read_text())
-record=read('data/hardware/peripherals/device.color_monitor_1.json')
-validator=record_validator(read('schemas/records/peripheral.schema.json'))
+def read(p):return read_document(p, root=R)
+record=read('data/peripherals.json')
+validator=record_validator(read('schemas/collections/peripherals.schema.json'))
 validator.validate(record)
 for invalid in ['display','display_component','Monitor','not_a_category']:
-    bad=copy.deepcopy(record);bad['data']['category']=invalid
+    bad=copy.deepcopy(record);bad['devices'][0]['category']=invalid
     try:validator.validate(bad)
     except jsonschema.ValidationError:pass
     else:raise AssertionError('Accepted noncanonical category '+invalid)

@@ -1,9 +1,10 @@
+from data_store import read_document, document_bytes, document_text
 """Quarterly, auditable third-party ecosystem scenario; no changes to project ROI."""
 import json, math, hashlib, html
 from pathlib import Path
 from collections import defaultdict
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 def save(n,x):(R/n).write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n')
 def qtr(month):return month[:4]+'-Q'+str((int(month[5:7])-1)//3+1)
 Q=[f'{y}-Q{q}' for y in range(1978,1984) for q in range(1,5) if (y,q)>=(1978,2)]
@@ -103,7 +104,7 @@ for spec in P['scenarios']:
   rows.append(dict(quarter=q,host_basis='Matched reassessed Logix scenario; contracted clone cohorts replace North Star/Vector prospect rows from 1982',logix_new_units=logix,logix_active_cpm=round(base_c),logix_active_aionix=round(base_a),external_active_cpm_tui=round(external_base),external_active_aionix=round(external_native_base),external_supported_manufacturers=len(external),external_computer_models=len(external),external_computers_sold=new_external,external_computers_cumulative=cum['external_computers'],external_oems=external,qualified_legacy_pool=qualified_legacy,cpm_applications=len(cpm),tui_applications=len(tui),aionix_applications=len(native),cross_platform_families=ports,distinct_application_families=len(cpm)+len(native)-ports,cpm_copies_sold=cp_copies,tui_copies_sold=tui_copies,aionix_copies_sold=na_copies,cpm_cumulative_copies=cum['cpm'],aionix_cumulative_copies=cum['native'],device_manufacturers=len(makers),device_models=len(models),devices_sold=hw_budget,devices_cumulative=cum['devices'],all_hardware_manufacturers=len(makers)+len(external),all_hardware_models=len(models)+len(external),all_hardware_units=hw_budget+new_external))
   prev_tui=[a['id'] for a in tui];last_cpm=len(cpm);last_native=len(native)
  scenarios.append(dict(id=idx,title=spec['title'],quarterly=rows,applications=list(apps.values()),device_manufacturers=list(makers.values()),device_models=list(models.values())))
-M=dict(metadata=dict(title='Third-party ecosystem',horizon='1978-Q2–1983-Q4',baseline_commit='1d6bfb9c2633d56d32b479723acd03ee0e100925',status='Alternative-history forecast, not observed third-party shipments',currency='Unit counts, not revenue',financial_treatment='Independent third-party retail receipts remain excluded. Scenario clone chipset/software and SGS royalties are separately included in revised project ROI.'),policy=P,scenarios=scenarios,sources=[dict(path=n,sha256=hashlib.sha256((R/n).read_bytes()).hexdigest()) for n in ['generated/catalogs/ecosystem-forecast-policy.json','generated/models/sales-forecast.json','generated/models/quarterly-market-share.json','generated/catalogs/logix-aion-technical-catalog-v2.json']])
+M=dict(metadata=dict(title='Third-party ecosystem',horizon='1978-Q2–1983-Q4',baseline_commit='1d6bfb9c2633d56d32b479723acd03ee0e100925',status='Alternative-history forecast, not observed third-party shipments',currency='Unit counts, not revenue',financial_treatment='Independent third-party retail receipts remain excluded. Scenario clone chipset/software and SGS royalties are separately included in revised project ROI.'),policy=P,scenarios=scenarios,sources=[dict(path=n,sha256=hashlib.sha256(document_bytes(n, root=R)).hexdigest()) for n in ['generated/catalogs/ecosystem-forecast-policy.json','generated/models/sales-forecast.json','generated/models/quarterly-market-share.json','generated/catalogs/logix-aion-technical-catalog-v2.json']])
 save('generated/models/ecosystem-forecast.json',M)
 site=read('generated/catalogs/site-pages.json');pages={p['id']:p for p in site['pages']};nav=''.join('<a href="'+html.escape(pages[x]['path'])+'"'+(' aria-current="page"' if x=='ecosystem' else '')+'>'+html.escape(pages[x]['title'])+'</a>' for x in site['navigation'])
 (R/'ecosystem.html').write_text((R/'tools/ecosystem_template.html').read_text().replace('__NAV__',nav).replace('__MODEL__',json.dumps(M,ensure_ascii=False).replace('</','<\\/')))

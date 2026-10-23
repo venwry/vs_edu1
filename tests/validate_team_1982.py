@@ -1,9 +1,10 @@
+from data_paths import read_document, document_bytes, document_text
 """Validate the launch, cost cutoff, pricing policy and explicitly frozen financial outputs."""
 import json,hashlib,math,sys
 from pathlib import Path
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'tools'))
 from memory_manufacturing import selected,evaluate,policy
-load=lambda n:json.loads((R/n).read_text())
+load=lambda n:read_document(n, root=R)
 program=load('generated/catalogs/team-development-program.json'); costs=load('generated/models/manufacturing-costs.json');pricing=load('generated/models/pricing-results.json');review=load('generated/models/manufacturing-review-1982.json');catalog=load('generated/catalogs/logix-aion-technical-catalog-v2.json')
 assert program['status'].startswith('Integrated')
 assert sum(r['usd'] for r in program['campaign_costs'])==program['totals']['campaign_provision_usd']==276000

@@ -1,9 +1,10 @@
+from data_paths import read_document, document_bytes, document_text
 """Check first offering use through forward BOM links and dated manufacturing variants."""
 import json, collections
 from pathlib import Path
 import os
 os.chdir(Path(__file__).resolve().parents[1])
-c=json.load(open('generated/catalogs/logix-aion-technical-catalog-v2.json'));b=json.load(open('generated/catalogs/hardware-bom.json'))
+c=read_document('generated/catalogs/logix-aion-technical-catalog-v2.json');b=read_document('generated/catalogs/hardware-bom.json')
 records={r['id']:r for v in c.values() if isinstance(v,list) for r in v if isinstance(r,dict) and 'id' in r}
 assemblies={r['id']:r for r in b['assemblies']};parts={r['id']:r for r in b['components']};first={}
 def date(r):return r.get('introduced',{}).get('event_start_date') or r.get('available_from') or ''

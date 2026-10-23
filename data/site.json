@@ -1,0 +1,1437 @@
+{
+  "$schema": "../schemas/collections/site.schema.json",
+  "schema_version": "3.0.0",
+  "aurelia_explorer": {
+    "computer_refs": [
+      "computer.aurelia",
+      "computer.aurelia_plus"
+    ],
+    "memory_ref": "technology.aurelia_memory_model",
+    "os_ref": "software.cpm_aurelia",
+    "introduction": "Explore the 8-bit platform that starts the Logix story. From its processor to its peripheral ecosystem, one connected system at a time.",
+    "context": "Logix launches Aurelia as a complete personal-computing platform: hardware, enhanced CP/M, AION applications, developer programs, support and the Computer Academy.",
+    "timeline": [
+      {
+        "date": "1978-06-05",
+        "title": "NCC 1978",
+        "description": "Aurelia launches with FlexiBUS, enhanced CP/M 1.4 and the separately offered BPI business suite."
+      },
+      {
+        "date": "1979-06-04",
+        "title": "NCC 1979",
+        "description": "Microsoft BASIC for Aurelia premieres alongside the Apple II interoperability products."
+      },
+      {
+        "date": "1979-12-03",
+        "title": "COMDEX 1979",
+        "description": "Aurelia+ arrives alongside Pulse and Abacus 2.0; Monitor II options become available."
+      },
+      {
+        "date": "1980-11",
+        "title": "Software direction",
+        "description": "Artemis becomes the primary AION software platform; Aurelia receives maintenance and simplified refreshes."
+      },
+      {
+        "date": "1981-05-04",
+        "title": "NCC 1981",
+        "description": "An optional network adapter and CP/M upgrade add business networking."
+      }
+    ],
+    "notes": {
+      "hardware": "AION system controller contains DMA, bank control and independent system refresh. Video uses 16 KiB DRAM plus exclusive 1 KiB sprite SRAM.",
+      "peripherals": "Compatible choices, not simultaneous port occupancy. Later accessories show their introduction dates; they were not included at the original launch.",
+      "software": "Explore system internals, the Business Tools cartridge and independent software offerings. Introduction dates are shown; later editions are not implied at launch.",
+      "memory": "Logical CPU windows map physical banks. DMA latches physical banks; all installed DRAM is refreshed. Sprite SRAM uses separate video ports and is not application RAM.",
+      "bundles": "Bundle decomposition. Existing offers and proposed packages are labeled separately. Listed dates prevent later software from being implied at launch; prices are not assumed.",
+      "portability": "Shared application code and C APIs; separate target binaries, startup code and libraries. Optional emulator/debugging features are not guaranteed launch components."
+    },
+    "portability_refs": {
+      "api": "technology.logix_c_api",
+      "display": "technology.logix_display_api",
+      "language": "technology.logix_c_target_contract",
+      "tui": "technology.logix_tui_standard",
+      "framework": "technology.aion_c_portability_framework",
+      "aurelia_tools": "software.simple_c_z80",
+      "artemis_tools": "software.aion_c_ide"
+    }
+  },
+  "artemis_explorer": {
+    "computer_refs": [
+      "computer.artemis",
+      "computer.artemis_pro"
+    ],
+    "page_ids": [
+      "artemis",
+      "artemis-pro"
+    ],
+    "memory_ref": "technology.artemis_memory_model",
+    "os_ref": "software.aionix",
+    "os_model_ref": "technology.aionix_os_model",
+    "business_tools_ref": "software.business_tools_artemis",
+    "network_software_ref": "software.aionix_server",
+    "network_adapter_ref": "device.network_card_artemis",
+    "compatibility_ref": "device.artemis_cpm80_module",
+    "context": "Artemis uses paired 16-bit RAM modules on a 32-bit memory bus. PRO uses the same high-density module family with larger populations. Native ERA applications use AIONix; the optional Z80 card remains a separate execution path qualified only for Artemis.",
+    "memory_note": "Functional address map. The selected replaceable video card contains its controller, 16 or 32 KiB display DRAM, independent 1 KiB sprite SRAM and internal buffers. Host MMU, DMA and system refresh remain outside the card. Numeric apertures are not yet assigned.",
+    "ram_note": "Choose an explicit matched-bank population. Low- and high-density configurations with the same capacity are distinct. Expanded populations and 1 MiB board capacity are design targets pending timing, loading and power qualification; they are not extra shipping bundles.",
+    "bundle_note": "Bundle contents follow the selected catalog offer and are independent of the exploratory RAM and networking controls. Items absent from the bundle record are not assumed to be included.",
+    "notes": {
+      "hardware": "Select a block to inspect the processor, RAM, custom chipset, storage and expansion interfaces. Lines show functional relationships, not a wiring or bus-timing specification.",
+      "peripherals": "Compatible devices are grouped by interface. Dashed connections denote optional devices; a monitor listed as a bundle option is included only in bundles naming that monitor. Introduction dates are shown for later offerings.",
+      "software": "Explore the native AIONix services, Business Tools, compatible software and C development tools. The optional Z80 module is distinct from native ERA recompilation.",
+      "memory": "Follow virtual addressing through the MMU to physical memory resources. Select RAM capacity to inspect module population. No undefined address ranges are invented.",
+      "bundles": "Select an offer to see its computer configuration, devices, software and services. Planned availability remains explicitly labeled."
+    },
+    "software_views": [
+      {
+        "id": "internals",
+        "label": "System internals"
+      },
+      {
+        "id": "cartridge",
+        "label": "Business Tools / Office Suite"
+      },
+      {
+        "id": "packages",
+        "label": "Compatible software"
+      },
+      {
+        "id": "portability",
+        "label": "C development & portability"
+      }
+    ],
+    "portability_refs": {
+      "api": "technology.logix_c_api",
+      "display": "technology.logix_display_api",
+      "language": "technology.logix_c_target_contract",
+      "tui": "technology.logix_tui_standard",
+      "framework": "technology.aion_c_portability_framework",
+      "aurelia_tools": "software.simple_c_z80",
+      "artemis_tools": "software.aion_c_ide"
+    },
+    "diagrams": {
+      "hardware": {
+        "nodes": [
+          {
+            "id": "cpu",
+            "title": "Processor",
+            "column": 2,
+            "row": 1,
+            "computer_path": "processor"
+          },
+          {
+            "id": "ram",
+            "title": "System RAM",
+            "column": 1,
+            "row": 1,
+            "computer_path": "memory"
+          },
+          {
+            "id": "rom",
+            "title": "ROM / EEPROM cartridges",
+            "column": 3,
+            "row": 1,
+            "computer_path": "io_and_expansion.rom_eeprom_cartridge_slots"
+          },
+          {
+            "id": "mmu",
+            "title": "Memory management unit",
+            "column": 2,
+            "row": 2,
+            "record_ref": "part.artemis_mmu"
+          },
+          {
+            "id": "dma",
+            "title": "DMA controller",
+            "column": 1,
+            "row": 2,
+            "record_ref": "part.artemis_dma"
+          },
+          {
+            "id": "graphics",
+            "title": "Replaceable video card",
+            "column": 3,
+            "row": 2,
+            "record_ref": "device.artemis_video_card_16kb",
+            "computer_path": "video"
+          },
+          {
+            "id": "disk",
+            "title": "Disk storage",
+            "column": 1,
+            "row": 3,
+            "computer_path": "storage"
+          },
+          {
+            "id": "slots",
+            "title": "Expansion slots",
+            "column": 2,
+            "row": 3,
+            "computer_path": "io_and_expansion.expansion_slots"
+          },
+          {
+            "id": "flex",
+            "title": "FlexiBUS controller",
+            "column": 3,
+            "row": 3,
+            "record_ref": "part.flexibus_host_controller",
+            "computer_path": "io_and_expansion"
+          },
+          {
+            "id": "network",
+            "title": "Network interface",
+            "column": 2,
+            "row": 4,
+            "record_ref": "device.network_card_artemis"
+          },
+          {
+            "id": "compatibility",
+            "title": "Optional CP/M-80 module",
+            "column": 3,
+            "row": 4,
+            "record_ref": "device.artemis_cpm80_module",
+            "optional": true,
+            "requires_compatible_device": true
+          },
+          {
+            "id": "system_refresh",
+            "title": "System bank / refresh control",
+            "column": 1,
+            "row": 6,
+            "record_ref": "technology.artemis_memory_model",
+            "fields": [
+              "physical_memory_design"
+            ]
+          }
+        ],
+        "edges": [
+          [
+            "cpu",
+            "mmu"
+          ],
+          [
+            "mmu",
+            "ram"
+          ],
+          [
+            "mmu",
+            "rom"
+          ],
+          [
+            "cpu",
+            "dma"
+          ],
+          [
+            "dma",
+            "disk"
+          ],
+          [
+            "cpu",
+            "slots"
+          ],
+          [
+            "cpu",
+            "graphics"
+          ],
+          [
+            "cpu",
+            "flex"
+          ],
+          [
+            "slots",
+            "network"
+          ],
+          [
+            "slots",
+            "compatibility"
+          ],
+          [
+            "system_refresh",
+            "ram"
+          ]
+        ]
+      },
+      "memory": {
+        "nodes": [
+          {
+            "id": "virtual",
+            "title": "Virtual address space",
+            "column": 2,
+            "row": 1,
+            "record_ref": "technology.artemis_memory_model",
+            "fields": [
+              "virtual_address_bits"
+            ]
+          },
+          {
+            "id": "mmu",
+            "title": "Address translation",
+            "column": 2,
+            "row": 2,
+            "record_ref": "part.artemis_mmu"
+          },
+          {
+            "id": "physical",
+            "title": "Physical address space",
+            "column": 2,
+            "row": 3,
+            "record_ref": "technology.artemis_memory_model",
+            "fields": [
+              "physical_address_bits",
+              "page_table_goal"
+            ]
+          },
+          {
+            "id": "ram",
+            "title": "Installed system RAM",
+            "column": 1,
+            "row": 3,
+            "computer_path": "memory"
+          },
+          {
+            "id": "rom",
+            "title": "XIP system / application ROM",
+            "column": 3,
+            "row": 3,
+            "record_ref": "technology.xip_rom_platform",
+            "computer_path": "io_and_expansion.rom_eeprom_cartridge_slots"
+          },
+          {
+            "id": "video_ram",
+            "title": "Replaceable video card",
+            "column": 3,
+            "row": 4,
+            "computer_path": "video",
+            "record_ref": "device.artemis_video_card_16kb"
+          },
+          {
+            "id": "os",
+            "title": "Process memory policy",
+            "column": 1,
+            "row": 4,
+            "record_ref": "technology.aionix_os_model",
+            "fields": [
+              "virtual_address_space_per_process",
+              "fork",
+              "brk_sbrk",
+              "demand_paging",
+              "user_kernel_modes",
+              "rom_backed_executables"
+            ]
+          },
+          {
+            "id": "dma",
+            "title": "Host DMA controller",
+            "column": 1,
+            "row": 2,
+            "record_ref": "part.artemis_dma"
+          },
+          {
+            "id": "system_refresh",
+            "title": "System bank / refresh control",
+            "column": 1,
+            "row": 6,
+            "record_ref": "technology.artemis_memory_model",
+            "fields": [
+              "physical_memory_design"
+            ]
+          }
+        ],
+        "edges": [
+          [
+            "virtual",
+            "mmu"
+          ],
+          [
+            "mmu",
+            "physical"
+          ],
+          [
+            "physical",
+            "ram"
+          ],
+          [
+            "physical",
+            "rom"
+          ],
+          [
+            "physical",
+            "video_ram"
+          ],
+          [
+            "os",
+            "mmu"
+          ],
+          [
+            "dma",
+            "video_ram"
+          ],
+          [
+            "dma",
+            "ram"
+          ],
+          [
+            "system_refresh",
+            "ram"
+          ]
+        ]
+      },
+      "software": {
+        "nodes": [
+          {
+            "id": "apps",
+            "title": "Native applications",
+            "column": 2,
+            "row": 1
+          },
+          {
+            "id": "shell",
+            "title": "Shell and utilities",
+            "column": 1,
+            "row": 2,
+            "record_ref": "technology.aionix_os_model",
+            "fields": [
+              "shell",
+              "utilities",
+              "rescue_unix_in_rom"
+            ]
+          },
+          {
+            "id": "tui",
+            "title": "TUI and display services",
+            "column": 3,
+            "row": 2,
+            "record_ref": "technology.logix_tui_standard"
+          },
+          {
+            "id": "api",
+            "title": "C API and target ABI",
+            "column": 2,
+            "row": 2,
+            "record_ref": "technology.logix_c_api"
+          },
+          {
+            "id": "kernel",
+            "title": "AIONix process services",
+            "column": 2,
+            "row": 3,
+            "record_ref": "technology.aionix_os_model",
+            "fields": [
+              "programming_model",
+              "fork",
+              "process_limit_example",
+              "signals",
+              "user_kernel_modes",
+              "permissions",
+              "stable_c_abi",
+              "stable_c_abi_scope"
+            ]
+          },
+          {
+            "id": "files",
+            "title": "Files and I/O",
+            "column": 1,
+            "row": 3,
+            "record_ref": "technology.aionix_os_model",
+            "fields": [
+              "file_descriptors",
+              "pipes",
+              "device_files",
+              "ioctl",
+              "directory_model",
+              "dma",
+              "serial_as_tty"
+            ]
+          },
+          {
+            "id": "memory",
+            "title": "Virtual memory",
+            "column": 3,
+            "row": 3,
+            "record_ref": "technology.artemis_memory_model"
+          },
+          {
+            "id": "os",
+            "title": "System cartridge",
+            "column": 2,
+            "row": 4,
+            "record_ref": "software.aionix"
+          },
+          {
+            "id": "network",
+            "title": "Networking services",
+            "column": 1,
+            "row": 4,
+            "record_ref": "technology.logix_tcpip_lan"
+          }
+        ],
+        "edges": [
+          [
+            "apps",
+            "api"
+          ],
+          [
+            "apps",
+            "tui"
+          ],
+          [
+            "shell",
+            "api"
+          ],
+          [
+            "tui",
+            "api"
+          ],
+          [
+            "api",
+            "kernel"
+          ],
+          [
+            "kernel",
+            "files"
+          ],
+          [
+            "kernel",
+            "memory"
+          ],
+          [
+            "os",
+            "kernel"
+          ],
+          [
+            "files",
+            "network"
+          ]
+        ]
+      }
+    }
+  },
+  "site_pages": {
+    "title": "Logix / AION Atlas",
+    "description": "Products, architecture and alternative-history timeline",
+    "pages": [
+      {
+        "id": "timeline",
+        "path": "timeline.html",
+        "title": "Timeline",
+        "description": "Explore events, continuous phases and ongoing processes across the calendar.",
+        "record_refs": [],
+        "kind": "timeline",
+        "aliases": [
+          "timeline"
+        ]
+      },
+      {
+        "id": "ecosystem",
+        "path": "ecosystem.html",
+        "title": "Third-party ecosystem",
+        "description": "Quarterly applications, paid licences, independent manufacturers, models and device sales, 1978–1983.",
+        "kind": "report",
+        "record_refs": [
+          "software.microsoft_basic_aurelia",
+          "software.microsoft_basic_aurelia",
+          "software.autocad_1_artemis",
+          "software.autocad_1_artemis",
+          "software.bpi_suite",
+          "software.bpi_client_server"
+        ],
+        "aliases": [
+          "Ecosystem forecast",
+          "Third-party software and devices"
+        ]
+      },
+      {
+        "id": "aurelia",
+        "path": "aurelia.html",
+        "title": "Logix Aurelia",
+        "description": "Explore models, documented configurations, software, components and manufacturing costs.",
+        "record_refs": [
+          "computer.aurelia",
+          "computer.aurelia_plus",
+          "part.z80a",
+          "part.z80b",
+          "part.dram_16kbit",
+          "part.flexibus_host_controller",
+          "part.aurelia_video_chip",
+          "part.aion_4116",
+          "part.aion_2114",
+          "part.aurelia_system_controller",
+          "part.aion_4164",
+          "device.flexibus_keyboard",
+          "device.mono_monitor_1",
+          "device.color_monitor_1",
+          "device.mono_monitor_2",
+          "device.color_monitor_2",
+          "device.aurelia_ram_16kb_card",
+          "device.flexiprint40",
+          "device.flexidisk",
+          "device.flexidisk_ii",
+          "device.network_card_aurelia",
+          "device.logix_mouse"
+        ],
+        "kind": "explorer",
+        "aliases": [
+          "Aurelia",
+          "Aurelia+"
+        ],
+        "model_refs": [
+          "computer.aurelia",
+          "computer.aurelia_plus"
+        ]
+      },
+      {
+        "id": "artemis",
+        "path": "artemis.html",
+        "title": "Logix Artemis",
+        "description": "Explore models, documented configurations, software, components and manufacturing costs.",
+        "record_refs": [
+          "computer.artemis",
+          "part.era1",
+          "technology.era1_isa",
+          "technology.artemis_memory_model",
+          "device.artemis_cpm80_module",
+          "technology.cpm80_virtual_peripheral_bridge",
+          "device.artemis_video_card_64kb",
+          "device.color_pro_14",
+          "device.artemis_professional_video_128kb",
+          "device.mono_pro_17",
+          "bundle.artemis_budget_128",
+          "bundle.artemis_budget_128_hdd",
+          "computer.artemis_pro",
+          "software.autocad_1_artemis",
+          "software.autocad_1_artemis",
+          "offer.comdex82_artemis_autocad",
+          "part.ram_128kb_x32",
+          "part.flexibus_host_controller",
+          "part.aurelia_video_chip",
+          "part.artemis_dma",
+          "part.artemis_mmu",
+          "part.artemis_graphics_chip",
+          "part.artemis_fdd_hdd_controller",
+          "part.hdd_5mb",
+          "part.ram_64kb_x32",
+          "part.aion_4116",
+          "part.aion_2114",
+          "part.aion_4164",
+          "device.flexibus_keyboard",
+          "device.mono_monitor_2",
+          "device.color_monitor_2",
+          "device.flexiprint40",
+          "device.flexidisk",
+          "device.flexidisk_ii",
+          "device.network_card_artemis",
+          "device.network_hub",
+          "device.artemis_video_card",
+          "device.mono_pro",
+          "device.artemis_video_card_16kb",
+          "device.logix_mouse"
+        ],
+        "kind": "explorer",
+        "aliases": [
+          "Artemis",
+          "Artemis PRO"
+        ],
+        "explorer_family": "artemis",
+        "model_refs": [
+          "computer.artemis",
+          "computer.artemis_pro"
+        ]
+      },
+      {
+        "id": "athena",
+        "path": "athena.html",
+        "title": "Logix Athena and ERA²",
+        "description": "NCC 1983 planned platform: 256 KiB desktop or 1 MiB server, 2 µm ERA² and 4164 memory, 256 KiB executable system ROM and EEPROM BIOS. AIONix2 targets protected multitasking, compatible ERA binaries, recoverable HDD storage and a layered TUI; qualification pending.",
+        "record_refs": [
+          "computer.athena",
+          "computer.athena_server",
+          "part.era2",
+          "technology.era2_architecture",
+          "part.aion_4164_2um",
+          "part.ram_128kb_x32",
+          "part.ram_256kb_x32_2um",
+          "software.aionix2",
+          "part.artemis_graphics_chip",
+          "part.aion_4116",
+          "part.aion_2114",
+          "part.artemis_graphics_chip_64kb",
+          "device.network_card_artemis",
+          "device.artemis_video_card",
+          "device.artemis_video_card_64kb"
+        ],
+        "kind": "offering",
+        "aliases": [
+          "Athena",
+          "Athena Server",
+          "ERA²",
+          "ERA^2"
+        ]
+      },
+      {
+        "id": "pricing",
+        "path": "pricing.html",
+        "title": "Retail pricing",
+        "description": "Commercial offerings, competitive prices and contribution margins, June 15 1978–1981.",
+        "record_refs": [],
+        "kind": "pricing",
+        "aliases": [
+          "Pricing",
+          "Retail prices"
+        ]
+      },
+      {
+        "id": "sales",
+        "path": "sales.html",
+        "title": "Logix computer demand and sales",
+        "description": "Logix computer sales through November 18, 1980: Aurelia, Aurelia+ and Artemis demand and capacity. Academy estimates retain the May 18 cutoff.",
+        "record_refs": [],
+        "kind": "sales",
+        "aliases": [
+          "Sales",
+          "Sales forecast"
+        ]
+      },
+      {
+        "id": "industrial-investment",
+        "path": "industrial_investment_1974_1981.html",
+        "title": "Industrial investment",
+        "description": "Quarterly investment, operating costs, factories, logistics, semiconductor equipment and headcount, 1974–1982.",
+        "kind": "report",
+        "record_refs": [],
+        "aliases": [
+          "Industrial investment",
+          "Factory capacity",
+          "Headcount"
+        ]
+      },
+      {
+        "id": "roi",
+        "path": "roi.html",
+        "title": "Quarterly ROI",
+        "description": "Quarterly revenue, investments, marketing, operating profit, ROI and cash recovery through 1982.",
+        "kind": "report",
+        "record_refs": [],
+        "aliases": [
+          "ROI",
+          "Return on investment",
+          "Marketing budget"
+        ]
+      },
+      {
+        "id": "market-share",
+        "path": "market-share.html",
+        "title": "Quarterly microcomputer market share",
+        "description": "1981–1983 Logix and five clone partners: shipment units, scenario shares and explicit market assumptions.",
+        "kind": "report",
+        "record_refs": [],
+        "aliases": [
+          "Market share",
+          "Clone manufacturer sales"
+        ]
+      },
+      {
+        "id": "technology",
+        "path": "technology.html",
+        "title": "Technology",
+        "description": "Browse technology standards, architecture and partner-platform specifications with their related events.",
+        "record_refs": [
+          "technology.logix_tui_mouse",
+          "technology.aionix_os_model",
+          "technology.abacus_sparse_model",
+          "computer.trs80_model_ii",
+          "technology.abacus_formatted_tables",
+          "technology.abacus_embedded_pulse",
+          "technology.bpi_relational_database",
+          "technology.logix_c_target_contract",
+          "technology.aion_c_portability_framework",
+          "technology.pulse_notebook_model",
+          "technology.flexibus",
+          "technology.plug_and_execute",
+          "technology.xip_rom_platform",
+          "technology.logix_tui_standard",
+          "technology.logix_tui_keyboard_standard",
+          "technology.logix_display_api",
+          "technology.logix_c_api",
+          "technology.scanline_palette_list",
+          "technology.flexibus_pointing_device",
+          "technology.artemis_professional_graphics",
+          "technology.logix_tcpip_lan",
+          "technology.logix_lan100_link"
+        ],
+        "kind": "report",
+        "aliases": [
+          "Technology standards"
+        ]
+      },
+      {
+        "id": "trainings-and-services",
+        "path": "trainings-and-services.html",
+        "title": "Trainings and Services",
+        "description": "Browse training, support, licensing and certification services with their related events.",
+        "record_refs": [
+          "service.customer_care",
+          "service.regular_support",
+          "service.professional_support",
+          "service.professional_business_onsite",
+          "service.academy_before_you_buy",
+          "service.academy_regular_courses",
+          "service.academy_customer_site",
+          "service.academy_direct_sales",
+          "service.pulse_training",
+          "service.bpi_training",
+          "service.aurelia_commercial_developer_license",
+          "service.artemis_commercial_developer_license",
+          "service.component_licensing",
+          "service.aurelia_compatibility_support",
+          "service.aurelia_compatibility_certification"
+        ],
+        "kind": "report",
+        "aliases": [
+          "Academy",
+          "Trainings and Services"
+        ]
+      },
+      {
+        "id": "bom-navigator",
+        "path": "bom-navigator.html",
+        "title": "BOM Navigator",
+        "description": "Browse parts, peripherals, computers, expansions, software and bundles with their specifications and BOMs.",
+        "record_refs": [],
+        "kind": "report",
+        "aliases": []
+      }
+    ],
+    "navigation": [
+      "timeline",
+      "ecosystem",
+      "aurelia",
+      "artemis",
+      "athena",
+      "technology",
+      "trainings-and-services",
+      "bom-navigator",
+      "pricing",
+      "sales",
+      "industrial-investment",
+      "roi",
+      "market-share"
+    ],
+    "labels": {
+      "loading": "Loading the product and story catalogs…",
+      "load_error": "Catalogs could not be loaded. Retry or select the three accompanying JSON files.",
+      "file_help": "For offline use, select logix_aion_technical_catalog_v2.json, logix_aion_story.json and site_pages.json together.",
+      "retry": "Retry",
+      "products": "Offerings",
+      "events": "Related events",
+      "details": "Explore product details",
+      "assumptions": "Scenario assumptions",
+      "phases": "Phases",
+      "all": "All",
+      "search": "Search events",
+      "actor": "Participant",
+      "type": "Event type",
+      "expand": "Show all event details",
+      "empty": "No events match these filters.",
+      "existing": "Existing bundles",
+      "proposed": "Proposed bundles",
+      "components": "Components",
+      "back": "All offerings",
+      "fiction": "Alternative timeline · Product and event catalogs",
+      "event_count": "events",
+      "phase_count": "phases"
+    },
+    "entity_page_links": {
+      "actor.adam": "timeline",
+      "actor.logix": "timeline",
+      "actor.labs": "timeline",
+      "actor.aion": "timeline",
+      "actor.bpi": "bom-navigator",
+      "actor.academy": "trainings-and-services",
+      "actor.autodesk": "artemis"
+    },
+    "rendering_notes": "Display text and product facts come from these JSON catalogs. HTML files are page shells; shared scripts render and link their content.",
+    "timeline_view": {
+      "eyebrow": "Alternative history / Swimlane timeline",
+      "board_label": "Calendar timeline: equal years downward, parties across",
+      "axis_label": "Year / Phase",
+      "instructions": "Select an event, phase or process to read its details on the left. Scroll down through equal year sections, or sideways through the party lanes.",
+      "scale_note": "Every year has equal height. Phases and processes are single continuous blocks across year boundaries. Dashed process blocks are approximate display envelopes derived from phase context, not confirmed start/end dates. Event cards are spaced to avoid overlap; the 2025 origin is separate. Year/month-only milestones retain their recorded precision; placement within that period is indicative.",
+      "details_label": "Event, phase or process details",
+      "select_hint": "Select an event, phase or process on the right.",
+      "lanes": [
+        {
+          "id": "adam",
+          "title": "Adam & foundations",
+          "description": "Identity, financing and recruitment",
+          "actor_refs": [
+            "actor.adam",
+            "actor.original_adam",
+            "actor.letwin",
+            "actor.paterson"
+          ],
+          "event_refs": [
+            "event.power",
+            "event.identity",
+            "event.lottery",
+            "event.us_nyse_start",
+            "event.office",
+            "event.companies",
+            "event.facility",
+            "event.letwin",
+            "event.paterson"
+          ],
+          "process_refs": [
+            "process.economics_studies"
+          ]
+        },
+        {
+          "id": "logix",
+          "title": "Logix & hardware",
+          "description": "Platforms, peripherals and training",
+          "actor_refs": [
+            "actor.logix",
+            "actor.labs",
+            "actor.academy"
+          ],
+          "event_refs": [
+            "event.academy",
+            "event.aurelia_launch",
+            "event.bpi_training",
+            "event.apple_extensions",
+            "event.plus_launch",
+            "event.cpm_bridge",
+            "event.artemis_launch",
+            "event.network_launch",
+            "event.aurelia_campaign_teaser",
+            "event.aurelia_campaign_advert",
+            "event.aurelia_campaign_preparation",
+            "event.ncc78_sessions_media",
+            "event.ncc79_campaign",
+            "event.cost_review_1982",
+            "event.financial_review_1982",
+            "event.financial_review_1980",
+            "event.financial_review_1981",
+            "event.ncc82_graphics_mouse",
+            "event.ncc82_dealer_preparation",
+            "event.ncc82_press_preview",
+            "event.ncc82_developer_sessions",
+            "event.ncc82_followup",
+            "event.ncc82_case_studies",
+            "event.artemis_budget_range",
+            "event.ncc83_athena_premiere",
+            "event.athena_production_review"
+          ],
+          "process_refs": [
+            "process.artemis_engineering",
+            "process.athena_integration"
+          ]
+        },
+        {
+          "id": "aion",
+          "title": "AION Software",
+          "description": "Applications and software strategy",
+          "actor_refs": [
+            "actor.aion"
+          ],
+          "event_refs": [
+            "event.aionix_agreement",
+            "event.artemis_software",
+            "event.software32",
+            "event.aionix_preliminary",
+            "event.team_pilots",
+            "event.team_dealer_training",
+            "event.team_launch",
+            "event.team_followup",
+            "event.team_engineering"
+          ],
+          "process_refs": []
+        },
+        {
+          "id": "partners",
+          "title": "Partners",
+          "description": "Independent BPI, DRI, MPI, SMC, Microsoft, Tandy and distribution",
+          "actor_refs": [
+            "actor.dri",
+            "actor.kildall",
+            "actor.microsoft",
+            "actor.mpi",
+            "actor.computerland",
+            "actor.dorothy",
+            "actor.smc",
+            "actor.tandy",
+            "actor.bpi",
+            "actor.northstar",
+            "actor.vector",
+            "actor.sks",
+            "actor.goupil",
+            "actor.eina",
+            "actor.aion_tech_uk",
+            "actor.autodesk"
+          ],
+          "event_refs": [
+            "event.dri_cpm",
+            "event.mpi",
+            "event.retail",
+            "event.dri_portable",
+            "event.basic_launch",
+            "event.dri_release",
+            "event.dri_founding",
+            "event.smc_agreement",
+            "event.smc_sales",
+            "event.tandy_contact",
+            "event.tandy_agreement",
+            "event.tandy_design_review",
+            "event.tandy_port_review",
+            "event.tandy_announcement",
+            "event.tandy_ncc_demo",
+            "event.tandy_release",
+            "event.bpi_offer",
+            "event.bpi_launch",
+            "event.bpi_cooperation",
+            "event.bpi_pilot",
+            "event.bpi_qualification",
+            "event.bpi_dealer_program",
+            "event.bpi_year_end",
+            "event.bpi_expansion",
+            "event.oem79_briefings",
+            "event.open79_profiles",
+            "event.open79_workshop",
+            "event.open79_roadshows",
+            "event.open79_delivery",
+            "event.open79_targets",
+            "event.open80_results",
+            "event.tandy_response",
+            "event.adapter_response",
+            "event.network_pilots",
+            "event.dri_68k_program",
+            "event.x86_protection_review",
+            "event.tandy_68k_review",
+            "event.compatibility_review",
+            "event.clone_contacts",
+            "event.clone_agreement_northstar",
+            "event.clone_agreement_vector",
+            "event.clone_agreement_sks",
+            "event.clone_agreement_goupil",
+            "event.clone_agreement_eina",
+            "event.clone_design_freeze",
+            "event.aion_tech_uk_setup",
+            "event.clone_engineering_pilots",
+            "event.clone_customer_pilots",
+            "event.clone_campaign_preview",
+            "event.clone_release_gate",
+            "event.clone_january_launch",
+            "event.clone_campaign_roadshows",
+            "event.clone_90day_review",
+            "event.autodesk_agreement",
+            "event.autodesk_incorporation",
+            "event.autodesk_professional_handover",
+            "event.autodesk_beta",
+            "event.autodesk_comdex",
+            "event.comdex82_dealer_readiness",
+            "event.comdex82_press_invitations",
+            "event.comdex82_customer_followup",
+            "event.comdex82_reference_cases"
+          ],
+          "process_refs": [
+            "process.clone_product_preparation",
+            "process.clone_localisation",
+            "process.clone_channel_readiness",
+            "process.clone_launch_campaign"
+          ]
+        },
+        {
+          "id": "apple",
+          "title": "Apple & Peachtree",
+          "description": "Business software and cooperation",
+          "actor_refs": [
+            "actor.apple",
+            "actor.peachtree"
+          ],
+          "event_refs": [
+            "event.apple_search",
+            "event.apple_peachtree",
+            "event.apple_cooperation",
+            "event.apple_business",
+            "event.apple_business_initiative",
+            "event.apple_dealer_demos",
+            "event.apple_business_promotions",
+            "event.apple_compatibility_review"
+          ],
+          "process_refs": [
+            "process.apple_compatibility"
+          ]
+        },
+        {
+          "id": "market",
+          "title": "IBM & the market",
+          "description": "Competitor decisions and market effects",
+          "actor_refs": [
+            "actor.ibm",
+            "actor.others",
+            "actor.customers"
+          ],
+          "event_refs": [
+            "event.ibm_investigate",
+            "event.ibm_project",
+            "event.ibm_os_review",
+            "event.ibm_os_program",
+            "event.ibm_qualification",
+            "event.native_validation",
+            "event.portable_cpm_pressure",
+            "event.recession_response",
+            "event.unix_competition",
+            "event.ibm_alternative_launch",
+            "event.application_competition"
+          ],
+          "process_refs": []
+        },
+        {
+          "id": "manufacturing",
+          "title": "AION manufacturing",
+          "description": "Process development, RAM yield and release gates",
+          "actor_refs": [
+            "actor.labs",
+            "actor.logix",
+            "actor.sgs"
+          ],
+          "event_refs": [
+            "event.stepper_order",
+            "event.stepper_accept",
+            "event.pilot_275",
+            "event.production_275",
+            "event.dram_control_release",
+            "event.dram_repair_release",
+            "event.dram_275_review",
+            "event.pilot_2",
+            "event.production_2",
+            "event.dram_2_release",
+            "event.mature_2",
+            "event.pilot_15",
+            "event.production_15",
+            "event.dram_15_release",
+            "event.mature_15",
+            "event.capacity_orders_1982",
+            "event.peak_readiness",
+            "event.sgs_contacts",
+            "event.sgs_transfer_agreement",
+            "event.sgs_controller_gate"
+          ],
+          "process_refs": [
+            "process.stepper_install",
+            "process.process_275",
+            "process.dram_repair",
+            "process.process_2",
+            "process.process_15",
+            "process.sgs_transfer",
+            "process.era2_development"
+          ]
+        }
+      ],
+      "group_label": "events · expand",
+      "phase_aliases": {
+        "phase.after_ncc78": "phase.ncc78",
+        "phase.before_comdex79": "phase.ncc79",
+        "phase.before_ncc80": "phase.comdex79"
+      },
+      "item_aliases": {
+        "event.harvard": "process.economics_studies",
+        "event.setup": "assumption.organization_buildout",
+        "event.others_monitor": "assumption.market_monitoring",
+        "event.market_growth": "assumption.market_expansion",
+        "event.apple_policy": "process.apple_compatibility",
+        "event.artemis_engineering": "process.artemis_engineering",
+        "process.nyse_speculation": "event.us_nyse_start",
+        "process.organization_buildout": "assumption.organization_buildout",
+        "process.market_monitoring": "assumption.market_monitoring",
+        "process.market_expansion": "assumption.market_expansion"
+      }
+    },
+    "navigation_sections": [
+      {
+        "title": "Events",
+        "page_refs": [
+          "timeline",
+          "ecosystem"
+        ]
+      },
+      {
+        "title": "Computers",
+        "page_refs": [
+          "aurelia",
+          "artemis",
+          "athena"
+        ]
+      },
+      {
+        "title": "Standards & services",
+        "page_refs": [
+          "technology",
+          "trainings-and-services",
+          "bom-navigator"
+        ]
+      },
+      {
+        "title": "Financial",
+        "page_refs": [
+          "pricing",
+          "sales",
+          "industrial-investment",
+          "roi",
+          "market-share"
+        ]
+      }
+    ],
+    "redirects": {
+      "index.html": "timeline.html",
+      "aurelia-plus.html": "aurelia.html#computer.aurelia_plus",
+      "artemis-pro.html": "artemis.html#computer.artemis_pro",
+      "abacus.html": "bom-navigator.html#software.abacus_1",
+      "business-tools.html": "bom-navigator.html#software.business_tools_aurelia",
+      "pulse.html": "bom-navigator.html#software.pulse_1",
+      "c-development.html": "bom-navigator.html#software.aion_c_ide",
+      "cpm.html": "bom-navigator.html#software.cpm_aurelia",
+      "aionix.html": "bom-navigator.html#software.aionix",
+      "tui-graphics.html": "technology.html",
+      "basic.html": "ecosystem.html#software.microsoft_basic_aurelia",
+      "manufacturing-costs.html": "industrial_investment_1974_1981.html#manufacturing-method",
+      "ncc-1982.html": "timeline.html#event.ncc82_graphics_mouse",
+      "comdex-1982.html": "timeline.html#event.autodesk_comdex",
+      "operating-systems.html": "technology.html",
+      "business-software.html": "technology.html",
+      "bpi.html": "technology.html",
+      "software-development.html": "technology.html",
+      "flexibus.html": "technology.html",
+      "video-system.html": "technology.html",
+      "networking.html": "technology.html",
+      "peripherals.html": "bom-navigator.html",
+      "academy.html": "trainings-and-services.html"
+    },
+    "record_page_links": {
+      "software.microsoft_basic_aurelia": "ecosystem",
+      "software.autocad_1_artemis": "bom-navigator",
+      "software.bpi_suite": "bom-navigator",
+      "software.bpi_client_server": "bom-navigator",
+      "computer.aurelia": "aurelia",
+      "computer.aurelia_plus": "aurelia",
+      "part.z80a": "aurelia",
+      "part.z80b": "aurelia",
+      "part.dram_16kbit": "aurelia",
+      "part.flexibus_host_controller": "bom-navigator",
+      "part.aurelia_video_chip": "aurelia",
+      "part.aion_4116": "aurelia",
+      "part.aion_2114": "aurelia",
+      "part.aurelia_system_controller": "aurelia",
+      "part.aion_4164": "aurelia",
+      "device.flexibus_keyboard": "bom-navigator",
+      "device.mono_monitor_1": "bom-navigator",
+      "device.color_monitor_1": "bom-navigator",
+      "device.mono_monitor_2": "bom-navigator",
+      "device.color_monitor_2": "bom-navigator",
+      "device.aurelia_ram_16kb_card": "aurelia",
+      "device.flexiprint40": "bom-navigator",
+      "device.flexidisk": "bom-navigator",
+      "device.flexidisk_ii": "bom-navigator",
+      "device.network_card_aurelia": "bom-navigator",
+      "device.logix_mouse": "bom-navigator",
+      "computer.artemis": "artemis",
+      "part.era1": "artemis",
+      "technology.era1_isa": "artemis",
+      "technology.artemis_memory_model": "artemis",
+      "device.artemis_cpm80_module": "artemis",
+      "technology.cpm80_virtual_peripheral_bridge": "artemis",
+      "device.artemis_video_card_64kb": "bom-navigator",
+      "device.color_pro_14": "bom-navigator",
+      "device.artemis_professional_video_128kb": "bom-navigator",
+      "device.mono_pro_17": "bom-navigator",
+      "bundle.artemis_budget_128": "artemis",
+      "bundle.artemis_budget_128_hdd": "artemis",
+      "computer.artemis_pro": "artemis",
+      "offer.comdex82_artemis_autocad": "bom-navigator",
+      "part.ram_128kb_x32": "athena",
+      "part.artemis_dma": "artemis",
+      "part.artemis_mmu": "artemis",
+      "part.artemis_graphics_chip": "artemis",
+      "part.artemis_fdd_hdd_controller": "artemis",
+      "part.hdd_5mb": "artemis",
+      "part.ram_64kb_x32": "artemis",
+      "device.network_card_artemis": "bom-navigator",
+      "device.network_hub": "bom-navigator",
+      "device.artemis_video_card": "bom-navigator",
+      "device.mono_pro": "bom-navigator",
+      "device.artemis_video_card_16kb": "bom-navigator",
+      "computer.athena": "athena",
+      "computer.athena_server": "athena",
+      "part.era2": "athena",
+      "technology.era2_architecture": "athena",
+      "part.aion_4164_2um": "athena",
+      "part.ram_256kb_x32_2um": "athena",
+      "software.aionix2": "bom-navigator",
+      "part.artemis_graphics_chip_64kb": "athena",
+      "software.cpm_aurelia": "bom-navigator",
+      "software.cpm_aurelia_networking": "bom-navigator",
+      "technology.logix_tui_mouse": "technology",
+      "software.entertainment_suite": "bom-navigator",
+      "software.aionix": "bom-navigator",
+      "software.aionix_server": "bom-navigator",
+      "technology.aionix_os_model": "technology",
+      "software.abacus_1": "bom-navigator",
+      "software.abacus_2": "bom-navigator",
+      "software.abacus_3": "bom-navigator",
+      "technology.abacus_sparse_model": "technology",
+      "edition.abacus_2.era": "bom-navigator",
+      "computer.trs80_model_ii": "technology",
+      "software.cpm_model_ii": "bom-navigator",
+      "device.model_ii_flexibus": "bom-navigator",
+      "edition.abacus_1.model_ii": "bom-navigator",
+      "technology.abacus_formatted_tables": "technology",
+      "technology.abacus_embedded_pulse": "technology",
+      "software.business_tools_aurelia": "bom-navigator",
+      "software.business_tools_artemis": "bom-navigator",
+      "technology.bpi_relational_database": "technology",
+      "edition.bpi_suite.era": "bom-navigator",
+      "edition.bpi_client_server.era_client": "bom-navigator",
+      "edition.bpi_client_server.era_server": "bom-navigator",
+      "service.bpi_training": "trainings-and-services",
+      "software.simple_c_z80": "bom-navigator",
+      "software.aion_c_ide": "bom-navigator",
+      "software.aurelia_sdk": "bom-navigator",
+      "software.artemis_sdk": "bom-navigator",
+      "technology.logix_c_target_contract": "technology",
+      "technology.aion_c_portability_framework": "technology",
+      "software.aurelia_compatibility_kit": "bom-navigator",
+      "software.aion_development_team": "bom-navigator",
+      "software.pulse_1": "bom-navigator",
+      "software.pulse_3": "bom-navigator",
+      "technology.pulse_notebook_model": "technology",
+      "technology.flexibus": "technology",
+      "technology.plug_and_execute": "technology",
+      "technology.xip_rom_platform": "technology",
+      "part.flexibus_device_controller": "bom-navigator",
+      "device.s100_flexibus_card": "bom-navigator",
+      "service.component_licensing": "trainings-and-services",
+      "technology.logix_tui_standard": "technology",
+      "technology.logix_tui_keyboard_standard": "technology",
+      "technology.logix_display_api": "technology",
+      "technology.logix_c_api": "technology",
+      "technology.scanline_palette_list": "technology",
+      "technology.flexibus_pointing_device": "technology",
+      "technology.artemis_professional_graphics": "technology",
+      "technology.logix_tcpip_lan": "technology",
+      "technology.logix_lan100_link": "technology",
+      "service.customer_care": "trainings-and-services",
+      "service.regular_support": "trainings-and-services",
+      "service.professional_support": "trainings-and-services",
+      "service.professional_business_onsite": "trainings-and-services",
+      "service.academy_before_you_buy": "trainings-and-services",
+      "service.academy_regular_courses": "trainings-and-services",
+      "service.academy_customer_site": "trainings-and-services",
+      "service.academy_direct_sales": "trainings-and-services",
+      "service.pulse_training": "trainings-and-services",
+      "service.aurelia_commercial_developer_license": "trainings-and-services",
+      "service.artemis_commercial_developer_license": "trainings-and-services",
+      "service.aurelia_compatibility_support": "trainings-and-services",
+      "service.aurelia_compatibility_certification": "trainings-and-services",
+      "device.apple2_expansion_card": "bom-navigator",
+      "device.artemis_ram_64kb_module": "bom-navigator",
+      "device.apple2_video_card": "bom-navigator",
+      "device.s100_video_card": "bom-navigator",
+      "software.product.abacus": "bom-navigator",
+      "software.product.pulse": "bom-navigator",
+      "software.product.aionix": "bom-navigator",
+      "software.product.cpm": "bom-navigator",
+      "software.product.bpi": "bom-navigator",
+      "software.product.business_tools": "bom-navigator",
+      "software.product.simple_c_z80": "bom-navigator",
+      "software.product.microsoft_basic_aurelia": "bom-navigator",
+      "software.product.aion_c_ide": "bom-navigator",
+      "software.product.aurelia_compatibility_kit": "bom-navigator",
+      "software.product.aion_development_team": "bom-navigator",
+      "software.product.entertainment_suite": "bom-navigator",
+      "software.product.autocad_1_artemis": "bom-navigator",
+      "edition.aion_development_team.era_client": "bom-navigator",
+      "edition.aion_development_team.z80_client": "bom-navigator",
+      "edition.entertainment_suite.era": "bom-navigator",
+      "part.dram_64kbit": "bom-navigator",
+      "part.dram_128kbit": "bom-navigator",
+      "part.artemis_ram_module_prototype": "bom-navigator",
+      "part.artemis_ram_module_64kb": "bom-navigator",
+      "part.aurelia_monitor_dac": "bom-navigator",
+      "part.color_monitor_controller": "bom-navigator",
+      "part.mono_monitor2_controller": "bom-navigator",
+      "part.ball_tv90_crt": "bom-navigator",
+      "part.sony_kv1204_display_assembly": "bom-navigator",
+      "part.motorola_ds3000_140a_crt": "bom-navigator",
+      "part.medium_resolution_rgb_crt": "bom-navigator",
+      "part.mpi_mp40_mechanism": "bom-navigator",
+      "part.brimar_m36_141w_crt": "bom-navigator",
+      "part.mono_pro_controller": "bom-navigator",
+      "part.nec_pc8853_display_assembly": "bom-navigator",
+      "part.color_pro_monitor_controller": "bom-navigator",
+      "part.professional_graphics_controller": "bom-navigator",
+      "part.mono_pro_17_controller": "bom-navigator",
+      "part.ram_256kb_x32": "bom-navigator",
+      "offer.ncc82_colour_upgrade": "bom-navigator",
+      "offer.comdex82_reference_hardware": "bom-navigator",
+      "offer.ncc82_professional_graphics": "bom-navigator",
+      "offer.ncc82_mouse_learning": "bom-navigator",
+      "offer.comdex82_professional_hardware": "bom-navigator",
+      "offer.comdex82_upgrade_autocad": "bom-navigator",
+      "offer.ram_64kb_module": "bom-navigator",
+      "offer.ram_256kb_bank": "bom-navigator",
+      "software.product.developer_sdk": "bom-navigator"
+    },
+    "campaign_groups": [
+      {
+        "event_ref": "event.ncc82_graphics_mouse",
+        "step_refs": [
+          "event.ncc82_dealer_preparation",
+          "event.ncc82_press_preview",
+          "event.ncc82_developer_sessions",
+          "event.ncc82_followup",
+          "event.ncc82_case_studies"
+        ],
+        "content_path": "site/content/ncc-1982-timeline.html"
+      },
+      {
+        "event_ref": "event.autodesk_comdex",
+        "step_refs": [
+          "event.comdex82_dealer_readiness",
+          "event.comdex82_press_invitations",
+          "event.comdex82_customer_followup",
+          "event.comdex82_reference_cases"
+        ],
+        "content_path": "site/content/comdex-1982-timeline.html"
+      }
+    ],
+    "record_redirects": {
+      "edition.abacus_1.z80": "software.abacus_1",
+      "edition.abacus_2.z80": "software.abacus_2",
+      "edition.abacus_3.era": "software.abacus_3",
+      "edition.pulse_1.z80": "software.pulse_1",
+      "edition.pulse_3.era": "software.pulse_3",
+      "edition.aionix.standard": "software.aionix",
+      "edition.aionix_server.server": "software.aionix_server",
+      "edition.cpm_aurelia.z80": "software.cpm_aurelia",
+      "edition.cpm_aurelia_networking.z80": "software.cpm_aurelia_networking",
+      "edition.bpi_suite.z80": "software.bpi_suite",
+      "edition.bpi_client_server.z80_client": "software.bpi_client_server",
+      "edition.business_tools_aurelia.z80": "software.business_tools_aurelia",
+      "edition.business_tools_artemis.era": "software.business_tools_artemis",
+      "edition.simple_c_z80.z80": "software.simple_c_z80",
+      "edition.aurelia_sdk.z80": "software.aurelia_sdk",
+      "edition.microsoft_basic_aurelia.z80": "software.microsoft_basic_aurelia",
+      "edition.aion_c_ide.era": "software.aion_c_ide",
+      "edition.artemis_sdk.era": "software.artemis_sdk",
+      "edition.aion_development_team.server": "software.aion_development_team",
+      "edition.entertainment_suite.z80": "software.entertainment_suite",
+      "edition.autocad_1_artemis.era": "software.autocad_1_artemis",
+      "part.artemis_ram_module_32kb_x16": "part.ram_64kb_x32",
+      "part.artemis_ram_module_128kb": "part.ram_128kb_x32",
+      "part.artemis_ram_module_128kb_aion": "part.ram_128kb_x32",
+      "part.athena_ram_module_128kb": "part.ram_128kb_x32",
+      "part.athena_ram_module_256kb": "part.ram_256kb_x32_2um",
+      "device.artemis_ram_64kb_bank_kit": "offer.ram_64kb_module",
+      "device.artemis_ram_256kb_bank_kit": "offer.ram_256kb_bank"
+    }
+  }
+}

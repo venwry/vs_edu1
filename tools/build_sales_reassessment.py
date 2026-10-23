@@ -1,3 +1,4 @@
+from data_store import read_document, document_bytes, document_text
 """Rebuild 1980–83 sales, contract economics, ROI bridge and quarterly unit shares.
 Frozen baseline makes reruns idempotent. All new commercial terms are scenarios.
 """
@@ -6,7 +7,7 @@ from pathlib import Path
 from collections import defaultdict
 from copy import deepcopy
 R=Path(__file__).resolve().parents[1]
-read=lambda n:json.loads((R/n).read_text())
+read=lambda n:read_document(n, root=R)
 def save(n,x):(R/n).write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n')
 def money(v):return round(v+1e-9,2)
 def qtr(m):return m[:4]+'-Q'+str((int(m[5:7])-1)//3+1)
@@ -168,8 +169,8 @@ for sid,settings in I['scenarios'].items():
  markets.append({'id':sid,'quarterly':shares})
 # Persist single current forecast and ROI, retaining historical pre-1980 values.
 S=deepcopy(B['sales']);S['scenarios']=scenarios;S['metadata'].update(title='Reassessed Logix sales and purpose bundles',current_forecast_horizon='1983-12-31',reassessment_inputs='generated/catalogs/sales-reassessment-inputs.json');S['policy']=I;S['financial_policy'].update(scope='Logix computer task bundles only. Additional paid offers and clone supply/royalties are separate streams in ROI. Autodesk licence receipts excluded from project revenue.',demand='1980–83 reassessment; clone cannibalisation and CAD substitution explicit.',timing='Use dated June/December catalogue assessments; June snapshots proxy whole June, COMDEX CAD shipments begin December 1982. 1983 holds December 1982 unit prices/costs; new Office Professional and Business Accounts priced contents replace legacy variants. Pending installation/backup scope is not claimed as a firm quote; support/qualification allowances remain explicit. No speculative process savings.');S['contract_scenarios']=all_contracts
-S['metadata']['source_story_sha256']=hashlib.sha256((R/'generated/catalogs/logix-aion-story.json').read_bytes()).hexdigest()
-S['sources']=[{'path':p,'sha256':hashlib.sha256((R/p).read_bytes()).hexdigest()} for p in ['baselines/sales-roi-baseline-1982.json','generated/catalogs/sales-reassessment-inputs.json','generated/models/pricing-results.json','generated/models/retail-catalog-1982-results.json','generated/catalogs/logix-aion-story.json']]
+S['metadata']['source_story_sha256']=hashlib.sha256(document_bytes('generated/catalogs/logix-aion-story.json', root=R)).hexdigest()
+S['sources']=[{'path':p,'sha256':hashlib.sha256(document_bytes(p, root=R)).hexdigest()} for p in ['baselines/sales-roi-baseline-1982.json','generated/catalogs/sales-reassessment-inputs.json','generated/models/pricing-results.json','generated/models/retail-catalog-1982-results.json','generated/catalogs/logix-aion-story.json']]
 save('generated/models/sales-forecast.json',S)
 M=deepcopy(B['roi']);M['scenarios']=roi_cases;M['metadata'].update(title='Project ROI and cash flow, 1974–1983',horizon='1974-Q1–1983-Q4',scenario='Reassessed Logix sales, clone programme and Autodesk sponsorship; pre-tax project scope');M['assumptions'].update(matching='New task-bundle recurring costs replace baseline computer costs. Old Team/network and BPI attach allowances removed before new cohorts are added. Retained other receipts scale with volumes; 65% fixed/35% variable other resources and 6% 1983 escalation are explicit assumptions.',ownership='Five-entity project resource scope retained. Independent clone computer sales, Aion Tech retail profit and Autodesk licence receipts excluded. Only scenario chipset/software receipts and SGS royalties accrue to this scope.',working_capital='Two months revised recurring product costs plus revolving component credit; no terminal recovery. Capacity expansion uses $120 per extra annualised system equivalent, 5% headroom, funding one quarter before service and five-year depreciation. Requires engineering validation.',bounds='Combined demand, programme-cost and SGS-royalty scenarios; not confidence intervals.',**{'1980_extension':'Through 1983; accepted clone launch January 1982. AutoCAD sales begin December 1982 conditional on acceptance. 1983 unit prices/costs carry December 1982; retained resources rise 6%.'});M['reassessment_inputs']=I;M['annual_central']=[]
 for y in range(1974,1984):
@@ -177,7 +178,7 @@ for y in range(1974,1984):
 M['monthly_revenue_links']=[r for r in M['monthly_revenue_links'] if r['month']<'1980-01'];M['assumptions']['internal_royalties']='Restore baseline eliminations before deriving retained costs, then eliminate the modeled $10 CP/M royalty per new Aurelia/Aurelia+ from project costs. Independent software publishers remain outside this elimination.'
 M['assumptions']['exclusions']=['Taxes, debt/interest, equity valuations and terminal asset sales','Independent clone computer revenue, Aion Tech retail profits and Autodesk licence receipts','Unspecified board/monitor export purchase orders and unqualified process savings','1984–2000 compatibility/support liabilities and future product development outside this horizon']
 M['reassessment_bridge_note']='1980–83 monthly computer/add-on lines are in generated/models/sales-forecast.json; quarterly contract and resource bridges are authoritative. Earlier marketing/industrial schedules remain baseline inputs, not updated capacity commitments.'
-M['sources']=[{'path':p,'sha256':hashlib.sha256((R/p).read_bytes()).hexdigest()} for p in ['baselines/sales-roi-baseline-1982.json','generated/catalogs/sales-reassessment-inputs.json','generated/models/sales-forecast.json','generated/models/pricing-results.json','generated/models/retail-catalog-1982-results.json','generated/catalogs/logix-aion-story.json']]
+M['sources']=[{'path':p,'sha256':hashlib.sha256(document_bytes(p, root=R)).hexdigest()} for p in ['baselines/sales-roi-baseline-1982.json','generated/catalogs/sales-reassessment-inputs.json','generated/models/sales-forecast.json','generated/models/pricing-results.json','generated/models/retail-catalog-1982-results.json','generated/catalogs/logix-aion-story.json']]
 save('generated/models/roi-1974-1980.json',M)
 market={'metadata':{'title':'Quarterly microcomputer market share','period':'1980-Q1–1983-Q4','status':'Alternative-history unit-shipment scenario; quarterly market totals are modelled, not observed','scope':I['geography']},'methodology':I['market'],'manufacturers':[{'id':'logix','name':'Logix (including UK distribution)'}]+[{'id':p['id'],'name':p['name']+' — compatible line'} for p in I['clones']]+[{'id':'other_manufacturers','name':'Other manufacturers and legacy product lines'}],'scenarios':markets,'sources':M['sources']}
 business=[]

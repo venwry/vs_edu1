@@ -1,8 +1,9 @@
+from data_paths import read_document, document_bytes, document_text
 """Check configuration-specific card, sourcing, offer and demand invariants."""
 import json
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def read(f):return json.loads((R/f).read_text())
+def read(f):return read_document(f, root=R)
 c=read('generated/catalogs/logix-aion-technical-catalog-v2.json')
 r={x['id']:x for a in c.values() if isinstance(a,list) for x in a if isinstance(x,dict) and 'id'in x}
 b=read('generated/catalogs/hardware-bom.json');aa={x['id']:x for x in b['assemblies']}

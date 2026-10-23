@@ -2,15 +2,15 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {JSDOM,VirtualConsole}=require('jsdom');
 const root=path.resolve(__dirname,'..'),read=n=>fs.readFileSync(path.join(root,n),'utf8');
-const story=JSON.parse(read('generated/catalogs/logix-aion-story.json'));
+const story=require('../data-store.js').read('generated/catalogs/logix-aion-story.json');
 const tick=()=>new Promise(resolve=>setTimeout(resolve,60));
 async function boot(file,hash=''){
  const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(read(file),{url:'https://atlas.test/'+file+hash,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc}),w=dom.window;
- w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>({ok:true,json:async()=>JSON.parse(read(p.replace('./','')))});
+ w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>({ok:true,json:async()=>require('../data-store.js').read(p.replace('./',''))});
  Object.defineProperty(w.HTMLElement.prototype,'offsetWidth',{get(){return this.id==='timelinejs'?1200:500;}});
  Object.defineProperty(w.HTMLElement.prototype,'offsetHeight',{get(){return this.id==='timelinejs'?800:200;}});
- w.eval(read('timeline-model.js'));w.eval(read('catalog-navigation.js'));w.eval(read('atlas.js'));await tick();
+ w.eval(read('data-store.js'));w.eval(read('timeline-model.js'));w.eval(read('catalog-navigation.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors};
 }
@@ -20,7 +20,7 @@ async function boot(file,hash=''){
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).height,'870px');
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-workspace')).marginBottom,'0px');
  assert.equal(w.getComputedStyle(d.querySelector('.timeline-main')).paddingBottom,'0px');
- assert.equal(d.querySelectorAll('[data-select-phase]').length,JSON.parse(read('generated/catalogs/logix-aion-story.json')).phases.length);
+ assert.equal(d.querySelectorAll('[data-select-phase]').length,require('../data-store.js').read('generated/catalogs/logix-aion-story.json').phases.length);
  assert.equal(d.querySelectorAll('[data-select-process]').length,story.processes.flatMap(p=>[p,...(p.subprocesses||[])]).length);
  assert(!d.querySelector('#timeline-panel #assumptions'));
  assert(d.getElementById('assumptions-panel').hidden);
@@ -49,7 +49,7 @@ async function boot(file,hash=''){
  assert(!d.getElementById('process.international_investment'));
  const investment=d.getElementById('process.economics_studies');
  const studyHeight=parseFloat(investment.style.height);
- const campaignSteps=JSON.parse(read('generated/catalogs/site-pages.json')).campaign_groups.flatMap(g=>g.step_refs);
+ const campaignSteps=require('../data-store.js').read('generated/catalogs/site-pages.json').campaign_groups.flatMap(g=>g.step_refs);
  for(const event of story.phases.flatMap(p=>p.events)){if(campaignSteps.includes(event.id))assert.equal(d.querySelector('[data-event="'+event.id+'"]'),null);else assert.equal(d.querySelector('[data-event="'+event.id+'"] time').textContent,event.date.start);const detail=d.getElementById(event.id);assert(!detail.textContent.includes('Date precision'));assert.equal(detail.querySelector('.event-dates dd').textContent,event.date.start);assert.equal(detail.querySelector('.event-dates div:last-child dd').textContent,event.date.end);}
  assert.equal(d.querySelectorAll('.calendar-process.approximate').length,story.processes.flatMap(p=>[p,...(p.subprocesses||[])]).filter(p=>w.AtlasTimeline.processSpan(p,story).approximate).length);
  const study=w.AtlasTimeline.processSpan(story.processes.find(p=>p.id==='process.economics_studies'),story);

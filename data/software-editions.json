@@ -1,0 +1,2972 @@
+{
+  "$schema": "../schemas/collections/software-editions.schema.json",
+  "schema_version": "3.0.0",
+  "platform_editions": [
+    {
+      "delivery": "diskette",
+      "features": [
+        "one tab per document",
+        "editor-consistent navigation/editing",
+        "formulas",
+        "print forms/layout using spreadsheet data",
+        "sparse storage model"
+      ],
+      "sold_separately": true,
+      "technology_refs": [
+        "technology.abacus_sparse_model",
+        "technology.logix_tui_standard",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
+      "launch_acceptance_requirements": {
+        "campaign_file": "aurelia_1978_campaign.json",
+        "status": "Required for the advertised launch demonstration; implementation and measured performance not yet qualified.",
+        "functions": [
+          "IF(condition, value_if_true, value_if_false)",
+          "Copy/fill-down formulas with documented relative and absolute references"
+        ],
+        "workload": "500-plus rows with populated-cell/formula count, RAM configuration and measured load/recalculation time recorded; automatic does not imply instantaneous.",
+        "workflow": "Change supplier cost assumption, recalculate, flag low margins, print report, save, close and reopen without loss."
+      },
+      "partner_distribution": {
+        "tandy": {
+          "agreement_date": "1978-11-27",
+          "announcement_date": "1979-05-30",
+          "demo_date": "1979-06-04",
+          "customer_release_date": "1979-10-15",
+          "edition_ref": "edition.abacus_1.model_ii",
+          "terms": "AION funds adaptation in exchange for official Tandy CP/M/FlexiBUS support and a distribution commitment; royalties/minimum purchases not specified. OEM sales/revenue are not priced as Aurelia retail copies.",
+          "video": "Native Tandy display through software adapter; no Logix video hardware required."
+        }
+      },
+      "data_interchange": {
+        "partner": "BPI Systems",
+        "available_from": "1978-06-05",
+        "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+        "status": "Accepted requirement; measured implementation qualification pending.",
+        "export_definition_ref": "software.bpi_suite"
+      },
+      "independent_implementation_policy": "Any manufacturer may implement the published Aurelia execution environment to run properly licensed compatible Abacus binaries; named editions document supported configurations, not exclusive manufacturer rights. Processor, resources and interface conformance must be met. The COMDEX 1979 compatibility kit supplies reference adapters and tests. No mandatory FlexiBUS or Logix video hardware.",
+      "id": "software.abacus_1",
+      "name": "Abacus 1.x (CP/M edition)",
+      "product_ref": "software.product.abacus",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1978-06-05"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia"
+      ],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "1.x",
+      "edition": "CP/M"
+    },
+    {
+      "delivery": "Model II-compatible eight-inch diskette through Radio Shack",
+      "features": [
+        "one tab per document",
+        "editor-consistent navigation/editing",
+        "formulas",
+        "print forms/layout using spreadsheet data",
+        "sparse storage model"
+      ],
+      "sold_separately": true,
+      "technology_refs": [
+        "technology.abacus_sparse_model",
+        "technology.logix_tui_standard",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "introduced": {
+        "event_name": "Model II Abacus qualified customer release",
+        "event_start_date": "1979-10-15"
+      },
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
+      "launch_acceptance_requirements": {
+        "campaign_file": "aurelia_1978_campaign.json",
+        "status": "Required for the advertised launch demonstration; implementation and measured performance not yet qualified.",
+        "functions": [
+          "IF(condition, value_if_true, value_if_false)",
+          "Copy/fill-down formulas with documented relative and absolute references"
+        ],
+        "workload": "500-plus rows with populated-cell/formula count, RAM configuration and measured load/recalculation time recorded; automatic does not imply instantaneous.",
+        "workflow": "Change supplier cost assumption, recalculate, flag low margins, print report, save, close and reopen without loss."
+      },
+      "partner_distribution": {
+        "tandy": {
+          "agreement_date": "1978-11-27",
+          "announcement_date": "1979-05-30",
+          "demo_date": "1979-06-04",
+          "customer_release_date": "1979-10-15",
+          "edition_ref": "edition.abacus_1.model_ii",
+          "terms": "AION funds adaptation in exchange for official Tandy CP/M/FlexiBUS support and a distribution commitment; royalties/minimum purchases not specified. OEM sales/revenue are not priced as Aurelia retail copies.",
+          "video": "Native Tandy display through software adapter; no Logix video hardware required."
+        }
+      },
+      "data_interchange": {
+        "partner": "BPI Systems",
+        "available_from": "1978-06-05",
+        "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+        "status": "Accepted requirement; measured implementation qualification pending.",
+        "export_definition_ref": "software.bpi_suite"
+      },
+      "independent_implementation_policy": "Any manufacturer may implement the published Aurelia execution environment to run properly licensed compatible Abacus binaries; named editions document supported configurations, not exclusive manufacturer rights. Processor, resources and interface conformance must be met. The COMDEX 1979 compatibility kit supplies reference adapters and tests. No mandatory FlexiBUS or Logix video hardware.",
+      "id": "edition.abacus_1.model_ii",
+      "name": "Abacus 1.x (CP/M / Tandy Model II edition)",
+      "product_ref": "software.product.abacus",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.trs80_model_ii",
+          "available_from": "1979-10-15"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 64,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Supported target configuration; measured workspace, worksheet capacity and speed require Model II qualification."
+      },
+      "dependency_refs": [
+        "software.cpm_model_ii"
+      ],
+      "support_status": "Scenario-supported release; engineering gates include native UI, document interchange, printing, save/reopen, RAM and banking/ROM adaptation. AION corrects incompatibilities; no identical-capacity or binary-compatibility assumption.",
+      "version": "1.x",
+      "edition": "CP/M / Tandy Model II"
+    },
+    {
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "features": [
+        "text-mode vertical or horizontal bar charts",
+        "report/document layouts",
+        "layouts can use spreadsheet field values",
+        "layouts can contain charts",
+        "one-off and repeating sections"
+      ],
+      "delivery_on_artemis": "diskette",
+      "sold_separately": true,
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
+      "data_interchange": {
+        "partner": "BPI Systems",
+        "available_from": "1979-12-03",
+        "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+        "status": "Accepted requirement; measured implementation qualification pending.",
+        "export_definition_ref": "software.bpi_suite"
+      },
+      "id": "software.abacus_2",
+      "name": "Abacus 2.0 (CP/M edition)",
+      "product_ref": "software.product.abacus",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1979-12-03"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "2.0",
+      "edition": "CP/M"
+    },
+    {
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "features": [
+        "text-mode vertical or horizontal bar charts",
+        "report/document layouts",
+        "layouts can use spreadsheet field values",
+        "layouts can contain charts",
+        "one-off and repeating sections"
+      ],
+      "artemis_native_extensions": [
+        "multiple tabs",
+        "cross-tab references"
+      ],
+      "delivery_on_artemis": "diskette",
+      "sold_separately": true,
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
+      "data_interchange": {
+        "partner": "BPI Systems",
+        "available_from": "1979-12-03",
+        "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+        "status": "Accepted requirement; measured implementation qualification pending.",
+        "export_definition_ref": "software.bpi_suite"
+      },
+      "id": "edition.abacus_2.era",
+      "name": "Abacus 2.0 (AIONix edition)",
+      "product_ref": "software.product.abacus",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1980-05-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "technology.aionix_os_model"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "2.0",
+      "edition": "AIONix"
+    },
+    {
+      "introduced": {
+        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+        "event_start_date": "1980-11-19"
+      },
+      "platform_policy": "Artemis-exclusive / 32-bit primary development line",
+      "features": [
+        "native 32-bit spreadsheet, structured-data analysis and reporting for Artemis",
+        "multiple tabs and cross-tab references; ordinary sparse worksheets coexist with schema-defined formatted-table tabs",
+        "typed columns, virtual calculated columns, unique-key lookups and read-only SQL queries",
+        "disk-backed columnar formatted-table storage with column pruning, conservative statistics-based block skipping and dataset-dependent encoding",
+        "graphical bar, line, pie and XY scatter charts in existing report layouts, with graphics preview and printing",
+        "embedded Pulse scripts through the Abacus document API",
+        "CSV and host-exported VSAM logical-record import into formatted tables"
+      ],
+      "explicitly_not_assumed": [
+        "background recalculation",
+        "unlimited document size or memory",
+        "guaranteed compression ratios or query throughput",
+        "full SQL database or transactional ledger engine",
+        "direct reading of arbitrary VSAM disk images",
+        "unrestricted nested-data support at the 3.0 launch"
+      ],
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard",
+        "technology.abacus_sparse_model",
+        "technology.abacus_formatted_tables",
+        "technology.abacus_embedded_pulse"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "programmatic_file_access": "Standalone Pulse retains exclusive offline read/edit/write access to supported document versions. Embedded Pulse 3.0 uses the Abacus-owned document API; never opens a second file writer. Preserve formulas and invalidate dependent cached results.",
+      "positioning": "Integrated spreadsheet, structured-data analysis and reporting environment, programmable in Pulse. The November 1980 release serves contemporary business workflows; direct competition with the historical 1983 Lotus 1-2-3 belongs to a later Abacus version.",
+      "reporting": {
+        "continuity": "Extend Abacus 2.0 report/document layouts, spreadsheet fields and one-off/repeating sections.",
+        "chart_types": [
+          "bar",
+          "line",
+          "pie",
+          "XY scatter"
+        ],
+        "presentation": "Retain standard TUI editing/navigation; add capability-aware graphical preview with titles, axes and legends. Support monochrome patterns and available display modes through the display API.",
+        "output": "Print reports and charts through supported printer drivers; define pagination and refresh stale query/formula results before output.",
+        "sources": "Worksheet ranges, formatted tables and grouped query results; keep source references stable after sorting and filtering."
+      },
+      "data_interchange": {
+        "bpi_continuity": "Retain versioned BPI summary imports as independent planning inputs with reconciliation and decimal validation; no ledger write-back or live database connection.",
+        "csv": "Schema-mapped CSV import with quoted fields, delimiter/character encoding selection, explicit date and decimal conventions, null handling, text preservation for identifiers and rejected-record diagnostics. Provide value-only CSV export with explicit loss-of-formulas/types warning.",
+        "vsam": "Import host-exported sequential logical records from supported VSAM datasets using a supplied field/record layout. Host-side export (for example IDCAMS REPRO) and a documented transfer path are prerequisites; raw VSAM clusters, indexes and disk images are not desktop interchange formats.",
+        "vsam_conversion": "Declare supported record boundaries, lengths, offsets, keys and character encoding; convert EBCDIC, supported binary, packed-decimal and zoned-decimal fields explicitly. Reject unsupported layouts without silently changing values.",
+        "migration": "Versioned document format; preserve supported older worksheets and reports. Older Abacus/Pulse editions must reject unsupported new features before writing. Explicit value-only export is a lossy interchange option."
+      },
+      "release_scope": {
+        "status": "Author-approved offering requirements; implementation and measured qualification remain pending.",
+        "launch_date": "1980-11-19",
+        "launch": "Flat typed formatted tables, bounded columnar processing, virtual columns, unique-key lookups, a documented read-only SQL subset, graphical reports, embedded Pulse and mapped imports.",
+        "later_milestones": [
+          "Bounded nested arrays, maps and structs with explicit expansion/indexing and aggregation semantics; format extension points reserved in 3.0.",
+          "Broader query capabilities and competitive response to Lotus 1-2-3 in a later Abacus version."
+        ],
+        "later_version_and_date": "Not assigned; no later feature is represented as available at the 1980 launch.",
+        "resource_policy": "Qualify real Artemis 128/256 KiB configurations and later Artemis PRO separately. Record application/OS memory, storage, dataset size and timings; larger jobs may require expansion or disk-backed execution. No new minimum RAM or maximum row count is asserted.",
+        "acceptance_workflow": "Import sales records, join customer/product information, calculate margins, group by region, print a graphical report, save/reopen, then repeat using a Pulse script.",
+        "acceptance_requirements": [
+          "Measure memory, disk I/O, import/query/recalculation/report times and compression on named datasets.",
+          "Verify import conversion/rejections, decimal rounding, nulls, duplicate lookup keys and join cardinality.",
+          "Verify cancellation, grouped undo, edit visibility, dependency invalidation, save recovery and unsupported-version rejection."
+        ]
+      },
+      "id": "software.abacus_3",
+      "name": "Abacus 3.0 (AIONix edition)",
+      "product_ref": "software.product.abacus",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1980-11-19"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "technology.aionix_os_model"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "3.0",
+      "edition": "AIONix"
+    },
+    {
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "features_ref": "technology.pulse_notebook_model",
+      "positioning": "Easy-to-learn notebook scripting environment and BASIC competitor; programmatic editing of Abacus document files.",
+      "training_available": true,
+      "sold_separately": true,
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "abacus_file_integration": {
+        "model": "Read/edit/write Abacus document files; not live application integration.",
+        "concurrency": "Exclusive writer ownership. Do not edit a file concurrently in Pulse and Abacus.",
+        "format_policy": "Check format version and supported features before writing; reject unsupported edits without silently dropping data.",
+        "save_policy": "Write a replacement file, validate it, then perform a recoverable replacement retaining the prior version until success.",
+        "formula_policy": "Preserve formula text/encoding. Mark cached results invalid after edits; Abacus recalculates on opening unless Pulse has the matching evaluation library.",
+        "memory_policy": "Bounded record/cell iteration; whole-document duplication in RAM is not required.",
+        "cross_version_policy": "Each edition declares supported document-format versions. Later Artemis features are not implicitly writable by the Z80 edition."
+      },
+      "id": "software.pulse_1",
+      "name": "Pulse (CP/M edition)",
+      "product_ref": "software.product.pulse",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 64,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "initial",
+      "edition": "CP/M"
+    },
+    {
+      "introduced": {
+        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+        "event_start_date": "1980-11-19"
+      },
+      "platform_policy": "Artemis-exclusive / 32-bit primary development line",
+      "features": [
+        "native 32-bit product",
+        "designed to fully use the potential of the 32-bit platform",
+        "embedded scripting runtime for Abacus 3.0 through its document API; standalone notebook and offline file editing remain available"
+      ],
+      "design_continuity_with": "software.pulse_1",
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard",
+        "technology.abacus_embedded_pulse"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "abacus_file_integration": {
+        "model": "Standalone mode: read/edit/write supported closed Abacus document files. Separate embedded mode in Abacus 3.0 is specified by technology.abacus_embedded_pulse.",
+        "concurrency": "Exclusive writer ownership. Do not edit a file concurrently in Pulse and Abacus.",
+        "format_policy": "Check format version and supported features before writing; reject unsupported edits without silently dropping data.",
+        "save_policy": "Write a replacement file, validate it, then perform a recoverable replacement retaining the prior version until success.",
+        "formula_policy": "Preserve formula text/encoding. Mark cached results invalid after edits; Abacus recalculates on opening unless Pulse has the matching evaluation library.",
+        "memory_policy": "Bounded record/cell iteration; whole-document duplication in RAM is not required.",
+        "cross_version_policy": "Each edition declares supported document-format versions. Later Artemis features are not implicitly writable by the Z80 edition."
+      },
+      "embedded_abacus_integration_ref": "technology.abacus_embedded_pulse",
+      "id": "software.pulse_3",
+      "name": "Pulse 3.0 (AIONix edition)",
+      "product_ref": "software.product.pulse",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1980-11-19"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "technology.aionix_os_model"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "3.0",
+      "edition": "AIONix"
+    },
+    {
+      "vendor": "AION Software / Digital Research cooperation",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "delivery": "System XIP ROM cartridge",
+      "technology_ref": "technology.aionix_os_model",
+      "bundled_with": [
+        "computer.artemis"
+      ],
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard",
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device"
+      ],
+      "portable_runtime": {
+        "api_ref": "technology.logix_c_api",
+        "display_ref": "technology.logix_display_api",
+        "implementation_target": "era_aionix",
+        "ownership": "System owns shared TUI implementation; Business Tools applications consume it.",
+        "capability_discovery": "Report supported services, limits and usable display configurations.",
+        "abi_policy": "Stable binary interfaces within this target; shared C API across targets."
+      },
+      "forward_compatibility_commitment": {
+        "announced": "1980-05-19",
+        "supported_through": "2000-12-31",
+        "scope": "Released Artemis application binaries using documented, supported ERA/AIONix interfaces retain a supported execution path on subsequent Logix professional platforms through 2000: native execution, a maintained compatibility runtime, or emulation. Source portability is a separate commitment, not a substitute for the binary execution path.",
+        "exclusions": "Undocumented hardware access, unqualified peripherals and unsupported interfaces; no promise of unchanged speed, unlimited memory, or every future device. Z80 programs use their separately qualified compatibility path.",
+        "delivery_requirements": "Publish versioned ABI/API eligibility and conformance tests; preserve reference binaries and regression workloads; budget compatibility engineering, runtime distribution and support. Staffing, funding and validation remain explicit launch readiness gates.",
+        "status": "Official scenario commitment at NCC 1980; future fulfilment is not established evidence."
+      },
+      "mouse_update": {
+        "available_from": "1982-06",
+        "technology_ref": "technology.logix_tui_mouse",
+        "driver_ref": "technology.flexibus_pointing_device",
+        "scope": "Driver and TUI library/service update; preserve existing OS/core identity and keyboard interface. Standard-control applications need no source edits, subject to linkage and runtime compatibility."
+      },
+      "id": "software.aionix",
+      "name": "AIONix (ERA edition)",
+      "product_ref": "software.product.aionix",
+      "execution_target": "era_aionix",
+      "role": "operating_system",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1980-05-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 128,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "ERA",
+      "bom_assembly_refs": [
+        "assembly.media.software.aionix"
+      ]
+    },
+    {
+      "vendor": "AION Software",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "technology_refs": [
+        "technology.aionix_os_model",
+        "technology.logix_tcpip_lan",
+        "technology.logix_lan100_link",
+        "technology.logix_c_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "api_compatibility": "Retains the base platform C/TUI API; optional networking services are discovered through versioned capability checks.",
+      "delivery": "Complete system ROM/EEPROM cartridge image, including the base AIONix services and networking; not an incremental upgrade.",
+      "base_product_ref": "software.aionix",
+      "description": "Separate AIONix edition for networked Artemis and Artemis PRO systems. Includes the base operating system, TCP/IP and server-service interfaces. BPI server applications are separately licensed offerings.",
+      "edition_relationship": "Complete edition of the AIONix family; no prior base-OS installation is required.",
+      "bundled_with": [
+        "computer.artemis_pro"
+      ],
+      "features": [
+        "TCP/IP networking support for Logix LAN",
+        "Base AIONix process, file, device and TUI services",
+        "Network service lifecycle and server administration interfaces"
+      ],
+      "feature_status": "Server-service interfaces are part of the edition specification; implementation remains to be validated. Inclusion of an OS edition does not include a BPI application license.",
+      "network_link_policy": {
+        "link_layer_ref": "technology.logix_lan100_link",
+        "driver_contract": "Enforce host rate ceilings, report advertised and negotiated rates separately, process packet-level interrupts and receiver credits, and expose fallback/error diagnostics. TCP/IP application throughput is below shared raw line rate and requires measurement."
+      },
+      "dated_revisions": [
+        {
+          "effective_from": "1981-11-19",
+          "default_services": [
+            "user management",
+            "group management",
+            "authentication",
+            "project permissions",
+            "home directories",
+            "quotas",
+            "administration"
+          ],
+          "note": "OS facilities included by default; Team Edition repository and collaboration applications licensed separately as one package."
+        }
+      ],
+      "id": "software.aionix_server",
+      "name": "AIONix (Server edition)",
+      "product_ref": "software.product.aionix",
+      "execution_target": "era_aionix",
+      "role": "operating_system",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1981-05-04"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "device.network_card_artemis"
+      ],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "Server",
+      "bom_assembly_refs": [
+        "assembly.media.software.aionix_server"
+      ]
+    },
+    {
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "product_status": "Accepted 1983 planning baseline; implementation, memory fit and release qualification pending.",
+      "description": "ROM-backed successor to AIONix: protected preemptive multitasking, documented ERA ABI compatibility, recoverable HDD storage, user access management and an event-driven TUI designed for later graphical windowing.",
+      "delivery": "At least 256 KiB directly executable shared OS ROM, alongside at least 256 KiB DRAM. EEPROM BIOS remains boot/diagnostic firmware. Optional services, larger utilities and patches load from disk; do not copy the entire OS ROM into RAM.",
+      "planned_for": [
+        "computer.athena",
+        "computer.athena_server"
+      ],
+      "specification": {
+        "status": {
+          "editorial_status": "accepted",
+          "engineering_readiness": "design",
+          "commercial_availability": "not_committed",
+          "evidence_basis": "story_assumption"
+        },
+        "baseline_ref": "technology.aionix_os_model",
+        "processor_architecture_ref": "technology.era2_architecture",
+        "portable_api_ref": "technology.logix_c_api",
+        "rom_execution": {
+          "code": [
+            "Stable kernel code",
+            "Core libraries",
+            "Small shell and basic utilities",
+            "Recovery tools"
+          ],
+          "mapping": "Shared read-only executable mappings; private writable data per process. Cacheable ROM with independently qualified timing.",
+          "updates": "Versioned dispatch tables and page-sized RAM patch overlays; ROM version/checksum checks and recovery boot bypassing disk patches. Patched pages consume DRAM.",
+          "physical_implementation": "256 KiB minimum system ROM bank; chip organization, package count, board mounting and timing remain qualification decisions."
+        },
+        "compatibility": {
+          "scope": "Documented ERA AIONix user binaries, instruction semantics and C ABI; not Z80 binary compatibility.",
+          "preserve": [
+            "System-call entry and numbers",
+            "Calling conventions and structure layouts",
+            "Executable loading",
+            "Errors and legacy signal conventions"
+          ],
+          "mechanism": "Executable ABI version selects legacy adapters; stable library dispatch and capability discovery.",
+          "limits": "Undocumented kernel dependencies, privileged drivers and direct hardware access require separate qualification; portable Z80 C applications require recompilation."
+        },
+        "multitasking": {
+          "kernel": "Compact monolithic kernel; timer-preempted user processes, bounded non-preemptible kernel critical sections.",
+          "requirements": [
+            "Fair scheduling with priority aging",
+            "Sleeping I/O and atomic sleep/wakeup",
+            "Checked user pointers and protected kernel/device mappings",
+            "Process-exit cleanup of files, memory, locks and child state",
+            "Per-process memory, file and request limits",
+            "Driver timeouts and bounded retries",
+            "Short interrupt handlers with deferred work",
+            "Responsive administrative termination path",
+            "Kernel-controlled DMA with checked pinned buffers"
+          ],
+          "limits": "Process isolation does not isolate kernel/driver faults or independently constrain DMA. Fully preemptible kernel and application threads are not initial requirements."
+        },
+        "posix_direction": {
+          "reference": "POSIX.1-2024 / Issue 8, used as an out-of-world future-informed design reference, not a 1983 certification claim.",
+          "initial_target": [
+            "Consistent open/read/write/close/lseek/stat and descriptor duplication, inheritance and errors",
+            "Reliable existing copy-on-write fork, exec, wait, exit status and environment",
+            "Defined signal delivery, masks, dispositions and interrupted-call semantics",
+            "Canonical/raw terminal modes, terminal attributes and foreground process groups",
+            "Hierarchical paths, working directories, hard links and symbolic links",
+            "Pipes with EOF/broken-pipe semantics and readiness multiplexing",
+            "Shell quoting, redirection, pipelines, variables and exit statuses",
+            "Wall clock, monotonic elapsed time and explicit timestamp formats"
+          ],
+          "later": [
+            "Efficient spawn without replacing fork semantics",
+            "Broader file control and memory mapping",
+            "Complete job control and pseudo-terminals",
+            "Sockets and additional IPC",
+            "Broader utilities, locales, threads and timers"
+          ],
+          "conformance": "Publish per-interface implemented/partial/absent matrix and unsupported-operation errors; names alone do not establish conformance.",
+          "source_url": "https://pubs.opengroup.org/onlinepubs/9799919799/"
+        },
+        "filesystem": {
+          "design": "Versioned inode-based filesystem; directory entries separate from metadata.",
+          "allocation_block_bytes": 1024,
+          "block_identifier_bits": 32,
+          "initial_qualification_volume_mb": [
+            20,
+            100
+          ],
+          "qualification_note": "Testing range, not capacity ceiling or a change to bundled HDD sizes.",
+          "requirements": [
+            "Direct and indirect block pointers",
+            "Ownership, permissions, link counts and timestamps",
+            "Bounded metadata/data cache",
+            "Mount support and logical-sector driver interface with CHS translation when required",
+            "Clean/dirty volume state and consistency checker",
+            "Ordered metadata writes and explicit synchronization",
+            "Backup/restore utilities and defined durable-save ordering"
+          ],
+          "later": "Small metadata journal after write-order and power-loss testing; journal does not by itself guarantee application-data durability.",
+          "open_items": [
+            "Exact on-disk format and limits",
+            "File-offset and timestamp representation",
+            "Legacy filesystem import/mount compatibility",
+            "Controller persistence guarantees"
+          ]
+        },
+        "user_access": {
+          "initial_target": [
+            "Numeric users and groups",
+            "Owner/group/other read/write/execute and directory search permissions",
+            "Creation masks",
+            "Real/effective credentials",
+            "Login sessions and home directories",
+            "Protected password database with salted costed hashing selected against CPU budget",
+            "Administrative control of devices, mounts and configuration",
+            "Kernel enforcement on all relevant operations",
+            "Protected administrative audit records"
+          ],
+          "privilege": "Qualify credential and exec transitions before enabling set-user-ID programs. Server authenticates identity rather than trusting client-supplied UID.",
+          "later": "Extended ACLs and more elaborate policies."
+        },
+        "ui_layers": [
+          {
+            "layer": 1,
+            "name": "Application layer",
+            "responsibility": "Business logic and semantic commands such as Open, Save, Select and Cancel, independent of rendering."
+          },
+          {
+            "layer": 2,
+            "name": "Abstraction layer",
+            "responsibility": "Events, menus, forms, lists, focus, layout, text measurement and drawing contexts."
+          },
+          {
+            "layer": 3,
+            "name": "Translation and compatibility layer",
+            "responsibility": "Existing TUI adapters, terminal rendering, device backends and legacy ABI behavior; later graphical renderers."
+          },
+          {
+            "layer": 4,
+            "name": "OS native API",
+            "responsibility": "Processes, files, IPC, timers, input devices and controlled display access."
+          }
+        ],
+        "ui_contract": {
+          "implementation": "Logical layers primarily in shared libraries plus a small UI service; not four mandatory processes or IPC crossings. Extend the existing portable C API.",
+          "initial_target": [
+            "Unified bounded event queue for keys, timers, focus, redraw and future pointer events",
+            "Semantic commands separated from physical keys",
+            "Opaque window/view handles initially representing text regions",
+            "Clipping, invalidation and repaint requests",
+            "Layout constraints and explicit text measurement",
+            "Separate cell and pixel coordinates",
+            "Bounded clipboard and selection ownership",
+            "Capability/version discovery for graphics, fonts, color and pointer input"
+          ],
+          "memory": "Compact text state, dirty regions and redraw callbacks; no mandatory full-screen RAM backing bitmap.",
+          "next_generation": "Windowed GUI; legacy character applications run in terminal windows. Adapters do not automatically redesign old UIs."
+        },
+        "memory_management": {
+          "initial": "Shared ROM code, sparse page tables, small kernel stacks, reliable copy-on-write and graceful allocation failure.",
+          "later": "Controlled disk-backed paging/swap only after restart, locking and I/O qualification; keep fault handlers and essential paging state resident.",
+          "policy": "Swap handles occasional pressure, not a routinely oversized working set; ROM does not replace writable RAM."
+        },
+        "qualification": [
+          "Legacy binary regression suite",
+          "CPU-bound application fairness and termination",
+          "Fault injection and resource cleanup",
+          "Concurrent disk/terminal/DMA I/O",
+          "Filesystem power-loss and durable-save tests",
+          "Credential and permission checks",
+          "Measured ROM/RAM footprint and Abacus/compiler/server workloads",
+          "TUI capability fallback and legacy terminal behavior"
+        ],
+        "priority_assessment": [
+          {
+            "priority": 1,
+            "area": "ROM execution and ABI",
+            "necessity": "essential",
+            "complexity": "medium",
+            "feasibility": "Strong existing foundation; fit and patch behavior must be measured."
+          },
+          {
+            "priority": 2,
+            "area": "Resilient multitasking",
+            "necessity": "essential",
+            "complexity": "high",
+            "feasibility": "Feasible with ERA protection and restart rules; extensive verification."
+          },
+          {
+            "priority": 3,
+            "area": "Recoverable HDD filesystem",
+            "necessity": "essential",
+            "complexity": "high",
+            "feasibility": "20–100 MB addressing is straightforward; crash recovery is the main risk."
+          },
+          {
+            "priority": 4,
+            "area": "Users and access enforcement",
+            "necessity": "essential",
+            "complexity": "medium-high",
+            "feasibility": "Feasible after process/filesystem isolation."
+          },
+          {
+            "priority": 5,
+            "area": "POSIX-oriented subset",
+            "necessity": "high",
+            "complexity": "medium-high",
+            "feasibility": "Phase interfaces; full contemporary conformance excluded."
+          },
+          {
+            "priority": 6,
+            "area": "Layered event-driven TUI",
+            "necessity": "high",
+            "complexity": "medium",
+            "feasibility": "Feasible groundwork; windowed GUI later."
+          },
+          {
+            "priority": 7,
+            "area": "Paging and swap",
+            "necessity": "useful later",
+            "complexity": "high",
+            "feasibility": "Depends on proven faults and I/O; not initial release gate."
+          },
+          {
+            "priority": 8,
+            "area": "Threads, broader networking and GUI",
+            "necessity": "selective later",
+            "complexity": "high",
+            "feasibility": "Not required in the minimum 1983 configuration."
+          }
+        ]
+      },
+      "release_scope": {
+        "initial": "ROM execution, documented legacy ABI, protected preemptive processes, recoverable HDD storage, users/permissions, POSIX-oriented subset and event-driven TUI groundwork.",
+        "later": "Paging/swap, metadata journal, broader networking/threads/locales and full windowed GUI.",
+        "schedule": "Retain planned NCC announcement; no new shipment date or completed implementation claimed."
+      },
+      "architecture": {
+        "resource_planning": {
+          "minimum_dram_bytes": 262144,
+          "minimum_os_rom_bytes": 262144,
+          "preferred_dram_bytes": 524288,
+          "basis": "Engineering allocation target, not a measured fit or maximum. Server retains its existing 1 MiB configuration.",
+          "illustrative_dram_budget_bytes": {
+            "kernel_state_tables_stacks": 40960,
+            "filesystem_buffers": 24576,
+            "process_translation_metadata": 16384,
+            "terminal_ui_input": 12288,
+            "services_patches_reserve": 20480,
+            "applications": 147456
+          }
+        }
+      },
+      "vendor": "AION Software",
+      "id": "software.aionix2",
+      "name": "AIONix 2 (ERA² edition)",
+      "execution_target": "era_aionix",
+      "role": "operating_system",
+      "platform_support": [
+        {
+          "computer_ref": "computer.athena",
+          "available_from": "1983-05-16"
+        },
+        {
+          "computer_ref": "computer.athena_server",
+          "available_from": "1983-05-16"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 256,
+        "application_ram_bytes": null,
+        "rom_bytes": 262144,
+        "status": "Recorded requirements only; unspecified limits remain unknown."
+      },
+      "dependency_refs": [],
+      "support_status": "Accepted 1983 planning baseline; implementation, memory fit and release qualification pending.",
+      "product_ref": "software.product.aionix",
+      "version": "2",
+      "edition": "ERA²"
+    },
+    {
+      "vendor": "Digital Research / Logix OEM implementation",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "delivery": [
+        "mainboard XIP ROM",
+        "System ROM cartridge"
+      ],
+      "components": {
+        "mainboard_rom": [
+          "Boot",
+          "Monitor",
+          "BIOS",
+          "Hardware Drivers"
+        ],
+        "system_cartridge": [
+          "CP/M CCP",
+          "CP/M BDOS",
+          "Aurelia BIOS extension",
+          "Utilities",
+          "Version Info"
+        ]
+      },
+      "extensions": [
+        "FlexiBUS support",
+        "Aurelia video support",
+        "system clipboard",
+        "Business Tools workspace when resident",
+        "common command-line editing behavior",
+        "TUI libraries/API"
+      ],
+      "bundled_with": [
+        "computer.aurelia",
+        "computer.aurelia_plus"
+      ],
+      "base_version": "CP/M 1.4",
+      "development_lineage": "Joint DRI founded in late 1974; earlier documented hardware abstraction. September 1976 is the Aurelia implementation agreement. Alternate 1.4-derived core retains ordinary CP/M interfaces; Platform Extensions 1.0 are an optional, versioned layer, not features claimed for historical CP/M 1.4.",
+      "description": "A ROM-adapted CP/M 1.4 platform combining the standard application and file-service interfaces with Logix memory, peripheral and TUI services. The same architecture supports Aurelia and Aurelia+.",
+      "vanilla_architecture": {
+        "execution_model": "Single user, one foreground application; conventional operating-system and application images execute in RAM.",
+        "memory_layout": [
+          {
+            "region": "0000H–00FFH",
+            "purpose": "System vectors, default file-control information and command/disk buffer"
+          },
+          {
+            "region": "From 0100H",
+            "purpose": "Transient Program Area (TPA): application code and data"
+          },
+          {
+            "region": "Above TPA",
+            "purpose": "CCP, then BDOS, then machine-specific BIOS at the high end of configured memory"
+          }
+        ],
+        "application_entry": "CALL 0005H",
+        "program_load_address": "0100H",
+        "components": [
+          {
+            "id": "ccp",
+            "name": "CCP — Console Command Processor",
+            "description": "Reads commands, executes built-in commands and loads transient programs. Uses BDOS services."
+          },
+          {
+            "id": "bdos",
+            "name": "BDOS — Basic Disk Operating System",
+            "description": "Provides console and file services, directory/allocation management and record operations. Calls BIOS for hardware operations."
+          },
+          {
+            "id": "bios",
+            "name": "BIOS — Basic Input/Output System",
+            "description": "Machine-specific console, printer and disk primitives, including startup and sector transfers."
+          },
+          {
+            "id": "tpa",
+            "name": "TPA — Transient Program Area",
+            "description": "Application code and data in RAM. A memory region, not an executable OS module."
+          },
+          {
+            "id": "utilities",
+            "name": "Transient utilities",
+            "description": "Separate editing, copying, assembly, debugging and maintenance programs loaded when needed."
+          }
+        ],
+        "changes_from_1_3": [
+          "Four logical disk drives; BIOS drive selection accepts 0–3.",
+          "Disk-sector translation moves into BIOS.",
+          "Drive selection can maintain additional disk state.",
+          "BDOS begins one 256-byte page lower; CCP and BIOS bases remain unchanged.",
+          "Revised disk-error handling interface.",
+          "DE returns the same value as HL.",
+          "BDOS implementation is divided into a PL/M main body and an assembly interface module."
+        ],
+        "limits": [
+          "No built-in banked-ROM runtime, cartridge manager or dynamic driver registry.",
+          "No shared TUI widgets, clipboard or resident Business Tools workspace.",
+          "The generalized CP/M 2.0 disk-parameter-block model is not part of vanilla 1.4."
+        ]
+      },
+      "internal_organization": [
+        {
+          "id": "boot",
+          "name": "Boot and recovery firmware",
+          "responsibility": "Logix",
+          "residence": "Motherboard ROM",
+          "description": "Initialize hardware, discover the system cartridge and provide diagnostics/recovery.",
+          "diagram_label": "Boot & recovery"
+        },
+        {
+          "id": "runtime",
+          "name": "Memory / cartridge runtime",
+          "responsibility": "Logix",
+          "residence": "Stable common-memory entry routines plus ROM services",
+          "description": "Select banks, preserve mappings and stacks, support nested calls and execute cartridge components.",
+          "diagram_label": "Memory runtime"
+        },
+        {
+          "id": "drivers",
+          "name": "Hardware drivers and device registry",
+          "responsibility": "Logix",
+          "residence": "Motherboard ROM, device ROM and replaceable extensions",
+          "description": "Operate video, keyboard, floppy and FlexiBUS hardware; discover devices and register compatible drivers.",
+          "diagram_label": "Drivers & registry"
+        },
+        {
+          "id": "bios",
+          "name": "CP/M BIOS adapter",
+          "responsibility": "Customized CP/M interface",
+          "residence": "Stable firmware primitives plus system-cartridge adaptation",
+          "description": "Translate CP/M console, printer and disk operations into Logix driver calls.",
+          "diagram_label": "BIOS adapter"
+        },
+        {
+          "id": "bdos",
+          "name": "CP/M 1.4-derived BDOS",
+          "responsibility": "DRI / Logix adaptation",
+          "residence": "System cartridge; mutable state in RAM",
+          "description": "Preserve file/application services; adapt disk-format assumptions and code for banked ROM execution.",
+          "diagram_label": "BDOS"
+        },
+        {
+          "id": "ccp",
+          "name": "CP/M 1.4-derived CCP",
+          "responsibility": "DRI / Logix adaptation",
+          "residence": "System cartridge; command buffers in RAM",
+          "description": "Interpret commands, launch disk/cartridge applications and use shared command-line editing.",
+          "diagram_label": "CCP"
+        },
+        {
+          "id": "tui",
+          "name": "Logix TUI and shared services",
+          "responsibility": "Logix / AION",
+          "residence": "CP/M system cartridge; mutable state in reserved RAM; hardware operations delegated to drivers",
+          "description": "Own the shared application-facing screen and keyboard API, editing controls, menus, forms, lists, popup windows, clipboard service and workspace entry/return support. Business Tools and other compatible applications call these services rather than carrying a second shared TUI library.",
+          "diagram_label": "TUI & services"
+        },
+        {
+          "id": "apps",
+          "name": "Utilities and applications",
+          "responsibility": "Platform software",
+          "residence": "RAM or optional application cartridges",
+          "description": "Use standard CP/M calls and, when Logix-aware, the versioned extension interface.",
+          "diagram_label": "Applications"
+        }
+      ],
+      "internal_relationships": [
+        [
+          "apps",
+          "bdos"
+        ],
+        [
+          "apps",
+          "tui"
+        ],
+        [
+          "ccp",
+          "bdos"
+        ],
+        [
+          "ccp",
+          "tui"
+        ],
+        [
+          "bdos",
+          "bios"
+        ],
+        [
+          "bios",
+          "drivers"
+        ],
+        [
+          "tui",
+          "drivers"
+        ],
+        [
+          "boot",
+          "runtime"
+        ],
+        [
+          "runtime",
+          "drivers"
+        ]
+      ],
+      "logix_requirements": [
+        "Preserve standard CP/M entry points, loading conventions and available-memory boundaries.",
+        "Adapt both BIOS and relevant BDOS assumptions to Aurelia floppy formats.",
+        "Keep bank-switching entry code, stack and critical interrupt handling permanently accessible.",
+        "Separate ROM code/constants from RAM state; adapt self-modifying routines.",
+        "Discover cartridge/device ROMs through defined, versioned interfaces.",
+        "Map Logix peripherals to standard CP/M console, printer and disk services.",
+        "Provide a separate versioned Logix service interface and C bindings.",
+        "Drivers use bounded DMA transfers with physical-bank descriptors and device-ready handshakes; abort/drain transfers before warm boot or reusing buffers.",
+        "Video API exposes dedicated sprite SRAM, atomic descriptor swaps and upload-port backpressure; use programmed I/O fallback where peripherals lack DMA endpoints."
+      ],
+      "tui_features": [
+        {
+          "name": "Layout and screen",
+          "description": "Query usable dimensions, clip and scroll; separate document coordinates from screen coordinates."
+        },
+        {
+          "name": "Adaptive layouts",
+          "description": "Compact 40-column and expanded 80-column layouts; dialogs, long names and errors fit either width."
+        },
+        {
+          "name": "Semantic colors",
+          "description": "Normal text, selection and warning roles map to color or monochrome attributes."
+        },
+        {
+          "name": "Input",
+          "description": "Structured character, function/navigation key and modifier events; blocking input and polling."
+        },
+        {
+          "name": "Controls",
+          "description": "Fields, lists, menus, dialogs, popup windows and consistent focus movement."
+        },
+        {
+          "name": "Editing",
+          "description": "Common selection, insertion/deletion and clipboard commands."
+        },
+        {
+          "name": "Clipboard",
+          "description": "Explicit formats, lengths, bounded capacity, ownership and errors."
+        },
+        {
+          "name": "Context lifecycle",
+          "description": "Create/destroy and activate/deactivate contexts; redraw when needed. A context describes an assigned display region, which may be the full Aurelia screen."
+        },
+        {
+          "name": "Timing",
+          "description": "System timing and keyboard-repeat services replace CPU-speed-dependent loops."
+        }
+      ],
+      "compatibility_notes": [
+        "Ordinary CP/M applications keep character/file services; rich TUI behavior requires use of Logix APIs.",
+        "Shared TUI routines do not require multitasking; applications may remain sequential.",
+        "Clipboard capacity, exact widgets and workspace behavior remain implementation decisions.",
+        "Keep the same API behavior across Aurelia, Aurelia+ and Artemis.",
+        "Do not assume display stride, video RAM address, last column or direct peripheral registers.",
+        "Legacy CP/M console behavior is preserved; Logix-aware interfaces use the documented editing conventions.",
+        "Artemis implementation mediates process access to shared clipboard and display services."
+      ],
+      "tui_ownership": {
+        "owner": "System TUI & services",
+        "interface_ref": "technology.logix_tui_standard",
+        "consumers": [
+          "software.business_tools_aurelia",
+          "software.abacus_1",
+          "software.abacus_2",
+          "software.bpi_suite",
+          "software.pulse_1"
+        ],
+        "boundary": "System services supply reusable controls and clipboard/workspace mechanisms. Applications own their documents, calculations, file-management workflows and calendar records."
+      },
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard",
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device"
+      ],
+      "portable_runtime": {
+        "api_ref": "technology.logix_c_api",
+        "display_ref": "technology.logix_display_api",
+        "implementation_target": "z80_cpm",
+        "ownership": "System owns shared TUI implementation; Business Tools applications consume it.",
+        "capability_discovery": "Report supported services, limits and usable display configurations.",
+        "abi_policy": "Stable binary interfaces within this target; shared C API across targets."
+      },
+      "memory_discovery_ref": "technology.aurelia_memory_model",
+      "alternate_history_roadmap": [
+        {
+          "period": "1974–1975",
+          "base_scenario": "Prototype and first commercial licenses; BIOS separation not yet released.",
+          "alternative_scenario": "Funded commercialization and earlier hardware-dependent layer/API discipline; rich services remain future work."
+        },
+        {
+          "period": "1976",
+          "base_scenario": "CP/M 1.3 introduces the separate BIOS.",
+          "alternative_scenario": "Existing abstraction work underlies the September Aurelia OEM requirements milestone."
+        },
+        {
+          "period": "1977–1978",
+          "base_scenario": "Conventional CP/M 1.4 without Logix ROM, banking or TUI facilities.",
+          "alternative_scenario": "Alternate 1.4-derived core plus optional Platform Extensions 1.0; Aurelia release June 5, 1978."
+        },
+        {
+          "period": "1979",
+          "base_scenario": "CP/M 2.x/2.2 general-purpose development.",
+          "alternative_scenario": "General-purpose CP/M development continues independently; portable extension package released May 5. No unsupported claim that Aurelia automatically upgrades to 2.2."
+        },
+        {
+          "period": "1980",
+          "base_scenario": "Processor transitions require architecture-specific software work.",
+          "alternative_scenario": "Shared C APIs support source recompilation to ERA; separate Z80 module executes supported existing binaries."
+        }
+      ],
+      "sources": [
+        "https://computerhistory.org/blog/early-digital-research-cpm-source-code/",
+        "https://computerhistory.org/blog/in-his-own-words-gary-kildall/"
+      ],
+      "ecosystem_policy": {
+        "programme_file": "ncc_1979_campaign.json",
+        "public_date": "1979-06-04",
+        "profiles": "Optional versioned extensions separate from the CP/M core; neither FlexiBUS nor Logix video is mandatory for all CP/M applications.",
+        "continuity": "Fund CP/M maintenance alongside the next-generation programme; detailed duration and budget remain open.",
+        "qualification": "Named host/ISA/TPA/application editions and file interchange; no universal Aurelia binary or disk compatibility promise."
+      },
+      "mouse_update": {
+        "available_from": "1982-06",
+        "technology_ref": "technology.logix_tui_mouse",
+        "driver_ref": "technology.flexibus_pointing_device",
+        "scope": "Driver and TUI library/service update; preserve existing OS/core identity and keyboard interface. Standard-control applications need no source edits, subject to linkage and runtime compatibility."
+      },
+      "id": "software.cpm_aurelia",
+      "name": "CP/M 1.4-derived / Platform Extensions 1.0 (Aurelia edition)",
+      "product_ref": "software.product.cpm",
+      "execution_target": "z80_cpm",
+      "role": "operating_system",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1978-06-05"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "1.4-derived / Platform Extensions 1.0",
+      "edition": "Aurelia",
+      "bom_assembly_refs": [
+        "assembly.media.software.cpm_aurelia"
+      ]
+    },
+    {
+      "vendor": "Logix / AION Software / Digital Research cooperation",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "delivery": "system/software upgrade supplied with the Aurelia network-adapter offer",
+      "adds": [
+        "TCP/IP stack",
+        "LogixLAN negotiated-rate adapter driver",
+        "network configuration tools",
+        "BPI client networking API"
+      ],
+      "technology_refs": [
+        "technology.logix_tcpip_lan",
+        "technology.logix_lan100_link",
+        "technology.logix_tui_standard",
+        "technology.logix_c_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "api_compatibility": "Retains the base platform C/TUI API; optional networking services are discovered through versioned capability checks.",
+      "network_link_policy": {
+        "link_layer_ref": "technology.logix_lan100_link",
+        "driver_contract": "Enforce host rate ceilings, report advertised and negotiated rates separately, process packet-level interrupts and receiver credits, and expose fallback/error diagnostics. TCP/IP application throughput is below shared raw line rate and requires measurement."
+      },
+      "id": "software.cpm_aurelia_networking",
+      "name": "CP/M (Aurelia networking edition)",
+      "product_ref": "software.product.cpm",
+      "execution_target": "z80_cpm",
+      "role": "network_extension",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1981-05-04"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia",
+        "device.network_card_aurelia"
+      ],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "networking",
+      "edition": "Aurelia networking",
+      "bom_assembly_refs": [
+        "assembly.media.software.cpm_aurelia_networking"
+      ]
+    },
+    {
+      "vendor": "DRI / Tandy",
+      "introduced": {
+        "event_name": "Model II CP/M qualified configuration",
+        "event_start_date": "1979-10-15"
+      },
+      "specification": "Model II boot/disk/printer BIOS plus native display/keyboard TUI adapter, bounded clipboard and required application services. CP/M-80 work reuses existing DRI investment; it does not imply an x86 CP/M commitment.",
+      "licensing": "Official Tandy distribution/support; negotiated OEM terms unspecified.",
+      "id": "software.cpm_model_ii",
+      "name": "CP/M (Tandy Model II edition)",
+      "execution_target": "z80_cpm",
+      "role": "operating_system",
+      "platform_support": [
+        {
+          "computer_ref": "computer.trs80_model_ii",
+          "available_from": "1979-10-15"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Recorded requirements only; unspecified limits remain unknown."
+      },
+      "dependency_refs": [],
+      "delivery": "Not yet specified",
+      "support_status": "Qualification not recorded.",
+      "product_ref": "software.product.cpm",
+      "version": null,
+      "edition": "Tandy Model II"
+    },
+    {
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "implementation": {
+        "language": "AION C",
+        "ui": "Logix TUI",
+        "database": "relational base engine",
+        "printing": "native FlexiBUS printer support"
+      },
+      "modules": [
+        {
+          "name": "BPI General Accounting",
+          "features": [
+            "general ledger",
+            "simplified AR",
+            "simplified AP",
+            "payroll integration",
+            "financial reports",
+            "balance sheets"
+          ]
+        },
+        {
+          "name": "BPI Accounts Receivable",
+          "features": [
+            "customer accounts",
+            "open invoices",
+            "incoming payments",
+            "customer statements"
+          ]
+        },
+        {
+          "name": "BPI Accounts Payable",
+          "features": [
+            "vendor accounts",
+            "outstanding liabilities",
+            "cash-flow obligations",
+            "check printing"
+          ]
+        },
+        {
+          "name": "BPI Inventory Control",
+          "features": [
+            "stock levels",
+            "purchase orders",
+            "journal entries for product movement",
+            "profitability reports"
+          ]
+        },
+        {
+          "name": "BPI Payroll",
+          "features": [
+            "employee hours",
+            "local/federal tax withholding",
+            "benefits",
+            "payroll check printing"
+          ]
+        }
+      ],
+      "technology_refs": [
+        "technology.bpi_relational_database",
+        "technology.aion_c_portability_framework",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "sold_separately": true,
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "launch_positioning": "Independent BPI Systems partner software, demonstrated after Abacus at NCC 1978. Separately licensed and optionally combined by dealers with Logix hardware and AION applications; never an automatically included Logix product.",
+      "specification": {
+        "company_and_support": "BPI retains product ownership, independent management, licensing, updates and specialist support; Adam investment and AION engineering cooperation are disclosed. Dealers provide first-line installation support; Logix supports hardware.",
+        "summary_export": {
+          "status": "Accepted launch requirement; qualification pending.",
+          "format": "Versioned delimited-text file on disk with named columns, period, currency, account identifiers, decimal amounts and control totals.",
+          "scope": "Selected balances or monthly totals imported into Abacus as planning inputs. No automatic write-back, concurrent execution or live database link. Close BPI before loading Abacus.",
+          "acceptance": "Reconcile record counts and control totals; validate rounding, quoting, disk-full errors, memory use and save/reopen. Prepared demo data is labelled."
+        },
+        "launch_acceptance": [
+          "Measured 48 KB workspace, disk capacity and supported disk configuration; 64 KB or extra drives only when qualified and separately quoted.",
+          "Posting consistency, correction history, disk-full handling and tested backup/restore.",
+          "Readable reports on launch display and supported printers; supported forms and paper documented.",
+          "Payroll jurisdictions, update process and maintenance responsibility explicitly documented."
+        ],
+        "commercial_policy": "Credit documented net amounts paid for eligible same-platform BPI module licences against one complete-suite upgrade, capped at current suite price; no cash refund, duplicate licence or training/setup credit. Retire credited module entitlements. Support and paid setup costs require separate budgets."
+      },
+      "id": "software.bpi_suite",
+      "name": "BPI (CP/M edition)",
+      "product_ref": "software.product.bpi",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1978-06-05"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "CP/M"
+    },
+    {
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "implementation": {
+        "language": "AION C",
+        "ui": "Logix TUI",
+        "database": "relational base engine",
+        "printing": "native FlexiBUS printer support"
+      },
+      "modules": [
+        {
+          "name": "BPI General Accounting",
+          "features": [
+            "general ledger",
+            "simplified AR",
+            "simplified AP",
+            "payroll integration",
+            "financial reports",
+            "balance sheets"
+          ]
+        },
+        {
+          "name": "BPI Accounts Receivable",
+          "features": [
+            "customer accounts",
+            "open invoices",
+            "incoming payments",
+            "customer statements"
+          ]
+        },
+        {
+          "name": "BPI Accounts Payable",
+          "features": [
+            "vendor accounts",
+            "outstanding liabilities",
+            "cash-flow obligations",
+            "check printing"
+          ]
+        },
+        {
+          "name": "BPI Inventory Control",
+          "features": [
+            "stock levels",
+            "purchase orders",
+            "journal entries for product movement",
+            "profitability reports"
+          ]
+        },
+        {
+          "name": "BPI Payroll",
+          "features": [
+            "employee hours",
+            "local/federal tax withholding",
+            "benefits",
+            "payroll check printing"
+          ]
+        }
+      ],
+      "technology_refs": [
+        "technology.bpi_relational_database",
+        "technology.aion_c_portability_framework",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "sold_separately": true,
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "launch_positioning": "Independent BPI Systems partner software, demonstrated after Abacus at NCC 1978. Separately licensed and optionally combined by dealers with Logix hardware and AION applications; never an automatically included Logix product.",
+      "specification": {
+        "company_and_support": "BPI retains product ownership, independent management, licensing, updates and specialist support; Adam investment and AION engineering cooperation are disclosed. Dealers provide first-line installation support; Logix supports hardware.",
+        "summary_export": {
+          "status": "Accepted launch requirement; qualification pending.",
+          "format": "Versioned delimited-text file on disk with named columns, period, currency, account identifiers, decimal amounts and control totals.",
+          "scope": "Selected balances or monthly totals imported into Abacus as planning inputs. No automatic write-back, concurrent execution or live database link. Close BPI before loading Abacus.",
+          "acceptance": "Reconcile record counts and control totals; validate rounding, quoting, disk-full errors, memory use and save/reopen. Prepared demo data is labelled."
+        },
+        "launch_acceptance": [
+          "Measured 48 KB workspace, disk capacity and supported disk configuration; 64 KB or extra drives only when qualified and separately quoted.",
+          "Posting consistency, correction history, disk-full handling and tested backup/restore.",
+          "Readable reports on launch display and supported printers; supported forms and paper documented.",
+          "Payroll jurisdictions, update process and maintenance responsibility explicitly documented."
+        ],
+        "commercial_policy": "Credit documented net amounts paid for eligible same-platform BPI module licences against one complete-suite upgrade, capped at current suite price; no cash refund, duplicate licence or training/setup credit. Retire credited module entitlements. Support and paid setup costs require separate budgets."
+      },
+      "id": "edition.bpi_suite.era",
+      "name": "BPI (AIONix edition)",
+      "product_ref": "software.product.bpi",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1980-05-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "technology.aionix_os_model"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "AIONix"
+    },
+    {
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "architecture": {
+        "client_server": true,
+        "server": "computer.artemis_pro",
+        "database": "Relational engine with the specified transaction, logging, checkpoint and recovery design; robustness and capacity remain subject to acceptance testing.",
+        "network_ref": "technology.logix_tcpip_lan",
+        "server_edition_ref": "edition.bpi_client_server.era_server"
+      },
+      "unspecified": [
+        "Final wire encoding and implementation language for queries",
+        "Measured transaction throughput and database size limits",
+        "Final disk durability implementation"
+      ],
+      "business_module_lineage": "software.bpi_suite",
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "BPI transactional client/server v1",
+          "architecture": "Thin Z80/ERA clients send bounded business operations to an Artemis PRO server. Query evaluation, indexes, validation, accounting posting and transactions execute on the server; clients do not fetch arbitrary database pages.",
+          "transactions": {
+            "concurrency": "Single serialized writer for v1 with short transactions and bounded reader locks; no long interactive transaction while a user edits a form.",
+            "commit": "Append checked log records and a commit marker, force them to durable storage, then acknowledge. Apply/replay committed changes idempotently.",
+            "recovery": "On startup validate checksums and recover committed log records; incomplete transactions never become visible. Use shadow page/index replacement or another explicitly validated torn-write-safe method.",
+            "failure": "Do not claim durable commit until disk/controller completion semantics are proven; no battery-backed cache is assumed.",
+            "log_format": "Redo-only changed-record/page after-images with transaction ID, sequence, length and checksum; the commit marker covers transaction record count and checksum. Persist duplicate-suppression outcomes in the same transaction.",
+            "buffer_policy": "Do not write uncommitted changes to database files (no-steal); cap transaction size to available transaction buffers.",
+            "checkpoint": "Write replacement pages and indexes to new locations, force them, then alternate checksummed generation-numbered root/checkpoint records. Retain the preceding valid root and necessary redo log until the new checkpoint is durable."
+          },
+          "protocol": {
+            "transport": "Length-framed requests over TCP; bounded messages and chunked results.",
+            "fields": [
+              "protocol version",
+              "authenticated session",
+              "durable request ID",
+              "operation",
+              "payload length",
+              "payload"
+            ],
+            "operations": [
+              "login",
+              "lookup",
+              "paged query",
+              "validate draft",
+              "post invoice/payment/journal",
+              "transaction status",
+              "report job",
+              "logout"
+            ],
+            "duplicate_suppression": "Store committed write request IDs and outcomes durably. After reconnect, clients query status or retry with the same ID; never post the same payment twice."
+          },
+          "data_integrity": [
+            "Amounts use explicitly scaled integers/decimal rules, never unspecified binary floating-point rounding.",
+            "Record currency, rounding, posting dates, account periods and unique document IDs.",
+            "Cross-module posting is atomic and produces an append-only audit record."
+          ],
+          "operations": [
+            "Role-based authorization and server-side input validation",
+            "Backup captures a consistent checkpoint plus required logs; test restoration onto a clean disk.",
+            "Bounded log growth, disk-full handling and operator-visible recovery status",
+            "Plan backups and report traffic around the negotiated shared 100/250/500/1000 kbit/s raw LAN budget and measured payload throughput; slower admitted hosts limit the whole network."
+          ],
+          "initial_limits": {
+            "server_ram_kb": 512,
+            "concurrent_sessions_target": 4,
+            "status": "Specified acceptance target, not measured capacity.",
+            "client_policy": "Bounded pages of results and forms; no entire-table download or whole-document duplication."
+          },
+          "acceptance_tests": [
+            "Power loss before/after commit acknowledgement",
+            "Lost acknowledgement and duplicate retry",
+            "Concurrent invoice/payment updates",
+            "Full disk, corrupt log tail and failed backup restore",
+            "48 KB Aurelia client resource budget"
+          ]
+        }
+      },
+      "id": "software.bpi_client_server",
+      "name": "BPI client-server (CP/M Client edition)",
+      "product_ref": "software.product.bpi",
+      "execution_target": "z80_cpm",
+      "role": "client",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1981-05-04"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia_networking"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "client-server",
+      "edition": "CP/M Client"
+    },
+    {
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "architecture": {
+        "client_server": true,
+        "server": "computer.artemis_pro",
+        "database": "Relational engine with the specified transaction, logging, checkpoint and recovery design; robustness and capacity remain subject to acceptance testing.",
+        "network_ref": "technology.logix_tcpip_lan",
+        "server_edition_ref": "edition.bpi_client_server.era_server"
+      },
+      "unspecified": [
+        "Final wire encoding and implementation language for queries",
+        "Measured transaction throughput and database size limits",
+        "Final disk durability implementation"
+      ],
+      "business_module_lineage": "software.bpi_suite",
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "BPI transactional client/server v1",
+          "architecture": "Thin Z80/ERA clients send bounded business operations to an Artemis PRO server. Query evaluation, indexes, validation, accounting posting and transactions execute on the server; clients do not fetch arbitrary database pages.",
+          "transactions": {
+            "concurrency": "Single serialized writer for v1 with short transactions and bounded reader locks; no long interactive transaction while a user edits a form.",
+            "commit": "Append checked log records and a commit marker, force them to durable storage, then acknowledge. Apply/replay committed changes idempotently.",
+            "recovery": "On startup validate checksums and recover committed log records; incomplete transactions never become visible. Use shadow page/index replacement or another explicitly validated torn-write-safe method.",
+            "failure": "Do not claim durable commit until disk/controller completion semantics are proven; no battery-backed cache is assumed.",
+            "log_format": "Redo-only changed-record/page after-images with transaction ID, sequence, length and checksum; the commit marker covers transaction record count and checksum. Persist duplicate-suppression outcomes in the same transaction.",
+            "buffer_policy": "Do not write uncommitted changes to database files (no-steal); cap transaction size to available transaction buffers.",
+            "checkpoint": "Write replacement pages and indexes to new locations, force them, then alternate checksummed generation-numbered root/checkpoint records. Retain the preceding valid root and necessary redo log until the new checkpoint is durable."
+          },
+          "protocol": {
+            "transport": "Length-framed requests over TCP; bounded messages and chunked results.",
+            "fields": [
+              "protocol version",
+              "authenticated session",
+              "durable request ID",
+              "operation",
+              "payload length",
+              "payload"
+            ],
+            "operations": [
+              "login",
+              "lookup",
+              "paged query",
+              "validate draft",
+              "post invoice/payment/journal",
+              "transaction status",
+              "report job",
+              "logout"
+            ],
+            "duplicate_suppression": "Store committed write request IDs and outcomes durably. After reconnect, clients query status or retry with the same ID; never post the same payment twice."
+          },
+          "data_integrity": [
+            "Amounts use explicitly scaled integers/decimal rules, never unspecified binary floating-point rounding.",
+            "Record currency, rounding, posting dates, account periods and unique document IDs.",
+            "Cross-module posting is atomic and produces an append-only audit record."
+          ],
+          "operations": [
+            "Role-based authorization and server-side input validation",
+            "Backup captures a consistent checkpoint plus required logs; test restoration onto a clean disk.",
+            "Bounded log growth, disk-full handling and operator-visible recovery status",
+            "Plan backups and report traffic around the negotiated shared 100/250/500/1000 kbit/s raw LAN budget and measured payload throughput; slower admitted hosts limit the whole network."
+          ],
+          "initial_limits": {
+            "server_ram_kb": 512,
+            "concurrent_sessions_target": 4,
+            "status": "Specified acceptance target, not measured capacity.",
+            "client_policy": "Bounded pages of results and forms; no entire-table download or whole-document duplication."
+          },
+          "acceptance_tests": [
+            "Power loss before/after commit acknowledgement",
+            "Lost acknowledgement and duplicate retry",
+            "Concurrent invoice/payment updates",
+            "Full disk, corrupt log tail and failed backup restore",
+            "48 KB Aurelia client resource budget"
+          ]
+        }
+      },
+      "id": "edition.bpi_client_server.era_client",
+      "name": "BPI client-server (AIONix Client edition)",
+      "product_ref": "software.product.bpi",
+      "execution_target": "era_aionix",
+      "role": "client",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.aionix_server"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "client-server",
+      "edition": "AIONix Client"
+    },
+    {
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "architecture": {
+        "client_server": true,
+        "server": "computer.artemis_pro",
+        "database": "Relational engine with the specified transaction, logging, checkpoint and recovery design; robustness and capacity remain subject to acceptance testing.",
+        "network_ref": "technology.logix_tcpip_lan",
+        "server_edition_ref": "edition.bpi_client_server.era_server"
+      },
+      "unspecified": [
+        "Final wire encoding and implementation language for queries",
+        "Measured transaction throughput and database size limits",
+        "Final disk durability implementation"
+      ],
+      "business_module_lineage": "software.bpi_suite",
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "BPI transactional client/server v1",
+          "architecture": "Thin Z80/ERA clients send bounded business operations to an Artemis PRO server. Query evaluation, indexes, validation, accounting posting and transactions execute on the server; clients do not fetch arbitrary database pages.",
+          "transactions": {
+            "concurrency": "Single serialized writer for v1 with short transactions and bounded reader locks; no long interactive transaction while a user edits a form.",
+            "commit": "Append checked log records and a commit marker, force them to durable storage, then acknowledge. Apply/replay committed changes idempotently.",
+            "recovery": "On startup validate checksums and recover committed log records; incomplete transactions never become visible. Use shadow page/index replacement or another explicitly validated torn-write-safe method.",
+            "failure": "Do not claim durable commit until disk/controller completion semantics are proven; no battery-backed cache is assumed.",
+            "log_format": "Redo-only changed-record/page after-images with transaction ID, sequence, length and checksum; the commit marker covers transaction record count and checksum. Persist duplicate-suppression outcomes in the same transaction.",
+            "buffer_policy": "Do not write uncommitted changes to database files (no-steal); cap transaction size to available transaction buffers.",
+            "checkpoint": "Write replacement pages and indexes to new locations, force them, then alternate checksummed generation-numbered root/checkpoint records. Retain the preceding valid root and necessary redo log until the new checkpoint is durable."
+          },
+          "protocol": {
+            "transport": "Length-framed requests over TCP; bounded messages and chunked results.",
+            "fields": [
+              "protocol version",
+              "authenticated session",
+              "durable request ID",
+              "operation",
+              "payload length",
+              "payload"
+            ],
+            "operations": [
+              "login",
+              "lookup",
+              "paged query",
+              "validate draft",
+              "post invoice/payment/journal",
+              "transaction status",
+              "report job",
+              "logout"
+            ],
+            "duplicate_suppression": "Store committed write request IDs and outcomes durably. After reconnect, clients query status or retry with the same ID; never post the same payment twice."
+          },
+          "data_integrity": [
+            "Amounts use explicitly scaled integers/decimal rules, never unspecified binary floating-point rounding.",
+            "Record currency, rounding, posting dates, account periods and unique document IDs.",
+            "Cross-module posting is atomic and produces an append-only audit record."
+          ],
+          "operations": [
+            "Role-based authorization and server-side input validation",
+            "Backup captures a consistent checkpoint plus required logs; test restoration onto a clean disk.",
+            "Bounded log growth, disk-full handling and operator-visible recovery status",
+            "Plan backups and report traffic around the negotiated shared 100/250/500/1000 kbit/s raw LAN budget and measured payload throughput; slower admitted hosts limit the whole network."
+          ],
+          "initial_limits": {
+            "server_ram_kb": 512,
+            "concurrent_sessions_target": 4,
+            "status": "Specified acceptance target, not measured capacity.",
+            "client_policy": "Bounded pages of results and forms; no entire-table download or whole-document duplication."
+          },
+          "acceptance_tests": [
+            "Power loss before/after commit acknowledgement",
+            "Lost acknowledgement and duplicate retry",
+            "Concurrent invoice/payment updates",
+            "Full disk, corrupt log tail and failed backup restore",
+            "48 KB Aurelia client resource budget"
+          ]
+        }
+      },
+      "id": "edition.bpi_client_server.era_server",
+      "name": "BPI client-server (AIONix Server edition)",
+      "product_ref": "software.product.bpi",
+      "execution_target": "era_aionix",
+      "role": "server",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 512,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.aionix_server"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": "client-server",
+      "edition": "AIONix Server"
+    },
+    {
+      "delivery": "16 KB XIP ROM system overlay / expansion cartridge",
+      "features": [
+        "text editor",
+        "simple disk browser",
+        "calculator",
+        "calendar/scheduler"
+      ],
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "description": "Separately offered 16 KB XIP ROM expansion cartridge with four applications: text editor, disk browser, calculator and calendar/scheduler. It calls TUI & services in the CP/M system cartridge. It does not contain a duplicate shared TUI library; application documents and state occupy RAM or disk storage.",
+      "subcomponents": [
+        {
+          "id": "editor",
+          "name": "Text editor",
+          "description": "Own text documents and editor commands, using the system editing controls, screen services and clipboard."
+        },
+        {
+          "id": "browser",
+          "name": "Disk browser",
+          "description": "Own disk/file browsing workflows, using system list controls, dialogs and file services."
+        },
+        {
+          "id": "calculator",
+          "name": "Calculator",
+          "description": "Own arithmetic operations and calculator state, using system input fields and clipboard services."
+        },
+        {
+          "id": "calendar",
+          "name": "Calendar / scheduler",
+          "description": "Own calendar records and scheduling workflows, using system forms, navigation and display services."
+        }
+      ],
+      "runtime_notes": [
+        "The cartridge remains a 16 KB product capacity; removing duplicate routines does not establish a measured free-space budget.",
+        "Uses one cartridge slot alongside the CP/M system cartridge.",
+        "Code executes from banked ROM where practical; writable application state is held in RAM.",
+        "Reusable TUI widgets, screen and input primitives, clipboard ownership and workspace mechanisms belong to the CP/M system cartridge.",
+        "Application-specific text editing, file browsing, calculation and scheduling logic remain in this cartridge.",
+        "The applications call the system TUI interface; they do not require their own copy of its library.",
+        "A resident workspace reserves RAM explicitly; the cartridge does not imply multitasking."
+      ],
+      "system_dependencies": [
+        {
+          "software_ref": "software.cpm_aurelia",
+          "component_id": "tui",
+          "name": "System TUI & services",
+          "description": "External dependency in the CP/M system cartridge: shared screen, input, editing controls, menus/forms, clipboard and workspace mechanisms."
+        }
+      ],
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "id": "software.business_tools_aurelia",
+      "name": "Business Tools (CP/M edition)",
+      "product_ref": "software.product.business_tools",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1978-06-05"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia"
+      ],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "CP/M",
+      "bom_assembly_refs": [
+        "assembly.media.software.business_tools_aurelia"
+      ]
+    },
+    {
+      "delivery": "Office Suite cartridge / Business Tools expansion cartridge",
+      "features": [
+        "file explorer",
+        "contact book",
+        "calendar/scheduler",
+        "task manager",
+        "text file editor",
+        "calculator",
+        "chat"
+      ],
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "portability_contract": {
+        "api_ref": "technology.logix_c_api",
+        "shared_logic": "Separate application/document algorithms from platform adapters.",
+        "display": "Query dimensions and attributes; use semantic colors and clipping.",
+        "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+        "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+        "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+      },
+      "id": "software.business_tools_artemis",
+      "name": "Business Tools (AIONix edition)",
+      "product_ref": "software.product.business_tools",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1980-05-19"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "technology.aionix_os_model"
+      ],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "AIONix",
+      "bom_assembly_refs": [
+        "assembly.media.software.business_tools_artemis"
+      ]
+    },
+    {
+      "features": [
+        "basic C libraries",
+        "structures",
+        "typedef",
+        "function pointers",
+        "documented 32-bit integer arithmetic",
+        "shared string and stream-I/O contracts",
+        "Shared Logix C/TUI/graphics headers and target libraries",
+        "ROM-aware linker and cartridge/disk output",
+        "ROM, RAM and stack-budget reports",
+        "Portability diagnostics where feasible"
+      ],
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "description": "Aurelia-hosted C development package with the Z80 backend, assembler/linker, startup code and target libraries for enhanced CP/M. Builds applications that discover display and memory capabilities at runtime.",
+      "toolchain": {
+        "host": [
+          "computer.aurelia",
+          "computer.aurelia_plus"
+        ],
+        "targets": [
+          "z80_cpm"
+        ],
+        "profiles": [
+          "aurelia_compatible",
+          "aurelia_plus_required"
+        ],
+        "components": [
+          "C compiler Z80 backend",
+          "Z80 assembler",
+          "linker",
+          "CP/M startup code",
+          "target runtime libraries",
+          "ROM/cartridge image tools"
+        ],
+        "language_contract_ref": "technology.logix_c_target_contract",
+        "runtime_contract_ref": "technology.logix_c_api",
+        "layout_tests": [
+          "40x25",
+          "80x25",
+          "monochrome"
+        ],
+        "resource_tests": [
+          "48 KB installed RAM",
+          "64 KB installed RAM",
+          "reserved common RAM and resident workspace"
+        ]
+      },
+      "technology_refs": [
+        "technology.logix_c_target_contract",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "id": "software.simple_c_z80",
+      "name": "Logix Simple C (CP/M edition)",
+      "product_ref": "software.product.simple_c_z80",
+      "execution_target": "z80_cpm",
+      "role": "development_tools",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1978-06-05"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "CP/M"
+    },
+    {
+      "contents": [
+        "Aurelia Technical Reference",
+        "Aurelia Programmer's Manual",
+        "Video Programmer's Guide",
+        "Expansion Card Developer Guide",
+        "FlexiBUS Developer Guide",
+        "Cartridge Developer Guide",
+        "SDK tools/software",
+        "Portable C language/ABI contract",
+        "Logix API v1 headers and service discovery guide",
+        "Capability-based display and TUI guide",
+        "Portable file-format and memory-handle conventions",
+        "40/80-column and monochrome examples",
+        "Target conformance and resource-budget test guidance",
+        "DMA physical-bank API, refresh/arbitration contract, upload ports and abort handling",
+        "Dedicated sprite SRAM and atomic descriptor-bank examples"
+      ],
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "technology_refs": [
+        "technology.logix_c_target_contract",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "roadmap_1979": "NCC 1979 clinics teach source portability using existing C/API/file-format contracts. No new-target compiler, public word size or ISA is released before NCC 1980.",
+      "id": "software.aurelia_sdk",
+      "name": "Logix Developer Package SDK (CP/M edition)",
+      "product_ref": "software.product.developer_sdk",
+      "execution_target": "z80_cpm",
+      "role": "development_tools",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1978-06-05"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "CP/M"
+    },
+    {
+      "relationship": "licensed third-party software developed in cooperation with AION / for Aurelia CP/M with TUI",
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "NCC 1979 — Apple II extensions / Microsoft BASIC for Aurelia",
+        "event_start_date": "1979-06-04"
+      },
+      "tui_integration": "Uses the shared Logix TUI interface and capability discovery. This does not imply that third-party BASIC implementation code is portable C.",
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api"
+      ],
+      "id": "software.microsoft_basic_aurelia",
+      "name": "Microsoft BASIC (CP/M edition)",
+      "product_ref": "software.product.microsoft_basic_aurelia",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1979-06-04"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1979-12-03"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": 48,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "CP/M"
+    },
+    {
+      "features": [
+        "C compiler",
+        "optimizer",
+        "IDE",
+        "shared portability libraries/templates for Aurelia and Artemis",
+        "support for adapting applications to a multitasking C environment",
+        "Native ERA and cross Z80 backends",
+        "Isolated target libraries and startup code",
+        "Named build profiles and separate output directories",
+        "Disk-image and cartridge-image generation",
+        "Memory-budget and portability reports",
+        "Regression profiles for 40-column, 80-column and monochrome displays"
+      ],
+      "technology_ref": "technology.aion_c_portability_framework",
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "description": "Artemis-hosted multi-target IDE. Produces native ERA/AIONix programs and Z80/enhanced-CP/M binaries for Aurelia and Aurelia+ from shared application projects.",
+      "toolchain": {
+        "host": [
+          "computer.artemis",
+          "computer.artemis_pro"
+        ],
+        "targets": [
+          "z80_cpm",
+          "era_aionix"
+        ],
+        "profiles": [
+          "aurelia_compatible",
+          "aurelia_plus_required",
+          "artemis_native"
+        ],
+        "target_isolation": "A Z80 build cannot link AIONix-only services or host libraries. Each target uses its own assembler/linker, startup code and runtime.",
+        "development_workflow": [
+          "Edit shared project on Artemis",
+          "Choose target profile",
+          "Compile and link with target libraries",
+          "Check RAM/ROM budgets and requirements",
+          "Package target disk or cartridge image",
+          "Run target conformance and application regression tests"
+        ],
+        "optional_development_features": [
+          "Z80 emulator",
+          "Remote execution/debugging on physical Aurelia"
+        ],
+        "optional_status": "Optional tools are not guaranteed launch components."
+      },
+      "technology_refs": [
+        "technology.logix_c_target_contract",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.aion_c_portability_framework",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "id": "software.aion_c_ide",
+      "name": "AION C IDE (AIONix edition)",
+      "product_ref": "software.product.aion_c_ide",
+      "execution_target": "era_aionix",
+      "role": "development_tools",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1980-05-19"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "technology.aionix_os_model"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "AIONix"
+    },
+    {
+      "contents": [
+        "Artemis Technical Reference",
+        "Artemis Programmer's Manual",
+        "Video Programmer's Guide",
+        "FlexiBUS Developer Guide",
+        "Expansion Card Developer Guide",
+        "Cartridge Developer Guide",
+        "SDK tools/software",
+        "Portable C language/ABI contract",
+        "Logix API v1 headers and service discovery guide",
+        "Capability-based display and TUI guide",
+        "Portable file-format and memory-handle conventions",
+        "40/80-column and monochrome examples",
+        "Target conformance and resource-budget test guidance"
+      ],
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "technology_refs": [
+        "technology.logix_c_target_contract",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "id": "software.artemis_sdk",
+      "name": "Logix Developer Package SDK (AIONix edition)",
+      "product_ref": "software.product.developer_sdk",
+      "execution_target": "era_aionix",
+      "role": "development_tools",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1980-05-19"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-05-04"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Compatibility contract; measured workspace and image budgets pending."
+      },
+      "dependency_refs": [
+        "technology.aionix_os_model"
+      ],
+      "delivery": "Not yet specified",
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "AIONix"
+    },
+    {
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
+        "event_start_date": "1979-12-03"
+      },
+      "description": "Manufacturer and independent-integrator kit for implementing the released Aurelia application environment on independently designed computers. Separate from the 1978 application-developer SDK.",
+      "contents": [
+        "Published processor, CP/M, memory, display, keyboard, storage and error-behaviour contracts",
+        "Reference runtime adapter source and redistribution terms",
+        "Diagnostics and conformance tests, including resource limits and failure cases",
+        "Abacus and Business Tools acceptance workloads: calculations, file interchange, printing, save/reopen",
+        "Porting and troubleshooting manuals, source listings and machine-readable disks",
+        "Versioned results forms and optional certification submission requirements"
+      ],
+      "technology_refs": [
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "compatibility_policy": {
+        "eligibility": "Any manufacturer or independent integrator may implement the published environment without a bespoke partnership or mandatory certification.",
+        "binary": "Existing Z80 binaries require compatible instruction execution and the specified OS/runtime and memory behaviour; CP/M alone is insufficient. Other processors need an appropriate port or execution solution.",
+        "hardware": "Native video, keyboards, disks and printers may be exposed through adapters. FlexiBUS and Logix video hardware are separate optional profiles. Full hardware clones may implement those published interfaces under their applicable terms.",
+        "applications": "Named supported platforms are tested configurations, not an exclusive permission list. Independently implemented environments may run properly licensed applications; certification identifies precisely what AION tested.",
+        "scope": "Released 8-bit Aurelia interfaces only. No future processor names, word size, ISA, binaries or architectural details before NCC 1980.",
+        "licensing": "Specification and self-test requirements are freely accessible. Kit fee covers media, manuals and updates supplied with the kit. Reference runtime adapters may be modified and redistributed without per-machine royalty under standard terms. No automatic licence to redistribute CP/M, application binaries, firmware or trademarks; obtain each required licence separately. Proprietary application source is not included.",
+        "delivery": "Printed manuals/source listings and disks; host/media conversion quoted separately.",
+        "certification": "Optional, configuration- and version-specific. Manufacturer-declared compatibility is distinct from AION-tested application compatibility. FlexiBUS electrical/protocol and Logix display tests are separate claims."
+      },
+      "id": "software.aurelia_compatibility_kit",
+      "name": "Aurelia Software Compatibility Kit (CP/M edition)",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Recorded requirements only; unspecified limits remain unknown."
+      },
+      "dependency_refs": [],
+      "delivery": "Not yet specified",
+      "support_status": "Qualification not recorded.",
+      "product_ref": "software.product.aurelia_compatibility_kit",
+      "version": null,
+      "edition": "CP/M"
+    },
+    {
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "COMDEX November 1981 — Team Edition premiere",
+        "event_start_date": "1981-11-19"
+      },
+      "description": "One Artemis PRO server entitlement and four concurrent network developer sessions. Hardware, network adapters, hub and backup media sold separately. C IDE version 2 runs locally after network loading; shared source/results live on the server.",
+      "features": [
+        "AIONix Server November 1981 services: users, groups, authentication, project permissions, home directories, quotas and administration",
+        "Repository: atomic multi-file commits, author/date/message, branches, release labels, diffs, rollback and comments tied to immutable revisions; isolated workspaces, saving is not committing",
+        "Collaboration: text channels, posts and replies with file/revision/commit references; shared calendar, meetings, invitations, tasks, owners, deadlines and milestones",
+        "C Development Environment 2: local Artemis ERA/Z80 builds; compact Aurelia/Aurelia+ TUI and local Z80 tools; queued server ERA/heavy builds",
+        "Initial targets CP/M/Z80 and AIONix/ERA with separate binaries, startup code and libraries; Breakthru TUI portability layer and target adapters",
+        "Reproducible builds record source revisions, compiler versions, build settings and target libraries",
+        "Network loader uses bounded transfers; acknowledged saves and recoverable workspaces after disconnect",
+        "Apple and Commodore target packages are future roadmap work; no launch support or binary compatibility claim"
+      ],
+      "specification": {
+        "server": "Artemis PRO, recommended 1 MiB; existing 5 MB disk supports bounded pilot projects only. Archive old history and rotate external floppy backups; larger qualified storage required for substantial projects and is not bundled or priced here.",
+        "clients": "Artemis, Aurelia and Aurelia+ with network upgrade; Aurelia compact tools use sequential overlays within its CP/M memory profile. No full suite resident in 48 KiB claim.",
+        "qualification": "Four concurrent developers is a validation target, not measured throughput. Gate release on commit recovery, access control, backup/restore, conflict handling and both target regression suites.",
+        "commercial_unit": {
+          "unit": "one server, four concurrent developer sessions",
+          "hardware_included": false,
+          "renewal": "No automatic paid renewal assumed; first-year support capped at 12 staff-hours. Further work quoted separately.",
+          "expansion": "Additional concurrency packs planned, not priced or counted as shipping offers."
+        },
+        "delivery_cost_assumptions": {
+          "disks": 12,
+          "printed_pages": 1000,
+          "onboarding_staff_hours": 20,
+          "first_year_support_staff_hours": 12,
+          "note": "One combined package; do not add its client/server editions or old IDE/SDK to its cost. Development/NRE excluded from unit cost."
+        },
+        "sponsored_deployment": "Autodesk whole-team deployment from late January 1982: team_development_program.json/autodesk_sponsored_deployment. Sponsor supplies hardware, qualified concurrency/storage and dedicated support beyond retail caps; retail entitlement remains unchanged.",
+        "adoption_pricing": {
+          "effective_from": "1981-11-19",
+          "reference_retail_usd": 1490.45,
+          "reference_basis": "Pre-change June 15 1982 Team Edition retail, previously used as the explicit November 1981 launch-price proxy. Not a historical market quotation.",
+          "reduction_pct": 50,
+          "retail_usd": 745.23,
+          "rounding": "1490.45 x 0.5, half-up to cents",
+          "scope": "Launch and subsequent modelled snapshots through 1982; no change to June 1981 prelaunch availability. No automatic expiry or second compounded reduction.",
+          "included_services_unchanged": true,
+          "rationale": "User-authorized rapid-adoption price; explicit exception to balanced pricing and the cost floor. Preserve one server/four concurrent users, 20h onboarding, 12h first-year support, media and documentation. Hardware remains separate.",
+          "loss_treatment": "Show actual negative unit contribution after dealer fees. Do not add the same shortfall a second time as a marketing expense in a future P&L. Forecast quantities and aggregate subsidy exposure require a separate demand review.",
+          "launch_cost_basis": "Use the first costed June 1982 delivery snapshot as a disclosed proxy for November 1981; no fabricated November cost study."
+        }
+      },
+      "technology_refs": [
+        "technology.aion_c_portability_framework",
+        "technology.logix_tui_standard",
+        "technology.logix_tcpip_lan"
+      ],
+      "id": "software.aion_development_team",
+      "name": "AION Development System (Team / AIONix Server edition)",
+      "product_ref": "software.product.aion_development_team",
+      "execution_target": "era_aionix",
+      "role": "team_server",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-11-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Release profiling required; server recommended 1 MiB, clients use existing platform memory profiles and bounded overlays. No measured minimum asserted."
+      },
+      "dependency_refs": [
+        "software.aionix_server"
+      ],
+      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
+      "support_status": "November 1981 scenario offering, subject to documented qualification gates.",
+      "version": null,
+      "edition": "Team / AIONix Server"
+    },
+    {
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "COMDEX November 1981 — Team Edition premiere",
+        "event_start_date": "1981-11-19"
+      },
+      "description": "One Artemis PRO server entitlement and four concurrent network developer sessions. Hardware, network adapters, hub and backup media sold separately. C IDE version 2 runs locally after network loading; shared source/results live on the server.",
+      "features": [
+        "AIONix Server November 1981 services: users, groups, authentication, project permissions, home directories, quotas and administration",
+        "Repository: atomic multi-file commits, author/date/message, branches, release labels, diffs, rollback and comments tied to immutable revisions; isolated workspaces, saving is not committing",
+        "Collaboration: text channels, posts and replies with file/revision/commit references; shared calendar, meetings, invitations, tasks, owners, deadlines and milestones",
+        "C Development Environment 2: local Artemis ERA/Z80 builds; compact Aurelia/Aurelia+ TUI and local Z80 tools; queued server ERA/heavy builds",
+        "Initial targets CP/M/Z80 and AIONix/ERA with separate binaries, startup code and libraries; Breakthru TUI portability layer and target adapters",
+        "Reproducible builds record source revisions, compiler versions, build settings and target libraries",
+        "Network loader uses bounded transfers; acknowledged saves and recoverable workspaces after disconnect",
+        "Apple and Commodore target packages are future roadmap work; no launch support or binary compatibility claim"
+      ],
+      "specification": {
+        "server": "Artemis PRO, recommended 1 MiB; existing 5 MB disk supports bounded pilot projects only. Archive old history and rotate external floppy backups; larger qualified storage required for substantial projects and is not bundled or priced here.",
+        "clients": "Artemis, Aurelia and Aurelia+ with network upgrade; Aurelia compact tools use sequential overlays within its CP/M memory profile. No full suite resident in 48 KiB claim.",
+        "qualification": "Four concurrent developers is a validation target, not measured throughput. Gate release on commit recovery, access control, backup/restore, conflict handling and both target regression suites.",
+        "commercial_unit": {
+          "unit": "one server, four concurrent developer sessions",
+          "hardware_included": false,
+          "renewal": "No automatic paid renewal assumed; first-year support capped at 12 staff-hours. Further work quoted separately.",
+          "expansion": "Additional concurrency packs planned, not priced or counted as shipping offers."
+        },
+        "delivery_cost_assumptions": {
+          "disks": 12,
+          "printed_pages": 1000,
+          "onboarding_staff_hours": 20,
+          "first_year_support_staff_hours": 12,
+          "note": "One combined package; do not add its client/server editions or old IDE/SDK to its cost. Development/NRE excluded from unit cost."
+        },
+        "sponsored_deployment": "Autodesk whole-team deployment from late January 1982: team_development_program.json/autodesk_sponsored_deployment. Sponsor supplies hardware, qualified concurrency/storage and dedicated support beyond retail caps; retail entitlement remains unchanged.",
+        "adoption_pricing": {
+          "effective_from": "1981-11-19",
+          "reference_retail_usd": 1490.45,
+          "reference_basis": "Pre-change June 15 1982 Team Edition retail, previously used as the explicit November 1981 launch-price proxy. Not a historical market quotation.",
+          "reduction_pct": 50,
+          "retail_usd": 745.23,
+          "rounding": "1490.45 x 0.5, half-up to cents",
+          "scope": "Launch and subsequent modelled snapshots through 1982; no change to June 1981 prelaunch availability. No automatic expiry or second compounded reduction.",
+          "included_services_unchanged": true,
+          "rationale": "User-authorized rapid-adoption price; explicit exception to balanced pricing and the cost floor. Preserve one server/four concurrent users, 20h onboarding, 12h first-year support, media and documentation. Hardware remains separate.",
+          "loss_treatment": "Show actual negative unit contribution after dealer fees. Do not add the same shortfall a second time as a marketing expense in a future P&L. Forecast quantities and aggregate subsidy exposure require a separate demand review.",
+          "launch_cost_basis": "Use the first costed June 1982 delivery snapshot as a disclosed proxy for November 1981; no fabricated November cost study."
+        }
+      },
+      "technology_refs": [
+        "technology.aion_c_portability_framework",
+        "technology.logix_tui_standard",
+        "technology.logix_tcpip_lan"
+      ],
+      "id": "edition.aion_development_team.era_client",
+      "name": "AION Development System (Team / AIONix Client edition)",
+      "product_ref": "software.product.aion_development_team",
+      "execution_target": "era_aionix",
+      "role": "development_client",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1981-11-19"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1981-11-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Release profiling required; server recommended 1 MiB, clients use existing platform memory profiles and bounded overlays. No measured minimum asserted."
+      },
+      "dependency_refs": [
+        "software.aionix_server"
+      ],
+      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
+      "support_status": "November 1981 scenario offering, subject to documented qualification gates.",
+      "version": null,
+      "edition": "Team / AIONix Client"
+    },
+    {
+      "sold_separately": true,
+      "introduced": {
+        "event_name": "COMDEX November 1981 — Team Edition premiere",
+        "event_start_date": "1981-11-19"
+      },
+      "description": "One Artemis PRO server entitlement and four concurrent network developer sessions. Hardware, network adapters, hub and backup media sold separately. C IDE version 2 runs locally after network loading; shared source/results live on the server.",
+      "features": [
+        "AIONix Server November 1981 services: users, groups, authentication, project permissions, home directories, quotas and administration",
+        "Repository: atomic multi-file commits, author/date/message, branches, release labels, diffs, rollback and comments tied to immutable revisions; isolated workspaces, saving is not committing",
+        "Collaboration: text channels, posts and replies with file/revision/commit references; shared calendar, meetings, invitations, tasks, owners, deadlines and milestones",
+        "C Development Environment 2: local Artemis ERA/Z80 builds; compact Aurelia/Aurelia+ TUI and local Z80 tools; queued server ERA/heavy builds",
+        "Initial targets CP/M/Z80 and AIONix/ERA with separate binaries, startup code and libraries; Breakthru TUI portability layer and target adapters",
+        "Reproducible builds record source revisions, compiler versions, build settings and target libraries",
+        "Network loader uses bounded transfers; acknowledged saves and recoverable workspaces after disconnect",
+        "Apple and Commodore target packages are future roadmap work; no launch support or binary compatibility claim"
+      ],
+      "specification": {
+        "server": "Artemis PRO, recommended 1 MiB; existing 5 MB disk supports bounded pilot projects only. Archive old history and rotate external floppy backups; larger qualified storage required for substantial projects and is not bundled or priced here.",
+        "clients": "Artemis, Aurelia and Aurelia+ with network upgrade; Aurelia compact tools use sequential overlays within its CP/M memory profile. No full suite resident in 48 KiB claim.",
+        "qualification": "Four concurrent developers is a validation target, not measured throughput. Gate release on commit recovery, access control, backup/restore, conflict handling and both target regression suites.",
+        "commercial_unit": {
+          "unit": "one server, four concurrent developer sessions",
+          "hardware_included": false,
+          "renewal": "No automatic paid renewal assumed; first-year support capped at 12 staff-hours. Further work quoted separately.",
+          "expansion": "Additional concurrency packs planned, not priced or counted as shipping offers."
+        },
+        "delivery_cost_assumptions": {
+          "disks": 12,
+          "printed_pages": 1000,
+          "onboarding_staff_hours": 20,
+          "first_year_support_staff_hours": 12,
+          "note": "One combined package; do not add its client/server editions or old IDE/SDK to its cost. Development/NRE excluded from unit cost."
+        },
+        "sponsored_deployment": "Autodesk whole-team deployment from late January 1982: team_development_program.json/autodesk_sponsored_deployment. Sponsor supplies hardware, qualified concurrency/storage and dedicated support beyond retail caps; retail entitlement remains unchanged.",
+        "adoption_pricing": {
+          "effective_from": "1981-11-19",
+          "reference_retail_usd": 1490.45,
+          "reference_basis": "Pre-change June 15 1982 Team Edition retail, previously used as the explicit November 1981 launch-price proxy. Not a historical market quotation.",
+          "reduction_pct": 50,
+          "retail_usd": 745.23,
+          "rounding": "1490.45 x 0.5, half-up to cents",
+          "scope": "Launch and subsequent modelled snapshots through 1982; no change to June 1981 prelaunch availability. No automatic expiry or second compounded reduction.",
+          "included_services_unchanged": true,
+          "rationale": "User-authorized rapid-adoption price; explicit exception to balanced pricing and the cost floor. Preserve one server/four concurrent users, 20h onboarding, 12h first-year support, media and documentation. Hardware remains separate.",
+          "loss_treatment": "Show actual negative unit contribution after dealer fees. Do not add the same shortfall a second time as a marketing expense in a future P&L. Forecast quantities and aggregate subsidy exposure require a separate demand review.",
+          "launch_cost_basis": "Use the first costed June 1982 delivery snapshot as a disclosed proxy for November 1981; no fabricated November cost study."
+        }
+      },
+      "technology_refs": [
+        "technology.aion_c_portability_framework",
+        "technology.logix_tui_standard",
+        "technology.logix_tcpip_lan"
+      ],
+      "id": "edition.aion_development_team.z80_client",
+      "name": "AION Development System (Team / CP/M Client edition)",
+      "product_ref": "software.product.aion_development_team",
+      "execution_target": "z80_cpm",
+      "role": "development_client",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1981-11-19"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1981-11-19"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Release profiling required; server recommended 1 MiB, clients use existing platform memory profiles and bounded overlays. No measured minimum asserted."
+      },
+      "dependency_refs": [
+        "software.cpm_aurelia_networking"
+      ],
+      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
+      "support_status": "November 1981 scenario offering, subject to documented qualification gates.",
+      "version": null,
+      "edition": "Team / CP/M Client"
+    },
+    {
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "features": [
+        "Sudoku",
+        "Solitaire (Klondike)",
+        "Spider",
+        "FreeCell",
+        "Mouse tutorials for pointing, clicking, dragging and both scrolling rollers",
+        "Keyboard alternatives, undo and clear rules"
+      ],
+      "positioning": "Mouse-focused recreational learning suite for the NCC 1982 mouse introduction; titles and release timing are deliberate alternate-history choices.",
+      "implementation": "Use standard TUI/display and pointing APIs. Colour distinguishes suits and selections but patterns/labels preserve monochrome usability; games remain usable on older supported monitors. Do not require the new 64 KiB card.",
+      "technology_refs": [
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device",
+        "technology.logix_tui_standard",
+        "technology.logix_display_api"
+      ],
+      "delivery": "diskette",
+      "validation": "Qualify puzzle validity/uniqueness, legal moves, deal generation, undo, input and resource budgets. Do not imply all randomly dealt card games are solvable.",
+      "id": "software.entertainment_suite",
+      "name": "AION Entertainment Suite (CP/M edition)",
+      "product_ref": "software.product.entertainment_suite",
+      "execution_target": "z80_cpm",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.aurelia",
+          "available_from": "1982-06"
+        },
+        {
+          "computer_ref": "computer.aurelia_plus",
+          "available_from": "1982-06"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Measured image/workspace budgets and minimum supported configurations pending."
+      },
+      "dependency_refs": [
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device"
+      ],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "CP/M"
+    },
+    {
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "features": [
+        "Sudoku",
+        "Solitaire (Klondike)",
+        "Spider",
+        "FreeCell",
+        "Mouse tutorials for pointing, clicking, dragging and both scrolling rollers",
+        "Keyboard alternatives, undo and clear rules"
+      ],
+      "positioning": "Mouse-focused recreational learning suite for the NCC 1982 mouse introduction; titles and release timing are deliberate alternate-history choices.",
+      "implementation": "Use standard TUI/display and pointing APIs. Colour distinguishes suits and selections but patterns/labels preserve monochrome usability; games remain usable on older supported monitors. Do not require the new 64 KiB card.",
+      "technology_refs": [
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device",
+        "technology.logix_tui_standard",
+        "technology.logix_display_api"
+      ],
+      "delivery": "diskette",
+      "validation": "Qualify puzzle validity/uniqueness, legal moves, deal generation, undo, input and resource budgets. Do not imply all randomly dealt card games are solvable.",
+      "id": "edition.entertainment_suite.era",
+      "name": "AION Entertainment Suite (AIONix edition)",
+      "product_ref": "software.product.entertainment_suite",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1982-06"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1982-06"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Measured image/workspace budgets and minimum supported configurations pending."
+      },
+      "dependency_refs": [
+        "technology.logix_tui_mouse",
+        "technology.flexibus_pointing_device"
+      ],
+      "support_status": "declared compatible; implementation conformance and performance not yet measured",
+      "version": null,
+      "edition": "AIONix"
+    },
+    {
+      "introduced": {
+        "event_name": "COMDEX 1982 — AutoCAD for Artemis target",
+        "event_start_date": "1982-11-29"
+      },
+      "product_status": "Accepted November 1982 COMDEX delivery target; release-quality demonstration and shipment acceptance are distinct gates.",
+      "sold_separately": true,
+      "description": "Independent Autodesk CAD product for AIONix/ERA, enabled by Adam-funded whole-team development equipment, Team Edition environment and integration support.",
+      "features": [
+        "Native 2D CAD with typed coordinate entry and validated numerical geometry",
+        "Dual-display commands/status and 800x600 drawing workspace",
+        "Explicit Logix Mouse integration and professional line/blit acceleration",
+        "Drawing exchange and supported pen-plotter output"
+      ],
+      "specification": {
+        "program_file": "team_development_program.json",
+        "program_key": "autodesk_sponsored_deployment",
+        "development_host": "Artemis PRO with 1 MiB RAM and qualified storage; whole-team workstations plus shared server/test capacity",
+        "minimum_shipping_configuration": "To be measured against representative drawings; do not advertise base 128/256 KiB Artemis as qualified automatically.",
+        "ownership": "Autodesk retains software ownership and non-exclusive cross-platform rights.",
+        "release_target": "1982-11-29; commercial shipment after acceptance, with any December fallback explicitly reported as schedule slippage, not the primary objective.",
+        "comdex_offering_ref": "offer.comdex82_artemis_autocad",
+        "professional_revision_date": "1982-11-29"
+      },
+      "technology_refs": [
+        "technology.artemis_professional_graphics",
+        "technology.logix_display_api",
+        "technology.flexibus_pointing_device"
+      ],
+      "id": "software.autocad_1_artemis",
+      "name": "Autodesk AutoCAD 1.0 (AIONix edition)",
+      "product_ref": "software.product.autocad_1_artemis",
+      "execution_target": "era_aionix",
+      "role": "application",
+      "platform_support": [
+        {
+          "computer_ref": "computer.artemis",
+          "available_from": "1982-11-29"
+        },
+        {
+          "computer_ref": "computer.artemis_pro",
+          "available_from": "1982-11-29"
+        }
+      ],
+      "minimum_resources": {
+        "installed_ram_kb": null,
+        "application_ram_bytes": null,
+        "rom_bytes": null,
+        "status": "Targeted platform support; measured minimum pending. Development/reference configuration is Artemis PRO with 1 MiB and qualified disk storage."
+      },
+      "dependency_refs": [
+        "software.aionix",
+        "technology.artemis_professional_graphics",
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17",
+        "device.logix_mouse"
+      ],
+      "delivery": "diskette",
+      "support_status": "November COMDEX target, qualification and shipment acceptance pending",
+      "version": "1.0",
+      "edition": "AIONix"
+    }
+  ]
+}

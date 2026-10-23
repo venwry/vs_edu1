@@ -1,10 +1,11 @@
+from data_paths import read_document, document_bytes
 """Validate shared Aurelia video resource budgets and BOM integration."""
 import json
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-catalog = json.loads((root / 'generated/catalogs/logix-aion-technical-catalog-v2.json').read_text())
-bom = json.loads((root / 'generated/catalogs/hardware-bom.json').read_text())
+catalog = read_document('generated/catalogs/logix-aion-technical-catalog-v2.json', root=root)
+bom = read_document('generated/catalogs/hardware-bom.json', root=root)
 records = {r['id']: r for items in catalog.values() if isinstance(items, list)
            for r in items if isinstance(r, dict) and 'id' in r}
 hosts = ['computer.aurelia', 'computer.aurelia_plus']
@@ -35,7 +36,7 @@ assert ram_part['vendor'] == 'AION Labs'
 assert ram_part['specification']['ports'] == ['single random read/write port']
 assert ram_part['specification']['serial_register_bits'] == 0
 # Storage budgets and fabrication costs are separate: both must reference the same dies.
-costs = json.loads((root / 'generated/models/manufacturing-costs.json').read_text())
+costs = read_document('generated/models/manufacturing-costs.json', root=root)
 models = costs['chip_fabrication_models']
 assert models[chip['id']]['1978']['die_area_mm2'] == 52
 assert models[ram_part['id']]['1978']['die_area_mm2'] == 18

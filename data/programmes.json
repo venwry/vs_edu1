@@ -1,0 +1,646 @@
+{
+  "$schema": "../schemas/collections/programmes.schema.json",
+  "schema_version": "3.0.0",
+  "product_strategy": {
+    "software_platform_policy_from_november_1980": {
+      "primary_focus": "32-bit Artemis software",
+      "8_bit_policy": "Aurelia/Aurelia+ receive simplified refreshes and maintenance rather than equal-feature major releases.",
+      "flagship_products": [
+        "software.abacus_3",
+        "software.pulse_3"
+      ]
+    },
+    "aurelia_1978_campaign": {
+      "definition_file": "aurelia_1978_campaign.json",
+      "tagline": "Logix Aurelia—a computer like no other. Your personal assistant in business.",
+      "event_refs": [
+        "event.aurelia_campaign_teaser",
+        "event.aurelia_campaign_advert",
+        "event.aurelia_campaign_preparation",
+        "event.aurelia_launch",
+        "event.ncc78_sessions_media",
+        "event.ncc78_sessions_media"
+      ],
+      "broadcast_policy": "Every Logix presentation at NCC 1978, including the premiere, both technical sessions, partner appearances, questions and any additional Logix sessions. Offer and supply the material free of charge to any television station wishing to broadcast it; Logix covers normal duplication and dispatch. Supply station-compatible broadcast copies on request.",
+      "accounting": "No fabricated campaign total and no automatic per-unit allocation. Reuse existing recurring course costs; do not charge Academy teaching twice. Free station supply creates no content-license revenue; reach and uptake are not guaranteed."
+    },
+    "competitor_reactions_file": "COMPETITOR_REACTIONS.md",
+    "ncc_1982_offering": {
+      "launch": "1982-06",
+      "event_ref": "event.ncc82_graphics_mouse",
+      "product_refs": [
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "device.logix_mouse",
+        "software.entertainment_suite"
+      ],
+      "positioning": "Colour business graphics and mouse interaction, with recreational tutorials. Later high-resolution second-display programme remains separate.",
+      "commercial_status": "Offering approved; detailed BOMs, prices, production qualification and forecasts not yet recalculated."
+    },
+    "ncc_1982": {
+      "campaign_file": "ncc_1982_campaign.json",
+      "headline": "Pointy ideas with a solid point.",
+      "offering_refs": [
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "device.logix_mouse",
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17",
+        "software.entertainment_suite",
+        "technology.logix_tui_mouse"
+      ],
+      "pricing_review": "ncc_1982_review.json",
+      "availability": "June colour/mouse offering and around-June professional hardware availability. AutoCAD is a November COMDEX development target, not a June shipping application."
+    },
+    "comdex_1982": {
+      "offering_ref": "offer.comdex82_artemis_autocad",
+      "campaign_file": "comdex_1982_campaign.json",
+      "report_page": "comdex-1982.html",
+      "cost_status": "November recurring costs and retail planning prices assessed separately; see comdex_1982_cost_review.json."
+    }
+  },
+  "review_scope": {
+    "deferred": [
+      "Electrical release details and measured performance",
+      "Fabrication/yield and production-capacity validation",
+      "Final commercial licence, maintenance and campaign budgets",
+      "Future consumer-TV implementation and sub-$100 costing"
+    ],
+    "era_area_assumption": "User targets an ERA die a little larger than 8086. This is an area target, not a transistor-count or timing equivalence. Quartz versus soda-lime mask choice remains a later process decision.",
+    "completed_assessments": "Pricing, sales, hardware BOM and memory-bus design have scenario assessments; this does not establish measured qualification or audited costs."
+  },
+  "market_reactions": {
+    "metadata": {
+      "status": "Accepted alternative-story events; selected dates are scenario dates, not newly established historical facts. Forecast effects are rough incremental judgement adjustments.",
+      "historical_sources": [
+        {
+          "url": "https://trs-80.com/sub-models-model2.htm",
+          "note": "May 1979 introduction and October US shipment window."
+        },
+        {
+          "url": "https://www.trs-80.org/model-2.html",
+          "note": "June NCC demonstration/order period and October delivery; sources differ on announcement wording."
+        },
+        {
+          "url": "https://www.bitsavers.org/magazines/Datamation/197910.pdf",
+          "note": "Contemporary Radio Shack advertisement, printed p.115: business positioning, service/training and Model II offering."
+        },
+        {
+          "url": "https://www.ibm.com/history/personal-computer",
+          "note": "Historical 1980 authorisation and August 1981 launch; the scenario substitutes an OS procurement/development delay."
+        },
+        {
+          "url": "https://www.federalreservehistory.org/essays/recession-of-1981-82",
+          "note": "July 1981–November 1982 recession; forecast coefficients are scenario assumptions."
+        }
+      ],
+      "forecast_horizon": "1982-12-31",
+      "policy_file": "tools/market_outlook.py"
+    }
+  },
+  "memory_manufacturing": {
+    "sources": [
+      {
+        "url": "https://www.lithoguru.com/scientist/litho_history/Optical_lithography_40_years_and_holding_Bruning_2007.pdf",
+        "use": "GCA stepper history/field, not AION yield or budget."
+      },
+      {
+        "url": "https://ieeexplore.ieee.org/document/1051630/",
+        "use": "1981 laser-programmable DRAM redundancy precedent; no published yield factor reused."
+      }
+    ]
+  },
+  "athena_1983_program": {
+    "open_decisions": [
+      "Athena maximum RAM and total sockets",
+      "CPU and board pinout, timing, power and thermal budget",
+      "BIOS capacity and firmware",
+      "Storage mechanisms, interface and formatted floppy capacity",
+      "Graphics/NIC compatibility on ERA²",
+      "External cache choice and DMA coherency",
+      "Monitor/keyboard bundles",
+      "AIONix2 implementation, legacy ABI qualification and measured fit within 256 KiB DRAM plus 256 KiB OS ROM",
+      "1983 manufacturing costs, investments and retail pricing",
+      "System ROM chip organization, assembly, access timing and patch/recovery qualification",
+      "Filesystem on-disk limits and power-loss recovery; user credential transitions"
+    ],
+    "status": "Accepted planning baseline; production and electrical qualification pending.",
+    "processor_ref": "part.era2",
+    "computer_refs": [
+      "computer.athena",
+      "computer.athena_server"
+    ],
+    "software_ref": "software.aionix2",
+    "scope": {
+      "os_specification": "Accepted phased AIONix2 specification in software.aionix2; implementation and 256 KiB DRAM fit pending qualification.",
+      "financial_policy": "No new retail prices, sales, investment or ROI calculated by this planning addition. Existing dated forecasts are unchanged.",
+      "memory_policy": "Shared 32-bit modules: 128 KiB two-rank 16K×1 modules preserve Athena 256 KiB; 256 KiB single-rank 2 µm 64K×1 modules preserve Server 1 MiB. Two modules per independently selected 32-bit capacity bank; qualification pending.",
+      "system_rom": "256 KiB minimum directly executable AIONix2 ROM bank plus separate EEPROM BIOS; physical assembly pending.",
+      "external_application_rom_cards": "No external cartridge slots added; system ROM is distinct from optional application cartridges."
+    },
+    "module_boms": [
+      {
+        "module_ref": "part.ram_128kb_x32",
+        "lines": [
+          {
+            "ref": "part.dram_16kbit",
+            "quantity": 64,
+            "unit": "each"
+          }
+        ],
+        "additional_functional_sets": [
+          "PCB and connector",
+          "Decoupling and bulk capacitors",
+          "Module/rank selection, address/control buffers and capacity identification"
+        ],
+        "cost_status": "Shared 32-bit module revision; current cost assessment and electrical qualification pending."
+      },
+      {
+        "module_ref": "part.ram_256kb_x32_2um",
+        "lines": [
+          {
+            "ref": "part.aion_4164_2um",
+            "quantity": 32,
+            "unit": "each"
+          }
+        ],
+        "additional_functional_sets": [
+          "PCB and connector",
+          "Decoupling and bulk capacitors",
+          "Module/rank selection, address/control buffers and capacity identification"
+        ],
+        "cost_status": "Shared 32-bit module revision; current cost assessment and electrical qualification pending."
+      }
+    ],
+    "computer_boms": [
+      {
+        "computer_ref": "computer.athena",
+        "lines": [
+          {
+            "ref": "part.era2",
+            "quantity": 1,
+            "unit": "each"
+          },
+          {
+            "ref": "part.ram_128kb_x32",
+            "quantity": 2,
+            "unit": "each"
+          },
+          {
+            "ref": "device.artemis_video_card_64kb",
+            "quantity": 1,
+            "unit": "each"
+          },
+          {
+            "ref": "device.network_card_artemis",
+            "quantity": 1,
+            "unit": "each"
+          }
+        ],
+        "functional_components": [
+          {
+            "name": "Internal HDD",
+            "quantity": 1,
+            "capacity_mb": 5,
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "Seagate Technology",
+            "manufacturer_part_number": "ST506",
+            "requirements": [
+              "Period sourcing candidate; qualify controller, power, mounting and capacity geometry before release. Seagate ST506: 5.0 MB formatted; April 1981 OEM manual."
+            ]
+          },
+          {
+            "name": "5.25-inch DS/DD FDD",
+            "quantity": 1,
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "Shugart Associates",
+            "manufacturer_part_number": "SA450",
+            "requirements": [
+              "DS/DD MFM candidate available before the 1983 offering. Formatted capacity remains unqualified."
+            ]
+          },
+          {
+            "name": "EEPROM BIOS",
+            "quantity": 1,
+            "capacity_kb": null,
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "AION Labs"
+          },
+          {
+            "name": "Mainboard, controllers, power supply, chassis and wiring",
+            "quantity": 1,
+            "unit": "functional set",
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "Logix"
+          },
+          {
+            "name": "Directly executable AIONix2 system ROM bank",
+            "quantity": 1,
+            "capacity_bytes": 262144,
+            "implementation_status": "Functional set; chip count, organization, mounting, timing and cost unqualified.",
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "Logix"
+          }
+        ],
+        "rom_card_count": 0,
+        "status": "Functional BOM only; system ROM included as uncosted functional set. No exhaustive production BOM or complete cost roll-up."
+      },
+      {
+        "computer_ref": "computer.athena_server",
+        "lines": [
+          {
+            "ref": "part.era2",
+            "quantity": 1,
+            "unit": "each"
+          },
+          {
+            "ref": "part.ram_256kb_x32_2um",
+            "quantity": 4,
+            "unit": "each"
+          },
+          {
+            "ref": "device.artemis_video_card_64kb",
+            "quantity": 1,
+            "unit": "each"
+          },
+          {
+            "ref": "device.network_card_artemis",
+            "quantity": 1,
+            "unit": "each"
+          }
+        ],
+        "functional_components": [
+          {
+            "name": "Internal HDD",
+            "quantity": 1,
+            "capacity_mb": 20,
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "Rodime",
+            "manufacturer_part_number": "RO202E",
+            "requirements": [
+              "Period sourcing candidate; qualify controller, power, mounting and capacity geometry before release. Rodime RO202E: 20.97 MB formatted, marketed as 20 MB; 1982 RO200E product specification."
+            ]
+          },
+          {
+            "name": "5.25-inch DS/DD FDD",
+            "quantity": 1,
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "Shugart Associates",
+            "manufacturer_part_number": "SA450",
+            "requirements": [
+              "DS/DD MFM candidate available before the 1983 offering. Formatted capacity remains unqualified."
+            ]
+          },
+          {
+            "name": "EEPROM BIOS",
+            "quantity": 1,
+            "capacity_kb": null,
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "AION Labs"
+          },
+          {
+            "name": "Mainboard, controllers, power supply, chassis and wiring",
+            "quantity": 1,
+            "unit": "functional set",
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "Logix"
+          },
+          {
+            "name": "Directly executable AIONix2 system ROM bank",
+            "quantity": 1,
+            "capacity_bytes": 262144,
+            "implementation_status": "Functional set; chip count, organization, mounting, timing and cost unqualified.",
+            "introduced": {
+              "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+              "event_start_date": "1983-05-16",
+              "date_precision": "day",
+              "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+            },
+            "manufacturer": "Logix"
+          }
+        ],
+        "rom_card_count": 0,
+        "status": "Functional BOM only; system ROM included as uncosted functional set. No exhaustive production BOM or complete cost roll-up."
+      }
+    ],
+    "launch": {
+      "event_ref": "event.ncc83_athena_premiere",
+      "conference": "NCC 1983",
+      "location": "Anaheim, California",
+      "conference_start": "1983-05-16",
+      "conference_end": "1983-05-19",
+      "premiere_date": "1983-05-16",
+      "date_source": "https://vtda.org/pubs/InformationDisplay_SIDJournal/V00N00-1982%20November.pdf",
+      "commercial_availability": "Gradual production after the conference; exact first shipment date pending qualification."
+    }
+  },
+  "manufacturing_programs": {
+    "metadata": {
+      "currency": "USD",
+      "basis": "Nominal 1978–1979 engineering planning allowances, not historical quotations or agreed contract prices. No present-value conversion.",
+      "scope": "One-time costs and optional supplier purchase scenarios separate from recurring product costs."
+    },
+    "smc_transfer": {
+      "agreement_date": "1978-07",
+      "initial_sales_date": "1979-10",
+      "licensed_part_refs": [
+        "part.flexibus_host_controller",
+        "part.flexibus_device_controller",
+        "part.aurelia_video_chip",
+        "part.aion_4116"
+      ],
+      "nre_status": "Illustrative budget, not a committed payment; AION/Logix fund transfer. No unit-cost allocation without production volumes.",
+      "nre_items": [
+        {
+          "name": "Process adaptation, layout and engineering support",
+          "low_usd": 90000,
+          "central_usd": 160000,
+          "high_usd": 280000
+        },
+        {
+          "name": "SMC-compatible mask sets, test structures and revisions",
+          "low_usd": 20000,
+          "central_usd": 40000,
+          "high_usd": 80000
+        },
+        {
+          "name": "Pilot wafers, characterization and corrective runs",
+          "low_usd": 30000,
+          "central_usd": 65000,
+          "high_usd": 130000
+        },
+        {
+          "name": "Probe/final-test development and reliability qualification",
+          "low_usd": 25000,
+          "central_usd": 45000,
+          "high_usd": 85000
+        },
+        {
+          "name": "Transfer documentation, training and travel",
+          "low_usd": 10000,
+          "central_usd": 20000,
+          "high_usd": 35000
+        }
+      ],
+      "nre_total_usd": {
+        "low": 175000,
+        "central": 330000,
+        "high": 610000
+      },
+      "nre_exclusions": [
+        "New fab equipment, facilities and major process-capacity expansion",
+        "Original AION chip development",
+        "Logix card design and driver development",
+        "Production inventory and working capital"
+      ],
+      "feasibility": "October 1979 initial sales plausible with characterized AION silicon, SMC-compatible masks by late 1978 and successful qualification. Family-wide availability/mature yield is not guaranteed. video RAM may require additional process investment beyond this allowance.",
+      "purchase_price_proxy": {
+        "central_multiplier": 1.6,
+        "low_multiplier": 1.2,
+        "high_multiplier": 2.4,
+        "inbound_freight_usd_per_chip": 0.25,
+        "basis": "Sensitivity relative to modeled AION internal cost, including SMC overhead/margin/capital recovery and embedded royalty. No exact royalty rate, quote or guaranteed cost advantage is inferred."
+      },
+      "sources": [
+        {
+          "url": "https://manuals.plus/m/e43becab466f1fc2ba1742e95b4f0645632eb5d5ac2aea60ac96975b1c99320c",
+          "use": "SMC 1979 catalog supports custom MOS, supplied-mask production and peripheral/display capability; does not substantiate these budgets or prove AION video RAM process compatibility."
+        }
+      ]
+    },
+    "ncc1979_card_refs": [
+      "device.apple2_expansion_card",
+      "device.s100_flexibus_card",
+      "device.apple2_video_card",
+      "device.s100_video_card"
+    ]
+  },
+  "aurelia_plus_aion_memory": {
+    "status": "Accepted planning scenario; production qualification remains required",
+    "source_commit": "7263e35dd2ed035b1a4880b3f3efc428f6486fad",
+    "maturity_multiplier": 0.85,
+    "development": "Existing 120 PM shared programme completed by 1979-Q3; existing 108 PM Aurelia+ integration programme includes qualification. No duplicate NRE.",
+    "capacity": "Rebuild wafer loading, tool counts, factory investment, staffing and logistics for modeled demand plus 10% installed good-output reserve; existing additional 5% fab engineering allowance and one-down redundancy retained.",
+    "effective_from": "1979-12-03",
+    "computer_ref": "computer.aurelia_plus",
+    "system_ram_chip_ref": "part.aion_4164",
+    "chip_count": 8,
+    "system_ram_kib": 64,
+    "die_area_mm2": 45
+  },
+  "team_development_program": {
+    "title": "AION Development System — Team Edition",
+    "launch_date": "1981-11-19",
+    "date_basis": "Selected November 1981 scenario launch day; not a sourced historical COMDEX opening date.",
+    "status": "Paid adoption cohorts and sponsorship planning provision integrated in the 1981–1983 sales/ROI reassessment.",
+    "autodesk_sponsored_deployment": {
+      "agreement_date": "1982-01-31",
+      "date_basis": "Selected alternate-history agreement day after the historical 30 January founding meeting; formally adopted by Autodesk after its 26 April incorporation.",
+      "objective": "Deliver AutoCAD 1.0 for Artemis/AIONix for the joint November 1982 COMDEX presentation; November release-quality build is the commitment, with commercial shipment subject to acceptance rather than automatically deferred to December.",
+      "sponsor": "Adam through Logix; AION Software and AION Labs provide development and hardware support.",
+      "commercial_terms": "Non-exclusive funded development. Autodesk retains its software ownership and cross-platform business; clear the underlying Interact contribution/porting rights with the founders, including Mike Riddle. Logix supplies distribution and joint marketing, without a source buyout or forced platform exclusivity.",
+      "team_environment": {
+        "workstations": "Supply an Artemis PRO with 1 MiB RAM, local storage and available display to each assigned developer, plus shared build/test and spare machines as the agreed staffing plan requires. No invented fixed team size.",
+        "software": "Install the entire AION Development System — Team Edition: C Development Environment 2, ERA compiler/linker/debugger and validated floating-point math library; source repository, branches/reviews, tasks, collaboration, reproducible builds, release labels and target testing.",
+        "network": "Supply network adapters, hub, cabling, configured accounts and project permissions, and dedicated Artemis PRO server capacity. Scale sponsored server/license deployments to the whole team within qualified concurrency; the retail four-session entitlement is not silently unlimited.",
+        "storage": "The standard 5 MB disk is inadequate as a presumed whole-team repository/build archive. Fund and qualify larger storage, additional volumes/servers, independent backup media, restore tests and off-machine source archives; capacities follow measured source/build/history budgets.",
+        "support": "Fund dedicated Autodesk engineering time, AION compiler/runtime and integration specialists, installation, training, documentation, replacement hardware, plotter access and on-site support through release. Retail onboarding/support-hour caps do not limit this separately sponsored agreement.",
+        "early_graphics": "January work uses available Artemis PRO displays and a stable software implementation of the graphics API. Supply 64 KiB/Color Pro engineering samples and mouse prototypes when qualified; do not make January work depend on the June professional hardware.",
+        "professional_handover": "Around June 1982 deliver the 128 KiB professional card and Logix Mono Pro 17 to the development and QA team, alongside the 64 KiB colour card/Color Pro 14 and mouse. This supersedes the earlier proposed January 17-inch prototype handover."
+      },
+      "acceptance": [
+        "Native AIONix/ERA build with reliable floating-point geometry and typed coordinate entry",
+        "Dual-display driver with colour command/status screen and 800x600 drawing canvas; independent palettes and explicit input focus",
+        "Explicit CAD mouse integration; standard TUI mouse support alone is insufficient",
+        "Drawing load/save and DXF exchange tests against the other supported AutoCAD builds",
+        "Supported pen-plotter output and physical drawing verification",
+        "Measured RAM, storage, redraw and stability requirements on the qualified configuration; backup/restore and reproducible release build",
+        "Feature baseline agreed with Autodesk; no automatic import of later AutoCAD dimensioning, object-snap or 3D features"
+      ],
+      "funding": "Adam commits to supplying the staffing, equipment, licences and integration resources required by the agreed delivery plan. No arbitrary dollar ceiling or fabricated cost estimate; procurement and staffing are reviewed against the November objective.",
+      "financial_boundary": "Sponsorship planning provision and conditional CAD demand are recorded in sales_reassessment_inputs.json. Sponsored hardware and deployment do not count as retail Team licences; Autodesk licence receipts remain independent. Final staffing/procurement approval remains open; the provision is not a funding cap.",
+      "historical_sources": [
+        "https://www.fourmilab.ch/fourmilog/archives/2017-01/001653.html",
+        "https://fourmilab.ch/autofile/e5/chapter2_11.html",
+        "https://fourmilab.ch/autofile/e5/chapter2_115.html"
+      ],
+      "historical_distinction": "Historical COMDEX introduction was 29 November; historical AutoCAD 1.0 shipment was December 1982. The funded Artemis release target is an explicit alternate-history acceleration.",
+      "product_refs": [
+        "computer.artemis_pro",
+        "software.aion_development_team",
+        "software.autocad_1_artemis",
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17",
+        "device.logix_mouse"
+      ],
+      "comdex_offering_ref": "offer.comdex82_artemis_autocad",
+      "professional_hardware_revision": "COMDEX November revision adds explicit inherited modes, palette sequencing and five-sprite compatibility; preserve June development handover. See dated revisions in the catalog."
+    },
+    "financial_boundary": "The prior freeze is lifted by user authorization. Development and campaign provisions are reconciled against existing funded capacity; recurring delivery and support remain unit costs.",
+    "pending_investment_costs": [
+      {
+        "id": "team_development",
+        "period": "1980-12 to 1981-11",
+        "category": "software development",
+        "basis": "20 engineer-equivalents × 12 months × $4,000 loaded monthly allowance",
+        "usd": 960000
+      },
+      {
+        "id": "team_qualification",
+        "period": "1981-02 to 1981-11",
+        "category": "QA and compatibility",
+        "basis": "6 QA equivalents × 10 months × $3,000 loaded monthly allowance",
+        "usd": 180000
+      },
+      {
+        "id": "team_documentation",
+        "period": "1981-04 to 1981-11",
+        "category": "documentation",
+        "basis": "3 technical writers × 8 months × $2,500 loaded monthly allowance",
+        "usd": 60000
+      },
+      {
+        "id": "team_development_contingency",
+        "period": "1981",
+        "category": "development contingency",
+        "basis": "15% of $1,200,000 development/QA/documentation subtotal",
+        "usd": 180000
+      }
+    ],
+    "campaign_costs": [
+      {
+        "id": "team_pilots",
+        "event_ref": "event.team_pilots",
+        "period": "1981-09",
+        "category": "reference-site pilot campaign",
+        "basis": "6 pilots × $5,000 deployment/demo allowance; no sales conversion assumed",
+        "usd": 30000
+      },
+      {
+        "id": "team_dealer_training",
+        "event_ref": "event.team_dealer_training",
+        "period": "1981-10",
+        "category": "dealer training and press kits",
+        "basis": "10 sessions × $4,500",
+        "usd": 45000
+      },
+      {
+        "id": "team_comdex",
+        "event_ref": "event.team_launch",
+        "period": "1981-11",
+        "category": "COMDEX booth, demonstrations and travel",
+        "basis": "$45,000 booth/AV + $25,000 travel + $20,000 demonstrations/print",
+        "usd": 90000
+      },
+      {
+        "id": "team_followup",
+        "event_ref": "event.team_followup",
+        "period": "1981-12 to 1982-02",
+        "category": "90-day workshops and trade advertising",
+        "basis": "3 months × $25,000; no leads or sales uplift assumed",
+        "usd": 75000
+      },
+      {
+        "id": "team_campaign_contingency",
+        "period": "1981-09 to 1982-02",
+        "category": "marketing contingency",
+        "basis": "15% of $240,000 campaign subtotal",
+        "usd": 36000
+      }
+    ],
+    "totals": {
+      "development_provision_usd": 1380000,
+      "campaign_provision_usd": 276000,
+      "gross_pending_provision_usd": 1656000,
+      "incremental_investment_to_book_usd": "Calculated in the linked reconciliations, not gross budget added twice."
+    },
+    "assumptions": "All staffing, hours, prices and campaign allowances are explicit alternative-history planning assumptions, not supplier quotes or historical facts.",
+    "financial_integration": {
+      "development_treatment": "Gross budget less allocated existing payroll; remainder expensed in industrial ledger.",
+      "development_reconciliation": "industrial_investment_1974_1981.json: team_development_reconciliation",
+      "campaign_reconciliation": "roi_1974_1980.json: team_campaign_reconciliation",
+      "contingency": "Full budget provision included as conservative planned expense; not a claim of realized spending.",
+      "launch_price": "Explicit $745.23 launch and 1982 adoption price: 50% of frozen $1490.45 prior June-1982/November-launch proxy. Delivery costs unchanged; unit loss is disclosed; existing demand and ROI outputs predate this policy."
+    },
+    "adoption_pricing": {
+      "effective_from": "1981-11-19",
+      "reference_retail_usd": 1490.45,
+      "reference_basis": "Pre-change June 15 1982 Team Edition retail, previously used as the explicit November 1981 launch-price proxy. Not a historical market quotation.",
+      "reduction_pct": 50,
+      "retail_usd": 745.23,
+      "rounding": "1490.45 x 0.5, half-up to cents",
+      "scope": "Launch and subsequent modelled snapshots through 1982; no change to June 1981 prelaunch availability. No automatic expiry or second compounded reduction.",
+      "included_services_unchanged": true,
+      "rationale": "User-authorized rapid-adoption price; explicit exception to balanced pricing and the cost floor. Preserve one server/four concurrent users, 20h onboarding, 12h first-year support, media and documentation. Hardware remains separate.",
+      "loss_treatment": "Show actual negative unit contribution after dealer fees. Do not add the same shortfall a second time as a marketing expense in a future P&L. Forecast quantities and aggregate subsidy exposure require a separate demand review.",
+      "launch_cost_basis": "Use the first costed June 1982 delivery snapshot as a disclosed proxy for November 1981; no fabricated November cost study."
+    }
+  },
+  "artemis_tiers": {
+    "status": "Accepted planning scenario; electrical qualification pending",
+    "artemis_128": {
+      "system_ram_kib": 128,
+      "video_card_ref": "device.artemis_video_card_16kb",
+      "monitor_refs": [
+        "device.mono_monitor_2",
+        "device.color_monitor_2"
+      ]
+    },
+    "artemis_256": {
+      "system_ram_kib": 256,
+      "system_ram_chip_ref": "part.aion_4164",
+      "system_ram_chip_count": 32,
+      "video_card_ref": "device.artemis_video_card",
+      "monitor_refs": [
+        "device.mono_pro",
+        "device.color_monitor_2"
+      ]
+    },
+    "pro_sourcing_changed": false
+  }
+}

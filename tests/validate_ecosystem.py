@@ -1,9 +1,10 @@
+from data_paths import read_document, document_bytes, document_text
 from data_paths import resolve_path
 """Cross-model checks for the DRI, NCC 1979 cards and independent sourcing revision."""
 import hashlib, json, math
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 s=read('generated/catalogs/logix-aion-story.json');t=read('generated/catalogs/logix-aion-technical-catalog-v2.json');b=read('generated/catalogs/hardware-bom.json');c=read('generated/models/manufacturing-costs.json');p=read('generated/catalogs/manufacturing-programs.json')
 e={e['id']:e for phase in s['phases'] for e in phase['events']}
 r={x['id']:x for v in t.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id' in x}
@@ -48,5 +49,5 @@ for alt in c['supplier_scenarios']['cards']:
   # Internal fabrication labor disappears for replaced chips; purchase price is material.
   assert v['breakdown_usd']['workforce']<base['breakdown_usd']['workforce']
   assert v['breakdown_usd']['bom_materials']>base['breakdown_usd']['bom_materials']
-for file,digest in c['metadata']['source_sha256'].items():assert hashlib.sha256((R/resolve_path(file)).read_bytes()).hexdigest()==digest
+for file,digest in c['metadata']['source_sha256'].items():assert hashlib.sha256(document_bytes(resolve_path(file), root=R)).hexdigest()==digest
 print('PASS: partial dates, founding capital, all three launch offers, exact silicon quantities, deferred 6502, SMC date gates and replacement costs, NRE separation and generated-input hashes.')

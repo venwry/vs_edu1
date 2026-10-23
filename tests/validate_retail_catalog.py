@@ -1,16 +1,17 @@
+from data_paths import read_document, document_bytes, document_text
 from data_paths import resolve_path
 """Validate the effective catalogue, price ceilings and incomplete-package labels."""
 import hashlib
 import json
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-x=json.loads((R/'generated/models/retail-catalog-1982-results.json').read_text())
-m=json.loads((R/'generated/models/pricing-results.json').read_text())
+x=read_document('generated/models/retail-catalog-1982-results.json', root=R)
+m=read_document('generated/models/pricing-results.json', root=R)
 assert len(x['solutions'])==9 and len(x['upgrades'])==5
 assert x['effective_from']=='1982-11-29'
 assert len({p['id'] for p in x['solutions']+x['upgrades']})==14
 for filename,digest in x['provenance'].items():
-    assert hashlib.sha256((R/resolve_path(filename)).read_bytes()).hexdigest()==digest
+    assert hashlib.sha256(document_bytes(resolve_path(filename), root=R)).hexdigest()==digest
 for p in x['solutions']+x['upgrades']:
     v=p['pricing']
     if p['unpriced_requirements']:assert not v['complete_price']

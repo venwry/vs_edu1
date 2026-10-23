@@ -33,7 +33,7 @@ window.setupFamilyControls=function(tech,page){
  const path=location.pathname.split('/').pop()||'index.html';for(const a of document.querySelectorAll('.atlas-header a'))if(a.getAttribute('href')===path)a.setAttribute('aria-current','page');
  const host=document.getElementById('site-details');if(!host)return;
  try{
-  const get=async p=>{const r=await fetch(p);if(!r.ok)throw Error('Unable to load '+p);return r.json();};
+  const get=async p=>{const r=await DataStore.fetch(p);if(!r.ok)throw Error('Unable to load '+p);return r.json();};
   const [site,tech,bom,cost]=await Promise.all(['generated/catalogs/site-pages.json','generated/catalogs/logix-aion-technical-catalog-v2.json','generated/catalogs/hardware-bom.json','generated/models/manufacturing-costs.json'].map(get));
   const page=site.pages.find(p=>p.id===host.dataset.page);if(!page)return;
   const records=Object.fromEntries(Object.values(tech).filter(Array.isArray).flat().filter(x=>x?.id).map(x=>[x.id,x]));

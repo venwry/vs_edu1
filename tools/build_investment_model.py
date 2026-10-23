@@ -1,3 +1,4 @@
+from data_store import read_document, document_bytes, document_text
 import json, math, hashlib, calendar
 from pathlib import Path
 from collections import defaultdict
@@ -5,8 +6,7 @@ from memory_manufacturing import policy as memory_policy
 from market_outlook import POLICY, reassess, team_units, team_quarter_budget
 ROOT=Path(__file__).resolve().parent.parent
 S=ROOT; OUT=ROOT
-from data_catalog import manifest as data_manifest
-def load(n):return json.load(open(S/data_manifest()['paths'].get(n+'.json', n+'.json')))
+def load(n):return read_document(n+'.json',root=S)
 sales=load('sales_forecast'); costs=load('manufacturing_costs'); cat=load('logix_aion_technical_catalog_v2'); price=load('pricing_results')
 cp={x['id']:x for x in costs['products']}; pp={x['id']:x for x in price['products']}; chips=costs['chip_fabrication_models']
 entities=['Logix','AION Labs','AION Software','DRI','BPI']
@@ -73,7 +73,7 @@ for work in memory_policy()['engineering_programs']:
  prog(work['id'],work['entity'],work['start'],work['end'],work['person_months'],work['product_refs'],work['scope'])
 # Recurring software support/compatibility sustaining engineering, separate from initial development.
 for e,pm in [('AION Software',210),('DRI',96),('BPI',90),('Logix',96)]:prog('sustain_'+e,e,'1978-Q3','1981-Q4',pm,[],'Maintenance, documentation, release engineering and compatibility stewardship through 1981 only; 1982 extension covered by retained payroll; further obligations excluded')
-source_refs=[dict(path=str(p.relative_to(S)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),url='https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/'+p.name) for p in [S/n for n in ['generated/models/sales-forecast.json','generated/models/manufacturing-costs.json','generated/catalogs/logix-aion-technical-catalog-v2.json','generated/models/pricing-results.json','generated/catalogs/hardware-bom.json','generated/catalogs/logix-aion-story.json','generated/catalogs/manufacturing-programs.json','generated/catalogs/memory-manufacturing.json','baselines/memory-manufacturing-baseline.json','generated/catalogs/team-development-program.json','tools/market_outlook.py','generated/catalogs/sales-model-inputs.json']]]
+source_refs=[dict(path=str(p.relative_to(S)),sha256=hashlib.sha256(document_bytes(str(p.relative_to(S)),root=S)).hexdigest(),url='https://github.com/venwry/vs_edu1/blob/52662752fae4abf14ce6a8adab2e4554ea932677/'+p.name) for p in [S/n for n in ['generated/models/sales-forecast.json','generated/models/manufacturing-costs.json','generated/catalogs/logix-aion-technical-catalog-v2.json','generated/models/pricing-results.json','generated/catalogs/hardware-bom.json','generated/catalogs/logix-aion-story.json','generated/catalogs/manufacturing-programs.json','generated/catalogs/memory-manufacturing.json','baselines/memory-manufacturing-baseline.json','generated/catalogs/team-development-program.json','tools/market_outlook.py','generated/catalogs/sales-model-inputs.json']]]
 monthly={r['month']:{'products':r['products'],'basis':r['basis']} for r in next(s for s in sales['scenarios'] if s['id']=='central')['monthly'] if r['computer_units']}
 sensitivities=[]
 for scenario in sales['scenarios']:
@@ -347,7 +347,7 @@ print(json.dumps({'annual':summary,'fab':[{k:v for k,v in s.items() if k!='tools
 template=ROOT/'tools/industrial_investment_template.html'
 if template.exists():
  import html
- site=json.loads((ROOT/'generated/catalogs/site-pages.json').read_text())
+ site=read_document('generated/catalogs/site-pages.json', root=ROOT)
  pages={x['id']:x for x in site['pages']}
  navigation=''.join('<a href="'+html.escape(pages[i]['path'],quote=True)+'"'+(' aria-current="page"' if i=='industrial-investment' else '')+'>'+html.escape(pages[i]['title'])+'</a>' for i in site['navigation'])
  (OUT/'industrial_investment_1974_1981.html').write_text(template.read_text().replace('__PROJECT_NAV__',navigation).replace('__MODEL__',json.dumps(model,indent=2).replace('</','<\\/')))

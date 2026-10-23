@@ -3,14 +3,14 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const {JSDOM,VirtualConsole}=require('jsdom');
 const root=path.resolve(__dirname,'..'),input=process.env.BASELINE_ROOT||root;
-const paths=JSON.parse(fs.readFileSync(path.join(root,'data/manifest.json'),'utf8')).paths;
+const paths=JSON.parse(fs.readFileSync(path.join(root,'schemas/data-registry.json'),'utf8')).legacy_paths;
 const baselinePath=path.join(__dirname,'page-content-reorganized.json');
-const normalize=s=>{for(const [old,current] of Object.entries(paths))s=s.split(current).join(old);return s.replace(/\s+/g,' ').trim();};
+const normalize=s=>{for(const [old,current] of Object.entries(paths).sort((a,b)=>b[1].length-a[1].length)){s=s.split(current).join(old);if(current.startsWith('generated/catalogs/'))s=s.split('data/view.html?view='+current.split('/').pop().replace(/\.json$/,'')).join(old);}return s.replace(/\s+/g,' ').trim();};
 async function inspect(file){
  const errors=[],requests=[];const vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));
  const dom=new JSDOM(fs.readFileSync(path.join(input,file),'utf8'),{url:'https://atlas.test/'+file,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc});const w=dom.window;
  w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};
- w.fetch=async url=>{const name=String(url).replace(/^\.\//,'');requests.push(name);return {ok:fs.existsSync(path.join(input,name)),json:async()=>JSON.parse(fs.readFileSync(path.join(input,name),'utf8'))};};
+ w.fetch=async url=>{const name=String(url).replace(/^\.\//,'');requests.push(name);return {ok:fs.existsSync(path.join(input,name))||name.startsWith('generated/catalogs/'),json:async()=>require('../data-store.js').read(name,input)};};
  for(const script of w.document.querySelectorAll('script')){
   if(script.type&&script.type!=='text/javascript')continue;if(script.textContent.includes('location.replace(target.href)'))continue;
   if(script.src){const name=new URL(script.src).pathname.slice(1);w.eval(fs.readFileSync(path.join(input,name),'utf8'));}else w.eval(script.textContent);

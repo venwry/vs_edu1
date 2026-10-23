@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "memory_manufacturing"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/manufacturing-processes.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "memory_manufacturing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "era_policy",
+        "memory_recipes",
+        "selection_policy",
+        "repair_model",
+        "qualification",
+        "quarterly_process_envelope",
+        "envelope_limits"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "era_policy": {
+          "type": "string"
+        },
+        "memory_recipes": {
+          "type": "array"
+        },
+        "selection_policy": {
+          "type": "string"
+        },
+        "repair_model": {
+          "type": "string"
+        },
+        "qualification": {
+          "type": "array"
+        },
+        "quarterly_process_envelope": {
+          "type": "array"
+        },
+        "envelope_limits": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

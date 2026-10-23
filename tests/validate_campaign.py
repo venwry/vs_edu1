@@ -1,9 +1,10 @@
+from data_paths import read_document, document_bytes, document_text
 """Cross-file campaign dates, presentation order and variable-credit accounting."""
 import json,math
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
-def read(n):return json.loads((R/n).read_text())
+def read(n):return read_document(n, root=R)
 c=read('generated/catalogs/aurelia-1978-campaign.json');s=read('generated/catalogs/logix-aion-story.json');t=read('generated/catalogs/logix-aion-technical-catalog-v2.json');p=read('generated/models/pricing-results.json')
 e={e['id']:e for phase in s['phases'] for e in phase['events']}
 r={x['id']:x for v in t.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id'in x}

@@ -1,10 +1,11 @@
+from data_store import read_document, document_bytes, document_text
 """Build current and ten dated retail views without rewriting historical pricing snapshots."""
 import hashlib
 import json
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 R = Path(__file__).resolve().parents[1]
-load = lambda p: json.loads((R / p).read_text())
+load = lambda p: read_document(p, root=R)
 D = lambda n: Decimal(str(n))
 money = lambda n: float(D(n).quantize(D('.01'), rounding=ROUND_HALF_UP))
 config = load('generated/catalogs/retail-catalog-1982.json')
@@ -225,6 +226,6 @@ for date,view in output['snapshots'].items():
    if date>='1981-05-04':card['includes'].append('Standard network interface')
    if card['id']=='budget_hdd':card['includes'].append('5 MB qualified hard-disk subsystem with enclosure, power and interface')
 output['snapshots']=dict(sorted(output['snapshots'].items()))
-output['provenance'] = {p:hashlib.sha256((R/p).read_bytes()).hexdigest() for p in ['generated/catalogs/retail-catalog-1982.json','generated/models/pricing-results.json']}
+output['provenance'] = {p:hashlib.sha256(document_bytes(p, root=R)).hexdigest() for p in ['generated/catalogs/retail-catalog-1982.json','generated/models/pricing-results.json']}
 (R/'generated/models/retail-catalog-1982-results.json').write_text(json.dumps(output,indent=2,ensure_ascii=False)+'\n')
 print('Built current catalogue and June 15 and December 15 views for 1978–1982; historical prices unchanged.')

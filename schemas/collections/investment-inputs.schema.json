@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "artemis_display_revision",
+    "memory_manufacturing",
+    "manufacturing_programs"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/investment-inputs.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "artemis_display_revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "effective_from",
+        "mono_pro_artemis_bundle_share",
+        "mono_pro_pro_console_share",
+        "demand_uplift",
+        "demand_basis",
+        "engineering_person_months",
+        "incremental_marketing_usd",
+        "historical_anchor_url",
+        "crt_status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "effective_from": {
+          "type": "string"
+        },
+        "mono_pro_artemis_bundle_share": {
+          "type": "number"
+        },
+        "mono_pro_pro_console_share": {
+          "type": "number"
+        },
+        "demand_uplift": {
+          "type": "object"
+        },
+        "demand_basis": {
+          "type": "string"
+        },
+        "engineering_person_months": {
+          "type": "object"
+        },
+        "incremental_marketing_usd": {
+          "type": "object"
+        },
+        "historical_anchor_url": {
+          "type": "string"
+        },
+        "crt_status": {
+          "type": "string"
+        }
+      }
+    },
+    "memory_manufacturing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capital_schedule",
+        "capital_basis",
+        "engineering_programs",
+        "future_engineering",
+        "future_engineering_basis"
+      ],
+      "properties": {
+        "capital_schedule": {
+          "type": "array"
+        },
+        "capital_basis": {
+          "type": "string"
+        },
+        "engineering_programs": {
+          "type": "array"
+        },
+        "future_engineering": {
+          "type": "array"
+        },
+        "future_engineering_basis": {
+          "type": "string"
+        }
+      }
+    },
+    "manufacturing_programs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dri_founding"
+      ],
+      "properties": {
+        "dri_founding": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

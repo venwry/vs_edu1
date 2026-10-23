@@ -1,0 +1,2050 @@
+{
+  "$schema": "../schemas/collections/standards.schema.json",
+  "schema_version": "3.0.0",
+  "technologies": [
+    {
+      "id": "technology.flexibus",
+      "name": "FlexiBUS",
+      "category": "peripheral_communication_bus",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "owner": "Logix",
+      "specification": {
+        "communication": "serial duplex peripheral communication",
+        "attachment_model": "dynamic attachment is supported when the bus is inactive",
+        "device_identification": true,
+        "peripheral_rom_metadata": [
+          "DEVICE ID",
+          "DEVICE TYPE",
+          "VENDOR",
+          "PROTOCOL VERSION",
+          "POWER REQUIREMENTS"
+        ],
+        "openness": "The technical specification is published for third-party implementation.",
+        "compatibility_policy": "Logix commits to forward peripheral compatibility across future Logix computer generations.",
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "FlexiBUS v1 transport and driver model",
+          "physical": {
+            "topology": "Point-to-point host port to one device; no passive multidrop or implicit daisy chaining in v1.",
+            "signaling": "Separate differential transmit and receive pairs; asynchronous serial framing.",
+            "rates_bps": [
+              125000,
+              500000
+            ],
+            "startup_rate_bps": 125000,
+            "cable_target": "Shielded cable up to 3 m at 500 kbit/s; qualify signal integrity and period-appropriate line components.",
+            "power": "Power contacts/current limits and keyed connector pinout require an electrical drawing. Disk/printer devices self-powered; keyboard power is current-limited.",
+            "attachment": "Attach or detach only while the port is quiescent. Ground-first/power sequencing must be defined; no unrestricted live hot-plug claim."
+          },
+          "frames": {
+            "encoding": "8N1 byte transport, 0x7E delimiter and escaped delimiter/escape bytes.",
+            "header": [
+              "protocol version",
+              "message class",
+              "flags",
+              "request ID",
+              "payload length"
+            ],
+            "max_payload_bytes": 256,
+            "integrity": "CRC-16-CCITT, polynomial 0x1021, init 0xFFFF, no reflection, xorout 0x0000; cover unescaped header and payload. Byte order must be frozen in wire specification.",
+            "flow_control": "One outstanding request per device initially; explicit ACK/NAK, bounded timeout/retry, device BUSY and response credit."
+          },
+          "commands": [
+            "IDENTIFY and capabilities",
+            "RESET and health",
+            "Keyboard event read",
+            "Printer status and bounded output blocks",
+            "Disk geometry/media generation, sector read/write and flush"
+          ],
+          "reliability": [
+            "Sequence/request IDs reject duplicate execution; keep the last completed request/response until session reset.",
+            "Retries of writes must carry the same identity; media changes invalidate queued requests.",
+            "Disk devices buffer complete sectors locally. Host throughput need not equal raw disk bit rate.",
+            "Report removal, CRC errors, timeouts and unsupported operations through stable OS errors.",
+            "Reset changes the session epoch. Do not silently retry an unresolved non-idempotent operation such as print output after reset; report uncertain completion to the caller."
+          ],
+          "performance": "500 kbit/s with 8N1 permits at most 50 KB/s before headers, escaping and turnaround; 125 kbit/s permits at most 12.5 KB/s. Keyboard polling must not monopolize CPU during disk transfers.",
+          "drivers": "Use architecture-neutral device descriptors and class protocols. Host OS provides Z80 or ERA class drivers. Optional device-specific ROM drivers must carry explicit ISA/ABI tags; never execute a Z80 ROM driver as ERA code.",
+          "validation": [
+            "FIFO overrun and worst-case CPU service latency",
+            "Printer backpressure",
+            "Disk retry after lost reply",
+            "CRC faults, cable removal and power sequencing"
+          ]
+        },
+        "keyboard_standard_ref": "technology.logix_tui_keyboard_standard",
+        "ecosystem_programme": {
+          "programme_file": "ncc_1979_campaign.json",
+          "policy": "Non-exclusive independently branded implementations; software and video adoption are optional.",
+          "class_extension_gates": "Plotter, modem and specialist profiles and drivers require design and qualification. Discovery metadata alone does not guarantee operation.",
+          "governance": "DRI leads software interfaces; Logix contributes hardware specifications; independent manufacturers participate. Final charter, fees and support period remain open."
+        }
+      },
+      "used_by": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "computer.artemis",
+        "device.flexiprint40",
+        "device.flexidisk",
+        "device.apple2_expansion_card",
+        "device.flexidisk_ii",
+        "device.s100_flexibus_card",
+        "device.logix_mouse"
+      ]
+    },
+    {
+      "id": "technology.plug_and_execute",
+      "name": "Plug and Execute expansion standard",
+      "category": "expansion_bus_and_autoconfiguration",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "owner": "Logix",
+      "specification": {
+        "configuration_switches_required": false,
+        "driver_storage": "expansion device carries its driver/identification code in ROM",
+        "design_goal": "automatic identification and execution without manual switch configuration",
+        "forward_design_policy": "connector/pin standards may reserve unused capacity for later generations"
+      },
+      "used_by": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "computer.artemis"
+      ]
+    },
+    {
+      "id": "technology.xip_rom_platform",
+      "name": "XIP ROM / cartridge software architecture",
+      "category": "system_software_distribution_and_execution",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "owner": "Logix / AION",
+      "specification": {
+        "execution_model": "system and application components may execute directly from ROM where practical",
+        "distribution_model": "replaceable ROM/EEPROM cartridges are used for system and application distribution",
+        "upgrade_model": "software/firmware can be upgraded by replacing the relevant cartridge",
+        "design_goal": "reduce RAM consumption and provide controlled, replaceable system images"
+      },
+      "used_by": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "computer.artemis",
+        "software.cpm_aurelia",
+        "software.aionix"
+      ]
+    },
+    {
+      "id": "technology.logix_digital_video",
+      "name": "Logix 4-bit digital video link",
+      "category": "video_communication_standard",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "owner": "Logix",
+      "specification": {
+        "digital_data_width_bits": 4,
+        "cable": "8 twisted pairs",
+        "signals": [
+          "Data0",
+          "Data1",
+          "Data2",
+          "Data3",
+          "Clock",
+          "Control",
+          "H-sync",
+          "V-sync"
+        ],
+        "plus_base_or_reference_connection": true,
+        "monitor_palette_control": "Baseline monitors accept vertical-retrace palette commands. From NCC June 1982, explicitly capable Color Pro monitors also accept bounded horizontal-retrace commands under technology.scanline_palette_list; do not send these to legacy monitors.",
+        "control_channel": {
+          "direction": "Half-duplex bidirectional Control pair",
+          "implementation": "Host firmware performs selection using controller control-channel registers; monitor fixed capability ROM/straps and serializer.",
+          "startup": [
+            "Blank picture",
+            "Read versioned capability record with integrity check and timeout",
+            "Intersect host and monitor raster support",
+            "Select raster and initialize palette",
+            "Enable picture"
+          ],
+          "capability_fields": [
+            "protocol version",
+            "monitor ID",
+            "supported raster IDs",
+            "maximum pixel clock",
+            "color or grayscale",
+            "palette precision",
+            "preferred raster",
+            "integrity check"
+          ],
+          "failure_policy": "Use an explicitly configured profile or documented common safe raster; otherwise remain blank. Never infer 640-pixel support from connection alone.",
+          "electrical_status": "External drivers/transceivers; voltage, termination, connector pinout, turnaround, timeout and packet encoding remain qualification gates. No hot-plug guarantee."
+        },
+        "raster_profiles": [
+          {
+            "id": "raster_320_200",
+            "active_width": 320,
+            "active_height": 200,
+            "pixel_clock_mhz": 7.15909,
+            "horizontal_total_pixels": 456,
+            "vertical_total_lines": 262
+          },
+          {
+            "id": "raster_640_200",
+            "active_width": 640,
+            "active_height": 200,
+            "pixel_clock_mhz": 14.31818,
+            "horizontal_total_pixels": 912,
+            "vertical_total_lines": 262
+          },
+          {
+            "id": "raster_640_400",
+            "active_width": 640,
+            "active_height": 400,
+            "pixel_clock_mhz": 21.504,
+            "horizontal_total_pixels": 800,
+            "vertical_total_lines": 448,
+            "horizontal_frequency_khz": 26.88,
+            "frame_rate_hz": 60,
+            "interlaced": false
+          }
+        ],
+        "raster_status": "Legacy 200-line targets approximately 15.70 kHz / 59.92 Hz. Mono Pro 640×400 target 26.88 kHz / 60 Hz progressive. Porch/sync widths, polarity and analog qualification remain release gates.",
+        "scaling": "Integer horizontal/vertical pixel repetition, including sprites. 160/320-wide logical modes can repeat to 320/640; 100 lines repeat to 200. Reject 640-wide graphics or 80-column text on a 320-only monitor; software viewport is a separately reported service. Artemis card repeats legacy pixels/lines to 640×400 for Mono Pro; never downscales 400 lines to an old monitor.",
+        "palette_mapping": "Explicit 1-bit and 2-bit pixel-to-output-index maps. Color indices are not brightness values. On grayscale displays map RGB palette entries to luminance; Mono I direct DAC requires host index mapping.",
+        "horizontal_palette_extension_ref": "technology.scanline_palette_list"
+      },
+      "used_by": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "computer.artemis",
+        "device.mono_monitor_1",
+        "device.color_monitor_1",
+        "device.mono_monitor_2",
+        "device.color_monitor_2",
+        "device.apple2_video_card",
+        "device.s100_video_card",
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14"
+      ]
+    },
+    {
+      "id": "technology.logix_tui_standard",
+      "name": "Logix common TUI and editing standard",
+      "category": "user_interface_standard",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "owner": "Logix / AION Software; portable CP/M extension developed with DRI",
+      "specification": {
+        "common_components": [
+          "text editing",
+          "disk/file browsing",
+          "forms",
+          "lists",
+          "popup windows"
+        ],
+        "common_interaction": {
+          "cursor": "moves by character",
+          "control_cursor": "moves by whole word",
+          "shift": "select text",
+          "Ctrl-C": "copy",
+          "Ctrl-V": "paste",
+          "Ctrl-X": "cut"
+        },
+        "system_clipboard": true,
+        "consistent_across": [
+          "text editor",
+          "C compiler/IDE",
+          "Abacus",
+          "command line",
+          "business applications"
+        ],
+        "developer_api": true,
+        "portability_goal": "DRI is encouraged and later assumed to distribute the TUI extension for other CP/M computers.",
+        "api_ref": "technology.logix_c_api",
+        "display_api_ref": "technology.logix_display_api",
+        "services": [
+          {
+            "name": "Layout and screen",
+            "description": "Query usable dimensions, clip and scroll; separate document coordinates from screen coordinates."
+          },
+          {
+            "name": "Adaptive layouts",
+            "description": "Compact 40-column and expanded 80-column layouts; dialogs, long names and errors fit either width."
+          },
+          {
+            "name": "Semantic colors",
+            "description": "Normal text, selection and warning roles map to color or monochrome attributes."
+          },
+          {
+            "name": "Input",
+            "description": "Structured character, function/navigation key and modifier events; blocking input and polling."
+          },
+          {
+            "name": "Controls",
+            "description": "Fields, lists, menus, dialogs, popup windows and consistent focus movement."
+          },
+          {
+            "name": "Editing",
+            "description": "Common selection, insertion/deletion and clipboard commands."
+          },
+          {
+            "name": "Clipboard",
+            "description": "Explicit formats, lengths, bounded capacity, ownership and errors."
+          },
+          {
+            "name": "Context lifecycle",
+            "description": "Create/destroy and activate/deactivate contexts; redraw when needed. A context describes an assigned display region, which may be the full Aurelia screen."
+          },
+          {
+            "name": "Timing",
+            "description": "System timing and keyboard-repeat services replace CPU-speed-dependent loops."
+          }
+        ],
+        "state_model": "Per-application context state; no accidental shared cursor, selection or editing globals. Aurelia remains single-foreground; Artemis may manage multiple isolated application contexts.",
+        "compatibility_rules": [
+          "Keep the same API behavior across Aurelia, Aurelia+ and Artemis.",
+          "Do not assume display stride, video RAM address, last column or direct peripheral registers.",
+          "Legacy CP/M console behavior is preserved; Logix-aware interfaces use the documented editing conventions.",
+          "Artemis implementation mediates process access to shared clipboard and display services."
+        ],
+        "keyboard_standard_ref": "technology.logix_tui_keyboard_standard",
+        "mouse_extension_ref": "technology.logix_tui_mouse"
+      },
+      "used_by": [
+        "software.cpm_aurelia",
+        "software.business_tools_aurelia",
+        "software.abacus_1",
+        "software.abacus_2",
+        "software.bpi_suite",
+        "software.pulse_1",
+        "software.aionix",
+        "software.aion_c_ide"
+      ]
+    },
+    {
+      "id": "technology.logix_tui_keyboard_standard",
+      "name": "Logix TUI keyboard commands and assignment standard",
+      "category": "user_interface_standard",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "owner": "Logix / AION Software",
+      "specification": {
+        "status": "Accepted specification baseline summarized from the keyboard proposal; implementation and conformance remain to be validated.",
+        "scope": "Native Logix-aware editors, forms, spreadsheets, file views and application lifecycle. Legacy CP/M console and Unix-compatible terminal sessions retain explicitly selected compatibility profiles.",
+        "historical_context": "Forward-looking alternative-history design at the TUI launch; later DOS, Windows and Linux conventions are design references, not claimed historical 1978 standards.",
+        "assignment_rules": [
+          "Arrows navigate; Ctrl modifies navigation granularity; Shift extends selection using the same movement destination.",
+          "Ctrl supplies editing/document commands; Alt supplies menu and system actions. System-reserved commands cannot be rebound by applications.",
+          "Dispatch stable logical command identifiers separately from physical keys. Resolve focused control, active dialog, application and system ownership explicitly.",
+          "Show shortcuts in menus/help; disabled or unavailable commands report their state. Compatibility profiles are explicit, visible and never silently mixed."
+        ],
+        "navigation": [
+          {
+            "command": "MOVE_CHARACTER_LEFT / RIGHT",
+            "keys": "Left / Right",
+            "scope": "native TUI"
+          },
+          {
+            "command": "MOVE_DISPLAY_LINE_UP / DOWN",
+            "keys": "Up / Down",
+            "scope": "native TUI"
+          },
+          {
+            "command": "MOVE_WORD_LEFT / RIGHT",
+            "keys": "Ctrl+Left / Ctrl+Right",
+            "scope": "native TUI"
+          },
+          {
+            "command": "MOVE_LINE_START / END",
+            "keys": "Home / End",
+            "scope": "native TUI"
+          },
+          {
+            "command": "MOVE_DOCUMENT_START / END",
+            "keys": "Ctrl+Home / Ctrl+End",
+            "scope": "native TUI"
+          },
+          {
+            "command": "MOVE_PAGE_UP / DOWN",
+            "keys": "Page Up / Page Down",
+            "scope": "native TUI"
+          },
+          {
+            "command": "MOVE_PARAGRAPH_PREVIOUS / NEXT",
+            "keys": "Ctrl+Up / Ctrl+Down",
+            "scope": "native TUI"
+          },
+          {
+            "command": "EXTEND_SELECTION",
+            "keys": "Shift + any navigation command",
+            "scope": "native TUI"
+          },
+          {
+            "command": "SELECT_ALL",
+            "keys": "Ctrl+A",
+            "scope": "focused editor/view"
+          },
+          {
+            "command": "CLEAR_SELECTION",
+            "keys": "Esc",
+            "scope": "only after higher-priority transient UI is dismissed"
+          }
+        ],
+        "editing": [
+          {
+            "command": "COPY",
+            "keys": "Ctrl+C; alias Ctrl+Insert",
+            "scope": "native TUI"
+          },
+          {
+            "command": "CUT",
+            "keys": "Ctrl+X; alias Shift+Delete in text editors only",
+            "scope": "native TUI"
+          },
+          {
+            "command": "PASTE",
+            "keys": "Ctrl+V; alias Shift+Insert",
+            "scope": "native TUI"
+          },
+          {
+            "command": "UNDO",
+            "keys": "Ctrl+Z; alias Alt+Backspace",
+            "scope": "native TUI"
+          },
+          {
+            "command": "REDO",
+            "keys": "Ctrl+Shift+Z; alias Ctrl+Y",
+            "scope": "native TUI"
+          },
+          {
+            "command": "DELETE_PREVIOUS / NEXT_CHARACTER",
+            "keys": "Backspace / Delete",
+            "scope": "native TUI"
+          },
+          {
+            "command": "DELETE_PREVIOUS / NEXT_WORD",
+            "keys": "Ctrl+Backspace / Ctrl+Delete",
+            "scope": "native TUI"
+          }
+        ],
+        "documents": [
+          {
+            "command": "NEW_DOCUMENT",
+            "keys": "Ctrl+N",
+            "scope": "native TUI"
+          },
+          {
+            "command": "OPEN_DOCUMENT",
+            "keys": "Ctrl+O",
+            "scope": "native TUI"
+          },
+          {
+            "command": "SAVE_DOCUMENT",
+            "keys": "Ctrl+S",
+            "scope": "native TUI"
+          },
+          {
+            "command": "SAVE_DOCUMENT_AS",
+            "keys": "Ctrl+Shift+S",
+            "scope": "native TUI"
+          },
+          {
+            "command": "PRINT_DOCUMENT",
+            "keys": "Ctrl+P",
+            "scope": "native TUI"
+          },
+          {
+            "command": "FIND",
+            "keys": "Ctrl+F",
+            "scope": "native TUI"
+          },
+          {
+            "command": "FIND_NEXT / PREVIOUS",
+            "keys": "F3 / Shift+F3; aliases Ctrl+G / Ctrl+Shift+G",
+            "scope": "native TUI"
+          },
+          {
+            "command": "REPLACE",
+            "keys": "Ctrl+H",
+            "scope": "native TUI"
+          },
+          {
+            "command": "GO_TO",
+            "keys": "Ctrl+L",
+            "scope": "line, cell or record in a document; context named in UI"
+          },
+          {
+            "command": "CLOSE_DOCUMENT",
+            "keys": "Ctrl+W",
+            "scope": "native TUI"
+          },
+          {
+            "command": "QUIT_APPLICATION",
+            "keys": "Ctrl+Q",
+            "scope": "native TUI"
+          },
+          {
+            "command": "HELP",
+            "keys": "F1",
+            "scope": "native TUI"
+          }
+        ],
+        "focus_and_lifecycle": [
+          {
+            "command": "FOCUS_NEXT / PREVIOUS_FIELD",
+            "keys": "Tab / Shift+Tab",
+            "scope": "forms/dialogs"
+          },
+          {
+            "command": "ACTIVATE_OR_TOGGLE",
+            "keys": "Space",
+            "scope": "focused button/checkbox"
+          },
+          {
+            "command": "ACCEPT_DIALOG",
+            "keys": "Enter",
+            "scope": "dialog; editor Enter inserts newline"
+          },
+          {
+            "command": "CANCEL_CONTEXT",
+            "keys": "Esc",
+            "scope": "innermost active menu/dialog/transient operation"
+          },
+          {
+            "command": "OPEN_MENU",
+            "keys": "F10",
+            "scope": "native TUI"
+          },
+          {
+            "command": "OPEN_NAMED_MENU",
+            "keys": "Alt+underlined letter",
+            "scope": "native TUI"
+          },
+          {
+            "command": "FOCUS_NEXT / PREVIOUS_PANE",
+            "keys": "F6 / Shift+F6",
+            "scope": "native TUI"
+          },
+          {
+            "command": "NEXT / PREVIOUS_DOCUMENT",
+            "keys": "Ctrl+Tab / Ctrl+Shift+Tab",
+            "scope": "native TUI"
+          },
+          {
+            "command": "NEXT / PREVIOUS_APPLICATION",
+            "keys": "Alt+Tab / Alt+Shift+Tab",
+            "scope": "system"
+          },
+          {
+            "command": "CLOSE_ACTIVE_SURFACE",
+            "keys": "Alt+F4",
+            "scope": "system close request with unsaved-work checks"
+          },
+          {
+            "command": "OPEN_SURFACE_ACTIONS",
+            "keys": "Alt+Space",
+            "scope": "system"
+          },
+          {
+            "command": "REQUEST_CANCEL_OPERATION",
+            "keys": "Ctrl+Break",
+            "scope": "cooperative cancellation; not immediate forced termination"
+          }
+        ],
+        "behavior": {
+          "selection": "Fixed anchor and moving caret. Plain Left/Right collapses to the corresponding selection edge without an extra step; vertical motion retains the preferred column. Home/End target displayed-line boundaries.",
+          "boundaries": "Shared word-boundary implementation groups letters, digits and underscore; freeze punctuation/whitespace traversal in conformance examples. Plain-text paragraphs are separated by blank lines; structured editors use paragraph objects.",
+          "clipboard": "Copy/Cut without a selection does nothing. Cut removes data only after clipboard transfer succeeds. Delete preserves clipboard. Typing or pasting replaces a selection as one undoable operation; allocation failure must not partially destroy selected content.",
+          "saving": "Report Save success only after successful completion; retain modified state on failure. Close offers Save/Discard/Cancel for modified content; Quit checks every modified document.",
+          "contexts": "Spreadsheet navigation selects cells until cell-edit mode, which uses text rules. Editor Tab indents and Shift+Tab unindents; form Tab traverses focus. F6 leaves a multiline editor. Esc acts on only one innermost context per press.",
+          "overwrite": "Insertion mode by default. Overwrite is an explicit visibly indicated option; bare Insert does not toggle it by default.",
+          "optional_commands": "Formatting Ctrl+B/I/U is optional in capable editors. Whole-line deletion, duplication, transpose and rectangular selection remain menu commands outside the common shortcut core.",
+          "platform_limits": "Aurelia remains single-foreground. Alt+Tab exposes the supported launcher/switch mechanism and does not promise concurrent applications or preserved running state. Query lifecycle capabilities on each host."
+        },
+        "terminal_compatibility": {
+          "selection": "Explicit terminal profile; no selection-dependent change between Ctrl+C Copy and Interrupt.",
+          "bindings": [
+            {
+              "command": "INTERRUPT",
+              "keys": "Ctrl+C",
+              "scope": "when terminal processing enables it"
+            },
+            {
+              "command": "SUSPEND",
+              "keys": "Ctrl+Z",
+              "scope": "if supported/configured"
+            },
+            {
+              "command": "EOF_OR_APPLICATION_INPUT",
+              "keys": "Ctrl+D",
+              "scope": "depends on terminal mode and pending input; not unconditional Quit"
+            },
+            {
+              "command": "READLINE_LINE_START / END",
+              "keys": "Ctrl+A / Ctrl+E",
+              "scope": "Readline-compatible line editor"
+            },
+            {
+              "command": "READLINE_DELETE_PREVIOUS_WORD",
+              "keys": "Ctrl+W",
+              "scope": "Readline-compatible line editor"
+            },
+            {
+              "command": "READLINE_YANK",
+              "keys": "Ctrl+Y",
+              "scope": "Readline-compatible line editor"
+            },
+            {
+              "command": "COPY_TERMINAL_VIEW",
+              "keys": "Ctrl+Shift+C",
+              "scope": "terminal viewer"
+            },
+            {
+              "command": "PASTE_TERMINAL",
+              "keys": "Ctrl+Shift+V",
+              "scope": "terminal viewer"
+            },
+            {
+              "command": "HISTORY_PREVIOUS / NEXT",
+              "keys": "Up / Down",
+              "scope": "supported shell prompt"
+            },
+            {
+              "command": "HISTORY_REVERSE_SEARCH",
+              "keys": "Ctrl+R",
+              "scope": "supported shell prompt"
+            }
+          ],
+          "flow_control": "Native TUI Ctrl+S/Q are Save/Quit and must not be intercepted by software flow control. Terminal sessions may preserve configured XON/XOFF behavior.",
+          "legacy_profiles": "Optional WordStar/Emacs profiles are whole opt-in keymaps, not conflicting default aliases. Legacy CP/M control-character semantics are preserved outside native TUI contexts."
+        },
+        "input_contract": {
+          "keyboard_ref": "device.flexibus_keyboard",
+          "transport_ref": "technology.flexibus",
+          "api_ref": "technology.logix_c_api",
+          "events": "Key identity plus Ctrl/Shift/Alt modifier state; text translation is separate. Preserve Ctrl+Shift navigation and Ctrl+Shift letter distinctions.",
+          "required_controls": [
+            "Arrows",
+            "Home / End",
+            "Page Up / Page Down",
+            "Separate Backspace / Delete",
+            "Ctrl / Shift / Alt",
+            "Function keys",
+            "Break"
+          ],
+          "terminal_fallback": "Traditional byte terminals can conflate Tab/Ctrl+I, Enter/Ctrl+M, Esc/Ctrl+[, Backspace/Ctrl+H and shifted Ctrl letters. Advertise capabilities and offer menu equivalents rather than ambiguous shortcut promises.",
+          "qualification": "Existing keyboard exact layout, event encoding, rollover and firmware remain engineering gates; required controls are conformance requirements, not a qualified new hardware revision."
+        },
+        "related_technology_refs": [
+          "technology.logix_tui_standard",
+          "technology.logix_c_api",
+          "technology.logix_display_api",
+          "technology.flexibus"
+        ]
+      },
+      "used_by": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "software.cpm_aurelia",
+        "software.business_tools_aurelia",
+        "software.abacus_1",
+        "software.simple_c_z80",
+        "software.bpi_suite",
+        "software.pulse_1",
+        "software.abacus_2",
+        "software.aionix",
+        "software.business_tools_artemis",
+        "software.aion_c_ide",
+        "software.abacus_3",
+        "software.pulse_3",
+        "software.bpi_client_server",
+        "software.cpm_aurelia_networking",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.flexibus",
+        "technology.logix_tui_standard",
+        "device.flexibus_keyboard",
+        "technology.aion_c_portability_framework",
+        "software.aurelia_sdk",
+        "software.artemis_sdk",
+        "software.aionix_server"
+      ]
+    },
+    {
+      "id": "technology.abacus_sparse_model",
+      "name": "Abacus sparse spreadsheet storage model",
+      "category": "spreadsheet_data_structure",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "owner": "AION Software",
+      "specification": {
+        "sparse_matrix_representation": [
+          "hash maps or quadtrees"
+        ],
+        "cell_encoding": "variable-length tagged encapsulation",
+        "goal": "handle larger documents than conventional dense memory organization on constrained 8-bit hardware"
+      },
+      "used_by": [
+        "software.abacus_1",
+        "software.abacus_2",
+        "software.abacus_3"
+      ]
+    },
+    {
+      "id": "technology.pulse_notebook_model",
+      "name": "Pulse interactive notebook scripting model",
+      "category": "programming_environment",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "owner": "AION Software",
+      "specification": {
+        "code_organization": "sequential independently executable sections/cells",
+        "fundamental_types": [
+          "integers",
+          "text strings",
+          "booleans",
+          "lists"
+        ],
+        "language_features": [
+          "loops",
+          "conditions",
+          "reusable functions",
+          "text tools",
+          "list tools"
+        ],
+        "abacus_integration": "Standalone file-based integration remains the baseline: Pulse reads and edits supported closed Abacus documents with exclusive writer ownership. Pulse 3.0 additionally supports embedded scripting in Abacus 3.0 under technology.abacus_embedded_pulse; this does not change Pulse 1.x."
+      },
+      "used_by": [
+        "software.pulse_1",
+        "software.pulse_3"
+      ]
+    },
+    {
+      "id": "technology.aion_c_portability_framework",
+      "name": "AION C cross-platform portability framework",
+      "category": "software_portability_standard",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "owner": "AION Software",
+      "specification": {
+        "targets": [
+          "Z80 CP/M / Aurelia",
+          "ERA / AIONix / Artemis"
+        ],
+        "mechanisms": [
+          "shared libraries",
+          "templates",
+          "common application structure"
+        ],
+        "design_goal": "maximize source portability between Aurelia and Artemis",
+        "migration_model": "Recompile shared application code with the target compiler and target libraries. Adapt OS-specific modules, resource budgets and assembly; binary compatibility is a separate CP/M-80 module path.",
+        "strategic_role": "demonstrate to third-party developers that moving from the 8-bit platform to Artemis is comparatively easy",
+        "shared_contract_refs": [
+          "technology.logix_c_api",
+          "technology.logix_display_api",
+          "technology.logix_c_target_contract",
+          "technology.logix_tui_standard",
+          "technology.logix_tui_keyboard_standard"
+        ],
+        "application_structure": [
+          "Shared application and document logic",
+          "Shared Logix API calls",
+          "Small target-specific adapters",
+          "Separate build profiles and output directories"
+        ],
+        "build_profiles": [
+          {
+            "id": "aurelia_compatible",
+            "target": "z80_cpm",
+            "description": "One Z80 binary for base Aurelia and Aurelia+; adapt at runtime and fit the base RAM budget."
+          },
+          {
+            "id": "aurelia_plus_required",
+            "target": "z80_cpm",
+            "description": "Same Z80 instruction target; explicitly declare higher RAM/display requirements."
+          },
+          {
+            "id": "artemis_native",
+            "target": "era_aionix",
+            "description": "Native ERA/AIONix program with target-specific startup and libraries."
+          }
+        ],
+        "portability_boundaries": [
+          "Instruction set: recompile C and replace assembly.",
+          "CP/M record/drive interfaces versus AIONix streams, paths and descriptors: use file adapters.",
+          "Banked versus virtual memory: use object handles and bounded buffers.",
+          "Single foreground versus multiple processes: explicit context ownership and shared-service synchronization.",
+          "Disk structures: serialize portable fields rather than dumping C objects.",
+          "More RAM and a wider display do not make later Artemis-only features available on Aurelia."
+        ]
+      },
+      "used_by": [
+        "software.aion_c_ide",
+        "software.abacus_2",
+        "software.bpi_suite",
+        "software.business_tools_artemis"
+      ],
+      "public_roadmap": {
+        "announced": "1979-06-04",
+        "available_from": "1980-05-19",
+        "boundary": "Existing C discipline is available in 1979; the complete dual-target framework remains a 1980 product. Recompilation is distinct from legacy execution."
+      }
+    },
+    {
+      "id": "technology.era1_isa",
+      "name": "ERA1 / Extreme RISC Architecture",
+      "category": "processor_architecture",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "owner": "Logix / AION Labs implementation based on future-derived blueprint",
+      "specification": {
+        "system_bus_bits": 32,
+        "internal_paths": "separate instruction/data paths",
+        "multiply": "iterative multiplier with radix-4 Booth recoding",
+        "registers": "R0-R15 plus separate CPSR",
+        "conditional_instructions": true,
+        "abort_support": [
+          "Data Abort",
+          "Prefetch Abort"
+        ],
+        "prefetch_buffer_words": 4
+      },
+      "used_by": [
+        "computer.artemis",
+        "computer.artemis_pro"
+      ]
+    },
+    {
+      "id": "technology.artemis_memory_model",
+      "name": "Artemis 32-bit virtual / 24-bit physical memory model",
+      "category": "memory_management",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "owner": "Logix / AION Labs",
+      "specification": {
+        "virtual_address_bits": 32,
+        "physical_address_bits": 24,
+        "page_table_goal": "Use compact software-managed mapping records and a 32-entry translation cache; do not allocate a flat table for the entire 32-bit virtual address space.",
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "ERA MMU v1",
+          "addressing": {
+            "virtual_bits": 32,
+            "physical_bits": 24,
+            "page_bytes": 4096,
+            "physical_frame_count": 4096
+          },
+          "translation_cache": {
+            "entries": 32,
+            "associativity": "fully associative",
+            "replacement": "software-controlled round-robin among unlocked entries",
+            "entry_fields": [
+              "20-bit virtual page number",
+              "12-bit physical frame number",
+              "valid",
+              "user accessible",
+              "writable",
+              "referenced",
+              "dirty",
+              "locked"
+            ],
+            "context_policy": "No ASIDs in v1. Flush unlocked user translations at each address-space switch; retain wired kernel translations."
+          },
+          "backing_map": {
+            "organization": "One compact record per allocated virtual mapping, indexed by virtual page; stored in kernel-owned RAM. Software resolves misses. No flat 4 GB page table.",
+            "entry_bytes_budget": 8,
+            "example": "128 mapped pages require 1024 bytes of mapping records per process, plus indexing and process metadata. This is an illustrative budget, not a measured total.",
+            "kernel_access": "Keep trap vectors, refill routine, kernel stack and map-access window permanently translatable; refill must not depend on an unresolved user mapping."
+          },
+          "faults": [
+            "Translation miss traps before a memory side effect; software finds the mapping, fills an entry and retries.",
+            "Writes to a copy-on-write mapping cause a protection fault; allocate/copy a page, update mappings and retry.",
+            "Unmapped or unauthorized addresses cause a process fault. Allocation failure returns a defined error or terminates the offending process according to the fault contract.",
+            "No demand paging or implicit swap is introduced."
+          ],
+          "cpu_contract": [
+            "Instruction restart must preserve exact state; multi-register loads/stores need defined restart semantics or restrictions.",
+            "Kernel instructions update translations, invalidate entries and control protection.",
+            "DMA uses physical addresses with pinned buffers or bounded bounce buffers; never translate arbitrary user pointers asynchronously.",
+            "Harvest referenced/dirty bits before replacing or flushing translation entries; merge them into kernel mapping metadata.",
+            "Maintain physical-frame reference counts for shared and copy-on-write pages; invalidate stale writable translations before sharing a frame."
+          ],
+          "timing": {
+            "baseline": "Begin with a conservative registered translation stage and an explicit wait/ready handshake. Do not promise zero wait states.",
+            "optional_double_clock": "Evaluate 12 MHz MMU at 6 MHz CPU and 16 MHz MMU at 8 MHz CPU, phase-locked to the CPU clock. A two-phase translation/permission lookup may reduce hit latency only if address setup, comparison and output timing close.",
+            "validation": "Measure hit/miss latency, context-switch cost, DMA contention and workload hit rate. A faster MMU clock cannot remove DRAM wait time or software refill cost."
+          },
+          "open_items": [
+            "Physical address map",
+            "Silicon timing and area",
+            "TLB entry count tuning",
+            "Final mapping-record layout",
+            "DMA interface and electrical implementation of the specified paired-bank memory organization"
+          ]
+        },
+        "physical_memory_design": {
+          "status": "Accepted banked-memory design baseline; electrical implementation and validation pending.",
+          "ram_slots": 8,
+          "banks": 4,
+          "modules_per_bank": 2,
+          "module_data_width_bits": 32,
+          "bank_data_width_bits": 32,
+          "supported_module_refs": [
+            "part.ram_64kb_x32",
+            "part.ram_128kb_x32",
+            "part.ram_256kb_x32",
+            "part.ram_256kb_x32_2um"
+          ],
+          "mixed_density_allowed": false,
+          "physical_limit_kb": 1024,
+          "physical_map_status": "RAM base, ROM, video RAM, I/O and reset overlays remain to be assigned; 24-bit physical addressing is unchanged.",
+          "requirements": [
+            "Independently select both full-width modules and each rank within a capacity bank; 32-bit data bus shared by selected module. Multiplex row/column addresses and refresh every rank.",
+            "Four byte write enables per 32-bit bank; defined aligned byte/halfword/word access and alignment faults.",
+            "RAS/CAS/WE timing, data buffers, refresh arbitration and DMA contention handling.",
+            "Explicit READY/wait handshake; full-width data transfer is not a zero-wait guarantee.",
+            "Capacity straps, pair matching, boot memory test and incomplete-bank rejection.",
+            "Shared module edge interface with separate board routing for selected DRAM rails; no chip-footprint interchangeability assumption."
+          ],
+          "open_items": [
+            "Exact controller ASIC versus discrete logic partition and physical component counts",
+            "Connector/pinout/keying and rails",
+            "Supplier-specific refresh and speed grades",
+            "Contiguous physical bank decoding and reset ROM map",
+            "Worst-case loading and power with eight modules",
+            "Optional server byte-parity variant"
+          ]
+        },
+        "display_memory_design": {
+          "card_ref": "device.artemis_video_card_16kb",
+          "display_dram_bytes": "16384 on Artemis 128; 32768 on Artemis 256 and PRO",
+          "sprite_sram_bytes": 1024,
+          "on_chip_pixel_fifo_bytes": "160 on economy; 640 on professional",
+          "on_chip_row_cache_bytes": 320,
+          "host_access": "Separate physical apertures/registers, mapped by system MMU; address numbers remain unresolved. System DMA uses pinned physical buffers and bounded card-ready handshakes.",
+          "refresh": "Display DRAM refreshed by card independently of host CPU/DMA. System DRAM refresh remains in host bank controller; no duplicate charge for a second system controller.",
+          "card_variants": [
+            "device.artemis_video_card_16kb",
+            "device.artemis_video_card"
+          ]
+        }
+      },
+      "used_by": [
+        "computer.artemis",
+        "software.aionix"
+      ]
+    },
+    {
+      "id": "technology.aionix_os_model",
+      "name": "AIONix operating-system and ABI model",
+      "category": "operating_system_architecture",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "owner": "AION Software controlling roadmap; developed with Digital Research",
+      "specification": {
+        "programming_model": "recognizably Unix V7, simplified for small RAM",
+        "minimum_design_target_ram_kb": 128,
+        "rom_backed_executables": true,
+        "fork": "copy-on-write",
+        "process_limit_example": 6,
+        "file_descriptors": true,
+        "pipes": true,
+        "signals": "drastically reduced",
+        "mmap": "not full mmap()",
+        "virtual_address_space_per_process": true,
+        "symbolic_links": "not implemented initially; reserved",
+        "networking_initial_release": false,
+        "device_files": true,
+        "dma": "hidden behind normal I/O",
+        "ioctl": true,
+        "directory_model": "Unix V7",
+        "shell": "small shell",
+        "utilities": "in ROM",
+        "syscall_abi": "deliberately POSIX-shaped",
+        "errno": true,
+        "syscall_number_policy": "reserve aggressively",
+        "stable_c_abi": true,
+        "floating_point_abi": false,
+        "brk_sbrk": true,
+        "demand_paging": false,
+        "user_kernel_modes": true,
+        "interrupt_model": "simple",
+        "permissions": "simple but real",
+        "serial_as_tty": true,
+        "rescue_unix_in_rom": true,
+        "tui_api": true,
+        "portable_api_ref": "technology.logix_c_api",
+        "stable_c_abi_scope": "ERA target ABI, not binary compatibility with the Z80 target."
+      },
+      "used_by": [
+        "computer.artemis",
+        "computer.artemis_pro",
+        "software.aionix",
+        "software.aion_c_ide",
+        "software.abacus_3",
+        "software.pulse_3",
+        "software.bpi_client_server"
+      ]
+    },
+    {
+      "id": "technology.cpm80_virtual_peripheral_bridge",
+      "name": "Artemis CP/M-80 compatibility / virtual peripheral bridge",
+      "category": "backward_compatibility",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "owner": "Logix with Digital Research",
+      "specification": {
+        "execution": "Qualified Z80 binaries execute on the Z80 guest processor, not natively on the new host ISA; OS/memory/peripheral bridging remains required.",
+        "peripheral_model": "the ERA host exposes Artemis peripherals through a virtual peripheral bridge",
+        "goal": "preserve the Aurelia software investment while transitioning to the 32-bit platform",
+        "api_discovery": "Return the display/input/service capabilities actually implemented by the compatibility environment.",
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "Z80 compatibility module and host driver",
+          "execution": "Z80 executes the enhanced CP/M environment in its local 64 KB RAM; ERA executes the AIONix host driver. This is neither ERA execution of Z80 instructions nor a C-source port.",
+          "module_requirements": [
+            "Local boot/system ROM or a host-uploaded system image",
+            "Bank/window emulation sufficient for documented Logix CP/M service entry points",
+            "A bounded shared mailbox or dual-ported transfer window and interrupt/doorbell signals; reserve its CP/M-side RAM before advertising TPA"
+          ],
+          "software_split": {
+            "guest": "CP/M BIOS and Logix TUI/device stubs marshal requests; applications using these interfaces do not access Artemis registers.",
+            "host": "A privileged AIONix driver validates guest buffer offsets and lengths, copies data and dispatches console/display, file, printer and clock operations.",
+            "ownership": "Guest-visible drive images preserve CP/M semantics. Host filesystem translation is a separate explicit mode, not transparent raw-volume sharing."
+          },
+          "mailbox": [
+            "version",
+            "request ID",
+            "opcode",
+            "buffer offset and length",
+            "completion status",
+            "transferred byte count"
+          ],
+          "scheduling": "One outstanding synchronous guest request initially; host completes then signals the guest. Add polling fallback and timeout/reset recovery. Never allow a guest to supply an unchecked ERA pointer.",
+          "display": "Render an isolated guest text surface through host display services. Capability queries describe that guest surface, not every ERA capability.",
+          "scope": "Support documented enhanced CP/M/Logix API applications. Arbitrary direct Aurelia hardware access, undocumented mapper use, timing-sensitive code and unvirtualized expansion ROMs are not guaranteed.",
+          "qualification": "Artemis PRO support remains unclaimed until its compatibility list and tests explicitly add the module."
+        }
+      },
+      "used_by": [
+        "device.artemis_cpm80_module",
+        "computer.artemis"
+      ]
+    },
+    {
+      "id": "technology.logix_tcpip_lan",
+      "name": "Logix TCP/IP local-area networking solution",
+      "category": "networking_standard_and_product_architecture",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "owner": "Logix / AION",
+      "specification": {
+        "network_protocol": "TCP/IP",
+        "link_layer_ref": "technology.logix_lan100_link",
+        "design_goal": "common network protocol stack across Aurelia CP/M and Artemis/AIONix clients and servers",
+        "interoperability_model": "IP is kept above the Logix-specific physical/data-link layer so future faster link technologies can preserve higher-level software."
+      },
+      "used_by": [
+        "software.cpm_aurelia_networking",
+        "software.aionix_server",
+        "software.bpi_client_server",
+        "computer.artemis",
+        "computer.artemis_pro"
+      ]
+    },
+    {
+      "id": "technology.logix_lan100_link",
+      "name": "LogixLAN negotiated-rate physical and data-link standard",
+      "category": "lan_physical_and_data_link_standard",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "owner": "Logix",
+      "specification": {
+        "topology": "active star through a multiport hub/repeater/arbiter",
+        "signaling": "balanced differential serial signaling compatible in principle with EIA-422-class line drivers/receivers",
+        "connector": "8-position modular connector (RJ45-style / 8P8C family)",
+        "cable": "four twisted pairs",
+        "pair_assignment": {
+          "pair_1": "station-to-hub differential data",
+          "pair_2": "hub-to-station differential data",
+          "pair_3": "hub-distributed synchronous clock / transmit-grant timing",
+          "pair_4": "reserved for diagnostics or later expansion"
+        },
+        "media_access": "hub-controlled polling/grant; one station is granted transmit access at a time, avoiding collision-detection hardware",
+        "framing": "HDLC-inspired bit-oriented framing with address/control fields and 16-bit frame check sequence",
+        "hub_behavior": "Stream the granted frame to other admitted ports at the common rate; destination filtering and CRC validation occur in adapters. No independent per-port rates, frame-store switching or rate conversion in the 1981 baseline.",
+        "station_addressing": "locally assigned link address stored/configured by the adapter; broadcast supported",
+        "design_goal": "simple, deterministic and inexpensive LAN implementation using technology comfortably available by 1981",
+        "supported_rates_kbps": [
+          100,
+          250,
+          500,
+          1000
+        ],
+        "startup_rate_kbps": 100,
+        "fallback_rate_kbps": 100,
+        "maximum_shared_raw_rate_kbps": 1000,
+        "rate_scope": "One common rate across all admitted stations; one transmitter at a time. Port count does not multiply shared bandwidth. Application throughput is lower and remains unvalidated.",
+        "legacy_identifier": "The stable logix_lan100_link identifier is retained for references; 100 denotes the mandatory startup/fallback rate, not the maximum rate.",
+        "platform_rate_profiles": [
+          {
+            "computer_ref": "computer.aurelia",
+            "supported_rates_kbps": [
+              100,
+              250
+            ],
+            "qualified_max_rate_kbps": 250
+          },
+          {
+            "computer_ref": "computer.aurelia_plus",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500
+            ],
+            "qualified_max_rate_kbps": 500
+          },
+          {
+            "computer_ref": "computer.artemis",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500,
+              1000
+            ],
+            "qualified_max_rate_kbps": 1000
+          },
+          {
+            "computer_ref": "computer.artemis_pro",
+            "supported_rates_kbps": [
+              100,
+              250,
+              500,
+              1000
+            ],
+            "qualified_max_rate_kbps": 1000
+          }
+        ],
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "LogixLAN shared-rate negotiation and buffered adapters",
+          "advertised_rates": "Intersection of adapter hardware capability, firmware-enforced host qualification ceiling and configured cable/reliability limits. Platform ceilings are design qualification targets, not measured throughput claims.",
+          "selection": "Hub selects the highest rate in the intersection of its own capability and every admitted station/link capability. A 100-only station or link limits the whole network to 100 kbit/s.",
+          "negotiation": [
+            "Reset/start at 100 kbit/s; keep unadmitted ports isolated from normal traffic.",
+            "Poll station identity, supported-rate bitmap, host profile and receiver capacity at 100 kbit/s.",
+            "Choose the highest common candidate; announce a switch epoch and bounded idle interval at 100 kbit/s and collect acknowledgments from all admitted stations.",
+            "Drain the current frame and stop grants before changing the distributed clock. Do not switch with a missing acknowledgment.",
+            "Run bounded test frames on every admitted link at the candidate rate; resume normal grants only after every link passes.",
+            "On failed qualification or persistent link errors, return to 100 kbit/s for coordination, exclude the failed candidate and try the next lower common rate. If 100 fails, isolate the faulty port and report the fault."
+          ],
+          "admission": "Periodically drain traffic and open an announced 100 kbit/s discovery window. New stations join only after coordinated renegotiation; admitting a slower station lowers the common rate. Discovery windows consume shared bandwidth.",
+          "recovery": "Adapters use a timeout independent of the distributed bit clock. On lost clock/control or switch timeout, stop transmitting and await the hub at 100 kbit/s. The hub watchdog restores 100 kbit/s and a new negotiation epoch; never allow unilateral station transmission at a different rate.",
+          "clock_generation": {
+            "timing_source_hz": 10000000,
+            "bit_clock_divisors": [
+              100,
+              40,
+              20,
+              10
+            ],
+            "scope": "Hub clock-divider reference only; does not require every adapter or host logic path to run at 10 MHz."
+          },
+          "adapter_requirements": {
+            "hardware_services": [
+              "Serial framing and CRC generation/checking",
+              "Destination filtering before CPU interrupt",
+              "Complete-frame buffering",
+              "Packet-level interrupts and receiver-ready reporting"
+            ],
+            "local_packet_ram_target_bytes": 4096,
+            "buffer_policy": "Local adapter RAM, additional to host system RAM. Partition transmit/receive buffers and metadata; freeze maximum frame length and IP MTU to fit complete frames before implementation. Physical RAM chip count remains unresolved.",
+            "flow_control": "Grant unicast only when the destination advertises credit for a complete frame; reserve that credit until completion. Broadcast requires credit from all intended admitted receivers. Timeouts revoke stale credits; bounded queues and retry/error reporting prevent indefinite blocking. Use flow control first for receiver pressure, not automatic rate changes.",
+            "host_service": "No per-byte interrupt requirement. Aurelia at 250 kbit/s has 128 CPU clocks per raw byte at 4 MHz; Aurelia+ at 500 kbit/s has 96 at 6 MHz. Validate worst-case service latency. A persistently slow host may advertise a lower configured ceiling."
+          },
+          "qualification_gates": [
+            "Cable lengths, termination, drivers and clock skew at each advertised rate",
+            "Exact frame format/length, IP MTU, buffer partitions and credit accounting",
+            "Discovery cadence, switch/ack timeouts and independent recovery watchdog",
+            "Error thresholds, test-frame counts and fallback hysteresis",
+            "Mixed-platform admission, missing acknowledgments, clock loss, buffer exhaustion and broadcast backpressure",
+            "Sustained TCP/IP throughput and CPU load on all four host platforms"
+          ]
+        }
+      },
+      "used_by": [
+        "technology.logix_tcpip_lan",
+        "device.network_card_aurelia",
+        "device.network_card_artemis",
+        "device.network_hub"
+      ]
+    },
+    {
+      "id": "technology.bpi_relational_database",
+      "name": "BPI relational database platform",
+      "category": "database_technology",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "owner": "BPI Systems",
+      "specification": {
+        "model": "relational database engine used as the common data foundation for BPI business applications",
+        "design_goal": "shared, structured business data across accounting, receivables, payables, inventory and payroll"
+      },
+      "used_by": [
+        "software.bpi_suite",
+        "software.bpi_client_server",
+        "computer.artemis_pro"
+      ],
+      "milestones": [
+        {
+          "event": {
+            "event_name": "NCC 1978 — Logix Aurelia launch",
+            "event_start_date": "1978-06-05"
+          },
+          "change": "Relational engine introduced with the AION C/TUI BPI application family."
+        },
+        {
+          "event": {
+            "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+            "event_start_date": "1981-05-04"
+          },
+          "change": "Evolves into a multiuser client-server RDBMS used by networked BPI clients."
+        }
+      ]
+    },
+    {
+      "id": "technology.aurelia_memory_model",
+      "name": "Aurelia banked memory organization",
+      "category": "memory_mapping",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "used_by": [
+        "computer.aurelia",
+        "computer.aurelia_plus"
+      ],
+      "description": "AION system controller combines DMA, 4 KiB bank mapping and CPU-independent system-DRAM refresh. Dedicated sprite SRAM is accessed through video upload ports.",
+      "specification": {
+        "cpu_address_space_kb": 64,
+        "page_size_kb": 4,
+        "fixed_low_ram_kb": 28,
+        "switchable_window_kb": 32,
+        "common_system_ram_kb": 4,
+        "common_ram_budget_status": "Initial planning allocation; validate against firmware, buffers and interrupt requirements.",
+        "mapping_register_access": "I/O ports",
+        "implementation": "One AION system-controller chip replaces mapper registers and selected decode/control logic; external clock/reset/interrupt and electrical buffers remain as required.",
+        "rom_policy": "Read-only code and constants execute directly from ROM where practical. Mutable state, stacks and buffers reside in RAM.",
+        "video_ram_policy": "CPU uses temporary 4 KiB display-memory windows or auto-incrementing upload ports. DMA uses physical source banks and target-ready video ports. Video controller independently refreshes display DRAM and arbitrates sprite SRAM; sprite storage is not system RAM.",
+        "reset_policy": "Initialize refresh and boot mapping before RAM use; disable DMA and clear pending ownership on reset. Warm boot aborts/drains DMA before restoring bank maps.",
+        "application_policy": "Installed RAM is accessible, but system workspaces and the resident Business Tools workspace reduce application memory.",
+        "expansion_policy": "Additional RAM uses mapped pages; an expansion does not enlarge the CPU logical address space.",
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation conformance and measured performance remain to be validated.",
+          "title": "CP/M-compatible application-memory boundary",
+          "discovery": "At launch, the little-endian word at 0006H (the operand of JMP at 0005H) points to the BDOS entry stub at the exclusive top of usable contiguous application RAM. Keep the entire advertised range writable RAM.",
+          "budget": "Reserve 4 KB at the top of lower RAM for the entry stub and resident workspace, in addition to F000–FFFF common system RAM. These are the initial design allocations, not measured image sizes. If implementation requires more workspace, revise the boot profile before application launch and report the actual lower boundary.",
+          "dispatch": [
+            "CALL 0005H enters the top-of-TPA stub.",
+            "The stub jumps to common memory before any bank mapping changes.",
+            "Common code saves mapping and application stack, then adopts the system stack.",
+            "Map the service; copy caller buffers in bounded chunks while respecting page boundaries.",
+            "Restore the application view and stack before returning."
+          ],
+          "lifecycle": [
+            "Choose all workspace reservations before launching the program. Never shrink TPA under a running program.",
+            "Warm boot restores vectors and the normal map. Legacy programs with hardcoded addresses beyond the published boundary remain unsupported.",
+            "Disable optional resident tools or choose a smaller TPA when networking needs more RAM; never silently consume advertised program memory."
+          ],
+          "extension_api": "lx_memory_query returns installed RAM, TPA bounds, reserved bytes and optional banked-handle capacity. Standard CP/M programs need not use it.",
+          "validation": [
+            "Exercise programs that inspect 0006H and fill their advertised TPA.",
+            "Test nested calls, interrupts, DMA buffers crossing pages and warm boot after application failure.",
+            "Stress CPU/DMA/refresh/peripherals and display together at both host clocks and process/temperature corners.",
+            "Validate hidden and expanded RAM refresh, physical DMA bounds, page-crossing segmentation, abort and warm boot."
+          ],
+          "application_memory_profiles": [
+            {
+              "installed_ram_kb": 48,
+              "application_start": "0100",
+              "application_end_inclusive": "9FFF",
+              "bdos_entry": "A000",
+              "lower_reserved_range": "A000–AFFF",
+              "tpa_bytes": 40704,
+              "id": "ram_48kb",
+              "status": "Specified initial allocation; any future budget change must preserve the published boundary for each running program."
+            },
+            {
+              "installed_ram_kb": 64,
+              "application_start": "0100",
+              "application_end_inclusive": "DFFF",
+              "bdos_entry": "E000",
+              "lower_reserved_range": "E000–EFFF",
+              "tpa_bytes": 57088,
+              "id": "ram_64kb",
+              "status": "Specified initial allocation; any future budget change must preserve the published boundary for each running program."
+            }
+          ]
+        },
+        "controller_ref": "part.aurelia_system_controller",
+        "dma": {
+          "transfer_contexts": 2,
+          "active_transfer_engines": 1,
+          "source_address_bits": 16,
+          "destination_address_bits": 16,
+          "length_bits": 16,
+          "operations": [
+            "memory-to-memory",
+            "memory-to-I/O",
+            "I/O-to-memory"
+          ],
+          "address_steps": [
+            "fixed",
+            "increment",
+            "decrement"
+          ],
+          "bank_selection": "Latch physical source/destination bank and offsets on start. CPU mapping changes cannot redirect an active transfer; split logical buffers at 4 KiB boundaries before programming physical segments. Reject ROM writes, unmapped banks and out-of-range lengths.",
+          "arbitration": "Bounded bursts with guaranteed CPU and refresh service; device-ready/WAIT handshake; video uploads yield to video-controller fetch deadlines. Numeric grant limits require cycle-level validation.",
+          "completion": "Completion/error interrupt, readable remaining count, controlled abort; reset disables DMA.",
+          "video_endpoint": "Auto-incrementing upload ports for display DRAM or dedicated sprite SRAM; target-ready backpressure.",
+          "peripheral_scope": "Disk/FlexiBUS DMA requires qualified request/ready or FIFO endpoints and drivers; legacy programmed I/O remains supported."
+        },
+        "system_refresh": {
+          "independent_of_cpu": true,
+          "all_installed_banks": true,
+          "scope": "System DRAM only, including hidden banks and expansion. Video controller refreshes display DRAM; sprite SRAM needs no refresh.",
+          "scheduler": "Always-running timer, row counter and refresh arbitration during CPU execution, HALT and DMA; initialize before enabling RAM use. Match row count and retention deadlines to each qualified system DRAM type.",
+          "supported_populations": [
+            "48 KiB: three banks of eight 16Kx1 DRAMs",
+            "64 KiB expanded Aurelia: four banks of eight 16Kx1 DRAMs",
+            "64 KiB Aurelia+: one bank of eight 64Kx1 DRAMs"
+          ]
+        },
+        "sprite_memory": {
+          "chip_ref": "part.aion_2114",
+          "chip_count": 2,
+          "bank_data_width_bits": 8,
+          "capacity_bytes": 1024,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        }
+      },
+      "regions": [
+        {
+          "start": "0000",
+          "end": "6FFF",
+          "size_kb": 28,
+          "role": "Fixed lower RAM",
+          "description": "Includes page zero and the lower application area."
+        },
+        {
+          "start": "7000",
+          "end": "EFFF",
+          "size_kb": 32,
+          "role": "Switchable pages",
+          "description": "Remaining application RAM, motherboard ROM, cartridge ROM or video RAM, selected in 4 KB pages."
+        },
+        {
+          "start": "F000",
+          "end": "FFFF",
+          "size_kb": 4,
+          "role": "Common system RAM",
+          "description": "Stable entry routines, system stack, critical interrupt code and mutable system state."
+        }
+      ],
+      "call_sequence": [
+        "Enter a stable routine in common memory.",
+        "Save application mapping and stack; switch to the system stack.",
+        "Map the required ROM and data/video RAM pages.",
+        "Execute the service; use a common buffer or alternate window for hidden application data.",
+        "Restore mapping and stack, then return."
+      ],
+      "requirements": [
+        "Preserve interrupt safety across every permitted mapping.",
+        "Define nested bank-call save/restore conventions.",
+        "Separate writable state from ROM code and remove or relocate self-modifying code.",
+        "Reserve resident workspace memory explicitly.",
+        "Final ROM capacities, timing and common-memory budget require implementation validation.",
+        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
+      ],
+      "normal_map_explanation": "Normal mapping describes what the CPU sees while an application runs. Mapper capability describes which addresses can change. The same 7000–EFFF switching capability exists in every configuration, even when those addresses normally contain RAM.",
+      "full_ram_explanation": "With 64 KB installed (Aurelia+ or expanded Aurelia), 0000–EFFF contains 60 KB lower RAM and F000–FFFF contains 4 KB common system RAM. B000–EFFF is therefore RAM rather than a permanently reserved ROM window. System calls temporarily overlay selected pages with ROM/cartridge/video RAM, then restore RAM. The Z80 never sees all physical RAM and ROM simultaneously."
+    },
+    {
+      "id": "technology.logix_c_api",
+      "name": "Logix portable C platform API v1",
+      "category": "application_programming_interface",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "version": "1.0",
+        "contract": "Shared C function names, argument meanings, ownership rules and error semantics across target-specific implementations.",
+        "compatibility": "Source API compatibility across Z80 and ERA; stable binary ABI within each target, not between targets.",
+        "versioning": [
+          "Mandatory v1 discovery entry points.",
+          "Major/minor version and optional capability queries.",
+          "Descriptor size/version negotiation with bounded writes.",
+          "Published service identifiers retain their meaning.",
+          "Unknown optional flags are ignored; unsupported services return a defined error.",
+          "Optional extensions are obtained through the stable dispatcher or checked extension lookup; never require an unresolved future symbol merely to test availability."
+        ],
+        "errors": [
+          "unsupported operation",
+          "invalid argument",
+          "insufficient memory",
+          "device unavailable",
+          "I/O failure"
+        ],
+        "ownership": [
+          "Caller supplies bounded descriptor buffers.",
+          "Application owns its context; library state is not shared through unqualified globals.",
+          "Clipboard copies data into system-managed storage instead of retaining application pointers.",
+          "Banked objects use opaque handles; raw addresses do not identify banked storage."
+        ],
+        "platform_adapters": [
+          "Text/graphics and input",
+          "File streams and path handling",
+          "Memory/object access",
+          "Clock and timing",
+          "Application lifecycle"
+        ],
+        "file_formats": "Explicit field encoding, byte order, lengths and version identifiers; never persist pointers or raw C structure layouts.",
+        "runtime_status": "Product architecture contract; implementation size, performance and conformance must be measured.",
+        "keyboard_standard_ref": "technology.logix_tui_keyboard_standard"
+      },
+      "used_by": [
+        "software.cpm_aurelia",
+        "software.aionix",
+        "software.simple_c_z80",
+        "software.aion_c_ide",
+        "software.aurelia_sdk",
+        "software.artemis_sdk"
+      ]
+    },
+    {
+      "id": "technology.logix_display_api",
+      "name": "Logix capability-based display and graphics API",
+      "category": "graphics_and_display_interface",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "mode_policy": "Enumerate usable configurations; optional stable names supplement opaque mode identifiers and descriptive properties. Do not assume every named mode is supported.",
+        "functions": [
+          {
+            "name": "lx_display_query",
+            "purpose": "Query display capabilities and limits"
+          },
+          {
+            "name": "lx_text_query",
+            "purpose": "Query current usable rows, columns and text attributes"
+          },
+          {
+            "name": "lx_mode_enum",
+            "purpose": "Return one usable mode descriptor into a caller-provided buffer"
+          },
+          {
+            "name": "lx_mode_test",
+            "purpose": "Validate a requested configuration without changing display state"
+          },
+          {
+            "name": "lx_mode_set",
+            "purpose": "Request activation and report success or a defined failure"
+          },
+          {
+            "name": "lx_mode_current",
+            "purpose": "Report the actual active mode"
+          }
+        ],
+        "mode_descriptor_fields": [
+          "descriptor size/version",
+          "opaque mode identifier",
+          "width",
+          "height",
+          "pixel format",
+          "bits per pixel",
+          "simultaneously addressable colors",
+          "palette capabilities",
+          "pixel aspect",
+          "buffering capabilities",
+          "native or emulated implementation",
+          "sprite count and per-scanline limit",
+          "valid buffer/sprite combinations",
+          "output raster ID",
+          "logical-to-output integer scaling"
+        ],
+        "selection_sequence": [
+          "Query capabilities",
+          "Choose a suitable descriptor",
+          "Request the mode",
+          "Check success or failure",
+          "Query and use the actual configuration"
+        ],
+        "monitor_policy": "Identify monitor through Logix bidirectional Control; use an explicit configured profile on identification failure. Report the intersection of host, monitor and memory-allocation capabilities.",
+        "future_modes": "New identifiers may be selected by descriptor properties without changing an older application. Unsupported requests fail cleanly.",
+        "drawing_operations": [
+          "Create/destroy drawing context",
+          "Set clipping and drawing attributes",
+          "Draw pixel, line, rectangle and filled region",
+          "Transfer bitmap using a documented portable format",
+          "Draw text through display/font services",
+          "Query/control palette when supported",
+          "Begin/end update and request presentation"
+        ],
+        "framebuffer_policy": "Application code uses drawing operations rather than native video RAM addresses, stride or pixel packing.",
+        "compatibility_canvas": "Optional later service: preserve a logical canvas and convert to available output. Not guaranteed at launch; report emulation and validate RAM, quality and speed.",
+        "text_mode_policy": "Aurelia/Aurelia+ and Artemis 128 economy card: native 40×25 and 80×25 with 8×8 cells. Artemis 256/PRO professional card adds 80×25 at 8×16 and 80×40 at 8×10 with Mono Pro. Intersect card and monitor capabilities.",
+        "video_ram_storage_policy": {
+          "status": "Accepted design baseline; capacities are arithmetic allocations, not measured timing guarantees.",
+          "allocation_model": "Text and bitmap modes reuse the same video RAM. Do not reserve all text maps, font storage and a full bitmap simultaneously.",
+          "mode_switch": [
+            "Validate the requested mode and resource allocation before changing the display.",
+            "Quiesce rendering and blank or synchronize the change to avoid scanning partially reconfigured memory.",
+            "Reconfigure the video RAM layout. Reload the font and initialize text maps when entering text mode.",
+            "Notify the application/context of the changed mode and request a redraw from its document state."
+          ],
+          "preservation": "Previous screen pixels are not preserved by default. An explicit preservation request may use a system-RAM buffer only if allocation succeeds; unsupported or unaffordable requests return a defined error before changing the mode.",
+          "graphics_buffering": "Aurelia family and Artemis economy card: 16 KiB, two 8000-byte bitmap pages or one 16000-byte page. Artemis professional card: 32 KiB, two 8000/16000-byte pages or one 32000-byte page. All text modes support two pages and one shared font; five sprites use separate SRAM.",
+          "graphics_text": "Draw glyphs from ROM/system resources into the bitmap; bitmap mode does not require a complete resident character-generator table in video RAM.",
+          "boundary": "Application documents remain in application RAM or files; a mode switch does not discard document state.",
+          "presentation": "Latch page and sprite positions during vertical blank; shared-font and sprite-pattern changes need separate synchronization."
+        },
+        "keyboard_standard_ref": "technology.logix_tui_keyboard_standard"
+      },
+      "used_by": [
+        "computer.aurelia",
+        "computer.aurelia_plus",
+        "computer.artemis",
+        "computer.artemis_pro",
+        "software.cpm_aurelia",
+        "software.aionix"
+      ]
+    },
+    {
+      "id": "technology.logix_c_target_contract",
+      "name": "Logix C language and target contracts",
+      "category": "compiler_and_abi_contract",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "language_profile": "Documented contemporary C subset shared by both compilers; later ANSI C features are not implicitly available.",
+        "required_features": [
+          "structures",
+          "typedef",
+          "function pointers",
+          "documented 32-bit integer arithmetic",
+          "shared string and stream-I/O contracts"
+        ],
+        "targets": [
+          {
+            "id": "z80_cpm",
+            "name": "Z80 / enhanced CP/M",
+            "char_bits": 8,
+            "short_bits": 16,
+            "int_bits": 16,
+            "long_bits": 32,
+            "ordinary_data_pointer_bits": 16
+          },
+          {
+            "id": "era_aionix",
+            "name": "ERA / AIONix",
+            "char_bits": 8,
+            "short_bits": 16,
+            "int_bits": 32,
+            "long_bits": 32,
+            "ordinary_data_pointer_bits": 32
+          }
+        ],
+        "width_status": "Defined target design contracts, not widths inferred from the CPU alone.",
+        "rules": [
+          "Publish signedness, alignment, calling conventions and aggregate layout per target before binary ABI freeze.",
+          "Supply project-specific fixed-width integer aliases; do not assume a standard stdint.h exists.",
+          "Warn about pointer/integer conversions and incompatible calls where feasible.",
+          "Never assume int, pointers or structure layout match across targets.",
+          "Put bank switching and physical memory access behind handles and platform adapters.",
+          "ROM-aware linking separates code/constants, initialized RAM data and uninitialized RAM.",
+          "No CPU floating-point hardware or cross-target floating representation is assumed; numeric libraries specify precision, rounding, overflow and format."
+        ],
+        "remaining_abi_work": [
+          "Finalize register/stack calling conventions and alignment rules.",
+          "Conformance-test compiler, runtime and libraries on both targets."
+        ]
+      },
+      "used_by": [
+        "software.simple_c_z80",
+        "software.aion_c_ide",
+        "software.aurelia_sdk",
+        "software.artemis_sdk"
+      ]
+    },
+    {
+      "id": "technology.nmos_3um",
+      "name": "3.0 µm NMOS manufacturing process",
+      "category": "semiconductor_manufacturing",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "Scenario process qualification target",
+        "event_start_date": "1978-06-05"
+      },
+      "specification": {
+        "node_um": 3,
+        "wafer_diameter_mm": 75,
+        "lithography": "Micralign projection",
+        "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+        "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+        "policy_file": "memory_manufacturing.json"
+      },
+      "used_by": [
+        "part.era1",
+        "part.aion_4164"
+      ]
+    },
+    {
+      "id": "technology.nmos_275um",
+      "name": "2.75 µm NMOS manufacturing process",
+      "category": "semiconductor_manufacturing",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "Scenario process qualification target",
+        "event_start_date": "1980-06"
+      },
+      "specification": {
+        "node_um": 2.75,
+        "wafer_diameter_mm": 75,
+        "lithography": "GCA reduction stepper; tool/optics upgrades qualified per node",
+        "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+        "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+        "policy_file": "memory_manufacturing.json"
+      },
+      "used_by": [
+        "part.aion_4164"
+      ]
+    },
+    {
+      "id": "technology.nmos_2um",
+      "name": "2.0 µm NMOS manufacturing process",
+      "category": "semiconductor_manufacturing",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "Scenario process qualification target",
+        "event_start_date": "1982-07"
+      },
+      "specification": {
+        "node_um": 2,
+        "wafer_diameter_mm": 75,
+        "lithography": "GCA reduction stepper; tool/optics upgrades qualified per node",
+        "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+        "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+        "policy_file": "memory_manufacturing.json"
+      },
+      "used_by": [
+        "part.aion_4164"
+      ]
+    },
+    {
+      "id": "technology.nmos_15um",
+      "name": "1.5 µm NMOS manufacturing process",
+      "category": "semiconductor_manufacturing",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "Scenario process qualification target",
+        "event_start_date": "1983-10"
+      },
+      "specification": {
+        "node_um": 1.5,
+        "wafer_diameter_mm": 75,
+        "lithography": "GCA reduction stepper; tool/optics upgrades qualified per node",
+        "status": "Accepted scenario roadmap; qualification gates in memory_manufacturing.json",
+        "recipe_separation": "Logic, SRAM, DRAM capacitor/sense circuits and analog require separate qualification. One metal baseline; additional polysilicon is recipe-specific.",
+        "policy_file": "memory_manufacturing.json"
+      },
+      "used_by": [
+        "part.aion_4164"
+      ]
+    },
+    {
+      "id": "technology.abacus_formatted_tables",
+      "name": "Abacus formatted tables and columnar storage",
+      "category": "structured_data_and_query_model",
+      "introduced": {
+        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+        "event_start_date": "1980-11-19"
+      },
+      "owner": "AION Software",
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation, resource budgets and performance qualification pending.",
+          "scope": "Formatted-table tabs coexist with freeform sparse worksheet tabs. Independently implemented historical Abacus format; no dependency on modern Parquet libraries or claim of Parquet compatibility.",
+          "schema": {
+            "column_identity": "Stable column ID, name, declared data type and nullability; stable row IDs survive sorting/filtering.",
+            "launch_types": [
+              "text",
+              "integer",
+              "decimal with declared precision/scale",
+              "date",
+              "Boolean"
+            ],
+            "rules": "Specify rounding, collation, overflow, null/error semantics and checked conversions; preserve leading-zero identifiers as text."
+          },
+          "storage": {
+            "hierarchy": [
+              "row groups",
+              "column chunks",
+              "pages"
+            ],
+            "page_role": "Smallest compression/encoding unit; byte-bounded buffers and dictionaries. Group/page sizes require measurement on target RAM and disks.",
+            "footer": "Versioned schema, chunk/page locations and supported min/max/null-count statistics. Bound metadata memory and permit incremental access.",
+            "column_pruning": "Read output columns plus all predicate, join and formula dependencies.",
+            "block_skipping": "Skip only when valid conservative statistics prove no match; handle nulls, sort order and pending edits. Predicate pushdown evaluates filters early and is distinct from statistics-based skipping.",
+            "encoding": "Dictionary, RLE, bit packing and suitable numeric encodings with uncompressed fallback. Compression is dataset-dependent; no guaranteed 75–90% reduction or heavy codec requirement.",
+            "execution": "Stream and batch scans; bound dictionaries, query state and join memory. Use temporary disk storage or report resource limits; do not require whole tables or row groups resident.",
+            "editing": "Use a bounded edit buffer/change log with stable row IDs; merge pending changes into reads. Rewrite affected storage on save/compaction, update or invalidate statistics and preserve a consistent visible snapshot.",
+            "recovery": "Validate replacement data and footer before recoverable replacement; retain prior valid version until success. Do not publish incomplete metadata or silently skip corrupt blocks."
+          },
+          "calculation": {
+            "syntax": "Abacus native expressions or documented SQL expression subset with shared type, decimal, null and error rules.",
+            "virtual_columns": "Side-effect-free row expressions; track dependencies and reject cycles. Values computed on demand; persisted statistics require valid materialization.",
+            "lookups": "Scalar lookup requires unique-key relationship; missing keys and duplicate keys have explicit behavior, never arbitrary first-match selection.",
+            "joins": "One-to-many/many-to-many joins produce derived query tables rather than silently changing scalar column cardinality.",
+            "sql_scope": "Read-only SELECT projections, WHERE filters, GROUP BY aggregates and equijoins over local formatted tables; document supported syntax and resource limits. No claim of complete SQL standard or general transaction engine."
+          },
+          "nested_data": {
+            "launch": "Flat typed columns; reserve versioned extension points for nested values.",
+            "later": "Bounded arrays, maps and structs with explicit depth/size limits, expandable presentation, indexing, null and aggregation semantics; implementation milestone not yet dated."
+          }
+        }
+      },
+      "used_by": [
+        "software.abacus_3"
+      ]
+    },
+    {
+      "id": "technology.abacus_embedded_pulse",
+      "name": "Embedded Pulse in Abacus",
+      "category": "application_scripting",
+      "introduced": {
+        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+        "event_start_date": "1980-11-19"
+      },
+      "owner": "AION Software",
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted design baseline; implementation and qualification pending.",
+          "modes": "Standalone offline document access remains available; embedded Pulse 3.0 is a separate mode hosted by Abacus 3.0.",
+          "ownership": "Abacus owns the open document and file writer. Scripts use its API; no concurrent independent Pulse writer.",
+          "api": "Bounded iteration and operations on cells, tables, formulas, queries and report layouts; reuse Pulse language/runtime semantics.",
+          "execution": "Explicit script actions may modify documents; ordinary formula/virtual-column evaluation is side-effect-free. Define cancellation, error recovery, grouped undo and recalculation boundaries.",
+          "consistency": "Track changed dependencies, invalidate stale caches and recalculate through the matching Abacus evaluator. Avoid whole-document duplication in RAM.",
+          "compatibility": "Preserve standalone version checks, recoverable replacement saves and older edition restrictions. Embedding does not backport 3.0 features to Z80 editions."
+        }
+      },
+      "used_by": [
+        "software.abacus_3",
+        "software.pulse_3"
+      ],
+      "technology_refs": [
+        "technology.pulse_notebook_model",
+        "technology.logix_tui_standard",
+        "technology.logix_tui_keyboard_standard"
+      ]
+    },
+    {
+      "id": "technology.scanline_palette_list",
+      "name": "Logix horizontal-retrace colour addressing list",
+      "category": "video_communication_extension",
+      "owner": "AION Labs",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "specification": {
+        "implementation_design": {
+          "status": "Accepted implementation design; command timing and analog settling require measurement.",
+          "memory": {
+            "offset_hex": "0xFA00",
+            "size_bytes": 1536,
+            "entry_bytes": 3,
+            "max_entries": 512,
+            "count_register": "10-bit unsigned count, legal range 0..512; no in-band terminator consumes an entry.",
+            "encoding": "Byte 0: unsigned scanline delta 0..255. Byte 1: bits 7..4 palette register 0..15, bits 3..0 red. Byte 2: bits 7..4 green, bits 3..0 blue. Each RGB component is 4 bits."
+          },
+          "coordinates": "Offsets count physical active output scanlines, independent of logical mode scaling. Start accumulator at 0 each frame; add delta before applying entry. Delta 0 permits multiple writes before the same line, including line 0. Reject overflow, out-of-frame targets and excess writes per line; never wrap. Bridge gaps above 255 with an explicitly redundant write preserving the current register value.",
+          "execution": "Prefetch records into dedicated sequencer registers/FIFO, outside the 1536-byte allocation. Execute during blanking before the target active scanline; reset pointer/counter at frame start. Restore a saved 16-register base palette every vertical blank before replay. Line-0 entries follow base restoration.",
+          "updates": "Single list buffer. CPU writes only with sequencer disabled or after completion before the next frame; arm validated count/base palette at vertical blank. No implicit full-list double buffer; late/incomplete updates remain disabled.",
+          "wire": "Opt-in capability extension over the existing Control pair, host-to-monitor during the reserved blanking window, clocked from pixel Clock. No simultaneous capability readback. Proposed fixed 32-bit write: 4-bit opcode, 4-bit register, 12-bit RGB, 4 reserved zero bits, CRC-8 (poly 0x07, init 0, no reflection/xorout), MSB first. Reset command framing at blank start; specify setup/hold, turnaround and CRC failure behavior before release.",
+          "budget": "640x400 raster has 160 blank clocks = about 7.44 us. Target maximum four 32-bit commands per blank (128 clocks, about 5.95 us), leaving 32 clocks for guards/commit/settling. This is a qualification target, not an unconditional measured guarantee. Advertise the validated per-raster limit; 512 total entries does not allow 512 writes on one scanline.",
+          "commit": "Monitor validates complete commands into staging registers and commits together before active pixels. Reject invalid/late batches, retain previous palette and latch diagnostic status; never update midway through an active line.",
+          "scope": "For raster effects on Color Pro use the 640x400 physical raster, including line-doubled 640x200. Other raster/monitor combinations require their own advertised timing budget. Old monitors receive only supported vertical-retrace commands.",
+          "colour_semantics": "Palette is global to text, bitmap and sprites at each scanline. 2 bpp still selects only four background indices on a line; 4 bpp selects sixteen. More colours across different lines do not imply a larger per-pixel index or arbitrary 4096-colour bitmap.",
+          "validation": [
+            "Worst-case four-command blanking with DAC settling",
+            "All 512 records, same-line writes, delta 255 and frame bounds",
+            "DRAM refresh and host/DMA contention during prefetch",
+            "CRC errors, late packets and safe palette retention",
+            "Base palette restore and list restart without frame-to-frame drift"
+          ]
+        }
+      },
+      "used_by": [
+        "device.artemis_video_card_64kb",
+        "device.color_pro_14",
+        "part.artemis_graphics_chip_64kb",
+        "part.color_pro_monitor_controller"
+      ]
+    },
+    {
+      "id": "technology.flexibus_pointing_device",
+      "name": "FlexiBUS pointing-device class",
+      "category": "peripheral_protocol",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "owner": "Logix / AION Labs",
+      "specification": {
+        "status": "Accepted protocol requirements; wire identifiers, polling and electrical qualification pending.",
+        "transport_ref": "technology.flexibus",
+        "discovery": "Pointing-device class, two buttons, relative X/Y, two independent signed roller axes; versioned capability record. Use negotiated existing FlexiBUS rates, framing, CRC and request/response discipline.",
+        "report": "Sequenced bounded report: accumulated signed relative X/Y motion, signed vertical/horizontal roller deltas, current button mask and ordered button transitions. ACK/retry must not duplicate motion or clicks.",
+        "polling": "Host polls with a bounded service budget; device buffers events. Coalesce motion but preserve button transitions; report overflow and resynchronize button state on reset/removal.",
+        "default_mapping": "Primary button focuses/selects/activates; secondary opens context actions where provided. Middle-finger roller scrolls vertically; thumb roller scrolls horizontally. Wheels have no implicit press buttons.",
+        "compatibility": "Architecture-neutral class driver for Z80 CP/M Platform Extensions and ERA AIONix. Attach while port quiescent; no unsupported hot-plug claim."
+      },
+      "used_by": [
+        "device.logix_mouse",
+        "software.cpm_aurelia",
+        "software.aionix"
+      ]
+    },
+    {
+      "id": "technology.logix_tui_mouse",
+      "name": "Logix TUI mouse interaction update",
+      "category": "user_interface_extension",
+      "introduced": {
+        "event_name": "NCC June 1982 — colour graphics and mouse interaction",
+        "event_start_date": "1982-06",
+        "date_precision": "month"
+      },
+      "owner": "AION Software / DRI",
+      "specification": {
+        "status": "Accepted NCC 1982 update requirements; platform implementation and compatibility qualification pending.",
+        "base_standard_ref": "technology.logix_tui_standard",
+        "device_class_ref": "technology.flexibus_pointing_device",
+        "behaviour": [
+          "Hit-test visible enabled standard controls; primary click focuses fields/selects list items and activates buttons/menu actions.",
+          "Text widgets support click-to-place caret and drag selection; scrollbar and roller actions respect widget bounds.",
+          "Capture drags to their originating context, release on button-up/cancel/removal, respect modal dialogs and clipping.",
+          "Dispatch existing semantic actions to applications; keyboard shortcuts remain fully functional.",
+          "Vertical roller scrolls the hovered scrollable control, falling back to the focused control; thumb roller similarly scrolls horizontally."
+        ],
+        "compatibility": "No application source changes for standard controls managed by the TUI library. Existing binaries gain support only when they call replaceable/system TUI services; statically linked copies require relinking with the updated library. Custom drawing, direct console polling and non-TUI applications require explicit adaptation. No blanket mouse retrofit for all CP/M programs.",
+        "routing": "Aurelia has one foreground application; AIONix routes events only to the appropriate active/context-owned controls, with modal/capture rules and no input leakage.",
+        "cursor": "Library-managed pointer with bounded save/restore on software-rendered targets or optional sprite rendering; application code need not change. A hardware pointer consumes an existing sprite unless separately provisioned; no sixth sprite is implied.",
+        "validation": [
+          "Unchanged standard-control applications",
+          "Static-library relink and ABI conformance",
+          "Text and graphics cursor restore, clipping and scrolling",
+          "Button ordering, drag capture and removal",
+          "Keyboard-only use and 40/80-column layouts"
+        ]
+      },
+      "used_by": [
+        "software.cpm_aurelia",
+        "software.aionix",
+        "software.entertainment_suite"
+      ]
+    },
+    {
+      "id": "technology.artemis_professional_graphics",
+      "name": "Artemis professional dual-display graphics",
+      "category": "graphics_and_display_interface",
+      "introduced": {
+        "event_name": "Professional graphics availability around June 1982",
+        "event_start_date": "1982-06"
+      },
+      "specification": {
+        "api_ref": "technology.logix_display_api",
+        "status": "Accepted alternate-history June 1982 availability target; engineering and manufacturing qualification required.",
+        "dual_display": "The 64 KiB card occupies the existing dedicated video slot; the 128 KiB professional card occupies one general 32-bit expansion slot. Independent framebuffers, clocks and palettes; freeze address windows, interrupts, DMA arbitration and power budget before release.",
+        "layout": "Colour display hosts commands/status; 800x600 monochrome display hosts the CAD canvas. Explicit display handles, coordinate transforms, keyboard/mouse focus and cursor ownership; no implicit shared framebuffer.",
+        "acceleration": [
+          "Overlap-safe rectangular copies with stride and clipping",
+          "Rectangle fills and masked Boolean raster operations",
+          "Integer all-octant line drawing",
+          "Optional lookup-table antialiased line drawing with four output shades"
+        ],
+        "rendering": "Keep vector geometry authoritative. CPU tessellates curves; redraw damaged regions and exposed pan strips. XOR is for temporary simple cursors, not erasing antialiased overlapping geometry. No full-frame 2bpp double buffer in 128 KiB.",
+        "bandwidth": "At 60 Hz visible framebuffer reads alone average 7.2 MB/s. Qualify banked/wide memory, line buffering, refresh priority and accelerator/host arbitration under worst-case drawing load.",
+        "portability": "Capability-query extension with software fallback for development on the existing display; later hardware accelerates the same semantics. CAD canvas requires explicit mouse adaptation."
+      },
+      "used_by": [
+        "software.autocad_1_artemis"
+      ],
+      "device_refs": [
+        "device.artemis_professional_video_128kb",
+        "device.mono_pro_17"
+      ]
+    },
+    {
+      "id": "technology.era2_architecture",
+      "name": "ERA² architecture and compatibility targets",
+      "category": "processor_architecture",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "specification": {
+        "status": "Accepted planning baseline; production and electrical qualification pending.",
+        "baseline_ref": "technology.era1_isa",
+        "system_bus_bits": 32,
+        "virtual_address_bits": 32,
+        "physical_address_bits": 32,
+        "physical_address_space_gib": 4,
+        "register_compatibility": "Preserve documented ERAv1 R0–R15/CPSR, instruction semantics, data formats and calling conventions.",
+        "execution_improvements": "Short in-order interlocked pipeline, ALU result forwarding, explicit load-use stalls, early branch-target calculation and flushing; preserve ERAv1 PC and instruction semantics, with no new visible delay slots.",
+        "instruction_cache_bytes_target": 512,
+        "external_cache_kb_options": [
+          8,
+          16
+        ],
+        "external_cache_policy": "Interface support target only; no external cache included in the Athena base BOM until selected. DMA coherency must be specified.",
+        "tlb": {
+          "entries_target": 64,
+          "associativity": 2,
+          "address_space_identifiers": true,
+          "asid_width": null,
+          "software_contract": [
+            "ASID width/recycling and invalidation",
+            "Replacement and permissions",
+            "Referenced/dirty handling",
+            "Resident accessible refill code",
+            "Explicit instruction/data translation arbitration"
+          ],
+          "refill_policy": "Prefer software-managed refill initially; concurrent instruction/data translation remains an implementation decision."
+        },
+        "faults": "Precisely defined restartable faults for demand paging. ERAv1 already has Data Abort and Prefetch Abort; ERA² strengthens the restart contract rather than introducing aborts for the first time.",
+        "floating_point": "Optional external FPU interface; no integrated or bundled FPU promised.",
+        "performance_target": "Measure workload-specific improvement over 8 MHz ERAv1; former 2–3× objective is not a general promise. Report clock, cache, memory and software configuration with results.",
+        "compatibility": "Documented ERAv1 user binaries retain an execution path. New privileged/MMU features require OS support; no socket, mainboard or unqualified peripheral compatibility implied.",
+        "open_design_items": [
+          "Package/pinout and supply rails",
+          "Instruction timings and pipeline details",
+          "Cache coherency and DMA protocol",
+          "MMU/TLB implementation and transistor allocation",
+          "Board memory timing and qualified speed bins",
+          "512-byte versus 1 KiB cache trace/layout decision",
+          "ROM electrical timing and patch/cache synchronization",
+          "Detailed fault continuation and late bus-error behavior",
+          "Write-buffer inclusion after precise-fault verification"
+        ],
+        "design_status": {
+          "editorial_status": "accepted",
+          "engineering_readiness": "design",
+          "commercial_availability": "not_committed",
+          "evidence_basis": "story_assumption"
+        },
+        "pipeline_contract": [
+          "False conditional instructions have no architectural/data-memory side effects or associated data faults.",
+          "Younger wrong-path instructions cannot commit registers or memory.",
+          "Interrupts enter at documented restartable boundaries, including multiply and multi-access instructions.",
+          "Instruction timings and forwarding paths require implementation-level verification."
+        ],
+        "fault_contract": [
+          "Earlier instructions completed; later instructions have no architectural effects.",
+          "Faulting instruction has no changes or documented resumable state; report instruction address, access address/type and cause.",
+          "Validate translations/permissions for multi-access instructions before effects, or define explicit continuation state; device accesses must not be blindly replayed.",
+          "Post-acceptance external bus errors are distinct from recoverable translation/protection faults; no claim that all external effects are undoable."
+        ],
+        "instruction_cache_design": {
+          "baseline_bytes": 512,
+          "evaluation_bytes": 1024,
+          "candidate": "Direct-mapped physically tagged cache with 16-byte lines; organization remains subject to layout and traces.",
+          "refill": "Coordinate four-word prefetch with requested-word-first refill and early restart where feasible; cancel obsolete branch fetches and prioritize demand data.",
+          "decision_gate": "Compare compiler, Abacus, interpreter and kernel traces within the 142000-transistor planning envelope."
+        },
+        "memory_interface": {
+          "handshake": "Programmable READY/wait controller, independent refresh and bounded DMA ownership.",
+          "dram_target": "Qualify 120 ns row access / about 240 ns random cycle; 150 ns fallback with about 270–300 ns random cycle. Geometry alone does not establish timing.",
+          "controller_target_12mhz": {
+            "first_word_clocks": 3,
+            "same_row_following_word_clocks": 2,
+            "same_bank_random_initiation_clocks": 4,
+            "four_word_refill_clocks": [
+              3,
+              2,
+              2,
+              2
+            ],
+            "basis": "Engineering budget, not measured; accepted physical request to data, excluding translation, contention, refresh and conflicting open row. Two-clock page transfer requires separate margin qualification."
+          },
+          "banks": "No two-bank interleaving credit for one-bank base Athena; independently qualify populated server banks.",
+          "rom": "Cacheable directly executable OS ROM with separate wait-state profile; ROM timing is not assumed equal to DRAM.",
+          "clock_scaling": "16 MHz requires recalculated waits; DRAM nanoseconds do not scale with CPU clock."
+        },
+        "coherence_contract": [
+          "Define instruction visibility after loading/modifying code, remapping, RAM patch overlays and DMA-written executable memory.",
+          "Uncached device regions and explicit DMA synchronization.",
+          "First optional external data/unified cache candidate: write-through, no-write-allocate; policy must be qualified before use."
+        ],
+        "write_buffer": {
+          "status": "Conditional evaluation, not baseline guarantee",
+          "candidate_entries": 2,
+          "conditions": [
+            "Translation/protection checked before enqueue",
+            "Required ordering and draining before relevant DMA/device operations",
+            "Defined late bus-error behavior",
+            "Preserve multi-access restart contract"
+          ]
+        }
+      },
+      "used_by": [
+        "computer.athena",
+        "computer.athena_server"
+      ]
+    }
+  ]
+}

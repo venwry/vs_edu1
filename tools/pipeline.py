@@ -4,8 +4,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
 def run_pipeline(steps):
-    from data_catalog import build
-    build(check=True)
+    from validate_data import validate_collections
+    validate_collections()
     with tempfile.TemporaryDirectory(prefix='logix-model-',dir=ROOT.parent) as tmp:
         stage=Path(tmp)/'project'
         shutil.copytree(ROOT,stage,ignore=shutil.ignore_patterns('.git','__pycache__','node_modules','.venv'))
@@ -18,7 +18,7 @@ def run_pipeline(steps):
         subprocess.run([sys.executable,str(stage/'tools/build_site.py')],cwd=stage,check=True)
         subprocess.run([sys.executable,str(stage/'tests/validate_data_structure.py')],cwd=stage,check=True)
         candidates=[]
-        for folder in ('generated','data','site/config'):
+        for folder in ('generated/models','data'):
             candidates.extend((stage/folder).rglob('*.json'))
         candidates.extend(stage.glob('*.html'))
         changed=0

@@ -1,11 +1,12 @@
+from data_store import read_document, document_bytes, document_text
 """Build navigation and content; rewrite legacy links and retain only the index redirect.
-Run after catalogue assembly and after any financial HTML builder.
+Run after UI configuration edits and after any financial HTML builder.
 """
 from pathlib import Path
 import json,re,html
 ROOT=Path(__file__).resolve().parents[1]
 def build():
- site=json.loads((ROOT/'generated/catalogs/site-pages.json').read_text());pages={p['id']:p for p in site['pages']};esc=html.escape
+ site=read_document('generated/catalogs/site-pages.json', root=ROOT);pages={p['id']:p for p in site['pages']};esc=html.escape
  labels={'timeline':'Timeline','ecosystem':'3rd Party','operating-systems':'OS','business-software':'Business','software-development':'Dev','video-system':'Video','peripherals':'Peripherals','aurelia':'Aurelia','artemis':'Artemis','athena':'Athena','bpi':'BPI','flexibus':'FlexiBUS','networking':'Network','academy':'Academy','pricing':'Pricing','sales':'Sales','industrial-investment':'Investment','roi':'ROI','market-share':'Share'}
  header='<header class="atlas-header"><nav aria-label="Main navigation">'+''.join('<section><h2>'+esc(group['title'])+'</h2>'+''.join('<a href="'+pages[i]['path']+'">'+esc(labels.get(i,pages[i]['title']))+'</a>' for i in group['page_refs'])+'</section>' for group in site['navigation_sections'])+'</nav></header>'
  (ROOT/'site/navigation.html').write_text(header+'\n')
@@ -14,6 +15,7 @@ def build():
    if path.name!='index.html':path.unlink()
    continue
   text=path.read_text();
+  if 'data-store.js' not in text:text=text.replace('<head>','<head><script src="data-store.js"></script>',1)
   if 'atlas.js' in text and 'catalog-navigation.js' not in text:text=text.replace('<head>','<head><script defer src="catalog-navigation.js"></script>',1)
   if any(name in text for name in ('bom-details.js','architecture-explorer.js','artemis-explorer.js')) and 'catalog-categories.js' not in text:text=text.replace('<head>','<head><script defer src="catalog-categories.js"></script>',1)
   if not re.search(r'<body\b',text):

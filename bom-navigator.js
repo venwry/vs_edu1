@@ -3,7 +3,7 @@
 const $=id=>document.getElementById(id),esc=BomDetails.esc;
 try{
  const pageId=document.documentElement.dataset.page,bomMode=pageId==='bom-navigator';
- const get=async p=>{const r=await fetch(p);if(!r.ok)throw Error('Unable to load '+p);return r.json();};
+ const get=async p=>{const r=await DataStore.fetch(p);if(!r.ok)throw Error('Unable to load '+p);return r.json();};
  const [catalog,story]=await Promise.all(['generated/catalogs/logix-aion-technical-catalog-v2.json','generated/catalogs/logix-aion-story.json'].map(get));
  let model,redirects={};
  if(bomMode){const [bom,cost,site]=await Promise.all(['generated/catalogs/hardware-bom.json','generated/models/manufacturing-costs.json','generated/catalogs/site-pages.json'].map(get));redirects=site.record_redirects||{};model=BomDetails.createModel(catalog,bom,cost);}

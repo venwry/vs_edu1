@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "retail_catalog_1982"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/retail-catalog.schema.json"
+    },
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "retail_catalog_1982": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effective_from",
+        "status",
+        "currency",
+        "pricing_policy",
+        "solutions",
+        "upgrades",
+        "secondary_sections",
+        "superseded_current_offers"
+      ],
+      "properties": {
+        "effective_from": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "pricing_policy": {
+          "type": "object"
+        },
+        "solutions": {
+          "type": "array"
+        },
+        "upgrades": {
+          "type": "array"
+        },
+        "secondary_sections": {
+          "type": "array"
+        },
+        "superseded_current_offers": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}
