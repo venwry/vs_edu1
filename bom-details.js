@@ -21,11 +21,15 @@ function pendingCostReason(assemblies,ids,seen=new Set()){
  }
  return '';
 }
+function releaseDate(record){
+ if(record.introduced?.event_name==='no release')return 'no release';
+ return record.introduced?.event_start_date||record.available_from||'';
+}
 function createModel(catalog,bom,cost){
  const records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(r=>r?.id).map(r=>[r.id,r]));
  const assemblies=new Map(bom.assemblies.map(r=>[r.id,r])),components=new Map(bom.components.map(r=>[r.id,r]));
  const items=new Map();
- function add(r,cl){const category=categories.category(r,records);if(!category)throw Error('Missing canonical category: '+r.id);items.set(r.id,{id:r.id,name:r.name||r.id,class:cl,category,release:r.introduced?.event_start_date||r.available_from||'',record:r});}
+ function add(r,cl){const category=categories.category(r,records);if(!category)throw Error('Missing canonical category: '+r.id);items.set(r.id,{id:r.id,name:r.name||r.id,class:cl,category,release:releaseDate(r),record:r});}
  for(const r of catalog.base_parts||[])add(r,'Part');
  for(const r of catalog.devices||[])add(r,categories.isExpansion(r)?'Expansion':'Peripheral');
  for(const r of catalog.computers||[])add(r,'Computer');
@@ -77,5 +81,5 @@ function createModel(catalog,bom,cost){
  function bind(host){for(const d of host.querySelectorAll('[data-bom-cost]'))d.addEventListener('toggle',()=>{if(!d.open||d.dataset.loaded)return;d.dataset.loaded='true';const p=cost.products.find(p=>p.id===d.dataset.bomCost);d.insertAdjacentHTML('beforeend',root.renderSpecification(p,records));root.bindSpecificationControls(d);});}
  return {bind,records,items:[...items.values()].sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id)),assemblies,components,assemblyIds,rows,render,renderBOM,renderCosts};
 }
-root.BomDetails={createModel,esc,vendorName,pendingCostReason};if(typeof module!=='undefined')module.exports=root.BomDetails;
+root.BomDetails={createModel,esc,vendorName,pendingCostReason,releaseDate};if(typeof module!=='undefined')module.exports=root.BomDetails;
 })(typeof window==='undefined'?globalThis:window);

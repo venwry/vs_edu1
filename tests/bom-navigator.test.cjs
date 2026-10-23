@@ -6,7 +6,27 @@ for(const key of ['base_parts','devices','computers','software_products','platfo
 for(const c of bom.components)assert(model.items.some(i=>i.id===c.id||i.id===c.catalog_ref),'Missing manufacturing part '+c.id);
 assert.equal(new Set(model.items.map(x=>x.id)).size,model.items.length);
 assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Computer','Expansion','Software','Software product','Software edition','Bundle']));
-assert(model.items.filter(x=>x.id.startsWith('bundle.proposed_')).every(x=>!x.release));
+assert(model.items.filter(x=>x.id.startsWith('bundle.proposed_')).every(x=>x.release==='no release'));
+assert.equal(model.items.filter(x=>x.release==='no release').length,12);
+assert(model.items.every(x=>x.release),'Every navigator element has a date or explicit no release');
+const {releaseDate,vendorName}=require('../bom-details.js');
+assert.equal(releaseDate({}), ''); // Unknown is distinct from explicitly unused.
+assert.equal(releaseDate({introduced:{event_name:'no release',event_start_date:null},available_from:'1980'}),'no release');
+for(const [id,date] of [
+ ['bompart.computer.aurelia.boot_rom_chips','1978-06-05'],
+ ['bompart.part.artemis_ram_module_128kb.module_pcb','1980-05-19'],
+ ['bompart.device.network_card_artemis.firmware_rom','1981-05-04'],
+ ['bompart.device.mono_pro_17.highspeed_link_pcb','1982-06'],
+ ['bompart.part.artemis_ram_module_32kb_x16.module_pcb','no release']
+])assert.equal(model.items.find(x=>x.id===id).release,date,id);
+for(const [id,vendor] of [
+ ['bompart.computer.aurelia.boot_rom_chips','AION Labs'],
+ ['bompart.device.flexibus_keyboard.scan_controller_and_firmware_storage','Logix'],
+ ['bompart.computer.aurelia.psu','Logix'],
+ ['bompart.computer.aurelia.525_inch_single_density_floppy_mechanism','Shugart Associates'],
+ ['part.hdd_5mb','Seagate Technology'],
+ ['software.product.cpm','Digital Research']
+])assert.equal(vendorName(model.items.find(x=>x.id===id).record,model.records),vendor,id);
 for(const id of ['computer.artemis','bundle.artemis_128_mono','device.artemis_video_card_64kb'])assert(model.assemblyIds(id).length,id+' has assemblies');
 assert(model.rows(model.assemblyIds('bundle.artemis_128_mono')[0]).some(x=>x.depth>0));
 assert(model.render('bompart.computer.artemis.boot_rom_chips').includes('Unknown'));
@@ -28,7 +48,8 @@ assert(model.render('bompart.computer.artemis.boot_rom_chips').includes('Unknown
  const category=model.items.find(x=>x.class==='Software'&&x.release).category;change('bom-category',category);const date=model.items.find(x=>x.class==='Software'&&x.category===category&&x.release).release;change('bom-release',date);assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.filter(x=>x.class==='Software'&&x.category===category&&x.release===date).length);
  change('bom-class','Computer');assert.equal(d.querySelectorAll('#bom-rows tr').length,0);assert(d.getElementById('bom-inspector').textContent.includes('No elements'));
  d.getElementById('bom-reset').click();assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.length);
- change('bom-release','Unknown');assert([...d.querySelectorAll('#bom-rows tr')].every(tr=>tr.lastElementChild.textContent==='Unknown'));
+ assert(![...d.getElementById('bom-release').options].some(option=>option.value==='Unknown'));
+ change('bom-release','no release');assert.equal(d.querySelectorAll('#bom-rows tr').length,12);assert([...d.querySelectorAll('#bom-rows tr')].every(tr=>tr.lastElementChild.textContent==='no release'));
  assert.deepEqual(errors,[]);dom.window.close();
  for(const [old,current] of [['edition.abacus_2.z80','software.abacus_2'],['part.artemis_ram_module_128kb_aion','part.ram_128kb_x32'],['device.artemis_ram_256kb_bank_kit','offer.ram_256kb_bank']]){
   const redirected=new JSDOM(read('bom-navigator.html'),{url:'https://atlas.test/bom-navigator.html?element='+old,runScripts:'outside-only',virtualConsole:vc});const rw=redirected.window;rw.fetch=async p=>({ok:true,json:async()=>json(p)});

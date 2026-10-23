@@ -69,7 +69,8 @@
         },
         "manufacturer_part_number": {
           "type": [
-            "null"
+            "null",
+            "string"
           ]
         },
         "name": {
@@ -123,6 +124,51 @@
               }
             }
           }
+        },
+        "introduced": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "event_name",
+            "event_start_date"
+          ],
+          "properties": {
+            "event_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "event_start_date": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[0-9]{4}(-[0-9]{2})?(-[0-9]{2})?$"
+            }
+          },
+          "oneOf": [
+            {
+              "properties": {
+                "event_name": {
+                  "const": "no release"
+                },
+                "event_start_date": {
+                  "type": "null"
+                }
+              }
+            },
+            {
+              "properties": {
+                "event_name": {
+                  "not": {
+                    "const": "no release"
+                  }
+                },
+                "event_start_date": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
         }
       }
     }

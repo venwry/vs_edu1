@@ -81,8 +81,8 @@
       "internal_hdd": {
         "count": 1,
         "capacity_mb": 20,
-        "interface": null,
-        "supplier": null
+        "interface": "ST-506-style MFM interface",
+        "supplier": "Rodime"
       }
     },
     "video": {
@@ -685,6 +685,9 @@
     "monitor_and_keyboard_bundle": "Not specified; do not assume included models or pricing.",
     "planning_file": "athena_1983_program.json",
     "vendor": "Logix",
-    "category": "computer"
+    "category": "computer",
+    "manufacturing_requirements": [
+      "Storage sourcing: Rodime RO202E 20 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
+    ]
   }
 }

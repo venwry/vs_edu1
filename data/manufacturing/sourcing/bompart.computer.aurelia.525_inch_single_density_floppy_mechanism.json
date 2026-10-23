@@ -5,16 +5,23 @@
   "record_type": "bom-components",
   "data": {
     "id": "bompart.computer.aurelia.525_inch_single_density_floppy_mechanism",
-    "name": "525 inch single density floppy mechanism",
+    "name": "5.25-inch single density floppy mechanism",
     "category": "floppy_drive_mechanism",
     "catalog_ref": null,
-    "manufacturer": null,
-    "manufacturer_part_number": null,
+    "manufacturer": "Shugart Associates",
+    "manufacturer_part_number": "SA400",
     "unit_cost": null,
     "currency": null,
     "quote_date": null,
     "quantity_tier": null,
     "qualification_status": "unresolved",
-    "requirements": []
+    "requirements": [
+      "Period sourcing selection: SA400 35-track single-sided mechanism; Aurelia uses FM single density. Freeze formatted sector geometry; do not imply 360 KB capacity.",
+      "Historical availability: Shugart November 1977 SA400/SA450 application bulletin; model selection does not resolve electrical, mechanical or supply qualification."
+    ],
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    }
   }
 }
