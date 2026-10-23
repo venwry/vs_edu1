@@ -1,3 +1,5 @@
+See [COMPUTER_LISTS.md](COMPUTER_LISTS.md) for the current shared display and single-dropdown configuration behaviour.
+
 # Current presentation
 
 The combined diagram prototype is superseded by the nested list and shared BOM inspector described in [BOM_NAVIGATOR.md](BOM_NAVIGATOR.md). The configuration model and saved-cost rules below remain in use; diagram and secondary-accordion layout descriptions are historical.

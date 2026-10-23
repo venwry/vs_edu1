@@ -1,3 +1,5 @@
+Computer-page follow-up: [COMPUTER_LISTS.md](COMPUTER_LISTS.md) supersedes the Artemis-only layout and multiple-filter description below. BOM Navigator behaviour is unchanged.
+
 # BOM Navigator and Artemis list view
 
 The BOM Navigator is a read-only catalogue at `bom-navigator.html`, linked from

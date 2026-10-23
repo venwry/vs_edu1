@@ -86,7 +86,10 @@ for layer,diagram in explorer['diagrams'].items():
   if 'record_ref' in node:assert node['record_ref'] in records,node['record_ref']
  for edge in diagram['edges']:assert set(edge)<=ids,edge
 for p in site['pages']:
- if p.get('explorer_family')=='artemis':assert 'src="artemis-explorer.js"' in (root/p['path']).read_text()
+ if p['id'] in ['aurelia','artemis','athena']:
+  for script in ['architecture-explorer.js','bom-details.js','artemis-configurator.js']:
+   assert 'src="'+script+'"' in (root/p['path']).read_text(), (p['id'],script)
+ elif p.get('explorer_family')=='artemis':assert 'src="artemis-explorer.js"' in (root/p['path']).read_text()
 # Preserve event meanings and prevent an offer or future right becoming a completed transaction.
 by={e['id']:e for e in events}
 assert by['event.bpi_offer']['event_type']=='offer'
