@@ -4,7 +4,7 @@ from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-review = json.loads((ROOT / 'generated/models/comdex-1982-cost-review.json').read_text())
+review = json.loads((ROOT / 'generated/models/manufacturing-costs.json').read_text())['reviews']['comdex-1982']
 rows = {p['id']: p for p in review['prices']}
 money = lambda n: Decimal(str(n)).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
 assert review['date'] == '1982-11-29'

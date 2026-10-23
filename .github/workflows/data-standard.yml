@@ -26,6 +26,8 @@ jobs:
           python tests/validate_data_structure.py
           python tests/validate_catalogs.py
           python tests/validate_hardware_bom.py
+          python tests/validate_cost_consolidation.py
+          python tests/validate_comdex82_costs.py
           python tests/validate_ecosystem_forecast.py
       - name: Check preserved page content and interactive consumers
         run: |

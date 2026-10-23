@@ -12,6 +12,7 @@ def build():
  for path in list(ROOT.glob('*.html'))+list((ROOT/'tools').glob('*template.html')):
   if path.name in site['redirects']:continue
   text=path.read_text();
+  if 'atlas.js' in text and 'catalog-navigation.js' not in text:text=text.replace('<head>','<head><script defer src="catalog-navigation.js"></script>',1)
   if not re.search(r'<body\b',text):
    text=re.sub(r'(<html[^>]*>)',r'\1<head>',text,count=1);text=text.replace('</style>','</style></head><body>',1);text=text.replace('</html>','</body></html>')
   text=re.sub(r'<!-- shared-navigation -->.*?<!-- /shared-navigation -->','',text,flags=re.S)
@@ -24,6 +25,7 @@ def build():
   if page and page['id'] not in ['bom-navigator','artemis','aurelia','athena']:
    content=''
    for fragment in sorted((ROOT/'site/content').glob('*-'+page['id']+'.html')):
+    if page['id'] in ['video-system','software-development']:continue
     if page['id']=='timeline':
      event='event.ncc82_graphics_mouse' if fragment.name.startswith('ncc') else 'event.autodesk_comdex'
      content+=f'<template id="campaign-{event}">'+fragment.read_text()+'</template>'

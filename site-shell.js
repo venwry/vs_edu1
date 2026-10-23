@@ -45,7 +45,8 @@ window.setupFamilyControls=function(tech,page){
    if(/athena|era2|4164/.test(id))return 'athena';if(/artemis|era1/.test(id))return 'artemis';if(/aurelia|z80|4116/.test(id))return 'aurelia';
    if(row.group==='OEM chips')return 'flexibus';if(row.group==='Peripherals')return /network/.test(id)?'networking':'peripherals';if(/abacus|business_tools/.test(id))return 'business-software';if(/bpi/.test(id))return 'bpi';if(/aionix|cpm/.test(id))return 'operating-systems';return 'software-development';
   }
-  const rows=cost.products.filter(r=>owner(r)===page.id||(!['Bundles','Services'].includes(r.group)&&page.record_refs.includes(r.catalog_ref)));
+  const moved=window.CatalogNavigation?.pages.includes(page.id)?CatalogNavigation.ids(tech):new Set();
+  const rows=cost.products.filter(r=>!moved.has(r.catalog_ref||r.id)).filter(r=>owner(r)===page.id||(!['Bundles','Services'].includes(r.group)&&page.record_refs.includes(r.catalog_ref)));
   if(rows.length){const section=document.createElement('section');section.id='product-costs';section.innerHTML='<h2>'+(page.id==='pricing'?'Bundle and service delivery costs':'Components, BOMs and manufacturing')+'</h2><p>Nominal USD estimates at the recorded assessment dates. Unknown quantities and qualification gaps remain explicit. Component rows and complete assemblies overlap; do not add both as independent costs. Software rows include duplication, licensing and delivery where applicable.</p>';
    const components=new Map(bom.components.map(x=>[x.id,x])),assemblies=new Map(bom.assemblies.map(x=>[x.id,x]));
    for(const row of rows){
@@ -55,11 +56,11 @@ window.setupFamilyControls=function(tech,page){
    }host.append(section);
   }
   if(['artemis','video-system','flexibus','software-development','operating-systems','ecosystem','pricing'].includes(page.id)){
-   const [june,november]=await Promise.all(['generated/models/ncc-1982-review.json','generated/models/comdex-1982-cost-review.json'].map(get));
-   const dated=[...june.products,...november.prices].filter(r=>page.id==='pricing'||page.record_refs.includes(r.id));
+   const june=cost.reviews?.['ncc-1982']||{products:[]},november=cost.reviews?.['comdex-1982']||{prices:[]};
+   const dated=[...june.products,...november.prices].filter(r=>!moved.has(r.id)).filter(r=>page.id==='pricing'||page.record_refs.includes(r.id));
    if(dated.length)host.insertAdjacentHTML('beforeend','<section id="dated-reviews"><h2>1982 dated product cost and price reviews</h2>'+dated.map(r=>atlasDetails(r.name+' · '+r.date,r)).join('')+'</section>');
   }
-  const uncosted=bom.products.filter(p=>page.record_refs.includes(p.catalog_ref)&&!rows.some(r=>r.catalog_ref===p.catalog_ref));if(uncosted.length)host.insertAdjacentHTML('beforeend','<section><h2>BOM requirements without a costed product row</h2><p>No complete manufacturing estimate is implied by these records.</p>'+uncosted.map(p=>atlasDetails(records[p.catalog_ref]?.name||p.catalog_ref,{requirements:p,assemblies:bom.assemblies.filter(a=>p.assembly_refs.includes(a.id))})).join('')+'</section>');
+  const uncosted=bom.products.filter(p=>!moved.has(p.catalog_ref)).filter(p=>page.record_refs.includes(p.catalog_ref)&&!rows.some(r=>r.catalog_ref===p.catalog_ref));if(uncosted.length)host.insertAdjacentHTML('beforeend','<section><h2>BOM requirements without a costed product row</h2><p>No complete manufacturing estimate is implied by these records.</p>'+uncosted.map(p=>atlasDetails(records[p.catalog_ref]?.name||p.catalog_ref,{requirements:p,assemblies:bom.assemblies.filter(a=>p.assembly_refs.includes(a.id))})).join('')+'</section>');
   if(page.id==='industrial-investment'){
    const global=Object.fromEntries(Object.entries(cost).filter(([k])=>k!=='products'));
    host.insertAdjacentHTML('beforeend','<section id="manufacturing-method"><h2>Manufacturing methods, supplier programmes and assumptions</h2><p>Product costs are attached to computer, software and standards pages. Bundle and service delivery costs appear under Retail pricing.</p>'+Object.keys(global).map(k=>'<details data-method="'+atlasEscape(k)+'"><summary>'+atlasEscape(atlasLabel(k))+'</summary></details>').join('')+'</section>');

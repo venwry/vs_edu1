@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Manufacturing review envelopes 1.0.0",
+  "description": "Additive reviews property of manufacturing-costs.json. Existing legacy review payloads retained verbatim; currency and dates are defined by each review.",
+  "type": "object",
+  "required": [
+    "ncc-1982",
+    "comdex-1982"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ncc-1982": {
+      "type": "object",
+      "required": [
+        "as_of",
+        "products",
+        "team_launch_price",
+        "team_1982_price",
+        "source_sha256"
+      ],
+      "properties": {
+        "as_of": {
+          "const": "1982-06-15"
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "date",
+              "manufacturing_cost_usd"
+            ]
+          }
+        }
+      }
+    },
+    "comdex-1982": {
+      "type": "object",
+      "required": [
+        "date",
+        "cost_assessment",
+        "prices",
+        "financial_boundary"
+      ],
+      "properties": {
+        "date": {
+          "const": "1982-11-29"
+        },
+        "cost_assessment": {
+          "type": "object",
+          "required": [
+            "date",
+            "products"
+          ]
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "name",
+              "date",
+              "manufacturing_cost_usd"
+            ],
+            "properties": {
+              "manufacturing_cost_usd": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

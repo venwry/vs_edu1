@@ -10,7 +10,7 @@ async function boot(file,hash=''){
  w.IntersectionObserver=class{observe(){}unobserve(){}disconnect(){}};w.fetch=async p=>({ok:true,json:async()=>JSON.parse(read(p.replace('./','')))});
  Object.defineProperty(w.HTMLElement.prototype,'offsetWidth',{get(){return this.id==='timelinejs'?1200:500;}});
  Object.defineProperty(w.HTMLElement.prototype,'offsetHeight',{get(){return this.id==='timelinejs'?800:200;}});
- w.eval(read('timeline-model.js'));w.eval(read('atlas.js'));await tick();
+ w.eval(read('timeline-model.js'));w.eval(read('catalog-navigation.js'));w.eval(read('atlas.js'));await tick();
  assert.equal(errors.length,0,errors.map(e=>e.message).join('\n'));
  return {dom,w,d:w.document,errors};
 }

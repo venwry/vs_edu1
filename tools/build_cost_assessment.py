@@ -260,6 +260,10 @@ model['assumptions']['extension_1982']='June 15 1982: nominal planning wage $8.3
 model['metadata']['source_sha256']['generated/catalogs/ncc-1982-inputs.json']=hashlib.sha256((R/'generated/catalogs/ncc-1982-inputs.json').read_bytes()).hexdigest()
 model['assumptions']['ncc_1982']='New products use itemized June-dollar allowances, dedicated launch routing without prior-year learning, conservative new-logic yields, and dated qualified RAM. Estimates do not certify production readiness. Updates have no extra licence fee; driver media is included in mouse BOM. Autodesk future royalties are uncosted.'
 model['metadata']['source_sha256']['generated/catalogs/team-development-program.json']=hashlib.sha256((R/'generated/catalogs/team-development-program.json').read_bytes()).hexdigest()
+previous_path=R/'generated/models/manufacturing-costs.json'
+if previous_path.exists():
+ previous=json.loads(previous_path.read_text())
+ if 'reviews' in previous:model['reviews']=previous['reviews']
 (R/'generated/models/manufacturing-costs.json').write_text(json.dumps(model,indent=2,ensure_ascii=False)+'\n')
 print('Rows:',len(rows),'components:',len(inputs),'unknown BOM quantities assumed:',len(quantity_assumptions))
 for r in rows:
