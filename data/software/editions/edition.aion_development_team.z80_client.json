@@ -1,18 +1,67 @@
 {
   "$schema": "../../../schemas/records/software-edition.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "id": "edition.aion_development_team.z80_client",
   "record_type": "software-edition",
   "data": {
-    "id": "edition.aion_development_team.z80_client",
-    "name": "AION Development System — Team Edition — z80 client",
-    "product_ref": "software.aion_development_team",
-    "execution_target": "z80_cpm",
-    "role": "development_client",
+    "sold_separately": true,
     "introduced": {
       "event_name": "COMDEX November 1981 — Team Edition premiere",
       "event_start_date": "1981-11-19"
     },
+    "description": "One Artemis PRO server entitlement and four concurrent network developer sessions. Hardware, network adapters, hub and backup media sold separately. C IDE version 2 runs locally after network loading; shared source/results live on the server.",
+    "features": [
+      "AIONix Server November 1981 services: users, groups, authentication, project permissions, home directories, quotas and administration",
+      "Repository: atomic multi-file commits, author/date/message, branches, release labels, diffs, rollback and comments tied to immutable revisions; isolated workspaces, saving is not committing",
+      "Collaboration: text channels, posts and replies with file/revision/commit references; shared calendar, meetings, invitations, tasks, owners, deadlines and milestones",
+      "C Development Environment 2: local Artemis ERA/Z80 builds; compact Aurelia/Aurelia+ TUI and local Z80 tools; queued server ERA/heavy builds",
+      "Initial targets CP/M/Z80 and AIONix/ERA with separate binaries, startup code and libraries; Breakthru TUI portability layer and target adapters",
+      "Reproducible builds record source revisions, compiler versions, build settings and target libraries",
+      "Network loader uses bounded transfers; acknowledged saves and recoverable workspaces after disconnect",
+      "Apple and Commodore target packages are future roadmap work; no launch support or binary compatibility claim"
+    ],
+    "specification": {
+      "server": "Artemis PRO, recommended 1 MiB; existing 5 MB disk supports bounded pilot projects only. Archive old history and rotate external floppy backups; larger qualified storage required for substantial projects and is not bundled or priced here.",
+      "clients": "Artemis, Aurelia and Aurelia+ with network upgrade; Aurelia compact tools use sequential overlays within its CP/M memory profile. No full suite resident in 48 KiB claim.",
+      "qualification": "Four concurrent developers is a validation target, not measured throughput. Gate release on commit recovery, access control, backup/restore, conflict handling and both target regression suites.",
+      "commercial_unit": {
+        "unit": "one server, four concurrent developer sessions",
+        "hardware_included": false,
+        "renewal": "No automatic paid renewal assumed; first-year support capped at 12 staff-hours. Further work quoted separately.",
+        "expansion": "Additional concurrency packs planned, not priced or counted as shipping offers."
+      },
+      "delivery_cost_assumptions": {
+        "disks": 12,
+        "printed_pages": 1000,
+        "onboarding_staff_hours": 20,
+        "first_year_support_staff_hours": 12,
+        "note": "One combined package; do not add its client/server editions or old IDE/SDK to its cost. Development/NRE excluded from unit cost."
+      },
+      "sponsored_deployment": "Autodesk whole-team deployment from late January 1982: team_development_program.json/autodesk_sponsored_deployment. Sponsor supplies hardware, qualified concurrency/storage and dedicated support beyond retail caps; retail entitlement remains unchanged.",
+      "adoption_pricing": {
+        "effective_from": "1981-11-19",
+        "reference_retail_usd": 1490.45,
+        "reference_basis": "Pre-change June 15 1982 Team Edition retail, previously used as the explicit November 1981 launch-price proxy. Not a historical market quotation.",
+        "reduction_pct": 50,
+        "retail_usd": 745.23,
+        "rounding": "1490.45 x 0.5, half-up to cents",
+        "scope": "Launch and subsequent modelled snapshots through 1982; no change to June 1981 prelaunch availability. No automatic expiry or second compounded reduction.",
+        "included_services_unchanged": true,
+        "rationale": "User-authorized rapid-adoption price; explicit exception to balanced pricing and the cost floor. Preserve one server/four concurrent users, 20h onboarding, 12h first-year support, media and documentation. Hardware remains separate.",
+        "loss_treatment": "Show actual negative unit contribution after dealer fees. Do not add the same shortfall a second time as a marketing expense in a future P&L. Forecast quantities and aggregate subsidy exposure require a separate demand review.",
+        "launch_cost_basis": "Use the first costed June 1982 delivery snapshot as a disclosed proxy for November 1981; no fabricated November cost study."
+      }
+    },
+    "technology_refs": [
+      "technology.aion_c_portability_framework",
+      "technology.logix_tui_standard",
+      "technology.logix_tcpip_lan"
+    ],
+    "id": "edition.aion_development_team.z80_client",
+    "name": "AION Development System (Team / CP/M Client edition)",
+    "product_ref": "software.product.aion_development_team",
+    "execution_target": "z80_cpm",
+    "role": "development_client",
     "platform_support": [
       {
         "computer_ref": "computer.aurelia",
@@ -33,6 +82,8 @@
       "software.cpm_aurelia_networking"
     ],
     "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
-    "support_status": "November 1981 scenario offering, subject to documented qualification gates."
+    "support_status": "November 1981 scenario offering, subject to documented qualification gates.",
+    "version": null,
+    "edition": "Team / CP/M Client"
   }
 }

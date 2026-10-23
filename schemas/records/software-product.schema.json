@@ -15,7 +15,10 @@
       "type": "string"
     },
     "schema_version": {
-      "const": "2.0.0"
+      "enum": [
+        "2.0.0",
+        "3.0.0"
+      ]
     },
     "id": {
       "type": "string",
@@ -432,5 +435,35 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "3.0.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "required": [
+              "edition_refs"
+            ],
+            "propertyNames": {
+              "enum": [
+                "id",
+                "name",
+                "category",
+                "vendor",
+                "introduced",
+                "edition_refs"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ]
 }

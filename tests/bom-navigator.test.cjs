@@ -5,7 +5,7 @@ const model=require('../bom-details.js').createModel(catalog,bom,cost);
 for(const key of ['base_parts','devices','computers','software_products','platform_editions','offered_bundles','proposed_bundles','commercial_offerings'])for(const r of catalog[key]||[])assert(model.items.some(i=>i.id===r.id),'Missing '+r.id);
 for(const c of bom.components)assert(model.items.some(i=>i.id===c.id||i.id===c.catalog_ref),'Missing manufacturing part '+c.id);
 assert.equal(new Set(model.items.map(x=>x.id)).size,model.items.length);
-assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Computer','Expansion','Software','Bundle']));
+assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Computer','Expansion','Software','Software product','Software edition','Bundle']));
 assert(model.items.filter(x=>x.id.startsWith('bundle.proposed_')).every(x=>!x.release));
 for(const id of ['computer.artemis','bundle.artemis_128_mono','device.artemis_video_card_64kb'])assert(model.assemblyIds(id).length,id+' has assemblies');
 assert(model.rows(model.assemblyIds('bundle.artemis_128_mono')[0]).some(x=>x.depth>0));
@@ -29,5 +29,14 @@ assert(model.render('bompart.computer.artemis.boot_rom_chips').includes('Unknown
  change('bom-class','Computer');assert.equal(d.querySelectorAll('#bom-rows tr').length,0);assert(d.getElementById('bom-inspector').textContent.includes('No elements'));
  d.getElementById('bom-reset').click();assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.length);
  change('bom-release','Unknown');assert([...d.querySelectorAll('#bom-rows tr')].every(tr=>tr.lastElementChild.textContent==='Unknown'));
- assert.deepEqual(errors,[]);dom.window.close();console.log('PASS: BOM Navigator coverage, deep link, combined filters, empty/reset states and component BOMs');
+ assert.deepEqual(errors,[]);dom.window.close();
+ for(const [old,current] of [['edition.abacus_2.z80','software.abacus_2'],['part.artemis_ram_module_128kb_aion','part.ram_128kb_x32'],['device.artemis_ram_256kb_bank_kit','offer.ram_256kb_bank']]){
+  const redirected=new JSDOM(read('bom-navigator.html'),{url:'https://atlas.test/bom-navigator.html?element='+old,runScripts:'outside-only',virtualConsole:vc});const rw=redirected.window;rw.fetch=async p=>({ok:true,json:async()=>json(p)});
+  for(const script of rw.document.scripts)rw.eval(read(new URL(script.src).pathname.slice(1)));
+  for(let i=0;i<60&&!rw.document.querySelector('main[data-ready]');i++)await new Promise(r=>setTimeout(r,10));
+  assert(rw.document.querySelector('[data-element="'+current+'"][aria-pressed=true]'));assert.equal(new URL(rw.location.href).searchParams.get('element'),current);
+  if(current.startsWith('part.')||current.startsWith('offer.')){rw.document.getElementById('tab-costs').click();assert(rw.document.getElementById('panel-costs').textContent.includes('pending reassessment'));}
+  redirected.window.close();
+ }
+ console.log('PASS: BOM Navigator coverage, deep link, combined filters, empty/reset states and component BOMs');
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "2.0.0",
+  "id": "software.aionix",
+  "record_type": "software-edition",
+  "data": {
+    "vendor": "AION Software / Digital Research cooperation",
+    "introduced": {
+      "event_name": "NCC 1980 — Logix Artemis launch",
+      "event_start_date": "1980-05-19"
+    },
+    "delivery": "System XIP ROM cartridge",
+    "technology_ref": "technology.aionix_os_model",
+    "bundled_with": [
+      "computer.artemis"
+    ],
+    "technology_refs": [
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_standard",
+      "technology.logix_tui_keyboard_standard",
+      "technology.logix_tui_mouse",
+      "technology.flexibus_pointing_device"
+    ],
+    "portable_runtime": {
+      "api_ref": "technology.logix_c_api",
+      "display_ref": "technology.logix_display_api",
+      "implementation_target": "era_aionix",
+      "ownership": "System owns shared TUI implementation; Business Tools applications consume it.",
+      "capability_discovery": "Report supported services, limits and usable display configurations.",
+      "abi_policy": "Stable binary interfaces within this target; shared C API across targets."
+    },
+    "forward_compatibility_commitment": {
+      "announced": "1980-05-19",
+      "supported_through": "2000-12-31",
+      "scope": "Released Artemis application binaries using documented, supported ERA/AIONix interfaces retain a supported execution path on subsequent Logix professional platforms through 2000: native execution, a maintained compatibility runtime, or emulation. Source portability is a separate commitment, not a substitute for the binary execution path.",
+      "exclusions": "Undocumented hardware access, unqualified peripherals and unsupported interfaces; no promise of unchanged speed, unlimited memory, or every future device. Z80 programs use their separately qualified compatibility path.",
+      "delivery_requirements": "Publish versioned ABI/API eligibility and conformance tests; preserve reference binaries and regression workloads; budget compatibility engineering, runtime distribution and support. Staffing, funding and validation remain explicit launch readiness gates.",
+      "status": "Official scenario commitment at NCC 1980; future fulfilment is not established evidence."
+    },
+    "mouse_update": {
+      "available_from": "1982-06",
+      "technology_ref": "technology.logix_tui_mouse",
+      "driver_ref": "technology.flexibus_pointing_device",
+      "scope": "Driver and TUI library/service update; preserve existing OS/core identity and keyboard interface. Standard-control applications need no source edits, subject to linkage and runtime compatibility."
+    },
+    "id": "software.aionix",
+    "name": "AIONix (ERA edition)",
+    "product_ref": "software.product.aionix",
+    "execution_target": "era_aionix",
+    "role": "operating_system",
+    "platform_support": [
+      {
+        "computer_ref": "computer.artemis",
+        "available_from": "1980-05-19"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": 128,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [],
+    "support_status": "declared compatible; implementation conformance and performance not yet measured",
+    "version": null,
+    "edition": "ERA",
+    "bom_assembly_refs": [
+      "assembly.media.software.aionix"
+    ]
+  }
+}

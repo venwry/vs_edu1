@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.part.ram_128kb_x32",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.part.ram_128kb_x32",
+    "name": "Logix 128 KB 32-bit DRAM module",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "bompart.part.dram_16kbit",
+        "quantity": 64,
+        "unit": "each",
+        "role": "32 data chips per rank; 2 rank(s)",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.module_pcb",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.module_connector_contacts",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      },
+      {
+        "ref": "bompart.part.artemis_ram_module_128kb.capacity_identification_straps",
+        "quantity": null,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "unresolved"
+      }
+    ],
+    "requirements": [
+      "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+      "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+    "cost_assessment_status": "pending_reassessment"
+  }
+}

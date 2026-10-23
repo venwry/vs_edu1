@@ -78,18 +78,19 @@
         "ram_slots": 8,
         "banks": 4,
         "modules_per_bank": 2,
-        "module_data_width_bits": 16,
+        "module_data_width_bits": 32,
         "bank_data_width_bits": 32,
         "supported_module_refs": [
-          "part.artemis_ram_module_32kb_x16",
-          "part.artemis_ram_module_128kb",
-          "part.artemis_ram_module_128kb_aion"
+          "part.ram_64kb_x32",
+          "part.ram_128kb_x32",
+          "part.ram_256kb_x32",
+          "part.ram_256kb_x32_2um"
         ],
         "mixed_density_allowed": false,
         "physical_limit_kb": 1024,
         "physical_map_status": "RAM base, ROM, video RAM, I/O and reset overlays remain to be assigned; 24-bit physical addressing is unchanged.",
         "requirements": [
-          "Independent bank selection with row/column address multiplexing.",
+          "Independently select both full-width modules and each rank within a capacity bank; 32-bit data bus shared by selected module. Multiplex row/column addresses and refresh every rank.",
           "Four byte write enables per 32-bit bank; defined aligned byte/halfword/word access and alignment faults.",
           "RAS/CAS/WE timing, data buffers, refresh arbitration and DMA contention handling.",
           "Explicit READY/wait handshake; full-width data transfer is not a zero-wait guarantee.",

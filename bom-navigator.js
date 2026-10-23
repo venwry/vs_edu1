@@ -5,8 +5,8 @@ try{
  const pageId=document.documentElement.dataset.page,bomMode=pageId==='bom-navigator';
  const get=async p=>{const r=await fetch(p);if(!r.ok)throw Error('Unable to load '+p);return r.json();};
  const [catalog,story]=await Promise.all(['generated/catalogs/logix-aion-technical-catalog-v2.json','generated/catalogs/logix-aion-story.json'].map(get));
- let model;
- if(bomMode){const [bom,cost]=await Promise.all(['generated/catalogs/hardware-bom.json','generated/models/manufacturing-costs.json'].map(get));model=BomDetails.createModel(catalog,bom,cost);}
+ let model,redirects={};
+ if(bomMode){const [bom,cost,site]=await Promise.all(['generated/catalogs/hardware-bom.json','generated/models/manufacturing-costs.json','generated/catalogs/site-pages.json'].map(get));redirects=site.record_redirects||{};model=BomDetails.createModel(catalog,bom,cost);}
  else{
   const site=await get('generated/catalogs/site-pages.json'),page=site.pages.find(p=>p.id===pageId);
   if(!page)throw Error('Missing navigator configuration');
@@ -19,11 +19,13 @@ try{
  const collator=new Intl.Collator('en',{numeric:true,sensitivity:'base'});
  let sortKey='name',sortDirection=1,displayedId=null;
  let selected=new URLSearchParams(location.search).get('element')||decodeURIComponent(location.hash.slice(1));
+ selected=redirects[selected]||selected;
  for(const [id,key] of filters)for(const value of [...new Set(model.items.map(x=>x[key]||'Unknown'))].sort()){const o=document.createElement('option');o.value=value;o.textContent=value.replace(/_/g,' ');$(id).append(o);}
  let activeTab='details';
  const tabs=bomMode?[['details','Details'],['bom','Bill of Materials'],['costs','Manufacturing costs'],['events','Related events']]:[['details','Details'],['events','Related events']];
  function relatedEvents(id){
-  const events=story.phases.flatMap(p=>p.events).filter(e=>(e.product_refs||[]).includes(id));
+  const relatedIds=new Set([id,...(model.records[id]?.edition_refs||[])]);
+  const events=story.phases.flatMap(p=>p.events).filter(e=>(e.product_refs||[]).some(ref=>relatedIds.has(ref)));
   return events.length?events.map(e=>'<article><h3><a href="timeline.html#'+esc(e.id)+'">'+esc(e.title)+'</a></h3><p>'+esc(e.date?.start||'Unknown date')+'</p>'+renderSpecification({actions:e.actions,outcomes:e.outcomes,agreement_terms:e.agreement_terms,metrics:e.metrics},model.records)+'</article>').join(''):'<p>No directly related events are recorded for this element.</p>';
  }
  function inspect(item){

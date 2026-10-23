@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "2.0.0",
+  "id": "software.aurelia_sdk",
+  "record_type": "software-edition",
+  "data": {
+    "contents": [
+      "Aurelia Technical Reference",
+      "Aurelia Programmer's Manual",
+      "Video Programmer's Guide",
+      "Expansion Card Developer Guide",
+      "FlexiBUS Developer Guide",
+      "Cartridge Developer Guide",
+      "SDK tools/software",
+      "Portable C language/ABI contract",
+      "Logix API v1 headers and service discovery guide",
+      "Capability-based display and TUI guide",
+      "Portable file-format and memory-handle conventions",
+      "40/80-column and monochrome examples",
+      "Target conformance and resource-budget test guidance",
+      "DMA physical-bank API, refresh/arbitration contract, upload ports and abort handling",
+      "Dedicated sprite SRAM and atomic descriptor-bank examples"
+    ],
+    "sold_separately": true,
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "technology_refs": [
+      "technology.logix_c_target_contract",
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "roadmap_1979": "NCC 1979 clinics teach source portability using existing C/API/file-format contracts. No new-target compiler, public word size or ISA is released before NCC 1980.",
+    "id": "software.aurelia_sdk",
+    "name": "Logix Developer Package SDK (CP/M edition)",
+    "product_ref": "software.product.developer_sdk",
+    "execution_target": "z80_cpm",
+    "role": "development_tools",
+    "platform_support": [
+      {
+        "computer_ref": "computer.aurelia",
+        "available_from": "1978-06-05"
+      },
+      {
+        "computer_ref": "computer.aurelia_plus",
+        "available_from": "1979-12-03"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": 48,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [
+      "software.cpm_aurelia"
+    ],
+    "delivery": "Not yet specified",
+    "support_status": "declared compatible; implementation conformance and performance not yet measured",
+    "version": null,
+    "edition": "CP/M"
+  }
+}

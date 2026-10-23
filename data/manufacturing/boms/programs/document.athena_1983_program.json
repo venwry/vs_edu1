@@ -6,24 +6,23 @@
   "data": {
     "module_boms": [
       {
-        "module_ref": "part.athena_ram_module_128kb",
+        "module_ref": "part.ram_128kb_x32",
         "lines": [
           {
-            "ref": "part.aion_4164_2um",
-            "quantity": 16,
+            "ref": "part.dram_16kbit",
+            "quantity": 64,
             "unit": "each"
           }
         ],
         "additional_functional_sets": [
           "PCB and connector",
           "Decoupling and bulk capacitors",
-          "Address/control buffers and capacity identification",
-          "Rank decode for 256 KiB module"
+          "Module/rank selection, address/control buffers and capacity identification"
         ],
-        "cost_status": "Uncosted 1983 module; assembly/test and component selections pending."
+        "cost_status": "Shared 32-bit module revision; current cost assessment and electrical qualification pending."
       },
       {
-        "module_ref": "part.athena_ram_module_256kb",
+        "module_ref": "part.ram_256kb_x32_2um",
         "lines": [
           {
             "ref": "part.aion_4164_2um",
@@ -34,10 +33,9 @@
         "additional_functional_sets": [
           "PCB and connector",
           "Decoupling and bulk capacitors",
-          "Address/control buffers and capacity identification",
-          "Rank decode for 256 KiB module"
+          "Module/rank selection, address/control buffers and capacity identification"
         ],
-        "cost_status": "Uncosted 1983 module; assembly/test and component selections pending."
+        "cost_status": "Shared 32-bit module revision; current cost assessment and electrical qualification pending."
       }
     ],
     "computer_boms": [
@@ -50,7 +48,7 @@
             "unit": "each"
           },
           {
-            "ref": "part.athena_ram_module_128kb",
+            "ref": "part.ram_128kb_x32",
             "quantity": 2,
             "unit": "each"
           },
@@ -104,7 +102,7 @@
             "unit": "each"
           },
           {
-            "ref": "part.athena_ram_module_256kb",
+            "ref": "part.ram_256kb_x32_2um",
             "quantity": 4,
             "unit": "each"
           },

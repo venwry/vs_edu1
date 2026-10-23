@@ -1,0 +1,93 @@
+{
+  "$schema": "../../../schemas/records/software-edition.schema.json",
+  "schema_version": "2.0.0",
+  "id": "software.abacus_1",
+  "record_type": "software-edition",
+  "data": {
+    "delivery": "diskette",
+    "features": [
+      "one tab per document",
+      "editor-consistent navigation/editing",
+      "formulas",
+      "print forms/layout using spreadsheet data",
+      "sparse storage model"
+    ],
+    "sold_separately": true,
+    "technology_refs": [
+      "technology.abacus_sparse_model",
+      "technology.logix_tui_standard",
+      "technology.logix_c_api",
+      "technology.logix_display_api",
+      "technology.logix_tui_keyboard_standard"
+    ],
+    "introduced": {
+      "event_name": "NCC 1978 — Logix Aurelia launch",
+      "event_start_date": "1978-06-05"
+    },
+    "portability_contract": {
+      "api_ref": "technology.logix_c_api",
+      "shared_logic": "Separate application/document algorithms from platform adapters.",
+      "display": "Query dimensions and attributes; use semantic colors and clipping.",
+      "memory": "Bounded buffers and handles for banked objects; report allocation failures.",
+      "storage": "Versioned, explicitly encoded records; no persisted pointers or raw C structures.",
+      "migration": "Recompile for the target, adapt OS-specific modules and test resource limits. This does not expand the listed supported platforms."
+    },
+    "programmatic_file_access": "Pulse may read and edit supported Abacus file versions offline. Preserve formulas and versioned features; prevent concurrent writers and invalidate stale cached results.",
+    "launch_acceptance_requirements": {
+      "campaign_file": "aurelia_1978_campaign.json",
+      "status": "Required for the advertised launch demonstration; implementation and measured performance not yet qualified.",
+      "functions": [
+        "IF(condition, value_if_true, value_if_false)",
+        "Copy/fill-down formulas with documented relative and absolute references"
+      ],
+      "workload": "500-plus rows with populated-cell/formula count, RAM configuration and measured load/recalculation time recorded; automatic does not imply instantaneous.",
+      "workflow": "Change supplier cost assumption, recalculate, flag low margins, print report, save, close and reopen without loss."
+    },
+    "partner_distribution": {
+      "tandy": {
+        "agreement_date": "1978-11-27",
+        "announcement_date": "1979-05-30",
+        "demo_date": "1979-06-04",
+        "customer_release_date": "1979-10-15",
+        "edition_ref": "edition.abacus_1.model_ii",
+        "terms": "AION funds adaptation in exchange for official Tandy CP/M/FlexiBUS support and a distribution commitment; royalties/minimum purchases not specified. OEM sales/revenue are not priced as Aurelia retail copies.",
+        "video": "Native Tandy display through software adapter; no Logix video hardware required."
+      }
+    },
+    "data_interchange": {
+      "partner": "BPI Systems",
+      "available_from": "1978-06-05",
+      "contract": "Import versioned BPI disk-file summaries as independent planning inputs: named columns, account identifiers, period, currency, decimal amounts and reconciliation totals. Validate parsing, rounding, memory and save/reopen. No direct ledger write-back, live database link or simultaneous execution.",
+      "status": "Accepted requirement; measured implementation qualification pending.",
+      "export_definition_ref": "software.bpi_suite"
+    },
+    "independent_implementation_policy": "Any manufacturer may implement the published Aurelia execution environment to run properly licensed compatible Abacus binaries; named editions document supported configurations, not exclusive manufacturer rights. Processor, resources and interface conformance must be met. The COMDEX 1979 compatibility kit supplies reference adapters and tests. No mandatory FlexiBUS or Logix video hardware.",
+    "id": "software.abacus_1",
+    "name": "Abacus 1.x (CP/M edition)",
+    "product_ref": "software.product.abacus",
+    "execution_target": "z80_cpm",
+    "role": "application",
+    "platform_support": [
+      {
+        "computer_ref": "computer.aurelia",
+        "available_from": "1978-06-05"
+      },
+      {
+        "computer_ref": "computer.aurelia_plus",
+        "available_from": "1979-12-03"
+      }
+    ],
+    "minimum_resources": {
+      "installed_ram_kb": 48,
+      "application_ram_bytes": null,
+      "rom_bytes": null,
+      "status": "Compatibility contract; measured workspace and image budgets pending."
+    },
+    "dependency_refs": [
+      "software.cpm_aurelia"
+    ],
+    "support_status": "declared compatible; implementation conformance and performance not yet measured",
+    "version": "1.x",
+    "edition": "CP/M"
+  }
+}

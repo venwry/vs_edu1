@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schemas/records/offer.schema.json",
+  "schema_version": "2.0.0",
+  "id": "offer.ram_256kb_bank",
+  "record_type": "offer",
+  "data": {
+    "id": "offer.ram_256kb_bank",
+    "name": "Logix 256 KB RAM bank (two modules)",
+    "category": "upgrade_bundle",
+    "vendor": "Logix",
+    "introduced": {
+      "event_name": "NCC 1980 — RAM expansion offering",
+      "event_start_date": "1980-05-19"
+    },
+    "component_refs": [
+      "part.ram_128kb_x32"
+    ],
+    "configuration": {
+      "modules": [
+        {
+          "module_ref": "part.ram_128kb_x32",
+          "quantity": 2
+        }
+      ],
+      "capacity_kb": 256,
+      "modules_per_bank": 2,
+      "installation": "Power off; a complete bank requires two matching modules. A single module does not populate a complete bank."
+    },
+    "bom_assembly_ref": "assembly.offer.ram_256kb_bank",
+    "status": "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending."
+  }
+}

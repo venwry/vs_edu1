@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../../schemas/records/bom-assemblies.schema.json",
+  "schema_version": "1.0.0",
+  "id": "assembly.offer.ram_256kb_bank",
+  "record_type": "bom-assemblies",
+  "data": {
+    "id": "assembly.offer.ram_256kb_bank",
+    "name": "Logix 256 KB RAM bank (two modules)",
+    "status": "incomplete",
+    "lines": [
+      {
+        "ref": "assembly.part.ram_128kb_x32",
+        "quantity": 2,
+        "unit": "each",
+        "role": "matched modules",
+        "condition": "always",
+        "quantity_status": "defined"
+      },
+      {
+        "ref": "bompart.device.artemis_ram_256kb_bank_kit.kit_packout_and_instructions",
+        "quantity": 1,
+        "unit": "each",
+        "role": "",
+        "condition": "always",
+        "quantity_status": "defined"
+      }
+    ],
+    "requirements": [
+      "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending."
+    ],
+    "routing": {
+      "operations": [],
+      "minutes_per_unit": null,
+      "first_pass_yield": null,
+      "rework_rate": null,
+      "scrap_rate": null,
+      "fixture_refs": []
+    },
+    "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+  }
+}

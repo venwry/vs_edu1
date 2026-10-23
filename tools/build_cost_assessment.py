@@ -7,6 +7,8 @@ R=Path(__file__).resolve().parents[1]
 C=json.loads((R/'generated/catalogs/logix-aion-technical-catalog-v2.json').read_text()); B=json.loads((R/'generated/catalogs/hardware-bom.json').read_text())
 records={x['id']:x for v in C.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id' in x}
 assemblies={x['id']:x for x in B['assemblies']}; components={x['id']:x for x in B['components']}
+pending=[a['id'] for a in assemblies.values() if a.get('cost_assessment_status')=='pending_reassessment']
+if pending:raise ValueError('Cost rebuild blocked: qualify revised module routing/allowances and reassess before publishing: '+', '.join(pending))
 years=[1978,1979,1980,1981,1982]; snapshots=[f'{y}-06-15' for y in years]
 wages=[5.99,6.54,7.08,7.85,8.30]; electricity=[.028,.031,.037,.043,.047]; overhead=[1,1.09,1.2,1.32,1.43]
 K=['bom_materials','workforce','energy','consumables','operating_overhead','yield_and_rework','instructions','packaging','logistics','recurring_licenses','included_service_delivery']
@@ -142,19 +144,18 @@ team_delivery=json.loads((R/'generated/catalogs/team-development-program.json').
 software_profiles.update(ncc['software_profiles'])
 software_profiles['autocad_1_artemis']=(0,0) # Future independent product: no June retail/royalty estimate.
 software_profiles['aion_development_team']=(team_delivery['disks'],team_delivery['printed_pages'])
-for x in C['software_products']:
- a='assembly.media.'+x['id'];kwargs={'assembly_ref':a} if a in assemblies else {'software_profile':software_profiles[x['id'].split('.')[1]]}
- if x.get('vendor')=='Autodesk':kwargs['not_costed_reason']='Future independent Autodesk product; distribution and licence terms not costed.'
- if x['id']=='software.aion_development_team':kwargs['service_hours']=team_delivery['onboarding_staff_hours']+team_delivery['first_year_support_staff_hours']
- row(x['id'],x['id'],x['name'],'Software','one media/manual set; bundled editions are not separate purchases',date(x),**kwargs,assumptions=['Media count and printed pages are planning allowances; software-development costs excluded.','Generic BPI suite denotes the five-module set; separately costed module rows below are alternatives, not additions.'] if x['id']=='software.bpi_suite' else ['Media and documentation reproduction only, plus an explicit recurring third-party license allowance where applicable.'])
-# Individual BPI offerings and native/client/server distribution variants.
-for m in records['software.bpi_suite']['modules']:row('software.bpi_suite.'+m['name'].lower().replace(' ','_'),'software.bpi_suite',m['name'],'Software','one module media/manual set','1978-06-05',software_profile=[1,140])
 external_platform_ids={x['id'] for x in C.get('external_platforms',[])}
-external_editions=[e for e in C['platform_editions'] if all(x['computer_ref'] in external_platform_ids for x in e['platform_support'])]
-for e in C['platform_editions']:
- if e in external_editions:continue
- prod=records[e['product_ref']];profile=software_profiles.get(prod['id'].split('.')[1]);a='assembly.media.'+prod['id']
- row(e['id'],prod['id'],e['name'],'Software editions','one platform-specific media/manual set',date(e),**({'assembly_ref':a} if a in assemblies else {'software_profile':profile or [2,200]}),assumptions=['Alternative distribution of the parent software product; do not add parent and edition rows.'])
+external_editions=[]
+for x in C['platform_editions']:
+ if x['platform_support'] and all(s['computer_ref'] in external_platform_ids for s in x['platform_support']):
+  external_editions.append(x);continue
+ key=x['id'].split('.')[1];a='assembly.media.software.'+key
+ kwargs={'assembly_ref':a} if a in assemblies else {'software_profile':software_profiles.get(key)}
+ if kwargs.get('software_profile','present') is None:kwargs={'not_costed_reason':'No qualified media, licence and delivery cost profile is recorded for this edition.'}
+ if records[x['product_ref']].get('vendor')=='Autodesk':kwargs['not_costed_reason']='Future independent Autodesk product; distribution and licence terms not costed.'
+ if key=='aion_development_team':kwargs['service_hours']=team_delivery['onboarding_staff_hours']+team_delivery['first_year_support_staff_hours']
+ row(x['id'],x['id'],x['name'],'Software editions','one edition media/manual set',date(x),**kwargs,assumptions=['Edition reproduction and delivery only; product is a grouping and has no additional manufacturing charge.'])
+for m in records['software.bpi_suite']['modules']:row('software.bpi_suite.'+m['name'].lower().replace(' ','_'),'software.bpi_suite',m['name'],'Software','one module media/manual set','1978-06-05',software_profile=[1,140])
 for x in C['offered_bundles']:
  row(x['id'],x['id'],x['name'],'Bundles','one complete catalog offer',date(x),assembly_ref=x['bom_assembly_ref'],manufacturing_variants=x.get('manufacturing_variants',[]),included_services=x.get('included_services',[]),announced_only=bool(x.get('availability_status')),assumptions=['Recursive BOM packout; never sum a bundle and its constituent product rows.','The dated manufacturing variant determines NIC and OS inclusion.'])
 # Service delivery units are necessary to avoid calling an annual contract a manufactured item.
