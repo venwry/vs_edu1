@@ -1,16 +1,16 @@
-# Authoritative JSON data standard (v3)
+# Authoritative JSON data standard (v3 / unified components)
 
 ## One source layer
 
 The 24 JSON files immediately under `data/` are the authoritative collections.
-Edit their records directly. Each root declares `schema_version: "3.0.0"` and a
+Edit their records directly. Roots declare `schema_version: "3.0.0"` (components use `"3.1.0"`) and a
 relative `$schema` pointing to its contract in `schemas/collections/`.
 There are no persisted generated catalogues and no per-record files or manifest.
 `data/site.json` owns navigation and page configuration.
 
 Collections group records by domain; file boundaries do not define identity.
 Keep existing stable IDs and reference fields. Names are labels, never join keys.
-Keep nulls, unknown quantities, units, date precision, supplier attribution and
+Keep meaningful unknowns, unknown quantities, units, date precision, supplier attribution and
 record order. Do not invent values or split combined supplied components.
 Offers, assemblies and product BOM mappings retain their existing meanings.
 
@@ -57,6 +57,37 @@ Those results and immutable `baselines/` remain separate because recomputing the
 is an intentional numerical operation. Follow `BUILD_PIPELINE.md`; never refresh
 saved hashes or models solely to make a structural migration pass.
 
-`python tools/check_migration.py` is the one-time losslessness audit for this
-migration. Its fixture hashes deliberately describe the migration base, so it is
-not a permanent gate against future intentional data changes.
+`python tools/check_migration.py` is the one-time component-identity migration audit.
+Its fixture checks unchanged physical assemblies, other views after identifier
+translation, and exact archived model/baseline bytes. It is not a permanent gate
+against future intentional data changes. Earlier migration audit fixtures describe
+the historical revisions documented in `SINGLE_DATA_MIGRATION.md`.
+
+## Unified component identity
+
+`data/components.json.components[]` is the sole component list. Do not recreate
+`base_parts[]` or `data/sourcing.json.components[]`. The technical and hardware
+in-memory views both expose this same list as `components`; edits through either
+view write to the same source. `data/sourcing.json` retains supplier programmes only.
+
+Each record has one `part.*` ID, name, canonical category, introduction and `bom_role`:
+`material` for physical BOM leaves with component-cost inputs, `assembly` for
+components represented by constituent assemblies, or `specification` for records
+without a released constituent BOM. These roles are not sales availability flags.
+Assembly lines point to material IDs or explicit `assembly.*` IDs, never an assembled
+component ID that would be ambiguously counted as a leaf.
+
+There is no component `catalog_ref`. Product/offer BOM mappings and cost-product
+`catalog_ref` fields retain their separate purpose and remain valid. Keep vendor
+and manufacturer distinct. Use `requirements` for reconciled requirements and
+`alternate_names` only for meaningful previous names. Empty quote fields and empty
+specification placeholders are omitted; absence means unspecified, never zero or
+qualified. In particular, no supplier quote should be inferred from saved model costs.
+
+`schemas/data-registry.json.component_id_aliases` maps retired BOM identifiers to
+canonical IDs. It is compatibility metadata, not a second component catalogue.
+The browser and Python readers translate IDs and component-keyed maps in saved
+models in memory, including compound `assembly|component` keys. They reject key
+collisions. Raw files, numerical values and original provenance remain unchanged.
+Do not manually refresh archival hashes. Old Navigator links resolve through the
+same alias map. New data and builder outputs must use canonical IDs.

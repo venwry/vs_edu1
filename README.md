@@ -6,6 +6,7 @@ with static HTML explorers and financial reports.
 - **Authoring contract:** [JSON_DATA_STANDARD.md](JSON_DATA_STANDARD.md)
 - **Build ownership:** [BUILD_PIPELINE.md](BUILD_PIPELINE.md)
 - **Migration audit and test results:** [SINGLE_DATA_MIGRATION.md](SINGLE_DATA_MIGRATION.md)
+- **Unified component migration:** [COMPONENT_MIGRATION.md](COMPONENT_MIGRATION.md)
 - **Source/projection registry:** [schemas/data-registry.json](schemas/data-registry.json)
 
 Edit the 24 authoritative collections under `data/`, then run:

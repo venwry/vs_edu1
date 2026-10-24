@@ -9,3 +9,8 @@ components just to identify suppliers. Run `python tools/validate_data.py` and
 Read `BUILD_PIPELINE.md` before numerical rebuilds. Do not recalculate financial
 models for structural edits. Frozen baselines are immutable. Existing baseline
 failures are documented in `SINGLE_DATA_MIGRATION.md`; do not remove checks.
+
+Components live only in `data/components.json.components[]`. Preserve unified IDs,
+BOM roles and the archival alias adapter. Read `COMPONENT_MIGRATION.md` before
+changing component contracts. Run `tests/validate_component_migration.py` for this
+migration, in addition to source validation and relevant browser/domain tests.

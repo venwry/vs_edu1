@@ -24,8 +24,8 @@ assert c['chip_fabrication_models']['part.era1']['1981']['good_packaged_chip_cos
 cp={x['id']:x for x in c['products']}
 for ref,count in [('bundle.artemis_pro_512_server',64),('bundle.artemis_pro_1mb_server',128)]:
  parts={x['component_ref']:x['quantity'] for x in cp[ref]['snapshots']['1981']['bom_lines']}
- assert parts['bompart.part.aion_4164']==count
- assert 'bompart.part.dram_64kbit' not in parts
+ assert parts['part.aion_4164']==count
+ assert 'part.dram_64kbit' not in parts
 for row in i['quarterly_wafer_loading']:
  if row['chip_ref']=='part.aion_4164' and row['quarter']=='1980-Q1':assert row['cost_snapshot_year']==1980 # Matches first available Aurelia+ cost snapshot; no mixed-vintage wafer credit.
 for src in impact['sources']:assert hashlib.sha256(document_bytes(resolve_path(src['path']), root=R)).hexdigest()==src['sha256']

@@ -18,11 +18,11 @@ for n,h in review['source_sha256'].items():
  assert hashlib.sha256(source).hexdigest()==h,n
 for id,n in [('device.artemis_video_card_64kb',8),('device.artemis_professional_video_128kb',16)]:
  row=costs[id];v={x['component_ref']:x['quantity'] for x in row['snapshots']['1982']['bom_lines']}
- assert v['bompart.part.aion_4164']==n
+ assert v['part.aion_4164']==n
  assert row['snapshots']['1981']['total_usd'] is None
  assert prices[id]['snapshots']['1982']['pricing_balance']['status']=='no_proxy_cost_based'
 v={x['component_ref']:x['quantity'] for x in costs['device.artemis_video_card_64kb']['snapshots']['1982']['bom_lines']}
-assert v['bompart.part.aion_2114']==2
+assert v['part.aion_2114']==2
 for pack in campaign['packages']:
  row=prices[pack['id']]['snapshots']['1982']
  assert abs(sum(costs[x]['snapshots']['1982']['total_usd'] for x in pack['components'])-row['manufacturing_cost_usd'])<.011

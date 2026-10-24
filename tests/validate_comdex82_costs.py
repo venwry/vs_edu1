@@ -22,7 +22,7 @@ for row in rows.values():
         assert row['unit_contribution_usd'] is None
 assert rows['software.autocad_1_artemis']['manufacturing_cost_usd'] is None
 card = next(p for p in review['cost_assessment']['products'] if p['id'] == 'device.artemis_professional_video_128kb')
-assert next(p for p in card['bom_lines'] if p['component_ref'] == 'bompart.part.aion_2114')['quantity'] == 2
+assert next(p for p in card['bom_lines'] if p['component_ref'] == 'part.aion_2114')['quantity'] == 2
 for filename in ('market-outlook.html', 'memory-manufacturing.html'):
     assert not (ROOT / filename).exists()
     for path in [ROOT / 'data/site.json', *ROOT.glob('*.html'), *ROOT.glob('*.js'), *ROOT.glob('tools/*template.html')]:

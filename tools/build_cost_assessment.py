@@ -7,7 +7,7 @@ from memory_manufacturing import policy as memory_policy, selected as memory_sel
 R=Path(__file__).resolve().parents[1]
 C=read_document('generated/catalogs/logix-aion-technical-catalog-v2.json', root=R); B=read_document('generated/catalogs/hardware-bom.json', root=R)
 records={x['id']:x for v in C.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id' in x}
-assemblies={x['id']:x for x in B['assemblies']}; components={x['id']:x for x in B['components']}
+assemblies={x['id']:x for x in B['assemblies']}; components={x['id']:x for x in B['components'] if x['bom_role']=='material'}
 pending=[a['id'] for a in assemblies.values() if a.get('cost_assessment_status')=='pending_reassessment']
 if pending:raise ValueError('Cost rebuild blocked: qualify revised module routing/allowances and reassess before publishing: '+', '.join(pending))
 years=[1978,1979,1980,1981,1982]; snapshots=[f'{y}-06-15' for y in years]
@@ -59,7 +59,7 @@ def chip_cost(ref,i):
  if memory_recipe:model.update(memory_recipe=memory_recipe['id'],raw_die_yield=round(memory_evaluate(memory_recipe)['raw_die_yield'],4),repair_fraction_of_spatial_failures=memory_recipe.get('repair_fraction_of_spatial_failures',0),repair_cost_per_wafer_usd=memory_recipe.get('repair_cost_per_wafer_usd',0))
  return v
 for cid,comp in components.items():
- ref=comp.get('catalog_ref');key=cid.split('.')[-1];costs=[];note='One functional set; allowance is a modeling assumption, not an exact released component list.'
+ ref=comp['id'];key=cid.split('.')[-1];costs=[];note='One functional set; allowance is a modeling assumption, not an exact released component list.'
  for i in range(len(years)):
   v=vec()
   if ref in custom:v=chip_cost(ref,i);note='Internal fabrication at recurring cash cost; wafer losses, packaging and final-test yield included. Capital and mask NRE excluded.'
@@ -85,8 +85,8 @@ for cid,comp in components.items():
 quantity_assumptions={}
 def quantity(a,l):
  if l['quantity'] is not None:return l['quantity']
- q=3 if l['ref']=='bompart.part.flexibus_host_controller' and a.startswith(('assembly.computer.aurelia.','assembly.computer.aurelia_plus.')) else 2 if l['ref']=='bompart.part.flexibus_host_controller' and a in ['assembly.device.apple2_expansion_card','assembly.device.s100_flexibus_card'] else 1
- quantity_assumptions[a+'|'+l['ref']]={'quantity':q,'unit':'functional set' if l['ref'] not in ['bompart.'+x for x in custom] else 'chip','reason':'One controller die per port, pending released ports-per-die definition.' if q in [2,3] else 'Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment.'}
+ q=3 if l['ref']=='part.flexibus_host_controller' and a.startswith(('assembly.computer.aurelia.','assembly.computer.aurelia_plus.')) else 2 if l['ref']=='part.flexibus_host_controller' and a in ['assembly.device.apple2_expansion_card','assembly.device.s100_flexibus_card'] else 1
+ quantity_assumptions[a+'|'+l['ref']]={'quantity':q,'unit':'functional set' if l['ref'] not in [x for x in custom] else 'chip','reason':'One controller die per port, pending released ports-per-die definition.' if q in [2,3] else 'Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment.'}
  return q
 def routing(a):
  if a in ncc['routing']:
@@ -201,8 +201,8 @@ def estimate(r,i,source_inputs=None):
  if ref=='software.microsoft_basic_aurelia':v['recurring_licenses']+=20
  if ref=='software.cpm_aurelia_networking':v['recurring_licenses']+=5
  if a and r['group']=='Bundles':
-  if any(k.startswith('bompart.software.cpm_aurelia.') for k in flat):v['recurring_licenses']+=10
-  if any(k.startswith('bompart.software.cpm_aurelia_networking.') for k in flat):v['recurring_licenses']+=5
+  if any(k.startswith('part.software.cpm_aurelia.') for k in flat):v['recurring_licenses']+=10
+  if any(k.startswith('part.software.cpm_aurelia_networking.') for k in flat):v['recurring_licenses']+=5
  for srv in r.get('included_services',[]):v['included_service_delivery']+=sum(support_cost(2,i).values())*srv.get('duration_years',1)
  if 'service_hours' in r:add(v,support_cost(r['service_hours'],i,r.get('travel',0)))
  if r.get('developer_sdk'):
@@ -225,7 +225,7 @@ for r in rows:
   r['assumptions']=['12 disks, 1000 printed pages and 32 staff-hours are planning allowances. Hardware, development/NRE, marketing and capital excluded; no recurring royalty for owned software.']
 # Coverage ledger deliberately includes internal/superseded records without pretending they are products.
 covered={r['catalog_ref'] for r in rows};excluded=[{'catalog_ref':x['id'],'reason':'External partner offering; manufacturing/media boundary and OEM terms not costed.'} for x in C.get('external_platforms',[])+C.get('external_partner_products',[])+external_editions]
-for cat in ['computers','devices','software_products','services','offered_bundles','base_parts','technologies','proposed_bundles']:
+for cat in ['computers','devices','software_products','services','offered_bundles','components','technologies','proposed_bundles']:
  for x in C[cat]:
   if x['id'] not in covered:excluded.append({'catalog_ref':x['id'],'reason':'Proposed bundle, not offered' if cat=='proposed_bundles' else 'Technology/specification, not separately sold' if cat=='technologies' else 'Superseded/prototype part, not active offering' if x.get('superseded_by') or 'prototype' in x['id'] or '128kbit' in x['id'] or 'module_64kb' in x['id'] else 'Purchased/internal component; included in end-product BOM, not a separate Logix offering'})
 sources=[{'id':'bls_wages','title':'BLS via FRED: manufacturing production-worker average hourly earnings','url':'https://fred.stlouisfed.org/data/AHEMAN','used_for':'June nominal wage anchors: 5.99, 6.54, 7.08, 7.85 USD/h. Benefits factor and skill multipliers are assumptions.'},{'id':'eia_power','title':'EIA Annual Energy Review Table 8.10','url':'https://www.eia.gov/totalenergy/data/annual/txt/ptb0810.html','used_for':'Annual US industrial electricity proxies: 2.8, 3.1, 3.7, 4.3 cents/kWh. Annual rates are retrospective proxies, not June-specific tariffs.'},{'id':'byte_1978','title':'BYTE November 1978 advertising','url':'https://vintageapple.org/byte/pdf/197811_Byte_Magazine_Vol_03-11_OSCAR_amateur_radio_satellites.pdf','used_for':'Retail 4116 kit price sanity check only. OEM DRAM prices are scenario discounts; this later-1978 advertisement is not a June quote.'},{'id':'disk_retail','title':'Apple Disk II advertisement, BYTE August 1978','url':'https://vintageapple.org/byte/pdf/197808_Byte_Magazine_Vol_03-08_Pascal.pdf','used_for':'495 USD complete-drive retail comparison only; not its manufacturing cost.'},{'id':'seagate_oem','title':'Computer History Museum corporate-history report: Seagate','url':'https://archive.computerhistory.org/resources/access/text/2015/04/102740040-05-01-acc.pdf','used_for':'Historical 5 MB drive pricing span (single-unit 1500 USD, 5000-unit tier 775 USD); 950 USD 1981 OEM central value is an assumption, not a dated Logix quote.'}]
@@ -235,7 +235,7 @@ programs=read_document('generated/catalogs/manufacturing-programs.json', root=R)
 program=programs['smc_transfer']
 alt_inputs=copy.deepcopy(inputs);supplier_chips=[]
 for ref in program['licensed_part_refs']:
- cid='bompart.'+ref;annual={}
+ cid=ref;annual={}
  for i,y in enumerate(years):
   if snapshots[i] < program['initial_sales_date']:
    annual[str(y)]={'status':'not_yet_available','purchase_price_usd':None};continue
@@ -252,7 +252,7 @@ for r in rows:
   if snapshots[i]<program['initial_sales_date']:
    annual[str(y)]={'status':'not_yet_available','total_usd':None};continue
   v,flat,a=estimate(r,i,alt_inputs);bd={k:round(n,2) for k,n in v.items()};total=round(sum(bd.values()),2)
-  annual[str(y)]={'status':'conditional_on_all_used_parts_qualified','total_usd':total,'breakdown_usd':bd,'delta_vs_aion_base_usd':round(total-r['snapshots'][str(y)]['total_usd'],2),'replaced_chip_quantities':{ref:flat['bompart.'+ref] for ref in program['licensed_part_refs'] if flat['bompart.'+ref]}}
+  annual[str(y)]={'status':'conditional_on_all_used_parts_qualified','total_usd':total,'breakdown_usd':bd,'delta_vs_aion_base_usd':round(total-r['snapshots'][str(y)]['total_usd'],2),'replaced_chip_quantities':{ref:flat[ref] for ref in program['licensed_part_refs'] if flat[ref]}}
  card_scenarios.append({'catalog_ref':r['id'],'name':r['name'],'snapshots':annual})
 model['manufacturing_programs']=programs
 model['supplier_scenarios']={'supplier':'SMC','basis':'Illustrative purchased-price sensitivity, not an SMC quote. Independent commercial sales start October 1979, after the June 1979 snapshot. Base costs retain AION fabrication; alternate rows replace rather than add chip costs. Part qualification is required, not assumed proven.','chips':supplier_chips,'cards':card_scenarios}

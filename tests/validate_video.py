@@ -17,10 +17,10 @@ for card in cards:
     assert spec['video_ram_chip_count'] * records[spec['video_ram_chip_ref']]['specification']['capacity_kbit'] // 8 == spec['video_ram_kb'] == 16
     assembly = next(a for a in bom['assemblies'] if a['id'] == 'assembly.' + card)
     quantities = {line['ref']: line['quantity'] for line in assembly['lines']}
-    assert quantities['bompart.part.aurelia_video_chip'] == 1
-    assert quantities['bompart.part.aion_4116'] == 8
-    assert quantities['bompart.part.aion_2114'] == 2
-    assert 'bompart.part.aurelia_system_controller' not in quantities
+    assert quantities['part.aurelia_video_chip'] == 1
+    assert quantities['part.aion_4116'] == 8
+    assert quantities['part.aion_2114'] == 2
+    assert 'part.aurelia_system_controller' not in quantities
 design = chip['specification']['implementation_design']
 buffers = design['internal_buffers']
 assert buffers['pixel_fifo_page_count'] == 4
@@ -88,10 +88,10 @@ for host in hosts:
             assert used + cfg['remaining_video_ram_bytes'] == capacity
     a = next(a for a in bom['assemblies'] if a['id'] == 'assembly.' + host + '.base')
     lines = {l['ref']: l for l in a['lines']}
-    assert lines['bompart.part.aurelia_video_chip']['quantity'] == 1
-    assert lines['bompart.part.aion_4116']['quantity'] == 8
-    assert lines['bompart.part.aion_2114']['quantity'] == 2
-    assert lines['bompart.part.aurelia_system_controller']['quantity'] == 1
+    assert lines['part.aurelia_video_chip']['quantity'] == 1
+    assert lines['part.aion_4116']['quantity'] == 8
+    assert lines['part.aion_2114']['quantity'] == 2
+    assert lines['part.aurelia_system_controller']['quantity'] == 1
     assert c['memory']['system_controller_ref'] == 'part.aurelia_system_controller'
     controller = records[c['memory']['system_controller_ref']]['specification']
     assert controller['refresh']['independent_of_cpu'] and controller['refresh']['all_installed_banks']

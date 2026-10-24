@@ -1,4 +1,4 @@
-from data_paths import read_document, document_bytes
+from data_paths import read_document, document_bytes, document_text
 from data_paths import resolve_path
 """Validate published industrial assets and their repository integration."""
 from pathlib import Path
@@ -7,7 +7,7 @@ root=Path(__file__).resolve().parents[1]
 model=read_document('generated/models/industrial-investment-1974-1981.json', root=root)
 report=(root/'industrial_investment_1974_1981.html').read_text()
 embedded=json.loads(re.search(r'<script id="model" type="application/json">(.*?)</script>',report,re.S).group(1))
-assert embedded==model,'Published HTML and JSON differ: regenerate both'
+assert embedded==json.loads(document_text('generated/models/industrial-investment-1974-1981.json',root=root)),'Published HTML and archived JSON differ: regenerate both'
 rows=model['quarterly_entity_costs']
 assert len(rows)==180 and len({(x['quarter'],x['entity']) for x in rows})==180
 for r in rows:

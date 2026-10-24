@@ -68,3 +68,12 @@ templates and rebuilds redirects. The financial orchestrator invokes it inside
 its staging checkout before publishing, so later report builds retain navigation.
 An ecosystem-only revision can run `run_pipeline([['build_ecosystem_forecast.py']])`
 using current committed sales inputs; it does not publish a new sales/ROI result.
+
+## Component identity migration
+
+Cost builders consume canonical `part.*` IDs. Only components with `bom_role:
+"material"` enter component costing; composed parts reference explicit assemblies.
+Saved models from before the migration retain their bytes and old IDs. The shared
+readers translate those identifiers and component-keyed/composite maps in memory.
+This is an identity adapter, not a recalculation. `document_bytes` still returns
+stored bytes for archived model provenance checks. See `COMPONENT_MIGRATION.md`.

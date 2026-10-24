@@ -12,11 +12,30 @@ def view_name(path, root=ROOT):
     name=Path(path).stem
     return name if (path.startswith('generated/catalogs/') or path.startswith('catalog:')) and name in reg['views'] else (path[8:] if path.startswith('catalog:') and path[8:] in reg['views'] else None)
 
+def normalize_component_ids(value, root=ROOT):
+    """Translate archival IDs and composite map keys in memory; preserve all numbers."""
+    aliases=registry(root).get('component_id_aliases',{})
+    def translate(v):
+        if isinstance(v,str):
+            if v in aliases:return aliases[v]
+            return '|'.join(aliases.get(p,p) for p in v.split('|')) if '|' in v else v
+        if isinstance(v,list):return [translate(x) for x in v]
+        if isinstance(v,dict):
+            out={}
+            for k,x in v.items():
+                key=translate(k)
+                if key in out:raise ValueError('Component identifier collision: '+key)
+                out[key]=translate(x)
+            return out
+        return v
+    return translate(value)
+
 def read_document(path, root=ROOT):
     root=Path(root);reg=registry(root);name=view_name(path,root)
     if name is None:
         actual=reg['legacy_paths'].get(str(path),str(path))
-        return json.loads((root/actual).read_text())
+        value=json.loads((root/actual).read_text())
+        return normalize_component_ids(value,root) if actual.startswith('generated/models/') else value
     cache={}
     def collection(file):
         if file not in cache:cache[file]=json.loads((root/file).read_text())

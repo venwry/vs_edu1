@@ -19,7 +19,7 @@ try{
  const collator=new Intl.Collator('en',{numeric:true,sensitivity:'base'});
  let sortKey='name',sortDirection=1,displayedId=null;
  let selected=new URLSearchParams(location.search).get('element')||decodeURIComponent(location.hash.slice(1));
- selected=redirects[selected]||selected;
+ selected=await DataStore.resolveComponentId(selected);selected=redirects[selected]||selected;
  for(const [id,key] of filters)for(const value of [...new Set(model.items.map(x=>x[key]||'Unknown'))].sort()){const o=document.createElement('option');o.value=value;o.textContent=value.replace(/_/g,' ');$(id).append(o);}
  let activeTab='details';
  const tabs=bomMode?[['details','Details'],['bom','Bill of Materials'],['costs','Manufacturing costs'],['events','Related events']]:[['details','Details'],['events','Related events']];

@@ -85,7 +85,7 @@ b=load('generated/catalogs/hardware-bom.json')
 for a in b['assemblies']:
  if a['id']=='assembly.part.artemis_ram_module_128kb':
   for l in a['lines']:
-   if l['ref']=='bompart.part.dram_64kbit':l['ref']='bompart.part.aion_4164';l['role']='AION 64K x 1 data DRAM; PRO-qualified grade'
+   if l['ref']=='part.dram_64kbit':l['ref']='part.aion_4164';l['role']='AION 64K x 1 data DRAM; PRO-qualified grade'
 save('generated/catalogs/hardware-bom.json',b)
 
 s=load('generated/catalogs/logix-aion-story.json');site=load('generated/catalogs/site-pages.json')
