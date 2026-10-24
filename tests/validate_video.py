@@ -15,7 +15,7 @@ assert set(chip['used_in']) == set(hosts + cards)
 for card in cards:
     spec = records[card]['specification']
     assert spec['video_ram_chip_count'] * records[spec['video_ram_chip_ref']]['specification']['capacity_kbit'] // 8 == spec['video_ram_kb'] == 16
-    assembly = next(a for a in bom['assemblies'] if a['id'] == 'assembly.' + card)
+    assembly = next(a for a in bom['assemblies'] if a['id'] == card)
     quantities = {line['ref']: line['quantity'] for line in assembly['lines']}
     assert quantities['part.aurelia_video_chip'] == 1
     assert quantities['part.aion_4116'] == 8

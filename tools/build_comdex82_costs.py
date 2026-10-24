@@ -35,8 +35,8 @@ def device(ref):
 card=device('device.artemis_professional_video_128kb');monitor=device('device.mono_pro_17')
 # Complete reference hardware: remove included old card at factory assembly cost, install new colour card once.
 base=base_rows['bundle.artemis_pro_1mb_server']['snapshots']['1982'];v=copy.deepcopy(base['breakdown_usd'])
-oldcard,_=g['rollup']('assembly.device.artemis_video_card',i)
-newcard,_=g['rollup']('assembly.device.artemis_video_card_64kb',i)
+oldcard,_=g['rollup']('device.artemis_video_card',i)
+newcard,_=g['rollup']('device.artemis_video_card_64kb',i)
 for k in g['K']:v[k]+=newcard[k]-oldcard[k]
 for ref in ['device.flexibus_keyboard','device.color_pro_14','device.logix_mouse']:
  for k,value in base_rows[ref]['snapshots']['1982']['breakdown_usd'].items():v[k]+=value

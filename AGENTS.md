@@ -14,3 +14,7 @@ Components live only in `data/components.json.components[]`. Preserve unified ID
 BOM roles and the archival alias adapter. Read `COMPONENT_MIGRATION.md` before
 changing component contracts. Run `tests/validate_component_migration.py` for this
 migration, in addition to source validation and relevant browser/domain tests.
+
+Device BOM definitions live in `data/devices.json`. Read
+`DEVICE_BOM_MIGRATION.md` before changing BOM ownership or assembly references.
+Run `tests/validate_device_migration.py` and relevant browser tests.

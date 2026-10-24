@@ -46,10 +46,10 @@ function peripherals(){
  product(video().technology_ref,2,2);product('technology.plug_and_execute',3,2,false,c.io_and_expansion.expansion_slots.count+' × '+c.io_and_expansion.expansion_slots.width_bits+'-bit slots');
  edges=[['host','technology.flexibus'],['host',video().technology_ref],['host','technology.plug_and_execute']];
  const bundled=new Set(catalog.offered_bundles.filter(b=>b.computer_ref===c.id).flatMap(b=>b.included_devices||[]));
- c.compatible_devices.filter(id=>id!=='device.mono_pro'||video().video_ram_kb===32).filter(id=>network()||![settings.network_adapter_ref,'device.network_hub'].includes(id)).forEach((id,i)=>{
+ c.compatible_devices.filter(id=>id!=='device.mono_pro'||video().video_ram_kb===32).filter(id=>network()||!(id===settings.network_adapter_ref||records[id]?.category==='network_hub_repeater')).forEach((id,i)=>{
   const d=rec(id),standard=id===video().card_ref||(id===settings.network_adapter_ref&&network()),bundle=bundled.has(id),optional=!standard&&!bundle;
   product(id,i%3+1,Math.floor(i/3)+3,optional,(standard?'Included in selected configuration':bundle?'Bundle option':'Optional')+' · '+d.introduced.event_start_date);
-  const parent=window.CatalogCategories.isMemory(d)?'host':['device.artemis_video_card','device.artemis_video_card_16kb'].includes(id)?'host':id==='device.network_hub'?settings.network_adapter_ref:window.CatalogCategories.isMonitor(d)?video().technology_ref:['device.artemis_cpm80_module',settings.network_adapter_ref].includes(id)?'technology.plug_and_execute':'technology.flexibus';
+  const parent=window.CatalogCategories.isMemory(d)?'host':['device.artemis_video_card','device.artemis_video_card_16kb'].includes(id)?'host':d.category==='network_hub_repeater'?settings.network_adapter_ref:window.CatalogCategories.isMonitor(d)?video().technology_ref:['device.artemis_cpm80_module',settings.network_adapter_ref].includes(id)?'technology.plug_and_execute':'technology.flexibus';
   edges.push([parent,id,optional]);
  });
 }

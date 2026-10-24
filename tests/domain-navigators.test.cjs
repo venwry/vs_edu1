@@ -7,7 +7,7 @@ const tech=site.pages.find(p=>p.id==='technology'),services=site.pages.find(p=>p
 assert.equal(tech.record_refs.length,22);assert.equal(services.record_refs.length,15);
 assert(services.record_refs.includes('service.bpi_training'));assert(services.record_refs.includes('service.component_licensing'));
 const all=[...tech.record_refs,...services.record_refs,...bom.items.map(i=>i.id)];assert.equal(new Set(all).size,all.length,'Navigator membership must not overlap');
-for(const id of json('tests/fixtures/retired-domain-records.json'))assert(all.includes(id),'Lost record '+id);
+for(const old of json('tests/fixtures/retired-domain-records.json'))for(const id of json('schemas/data-registry.json').device_family_aliases[old]||[old])assert(all.includes(id),'Lost record '+id);
 for(const page of [tech,services])for(const id of page.record_refs)assert.equal(site.record_page_links[id],page.id);
 (async()=>{
  for(const [page,deep] of [[tech,'technology.flexibus'],[services,'service.bpi_training']]){

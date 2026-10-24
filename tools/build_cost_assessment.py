@@ -85,7 +85,7 @@ for cid,comp in components.items():
 quantity_assumptions={}
 def quantity(a,l):
  if l['quantity'] is not None:return l['quantity']
- q=3 if l['ref']=='part.flexibus_host_controller' and a.startswith(('assembly.computer.aurelia.','assembly.computer.aurelia_plus.')) else 2 if l['ref']=='part.flexibus_host_controller' and a in ['assembly.device.apple2_expansion_card','assembly.device.s100_flexibus_card'] else 1
+ q=3 if l['ref']=='part.flexibus_host_controller' and a.startswith(('assembly.computer.aurelia.','assembly.computer.aurelia_plus.')) else 2 if l['ref']=='part.flexibus_host_controller' and a in ['device.apple2_expansion_card','device.s100_flexibus_card'] else 1
  quantity_assumptions[a+'|'+l['ref']]={'quantity':q,'unit':'functional set' if l['ref'] not in [x for x in custom] else 'chip','reason':'One controller die per port, pending released ports-per-die definition.' if q in [2,3] else 'Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment.'}
  return q
 def routing(a):
@@ -98,7 +98,7 @@ def routing(a):
   return (.18,1,.15) # installation and verification, not another complete build
  if a.startswith('assembly.media.'):return (.08,.08,.08)
  if a.startswith('assembly.bundle.'):return (.2,.2,.25)
- if a.startswith('assembly.device.'):
+ if a.startswith(('device.','assembly.device.')):
   if 'mono_pro' in a:return (1.5,5,1.5)
   if 'artemis_video_card' in a:return (.6,1,.7)
   if 'monitor' in a:return (1.0,4,1)
@@ -115,7 +115,7 @@ def rollup(a,i,source_inputs=None):
  v=vec();flat=Counter()
  for line in assemblies[a]['lines']:
   q=quantity(a,line);ref=line['ref']
-  if ref.startswith('assembly.'):
+  if ref in assemblies:
    child,leaves=rollup(ref,i,source_inputs);add(v,child,q);flat.update({k:n*q for k,n in leaves.items()})
   else:add(v,source_inputs[ref]['annual_cost_buckets_usd'][str(years[i])],q);flat[ref]+=q
  h,kwh,cons=routing(a);h*=1 if a in ncc['routing'] else 1-.05*i;labor=h*wages[i]*1.35

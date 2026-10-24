@@ -1,0 +1,482 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "devices"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "../schemas/collections/devices.schema.json"
+    },
+    "schema_version": {
+      "const": "3.2.0"
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "category",
+              "id",
+              "introduced",
+              "manufacturing_status",
+              "name"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "athena_qualification": {
+                "type": [
+                  "string"
+                ]
+              },
+              "bank_count": {
+                "type": [
+                  "number"
+                ]
+              },
+              "bundled_with": {
+                "type": [
+                  "array"
+                ]
+              },
+              "capacity_kb": {
+                "type": [
+                  "number"
+                ]
+              },
+              "category": {
+                "$ref": "urn:logix-aion:category:2"
+              },
+              "compatibility_note": {
+                "type": [
+                  "string"
+                ]
+              },
+              "compatible_computers": {
+                "type": [
+                  "array"
+                ]
+              },
+              "compatible_with": {
+                "type": [
+                  "array"
+                ]
+              },
+              "connection": {
+                "type": [
+                  "string"
+                ]
+              },
+              "data_width_bits": {
+                "type": [
+                  "number"
+                ]
+              },
+              "dated_revisions": {
+                "type": [
+                  "array"
+                ]
+              },
+              "description": {
+                "type": [
+                  "string"
+                ]
+              },
+              "id": {
+                "type": [
+                  "string"
+                ]
+              },
+              "installation": {
+                "type": [
+                  "string"
+                ]
+              },
+              "introduced": {
+                "type": [
+                  "object"
+                ]
+              },
+              "manufacturing_requirements": {
+                "type": [
+                  "array"
+                ]
+              },
+              "manufacturing_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "memory_mapping": {
+                "type": [
+                  "object"
+                ]
+              },
+              "module_quantity": {
+                "type": [
+                  "number"
+                ]
+              },
+              "module_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "name": {
+                "type": [
+                  "string"
+                ]
+              },
+              "offered_with": {
+                "type": [
+                  "array"
+                ]
+              },
+              "optional_with": {
+                "type": [
+                  "array"
+                ]
+              },
+              "packaging": {
+                "type": [
+                  "string"
+                ]
+              },
+              "part_ref": {
+                "type": [
+                  "string"
+                ],
+                "minLength": 1
+              },
+              "physical_population": {
+                "type": [
+                  "object"
+                ]
+              },
+              "planned_compatible_with": {
+                "type": [
+                  "array"
+                ]
+              },
+              "price_usd": {
+                "type": [
+                  "number"
+                ]
+              },
+              "product_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "public_roadmap": {
+                "type": [
+                  "object"
+                ]
+              },
+              "qualification_status": {
+                "type": [
+                  "string"
+                ]
+              },
+              "slot_count": {
+                "type": [
+                  "number"
+                ]
+              },
+              "sold_separately": {
+                "type": [
+                  "boolean"
+                ]
+              },
+              "sold_with": {
+                "type": [
+                  "array"
+                ]
+              },
+              "specification": {
+                "type": [
+                  "object"
+                ]
+              },
+              "superseded_by": {
+                "type": [
+                  "array"
+                ]
+              },
+              "technology_refs": {
+                "type": [
+                  "array"
+                ]
+              },
+              "vendor": {
+                "type": [
+                  "string"
+                ]
+              },
+              "bom_assembly_definition": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/line"
+                },
+                "minItems": 1
+              },
+              "bom_assembly_metadata": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "requirements": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "routing": {
+                    "type": "object",
+                    "properties": {
+                      "operations": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "minutes_per_unit": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "minimum": 0
+                      },
+                      "first_pass_yield": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "rework_rate": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "scrap_rate": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "fixture_refs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "operations",
+                      "minutes_per_unit",
+                      "first_pass_yield",
+                      "rework_rate",
+                      "scrap_rate",
+                      "fixture_refs"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "cost_rollup_status": {
+                    "type": "string"
+                  },
+                  "ram_configuration_id": {
+                    "type": "string"
+                  },
+                  "shipping_configuration": {
+                    "type": "boolean"
+                  },
+                  "effective_from": {
+                    "type": "string"
+                  },
+                  "cost_assessment_status": {
+                    "enum": [
+                      "pending_reassessment",
+                      "assessed"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "status",
+                  "requirements",
+                  "routing",
+                  "cost_rollup_status"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "dependentRequired": {
+              "bom_assembly_definition": [
+                "bom_assembly_metadata"
+              ],
+              "bom_assembly_metadata": [
+                "bom_assembly_definition"
+              ]
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "id": {
+                      "const": "device.network_hub.4_port"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "specification": {
+                      "type": "object",
+                      "required": [
+                        "port_count"
+                      ],
+                      "properties": {
+                        "port_count": {
+                          "const": 4
+                        }
+                      },
+                      "not": {
+                        "required": [
+                          "port_count_options"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "bom_assembly_definition"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "id": {
+                      "const": "device.network_hub.8_port"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "specification": {
+                      "type": "object",
+                      "required": [
+                        "port_count"
+                      ],
+                      "properties": {
+                        "port_count": {
+                          "const": 8
+                        }
+                      },
+                      "not": {
+                        "required": [
+                          "port_count_options"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "bom_assembly_definition"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "id": {
+                      "const": "device.network_hub.16_port"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "specification": {
+                      "type": "object",
+                      "required": [
+                        "port_count"
+                      ],
+                      "properties": {
+                        "port_count": {
+                          "const": 16
+                        }
+                      },
+                      "not": {
+                        "required": [
+                          "port_count_options"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "bom_assembly_definition"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "line": {
+      "type": "object",
+      "properties": {
+        "ref": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "unit": {
+          "const": "each"
+        },
+        "role": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "quantity_status": {
+          "enum": [
+            "defined",
+            "unresolved"
+          ]
+        }
+      },
+      "required": [
+        "ref",
+        "quantity",
+        "unit",
+        "role",
+        "condition",
+        "quantity_status"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -77,3 +77,8 @@ Saved models from before the migration retain their bytes and old IDs. The share
 readers translate those identifiers and component-keyed/composite maps in memory.
 This is an identity adapter, not a recalculation. `document_bytes` still returns
 stored bytes for archived model provenance checks. See `COMPONENT_MIGRATION.md`.
+
+Device-owned BOM definitions are composed into the hardware-BOM view at read time.
+Writers route these definitions back to `data/devices.json`; do not copy them into
+`data/assemblies.json`. Recurse by assembly-index membership, not an ID prefix.
+See [DEVICE_BOM_MIGRATION.md](DEVICE_BOM_MIGRATION.md).

@@ -27,3 +27,5 @@ file picker is replaced with local-server instructions. The source-view links on
 pages show transient JSON and link to its authoritative collections.
 
 See the standard before adding a record, changing a schema or recalculating models.
+
+Device data ownership: [Device BOM migration](DEVICE_BOM_MIGRATION.md).
