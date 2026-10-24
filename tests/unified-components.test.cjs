@@ -19,7 +19,7 @@ const numbers=x=>typeof x==='number'?[x]:x&&typeof x==='object'?Object.values(x)
  assert.equal(await context.DataStore.resolveComponentId('bompart.device.flexidisk.drive_psu'),'part.device.flexidisk.drive_psu');
  const response=await context.DataStore.fetch('generated/models/manufacturing-costs.json');assert.equal(JSON.stringify(await response.json()),JSON.stringify(normalized));
  assert.equal(requested.filter(p=>p==='schemas/data-registry.json').length,1);
- const model=require('../bom-details.js').createModel(catalog,bom,normalized);assert.equal(model.items.length,398);assert(model.rows('assembly.part.z80a').some(r=>r.ref==='part.z80a'));
+ const model=require('../bom-details.js').createModel(catalog,bom,normalized);assert.equal(model.items.length,400);assert(model.rows('assembly.part.z80a').some(r=>r.ref==='part.z80a'));
  globalThis.renderSpecification=x=>JSON.stringify(x);const costHtml=model.renderCosts('part.z80a',{fullRecords:true});assert(costHtml.includes('Component cost assumptions by year'));assert(costHtml.includes(JSON.stringify(normalized.component_cost_assumptions['part.z80a'])));delete globalThis.renderSpecification;
  console.log('PASS: single identity/schema, combined fields, archived-map normalization, collision rejection, raw browser reads and alias caching');
 })().catch(e=>{console.error(e);process.exitCode=1});

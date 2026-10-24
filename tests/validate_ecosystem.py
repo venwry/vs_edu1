@@ -25,7 +25,7 @@ for id in cards:
  assert all(x['actor_ref']!='actor.dri' for x in e['event.apple_extensions']['participants'])
 assert not any('6502' in id for id in r if id.startswith('software.'))
 for id in cards[1:]:
- lines={x['ref']:x['quantity'] for x in a['assembly.'+id]['lines']}
+ lines={x['ref']:x['quantity'] for x in a[id]['lines']}
  assert lines['part.aion_4116']==8
  assert lines['part.aurelia_video_chip']==1
  inv={x['component_ref']:x['quantity'] for x in cost[id]['snapshots']['1979']['bom_lines']}

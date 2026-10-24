@@ -14,7 +14,8 @@ def view_name(path, root=ROOT):
 
 def normalize_component_ids(value, root=ROOT):
     """Translate archival IDs and composite map keys in memory; preserve all numbers."""
-    aliases=registry(root).get('component_id_aliases',{})
+    reg=registry(root);aliases={**reg.get('component_id_aliases',{}),**reg.get('device_assembly_aliases',{})}
+    families=reg.get('device_family_aliases',{})
     def translate(v):
         if isinstance(v,str):
             if v in aliases:return aliases[v]
@@ -26,9 +27,17 @@ def normalize_component_ids(value, root=ROOT):
                 key=translate(k)
                 if key in out:raise ValueError('Component identifier collision: '+key)
                 out[key]=translate(x)
+            if out.get('catalog_ref') in families and out.get('id') in families[out['catalog_ref']]:out['catalog_ref']=out['id']
             return out
         return v
     return translate(value)
+
+def assembly_records(stored, devices):
+    """Build the runtime BOM index from its sole source owners; never persist copies."""
+    rows=copy.deepcopy(stored)
+    rows.extend({'id':d['id'],**copy.deepcopy(d['bom_assembly_metadata']),'lines':copy.deepcopy(d['bom_assembly_definition'])} for d in devices if 'bom_assembly_definition' in d)
+    if len({r['id'] for r in rows})!=len(rows):raise ValueError('Duplicate device/assembly BOM identity')
+    return rows
 
 def read_document(path, root=ROOT):
     root=Path(root);reg=registry(root);name=view_name(path,root)
@@ -40,7 +49,9 @@ def read_document(path, root=ROOT):
     def collection(file):
         if file not in cache:cache[file]=json.loads((root/file).read_text())
         return cache[file]
-    def select(ref):return copy.deepcopy(collection(ref['file'])[ref['key']])
+    def select(ref):
+        rows=collection(ref['file'])[ref['key']]
+        return assembly_records(rows,collection(ref['device_file'])['devices']) if ref.get('device_file') else copy.deepcopy(rows)
     recipe=reg['views'][name]
     if recipe.get('story'):
         world=collection('data/world.json');structure=collection('data/timeline-structure.json')
@@ -85,6 +96,17 @@ def store_document(path, value, root=ROOT):
     def assign(ref,payload):
         file=ref['file']
         if file not in changes:changes[file]=json.loads((root/file).read_text())
+        if ref.get('device_file'):
+            device_file=ref['device_file']
+            if device_file not in changes:changes[device_file]=json.loads((root/device_file).read_text())
+            devices={d['id']:d for d in changes[device_file]['devices'] if 'bom_assembly_definition' in d}
+            owned=[r for r in payload if r['id'] in devices]
+            if len(owned)!=len(devices) or {r['id'] for r in owned}!=set(devices):raise ValueError('Device BOMs must be edited at their existing owners')
+            for row in owned:
+                device=devices[row['id']];device['bom_assembly_definition']=copy.deepcopy(row['lines'])
+                device['bom_assembly_metadata']=copy.deepcopy({k:v for k,v in row.items() if k not in ['id','lines']})
+            payload=[r for r in payload if r['id'] not in devices]
+            if any(r['id'].startswith('device.') for r in payload):raise ValueError('Add device BOMs in data/devices.json')
         changes[file][ref['key']]=copy.deepcopy(payload)
     recipe=reg['views'][name]
     if recipe.get('story'):

@@ -13,7 +13,7 @@
     "data/investment-inputs.json",
     "data/manufacturing-processes.json",
     "data/offers.json",
-    "data/peripherals.json",
+    "data/devices.json",
     "data/product-boms.json",
     "data/programmes.json",
     "data/retail-catalog.json",
@@ -126,7 +126,8 @@
       },
       "assemblies": {
         "file": "data/assemblies.json",
-        "key": "assemblies"
+        "key": "assemblies",
+        "device_file": "data/devices.json"
       },
       "products": {
         "file": "data/product-boms.json",
@@ -170,7 +171,7 @@
         "key": "components"
       },
       "devices": {
-        "file": "data/peripherals.json",
+        "file": "data/devices.json",
         "key": "devices"
       },
       "computers": {
@@ -399,7 +400,8 @@
     "sales_reassessment_inputs.json": "generated/catalogs/sales-reassessment-inputs.json",
     "sales_roi_baseline_1982.json": "baselines/sales-roi-baseline-1982.json",
     "site_pages.json": "generated/catalogs/site-pages.json",
-    "team_development_program.json": "generated/catalogs/team-development-program.json"
+    "team_development_program.json": "generated/catalogs/team-development-program.json",
+    "data/peripherals.json": "data/devices.json"
   },
   "component_id_aliases": {
     "bompart.part.z80a": "part.z80a",
@@ -681,5 +683,41 @@
     "bompart.device.mono_pro_17.enclosure": "part.device.mono_pro_17.enclosure",
     "bompart.device.mono_pro_17.cables_regional_mains": "part.device.mono_pro_17.cables_regional_mains",
     "bompart.part.aion_4164_2um": "part.aion_4164_2um"
+  },
+  "device_assembly_aliases": {
+    "assembly.device.flexibus_keyboard": "device.flexibus_keyboard",
+    "assembly.device.mono_monitor_1": "device.mono_monitor_1",
+    "assembly.device.color_monitor_1": "device.color_monitor_1",
+    "assembly.device.mono_monitor_2": "device.mono_monitor_2",
+    "assembly.device.color_monitor_2": "device.color_monitor_2",
+    "assembly.device.aurelia_ram_16kb_card": "device.aurelia_ram_16kb_card",
+    "assembly.device.flexiprint40": "device.flexiprint40",
+    "assembly.device.flexidisk": "device.flexidisk",
+    "assembly.device.apple2_expansion_card": "device.apple2_expansion_card",
+    "assembly.device.flexidisk_ii": "device.flexidisk_ii",
+    "assembly.device.artemis_cpm80_module": "device.artemis_cpm80_module",
+    "assembly.device.network_card_aurelia": "device.network_card_aurelia",
+    "assembly.device.network_card_artemis": "device.network_card_artemis",
+    "assembly.device.network_hub.4_port": "device.network_hub.4_port",
+    "assembly.device.network_hub.8_port": "device.network_hub.8_port",
+    "assembly.device.network_hub.16_port": "device.network_hub.16_port",
+    "assembly.device.s100_flexibus_card": "device.s100_flexibus_card",
+    "assembly.device.apple2_video_card": "device.apple2_video_card",
+    "assembly.device.s100_video_card": "device.s100_video_card",
+    "assembly.device.artemis_video_card": "device.artemis_video_card",
+    "assembly.device.mono_pro": "device.mono_pro",
+    "assembly.device.artemis_video_card_16kb": "device.artemis_video_card_16kb",
+    "assembly.device.artemis_video_card_64kb": "device.artemis_video_card_64kb",
+    "assembly.device.color_pro_14": "device.color_pro_14",
+    "assembly.device.logix_mouse": "device.logix_mouse",
+    "assembly.device.artemis_professional_video_128kb": "device.artemis_professional_video_128kb",
+    "assembly.device.mono_pro_17": "device.mono_pro_17"
+  },
+  "device_family_aliases": {
+    "device.network_hub": [
+      "device.network_hub.4_port",
+      "device.network_hub.8_port",
+      "device.network_hub.16_port"
+    ]
   }
 }

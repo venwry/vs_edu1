@@ -78,5 +78,5 @@ for offer in bom['offers']:
   inv=explode(v['assembly_ref']);assert inv['part.device.network_card_artemis.network_card_pcb']==1
   refs=[l['ref'] for l in assemblies[v['assembly_ref']]['lines']]
   assert 'assembly.media.software.aionix_server' in refs and 'assembly.media.software.aionix' not in refs
-assert {a for a in assemblies if a.startswith('assembly.device.network_hub.')}=={f'assembly.device.network_hub.{n}_port' for n in [4,8,16]}
+assert {a for a in assemblies if a.startswith('device.network_hub.')}=={f'device.network_hub.{n}_port' for n in [4,8,16]}
 print(f'Validated RAM arithmetic and paired banks; {len(products)} hardware records, {len(assemblies)} BOM assemblies and all {len(bom["offers"])} offers. Unresolved lines remain blocked for costing.')

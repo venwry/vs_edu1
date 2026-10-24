@@ -2,7 +2,7 @@
 import json,re,sys
 from pathlib import Path
 import jsonschema
-from data_store import ROOT,registry,read_document
+from data_store import ROOT,registry,read_document,assembly_records
 from schema_validation import record_validator
 
 def validate_collections(root=ROOT, overrides=None):
@@ -33,12 +33,18 @@ def validate_collections(root=ROOT, overrides=None):
     refs(tech)
     for e in tech['platform_editions']:
         if e['product_ref'] not in {p['id'] for p in tech['software_products']}:raise ValueError('Edition must reference a software product: '+e['id'])
-    parts=unique(docs['data/components.json']['components'],'components');assemblies=unique(docs['data/assemblies.json']['assemblies'],'assemblies')
+    parts=unique(docs['data/components.json']['components'],'components');assemblies=unique(assembly_records(docs['data/assemblies.json']['assemblies'],docs['data/devices.json']['devices']),'assemblies')
     aliases=reg.get('component_id_aliases',{})
     if not set(aliases.values())<=parts.keys():raise ValueError('Unresolved component alias target')
+    device_aliases=reg.get('device_assembly_aliases',{})
+    if not set(device_aliases.values())<=assemblies.keys():raise ValueError('Unresolved device BOM alias target')
+    if any(r['id'].startswith('device.') for r in docs['data/assemblies.json']['assemblies']):raise ValueError('Device BOM must be owned by data/devices.json')
+    aliases={**aliases,**device_aliases}
+    for family,targets in reg.get('device_family_aliases',{}).items():
+        if family in records or not targets or len(targets)!=len(set(targets)) or not set(targets)<=records.keys():raise ValueError('Invalid device family aliases')
     def reject_retired(v):
         if isinstance(v,str):
-            if v in aliases or any(x in aliases for x in v.split('|')):raise ValueError('Retired component ID in source: '+v)
+            if v in aliases or v in reg.get('device_family_aliases',{}) or any(x in aliases for x in v.split('|')):raise ValueError('Retired component ID in source: '+v)
         elif isinstance(v,list):
             for x in v:reject_retired(x)
         elif isinstance(v,dict):

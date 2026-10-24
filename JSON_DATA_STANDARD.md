@@ -91,3 +91,10 @@ models in memory, including compound `assembly|component` keys. They reject key
 collisions. Raw files, numerical values and original provenance remain unchanged.
 Do not manually refresh archival hashes. Old Navigator links resolve through the
 same alias map. New data and builder outputs must use canonical IDs.
+
+## Device BOM ownership
+
+Device schema 3.2 stores BOM lines in `bom_assembly_definition` and the remaining
+assembly attributes in `bom_assembly_metadata`. Standalone assemblies and device
+IDs share the runtime BOM index; resolve references by index membership.
+See [DEVICE_BOM_MIGRATION.md](DEVICE_BOM_MIGRATION.md).

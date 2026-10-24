@@ -108,7 +108,7 @@
       "catalog_ref": "device.flexibus_keyboard",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.flexibus_keyboard"
+        "device.flexibus_keyboard"
       ],
       "requirements": [
         "Exact key count and regional layouts, switch technology, matrix/diodes, debounce and rollover, scan controller or MCU, firmware ROM/RAM, FlexiBUS transceiver/controller, LEDs, PCB, cable/connector, enclosure/keycaps, bus-power budget and keyboard test fixture. It is not presently linked to a complete controller BOM.",
@@ -123,7 +123,7 @@
       "catalog_ref": "device.mono_monitor_1",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.mono_monitor_1"
+        "device.mono_monitor_1"
       ],
       "requirements": [
         "Decide whether TV-90 means a tube or a complete display assembly",
@@ -140,7 +140,7 @@
       "catalog_ref": "device.color_monitor_1",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.color_monitor_1"
+        "device.color_monitor_1"
       ],
       "requirements": [
         "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once.",
@@ -156,7 +156,7 @@
       "catalog_ref": "device.mono_monitor_2",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.mono_monitor_2"
+        "device.mono_monitor_2"
       ],
       "requirements": [
         "Resolve tube-versus-module purchase boundary",
@@ -173,7 +173,7 @@
       "catalog_ref": "device.color_monitor_2",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.color_monitor_2"
+        "device.color_monitor_2"
       ],
       "requirements": [
         "Name an OEM/model and electrical/raster specification",
@@ -191,7 +191,7 @@
       "catalog_ref": "device.aurelia_ram_16kb_card",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.aurelia_ram_16kb_card"
+        "device.aurelia_ram_16kb_card"
       ],
       "requirements": [
         "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/video RAM.",
@@ -206,7 +206,7 @@
       "catalog_ref": "device.flexiprint40",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.flexiprint40"
+        "device.flexiprint40"
       ],
       "requirements": [
         "Establish which motors, printhead, sensors and cable harnesses the purchased mechanism includes. Add motor/head drivers, power supply, local sequencer/MCU, RAM input buffer, font/firmware ROM, paper controls/path, ribbon/consumables, case, interface cable and print/registration test. A bus controller alone is not a complete printer controller.",
@@ -221,7 +221,7 @@
       "catalog_ref": "device.flexidisk",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.flexidisk"
+        "device.flexidisk"
       ],
       "requirements": [
         "Exact mechanism, number of drives, sides/tracks/density/format and usable capacity",
@@ -237,7 +237,7 @@
       "catalog_ref": "device.apple2_expansion_card",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.apple2_expansion_card"
+        "device.apple2_expansion_card"
       ],
       "requirements": [
         "Apple bus decode/buffering and connector, identification/boot/driver ROM size, port-controller count, transceivers and any FIFO, Disk II sequencing/data handling, timing and firmware ownership. Freeze how native Disk II and FlexiBUS drive access coexist. Existing retail price is not component cost.",
@@ -252,7 +252,7 @@
       "catalog_ref": "device.flexidisk_ii",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.flexidisk_ii"
+        "device.flexidisk_ii"
       ],
       "requirements": [
         "Exact mechanism/media geometry",
@@ -268,7 +268,7 @@
       "catalog_ref": "device.artemis_cpm80_module",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.artemis_cpm80_module"
+        "device.artemis_cpm80_module"
       ],
       "requirements": [
         "Choose eight 64K×1 data DRAMs as a candidate, or another explicitly costed organization",
@@ -297,7 +297,7 @@
       "catalog_ref": "device.network_card_aurelia",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.network_card_aurelia"
+        "device.network_card_aurelia"
       ],
       "requirements": [
         "Host bus/mapper interface, controller or sequencer, serial framing/CRC logic, RAM/FIFO, firmware ROM, differential data and clock transceivers, port connector, protection/termination and cable. Specify Z80 CPU-service latency and buffers",
@@ -314,7 +314,7 @@
       "catalog_ref": "device.network_card_artemis",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.network_card_artemis"
+        "device.network_card_artemis"
       ],
       "requirements": [
         "Choose physical implementation. A practical first-costing baseline is one common removable NIC installed in new systems and sold for upgrades",
@@ -328,15 +328,43 @@
       ]
     },
     {
-      "catalog_ref": "device.network_hub",
+      "catalog_ref": "device.network_hub.4_port",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.network_hub.4_port",
-        "assembly.device.network_hub.8_port",
-        "assembly.device.network_hub.16_port"
+        "device.network_hub.4_port"
       ],
       "requirements": [
-        "Qualify 4-, 8- and 16-port SKUs with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity.",
+        "Qualify this 4-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+      ]
+    },
+    {
+      "catalog_ref": "device.network_hub.8_port",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "device.network_hub.8_port"
+      ],
+      "requirements": [
+        "Qualify this 8-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+      ]
+    },
+    {
+      "catalog_ref": "device.network_hub.16_port",
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "device.network_hub.16_port"
+      ],
+      "requirements": [
+        "Qualify this 16-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -729,7 +757,7 @@
       "catalog_ref": "device.s100_flexibus_card",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.s100_flexibus_card"
+        "device.s100_flexibus_card"
       ],
       "requirements": [
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
@@ -741,7 +769,7 @@
       "catalog_ref": "device.apple2_video_card",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.apple2_video_card"
+        "device.apple2_video_card"
       ],
       "requirements": [
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
@@ -754,7 +782,7 @@
       "catalog_ref": "device.s100_video_card",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.s100_video_card"
+        "device.s100_video_card"
       ],
       "requirements": [
         "Freeze host decode, pinout, power and timings; select physical buffers/transceivers and PCB stack-up.",
@@ -790,7 +818,7 @@
       "catalog_ref": "device.artemis_video_card",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.artemis_video_card"
+        "device.artemis_video_card"
       ],
       "requirements": [
         "Qualification pending."
@@ -800,7 +828,7 @@
       "catalog_ref": "device.mono_pro",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.mono_pro"
+        "device.mono_pro"
       ],
       "requirements": [
         "Qualification pending."
@@ -840,7 +868,7 @@
       "catalog_ref": "device.artemis_video_card_16kb",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.artemis_video_card_16kb"
+        "device.artemis_video_card_16kb"
       ],
       "requirements": [
         "Accepted planning design; qualification pending."
@@ -900,7 +928,7 @@
       "catalog_ref": "device.artemis_video_card_64kb",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.artemis_video_card_64kb"
+        "device.artemis_video_card_64kb"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -910,7 +938,7 @@
       "catalog_ref": "device.color_pro_14",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.color_pro_14"
+        "device.color_pro_14"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -920,7 +948,7 @@
       "catalog_ref": "device.logix_mouse",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.logix_mouse"
+        "device.logix_mouse"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -930,7 +958,7 @@
       "catalog_ref": "device.artemis_professional_video_128kb",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.artemis_professional_video_128kb"
+        "device.artemis_professional_video_128kb"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -940,7 +968,7 @@
       "catalog_ref": "device.mono_pro_17",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.device.mono_pro_17"
+        "device.mono_pro_17"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."

@@ -7,8 +7,8 @@ R=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(R/'tools'))
 from schema_validation import record_validator
 def read(p):return read_document(p, root=R)
-record=read('data/peripherals.json')
-validator=record_validator(read('schemas/collections/peripherals.schema.json'))
+record=read('data/devices.json')
+validator=record_validator(read('schemas/collections/devices.schema.json'))
 validator.validate(record)
 for invalid in ['display','display_component','Monitor','not_a_category']:
     bad=copy.deepcopy(record);bad['devices'][0]['category']=invalid
