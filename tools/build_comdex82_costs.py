@@ -13,7 +13,7 @@ costs=load('generated/models/manufacturing-costs.json'); prices=load('generated/
 base_rows={x['id']:x for x in costs['products']}; inputcopy=copy.deepcopy(g['inputs'])
 # November silicon allowance, no assumed shrink or unqualified July RAM substitution.
 ref='part.professional_graphics_controller';g['chip_area'][ref]=policy['graphics_controller_die_area_mm2']
-chip=g['chip_cost'](ref,i);inputcopy['bompart.'+ref]['annual_cost_buckets_usd']['1982']={k:round(v,5) for k,v in chip.items() if v}
+chip=g['chip_cost'](ref,i);inputcopy[ref]['annual_cost_buckets_usd']['1982']={k:round(v,5) for k,v in chip.items() if v}
 for ref,amount in policy['monitor_component_overrides_usd'].items():
  inputcopy[ref]['annual_cost_buckets_usd']['1982']={'bom_materials':amount}
 original_routing=g['routing']

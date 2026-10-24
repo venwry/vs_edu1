@@ -47,6 +47,6 @@ assert sum(resources['illustrative_dram_budget_bytes'].values()) == resources['m
 assert [layer['layer'] for layer in os['specification']['ui_layers']] == [1, 2, 3, 4]
 assert os['specification']['status']['engineering_readiness'] == 'design'
 assert records['technology.era2_architecture']['specification']['instruction_cache_bytes_target'] == 512
-assert records['part.aion_4164_2um']['specification']['access_time_ns'] is None
+assert records['part.aion_4164_2um']['specification'].get('access_time_ns') is None
 assert plan['launch']['premiere_date'] == '1983-05-16'
 print('PASS: Athena base/server RAM, 2 µm chips, storage, graphics, NIC, ROM-backed AIONix2, memory budgets, ERA² targets and planning status.')

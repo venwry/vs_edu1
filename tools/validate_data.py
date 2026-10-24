@@ -33,11 +33,24 @@ def validate_collections(root=ROOT, overrides=None):
     refs(tech)
     for e in tech['platform_editions']:
         if e['product_ref'] not in {p['id'] for p in tech['software_products']}:raise ValueError('Edition must reference a software product: '+e['id'])
-    parts=unique(docs['data/sourcing.json']['components'],'BOM components');assemblies=unique(docs['data/assemblies.json']['assemblies'],'assemblies')
+    parts=unique(docs['data/components.json']['components'],'components');assemblies=unique(docs['data/assemblies.json']['assemblies'],'assemblies')
+    aliases=reg.get('component_id_aliases',{})
+    if not set(aliases.values())<=parts.keys():raise ValueError('Unresolved component alias target')
+    def reject_retired(v):
+        if isinstance(v,str):
+            if v in aliases or any(x in aliases for x in v.split('|')):raise ValueError('Retired component ID in source: '+v)
+        elif isinstance(v,list):
+            for x in v:reject_retired(x)
+        elif isinstance(v,dict):
+            for k,x in v.items():reject_retired(k);reject_retired(x)
+    for doc in docs.values():reject_retired(doc)
     for p in parts.values():
-        if p.get('catalog_ref') and p['catalog_ref'] not in records:raise ValueError('Unresolved sourcing catalogue reference: '+p['id'])
+        for aid in p.get('bom_assembly_refs',[]):
+            if aid not in assemblies:raise ValueError('Unresolved component assembly: '+aid)
+        if p['bom_role']=='assembly' and not p.get('bom_assembly_refs'):raise ValueError('Assembly component has no assembly: '+p['id'])
     for a in assemblies.values():
         for line in a['lines']:
+            if line['ref'] in parts and parts[line['ref']]['bom_role']!='material':raise ValueError('BOM leaf must be a material; reference the assembly for composed parts: '+line['ref'])
             if line['ref'] not in parts and line['ref'] not in assemblies:raise ValueError('Unresolved BOM line: '+line['ref'])
             q=line.get('quantity')
             if q is not None and (isinstance(q,bool) or not isinstance(q,(float,int)) or q<=0):raise ValueError('Invalid BOM quantity: '+a['id'])

@@ -26,14 +26,14 @@ for id in cards:
 assert not any('6502' in id for id in r if id.startswith('software.'))
 for id in cards[1:]:
  lines={x['ref']:x['quantity'] for x in a['assembly.'+id]['lines']}
- assert lines['bompart.part.aion_4116']==8
- assert lines['bompart.part.aurelia_video_chip']==1
+ assert lines['part.aion_4116']==8
+ assert lines['part.aurelia_video_chip']==1
  inv={x['component_ref']:x['quantity'] for x in cost[id]['snapshots']['1979']['bom_lines']}
- assert inv['bompart.part.aion_4116']==8
- assert inv['bompart.part.aurelia_video_chip']==1
+ assert inv['part.aion_4116']==8
+ assert inv['part.aurelia_video_chip']==1
 for id in ['device.apple2_expansion_card','device.s100_flexibus_card']:
  inv={x['component_ref']:x['quantity'] for x in cost[id]['snapshots']['1979']['bom_lines']}
- assert inv['bompart.part.flexibus_host_controller']==2
+ assert inv['part.flexibus_host_controller']==2
  assert not any('controller_and_two_port' in x for x in inv)
 prog=p['smc_transfer'];assert set(prog['licensed_part_refs'])==set(b['supplier_programs'][0]['part_refs'])
 assert 'part.era1' not in prog['licensed_part_refs']

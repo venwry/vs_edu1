@@ -31,8 +31,8 @@ for m in v['text_modes']+v['bitmap_modes']:
  for a in m['configurations']:assert a['allocated_bytes']+a['remaining_video_ram_bytes']==32768
 for host in ['computer.artemis_pro']:
  inv=population('assembly.'+host+'.base')
- assert inv['bompart.part.aion_4116']==16 and inv['bompart.part.aion_2114']==2
- assert inv['bompart.part.artemis_graphics_chip']==1
+ assert inv['part.aion_4116']==16 and inv['part.aion_2114']==2
+ assert inv['part.artemis_graphics_chip']==1
  assert r[host]['io_and_expansion']['expansion_slots']['count']==4
  assert r[host]['io_and_expansion']['dedicated_video_slot']['general_purpose_slots_consumed']==0
 for d in c['devices']:
@@ -40,7 +40,7 @@ for d in c['devices']:
 for bundle in c['offered_bundles']:
  if bundle['id'].endswith('_mono_pro'):
   assert bundle['included_devices']==['device.flexibus_keyboard','device.mono_pro']
-  inv=population(bundle['bom_assembly_ref']);assert inv['bompart.part.brimar_m36_141w_crt']==1 and inv['bompart.part.artemis_graphics_chip']==1
+  inv=population(bundle['bom_assembly_ref']);assert inv['part.brimar_m36_141w_crt']==1 and inv['part.artemis_graphics_chip']==1
 policy=read('generated/catalogs/artemis-display-revision.json');s=read('generated/models/sales-forecast.json');inv=read('generated/models/industrial-investment-1974-1981.json');roi=read('generated/models/roi-1974-1980.json')
 for q in inv['quarterly_capacity']:
  assert q['installed_computer_capacity_month']>=math.floor(q['peak_month_customer_demand']*1.05)

@@ -190,69 +190,234 @@
   "$defs": {
     "component": {
       "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "category",
+        "introduced",
+        "bom_role"
+      ],
       "properties": {
-        "id": {
-          "type": "string",
-          "pattern": "^bompart\\."
-        },
-        "name": {
-          "type": "string"
+        "bom_assembly_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^assembly\\."
+          },
+          "minItems": 1,
+          "uniqueItems": true
         },
         "category": {
-          "type": "string"
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "urn:logix-aion:category:2",
+          "title": "Canonical BOM product and component category",
+          "description": "Functional category, independent of record type, platform, availability and supplier qualification. Editions inherit the parent product category.",
+          "type": "string",
+          "enum": [
+            "bus_interface_and_control_assembly",
+            "business_application_suite",
+            "cable_kit",
+            "cad_software",
+            "cartridge_board_and_connector",
+            "compiler",
+            "computer",
+            "connector",
+            "crt_display_assembly",
+            "crt_tube",
+            "development_environment",
+            "diode",
+            "display_controller_ic",
+            "display_deflection_component",
+            "display_power_and_deflection_assembly",
+            "dma_controller_ic",
+            "educational_and_entertainment_software",
+            "enclosure",
+            "external_floppy_drive",
+            "firmware_memory",
+            "floppy_drive_mechanism",
+            "graphics_controller_ic",
+            "hard_disk_drive",
+            "input_controller_assembly",
+            "interconnect_and_passive_component_kit",
+            "interface_integration_allowance",
+            "io_controller_ic",
+            "io_interface_assembly",
+            "io_interface_expansion",
+            "keyboard",
+            "keyboard_controller_assembly",
+            "keycap",
+            "memory_assembly",
+            "memory_controller_assembly",
+            "memory_expansion",
+            "memory_ic",
+            "memory_identification_circuitry",
+            "memory_management_ic",
+            "memory_module",
+            "monitor",
+            "mouse",
+            "mouse_encoder_mechanism",
+            "network_controller_assembly",
+            "network_hub_repeater",
+            "network_interface_card",
+            "network_transceiver_assembly",
+            "office_suite",
+            "operating_system",
+            "operating_system_networking_extension",
+            "packaging_and_documentation_kit",
+            "passive_and_protection_components",
+            "power_supply",
+            "printed_circuit_board",
+            "printer",
+            "printer_controller_assembly",
+            "printer_driver_electronics",
+            "printer_mechanism",
+            "printer_ribbon",
+            "processor_expansion",
+            "processor_ic",
+            "programming_language",
+            "scripting_environment",
+            "software_development_kit",
+            "software_distribution_medium",
+            "spreadsheet_software",
+            "storage_controller_assembly",
+            "storage_controller_ic",
+            "switch",
+            "system_bundle",
+            "system_controller_ic",
+            "upgrade_bundle",
+            "video_amplifier",
+            "video_dac_and_amplifier_assembly",
+            "video_dac_ic",
+            "video_expansion_card",
+            "video_interface_assembly",
+            "video_receiver_and_amplifier_assembly",
+            "video_receiver_assembly",
+            "video_receiver_board",
+            "video_timing_and_interface_assembly"
+          ]
         },
-        "catalog_ref": {
+        "id": {
+          "type": "string",
+          "pattern": "^part\\.[a-z0-9_.]+$"
+        },
+        "introduced": {
+          "type": "object",
+          "required": [
+            "event_name"
+          ],
+          "properties": {
+            "event_name": {
+              "type": "string"
+            },
+            "event_start_date": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": true
+        },
+        "manufacturing_planning": {
           "type": [
-            "string",
-            "null"
+            "object"
+          ]
+        },
+        "manufacturing_process_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "manufacturing_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "type": [
+            "string"
+          ]
+        },
+        "origin": {
+          "type": [
+            "string"
+          ]
+        },
+        "product_status": {
+          "type": [
+            "string"
+          ]
+        },
+        "revision": {
+          "type": [
+            "string"
+          ]
+        },
+        "second_source": {
+          "type": [
+            "object"
+          ]
+        },
+        "specification": {
+          "type": [
+            "object"
+          ]
+        },
+        "specification_ref": {
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "superseded_by": {
+          "type": [
+            "array"
+          ]
+        },
+        "technology_refs": {
+          "type": [
+            "array"
+          ]
+        },
+        "used_in": {
+          "type": [
+            "array"
+          ]
+        },
+        "variants": {
+          "type": [
+            "array"
+          ]
+        },
+        "vendor": {
+          "type": [
+            "string"
           ]
         },
         "manufacturer": {
           "type": [
-            "string",
-            "null"
+            "null",
+            "string"
           ]
         },
         "manufacturer_part_number": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "unit_cost": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "currency": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "quote_date": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "quantity_tier": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 1
+          "type": "string",
+          "minLength": 1
         },
         "qualification_status": {
-          "type": "string"
+          "type": [
+            "string"
+          ]
         },
         "requirements": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "minItems": 1,
+          "uniqueItems": true
         },
         "candidate_manufacturers": {
           "type": "array",
@@ -276,67 +441,53 @@
             }
           }
         },
-        "introduced": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "event_name",
-            "event_start_date"
+        "bom_role": {
+          "enum": [
+            "material",
+            "assembly",
+            "specification"
           ],
-          "properties": {
-            "event_name": {
-              "type": "string",
-              "minLength": 1
-            },
-            "event_start_date": {
-              "type": [
-                "string",
-                "null"
-              ],
-              "pattern": "^[0-9]{4}(-[0-9]{2})?(-[0-9]{2})?$"
-            }
+          "description": "Material: physical BOM leaf with cost inputs; assembly: composed component; specification: no released constituent BOM. Not a sales/availability flag."
+        },
+        "alternate_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
           },
-          "oneOf": [
-            {
-              "properties": {
-                "event_name": {
-                  "const": "no release"
-                },
-                "event_start_date": {
-                  "type": "null"
-                }
-              }
-            },
-            {
-              "properties": {
-                "event_name": {
-                  "not": {
-                    "const": "no release"
-                  }
-                },
-                "event_start_date": {
-                  "type": "string"
-                }
-              }
-            }
-          ]
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
-      "required": [
-        "id",
-        "name",
-        "category",
-        "catalog_ref",
-        "manufacturer",
-        "manufacturer_part_number",
-        "unit_cost",
-        "currency",
-        "quote_date",
-        "quantity_tier",
-        "qualification_status",
-        "requirements"
-      ],
-      "additionalProperties": false
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "bom_role": {
+                "const": "material"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "qualification_status"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "bom_role": {
+                "const": "assembly"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "bom_assembly_refs"
+            ]
+          }
+        }
+      ]
     },
     "line": {
       "type": "object",

@@ -115,7 +115,7 @@ for m,row in monthly.items():
   buckets=dict(snap['breakdown_usd']);internal=defaultdict(float);bom=[]
   for line in snap.get('bom_lines',[]):
    part=line['component_ref'];qty=line['quantity']*units;q_components[q][part]+=qty;bom.append({'component_ref':part,'quantity_per_offer':line['quantity']})
-   cref=part.removeprefix('bompart.')
+   cref=part
    if cref in chips:
     chip_q[q][cref]+=qty
     chip_vintages[q][(cref,sy)]+=qty
@@ -131,7 +131,7 @@ for q in quarters:
  for ref,n,vintage in groups:
   model=chips[ref][str(vintage)];good=model['gross_usable_dies']*model['die_yield']*model['packaging_test_yield'];w=math.ceil(n/good);total+=w;goods+=n
   wafer_rows.append(dict(quarter=q,chip_ref=ref,cost_snapshot_year=vintage,good_chips=math.ceil(n),good_packaged_dies_per_wafer=round(good,3),wafer_starts=w,die_area_mm2=model['die_area_mm2'],die_yield=model['die_yield'],package_yield=model['packaging_test_yield']))
-  unit=costs['component_cost_assumptions']['bompart.'+ref]['annual_cost_buckets_usd'][str(vintage)]
+  unit=costs['component_cost_assumptions'][ref]['annual_cost_buckets_usd'][str(vintage)]
   for k,v in unit.items():q_entity_buckets[q]['AION Labs'][k]+=n*v
  ratio=q_month_peak[q]/(q_units[q]/3) if q_units[q] else 1
  wafer_peak[q]=math.ceil(total/3*ratio*1.05*1.05) # 5% engineering/monitor wafers beyond 5% commercial reserve

@@ -47,7 +47,7 @@ function createModel(catalog,bom,cost){
   const host=records[option.hostRef],ram=host.memory.configurations.find(r=>r.id===option.ramId)||host.memory.configurations.find(r=>r.id===host.memory.default_configuration);
   const tree=walk(revision.id),refs=new Set();
   for(const id of tree.assemblyRefs){const r=id.replace(/^assembly\.(media\.)?/,'');if(records[r])refs.add(r);}
-  for(const leaf of tree.leaves)if(leaf.component?.catalog_ref)refs.add(leaf.component.catalog_ref);
+  for(const leaf of tree.leaves)if(leaf.component)refs.add(leaf.component.id);
   for(const id of option.offer?.included_devices||[])refs.add(id);
   for(const id of option.offer?.component_refs||[])refs.add(id);
   // The dated assembly owns the OS/NIC revision. Budget overlays carry additional software.
@@ -90,7 +90,7 @@ function createFamilyModel(catalog,bom,cost,familyId){
  function state(option,revision,date){
   const host=records[option.hostRef],ram=host.memory.configurations?.find(c=>c.id===host.memory.default_configuration)||{ram_kb:host.memory.ram_kb},tree=model.walk(revision.id),refs=new Set([...(option.offer?.included_devices||[]),...(option.offer?.included_software||[])]);
   for(const id of tree.assemblyRefs){const ref=id.replace(/^assembly\.(media\.)?/,'');if(records[ref])refs.add(ref);}
-  for(const line of tree.leaves)if(line.component?.catalog_ref)refs.add(line.component.catalog_ref);
+  for(const line of tree.leaves)if(line.component)refs.add(line.component.id);
   if(!option.upgrade){if(host.operating_system_ref)refs.add(host.operating_system_ref);if(host.rom_and_cartridges?.system_cartridge_ref)refs.add(host.rom_and_cartridges.system_cartridge_ref);if(host.network?.included)refs.add(host.network.card_ref);}
   if(option.upgradeOffer){for(const id of option.upgradeOffer.included_devices||[])refs.add(id);for(const id of option.upgradeOffer.included_software||[])refs.add(id);refs.delete(host.rom_and_cartridges?.system_cartridge_ref);}
   const primary=host.graphics_card_ref||host.video?.card_ref;
@@ -151,8 +151,8 @@ root.setupArtemisWorkbench=function(catalog,page){
    const os=s.software.find(id=>/^software\.aionix/.test(id));const tools=s.software.find(id=>id==='software.business_tools_artemis');
    memory+=os?recordButton('os-rom',os,'System ROM cartridge',records[os].name,{capacity_note:'ROM capacity is not specified in this offering record.'}):empty('System cartridge','Not included');
    memory+=tools?recordButton('tools-rom',tools,'Application cartridge','AION Business Tools',{capacity_note:'ROM capacity is not specified in this offering record.'}):empty('Application cartridge','Not included');
-   memory+=button('boot-rom','Boot ROM','On mainboard',{assembly:host.id,boot_components:s.tree.leaves.filter(l=>/boot_rom/.test(l.ref))},'bompart.'+host.id+'.boot_rom_chips');
-   let disks='';for(let i=0;i<host.storage.internal_fdd.count;i++)disks+=button('fdd-'+i,'Internal floppy '+(i+1),host.storage.internal_fdd.size_inch+'″ · '+host.storage.internal_fdd.density,host.storage.internal_fdd,'bompart.'+host.id+'.525_inch_double_density_floppy_mechanism');
+   memory+=button('boot-rom','Boot ROM','On mainboard',{assembly:host.id,boot_components:s.tree.leaves.filter(l=>/boot_rom/.test(l.ref))},'part.'+host.id+'.boot_rom_chips');
+   let disks='';for(let i=0;i<host.storage.internal_fdd.count;i++)disks+=button('fdd-'+i,'Internal floppy '+(i+1),host.storage.internal_fdd.size_inch+'″ · '+host.storage.internal_fdd.density,host.storage.internal_fdd,'part.'+host.id+'.525_inch_double_density_floppy_mechanism');
    if(host.storage.internal_hdd)disks+=recordButton('hdd',host.storage.internal_hdd.part_ref,'Internal hard disk',host.storage.internal_hdd.capacity_mb+' MB',host.storage.internal_hdd);
    if(s.externalHdd)disks+=recordButton('external-hdd','part.hdd_5mb','External hard disk','5 MB · separate enclosure',{storage:s.option.offer.storage});
    // Retain the old architecture's named memory and software views as selectable children.

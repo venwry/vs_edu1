@@ -11,14 +11,14 @@ jsonschema.Draft202012Validator(read('schemas/legacy/hardware_bom.schema.json'))
 records={r['id']:r for v in t.values() if isinstance(v,list) for r in v if isinstance(r,dict) and 'id'in r}
 products={r['catalog_ref']:r for r in bom['products']};components={r['id']:r for r in bom['components']};assemblies={r['id']:r for r in bom['assemblies']}
 assert len(products)==len(bom['products']);assert len(components)==len(bom['components']);assert len(assemblies)==len(bom['assemblies'])
-assert set(products)=={r['id'] for key in ['computers','devices','base_parts'] for r in t[key]}
+assert {r['id'] for key in ['computers','devices'] for r in t[key]} <= set(products) <= set(records)
 assert {r['catalog_ref'] for r in bom['offers']}=={r['id'] for r in t['offered_bundles']}
 for p in products.values():
  assert set(p['assembly_refs'])<=assemblies.keys()
  assert bool(p['assembly_refs'])==(p['production_status']!='excluded'),p['catalog_ref']
 for c in components.values():
- assert c['catalog_ref'] is None or c['catalog_ref'] in records
- assert c['catalog_ref'] not in ['part.dram_128kbit','part.artemis_ram_module_64kb','part.artemis_ram_module_prototype','device.artemis_ram_64kb_module']
+ assert 'catalog_ref' not in c and records[c['id']]==c
+ if c['id'] in ['part.dram_128kbit','part.artemis_ram_module_64kb','part.artemis_ram_module_prototype']:assert c['bom_role']=='specification'
 for a in assemblies.values():
  for l in a['lines']:
   assert l['ref'] in components or l['ref'] in assemblies,(a['id'],l['ref'])
@@ -39,7 +39,7 @@ for id in ['part.ram_64kb_x32','part.ram_128kb_x32','part.ram_256kb_x32','part.r
  assert s['chips']==s['ranks']*32 and chip['data_width_bits']==1
  assert s['chips']*chip['capacity_kbit']/8==s['capacity_kb']
  assert s['bank_capacity_kb']==2*s['capacity_kb'] and s['bank_data_width_bits']==32
- inv=explode('assembly.'+id);assert inv['bompart.'+s['chip_type_ref']]==s['chips']
+ inv=explode('assembly.'+id);assert inv[s['chip_type_ref']]==s['chips']
 for id in ['computer.artemis','computer.artemis_pro']:
  mem=records[id]['memory'];assert 'module_ref' not in mem
  assert mem['ram_sockets']==8 and mem['bank_count']==4
@@ -54,7 +54,7 @@ for id in ['computer.artemis','computer.artemis_pro']:
   assert len(cfg['bank_population'])==cfg['populated_banks']
   assert [slot for bank in cfg['bank_population'] for slot in bank['slots']]==list(range(cfg['populated_modules']))
   inv=explode('assembly.'+id+'.'+cfg['id'])
-  assert inv['bompart.'+module['chip_type_ref']]==cfg['data_chip_count']
+  assert inv[module['chip_type_ref']]==cfg['data_chip_count']
 shipping={id:{c['ram_kb']:(c['populated_modules'],c['populated_banks'],c['data_chip_count']) for c in records[id]['memory']['configurations'] if c['shipping_configuration']} for id in ['computer.artemis','computer.artemis_pro']}
 assert shipping['computer.artemis']=={128:(2,1,64),256:(2,1,128)}
 assert shipping['computer.artemis_pro']=={512:(2,1,64),1024:(4,2,128)}
@@ -73,9 +73,9 @@ for offer in bom['offers']:
  assert offer['included_host']==(offer['kind']=='system_bundle')
  if offer['kind']=='upgrade_kit':assert not any(l['ref'].startswith('assembly.computer.') for l in a['lines'])
  if 'artemis_pro' in offer['catalog_ref']:
-  inv=explode(a['id']);assert inv['bompart.device.network_card_artemis.network_card_pcb']==1
+  inv=explode(a['id']);assert inv['part.device.network_card_artemis.network_card_pcb']==1
  for v in offer.get('variants',[]):
-  inv=explode(v['assembly_ref']);assert inv['bompart.device.network_card_artemis.network_card_pcb']==1
+  inv=explode(v['assembly_ref']);assert inv['part.device.network_card_artemis.network_card_pcb']==1
   refs=[l['ref'] for l in assemblies[v['assembly_ref']]['lines']]
   assert 'assembly.media.software.aionix_server' in refs and 'assembly.media.software.aionix' not in refs
 assert {a for a in assemblies if a.startswith('assembly.device.network_hub.')}=={f'assembly.device.network_hub.{n}_port' for n in [4,8,16]}

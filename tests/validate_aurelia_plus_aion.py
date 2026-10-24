@@ -9,11 +9,11 @@ r={x['id']:x for a in c.values() if isinstance(a,list) for x in a if isinstance(
 h=r['computer.aurelia_plus'];p=h['memory']['physical_population']
 assert p['chip_ref']=='part.aion_4164' and p['data_chip_count']==8 and p['data_ram_kb']==64
 assert r['part.aion_4164']['introduced']['event_start_date']=='1979-12-03'
-assert 'computer.aurelia_plus' not in r['part.dram_64kbit']['used_in']
+assert 'computer.aurelia_plus' not in r['part.dram_64kbit'].get('used_in',[])
 a=next(x for x in b['assemblies'] if x['id']=='assembly.computer.aurelia_plus.base')
 lines={l['ref']:l['quantity'] for l in a['lines']}
-assert lines['bompart.part.aion_4164']==8 and 'bompart.part.dram_64kbit' not in lines
-assert lines['bompart.part.aion_4116']==8 and lines['bompart.part.aion_2114']==2
+assert lines['part.aion_4164']==8 and 'part.dram_64kbit' not in lines
+assert lines['part.aion_4116']==8 and lines['part.aion_2114']==2
 m=load('generated/models/manufacturing-costs.json')['chip_fabrication_models']['part.aion_4164']
 assert abs(m['1980']['good_packaged_chip_cost_usd']*8-115.2448)<.01
 assert abs(m['1981']['good_packaged_chip_cost_usd']*8-91.8992)<.01

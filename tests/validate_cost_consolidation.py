@@ -5,7 +5,7 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(R/'tools'))
 from merge_cost_reviews import merge
-model=read_document('generated/models/manufacturing-costs.json', root=R)
+model=json.loads(document_text('generated/models/manufacturing-costs.json', root=R)) # audit stored bytes, before runtime ID translation
 expected=read_document('tests/fixtures/cost-consolidation-hashes.json', root=R)
 def digest(value):return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
 reviews=model['reviews']

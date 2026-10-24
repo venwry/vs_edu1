@@ -27,13 +27,13 @@ for m in small['bitmap_modes']:
 for m in small['text_modes']+small['bitmap_modes']:
  assert m['sprites_available']==5 and 'raster_640_400' not in m['required_raster_ids']
 lo=pop('assembly.computer.artemis.m32_128');hi=pop('assembly.computer.artemis.m128_256');pro=pop('assembly.computer.artemis_pro.base')
-assert lo['bompart.part.aion_4116']==8 and lo['bompart.part.aion_2114']==2
-assert lo['bompart.part.aurelia_video_chip']==1 and not lo.get('bompart.part.artemis_graphics_chip')
-assert hi['bompart.part.aion_4116']==16 and hi['bompart.part.aion_2114']==2
-assert hi['bompart.part.aion_4164']==32 and not hi.get('bompart.part.dram_64kbit')
-assert hi['bompart.part.artemis_graphics_chip']==1 and not hi.get('bompart.part.aurelia_video_chip')
-assert pop('assembly.computer.artemis_pro.m128_512')['bompart.part.aion_4164']==64
-assert not pop('assembly.computer.artemis_pro.m128_512').get('bompart.part.dram_64kbit')
+assert lo['part.aion_4116']==8 and lo['part.aion_2114']==2
+assert lo['part.aurelia_video_chip']==1 and not lo.get('part.artemis_graphics_chip')
+assert hi['part.aion_4116']==16 and hi['part.aion_2114']==2
+assert hi['part.aion_4164']==32 and not hi.get('part.dram_64kbit')
+assert hi['part.artemis_graphics_chip']==1 and not hi.get('part.aurelia_video_chip')
+assert pop('assembly.computer.artemis_pro.m128_512')['part.aion_4164']==64
+assert not pop('assembly.computer.artemis_pro.m128_512').get('part.dram_64kbit')
 assert 'bundle.artemis_128_mono_pro' not in r and 'bundle.artemis_256_mono' not in r
 for layer in ['hardware','memory']:
  nodes=c['artemis_explorer']['diagrams'][layer]['nodes']
