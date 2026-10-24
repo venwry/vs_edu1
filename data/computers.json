@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/collections/computers.schema.json",
-  "schema_version": "3.0.0",
+  "schema_version": "3.3.0",
   "computers": [
     {
       "id": "computer.aurelia",
@@ -8,11 +8,6 @@
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
-      },
-      "form_factor": "slim desktop",
-      "processor": {
-        "part_ref": "part.z80a",
-        "clock_mhz": 4
       },
       "memory": {
         "ram_kb": 48,
@@ -110,7 +105,6 @@
         }
       },
       "rom_and_cartridges": {
-        "xip_slots": 2,
         "mainboard_rom": [
           "Boot",
           "Monitor",
@@ -118,15 +112,6 @@
           "Hardware Drivers"
         ],
         "system_cartridge_ref": "software.cpm_aurelia"
-      },
-      "io_and_expansion": {
-        "flexibus_ports": 3,
-        "expansion_slots": {
-          "count": 2,
-          "width_bits": 8,
-          "plug_and_execute": true,
-          "future_pin_area_reserved_for_bits": 32
-        }
       },
       "video": {
         "technology_ref": "technology.logix_digital_video",
@@ -531,7 +516,8 @@
       },
       "lifecycle_policy": "From COMDEX 1979 Logix focuses new hardware development and promotion on Aurelia+. Existing Aurelia support and compatible software continue; independent manufacturers may develop Aurelia-class clones through published interfaces and appropriate software licences. No immediate withdrawal or shutdown date is imposed.",
       "vendor": "Logix",
-      "category": "computer"
+      "category": "computer",
+      "chassis_ref": "device.chassis.aurelia"
     },
     {
       "id": "computer.aurelia_plus",
@@ -541,11 +527,6 @@
         "event_start_date": "1979-12-03",
         "date_precision": "day",
         "timeline_note": "Author-confirmed introduction date."
-      },
-      "form_factor": "slim desktop",
-      "processor": {
-        "part_ref": "part.z80b",
-        "clock_mhz": 6
       },
       "memory": {
         "ram_kb": 64,
@@ -612,7 +593,6 @@
         }
       },
       "rom_and_cartridges": {
-        "xip_slots": 2,
         "mainboard_rom": [
           "Boot",
           "Monitor",
@@ -620,15 +600,6 @@
           "Hardware Drivers"
         ],
         "system_cartridge_ref": "software.cpm_aurelia"
-      },
-      "io_and_expansion": {
-        "flexibus_ports": 3,
-        "expansion_slots": {
-          "count": 2,
-          "width_bits": 8,
-          "plug_and_execute": true,
-          "future_pin_area_reserved_for_bits": 32
-        }
       },
       "video": {
         "technology_ref": "technology.logix_digital_video",
@@ -1029,7 +1000,8 @@
         "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link."
       },
       "vendor": "Logix",
-      "category": "computer"
+      "category": "computer",
+      "chassis_ref": "device.chassis.aurelia_plus"
     },
     {
       "id": "computer.artemis",
@@ -1038,31 +1010,19 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "form_factor": "full desktop",
-      "processor": {
-        "part_ref": "part.era1",
-        "variant": "ERA1 initial",
-        "clock_mhz": 6
-      },
       "memory": {
-        "ram_sockets": 8,
-        "bank_count": 4,
-        "modules_per_bank": 2,
         "bank_data_width_bits": 32,
         "parity_bits": 0,
-        "mixed_density_allowed": false,
-        "physical_capacity_limit_kb": 1024,
-        "capacity_limit_status": "Design target; all-bank timing, loading and power qualification pending.",
         "module_refs": [
-          "part.ram_64kb_x32",
-          "part.ram_128kb_x32",
-          "part.ram_256kb_x32"
+          "device.ram_64kb_x32",
+          "device.ram_128kb_x32",
+          "device.ram_256kb_x32"
         ],
         "configurations": [
           {
             "id": "m32_128",
             "ram_kb": 128,
-            "module_ref": "part.ram_64kb_x32",
+            "module_ref": "device.ram_64kb_x32",
             "populated_modules": 2,
             "populated_banks": 1,
             "data_chip_count": 64,
@@ -1081,7 +1041,7 @@
           {
             "id": "m32_256",
             "ram_kb": 256,
-            "module_ref": "part.ram_64kb_x32",
+            "module_ref": "device.ram_64kb_x32",
             "populated_modules": 4,
             "populated_banks": 2,
             "data_chip_count": 128,
@@ -1107,7 +1067,7 @@
           {
             "id": "m128_256",
             "ram_kb": 256,
-            "module_ref": "part.ram_128kb_x32",
+            "module_ref": "device.ram_128kb_x32",
             "populated_modules": 2,
             "populated_banks": 1,
             "data_chip_count": 128,
@@ -1126,7 +1086,7 @@
           {
             "id": "m128_512",
             "ram_kb": 512,
-            "module_ref": "part.ram_256kb_x32",
+            "module_ref": "device.ram_256kb_x32",
             "populated_modules": 2,
             "populated_banks": 1,
             "data_chip_count": 64,
@@ -1145,7 +1105,7 @@
           {
             "id": "m128_768",
             "ram_kb": 768,
-            "module_ref": "part.ram_128kb_x32",
+            "module_ref": "device.ram_128kb_x32",
             "populated_modules": 6,
             "populated_banks": 3,
             "data_chip_count": 384,
@@ -1178,7 +1138,7 @@
           {
             "id": "m128_1024",
             "ram_kb": 1024,
-            "module_ref": "part.ram_256kb_x32",
+            "module_ref": "device.ram_256kb_x32",
             "populated_modules": 4,
             "populated_banks": 2,
             "data_chip_count": 128,
@@ -1225,31 +1185,6 @@
         "part.artemis_fdd_hdd_controller",
         "part.flexibus_host_controller"
       ],
-      "io_and_expansion": {
-        "flexibus_ports": 4,
-        "expansion_slots": {
-          "count": 4,
-          "width_bits": 32,
-          "plug_and_execute": true
-        },
-        "rom_eeprom_cartridge_slots": {
-          "count": 2,
-          "rear": "operating system",
-          "front": "office/application cartridge"
-        },
-        "dedicated_video_slot": {
-          "count": 1,
-          "included_card_ref": "device.artemis_video_card_16kb",
-          "replaceable": true,
-          "hot_swap": false,
-          "general_purpose_slots_consumed": 0,
-          "interface": "Keyed dedicated connector; buffered host data/address, wait/ready, DMA access and independent card clocks; electrical pinout pending.",
-          "configuration_card_refs": {
-            "m32_128": "device.artemis_video_card_16kb",
-            "m128_256": "device.artemis_video_card"
-          }
-        }
-      },
       "video": {
         "technology_ref": "technology.logix_digital_video",
         "api_ref": "technology.logix_display_api",
@@ -1672,8 +1607,8 @@
         "device.network_hub.4_port",
         "device.network_hub.8_port",
         "device.network_hub.16_port",
-        "part.ram_64kb_x32",
-        "part.ram_128kb_x32",
+        "device.ram_64kb_x32",
+        "device.ram_128kb_x32",
         "device.artemis_video_card",
         "device.mono_pro",
         "device.artemis_video_card_16kb",
@@ -2620,7 +2555,13 @@
         "policy": "Optional replacement video card; existing configurations retain their installed card. Separate COMDEX high-resolution display is outside this release."
       },
       "vendor": "Logix",
-      "category": "computer"
+      "category": "computer",
+      "chassis_ref": "device.chassis.artemis",
+      "default_video_card_ref": "device.artemis_video_card_16kb",
+      "configuration_video_card_refs": {
+        "m32_128": "device.artemis_video_card_16kb",
+        "m128_256": "device.artemis_video_card"
+      }
     },
     {
       "id": "computer.artemis_pro",
@@ -2630,30 +2571,18 @@
         "event_start_date": "1981-05-04"
       },
       "role": "network server",
-      "form_factor": "full desktop / server",
-      "processor": {
-        "part_ref": "part.era1",
-        "variant": "ERA upgraded",
-        "clock_mhz": 8
-      },
       "memory": {
-        "ram_sockets": 8,
-        "bank_count": 4,
-        "modules_per_bank": 2,
         "bank_data_width_bits": 32,
         "parity_bits": 0,
-        "mixed_density_allowed": false,
-        "physical_capacity_limit_kb": 1024,
-        "capacity_limit_status": "Design target; all-bank timing, loading and power qualification pending.",
         "module_refs": [
-          "part.ram_256kb_x32",
-          "part.ram_128kb_x32"
+          "device.ram_256kb_x32",
+          "device.ram_128kb_x32"
         ],
         "configurations": [
           {
             "id": "m128_512",
             "ram_kb": 512,
-            "module_ref": "part.ram_256kb_x32",
+            "module_ref": "device.ram_256kb_x32",
             "populated_modules": 2,
             "populated_banks": 1,
             "data_chip_count": 64,
@@ -2672,7 +2601,7 @@
           {
             "id": "m128_768",
             "ram_kb": 768,
-            "module_ref": "part.ram_128kb_x32",
+            "module_ref": "device.ram_128kb_x32",
             "populated_modules": 6,
             "populated_banks": 3,
             "data_chip_count": 384,
@@ -2705,7 +2634,7 @@
           {
             "id": "m128_1024",
             "ram_kb": 1024,
-            "module_ref": "part.ram_256kb_x32",
+            "module_ref": "device.ram_256kb_x32",
             "populated_modules": 4,
             "populated_banks": 2,
             "data_chip_count": 128,
@@ -2756,27 +2685,6 @@
         "part.artemis_fdd_hdd_controller",
         "part.flexibus_host_controller"
       ],
-      "io_and_expansion": {
-        "flexibus_ports": 4,
-        "expansion_slots": {
-          "count": 4,
-          "width_bits": 32,
-          "plug_and_execute": true
-        },
-        "rom_eeprom_cartridge_slots": {
-          "count": 2,
-          "rear": "operating system",
-          "front": "office/application cartridge"
-        },
-        "dedicated_video_slot": {
-          "count": 1,
-          "included_card_ref": "device.artemis_video_card",
-          "replaceable": true,
-          "hot_swap": false,
-          "general_purpose_slots_consumed": 0,
-          "interface": "Keyed dedicated connector; buffered host data/address, wait/ready, DMA access and independent card clocks; electrical pinout pending."
-        }
-      },
       "video": {
         "technology_ref": "technology.logix_digital_video",
         "api_ref": "technology.logix_display_api",
@@ -3317,7 +3225,7 @@
         "device.network_hub.4_port",
         "device.network_hub.8_port",
         "device.network_hub.16_port",
-        "part.ram_128kb_x32",
+        "device.ram_128kb_x32",
         "device.artemis_video_card",
         "device.mono_pro",
         "device.logix_mouse",
@@ -3367,7 +3275,9 @@
         "policy": "Optional replacement video card; existing configurations retain their installed card. Separate COMDEX high-resolution display is outside this release."
       },
       "vendor": "Logix",
-      "category": "computer"
+      "category": "computer",
+      "chassis_ref": "device.chassis.artemis_pro",
+      "default_video_card_ref": "device.artemis_video_card"
     },
     {
       "id": "computer.athena",
@@ -3379,29 +3289,19 @@
         "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
       },
       "product_status": "Accepted planning baseline; production and electrical qualification pending.",
-      "form_factor": "desktop/server chassis; mechanical design pending",
-      "processor": {
-        "part_ref": "part.era2",
-        "variant": "ERA² baseline target",
-        "clock_mhz": 12,
-        "clock_status": "Target pending qualification"
-      },
       "memory": {
         "ram_kb": 256,
         "video_ram_kb": 64,
         "module_refs": [
-          "part.ram_128kb_x32"
+          "device.ram_128kb_x32"
         ],
-        "modules_per_bank": 2,
         "bank_data_width_bits": 32,
-        "ram_sockets": null,
-        "maximum_ram_kb": null,
         "capacity_policy": "Installed configuration is specified; maximum board capacity/socket count remain open and are not the CPU address-space limit.",
         "configurations": [
           {
             "id": "base",
             "ram_kb": 256,
-            "module_ref": "part.ram_128kb_x32",
+            "module_ref": "device.ram_128kb_x32",
             "populated_modules": 2,
             "populated_banks": 1,
             "data_chip_count": 128,
@@ -4022,19 +3922,6 @@
         "card_ref": "device.network_card_artemis",
         "qualification_status": "Reuse existing network protocol/card baseline; qualify ERA² bus, DMA, drivers and rate advertisement before release."
       },
-      "io_and_expansion": {
-        "rom_eeprom_cartridge_slots": {
-          "count": 0
-        },
-        "application_rom_cards_supported": false,
-        "eeprom_bios": {
-          "included": true,
-          "capacity_kb": null,
-          "purpose": "Boot, hardware initialization, diagnostics and selection of ROM-backed AIONix2/recovery or disk patches."
-        },
-        "graphics_card_count": 1,
-        "general_expansion_slot_count": null
-      },
       "operating_system_ref": "software.aionix2",
       "compatible_software": [
         "software.aionix2"
@@ -4047,6 +3934,10 @@
       "category": "computer",
       "manufacturing_requirements": [
         "Storage sourcing: Seagate ST506 5 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
+      ],
+      "chassis_ref": "device.chassis.athena",
+      "bom_assembly_refs": [
+        "assembly.computer.athena.base"
       ]
     },
     {
@@ -4059,29 +3950,19 @@
         "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
       },
       "product_status": "Accepted planning baseline; production and electrical qualification pending.",
-      "form_factor": "desktop/server chassis; mechanical design pending",
-      "processor": {
-        "part_ref": "part.era2",
-        "variant": "ERA² baseline target",
-        "clock_mhz": 12,
-        "clock_status": "Target pending qualification"
-      },
       "memory": {
         "ram_kb": 1024,
         "video_ram_kb": 64,
         "module_refs": [
-          "part.ram_256kb_x32_2um"
+          "device.ram_256kb_x32_2um"
         ],
-        "modules_per_bank": 2,
         "bank_data_width_bits": 32,
-        "ram_sockets": null,
-        "maximum_ram_kb": null,
         "capacity_policy": "Installed configuration is specified; maximum board capacity/socket count remain open and are not the CPU address-space limit.",
         "configurations": [
           {
             "id": "base",
             "ram_kb": 1024,
-            "module_ref": "part.ram_256kb_x32_2um",
+            "module_ref": "device.ram_256kb_x32_2um",
             "populated_modules": 4,
             "populated_banks": 2,
             "data_chip_count": 128,
@@ -4709,19 +4590,6 @@
         "card_ref": "device.network_card_artemis",
         "qualification_status": "Reuse existing network protocol/card baseline; qualify ERA² bus, DMA, drivers and rate advertisement before release."
       },
-      "io_and_expansion": {
-        "rom_eeprom_cartridge_slots": {
-          "count": 0
-        },
-        "application_rom_cards_supported": false,
-        "eeprom_bios": {
-          "included": true,
-          "capacity_kb": null,
-          "purpose": "Boot, hardware initialization, diagnostics and selection of ROM-backed AIONix2/recovery or disk patches."
-        },
-        "graphics_card_count": 1,
-        "general_expansion_slot_count": null
-      },
       "operating_system_ref": "software.aionix2",
       "compatible_software": [
         "software.aionix2"
@@ -4734,6 +4602,10 @@
       "category": "computer",
       "manufacturing_requirements": [
         "Storage sourcing: Rodime RO202E 20 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
+      ],
+      "chassis_ref": "device.chassis.athena_server",
+      "bom_assembly_refs": [
+        "assembly.computer.athena_server.base"
       ]
     }
   ],

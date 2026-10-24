@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/collections/components.schema.json",
-  "schema_version": "3.1.0",
+  "schema_version": "3.3.0",
   "components": [
     {
       "id": "part.z80a",
@@ -62,50 +62,6 @@
       ]
     },
     {
-      "id": "part.era1",
-      "name": "ERA1 processor",
-      "category": "processor_ic",
-      "origin": "custom_aion_labs",
-      "specification_ref": "technology.era1_isa",
-      "variants": [
-        {
-          "name": "ERA1 initial",
-          "clock_mhz": 6,
-          "used_in": [
-            "computer.artemis"
-          ]
-        },
-        {
-          "name": "ERA upgraded",
-          "clock_mhz": 8,
-          "used_in": [
-            "computer.artemis_pro"
-          ]
-        }
-      ],
-      "vendor": "AION Labs",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.era1"
-      ],
-      "manufacturing_process_ref": "technology.nmos_3um",
-      "manufacturing_planning": {
-        "node_um": 3,
-        "die_area_mm2": 55,
-        "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
-      },
-      "bom_role": "material",
-      "manufacturer": "AION Labs",
-      "qualification_status": "unresolved",
-      "requirements": [
-        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
-      ]
-    },
-    {
       "id": "part.dram_16kbit",
       "name": "16 Kbit RAM chip",
       "category": "memory_ic",
@@ -113,9 +69,9 @@
       "used_in": [
         "computer.aurelia",
         "device.aurelia_ram_16kb_card",
-        "part.artemis_ram_module_prototype",
-        "part.ram_64kb_x32",
-        "part.ram_128kb_x32"
+        "device.artemis_ram_module_prototype",
+        "device.ram_64kb_x32",
+        "device.ram_128kb_x32"
       ],
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
@@ -192,59 +148,6 @@
       "requirements": [
         "Remove from active production BOMs. Preserve only as a superseded design assumption if history is retained",
         "it is not a qualified purchased component."
-      ]
-    },
-    {
-      "id": "part.artemis_ram_module_prototype",
-      "name": "Artemis prototype RAM module",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "specification": {
-        "chips": 16,
-        "chip_type_ref": "part.dram_16kbit",
-        "physical_arrangement": "4 rows x 4 chips",
-        "capacity_kb": 32,
-        "data_width_bits": 16
-      },
-      "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "product_status": "Historical pre-release engineering subassembly; not a commercial offering. Production replacement is a separate qualified design record.",
-      "manufacturing_status": "excluded_from_active_production",
-      "bom_role": "specification",
-      "requirements": [
-        "Retain noncommercial engineering status. Its chip count implies 32 KiB",
-        "define width/PCB/connectors separately from a new shared 64/128 KB 32-bit modules."
-      ]
-    },
-    {
-      "id": "part.artemis_ram_module_64kb",
-      "name": "Artemis RAM Module 1",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "specification": {
-        "capacity_kb": 64,
-        "chips": 8,
-        "chip_type_ref": "part.dram_64kbit",
-        "physical_arrangement": "2 rows x 4 chips"
-      },
-      "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "product_status": "Superseded design assumption; excluded from active manufacturing BOMs.",
-      "superseded_by": [
-        "part.ram_64kb_x32",
-        "part.ram_128kb_x32"
-      ],
-      "manufacturing_status": "excluded_from_active_production",
-      "bom_role": "specification",
-      "requirements": [
-        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
-        "identify how existing prototypes/spares are handled."
       ]
     },
     {
@@ -1585,7 +1488,7 @@
       "used_in": [
         "computer.artemis_pro",
         "computer.aurelia_plus",
-        "part.ram_256kb_x32"
+        "device.ram_256kb_x32"
       ],
       "introduced": {
         "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
@@ -1816,48 +1719,6 @@
       ]
     },
     {
-      "id": "part.era2",
-      "name": "ERA² processor",
-      "category": "processor_ic",
-      "origin": "custom_aion_labs",
-      "vendor": "AION Labs",
-      "introduced": {
-        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
-        "event_start_date": "1983-05-16",
-        "date_precision": "day",
-        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
-      },
-      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
-      "specification_ref": "technology.era2_architecture",
-      "manufacturing_process_ref": "technology.nmos_2um",
-      "variants": [
-        {
-          "name": "ERA² baseline target",
-          "clock_mhz": 12,
-          "used_in": [
-            "computer.athena",
-            "computer.athena_server"
-          ]
-        },
-        {
-          "name": "ERA² stretch speed bin",
-          "clock_mhz": 16,
-          "status": "Uncommitted; depends on timing, power and yield qualification."
-        }
-      ],
-      "manufacturing_planning": {
-        "node_um": 2,
-        "wafer_diameter_mm": 75,
-        "die_area_mm2_target": 90,
-        "transistor_budget_target": 142000,
-        "initial_die_yield_acceptable": 0.1,
-        "status": "Planning envelope, not a completed layout or measured yield. Cache/MMU allocation must fit this budget.",
-        "initial_manufacturer": "AION Labs only",
-        "second_source_policy": "No SGS-ATES ERA² manufacture for at least 12–18 months after initial commercial availability; transfer is not automatic."
-      },
-      "bom_role": "specification"
-    },
-    {
       "id": "part.aion_4164_2um",
       "name": "AION 4164 — 2 µm revision",
       "category": "memory_ic",
@@ -1902,158 +1763,6 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Planned 2 µm process; supplier, electrical qualification, yield and current unit cost remain unqualified."
-      ]
-    },
-    {
-      "id": "part.ram_64kb_x32",
-      "name": "Logix 64 KB 32-bit DRAM module",
-      "vendor": "Logix",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "introduced": {
-        "event_name": "Shared module specification migration; original availability retained",
-        "event_start_date": "1980-05-19"
-      },
-      "specification": {
-        "capacity_kb": 64,
-        "data_width_bits": 32,
-        "chips": 32,
-        "chip_type_ref": "part.dram_16kbit",
-        "chip_organization": "16K × 1",
-        "ranks": 1,
-        "chips_per_rank": 32,
-        "rank_capacity_kb": 64,
-        "modules_per_bank": 2,
-        "bank_data_width_bits": 32,
-        "bank_capacity_kb": 128,
-        "parity_bits": 0,
-        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
-        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
-        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
-      },
-      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ram_64kb_x32"
-      ],
-      "bom_role": "assembly",
-      "requirements": [
-        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
-        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
-      ]
-    },
-    {
-      "id": "part.ram_128kb_x32",
-      "name": "Logix 128 KB 32-bit DRAM module",
-      "vendor": "Logix",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "introduced": {
-        "event_name": "Shared module specification migration; original availability retained",
-        "event_start_date": "1980-05-19"
-      },
-      "specification": {
-        "capacity_kb": 128,
-        "data_width_bits": 32,
-        "chips": 64,
-        "chip_type_ref": "part.dram_16kbit",
-        "chip_organization": "16K × 1",
-        "ranks": 2,
-        "chips_per_rank": 32,
-        "rank_capacity_kb": 64,
-        "modules_per_bank": 2,
-        "bank_data_width_bits": 32,
-        "bank_capacity_kb": 256,
-        "parity_bits": 0,
-        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
-        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
-        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
-      },
-      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ram_128kb_x32"
-      ],
-      "bom_role": "assembly",
-      "requirements": [
-        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
-        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
-      ]
-    },
-    {
-      "id": "part.ram_256kb_x32",
-      "name": "Logix 256 KB 32-bit DRAM module",
-      "vendor": "Logix",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "introduced": {
-        "event_name": "Shared module specification migration; original availability retained",
-        "event_start_date": "1980-05-19"
-      },
-      "specification": {
-        "capacity_kb": 256,
-        "data_width_bits": 32,
-        "chips": 32,
-        "chip_type_ref": "part.aion_4164",
-        "chip_organization": "64K × 1",
-        "ranks": 1,
-        "chips_per_rank": 32,
-        "rank_capacity_kb": 256,
-        "modules_per_bank": 2,
-        "bank_data_width_bits": 32,
-        "bank_capacity_kb": 512,
-        "parity_bits": 0,
-        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
-        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
-        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
-      },
-      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ram_256kb_x32"
-      ],
-      "bom_role": "assembly",
-      "requirements": [
-        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
-        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
-      ]
-    },
-    {
-      "id": "part.ram_256kb_x32_2um",
-      "name": "Logix 256 KB 32-bit DRAM module (2 µm)",
-      "vendor": "Logix",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "introduced": {
-        "event_name": "Shared module specification migration; original availability retained",
-        "event_start_date": "1983-05-16"
-      },
-      "specification": {
-        "capacity_kb": 256,
-        "data_width_bits": 32,
-        "chips": 32,
-        "chip_type_ref": "part.aion_4164_2um",
-        "chip_organization": "64K × 1",
-        "ranks": 1,
-        "chips_per_rank": 32,
-        "rank_capacity_kb": 256,
-        "modules_per_bank": 2,
-        "bank_data_width_bits": 32,
-        "bank_capacity_kb": 512,
-        "parity_bits": 0,
-        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
-        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
-        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
-      },
-      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ram_256kb_x32_2um"
-      ],
-      "bom_role": "assembly",
-      "requirements": [
-        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
-        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
       ]
     },
     {
@@ -5780,6 +5489,317 @@
         "event_start_date": "1982-06"
       },
       "bom_role": "material"
+    },
+    {
+      "id": "part.erav1_6mhz",
+      "name": "ERAv1 6MHz (initial)",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "specification_ref": "technology.era1_isa",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "manufacturing_process_ref": "technology.nmos_3um",
+      "manufacturing_planning": {
+        "node_um": 3,
+        "die_area_mm2": 55,
+        "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
+      },
+      "bom_role": "material",
+      "manufacturer": "AION Labs",
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
+      ],
+      "specification": {
+        "clock_mhz": 6
+      },
+      "used_in": [
+        "computer.artemis"
+      ],
+      "bom_assembly_refs": [
+        "assembly.part.erav1_6mhz"
+      ]
+    },
+    {
+      "id": "part.erav1_8mhz",
+      "name": "ERAv1 8MHz (upgraded)",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "specification_ref": "technology.era1_isa",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "manufacturing_process_ref": "technology.nmos_3um",
+      "manufacturing_planning": {
+        "node_um": 3,
+        "die_area_mm2": 55,
+        "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
+      },
+      "bom_role": "material",
+      "manufacturer": "AION Labs",
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
+      ],
+      "specification": {
+        "clock_mhz": 8
+      },
+      "used_in": [
+        "computer.artemis_pro"
+      ],
+      "bom_assembly_refs": [
+        "assembly.part.erav1_8mhz"
+      ]
+    },
+    {
+      "id": "part.era2_12mhz",
+      "name": "ERA^2 12MHz",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
+      "specification_ref": "technology.era2_architecture",
+      "manufacturing_process_ref": "technology.nmos_2um",
+      "manufacturing_planning": {
+        "node_um": 2,
+        "wafer_diameter_mm": 75,
+        "die_area_mm2_target": 90,
+        "transistor_budget_target": 142000,
+        "initial_die_yield_acceptable": 0.1,
+        "status": "Planning envelope, not a completed layout or measured yield. Cache/MMU allocation must fit this budget.",
+        "initial_manufacturer": "AION Labs only",
+        "second_source_policy": "No SGS-ATES ERA² manufacture for at least 12–18 months after initial commercial availability; transfer is not automatic."
+      },
+      "bom_role": "material",
+      "specification": {
+        "clock_mhz": 12
+      },
+      "used_in": [
+        "computer.athena",
+        "computer.athena_server"
+      ],
+      "qualification_status": "unresolved"
+    },
+    {
+      "id": "part.era2_16mhz_rev2",
+      "name": "ERA^2 16MHz rev2",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "product_status": "Uncommitted; depends on timing, power and yield qualification.",
+      "specification_ref": "technology.era2_architecture",
+      "manufacturing_process_ref": "technology.nmos_2um",
+      "manufacturing_planning": {
+        "node_um": 2,
+        "wafer_diameter_mm": 75,
+        "die_area_mm2_target": 90,
+        "transistor_budget_target": 142000,
+        "initial_die_yield_acceptable": 0.1,
+        "status": "Planning envelope, not a completed layout or measured yield. Cache/MMU allocation must fit this budget.",
+        "initial_manufacturer": "AION Labs only",
+        "second_source_policy": "No SGS-ATES ERA² manufacture for at least 12–18 months after initial commercial availability; transfer is not automatic."
+      },
+      "bom_role": "specification",
+      "specification": {
+        "clock_mhz": 16
+      }
+    },
+    {
+      "name": "Internal HDD",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Seagate Technology",
+      "manufacturer_part_number": "ST506",
+      "requirements": [
+        "Period sourcing candidate; qualify controller, power, mounting and capacity geometry before release. Seagate ST506: 5.0 MB formatted; April 1981 OEM manual."
+      ],
+      "id": "part.athena.hdd",
+      "category": "hard_disk_drive",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_mb": 5
+      }
+    },
+    {
+      "name": "5.25-inch DS/DD FDD",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Shugart Associates",
+      "manufacturer_part_number": "SA450",
+      "requirements": [
+        "DS/DD MFM candidate available before the 1983 offering. Formatted capacity remains unqualified."
+      ],
+      "id": "part.athena.fdd",
+      "category": "floppy_drive_mechanism",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {}
+    },
+    {
+      "name": "EEPROM BIOS",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "AION Labs",
+      "id": "part.athena.bios",
+      "category": "firmware_memory",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_kb": null
+      }
+    },
+    {
+      "name": "Mainboard, controllers, power supply, chassis and wiring",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Logix",
+      "id": "part.athena.mainboard_set",
+      "category": "io_interface_assembly",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {}
+    },
+    {
+      "name": "Directly executable AIONix2 system ROM bank",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Logix",
+      "id": "part.athena.system_rom",
+      "category": "firmware_memory",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_bytes": 262144,
+        "implementation_status": "Functional set; chip count, organization, mounting, timing and cost unqualified."
+      }
+    },
+    {
+      "name": "Internal HDD",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Rodime",
+      "manufacturer_part_number": "RO202E",
+      "requirements": [
+        "Period sourcing candidate; qualify controller, power, mounting and capacity geometry before release. Rodime RO202E: 20.97 MB formatted, marketed as 20 MB; 1982 RO200E product specification."
+      ],
+      "id": "part.athena_server.hdd",
+      "category": "hard_disk_drive",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_mb": 20
+      }
+    },
+    {
+      "name": "5.25-inch DS/DD FDD",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Shugart Associates",
+      "manufacturer_part_number": "SA450",
+      "requirements": [
+        "DS/DD MFM candidate available before the 1983 offering. Formatted capacity remains unqualified."
+      ],
+      "id": "part.athena_server.fdd",
+      "category": "floppy_drive_mechanism",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {}
+    },
+    {
+      "name": "EEPROM BIOS",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "AION Labs",
+      "id": "part.athena_server.bios",
+      "category": "firmware_memory",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_kb": null
+      }
+    },
+    {
+      "name": "Mainboard, controllers, power supply, chassis and wiring",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Logix",
+      "id": "part.athena_server.mainboard_set",
+      "category": "io_interface_assembly",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {}
+    },
+    {
+      "name": "Directly executable AIONix2 system ROM bank",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Logix",
+      "id": "part.athena_server.system_rom",
+      "category": "firmware_memory",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_bytes": 262144,
+        "implementation_status": "Functional set; chip count, organization, mounting, timing and cost unqualified."
+      }
     }
   ]
 }

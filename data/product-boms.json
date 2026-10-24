@@ -281,7 +281,7 @@
       ]
     },
     {
-      "catalog_ref": "device.artemis_ram_64kb_module",
+      "catalog_ref": "device.artemis_ram_module_64kb",
       "production_status": "excluded",
       "assembly_refs": [],
       "requirements": [
@@ -290,7 +290,9 @@
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
         "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
+        "identify how existing prototypes/spares are handled."
       ]
     },
     {
@@ -404,10 +406,10 @@
       ]
     },
     {
-      "catalog_ref": "part.era1",
+      "catalog_ref": "part.erav1_6mhz",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.era1"
+        "assembly.part.erav1_6mhz"
       ],
       "requirements": [
         "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost.",
@@ -465,26 +467,12 @@
       ]
     },
     {
-      "catalog_ref": "part.artemis_ram_module_prototype",
+      "catalog_ref": "device.artemis_ram_module_prototype",
       "production_status": "excluded",
       "assembly_refs": [],
       "requirements": [
         "Retain noncommercial engineering status. Its chip count implies 32 KiB",
         "define width/PCB/connectors separately from a new shared 64/128 KB 32-bit modules.",
-        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
-        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
-        "Power per rail, startup/thermal limits and region-specific power configuration",
-        "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
-      ]
-    },
-    {
-      "catalog_ref": "part.artemis_ram_module_64kb",
-      "production_status": "excluded",
-      "assembly_refs": [],
-      "requirements": [
-        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
-        "identify how existing prototypes/spares are handled.",
         "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
@@ -975,7 +963,7 @@
       ]
     },
     {
-      "catalog_ref": "part.era2",
+      "catalog_ref": "part.era2_12mhz",
       "production_status": "excluded",
       "assembly_refs": [],
       "requirements": [
@@ -994,27 +982,33 @@
     },
     {
       "catalog_ref": "computer.athena",
-      "production_status": "excluded",
-      "assembly_refs": [],
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.computer.athena.base"
+      ],
       "requirements": [
         "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
-        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
+        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts.",
+        "Storage sourcing: Seagate ST506 5 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
       ]
     },
     {
       "catalog_ref": "computer.athena_server",
-      "production_status": "excluded",
-      "assembly_refs": [],
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.computer.athena_server.base"
+      ],
       "requirements": [
         "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
-        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
+        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts.",
+        "Storage sourcing: Rodime RO202E 20 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
       ]
     },
     {
-      "catalog_ref": "part.ram_64kb_x32",
+      "catalog_ref": "device.ram_64kb_x32",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.ram_64kb_x32"
+        "device.ram_64kb_x32"
       ],
       "requirements": [
         "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
@@ -1022,10 +1016,10 @@
       ]
     },
     {
-      "catalog_ref": "part.ram_128kb_x32",
+      "catalog_ref": "device.ram_128kb_x32",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.ram_128kb_x32"
+        "device.ram_128kb_x32"
       ],
       "requirements": [
         "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
@@ -1033,10 +1027,10 @@
       ]
     },
     {
-      "catalog_ref": "part.ram_256kb_x32",
+      "catalog_ref": "device.ram_256kb_x32",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.ram_256kb_x32"
+        "device.ram_256kb_x32"
       ],
       "requirements": [
         "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
@@ -1044,7 +1038,7 @@
       ]
     },
     {
-      "catalog_ref": "part.ram_256kb_x32_2um",
+      "catalog_ref": "device.ram_256kb_x32_2um",
       "production_status": "excluded",
       "assembly_refs": [],
       "requirements": [

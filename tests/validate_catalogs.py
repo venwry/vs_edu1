@@ -34,7 +34,7 @@ for id in ['computer.aurelia','computer.aurelia_plus']:
  assert {'software.abacus_1','software.abacus_2'}<=set(records[id]['compatible_software'])
 assert records[records['software.aionix_server']['product_ref']]['category']=='operating_system'
 assert records['device.network_card_aurelia']['sold_with']==['software.cpm_aurelia_networking']
-assert 'used_in' not in records['part.artemis_ram_module_prototype']
+assert 'used_in' not in records['device.artemis_ram_module_prototype']
 accepted_designs=['technology.flexibus','technology.artemis_memory_model','technology.cpm80_virtual_peripheral_bridge','technology.aurelia_memory_model','software.bpi_client_server']
 for id in accepted_designs:
  assert 'proposed_design' not in records[id]

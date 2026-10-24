@@ -12,7 +12,7 @@
       "const": "../schemas/collections/software-editions.schema.json"
     },
     "schema_version": {
-      "const": "3.0.0"
+      "const": "3.3.0"
     },
     "platform_editions": {
       "type": "array",
@@ -472,6 +472,14 @@
                   "type": "string",
                   "pattern": "^assembly\\."
                 }
+              },
+              "physical_media_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
               }
             }
           }

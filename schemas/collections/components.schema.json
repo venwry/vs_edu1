@@ -12,7 +12,7 @@
       "const": "../schemas/collections/components.schema.json"
     },
     "schema_version": {
-      "const": "3.1.0"
+      "const": "3.3.0"
     },
     "components": {
       "type": "array",
@@ -128,11 +128,6 @@
               "array"
             ]
           },
-          "variants": {
-            "type": [
-              "array"
-            ]
-          },
           "vendor": {
             "type": [
               "string"
@@ -226,6 +221,18 @@
             "then": {
               "required": [
                 "bom_assembly_refs"
+              ]
+            }
+          },
+          {
+            "not": {
+              "properties": {
+                "category": {
+                  "const": "memory_module"
+                }
+              },
+              "required": [
+                "category"
               ]
             }
           }

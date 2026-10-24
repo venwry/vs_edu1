@@ -32,13 +32,15 @@ for product, capacity, modules, module_size, disk in [
     assert computer['memory']['os_rom']['capacity_bytes'] == 262144
     assert not config['shipping_configuration']
     bom = next(b for b in plan['computer_boms'] if b['computer_ref'] == product)
-    rom = next(c for c in bom['functional_components'] if c['name'] == 'Directly executable AIONix2 system ROM bank')
-    assert rom['quantity'] == 1 and rom['capacity_bytes'] == computer['memory']['os_rom']['capacity_bytes']
-    counts = {line['ref']: line['quantity'] for line in bom['lines']}
-    assert counts[config['module_ref']] == modules
-    assert counts['part.era2'] == counts['device.artemis_video_card_64kb'] == counts['device.network_card_artemis'] == 1
-assert records['part.era1']['manufacturing_planning']['node_um'] == 3
-assert records['part.era2']['manufacturing_planning']['initial_manufacturer'] == 'AION Labs only'
+    rom=records['part.'+product.split('.')[1]+'.system_rom']
+    assert rom['specification']['capacity_bytes']==computer['memory']['os_rom']['capacity_bytes']
+    assemblies={a['id']:a for a in read_document('catalog:hardware-bom')['assemblies']}
+    counts={l['ref']:l['quantity'] for l in assemblies[bom['assembly_ref']]['lines']}
+    assert counts[config['module_ref']]==modules
+    assert counts[computer['chassis_ref']]==counts['device.artemis_video_card_64kb']==counts['device.network_card_artemis']==1
+assert records['part.erav1_6mhz']['manufacturing_planning']['node_um']==3
+assert records['part.erav1_8mhz']['manufacturing_planning']['node_um']==3
+assert records['part.era2_12mhz']['manufacturing_planning']['initial_manufacturer']=='AION Labs only'
 assert records['software.aionix2']['product_ref']=='software.product.aionix'
 os = records['software.aionix2']
 resources = os['architecture']['resource_planning']

@@ -176,7 +176,8 @@
       },
       "computers": {
         "file": "data/computers.json",
-        "key": "computers"
+        "key": "computers",
+        "chassis_file": "data/devices.json"
       },
       "software_products": {
         "file": "data/software-products.json",
@@ -711,7 +712,17 @@
     "assembly.device.color_pro_14": "device.color_pro_14",
     "assembly.device.logix_mouse": "device.logix_mouse",
     "assembly.device.artemis_professional_video_128kb": "device.artemis_professional_video_128kb",
-    "assembly.device.mono_pro_17": "device.mono_pro_17"
+    "assembly.device.mono_pro_17": "device.mono_pro_17",
+    "assembly.part.ram_64kb_x32": "device.ram_64kb_x32",
+    "assembly.part.ram_128kb_x32": "device.ram_128kb_x32",
+    "assembly.part.ram_256kb_x32": "device.ram_256kb_x32",
+    "assembly.part.ram_256kb_x32_2um": "device.ram_256kb_x32_2um",
+    "assembly.media.software.aionix": "device.rom_cartridge.aionix",
+    "assembly.media.software.aionix_server": "device.rom_cartridge.aionix_server",
+    "assembly.media.software.cpm_aurelia": "device.rom_cartridge.cpm_aurelia",
+    "assembly.media.software.cpm_aurelia_networking": "device.rom_cartridge.cpm_aurelia_networking",
+    "assembly.media.software.business_tools_aurelia": "device.rom_cartridge.business_tools_aurelia",
+    "assembly.media.software.business_tools_artemis": "device.rom_cartridge.business_tools_artemis"
   },
   "device_family_aliases": {
     "device.network_hub": [
@@ -719,5 +730,38 @@
       "device.network_hub.8_port",
       "device.network_hub.16_port"
     ]
+  },
+  "record_id_aliases": {
+    "part.artemis_ram_module_prototype": "device.artemis_ram_module_prototype",
+    "part.artemis_ram_module_64kb": "device.artemis_ram_module_64kb",
+    "device.artemis_ram_64kb_module": "device.artemis_ram_module_64kb",
+    "part.ram_64kb_x32": "device.ram_64kb_x32",
+    "part.ram_128kb_x32": "device.ram_128kb_x32",
+    "part.ram_256kb_x32": "device.ram_256kb_x32",
+    "part.ram_256kb_x32_2um": "device.ram_256kb_x32_2um"
+  },
+  "record_family_aliases": {
+    "part.era1": [
+      "part.erav1_6mhz",
+      "part.erav1_8mhz"
+    ],
+    "part.era2": [
+      "part.era2_12mhz",
+      "part.era2_16mhz_rev2"
+    ],
+    "assembly.part.era1": [
+      "part.erav1_6mhz",
+      "part.erav1_8mhz"
+    ]
+  },
+  "processor_context_variants": {
+    "part.era1": {
+      "computer.artemis": "part.erav1_6mhz",
+      "computer.artemis_pro": "part.erav1_8mhz"
+    },
+    "part.era2": {
+      "computer.athena": "part.era2_12mhz",
+      "computer.athena_server": "part.era2_12mhz"
+    }
   }
 }

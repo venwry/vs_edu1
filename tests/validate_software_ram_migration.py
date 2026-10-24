@@ -26,7 +26,7 @@ assert 'device.artemis_ram_256kb_bank_kit' not in records
 assert records['computer.artemis']['memory']['configurations'][2]['ram_kb']==256
 ar=next(x for x in records['computer.artemis']['memory']['configurations'] if x['id']=='m128_256')
 at=records['computer.athena']['memory']['configurations'][0]
-assert ar['module_ref']==at['module_ref']=='part.ram_128kb_x32'
+assert ar['module_ref']==at['module_ref']=='device.ram_128kb_x32'
 assert ar['data_chip_count']==at['data_chip_count']==128
 card=records['device.aurelia_ram_16kb_card']
 assert card['category']=='memory_expansion' and card['capacity_kb']==16

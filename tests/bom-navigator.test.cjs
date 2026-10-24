@@ -5,9 +5,9 @@ const model=require('../bom-details.js').createModel(catalog,bom,cost);
 for(const key of ['components','devices','computers','software_products','platform_editions','offered_bundles','proposed_bundles','commercial_offerings'])for(const r of catalog[key]||[])assert(model.items.some(i=>i.id===r.id),'Missing '+r.id);
 for(const c of bom.components)assert(model.items.some(i=>i.id===c.id),'Missing manufacturing part '+c.id);
 assert.equal(new Set(model.items.map(x=>x.id)).size,model.items.length);
-assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Computer','Expansion','Software','Software product','Software edition','Bundle']));
+assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Chassis','Internal subsystem','Computer','Expansion','Software','Software product','Software edition','Bundle']));
 assert(model.items.filter(x=>x.id.startsWith('bundle.proposed_')).every(x=>x.release==='no release'));
-assert.equal(model.items.filter(x=>x.release==='no release').length,12);
+assert.equal(model.items.filter(x=>x.release==='no release').length,13);
 assert(model.items.every(x=>x.release),'Every navigator element has a date or explicit no release');
 const {releaseDate,vendorName}=require('../bom-details.js');
 assert.equal(releaseDate({}), ''); // Unknown is distinct from explicitly unused.
@@ -49,14 +49,14 @@ assert(model.render('part.computer.artemis.boot_rom_chips').includes('Supplier q
  change('bom-class','Computer');assert.equal(d.querySelectorAll('#bom-rows tr').length,0);assert(d.getElementById('bom-inspector').textContent.includes('No elements'));
  d.getElementById('bom-reset').click();assert.equal(d.querySelectorAll('#bom-rows tr').length,model.items.length);
  assert(![...d.getElementById('bom-release').options].some(option=>option.value==='Unknown'));
- change('bom-release','no release');assert.equal(d.querySelectorAll('#bom-rows tr').length,12);assert([...d.querySelectorAll('#bom-rows tr')].every(tr=>tr.lastElementChild.textContent==='no release'));
+ change('bom-release','no release');assert.equal(d.querySelectorAll('#bom-rows tr').length,13);assert([...d.querySelectorAll('#bom-rows tr')].every(tr=>tr.lastElementChild.textContent==='no release'));
  assert.deepEqual(errors,[]);dom.window.close();
- for(const [old,current] of [['bompart.part.z80a','part.z80a'],['bompart.computer.aurelia.boot_rom_chips','part.computer.aurelia.boot_rom_chips'],['edition.abacus_2.z80','software.abacus_2'],['part.artemis_ram_module_128kb_aion','part.ram_128kb_x32'],['device.artemis_ram_256kb_bank_kit','offer.ram_256kb_bank']]){
+ for(const [old,current] of [['bompart.part.z80a','part.z80a'],['bompart.computer.aurelia.boot_rom_chips','part.computer.aurelia.boot_rom_chips'],['edition.abacus_2.z80','software.abacus_2'],['part.artemis_ram_module_128kb_aion','device.ram_128kb_x32'],['device.artemis_ram_256kb_bank_kit','offer.ram_256kb_bank']]){
   const redirected=new JSDOM(read('bom-navigator.html'),{url:'https://atlas.test/bom-navigator.html?element='+old,runScripts:'outside-only',virtualConsole:vc});const rw=redirected.window;rw.fetch=async p=>({ok:true,json:async()=>json(p)});
   for(const script of rw.document.scripts)rw.eval(read(new URL(script.src).pathname.slice(1)));
   for(let i=0;i<60&&!rw.document.querySelector('main[data-ready]');i++)await new Promise(r=>setTimeout(r,10));
   assert(rw.document.querySelector('[data-element="'+current+'"][aria-pressed=true]'));assert.equal(new URL(rw.location.href).searchParams.get('element'),current);
-  if(current==='part.ram_128kb_x32'||current.startsWith('offer.')){rw.document.getElementById('tab-costs').click();assert(rw.document.getElementById('panel-costs').textContent.includes('pending reassessment'));}
+  if(current==='device.ram_128kb_x32'||current.startsWith('offer.')){rw.document.getElementById('tab-costs').click();assert(rw.document.getElementById('panel-costs').textContent.includes('pending reassessment'));}
   redirected.window.close();
  }
  console.log('PASS: BOM Navigator coverage, deep link, combined filters, empty/reset states and component BOMs');

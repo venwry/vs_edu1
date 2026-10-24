@@ -14,7 +14,7 @@ def view_name(path, root=ROOT):
 
 def normalize_component_ids(value, root=ROOT):
     """Translate archival IDs and composite map keys in memory; preserve all numbers."""
-    reg=registry(root);aliases={**reg.get('component_id_aliases',{}),**reg.get('device_assembly_aliases',{})}
+    reg=registry(root);aliases={**reg.get('component_id_aliases',{}),**reg.get('device_assembly_aliases',{}),**reg.get('record_id_aliases',{})}
     families=reg.get('device_family_aliases',{})
     def translate(v):
         if isinstance(v,str):
@@ -27,6 +27,7 @@ def normalize_component_ids(value, root=ROOT):
                 key=translate(k)
                 if key in out:raise ValueError('Component identifier collision: '+key)
                 out[key]=translate(x)
+            if out.get('catalog_ref') in reg.get('record_family_aliases',{}):out['historical_variant_refs']=reg['record_family_aliases'][out['catalog_ref']]
             if out.get('catalog_ref') in families and out.get('id') in families[out['catalog_ref']]:out['catalog_ref']=out['id']
             return out
         return v
@@ -37,6 +38,30 @@ def assembly_records(stored, devices):
     rows=copy.deepcopy(stored)
     rows.extend({'id':d['id'],**copy.deepcopy(d['bom_assembly_metadata']),'lines':copy.deepcopy(d['bom_assembly_definition'])} for d in devices if 'bom_assembly_definition' in d)
     if len({r['id'] for r in rows})!=len(rows):raise ValueError('Duplicate device/assembly BOM identity')
+    return rows
+
+def computer_records(stored, devices, components):
+    devices={d['id']:d for d in devices};components={p['id']:p for p in components};rows=copy.deepcopy(stored)
+    for c in rows:
+        chassis=devices[c['chassis_ref']]
+        for key in ['processor','form_factor','io_and_expansion']:c[key]=copy.deepcopy(chassis[key])
+        cpu=components[c['processor']['part_ref']];c['processor']['variant']=cpu['name'];c['processor']['clock_mhz']=cpu['specification']['clock_mhz']
+        slots={s['id']:s for g in chassis['expansion_socket_groups'] for s in g['sockets']};io=c['io_and_expansion']
+        if 'flexibus' in slots:io['flexibus_ports']=slots['flexibus']['capacity']
+        if 'expansion_slots' in io:io['expansion_slots']['count']=slots['expansion']['capacity']
+        else:io['general_expansion_slot_count']=slots['expansion']['capacity']
+        if 'dedicated_video_slot' in io:io['dedicated_video_slot']['count']=slots['video_card']['capacity']
+        elif 'video_card' in slots:io['graphics_card_count']=slots['video_card']['capacity']
+        if 'rom_and_cartridges' in c:c['rom_and_cartridges']={'xip_slots':sum(s['capacity'] for s in slots.values() if s['connection']=='rom_cartridge'),**c['rom_and_cartridges']}
+        if 'rom_eeprom_cartridge_slots' in io:io['rom_eeprom_cartridge_slots']['count']=sum(s['capacity'] for s in slots.values() if s['connection']=='rom_cartridge')
+        if 'ram' in slots:
+            ram=slots['ram'];mem=c['memory'];mem['ram_sockets']=ram['capacity'];mem['modules_per_bank']=ram['installation_multiple']
+            if ram['capacity'] is not None:
+                mem['bank_count']=ram['capacity']//ram['installation_multiple'];mem['physical_capacity_limit_kb']=chassis['memory_constraints']['max_ram_kib'];mem['capacity_limit_status']=chassis['memory_constraints']['qualification_status'];mem['mixed_density_allowed']=chassis['memory_constraints']['mixed_module_types_allowed']
+            else:mem['maximum_ram_kb']=chassis['memory_constraints']['max_ram_kib']
+        slot=c['io_and_expansion'].get('dedicated_video_slot',{})
+        if c.get('default_video_card_ref'):slot['included_card_ref']=c['default_video_card_ref']
+        if c.get('configuration_video_card_refs'):slot['configuration_card_refs']=c['configuration_video_card_refs']
     return rows
 
 def read_document(path, root=ROOT):
@@ -51,6 +76,7 @@ def read_document(path, root=ROOT):
         return cache[file]
     def select(ref):
         rows=collection(ref['file'])[ref['key']]
+        if ref.get('chassis_file'):return computer_records(rows,collection(ref['chassis_file'])['devices'],collection('data/components.json')['components'])
         return assembly_records(rows,collection(ref['device_file'])['devices']) if ref.get('device_file') else copy.deepcopy(rows)
     recipe=reg['views'][name]
     if recipe.get('story'):
@@ -107,6 +133,18 @@ def store_document(path, value, root=ROOT):
                 device['bom_assembly_metadata']=copy.deepcopy({k:v for k,v in row.items() if k not in ['id','lines']})
             payload=[r for r in payload if r['id'] not in devices]
             if any(r['id'].startswith('device.') for r in payload):raise ValueError('Add device BOMs in data/devices.json')
+        if ref.get('chassis_file'):
+            payload=copy.deepcopy(payload)
+            stored={c['id']:c for c in changes[file][ref['key']]}
+            for c in payload:
+                # Hydrated fields are read-only here; edit the owning chassis instead.
+                expected=computer_records([stored[c['id']]],changes.get(ref['chassis_file'],json.loads((root/ref['chassis_file']).read_text()))['devices'],changes.get('data/components.json',json.loads((root/'data/components.json').read_text()))['components'])[0]
+                if 'rom_and_cartridges' in c:
+                    if c['rom_and_cartridges'].pop('xip_slots',None)!=expected['rom_and_cartridges']['xip_slots']:raise ValueError('Edit cartridge slots on the owning chassis')
+                for key in set(expected['memory'])-set(stored[c['id']]['memory']):
+                    if c['memory'].pop(key,None)!=expected['memory'][key]:raise ValueError('Edit memory limits on the owning chassis: '+key)
+                for key in ['processor','form_factor','io_and_expansion']:
+                    if c.pop(key,None)!=expected[key]:raise ValueError('Edit hardware fields on the owning chassis: '+key)
         changes[file][ref['key']]=copy.deepcopy(payload)
     recipe=reg['views'][name]
     if recipe.get('story'):

@@ -31,7 +31,7 @@ function createModel(catalog,bom,cost){
  const items=new Map();
  function add(r,cl){const category=categories.category(r,records);if(!category)throw Error('Missing canonical category: '+r.id);items.set(r.id,{id:r.id,name:r.name||r.id,class:cl,category,release:releaseDate(r),record:r});}
  for(const r of catalog.components||[])add(r,'Part');
- for(const r of catalog.devices||[])add(r,categories.isExpansion(r)?'Expansion':'Peripheral');
+ for(const r of catalog.devices||[])add(r,r.category==='computer_chassis'?'Chassis':r.virtual?'Internal subsystem':categories.isExpansion(r)?'Expansion':'Peripheral');
  for(const r of catalog.computers||[])add(r,'Computer');
  for(const r of catalog.software_products||[])add(r,'Software product');
  for(const r of catalog.platform_editions||[])add(r,'Software edition');
@@ -42,7 +42,7 @@ function createModel(catalog,bom,cost){
  for(const r of reviewRows)if(!items.has(r.id))throw Error('Missing canonical record for reviewed offering: '+r.id);
  function assemblyIds(id){const r=records[id];return [...new Set([
  ...(assemblies.has(id)?[id]:[]),...(bom.products||[]).filter(p=>p.catalog_ref===id).flatMap(p=>p.assembly_refs||[]),
- ...(bom.offers||[]).filter(p=>p.catalog_ref===id).map(p=>p.assembly_ref),r?.bom_assembly_ref,...(r?.bom_assembly_refs||[]),
+ ...(bom.offers||[]).filter(p=>p.catalog_ref===id).map(p=>p.assembly_ref),r?.bom_assembly_ref,...(r?.bom_assembly_refs||[]),...(r?.physical_media_refs||[]),
  ...(r?.manufacturing_variants||[]).map(v=>v.assembly_ref),
  ...cost.products.filter(p=>p.catalog_ref===id||p.id===id).map(p=>p.assembly_ref),
  ...['assembly.'+id,'assembly.media.'+id].filter(x=>assemblies.has(x))
@@ -64,7 +64,8 @@ function createModel(catalog,bom,cost){
  function renderCosts(id,opts={}){
   let html='<section class="bom-detail">';
   const blocked=pendingCostReason(assemblies,assemblyIds(id));if(blocked)return html+'<p class="cost-reassessment-pending">'+esc(blocked)+'</p><p><a href="generated/models/manufacturing-costs.json">Archived evaluations of the superseded design</a></p></section>';
-  const products=cost.products.filter(p=>p.id===id||p.catalog_ref===id);
+  const products=cost.products.filter(p=>p.id===id||p.catalog_ref===id||p.historical_variant_refs?.includes(id));
+  if(products.some(p=>p.historical_variant_refs?.includes(id)))html+='<p>Historical processor-family estimates below are not speed-bin-specific. They are not new quotations or additional configuration costs.</p>';
   if(products.length){html+='<h3>Recorded costs</h3><p>Nominal USD engineering estimates. Software costs may include media, licensing and delivery. Component and assembly costs overlap; do not add them together.</p>';for(const p of products){html+='<details data-bom-cost="'+esc(p.id)+'" data-cost-id="'+esc(p.id)+'"><summary>'+esc(p.name)+'</summary><div class="bom-table-scroll"><table><thead><tr><th>June 15 evaluation</th><th>Total recurring cost</th><th>Range</th><th>Status</th></tr></thead><tbody>'+Object.entries(p.snapshots||{}).filter(([y,s])=>s.status!=='not_yet_offered'&&(cost.metadata.snapshots||[]).includes(y+'-06-15')).map(([y,s])=>'<tr><td>'+esc(y+'-06-15')+'</td><td>'+money(s.total_usd)+'</td><td>'+money(s.low_usd)+' – '+money(s.high_usd)+'</td><td>'+esc(s.status)+'</td></tr>').join('')+'</tbody></table></div>'+'</details>';}}
   const dated=(cost.dated_assessments||[]).flatMap(a=>(a.products||[]).filter(p=>p.id===id).map(p=>({date:a.date,basis:a.basis,...p})));
   const reviews=reviewRows.filter(p=>p.id===id);

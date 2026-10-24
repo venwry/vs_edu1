@@ -2,7 +2,7 @@
 import json,re,sys
 from pathlib import Path
 import jsonschema
-from data_store import ROOT,registry,read_document,assembly_records
+from data_store import ROOT,registry,read_document,assembly_records,computer_records
 from schema_validation import record_validator
 
 def validate_collections(root=ROOT, overrides=None):
@@ -35,16 +35,17 @@ def validate_collections(root=ROOT, overrides=None):
         if e['product_ref'] not in {p['id'] for p in tech['software_products']}:raise ValueError('Edition must reference a software product: '+e['id'])
     parts=unique(docs['data/components.json']['components'],'components');assemblies=unique(assembly_records(docs['data/assemblies.json']['assemblies'],docs['data/devices.json']['devices']),'assemblies')
     aliases=reg.get('component_id_aliases',{})
-    if not set(aliases.values())<=parts.keys():raise ValueError('Unresolved component alias target')
+    if not set(aliases.values())<=set(records)|set(reg.get('record_family_aliases',{})):raise ValueError('Unresolved component alias target')
     device_aliases=reg.get('device_assembly_aliases',{})
     if not set(device_aliases.values())<=assemblies.keys():raise ValueError('Unresolved device BOM alias target')
     if any(r['id'].startswith('device.') for r in docs['data/assemblies.json']['assemblies']):raise ValueError('Device BOM must be owned by data/devices.json')
-    aliases={**aliases,**device_aliases}
-    for family,targets in reg.get('device_family_aliases',{}).items():
+    aliases={**aliases,**device_aliases,**reg.get('record_id_aliases',{})}
+    if not set(reg.get('record_id_aliases',{}).values())<=records.keys():raise ValueError('Unresolved migrated record alias')
+    for family,targets in {**reg.get('device_family_aliases',{}),**reg.get('record_family_aliases',{})}.items():
         if family in records or not targets or len(targets)!=len(set(targets)) or not set(targets)<=records.keys():raise ValueError('Invalid device family aliases')
     def reject_retired(v):
         if isinstance(v,str):
-            if v in aliases or v in reg.get('device_family_aliases',{}) or any(x in aliases for x in v.split('|')):raise ValueError('Retired component ID in source: '+v)
+            if v in aliases or v in reg.get('device_family_aliases',{}) or v in reg.get('record_family_aliases',{}) or any(x in aliases for x in v.split('|')):raise ValueError('Retired component ID in source: '+v)
         elif isinstance(v,list):
             for x in v:reject_retired(x)
         elif isinstance(v,dict):
@@ -68,6 +69,13 @@ def validate_collections(root=ROOT, overrides=None):
             if line['ref'] in assemblies:visit(line['ref'],active|{id})
         done.add(id)
     for id in assemblies:visit(id,set())
+    from device_configuration import validate_devices,configuration
+    device_map={d['id']:d for d in tech['devices']}
+    validate_devices(device_map,assemblies,records)
+    for aid in assemblies:
+        fit=configuration(aid,assemblies,device_map)
+        if fit['status']=='invalid':raise ValueError('Invalid socket population: '+aid+' '+str(fit['issues']))
+    unique([{'id':p['catalog_ref']} for p in docs['data/product-boms.json']['products']],'product BOM mappings')
     for p in docs['data/product-boms.json']['products']+docs['data/product-boms.json']['offers']:
         if p['catalog_ref'] not in records:raise ValueError('Unresolved product/offer link')
         for id in p.get('assembly_refs',[])+([p['assembly_ref']] if p.get('assembly_ref') else []):
