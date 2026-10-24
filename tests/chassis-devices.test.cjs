@@ -6,10 +6,10 @@ assert.deepEqual(c.components.filter(r=>/^part\.(erav1|era2)_/.test(r.id)).map(r
 assert(!c.components.some(p=>p.variants||p.category==='memory_module'));
 for(const p of c.platform_editions)for(const ref of p.physical_media_refs||[]){assert.equal(by[ref].category,'rom_cartridge');assert(by[ref].software_refs.includes(p.id));}
 assert.equal(c.devices.filter(d=>d.category==='computer_chassis').length,6);
-const am=createFamilyModel(c,b,cost,'aurelia'),base=am.options.find(o=>o.id==='computer.aurelia');assert(!am.state(base,am.revisions(base)[0],base.available).software.includes('software.cpm_aurelia'));
 for(const family of ['aurelia','artemis','athena']){
- const model=createFamilyModel(c,b,cost,family);assert.equal(model.options.filter(o=>o.chassis).length,2);
- for(const o of model.options.filter(o=>o.chassis)){const r=model.revisions(o)[0],s=model.state(o,r,r.from);assert.equal(model.assessments(o,r).length,0);assert(!s.network&&!s.primary);assert.equal(s.ram.ram_kb,family==='aurelia'?(o.id.endsWith('_plus')?64:48):0);assert(!s.tree.assemblyRefs.some(id=>by[id]?.category==='rom_cartridge'||by[id]?.category==='memory_expansion'));}
+ const model=createFamilyModel(c,b,cost,family);assert.equal(model.options.length,{aurelia:4,artemis:8,athena:2}[family]);
+ assert(!model.options.some(o=>o.chassis||o.target||o.combination));
+ for(const ch of c.devices.filter(d=>d.category==='computer_chassis'))assert(!ch.bom_assembly_definition.some(l=>by[l.ref]&&['memory_expansion','rom_cartridge','video_expansion_card','network_interface_card','floppy_drive_mechanism','hard_disk_drive'].includes(by[l.ref].category)));
 }
 (async()=>{
  const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));
@@ -22,7 +22,7 @@ for(const family of ['aurelia','artemis','athena']){
   assert.equal(details.getAttribute('aria-selected'),'true');assert(d.getElementById('configuration-panel-bom').hidden);
   bomTab.click();assert.equal(bomTab.getAttribute('aria-selected'),'true');assert(d.getElementById('configuration-panel-details').hidden);assert(!d.getElementById('configuration-panel-bom').hidden);
   bomTab.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));assert.equal(details.getAttribute('aria-selected'),'true');assert.equal(d.activeElement,details);
-  assert(d.getElementById('configuration-diagram').textContent.includes('Available sockets and compatibility'));assert.equal(d.querySelectorAll('[data-evaluation]').length,0);dom.window.close();
+  assert(d.querySelector('[data-component="chassis"]'));assert.equal(d.getElementById('artemis-configuration').options.length,{aurelia:4,artemis:8,athena:2}[family]);dom.window.close();
  }
  {
   const dom=await boot('bom-navigator.html','?element=assembly.part.z80a'),d=dom.window.document;

@@ -23,7 +23,7 @@ for old,new in site['record_redirects'].items():
  assert old not in records and new in records and new not in site['record_redirects']
 assert 'device.artemis_ram_64kb_bank_kit' not in records
 assert 'device.artemis_ram_256kb_bank_kit' not in records
-assert records['computer.artemis']['memory']['configurations'][2]['ram_kb']==256
+assert next(x for x in records['computer.artemis']['memory']['configurations'] if x['id']=='m128_256')['ram_kb']==256
 ar=next(x for x in records['computer.artemis']['memory']['configurations'] if x['id']=='m128_256')
 at=records['computer.athena']['memory']['configurations'][0]
 assert ar['module_ref']==at['module_ref']=='device.ram_128kb_x32'

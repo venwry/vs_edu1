@@ -2,7 +2,7 @@
 import json,re,sys
 from pathlib import Path
 import jsonschema
-from data_store import ROOT,registry,read_document,assembly_records,computer_records
+from data_store import ROOT,registry,read_document,assembly_records,computer_records,project_collections
 from schema_validation import record_validator
 
 def validate_collections(root=ROOT, overrides=None):
@@ -19,9 +19,13 @@ def validate_collections(root=ROOT, overrides=None):
         ids=[r['id'] for r in rows]
         if len(ids)!=len(set(ids)):raise ValueError('Duplicate IDs in '+label)
         return {r['id']:r for r in rows}
+    source_docs=docs
+    docs=project_collections(docs)
+    from validate_products import validate_products
+    validate_products(source_docs,docs)
     # Use the provided documents, including staged edits, for all relationship checks.
     recipe=reg['views']['logix-aion-technical-catalog-v2']
-    tech={k:docs[v['file']][v['key']] for k,v in recipe.items()}
+    tech={k:docs[v['file']][v['key']] for k,v in recipe.items() if k!='product_catalog'}
     records=unique([r for rows in tech.values() if isinstance(rows,list) for r in rows if isinstance(r,dict) and 'id'in r],'technical records')
     def refs(value):
         if isinstance(value,dict):
@@ -88,6 +92,6 @@ def validate_collections(root=ROOT, overrides=None):
         if e.get('agreement_ref') and e['agreement_ref'] not in contracts:raise ValueError('Unresolved agreement: '+e['id'])
     for p in phases.values():event_refs.extend(p['event_refs'])
     if len(event_refs)!=len(set(event_refs)) or set(event_refs)!=set(events):raise ValueError('Every event must belong to exactly one phase')
-    return len(docs)
+    return len(source_docs)
 
 if __name__=='__main__':print('PASS:',validate_collections(),'authoritative collections; schemas, IDs, references and acyclic BOMs')

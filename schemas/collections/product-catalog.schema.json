@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "products",
+    "external_platforms",
+    "catalog_editions",
+    "bom_policy"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "4.0.0"
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "category",
+          "introduced",
+          "record_kind",
+          "computer_line",
+          "catalogue_status"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string"
+            ]
+          },
+          "name": {
+            "type": [
+              "string"
+            ]
+          },
+          "introduced": {
+            "type": [
+              "object"
+            ]
+          },
+          "technology_refs": {
+            "type": [
+              "array"
+            ]
+          },
+          "lifecycle_policy": {
+            "type": [
+              "string"
+            ]
+          },
+          "vendor": {
+            "type": [
+              "string"
+            ]
+          },
+          "category": {
+            "type": [
+              "string"
+            ]
+          },
+          "chassis_ref": {
+            "type": [
+              "string"
+            ]
+          },
+          "record_kind": {
+            "type": [
+              "string"
+            ]
+          },
+          "computer_line": {
+            "enum": [
+              "Aurelia",
+              "Artemis",
+              "Athena",
+              null
+            ]
+          },
+          "line": {
+            "type": [
+              "string"
+            ]
+          },
+          "catalogue_status": {
+            "type": [
+              "string"
+            ]
+          },
+          "technical_profile": {
+            "type": [
+              "object"
+            ]
+          },
+          "default_configuration": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "recommended_software_ref": {
+            "type": [
+              "string"
+            ]
+          },
+          "hardware_assembly_refs": {
+            "type": [
+              "array"
+            ]
+          },
+          "production_status": {
+            "type": [
+              "string"
+            ]
+          },
+          "upgrade_product_refs": {
+            "type": [
+              "array"
+            ]
+          },
+          "role": {
+            "type": [
+              "string"
+            ]
+          },
+          "availability": {
+            "type": [
+              "object",
+              "string"
+            ]
+          },
+          "product_status": {
+            "type": [
+              "string"
+            ]
+          },
+          "positioning": {
+            "type": [
+              "string"
+            ]
+          },
+          "inclusion_qualification": {
+            "type": [
+              "string"
+            ]
+          },
+          "programme_ref": {
+            "type": [
+              "string"
+            ]
+          },
+          "main_product": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "connected_devices": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "device_ref",
+                "quantity",
+                "used_socket"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "device_ref": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                },
+                "used_socket": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "connected_to": {
+                  "type": "string"
+                },
+                "qualification_status": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "hardware_assembly_ref": {
+            "type": [
+              "string"
+            ]
+          },
+          "attached_products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "quantity"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "software_ref": {
+                  "type": "string"
+                },
+                "service_ref": {
+                  "type": "string"
+                },
+                "product_ref": {
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "duration_years": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                }
+              },
+              "oneOf": [
+                {
+                  "required": [
+                    "software_ref"
+                  ]
+                },
+                {
+                  "required": [
+                    "service_ref"
+                  ]
+                },
+                {
+                  "required": [
+                    "product_ref"
+                  ]
+                }
+              ]
+            }
+          },
+          "computer_ref": {
+            "type": [
+              "string"
+            ]
+          },
+          "source_group": {
+            "type": [
+              "string"
+            ]
+          },
+          "commercial_terms": {
+            "type": [
+              "object"
+            ]
+          },
+          "acceptance": {
+            "type": [
+              "array"
+            ]
+          },
+          "revisions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "effective_from",
+                "hardware_assembly_ref",
+                "main_product",
+                "connected_devices"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "effective_from": {
+                  "type": "string"
+                },
+                "hardware_assembly_ref": {
+                  "type": "string"
+                },
+                "main_product": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "connected_devices": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "device_ref",
+                      "quantity",
+                      "used_socket"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "device_ref": {
+                        "type": "string"
+                      },
+                      "quantity": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
+                        "minimum": 1
+                      },
+                      "used_socket": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "connected_to": {
+                        "type": "string"
+                      },
+                      "qualification_status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "also_compatible_with": {
+            "type": [
+              "array"
+            ]
+          },
+          "availability_status": {
+            "type": [
+              "string"
+            ]
+          },
+          "shipping_date": {
+            "type": [
+              "null"
+            ]
+          },
+          "option_for": {
+            "type": [
+              "string"
+            ]
+          },
+          "storage": {
+            "type": [
+              "object"
+            ]
+          },
+          "software_variants": {
+            "type": [
+              "array"
+            ]
+          },
+          "notes": {
+            "type": [
+              "array"
+            ]
+          },
+          "retail_presentation": {
+            "type": [
+              "object"
+            ]
+          },
+          "status": {
+            "type": [
+              "string"
+            ]
+          },
+          "base_bundle_ref": {
+            "type": [
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "string"
+            ]
+          },
+          "earliest_offer_date": {
+            "type": [
+              "string"
+            ]
+          },
+          "pricing": {
+            "type": [
+              "string"
+            ]
+          },
+          "configuration": {
+            "type": [
+              "object"
+            ]
+          },
+          "commercial_routes": {
+            "type": [
+              "array"
+            ]
+          },
+          "support_split": {
+            "type": [
+              "object"
+            ]
+          },
+          "timeline": {
+            "type": [
+              "string"
+            ]
+          },
+          "campaign_ref": {
+            "type": [
+              "string"
+            ]
+          },
+          "component_refs": {
+            "type": [
+              "array"
+            ]
+          }
+        }
+      }
+    },
+    "external_platforms": {
+      "type": "array"
+    },
+    "catalog_editions": {
+      "type": "array"
+    },
+    "bom_policy": {
+      "type": "object"
+    },
+    "retired_configuration_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

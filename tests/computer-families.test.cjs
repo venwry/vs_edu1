@@ -9,22 +9,26 @@ async function boot(family,query=''){
  for(let i=0;i<60&&!d.querySelector('#artemis-workbench[data-ready]');i++)await new Promise(r=>setTimeout(r,10));
  assert(d.querySelector('#artemis-workbench[data-ready]'),d.body.textContent.slice(-500));return {dom,w,d,errors};
 }
+// No cost-row, catalogue-status or hardcoded-ID membership filter is permitted.
+const probe=JSON.parse(JSON.stringify(catalog)),template=probe.product_catalog.products.find(p=>p.id==='bundle.aurelia_mono');
+probe.product_catalog.products.push({...template,id:'offer.selector_probe',name:'Selector probe',catalogue_status:'planned'});
+assert(createFamilyModel(probe,bom,cost,'aurelia').options.some(o=>o.id==='offer.selector_probe'&&!o.cost));
+template.computer_line=null;assert(!createFamilyModel(probe,bom,cost,'aurelia').options.some(o=>o.id===template.id));
 (async()=>{
  for(const family of ['artemis','aurelia','athena']){
   const model=createFamilyModel(catalog,bom,cost,family),{dom,w,d,errors}=await boot(family),select=d.getElementById('artemis-configuration');
-  assert(!d.getElementById('artemis-revision'));assert(!d.getElementById('artemis-cost-date'));assert.equal(d.querySelectorAll('.configuration-sections>li').length,6);
-  assert.equal(select.options.length,model.options.reduce((n,o)=>n+model.revisions(o).length,0));
-  for(const option of model.options)for(const [i,rev] of model.revisions(option).entries()){
-   select.value=i?option.id+'::'+rev.id:option.id;select.dispatchEvent(new w.Event('change'));await new Promise(r=>setTimeout(r,0));
-   assert.equal(d.getElementById('artemis-workbench').dataset.configuration,option.id);assert(!d.querySelector('.configuration-empty'));assert.equal(d.querySelectorAll('[data-evaluation]').length,model.assessments(option,rev).length);
-   for(const {date,snapshot} of model.assessments(option,rev)){d.querySelector('[data-evaluation="'+date+'"]').click();assert(d.getElementById('configuration-bom-date').textContent.includes(date));assert.equal(d.querySelector('#configuration-bom-table table tbody').children.length,snapshot.bom_lines.length);await new Promise(r=>setTimeout(r,0));}
-   for(const button of d.querySelectorAll('[data-component]')){assert(button.querySelector('.component-label'));assert(!button.querySelector('br'));button.click();assert(d.getElementById('configuration-inspector').textContent.includes(button.querySelector('.component-label').textContent));await new Promise(r=>setTimeout(r,0));}
-   if(option.chassis){assert(d.getElementById('configuration-diagram').textContent.includes('Available sockets'));assert.equal(d.querySelectorAll('[data-evaluation]').length,0);}else if(option.upgrade)assert(!d.querySelector('[data-component="cpu"]'));else{assert(d.querySelector('[data-component="cpu"] .component-value').textContent.includes('MHz'));if(family==='artemis'){const state=model.state(option,rev,model.assessments(option,rev).at(-1)?.date||rev.from);assert.equal(d.querySelectorAll('[data-component^="bank-"]').length,state.ram.populated_banks);assert.equal(Boolean(d.querySelector('[data-record-ref="device.network_card_artemis"][data-component^="slot-"]')),state.network);}}
+  const line={aurelia:'Aurelia',artemis:'Artemis',athena:'Athena'}[family];
+  assert.deepEqual([...select.options].map(o=>o.value),catalog.product_catalog.products.filter(p=>p.computer_line===line).map(p=>p.id));
+  assert(!d.getElementById('artemis-revision'));assert.equal(select.options.length,{aurelia:4,artemis:8,athena:2}[family]);
+  for(const option of model.options){
+   select.value=option.id;select.dispatchEvent(new w.Event('change'));await new Promise(r=>setTimeout(r,0));
+   const rev=model.revisions(option).at(-1);assert.equal(d.getElementById('artemis-workbench').dataset.configuration,option.id);
+   assert.equal(d.querySelectorAll('[data-evaluation]').length,model.assessments(option,rev).length);
+   for(const {date,snapshot} of model.assessments(option,rev)){d.querySelector('[data-evaluation="'+date+'"]').click();assert(d.getElementById('configuration-bom-date').textContent.includes(date));assert.equal(d.querySelector('#configuration-bom-table table tbody').children.length,snapshot.bom_lines.length);}
+   for(const button of d.querySelectorAll('[data-component]')){button.click();assert(d.getElementById('configuration-inspector').textContent.includes(button.querySelector('.component-label').textContent));}
+   d.getElementById('configuration-tab-bom').click();assert(!d.getElementById('configuration-panel-bom').hidden);d.getElementById('configuration-tab-details').click();
   }
-  if(family==='aurelia'){const combos=model.options.filter(o=>o.combination);assert.equal(combos.length,6);for(const o of combos){const s=model.state(o,model.revisions(o)[0],o.available);assert(s.network);assert(s.software.includes('software.cpm_aurelia_networking'));assert(!s.software.includes('software.cpm_aurelia'));assert(!s.snapshot);}}
-  if(family==='athena'){select.value='computer.athena_server';select.dispatchEvent(new w.Event('change'));assert.equal(select.options.length,4);assert(d.getElementById('configuration-status').textContent.includes('planning'));assert(d.getElementById('configuration-cost-table').textContent.includes('pending reassessment'));assert.equal(d.querySelectorAll('[data-component^="bank-"]').length,2);assert(d.querySelector('[data-component="hdd"] .component-value').textContent.includes('20 MB'));}
-  w.dispatchEvent(new w.Event('resize'));await new Promise(r=>setTimeout(r,20));assert.deepEqual(errors,[]);dom.window.close();
+  assert.deepEqual(errors,[]);dom.window.close();
  }
- const {dom,d}=await boot('artemis','?configuration=bundle.artemis_128_mono&revision=assembly.bundle.artemis_128_mono.networked');assert(d.getElementById('artemis-configuration').value.includes('::'));assert(d.querySelector('[data-component="slot-0"]'));dom.window.close();
- console.log('PASS: all computer families, every configuration/revision/component, cost history, compact rows, populated banks, network selections and legacy links');
+ console.log('PASS: all 14 commercial products, line-only membership, details/BOM tabs, every selectable component and saved cost evaluation');
 })().catch(e=>{console.error(e);process.exitCode=1;});

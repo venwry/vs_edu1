@@ -1,7 +1,7 @@
 # Repository editing instructions
 
 Read `JSON_DATA_STANDARD.md` before changing JSON, models, schemas or page loaders.
-Edit the 24 authoritative collections under `data/` directly, including `data/site.json`
+Edit the 21 authoritative collections under `data/` directly, including `data/site.json`
 for UI configuration. There is no catalogue generation step or per-record manifest.
 Preserve stable IDs, unknowns and historical date precision. Do not split combined
 components just to identify suppliers. Run `python tools/validate_data.py` and
@@ -22,3 +22,7 @@ Run `tests/validate_device_migration.py` and relevant browser tests.
 For chassis, slots, processor bins, RAM devices and physical media ownership, read
 [CHASSIS_DEVICE_MIGRATION.md](CHASSIS_DEVICE_MIGRATION.md). Run
 `python tests/validate_chassis_migration.py` after structural hardware changes.
+
+For commercial products and computer projections read PRODUCT_CATALOG_MIGRATION.md.
+Run tests/validate_product_catalog.py. Node is required by the shared Python/JS
+projection. Do not recreate retired source collections or infer products from cost rows.

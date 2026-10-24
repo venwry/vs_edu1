@@ -1,3 +1,7 @@
+> Historical migration record. The current source layout is described in
+> [PRODUCT_CATALOG_MIGRATION.md](PRODUCT_CATALOG_MIGRATION.md); four collections
+> in the table below have since been consolidated into product-catalog.json.
+
 # Single authoritative data layer
 
 This migration replaces 951 per-record source files and 25 generated catalogue
