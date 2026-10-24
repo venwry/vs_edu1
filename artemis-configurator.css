@@ -12,3 +12,9 @@ main.artemis-workbench-page{box-sizing:border-box;width:100%;max-width:none;padd
 @media(max-width:640px){.configuration-stats{grid-template-columns:1fr 1fr}.configuration-toolbar label{flex:1 1 200px}.configuration-main-choice{min-width:0!important}.configuration-canvas-heading{display:block}}
 /* Shared compact row standard for all computer families. */
 .configuration-node{display:flex;align-items:baseline;justify-content:space-between;gap:12px;min-height:0;padding:3px 8px;line-height:1.4;border-radius:2px;white-space:nowrap}.configuration-node .component-label{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:12px;font-weight:400;color:var(--text);margin:0}.configuration-node .component-value{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:12px;font-weight:650;text-align:right;color:var(--text)}.configuration-group-items>li,.configuration-subgroup li{margin:1px 0}.configuration-sections .configuration-group{padding:8px 0;margin-bottom:4px}.configuration-group-items{margin-top:5px!important;padding-left:8px}.configuration-subgroup{margin:5px 0}.configuration-group summary{font-size:13px}.configuration-subgroup>summary{font-size:11px}.configuration-toolbar{padding:10px 16px}.configuration-toolbar select{padding:7px}.configuration-stats>div{padding:8px 16px}
+
+.configuration-detail-column>.bom-tabs{display:flex;gap:8px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.configuration-detail-column>.bom-tabs button{padding:9px 14px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:4px;cursor:pointer}
+.configuration-detail-column>.bom-tabs button[aria-selected="true"]{border-color:var(--accent);color:var(--accent)}
+.configuration-detail-column [role="tabpanel"][hidden]{display:none}
+#configuration-element-bom:not(:empty){padding:20px}

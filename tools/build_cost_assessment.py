@@ -92,8 +92,6 @@ def quantity(a,l):
 def routing(a):
  if a in ncc['routing']:
   x=ncc['routing'][a];return (x['hours'],x['kwh'],x['consumables_usd'])
- if a.startswith('assembly.part.'):
-  return (.22, .6,.35) if 'module_' in a else (0,0,0)
  if a.startswith('assembly.computer.'):
   if a.endswith('.base'):return (3.5 if 'artemis' in a else 2.4,12 if 'artemis' in a else 7,2.5)
   return (.18,1,.15) # installation and verification, not another complete build
@@ -114,6 +112,9 @@ assembly_inputs={a:{'assembly_hours_1978':routing(a)[0],'kwh_1978':routing(a)[1]
 def rollup(a,i,source_inputs=None):
  source_inputs=inputs if source_inputs is None else source_inputs
  v=vec();flat=Counter()
+ if a in source_inputs:
+  add(v,source_inputs[a]['annual_cost_buckets_usd'][str(years[i])],1);flat[a]=1
+  return v,flat
  for line in assemblies[a]['lines']:
   q=quantity(a,line);ref=line['ref']
   if ref in assemblies:
@@ -141,7 +142,7 @@ for x in C['computers']+C['devices']:
   for a in refs:row(x['id']+(('.'+a.split('.')[-1]) if len(refs)>1 else ''),x['id'],x['name']+((' — '+a.split('.')[-1].replace('_',' ')) if len(refs)>1 else ''),'Computers' if x['id'].startswith('computer') else 'Peripherals','one chassis, no accessories/system cartridge' if x['id'].startswith('computer') else 'one finished accessory',date(x),assembly_ref=a)
 # OEM custom chips are explicitly offered by the component-licensing service.
 for ref in sorted(custom):
- x=records[ref];row(ref,ref,x['name'],'OEM chips','one tested packaged chip, bulk shipment',date(x),assembly_ref='assembly.'+ref)
+ x=records[ref];row(ref,ref,x['name'],'OEM chips','one tested packaged chip, bulk shipment',date(x),assembly_ref=ref)
 # Software production excludes development; platform variants retain distinct availability.
 software_profiles={'aurelia_compatibility_kit':(5,800),'abacus_1':(1,80),'simple_c_z80':(3,220),'aurelia_sdk':(5,800),'bpi_suite':(5,700),'microsoft_basic_aurelia':(1,180),'pulse_1':(3,240),'abacus_2':(2,160),'aion_c_ide':(6,400),'artemis_sdk':(8,1000),'abacus_3':(4,280),'pulse_3':(4,300),'bpi_client_server':(8,800)}
 team_delivery=read_document('generated/catalogs/team-development-program.json', root=R)['delivery']

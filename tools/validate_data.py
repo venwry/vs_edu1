@@ -56,6 +56,8 @@ def validate_collections(root=ROOT, overrides=None):
             if aid not in assemblies:raise ValueError('Unresolved component assembly: '+aid)
         if p['bom_role']=='assembly' and not p.get('bom_assembly_refs'):raise ValueError('Assembly component has no assembly: '+p['id'])
     for a in assemblies.values():
+        if a['id'].startswith('assembly.part.'):raise ValueError('Component wrappers must not be stored')
+        if a['id'].startswith('assembly.computer.') and any(l['ref'].startswith('assembly.') for l in a['lines']):raise ValueError('Computer BOM must contain devices and parts directly')
         for line in a['lines']:
             if line['ref'] in parts and parts[line['ref']]['bom_role']!='material':raise ValueError('BOM leaf must be a material; reference the assembly for composed parts: '+line['ref'])
             if line['ref'] not in parts and line['ref'] not in assemblies:raise ValueError('Unresolved BOM line: '+line['ref'])
@@ -79,7 +81,7 @@ def validate_collections(root=ROOT, overrides=None):
     for p in docs['data/product-boms.json']['products']+docs['data/product-boms.json']['offers']:
         if p['catalog_ref'] not in records:raise ValueError('Unresolved product/offer link')
         for id in p.get('assembly_refs',[])+([p['assembly_ref']] if p.get('assembly_ref') else []):
-            if id not in assemblies:raise ValueError('Unresolved assembly link: '+id)
+            if id not in assemblies and (id not in parts or parts[id]['bom_role']!='material'):raise ValueError('Unresolved material/assembly BOM target: '+id)
     events=unique(docs['data/events.json']['events'],'events');phases=unique(docs['data/timeline-structure.json']['phases'],'phases');event_refs=[]
     contracts=docs['data/contracts.json']
     for e in events.values():

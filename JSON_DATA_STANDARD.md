@@ -12,7 +12,7 @@ Collections group records by domain; file boundaries do not define identity.
 Keep existing stable IDs and reference fields. Names are labels, never join keys.
 Keep meaningful unknowns, unknown quantities, units, date precision, supplier attribution and
 record order. Do not invent values or split combined supplied components.
-Offers, assemblies and product BOM mappings retain their existing meanings.
+Offers and product BOM mappings retain their existing meanings. Product BOM targets may be material component IDs as well as assembly/device IDs. Computer assemblies contain devices and parts directly; single-material assembly.part wrappers are retired.
 
 `schemas/data-registry.json` lists collection files and field ownership for
 compatibility views. It contains no record payloads or per-record registrations.

@@ -15,7 +15,7 @@ assert {r['id'] for r in t['computers']} <= set(products) <= set(records)
 assert all(d['id'] in assemblies or d['manufacturing_status']=='excluded_from_active_production' for d in t['devices'])
 assert {r['catalog_ref'] for r in bom['offers']}=={r['id'] for r in t['offered_bundles']}
 for p in products.values():
- assert set(p['assembly_refs'])<=assemblies.keys()
+ assert set(p['assembly_refs'])<=assemblies.keys()|{id for id,p in components.items() if p['bom_role']=='material'}
  assert bool(p['assembly_refs'])==(p['production_status']!='excluded'),p['catalog_ref']
 for c in components.values():
  assert 'catalog_ref' not in c and records[c['id']]==c

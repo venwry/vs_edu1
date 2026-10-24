@@ -9,6 +9,7 @@ f=read_document('tests/fixtures/chassis-migration.json');validate_collections()
 t=read_document('catalog:logix-aion-technical-catalog-v2');b=read_document('catalog:hardware-bom');a={r['id']:r for r in b['assemblies']};d={r['id']:r for r in t['devices']};p={r['id']:r for r in t['components']};records={r['id']:r for rows in t.values() if isinstance(rows,list) for r in rows if isinstance(r,dict) and 'id'in r}
 inverse={v:k for k,vs in f['processor_families'].items() for v in vs}
 def flat(id):
+ if id in p:return [[inverse.get(id,id),1]]
  result=[]
  for l in a[id]['lines']:
   rows=flat(l['ref']) if l['ref'] in a else [[inverse.get(l['ref'],l['ref']),1]]
@@ -16,7 +17,8 @@ def flat(id):
  return sorted(result,key=lambda x:(x[0],str(x[1])))
 for old,expected in f['assembly_leaves'].items():
  id=f['aliases'].get(old,old)
- if old=='assembly.part.era1':id='assembly.part.erav1_6mhz'
+ if old=='assembly.part.era1':id='part.erav1_6mhz'
+ id=registry().get('record_id_aliases',{}).get(id,id)
  assert flat(id)==expected,old+' physical BOM changed'
 for path,h in f['frozen_files'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h,path
 assert not any('variants'in r or r['category']=='memory_module' for r in p.values())
@@ -66,3 +68,14 @@ with tempfile.TemporaryDirectory() as tmp:
  else:raise AssertionError('Hydrated chassis hardware silently overwritten')
  assert all(path.read_bytes()==raw for path,raw in before.items())
 print('PASS: old flattened BOMs and archives unchanged; six chassis, processor bins, memory/media ownership, slot constraints and write roundtrips')
+
+# A shared internal-drive pool supports either drive type, without additional bays.
+for name,capacity in [('artemis',2),('artemis_pro',3),('athena',2),('athena_server',2)]:
+ ch=d['device.chassis.'+name];slots=[s for g in ch['expansion_socket_groups'] for s in g['sockets'] if s['connection']=='internal_storage']
+ assert len(slots)==1 and slots[0]['id']=='internal_drive' and slots[0]['capacity']==capacity
+ assert {d[r]['category'] for r in slots[0]['compatible_device_refs']}=={'floppy_drive_mechanism','hard_disk_drive'}
+ for ref in slots[0]['compatible_device_refs']:
+  test={'id':'test','lines':[{'ref':ch['id'],'quantity':1},{'ref':ref,'quantity':capacity}]}
+  fit=configuration('test',{**a,'test':test},d);assert fit['status']!='invalid',fit
+  test['lines'][1]['quantity']=capacity+1
+  assert configuration('test',{**a,'test':test},d)['status']=='invalid'

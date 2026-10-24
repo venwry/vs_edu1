@@ -6056,12 +6056,12 @@
           ]
         },
         {
-          "id": "internal_fdd",
+          "id": "internal_drive",
           "name": "Internal storage",
           "sockets": [
             {
-              "id": "internal_fdd",
-              "name": "Internal Fdd",
+              "id": "internal_drive",
+              "name": "Internal drive bays",
               "connection": "internal_storage",
               "capacity": 1,
               "compatible_device_refs": [
@@ -6467,12 +6467,12 @@
           ]
         },
         {
-          "id": "internal_fdd",
+          "id": "internal_drive",
           "name": "Internal storage",
           "sockets": [
             {
-              "id": "internal_fdd",
-              "name": "Internal Fdd",
+              "id": "internal_drive",
+              "name": "Internal drive bays",
               "connection": "internal_storage",
               "capacity": 2,
               "compatible_device_refs": [
@@ -6895,16 +6895,17 @@
           ]
         },
         {
-          "id": "internal_fdd",
+          "id": "internal_drive",
           "name": "Internal storage",
           "sockets": [
             {
-              "id": "internal_fdd",
-              "name": "Internal Fdd",
+              "id": "internal_drive",
+              "name": "Internal drive bays",
               "connection": "internal_storage",
               "capacity": 2,
               "compatible_device_refs": [
-                "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism"
+                "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+                "device.storage.hdd_5mb"
               ],
               "capacity_status": "documented_population_only",
               "requirements": [
@@ -7217,34 +7218,16 @@
           ]
         },
         {
-          "id": "internal_fdd",
+          "id": "internal_drive",
           "name": "Internal storage",
           "sockets": [
             {
-              "id": "internal_fdd",
-              "name": "Internal Fdd",
+              "id": "internal_drive",
+              "name": "Internal drive bays",
               "connection": "internal_storage",
-              "capacity": 2,
+              "capacity": 3,
               "compatible_device_refs": [
-                "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism"
-              ],
-              "capacity_status": "documented_population_only",
-              "requirements": [
-                "Recorded fitted-drive count; additional spare bays are not established."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "internal_hdd",
-          "name": "Internal storage",
-          "sockets": [
-            {
-              "id": "internal_hdd",
-              "name": "Internal Hdd",
-              "connection": "internal_storage",
-              "capacity": 1,
-              "compatible_device_refs": [
+                "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
                 "device.storage.hdd_5mb"
               ],
               "capacity_status": "documented_population_only",
@@ -7475,34 +7458,16 @@
           "sockets": []
         },
         {
-          "id": "internal_fdd",
+          "id": "internal_drive",
           "name": "Internal storage",
           "sockets": [
             {
-              "id": "internal_fdd",
-              "name": "Internal Fdd",
+              "id": "internal_drive",
+              "name": "Internal drive bays",
               "connection": "internal_storage",
-              "capacity": 1,
+              "capacity": 2,
               "compatible_device_refs": [
-                "device.athena.fdd"
-              ],
-              "capacity_status": "documented_population_only",
-              "requirements": [
-                "Recorded fitted-drive count; additional spare bays are not established."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "internal_hdd",
-          "name": "Internal storage",
-          "sockets": [
-            {
-              "id": "internal_hdd",
-              "name": "Internal Hdd",
-              "connection": "internal_storage",
-              "capacity": 1,
-              "compatible_device_refs": [
+                "device.athena.fdd",
                 "device.athena.hdd"
               ],
               "capacity_status": "documented_population_only",
@@ -7781,34 +7746,16 @@
           "sockets": []
         },
         {
-          "id": "internal_fdd",
+          "id": "internal_drive",
           "name": "Internal storage",
           "sockets": [
             {
-              "id": "internal_fdd",
-              "name": "Internal Fdd",
+              "id": "internal_drive",
+              "name": "Internal drive bays",
               "connection": "internal_storage",
-              "capacity": 1,
+              "capacity": 2,
               "compatible_device_refs": [
-                "device.athena_server.fdd"
-              ],
-              "capacity_status": "documented_population_only",
-              "requirements": [
-                "Recorded fitted-drive count; additional spare bays are not established."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "internal_hdd",
-          "name": "Internal storage",
-          "sockets": [
-            {
-              "id": "internal_hdd",
-              "name": "Internal Hdd",
-              "connection": "internal_storage",
-              "capacity": 1,
-              "compatible_device_refs": [
+                "device.athena_server.fdd",
                 "device.athena_server.hdd"
               ],
               "capacity_status": "documented_population_only",

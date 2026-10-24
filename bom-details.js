@@ -40,23 +40,25 @@ function createModel(catalog,bom,cost){
 
  const reviewRows=Object.entries(cost.reviews||{}).flatMap(([key,r])=>[...(r.products||r.prices||[]),...(key==='ncc-1982'?[{id:'software.aion_development_team',name:'AION Development Team',...r.team_launch_price},{id:'software.aion_development_team',name:'AION Development Team',...r.team_1982_price}]:[])].map(row=>({...row,review:key})));
  for(const r of reviewRows)if(!items.has(r.id))throw Error('Missing canonical record for reviewed offering: '+r.id);
+ const isMaterial=id=>components.get(id)?.bom_role==='material';
  function assemblyIds(id){const r=records[id];return [...new Set([
- ...(assemblies.has(id)?[id]:[]),...(bom.products||[]).filter(p=>p.catalog_ref===id).flatMap(p=>p.assembly_refs||[]),
+ ...(assemblies.has(id)||isMaterial(id)?[id]:[]),...(bom.products||[]).filter(p=>p.catalog_ref===id).flatMap(p=>p.assembly_refs||[]),
  ...(bom.offers||[]).filter(p=>p.catalog_ref===id).map(p=>p.assembly_ref),r?.bom_assembly_ref,...(r?.bom_assembly_refs||[]),...(r?.physical_media_refs||[]),
  ...(r?.manufacturing_variants||[]).map(v=>v.assembly_ref),
  ...cost.products.filter(p=>p.catalog_ref===id||p.id===id).map(p=>p.assembly_ref),
  ...['assembly.'+id,'assembly.media.'+id].filter(x=>assemblies.has(x))
- ].filter(x=>assemblies.has(x)))];}
- function rows(id,seen=new Set(),depth=0){if(seen.has(id))return [];const a=assemblies.get(id);if(!a)return [];const next=new Set(seen).add(id);return (a.lines||[]).flatMap(l=>[{...l,depth,name:assemblies.get(l.ref)?.name||components.get(l.ref)?.name||records[l.ref]?.name||l.ref},...rows(l.ref,next,depth+1)]);}
+ ].filter(x=>assemblies.has(x)||isMaterial(x)))];}
+ function rows(id,seen=new Set(),depth=0){if(seen.has(id))return [];const a=assemblies.get(id);if(!a)return isMaterial(id)?[{ref:id,quantity:1,unit:'each',condition:'always',quantity_status:'defined',depth,name:components.get(id).name}]:[];const next=new Set(seen).add(id);return (a.lines||[]).flatMap(l=>[{...l,depth,name:assemblies.get(l.ref)?.name||components.get(l.ref)?.name||records[l.ref]?.name||l.ref},...(assemblies.has(l.ref)?rows(l.ref,next,depth+1):[])]);}
  function renderBOM(id,opts={}){
-  const ids=opts.assemblyRef?(assemblies.has(opts.assemblyRef)?[opts.assemblyRef]:[]):assemblyIds(id);
+  const ids=opts.assemblyRef?(assemblies.has(opts.assemblyRef)||isMaterial(opts.assemblyRef)?[opts.assemblyRef]:[]):assemblyIds(id);
   let html='<section class="bom-detail"><h3>Bill of materials</h3>';
+  if(isMaterial(id))html+='<p>This component is a terminal material item. Supplier quotations are not recorded; saved engineering estimates are shown in Manufacturing costs.</p>';
   if(!ids.length)html+='<p>No constituent assembly BOM is recorded for this element.</p><p>Supplier quotations are not recorded; any saved engineering cost assumptions are shown in Manufacturing costs.</p>';
-  for(const aid of ids){const a=assemblies.get(aid);html+='<details'+(ids.length===1?' open':'')+'><summary>'+esc(a.name||aid)+'</summary><p>'+esc(a.status||'')+' · Quantities below are per parent assembly; nested rows are not additional totals.</p><div class="bom-table-scroll"><table><thead><tr><th>Element</th><th>Quantity</th><th>Unit</th><th>Role / condition</th></tr></thead><tbody>'+rows(aid).map(l=>'<tr><td style="padding-left:'+(.5+l.depth)+'rem">'+esc(l.name)+'</td><td>'+esc(l.quantity??'Unknown')+'</td><td>'+esc(l.unit||'—')+'</td><td>'+esc([l.role,l.condition,l.quantity_status].filter(Boolean).join(' · '))+'</td></tr>').join('')+'</tbody></table></div></details>';}
+  for(const aid of ids){const a=assemblies.get(aid)||components.get(aid);html+='<details'+(ids.length===1?' open':'')+'><summary>'+esc(a.name||aid)+'</summary><p>'+esc(a.status||'')+' · Quantities below are per parent assembly; nested rows are not additional totals.</p><div class="bom-table-scroll"><table><thead><tr><th>Element</th><th>Quantity</th><th>Unit</th><th>Role / condition</th></tr></thead><tbody>'+rows(aid).map(l=>'<tr><td style="padding-left:'+(.5+l.depth)+'rem">'+esc(l.name)+'</td><td>'+esc(l.quantity??'Unknown')+'</td><td>'+esc(l.unit||'—')+'</td><td>'+esc([l.role,l.condition,l.quantity_status].filter(Boolean).join(' · '))+'</td></tr>').join('')+'</tbody></table></div></details>';}
   if(opts.fullRecords&&typeof root.renderSpecification==='function'){
    const assemblySet=new Set(ids);for(const aid of ids)for(const row of rows(aid))if(assemblies.has(row.ref))assemblySet.add(row.ref);
    const partIds=new Set([...assemblySet].flatMap(aid=>rows(aid).map(l=>l.ref)));
-   const source={requirements:(bom.products||[]).filter(p=>p.catalog_ref===id),offers:(bom.offers||[]).filter(p=>p.catalog_ref===id),assemblies:[...assemblySet].map(aid=>assemblies.get(aid)),components:[...components.values()].filter(p=>p.id===id||partIds.has(p.id))};
+   const source={requirements:(bom.products||[]).filter(p=>p.catalog_ref===id),offers:(bom.offers||[]).filter(p=>p.catalog_ref===id),assemblies:[...assemblySet].filter(aid=>assemblies.has(aid)).map(aid=>assemblies.get(aid)),components:[...components.values()].filter(p=>p.id===id||partIds.has(p.id))};
    html+='<details><summary>Full BOM records and qualification</summary>'+root.renderSpecification(source,records)+'</details>';
   }
   return html+'</section>';

@@ -94,3 +94,37 @@ Verification at publication: 21/22 browser tests pass; the existing atlas timeli
 pricing-link assertion still fails. Python validators: 18/37 pass, with the same
 19 failing validators as the base revision. Source schemas, logical-view parity,
 physical-equivalence migration audit and archive invariance all pass.
+
+## Component roots and flat computer configurations
+
+The follow-up removes all 33 single-material `assembly.part.*` wrappers. Components
+own the merged meaningful names (`alternate_names` where different), reconciled
+requirements, and `cost_rollup_status`; wrapper lines and routing are discarded.
+The old unbuffered graphics requirement is already covered by the newer buffered
+controller requirements and is not reintroduced. Product BOM mappings now reference
+`part.*` directly. Redundant component-to-self BOM references are removed.
+
+`record_id_aliases` redirects retired wrapper IDs for links and archived models.
+Archived financial files and frozen fixtures remain unchanged; their references
+are translated only when read. A material component is a terminal BOM target, not
+an assembly with a synthetic self-edge. Browser rendering and the guarded future
+cost builder accept material roots directly. There are now 47 stored assemblies
+and 58 device-owned definitions (105 runtime assemblies).
+
+All 21 `assembly.computer.*` configurations contain device/part lines directly;
+no configuration includes another computer assembly. Device internals still retain
+their own BOMs. Flattening multiplies quantities, preserves unknowns and combines
+parent/child conditions and roles. The independent original-inventory audit still
+passes. Numerical rebuilds remain blocked pending routing qualification; flattening
+must not silently remove historical configuration installation costs.
+
+All chassis storage socket pools are called `internal_drive`. Aurelia compatibility
+remains FDD-only. Artemis/Artemis Pro and Athena/Athena Server have shared FDD/HDD
+pools with total capacities of 2/3 and 2/2 respectively, preserving previously
+recorded bay totals. These are documented population counts, not evidence of spare
+bays. Existing device compatibility and unresolved qualification remain explicit.
+
+The computer family right-hand column now has accessible Details and Bill of
+materials tabs. The latter contains selected-element BOMs/costs, or configuration
+physical BOMs, recorded cost history and dated decomposition. Keyboard arrows,
+Home and End switch tabs; selection updates the content within the active tab.

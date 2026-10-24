@@ -3,558 +3,6 @@
   "schema_version": "3.0.0",
   "assemblies": [
     {
-      "id": "assembly.part.z80a",
-      "name": "Zilog Z80A",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.z80a",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.z80b",
-      "name": "Zilog Z80B",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.z80b",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Same, with 6 MHz timing and December 1979 sourcing qualification",
-        "distinguish speed-bin procurement from a new CPU design."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.dram_16kbit",
-      "name": "16 Kbit RAM chip",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.dram_16kbit",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
-        "the current list only names the prototype."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.dram_64kbit",
-      "name": "64 Kbit RAM chip",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.dram_64kbit",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.flexibus_host_controller",
-      "name": "FlexiBUS computer/host controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.flexibus_host_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
-        "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.flexibus_device_controller",
-      "name": "FlexiBUS peripheral/device controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.flexibus_device_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Specify whether it is a transport-only state machine or programmable controller",
-        "CPU/ROM/RAM integration, peripheral interfaces, external drivers and power. Define keyboard use explicitly if adopted."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.aurelia_video_chip",
-      "name": "Aurelia custom video chip",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.aurelia_video_chip",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
-        "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.aurelia_monitor_dac",
-      "name": "Aurelia monochrome monitor custom D/A chip",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.aurelia_monitor_dac",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Specify reference, transfer function/linearity, output range, settling time, package and required analog stages. Decide custom silicon versus a discrete implementation before assigning die cost."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.color_monitor_controller",
-      "name": "Logix color monitor custom controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.color_monitor_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Locate the 16×12-bit palette storage, command decoder, clocking, RGB conversion and external analog drivers",
-        "establish whether Monitor I/II share silicon but differ in bandwidth/output stages."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.mono_monitor2_controller",
-      "name": "Mono Monitor II custom controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.mono_monitor2_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Locate 16×8-bit palette storage, command decode, DAC and analog output",
-        "define clock/raster and custom-silicon parameters."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.artemis_dma",
-      "name": "Artemis DMA chip",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.artemis_dma",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Channels, bus-master handshake, byte/word widths, counters, request lines, priority, refresh interaction and external buffering",
-        "freeze die/package/test design."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.artemis_mmu",
-      "name": "Artemis MMU chip",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.artemis_mmu",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.artemis_graphics_chip",
-      "name": "Artemis custom graphics chip",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.artemis_graphics_chip",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define video RAM bus, arbitration, scan timing, font path, output serializers/drivers and package."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.artemis_fdd_hdd_controller",
-      "name": "Artemis custom FDD/HDD controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.artemis_fdd_hdd_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Define exact floppy and HDD electrical interfaces, encodings, data separator/PLL, DMA/FIFO and firmware split. Specify what remains external",
-        "“HDD supported” is not a complete controller."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.ball_tv90_crt",
-      "name": "Ball Brothers TV-90 CRT display",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.ball_tv90_crt",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Exact OEM orderable part, supplied assembly boundary, screen/phosphor, scan requirements, life/acceptance limits and what analog/HV components remain to buy."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.sony_kv1204_display_assembly",
-      "name": "Sony KV-1204 12-inch color display components",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.sony_kv1204_display_assembly",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Exact OEM supply boundary and permitted purchasable kit, with included component list",
-        "quantify RGB-interface modifications, mechanical fit, yield and calibration."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.motorola_ds3000_140a_crt",
-      "name": "Motorola DS3000-140A CRT display",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.motorola_ds3000_140a_crt",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Exact tube or monitor-assembly identification, included electronics, raster/bandwidth and acceptance test",
-        "prevent tube-plus-complete-monitor double counting."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.medium_resolution_rgb_crt",
-      "name": "12-inch medium-resolution RGB CRT display assembly",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.medium_resolution_rgb_crt",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.mpi_mp40_mechanism",
-      "name": "Micro Peripherals MP-40 bare printer mechanism",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.mpi_mp40_mechanism",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Orderable revision and contents: head, motors, sensors, frame, carriage/platen, ribbon system, wiring",
-        "define excluded controller/PSU/case and incoming tests."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.hdd_5mb",
-      "name": "5 MB hard disk drive",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.hdd_5mb",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
       "id": "assembly.computer.aurelia.base",
       "name": "Logix Aurelia base hardware without modular RAM, cartridges or NIC",
       "status": "incomplete",
@@ -700,8 +148,16 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.base",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
           "unit": "each",
           "role": "",
           "condition": "always",
@@ -745,10 +201,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.m32_128",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
           "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -781,8 +261,16 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.base",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
           "unit": "each",
           "role": "",
           "condition": "always",
@@ -826,10 +314,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.m32_256",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
           "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 4,
+          "unit": "each",
+          "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -862,8 +374,16 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.base",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
           "unit": "each",
           "role": "",
           "condition": "always",
@@ -907,10 +427,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.m128_256",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
           "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -943,8 +487,16 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.base",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
           "unit": "each",
           "role": "",
           "condition": "always",
@@ -988,10 +540,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.m128_512",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
           "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_256kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -1024,8 +600,16 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.base",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
           "unit": "each",
           "role": "",
           "condition": "always",
@@ -1069,10 +653,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.m128_768",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
           "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_128kb_x32",
+          "quantity": 6,
+          "unit": "each",
+          "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -1105,8 +713,16 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.base",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
           "unit": "each",
           "role": "",
           "condition": "always",
@@ -1150,10 +766,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis.m128_1024",
+          "ref": "device.chassis.artemis",
           "quantity": 1,
           "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_256kb_x32",
+          "quantity": 4,
+          "unit": "each",
+          "role": "system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Exactly one configured video card",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -1244,10 +884,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis_pro.base",
+          "ref": "device.chassis.artemis_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.hdd_5mb",
           "quantity": 1,
           "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Included replaceable video card; dedicated slot",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -1289,10 +953,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis_pro.base",
+          "ref": "device.chassis.artemis_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.hdd_5mb",
           "quantity": 1,
           "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Included replaceable video card; dedicated slot",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -1334,10 +1022,34 @@
       "status": "incomplete",
       "lines": [
         {
-          "ref": "assembly.computer.artemis_pro.base",
+          "ref": "device.chassis.artemis_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Bare chassis",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.hdd_5mb",
           "quantity": 1,
           "unit": "each",
           "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Included replaceable video card; dedicated slot",
           "condition": "always",
           "quantity_status": "defined"
         },
@@ -2139,145 +1851,6 @@
       "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
-      "id": "assembly.part.aion_4116",
-      "name": "AION 4116-equivalent 16Kx1 NMOS DRAM",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.aion_4116",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
-        "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.aion_2114",
-      "name": "AION 2114-equivalent 1Kx4 sprite SRAM",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.aion_2114",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
-        "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.aurelia_system_controller",
-      "name": "AION Aurelia system controller (DMA, banking and refresh)",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.aurelia_system_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
-        "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
-        "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.brimar_m36_141w_crt",
-      "name": "Thorn–Brimar M36-141W 14-inch monochrome CRT",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.brimar_m36_141w_crt",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included component",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.mono_pro_controller",
-      "name": "AION Mono Pro receiver and grayscale palette controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.mono_pro_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included component",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
       "id": "assembly.bundle.artemis_256_mono_pro",
       "name": "Logix Artemis 256 KB — Mono Pro system",
       "status": "incomplete",
@@ -2502,168 +2075,6 @@
       ],
       "requirements": [
         "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.aion_4164",
-      "name": "AION 64 Kbit DRAM (4164-equivalent)",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.aion_4164",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included component",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.artemis_graphics_chip_64kb",
-      "name": "AION 64 KiB Artemis graphics controller with palette sequencer",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.artemis_graphics_chip_64kb",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included component",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.color_pro_monitor_controller",
-      "name": "AION Color Pro digital-to-RGB monitor controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.color_pro_monitor_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included component",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.professional_graphics_controller",
-      "name": "AION professional 2D blitter and line controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.professional_graphics_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included component",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.mono_pro_17_controller",
-      "name": "AION Mono Pro 17 grayscale monitor controller",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.mono_pro_17_controller",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included component",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-    },
-    {
-      "id": "assembly.part.nec_pc8853_display_assembly",
-      "name": "NEC PC-8853 / JC-1410P2-class colour display assembly",
-      "status": "incomplete",
-      "lines": [
-        {
-          "ref": "part.nec_pc8853_display_assembly",
-          "quantity": 1,
-          "unit": "each",
-          "role": "included component",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ],
-      "requirements": [
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
       ],
       "routing": {
         "operations": [],
@@ -3283,60 +2694,6 @@
         },
         {
           "ref": "device.athena_server.fdd",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ]
-    },
-    {
-      "id": "assembly.part.erav1_6mhz",
-      "name": "ERAv1 6MHz (initial)",
-      "status": "incomplete",
-      "requirements": [
-        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
-      "lines": [
-        {
-          "ref": "part.erav1_6mhz",
-          "quantity": 1,
-          "unit": "each",
-          "role": "",
-          "condition": "always",
-          "quantity_status": "defined"
-        }
-      ]
-    },
-    {
-      "id": "assembly.part.erav1_8mhz",
-      "name": "ERAv1 8MHz (upgraded)",
-      "status": "incomplete",
-      "requirements": [
-        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
-      ],
-      "routing": {
-        "operations": [],
-        "minutes_per_unit": null,
-        "first_pass_yield": null,
-        "rework_rate": null,
-        "scrap_rate": null,
-        "fixture_refs": []
-      },
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
-      "lines": [
-        {
-          "ref": "part.erav1_8mhz",
           "quantity": 1,
           "unit": "each",
           "role": "",

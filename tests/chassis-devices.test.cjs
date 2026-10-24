@@ -17,7 +17,17 @@ for(const family of ['aurelia','artemis','athena']){
  for(const family of ['aurelia','artemis','athena']){
   const dom=await boot(family+'.html','?configuration=device.chassis.'+family),d=dom.window.document;
   assert.deepEqual([...d.querySelectorAll('#configuration-stats>div>span')].map(n=>n.textContent),['Processor','System RAM']);
+  const details=d.getElementById('configuration-tab-details'),bomTab=d.getElementById('configuration-tab-bom');
+  assert.equal(details.textContent,'Details');assert.equal(bomTab.textContent,'Bill of materials');
+  assert.equal(details.getAttribute('aria-selected'),'true');assert(d.getElementById('configuration-panel-bom').hidden);
+  bomTab.click();assert.equal(bomTab.getAttribute('aria-selected'),'true');assert(d.getElementById('configuration-panel-details').hidden);assert(!d.getElementById('configuration-panel-bom').hidden);
+  bomTab.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));assert.equal(details.getAttribute('aria-selected'),'true');assert.equal(d.activeElement,details);
   assert(d.getElementById('configuration-diagram').textContent.includes('Available sockets and compatibility'));assert.equal(d.querySelectorAll('[data-evaluation]').length,0);dom.window.close();
+ }
+ {
+  const dom=await boot('bom-navigator.html','?element=assembly.part.z80a'),d=dom.window.document;
+  assert(d.getElementById('bom-inspector').textContent.includes('Zilog Z80A'));
+  d.getElementById('tab-bom').click();assert(d.getElementById('panel-bom').textContent.includes('terminal material item'));dom.window.close();
  }
  for(const [old,count] of [['part.era1',2],['part.era2',2],['bompart.part.era1',2]]){
   const dom=await boot('bom-navigator.html','?element='+old),d=dom.window.document;assert.equal(d.querySelectorAll('#bom-rows tr').length,count);assert(d.getElementById('bom-inspector').textContent.includes('Select a variant'));dom.window.close();

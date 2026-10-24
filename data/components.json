@@ -21,15 +21,13 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.z80a"
-      ],
       "bom_role": "material",
       "manufacturer": "Zilog",
       "qualification_status": "unresolved",
       "requirements": [
         "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.z80b",
@@ -50,16 +48,14 @@
         "computer.aurelia_plus"
       ],
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.z80b"
-      ],
       "bom_role": "material",
       "manufacturer": "Zilog",
       "qualification_status": "unresolved",
       "requirements": [
         "Same, with 6 MHz timing and December 1979 sourcing qualification",
         "distinguish speed-bin procurement from a new CPU design."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.dram_16kbit",
@@ -87,16 +83,14 @@
         "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.dram_16kbit"
-      ],
       "bom_role": "material",
       "qualification_status": "unresolved",
       "manufacturer": null,
       "requirements": [
         "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
         "the current list only names the prototype."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.dram_64kbit",
@@ -119,15 +113,13 @@
         "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.dram_64kbit"
-      ],
       "bom_role": "material",
       "qualification_status": "unresolved",
       "manufacturer": null,
       "requirements": [
         "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.dram_128kbit",
@@ -169,9 +161,6 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.flexibus_host_controller"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -186,7 +175,8 @@
       "requirements": [
         "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
         "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.flexibus_device_controller",
@@ -205,9 +195,6 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.flexibus_device_controller"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -222,7 +209,8 @@
       "requirements": [
         "Specify whether it is a transport-only state machine or programmable controller",
         "CPU/ROM/RAM integration, peripheral interfaces, external drivers and power. Define keyboard use explicitly if adopted."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aurelia_video_chip",
@@ -334,9 +322,6 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aurelia_video_chip"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -354,7 +339,8 @@
       "requirements": [
         "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
         "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aurelia_monitor_dac",
@@ -374,15 +360,13 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aurelia_monitor_dac"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Specify reference, transfer function/linearity, output range, settling time, package and required analog stages. Decide custom silicon versus a discrete implementation before assigning die cost."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.color_monitor_controller",
@@ -405,16 +389,14 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.color_monitor_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Locate the 16×12-bit palette storage, command decoder, clocking, RGB conversion and external analog drivers",
         "establish whether Monitor I/II share silicon but differ in bandwidth/output stages."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.mono_monitor2_controller",
@@ -437,16 +419,14 @@
         "timeline_note": "Author-confirmed introduction date."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.mono_monitor2_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Locate 16×8-bit palette storage, command decode, DAC and analog output",
         "define clock/raster and custom-silicon parameters."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_dma",
@@ -463,16 +443,14 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.artemis_dma"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Channels, bus-master handshake, byte/word widths, counters, request lines, priority, refresh interaction and external buffering",
         "freeze die/package/test design."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_mmu",
@@ -490,15 +468,13 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.artemis_mmu"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_graphics_chip",
@@ -1011,9 +987,6 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.artemis_graphics_chip"
-      ],
       "bom_role": "material",
       "alternate_names": [
         "Artemis custom graphics chip"
@@ -1023,7 +996,8 @@
       "requirements": [
         "External 16×4116 DRAM and 2×2114 sprite SRAM; integrated 640-byte pixel FIFO and 320-byte row cache. Die-area estimate 80 mm² (60–110), about 65,000–95,000 transistors including SRAM; not a released layout. Qualify timing, large-package pin count, analog-free digital logic and one respin.",
         "Define the external video RAM bus, arbitration, scan timing, font path and output serializers/drivers; qualify the package against the buffered controller design."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_fdd_hdd_controller",
@@ -1047,16 +1021,14 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.artemis_fdd_hdd_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Define exact floppy and HDD electrical interfaces, encodings, data separator/PLL, DMA/FIFO and firmware split. Specify what remains external",
         "“HDD supported” is not a complete controller."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.ball_tv90_crt",
@@ -1072,15 +1044,13 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ball_tv90_crt"
-      ],
       "bom_role": "material",
       "manufacturer": "Ball Brothers",
       "qualification_status": "unresolved",
       "requirements": [
         "Exact OEM orderable part, supplied assembly boundary, screen/phosphor, scan requirements, life/acceptance limits and what analog/HV components remain to buy."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.sony_kv1204_display_assembly",
@@ -1105,16 +1075,14 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.sony_kv1204_display_assembly"
-      ],
       "bom_role": "material",
       "manufacturer": "Sony",
       "qualification_status": "unresolved",
       "requirements": [
         "Exact OEM supply boundary and permitted purchasable kit, with included component list",
         "quantify RGB-interface modifications, mechanical fit, yield and calibration."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.motorola_ds3000_140a_crt",
@@ -1132,16 +1100,14 @@
         "timeline_note": "Author-confirmed introduction date."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.motorola_ds3000_140a_crt"
-      ],
       "bom_role": "material",
       "manufacturer": "Motorola",
       "qualification_status": "unresolved",
       "requirements": [
         "Exact tube or monitor-assembly identification, included electronics, raster/bandwidth and acceptance test",
         "prevent tube-plus-complete-monitor double counting."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.medium_resolution_rgb_crt",
@@ -1159,15 +1125,13 @@
         "timeline_note": "Author-confirmed introduction date."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.medium_resolution_rgb_crt"
-      ],
       "bom_role": "material",
       "qualification_status": "unresolved",
       "manufacturer": null,
       "requirements": [
         "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.mpi_mp40_mechanism",
@@ -1183,16 +1147,14 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.mpi_mp40_mechanism"
-      ],
       "bom_role": "material",
       "manufacturer": "Micro Peripherals, Inc.",
       "qualification_status": "unresolved",
       "requirements": [
         "Orderable revision and contents: head, motors, sensors, frame, carriage/platen, ribbon system, wiring",
         "define excluded controller/PSU/case and incoming tests."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.hdd_5mb",
@@ -1211,9 +1173,6 @@
         "event_start_date": "1981-05-04"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.hdd_5mb"
-      ],
       "bom_role": "material",
       "manufacturer": "Seagate Technology",
       "manufacturer_part_number": "ST506",
@@ -1221,7 +1180,11 @@
       "requirements": [
         "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in.",
         "Selected ST506: 5.0 MB formatted / 6.38 MB unformatted, MFM 5 Mbit/s, 34-pin control and 20-pin data. Budget +12 V 4.5 A startup and +5 V 1 A maximum; qualify controller, spin-up, airflow, harness and mounting. Seagate preliminary OEM manual, April 1981. No cost or qualification claim."
-      ]
+      ],
+      "alternate_names": [
+        "5 MB hard disk drive"
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aion_4116",
@@ -1272,9 +1235,6 @@
         }
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aion_4116"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -1289,7 +1249,8 @@
       "requirements": [
         "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
         "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aion_2114",
@@ -1327,16 +1288,14 @@
         }
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aion_2114"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
         "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aurelia_system_controller",
@@ -1405,9 +1364,6 @@
         }
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aurelia_system_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
@@ -1415,7 +1371,8 @@
         "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
         "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
         "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.brimar_m36_141w_crt",
@@ -1438,15 +1395,14 @@
         "device.mono_pro"
       ],
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.brimar_m36_141w_crt"
-      ],
       "bom_role": "material",
       "manufacturer": "Thorn–Brimar",
       "qualification_status": "unresolved",
       "requirements": [
-        "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance."
-      ]
+        "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.mono_pro_controller",
@@ -1469,15 +1425,14 @@
         "device.mono_pro"
       ],
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.mono_pro_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance."
-      ]
+        "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aion_4164",
@@ -1554,9 +1509,6 @@
         "electrical_contract": "64K x 1; released pinout/rails/timing/refresh remain gates. Common module interface only after retention, speed and all-bank qualification; no capacity or bus-width change."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aion_4164"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -1570,7 +1522,8 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_graphics_chip_64kb",
@@ -1602,8 +1555,10 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Functional-set procurement allowance; detailed supplier selection pending."
-      ]
+        "Functional-set procurement allowance; detailed supplier selection pending.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.nec_pc8853_display_assembly",
@@ -1631,8 +1586,10 @@
       "manufacturer": "NEC",
       "qualification_status": "unresolved",
       "requirements": [
-        "Complete NEC-class 14-inch OEM display core, tube/yoke/HV/deflection/PSU; excludes AION adapter and final Logix cabinet. $280 is a volume procurement scenario, not a quote."
-      ]
+        "Complete NEC-class 14-inch OEM display core, tube/yoke/HV/deflection/PSU; excludes AION adapter and final Logix cabinet. $280 is a volume procurement scenario, not a quote.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.color_pro_monitor_controller",
@@ -1663,8 +1620,10 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Functional-set procurement allowance; detailed supplier selection pending."
-      ]
+        "Functional-set procurement allowance; detailed supplier selection pending.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.professional_graphics_controller",
@@ -1689,8 +1648,10 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Functional-set procurement allowance; detailed supplier selection pending."
-      ]
+        "Functional-set procurement allowance; detailed supplier selection pending.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.mono_pro_17_controller",
@@ -1715,8 +1676,10 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Functional-set procurement allowance; detailed supplier selection pending."
-      ]
+        "Functional-set procurement allowance; detailed supplier selection pending.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aion_4164_2um",
@@ -5520,9 +5483,7 @@
       "used_in": [
         "computer.artemis"
       ],
-      "bom_assembly_refs": [
-        "assembly.part.erav1_6mhz"
-      ]
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.erav1_8mhz",
@@ -5554,9 +5515,7 @@
       "used_in": [
         "computer.artemis_pro"
       ],
-      "bom_assembly_refs": [
-        "assembly.part.erav1_8mhz"
-      ]
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.era2_12mhz",
