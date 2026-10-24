@@ -48,7 +48,7 @@ try{
   $('bom-count').textContent=list.length+' elements';
   $('bom-rows').innerHTML=list.map(x=>'<tr data-catalog-id="'+esc(x.id)+'"><td><button type="button" data-element="'+esc(x.id)+'" aria-controls="bom-inspector" aria-pressed="false">'+esc(x.name)+'</button></td><td>'+esc(x.class)+'</td><td>'+esc(x.category.replace(/_/g,' '))+'</td><td>'+esc(x.vendor)+'</td><td>'+esc(x.release||'Unknown')+'</td></tr>').join('');
   for(const b of document.querySelectorAll('[data-element]'))b.onclick=()=>inspect(list.find(x=>x.id===b.dataset.element));
-  if(list.length&&familyIds.length&&!selected){displayedId=null;$('bom-inspector').innerHTML='<h2>Select a hub variant</h2><p>This former family record now has separate 4-, 8- and 16-port devices. Select a row to inspect its BOM and costs.</p>';}
+  if(list.length&&familyIds.length&&!selected){displayedId=null;$('bom-inspector').innerHTML='<h2>Select a variant</h2><p>This former family record now has separate records. Select a row to inspect its specification, BOM and costs.</p>';}
   else if(list.length){const item=list.find(x=>x.id===selected)||list[0];if(displayedId!==item.id)inspect(item);for(const b of document.querySelectorAll('[data-element]'))b.setAttribute('aria-pressed',String(b.dataset.element===selected));}
   else{displayedId=null;$('bom-inspector').innerHTML='<p>No elements match these filters.</p>';}
   for(const b of document.querySelectorAll('[data-sort]')){const active=b.dataset.sort===sortKey;b.closest('th').setAttribute('aria-sort',active?(sortDirection===1?'ascending':'descending'):'none');b.querySelector('span').textContent=active?(sortDirection===1?' ▲':' ▼'):' ↕';b.setAttribute('aria-label','Sort by '+b.dataset.label+', '+(active&&sortDirection===1?'descending':'ascending'));}

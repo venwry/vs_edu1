@@ -82,3 +82,7 @@ Device-owned BOM definitions are composed into the hardware-BOM view at read tim
 Writers route these definitions back to `data/devices.json`; do not copy them into
 `data/assemblies.json`. Recurse by assembly-index membership, not an ID prefix.
 See [DEVICE_BOM_MIGRATION.md](DEVICE_BOM_MIGRATION.md).
+
+For chassis, slots, processor bins, RAM devices and physical media ownership, read
+[CHASSIS_DEVICE_MIGRATION.md](CHASSIS_DEVICE_MIGRATION.md). Run
+`python tests/validate_chassis_migration.py` after structural hardware changes.

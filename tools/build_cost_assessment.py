@@ -10,6 +10,7 @@ records={x['id']:x for v in C.values() if isinstance(v,list) for x in v if isins
 assemblies={x['id']:x for x in B['assemblies']}; components={x['id']:x for x in B['components'] if x['bom_role']=='material'}
 pending=[a['id'] for a in assemblies.values() if a.get('cost_assessment_status')=='pending_reassessment']
 if pending:raise ValueError('Cost rebuild blocked: qualify revised module routing/allowances and reassess before publishing: '+', '.join(pending))
+if any(d.get('category')=='computer_chassis' for d in C['devices']):raise ValueError('Cost rebuild blocked: qualify chassis, device and configured-product routing ownership before recalculation')
 years=[1978,1979,1980,1981,1982]; snapshots=[f'{y}-06-15' for y in years]
 wages=[5.99,6.54,7.08,7.85,8.30]; electricity=[.028,.031,.037,.043,.047]; overhead=[1,1.09,1.2,1.32,1.43]
 K=['bom_materials','workforce','energy','consumables','operating_overhead','yield_and_rework','instructions','packaging','logistics','recurring_licenses','included_service_delivery']
@@ -20,7 +21,7 @@ def add(a,b,n=1):
 # Explicit bought-in component price assumptions, nominal USD at each June snapshot.
 prices={'part.z80a':[18,14,11,9],'part.z80b':[35,30,24,18],'part.dram_16kbit':[6,4.5,3.25,2.25],'part.dram_64kbit':[80,65,40,25], 'part.ball_tv90_crt':[45,44,43,42],'part.sony_kv1204_display_assembly':[130,126,122,118],'part.motorola_ds3000_140a_crt':[65,63,60,56],'part.medium_resolution_rgb_crt':[190,180,170,158],'part.mpi_mp40_mechanism':[120,115,110,105],'part.hdd_5mb':[1500,1400,1150,950]}
 # Area is an engineering assumption; video RAM/video areas follow catalog planning ranges.
-chip_area={'part.era1':55,'part.flexibus_host_controller':12,'part.flexibus_device_controller':10,'part.aurelia_video_chip':52,'part.aion_2114':20,'part.aurelia_system_controller':30,'part.aurelia_monitor_dac':6,'part.color_monitor_controller':14,'part.mono_monitor2_controller':9,'part.artemis_dma':18,'part.artemis_mmu':30,'part.artemis_graphics_chip':80,'part.mono_pro_controller':12,'part.artemis_fdd_hdd_controller':22,'part.aion_4116':18,'part.aion_4164':45}
+chip_area={'part.erav1_6mhz':55,'part.erav1_8mhz':55,'part.flexibus_host_controller':12,'part.flexibus_device_controller':10,'part.aurelia_video_chip':52,'part.aion_2114':20,'part.aurelia_system_controller':30,'part.aurelia_monitor_dac':6,'part.color_monitor_controller':14,'part.mono_monitor2_controller':9,'part.artemis_dma':18,'part.artemis_mmu':30,'part.artemis_graphics_chip':80,'part.mono_pro_controller':12,'part.artemis_fdd_hdd_controller':22,'part.aion_4116':18,'part.aion_4164':45}
 prices['part.brimar_m36_141w_crt']=[95,92,90,85] # Bare tube, unquoted nominal planning purchase price.
 # 1982 OEM estimates, not verified quotes; hardware BOM quantities unchanged.
 for ref,value in {'part.z80a':8,'part.z80b':16,'part.dram_16kbit':1.75,'part.dram_64kbit':18,'part.ball_tv90_crt':41,'part.sony_kv1204_display_assembly':114,'part.motorola_ds3000_140a_crt':53,'part.medium_resolution_rgb_crt':150,'part.mpi_mp40_mechanism':100,'part.hdd_5mb':850,'part.brimar_m36_141w_crt':82}.items():prices[ref].append(value)
@@ -37,7 +38,7 @@ allowances.update({'artemis_video_card_pcb':12,'artemis_video_slot_connector':8,
 allowances.update({'sprite_interface_package_pcb_test':7.4,'system_controller_interface_pcb_test':11.5,'clock_reset_interrupts_and_bus_buffers':13})
 inputs={}; chip_models={}
 def chip_cost(ref,i):
- area=chip_area[ref];diameter=75;usable=.9*(math.pi*(diameter/2)**2/area-math.pi*diameter/math.sqrt(2*area));d=[2.8,2.4,2.,1.7,1.6][i];maturity=.72 if ref.startswith('part.artemis') or ref=='part.era1' else 1
+ area=chip_area[ref];diameter=75;usable=.9*(math.pi*(diameter/2)**2/area-math.pi*diameter/math.sqrt(2*area));d=[2.8,2.4,2.,1.7,1.6][i];maturity=.72 if ref.startswith('part.artemis') or ref in ['part.erav1_6mhz','part.erav1_8mhz'] else 1
  if i>=3 and maturity<1:maturity=.86
  if ref=='part.aion_4164':maturity=.85
  if ref in ncc['custom_die_area_mm2']:maturity=ncc['custom_maturity']
@@ -48,7 +49,7 @@ def chip_cost(ref,i):
   yield_die=memory_evaluate(memory_recipe)['die_yield']
  else:yield_die=max(.08,math.exp(-d*area/100)*.85*maturity)
  good=usable*yield_die
- wafer=[210,220,235,255,276][i];package=4 if ref=='part.artemis_graphics_chip' else 3 if ref=='part.aurelia_system_controller' else 2.5 if ref in ['part.era1','part.artemis_mmu'] else .65;test=1.3 if area>=30 else .35;py=.93
+ wafer=[210,220,235,255,276][i];package=4 if ref=='part.artemis_graphics_chip' else 3 if ref=='part.aurelia_system_controller' else 2.5 if ref in ['part.erav1_6mhz','part.erav1_8mhz','part.artemis_mmu'] else .65;test=1.3 if area>=30 else .35;py=.93
  if ref in ncc['package_usd']:package=ncc['package_usd'][ref]
  if memory_recipe:
   wafer=memory_policy()['wafer_cost_by_year'][str(years[i])][memory_recipe['node_um']]+memory_recipe.get('repair_cost_per_wafer_usd',0)
@@ -91,8 +92,6 @@ def quantity(a,l):
 def routing(a):
  if a in ncc['routing']:
   x=ncc['routing'][a];return (x['hours'],x['kwh'],x['consumables_usd'])
- if a.startswith('assembly.part.'):
-  return (.22, .6,.35) if 'module_' in a else (0,0,0)
  if a.startswith('assembly.computer.'):
   if a.endswith('.base'):return (3.5 if 'artemis' in a else 2.4,12 if 'artemis' in a else 7,2.5)
   return (.18,1,.15) # installation and verification, not another complete build
@@ -113,6 +112,9 @@ assembly_inputs={a:{'assembly_hours_1978':routing(a)[0],'kwh_1978':routing(a)[1]
 def rollup(a,i,source_inputs=None):
  source_inputs=inputs if source_inputs is None else source_inputs
  v=vec();flat=Counter()
+ if a in source_inputs:
+  add(v,source_inputs[a]['annual_cost_buckets_usd'][str(years[i])],1);flat[a]=1
+  return v,flat
  for line in assemblies[a]['lines']:
   q=quantity(a,line);ref=line['ref']
   if ref in assemblies:
@@ -128,7 +130,9 @@ def row(id,ref,name,group,unit,start,**kwargs):
 # Hardware product rows use the canonical BOM configurations, retaining shipping uncertainty.
 for x in C['computers']+C['devices']:
  if x.get('superseded_by'):continue
- prod=next(p for p in B['products'] if p['catalog_ref']==x['id']);refs=prod['assembly_refs']
+ prod=next((p for p in B['products'] if p['catalog_ref']==x['id']),None)
+ if prod is None:continue # A device identity is not evidence of a sold/costed product.
+ refs=prod['assembly_refs']
  if x['id'] in ['computer.artemis','computer.artemis_pro']:
   configs=[z for z in x['memory']['configurations'] if z['shipping_configuration']]
   for conf in configs:
@@ -138,7 +142,7 @@ for x in C['computers']+C['devices']:
   for a in refs:row(x['id']+(('.'+a.split('.')[-1]) if len(refs)>1 else ''),x['id'],x['name']+((' — '+a.split('.')[-1].replace('_',' ')) if len(refs)>1 else ''),'Computers' if x['id'].startswith('computer') else 'Peripherals','one chassis, no accessories/system cartridge' if x['id'].startswith('computer') else 'one finished accessory',date(x),assembly_ref=a)
 # OEM custom chips are explicitly offered by the component-licensing service.
 for ref in sorted(custom):
- x=records[ref];row(ref,ref,x['name'],'OEM chips','one tested packaged chip, bulk shipment',date(x),assembly_ref='assembly.'+ref)
+ x=records[ref];row(ref,ref,x['name'],'OEM chips','one tested packaged chip, bulk shipment',date(x),assembly_ref=ref)
 # Software production excludes development; platform variants retain distinct availability.
 software_profiles={'aurelia_compatibility_kit':(5,800),'abacus_1':(1,80),'simple_c_z80':(3,220),'aurelia_sdk':(5,800),'bpi_suite':(5,700),'microsoft_basic_aurelia':(1,180),'pulse_1':(3,240),'abacus_2':(2,160),'aion_c_ide':(6,400),'artemis_sdk':(8,1000),'abacus_3':(4,280),'pulse_3':(4,300),'bpi_client_server':(8,800)}
 team_delivery=read_document('generated/catalogs/team-development-program.json', root=R)['delivery']
@@ -150,7 +154,7 @@ external_editions=[]
 for x in C['platform_editions']:
  if x['platform_support'] and all(s['computer_ref'] in external_platform_ids for s in x['platform_support']):
   external_editions.append(x);continue
- key=x['id'].split('.')[1];a='assembly.media.software.'+key
+ key=x['id'].split('.')[1];a=next(iter(x.get('physical_media_refs',[])),'assembly.media.software.'+key)
  kwargs={'assembly_ref':a} if a in assemblies else {'software_profile':software_profiles.get(key)}
  if kwargs.get('software_profile','present') is None:kwargs={'not_costed_reason':'No qualified media, licence and delivery cost profile is recorded for this edition.'}
  if records[x['product_ref']].get('vendor')=='Autodesk':kwargs['not_costed_reason']='Future independent Autodesk product; distribution and licence terms not costed.'

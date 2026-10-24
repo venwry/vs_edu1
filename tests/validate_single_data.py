@@ -23,7 +23,7 @@ with tempfile.TemporaryDirectory() as tmp:
    target='data/assemblies.json';value=read_document(target,root)
    if kind=='empty':value={}
    elif kind=='retired':value['assemblies'][0]['lines'][0]['ref']='bompart.part.z80a'
-   elif kind=='composed_leaf':value['assemblies'][0]['lines'][0]['ref']='part.ram_64kb_x32'
+   elif kind=='composed_leaf':value['assemblies'][0]['lines'][0]['ref']='part.era2_16mhz_rev2'
    else:value['assemblies'][0]['lines'][0]['ref']=value['assemblies'][0]['id']
   try:store_document(target,value,root)
   except (ValueError,KeyError):pass

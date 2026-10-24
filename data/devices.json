@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/collections/devices.schema.json",
-  "schema_version": "3.2.0",
+  "schema_version": "3.3.0",
   "devices": [
     {
       "id": "device.flexibus_keyboard",
@@ -1279,30 +1279,6 @@
       }
     },
     {
-      "id": "device.artemis_ram_64kb_module",
-      "name": "Logix Artemis additional 64 KB RAM module",
-      "category": "memory_expansion",
-      "part_ref": "part.artemis_ram_module_64kb",
-      "compatible_with": [
-        "computer.artemis"
-      ],
-      "sold_separately": false,
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "product_status": "Superseded standalone 8-bit module offer; use matched bank kits.",
-      "superseded_by": [
-        "part.ram_64kb_x32",
-        "part.ram_128kb_x32"
-      ],
-      "manufacturing_requirements": [
-        "Retire/revise this offering to a matched-pair kit. Define separate 64 KiB low-density and 256 KiB high-density bank kits, included modules, compatible host revisions, installation instructions, spares and kit packaging. The old eight-chip module cannot remain under the new electrical rule."
-      ],
-      "manufacturing_status": "excluded_from_active_production",
-      "vendor": "Logix"
-    },
-    {
       "id": "device.network_card_aurelia",
       "name": "Logix Aurelia network card",
       "category": "network_interface_card",
@@ -1447,7 +1423,26 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "network",
+          "name": "Network connection",
+          "sockets": [
+            {
+              "id": "network_out",
+              "name": "Network connection",
+              "connection": "logix_network",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.network_hub.4_port",
+                "device.network_hub.8_port",
+                "device.network_hub.16_port"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.network_card_artemis",
@@ -1601,7 +1596,26 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "network",
+          "name": "Network connection",
+          "sockets": [
+            {
+              "id": "network_out",
+              "name": "Network connection",
+              "connection": "logix_network",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.network_hub.4_port",
+                "device.network_hub.8_port",
+                "device.network_hub.16_port"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.network_hub.4_port",
@@ -1701,7 +1715,25 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "network",
+          "name": "Network connections",
+          "sockets": [
+            {
+              "id": "network_ports",
+              "name": "Network ports",
+              "connection": "logix_network",
+              "capacity": 4,
+              "compatible_device_refs": [
+                "device.network_card_aurelia",
+                "device.network_card_artemis"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.network_hub.8_port",
@@ -1801,7 +1833,25 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "network",
+          "name": "Network connections",
+          "sockets": [
+            {
+              "id": "network_ports",
+              "name": "Network ports",
+              "connection": "logix_network",
+              "capacity": 8,
+              "compatible_device_refs": [
+                "device.network_card_aurelia",
+                "device.network_card_artemis"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.network_hub.16_port",
@@ -1901,7 +1951,25 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "network",
+          "name": "Network connections",
+          "sockets": [
+            {
+              "id": "network_ports",
+              "name": "Network ports",
+              "connection": "logix_network",
+              "capacity": 16,
+              "compatible_device_refs": [
+                "device.network_card_aurelia",
+                "device.network_card_artemis"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.s100_flexibus_card",
@@ -2170,7 +2238,30 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "display",
+          "name": "Display output",
+          "sockets": [
+            {
+              "id": "video_out",
+              "name": "Video output",
+              "connection": "video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.mono_monitor_1",
+                "device.color_monitor_1",
+                "device.mono_monitor_2",
+                "device.color_monitor_2",
+                "device.mono_pro",
+                "device.color_pro_14"
+              ],
+              "qualification_status": "Check selected card/monitor raster and electrical compatibility; list is not blanket qualification."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.s100_video_card",
@@ -2332,7 +2423,30 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "display",
+          "name": "Display output",
+          "sockets": [
+            {
+              "id": "video_out",
+              "name": "Video output",
+              "connection": "video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.mono_monitor_1",
+                "device.color_monitor_1",
+                "device.mono_monitor_2",
+                "device.color_monitor_2",
+                "device.mono_pro",
+                "device.color_pro_14"
+              ],
+              "qualification_status": "Check selected card/monitor raster and electrical compatibility; list is not blanket qualification."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.artemis_video_card",
@@ -2920,7 +3034,30 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "display",
+          "name": "Display output",
+          "sockets": [
+            {
+              "id": "video_out",
+              "name": "Video output",
+              "connection": "video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.mono_monitor_1",
+                "device.color_monitor_1",
+                "device.mono_monitor_2",
+                "device.color_monitor_2",
+                "device.mono_pro",
+                "device.color_pro_14"
+              ],
+              "qualification_status": "Check selected card/monitor raster and electrical compatibility; list is not blanket qualification."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.mono_pro",
@@ -3542,7 +3679,30 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "display",
+          "name": "Display output",
+          "sockets": [
+            {
+              "id": "video_out",
+              "name": "Video output",
+              "connection": "video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.mono_monitor_1",
+                "device.color_monitor_1",
+                "device.mono_monitor_2",
+                "device.color_monitor_2",
+                "device.mono_pro",
+                "device.color_pro_14"
+              ],
+              "qualification_status": "Check selected card/monitor raster and electrical compatibility; list is not blanket qualification."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.artemis_video_card_64kb",
@@ -4219,7 +4379,30 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "display",
+          "name": "Display output",
+          "sockets": [
+            {
+              "id": "video_out",
+              "name": "Video output",
+              "connection": "video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.mono_monitor_1",
+                "device.color_monitor_1",
+                "device.mono_monitor_2",
+                "device.color_monitor_2",
+                "device.mono_pro",
+                "device.color_pro_14"
+              ],
+              "qualification_status": "Check selected card/monitor raster and electrical compatibility; list is not blanket qualification."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.color_pro_14",
@@ -4654,7 +4837,25 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "display",
+          "name": "Display output",
+          "sockets": [
+            {
+              "id": "video_out",
+              "name": "Video output",
+              "connection": "video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.mono_pro_17"
+              ],
+              "qualification_status": "Check selected card/monitor raster and electrical compatibility; list is not blanket qualification."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "device.mono_pro_17",
@@ -4781,6 +4982,2914 @@
         "requirements": [
           "Engineering baseline; electrical qualification, routing and supplier quotes pending."
         ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.artemis_ram_module_prototype",
+      "name": "Artemis prototype RAM module",
+      "category": "memory_expansion",
+      "origin": "custom_logix",
+      "specification": {
+        "chips": 16,
+        "chip_type_ref": "part.dram_16kbit",
+        "physical_arrangement": "4 rows x 4 chips",
+        "capacity_kb": 32,
+        "data_width_bits": 16
+      },
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "product_status": "Historical pre-release engineering subassembly; not a commercial offering. Production replacement is a separate qualified design record.",
+      "manufacturing_status": "excluded_from_active_production",
+      "requirements": [
+        "Retain noncommercial engineering status. Its chip count implies 32 KiB",
+        "define width/PCB/connectors separately from a new shared 64/128 KB 32-bit modules."
+      ]
+    },
+    {
+      "id": "device.artemis_ram_module_64kb",
+      "name": "Artemis RAM Module 1",
+      "category": "memory_expansion",
+      "origin": "custom_logix",
+      "specification": {
+        "capacity_kb": 64,
+        "chips": 8,
+        "chip_type_ref": "part.dram_64kbit",
+        "physical_arrangement": "2 rows x 4 chips"
+      },
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "product_status": "Superseded design assumption; excluded from active manufacturing BOMs.",
+      "superseded_by": [
+        "device.ram_64kb_x32",
+        "device.ram_128kb_x32"
+      ],
+      "manufacturing_status": "excluded_from_active_production",
+      "requirements": [
+        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
+        "identify how existing prototypes/spares are handled."
+      ],
+      "sold_separately": false,
+      "compatible_with": [
+        "computer.artemis"
+      ],
+      "manufacturing_requirements": [
+        "Retire/revise this offering to a matched-pair kit. Define separate 64 KiB low-density and 256 KiB high-density bank kits, included modules, compatible host revisions, installation instructions, spares and kit packaging. The old eight-chip module cannot remain under the new electrical rule."
+      ],
+      "alternate_names": [
+        "Logix Artemis additional 64 KB RAM module"
+      ]
+    },
+    {
+      "id": "device.ram_64kb_x32",
+      "name": "Logix 64 KB 32-bit DRAM module",
+      "vendor": "Logix",
+      "category": "memory_expansion",
+      "origin": "custom_logix",
+      "introduced": {
+        "event_name": "Shared module specification migration; original availability retained",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "capacity_kb": 64,
+        "data_width_bits": 32,
+        "chips": 32,
+        "chip_type_ref": "part.dram_16kbit",
+        "chip_organization": "16K × 1",
+        "ranks": 1,
+        "chips_per_rank": 32,
+        "rank_capacity_kb": 64,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 128,
+        "parity_bits": 0,
+        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+      },
+      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+      "manufacturing_status": "incomplete_bom",
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "bom_assembly_definition": [
+        {
+          "ref": "part.dram_16kbit",
+          "quantity": 32,
+          "unit": "each",
+          "role": "32 data chips per rank; 1 rank(s)",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix 64 KB 32-bit DRAM module",
+        "status": "incomplete",
+        "requirements": [
+          "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+          "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+        "cost_assessment_status": "pending_reassessment"
+      }
+    },
+    {
+      "id": "device.ram_128kb_x32",
+      "name": "Logix 128 KB 32-bit DRAM module",
+      "vendor": "Logix",
+      "category": "memory_expansion",
+      "origin": "custom_logix",
+      "introduced": {
+        "event_name": "Shared module specification migration; original availability retained",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "capacity_kb": 128,
+        "data_width_bits": 32,
+        "chips": 64,
+        "chip_type_ref": "part.dram_16kbit",
+        "chip_organization": "16K × 1",
+        "ranks": 2,
+        "chips_per_rank": 32,
+        "rank_capacity_kb": 64,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 256,
+        "parity_bits": 0,
+        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+      },
+      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+      "manufacturing_status": "incomplete_bom",
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "bom_assembly_definition": [
+        {
+          "ref": "part.dram_16kbit",
+          "quantity": 64,
+          "unit": "each",
+          "role": "32 data chips per rank; 2 rank(s)",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix 128 KB 32-bit DRAM module",
+        "status": "incomplete",
+        "requirements": [
+          "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+          "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+        "cost_assessment_status": "pending_reassessment"
+      }
+    },
+    {
+      "id": "device.ram_256kb_x32",
+      "name": "Logix 256 KB 32-bit DRAM module",
+      "vendor": "Logix",
+      "category": "memory_expansion",
+      "origin": "custom_logix",
+      "introduced": {
+        "event_name": "Shared module specification migration; original availability retained",
+        "event_start_date": "1980-05-19"
+      },
+      "specification": {
+        "capacity_kb": 256,
+        "data_width_bits": 32,
+        "chips": 32,
+        "chip_type_ref": "part.aion_4164",
+        "chip_organization": "64K × 1",
+        "ranks": 1,
+        "chips_per_rank": 32,
+        "rank_capacity_kb": 256,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 512,
+        "parity_bits": 0,
+        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+      },
+      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+      "manufacturing_status": "incomplete_bom",
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "bom_assembly_definition": [
+        {
+          "ref": "part.aion_4164",
+          "quantity": 32,
+          "unit": "each",
+          "role": "32 data chips per rank; 1 rank(s)",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix 256 KB 32-bit DRAM module",
+        "status": "incomplete",
+        "requirements": [
+          "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+          "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+        "cost_assessment_status": "pending_reassessment"
+      }
+    },
+    {
+      "id": "device.ram_256kb_x32_2um",
+      "name": "Logix 256 KB 32-bit DRAM module (2 µm)",
+      "vendor": "Logix",
+      "category": "memory_expansion",
+      "origin": "custom_logix",
+      "introduced": {
+        "event_name": "Shared module specification migration; original availability retained",
+        "event_start_date": "1983-05-16"
+      },
+      "specification": {
+        "capacity_kb": 256,
+        "data_width_bits": 32,
+        "chips": 32,
+        "chip_type_ref": "part.aion_4164_2um",
+        "chip_organization": "64K × 1",
+        "ranks": 1,
+        "chips_per_rank": 32,
+        "rank_capacity_kb": 256,
+        "modules_per_bank": 2,
+        "bank_data_width_bits": 32,
+        "bank_capacity_kb": 512,
+        "parity_bits": 0,
+        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
+        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
+        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
+      },
+      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
+      "manufacturing_status": "incomplete_bom",
+      "requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ],
+      "bom_assembly_definition": [
+        {
+          "ref": "part.aion_4164_2um",
+          "quantity": 32,
+          "unit": "each",
+          "role": "32 data chips per rank; 1 rank(s)",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.module_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.module_connector_contacts",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.decoupling_and_bulk_capacitors",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.data_buffers_and_byte_enable_logic",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_ram_module_128kb.capacity_identification_straps",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix 256 KB 32-bit DRAM module (2 µm)",
+        "status": "incomplete",
+        "requirements": [
+          "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+          "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+        "cost_assessment_status": "pending_reassessment"
+      }
+    },
+    {
+      "id": "device.rom_cartridge.aionix",
+      "name": "AIONix (ERA edition) — ROM cartridge",
+      "category": "rom_cartridge",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "software_refs": [
+        "software.aionix"
+      ],
+      "connection": "rom_cartridge",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.software.aionix.rom_eprom_eeprom_or_media_selection",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.aionix.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.aionix.cartridge_shell_label_and_instructions",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "AIONix physical delivery",
+        "status": "incomplete",
+        "requirements": [
+          "Freeze actual image size and storage technology; do not assume EEPROM by default.",
+          "For XIP choose wide ROM or explicit width adapter/wait states."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.rom_cartridge.aionix_server",
+      "name": "AIONix (Server edition) — ROM cartridge",
+      "category": "rom_cartridge",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "software_refs": [
+        "software.aionix_server"
+      ],
+      "connection": "rom_cartridge",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.software.aionix_server.rom_eprom_eeprom_or_media_selection",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.aionix_server.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.aionix_server.cartridge_shell_label_and_instructions",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "AIONix Server edition physical delivery",
+        "status": "incomplete",
+        "requirements": [
+          "Freeze actual image size and storage technology; do not assume EEPROM by default.",
+          "For XIP choose wide ROM or explicit width adapter/wait states."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.rom_cartridge.cpm_aurelia",
+      "name": "CP/M 1.4-derived / Platform Extensions 1.0 (Aurelia edition) — ROM cartridge",
+      "category": "rom_cartridge",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "software_refs": [
+        "software.cpm_aurelia"
+      ],
+      "connection": "rom_cartridge",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.software.cpm_aurelia.rom_eprom_eeprom_or_media_selection",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.cpm_aurelia.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.cpm_aurelia.cartridge_shell_label_and_instructions",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Enhanced CP/M 1.4 for Logix Aurelia physical delivery",
+        "status": "incomplete",
+        "requirements": [
+          "Freeze actual image size and storage technology; do not assume EEPROM by default.",
+          "For XIP choose wide ROM or explicit width adapter/wait states."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.rom_cartridge.cpm_aurelia_networking",
+      "name": "CP/M (Aurelia networking edition) — ROM cartridge",
+      "category": "rom_cartridge",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "software_refs": [
+        "software.cpm_aurelia_networking"
+      ],
+      "connection": "rom_cartridge",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.software.cpm_aurelia_networking.rom_eprom_eeprom_or_media_selection",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.cpm_aurelia_networking.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.cpm_aurelia_networking.cartridge_shell_label_and_instructions",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Enhanced CP/M networking upgrade for Aurelia physical delivery",
+        "status": "incomplete",
+        "requirements": [
+          "Freeze actual image size and storage technology; do not assume EEPROM by default.",
+          "For XIP choose wide ROM or explicit width adapter/wait states."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.rom_cartridge.business_tools_aurelia",
+      "name": "Business Tools (CP/M edition) — ROM cartridge",
+      "category": "rom_cartridge",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "software_refs": [
+        "software.business_tools_aurelia"
+      ],
+      "connection": "rom_cartridge",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.software.business_tools_aurelia.rom_eprom_eeprom_or_media_selection",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.business_tools_aurelia.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.business_tools_aurelia.cartridge_shell_label_and_instructions",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "AION Software Business Tools expansion physical delivery",
+        "status": "incomplete",
+        "requirements": [
+          "Freeze actual image size and storage technology; do not assume EEPROM by default.",
+          "For XIP choose wide ROM or explicit width adapter/wait states.",
+          "Business Tools Aurelia image allocation is 16 KiB; chip count remains dependent on organization."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.rom_cartridge.business_tools_artemis",
+      "name": "Business Tools (AIONix edition) — ROM cartridge",
+      "category": "rom_cartridge",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "software_refs": [
+        "software.business_tools_artemis"
+      ],
+      "connection": "rom_cartridge",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.software.business_tools_artemis.rom_eprom_eeprom_or_media_selection",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.business_tools_artemis.cartridge_pcb_and_connector_if_cartridge_delivered",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.software.business_tools_artemis.cartridge_shell_label_and_instructions",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "AION Business Tools / Office Suite for Artemis physical delivery",
+        "status": "incomplete",
+        "requirements": [
+          "Freeze actual image size and storage technology; do not assume EEPROM by default.",
+          "For XIP choose wide ROM or explicit width adapter/wait states."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.chassis.aurelia",
+      "name": "Logix Aurelia — bare chassis",
+      "category": "computer_chassis",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "computer_family_ref": "computer.aurelia",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.z80a",
+          "quantity": 1,
+          "unit": "each",
+          "role": "CPU",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.flexibus_host_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "three independent host ports; die port count unresolved",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia.floppy_controller_data_separator_and_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia.mainboard_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.enclosure_and_chassis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.boot_rom_chips",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia.connectors_passives_fasteners_and_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.aurelia_system_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "DMA, memory-bank control and independent system refresh",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.system_controller_interface_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "System controller interface, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.subsystem.aurelia.base_memory",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Permanently fitted system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.subsystem.aurelia.video",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Permanently fitted video subsystem",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Aurelia — bare chassis",
+        "status": "incomplete",
+        "requirements": [
+          "Populate 24 system DRAMs; AION system controller owns decode and refresh",
+          "exact FDD mechanism plus a controller/data separator (not currently a named base part)",
+          "motherboard ROM capacity/package/count and cartridge connectors",
+          "AION system controller owns mapper registers/logic",
+          "clock/reset/interrupt circuitry",
+          "complete mainboard, PSU, enclosure and harnesses. Specify motherboard versus controller-chip integration.",
+          "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
+          "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
+          "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+          "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+          "Power per rail, startup/thermal limits and region-specific power configuration",
+          "Firmware image capacity/revision, programming and verification",
+          "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+          "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+          "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+          "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+          "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+          "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "processor": {
+        "part_ref": "part.z80a"
+      },
+      "form_factor": "slim desktop",
+      "io_and_expansion": {
+        "expansion_slots": {
+          "width_bits": 8,
+          "plug_and_execute": true,
+          "future_pin_area_reserved_for_bits": 32
+        }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "expansion",
+          "name": "Expansion cards",
+          "sockets": [
+            {
+              "id": "expansion",
+              "name": "General expansion slots",
+              "connection": "expansion_card",
+              "capacity": 2,
+              "compatible_device_refs": [
+                "device.network_card_aurelia"
+              ],
+              "capacity_status": "documented",
+              "device_quantity_limits": {
+                "device.aurelia_ram_16kb_card": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "cartridges",
+          "name": "ROM cartridges",
+          "sockets": [
+            {
+              "id": "system_cartridge",
+              "name": "System cartridge slot",
+              "connection": "rom_cartridge",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.rom_cartridge.cpm_aurelia",
+                "device.rom_cartridge.cpm_aurelia_networking"
+              ]
+            },
+            {
+              "id": "application_cartridge",
+              "name": "Application cartridge slot",
+              "connection": "rom_cartridge",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.rom_cartridge.business_tools_aurelia"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "external",
+          "name": "External connections",
+          "sockets": [
+            {
+              "id": "flexibus",
+              "name": "FlexiBUS ports",
+              "connection": "flexibus",
+              "capacity": 3,
+              "compatible_device_refs": [
+                "device.flexibus_keyboard",
+                "device.flexiprint40",
+                "device.flexidisk",
+                "device.flexidisk_ii",
+                "device.logix_mouse"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "display",
+          "name": "Integrated video output",
+          "sockets": [
+            {
+              "id": "video_out",
+              "name": "Video output",
+              "connection": "video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.mono_monitor_1",
+                "device.color_monitor_1",
+                "device.mono_monitor_2",
+                "device.color_monitor_2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "internal_drive",
+          "name": "Internal storage",
+          "sockets": [
+            {
+              "id": "internal_drive",
+              "name": "Internal drive bays",
+              "connection": "internal_storage",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism"
+              ],
+              "capacity_status": "documented_population_only",
+              "requirements": [
+                "Recorded fitted-drive count; additional spare bays are not established."
+              ]
+            }
+          ]
+        }
+      ],
+      "configuration_requirements": {
+        "scope": "complete_system",
+        "rules": [
+          "RAM must satisfy the selected configuration; removable modules are fitted in matched pairs where specified.",
+          "Installed cartridges must match software platform and socket role.",
+          "A monitor connects to an installed video provider, not to an empty video-card socket."
+        ],
+        "external_application_cartridges_supported": true
+      },
+      "memory_constraints": {
+        "max_ram_kib": 64,
+        "mixed_module_types_allowed": false,
+        "qualification_status": "Preserve documented capacity and memory-controller qualification requirements."
+      }
+    },
+    {
+      "id": "device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism",
+      "name": "5.25-inch single density floppy mechanism",
+      "category": "floppy_drive_mechanism",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.computer.aurelia.525_inch_single_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "5.25-inch single density floppy mechanism",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.subsystem.aurelia.base_memory",
+      "name": "Logix Aurelia fixed mainboard RAM",
+      "category": "memory_assembly",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "virtual": true,
+      "selectable": false,
+      "specification": {
+        "capacity_kb": 48
+      },
+      "bom_assembly_definition": [
+        {
+          "ref": "part.dram_16kbit",
+          "quantity": 24,
+          "unit": "each",
+          "role": "system DRAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Aurelia fixed mainboard RAM",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.subsystem.aurelia.video",
+      "name": "Logix Aurelia integrated video subsystem",
+      "category": "video_interface_assembly",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "virtual": true,
+      "selectable": false,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.aurelia_video_chip",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Shared Aurelia / Aurelia+ video controller",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.aion_4116",
+          "quantity": 8,
+          "unit": "each",
+          "role": "Separate 16 KiB video RAM: eight AION-manufactured 4116-equivalent 16Kx1 DRAM chips",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.aion_2114",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Exclusive 1 KiB sprite SRAM on separate bus",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.sprite_interface_package_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Sprite interface package, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Aurelia integrated video subsystem",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.chassis.aurelia_plus",
+      "name": "Logix Aurelia+ — bare chassis",
+      "category": "computer_chassis",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "computer_family_ref": "computer.aurelia_plus",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.z80b",
+          "quantity": 1,
+          "unit": "each",
+          "role": "CPU",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.flexibus_host_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "three independent host ports; die port count unresolved",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.floppy_controller_data_separator_and_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.mainboard_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.enclosure_and_chassis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.boot_rom_chips",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.aurelia_system_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "DMA, memory-bank control and independent system refresh",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.system_controller_interface_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "System controller interface, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.subsystem.aurelia_plus.base_memory",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Permanently fitted system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.subsystem.aurelia_plus.video",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Permanently fitted video subsystem",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Aurelia+ — bare chassis",
+        "status": "incomplete",
+        "requirements": [
+          "Qualify eight AION-manufactured 64K×1 DRAMs (64 KiB total, one 8-bit bank) before December 1979. Confirm package/pinout, supply rails, retention, refresh deadlines and 6 MHz host timing.",
+          "Populate one shared Aurelia video controller and eight AION-manufactured 4116-equivalent 16Kx1 DRAMs (16 KiB). Qualify CPU arbitration at the host clock, refresh, pixel FIFO deadlines, package, rails and external video/control line drivers.",
+          "Qualify dual-drive controller/mechanisms, ROM images/capacities, 6 MHz host timing and PSU/thermal deltas.",
+          "Provide three independent point-to-point FlexiBUS host ports, including connectors, transceivers, protection and power budget; qualify simultaneous keyboard, disk and printer service. Controller die count depends on ports per die.",
+          "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+          "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+          "Power per rail, startup/thermal limits and region-specific power configuration",
+          "Firmware image capacity/revision, programming and verification",
+          "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+          "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
+          "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap.",
+          "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
+          "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
+          "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "processor": {
+        "part_ref": "part.z80b"
+      },
+      "form_factor": "slim desktop",
+      "io_and_expansion": {
+        "expansion_slots": {
+          "width_bits": 8,
+          "plug_and_execute": true,
+          "future_pin_area_reserved_for_bits": 32
+        }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "expansion",
+          "name": "Expansion cards",
+          "sockets": [
+            {
+              "id": "expansion",
+              "name": "General expansion slots",
+              "connection": "expansion_card",
+              "capacity": 2,
+              "compatible_device_refs": [
+                "device.network_card_aurelia"
+              ],
+              "capacity_status": "documented"
+            }
+          ]
+        },
+        {
+          "id": "cartridges",
+          "name": "ROM cartridges",
+          "sockets": [
+            {
+              "id": "system_cartridge",
+              "name": "System cartridge slot",
+              "connection": "rom_cartridge",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.rom_cartridge.cpm_aurelia",
+                "device.rom_cartridge.cpm_aurelia_networking"
+              ]
+            },
+            {
+              "id": "application_cartridge",
+              "name": "Application cartridge slot",
+              "connection": "rom_cartridge",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.rom_cartridge.business_tools_aurelia"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "external",
+          "name": "External connections",
+          "sockets": [
+            {
+              "id": "flexibus",
+              "name": "FlexiBUS ports",
+              "connection": "flexibus",
+              "capacity": 3,
+              "compatible_device_refs": [
+                "device.flexibus_keyboard",
+                "device.flexiprint40",
+                "device.flexidisk",
+                "device.flexidisk_ii",
+                "device.logix_mouse"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "display",
+          "name": "Integrated video output",
+          "sockets": [
+            {
+              "id": "video_out",
+              "name": "Video output",
+              "connection": "video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.mono_monitor_1",
+                "device.color_monitor_1",
+                "device.mono_monitor_2",
+                "device.color_monitor_2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "internal_drive",
+          "name": "Internal storage",
+          "sockets": [
+            {
+              "id": "internal_drive",
+              "name": "Internal drive bays",
+              "connection": "internal_storage",
+              "capacity": 2,
+              "compatible_device_refs": [
+                "device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism"
+              ],
+              "capacity_status": "documented_population_only",
+              "requirements": [
+                "Recorded fitted-drive count; additional spare bays are not established."
+              ]
+            }
+          ]
+        }
+      ],
+      "configuration_requirements": {
+        "scope": "complete_system",
+        "rules": [
+          "RAM must satisfy the selected configuration; removable modules are fitted in matched pairs where specified.",
+          "Installed cartridges must match software platform and socket role.",
+          "A monitor connects to an installed video provider, not to an empty video-card socket."
+        ],
+        "external_application_cartridges_supported": true
+      },
+      "memory_constraints": {
+        "max_ram_kib": 64,
+        "mixed_module_types_allowed": false,
+        "qualification_status": "Preserve documented capacity and memory-controller qualification requirements."
+      }
+    },
+    {
+      "id": "device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism",
+      "name": "5.25-inch double density floppy mechanism",
+      "category": "floppy_drive_mechanism",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.computer.aurelia_plus.525_inch_double_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "5.25-inch double density floppy mechanism",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.subsystem.aurelia_plus.base_memory",
+      "name": "Logix Aurelia+ fixed mainboard RAM",
+      "category": "memory_assembly",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "virtual": true,
+      "selectable": false,
+      "specification": {
+        "capacity_kb": 64
+      },
+      "bom_assembly_definition": [
+        {
+          "ref": "part.aion_4164",
+          "quantity": 8,
+          "unit": "each",
+          "role": "64 KiB system RAM: eight AION 64K×1 DRAMs",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Aurelia+ fixed mainboard RAM",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.subsystem.aurelia_plus.video",
+      "name": "Logix Aurelia+ integrated video subsystem",
+      "category": "video_interface_assembly",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "virtual": true,
+      "selectable": false,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.aurelia_video_chip",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Shared Aurelia / Aurelia+ video controller",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.aion_4116",
+          "quantity": 8,
+          "unit": "each",
+          "role": "Separate 16 KiB video RAM: eight AION-manufactured 4116-equivalent 16Kx1 DRAM chips",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.aion_2114",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Exclusive 1 KiB sprite SRAM on separate bus",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.sprite_interface_package_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Sprite interface package, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Aurelia+ integrated video subsystem",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.chassis.artemis",
+      "name": "Logix Artemis — bare chassis",
+      "category": "computer_chassis",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "computer_family_ref": "computer.artemis",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.erav1_6mhz",
+          "quantity": 1,
+          "unit": "each",
+          "role": "CPU",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_dma",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_mmu",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_fdd_hdd_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.flexibus_host_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis.paired_bank_dram_controller_refresh_and_data_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis.mainboard_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis.psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis.enclosure_and_chassis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis.boot_rom_chips",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis.clock_reset_interrupts_mapper_and_bus_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis.connectors_passives_fasteners_and_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Artemis — bare chassis",
+        "status": "incomplete",
+        "requirements": [
+          "Replace old module model with the two-density, four-bank architecture. Add DRAM controller/refresh/buffers and capacity straps, numeric physical map, boot/reset ROM path, bus width adapters and exact custom-chip quantities/packages. Define FDD mechanisms and HDD interface even when no HDD ships. Cost pre-1981 and networking-included 1981 revisions separately. Determine which chip implements four FlexiBUS ports.",
+          "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+          "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+          "Power per rail, startup/thermal limits and region-specific power configuration",
+          "Firmware image capacity/revision, programming and verification",
+          "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "processor": {
+        "part_ref": "part.erav1_6mhz"
+      },
+      "form_factor": "full desktop",
+      "io_and_expansion": {
+        "expansion_slots": {
+          "width_bits": 32,
+          "plug_and_execute": true
+        },
+        "rom_eeprom_cartridge_slots": {
+          "rear": "operating system",
+          "front": "office/application cartridge"
+        },
+        "dedicated_video_slot": {
+          "replaceable": true,
+          "hot_swap": false,
+          "general_purpose_slots_consumed": 0,
+          "interface": "Keyed dedicated connector; buffered host data/address, wait/ready, DMA access and independent card clocks; electrical pinout pending."
+        }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "memory",
+          "name": "RAM modules",
+          "sockets": [
+            {
+              "id": "ram",
+              "name": "RAM sockets",
+              "connection": "memory_module",
+              "capacity": 8,
+              "compatible_device_refs": [
+                "device.ram_64kb_x32",
+                "device.ram_128kb_x32",
+                "device.ram_256kb_x32"
+              ],
+              "installation_multiple": 2,
+              "matched_modules": true,
+              "capacity_status": "documented",
+              "population_order": "Fill matched pairs consecutively, starting with sockets 1 and 2."
+            }
+          ]
+        },
+        {
+          "id": "expansion",
+          "name": "Expansion cards",
+          "sockets": [
+            {
+              "id": "expansion",
+              "name": "General expansion slots",
+              "connection": "expansion_card",
+              "capacity": 4,
+              "compatible_device_refs": [
+                "device.artemis_cpm80_module",
+                "device.artemis_professional_video_128kb",
+                "device.network_card_artemis"
+              ],
+              "capacity_status": "documented"
+            }
+          ]
+        },
+        {
+          "id": "graphics",
+          "name": "Video card",
+          "sockets": [
+            {
+              "id": "video_card",
+              "name": "Dedicated video slot",
+              "connection": "dedicated_video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.artemis_video_card",
+                "device.artemis_video_card_16kb",
+                "device.artemis_video_card_64kb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cartridges",
+          "name": "ROM cartridges",
+          "sockets": [
+            {
+              "id": "system_cartridge",
+              "name": "System cartridge slot",
+              "connection": "rom_cartridge",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.rom_cartridge.aionix",
+                "device.rom_cartridge.aionix_server"
+              ]
+            },
+            {
+              "id": "application_cartridge",
+              "name": "Application cartridge slot",
+              "connection": "rom_cartridge",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.rom_cartridge.business_tools_artemis"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "external",
+          "name": "External connections",
+          "sockets": [
+            {
+              "id": "flexibus",
+              "name": "FlexiBUS ports",
+              "connection": "flexibus",
+              "capacity": 4,
+              "compatible_device_refs": [
+                "device.flexibus_keyboard",
+                "device.flexiprint40",
+                "device.flexidisk",
+                "device.flexidisk_ii",
+                "device.logix_mouse"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "internal_drive",
+          "name": "Internal storage",
+          "sockets": [
+            {
+              "id": "internal_drive",
+              "name": "Internal drive bays",
+              "connection": "internal_storage",
+              "capacity": 2,
+              "compatible_device_refs": [
+                "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+                "device.storage.hdd_5mb"
+              ],
+              "capacity_status": "documented_population_only",
+              "requirements": [
+                "Recorded fitted-drive count; additional spare bays are not established."
+              ]
+            }
+          ]
+        }
+      ],
+      "configuration_requirements": {
+        "scope": "complete_system",
+        "rules": [
+          "RAM must satisfy the selected configuration; removable modules are fitted in matched pairs where specified.",
+          "Installed cartridges must match software platform and socket role.",
+          "A monitor connects to an installed video provider, not to an empty video-card socket."
+        ],
+        "external_application_cartridges_supported": true
+      },
+      "memory_constraints": {
+        "max_ram_kib": 1024,
+        "mixed_module_types_allowed": false,
+        "qualification_status": "Design target; all-bank timing, loading and power qualification pending."
+      }
+    },
+    {
+      "id": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+      "name": "5.25-inch double density floppy mechanism",
+      "category": "floppy_drive_mechanism",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "5.25-inch double density floppy mechanism",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.chassis.artemis_pro",
+      "name": "Logix Artemis PRO — bare chassis",
+      "category": "computer_chassis",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "computer_family_ref": "computer.artemis_pro",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.erav1_8mhz",
+          "quantity": 1,
+          "unit": "each",
+          "role": "CPU",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_dma",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_mmu",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_fdd_hdd_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.flexibus_host_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis_pro.paired_bank_dram_controller_refresh_and_data_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis_pro.mainboard_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis_pro.psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis_pro.enclosure_and_chassis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis_pro.boot_rom_chips",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis_pro.clock_reset_interrupts_mapper_and_bus_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis_pro.connectors_passives_fasteners_and_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Artemis PRO — bare chassis",
+        "status": "incomplete",
+        "requirements": [
+          "Remove 128 Kbit dependency",
+          "use four/eight high-density modules and two/four banks. Specify 8 MHz die/speed-bin and MMU timing, power and cooling at full population, exact HDD model and interface/format, network integration boundary, optional parity policy, RTC/battery need, and boot/service-console policy. Original server-only bundles exclude keyboard/monitor and still require validated headless operation or an optional console. New Mono Pro console bundles explicitly include both. Announcement is recorded for 1981-05-04",
+          "actual shipping date remains unspecified.",
+          "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+          "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+          "Power per rail, startup/thermal limits and region-specific power configuration",
+          "Firmware image capacity/revision, programming and verification",
+          "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+        ],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "processor": {
+        "part_ref": "part.erav1_8mhz"
+      },
+      "form_factor": "full desktop / server",
+      "io_and_expansion": {
+        "expansion_slots": {
+          "width_bits": 32,
+          "plug_and_execute": true
+        },
+        "rom_eeprom_cartridge_slots": {
+          "rear": "operating system",
+          "front": "office/application cartridge"
+        },
+        "dedicated_video_slot": {
+          "replaceable": true,
+          "hot_swap": false,
+          "general_purpose_slots_consumed": 0,
+          "interface": "Keyed dedicated connector; buffered host data/address, wait/ready, DMA access and independent card clocks; electrical pinout pending."
+        }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "memory",
+          "name": "RAM modules",
+          "sockets": [
+            {
+              "id": "ram",
+              "name": "RAM sockets",
+              "connection": "memory_module",
+              "capacity": 8,
+              "compatible_device_refs": [
+                "device.ram_256kb_x32",
+                "device.ram_128kb_x32"
+              ],
+              "installation_multiple": 2,
+              "matched_modules": true,
+              "capacity_status": "documented",
+              "population_order": "Fill matched pairs consecutively, starting with sockets 1 and 2."
+            }
+          ]
+        },
+        {
+          "id": "expansion",
+          "name": "Expansion cards",
+          "sockets": [
+            {
+              "id": "expansion",
+              "name": "General expansion slots",
+              "connection": "expansion_card",
+              "capacity": 4,
+              "compatible_device_refs": [
+                "device.artemis_professional_video_128kb",
+                "device.network_card_artemis"
+              ],
+              "capacity_status": "documented"
+            }
+          ]
+        },
+        {
+          "id": "graphics",
+          "name": "Video card",
+          "sockets": [
+            {
+              "id": "video_card",
+              "name": "Dedicated video slot",
+              "connection": "dedicated_video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.artemis_video_card",
+                "device.artemis_video_card_64kb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cartridges",
+          "name": "ROM cartridges",
+          "sockets": [
+            {
+              "id": "system_cartridge",
+              "name": "System cartridge slot",
+              "connection": "rom_cartridge",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.rom_cartridge.aionix",
+                "device.rom_cartridge.aionix_server"
+              ]
+            },
+            {
+              "id": "application_cartridge",
+              "name": "Application cartridge slot",
+              "connection": "rom_cartridge",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.rom_cartridge.business_tools_artemis"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "external",
+          "name": "External connections",
+          "sockets": [
+            {
+              "id": "flexibus",
+              "name": "FlexiBUS ports",
+              "connection": "flexibus",
+              "capacity": 4,
+              "compatible_device_refs": [
+                "device.flexibus_keyboard",
+                "device.flexiprint40",
+                "device.flexidisk",
+                "device.flexidisk_ii",
+                "device.logix_mouse"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "internal_drive",
+          "name": "Internal storage",
+          "sockets": [
+            {
+              "id": "internal_drive",
+              "name": "Internal drive bays",
+              "connection": "internal_storage",
+              "capacity": 3,
+              "compatible_device_refs": [
+                "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+                "device.storage.hdd_5mb"
+              ],
+              "capacity_status": "documented_population_only",
+              "requirements": [
+                "Recorded fitted-drive count; additional spare bays are not established."
+              ]
+            }
+          ]
+        }
+      ],
+      "configuration_requirements": {
+        "scope": "complete_system",
+        "rules": [
+          "RAM must satisfy the selected configuration; removable modules are fitted in matched pairs where specified.",
+          "Installed cartridges must match software platform and socket role.",
+          "A monitor connects to an installed video provider, not to an empty video-card socket."
+        ],
+        "external_application_cartridges_supported": true
+      },
+      "memory_constraints": {
+        "max_ram_kib": 1024,
+        "mixed_module_types_allowed": false,
+        "qualification_status": "Design target; all-bank timing, loading and power qualification pending."
+      }
+    },
+    {
+      "id": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+      "name": "5.25-inch double density floppy mechanism",
+      "category": "floppy_drive_mechanism",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "5.25-inch double density floppy mechanism",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.storage.hdd_5mb",
+      "name": "Seagate ST506 5 MB hard disk drive",
+      "category": "hard_disk_drive",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "bom_assembly_definition": [
+        {
+          "ref": "part.hdd_5mb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Seagate ST506 5 MB hard disk drive",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.chassis.athena",
+      "name": "Logix Athena — bare chassis",
+      "category": "computer_chassis",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "computer_family_ref": "computer.athena",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.era2_12mhz",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.athena.bios",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.athena.mainboard_set",
+          "quantity": 1,
+          "unit": "each",
+          "role": "functional set",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.athena.system_rom",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Athena — bare chassis",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "processor": {
+        "part_ref": "part.era2_12mhz",
+        "clock_status": "Target pending qualification"
+      },
+      "form_factor": "desktop/server chassis; mechanical design pending",
+      "io_and_expansion": {
+        "rom_eeprom_cartridge_slots": {},
+        "application_rom_cards_supported": false,
+        "eeprom_bios": {
+          "included": true,
+          "capacity_kb": null,
+          "purpose": "Boot, hardware initialization, diagnostics and selection of ROM-backed AIONix2/recovery or disk patches."
+        }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "memory",
+          "name": "RAM modules",
+          "sockets": [
+            {
+              "id": "ram",
+              "name": "RAM sockets",
+              "connection": "memory_module",
+              "capacity": null,
+              "compatible_device_refs": [
+                "device.ram_128kb_x32"
+              ],
+              "installation_multiple": 2,
+              "matched_modules": true,
+              "capacity_status": "unresolved",
+              "population_order": "Fill matched pairs consecutively, starting with sockets 1 and 2."
+            }
+          ]
+        },
+        {
+          "id": "expansion",
+          "name": "Expansion cards",
+          "sockets": [
+            {
+              "id": "expansion",
+              "name": "General expansion slots",
+              "connection": "expansion_card",
+              "capacity": null,
+              "compatible_device_refs": [
+                "device.network_card_artemis"
+              ],
+              "capacity_status": "unresolved"
+            }
+          ]
+        },
+        {
+          "id": "graphics",
+          "name": "Video card",
+          "sockets": [
+            {
+              "id": "video_card",
+              "name": "Dedicated video slot",
+              "connection": "dedicated_video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.artemis_video_card_64kb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cartridges",
+          "name": "ROM cartridges",
+          "sockets": []
+        },
+        {
+          "id": "internal_drive",
+          "name": "Internal storage",
+          "sockets": [
+            {
+              "id": "internal_drive",
+              "name": "Internal drive bays",
+              "connection": "internal_storage",
+              "capacity": 2,
+              "compatible_device_refs": [
+                "device.athena.fdd",
+                "device.athena.hdd"
+              ],
+              "capacity_status": "documented_population_only",
+              "requirements": [
+                "Recorded fitted-drive count; additional spare bays are not established."
+              ]
+            }
+          ]
+        }
+      ],
+      "configuration_requirements": {
+        "scope": "complete_system",
+        "rules": [
+          "RAM must satisfy the selected configuration; removable modules are fitted in matched pairs where specified.",
+          "Installed cartridges must match software platform and socket role.",
+          "A monitor connects to an installed video provider, not to an empty video-card socket."
+        ],
+        "external_application_cartridges_supported": false
+      },
+      "memory_constraints": {
+        "max_ram_kib": null,
+        "mixed_module_types_allowed": false,
+        "qualification_status": "Installed configuration is specified; maximum board capacity/socket count remain open and are not the CPU address-space limit."
+      }
+    },
+    {
+      "id": "device.athena.hdd",
+      "name": "Logix Athena Internal HDD",
+      "category": "hard_disk_drive",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.athena.hdd",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Athena Internal HDD",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.athena.fdd",
+      "name": "Logix Athena 5.25-inch DS/DD FDD",
+      "category": "floppy_drive_mechanism",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.athena.fdd",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Athena 5.25-inch DS/DD FDD",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.athena.system_rom",
+      "name": "Logix Athena Directly executable AIONix2 system ROM bank",
+      "category": "firmware_memory",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "on_mainboard",
+      "selectable": false,
+      "software_refs": [
+        "software.aionix2"
+      ],
+      "bom_assembly_definition": [
+        {
+          "ref": "part.athena.system_rom",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Athena Directly executable AIONix2 system ROM bank",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.chassis.athena_server",
+      "name": "Logix Athena Server — bare chassis",
+      "category": "computer_chassis",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "computer_family_ref": "computer.athena_server",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.era2_12mhz",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.athena_server.bios",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.athena_server.mainboard_set",
+          "quantity": 1,
+          "unit": "each",
+          "role": "functional set",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.athena_server.system_rom",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Athena Server — bare chassis",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "processor": {
+        "part_ref": "part.era2_12mhz",
+        "clock_status": "Target pending qualification"
+      },
+      "form_factor": "desktop/server chassis; mechanical design pending",
+      "io_and_expansion": {
+        "rom_eeprom_cartridge_slots": {},
+        "application_rom_cards_supported": false,
+        "eeprom_bios": {
+          "included": true,
+          "capacity_kb": null,
+          "purpose": "Boot, hardware initialization, diagnostics and selection of ROM-backed AIONix2/recovery or disk patches."
+        }
+      },
+      "expansion_socket_groups": [
+        {
+          "id": "memory",
+          "name": "RAM modules",
+          "sockets": [
+            {
+              "id": "ram",
+              "name": "RAM sockets",
+              "connection": "memory_module",
+              "capacity": null,
+              "compatible_device_refs": [
+                "device.ram_256kb_x32_2um"
+              ],
+              "installation_multiple": 2,
+              "matched_modules": true,
+              "capacity_status": "unresolved",
+              "population_order": "Fill matched pairs consecutively, starting with sockets 1 and 2."
+            }
+          ]
+        },
+        {
+          "id": "expansion",
+          "name": "Expansion cards",
+          "sockets": [
+            {
+              "id": "expansion",
+              "name": "General expansion slots",
+              "connection": "expansion_card",
+              "capacity": null,
+              "compatible_device_refs": [
+                "device.network_card_artemis"
+              ],
+              "capacity_status": "unresolved"
+            }
+          ]
+        },
+        {
+          "id": "graphics",
+          "name": "Video card",
+          "sockets": [
+            {
+              "id": "video_card",
+              "name": "Dedicated video slot",
+              "connection": "dedicated_video",
+              "capacity": 1,
+              "compatible_device_refs": [
+                "device.artemis_video_card_64kb"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cartridges",
+          "name": "ROM cartridges",
+          "sockets": []
+        },
+        {
+          "id": "internal_drive",
+          "name": "Internal storage",
+          "sockets": [
+            {
+              "id": "internal_drive",
+              "name": "Internal drive bays",
+              "connection": "internal_storage",
+              "capacity": 2,
+              "compatible_device_refs": [
+                "device.athena_server.fdd",
+                "device.athena_server.hdd"
+              ],
+              "capacity_status": "documented_population_only",
+              "requirements": [
+                "Recorded fitted-drive count; additional spare bays are not established."
+              ]
+            }
+          ]
+        }
+      ],
+      "configuration_requirements": {
+        "scope": "complete_system",
+        "rules": [
+          "RAM must satisfy the selected configuration; removable modules are fitted in matched pairs where specified.",
+          "Installed cartridges must match software platform and socket role.",
+          "A monitor connects to an installed video provider, not to an empty video-card socket."
+        ],
+        "external_application_cartridges_supported": false
+      },
+      "memory_constraints": {
+        "max_ram_kib": null,
+        "mixed_module_types_allowed": false,
+        "qualification_status": "Installed configuration is specified; maximum board capacity/socket count remain open and are not the CPU address-space limit."
+      }
+    },
+    {
+      "id": "device.athena_server.hdd",
+      "name": "Logix Athena Server Internal HDD",
+      "category": "hard_disk_drive",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.athena_server.hdd",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Athena Server Internal HDD",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.athena_server.fdd",
+      "name": "Logix Athena Server 5.25-inch DS/DD FDD",
+      "category": "floppy_drive_mechanism",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "internal_storage",
+      "selectable": true,
+      "bom_assembly_definition": [
+        {
+          "ref": "part.athena_server.fdd",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Athena Server 5.25-inch DS/DD FDD",
+        "status": "incomplete",
+        "requirements": [],
+        "routing": {
+          "operations": [],
+          "minutes_per_unit": null,
+          "first_pass_yield": null,
+          "rework_rate": null,
+          "scrap_rate": null,
+          "fixture_refs": []
+        },
+        "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      }
+    },
+    {
+      "id": "device.athena_server.system_rom",
+      "name": "Logix Athena Server Directly executable AIONix2 system ROM bank",
+      "category": "firmware_memory",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturing_status": "incomplete_bom",
+      "connection": "on_mainboard",
+      "selectable": false,
+      "software_refs": [
+        "software.aionix2"
+      ],
+      "bom_assembly_definition": [
+        {
+          "ref": "part.athena_server.system_rom",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "bom_assembly_metadata": {
+        "name": "Logix Athena Server Directly executable AIONix2 system ROM bank",
+        "status": "incomplete",
+        "requirements": [],
         "routing": {
           "operations": [],
           "minutes_per_unit": null,

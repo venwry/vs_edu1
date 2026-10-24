@@ -11,14 +11,15 @@ jsonschema.Draft202012Validator(read('schemas/legacy/hardware_bom.schema.json'))
 records={r['id']:r for v in t.values() if isinstance(v,list) for r in v if isinstance(r,dict) and 'id'in r}
 products={r['catalog_ref']:r for r in bom['products']};components={r['id']:r for r in bom['components']};assemblies={r['id']:r for r in bom['assemblies']}
 assert len(products)==len(bom['products']);assert len(components)==len(bom['components']);assert len(assemblies)==len(bom['assemblies'])
-assert {r['id'] for key in ['computers','devices'] for r in t[key]} <= set(products) <= set(records)
+assert {r['id'] for r in t['computers']} <= set(products) <= set(records)
+assert all(d['id'] in assemblies or d['manufacturing_status']=='excluded_from_active_production' for d in t['devices'])
 assert {r['catalog_ref'] for r in bom['offers']}=={r['id'] for r in t['offered_bundles']}
 for p in products.values():
- assert set(p['assembly_refs'])<=assemblies.keys()
+ assert set(p['assembly_refs'])<=assemblies.keys()|{id for id,p in components.items() if p['bom_role']=='material'}
  assert bool(p['assembly_refs'])==(p['production_status']!='excluded'),p['catalog_ref']
 for c in components.values():
  assert 'catalog_ref' not in c and records[c['id']]==c
- if c['id'] in ['part.dram_128kbit','part.artemis_ram_module_64kb','part.artemis_ram_module_prototype']:assert c['bom_role']=='specification'
+ if c['id'] in ['part.dram_128kbit','device.artemis_ram_module_64kb','device.artemis_ram_module_prototype']:assert c['bom_role']=='specification'
 for a in assemblies.values():
  for l in a['lines']:
   assert l['ref'] in components or l['ref'] in assemblies,(a['id'],l['ref'])
@@ -33,13 +34,13 @@ def explode(id,stack=()):
   if l['quantity'] is not None:out.update({k:v*l['quantity'] for k,v in child.items()})
  return out # known-quantity inventory ONLY, never a price for unresolved lines
 for id in assemblies:explode(id)
-for id in ['part.ram_64kb_x32','part.ram_128kb_x32','part.ram_256kb_x32','part.ram_256kb_x32_2um']:
+for id in ['device.ram_64kb_x32','device.ram_128kb_x32','device.ram_256kb_x32','device.ram_256kb_x32_2um']:
  s=records[id]['specification'];chip=records[s['chip_type_ref']]['specification']
  assert s['data_width_bits']==32 and s['chips_per_rank']==32
  assert s['chips']==s['ranks']*32 and chip['data_width_bits']==1
  assert s['chips']*chip['capacity_kbit']/8==s['capacity_kb']
  assert s['bank_capacity_kb']==2*s['capacity_kb'] and s['bank_data_width_bits']==32
- inv=explode('assembly.'+id);assert inv[s['chip_type_ref']]==s['chips']
+ inv=explode(id);assert inv[s['chip_type_ref']]==s['chips']
 for id in ['computer.artemis','computer.artemis_pro']:
  mem=records[id]['memory'];assert 'module_ref' not in mem
  assert mem['ram_sockets']==8 and mem['bank_count']==4
@@ -77,6 +78,6 @@ for offer in bom['offers']:
  for v in offer.get('variants',[]):
   inv=explode(v['assembly_ref']);assert inv['part.device.network_card_artemis.network_card_pcb']==1
   refs=[l['ref'] for l in assemblies[v['assembly_ref']]['lines']]
-  assert 'assembly.media.software.aionix_server' in refs and 'assembly.media.software.aionix' not in refs
+  assert 'device.rom_cartridge.aionix_server' in refs and 'device.rom_cartridge.aionix' not in refs
 assert {a for a in assemblies if a.startswith('device.network_hub.')}=={f'device.network_hub.{n}_port' for n in [4,8,16]}
 print(f'Validated RAM arithmetic and paired banks; {len(products)} hardware records, {len(assemblies)} BOM assemblies and all {len(bom["offers"])} offers. Unresolved lines remain blocked for costing.')

@@ -24,7 +24,9 @@ for key in ['computers','devices','platform_editions','offered_bundles','commerc
  for r in c[key]:
   d=date(r)
   if not d:continue
-  refs=set(r.get('bom_assembly_refs',[]));refs.add(r.get('bom_assembly_ref'))
+  refs=set(r.get('bom_assembly_refs',[])+r.get('physical_media_refs',[]));
+  if r['id'] in assemblies:refs.add(r['id'])
+  refs.add(r.get('bom_assembly_ref'))
   for p in b['products']:
    if p['catalog_ref']==r['id']:refs.update(p.get('assembly_refs',[]))
   for p in b['offers']:

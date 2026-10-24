@@ -3,7 +3,7 @@
 ## One source layer
 
 The 24 JSON files immediately under `data/` are the authoritative collections.
-Edit their records directly. Roots declare `schema_version: "3.0.0"` (components use `"3.1.0"`) and a
+Edit their records directly. Roots declare `schema_version: "3.0.0"` (components, devices, computers and software editions use `"3.3.0"`) and a
 relative `$schema` pointing to its contract in `schemas/collections/`.
 There are no persisted generated catalogues and no per-record files or manifest.
 `data/site.json` owns navigation and page configuration.
@@ -12,7 +12,7 @@ Collections group records by domain; file boundaries do not define identity.
 Keep existing stable IDs and reference fields. Names are labels, never join keys.
 Keep meaningful unknowns, unknown quantities, units, date precision, supplier attribution and
 record order. Do not invent values or split combined supplied components.
-Offers, assemblies and product BOM mappings retain their existing meanings.
+Offers and product BOM mappings retain their existing meanings. Product BOM targets may be material component IDs as well as assembly/device IDs. Computer assemblies contain devices and parts directly; single-material assembly.part wrappers are retired.
 
 `schemas/data-registry.json` lists collection files and field ownership for
 compatibility views. It contains no record payloads or per-record registrations.
@@ -98,3 +98,7 @@ Device schema 3.2 stores BOM lines in `bom_assembly_definition` and the remainin
 assembly attributes in `bom_assembly_metadata`. Standalone assemblies and device
 IDs share the runtime BOM index; resolve references by index membership.
 See [DEVICE_BOM_MIGRATION.md](DEVICE_BOM_MIGRATION.md).
+
+For chassis, slots, processor bins, RAM devices and physical media ownership, read
+[CHASSIS_DEVICE_MIGRATION.md](CHASSIS_DEVICE_MIGRATION.md). Run
+`python tests/validate_chassis_migration.py` after structural hardware changes.

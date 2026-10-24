@@ -913,10 +913,10 @@
           "module_data_width_bits": 32,
           "bank_data_width_bits": 32,
           "supported_module_refs": [
-            "part.ram_64kb_x32",
-            "part.ram_128kb_x32",
-            "part.ram_256kb_x32",
-            "part.ram_256kb_x32_2um"
+            "device.ram_64kb_x32",
+            "device.ram_128kb_x32",
+            "device.ram_256kb_x32",
+            "device.ram_256kb_x32_2um"
           ],
           "mixed_density_allowed": false,
           "physical_limit_kb": 1024,
@@ -1637,7 +1637,8 @@
         "policy_file": "memory_manufacturing.json"
       },
       "used_by": [
-        "part.era1",
+        "part.erav1_6mhz",
+        "part.erav1_8mhz",
         "part.aion_4164"
       ]
     },

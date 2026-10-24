@@ -13,7 +13,7 @@
       "const": "../schemas/collections/computers.schema.json"
     },
     "schema_version": {
-      "const": "3.0.0"
+      "const": "3.3.0"
     },
     "computers": {
       "type": "array",
@@ -219,6 +219,17 @@
                 "type": [
                   "array"
                 ]
+              },
+              "chassis_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "default_video_card_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "configuration_video_card_refs": {
+                "type": "object"
               }
             }
           }

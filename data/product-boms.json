@@ -281,7 +281,7 @@
       ]
     },
     {
-      "catalog_ref": "device.artemis_ram_64kb_module",
+      "catalog_ref": "device.artemis_ram_module_64kb",
       "production_status": "excluded",
       "assembly_refs": [],
       "requirements": [
@@ -290,7 +290,9 @@
         "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
         "Power per rail, startup/thermal limits and region-specific power configuration",
         "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
+        "identify how existing prototypes/spares are handled."
       ]
     },
     {
@@ -376,7 +378,7 @@
       "catalog_ref": "part.z80a",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.z80a"
+        "part.z80a"
       ],
       "requirements": [
         "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card.",
@@ -391,7 +393,7 @@
       "catalog_ref": "part.z80b",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.z80b"
+        "part.z80b"
       ],
       "requirements": [
         "Same, with 6 MHz timing and December 1979 sourcing qualification",
@@ -404,10 +406,10 @@
       ]
     },
     {
-      "catalog_ref": "part.era1",
+      "catalog_ref": "part.erav1_6mhz",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.era1"
+        "part.erav1_6mhz"
       ],
       "requirements": [
         "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost.",
@@ -422,7 +424,7 @@
       "catalog_ref": "part.dram_16kbit",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.dram_16kbit"
+        "part.dram_16kbit"
       ],
       "requirements": [
         "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
@@ -438,7 +440,7 @@
       "catalog_ref": "part.dram_64kbit",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.dram_64kbit"
+        "part.dram_64kbit"
       ],
       "requirements": [
         "Add 64K×1 and sourcing by launch date",
@@ -465,7 +467,7 @@
       ]
     },
     {
-      "catalog_ref": "part.artemis_ram_module_prototype",
+      "catalog_ref": "device.artemis_ram_module_prototype",
       "production_status": "excluded",
       "assembly_refs": [],
       "requirements": [
@@ -479,24 +481,10 @@
       ]
     },
     {
-      "catalog_ref": "part.artemis_ram_module_64kb",
-      "production_status": "excluded",
-      "assembly_refs": [],
-      "requirements": [
-        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
-        "identify how existing prototypes/spares are handled.",
-        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
-        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
-        "Power per rail, startup/thermal limits and region-specific power configuration",
-        "Firmware image capacity/revision, programming and verification",
-        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
-      ]
-    },
-    {
       "catalog_ref": "part.flexibus_host_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.flexibus_host_controller"
+        "part.flexibus_host_controller"
       ],
       "requirements": [
         "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
@@ -512,7 +500,7 @@
       "catalog_ref": "part.flexibus_device_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.flexibus_device_controller"
+        "part.flexibus_device_controller"
       ],
       "requirements": [
         "Specify whether it is a transport-only state machine or programmable controller",
@@ -528,7 +516,7 @@
       "catalog_ref": "part.aurelia_video_chip",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.aurelia_video_chip"
+        "part.aurelia_video_chip"
       ],
       "requirements": [
         "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
@@ -544,7 +532,7 @@
       "catalog_ref": "part.aurelia_monitor_dac",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.aurelia_monitor_dac"
+        "part.aurelia_monitor_dac"
       ],
       "requirements": [
         "Specify reference, transfer function/linearity, output range, settling time, package and required analog stages. Decide custom silicon versus a discrete implementation before assigning die cost.",
@@ -559,7 +547,7 @@
       "catalog_ref": "part.color_monitor_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.color_monitor_controller"
+        "part.color_monitor_controller"
       ],
       "requirements": [
         "Locate the 16×12-bit palette storage, command decoder, clocking, RGB conversion and external analog drivers",
@@ -575,7 +563,7 @@
       "catalog_ref": "part.mono_monitor2_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.mono_monitor2_controller"
+        "part.mono_monitor2_controller"
       ],
       "requirements": [
         "Locate 16×8-bit palette storage, command decode, DAC and analog output",
@@ -591,7 +579,7 @@
       "catalog_ref": "part.artemis_dma",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.artemis_dma"
+        "part.artemis_dma"
       ],
       "requirements": [
         "Channels, bus-master handshake, byte/word widths, counters, request lines, priority, refresh interaction and external buffering",
@@ -607,7 +595,7 @@
       "catalog_ref": "part.artemis_mmu",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.artemis_mmu"
+        "part.artemis_mmu"
       ],
       "requirements": [
         "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers.",
@@ -622,7 +610,7 @@
       "catalog_ref": "part.artemis_graphics_chip",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.artemis_graphics_chip"
+        "part.artemis_graphics_chip"
       ],
       "requirements": [
         "Clarify that 16 KiB video RAM is external unless explicitly integrated. Define video RAM bus, arbitration, scan timing, font path, output serializers/drivers and package.",
@@ -637,7 +625,7 @@
       "catalog_ref": "part.artemis_fdd_hdd_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.artemis_fdd_hdd_controller"
+        "part.artemis_fdd_hdd_controller"
       ],
       "requirements": [
         "Define exact floppy and HDD electrical interfaces, encodings, data separator/PLL, DMA/FIFO and firmware split. Specify what remains external",
@@ -653,7 +641,7 @@
       "catalog_ref": "part.ball_tv90_crt",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.ball_tv90_crt"
+        "part.ball_tv90_crt"
       ],
       "requirements": [
         "Exact OEM orderable part, supplied assembly boundary, screen/phosphor, scan requirements, life/acceptance limits and what analog/HV components remain to buy.",
@@ -668,7 +656,7 @@
       "catalog_ref": "part.sony_kv1204_display_assembly",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.sony_kv1204_display_assembly"
+        "part.sony_kv1204_display_assembly"
       ],
       "requirements": [
         "Exact OEM supply boundary and permitted purchasable kit, with included component list",
@@ -684,7 +672,7 @@
       "catalog_ref": "part.motorola_ds3000_140a_crt",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.motorola_ds3000_140a_crt"
+        "part.motorola_ds3000_140a_crt"
       ],
       "requirements": [
         "Exact tube or monitor-assembly identification, included electronics, raster/bandwidth and acceptance test",
@@ -700,7 +688,7 @@
       "catalog_ref": "part.medium_resolution_rgb_crt",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.medium_resolution_rgb_crt"
+        "part.medium_resolution_rgb_crt"
       ],
       "requirements": [
         "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis.",
@@ -715,7 +703,7 @@
       "catalog_ref": "part.mpi_mp40_mechanism",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.mpi_mp40_mechanism"
+        "part.mpi_mp40_mechanism"
       ],
       "requirements": [
         "Orderable revision and contents: head, motors, sensors, frame, carriage/platen, ribbon system, wiring",
@@ -731,7 +719,7 @@
       "catalog_ref": "part.hdd_5mb",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.hdd_5mb"
+        "part.hdd_5mb"
       ],
       "requirements": [
         "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in.",
@@ -746,7 +734,7 @@
       "catalog_ref": "part.aion_4116",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.aion_4116"
+        "part.aion_4116"
       ],
       "requirements": [
         "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
@@ -795,7 +783,7 @@
       "catalog_ref": "part.aion_2114",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.aion_2114"
+        "part.aion_2114"
       ],
       "requirements": [
         "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
@@ -806,7 +794,7 @@
       "catalog_ref": "part.aurelia_system_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.aurelia_system_controller"
+        "part.aurelia_system_controller"
       ],
       "requirements": [
         "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
@@ -838,7 +826,7 @@
       "catalog_ref": "part.brimar_m36_141w_crt",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.brimar_m36_141w_crt"
+        "part.brimar_m36_141w_crt"
       ],
       "requirements": [
         "Supplier and electrical qualification pending."
@@ -848,7 +836,7 @@
       "catalog_ref": "part.mono_pro_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.mono_pro_controller"
+        "part.mono_pro_controller"
       ],
       "requirements": [
         "Supplier and electrical qualification pending."
@@ -858,7 +846,7 @@
       "catalog_ref": "part.aion_4164",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.aion_4164"
+        "part.aion_4164"
       ],
       "requirements": [
         "Accepted planning design; qualification pending."
@@ -878,7 +866,7 @@
       "catalog_ref": "part.artemis_graphics_chip_64kb",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.artemis_graphics_chip_64kb"
+        "part.artemis_graphics_chip_64kb"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -888,7 +876,7 @@
       "catalog_ref": "part.color_pro_monitor_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.color_pro_monitor_controller"
+        "part.color_pro_monitor_controller"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -898,7 +886,7 @@
       "catalog_ref": "part.professional_graphics_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.professional_graphics_controller"
+        "part.professional_graphics_controller"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -908,7 +896,7 @@
       "catalog_ref": "part.mono_pro_17_controller",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.mono_pro_17_controller"
+        "part.mono_pro_17_controller"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -918,7 +906,7 @@
       "catalog_ref": "part.nec_pc8853_display_assembly",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.nec_pc8853_display_assembly"
+        "part.nec_pc8853_display_assembly"
       ],
       "requirements": [
         "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
@@ -975,7 +963,7 @@
       ]
     },
     {
-      "catalog_ref": "part.era2",
+      "catalog_ref": "part.era2_12mhz",
       "production_status": "excluded",
       "assembly_refs": [],
       "requirements": [
@@ -994,27 +982,33 @@
     },
     {
       "catalog_ref": "computer.athena",
-      "production_status": "excluded",
-      "assembly_refs": [],
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.computer.athena.base"
+      ],
       "requirements": [
         "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
-        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
+        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts.",
+        "Storage sourcing: Seagate ST506 5 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
       ]
     },
     {
       "catalog_ref": "computer.athena_server",
-      "production_status": "excluded",
-      "assembly_refs": [],
+      "production_status": "design_baseline",
+      "assembly_refs": [
+        "assembly.computer.athena_server.base"
+      ],
       "requirements": [
         "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
-        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
+        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts.",
+        "Storage sourcing: Rodime RO202E 20 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
       ]
     },
     {
-      "catalog_ref": "part.ram_64kb_x32",
+      "catalog_ref": "device.ram_64kb_x32",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.ram_64kb_x32"
+        "device.ram_64kb_x32"
       ],
       "requirements": [
         "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
@@ -1022,10 +1016,10 @@
       ]
     },
     {
-      "catalog_ref": "part.ram_128kb_x32",
+      "catalog_ref": "device.ram_128kb_x32",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.ram_128kb_x32"
+        "device.ram_128kb_x32"
       ],
       "requirements": [
         "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
@@ -1033,10 +1027,10 @@
       ]
     },
     {
-      "catalog_ref": "part.ram_256kb_x32",
+      "catalog_ref": "device.ram_256kb_x32",
       "production_status": "design_baseline",
       "assembly_refs": [
-        "assembly.part.ram_256kb_x32"
+        "device.ram_256kb_x32"
       ],
       "requirements": [
         "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
@@ -1044,7 +1038,7 @@
       ]
     },
     {
-      "catalog_ref": "part.ram_256kb_x32_2um",
+      "catalog_ref": "device.ram_256kb_x32_2um",
       "production_status": "excluded",
       "assembly_refs": [],
       "requirements": [

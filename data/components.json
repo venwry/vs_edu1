@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/collections/components.schema.json",
-  "schema_version": "3.1.0",
+  "schema_version": "3.3.0",
   "components": [
     {
       "id": "part.z80a",
@@ -21,15 +21,13 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.z80a"
-      ],
       "bom_role": "material",
       "manufacturer": "Zilog",
       "qualification_status": "unresolved",
       "requirements": [
         "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.z80b",
@@ -50,60 +48,14 @@
         "computer.aurelia_plus"
       ],
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.z80b"
-      ],
       "bom_role": "material",
       "manufacturer": "Zilog",
       "qualification_status": "unresolved",
       "requirements": [
         "Same, with 6 MHz timing and December 1979 sourcing qualification",
         "distinguish speed-bin procurement from a new CPU design."
-      ]
-    },
-    {
-      "id": "part.era1",
-      "name": "ERA1 processor",
-      "category": "processor_ic",
-      "origin": "custom_aion_labs",
-      "specification_ref": "technology.era1_isa",
-      "variants": [
-        {
-          "name": "ERA1 initial",
-          "clock_mhz": 6,
-          "used_in": [
-            "computer.artemis"
-          ]
-        },
-        {
-          "name": "ERA upgraded",
-          "clock_mhz": 8,
-          "used_in": [
-            "computer.artemis_pro"
-          ]
-        }
       ],
-      "vendor": "AION Labs",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.era1"
-      ],
-      "manufacturing_process_ref": "technology.nmos_3um",
-      "manufacturing_planning": {
-        "node_um": 3,
-        "die_area_mm2": 55,
-        "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
-      },
-      "bom_role": "material",
-      "manufacturer": "AION Labs",
-      "qualification_status": "unresolved",
-      "requirements": [
-        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
-      ]
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.dram_16kbit",
@@ -113,9 +65,9 @@
       "used_in": [
         "computer.aurelia",
         "device.aurelia_ram_16kb_card",
-        "part.artemis_ram_module_prototype",
-        "part.ram_64kb_x32",
-        "part.ram_128kb_x32"
+        "device.artemis_ram_module_prototype",
+        "device.ram_64kb_x32",
+        "device.ram_128kb_x32"
       ],
       "vendor": "unspecified commercial DRAM supplier",
       "introduced": {
@@ -131,16 +83,14 @@
         "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.dram_16kbit"
-      ],
       "bom_role": "material",
       "qualification_status": "unresolved",
       "manufacturer": null,
       "requirements": [
         "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
         "the current list only names the prototype."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.dram_64kbit",
@@ -163,15 +113,13 @@
         "qualification_status": "Exact supplier, package, speed, rails, refresh and period-volume availability require qualification."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.dram_64kbit"
-      ],
       "bom_role": "material",
       "qualification_status": "unresolved",
       "manufacturer": null,
       "requirements": [
         "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.dram_128kbit",
@@ -195,59 +143,6 @@
       ]
     },
     {
-      "id": "part.artemis_ram_module_prototype",
-      "name": "Artemis prototype RAM module",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "specification": {
-        "chips": 16,
-        "chip_type_ref": "part.dram_16kbit",
-        "physical_arrangement": "4 rows x 4 chips",
-        "capacity_kb": 32,
-        "data_width_bits": 16
-      },
-      "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "product_status": "Historical pre-release engineering subassembly; not a commercial offering. Production replacement is a separate qualified design record.",
-      "manufacturing_status": "excluded_from_active_production",
-      "bom_role": "specification",
-      "requirements": [
-        "Retain noncommercial engineering status. Its chip count implies 32 KiB",
-        "define width/PCB/connectors separately from a new shared 64/128 KB 32-bit modules."
-      ]
-    },
-    {
-      "id": "part.artemis_ram_module_64kb",
-      "name": "Artemis RAM Module 1",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "specification": {
-        "capacity_kb": 64,
-        "chips": 8,
-        "chip_type_ref": "part.dram_64kbit",
-        "physical_arrangement": "2 rows x 4 chips"
-      },
-      "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
-      "product_status": "Superseded design assumption; excluded from active manufacturing BOMs.",
-      "superseded_by": [
-        "part.ram_64kb_x32",
-        "part.ram_128kb_x32"
-      ],
-      "manufacturing_status": "excluded_from_active_production",
-      "bom_role": "specification",
-      "requirements": [
-        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
-        "identify how existing prototypes/spares are handled."
-      ]
-    },
-    {
       "id": "part.flexibus_host_controller",
       "name": "FlexiBUS computer/host controller",
       "category": "io_controller_ic",
@@ -266,9 +161,6 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.flexibus_host_controller"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -283,7 +175,8 @@
       "requirements": [
         "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
         "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.flexibus_device_controller",
@@ -302,9 +195,6 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.flexibus_device_controller"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -319,7 +209,8 @@
       "requirements": [
         "Specify whether it is a transport-only state machine or programmable controller",
         "CPU/ROM/RAM integration, peripheral interfaces, external drivers and power. Define keyboard use explicitly if adopted."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aurelia_video_chip",
@@ -431,9 +322,6 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aurelia_video_chip"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -451,7 +339,8 @@
       "requirements": [
         "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
         "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aurelia_monitor_dac",
@@ -471,15 +360,13 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aurelia_monitor_dac"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Specify reference, transfer function/linearity, output range, settling time, package and required analog stages. Decide custom silicon versus a discrete implementation before assigning die cost."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.color_monitor_controller",
@@ -502,16 +389,14 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.color_monitor_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Locate the 16×12-bit palette storage, command decoder, clocking, RGB conversion and external analog drivers",
         "establish whether Monitor I/II share silicon but differ in bandwidth/output stages."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.mono_monitor2_controller",
@@ -534,16 +419,14 @@
         "timeline_note": "Author-confirmed introduction date."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.mono_monitor2_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Locate 16×8-bit palette storage, command decode, DAC and analog output",
         "define clock/raster and custom-silicon parameters."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_dma",
@@ -560,16 +443,14 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.artemis_dma"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Channels, bus-master handshake, byte/word widths, counters, request lines, priority, refresh interaction and external buffering",
         "freeze die/package/test design."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_mmu",
@@ -587,15 +468,13 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.artemis_mmu"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_graphics_chip",
@@ -1108,9 +987,6 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.artemis_graphics_chip"
-      ],
       "bom_role": "material",
       "alternate_names": [
         "Artemis custom graphics chip"
@@ -1120,7 +996,8 @@
       "requirements": [
         "External 16×4116 DRAM and 2×2114 sprite SRAM; integrated 640-byte pixel FIFO and 320-byte row cache. Die-area estimate 80 mm² (60–110), about 65,000–95,000 transistors including SRAM; not a released layout. Qualify timing, large-package pin count, analog-free digital logic and one respin.",
         "Define the external video RAM bus, arbitration, scan timing, font path and output serializers/drivers; qualify the package against the buffered controller design."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_fdd_hdd_controller",
@@ -1144,16 +1021,14 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.artemis_fdd_hdd_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Define exact floppy and HDD electrical interfaces, encodings, data separator/PLL, DMA/FIFO and firmware split. Specify what remains external",
         "“HDD supported” is not a complete controller."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.ball_tv90_crt",
@@ -1169,15 +1044,13 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ball_tv90_crt"
-      ],
       "bom_role": "material",
       "manufacturer": "Ball Brothers",
       "qualification_status": "unresolved",
       "requirements": [
         "Exact OEM orderable part, supplied assembly boundary, screen/phosphor, scan requirements, life/acceptance limits and what analog/HV components remain to buy."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.sony_kv1204_display_assembly",
@@ -1202,16 +1075,14 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.sony_kv1204_display_assembly"
-      ],
       "bom_role": "material",
       "manufacturer": "Sony",
       "qualification_status": "unresolved",
       "requirements": [
         "Exact OEM supply boundary and permitted purchasable kit, with included component list",
         "quantify RGB-interface modifications, mechanical fit, yield and calibration."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.motorola_ds3000_140a_crt",
@@ -1229,16 +1100,14 @@
         "timeline_note": "Author-confirmed introduction date."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.motorola_ds3000_140a_crt"
-      ],
       "bom_role": "material",
       "manufacturer": "Motorola",
       "qualification_status": "unresolved",
       "requirements": [
         "Exact tube or monitor-assembly identification, included electronics, raster/bandwidth and acceptance test",
         "prevent tube-plus-complete-monitor double counting."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.medium_resolution_rgb_crt",
@@ -1256,15 +1125,13 @@
         "timeline_note": "Author-confirmed introduction date."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.medium_resolution_rgb_crt"
-      ],
       "bom_role": "material",
       "qualification_status": "unresolved",
       "manufacturer": null,
       "requirements": [
         "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.mpi_mp40_mechanism",
@@ -1280,16 +1147,14 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.mpi_mp40_mechanism"
-      ],
       "bom_role": "material",
       "manufacturer": "Micro Peripherals, Inc.",
       "qualification_status": "unresolved",
       "requirements": [
         "Orderable revision and contents: head, motors, sensors, frame, carriage/platen, ribbon system, wiring",
         "define excluded controller/PSU/case and incoming tests."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.hdd_5mb",
@@ -1308,9 +1173,6 @@
         "event_start_date": "1981-05-04"
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.hdd_5mb"
-      ],
       "bom_role": "material",
       "manufacturer": "Seagate Technology",
       "manufacturer_part_number": "ST506",
@@ -1318,7 +1180,11 @@
       "requirements": [
         "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in.",
         "Selected ST506: 5.0 MB formatted / 6.38 MB unformatted, MFM 5 Mbit/s, 34-pin control and 20-pin data. Budget +12 V 4.5 A startup and +5 V 1 A maximum; qualify controller, spin-up, airflow, harness and mounting. Seagate preliminary OEM manual, April 1981. No cost or qualification claim."
-      ]
+      ],
+      "alternate_names": [
+        "5 MB hard disk drive"
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aion_4116",
@@ -1369,9 +1235,6 @@
         }
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aion_4116"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -1386,7 +1249,8 @@
       "requirements": [
         "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
         "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aion_2114",
@@ -1424,16 +1288,14 @@
         }
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aion_2114"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
         "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
         "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aurelia_system_controller",
@@ -1502,9 +1364,6 @@
         }
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aurelia_system_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
@@ -1512,7 +1371,8 @@
         "Qualify CPU bus handover at 4 and 6 MHz, bounded DMA bursts, device-ready waits, completion interrupts and abort/reset recovery.",
         "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
         "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.brimar_m36_141w_crt",
@@ -1535,15 +1395,14 @@
         "device.mono_pro"
       ],
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.brimar_m36_141w_crt"
-      ],
       "bom_role": "material",
       "manufacturer": "Thorn–Brimar",
       "qualification_status": "unresolved",
       "requirements": [
-        "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance."
-      ]
+        "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.mono_pro_controller",
@@ -1566,15 +1425,14 @@
         "device.mono_pro"
       ],
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.mono_pro_controller"
-      ],
       "bom_role": "material",
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance."
-      ]
+        "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aion_4164",
@@ -1585,7 +1443,7 @@
       "used_in": [
         "computer.artemis_pro",
         "computer.aurelia_plus",
-        "part.ram_256kb_x32"
+        "device.ram_256kb_x32"
       ],
       "introduced": {
         "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
@@ -1651,9 +1509,6 @@
         "electrical_contract": "64K x 1; released pinout/rails/timing/refresh remain gates. Common module interface only after retention, speed and all-bank qualification; no capacity or bus-width change."
       },
       "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.aion_4164"
-      ],
       "second_source": {
         "manufacturer": "Standard Microsystems Corporation (SMC)",
         "agreement_date": "1978-07",
@@ -1667,7 +1522,8 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
-      ]
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.artemis_graphics_chip_64kb",
@@ -1699,8 +1555,10 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Functional-set procurement allowance; detailed supplier selection pending."
-      ]
+        "Functional-set procurement allowance; detailed supplier selection pending.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.nec_pc8853_display_assembly",
@@ -1728,8 +1586,10 @@
       "manufacturer": "NEC",
       "qualification_status": "unresolved",
       "requirements": [
-        "Complete NEC-class 14-inch OEM display core, tube/yoke/HV/deflection/PSU; excludes AION adapter and final Logix cabinet. $280 is a volume procurement scenario, not a quote."
-      ]
+        "Complete NEC-class 14-inch OEM display core, tube/yoke/HV/deflection/PSU; excludes AION adapter and final Logix cabinet. $280 is a volume procurement scenario, not a quote.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.color_pro_monitor_controller",
@@ -1760,8 +1620,10 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Functional-set procurement allowance; detailed supplier selection pending."
-      ]
+        "Functional-set procurement allowance; detailed supplier selection pending.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.professional_graphics_controller",
@@ -1786,8 +1648,10 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Functional-set procurement allowance; detailed supplier selection pending."
-      ]
+        "Functional-set procurement allowance; detailed supplier selection pending.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.mono_pro_17_controller",
@@ -1812,50 +1676,10 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Functional-set procurement allowance; detailed supplier selection pending."
-      ]
-    },
-    {
-      "id": "part.era2",
-      "name": "ERA² processor",
-      "category": "processor_ic",
-      "origin": "custom_aion_labs",
-      "vendor": "AION Labs",
-      "introduced": {
-        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
-        "event_start_date": "1983-05-16",
-        "date_precision": "day",
-        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
-      },
-      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
-      "specification_ref": "technology.era2_architecture",
-      "manufacturing_process_ref": "technology.nmos_2um",
-      "variants": [
-        {
-          "name": "ERA² baseline target",
-          "clock_mhz": 12,
-          "used_in": [
-            "computer.athena",
-            "computer.athena_server"
-          ]
-        },
-        {
-          "name": "ERA² stretch speed bin",
-          "clock_mhz": 16,
-          "status": "Uncommitted; depends on timing, power and yield qualification."
-        }
+        "Functional-set procurement allowance; detailed supplier selection pending.",
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
       ],
-      "manufacturing_planning": {
-        "node_um": 2,
-        "wafer_diameter_mm": 75,
-        "die_area_mm2_target": 90,
-        "transistor_budget_target": 142000,
-        "initial_die_yield_acceptable": 0.1,
-        "status": "Planning envelope, not a completed layout or measured yield. Cache/MMU allocation must fit this budget.",
-        "initial_manufacturer": "AION Labs only",
-        "second_source_policy": "No SGS-ATES ERA² manufacture for at least 12–18 months after initial commercial availability; transfer is not automatic."
-      },
-      "bom_role": "specification"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
     },
     {
       "id": "part.aion_4164_2um",
@@ -1902,158 +1726,6 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Planned 2 µm process; supplier, electrical qualification, yield and current unit cost remain unqualified."
-      ]
-    },
-    {
-      "id": "part.ram_64kb_x32",
-      "name": "Logix 64 KB 32-bit DRAM module",
-      "vendor": "Logix",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "introduced": {
-        "event_name": "Shared module specification migration; original availability retained",
-        "event_start_date": "1980-05-19"
-      },
-      "specification": {
-        "capacity_kb": 64,
-        "data_width_bits": 32,
-        "chips": 32,
-        "chip_type_ref": "part.dram_16kbit",
-        "chip_organization": "16K × 1",
-        "ranks": 1,
-        "chips_per_rank": 32,
-        "rank_capacity_kb": 64,
-        "modules_per_bank": 2,
-        "bank_data_width_bits": 32,
-        "bank_capacity_kb": 128,
-        "parity_bits": 0,
-        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
-        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
-        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
-      },
-      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ram_64kb_x32"
-      ],
-      "bom_role": "assembly",
-      "requirements": [
-        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
-        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
-      ]
-    },
-    {
-      "id": "part.ram_128kb_x32",
-      "name": "Logix 128 KB 32-bit DRAM module",
-      "vendor": "Logix",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "introduced": {
-        "event_name": "Shared module specification migration; original availability retained",
-        "event_start_date": "1980-05-19"
-      },
-      "specification": {
-        "capacity_kb": 128,
-        "data_width_bits": 32,
-        "chips": 64,
-        "chip_type_ref": "part.dram_16kbit",
-        "chip_organization": "16K × 1",
-        "ranks": 2,
-        "chips_per_rank": 32,
-        "rank_capacity_kb": 64,
-        "modules_per_bank": 2,
-        "bank_data_width_bits": 32,
-        "bank_capacity_kb": 256,
-        "parity_bits": 0,
-        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
-        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
-        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
-      },
-      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ram_128kb_x32"
-      ],
-      "bom_role": "assembly",
-      "requirements": [
-        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
-        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
-      ]
-    },
-    {
-      "id": "part.ram_256kb_x32",
-      "name": "Logix 256 KB 32-bit DRAM module",
-      "vendor": "Logix",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "introduced": {
-        "event_name": "Shared module specification migration; original availability retained",
-        "event_start_date": "1980-05-19"
-      },
-      "specification": {
-        "capacity_kb": 256,
-        "data_width_bits": 32,
-        "chips": 32,
-        "chip_type_ref": "part.aion_4164",
-        "chip_organization": "64K × 1",
-        "ranks": 1,
-        "chips_per_rank": 32,
-        "rank_capacity_kb": 256,
-        "modules_per_bank": 2,
-        "bank_data_width_bits": 32,
-        "bank_capacity_kb": 512,
-        "parity_bits": 0,
-        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
-        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
-        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
-      },
-      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ram_256kb_x32"
-      ],
-      "bom_role": "assembly",
-      "requirements": [
-        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
-        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
-      ]
-    },
-    {
-      "id": "part.ram_256kb_x32_2um",
-      "name": "Logix 256 KB 32-bit DRAM module (2 µm)",
-      "vendor": "Logix",
-      "category": "memory_module",
-      "origin": "custom_logix",
-      "introduced": {
-        "event_name": "Shared module specification migration; original availability retained",
-        "event_start_date": "1983-05-16"
-      },
-      "specification": {
-        "capacity_kb": 256,
-        "data_width_bits": 32,
-        "chips": 32,
-        "chip_type_ref": "part.aion_4164_2um",
-        "chip_organization": "64K × 1",
-        "ranks": 1,
-        "chips_per_rank": 32,
-        "rank_capacity_kb": 256,
-        "modules_per_bank": 2,
-        "bank_data_width_bits": 32,
-        "bank_capacity_kb": 512,
-        "parity_bits": 0,
-        "bank_organization": "Two independently selected 32-bit modules share a 32-bit data bus; address decoding selects one module and rank. The pair is a capacity bank, not concatenated data lanes.",
-        "installation": "Matched pairs, power off. Controller must decode all modules and ranks and refresh all arrays.",
-        "electrical_interface": "Shared Artemis/Athena interface design target. Connector, rank selection, power, timing and loading qualification pending on each controller."
-      },
-      "product_status": "Accepted story design revision; physical implementation and electrical qualification pending.",
-      "manufacturing_status": "incomplete_bom",
-      "bom_assembly_refs": [
-        "assembly.part.ram_256kb_x32_2um"
-      ],
-      "bom_role": "assembly",
-      "requirements": [
-        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
-        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
       ]
     },
     {
@@ -5780,6 +5452,313 @@
         "event_start_date": "1982-06"
       },
       "bom_role": "material"
+    },
+    {
+      "id": "part.erav1_6mhz",
+      "name": "ERAv1 6MHz (initial)",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "specification_ref": "technology.era1_isa",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "manufacturing_process_ref": "technology.nmos_3um",
+      "manufacturing_planning": {
+        "node_um": 3,
+        "die_area_mm2": 55,
+        "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
+      },
+      "bom_role": "material",
+      "manufacturer": "AION Labs",
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
+      ],
+      "specification": {
+        "clock_mhz": 6
+      },
+      "used_in": [
+        "computer.artemis"
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "part.erav1_8mhz",
+      "name": "ERAv1 8MHz (upgraded)",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "specification_ref": "technology.era1_isa",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "manufacturing_status": "incomplete_bom",
+      "manufacturing_process_ref": "technology.nmos_3um",
+      "manufacturing_planning": {
+        "node_um": 3,
+        "die_area_mm2": 55,
+        "policy": "Both 6 and 8 MHz remain on original Micralign process; speed-bin and electrical qualification unchanged."
+      },
+      "bom_role": "material",
+      "manufacturer": "AION Labs",
+      "qualification_status": "unresolved",
+      "requirements": [
+        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
+      ],
+      "specification": {
+        "clock_mhz": 8
+      },
+      "used_in": [
+        "computer.artemis_pro"
+      ],
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+    },
+    {
+      "id": "part.era2_12mhz",
+      "name": "ERA^2 12MHz",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
+      "specification_ref": "technology.era2_architecture",
+      "manufacturing_process_ref": "technology.nmos_2um",
+      "manufacturing_planning": {
+        "node_um": 2,
+        "wafer_diameter_mm": 75,
+        "die_area_mm2_target": 90,
+        "transistor_budget_target": 142000,
+        "initial_die_yield_acceptable": 0.1,
+        "status": "Planning envelope, not a completed layout or measured yield. Cache/MMU allocation must fit this budget.",
+        "initial_manufacturer": "AION Labs only",
+        "second_source_policy": "No SGS-ATES ERA² manufacture for at least 12–18 months after initial commercial availability; transfer is not automatic."
+      },
+      "bom_role": "material",
+      "specification": {
+        "clock_mhz": 12
+      },
+      "used_in": [
+        "computer.athena",
+        "computer.athena_server"
+      ],
+      "qualification_status": "unresolved"
+    },
+    {
+      "id": "part.era2_16mhz_rev2",
+      "name": "ERA^2 16MHz rev2",
+      "category": "processor_ic",
+      "origin": "custom_aion_labs",
+      "vendor": "AION Labs",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "product_status": "Uncommitted; depends on timing, power and yield qualification.",
+      "specification_ref": "technology.era2_architecture",
+      "manufacturing_process_ref": "technology.nmos_2um",
+      "manufacturing_planning": {
+        "node_um": 2,
+        "wafer_diameter_mm": 75,
+        "die_area_mm2_target": 90,
+        "transistor_budget_target": 142000,
+        "initial_die_yield_acceptable": 0.1,
+        "status": "Planning envelope, not a completed layout or measured yield. Cache/MMU allocation must fit this budget.",
+        "initial_manufacturer": "AION Labs only",
+        "second_source_policy": "No SGS-ATES ERA² manufacture for at least 12–18 months after initial commercial availability; transfer is not automatic."
+      },
+      "bom_role": "specification",
+      "specification": {
+        "clock_mhz": 16
+      }
+    },
+    {
+      "name": "Internal HDD",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Seagate Technology",
+      "manufacturer_part_number": "ST506",
+      "requirements": [
+        "Period sourcing candidate; qualify controller, power, mounting and capacity geometry before release. Seagate ST506: 5.0 MB formatted; April 1981 OEM manual."
+      ],
+      "id": "part.athena.hdd",
+      "category": "hard_disk_drive",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_mb": 5
+      }
+    },
+    {
+      "name": "5.25-inch DS/DD FDD",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Shugart Associates",
+      "manufacturer_part_number": "SA450",
+      "requirements": [
+        "DS/DD MFM candidate available before the 1983 offering. Formatted capacity remains unqualified."
+      ],
+      "id": "part.athena.fdd",
+      "category": "floppy_drive_mechanism",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {}
+    },
+    {
+      "name": "EEPROM BIOS",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "AION Labs",
+      "id": "part.athena.bios",
+      "category": "firmware_memory",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_kb": null
+      }
+    },
+    {
+      "name": "Mainboard, controllers, power supply, chassis and wiring",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Logix",
+      "id": "part.athena.mainboard_set",
+      "category": "io_interface_assembly",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {}
+    },
+    {
+      "name": "Directly executable AIONix2 system ROM bank",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Logix",
+      "id": "part.athena.system_rom",
+      "category": "firmware_memory",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_bytes": 262144,
+        "implementation_status": "Functional set; chip count, organization, mounting, timing and cost unqualified."
+      }
+    },
+    {
+      "name": "Internal HDD",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Rodime",
+      "manufacturer_part_number": "RO202E",
+      "requirements": [
+        "Period sourcing candidate; qualify controller, power, mounting and capacity geometry before release. Rodime RO202E: 20.97 MB formatted, marketed as 20 MB; 1982 RO200E product specification."
+      ],
+      "id": "part.athena_server.hdd",
+      "category": "hard_disk_drive",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_mb": 20
+      }
+    },
+    {
+      "name": "5.25-inch DS/DD FDD",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Shugart Associates",
+      "manufacturer_part_number": "SA450",
+      "requirements": [
+        "DS/DD MFM candidate available before the 1983 offering. Formatted capacity remains unqualified."
+      ],
+      "id": "part.athena_server.fdd",
+      "category": "floppy_drive_mechanism",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {}
+    },
+    {
+      "name": "EEPROM BIOS",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "AION Labs",
+      "id": "part.athena_server.bios",
+      "category": "firmware_memory",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_kb": null
+      }
+    },
+    {
+      "name": "Mainboard, controllers, power supply, chassis and wiring",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Logix",
+      "id": "part.athena_server.mainboard_set",
+      "category": "io_interface_assembly",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {}
+    },
+    {
+      "name": "Directly executable AIONix2 system ROM bank",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "manufacturer": "Logix",
+      "id": "part.athena_server.system_rom",
+      "category": "firmware_memory",
+      "bom_role": "material",
+      "qualification_status": "unresolved",
+      "specification": {
+        "capacity_bytes": 262144,
+        "implementation_status": "Functional set; chip count, organization, mounting, timing and cost unqualified."
+      }
     }
   ]
 }

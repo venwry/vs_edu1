@@ -18,3 +18,7 @@ migration, in addition to source validation and relevant browser/domain tests.
 Device BOM definitions live in `data/devices.json`. Read
 `DEVICE_BOM_MIGRATION.md` before changing BOM ownership or assembly references.
 Run `tests/validate_device_migration.py` and relevant browser tests.
+
+For chassis, slots, processor bins, RAM devices and physical media ownership, read
+[CHASSIS_DEVICE_MIGRATION.md](CHASSIS_DEVICE_MIGRATION.md). Run
+`python tests/validate_chassis_migration.py` after structural hardware changes.

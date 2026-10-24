@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const store=require('../data-store.js'),root=path.resolve(__dirname,'..'),reg=store.read('schemas/data-registry.json');
 const components=store.read('data/components.json').components,catalog=store.read('catalog:logix-aion-technical-catalog-v2'),bom=store.read('catalog:hardware-bom');
 assert.deepEqual(catalog.components,components);assert.deepEqual(bom.components,components);
-assert.equal(components.length,287);assert.equal(new Set(components.map(x=>x.id)).size,287);
+assert.equal(components.length,293);assert.equal(new Set(components.map(x=>x.id)).size,293);
 assert(!('base_parts' in catalog));assert(!('components' in store.read('data/sourcing.json')));
 const z=components.find(x=>x.id==='part.z80a');assert(z.specification.clock_mhz===4&&z.vendor==='Zilog'&&z.manufacturer==='Zilog');assert.equal(z.qualification_status,'unresolved');
 const hdd=components.find(x=>x.id==='part.hdd_5mb');assert.equal(hdd.manufacturer_part_number,'ST506');
@@ -19,7 +19,16 @@ const numbers=x=>typeof x==='number'?[x]:x&&typeof x==='object'?Object.values(x)
  assert.equal(await context.DataStore.resolveComponentId('bompart.device.flexidisk.drive_psu'),'part.device.flexidisk.drive_psu');
  const response=await context.DataStore.fetch('generated/models/manufacturing-costs.json');assert.equal(JSON.stringify(await response.json()),JSON.stringify(normalized));
  assert.equal(requested.filter(p=>p==='schemas/data-registry.json').length,1);
- const model=require('../bom-details.js').createModel(catalog,bom,normalized);assert.equal(model.items.length,400);assert(model.rows('assembly.part.z80a').some(r=>r.ref==='part.z80a'));
+ const model=require('../bom-details.js').createModel(catalog,bom,normalized);assert.equal(model.items.length,438);assert(model.rows('part.z80a').some(r=>r.ref==='part.z80a'));
  globalThis.renderSpecification=x=>JSON.stringify(x);const costHtml=model.renderCosts('part.z80a',{fullRecords:true});assert(costHtml.includes('Component cost assumptions by year'));assert(costHtml.includes(JSON.stringify(normalized.component_cost_assumptions['part.z80a'])));delete globalThis.renderSpecification;
  console.log('PASS: single identity/schema, combined fields, archived-map normalization, collision rejection, raw browser reads and alias caching');
 })().catch(e=>{console.error(e);process.exitCode=1});
+
+// Removed wrappers resolve directly to component material records, including archived costs.
+const simpleStore=require('../data-store.js'),simpleBom=simpleStore.read('catalog:hardware-bom'),simpleCatalog=simpleStore.read('catalog:logix-aion-technical-catalog-v2'),simpleCosts=simpleStore.read('generated/models/manufacturing-costs.json');
+assert(!simpleBom.assemblies.some(a=>a.id.startsWith('assembly.part.')));
+for(const a of simpleBom.assemblies.filter(a=>a.id.startsWith('assembly.computer.')))assert(a.lines.every(l=>/^(part|device)\./.test(l.ref)));
+const simpleModel=require('../bom-details.js').createModel(simpleCatalog,simpleBom,simpleCosts);
+assert.deepEqual(simpleModel.assemblyIds('part.z80a'),['part.z80a']);assert.equal(simpleModel.rows('part.z80a').length,1);
+assert(simpleCatalog.components.find(p=>p.id==='part.z80a').cost_rollup_status);
+assert(simpleCosts.products.some(p=>p.assembly_ref==='part.aion_2114'));

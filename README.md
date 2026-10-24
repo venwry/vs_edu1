@@ -29,3 +29,5 @@ pages show transient JSON and link to its authoritative collections.
 See the standard before adding a record, changing a schema or recalculating models.
 
 Device data ownership: [Device BOM migration](DEVICE_BOM_MIGRATION.md).
+
+[Chassis, devices and configurable computer products](CHASSIS_DEVICE_MIGRATION.md).
