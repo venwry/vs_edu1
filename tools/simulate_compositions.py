@@ -82,7 +82,7 @@ def simulate(root=ROOT):
                         merged.append({**copy.deepcopy(l),'element_type':'attached_product'})
                         issue('assembly_only_line',owner,v,l['ref'],'Not present in product composition: '+str(l['quantity'])+' '+l.get('unit','each')+'; role '+l.get('role',''))
                 candidates.append(dict(assembly=aid,owner=owner,version=v,added_lines=len(merged)-len(lines)))
-                issue('manufacturing_metadata',owner,v,aid,'Routing, requirements and cost_rollup_status need explicit owner/version assignment; not represented by composition lines.')
+                if not h.get('bom_assembly_metadata'):issue('manufacturing_metadata',owner,v,aid,'Routing, requirements and cost_rollup_status need explicit owner/version assignment; not represented by composition lines.')
             if aid and aid not in runtime:issue('missing_legacy_bom',owner,v,aid,'No legacy runtime BOM for comparison')
             if aid in runtime:
                 expected=legacy(aid)

@@ -8,17 +8,17 @@ fixture=read_document('tests/fixtures/component-migration.json')
 digest=lambda x:hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
 validate_collections()
 rows=read_document('data/components.json')['components'];ids={x['id'] for x in rows}
-assert len(rows)==len(ids)==347
+assert len(rows)==len(ids)==350
 assert 'components' not in read_document('data/sourcing.json')
 assert 'base_parts' not in read_document('data/components.json')
-assert sum(x['bom_role']=='material' for x in rows)==345
+assert sum(x['bom_role']=='material' for x in rows)==348
 assert sum(x['bom_role']=='assembly' for x in rows)==0
 assert sum(x['bom_role']=='specification' for x in rows)==2
 for x in rows:
  assert not {'catalog_ref','unit_cost','currency','quote_date','quantity_tier','manufacturing_requirements'}&x.keys()
  assert not any(k in x.get('specification',{}) for k in ['access_time_ns','cycle_time_ns','refresh_requirement','bare_tube_ordering_code'])
-assert sum(bool(x.get('manufacturer_part_number')) for x in rows)==11
-aliases=registry()['component_id_aliases'];assert len(aliases)==279 and set(aliases.values())<=ids|{d['id'] for d in read_document('data/devices.json')['devices']}|set(registry()['record_family_aliases'])
+assert sum(bool(x.get('manufacturer_part_number')) for x in rows)==10
+aliases=registry()['component_id_aliases'];assert len(aliases)==280 and set(aliases.values())<=ids|{d['id'] for d in read_document('data/devices.json')['devices']}|set(registry()['record_family_aliases'])
 assert len(aliases)==len(set(aliases))
 for path,expected in fixture['frozen_files'].items():
  assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==expected,path+' archival bytes changed'

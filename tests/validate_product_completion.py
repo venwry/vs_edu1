@@ -27,15 +27,11 @@ for d in ds.values():
    keys=['documentation','mains_cable','packout']+(['signal_cable'] if d['category']=='monitor' else [])
    for key in keys:assert lines['part.'+d['id']+'.'+key]['quantity']==1
    assert not set(lines)&set(f['superseded_parts'])
-  if d['category']=='floppy_drive_mechanism':assert lines['part.'+d['id']+'.controller_cable']['quantity'] is None
+  if d['category']=='floppy_drive_mechanism':assert not any(ref.endswith('.controller_cable') for ref in lines)
 for id in ['offer.retail.connect_office','offer.retail.cpm_migration']:
  h=ps[id]['composition_history'][0];assert h['composition_status']=='unresolved'
  assert h['composition_definition'] and all(l['quantity'] is None and l['condition']!='always' for l in h['composition_definition'])
-network=ps['bundle.proposed_artemis_pro_small_office'];assert network['catalogue_status']=='announced';assert network['commercial_terms']['shipping_date'] is None
-lines={l['ref']:l for l in network['composition_history'][0]['composition_definition']}
-assert lines['part.logix_network_cable']['quantity']==3
-assert lines['edition.bpi_client_server.era_client']['quantity']==2
-assert lines['device.base_computer.artemis']['quantity']==2 and lines['device.base_computer.artemis_pro']['quantity']==1
+assert 'bundle.proposed_artemis_pro_small_office' not in ps
 for file in ['data/assemblies.json','data/retired_assemblies.json']:
  assert not any(l['ref'].startswith('assembly.') for a in load(file)['assemblies'] for l in a['lines'])
 # Validate each approved changed owner, then compare all 97 pre-change assembly fingerprints.

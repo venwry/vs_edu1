@@ -123,3 +123,8 @@ Assembly consolidation and temporal calculation are simulation-only in this revi
 The approved follow-up in PRODUCT_COMPLETION.md fills snapshot-derived product
 dates/contents and changes device delivery scope. It supersedes the prior missing
 product/date counts and unchanged-BOM statement; financial files remain unchanged.
+
+The approved COMPOSITION_RESOLUTION.md follow-up stores bom_assembly_metadata on
+composition versions. Transitional assemblies reference metadata_owner_ref and
+metadata_version_number; the reader hydrates their former metadata shape. BOM line
+units allow each and set: one supplied functional set does not assert one internal IC.

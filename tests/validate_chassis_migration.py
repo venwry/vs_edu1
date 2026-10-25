@@ -50,7 +50,7 @@ for id in ['computer.athena','computer.athena_server']:
  # Every original functional set survived, including combined mainboard/chassis set.
  old=next(x for x in f['athena_functional_boms'] if x['computer_ref']==id)
  for key,original in zip(['hdd','fdd','bios','mainboard_set','system_rom'],old['functional_components']):
-  part=p['part.'+id.split('.')[1]+'.'+key];assert part['name']==original['name'];assert part.get('manufacturer')==original.get('manufacturer');assert part.get('manufacturer_part_number')==original.get('manufacturer_part_number')
+  ref='part.'+id.split('.')[1]+'.'+key;part=p['part.hdd_5mb' if ref=='part.athena.hdd' else ref];assert ref=='part.athena.hdd' or part['name']==original['name'];assert part.get('manufacturer')==original.get('manufacturer');assert part.get('manufacturer_part_number')==original.get('manufacturer_part_number')
 # Writes through either logical view preserve source ownership exactly.
 with tempfile.TemporaryDirectory() as tmp:
  root=Path(tmp)

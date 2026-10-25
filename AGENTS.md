@@ -34,3 +34,9 @@ assembly lines into compositions without a separate explicit instruction.
 For approved product completion and device-owned delivery items read
 PRODUCT_COMPLETION.md and run tests/validate_product_completion.py. Preserve
 conditional/unknown FDD cable allocation and unqualified quotation scope.
+
+For approved design quantities and version-owned manufacturing metadata read
+COMPOSITION_RESOLUTION.md and run tests/validate_composition_resolution.py.
+FDD data harnesses are owned once per base computer. Do not reinstate removed
+multi-computer products or the generic supplemental-media allowance. Manufacturing
+qualification and financial costing remain pending despite defined supplied-set counts.

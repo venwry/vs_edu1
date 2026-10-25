@@ -98,3 +98,6 @@ Verification: all 22 source collections and migration audits pass. Browser tests
 21/22 (the existing timeline pricing-link failure); Python validators 21/40 (the
 same 19 pre-existing failures). All 25 Python/JavaScript views agree. Fourteen page
 snapshots reflect the approved date/content and delivery-component changes.
+
+COMPOSITION_RESOLUTION.md supersedes the provisional FDD cable ownership, residual
+media allowance, Small Office inclusion and unresolved quantity/date findings above.

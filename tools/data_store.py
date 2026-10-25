@@ -155,7 +155,7 @@ def store_document(path, value, root=ROOT):
 
             if len(by[id]['composition_history'])!=1:raise ValueError('Edit the explicit composition version at its source owner')
             by[id]['composition_history'][0]['composition_definition']=copy.deepcopy(a['lines'])
-            by[id]['bom_assembly_metadata']={k:copy.deepcopy(v) for k,v in a.items() if k not in ['id','lines']}
+            by[id]['composition_history'][0]['bom_assembly_metadata']={k:copy.deepcopy(v) for k,v in a.items() if k not in ['id','lines']}
         from validate_data import validate_collections
         validate_collections(root,{'data/devices.json':devices})
         (root/'data/devices.json').write_text(json.dumps(devices,indent=2,ensure_ascii=False)+'\n')
@@ -174,7 +174,7 @@ def store_document(path, value, root=ROOT):
                 device=devices[row['id']]
                 if len(device['composition_history'])!=1:raise ValueError('Edit the explicit composition version at its source owner')
                 device['composition_history'][0]['composition_definition']=copy.deepcopy(row['lines'])
-                device['bom_assembly_metadata']=copy.deepcopy({k:v for k,v in row.items() if k not in ['id','lines']})
+                device['composition_history'][0]['bom_assembly_metadata']=copy.deepcopy({k:v for k,v in row.items() if k not in ['id','lines']})
             payload=[r for r in payload if r['id'] not in devices]
             if any(r['id'].startswith('device.') for r in payload):raise ValueError('Add device BOMs in data/devices.json')
         if ref.get('chassis_file'):

@@ -7,7 +7,7 @@ function project(input){
  // The simulation evaluates version dates separately; production retains its existing algorithm.
  if(docs['data/retired_assemblies.json'])docs['data/assemblies.json'].assemblies.push(...clone(docs['data/retired_assemblies.json'].assemblies.filter(a=>!pc.retired_configuration_ids.includes(a.id))));
  const physical=docs['data/devices.json'].devices;
- for(const d of physical){const h=d.composition_history?.[0];if(h)d.bom_assembly_definition=clone(h.composition_definition);}
+ for(const d of physical){const h=d.composition_history?.[0];if(h){d.bom_assembly_definition=clone(h.composition_definition);if(h.bom_assembly_metadata)d.bom_assembly_metadata=clone(h.bom_assembly_metadata);}}
  const platformKeys=['introduced','technology_refs','lifecycle_policy','vendor','technical_profile','default_configuration','recommended_software_ref','production_status','upgrade_product_refs','role','availability','product_status','inclusion_qualification','programme_ref'];
  const platforms=physical.filter(d=>d.category==='base_computer').map(d=>{const p={id:d.id.replace('device.base_computer.','computer.'),name:d.name.replace(' — base computer',''),category:'computer',chassis_ref:d.id,record_kind:'platform',computer_line:null,catalogue_status:'platform',hardware_assembly_refs:d.platform_assembly_refs||[]};for(const k of platformKeys)if(k in d)p[k]=clone(d[k]);return p;});
  const expandVersion=h=>{const out={main_product:null,connected_devices:[],attached_products:[]};if(h.legacy_assembly_ref)out.hardware_assembly_ref=h.legacy_assembly_ref;for(const line of h.composition_definition){const {ref,element_type,unit,role,condition,quantity_status,...other}=clone(line);if(element_type==='main_product'){if(!out.main_product)out.main_product={device_ref:ref};}else if(element_type==='connected_device')out.connected_devices.push({device_ref:ref,...other});else out.attached_products.push({[ref.startsWith('service.')?'service_ref':/^(software|edition)\./.test(ref)?'software_ref':'product_ref']:ref,...other});}return out;};
@@ -21,13 +21,14 @@ function project(input){
  for(const d of devices){if(d.specification)d.specification=resolve(d.specification);const r=d.specification?.sprite_profile_ref;if(r)d.specification.sprites=clone(records[r.technology_ref].specification.profiles[r.profile]);}
  for(const t of technologies)t.specification=resolve(t.specification);
  const stored=docs['data/assemblies.json'].assemblies;
+ for(const a of stored)if(a.metadata_owner_ref){const h=pc.products.find(p=>p.id===a.metadata_owner_ref)?.composition_history?.find(h=>h.version_number===a.metadata_version_number);if(!h?.bom_assembly_metadata)throw Error('Missing version metadata for '+a.id);Object.assign(a,clone(h.bom_assembly_metadata));delete a.metadata_owner_ref;delete a.metadata_version_number;}
  const assemblies=new Map(stored.map(a=>[a.id,a]));
  for(const d of devices)if(d.bom_assembly_definition)assemblies.set(d.id,{id:d.id,...clone(d.bom_assembly_metadata),lines:clone(d.bom_assembly_definition)});
  const line=(ref,quantity,role='')=>({ref,quantity,unit:'each',role,condition:'always',quantity_status:quantity===null?'unresolved':'defined'});
  for(const p of pc.products){
   for(const version of [p,...(p.revisions||[])]){
    let a=assemblies.get(version.hardware_assembly_ref);if(!a&&version.main_product&&version.hardware_assembly_ref){a={id:version.hardware_assembly_ref||p.id,name:p.name,status:'incomplete',cost_rollup_status:'blocked_pending_component_and_routing_definition',requirements:p.acceptance||[],routing:{operations:[],minutes_per_unit:null,first_pass_yield:null,rework_rate:null,scrap_rate:null,fixture_refs:[]},lines:[],commercial_product_ref:p.id};assemblies.set(a.id,a);stored.push(a);}if(!a||!a.commercial_product_ref)continue;
-   a.lines=[...(version.main_product?[line(version.main_product.device_ref,1,'Main product')]:[]),...(version.connected_devices||[]).map(e=>line(e.device_ref,e.quantity,'Supplied device')),...a.lines];
+   a.lines=[...(version.main_product?[line(version.main_product.device_ref,1,'Main product')]:[]),...(version.connected_devices||[]).map(e=>line(e.device_ref,e.quantity,'Supplied device')),...(version.attached_products||[]).filter(e=>e.product_ref?.startsWith('part.')).map(e=>line(e.product_ref,e.quantity,'Supplied product material')),...a.lines];
   }
  }
  function leaves(ref,seen=[]){if(seen.includes(ref))throw Error('Cyclic hardware BOM');const a=assemblies.get(ref);if(!a)return [line(ref,1)];return a.lines.flatMap(l=>assemblies.has(l.ref)?leaves(l.ref,[...seen,ref]).map(x=>({...x,quantity:x.quantity===null||l.quantity===null?null:x.quantity*l.quantity})):l);}

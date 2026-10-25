@@ -21,6 +21,7 @@ with tempfile.TemporaryDirectory() as tmp:
    target='catalog:logix-aion-technical-catalog-v2'
   else:
    target='data/assemblies.json';value=read_document(target,root)
+   if kind!='empty':value['assemblies']=sorted(value['assemblies'],key=lambda a:not bool(a['lines']))
    if kind=='empty':value={}
    elif kind=='retired':value['assemblies'][0]['lines'][0]['ref']='bompart.part.z80a'
    elif kind=='composed_leaf':value['assemblies'][0]['lines'][0]['ref']='part.era2_16mhz_rev2'

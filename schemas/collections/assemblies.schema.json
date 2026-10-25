@@ -21,12 +21,9 @@
           {
             "type": "object",
             "required": [
-              "cost_rollup_status",
               "id",
               "lines",
               "name",
-              "requirements",
-              "routing",
               "status"
             ],
             "additionalProperties": false,
@@ -95,6 +92,13 @@
               },
               "commercial_product_ref": {
                 "type": "string"
+              },
+              "metadata_owner_ref": {
+                "type": "string"
+              },
+              "metadata_version_number": {
+                "type": "integer",
+                "minimum": 1
               }
             }
           }

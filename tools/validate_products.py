@@ -12,6 +12,13 @@ def validate_products(source, projected):
     for doc in source.values():
         for rows in doc.values():
             if isinstance(rows,list):known.update(r['id'] for r in rows if isinstance(r,dict) and 'id' in r)
+    owners={x['id']:x for x in [*devices.values(),*products]}
+    for assembly in source['data/assemblies.json']['assemblies']:
+        if 'metadata_owner_ref' not in assembly:continue
+        owner=owners.get(assembly['metadata_owner_ref'])
+        version=next((h for h in owner['composition_history'] if h['version_number']==assembly['metadata_version_number']),None) if owner else None
+        if not version or version.get('legacy_assembly_ref')!=assembly['id'] or not version.get('bom_assembly_metadata'):raise ValueError('Invalid assembly metadata owner/version')
+        if any(k in assembly for k in ['requirements','routing','cost_rollup_status']):raise ValueError('Duplicate assembly manufacturing metadata')
     graph=defaultdict(set)
     for owner in [*devices.values(),*products]:
         versions=owner['composition_history'];numbers=[];previous=None
