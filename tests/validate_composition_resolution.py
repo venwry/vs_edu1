@@ -39,19 +39,14 @@ for suffix in ['aurelia','artemis']:
  assert len(lines(P['bundle.'+suffix+'_network_upgrade']))==2
 for p in P.values():
  for h in p['composition_history']:assert not any(l['ref']=='part.logix_supplemental_distribution_media' for l in h['composition_definition'])
-# A bad ownership pointer must fail; deleting the metadata must also fail.
-for mutation in ['pointer','payload']:
- docs=copy.deepcopy(source);a=next(a for a in docs['data/assemblies.json']['assemblies'] if 'metadata_owner_ref' in a)
- if mutation=='pointer':a['metadata_version_number']=999
- else:
-  p=next(p for p in docs['data/product-catalog.json']['products'] if p['id']==a['metadata_owner_ref']);next(h for h in p['composition_history'] if h['version_number']==a['metadata_version_number']).pop('bom_assembly_metadata')
- try:validate_products(docs,{})
- except ValueError:pass
- else:raise AssertionError('Invalid manufacturing ownership accepted')
-r=simulate();s=r['summary'];assert s['unmerged_equal']==s['compared_versions']==27
-assert s['unknown_components']==28 and s['full_cutover_equal']==26
-assert not set(s['findings_by_kind'])&{'component_after_parent','manufacturing_metadata','assembly_duplicate_line','assembly_only_line'}
-assert s['findings_by_kind']['no_legacy_product_bom']==44
+# Metadata belongs to an explicit version; removing it must fail.
+docs=copy.deepcopy(source);docs['data/devices.json']['devices'][0]['composition_history'][0].pop('bom_assembly_metadata')
+try:validate_products(docs,{})
+except ValueError:pass
+else:raise AssertionError('Missing manufacturing metadata accepted')
+r=simulate();s=r['summary'];assert s['compared_versions']==72 and s['unchanged_versions']==64
+assert s['unknown_components']==37
+assert s['findings_by_kind']=={'inventory_change':8}
 historical_bom(read_document('catalog:hardware-bom'))
 f=read_document('tests/fixtures/composition-migration.json')
 for path,h in f['financial_files'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h

@@ -40,6 +40,7 @@ digest=lambda v:hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'))
 assert {a['id']:digest(a['lines']) for a in b['assemblies']}==old['assembly_lines']
 for path,h in old['financial_files'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h
 r=simulate();assert not any(x['kind'] in ['unknown_start_date','child_date_coverage','unresolved_package'] for x in r['findings'])
-assert r['summary']['full_cutover_equal']==26 and r['summary']['findings_by_kind']['quotation_scope_unresolved']==2
+assert r['summary']['unchanged_versions']==64
+assert sum(h.get('composition_status')=='unresolved' for p in read_document('data/product-catalog.json')['products'] for h in p['composition_history'])==2
 assert {line:sum(p['computer_line']==line for p in ps.values()) for line in ['Aurelia','Artemis','Athena']}=={'Aurelia':4,'Artemis':8,'Athena':2}
 print('PASS: snapshot-derived dates, flat resolved packages, announced status, 54 delivery parts, no duplicate packout, scoped unknowns and unchanged financial files')

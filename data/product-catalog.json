@@ -2319,14 +2319,6 @@
         "hard_disk_mb": 0,
         "hard_disk_enclosure": null
       },
-      "software_variants": [
-        {
-          "effective_from": "1980-11-19",
-          "add": [
-            "software.abacus_3"
-          ]
-        }
-      ],
       "notes": [
         "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
         "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
@@ -2366,7 +2358,7 @@
       "composition_history": [
         {
           "valid_from": "1980-05-19",
-          "valid_to": "1981-05-04",
+          "valid_to": "1980-11-19",
           "version_number": 1,
           "composition_definition": [
             {
@@ -2479,9 +2471,131 @@
           }
         },
         {
+          "valid_from": "1980-11-19",
+          "valid_to": "1981-05-04",
+          "version_number": 2,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_64kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card_16kb",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card_16kb",
+              "ref": "device.color_monitor_2",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "system_cartridge",
+              "ref": "device.rom_cartridge.aionix",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 1,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.abacus_3",
+              "quantity": 1,
+              "unit": "each",
+              "role": "Included application software",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ],
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
+        },
+        {
           "valid_from": "1981-05-04",
           "valid_to": "1990-01-01",
-          "version_number": 2,
+          "version_number": 3,
           "composition_definition": [
             {
               "ref": "device.base_computer.artemis",
@@ -2583,6 +2697,15 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
+            },
+            {
+              "ref": "software.abacus_3",
+              "quantity": 1,
+              "unit": "each",
+              "role": "Included application software",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
             }
           ],
           "legacy_assembly_ref": "assembly.bundle.artemis_budget_128.networked",
@@ -2617,14 +2740,6 @@
         "hard_disk_mb": 5,
         "hard_disk_enclosure": "internal drive bay"
       },
-      "software_variants": [
-        {
-          "effective_from": "1980-11-19",
-          "add": [
-            "software.abacus_3"
-          ]
-        }
-      ],
       "notes": [
         "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
         "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
@@ -2768,6 +2883,15 @@
               "quantity_status": "defined",
               "element_type": "connected_device",
               "used_socket": "internal_drive"
+            },
+            {
+              "ref": "software.abacus_3",
+              "quantity": 1,
+              "unit": "each",
+              "role": "Included application software",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
             }
           ],
           "legacy_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
@@ -2902,6 +3026,15 @@
               "quantity_status": "defined",
               "element_type": "connected_device",
               "used_socket": "internal_drive"
+            },
+            {
+              "ref": "software.abacus_3",
+              "quantity": 1,
+              "unit": "each",
+              "role": "Included application software",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
             }
           ],
           "legacy_assembly_ref": "assembly.bundle.artemis_budget_128_hdd.networked",
@@ -4000,7 +4133,29 @@
               "quantity_status": "defined"
             }
           ],
-          "legacy_assembly_ref": "assembly.offer.comdex82_artemis_autocad"
+          "legacy_assembly_ref": "assembly.offer.comdex82_artemis_autocad",
+          "bom_assembly_metadata": {
+            "name": "Logix Artemis PRO Professional CAD — Autodesk AutoCAD 1.0",
+            "status": "incomplete",
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+            "requirements": [
+              "Run the agreed release-quality native AutoCAD build on the reference configuration",
+              "Load/save and exchange a representative drawing; verify numerical geometry",
+              "Use both displays and the mouse with correct focus and cursor restoration",
+              "Show readable antialiased lines and stable display refresh under accelerator load",
+              "Plot a physical drawing and verify scale and geometry",
+              "Recover from interrupted work and restore a backup",
+              "Document supported features; no automatic later-version dimensioning, object-snap or 3D claims"
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            }
+          }
         }
       ]
     },

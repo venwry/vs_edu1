@@ -64,8 +64,8 @@ def computer_records(stored, devices, components):
         if c.get('configuration_video_card_refs'):slot['configuration_card_refs']=c['configuration_video_card_refs']
     return rows
 
-def project_collections(docs):
-    result=subprocess.run(['node',str(ROOT/'data-store.js')],input=json.dumps(docs),text=True,capture_output=True)
+def project_collections(docs,legacy_bom=False):
+    result=subprocess.run(['node',str(ROOT/'data-store.js')],input=json.dumps({'documents':docs,'legacyBOM':legacy_bom}),text=True,capture_output=True)
     if result.returncode:raise ValueError('Invalid catalogue projection: '+result.stderr[-1800:])
     return json.loads(result.stdout)
 
@@ -78,7 +78,7 @@ def read_document(path, root=ROOT):
     cache={}
     if reg.get("commercial_projection_files"):
         source={f:json.loads((root/f).read_text()) for f in reg["commercial_projection_files"]}
-        cache=project_collections(source)
+        cache=project_collections(source,legacy_bom=name=='hardware-bom')
     def collection(file):
         if file not in cache:cache[file]=json.loads((root/file).read_text())
         return cache[file]

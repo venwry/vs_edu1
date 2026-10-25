@@ -1,11 +1,8 @@
 /* Commercial source projection. Shared by browser and Python: no generated catalogue files. */
 (function(root){'use strict';
 const clone=x=>JSON.parse(JSON.stringify(x));
-function project(input){
+function project(input,{legacyBOM=false}={}){
  const docs=clone(input),pc=docs['data/product-catalog.json'];if(!pc)return docs;
- // Transitional projection only. No date-based BOM calculation is enabled here.
- // The simulation evaluates version dates separately; production retains its existing algorithm.
- if(docs['data/retired_assemblies.json'])docs['data/assemblies.json'].assemblies.push(...clone(docs['data/retired_assemblies.json'].assemblies.filter(a=>!pc.retired_configuration_ids.includes(a.id))));
  const editions=docs['data/software-editions.json'].software_editions;
  const softwareIds=new Set(editions.map(e=>e.id)),softwareLines=new Map();
  for(const e of editions){
@@ -34,19 +31,16 @@ function project(input){
  for(const d of devices)if(d.specification_ref)d.specification={...clone(records[d.specification_ref].specification),...(d.specification||{})};
  for(const d of devices){if(d.specification)d.specification=resolve(d.specification);const r=d.specification?.sprite_profile_ref;if(r)d.specification.sprites=clone(records[r.technology_ref].specification.profiles[r.profile]);}
  for(const t of technologies)t.specification=resolve(t.specification);
- const stored=docs['data/assemblies.json'].assemblies;
- for(const a of stored)if(a.metadata_owner_ref){const h=pc.products.find(p=>p.id===a.metadata_owner_ref)?.composition_history?.find(h=>h.version_number===a.metadata_version_number);if(!h?.bom_assembly_metadata)throw Error('Missing version metadata for '+a.id);Object.assign(a,clone(h.bom_assembly_metadata));delete a.metadata_owner_ref;delete a.metadata_version_number;}
- for(const e of editions){const h=e.composition_history[0];stored.push({id:e.id,name:e.name,status:e.distribution.status==='unspecified'?'incomplete':'design_baseline',requirements:['Physical media and documents only; licence/service fees are outside manufacturing totals.'],routing:{operations:[],minutes_per_unit:null,first_pass_yield:null,rework_rate:null,scrap_rate:null,fixture_refs:[]},cost_rollup_status:'blocked_pending_component_and_routing_definition',lines:clone(h?.composition_definition||[])});}
- const assemblies=new Map(stored.map(a=>[a.id,a]));
- for(const d of devices)if(d.bom_assembly_definition)assemblies.set(d.id,{id:d.id,...clone(d.bom_assembly_metadata),lines:clone(d.bom_assembly_definition)});
+ // Legacy export only: current UI resolves source composition histories directly.
+ const stored=[];docs['data/assemblies.json']={assemblies:stored};
+ const assemblies=new Map();
  const line=(ref,quantity,role='')=>({ref,quantity,unit:'each',role,condition:'always',quantity_status:quantity===null?'unresolved':'defined'});
- for(const p of pc.products){
-  for(const version of [p,...(p.revisions||[])]){
-   let a=assemblies.get(version.hardware_assembly_ref);if(!a&&version.main_product&&version.hardware_assembly_ref){a={id:version.hardware_assembly_ref||p.id,name:p.name,status:'incomplete',cost_rollup_status:'blocked_pending_component_and_routing_definition',requirements:p.acceptance||[],routing:{operations:[],minutes_per_unit:null,first_pass_yield:null,rework_rate:null,scrap_rate:null,fixture_refs:[]},lines:[],commercial_product_ref:p.id};assemblies.set(a.id,a);stored.push(a);}if(!a||!a.commercial_product_ref)continue;
-   a.lines=[...(version.main_product?[line(version.main_product.device_ref,1,'Main product')]:[]),...(version.connected_devices||[]).map(e=>line(e.device_ref,e.quantity,'Supplied device')),...(version.attached_products||[]).filter(e=>e.product_ref?.startsWith('part.')||softwareIds.has(e.software_ref)).map(e=>line(e.product_ref||e.software_ref,e.quantity,'Supplied physical delivery')),...a.lines];
-  }
+ if(legacyBOM)for(const r of [...devices,...editions,...pc.products])for(const h of r.composition_history||[]){
+  const id=h.legacy_assembly_ref||r.id;
+  if(assemblies.has(id))continue;
+  const a={id,name:r.name,status:'incomplete',requirements:[],routing:{operations:[],minutes_per_unit:null,first_pass_yield:null,rework_rate:null,scrap_rate:null,fixture_refs:[]},cost_rollup_status:'blocked_pending_component_and_routing_definition',...clone(h.bom_assembly_metadata||{}),lines:clone(h.composition_definition).filter(l=>!l.ref.startsWith('service.')).map(l=>Object.fromEntries(['ref','quantity','unit','role','condition','quantity_status'].map(k=>[k,l[k]])))};
+  assemblies.set(id,a);if(!devices.includes(r))stored.push(a);
  }
- function leaves(ref,seen=[]){if(seen.includes(ref))throw Error('Cyclic hardware BOM');const a=assemblies.get(ref);if(!a)return [line(ref,1)];return a.lines.flatMap(l=>assemblies.has(l.ref)?leaves(l.ref,[...seen,ref]).map(x=>({...x,quantity:x.quantity===null||l.quantity===null?null:x.quantity*l.quantity})):l);}
  function softwareFor(p){const refs=new Set();const walk=id=>{const d=records[id];for(const s of d?.software_refs||[])refs.add(s);for(const l of d?.bom_assembly_definition||[])if(records[l.ref]?.bom_assembly_definition)walk(l.ref);};if(p.main_product)walk(p.main_product.device_ref);for(const e of p.connected_devices||[])walk(e.device_ref);for(const e of p.attached_products||[]){if(e.software_ref)refs.add(e.software_ref);else if(e.product_ref)walk(e.product_ref);}return [...refs];}
  function legacyOffer(p){
   const o=clone(p);o.bom_assembly_ref=p.hardware_assembly_ref;
@@ -58,12 +52,10 @@ function project(input){
  }
  const computers=pc.products.filter(p=>p.record_kind==='platform').map(p=>{
   const c={...clone(p),...resolve(p.technical_profile)},ch=records[p.chassis_ref],familyLine=['Aurelia','Artemis','Athena'].find(x=>ch.id.includes(x.toLowerCase())),slots=ch.expansion_socket_groups.flatMap(g=>g.sockets);
-  const base=assemblies.get('assembly.'+p.id+'.base');
-  const configurations=stored.filter(a=>a.computer_ref===p.id&&a.configuration).map(a=>{
-   const ram=a.lines.find(l=>records[l.ref]?.category==='memory_expansion'),s=records[ram?.ref]?.specification;if(!ram||!s)return {...a.configuration};
-   return {...a.configuration,module_ref:ram.ref,populated_modules:ram.quantity,populated_banks:ram.quantity/2,ram_kb:ram.quantity*s.capacity_kb,data_chip_count:ram.quantity*s.chips,bank_population:Array.from({length:ram.quantity/2},(_,i)=>({bank:i,slots:[2*i,2*i+1]}))};
-  });
-  const mem=c.memory||{};const fixed=records['device.subsystem.'+p.id.slice(9)+'.base_memory'];if(mem.physical_population&&fixed){const l=fixed.bom_assembly_definition.find(l=>records[l.ref]?.category==='memory_ic');if(l)Object.assign(mem.physical_population,{chip_ref:l.ref,data_chip_count:l.quantity,data_ram_kb:fixed.specification.capacity_kb});}if(configurations.length){mem.configurations=configurations;mem.default_configuration=p.default_configuration||configurations[0].id;mem.module_refs=slots.find(s=>s.id==='ram')?.compatible_device_refs||[];}
+  const offerings=pc.products.filter(x=>x.computer_ref===p.id&&x.composition_history?.length);
+  const configurations=offerings.flatMap(x=>{const h=x.composition_history[0],ram=h.composition_definition.find(l=>records[l.ref]?.category==='memory_expansion'),s=records[ram?.ref]?.specification;if(!ram||!s)return [];return [{id:x.id,product_ref:x.id,shipping_configuration:x.catalogue_status==='offered'&&x.availability_status!=='announced',module_ref:ram.ref,populated_modules:ram.quantity,populated_banks:ram.quantity/2,ram_kb:ram.quantity*s.capacity_kb,data_chip_count:ram.quantity*s.chips,bank_population:Array.from({length:ram.quantity/2},(_,i)=>({bank:i,slots:[2*i,2*i+1]}))}];});
+  const base={lines:offerings[0]?.composition_history[0].composition_definition||[]};
+  const mem=c.memory||{};const fixed=records['device.subsystem.'+p.id.slice(9)+'.base_memory'];if(mem.physical_population&&fixed){const l=fixed.bom_assembly_definition.find(l=>records[l.ref]?.category==='memory_ic');if(l)Object.assign(mem.physical_population,{chip_ref:l.ref,data_chip_count:l.quantity,data_ram_kb:fixed.specification.capacity_kb});}if(configurations.length){mem.configurations=configurations;mem.default_configuration=configurations.find(x=>x.id===p.default_configuration)?.id||configurations[0].id;mem.module_refs=slots.find(s=>s.id==='ram')?.compatible_device_refs||[];}
   const selected=configurations.find(x=>x.id===mem.default_configuration);mem.ram_kb=selected?.ram_kb||records['device.subsystem.'+p.id.slice(9)+'.base_memory']?.specification.capacity_kb||0;
   mem.video_ram_kb=c.video?.video_ram_kb||c.video?.display_memory?.capacity_bytes/1024||16;mem.sprite_ram_kb=1;mem.sprite_sram_kb=1;
   if(c.video)c.video.card_ref=c.video.controller_ref&&familyLine!=='Aurelia'?p.technical_profile.video.source_ref:undefined;
@@ -73,19 +65,18 @@ function project(input){
   const ctrl=ch.bom_assembly_definition.find(l=>records[l.ref]?.category==='io_controller_ic'&&l.ref.includes('fdd'))?.ref;if(ctrl)c.storage.controller_ref=ctrl;
   c.chipset=ch.bom_assembly_definition.filter(l=>l.ref.startsWith('part.')&&/controller|mmu|dma/.test(l.ref)).map(l=>l.ref);
   if(p.recommended_software_ref){c.operating_system_ref=p.recommended_software_ref;if(c.rom_and_cartridges)c.rom_and_cartridges.system_cartridge_ref=p.recommended_software_ref;}
-  c.bom_assembly_refs=p.hardware_assembly_refs;c.manufacturing_status=ch.manufacturing_status;c.manufacturing_requirements=ch.bom_assembly_metadata.requirements;
+  c.bom_assembly_refs=[ch.id];c.manufacturing_status=ch.manufacturing_status;c.manufacturing_requirements=ch.bom_assembly_metadata.requirements;
   c.compatible_devices=[...new Set(slots.flatMap(s=>s.compatible_device_refs))];
   c.compatible_software=docs['data/software-editions.json'].platform_editions.filter(e=>(e.platform_support||[]).some(s=>s.computer_ref===p.id)).map(e=>e.id);
   c.default_video_card_ref=familyLine==='Aurelia'?undefined:p.technical_profile.video.source_ref;
   if(familyLine==='Athena')c.graphics_card_ref=c.default_video_card_ref;
   c.video_variants=[];c.configuration_video_card_refs={};
-  for(const cfg of configurations){const a=assemblies.get('assembly.'+p.id+'.'+cfg.id)||base;const card=a?.lines.find(l=>records[l.ref]?.category==='video_expansion_card');if(card){c.configuration_video_card_refs[cfg.id]=card.ref;let v=c.video_variants.find(v=>v.card_ref===card.ref);if(!v){v={card_ref:card.ref,configuration_ids:[],specification:{...clone(records[card.ref].specification),card_ref:card.ref}};c.video_variants.push(v);}v.configuration_ids.push(cfg.id);}}
+  for(const cfg of configurations){const a={lines:records[cfg.product_ref]?.composition_history[0].composition_definition||base.lines};const card=a?.lines.find(l=>records[l.ref]?.category==='video_expansion_card');if(card){c.configuration_video_card_refs[cfg.id]=card.ref;let v=c.video_variants.find(v=>v.card_ref===card.ref);if(!v){v={card_ref:card.ref,configuration_ids:[],specification:{...clone(records[card.ref].specification),card_ref:card.ref}};c.video_variants.push(v);}v.configuration_ids.push(cfg.id);}}
   for(const k of ['network','networking','networking_from_ncc_1981'])if(c[k]){c[k].adapter_ref='device.network_card_'+(familyLine==='Aurelia'?'aurelia':'artemis');c[k].included_by_default=p.id==='computer.artemis_pro';if(k==='network'){c[k].card_ref=c[k].adapter_ref;c[k].card_count=(base?.lines||[]).filter(l=>l.ref===c[k].card_ref).reduce((n,l)=>n+l.quantity,0);c[k].included=c[k].card_count>0;}}
   delete c.technical_profile;return c;
  });
  docs['data/computers.json']={computers,external_platforms:pc.external_platforms};
  docs['data/offers.json']=Object.fromEntries(['offered_bundles','proposed_bundles','commercial_offerings'].map(k=>[k,pc.products.filter(p=>p.source_group===k||(k==='commercial_offerings'&&['retail','unresolved'].includes(p.source_group))).map(legacyOffer)]));
- for(const p of pc.products.filter(p=>p.category==='software')){const h=p.composition_history?.[0];if(h)stored.push({id:p.id,name:p.name,status:'incomplete',requirements:p.acceptance||[],routing:{operations:[],minutes_per_unit:null,first_pass_yield:null,rework_rate:null,scrap_rate:null,fixture_refs:[]},cost_rollup_status:'blocked_pending_component_and_routing_definition',lines:clone(h.composition_definition).filter(l=>!l.ref.startsWith('service.')).map(({element_type,...l})=>l)});}
  const mappings=[...computers.map(c=>({catalog_ref:c.id,production_status:c.production_status||'design_baseline',assembly_refs:c.bom_assembly_refs,requirements:c.manufacturing_requirements})),...devices.filter(d=>d.hardware_assembly_refs).map(d=>({catalog_ref:d.id,production_status:d.production_status,assembly_refs:d.hardware_assembly_refs,requirements:d.manufacturing_requirements||[]})),...parts.filter(p=>p.production_status).map(p=>({catalog_ref:p.id,production_status:p.production_status,assembly_refs:p.bom_role==='material'&&p.production_status!=='excluded'?[p.id]:[],requirements:p.requirements||[]}))];
  docs['data/product-boms.json']={...clone(pc.bom_policy),products:mappings,offers:pc.products.filter(p=>p.source_group==='offered_bundles').map(p=>({catalog_ref:p.id,kind:p.category==='upgrade_bundle'?'upgrade_kit':p.category,assembly_ref:p.hardware_assembly_ref,compatible_host_ref:p.computer_ref,included_host:Boolean(p.main_product),effective_from:p.introduced.event_start_date,...p.commercial_terms,requirements:p.acceptance||[],licenses_and_services:'Tracked outside recurring hardware BOM; physical media remains included.'})),proposed_offer_refs:pc.products.filter(p=>p.source_group==='proposed_bundles').map(p=>p.id)};
  const retail=clone(pc.catalog_editions[0]);for(const key of ['solutions','upgrades'])retail[key]=retail[key].map(e=>{const p=records[e.product_ref],r=p.retail_presentation;return {...clone(r),components:r.component_product_ref?[{ref:r.component_product_ref,quantity:1}]:(p.attached_products||[]).map(e=>({ref:e.product_ref||e.software_ref||e.service_ref,quantity:e.quantity}))};});
@@ -93,7 +84,7 @@ function project(input){
  return docs;
 }
 const api={project};if(typeof module!=='undefined')module.exports=api;root.CatalogModel=api;
-if(typeof require!=='undefined'&&require.main===module){let s='';process.stdin.on('data',x=>s+=x);process.stdin.on('end',()=>process.stdout.write(JSON.stringify(project(JSON.parse(s)))));}
+if(typeof require!=='undefined'&&require.main===module){let s='';process.stdin.on('data',x=>s+=x);process.stdin.on('end',()=>(()=>{const request=JSON.parse(s);process.stdout.write(JSON.stringify(project(request.documents||request,{legacyBOM:request.legacyBOM===true})));})());}
 })(typeof window==='undefined'?globalThis:window);
 
 /* Authoritative collection loader. Compatibility shapes are transient, never files. */
@@ -126,7 +117,7 @@ function computerRecords(stored,devices,components){
  const slot=c.io_and_expansion.dedicated_video_slot||{};if(c.default_video_card_ref)slot.included_card_ref=c.default_video_card_ref;if(c.configuration_video_card_refs)slot.configuration_card_refs=c.configuration_video_card_refs;return c;});
 }
 function assemble(name,registry,collections){
- if(collections['data/product-catalog.json'])collections=root.CatalogModel.project(collections);
+ if(collections['data/product-catalog.json'])collections=root.CatalogModel.project(collections,{legacyBOM:name==='hardware-bom'});
  const recipe=registry.views[name],clone=x=>JSON.parse(JSON.stringify(x)),select=r=>r.wrap?{products:clone(collections[r.file][r.key])}:r.chassis_file?computerRecords(collections[r.file][r.key],collections[r.chassis_file].devices,collections['data/components.json'].components):r.device_file?assemblyRecords(collections[r.file][r.key],collections[r.device_file].devices):clone(collections[r.file][r.key]);
  if(recipe.story){const world=collections['data/world.json'],structure=collections['data/timeline-structure.json'],events=new Map(collections['data/events.json'].events.map(e=>[e.id,e])),contracts=collections['data/contracts.json'];return {assumptions:Object.fromEntries(['scenario','entities','principles','conventions'].map(k=>[k,clone(world[k])])),phases:structure.phases.map(phase=>{const p=clone(phase),ids=p.event_refs;delete p.event_refs;p.events=ids.map(id=>{if(!events.has(id))throw Error('Missing event '+id);const e=clone(events.get(id));if(e.agreement_ref){e.agreement_terms=clone(contracts[e.agreement_ref]);delete e.agreement_ref;}return e;});return p;}),processes:clone(structure.processes)};}
  if(recipe.merge){const result={};for(const ref of recipe.merge){const part=select(ref);for(const k of Object.keys(part))if(Object.hasOwn(result,k))throw Error('Overlapping field ownership: '+name);Object.assign(result,part);}return result;}
@@ -135,10 +126,10 @@ function assemble(name,registry,collections){
 function filesFor(name,reg){
  const r=reg.views[name];if(r.story)return ['data/world.json','data/timeline-structure.json','data/events.json','data/contracts.json'];
  const files=(r.merge||Object.values(r)).flatMap(x=>[x.file,...(x.device_file?[x.device_file]:[]),...(x.chassis_file?[x.chassis_file,'data/components.json']:[])]);
- return [...new Set(files.filter(f=>!['data/computers.json','data/offers.json','data/product-boms.json','data/retail-catalog.json','data/software-products.json'].includes(f)).concat(reg.commercial_projection_files||[]))];
+ return [...new Set(files.filter(f=>!['data/computers.json','data/offers.json','data/product-boms.json','data/retail-catalog.json','data/software-products.json'].includes(f)).concat((reg.commercial_projection_files||[]).filter(f=>f!=='data/retired_assemblies.json')))];
 }
 if(node){const fs=require('node:fs'),path=require('node:path');function read(file,base=__dirname){const reg=JSON.parse(fs.readFileSync(path.join(base,'schemas/data-registry.json'),'utf8')),name=nameFor(file,reg);if(!name){const actual=reg.legacy_paths[file]||file,value=JSON.parse(fs.readFileSync(path.join(base,actual),'utf8'));return actual.startsWith('generated/models/')?normalizeComponentIds(value,reg):value;}const collections=Object.fromEntries(filesFor(name,reg).map(p=>[p,JSON.parse(fs.readFileSync(path.join(base,p),'utf8'))]));return assemble(name,reg,collections);}module.exports={read,assemble,filesFor,nameFor,normalizeComponentIds,assemblyRecords,computerRecords};return;}
 const cache=new Map();function json(path){if(!cache.has(path))cache.set(path,root.fetch(path).then(r=>{if(!r.ok)throw Error('Unable to load '+path);return r.json();}).catch(e=>{cache.delete(path);throw e;}));return cache.get(path);}
 async function fetchData(path,options){if(String(path).replace(/^\.\//,'').startsWith('generated/models/')){const [response,reg]=await Promise.all([root.fetch(path,options),json('schemas/data-registry.json')]);return {ok:response.ok,status:response.status,json:async()=>normalizeComponentIds(await response.json(),reg)};}if(!String(path).replace(/^\.\//,'').startsWith('generated/catalogs/')&&!String(path).startsWith('catalog:'))return root.fetch(path,options);const reg=await json('schemas/data-registry.json'),name=nameFor(path,reg);if(!name)return root.fetch(path,options);const files=filesFor(name,reg),values=await Promise.all(files.map(json));return {ok:true,status:200,json:async()=>assemble(name,reg,Object.fromEntries(files.map((p,i)=>[p,values[i]])))};}
-root.DataStore={fetch:fetchData,assemble,filesFor,nameFor,normalizeComponentIds,assemblyRecords,computerRecords,resolveComponentId:async id=>{const reg=await json('schemas/data-registry.json');return reg.component_id_aliases?.[id]||reg.device_assembly_aliases?.[id]||reg.record_id_aliases?.[id]||id;},deviceFamily:async id=>{const reg=await json('schemas/data-registry.json');return reg.device_family_aliases?.[id]||reg.record_family_aliases?.[id]||[];}};
+root.DataStore={compositionAlias:async id=>(await json('schemas/data-registry.json')).composition_aliases?.[id],fetch:fetchData,assemble,filesFor,nameFor,normalizeComponentIds,assemblyRecords,computerRecords,resolveComponentId:async id=>{const reg=await json('schemas/data-registry.json');return reg.component_id_aliases?.[id]||reg.device_assembly_aliases?.[id]||reg.record_id_aliases?.[id]||id;},deviceFamily:async id=>{const reg=await json('schemas/data-registry.json');return reg.device_family_aliases?.[id]||reg.record_family_aliases?.[id]||[];}};
 })(typeof window==='undefined'?globalThis:window);

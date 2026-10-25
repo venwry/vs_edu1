@@ -34,9 +34,10 @@ window.setupFamilyControls=function(tech,page){
  const host=document.getElementById('site-details');if(!host)return;
  try{
   const get=async p=>{const r=await DataStore.fetch(p);if(!r.ok)throw Error('Unable to load '+p);return r.json();};
-  const [site,tech,bom,cost]=await Promise.all(['generated/catalogs/site-pages.json','generated/catalogs/logix-aion-technical-catalog-v2.json','generated/catalogs/hardware-bom.json','generated/models/manufacturing-costs.json'].map(get));
+  const [site,tech,cost]=await Promise.all(['generated/catalogs/site-pages.json','generated/catalogs/logix-aion-technical-catalog-v2.json','generated/models/manufacturing-costs.json'].map(get));
   const page=site.pages.find(p=>p.id===host.dataset.page);if(!page)return;
   const records=Object.fromEntries(Object.values(tech).filter(Array.isArray).flat().filter(x=>x?.id).map(x=>[x.id,x]));
+  for(const p of tech.product_catalog.products)records[p.id]=p;
   if(['aurelia','artemis'].includes(page.id)){const section=document.createElement('section');section.id='component-specifications';section.innerHTML='<h2>Model and component specifications</h2>'+page.record_refs.filter(id=>records[id]&&!document.getElementById(id)).map(id=>atlasDetails(records[id].name,records[id],id)).join('');host.append(section);}
   const owned=new Map(Object.entries(site.record_page_links||{}));
   // All cost rows have a visible home. Explicit primary ownership wins; family
@@ -48,11 +49,10 @@ window.setupFamilyControls=function(tech,page){
   const moved=window.CatalogNavigation?.pages.includes(page.id)?CatalogNavigation.ids(tech):new Set();
   const rows=cost.products.filter(r=>!moved.has(r.catalog_ref||r.id)).filter(r=>owner(r)===page.id||(!['Bundles','Services'].includes(r.group)&&page.record_refs.includes(r.catalog_ref)));
   if(rows.length){const section=document.createElement('section');section.id='product-costs';section.innerHTML='<h2>'+(page.id==='pricing'?'Bundle and service delivery costs':'Components, BOMs and manufacturing')+'</h2><p>Nominal USD estimates at the recorded assessment dates. Unknown quantities and qualification gaps remain explicit. Component rows and complete assemblies overlap; do not add both as independent costs. Software rows include duplication, licensing and delivery where applicable.</p>';
-   const components=new Map(bom.components.map(x=>[x.id,x])),assemblies=new Map(bom.assemblies.map(x=>[x.id,x]));
    for(const row of rows){
     const d=document.createElement('details');d.id='cost-'+row.id;d.dataset.costId=row.id;d.innerHTML='<summary>'+atlasEscape(row.name)+' · '+atlasEscape(row.group)+'</summary>';
-    d.addEventListener('toggle',()=>{if(!d.open||d.dataset.loaded)return;d.dataset.loaded='true';const refs=bom.products.filter(p=>p.catalog_ref===row.catalog_ref),assemblySet=new Map(),partSet=new Map();function visit(id){if(assemblies.has(id)&&!assemblySet.has(id)){const a=assemblies.get(id);assemblySet.set(id,a);for(const l of a.lines||[])visit(l.ref);}else if(components.has(id))partSet.set(id,components.get(id));}for(const p of refs)for(const id of p.assembly_refs||[])visit(id);
-    d.insertAdjacentHTML('beforeend',(records[row.catalog_ref]?atlasDetails('Technical specification',records[row.catalog_ref]):'')+atlasDetails('Dated cost assessments and breakdowns',row)+atlasDetails('BOM requirements and assemblies',{products:refs,assemblies:[...assemblySet.values()],components:[...partSet.values()]}));});section.append(d);
+    d.addEventListener('toggle',()=>{if(!d.open||d.dataset.loaded)return;d.dataset.loaded='true';const record=records[row.catalog_ref];
+    d.insertAdjacentHTML('beforeend',(record?atlasDetails('Technical specification',record):'')+atlasDetails('Dated cost assessments and breakdowns',row)+atlasDetails('Composition histories (saved costs are separate)',record?.composition_history||[]));});section.append(d);
    }host.append(section);
   }
   if(['artemis','video-system','flexibus','software-development','operating-systems','ecosystem','pricing'].includes(page.id)){
@@ -60,7 +60,7 @@ window.setupFamilyControls=function(tech,page){
    const dated=[...june.products,...november.prices].filter(r=>!moved.has(r.id)).filter(r=>page.id==='pricing'||page.record_refs.includes(r.id));
    if(dated.length)host.insertAdjacentHTML('beforeend','<section id="dated-reviews"><h2>1982 dated product cost and price reviews</h2>'+dated.map(r=>atlasDetails(r.name+' · '+r.date,r)).join('')+'</section>');
   }
-  const uncosted=bom.products.filter(p=>!moved.has(p.catalog_ref)).filter(p=>page.record_refs.includes(p.catalog_ref)&&!rows.some(r=>r.catalog_ref===p.catalog_ref));if(uncosted.length)host.insertAdjacentHTML('beforeend','<section><h2>BOM requirements without a costed product row</h2><p>No complete manufacturing estimate is implied by these records.</p>'+uncosted.map(p=>atlasDetails(records[p.catalog_ref]?.name||p.catalog_ref,{requirements:p,assemblies:bom.assemblies.filter(a=>p.assembly_refs.includes(a.id))})).join('')+'</section>');
+  const uncosted=page.record_refs.map(id=>records[id]).filter(r=>r?.composition_history&&!moved.has(r.id)&&!rows.some(x=>x.catalog_ref===r.id));if(uncosted.length)host.insertAdjacentHTML('beforeend','<section><h2>Compositions without a costed product row</h2>'+uncosted.map(r=>atlasDetails(r.name,r.composition_history)).join('')+'</section>');
   if(page.id==='industrial-investment'){
    const global=Object.fromEntries(Object.entries(cost).filter(([k])=>k!=='products'));
    host.insertAdjacentHTML('beforeend','<section id="manufacturing-method"><h2>Manufacturing methods, supplier programmes and assumptions</h2><p>Product costs are attached to computer, software and standards pages. Bundle and service delivery costs appear under Retail pricing.</p>'+Object.keys(global).map(k=>'<details data-method="'+atlasEscape(k)+'"><summary>'+atlasEscape(atlasLabel(k))+'</summary></details>').join('')+'</section>');

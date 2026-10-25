@@ -816,8 +816,7 @@
     "data/standards.json",
     "data/assemblies.json",
     "data/software-editions.json",
-    "data/ecosystem-inputs.json",
-    "data/retired_assemblies.json"
+    "data/ecosystem-inputs.json"
   ],
   "platform_device_aliases": {
     "computer.aurelia": "device.base_computer.aurelia",
@@ -826,5 +825,123 @@
     "computer.artemis_pro": "device.base_computer.artemis_pro",
     "computer.athena": "device.base_computer.athena",
     "computer.athena_server": "device.base_computer.athena_server"
+  },
+  "composition_aliases": {
+    "assembly.device.artemis_professional_video_128kb.comdex82": {
+      "ref": "device.artemis_professional_video_128kb",
+      "version_number": 2
+    },
+    "assembly.device.mono_pro_17.comdex82": {
+      "ref": "device.mono_pro_17",
+      "version_number": 2
+    },
+    "assembly.computer.athena.base": {
+      "ref": "product.athena",
+      "version_number": 1
+    },
+    "assembly.computer.athena_server.base": {
+      "ref": "product.athena_server",
+      "version_number": 1
+    },
+    "assembly.bundle.aurelia_mono": {
+      "ref": "bundle.aurelia_mono",
+      "version_number": 1
+    },
+    "assembly.bundle.aurelia_color": {
+      "ref": "bundle.aurelia_color",
+      "version_number": 1
+    },
+    "assembly.bundle.aurelia_plus_mono": {
+      "ref": "bundle.aurelia_plus_mono",
+      "version_number": 1
+    },
+    "assembly.bundle.aurelia_plus_color": {
+      "ref": "bundle.aurelia_plus_color",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_128_mono": {
+      "ref": "bundle.artemis_128_mono",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_128_mono.networked": {
+      "ref": "bundle.artemis_128_mono",
+      "version_number": 2
+    },
+    "assembly.bundle.artemis_128_color": {
+      "ref": "bundle.artemis_128_color",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_128_color.networked": {
+      "ref": "bundle.artemis_128_color",
+      "version_number": 2
+    },
+    "assembly.bundle.artemis_256_color": {
+      "ref": "bundle.artemis_256_color",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_256_color.networked": {
+      "ref": "bundle.artemis_256_color",
+      "version_number": 2
+    },
+    "assembly.bundle.aurelia_network_upgrade": {
+      "ref": "bundle.aurelia_network_upgrade",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_network_upgrade": {
+      "ref": "bundle.artemis_network_upgrade",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_pro_512_server": {
+      "ref": "bundle.artemis_pro_512_server",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_pro_1mb_server": {
+      "ref": "bundle.artemis_pro_1mb_server",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_256_mono_pro": {
+      "ref": "bundle.artemis_256_mono_pro",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_256_mono_pro.networked": {
+      "ref": "bundle.artemis_256_mono_pro",
+      "version_number": 2
+    },
+    "assembly.bundle.artemis_pro_512_mono_pro": {
+      "ref": "bundle.artemis_pro_512_mono_pro",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_pro_1mb_mono_pro": {
+      "ref": "bundle.artemis_pro_1mb_mono_pro",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_budget_128": {
+      "ref": "bundle.artemis_budget_128",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_budget_128.networked": {
+      "ref": "bundle.artemis_budget_128",
+      "version_number": 3
+    },
+    "assembly.bundle.artemis_budget_128_hdd": {
+      "ref": "bundle.artemis_budget_128_hdd",
+      "version_number": 1
+    },
+    "assembly.bundle.artemis_budget_128_hdd.networked": {
+      "ref": "bundle.artemis_budget_128_hdd",
+      "version_number": 2
+    },
+    "assembly.offer.comdex82_artemis_autocad": {
+      "ref": "offer.comdex82_artemis_autocad",
+      "version_number": 1
+    },
+    "assembly.offer.ram_64kb_module": {
+      "ref": "offer.ram_64kb_module",
+      "version_number": 1
+    },
+    "assembly.offer.ram_256kb_bank": {
+      "ref": "offer.ram_256kb_bank",
+      "version_number": 1
+    }
   }
 }

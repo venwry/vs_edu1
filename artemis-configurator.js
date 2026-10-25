@@ -3,90 +3,16 @@
 (function(root){
 'use strict';
 const categories=typeof module!=='undefined'&&module.exports?require('./catalog-categories.js'):root.CatalogCategories;
-const pendingCostReason=(typeof module!=='undefined'&&module.exports?require('./bom-details.js'):root.BomDetails).pendingCostReason;
-const family=['computer.artemis','computer.artemis_pro'];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const human=v=>String(v).replace(/_/g,' ');
 const money=v=>Number.isFinite(v)?'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Not costed';
 const processorLabel=(records,p)=>{const name=records[p.part_ref]?.name||p.variant||'';return /MHz/.test(name)?name:p.clock_mhz+' MHz '+name;};
 const clean=r=>Object.fromEntries(Object.entries(r||{}).filter(([k])=>!['used_by','used_in','compatible_with','source_group','technical_profile'].includes(k)));
-function chassisState(records,option,revision,walk){
- const host=records[option.hostRef],ch=records[host.chassis_ref],tree=walk(revision.id),refs=new Set(tree.assemblyRefs.filter(id=>records[id]));for(const l of tree.leaves)if(records[l.ref])refs.add(l.ref);
- const fixedRam=[...refs].filter(id=>records[id].virtual&&records[id].category==='memory_assembly').reduce((n,id)=>n+(records[id].specification?.capacity_kb||0),0);
- return {option,revision,host,tree,refs,ram:{ram_kb:fixedRam,populated_banks:0},software:[],peripherals:[],displays:[],additional:[],network:false,primary:null};
-}
-function chassisOptions(catalog,hosts){return hosts.map(id=>{const host=catalog.computers.find(c=>c.id===id),ch=catalog.devices.find(d=>d.id===host.chassis_ref);return {id:ch.id,name:ch.name,group:'Base computer — fixed hardware only',hostRef:id,assemblyRef:ch.id,available:ch.introduced.event_start_date,chassis:true};});}
-function createModel(catalog,bom,cost){
- const records=Object.fromEntries(Object.values(catalog).filter(Array.isArray).flat().filter(x=>x?.id).map(x=>[x.id,x]));
- const assemblies=new Map(bom.assemblies.map(x=>[x.id,x])),components=new Map(bom.components.map(x=>[x.id,x])),costs=new Map(cost.products.map(x=>[x.id,x]));
- const options=[];
- for(const offer of catalog.offered_bundles.filter(x=>family.includes(x.computer_ref))){
-  options.push({id:offer.id,name:offer.name,group:offer.computer_configuration?'Complete systems':'Upgrade kits — host not included',hostRef:offer.computer_ref,ramId:offer.computer_configuration?.ram_configuration_id,offer,cost:costs.get(offer.id),assemblyRef:offer.bom_assembly_ref,available:offer.introduced.event_start_date,upgrade:!offer.computer_configuration});
- }
- for(const row of cost.products.filter(x=>x.group==='Computers'&&family.includes(x.catalog_ref))){
-  options.push({id:row.id,name:row.name+' · configured computer',group:'Configured computers',hostRef:row.catalog_ref,ramId:records[row.catalog_ref].memory.configurations.find(x=>row.id.includes('.'+x.id))?.id,cost:row,assemblyRef:row.assembly_ref,available:row.available_from});
- }
- for(const offer of catalog.commercial_offerings||[]){
-  const hostRef=offer.component_refs?.find(id=>family.includes(id));if(!hostRef)continue;
-  const amount=offer.configuration?.host?.match(/(\d+)\s*MiB/);
-  options.push({id:offer.id,name:offer.name,group:'Professional offerings — acceptance pending',hostRef,ramId:amount?records[hostRef].memory.configurations.find(x=>x.ram_kb===Number(amount[1])*1024)?.id:null,offer,cost:costs.get(offer.id),available:offer.introduced.event_start_date,professional:true});
- }
- for(const hostRef of family)for(const ram of records[hostRef].memory.configurations.filter(x=>!x.shipping_configuration)){
-  options.push({id:hostRef+'.'+ram.id+'.target',name:records[hostRef].name+' · '+ram.ram_kb+' KiB / '+records[ram.module_ref].specification.capacity_kb+' KiB modules',group:'Expansion design targets — not qualified offers',hostRef,ramId:ram.id,assemblyRef:'assembly.'+hostRef+'.'+ram.id,available:records[hostRef].introduced.event_start_date,target:true});
- }
- function revisions(option){return [{id:option.assemblyRef||option.id,from:option.available,label:'Original configuration · '+option.available},...(option.offer?.manufacturing_variants||[]).map(v=>({id:v.assembly_ref,from:v.effective_from,label:'Networking revision · '+v.effective_from}))];}
- function revisionAt(option,date){return revisions(option).filter(r=>r.from<=date).at(-1);}
- function assessments(option,revision){
-  if(pendingCostReason(assemblies,[revision.id]))return [];
-  return (cost.metadata.snapshots||[]).filter(d=>d.endsWith('-06-15')).flatMap(date=>{
-   const snapshot=option.cost?.snapshots?.[date.slice(0,4)],r=revisionAt(option,date);
-   if(!r||r.id!==revision.id||!snapshot||snapshot.status==='not_yet_offered')return [];
-   return [{date,snapshot}];
-  });
- }
- function walk(id,seen=new Set()){
-  if(seen.has(id))throw Error('Circular BOM assembly: '+id);const a=assemblies.get(id);if(!a)return {assemblyRefs:[],leaves:[]};
-  const next=new Set(seen).add(id),out={assemblyRefs:[id],leaves:[]};
-  for(const line of a.lines||[]){if(assemblies.has(line.ref)){const child=walk(line.ref,next);out.assemblyRefs.push(...child.assemblyRefs);out.leaves.push(...child.leaves.map(l=>({...l,assemblyPath:[id,...(l.assemblyPath||[])],quantity:l.quantity===null||line.quantity===null?null:l.quantity*line.quantity})));}else out.leaves.push({...line,assemblyPath:[id],component:components.get(line.ref)});}
-  return out;
- }
- function state(option,revision,date){
-  if(option.chassis)return chassisState(records,option,revision,walk);
-  const host=records[option.hostRef],ram=host.memory.configurations.find(r=>r.id===option.ramId)||host.memory.configurations.find(r=>r.id===host.memory.default_configuration);
-  const tree=walk(revision.id),refs=new Set();
-  for(const id of tree.assemblyRefs){const r=id.replace(/^assembly\.(media\.)?/,'');if(records[r])refs.add(r);}
-  for(const leaf of tree.leaves)if(leaf.component)refs.add(leaf.component.id);
-  for(const id of [...refs])for(const software of records[id]?.software_refs||[])refs.add(software);
-  for(const id of option.offer?.included_devices||[])refs.add(id);
-  for(const id of option.offer?.component_refs||[])refs.add(id);
-  // The dated assembly owns the OS/NIC revision. Budget overlays carry additional software.
-  if(![...refs].some(id=>/^software\.aionix/.test(id)))for(const id of option.offer?.included_software||[])refs.add(id);
-  for(const id of option.offer?.included_software||[])if(!/^software\.aionix/.test(id))refs.add(id);
-  for(const v of option.offer?.software_variants||[])if(v.effective_from<=date)for(const id of v.add||[])refs.add(id);
-  const dedicated=host.video_variants?.find(v=>v.configuration_ids.includes(ram.id))?.specification||host.video;
-  const videoRefs=[...refs].filter(id=>categories.isVideoCard(records[id]));
-  if(!videoRefs.length&&!option.upgrade)videoRefs.push(option.offer?.computer_configuration?.video_card_ref||dedicated.card_ref||host.io_and_expansion.dedicated_video_slot.included_card_ref);
-  // Professional CAD replaces the base primary card; do not count both.
-  const primary=videoRefs.find(id=>id==='device.artemis_video_card_64kb')||videoRefs.find(id=>id!=='device.artemis_professional_video_128kb');
-  const additional=videoRefs.filter(id=>id!==primary);
-  const network=refs.has('device.network_card_artemis')||(!option.upgrade&&Boolean(host.networking?.included_by_default));
-  const displays=[...refs].filter(id=>categories.isMonitor(records[id]));
-  const peripherals=[...refs].filter(id=>id.startsWith('device.')&&!displays.includes(id)&&!videoRefs.includes(id)&&['keyboard','mouse','printer','external_floppy_drive'].includes(records[id]?.category)&&id!=='device.network_card_artemis'&&id!=='device.artemis_cpm80_module'&&!/ram_/.test(id));
-  return {option,revision,date,host,ram,tree,refs,primary,additional,network,displays,peripherals,software:[...refs].filter(id=>id.startsWith('software.')||id.startsWith('edition.')),externalHdd:option.offer?.storage?.hard_disk_enclosure==='external qualified subsystem',snapshot:assessments(option,revision).find(x=>x.date===date)?.snapshot};
- }
- function bomRows(snapshot){
-  return (snapshot?.bom_lines||[]).map(line=>{
-   const component=components.get(line.component_ref),id=line.component_ref.replace(/^budgetcost\./,'');
-   return {...line,name:component?.name||records[id]?.name||(id==='allowance.artemis_budget_5mb_subsystem'?'5 MB external HDD subsystem — drive, enclosure, integration and delivery':human(line.component_ref)),basis:line.component_ref.startsWith('budgetcost.')?'Complete recurring-cost component':'BOM material',unitCost:Number.isFinite(line.extended_recurring_cost_usd)&&Number.isFinite(line.quantity)&&line.quantity>0?line.extended_recurring_cost_usd/line.quantity:null};
-  });
- }
- options.push(...chassisOptions(catalog,family));
- return {records,assemblies,components,costs,options,revisions,assessments,state,bomRows,walk,cost};
-}
 function createFamilyModel(catalog,bom,cost,familyId){
- const model=createModel(catalog,bom,cost),line={aurelia:'Aurelia',artemis:'Artemis',athena:'Athena'}[familyId];
+ const compositionModel=(typeof module!=='undefined'&&module.exports?require('./bom-details.js'):root.BomDetails).createModel(catalog,bom,cost),graph=compositionModel.graph,model={records:compositionModel.records,components:compositionModel.components,assemblies:new Map(),costs:new Map(cost.products.map(p=>[p.id,p])),cost},line={aurelia:'Aurelia',artemis:'Artemis',athena:'Athena'}[familyId];
  // The sole membership qualifier is computer_line. Availability only labels the choice.
  const products=catalog.product_catalog.products.filter(p=>p.computer_line===line);
+ model.bomRows=snapshot=>(snapshot?.bom_lines||[]).map(l=>({...l,name:model.records[l.component_ref]?.name||human(l.component_ref),basis:l.component_ref.startsWith('budgetcost.')?'Complete recurring-cost component':'BOM material',unitCost:Number.isFinite(l.extended_recurring_cost_usd)&&l.quantity>0?l.extended_recurring_cost_usd/l.quantity:null}));
  const options=products.map(p=>{
   const hostRef=p.computer_ref||p.id,host=model.records[hostRef];
   const ram=(p.connected_devices||[]).find(e=>model.records[e.device_ref]?.category==='memory_expansion');
@@ -95,22 +21,23 @@ function createFamilyModel(catalog,bom,cost,familyId){
   return {id:p.id,name:p.name,group:line+' products',hostRef,ramId:config?.id,offer,cost:model.costs.get(p.id),assemblyRef:p.hardware_assembly_ref||p.id,available:p.introduced.event_start_date,planning:p.catalogue_status==='planned',professional:p.id==='offer.comdex82_artemis_autocad',product:p};
  });
  function state(option,revision,date){
-  const host=JSON.parse(JSON.stringify(model.records[option.hostRef])),tree=model.walk(revision.id),refs=new Set(tree.assemblyRefs.filter(id=>model.records[id]));for(const l of tree.leaves)if(model.records[l.ref])refs.add(l.ref);
-  const version=option.product.revisions?.find(r=>r.hardware_assembly_ref===revision.id)||option.product;
+  const host=JSON.parse(JSON.stringify(model.records[option.hostRef])),tree=walk(option.id,revision.version),refs=new Set(tree.assemblyRefs.filter(id=>model.records[id]));for(const l of tree.leaves)if(model.records[l.ref])refs.add(l.ref);
+  const selected=graph.select(option.id,{version:revision.version});
+  const version={connected_devices:selected.composition_definition.filter(l=>l.element_type==='connected_device').map(l=>({...l,device_ref:l.ref}))};
   for(const e of version.connected_devices||[])refs.add(e.device_ref);
-  for(const id of [...refs])for(const software of model.records[id]?.software_refs||[])refs.add(software);
-  for(const e of option.product.attached_products||[])if(e.software_ref)refs.add(e.software_ref);
-  for(const v of option.product.software_variants||[])if(v.effective_from<=date)for(const id of v.add||[])refs.add(id);
   host.storage={controller_ref:host.storage.controller_ref,internal_fdd:{count:0}};for(const e of version.connected_devices||[]){const d=model.records[e.device_ref];if(['floppy_drive_mechanism','hard_disk_drive'].includes(d?.category)&&e.used_socket==='internal_drive'){host.storage[d.category==='hard_disk_drive'?'internal_hdd':'internal_fdd']={...d.specification,count:e.quantity};}}
   const modules=(version.connected_devices||[]).filter(e=>model.records[e.device_ref]?.category==='memory_expansion');
   const first=modules[0],ram=first?{module_ref:first.device_ref,populated_modules:first.quantity,populated_banks:first.quantity/2,ram_kb:modules.reduce((n,e)=>n+e.quantity*model.records[e.device_ref].specification.capacity_kb,0),bank_population:Array.from({length:first.quantity/2},(_,i)=>({bank:i,slots:[2*i,2*i+1]}))}:{ram_kb:host.memory.ram_kb};
   const video=[...refs].filter(id=>categories.isVideoCard(model.records[id])),primary=video.find(id=>id==='device.artemis_video_card_64kb')||video.find(id=>id!=='device.artemis_professional_video_128kb');
-  return {option,revision,date,host,tree,refs,ram,primary,additional:video.filter(id=>id!==primary),network:[...refs].some(id=>id.startsWith('device.network_card')),displays:[...refs].filter(id=>categories.isMonitor(model.records[id])),peripherals:(version.connected_devices||[]).filter(e=>e.used_socket==='flexibus').flatMap(e=>Array(e.quantity||0).fill(e.device_ref)),software:[...refs].filter(id=>id.startsWith('software.')||id.startsWith('edition.')),snapshot:model.assessments(option,revision).find(x=>x.date===date)?.snapshot,externalHdd:option.product.storage?.hard_disk_enclosure==='external qualified subsystem'};
+  return {option,revision,date,host,tree,refs,ram,primary,additional:video.filter(id=>id!==primary),network:[...refs].some(id=>id.startsWith('device.network_card')),displays:[...refs].filter(id=>categories.isMonitor(model.records[id])),peripherals:(version.connected_devices||[]).filter(e=>e.used_socket==='flexibus').flatMap(e=>Array(e.quantity||0).fill(e.device_ref)),software:[...refs].filter(id=>id.startsWith('software.')||id.startsWith('edition.')),snapshot:assessments(option,revision).find(x=>x.date===date)?.snapshot,externalHdd:option.product.storage?.hard_disk_enclosure==='external qualified subsystem'};
  }
- return {...model,options,state};
+ function revisions(option){return graph.versions(option.id).map(h=>({id:option.id+'@'+h.version_number,version:h.version_number,from:h.valid_from,to:h.valid_to,label:h.valid_from+' - '+h.valid_to}));}
+ function walk(id,version){const result=graph.resolve(id,{version:version??graph.versions(id).at(-1).version_number});return {assemblyRefs:result.nodes.map(n=>n.ref),leaves:result.leaves.map(l=>({...l,quantity:l.total_quantity,assemblyPath:l.path,component:model.components.get(l.ref)})),issues:result.issues};}
+ function assessments(option,revision){if(compositionModel.costStatus(option.id,revision.version))return [];return (cost.metadata.snapshots||[]).filter(date=>revision.from<=date&&date<revision.to).flatMap(date=>{const snapshot=option.cost?.snapshots?.[date.slice(0,4)];return snapshot&&snapshot.status!=='not_yet_offered'?[{date,snapshot}]:[];});}
+ return {...model,options,state,revisions,walk,assessments,graph,costStatus:compositionModel.costStatus};
 }
 
-if(typeof module!=='undefined'&&module.exports)module.exports={createModel,createFamilyModel};
+if(typeof module!=='undefined'&&module.exports)module.exports={createFamilyModel};
 if(!root.document)return;
 root.setupArtemisWorkbench=function(catalog,page){
  if(!['artemis','aurelia','athena'].includes(page.id))return;
@@ -120,7 +47,7 @@ root.setupArtemisWorkbench=function(catalog,page){
  hero.querySelector('h1').textContent=page.title;
  for(const node of [...main.children])if(node!==hero)node.remove();
  const panel=document.createElement('section');panel.id='artemis-workbench';panel.innerHTML='<p role="status">Loading configurations, manufacturing evaluations and BOMs…</p>';hero.after(panel);
- Promise.all(['generated/catalogs/hardware-bom.json','generated/models/manufacturing-costs.json'].map(async path=>{const r=await DataStore.fetch(path);if(!r.ok)throw Error('Unable to load '+path);return r.json();})).then(([bom,cost])=>mount(createFamilyModel(catalog,bom,cost,page.id),root.BomDetails.createModel(catalog,bom,cost))).catch(error=>{panel.innerHTML='<p role="alert">'+esc(error.message)+'</p><button id="retry-artemis-workbench">Retry</button>';panel.querySelector('button').onclick=()=>location.reload();});
+ DataStore.fetch('generated/models/manufacturing-costs.json').then(r=>r.json()).then(cost=>mount(createFamilyModel(catalog,{},cost,page.id),root.BomDetails.createModel(catalog,{},cost))).catch(error=>{panel.innerHTML='<p role="alert">'+esc(error.message)+'</p><button id="retry-artemis-workbench">Retry</button>';panel.querySelector('button').onclick=()=>location.reload();});
  function mount(model,bomDetails){
   const records=model.records,params=new URLSearchParams(location.search),modelRef=params.get('model')||page.record_refs[0];
   let option=model.options.find(x=>x.id===params.get('configuration')?.split('::')[0])||model.options.find(x=>x.hostRef===modelRef&&!x.upgrade&&!x.target)||model.options.find(x=>!x.upgrade&&!x.target),revision,chosenDate,selected='configuration',nodes=new Map();
@@ -193,7 +120,7 @@ root.setupArtemisWorkbench=function(catalog,page){
    const present=new Set([...nodes.values()].map(n=>n.ref));
    for(const id of host.compatible_devices||[]){if(present.has(id)||!records[id])continue;const r=records[id],entry=recordButton('optional-'+id,id,null,'Compatible option — not fitted · '+(r.introduced?.event_start_date||'date unknown'));if(categories.isMemory(r))memory+=entry;else if(categories.isExpansion(r))expansion+=entry;else ports+=entry;present.add(id);}
    // Full platform records previously exposed in the reference accordion remain reachable.
-   for(const id of page.record_refs){if(id===host.id||present.has(id)||!records[id]||family.includes(id)||id.startsWith('bundle.')||id.startsWith('offer.'))continue;
+   for(const id of page.record_refs){if(id===host.id||present.has(id)||!records[id]||id.startsWith('computer.')||id.startsWith('bundle.')||id.startsWith('offer.'))continue;
     const entry=recordButton('platform-'+id,id,null,'Platform reference — not an included item');
     if(/^(software|edition)\./.test(id)||/api|abi|cpm|os_model|portability|tui/.test(id))software+=entry;else if(/memory|xip/.test(id))memory+=entry;else if(/video|display|monitor|mono_pro|color_pro/.test(id))monitor+=entry;else core+=entry;
    }
@@ -244,15 +171,17 @@ root.setupArtemisWorkbench=function(catalog,page){
   function inspect(){const n=nodes.get(selected);if(!n)return;for(const b of $('configuration-diagram').querySelectorAll('[data-component]'))b.setAttribute('aria-pressed',String(b.dataset.component===selected));
    const system=selected==='configuration';$('configuration-cost-history').hidden=!system;$('configuration-bom').hidden=!system;
    let bomRef=n.ref;
-   const bomHtml=system?'':bomDetails.render(bomRef||selected);
+   const childVersion=model.graph.resolve(option.id,{version:revision.version}).nodes.find(n=>n.ref===bomRef)?.version_number;
+   const bomHtml=system?bomDetails.renderBOM(option.id,{version:revision.version}):bomDetails.render(bomRef||selected,{version:childVersion});
    $('configuration-inspector').innerHTML='<div class="eyebrow">'+(system?'Selected configuration':'Selected component')+'</div><h2>'+esc(n.title)+'</h2><p>'+esc([n.subtitle,n.scope!==n.subtitle?n.scope:''].filter(Boolean).join(' · '))+'</p>'+root.renderSpecification(n.data,records);$('configuration-element-bom').innerHTML=bomHtml;root.bindSpecificationControls($('configuration-inspector'));root.bindSpecificationControls($('configuration-element-bom'));bomDetails.bind($('configuration-element-bom'));
   }
+  $('configuration-element-bom').addEventListener('compositionchange',e=>{if(e.detail.ref!==option.id)return;revision=model.revisions(option).find(r=>r.version===e.detail.version);initDate();render();});
   function table(headers,rows,caption){return '<div class="configuration-table-scroll" tabindex="0"><table><caption>'+esc(caption)+'</caption><thead><tr>'+headers.map(x=>'<th scope="col">'+esc(x)+'</th>').join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table></div>';}
   const td=v=>'<td>'+esc(v)+'</td>';
   function renderCosts(s){
    const rows=model.assessments(option,revision);
    $('configuration-cost-table').innerHTML=rows.length?table(['Evaluation','BOM materials','Manufacturing & fulfillment¹','Licences & services','Total recurring cost','Recorded total range','Status'],rows.map(({date,snapshot:r})=>{const b=r.breakdown_usd||{},extras=Number.isFinite(b.recurring_licenses)&&Number.isFinite(b.included_service_delivery)?b.recurring_licenses+b.included_service_delivery:null,physical=Number.isFinite(r.total_usd)&&extras!==null?r.total_usd-extras:null;return '<tr'+(date===chosenDate?' class="selected-evaluation"':'')+'><th scope="row"><button type="button" data-evaluation="'+date+'" aria-pressed="'+(date===chosenDate)+'">15 June '+date.slice(0,4)+'</button></th>'+td(money(b.bom_materials))+td(money(physical))+td(money(extras))+td(money(r.total_usd))+td(Number.isFinite(r.low_usd)&&Number.isFinite(r.high_usd)?money(r.low_usd)+' – '+money(r.high_usd):'Not recorded')+td(human(r.status))+'</tr>';}),'Cost of '+option.name+' · '+revision.label)+'<p class="configuration-footnote">¹ Physical materials, production, media, packaging and logistics; excludes separately identified recurring licences and service delivery. Ranges apply to the complete recurring estimate. Figures are planning estimates, not supplier quotes. No later-year costs are extrapolated.</p>':'<p class="configuration-empty-state">No June 15 evaluation is recorded for this configuration and revision. '+(option.professional?'The CAD offering starts after the last annual snapshot; its November review is linked below.':option.target?'This is an unqualified expansion design target.':'Unknown costs have not been replaced with zero.')+'</p>';
-   const blocked=pendingCostReason(model.assemblies,[revision.id]);if(blocked)$('configuration-cost-table').innerHTML='<p class="cost-reassessment-pending">'+esc(blocked)+'</p>';
+   const blocked=model.costStatus(option.id,revision.version);if(blocked)$('configuration-cost-table').innerHTML='<p class="cost-reassessment-pending">'+esc(blocked)+'</p>';
    for(const b of $('configuration-cost-table').querySelectorAll('[data-evaluation]'))b.onclick=()=>{chosenDate=b.dataset.evaluation;render();};
    $('configuration-bom-date').textContent=s.snapshot?'Evaluation · '+chosenDate:'Configuration · '+revision.from;
    const lines=model.bomRows(s.snapshot),aggregate=lines.some(l=>l.basis!=='BOM material');

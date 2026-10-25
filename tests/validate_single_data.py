@@ -20,12 +20,13 @@ with tempfile.TemporaryDirectory() as tmp:
    else:value['platform_editions'][0]['product_ref']='software.missing_reference'
    target='catalog:logix-aion-technical-catalog-v2'
   else:
-   target='data/assemblies.json';value=read_document(target,root)
-   if kind!='empty':value['assemblies']=sorted(value['assemblies'],key=lambda a:not bool(a['lines']))
+   target='data/devices.json';value=read_document(target,root)
+   owner=next(d for d in value['devices'] if d['composition_history'])
+   line=owner['composition_history'][0]['composition_definition'][0]
    if kind=='empty':value={}
-   elif kind=='retired':value['assemblies'][0]['lines'][0]['ref']='bompart.part.z80a'
-   elif kind=='composed_leaf':value['assemblies'][0]['lines'][0]['ref']='part.era2_16mhz_rev2'
-   else:value['assemblies'][0]['lines'][0]['ref']=value['assemblies'][0]['id']
+   elif kind=='retired':line['ref']='bompart.part.z80a'
+   elif kind=='composed_leaf':line['ref']='part.missing_reference'
+   else:line['ref']=owner['id']
   try:store_document(target,value,root)
   except (ValueError,KeyError):pass
   else:raise AssertionError('Accepted '+kind)

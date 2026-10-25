@@ -1,5 +1,5 @@
 """Validate versioned source composition and commercial socket populations.
-Temporal child feasibility is reported by simulate_compositions.py until cutover.
+Temporal child feasibility uses the shared composition resolver.
 """
 from collections import defaultdict
 from datetime import date
@@ -32,6 +32,7 @@ def validate_products(source, projected):
         versions=owner['composition_history'];numbers=[];previous=None
         if any(k in owner for k in ['bom_assembly_definition','main_product','connected_devices','attached_products','base_bundle_ref']):raise ValueError('Duplicate legacy composition: '+owner['id'])
         for version in versions:
+            if (owner['id'] in devices or version.get('legacy_assembly_ref')) and not version.get('bom_assembly_metadata'):raise ValueError('Missing version manufacturing metadata: '+owner['id'])
             n=version['version_number'];numbers.append(n)
             start=version['valid_from'];end=version['valid_to'];date.fromisoformat(end)
             if start is not None:
@@ -61,6 +62,14 @@ def validate_products(source, projected):
         for child in graph[ref]:visit(child,path|{ref})
         done.add(ref)
     for ref in list(graph):visit(ref,set())
+    from compositions import resolve_many
+    requests=[{'ref':o['id'],'selection':{'version':h['version_number']}} for o in [*physical.values(),*products] for h in o['composition_history']]
+    for result in resolve_many(requests,documents=source):
+        if result['issues']:raise ValueError('Invalid temporal composition: '+str(result['issues']))
+        if devices.get(result['ref'],{}).get('category')=='base_computer':
+            removable={'memory_expansion','rom_cartridge','video_expansion_card','network_interface_card','floppy_drive_mechanism','hard_disk_drive','keyboard','monitor'}
+            if any(devices.get(n['ref'],{}).get('category') in removable for n in result['nodes'][1:]):raise ValueError('Removable device included in bare base computer')
+
 
 def validate_connections(product,version,devices):
     lines=version['composition_definition'];mains=[x for x in lines if x['element_type']=='main_product']

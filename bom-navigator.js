@@ -6,7 +6,7 @@ try{
  const get=async p=>{const r=await DataStore.fetch(p);if(!r.ok)throw Error('Unable to load '+p);return r.json();};
  const [catalog,story]=await Promise.all(['generated/catalogs/logix-aion-technical-catalog-v2.json','generated/catalogs/logix-aion-story.json'].map(get));
  let model,redirects={};
- if(bomMode){const [bom,cost,site]=await Promise.all(['generated/catalogs/hardware-bom.json','generated/models/manufacturing-costs.json','generated/catalogs/site-pages.json'].map(get));redirects=site.record_redirects||{};model=BomDetails.createModel(catalog,bom,cost);}
+ if(bomMode){const [cost,site]=await Promise.all(['generated/models/manufacturing-costs.json','generated/catalogs/site-pages.json'].map(get));redirects=site.record_redirects||{};model=BomDetails.createModel(catalog,{},cost);}
  else{
   const site=await get('generated/catalogs/site-pages.json'),page=site.pages.find(p=>p.id===pageId);
   if(!page)throw Error('Missing navigator configuration');
@@ -19,6 +19,7 @@ try{
  const collator=new Intl.Collator('en',{numeric:true,sensitivity:'base'});
  let sortKey='name',sortDirection=1,displayedId=null;
  let selected=new URLSearchParams(location.search).get('element')||decodeURIComponent(location.hash.slice(1));
+ const initialAlias=await DataStore.compositionAlias(selected);if(initialAlias)selected=initialAlias.ref;
  selected=await DataStore.resolveComponentId(selected);selected=redirects[selected]||selected;
  let familyId=new URLSearchParams(location.search).get('family')||selected,familyIds=await DataStore.deviceFamily(familyId);
  if(familyIds.length&&selected===familyId)selected='';
@@ -33,7 +34,7 @@ try{
  function inspect(item){
   displayedId=item.id;selected=item.id;const url=new URL(location.href);url.searchParams.set('element',selected);if(familyIds.length)url.searchParams.set('family',familyId);else url.searchParams.delete('family');url.hash='';history.replaceState(null,'',url);
   const host=$('bom-inspector');host.innerHTML='<h2>'+esc(item.name)+'</h2><p>'+esc(item.class)+' · '+esc(item.category.replace(/_/g,' '))+'</p><div class="bom-tabs" role="tablist" aria-label="Element information">'+tabs.map(([id,label])=>'<button type="button" role="tab" id="tab-'+id+'" aria-controls="panel-'+id+'">'+label+'</button>').join('')+'</div>'+tabs.map(([id])=>'<section role="tabpanel" id="panel-'+id+'" aria-labelledby="tab-'+id+'" tabindex="0" hidden></section>').join('');
-  function activate(id,focus=false){activeTab=id;for(const [key] of tabs){const tab=$('tab-'+key),panel=$('panel-'+key),on=key===id;tab.setAttribute('aria-selected',String(on));tab.tabIndex=on?0:-1;panel.hidden=!on;if(on&&!panel.dataset.loaded){panel.innerHTML=key==='details'?renderSpecification(item.record,model.records):key==='bom'?model.renderBOM(item.id,{fullRecords:true}):key==='costs'?model.renderCosts(item.id,{fullRecords:true}):relatedEvents(item.id);panel.dataset.loaded='true';bindSpecificationControls(panel);model.bind(panel);}if(on&&focus)tab.focus();}}
+  function activate(id,focus=false){activeTab=id;for(const [key] of tabs){const tab=$('tab-'+key),panel=$('panel-'+key),on=key===id;tab.setAttribute('aria-selected',String(on));tab.tabIndex=on?0:-1;panel.hidden=!on;if(on&&!panel.dataset.loaded){panel.innerHTML=key==='details'?renderSpecification(item.record,model.records):key==='bom'?model.renderBOM(item.id,{fullRecords:true,version:initialAlias?.ref===item.id?initialAlias.version_number:undefined}):key==='costs'?model.renderCosts(item.id,{fullRecords:true}):relatedEvents(item.id);panel.dataset.loaded='true';bindSpecificationControls(panel);model.bind(panel);}if(on&&focus)tab.focus();}}
   for(const [id] of tabs){$('tab-'+id).onclick=()=>activate(id);$('tab-'+id).onkeydown=e=>{const i=tabs.findIndex(t=>t[0]===id);const next=e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:e.key==='Home'?0:e.key==='End'?tabs.length-1:null;if(next!==null){e.preventDefault();activate(tabs[next][0],true);}};}
   activate(activeTab);for(const b of document.querySelectorAll('[data-element]'))b.setAttribute('aria-pressed',String(b.dataset.element===selected));
  }

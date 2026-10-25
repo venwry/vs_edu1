@@ -32,7 +32,7 @@ def resolution_baseline(bom):
 
 
 def software_baseline(bom):
-    result=copy.deepcopy(bom)
+    result=cutover_baseline(bom)
     f=json.loads((R/'tests/fixtures/software-delivery.json').read_text())
     digest=lambda v:hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':')).encode()).hexdigest()
     found=set();added=set();rows=[]
@@ -46,4 +46,23 @@ def software_baseline(bom):
         rows.append(a)
     assert found==set(f['changed']) and added==set(f['added'])
     result['assemblies']=rows
+    return result
+
+
+def cutover_baseline(bom):
+    result=copy.deepcopy(bom)
+    f=json.loads((R/'tests/fixtures/composition-cutover.json').read_text())
+    digest=lambda v:hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    found=set();added=set();rows=[]
+    for a in result['assemblies']:
+        if a['id'] in f['added']:
+            assert digest(a['lines'])==f['added'][a['id']],a['id']
+            added.add(a['id']);continue
+        if a['id'] in f['changed']:
+            c=f['changed'][a['id']];assert digest(a['lines'])==c['after_sha256'],a['id']
+            a['lines']=copy.deepcopy(c['before']);found.add(a['id'])
+        rows.append(a)
+    assert found==set(f['changed']) and added==set(f['added'])
+    assert not set(f['removed']) & {a['id'] for a in rows}
+    result['assemblies']=rows+list(copy.deepcopy(f['removed']).values())
     return result

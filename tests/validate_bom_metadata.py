@@ -9,36 +9,14 @@ records={r['id']:r for v in c.values() if isinstance(v,list) for r in v if isins
 former_base=set(read_document('tests/fixtures/component-migration.json')['former_base_ids'])
 assemblies={r['id']:r for r in b['assemblies']};parts={r['id']:r for r in b['components']};first={}
 def date(r):return r.get('introduced',{}).get('event_start_date') or r.get('available_from') or ''
-def walk(id,d,seen):
- if id in seen:return
- if id in parts:
-  if id not in first or d<first[id]:first[id]=d
-  return
- a=assemblies.get(id)
- if not a:return
- d=max(d,a.get('effective_from',''))
- for line in a['lines']:
-  ref=line['ref'];p=parts.get(ref,{});r=records.get(ref,{}) if ref in former_base else {}
-  walk(ref,max(d,date(r)),seen|{id})
-for key in ['computers','devices','platform_editions','offered_bundles','commercial_offerings']:
- for r in c[key]:
-  d=date(r)
-  if not d:continue
-  refs=set(r.get('bom_assembly_refs',[])+r.get('physical_media_refs',[]));
-  if r['id'] in assemblies:refs.add(r['id'])
-  refs.add(r.get('bom_assembly_ref'))
-  for p in b['products']:
-   if p['catalog_ref']==r['id']:refs.update(p.get('assembly_refs',[]))
-  for p in b['offers']:
-   if p['catalog_ref']==r['id']:walk(p.get('assembly_ref'),max(d,p.get('effective_from','')),set())
-  for ref in refs:walk(ref,d,set())
-  for v in r.get('manufacturing_variants',[]):walk(v['assembly_ref'],max(d,v.get('effective_from','')),set())
-# Commercial compositions include new delivered components not yet in the legacy cost projection.
-for product in read_document('data/product-catalog.json')['products']:
- for version in product['composition_history']:
-  for line in version['composition_definition']:
-   if line['ref'] in parts and version['valid_from']:
-    ref=line['ref'];first[ref]=min(first.get(ref,version['valid_from']),version['valid_from'])
+from compositions import resolve_many
+owners=read_document('data/devices.json')['devices']+read_document('data/software-editions.json')['software_editions']+read_document('data/product-catalog.json')['products']
+requests=[{'ref':o['id'],'selection':{'version':h['version_number']}} for o in owners for h in o['composition_history']]
+for result in resolve_many(requests):
+ d=result['version']['valid_from']
+ if not d:continue
+ for line in result['leaves']:
+  ref=line['ref'];first[ref]=min(first.get(ref,d),d)
 errors=[]
 for p in b['components']:
  if p['id'] in former_base or p.get('production_status')=='excluded':continue

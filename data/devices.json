@@ -5281,8 +5281,8 @@
           "monitor_modes": "Mono Pro 17 uses a qualified fixed 800x600 raster. Older modes can be centered without scaling; the card reports presentation geometry and logical/output coordinate mapping. Older full-screen timings are enabled only for a monitor profile explicitly supporting them. No automatic multisync claim.",
           "host_integration": "One general 32-bit Artemis slot for the additional professional card; the primary 64 KiB colour card keeps the dedicated video slot. Independent display handles, palettes, clocks, DMA/address resources and input focus.",
           "cost_boundary": "November revision assessed separately in comdex_1982_cost_review.json. June cost rows unchanged; quotes and production qualification pending.",
-          "bom_assembly_ref": "assembly.device.artemis_professional_video_128kb.comdex82",
-          "cost_review_ref": "comdex_1982_cost_review.json"
+          "cost_review_ref": "comdex_1982_cost_review.json",
+          "composition_version_number": 2
         }
       ],
       "vendor": "Logix",
@@ -5314,7 +5314,7 @@
       "composition_history": [
         {
           "valid_from": "1982-06-07",
-          "valid_to": "1990-01-01",
+          "valid_to": "1982-11-29",
           "version_number": 1,
           "composition_definition": [
             {
@@ -5390,6 +5390,93 @@
             },
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
+        },
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 2,
+          "composition_definition": [
+            {
+              "ref": "part.professional_graphics_controller",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.aion_4164",
+              "quantity": 16,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.artemis_professional_video_128kb.pcb",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.artemis_professional_video_128kb.slot_connector",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.artemis_professional_video_128kb.host_dma_arbitration_buffers",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.artemis_professional_video_128kb.line_fifo_clock_link",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.artemis_professional_video_128kb.passives_power_filtering",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.aion_2114",
+              "quantity": 2,
+              "unit": "each",
+              "role": "Separate 1 KiB sprite SRAM; not charged against 128 KiB display RAM",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ],
+          "bom_assembly_metadata": {
+            "name": "Logix Artemis Professional 128 KiB video card — November revision",
+            "status": "incomplete",
+            "requirements": [
+              "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -5451,8 +5538,8 @@
             "https://www.manualslib.com/manual/3426964/Ball-Hd-Series.html?page=6"
           ],
           "supplier_status": "Selected OEM design basis in the alternative timeline; actual ordering code and commercial supply terms remain unspecified.",
-          "bom_assembly_ref": "assembly.device.mono_pro_17.comdex82",
-          "cost_review_ref": "comdex_1982_cost_review.json"
+          "cost_review_ref": "comdex_1982_cost_review.json",
+          "composition_version_number": 2
         }
       ],
       "vendor": "Logix",
@@ -5466,7 +5553,7 @@
       "composition_history": [
         {
           "valid_from": "1982-06-07",
-          "valid_to": "1990-01-01",
+          "valid_to": "1982-11-29",
           "version_number": 1,
           "composition_definition": [
             {
@@ -5552,6 +5639,109 @@
           ],
           "bom_assembly_metadata": {
             "name": "Logix Mono Pro 17",
+            "status": "incomplete",
+            "requirements": [
+              "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
+        },
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 2,
+          "composition_definition": [
+            {
+              "ref": "part.mono_pro_17_controller",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.oem_17inch_core",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.deflection_60hz_upgrade",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.grayscale_dac_linear_amplifier",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.highspeed_link_pcb",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.enclosure",
+              "quantity": 1,
+              "unit": "each",
+              "role": "included component",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.documentation",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.mains_cable",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.signal_cable",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.mono_pro_17.packout",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ],
+          "bom_assembly_metadata": {
+            "name": "Logix Mono Pro 17 — November revision",
             "status": "incomplete",
             "requirements": [
               "Engineering baseline; electrical qualification, routing and supplier quotes pending."

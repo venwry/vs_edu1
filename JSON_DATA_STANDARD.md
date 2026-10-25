@@ -134,3 +134,9 @@ Software delivery migration: SOFTWARE_DELIVERY_MIGRATION.md supersedes the earli
 owns software_editions; 14 line groups are derived from consistent edition metadata.
 There are 21 authoritative collections. Device/software composition edges share cycle
 validation; only physical media/documents enter their BOM leaves, not licence fees.
+
+COMPOSITION_CUTOVER.md supersedes the simulation-only BOM boundary. Current BOM
+consumers resolve products/devices/software histories directly. assemblies.json is
+empty; retired assemblies are historical only. Version-specific aliases preserve
+old identity without supplying a second composition. Historical hardware-BOM exports
+remain compatibility views, not current traversal inputs.
