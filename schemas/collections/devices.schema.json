@@ -228,13 +228,6 @@
               "string"
             ]
           },
-          "bom_assembly_definition": {
-            "type": "array",
-            "items": {
-              "$ref": "#/$defs/line"
-            },
-            "minItems": 1
-          },
           "bom_assembly_metadata": {
             "type": "object",
             "properties": {
@@ -591,14 +584,181 @@
           },
           "hardware_assembly_refs": {
             "type": "array"
+          },
+          "composition_history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "valid_from",
+                "valid_to",
+                "version_number",
+                "composition_definition"
+              ],
+              "properties": {
+                "valid_from": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "valid_to": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "version_number": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "composition_definition": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "ref",
+                      "quantity",
+                      "unit",
+                      "role",
+                      "condition",
+                      "quantity_status"
+                    ],
+                    "properties": {
+                      "ref": {
+                        "type": "string"
+                      },
+                      "quantity": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "exclusiveMinimum": 0
+                      },
+                      "unit": {
+                        "type": "string"
+                      },
+                      "role": {
+                        "type": "string"
+                      },
+                      "condition": {
+                        "type": "string"
+                      },
+                      "quantity_status": {
+                        "enum": [
+                          "defined",
+                          "unresolved"
+                        ]
+                      },
+                      "element_type": {
+                        "enum": [
+                          "main_product",
+                          "connected_device",
+                          "attached_product"
+                        ]
+                      },
+                      "used_socket": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "connected_to": {
+                        "type": "string"
+                      },
+                      "qualification_status": {
+                        "type": "string"
+                      },
+                      "duration_years": {
+                        "type": "number"
+                      },
+                      "placements": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      }
+                    }
+                  }
+                },
+                "legacy_assembly_ref": {
+                  "type": "string"
+                },
+                "unresolved_items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "composition_status": {
+                  "enum": [
+                    "unresolved"
+                  ]
+                },
+                "date_status": {
+                  "enum": [
+                    "unknown"
+                  ]
+                }
+              }
+            }
+          },
+          "lifecycle_policy": {
+            "type": [
+              "string"
+            ]
+          },
+          "technical_profile": {
+            "type": [
+              "object"
+            ]
+          },
+          "default_configuration": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "recommended_software_ref": {
+            "type": [
+              "string"
+            ]
+          },
+          "platform_assembly_refs": {
+            "type": [
+              "array"
+            ]
+          },
+          "upgrade_product_refs": {
+            "type": [
+              "array"
+            ]
+          },
+          "role": {
+            "type": [
+              "string"
+            ]
+          },
+          "availability": {
+            "type": [
+              "object"
+            ]
+          },
+          "inclusion_qualification": {
+            "type": [
+              "string"
+            ]
+          },
+          "programme_ref": {
+            "type": [
+              "string"
+            ]
           }
         },
         "dependentRequired": {
-          "bom_assembly_definition": [
-            "bom_assembly_metadata"
-          ],
           "bom_assembly_metadata": [
-            "bom_assembly_definition"
+            "composition_history"
           ]
         },
         "allOf": [
@@ -630,7 +790,7 @@
                 }
               },
               "required": [
-                "bom_assembly_definition"
+                "composition_history"
               ]
             }
           },
@@ -662,7 +822,7 @@
                 }
               },
               "required": [
-                "bom_assembly_definition"
+                "composition_history"
               ]
             }
           },
@@ -694,7 +854,7 @@
                 }
               },
               "required": [
-                "bom_assembly_definition"
+                "composition_history"
               ]
             }
           },
@@ -702,7 +862,7 @@
             "if": {
               "properties": {
                 "category": {
-                  "const": "computer_chassis"
+                  "const": "base_computer"
                 }
               },
               "required": [
@@ -713,8 +873,7 @@
               "required": [
                 "processor",
                 "expansion_socket_groups",
-                "bom_assembly_definition",
-                "computer_family_ref",
+                "composition_history",
                 "memory_constraints"
               ]
             }
@@ -733,7 +892,7 @@
             "then": {
               "required": [
                 "software_refs",
-                "bom_assembly_definition"
+                "composition_history"
               ]
             }
           }

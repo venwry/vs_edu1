@@ -2,7 +2,7 @@
 
 ## One source layer
 
-The 21 JSON files immediately under `data/` are the authoritative collections.
+The 22 JSON files immediately under `data/` are the authoritative collections.
 Edit their records directly. Roots declare `schema_version: "3.0.0"` (components, devices and software editions use `"3.3.0"`) and a
 relative `$schema` pointing to its contract in `schemas/collections/`.
 There are no persisted generated catalogues and no per-record files or manifest.
@@ -111,3 +111,15 @@ technologies. See [PRODUCT_CATALOG_MIGRATION.md](PRODUCT_CATALOG_MIGRATION.md).
 The former computers/offers/product-boms/retail-catalog files are retired. Their
 logical view shapes are read-time projections only. Python catalogue readers now
 require Node to execute the same projection used by browser readers.
+
+## Versioned composition ownership
+
+The current source contract uses composition_history on devices and products.
+Base-computer platform information lives in devices; external platforms live in
+ecosystem-inputs. Retired assemblies have a separate archive. See
+COMPOSITION_MIGRATION.md for the shared line contract and compatibility boundary.
+Assembly consolidation and temporal calculation are simulation-only in this revision.
+
+The approved follow-up in PRODUCT_COMPLETION.md fills snapshot-derived product
+dates/contents and changes device delivery scope. It supersedes the prior missing
+product/date counts and unchanged-BOM statement; financial files remain unchanged.

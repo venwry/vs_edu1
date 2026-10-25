@@ -7,7 +7,7 @@ def load(n): return read_document(n, root=R)
 from data_store import store_document
 def save(n,v): store_document(n,v)
 
-if any(d.get('category')=='computer_chassis' for d in load('catalog:logix-aion-technical-catalog-v2')['devices']):
+if any(d.get('category')=='base_computer' for d in load('catalog:logix-aion-technical-catalog-v2')['devices']):
  raise ValueError('Historical one-time migration is not applicable after chassis/device migration; edit current device owners directly.')
 
 policy={

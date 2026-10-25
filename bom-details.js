@@ -31,7 +31,7 @@ function createModel(catalog,bom,cost){
  const items=new Map();
  function add(r,cl){const category=categories.category(r,records);if(!category)throw Error('Missing canonical category: '+r.id);items.set(r.id,{id:r.id,name:r.name||r.id,class:cl,category,release:releaseDate(r),record:r});}
  for(const r of catalog.components||[])add(r,'Part');
- for(const r of catalog.devices||[])add(r,r.category==='computer_chassis'?'Chassis':r.virtual?'Internal subsystem':categories.isExpansion(r)?'Expansion':'Peripheral');
+ for(const r of catalog.devices||[])add(r,r.category==='base_computer'?'Base computer':r.virtual?'Internal subsystem':categories.isExpansion(r)?'Expansion':'Peripheral');
  for(const r of catalog.computers||[])add(r,'Computer');
  for(const r of catalog.software_products||[])add(r,'Software product');
  for(const r of catalog.platform_editions||[])add(r,'Software edition');

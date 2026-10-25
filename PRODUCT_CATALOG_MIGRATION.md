@@ -107,3 +107,11 @@ migration audit, with the same 19 pre-existing failures. All 21 collections pass
 source/schema/reference validation, all 25 logical views agree between Python and
 JavaScript, and the data viewer works with the new shared resolver. Fourteen page
 snapshots were reviewed and updated for the intentional product/specification changes.
+
+The subsequent structural migration is documented in COMPOSITION_MIGRATION.md.
+It supersedes source field names and platform ownership above while preserving
+the existing production BOM calculation pending the separate simulation review.
+
+The approved follow-up in PRODUCT_COMPLETION.md fills snapshot-derived product
+dates/contents and changes device delivery scope. It supersedes the prior missing
+product/date counts and unchanged-BOM statement; financial files remain unchanged.

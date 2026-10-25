@@ -2,11 +2,12 @@
 import json,hashlib,sys,copy,tempfile,shutil
 from pathlib import Path
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'tools'))
+from completion_audit import historical_bom
 from data_store import read_document,registry,store_document
 from validate_data import validate_collections
 from device_configuration import configuration
 f=read_document('tests/fixtures/chassis-migration.json');validate_collections()
-t=read_document('catalog:logix-aion-technical-catalog-v2');b=read_document('catalog:hardware-bom');a={r['id']:r for r in b['assemblies']};d={r['id']:r for r in t['devices']};p={r['id']:r for r in t['components']};records={r['id']:r for rows in t.values() if isinstance(rows,list) for r in rows if isinstance(r,dict) and 'id'in r}
+t=read_document('catalog:logix-aion-technical-catalog-v2');b=historical_bom(read_document('catalog:hardware-bom'));a={r['id']:r for r in b['assemblies']};d={r['id']:r for r in t['devices']};p={r['id']:r for r in t['components']};records={r['id']:r for rows in t.values() if isinstance(rows,list) for r in rows if isinstance(r,dict) and 'id'in r}
 inverse={v:k for k,vs in f['processor_families'].items() for v in vs}
 def flat(id):
  if id in p:return [[inverse.get(id,id),1]]
@@ -27,7 +28,7 @@ assert not any('variants'in r or r['category']=='memory_module' for r in p.value
 for old in f['components']:
  new=d[f['aliases'][old['id']]];assert new['category']=='memory_expansion';assert new.get('specification')==old['specification']
 for old in f['computers']:
- c=records[old['id']];ch=d[c['chassis_ref']];assert ch['category']=='computer_chassis';assert c['processor']['clock_mhz']==old['processor']['clock_mhz']
+ c=records[old['id']];ch=d[c['chassis_ref']];assert ch['category']=='base_computer';assert c['processor']['clock_mhz']==old['processor']['clock_mhz']
  assert inverse.get(c['processor']['part_ref'],c['processor']['part_ref'])==old['processor']['part_ref']
  assert c['memory']['ram_kb']>=0
  assert configuration(ch['id'],a,d)['status']=='documented_fit'
@@ -67,7 +68,7 @@ print('PASS: old flattened BOMs and archives unchanged; six chassis, processor b
 
 # A shared internal-drive pool supports either drive type, without additional bays.
 for name,capacity in [('artemis',2),('artemis_pro',3),('athena',2),('athena_server',2)]:
- ch=d['device.chassis.'+name];slots=[s for g in ch['expansion_socket_groups'] for s in g['sockets'] if s['connection']=='internal_storage']
+ ch=d['device.base_computer.'+name];slots=[s for g in ch['expansion_socket_groups'] for s in g['sockets'] if s['connection']=='internal_storage']
  assert len(slots)==1 and slots[0]['id']=='internal_drive' and slots[0]['capacity']==capacity
  assert {d[r]['category'] for r in slots[0]['compatible_device_refs']}=={'floppy_drive_mechanism','hard_disk_drive'}
  for ref in slots[0]['compatible_device_refs']:

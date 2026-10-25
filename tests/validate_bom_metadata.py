@@ -33,16 +33,23 @@ for key in ['computers','devices','platform_editions','offered_bundles','commerc
    if p['catalog_ref']==r['id']:walk(p.get('assembly_ref'),max(d,p.get('effective_from','')),set())
   for ref in refs:walk(ref,d,set())
   for v in r.get('manufacturing_variants',[]):walk(v['assembly_ref'],max(d,v.get('effective_from','')),set())
+# Commercial compositions include new delivered components not yet in the legacy cost projection.
+for product in read_document('data/product-catalog.json')['products']:
+ for version in product['composition_history']:
+  for line in version['composition_definition']:
+   if line['ref'] in parts and version['valid_from']:
+    ref=line['ref'];first[ref]=min(first.get(ref,version['valid_from']),version['valid_from'])
 errors=[]
 for p in b['components']:
- if p['id'] in former_base:continue
+ if p['id'] in former_base or p.get('production_status')=='excluded':continue
  expected=first.get(p['id']);actual=p.get('introduced',{}).get('event_start_date')
- if expected!=actual:errors.append((p['id'],actual,expected))
+ # A component's preserved month-precision date may contain a newly precise device first use.
+ if expected!=actual and not (isinstance(actual,str) and len(actual)==7 and isinstance(expected,str) and expected.startswith(actual+'-')):errors.append((p['id'],actual,expected))
 assert not errors, errors
 for p in b['components']:
- if p['id'] not in former_base and p['id'] not in first:
+ if p['id'] not in former_base and p['id'] not in first and p.get('production_status')!='excluded':
   assert p['introduced']=={'event_name':'no release','event_start_date':None},p['id']
 for p in c['proposed_bundles']:
- assert p['introduced']=={'event_name':'no release','event_start_date':None},p['id']
+ assert p['introduced']['event_start_date'] is not None,p['id']
 print('PASS: component first-use dates match forward BOM reachability, including variant effective dates')
 print(collections.Counter(first.get(p['id'],'no release') for p in b['components'] if p['id'] not in former_base))

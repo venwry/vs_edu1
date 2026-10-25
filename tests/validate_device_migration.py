@@ -17,7 +17,7 @@ assert 'bom_assembly_definition' not in by['device.artemis_ram_module_64kb']
 for n in [4,8,16]:
  d=by[f'device.network_hub.{n}_port'];assert d['specification']['port_count']==n
  assert 'port_count_options' not in d['specification']
- lines={l['ref']:l for l in d['bom_assembly_definition']}
+ lines={l['ref']:l for l in d['composition_history'][0]['composition_definition']}
  assert lines['part.device.network_hub.network_connector']['quantity']==n
  assert lines['part.device.network_hub.per_port_transceiver_termination_and_protection_assembly']['quantity']==n
  for kind in ['pcb','psu','enclosure']:assert lines[f'part.device.network_hub.{n}_port_{kind}']['quantity']==1
@@ -34,7 +34,7 @@ with tempfile.TemporaryDirectory() as t:
  assert all(p.read_bytes()==b for p,b in snapshot.items()),'Roundtrip rewrote source ownership/order'
  row=next(a for a in bom['assemblies'] if a['id']=='device.network_card_aurelia');row['lines'][0]['quantity']=2
  store_document('catalog:hardware-bom',bom,root)
- assert next(d for d in read_document('data/devices.json',root)['devices'] if d['id']==row['id'])['bom_assembly_definition'][0]['quantity']==2
+ assert next(d for d in read_document('data/devices.json',root)['devices'] if d['id']==row['id'])['composition_history'][0]['composition_definition'][0]['quantity']==2
  assert (root/'data/assemblies.json').read_bytes()==snapshot[root/'data/assemblies.json']
  # A device-to-device cycle must be rejected before any source write.
  row['lines'][0]['ref']=row['id'];before={p:p.read_bytes() for p in (root/'data').glob('*.json')}
