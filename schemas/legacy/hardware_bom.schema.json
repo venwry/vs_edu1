@@ -509,7 +509,10 @@
           "minimum": 1
         },
         "unit": {
-          "const": "each"
+          "enum": [
+            "each",
+            "set"
+          ]
         },
         "role": {
           "type": "string"
@@ -539,7 +542,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^(assembly|device)\\."
+          "pattern": "^(assembly|device|software|edition|product|bundle|offer)\\."
         },
         "name": {
           "type": "string"

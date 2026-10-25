@@ -123,3 +123,20 @@ Assembly consolidation and temporal calculation are simulation-only in this revi
 The approved follow-up in PRODUCT_COMPLETION.md fills snapshot-derived product
 dates/contents and changes device delivery scope. It supersedes the prior missing
 product/date counts and unchanged-BOM statement; financial files remain unchanged.
+
+The approved COMPOSITION_RESOLUTION.md follow-up stores bom_assembly_metadata on
+composition versions. Transitional assemblies reference metadata_owner_ref and
+metadata_version_number; the reader hydrates their former metadata shape. BOM line
+units allow each and set: one supplied functional set does not assert one internal IC.
+
+Software delivery migration: SOFTWARE_DELIVERY_MIGRATION.md supersedes the earlier
+22-file count and stored software-line ownership. software-editions.json schema 4.0.0
+owns software_editions; 14 line groups are derived from consistent edition metadata.
+There are 21 authoritative collections. Device/software composition edges share cycle
+validation; only physical media/documents enter their BOM leaves, not licence fees.
+
+COMPOSITION_CUTOVER.md supersedes the simulation-only BOM boundary. Current BOM
+consumers resolve products/devices/software histories directly. assemblies.json is
+empty; retired assemblies are historical only. Version-specific aliases preserve
+old identity without supplying a second composition. Historical hardware-BOM exports
+remain compatibility views, not current traversal inputs.

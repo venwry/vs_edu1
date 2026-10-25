@@ -35,7 +35,8 @@ for product, capacity, modules, module_size, disk in [
     rom=records['part.'+product.split('.')[1]+'.system_rom']
     assert rom['specification']['capacity_bytes']==computer['memory']['os_rom']['capacity_bytes']
     assemblies={a['id']:a for a in read_document('catalog:hardware-bom')['assemblies']}
-    counts={l['ref']:l['quantity'] for l in assemblies[bom['assembly_ref']]['lines']}
+    from compositions import resolve
+    counts={l['ref']:l['quantity'] for l in resolve(product.replace('computer.','product.'),version=1)['version']['composition_definition']}
     assert counts[config['module_ref']]==modules
     assert counts[computer['chassis_ref']]==counts['device.artemis_video_card_64kb']==counts['device.network_card_artemis']==1
 assert records['part.erav1_6mhz']['manufacturing_planning']['node_um']==3

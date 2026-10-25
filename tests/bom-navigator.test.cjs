@@ -25,7 +25,7 @@ for(const [id,vendor] of [
  ['part.computer.aurelia.psu','Logix'],
  ['part.computer.aurelia.525_inch_single_density_floppy_mechanism','Shugart Associates'],
  ['part.hdd_5mb','Seagate Technology'],
- ['software.product.cpm','Digital Research']
+ ['software.product.cpm','Digital Research / Logix OEM implementation']
 ])assert.equal(vendorName(model.items.find(x=>x.id===id).record,model.records),vendor,id);
 for(const id of ['computer.artemis','bundle.artemis_128_mono','device.artemis_video_card_64kb'])assert(model.assemblyIds(id).length,id+' has assemblies');
 assert(model.rows(model.assemblyIds('bundle.artemis_128_mono')[0]).some(x=>x.depth>0));

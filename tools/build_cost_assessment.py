@@ -1,14 +1,16 @@
 from data_store import read_document, document_bytes, document_text
+from compositions import pricing_composition
+from functools import lru_cache
 """Deterministic, assumption-based recurring unit cost model; run from any directory."""
 from pathlib import Path
 import json, math, copy, hashlib
 from collections import defaultdict,Counter
 from memory_manufacturing import policy as memory_policy, selected as memory_selected, evaluate as memory_evaluate
 R=Path(__file__).resolve().parents[1]
-C=read_document('generated/catalogs/logix-aion-technical-catalog-v2.json', root=R); B=read_document('generated/catalogs/hardware-bom.json', root=R)
+C=read_document('generated/catalogs/logix-aion-technical-catalog-v2.json', root=R)
 records={x['id']:x for v in C.values() if isinstance(v,list) for x in v if isinstance(x,dict) and 'id' in x}
-assemblies={x['id']:x for x in B['assemblies']}; components={x['id']:x for x in B['components'] if x['bom_role']=='material'}
-pending=[a['id'] for a in assemblies.values() if a.get('cost_assessment_status')=='pending_reassessment']
+owners={x['id']:x for x in C['devices']+C['platform_editions']+C['product_catalog']['products'] if x.get('composition_history')}; components={x['id']:x for x in C['components'] if x['bom_role']=='material'}
+pending=[r['id'] for r in owners.values() if any(h.get('bom_assembly_metadata',{}).get('cost_assessment_status')=='pending_reassessment' for h in r['composition_history'])]
 if pending:raise ValueError('Cost rebuild blocked: qualify revised module routing/allowances and reassess before publishing: '+', '.join(pending))
 if any(d.get('category')=='base_computer' for d in C['devices']):raise ValueError('Cost rebuild blocked: qualify chassis, device and configured-product routing ownership before recalculation')
 years=[1978,1979,1980,1981,1982]; snapshots=[f'{y}-06-15' for y in years]
@@ -84,65 +86,43 @@ for cid,comp in components.items():
   costs.append({k:round(x,5) for k,x in v.items() if x})
  inputs[cid]={'name':comp['name'],'basis':note,'annual_cost_buckets_usd':dict(zip(map(str,years),costs)),'confidence':'low','price_range_multipliers':[.7,1.55] if ref not in custom else [.5,2.5]}
 quantity_assumptions={}
-def quantity(a,l):
- if l['quantity'] is not None:return l['quantity']
- q=3 if l['ref']=='part.flexibus_host_controller' and a.startswith(('assembly.computer.aurelia.','assembly.computer.aurelia_plus.')) else 2 if l['ref']=='part.flexibus_host_controller' and a in ['device.apple2_expansion_card','device.s100_flexibus_card'] else 1
- quantity_assumptions[a+'|'+l['ref']]={'quantity':q,'unit':'functional set' if l['ref'] not in [x for x in custom] else 'chip','reason':'One controller die per port, pending released ports-per-die definition.' if q in [2,3] else 'Unspecified engineering quantity replaced by one priced functional set (or one controller die); not a catalog amendment.'}
- return q
-def routing(a):
- if a in ncc['routing']:
-  x=ncc['routing'][a];return (x['hours'],x['kwh'],x['consumables_usd'])
- if a.startswith('assembly.computer.'):
-  if a.endswith('.base'):return (3.5 if 'artemis' in a else 2.4,12 if 'artemis' in a else 7,2.5)
-  return (.18,1,.15) # installation and verification, not another complete build
- if a.startswith('assembly.media.'):return (.08,.08,.08)
- if a.startswith('assembly.bundle.'):return (.2,.2,.25)
- if a.startswith(('device.','assembly.device.')):
-  if 'mono_pro' in a:return (1.5,5,1.5)
-  if 'artemis_video_card' in a:return (.6,1,.7)
-  if 'monitor' in a:return (1.0,4,1)
-  if 'print' in a:return (1.3,2,1.2)
-  if 'disk' in a:return (.65,1,.6)
-  if 'keyboard' in a:return (.75,.25,.4)
-  if 'hub' in a:return (.75,1,.7)
-  if 'bank_kit' in a:return (.08,.1,.08)
-  return (.4,.5,.35)
- return (0,0,0)
-assembly_inputs={a:{'assembly_hours_1978':routing(a)[0],'kwh_1978':routing(a)[1],'consumables_usd_1978':routing(a)[2],'operating_overhead_fraction_of_loaded_labor':.25,'rework_allowance_fraction_of_labor':.10,'incremental_material_scrap_rate':.015 if routing(a)[0] else 0} for a in assemblies}
-def rollup(a,i,source_inputs=None):
+assembly_inputs={} # Populated only from explicitly qualified owner/version routing.
+@lru_cache(None)
+def dated_composition(ref,evaluation_date):return pricing_composition(ref,evaluation_date,root=R)
+def routing(node):
+ route=node['metadata'].get('routing',{})
+ required=['minutes_per_unit','kwh_per_unit','consumables_usd_per_unit']
+ if any(route.get(k) is None for k in required):raise ValueError('Unqualified version routing: '+node['ref']+' v'+str(node['version_number']))
+ return route['minutes_per_unit']/60,route['kwh_per_unit'],route['consumables_usd_per_unit']
+def rollup(ref,i,source_inputs=None,*,evaluation_date):
  source_inputs=inputs if source_inputs is None else source_inputs
  v=vec();flat=Counter()
- if a in source_inputs:
-  add(v,source_inputs[a]['annual_cost_buckets_usd'][str(years[i])],1);flat[a]=1
-  return v,flat
- for line in assemblies[a]['lines']:
-  q=quantity(a,line);ref=line['ref']
-  if ref in assemblies:
-   child,leaves=rollup(ref,i,source_inputs);add(v,child,q);flat.update({k:n*q for k,n in leaves.items()})
-  else:add(v,source_inputs[ref]['annual_cost_buckets_usd'][str(years[i])],q);flat[ref]+=q
- h,kwh,cons=routing(a);h*=1 if a in ncc['routing'] else 1-.05*i;labor=h*wages[i]*1.35
- v['workforce']+=labor;v['energy']+=kwh*electricity[i];v['consumables']+=cons*overhead[i];v['operating_overhead']+=labor*.25;v['yield_and_rework']+=labor*.10+sum(v[k] for k in ['bom_materials'])*(.015 if h else 0)
+ if ref in source_inputs:
+  add(v,source_inputs[ref]['annual_cost_buckets_usd'][evaluation_date[:4]],1);flat[ref]=1;return v,flat
+ result=dated_composition(ref,evaluation_date)
+ for line in result['leaves']:
+  if any(c!='always' for c in line['conditions']):raise ValueError('Qualify supply condition before costing: '+line['ref'])
+  q=line['total_quantity']
+  if q is None:raise ValueError('Unknown composition quantity: '+line['ref'])
+  if line['ref'] not in source_inputs:raise ValueError('Missing cost input: '+line['ref'])
+  if source_inputs[line['ref']].get('unit')!=line['unit']:raise ValueError('Qualify cost unit: '+line['ref'])
+  add(v,source_inputs[line['ref']]['annual_cost_buckets_usd'][evaluation_date[:4]],q);flat[line['ref']]+=q
+ for node in result['nodes']:
+  h,kwh,cons=routing(node);q=node['quantity'];labor=h*wages[i]*1.35
+  if q is None:raise ValueError('Unknown routing quantity: '+node['ref'])
+  v['workforce']+=labor*q;v['energy']+=kwh*electricity[i]*q;v['consumables']+=cons*q;v['operating_overhead']+=labor*.25*q;v['yield_and_rework']+=labor*.10*q
  return v,flat
 rows=[]
 def date(x):return x.get('introduced',{}).get('event_start_date','1978-06-05')
 def row(id,ref,name,group,unit,start,**kwargs):
  d={'id':id,'catalog_ref':ref,'name':name,'group':group,'unit':unit,'available_from':start,'assumptions':[],'snapshots':{},**kwargs};rows.append(d);return d
-# Hardware product rows use the canonical BOM configurations, retaining shipping uncertainty.
-for x in C['computers']+C['devices']:
- if x.get('superseded_by'):continue
- prod=next((p for p in B['products'] if p['catalog_ref']==x['id']),None)
- if prod is None:continue # A device identity is not evidence of a sold/costed product.
- refs=prod['assembly_refs']
- if x['id'] in ['computer.artemis','computer.artemis_pro']:
-  configs=[z for z in x['memory']['configurations'] if z['shipping_configuration']]
-  for conf in configs:
-   a='assembly.'+x['id']+'.'+conf['id'];row(x['id']+'.'+conf['id'],x['id'],x['name']+f' — {conf["ram_kb"]} KiB ({conf["populated_modules"]} modules)', 'Computers','one chassis, no keyboard/monitor/system cartridge',date(x),assembly_ref=a,announced_only=x['id']=='computer.artemis_pro',assumptions=['Separate system bundle rows include the OS, accessories and bundled support; do not add these rows to bundle costs.'])
-   if x['id']=='computer.artemis':row(x['id']+'.'+conf['id']+'.networked',x['id'],x['name']+f' — {conf["ram_kb"]} KiB networked','Computers','one chassis with NIC, no OS/accessories','1981-05-04',assembly_ref=a+'.networked')
- else:
-  for a in refs:row(x['id']+(('.'+a.split('.')[-1]) if len(refs)>1 else ''),x['id'],x['name']+((' — '+a.split('.')[-1].replace('_',' ')) if len(refs)>1 else ''),'Computers' if x['id'].startswith('computer') else 'Peripherals','one chassis, no accessories/system cartridge' if x['id'].startswith('computer') else 'one finished accessory',date(x),assembly_ref=a)
+# Hardware owners and commercial products use their source identity, never configured assemblies.
+for x in C['devices']+C['product_catalog']['products']:
+ if not x.get('composition_history') or x.get('record_kind')=='platform':continue
+ row(x['id'],x['id'],x['name'],'Bundles' if x in C['product_catalog']['products'] else 'Peripherals','one supplied composition',date(x),composition_ref=x['id'])
 # OEM custom chips are explicitly offered by the component-licensing service.
 for ref in sorted(custom):
- x=records[ref];row(ref,ref,x['name'],'OEM chips','one tested packaged chip, bulk shipment',date(x),assembly_ref=ref)
+ x=records[ref];row(ref,ref,x['name'],'OEM chips','one tested packaged chip, bulk shipment',date(x),composition_ref=ref)
 # Software production excludes development; platform variants retain distinct availability.
 software_profiles={'aurelia_compatibility_kit':(5,800),'abacus_1':(1,80),'simple_c_z80':(3,220),'aurelia_sdk':(5,800),'bpi_suite':(5,700),'microsoft_basic_aurelia':(1,180),'pulse_1':(3,240),'abacus_2':(2,160),'aion_c_ide':(6,400),'artemis_sdk':(8,1000),'abacus_3':(4,280),'pulse_3':(4,300),'bpi_client_server':(8,800)}
 team_delivery=read_document('generated/catalogs/team-development-program.json', root=R)['delivery']
@@ -154,15 +134,13 @@ external_editions=[]
 for x in C['platform_editions']:
  if x['platform_support'] and all(s['computer_ref'] in external_platform_ids for s in x['platform_support']):
   external_editions.append(x);continue
- key=x['id'].split('.')[1];a=next(iter(x.get('physical_media_refs',[])),'assembly.media.software.'+key)
- kwargs={'assembly_ref':a} if a in assemblies else {'software_profile':software_profiles.get(key)}
+ key=x['id'].split('.')[1];a=x['id']
+ kwargs={'composition_ref':a} if a in owners else {'not_costed_reason':'No physical composition is defined for this externally supplied edition.'}
  if kwargs.get('software_profile','present') is None:kwargs={'not_costed_reason':'No qualified media, licence and delivery cost profile is recorded for this edition.'}
  if records[x['product_ref']].get('vendor')=='Autodesk':kwargs['not_costed_reason']='Future independent Autodesk product; distribution and licence terms not costed.'
  if key=='aion_development_team':kwargs['service_hours']=team_delivery['onboarding_staff_hours']+team_delivery['first_year_support_staff_hours']
  row(x['id'],x['id'],x['name'],'Software editions','one edition media/manual set',date(x),**kwargs,assumptions=['Edition reproduction and delivery only; product is a grouping and has no additional manufacturing charge.'])
 for m in records['software.bpi_suite']['modules']:row('software.bpi_suite.'+m['name'].lower().replace(' ','_'),'software.bpi_suite',m['name'],'Software','one module media/manual set','1978-06-05',software_profile=[1,140])
-for x in C['offered_bundles']:
- row(x['id'],x['id'],x['name'],'Bundles','one complete catalog offer',date(x),assembly_ref=x['bom_assembly_ref'],manufacturing_variants=x.get('manufacturing_variants',[]),included_services=x.get('included_services',[]),announced_only=bool(x.get('availability_status')),assumptions=['Recursive BOM packout; never sum a bundle and its constituent product rows.','The dated manufacturing variant determines NIC and OS inclusion.'])
 # Service delivery units are necessary to avoid calling an annual contract a manufactured item.
 for x in C['services']:
  id=x['id'];category=x['category'];args={}
@@ -191,11 +169,9 @@ def fulfillment(r,i):
 def support_cost(hours,i,travel=0):
  v=vec();v['workforce']=hours*wages[i]*1.35*1.6;v['operating_overhead']=v['workforce']*.25+hours*1.5*overhead[i];v['instructions']=1*overhead[i];v['logistics']=travel*overhead[i];return v
 
-def estimate(r,i,source_inputs=None):
- v=vec();flat=Counter();a=r.get('assembly_ref');snapshot=snapshots[i]
- for variant in r.get('manufacturing_variants',[]):
-  if variant['effective_from']<=snapshot:a=variant['assembly_ref']
- if a:v,flat=rollup(a,i,source_inputs)
+def estimate(r,i,source_inputs=None,*,evaluation_date=None):
+ v=vec();flat=Counter();a=r.get('composition_ref');snapshot=evaluation_date or snapshots[i]
+ if a:v,flat=rollup(a,i,source_inputs,evaluation_date=snapshot)
  if r.get('software_profile'):
   disks,pages=r['software_profile'];v['bom_materials']=disks*[1.6,1.5,1.4,1.3,1.2][i];v['instructions']=(pages*.018+1.2)*overhead[i];v['workforce']=(.08+.025*disks)*wages[i]*1.35;v['energy']=.1*electricity[i];v['consumables']=.1*overhead[i];v['operating_overhead']=v['workforce']*.25
  if r['group'] in ['Software','Software editions'] and a:v['instructions']+=3*overhead[i]
@@ -233,7 +209,7 @@ for cat in ['computers','devices','software_products','services','offered_bundle
  for x in C[cat]:
   if x['id'] not in covered:excluded.append({'catalog_ref':x['id'],'reason':'Proposed bundle, not offered' if cat=='proposed_bundles' else 'Technology/specification, not separately sold' if cat=='technologies' else 'Superseded/prototype part, not active offering' if x.get('superseded_by') or 'prototype' in x['id'] or '128kbit' in x['id'] or 'module_64kb' in x['id'] else 'Purchased/internal component; included in end-product BOM, not a separate Logix offering'})
 sources=[{'id':'bls_wages','title':'BLS via FRED: manufacturing production-worker average hourly earnings','url':'https://fred.stlouisfed.org/data/AHEMAN','used_for':'June nominal wage anchors: 5.99, 6.54, 7.08, 7.85 USD/h. Benefits factor and skill multipliers are assumptions.'},{'id':'eia_power','title':'EIA Annual Energy Review Table 8.10','url':'https://www.eia.gov/totalenergy/data/annual/txt/ptb0810.html','used_for':'Annual US industrial electricity proxies: 2.8, 3.1, 3.7, 4.3 cents/kWh. Annual rates are retrospective proxies, not June-specific tariffs.'},{'id':'byte_1978','title':'BYTE November 1978 advertising','url':'https://vintageapple.org/byte/pdf/197811_Byte_Magazine_Vol_03-11_OSCAR_amateur_radio_satellites.pdf','used_for':'Retail 4116 kit price sanity check only. OEM DRAM prices are scenario discounts; this later-1978 advertisement is not a June quote.'},{'id':'disk_retail','title':'Apple Disk II advertisement, BYTE August 1978','url':'https://vintageapple.org/byte/pdf/197808_Byte_Magazine_Vol_03-08_Pascal.pdf','used_for':'495 USD complete-drive retail comparison only; not its manufacturing cost.'},{'id':'seagate_oem','title':'Computer History Museum corporate-history report: Seagate','url':'https://archive.computerhistory.org/resources/access/text/2015/04/102740040-05-01-acc.pdf','used_for':'Historical 5 MB drive pricing span (single-unit 1500 USD, 5000-unit tier 775 USD); 950 USD 1981 OEM central value is an assumption, not a dated Logix quote.'}]
-model={'metadata':{'title':'Logix / AION recurring unit cost assessment','version':'1.2','currency':'USD','price_basis':'nominal dollars of each snapshot year; no conversion to current money','snapshots':snapshots,'source_commit':'c4567d340882e132ca92671861487af453dafc80','source_note':'Baseline commit; source hashes identify the edited inputs used for this build.','source_sha256':{n:hashlib.sha256(document_bytes(n, root=R)).hexdigest() for n in ['generated/catalogs/logix-aion-technical-catalog-v2.json','generated/catalogs/hardware-bom.json','generated/catalogs/manufacturing-programs.json','generated/catalogs/memory-manufacturing.json']},'estimate_status':'engineering planning scenario; no supplier quotes; not audited manufacturing accounts','generated_by':'tools/build_cost_assessment.py'},'scope':{'included':['Purchased BOM and internal-chip recurring fabrication','Direct and test labor plus 35% employment burden','Electricity','Process consumables, materials lost to yield and rework','Recurring factory maintenance/supervision allowance','Printed instructions and media duplication','Packaging','Inbound/outbound logistics allowance to US distribution/customer','Assumed recurring third-party royalties','Explicitly bundled support delivery; service rows use their stated units'],'excluded':['R&D and design engineering','Land, factory construction and equipment purchases','Capital depreciation, equipment leases and financing','Original masks, tooling and fixture NRE','Software and firmware development, including maintenance-release development','Marketing, promotion and vouchers','ComputerLand fees and retailer margin','Profit, income/sales tax and working-capital interest'],'boundary':'US production/distribution scenario. Purchased parts retain vendor margins/capital in their purchase price. Routine maintenance is included; Logix-owned capital cost is excluded. No fleet-wide total is calculated: rows include overlapping bundles and alternatives.'},'assumptions':{'offering_policy':'Introduction on/before June 15 qualifies as offered, not proven shipment. No withdrawals are specified: earlier models/versions remain in the scenario. PRO is marked announced/shipping unconfirmed. Non-shipping RAM expansion targets excluded as factory configurations.','scale':'Planning scale: 10,000 hardware units per family/year, OEM electronics orders generally 10k–100k pieces; PRO 1,000/year, cartridges/printed editions 5,000 copies. Volumes are assumptions, not story facts. Steady recurring runs even at recently announced launches; ramp risk in high range.','labor_usd_per_hour':dict(zip(map(str,years),wages)),'labor_burden_multiplier':1.35,'electricity_usd_per_kwh':dict(zip(map(str,years),electricity)),'assembly_learning':'5 percentage points less assembly time each year relative to 1978 baseline; new/complex designs retain larger operation-hour budgets.','logistics':'Per-unit bulk US freight/handling allowance. No individually quoted route or international customs model.','custom_fabrication':'75 mm NMOS wafer assumption, die area and yield per chip below. Advanced design/mask access does not eliminate recurring wafer processing or failures. No capital/NRE allocation.','royalties':'CP/M 10 USD/copy, CP/M networking 5 USD, Microsoft BASIC 20 USD; provisional contract allowances, not sourced contract terms. Owned software has no external royalty.','service_units':'Support is per customer-year; training is per learner at 8 learners and 6 teaching hours/day plus 1.5 prep hours/class/day. Unspecified course lengths are scenario assumptions. No repair-parts entitlement is assumed unless stated.','uncertainty':'Hardware/software ranges usually 0.70–1.60× central; PRO 0.65–1.75×; OEM silicon 0.50–2.50×; services 0.55–1.90×. Correlated scenario envelopes, not statistical intervals. Custom chip yield and 64K DRAM procurement dominate risk.','double_counting':'Nested BOMs count each component once. Final manuals/cartons/freight applied only at the top-level offer. Chip fabrication labor/energy is categorized inside the breakdown; extended BOM line costs include these internal conversion costs and must not be added to the total again.'},'sources':sources,'component_cost_assumptions':inputs,'chip_fabrication_models':chip_models,'assembly_routing_assumptions':assembly_inputs,'unresolved_quantity_assumptions':quantity_assumptions,'products':rows,'coverage_exclusions':excluded}
+model={'metadata':{'title':'Logix / AION recurring unit cost assessment','version':'1.2','currency':'USD','price_basis':'nominal dollars of each snapshot year; no conversion to current money','snapshots':snapshots,'source_commit':'c4567d340882e132ca92671861487af453dafc80','source_note':'Baseline commit; source hashes identify the edited inputs used for this build.','source_sha256':{n:hashlib.sha256(document_bytes(n, root=R)).hexdigest() for n in ['generated/catalogs/logix-aion-technical-catalog-v2.json','data/devices.json','data/product-catalog.json','data/software-editions.json','data/components.json','generated/catalogs/manufacturing-programs.json','generated/catalogs/memory-manufacturing.json']},'estimate_status':'engineering planning scenario; no supplier quotes; not audited manufacturing accounts','generated_by':'tools/build_cost_assessment.py'},'scope':{'included':['Purchased BOM and internal-chip recurring fabrication','Direct and test labor plus 35% employment burden','Electricity','Process consumables, materials lost to yield and rework','Recurring factory maintenance/supervision allowance','Printed instructions and media duplication','Packaging','Inbound/outbound logistics allowance to US distribution/customer','Assumed recurring third-party royalties','Explicitly bundled support delivery; service rows use their stated units'],'excluded':['R&D and design engineering','Land, factory construction and equipment purchases','Capital depreciation, equipment leases and financing','Original masks, tooling and fixture NRE','Software and firmware development, including maintenance-release development','Marketing, promotion and vouchers','ComputerLand fees and retailer margin','Profit, income/sales tax and working-capital interest'],'boundary':'US production/distribution scenario. Purchased parts retain vendor margins/capital in their purchase price. Routine maintenance is included; Logix-owned capital cost is excluded. No fleet-wide total is calculated: rows include overlapping bundles and alternatives.'},'assumptions':{'offering_policy':'Introduction on/before June 15 qualifies as offered, not proven shipment. No withdrawals are specified: earlier models/versions remain in the scenario. PRO is marked announced/shipping unconfirmed. Non-shipping RAM expansion targets excluded as factory configurations.','scale':'Planning scale: 10,000 hardware units per family/year, OEM electronics orders generally 10k–100k pieces; PRO 1,000/year, cartridges/printed editions 5,000 copies. Volumes are assumptions, not story facts. Steady recurring runs even at recently announced launches; ramp risk in high range.','labor_usd_per_hour':dict(zip(map(str,years),wages)),'labor_burden_multiplier':1.35,'electricity_usd_per_kwh':dict(zip(map(str,years),electricity)),'assembly_learning':'5 percentage points less assembly time each year relative to 1978 baseline; new/complex designs retain larger operation-hour budgets.','logistics':'Per-unit bulk US freight/handling allowance. No individually quoted route or international customs model.','custom_fabrication':'75 mm NMOS wafer assumption, die area and yield per chip below. Advanced design/mask access does not eliminate recurring wafer processing or failures. No capital/NRE allocation.','royalties':'CP/M 10 USD/copy, CP/M networking 5 USD, Microsoft BASIC 20 USD; provisional contract allowances, not sourced contract terms. Owned software has no external royalty.','service_units':'Support is per customer-year; training is per learner at 8 learners and 6 teaching hours/day plus 1.5 prep hours/class/day. Unspecified course lengths are scenario assumptions. No repair-parts entitlement is assumed unless stated.','uncertainty':'Hardware/software ranges usually 0.70–1.60× central; PRO 0.65–1.75×; OEM silicon 0.50–2.50×; services 0.55–1.90×. Correlated scenario envelopes, not statistical intervals. Custom chip yield and 64K DRAM procurement dominate risk.','double_counting':'Nested BOMs count each component once. Final manuals/cartons/freight applied only at the top-level offer. Chip fabrication labor/energy is categorized inside the breakdown; extended BOM line costs include these internal conversion costs and must not be added to the total again.'},'sources':sources,'component_cost_assumptions':inputs,'chip_fabrication_models':chip_models,'assembly_routing_assumptions':assembly_inputs,'unresolved_quantity_assumptions':quantity_assumptions,'products':rows,'coverage_exclusions':excluded}
 # Separate procurement and one-time program scenarios; never folded silently into base costs.
 programs=read_document('generated/catalogs/manufacturing-programs.json', root=R)
 program=programs['smc_transfer']

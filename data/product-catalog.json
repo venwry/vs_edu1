@@ -84,7 +84,22 @@
               "quantity_status": "defined"
             }
           ],
-          "legacy_assembly_ref": "assembly.computer.athena.base"
+          "legacy_assembly_ref": "assembly.computer.athena.base",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Functional BOM only; system ROM included as uncosted functional set. No exhaustive production BOM or complete cost roll-up.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ],
       "computer_ref": "computer.athena"
@@ -171,7 +186,22 @@
               "quantity_status": "defined"
             }
           ],
-          "legacy_assembly_ref": "assembly.computer.athena_server.base"
+          "legacy_assembly_ref": "assembly.computer.athena_server.base",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Functional BOM only; system ROM included as uncosted functional set. No exhaustive production BOM or complete cost roll-up.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ],
       "computer_ref": "computer.athena_server"
@@ -263,18 +293,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.aurelia_mono"
+          "legacy_assembly_ref": "assembly.bundle.aurelia_mono",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Computer + keyboard + Mono I are explicit; add video/keyboard/mains cables, exact CP/M cartridge/media, manuals and cartons. Define whether purchased monitor/keyboard already include cables.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -365,18 +401,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.aurelia_color"
+          "legacy_assembly_ref": "assembly.bundle.aurelia_color",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Same, using Color I; use its separate OEM assembly and calibration cost, not a generic monitor allowance.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -469,18 +511,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.aurelia_plus_mono"
+          "legacy_assembly_ref": "assembly.bundle.aurelia_plus_mono",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Tie to 64 KiB Plus board and two FDDs, Mono II, keyboard, exact cartridge/media and packout.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -573,18 +621,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.aurelia_plus_color"
+          "legacy_assembly_ref": "assembly.bundle.aurelia_plus_color",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Same with Color II and its corresponding power/cable/packaging variant.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -702,18 +756,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_128_mono"
+          "legacy_assembly_ref": "assembly.bundle.artemis_128_mono",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Two 64 KB 32-bit modules/one bank, Mono II, keyboard and AIONix cartridge; define pre-/post-1981 networking contents.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         },
         {
           "valid_from": "1981-05-04",
@@ -809,18 +869,25 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_128_mono.networked"
+          "legacy_assembly_ref": "assembly.bundle.artemis_128_mono.networked",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "No second NIC; it is already fitted in the host assembly.",
+              "AIONix Server replaces the base AIONix cartridge for the networking configuration.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -938,18 +1005,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_128_color"
+          "legacy_assembly_ref": "assembly.bundle.artemis_128_color",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Same RAM/host revision with Color II; distinguish display and packout costs.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         },
         {
           "valid_from": "1981-05-04",
@@ -1045,18 +1118,25 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_128_color.networked"
+          "legacy_assembly_ref": "assembly.bundle.artemis_128_color.networked",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "No second NIC; it is already fitted in the host assembly.",
+              "AIONix Server replaces the base AIONix cartridge for the networking configuration.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -1174,18 +1254,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_256_color"
+          "legacy_assembly_ref": "assembly.bundle.artemis_256_color",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Same high-density configuration with Color II; preserve configuration-specific module count.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         },
         {
           "valid_from": "1981-05-04",
@@ -1281,18 +1367,25 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_256_color.networked"
+          "legacy_assembly_ref": "assembly.bundle.artemis_256_color.networked",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "No second NIC; it is already fitted in the host assembly.",
+              "AIONix Server replaces the base AIONix cartridge for the networking configuration.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -1349,7 +1442,22 @@
               "quantity_status": "defined"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.aurelia_network_upgrade"
+          "legacy_assembly_ref": "assembly.bundle.aurelia_network_upgrade",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "NIC plus named OS upgrade medium and installation materials; decide included network cable and any required RAM upgrade. No new host, no implicit hub.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -1403,7 +1511,22 @@
               "quantity_status": "defined"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_network_upgrade"
+          "legacy_assembly_ref": "assembly.bundle.artemis_network_upgrade",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "NIC plus complete Server OS cartridge/media, cable policy and install kit. Do not count a second base OS cartridge unless actually included. No new host or hub.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -1507,18 +1630,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_pro_512_server"
+          "legacy_assembly_ref": "assembly.bundle.artemis_pro_512_server",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Two 256 KB 32-bit modules, one HDD, two FDDs, one network interface, Server OS; explicitly decide console keyboard/monitor, cables and headless service tools. Hub not specified. Shipment date unconfirmed.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -1622,18 +1751,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_pro_1mb_server"
+          "legacy_assembly_ref": "assembly.bundle.artemis_pro_1mb_server",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Four 256 KB 32-bit modules/two banks; otherwise same explicit inclusions and unresolved console/hub/shipment policy. Higher power and full-population testing are configuration-specific.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -1751,18 +1886,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_256_mono_pro"
+          "legacy_assembly_ref": "assembly.bundle.artemis_256_mono_pro",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         },
         {
           "valid_from": "1981-05-04",
@@ -1858,18 +1999,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_256_mono_pro.networked"
+          "legacy_assembly_ref": "assembly.bundle.artemis_256_mono_pro.networked",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -1995,18 +2142,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_pro_512_mono_pro"
+          "legacy_assembly_ref": "assembly.bundle.artemis_pro_512_mono_pro",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -2132,18 +2285,24 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
-            },
-            {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_pro_1mb_mono_pro"
+          "legacy_assembly_ref": "assembly.bundle.artemis_pro_1mb_mono_pro",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Includes Mono Pro 640×400 monitor and keyboard; one video card already included in host, not added twice.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -2160,14 +2319,6 @@
         "hard_disk_mb": 0,
         "hard_disk_enclosure": null
       },
-      "software_variants": [
-        {
-          "effective_from": "1980-11-19",
-          "add": [
-            "software.abacus_3"
-          ]
-        }
-      ],
       "notes": [
         "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
         "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
@@ -2207,7 +2358,7 @@
       "composition_history": [
         {
           "valid_from": "1980-05-19",
-          "valid_to": "1981-05-04",
+          "valid_to": "1980-11-19",
           "version_number": 1,
           "composition_definition": [
             {
@@ -2282,12 +2433,128 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_artemis",
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 1,
+              "ref": "service.regular_support",
               "element_type": "attached_product",
               "unit": "each",
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
+            }
+          ],
+          "legacy_assembly_ref": "assembly.bundle.artemis_budget_128",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
+        },
+        {
+          "valid_from": "1980-11-19",
+          "valid_to": "1981-05-04",
+          "version_number": 2,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_64kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card_16kb",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card_16kb",
+              "ref": "device.color_monitor_2",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "system_cartridge",
+              "ref": "device.rom_cartridge.aionix",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
             },
             {
               "duration_years": 1,
@@ -2300,21 +2567,35 @@
               "quantity_status": "defined"
             },
             {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
+              "ref": "software.abacus_3",
+              "quantity": 1,
               "unit": "each",
-              "role": "",
+              "role": "Included application software",
               "condition": "always",
-              "quantity_status": "unresolved",
+              "quantity_status": "defined",
               "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_budget_128"
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         },
         {
           "valid_from": "1981-05-04",
           "valid_to": "1990-01-01",
-          "version_number": 2,
+          "version_number": 3,
           "composition_definition": [
             {
               "ref": "device.base_computer.artemis",
@@ -2398,12 +2679,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_artemis",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
             },
             {
               "duration_years": 1,
@@ -2416,16 +2699,31 @@
               "quantity_status": "defined"
             },
             {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
+              "ref": "software.abacus_3",
+              "quantity": 1,
               "unit": "each",
-              "role": "",
+              "role": "Included application software",
               "condition": "always",
-              "quantity_status": "unresolved",
+              "quantity_status": "defined",
               "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_budget_128.networked"
+          "legacy_assembly_ref": "assembly.bundle.artemis_budget_128.networked",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -2433,23 +2731,15 @@
       "id": "bundle.artemis_budget_128_hdd",
       "name": "Artemis 128 — Budget Hard-Disk Office",
       "introduced": {
-        "event_name": "NCC 1980 — Artemis budget range",
-        "event_start_date": "1980-05-19"
+        "event_name": "COMDEX 1980 — Artemis budget HDD configuration",
+        "event_start_date": "1980-11-19"
       },
       "computer_ref": "computer.artemis",
       "storage": {
-        "floppies": 2,
+        "floppies": 1,
         "hard_disk_mb": 5,
-        "hard_disk_enclosure": "external qualified subsystem"
+        "hard_disk_enclosure": "internal drive bay"
       },
-      "software_variants": [
-        {
-          "effective_from": "1980-11-19",
-          "add": [
-            "software.abacus_3"
-          ]
-        }
-      ],
       "notes": [
         "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
         "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
@@ -2462,7 +2752,7 @@
       "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": "1980-05-19",
+        "shipping_date": "1980-11-19",
         "availability_status": "scenario_qualified_shipment",
         "licenses_and_services": "AIONix, Business Tools, dated Abacus 3 and regular support counted once in budget assessment."
       },
@@ -2473,10 +2763,10 @@
         "name": "Logix Budget Hard-Disk Office",
         "purpose": "Affordable native Artemis business workstation with 5 MB storage.",
         "includes": [
-          "Artemis 128 KiB, two floppy drives, keyboard and Color Monitor II 12-inch",
+          "Artemis 128 KiB, one floppy drive, keyboard and Color Monitor II 12-inch",
           "AIONix, Business Tools and Abacus 3 (from November 1980)",
           "One-year Regular Support",
-          "5 MB hard disk with qualified enclosure, power and interface"
+          "5 MB internal ST506 hard disk; base-computer power and controller qualification required"
         ],
         "unpriced_requirements": [],
         "options": [
@@ -2489,7 +2779,7 @@
       },
       "composition_history": [
         {
-          "valid_from": "1980-05-19",
+          "valid_from": "1980-11-19",
           "valid_to": "1981-05-04",
           "version_number": 1,
           "composition_definition": [
@@ -2503,7 +2793,7 @@
               "quantity_status": "defined"
             },
             {
-              "quantity": 2,
+              "quantity": 1,
               "used_socket": "internal_drive",
               "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
               "element_type": "connected_device",
@@ -2565,12 +2855,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_artemis",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
             },
             {
               "duration_years": 1,
@@ -2583,16 +2875,41 @@
               "quantity_status": "defined"
             },
             {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
+              "ref": "device.storage.hdd_5mb",
+              "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "unresolved",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "internal_drive"
+            },
+            {
+              "ref": "software.abacus_3",
+              "quantity": 1,
+              "unit": "each",
+              "role": "Included application software",
+              "condition": "always",
+              "quantity_status": "defined",
               "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_budget_128_hdd"
+          "legacy_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         },
         {
           "valid_from": "1981-05-04",
@@ -2609,7 +2926,7 @@
               "quantity_status": "defined"
             },
             {
-              "quantity": 2,
+              "quantity": 1,
               "used_socket": "internal_drive",
               "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
               "element_type": "connected_device",
@@ -2681,12 +2998,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_artemis",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
             },
             {
               "duration_years": 1,
@@ -2699,16 +3018,41 @@
               "quantity_status": "defined"
             },
             {
-              "ref": "part.logix_supplemental_distribution_media",
-              "quantity": null,
+              "ref": "device.storage.hdd_5mb",
+              "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "unresolved",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "internal_drive"
+            },
+            {
+              "ref": "software.abacus_3",
+              "quantity": 1,
+              "unit": "each",
+              "role": "Included application software",
+              "condition": "always",
+              "quantity_status": "defined",
               "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.bundle.artemis_budget_128_hdd.networked"
+          "legacy_assembly_ref": "assembly.bundle.artemis_budget_128_hdd.networked",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -2805,12 +3149,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_aurelia",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_aurelia",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.aurelia"
             },
             {
               "quantity": 1,
@@ -2929,12 +3275,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_aurelia",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_aurelia",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.aurelia"
             },
             {
               "quantity": 1,
@@ -3042,12 +3390,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_aurelia",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_aurelia",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.aurelia"
             },
             {
               "quantity": 1,
@@ -3180,12 +3530,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_aurelia",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_aurelia",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.aurelia_plus"
             },
             {
               "quantity": 1,
@@ -3304,12 +3656,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_aurelia",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_aurelia",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.aurelia_plus"
             },
             {
               "quantity": 1,
@@ -3417,12 +3771,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_aurelia",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_aurelia",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.aurelia_plus"
             },
             {
               "quantity": 1,
@@ -3539,12 +3895,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_aurelia",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_aurelia",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.aurelia_plus"
             },
             {
               "quantity": 1,
@@ -3775,7 +4133,29 @@
               "quantity_status": "defined"
             }
           ],
-          "legacy_assembly_ref": "assembly.offer.comdex82_artemis_autocad"
+          "legacy_assembly_ref": "assembly.offer.comdex82_artemis_autocad",
+          "bom_assembly_metadata": {
+            "name": "Logix Artemis PRO Professional CAD — Autodesk AutoCAD 1.0",
+            "status": "incomplete",
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+            "requirements": [
+              "Run the agreed release-quality native AutoCAD build on the reference configuration",
+              "Load/save and exchange a representative drawing; verify numerical geometry",
+              "Use both displays and the mouse with correct focus and cursor restoration",
+              "Show readable antialiased lines and stable display refresh under accelerator load",
+              "Plot a physical drawing and verify scale and geometry",
+              "Recover from interrupted work and restore a backup",
+              "Document supported features; no automatic later-version dimensioning, object-snap or 3D claims"
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            }
+          }
         }
       ]
     },
@@ -4294,9 +4674,33 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.artemis_ram_64kb_bank_kit.kit_packout_and_instructions",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.offer.ram_64kb_module"
+          "legacy_assembly_ref": "assembly.offer.ram_64kb_module",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -4345,9 +4749,33 @@
               "role": "",
               "condition": "always",
               "quantity_status": "defined"
+            },
+            {
+              "ref": "part.device.artemis_ram_256kb_bank_kit.kit_packout_and_instructions",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
             }
           ],
-          "legacy_assembly_ref": "assembly.offer.ram_256kb_bank"
+          "legacy_assembly_ref": "assembly.offer.ram_256kb_bank",
+          "bom_assembly_metadata": {
+            "requirements": [
+              "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending.",
+              "Final product integration and shipment checks; constituent device manufacture, testing and delivery items belong to their device versions."
+            ],
+            "routing": {
+              "operations": [],
+              "minutes_per_unit": null,
+              "first_pass_yield": null,
+              "rework_rate": null,
+              "scrap_rate": null,
+              "fixture_refs": []
+            },
+            "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+          }
         }
       ]
     },
@@ -4483,12 +4911,14 @@
             },
             {
               "quantity": 1,
-              "ref": "software.business_tools_artemis",
-              "element_type": "attached_product",
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "element_type": "connected_device",
               "unit": "each",
               "role": "",
               "condition": "always",
-              "quantity_status": "defined"
+              "quantity_status": "defined",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
             },
             {
               "quantity": 1,
@@ -4640,13 +5070,15 @@
               "quantity_status": "defined"
             },
             {
-              "ref": "software.business_tools_artemis",
+              "ref": "device.rom_cartridge.business_tools_artemis",
               "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
               "quantity_status": "defined",
-              "element_type": "attached_product"
+              "element_type": "connected_device",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
             },
             {
               "ref": "software.bpi_suite",
@@ -4681,9 +5113,790 @@
       ]
     },
     {
-      "id": "offer.retail.connected_office",
-      "name": "Logix Connected Office",
+      "id": "offer.retail.developer_workstation",
+      "name": "Logix Developer Workstation",
       "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "retail_presentation": {
+        "name": "Logix Developer Workstation",
+        "purpose": "Build native Artemis and Z80-compatible applications.",
+        "includes": [
+          "Artemis 256 KiB with readable Mono Pro display",
+          "C IDE with native and Z80 cross-compilers",
+          "SDK, TUI libraries, documentation and Business Tools"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "CP/M-80 compatibility module and testing service",
+          "Commercial developer licence where required"
+        ],
+        "id": "developer_workstation"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_128kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "expansion",
+              "ref": "device.network_card_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card",
+              "ref": "device.mono_pro",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "system_cartridge",
+              "ref": "device.rom_cartridge.aionix_server",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 1,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "ref": "software.aion_c_ide",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.artemis_sdk",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "offer.retail.connect_office",
+      "name": "Connect My Office",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "retail_presentation": {
+        "name": "Connect My Office",
+        "purpose": "Connect existing compatible machines.",
+        "includes": [
+          "Interfaces only where absent, sized hub, cables and setup"
+        ],
+        "unpriced_requirements": [
+          "Survey machine count, built-in interfaces, link rates, cable lengths and installation"
+        ],
+        "options": [],
+        "id": "connect_office"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.logix_network_cable",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "Cable count and lengths determined by site survey",
+              "quantity_status": "unresolved",
+              "element_type": "attached_product"
+            }
+          ],
+          "composition_status": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "offer.retail.cpm_migration",
+      "name": "Move from CP/M to Artemis",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "retail_presentation": {
+        "name": "Move from CP/M to Artemis",
+        "purpose": "Preserve compatible applications and move business data.",
+        "includes": [
+          "CP/M-80 module where required, data transfer and application qualification"
+        ],
+        "unpriced_requirements": [
+          "Inventory applications, rights, file formats and target hardware before quoting"
+        ],
+        "options": [],
+        "id": "cpm_migration"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.artemis_cpm80_module",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "Only where application qualification requires the CP/M-80 hardware module",
+              "quantity_status": "unresolved",
+              "element_type": "attached_product"
+            }
+          ],
+          "composition_status": "unresolved"
+        }
+      ]
+    },
+    {
+      "id": "bundle.proposed_artemis_accounts",
+      "name": "Artemis Accounts",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "qualification_pending",
+      "introduced": {
+        "event_name": "NCC 1980 — first recorded catalogue snapshot",
+        "event_start_date": "1980-06-15",
+        "date_precision": "day",
+        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1980; not the conference opening date or evidence of shipment."
+      },
+      "acceptance": [
+        "Composition reconstructed from saved retail/pricing snapshot constituent records; electrical qualification and actual shipment remain unconfirmed."
+      ],
+      "composition_history": [
+        {
+          "valid_from": "1980-06-15",
+          "valid_to": "1981-05-04",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_128kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card",
+              "ref": "device.mono_pro",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "system_cartridge",
+              "ref": "device.rom_cartridge.aionix",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 1,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "ref": "software.bpi_suite",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "device.flexiprint40",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "flexibus",
+              "element_type": "connected_device"
+            }
+          ]
+        },
+        {
+          "valid_from": "1981-05-04",
+          "valid_to": "1990-01-01",
+          "version_number": 2,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_128kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "expansion",
+              "ref": "device.network_card_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card",
+              "ref": "device.mono_pro",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "system_cartridge",
+              "ref": "device.rom_cartridge.aionix_server",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 1,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "ref": "software.bpi_suite",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "device.flexiprint40",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "flexibus",
+              "element_type": "connected_device"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated."
+      ]
+    },
+    {
+      "id": "bundle.proposed_artemis_developer",
+      "name": "Artemis Developer",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "qualification_pending",
+      "introduced": {
+        "event_name": "NCC 1980 — first recorded catalogue snapshot",
+        "event_start_date": "1980-06-15",
+        "date_precision": "day",
+        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1980; not the conference opening date or evidence of shipment."
+      },
+      "acceptance": [
+        "Composition reconstructed from saved retail/pricing snapshot constituent records; electrical qualification and actual shipment remain unconfirmed."
+      ],
+      "composition_history": [
+        {
+          "valid_from": "1980-06-15",
+          "valid_to": "1981-05-04",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_128kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card",
+              "ref": "device.mono_pro",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "system_cartridge",
+              "ref": "device.rom_cartridge.aionix",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 1,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "ref": "software.aion_c_ide",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.artemis_sdk",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        },
+        {
+          "valid_from": "1981-05-04",
+          "valid_to": "1990-01-01",
+          "version_number": 2,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_128kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "expansion",
+              "ref": "device.network_card_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card",
+              "ref": "device.mono_pro",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "system_cartridge",
+              "ref": "device.rom_cartridge.aionix_server",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 1,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "ref": "software.aion_c_ide",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.artemis_sdk",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated."
+      ]
+    },
+    {
+      "id": "product.retail.connected_office",
+      "name": "Logix Connected Office",
+      "category": "computer_system",
       "vendor": "Logix",
       "record_kind": "commercial_product",
       "source_group": "retail",
@@ -4894,8 +6107,39 @@
               "element_type": "attached_product"
             },
             {
-              "ref": "part.logix_network_cable",
-              "quantity": 3,
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "quantity": 2,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "ref": "device.flexiprint40",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "flexibus",
+              "connected_to": "device.base_computer.artemis_pro",
+              "element_type": "connected_device"
+            },
+            {
+              "ref": "edition.bpi_client_server.era_client",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "edition.bpi_client_server.era_server",
+              "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
@@ -4912,201 +6156,44 @@
               "element_type": "attached_product"
             },
             {
-              "ref": "edition.bpi_client_server.era_client",
-              "quantity": 2,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "software.business_tools_artemis",
-              "quantity": 2,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "device.flexiprint40",
+              "ref": "part.product.bpi_client_server.package_license",
               "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
               "quantity_status": "defined",
-              "used_socket": "flexibus",
-              "connected_to": "device.base_computer.artemis_pro",
-              "element_type": "connected_device"
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "part.product.bpi_client_server.package_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
             }
           ]
         }
       ],
       "commercial_terms": {
         "availability_status": "announced_shipping_unconfirmed",
-        "shipping_date": null
-      }
-    },
-    {
-      "id": "offer.retail.developer_workstation",
-      "name": "Logix Developer Workstation",
-      "category": "system_bundle",
-      "vendor": "Logix",
-      "record_kind": "commercial_product",
-      "source_group": "retail",
-      "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
-      "retail_presentation": {
-        "name": "Logix Developer Workstation",
-        "purpose": "Build native Artemis and Z80-compatible applications.",
-        "includes": [
-          "Artemis 256 KiB with readable Mono Pro display",
-          "C IDE with native and Z80 cross-compilers",
-          "SDK, TUI libraries, documentation and Business Tools"
-        ],
-        "unpriced_requirements": [],
-        "options": [
-          "CP/M-80 compatibility module and testing service",
-          "Commercial developer licence where required"
-        ],
-        "id": "developer_workstation"
-      },
-      "composition_history": [
-        {
-          "valid_from": "1982-11-29",
-          "valid_to": "1990-01-01",
-          "version_number": 1,
-          "composition_definition": [
-            {
-              "ref": "device.base_computer.artemis",
-              "quantity": 1,
-              "element_type": "main_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "internal_drive",
-              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "ram",
-              "ref": "device.ram_128kb_x32",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_card",
-              "ref": "device.artemis_video_card",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "expansion",
-              "ref": "device.network_card_artemis",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "flexibus",
-              "ref": "device.flexibus_keyboard",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_out",
-              "connected_to": "device.artemis_video_card",
-              "ref": "device.mono_pro",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "system_cartridge",
-              "ref": "device.rom_cartridge.aionix_server",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "duration_years": 1,
-              "quantity": 1,
-              "ref": "service.regular_support",
-              "element_type": "attached_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "ref": "software.business_tools_artemis",
-              "quantity": 1,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "software.aion_c_ide",
-              "quantity": 1,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "software.artemis_sdk",
-              "quantity": 1,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            }
-          ]
+        "shipping_date": null,
+        "included_software_package": {
+          "product_ref": "product.bpi_client_server",
+          "server_licenses": 1,
+          "client_seats": 2,
+          "qualification": "Retains existing package entitlements; media distribution sets are not multiplied by client seats."
         }
+      },
+      "notes": [
+        "Restored as a computer system. Network cables are included by NIC devices; per-host placement and shipment qualification remain explicit. No product-level legacy cost baseline is asserted."
       ]
     },
     {
-      "id": "offer.retail.development_team",
+      "id": "product.retail.development_team",
       "name": "Logix Development Team",
-      "category": "system_bundle",
+      "category": "computer_system",
       "vendor": "Logix",
       "record_kind": "commercial_product",
       "source_group": "retail",
@@ -5318,214 +6405,25 @@
               "quantity_status": "defined"
             },
             {
+              "ref": "edition.aion_development_team.era_client",
               "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "edition.aion_development_team.z80_client",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
               "ref": "software.aion_development_team",
-              "element_type": "attached_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "offer.retail.connect_office",
-      "name": "Connect My Office",
-      "category": "upgrade_bundle",
-      "vendor": "Logix",
-      "record_kind": "commercial_product",
-      "source_group": "retail",
-      "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
-      "retail_presentation": {
-        "name": "Connect My Office",
-        "purpose": "Connect existing compatible machines.",
-        "includes": [
-          "Interfaces only where absent, sized hub, cables and setup"
-        ],
-        "unpriced_requirements": [
-          "Survey machine count, built-in interfaces, link rates, cable lengths and installation"
-        ],
-        "options": [],
-        "id": "connect_office"
-      },
-      "composition_history": [
-        {
-          "valid_from": "1982-11-29",
-          "valid_to": "1990-01-01",
-          "version_number": 1,
-          "composition_definition": [
-            {
-              "ref": "part.logix_network_cable",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "Cable count and lengths determined by site survey",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
-            }
-          ],
-          "composition_status": "unresolved"
-        }
-      ]
-    },
-    {
-      "id": "offer.retail.cpm_migration",
-      "name": "Move from CP/M to Artemis",
-      "category": "upgrade_bundle",
-      "vendor": "Logix",
-      "record_kind": "commercial_product",
-      "source_group": "retail",
-      "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
-      "retail_presentation": {
-        "name": "Move from CP/M to Artemis",
-        "purpose": "Preserve compatible applications and move business data.",
-        "includes": [
-          "CP/M-80 module where required, data transfer and application qualification"
-        ],
-        "unpriced_requirements": [
-          "Inventory applications, rights, file formats and target hardware before quoting"
-        ],
-        "options": [],
-        "id": "cpm_migration"
-      },
-      "composition_history": [
-        {
-          "valid_from": "1982-11-29",
-          "valid_to": "1990-01-01",
-          "version_number": 1,
-          "composition_definition": [
-            {
-              "ref": "device.artemis_cpm80_module",
-              "quantity": null,
-              "unit": "each",
-              "role": "",
-              "condition": "Only where application qualification requires the CP/M-80 hardware module",
-              "quantity_status": "unresolved",
-              "element_type": "attached_product"
-            }
-          ],
-          "composition_status": "unresolved"
-        }
-      ]
-    },
-    {
-      "id": "bundle.proposed_artemis_accounts",
-      "name": "Artemis Accounts",
-      "category": "system_bundle",
-      "vendor": "Logix",
-      "record_kind": "commercial_product",
-      "source_group": "commercial_offerings",
-      "computer_line": null,
-      "catalogue_status": "qualification_pending",
-      "introduced": {
-        "event_name": "NCC 1980 — first recorded catalogue snapshot",
-        "event_start_date": "1980-06-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1980; not the conference opening date or evidence of shipment."
-      },
-      "acceptance": [
-        "Composition reconstructed from saved retail/pricing snapshot constituent records; electrical qualification and actual shipment remain unconfirmed."
-      ],
-      "composition_history": [
-        {
-          "valid_from": "1980-06-15",
-          "valid_to": "1981-05-04",
-          "version_number": 1,
-          "composition_definition": [
-            {
-              "ref": "device.base_computer.artemis",
-              "quantity": 1,
-              "element_type": "main_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "internal_drive",
-              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "ram",
-              "ref": "device.ram_128kb_x32",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_card",
-              "ref": "device.artemis_video_card",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "flexibus",
-              "ref": "device.flexibus_keyboard",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_out",
-              "connected_to": "device.artemis_video_card",
-              "ref": "device.mono_pro",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "system_cartridge",
-              "ref": "device.rom_cartridge.aionix",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "duration_years": 1,
-              "quantity": 1,
-              "ref": "service.regular_support",
-              "element_type": "attached_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "ref": "software.business_tools_artemis",
               "quantity": 1,
               "unit": "each",
               "role": "",
@@ -5534,7 +6432,7 @@
               "element_type": "attached_product"
             },
             {
-              "ref": "software.bpi_suite",
+              "ref": "part.product.aion_development_team.package_license",
               "quantity": 1,
               "unit": "each",
               "role": "",
@@ -5543,151 +6441,33 @@
               "element_type": "attached_product"
             },
             {
-              "ref": "device.flexiprint40",
-              "quantity": 1,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "used_socket": "flexibus",
-              "element_type": "connected_device"
-            }
-          ]
-        },
-        {
-          "valid_from": "1981-05-04",
-          "valid_to": "1990-01-01",
-          "version_number": 2,
-          "composition_definition": [
-            {
-              "ref": "device.base_computer.artemis",
-              "quantity": 1,
-              "element_type": "main_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "internal_drive",
-              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "ram",
-              "ref": "device.ram_128kb_x32",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_card",
-              "ref": "device.artemis_video_card",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "expansion",
-              "ref": "device.network_card_artemis",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "flexibus",
-              "ref": "device.flexibus_keyboard",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_out",
-              "connected_to": "device.artemis_video_card",
-              "ref": "device.mono_pro",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "system_cartridge",
-              "ref": "device.rom_cartridge.aionix_server",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "duration_years": 1,
-              "quantity": 1,
-              "ref": "service.regular_support",
-              "element_type": "attached_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "ref": "software.business_tools_artemis",
+              "ref": "part.product.aion_development_team.package_packaging",
               "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
               "quantity_status": "defined",
               "element_type": "attached_product"
-            },
-            {
-              "ref": "software.bpi_suite",
-              "quantity": 1,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "device.flexiprint40",
-              "quantity": 1,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "used_socket": "flexibus",
-              "element_type": "connected_device"
             }
           ]
         }
       ],
       "notes": [
-        "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated."
-      ]
+        "Restored as a computer system. Network cables are included by NIC devices; per-host placement and shipment qualification remain explicit. No product-level legacy cost baseline is asserted."
+      ],
+      "commercial_terms": {
+        "included_software_package": {
+          "product_ref": "product.aion_development_team",
+          "server_licenses": 1,
+          "client_seats": 4,
+          "qualification": "Retains existing package entitlements; media distribution sets are not multiplied by client seats."
+        }
+      }
     },
     {
-      "id": "bundle.proposed_artemis_pro_small_office",
+      "id": "product.proposed_artemis_pro_small_office",
       "name": "Artemis Pro Small Office",
-      "category": "system_bundle",
+      "category": "computer_system",
       "vendor": "Logix",
       "record_kind": "commercial_product",
       "source_group": "commercial_offerings",
@@ -5887,8 +6667,39 @@
               "element_type": "attached_product"
             },
             {
-              "ref": "part.logix_network_cable",
-              "quantity": 3,
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "quantity": 2,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "connected_device",
+              "used_socket": "application_cartridge",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "ref": "device.flexiprint40",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "flexibus",
+              "connected_to": "device.base_computer.artemis_pro",
+              "element_type": "connected_device"
+            },
+            {
+              "ref": "edition.bpi_client_server.era_client",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "edition.bpi_client_server.era_server",
+              "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
@@ -5905,169 +6716,67 @@
               "element_type": "attached_product"
             },
             {
-              "ref": "edition.bpi_client_server.era_client",
-              "quantity": 2,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "software.business_tools_artemis",
-              "quantity": 2,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "device.flexiprint40",
+              "ref": "part.product.bpi_client_server.package_license",
               "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
               "quantity_status": "defined",
-              "used_socket": "flexibus",
-              "connected_to": "device.base_computer.artemis_pro",
-              "element_type": "connected_device"
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "part.product.bpi_client_server.package_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
             }
           ]
         }
       ],
       "commercial_terms": {
         "availability_status": "announced_shipping_unconfirmed",
-        "shipping_date": null
+        "shipping_date": null,
+        "included_software_package": {
+          "product_ref": "product.bpi_client_server",
+          "server_licenses": 1,
+          "client_seats": 2,
+          "qualification": "Retains existing package entitlements; media distribution sets are not multiplied by client seats."
+        }
       },
       "notes": [
-        "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated."
+        "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated.",
+        "Restored as a computer system. Network cables are included by NIC devices; per-host placement and shipment qualification remain explicit. No product-level legacy cost baseline is asserted."
       ]
     },
     {
-      "id": "bundle.proposed_artemis_developer",
-      "name": "Artemis Developer",
-      "category": "system_bundle",
-      "vendor": "Logix",
+      "id": "product.abacus_1",
+      "name": "Abacus 1.x (CP/M edition)",
+      "vendor": "AION Software",
+      "category": "software",
       "record_kind": "commercial_product",
       "source_group": "commercial_offerings",
       "computer_line": null,
-      "catalogue_status": "qualification_pending",
+      "catalogue_status": "offered",
       "introduced": {
-        "event_name": "NCC 1980 — first recorded catalogue snapshot",
-        "event_start_date": "1980-06-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1980; not the conference opening date or evidence of shipment."
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
       },
-      "acceptance": [
-        "Composition reconstructed from saved retail/pricing snapshot constituent records; electrical qualification and actual shipment remain unconfirmed."
-      ],
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
       "composition_history": [
         {
-          "valid_from": "1980-06-15",
-          "valid_to": "1981-05-04",
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
           "version_number": 1,
           "composition_definition": [
             {
-              "ref": "device.base_computer.artemis",
-              "quantity": 1,
-              "element_type": "main_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "internal_drive",
-              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "ram",
-              "ref": "device.ram_128kb_x32",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_card",
-              "ref": "device.artemis_video_card",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "flexibus",
-              "ref": "device.flexibus_keyboard",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_out",
-              "connected_to": "device.artemis_video_card",
-              "ref": "device.mono_pro",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "system_cartridge",
-              "ref": "device.rom_cartridge.aionix",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "duration_years": 1,
-              "quantity": 1,
-              "ref": "service.regular_support",
-              "element_type": "attached_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "ref": "software.business_tools_artemis",
-              "quantity": 1,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "software.aion_c_ide",
-              "quantity": 1,
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined",
-              "element_type": "attached_product"
-            },
-            {
-              "ref": "software.artemis_sdk",
+              "ref": "software.abacus_1",
               "quantity": 1,
               "unit": "each",
               "role": "",
@@ -6076,111 +6785,481 @@
               "element_type": "attached_product"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "product.abacus_1.model_ii",
+      "name": "Abacus 1.x (CP/M / Tandy Model II edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "Model II Abacus qualified customer release",
+        "event_start_date": "1979-10-15"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Radio Shack / Tandy OEM distribution",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
         {
-          "valid_from": "1981-05-04",
+          "valid_from": "1979-10-15",
           "valid_to": "1990-01-01",
-          "version_number": 2,
+          "version_number": 1,
           "composition_definition": [
             {
-              "ref": "device.base_computer.artemis",
-              "quantity": 1,
-              "element_type": "main_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "internal_drive",
-              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 2,
-              "used_socket": "ram",
-              "ref": "device.ram_128kb_x32",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_card",
-              "ref": "device.artemis_video_card",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "expansion",
-              "ref": "device.network_card_artemis",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "flexibus",
-              "ref": "device.flexibus_keyboard",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "video_out",
-              "connected_to": "device.artemis_video_card",
-              "ref": "device.mono_pro",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "quantity": 1,
-              "used_socket": "system_cartridge",
-              "ref": "device.rom_cartridge.aionix_server",
-              "element_type": "connected_device",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "duration_years": 1,
-              "quantity": 1,
-              "ref": "service.regular_support",
-              "element_type": "attached_product",
-              "unit": "each",
-              "role": "",
-              "condition": "always",
-              "quantity_status": "defined"
-            },
-            {
-              "ref": "software.business_tools_artemis",
+              "ref": "edition.abacus_1.model_ii",
               "quantity": 1,
               "unit": "each",
               "role": "",
               "condition": "always",
               "quantity_status": "defined",
               "element_type": "attached_product"
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.abacus_2",
+      "name": "Abacus 2.0 (CP/M edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-12-03",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.abacus_2",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.abacus_2.era",
+      "name": "Abacus 2.0 (AIONix edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "edition.abacus_2.era",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.abacus_3",
+      "name": "Abacus 3.0 (AIONix edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+        "event_start_date": "1980-11-19"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-11-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.abacus_3",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.pulse_1",
+      "name": "Pulse (CP/M edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-12-03",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.pulse_1",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.pulse_3",
+      "name": "Pulse 3.0 (AIONix edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
+        "event_start_date": "1980-11-19"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-11-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.pulse_3",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.bpi_suite",
+      "name": "BPI (CP/M edition)",
+      "vendor": "BPI Systems",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.bpi_suite",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.bpi_suite.era",
+      "name": "BPI (AIONix edition)",
+      "vendor": "BPI Systems",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "edition.bpi_suite.era",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.business_tools_aurelia",
+      "name": "Business Tools (CP/M edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.rom_cartridge.business_tools_aurelia",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.business_tools_artemis",
+      "name": "Business Tools (AIONix edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.rom_cartridge.business_tools_artemis",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.simple_c_z80",
+      "name": "Logix Simple C (CP/M edition)",
+      "vendor": "Logix",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.simple_c_z80",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.aurelia_sdk",
+      "name": "Logix Developer Package SDK (CP/M edition)",
+      "vendor": "Logix",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.aurelia_sdk",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.aion_c_ide",
+      "name": "AION C IDE (AIONix edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
             {
               "ref": "software.aion_c_ide",
               "quantity": 1,
@@ -6189,7 +7268,35 @@
               "condition": "always",
               "quantity_status": "defined",
               "element_type": "attached_product"
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.artemis_sdk",
+      "name": "Logix Developer Package SDK (AIONix edition)",
+      "vendor": "Logix",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
             {
               "ref": "software.artemis_sdk",
               "quantity": 1,
@@ -6201,9 +7308,238 @@
             }
           ]
         }
-      ],
-      "notes": [
-        "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated."
+      ]
+    },
+    {
+      "id": "product.aurelia_compatibility_kit",
+      "name": "Aurelia Software Compatibility Kit (CP/M edition)",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
+        "event_start_date": "1979-12-03"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-12-03",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.aurelia_compatibility_kit",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.autocad_1_artemis",
+      "name": "Autodesk AutoCAD 1.0 (AIONix edition)",
+      "vendor": "Autodesk",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "COMDEX 1982 — AutoCAD for Artemis target",
+        "event_start_date": "1982-11-29"
+      },
+      "commercial_terms": {
+        "distribution_channel": "Logix commercial catalogue",
+        "pricing_status": "not_rebuilt",
+        "license_entitlement": "One separately supplied edition; detailed licence terms require qualification."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "software.autocad_1_artemis",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.aion_development_team",
+      "name": "AION Development Team",
+      "vendor": "AION Software",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "introduced": {
+        "event_name": "COMDEX November 1981 — Team Edition premiere",
+        "event_start_date": "1981-11-19"
+      },
+      "commercial_terms": {
+        "hardware_included": false,
+        "pricing_status": "not_rebuilt",
+        "client_media_policy": "One distribution set per supported platform; deployment copies and seat entitlement are separate.",
+        "server_installation": "Install from diskettes onto server HDD",
+        "server_licenses": 1,
+        "concurrent_developer_sessions": 4,
+        "total_distribution_diskettes": 12,
+        "total_printed_pages": 1000,
+        "allocation_status": "Server/client disk and page allocation unresolved; totals cover the combined package, not each edition.",
+        "onboarding_staff_hours": 20,
+        "first_year_support_staff_hours": 12
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-11-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "edition.aion_development_team.era_client",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "edition.aion_development_team.z80_client",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.aion_development_team",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "part.product.aion_development_team.package_license",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "part.product.aion_development_team.package_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product.bpi_client_server",
+      "name": "BPI client-server package",
+      "vendor": "BPI Systems",
+      "category": "software",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "commercial_terms": {
+        "hardware_included": false,
+        "pricing_status": "not_rebuilt",
+        "client_media_policy": "One distribution set per supported platform; deployment copies and seat entitlement are separate.",
+        "server_installation": "Install from diskettes onto server HDD",
+        "server_licenses": 1,
+        "client_seat_count": null,
+        "entitlement_status": "Client seat count and media quantities require qualification; no standalone client sale inferred."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-05-04",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "edition.bpi_client_server.era_client",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "edition.bpi_client_server.era_server",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.bpi_client_server",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "part.product.bpi_client_server.package_license",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "part.product.bpi_client_server.package_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            }
+          ]
+        }
       ]
     }
   ],
@@ -6238,13 +7574,13 @@
           "product_ref": "offer.retail.business_accounts"
         },
         {
-          "product_ref": "offer.retail.connected_office"
+          "product_ref": "product.retail.connected_office"
         },
         {
           "product_ref": "offer.retail.developer_workstation"
         },
         {
-          "product_ref": "offer.retail.development_team"
+          "product_ref": "product.retail.development_team"
         },
         {
           "product_ref": "offer.comdex82_artemis_autocad"

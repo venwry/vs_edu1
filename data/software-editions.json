@@ -1,9 +1,8 @@
 {
   "$schema": "../schemas/collections/software-editions.schema.json",
-  "schema_version": "3.3.0",
-  "platform_editions": [
+  "schema_version": "4.0.0",
+  "software_editions": [
     {
-      "delivery": "diskette",
       "features": [
         "one tab per document",
         "editor-consistent navigation/editing",
@@ -11,7 +10,6 @@
         "print forms/layout using spreadsheet data",
         "sparse storage model"
       ],
-      "sold_separately": true,
       "technology_refs": [
         "technology.abacus_sparse_model",
         "technology.logix_tui_standard",
@@ -63,7 +61,6 @@
       "independent_implementation_policy": "Any manufacturer may implement the published Aurelia execution environment to run properly licensed compatible Abacus binaries; named editions document supported configurations, not exclusive manufacturer rights. Processor, resources and interface conformance must be met. The COMDEX 1979 compatibility kit supplies reference adapters and tests. No mandatory FlexiBUS or Logix video hardware.",
       "id": "software.abacus_1",
       "name": "Abacus 1.x (CP/M edition)",
-      "product_ref": "software.product.abacus",
       "execution_target": "z80_cpm",
       "role": "application",
       "platform_support": [
@@ -87,10 +84,59 @@
       ],
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "1.x",
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.abacus",
+      "software_line_name": "Abacus",
+      "software_line_category": "spreadsheet_software",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.abacus_1.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.abacus_1.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.abacus_1.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.abacus_1.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
-      "delivery": "Model II-compatible eight-inch diskette through Radio Shack",
       "features": [
         "one tab per document",
         "editor-consistent navigation/editing",
@@ -98,7 +144,6 @@
         "print forms/layout using spreadsheet data",
         "sparse storage model"
       ],
-      "sold_separately": true,
       "technology_refs": [
         "technology.abacus_sparse_model",
         "technology.logix_tui_standard",
@@ -150,7 +195,6 @@
       "independent_implementation_policy": "Any manufacturer may implement the published Aurelia execution environment to run properly licensed compatible Abacus binaries; named editions document supported configurations, not exclusive manufacturer rights. Processor, resources and interface conformance must be met. The COMDEX 1979 compatibility kit supplies reference adapters and tests. No mandatory FlexiBUS or Logix video hardware.",
       "id": "edition.abacus_1.model_ii",
       "name": "Abacus 1.x (CP/M / Tandy Model II edition)",
-      "product_ref": "software.product.abacus",
       "execution_target": "z80_cpm",
       "role": "application",
       "platform_support": [
@@ -170,7 +214,59 @@
       ],
       "support_status": "Scenario-supported release; engineering gates include native UI, document interchange, printing, save/reopen, RAM and banking/ROM adaptation. AION corrects incompatibilities; no identical-capacity or binary-compatibility assumption.",
       "version": "1.x",
-      "edition": "CP/M / Tandy Model II"
+      "edition": "CP/M / Tandy Model II",
+      "software_line_id": "software.product.abacus",
+      "software_line_name": "Abacus",
+      "software_line_category": "spreadsheet_software",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "disk_format": "Model II-compatible 8-inch",
+        "channel": "Radio Shack / Tandy OEM distribution"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-10-15",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.edition.abacus_1.model_ii.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.abacus_1.model_ii.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.abacus_1.model_ii.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.edition.abacus_1.model_ii.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -187,7 +283,6 @@
         "one-off and repeating sections"
       ],
       "delivery_on_artemis": "diskette",
-      "sold_separately": true,
       "technology_refs": [
         "technology.logix_c_api",
         "technology.logix_display_api",
@@ -212,7 +307,6 @@
       },
       "id": "software.abacus_2",
       "name": "Abacus 2.0 (CP/M edition)",
-      "product_ref": "software.product.abacus",
       "execution_target": "z80_cpm",
       "role": "application",
       "platform_support": [
@@ -234,10 +328,59 @@
       "dependency_refs": [
         "software.cpm_aurelia"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "2.0",
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.abacus",
+      "software_line_name": "Abacus",
+      "software_line_category": "spreadsheet_software",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-12-03",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.abacus_2.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.abacus_2.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.abacus_2.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.abacus_2.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -256,7 +399,6 @@
         "cross-tab references"
       ],
       "delivery_on_artemis": "diskette",
-      "sold_separately": true,
       "technology_refs": [
         "technology.logix_c_api",
         "technology.logix_display_api",
@@ -281,7 +423,6 @@
       },
       "id": "edition.abacus_2.era",
       "name": "Abacus 2.0 (AIONix edition)",
-      "product_ref": "software.product.abacus",
       "execution_target": "era_aionix",
       "role": "application",
       "platform_support": [
@@ -299,10 +440,59 @@
       "dependency_refs": [
         "technology.aionix_os_model"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "2.0",
-      "edition": "AIONix"
+      "edition": "AIONix",
+      "software_line_id": "software.product.abacus",
+      "software_line_name": "Abacus",
+      "software_line_category": "spreadsheet_software",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.edition.abacus_2.era.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.abacus_2.era.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.abacus_2.era.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.edition.abacus_2.era.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -384,7 +574,6 @@
       },
       "id": "software.abacus_3",
       "name": "Abacus 3.0 (AIONix edition)",
-      "product_ref": "software.product.abacus",
       "execution_target": "era_aionix",
       "role": "application",
       "platform_support": [
@@ -406,10 +595,59 @@
       "dependency_refs": [
         "technology.aionix_os_model"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "3.0",
-      "edition": "AIONix"
+      "edition": "AIONix",
+      "software_line_id": "software.product.abacus",
+      "software_line_name": "Abacus",
+      "software_line_category": "spreadsheet_software",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-11-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.abacus_3.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.abacus_3.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.abacus_3.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.abacus_3.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -421,7 +659,6 @@
       "features_ref": "technology.pulse_notebook_model",
       "positioning": "Easy-to-learn notebook scripting environment and BASIC competitor; programmatic editing of Abacus document files.",
       "training_available": true,
-      "sold_separately": true,
       "technology_refs": [
         "technology.logix_c_api",
         "technology.logix_display_api",
@@ -447,7 +684,6 @@
       },
       "id": "software.pulse_1",
       "name": "Pulse (CP/M edition)",
-      "product_ref": "software.product.pulse",
       "execution_target": "z80_cpm",
       "role": "application",
       "platform_support": [
@@ -465,10 +701,59 @@
       "dependency_refs": [
         "software.cpm_aurelia"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "initial",
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.pulse",
+      "software_line_name": "Pulse",
+      "software_line_category": "scripting_environment",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-12-03",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.pulse_1.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.pulse_1.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.pulse_1.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.pulse_1.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -509,7 +794,6 @@
       "embedded_abacus_integration_ref": "technology.abacus_embedded_pulse",
       "id": "software.pulse_3",
       "name": "Pulse 3.0 (AIONix edition)",
-      "product_ref": "software.product.pulse",
       "execution_target": "era_aionix",
       "role": "application",
       "platform_support": [
@@ -531,10 +815,59 @@
       "dependency_refs": [
         "technology.aionix_os_model"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "3.0",
-      "edition": "AIONix"
+      "edition": "AIONix",
+      "software_line_id": "software.product.pulse",
+      "software_line_name": "Pulse",
+      "software_line_category": "scripting_environment",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-11-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.pulse_3.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.pulse_3.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.pulse_3.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.pulse_3.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "vendor": "AION Software / Digital Research cooperation",
@@ -542,7 +875,6 @@
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
       },
-      "delivery": "System XIP ROM cartridge",
       "technology_ref": "technology.aionix_os_model",
       "bundled_with": [
         "computer.artemis"
@@ -579,7 +911,6 @@
       },
       "id": "software.aionix",
       "name": "AIONix (ERA edition)",
-      "product_ref": "software.product.aionix",
       "execution_target": "era_aionix",
       "role": "operating_system",
       "platform_support": [
@@ -598,8 +929,39 @@
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
       "edition": "ERA",
-      "physical_media_refs": [
-        "device.rom_cartridge.aionix"
+      "software_line_id": "software.product.aionix",
+      "software_line_name": "AIONix",
+      "software_line_category": "operating_system",
+      "distribution": {
+        "medium": "cartridge",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "execution": "System XIP ROM cartridge"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.aionix.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aionix.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
       ]
     },
     {
@@ -616,7 +978,6 @@
         "technology.logix_tui_keyboard_standard"
       ],
       "api_compatibility": "Retains the base platform C/TUI API; optional networking services are discovered through versioned capability checks.",
-      "delivery": "Complete system ROM/EEPROM cartridge image, including the base AIONix services and networking; not an incremental upgrade.",
       "base_product_ref": "software.aionix",
       "description": "Separate AIONix edition for networked Artemis and Artemis PRO systems. Includes the base operating system, TCP/IP and server-service interfaces. BPI server applications are separately licensed offerings.",
       "edition_relationship": "Complete edition of the AIONix family; no prior base-OS installation is required.",
@@ -650,7 +1011,6 @@
       ],
       "id": "software.aionix_server",
       "name": "AIONix (Server edition)",
-      "product_ref": "software.product.aionix",
       "execution_target": "era_aionix",
       "role": "operating_system",
       "platform_support": [
@@ -675,8 +1035,39 @@
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
       "edition": "Server",
-      "physical_media_refs": [
-        "device.rom_cartridge.aionix_server"
+      "software_line_id": "software.product.aionix",
+      "software_line_name": "AIONix",
+      "software_line_category": "operating_system",
+      "distribution": {
+        "medium": "cartridge",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "execution": "Complete system ROM/EEPROM cartridge image, including the base AIONix services and networking; not an incremental upgrade."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-05-04",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.aionix_server.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aionix_server.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
       ]
     },
     {
@@ -688,7 +1079,6 @@
       },
       "product_status": "Accepted 1983 planning baseline; implementation, memory fit and release qualification pending.",
       "description": "ROM-backed successor to AIONix: protected preemptive multitasking, documented ERA ABI compatibility, recoverable HDD storage, user access management and an event-driven TUI designed for later graphical windowing.",
-      "delivery": "At least 256 KiB directly executable shared OS ROM, alongside at least 256 KiB DRAM. EEPROM BIOS remains boot/diagnostic firmware. Optional services, larger utilities and patches load from disk; do not copy the entire OS ROM into RAM.",
       "planned_for": [
         "computer.athena",
         "computer.athena_server"
@@ -958,9 +1348,42 @@
       },
       "dependency_refs": [],
       "support_status": "Accepted 1983 planning baseline; implementation, memory fit and release qualification pending.",
-      "product_ref": "software.product.aionix",
       "version": "2",
-      "edition": "ERA²"
+      "edition": "ERA²",
+      "software_line_id": "software.product.aionix",
+      "software_line_name": "AIONix",
+      "software_line_category": "operating_system",
+      "distribution": {
+        "medium": "system_rom",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "execution": "At least 256 KiB directly executable shared OS ROM, alongside at least 256 KiB DRAM. EEPROM BIOS remains boot/diagnostic firmware. Optional services, larger utilities and patches load from disk; do not copy the entire OS ROM into RAM."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1983-05-16",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.aionix2.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aionix2.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "vendor": "Digital Research / Logix OEM implementation",
@@ -968,10 +1391,6 @@
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
       },
-      "delivery": [
-        "mainboard XIP ROM",
-        "System ROM cartridge"
-      ],
       "components": {
         "mainboard_rom": [
           "Boot",
@@ -1299,7 +1718,6 @@
       },
       "id": "software.cpm_aurelia",
       "name": "CP/M 1.4-derived / Platform Extensions 1.0 (Aurelia edition)",
-      "product_ref": "software.product.cpm",
       "execution_target": "z80_cpm",
       "role": "operating_system",
       "platform_support": [
@@ -1322,8 +1740,42 @@
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "1.4-derived / Platform Extensions 1.0",
       "edition": "Aurelia",
-      "physical_media_refs": [
-        "device.rom_cartridge.cpm_aurelia"
+      "software_line_id": "software.product.cpm",
+      "software_line_name": "CP/M",
+      "software_line_category": "operating_system",
+      "distribution": {
+        "medium": "cartridge",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "execution": [
+          "mainboard XIP ROM",
+          "System ROM cartridge"
+        ]
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.cpm_aurelia.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.cpm_aurelia.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
       ]
     },
     {
@@ -1332,7 +1784,6 @@
         "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
         "event_start_date": "1981-05-04"
       },
-      "delivery": "system/software upgrade supplied with the Aurelia network-adapter offer",
       "adds": [
         "TCP/IP stack",
         "LogixLAN negotiated-rate adapter driver",
@@ -1353,7 +1804,6 @@
       },
       "id": "software.cpm_aurelia_networking",
       "name": "CP/M (Aurelia networking edition)",
-      "product_ref": "software.product.cpm",
       "execution_target": "z80_cpm",
       "role": "network_extension",
       "platform_support": [
@@ -1379,8 +1829,39 @@
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "networking",
       "edition": "Aurelia networking",
-      "physical_media_refs": [
-        "device.rom_cartridge.cpm_aurelia_networking"
+      "software_line_id": "software.product.cpm",
+      "software_line_name": "CP/M",
+      "software_line_category": "operating_system",
+      "distribution": {
+        "medium": "cartridge",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "execution": "system/software upgrade supplied with the Aurelia network-adapter offer"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-05-04",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.cpm_aurelia_networking.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.cpm_aurelia_networking.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
       ]
     },
     {
@@ -1408,11 +1889,27 @@
         "status": "Recorded requirements only; unspecified limits remain unknown."
       },
       "dependency_refs": [],
-      "delivery": "Not yet specified",
       "support_status": "Qualification not recorded.",
-      "product_ref": "software.product.cpm",
       "version": null,
-      "edition": "Tandy Model II"
+      "edition": "Tandy Model II",
+      "software_line_id": "software.product.cpm",
+      "software_line_name": "CP/M",
+      "software_line_category": "operating_system",
+      "distribution": {
+        "medium": "unspecified",
+        "fulfillment": "external_supplier",
+        "status": "unspecified",
+        "notes": "External compatibility record only; no Logix product, price, licence entitlement or physical delivery is asserted."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-10-15",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [],
+          "composition_status": "unresolved"
+        }
+      ]
     },
     {
       "introduced": {
@@ -1482,7 +1979,6 @@
         "technology.logix_tui_standard",
         "technology.logix_tui_keyboard_standard"
       ],
-      "sold_separately": true,
       "portability_contract": {
         "api_ref": "technology.logix_c_api",
         "shared_logic": "Separate application/document algorithms from platform adapters.",
@@ -1510,7 +2006,6 @@
       },
       "id": "software.bpi_suite",
       "name": "BPI (CP/M edition)",
-      "product_ref": "software.product.bpi",
       "execution_target": "z80_cpm",
       "role": "application",
       "platform_support": [
@@ -1532,10 +2027,59 @@
       "dependency_refs": [
         "software.cpm_aurelia"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.bpi",
+      "software_line_name": "BPI",
+      "software_line_category": "business_application_suite",
+      "vendor": "BPI Systems",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.bpi_suite.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.bpi_suite.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.bpi_suite.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.bpi_suite.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -1605,7 +2149,6 @@
         "technology.logix_tui_standard",
         "technology.logix_tui_keyboard_standard"
       ],
-      "sold_separately": true,
       "portability_contract": {
         "api_ref": "technology.logix_c_api",
         "shared_logic": "Separate application/document algorithms from platform adapters.",
@@ -1633,7 +2176,6 @@
       },
       "id": "edition.bpi_suite.era",
       "name": "BPI (AIONix edition)",
-      "product_ref": "software.product.bpi",
       "execution_target": "era_aionix",
       "role": "application",
       "platform_support": [
@@ -1651,10 +2193,59 @@
       "dependency_refs": [
         "technology.aionix_os_model"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "AIONix"
+      "edition": "AIONix",
+      "software_line_id": "software.product.bpi",
+      "software_line_name": "BPI",
+      "software_line_category": "business_application_suite",
+      "vendor": "BPI Systems",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.edition.bpi_suite.era.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.bpi_suite.era.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.bpi_suite.era.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.edition.bpi_suite.era.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -1752,7 +2343,6 @@
       },
       "id": "software.bpi_client_server",
       "name": "BPI client-server (CP/M Client edition)",
-      "product_ref": "software.product.bpi",
       "execution_target": "z80_cpm",
       "role": "client",
       "platform_support": [
@@ -1774,10 +2364,47 @@
       "dependency_refs": [
         "software.cpm_aurelia_networking"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "client-server",
-      "edition": "CP/M Client"
+      "edition": "CP/M Client",
+      "software_line_id": "software.product.bpi",
+      "software_line_name": "BPI",
+      "software_line_category": "business_application_suite",
+      "vendor": "BPI Systems",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "included_in_package",
+        "status": "design_baseline",
+        "installation": "client_startup_diskette",
+        "network_operation": "Start under the existing networking OS, connect to server, and load further modules/data over the network; bootstrap remains local.",
+        "licensing": "Licensed by the commercial package; media copy count is not a client licence or concurrent-session count.",
+        "data_access": "Business transactions, validation and database writes remain server-side; clients do not directly modify shared database files."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-05-04",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.bpi_client_server.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.bpi_client_server.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -1875,7 +2502,6 @@
       },
       "id": "edition.bpi_client_server.era_client",
       "name": "BPI client-server (AIONix Client edition)",
-      "product_ref": "software.product.bpi",
       "execution_target": "era_aionix",
       "role": "client",
       "platform_support": [
@@ -1893,10 +2519,47 @@
       "dependency_refs": [
         "software.aionix_server"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "client-server",
-      "edition": "AIONix Client"
+      "edition": "AIONix Client",
+      "software_line_id": "software.product.bpi",
+      "software_line_name": "BPI",
+      "software_line_category": "business_application_suite",
+      "vendor": "BPI Systems",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "included_in_package",
+        "status": "design_baseline",
+        "installation": "client_startup_diskette",
+        "network_operation": "Start under the existing networking OS, connect to server, and load further modules/data over the network; bootstrap remains local.",
+        "licensing": "Licensed by the commercial package; media copy count is not a client licence or concurrent-session count.",
+        "data_access": "Business transactions, validation and database writes remain server-side; clients do not directly modify shared database files."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-05-04",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.edition.bpi_client_server.era_client.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.bpi_client_server.era_client.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -1994,7 +2657,6 @@
       },
       "id": "edition.bpi_client_server.era_server",
       "name": "BPI client-server (AIONix Server edition)",
-      "product_ref": "software.product.bpi",
       "execution_target": "era_aionix",
       "role": "server",
       "platform_support": [
@@ -2012,20 +2674,55 @@
       "dependency_refs": [
         "software.aionix_server"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": "client-server",
-      "edition": "AIONix Server"
+      "edition": "AIONix Server",
+      "software_line_id": "software.product.bpi",
+      "software_line_name": "BPI",
+      "software_line_category": "business_application_suite",
+      "vendor": "BPI Systems",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "included_in_package",
+        "status": "design_baseline",
+        "installation": "server_hdd",
+        "network_operation": "Server services and persistent storage",
+        "licensing": "Licensed by the commercial package; media copy count is not a client licence or concurrent-session count.",
+        "data_access": "Business transactions, validation and database writes remain server-side; clients do not directly modify shared database files."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-05-04",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.edition.bpi_client_server.era_server.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.bpi_client_server.era_server.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            }
+          ]
+        }
+      ]
     },
     {
-      "delivery": "16 KB XIP ROM system overlay / expansion cartridge",
       "features": [
         "text editor",
         "simple disk browser",
         "calculator",
         "calendar/scheduler"
       ],
-      "sold_separately": true,
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2086,7 +2783,6 @@
       },
       "id": "software.business_tools_aurelia",
       "name": "Business Tools (CP/M edition)",
-      "product_ref": "software.product.business_tools",
       "execution_target": "z80_cpm",
       "role": "application",
       "platform_support": [
@@ -2111,12 +2807,43 @@
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
       "edition": "CP/M",
-      "physical_media_refs": [
-        "device.rom_cartridge.business_tools_aurelia"
+      "software_line_id": "software.product.business_tools",
+      "software_line_name": "Business Tools",
+      "software_line_category": "office_suite",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "cartridge",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "execution": "16 KB XIP ROM system overlay / expansion cartridge"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.business_tools_aurelia.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.business_tools_aurelia.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
       ]
     },
     {
-      "delivery": "Office Suite cartridge / Business Tools expansion cartridge",
       "features": [
         "file explorer",
         "contact book",
@@ -2126,7 +2853,6 @@
         "calculator",
         "chat"
       ],
-      "sold_separately": true,
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2147,7 +2873,6 @@
       },
       "id": "software.business_tools_artemis",
       "name": "Business Tools (AIONix edition)",
-      "product_ref": "software.product.business_tools",
       "execution_target": "era_aionix",
       "role": "application",
       "platform_support": [
@@ -2172,8 +2897,40 @@
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
       "edition": "AIONix",
-      "physical_media_refs": [
-        "device.rom_cartridge.business_tools_artemis"
+      "software_line_id": "software.product.business_tools",
+      "software_line_name": "Business Tools",
+      "software_line_category": "office_suite",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "cartridge",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "execution": "Office Suite cartridge / Business Tools expansion cartridge"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.business_tools_artemis.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.business_tools_artemis.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
       ]
     },
     {
@@ -2189,7 +2946,6 @@
         "ROM, RAM and stack-budget reports",
         "Portability diagnostics where feasible"
       ],
-      "sold_separately": true,
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2237,7 +2993,6 @@
       ],
       "id": "software.simple_c_z80",
       "name": "Logix Simple C (CP/M edition)",
-      "product_ref": "software.product.simple_c_z80",
       "execution_target": "z80_cpm",
       "role": "development_tools",
       "platform_support": [
@@ -2259,10 +3014,59 @@
       "dependency_refs": [
         "software.cpm_aurelia"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.simple_c_z80",
+      "software_line_name": "Logix Simple C",
+      "software_line_category": "compiler",
+      "vendor": "Logix",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.simple_c_z80.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.simple_c_z80.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.simple_c_z80.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.simple_c_z80.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "contents": [
@@ -2282,7 +3086,6 @@
         "DMA physical-bank API, refresh/arbitration contract, upload ports and abort handling",
         "Dedicated sprite SRAM and atomic descriptor-bank examples"
       ],
-      "sold_separately": true,
       "introduced": {
         "event_name": "NCC 1978 — Logix Aurelia launch",
         "event_start_date": "1978-06-05"
@@ -2296,7 +3099,6 @@
       "roadmap_1979": "NCC 1979 clinics teach source portability using existing C/API/file-format contracts. No new-target compiler, public word size or ISA is released before NCC 1980.",
       "id": "software.aurelia_sdk",
       "name": "Logix Developer Package SDK (CP/M edition)",
-      "product_ref": "software.product.developer_sdk",
       "execution_target": "z80_cpm",
       "role": "development_tools",
       "platform_support": [
@@ -2316,16 +3118,82 @@
         "status": "Compatibility contract; measured workspace and image budgets pending."
       },
       "dependency_refs": [
-        "software.cpm_aurelia"
+        "software.cpm_aurelia",
+        "software.simple_c_z80"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.developer_sdk",
+      "software_line_name": "Logix Developer Package SDK",
+      "software_line_category": "software_development_kit",
+      "vendor": "Logix",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "toolchain": "Platform SDK supplement: headers, bindings, libraries, startup code, examples, small utilities and tests. Compiler/IDE is separately supplied."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1978-06-05",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.aurelia_sdk.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aurelia_sdk.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aurelia_sdk.interfaces_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.aurelia_sdk.examples_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.aurelia_sdk.utilities_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.aurelia_sdk.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "relationship": "licensed third-party software developed in cooperation with AION / for Aurelia CP/M with TUI",
-      "sold_separately": true,
       "introduced": {
         "event_name": "NCC 1979 — Apple II extensions / Microsoft BASIC for Aurelia",
         "event_start_date": "1979-06-04"
@@ -2337,7 +3205,6 @@
       ],
       "id": "software.microsoft_basic_aurelia",
       "name": "Microsoft BASIC (CP/M edition)",
-      "product_ref": "software.product.microsoft_basic_aurelia",
       "execution_target": "z80_cpm",
       "role": "application",
       "platform_support": [
@@ -2359,10 +3226,28 @@
       "dependency_refs": [
         "software.cpm_aurelia"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.microsoft_basic_aurelia",
+      "software_line_name": "Microsoft BASIC",
+      "software_line_category": "programming_language",
+      "vendor": "Microsoft",
+      "distribution": {
+        "medium": "unspecified",
+        "fulfillment": "external_supplier",
+        "status": "unspecified",
+        "notes": "External compatibility record only; no Logix product, price, licence entitlement or physical delivery is asserted."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-06-04",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [],
+          "composition_status": "unresolved"
+        }
+      ]
     },
     {
       "features": [
@@ -2379,7 +3264,6 @@
         "Regression profiles for 40-column, 80-column and monochrome displays"
       ],
       "technology_ref": "technology.aion_c_portability_framework",
-      "sold_separately": true,
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2424,7 +3308,6 @@
       ],
       "id": "software.aion_c_ide",
       "name": "AION C IDE (AIONix edition)",
-      "product_ref": "software.product.aion_c_ide",
       "execution_target": "era_aionix",
       "role": "development_tools",
       "platform_support": [
@@ -2446,10 +3329,59 @@
       "dependency_refs": [
         "technology.aionix_os_model"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "AIONix"
+      "edition": "AIONix",
+      "software_line_id": "software.product.aion_c_ide",
+      "software_line_name": "AION C IDE",
+      "software_line_category": "development_environment",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.aion_c_ide.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aion_c_ide.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aion_c_ide.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.aion_c_ide.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "contents": [
@@ -2467,7 +3399,6 @@
         "40/80-column and monochrome examples",
         "Target conformance and resource-budget test guidance"
       ],
-      "sold_separately": true,
       "introduced": {
         "event_name": "NCC 1980 — Logix Artemis launch",
         "event_start_date": "1980-05-19"
@@ -2480,7 +3411,6 @@
       ],
       "id": "software.artemis_sdk",
       "name": "Logix Developer Package SDK (AIONix edition)",
-      "product_ref": "software.product.developer_sdk",
       "execution_target": "era_aionix",
       "role": "development_tools",
       "platform_support": [
@@ -2500,15 +3430,81 @@
         "status": "Compatibility contract; measured workspace and image budgets pending."
       },
       "dependency_refs": [
-        "technology.aionix_os_model"
+        "technology.aionix_os_model",
+        "software.aion_c_ide"
       ],
-      "delivery": "Not yet specified",
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "AIONix"
+      "edition": "AIONix",
+      "software_line_id": "software.product.developer_sdk",
+      "software_line_name": "Logix Developer Package SDK",
+      "software_line_category": "software_development_kit",
+      "vendor": "Logix",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline",
+        "toolchain": "Platform SDK supplement: headers, bindings, libraries, startup code, examples, small utilities and tests. Compiler/IDE is separately supplied."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1980-05-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.artemis_sdk.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.artemis_sdk.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.artemis_sdk.interfaces_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.artemis_sdk.examples_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.artemis_sdk.utilities_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.artemis_sdk.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
-      "sold_separately": true,
       "introduced": {
         "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
         "event_start_date": "1979-12-03"
@@ -2549,14 +3545,61 @@
         "status": "Recorded requirements only; unspecified limits remain unknown."
       },
       "dependency_refs": [],
-      "delivery": "Not yet specified",
       "support_status": "Qualification not recorded.",
-      "product_ref": "software.product.aurelia_compatibility_kit",
       "version": null,
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.aurelia_compatibility_kit",
+      "software_line_name": "Aurelia Software Compatibility Kit",
+      "software_line_category": "software_development_kit",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1979-12-03",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.aurelia_compatibility_kit.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aurelia_compatibility_kit.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aurelia_compatibility_kit.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.aurelia_compatibility_kit.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
-      "sold_separately": true,
       "introduced": {
         "event_name": "COMDEX November 1981 — Team Edition premiere",
         "event_start_date": "1981-11-19"
@@ -2576,19 +3619,6 @@
         "server": "Artemis PRO, recommended 1 MiB; existing 5 MB disk supports bounded pilot projects only. Archive old history and rotate external floppy backups; larger qualified storage required for substantial projects and is not bundled or priced here.",
         "clients": "Artemis, Aurelia and Aurelia+ with network upgrade; Aurelia compact tools use sequential overlays within its CP/M memory profile. No full suite resident in 48 KiB claim.",
         "qualification": "Four concurrent developers is a validation target, not measured throughput. Gate release on commit recovery, access control, backup/restore, conflict handling and both target regression suites.",
-        "commercial_unit": {
-          "unit": "one server, four concurrent developer sessions",
-          "hardware_included": false,
-          "renewal": "No automatic paid renewal assumed; first-year support capped at 12 staff-hours. Further work quoted separately.",
-          "expansion": "Additional concurrency packs planned, not priced or counted as shipping offers."
-        },
-        "delivery_cost_assumptions": {
-          "disks": 12,
-          "printed_pages": 1000,
-          "onboarding_staff_hours": 20,
-          "first_year_support_staff_hours": 12,
-          "note": "One combined package; do not add its client/server editions or old IDE/SDK to its cost. Development/NRE excluded from unit cost."
-        },
         "sponsored_deployment": "Autodesk whole-team deployment from late January 1982: team_development_program.json/autodesk_sponsored_deployment. Sponsor supplies hardware, qualified concurrency/storage and dedicated support beyond retail caps; retail entitlement remains unchanged.",
         "adoption_pricing": {
           "effective_from": "1981-11-19",
@@ -2611,7 +3641,6 @@
       ],
       "id": "software.aion_development_team",
       "name": "AION Development System (Team / AIONix Server edition)",
-      "product_ref": "software.product.aion_development_team",
       "execution_target": "era_aionix",
       "role": "team_server",
       "platform_support": [
@@ -2629,13 +3658,48 @@
       "dependency_refs": [
         "software.aionix_server"
       ],
-      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
       "support_status": "November 1981 scenario offering, subject to documented qualification gates.",
       "version": null,
-      "edition": "Team / AIONix Server"
+      "edition": "Team / AIONix Server",
+      "software_line_id": "software.product.aion_development_team",
+      "software_line_name": "AION Development System",
+      "software_line_category": "development_environment",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "included_in_package",
+        "status": "design_baseline",
+        "installation": "server_hdd",
+        "network_operation": "Server services and persistent storage",
+        "licensing": "Licensed by the commercial package; media copy count is not a client licence or concurrent-session count."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-11-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.aion_development_team.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.aion_development_team.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            }
+          ]
+        }
+      ]
     },
     {
-      "sold_separately": true,
       "introduced": {
         "event_name": "COMDEX November 1981 — Team Edition premiere",
         "event_start_date": "1981-11-19"
@@ -2690,7 +3754,6 @@
       ],
       "id": "edition.aion_development_team.era_client",
       "name": "AION Development System (Team / AIONix Client edition)",
-      "product_ref": "software.product.aion_development_team",
       "execution_target": "era_aionix",
       "role": "development_client",
       "platform_support": [
@@ -2712,13 +3775,48 @@
       "dependency_refs": [
         "software.aionix_server"
       ],
-      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
       "support_status": "November 1981 scenario offering, subject to documented qualification gates.",
       "version": null,
-      "edition": "Team / AIONix Client"
+      "edition": "Team / AIONix Client",
+      "software_line_id": "software.product.aion_development_team",
+      "software_line_name": "AION Development System",
+      "software_line_category": "development_environment",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "included_in_package",
+        "status": "design_baseline",
+        "installation": "client_startup_diskette",
+        "network_operation": "Start under the existing networking OS, connect to server, and load further modules/data over the network; bootstrap remains local.",
+        "licensing": "Licensed by the commercial package; media copy count is not a client licence or concurrent-session count."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-11-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.edition.aion_development_team.era_client.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.aion_development_team.era_client.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            }
+          ]
+        }
+      ]
     },
     {
-      "sold_separately": true,
       "introduced": {
         "event_name": "COMDEX November 1981 — Team Edition premiere",
         "event_start_date": "1981-11-19"
@@ -2773,7 +3871,6 @@
       ],
       "id": "edition.aion_development_team.z80_client",
       "name": "AION Development System (Team / CP/M Client edition)",
-      "product_ref": "software.product.aion_development_team",
       "execution_target": "z80_cpm",
       "role": "development_client",
       "platform_support": [
@@ -2795,16 +3892,53 @@
       "dependency_refs": [
         "software.cpm_aurelia_networking"
       ],
-      "delivery": "Included in Team Edition; network-loaded clients, local execution, shared server storage. Not a separate license.",
       "support_status": "November 1981 scenario offering, subject to documented qualification gates.",
       "version": null,
-      "edition": "Team / CP/M Client"
+      "edition": "Team / CP/M Client",
+      "software_line_id": "software.product.aion_development_team",
+      "software_line_name": "AION Development System",
+      "software_line_category": "development_environment",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "included_in_package",
+        "status": "design_baseline",
+        "installation": "client_startup_diskette",
+        "network_operation": "Start under the existing networking OS, connect to server, and load further modules/data over the network; bootstrap remains local.",
+        "licensing": "Licensed by the commercial package; media copy count is not a client licence or concurrent-session count."
+      },
+      "composition_history": [
+        {
+          "valid_from": "1981-11-19",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.edition.aion_development_team.z80_client.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.aion_development_team.z80_client.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
         "event_name": "NCC June 1982 — colour graphics and mouse interaction",
-        "event_start_date": "1982-06",
-        "date_precision": "month"
+        "event_start_date": "1982-06-07",
+        "date_precision": "day",
+        "timeline_note": "NCC 1982 release-day convention adopted for the composition interval; previous record specified June 1982."
       },
       "features": [
         "Sudoku",
@@ -2822,11 +3956,9 @@
         "technology.logix_tui_standard",
         "technology.logix_display_api"
       ],
-      "delivery": "diskette",
       "validation": "Qualify puzzle validity/uniqueness, legal moves, deal generation, undo, input and resource budgets. Do not imply all randomly dealt card games are solvable.",
       "id": "software.entertainment_suite",
       "name": "AION Entertainment Suite (CP/M edition)",
-      "product_ref": "software.product.entertainment_suite",
       "execution_target": "z80_cpm",
       "role": "application",
       "platform_support": [
@@ -2851,13 +3983,64 @@
       ],
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "CP/M"
+      "edition": "CP/M",
+      "software_line_id": "software.product.entertainment_suite",
+      "software_line_name": "AION Entertainment Suite",
+      "software_line_category": "educational_and_entertainment_software",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-06-07",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.entertainment_suite.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.entertainment_suite.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.entertainment_suite.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.entertainment_suite.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
         "event_name": "NCC June 1982 — colour graphics and mouse interaction",
-        "event_start_date": "1982-06",
-        "date_precision": "month"
+        "event_start_date": "1982-06-07",
+        "date_precision": "day",
+        "timeline_note": "NCC 1982 release-day convention adopted for the composition interval; previous record specified June 1982."
       },
       "features": [
         "Sudoku",
@@ -2875,11 +4058,9 @@
         "technology.logix_tui_standard",
         "technology.logix_display_api"
       ],
-      "delivery": "diskette",
       "validation": "Qualify puzzle validity/uniqueness, legal moves, deal generation, undo, input and resource budgets. Do not imply all randomly dealt card games are solvable.",
       "id": "edition.entertainment_suite.era",
       "name": "AION Entertainment Suite (AIONix edition)",
-      "product_ref": "software.product.entertainment_suite",
       "execution_target": "era_aionix",
       "role": "application",
       "platform_support": [
@@ -2904,7 +4085,57 @@
       ],
       "support_status": "declared compatible; implementation conformance and performance not yet measured",
       "version": null,
-      "edition": "AIONix"
+      "edition": "AIONix",
+      "software_line_id": "software.product.entertainment_suite",
+      "software_line_name": "AION Entertainment Suite",
+      "software_line_category": "educational_and_entertainment_software",
+      "vendor": "AION Software",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-06-07",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.edition.entertainment_suite.era.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.entertainment_suite.era.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.edition.entertainment_suite.era.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.edition.entertainment_suite.era.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     },
     {
       "introduced": {
@@ -2912,7 +4143,6 @@
         "event_start_date": "1982-11-29"
       },
       "product_status": "Accepted November 1982 COMDEX delivery target; release-quality demonstration and shipment acceptance are distinct gates.",
-      "sold_separately": true,
       "description": "Independent Autodesk CAD product for AIONix/ERA, enabled by Adam-funded whole-team development equipment, Team Edition environment and integration support.",
       "features": [
         "Native 2D CAD with typed coordinate entry and validated numerical geometry",
@@ -2937,7 +4167,6 @@
       ],
       "id": "software.autocad_1_artemis",
       "name": "Autodesk AutoCAD 1.0 (AIONix edition)",
-      "product_ref": "software.product.autocad_1_artemis",
       "execution_target": "era_aionix",
       "role": "application",
       "platform_support": [
@@ -2963,10 +4192,59 @@
         "device.mono_pro_17",
         "device.logix_mouse"
       ],
-      "delivery": "diskette",
       "support_status": "November COMDEX target, qualification and shipment acceptance pending",
       "version": "1.0",
-      "edition": "AIONix"
+      "edition": "AIONix",
+      "software_line_id": "software.product.autocad_1_artemis",
+      "software_line_name": "Autodesk AutoCAD",
+      "software_line_category": "cad_software",
+      "vendor": "Autodesk",
+      "distribution": {
+        "medium": "diskette",
+        "fulfillment": "edition_delivery",
+        "status": "design_baseline"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "part.software.autocad_1_artemis.software_documentation",
+              "quantity": 1,
+              "unit": "set",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.autocad_1_artemis.license_document",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "part.software.autocad_1_artemis.installation_media",
+              "quantity": null,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "unresolved"
+            },
+            {
+              "ref": "part.software.autocad_1_artemis.software_packaging",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -16,27 +16,19 @@ ref='part.professional_graphics_controller';g['chip_area'][ref]=policy['graphics
 chip=g['chip_cost'](ref,i);inputcopy[ref]['annual_cost_buckets_usd']['1982']={k:round(v,5) for k,v in chip.items() if v}
 for ref,amount in policy['monitor_component_overrides_usd'].items():
  inputcopy[ref]['annual_cost_buckets_usd']['1982']={'bom_materials':amount}
-original_routing=g['routing']
-def routing(a):
- if a=='assembly.device.artemis_professional_video_128kb.comdex82':return (1.5,2.2,1.75)
- if a=='assembly.device.mono_pro_17.comdex82':return (2.5,9,3)
- return original_routing(a)
-g['rollup'].__globals__['routing']=routing
-for a in ['assembly.device.artemis_professional_video_128kb.comdex82','assembly.device.mono_pro_17.comdex82']:
- # Prevent prelaunch learning discount on newly qualified revision routing.
- g['ncc']['routing'][a]={'hours':routing(a)[0],'kwh':routing(a)[1],'consumables_usd':routing(a)[2]}
+# Revision routing must be qualified on the selected device composition version.
 rows=[]
 def row(id,name,v,lines=None,assumptions=None):
  bd={k:cents(v.get(k,0)) for k in g['K']};cost=cents(sum(bd.values()));entry={'id':id,'name':name,'date':'1982-11-29','cost_usd':cost,'low_usd':cents(cost*.7),'high_usd':cents(cost*1.6),'breakdown_usd':bd,'bom_lines':lines or [],'assumptions':assumptions or [],'status':'unquoted_engineering_planning_estimate'};rows.append(entry);return entry
 def device(ref):
- r=copy.deepcopy(base_rows[ref]);r['assembly_ref']='assembly.'+ref+'.comdex82'
- v,flat,a=g['estimate'](r,i,inputcopy)
+ r=copy.deepcopy(base_rows[ref]);r['composition_ref']=ref
+ v,flat,a=g['estimate'](r,i,inputcopy,evaluation_date='1982-11-29')
  return row(ref,r['name']+' — November revision',v,[{'component_ref':k,'quantity':q,'unit_cost_usd':sum(inputcopy[k]['annual_cost_buckets_usd']['1982'].values()),'extended_cost_usd':cents(q*sum(inputcopy[k]['annual_cost_buckets_usd']['1982'].values()))} for k,q in flat.items()],['Dated November revision; June row is unchanged.','Existing June nominal labor, energy and qualified RAM costs carried forward explicitly; no unsupported November cost decline.'])
 card=device('device.artemis_professional_video_128kb');monitor=device('device.mono_pro_17')
 # Complete reference hardware: remove included old card at factory assembly cost, install new colour card once.
 base=base_rows['bundle.artemis_pro_1mb_server']['snapshots']['1982'];v=copy.deepcopy(base['breakdown_usd'])
-oldcard,_=g['rollup']('device.artemis_video_card',i)
-newcard,_=g['rollup']('device.artemis_video_card_64kb',i)
+oldcard,_=g['rollup']('device.artemis_video_card',i,evaluation_date='1982-11-29')
+newcard,_=g['rollup']('device.artemis_video_card_64kb',i,evaluation_date='1982-11-29')
 for k in g['K']:v[k]+=newcard[k]-oldcard[k]
 for ref in ['device.flexibus_keyboard','device.color_pro_14','device.logix_mouse']:
  for k,value in base_rows[ref]['snapshots']['1982']['breakdown_usd'].items():v[k]+=value

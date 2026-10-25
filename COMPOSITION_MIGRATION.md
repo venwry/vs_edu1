@@ -117,3 +117,6 @@ histories to avoid duplicate details.
 The approved follow-up in PRODUCT_COMPLETION.md fills snapshot-derived product
 dates/contents and changes device delivery scope. It supersedes the prior missing
 product/date counts and unchanged-BOM statement; financial files remain unchanged.
+
+COMPOSITION_RESOLUTION.md records the later approved quantity, manufacturing ownership,
+commercial removal and single-FDD changes. Current active product count is 41.

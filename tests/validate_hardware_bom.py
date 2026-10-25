@@ -54,11 +54,15 @@ for id in ['computer.artemis','computer.artemis_pro']:
   assert cfg['data_chip_count']==module['chips']*cfg['populated_modules']
   assert len(cfg['bank_population'])==cfg['populated_banks']
   assert [slot for bank in cfg['bank_population'] for slot in bank['slots']]==list(range(cfg['populated_modules']))
-  inv=explode('assembly.'+id+'.'+cfg['id'])
+  from compositions import resolve
+  inv=Counter()
+  for l in resolve(cfg['product_ref'],version=1)['leaves']:
+   if l['total_quantity'] is not None and cfg['module_ref'] in l['path']:inv[l['ref']]+=l['total_quantity']
   assert inv[module['chip_type_ref']]==cfg['data_chip_count']
 shipping={id:{c['ram_kb']:(c['populated_modules'],c['populated_banks'],c['data_chip_count']) for c in records[id]['memory']['configurations'] if c['shipping_configuration']} for id in ['computer.artemis','computer.artemis_pro']}
 assert shipping['computer.artemis']=={128:(2,1,64),256:(2,1,128)}
-assert shipping['computer.artemis_pro']=={512:(2,1,64),1024:(4,2,128)}
+assert shipping['computer.artemis_pro']=={} # Announced products are not confirmed shipping configurations.
+assert {c['ram_kb'] for c in records['computer.artemis_pro']['memory']['configurations']}=={512,1024}
 for id,expected in [('computer.aurelia',48),('computer.aurelia_plus',64)]:
  pop=records[id]['memory']['physical_population'];assert pop['data_chip_count']*records[pop['chip_ref']]['specification']['capacity_kbit']/8==expected
 for id in ['offer.ram_64kb_module','offer.ram_256kb_bank']:

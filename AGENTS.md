@@ -34,3 +34,21 @@ assembly lines into compositions without a separate explicit instruction.
 For approved product completion and device-owned delivery items read
 PRODUCT_COMPLETION.md and run tests/validate_product_completion.py. Preserve
 conditional/unknown FDD cable allocation and unqualified quotation scope.
+
+For approved design quantities and version-owned manufacturing metadata read
+COMPOSITION_RESOLUTION.md and run tests/validate_composition_resolution.py.
+FDD data harnesses are owned once per base computer. The three computer systems are restored as product.* records; do not reinstate
+the generic supplemental-media allowance. Manufacturing
+qualification and financial costing remain pending despite defined supplied-set counts.
+
+Software editions and physical fulfillment follow SOFTWARE_DELIVERY_MIGRATION.md.
+There are now 21 collections; software-products.json is removed. Edit
+software-editions.json.software_editions, never the derived legacy line/edition views.
+Run tests/validate_software_delivery.py for software or cartridge composition changes.
+
+The approved composition cutover in COMPOSITION_CUTOVER.md supersedes the earlier
+simulation-only instruction. BOM consumers use composition-resolver.js; Python uses
+tools/compositions.py. Never select a child by list position or pricing date: use
+its parent's valid_from. Pricing requires an explicit evaluation date. Keep
+financial qualification guards and saved financial files unchanged during structural
+work. Run tests/validate_composition_cutover.py and both composition *.test.cjs tests.

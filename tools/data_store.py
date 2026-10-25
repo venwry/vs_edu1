@@ -64,8 +64,8 @@ def computer_records(stored, devices, components):
         if c.get('configuration_video_card_refs'):slot['configuration_card_refs']=c['configuration_video_card_refs']
     return rows
 
-def project_collections(docs):
-    result=subprocess.run(['node',str(ROOT/'data-store.js')],input=json.dumps(docs),text=True,capture_output=True)
+def project_collections(docs,legacy_bom=False):
+    result=subprocess.run(['node',str(ROOT/'data-store.js')],input=json.dumps({'documents':docs,'legacyBOM':legacy_bom}),text=True,capture_output=True)
     if result.returncode:raise ValueError('Invalid catalogue projection: '+result.stderr[-1800:])
     return json.loads(result.stdout)
 
@@ -78,7 +78,7 @@ def read_document(path, root=ROOT):
     cache={}
     if reg.get("commercial_projection_files"):
         source={f:json.loads((root/f).read_text()) for f in reg["commercial_projection_files"]}
-        cache=project_collections(source)
+        cache=project_collections(source,legacy_bom=name=='hardware-bom')
     def collection(file):
         if file not in cache:cache[file]=json.loads((root/file).read_text())
         return cache[file]
@@ -133,7 +133,7 @@ def store_document(path, value, root=ROOT):
     if name in ['logix-aion-technical-catalog-v2','hardware-bom','retail-catalog-1982']:
         if name=='logix-aion-technical-catalog-v2':
             edited=[k for k in current if current[k]!=value.get(k)]
-            allowed=['components','platform_editions','services','software_products','external_partner_products']
+            allowed=['components','services','external_partner_products']
             if not edited or any(k not in allowed for k in edited):raise ValueError('Edit the authoritative product, device or technology record')
             changes={}
             for k in edited:
@@ -155,7 +155,7 @@ def store_document(path, value, root=ROOT):
 
             if len(by[id]['composition_history'])!=1:raise ValueError('Edit the explicit composition version at its source owner')
             by[id]['composition_history'][0]['composition_definition']=copy.deepcopy(a['lines'])
-            by[id]['bom_assembly_metadata']={k:copy.deepcopy(v) for k,v in a.items() if k not in ['id','lines']}
+            by[id]['composition_history'][0]['bom_assembly_metadata']={k:copy.deepcopy(v) for k,v in a.items() if k not in ['id','lines']}
         from validate_data import validate_collections
         validate_collections(root,{'data/devices.json':devices})
         (root/'data/devices.json').write_text(json.dumps(devices,indent=2,ensure_ascii=False)+'\n')
@@ -174,7 +174,7 @@ def store_document(path, value, root=ROOT):
                 device=devices[row['id']]
                 if len(device['composition_history'])!=1:raise ValueError('Edit the explicit composition version at its source owner')
                 device['composition_history'][0]['composition_definition']=copy.deepcopy(row['lines'])
-                device['bom_assembly_metadata']=copy.deepcopy({k:v for k,v in row.items() if k not in ['id','lines']})
+                device['composition_history'][0]['bom_assembly_metadata']=copy.deepcopy({k:v for k,v in row.items() if k not in ['id','lines']})
             payload=[r for r in payload if r['id'] not in devices]
             if any(r['id'].startswith('device.') for r in payload):raise ValueError('Add device BOMs in data/devices.json')
         if ref.get('chassis_file'):

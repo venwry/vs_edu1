@@ -10,11 +10,8 @@ h=r['computer.aurelia_plus'];p=h['memory']['physical_population']
 assert p['chip_ref']=='part.aion_4164' and p['data_chip_count']==8 and p['data_ram_kb']==64
 assert r['part.aion_4164']['introduced']['event_start_date']=='1979-12-03'
 assert 'computer.aurelia_plus' not in r['part.dram_64kbit'].get('used_in',[])
-a=next(x for x in b['assemblies'] if x['id']=='assembly.computer.aurelia_plus.base')
-index={a['id']:a for a in b['assemblies']}
-def leaves(a):
- return [leaf for l in a['lines'] for leaf in (leaves(index[l['ref']]) if l['ref'] in index else [l])]
-lines={l['ref']:l['quantity'] for l in leaves(a)}
+from compositions import resolve
+lines={l['ref']:l['total_quantity'] for l in resolve('device.base_computer.aurelia_plus',version=1)['leaves']}
 assert lines['part.aion_4164']==8 and 'part.dram_64kbit' not in lines
 assert lines['part.aion_4116']==8 and lines['part.aion_2114']==2
 m=load('generated/models/manufacturing-costs.json')['chip_fabrication_models']['part.aion_4164']

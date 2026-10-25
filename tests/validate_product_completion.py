@@ -27,15 +27,11 @@ for d in ds.values():
    keys=['documentation','mains_cable','packout']+(['signal_cable'] if d['category']=='monitor' else [])
    for key in keys:assert lines['part.'+d['id']+'.'+key]['quantity']==1
    assert not set(lines)&set(f['superseded_parts'])
-  if d['category']=='floppy_drive_mechanism':assert lines['part.'+d['id']+'.controller_cable']['quantity'] is None
+  if d['category']=='floppy_drive_mechanism':assert not any(ref.endswith('.controller_cable') for ref in lines)
 for id in ['offer.retail.connect_office','offer.retail.cpm_migration']:
  h=ps[id]['composition_history'][0];assert h['composition_status']=='unresolved'
  assert h['composition_definition'] and all(l['quantity'] is None and l['condition']!='always' for l in h['composition_definition'])
-network=ps['bundle.proposed_artemis_pro_small_office'];assert network['catalogue_status']=='announced';assert network['commercial_terms']['shipping_date'] is None
-lines={l['ref']:l for l in network['composition_history'][0]['composition_definition']}
-assert lines['part.logix_network_cable']['quantity']==3
-assert lines['edition.bpi_client_server.era_client']['quantity']==2
-assert lines['device.base_computer.artemis']['quantity']==2 and lines['device.base_computer.artemis_pro']['quantity']==1
+assert 'bundle.proposed_artemis_pro_small_office' not in ps
 for file in ['data/assemblies.json','data/retired_assemblies.json']:
  assert not any(l['ref'].startswith('assembly.') for a in load(file)['assemblies'] for l in a['lines'])
 # Validate each approved changed owner, then compare all 97 pre-change assembly fingerprints.
@@ -44,6 +40,7 @@ digest=lambda v:hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'))
 assert {a['id']:digest(a['lines']) for a in b['assemblies']}==old['assembly_lines']
 for path,h in old['financial_files'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h
 r=simulate();assert not any(x['kind'] in ['unknown_start_date','child_date_coverage','unresolved_package'] for x in r['findings'])
-assert r['summary']['full_cutover_equal']==26 and r['summary']['findings_by_kind']['quotation_scope_unresolved']==2
+assert r['summary']['unchanged_versions']==64
+assert sum(h.get('composition_status')=='unresolved' for p in read_document('data/product-catalog.json')['products'] for h in p['composition_history'])==2
 assert {line:sum(p['computer_line']==line for p in ps.values()) for line in ['Aurelia','Artemis','Athena']}=={'Aurelia':4,'Artemis':8,'Athena':2}
 print('PASS: snapshot-derived dates, flat resolved packages, announced status, 54 delivery parts, no duplicate packout, scoped unknowns and unchanged financial files')

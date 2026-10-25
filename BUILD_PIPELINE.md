@@ -86,3 +86,8 @@ See [DEVICE_BOM_MIGRATION.md](DEVICE_BOM_MIGRATION.md).
 For chassis, slots, processor bins, RAM devices and physical media ownership, read
 [CHASSIS_DEVICE_MIGRATION.md](CHASSIS_DEVICE_MIGRATION.md). Run
 `python tests/validate_chassis_migration.py` after structural hardware changes.
+
+Composition cutover: current physical traversal uses explicit evaluation dates and
+the shared version resolver (COMPOSITION_CUTOVER.md). Cost rebuilds remain blocked
+pending qualified routing, quantities and supplier inputs. Updating traversal does
+not authorize replacing immutable saved results or guessing missing financial data.
