@@ -128,3 +128,9 @@ The approved COMPOSITION_RESOLUTION.md follow-up stores bom_assembly_metadata on
 composition versions. Transitional assemblies reference metadata_owner_ref and
 metadata_version_number; the reader hydrates their former metadata shape. BOM line
 units allow each and set: one supplied functional set does not assert one internal IC.
+
+Software delivery migration: SOFTWARE_DELIVERY_MIGRATION.md supersedes the earlier
+22-file count and stored software-line ownership. software-editions.json schema 4.0.0
+owns software_editions; 14 line groups are derived from consistent edition metadata.
+There are 21 authoritative collections. Device/software composition edges share cycle
+validation; only physical media/documents enter their BOM leaves, not licence fees.

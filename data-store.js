@@ -6,7 +6,21 @@ function project(input){
  // Transitional projection only. No date-based BOM calculation is enabled here.
  // The simulation evaluates version dates separately; production retains its existing algorithm.
  if(docs['data/retired_assemblies.json'])docs['data/assemblies.json'].assemblies.push(...clone(docs['data/retired_assemblies.json'].assemblies.filter(a=>!pc.retired_configuration_ids.includes(a.id))));
+ const editions=docs['data/software-editions.json'].software_editions;
+ const softwareIds=new Set(editions.map(e=>e.id)),softwareLines=new Map();
+ for(const e of editions){
+  let group=softwareLines.get(e.software_line_id);
+  if(!group){group={id:e.software_line_id,name:e.software_line_name,category:e.software_line_category,vendor:e.vendor,introduced:clone(e.introduced),edition_refs:[]};softwareLines.set(group.id,group);}
+  group.edition_refs.push(e.id);if(e.introduced.event_start_date<group.introduced.event_start_date)group.introduced=clone(e.introduced);
+  e.product_ref=e.software_line_id;e.delivery=e.distribution.medium;
+  e.sold_separately=pc.products.some(p=>p.category==='software'&&p.id!=='product.aion_development_team'&&p.id!=='product.bpi_client_server'&&p.composition_history.some(h=>h.composition_definition.some(l=>l.ref===e.id||docs['data/devices.json'].devices.find(d=>d.id===l.ref)?.composition_history.some(v=>v.composition_definition.some(x=>x.ref===e.id)))));
+  if(e.id==='software.aion_development_team'){const t=pc.products.find(p=>p.id==='product.aion_development_team').commercial_terms;e.specification.delivery_cost_assumptions={disks:t.total_distribution_diskettes,printed_pages:t.total_printed_pages,onboarding_staff_hours:t.onboarding_staff_hours,first_year_support_staff_hours:t.first_year_support_staff_hours,note:t.allocation_status};e.specification.commercial_unit={unit:'one server, four concurrent developer sessions',hardware_included:false};}
+ }
+ docs['data/software-products.json']={software_products:[...softwareLines.values()]};
+ docs['data/software-editions.json'].platform_editions=editions;
  const physical=docs['data/devices.json'].devices;
+ for(const d of physical)d.software_refs=[...new Set(d.composition_history.flatMap(h=>h.composition_definition.filter(l=>softwareIds.has(l.ref)).map(l=>l.ref)))];
+
  for(const d of physical){const h=d.composition_history?.[0];if(h){d.bom_assembly_definition=clone(h.composition_definition);if(h.bom_assembly_metadata)d.bom_assembly_metadata=clone(h.bom_assembly_metadata);}}
  const platformKeys=['introduced','technology_refs','lifecycle_policy','vendor','technical_profile','default_configuration','recommended_software_ref','production_status','upgrade_product_refs','role','availability','product_status','inclusion_qualification','programme_ref'];
  const platforms=physical.filter(d=>d.category==='base_computer').map(d=>{const p={id:d.id.replace('device.base_computer.','computer.'),name:d.name.replace(' — base computer',''),category:'computer',chassis_ref:d.id,record_kind:'platform',computer_line:null,catalogue_status:'platform',hardware_assembly_refs:d.platform_assembly_refs||[]};for(const k of platformKeys)if(k in d)p[k]=clone(d[k]);return p;});
@@ -15,24 +29,25 @@ function project(input){
  pc.products.unshift(...platforms);pc.external_platforms=docs['data/ecosystem-inputs.json']?.external_platforms||[];
 
  const devices=docs['data/devices.json'].devices,parts=docs['data/components.json'].components,technologies=docs['data/standards.json'].technologies;
- const records=Object.fromEntries([...devices,...parts,...technologies,...pc.products].map(r=>[r.id,r]));
+ const records=Object.fromEntries([...devices,...parts,...technologies,...editions,...pc.products].map(r=>[r.id,r]));
  function resolve(v,seen=[]){if(Array.isArray(v))return v.map(x=>resolve(x,seen));if(v&&typeof v==='object'){if(v.source_ref){if(seen.includes(v.source_ref+JSON.stringify(v.path)))throw Error('Cyclic specification reference');let x=records[v.source_ref];for(const key of v.path)x=x?.[key];if(x===undefined)throw Error('Missing specification source '+v.source_ref+':'+v.path);return resolve(x,[...seen,v.source_ref+JSON.stringify(v.path)]);}return Object.fromEntries(Object.entries(v).map(([k,x])=>[k,resolve(x,seen)]));}return v;}
  for(const d of devices)if(d.specification_ref)d.specification={...clone(records[d.specification_ref].specification),...(d.specification||{})};
  for(const d of devices){if(d.specification)d.specification=resolve(d.specification);const r=d.specification?.sprite_profile_ref;if(r)d.specification.sprites=clone(records[r.technology_ref].specification.profiles[r.profile]);}
  for(const t of technologies)t.specification=resolve(t.specification);
  const stored=docs['data/assemblies.json'].assemblies;
  for(const a of stored)if(a.metadata_owner_ref){const h=pc.products.find(p=>p.id===a.metadata_owner_ref)?.composition_history?.find(h=>h.version_number===a.metadata_version_number);if(!h?.bom_assembly_metadata)throw Error('Missing version metadata for '+a.id);Object.assign(a,clone(h.bom_assembly_metadata));delete a.metadata_owner_ref;delete a.metadata_version_number;}
+ for(const e of editions){const h=e.composition_history[0];stored.push({id:e.id,name:e.name,status:e.distribution.status==='unspecified'?'incomplete':'design_baseline',requirements:['Physical media and documents only; licence/service fees are outside manufacturing totals.'],routing:{operations:[],minutes_per_unit:null,first_pass_yield:null,rework_rate:null,scrap_rate:null,fixture_refs:[]},cost_rollup_status:'blocked_pending_component_and_routing_definition',lines:clone(h?.composition_definition||[])});}
  const assemblies=new Map(stored.map(a=>[a.id,a]));
  for(const d of devices)if(d.bom_assembly_definition)assemblies.set(d.id,{id:d.id,...clone(d.bom_assembly_metadata),lines:clone(d.bom_assembly_definition)});
  const line=(ref,quantity,role='')=>({ref,quantity,unit:'each',role,condition:'always',quantity_status:quantity===null?'unresolved':'defined'});
  for(const p of pc.products){
   for(const version of [p,...(p.revisions||[])]){
    let a=assemblies.get(version.hardware_assembly_ref);if(!a&&version.main_product&&version.hardware_assembly_ref){a={id:version.hardware_assembly_ref||p.id,name:p.name,status:'incomplete',cost_rollup_status:'blocked_pending_component_and_routing_definition',requirements:p.acceptance||[],routing:{operations:[],minutes_per_unit:null,first_pass_yield:null,rework_rate:null,scrap_rate:null,fixture_refs:[]},lines:[],commercial_product_ref:p.id};assemblies.set(a.id,a);stored.push(a);}if(!a||!a.commercial_product_ref)continue;
-   a.lines=[...(version.main_product?[line(version.main_product.device_ref,1,'Main product')]:[]),...(version.connected_devices||[]).map(e=>line(e.device_ref,e.quantity,'Supplied device')),...(version.attached_products||[]).filter(e=>e.product_ref?.startsWith('part.')).map(e=>line(e.product_ref,e.quantity,'Supplied product material')),...a.lines];
+   a.lines=[...(version.main_product?[line(version.main_product.device_ref,1,'Main product')]:[]),...(version.connected_devices||[]).map(e=>line(e.device_ref,e.quantity,'Supplied device')),...(version.attached_products||[]).filter(e=>e.product_ref?.startsWith('part.')||softwareIds.has(e.software_ref)).map(e=>line(e.product_ref||e.software_ref,e.quantity,'Supplied physical delivery')),...a.lines];
   }
  }
  function leaves(ref,seen=[]){if(seen.includes(ref))throw Error('Cyclic hardware BOM');const a=assemblies.get(ref);if(!a)return [line(ref,1)];return a.lines.flatMap(l=>assemblies.has(l.ref)?leaves(l.ref,[...seen,ref]).map(x=>({...x,quantity:x.quantity===null||l.quantity===null?null:x.quantity*l.quantity})):l);}
- function softwareFor(p){const refs=new Set();const walk=id=>{const d=records[id];for(const s of d?.software_refs||[])refs.add(s);for(const l of d?.bom_assembly_definition||[])if(records[l.ref]?.bom_assembly_definition)walk(l.ref);};if(p.main_product)walk(p.main_product.device_ref);for(const e of p.connected_devices||[])walk(e.device_ref);for(const e of p.attached_products||[])if(e.software_ref)refs.add(e.software_ref);return [...refs];}
+ function softwareFor(p){const refs=new Set();const walk=id=>{const d=records[id];for(const s of d?.software_refs||[])refs.add(s);for(const l of d?.bom_assembly_definition||[])if(records[l.ref]?.bom_assembly_definition)walk(l.ref);};if(p.main_product)walk(p.main_product.device_ref);for(const e of p.connected_devices||[])walk(e.device_ref);for(const e of p.attached_products||[]){if(e.software_ref)refs.add(e.software_ref);else if(e.product_ref)walk(e.product_ref);}return [...refs];}
  function legacyOffer(p){
   const o=clone(p);o.bom_assembly_ref=p.hardware_assembly_ref;
   o.included_devices=(p.connected_devices||[]).map(e=>e.device_ref);o.included_software=softwareFor(p);o.included_services=(p.attached_products||[]).filter(e=>e.service_ref);
@@ -70,6 +85,7 @@ function project(input){
  });
  docs['data/computers.json']={computers,external_platforms:pc.external_platforms};
  docs['data/offers.json']=Object.fromEntries(['offered_bundles','proposed_bundles','commercial_offerings'].map(k=>[k,pc.products.filter(p=>p.source_group===k||(k==='commercial_offerings'&&['retail','unresolved'].includes(p.source_group))).map(legacyOffer)]));
+ for(const p of pc.products.filter(p=>p.category==='software')){const h=p.composition_history?.[0];if(h)stored.push({id:p.id,name:p.name,status:'incomplete',requirements:p.acceptance||[],routing:{operations:[],minutes_per_unit:null,first_pass_yield:null,rework_rate:null,scrap_rate:null,fixture_refs:[]},cost_rollup_status:'blocked_pending_component_and_routing_definition',lines:clone(h.composition_definition).filter(l=>!l.ref.startsWith('service.')).map(({element_type,...l})=>l)});}
  const mappings=[...computers.map(c=>({catalog_ref:c.id,production_status:c.production_status||'design_baseline',assembly_refs:c.bom_assembly_refs,requirements:c.manufacturing_requirements})),...devices.filter(d=>d.hardware_assembly_refs).map(d=>({catalog_ref:d.id,production_status:d.production_status,assembly_refs:d.hardware_assembly_refs,requirements:d.manufacturing_requirements||[]})),...parts.filter(p=>p.production_status).map(p=>({catalog_ref:p.id,production_status:p.production_status,assembly_refs:p.bom_role==='material'&&p.production_status!=='excluded'?[p.id]:[],requirements:p.requirements||[]}))];
  docs['data/product-boms.json']={...clone(pc.bom_policy),products:mappings,offers:pc.products.filter(p=>p.source_group==='offered_bundles').map(p=>({catalog_ref:p.id,kind:p.category==='upgrade_bundle'?'upgrade_kit':p.category,assembly_ref:p.hardware_assembly_ref,compatible_host_ref:p.computer_ref,included_host:Boolean(p.main_product),effective_from:p.introduced.event_start_date,...p.commercial_terms,requirements:p.acceptance||[],licenses_and_services:'Tracked outside recurring hardware BOM; physical media remains included.'})),proposed_offer_refs:pc.products.filter(p=>p.source_group==='proposed_bundles').map(p=>p.id)};
  const retail=clone(pc.catalog_editions[0]);for(const key of ['solutions','upgrades'])retail[key]=retail[key].map(e=>{const p=records[e.product_ref],r=p.retail_presentation;return {...clone(r),components:r.component_product_ref?[{ref:r.component_product_ref,quantity:1}]:(p.attached_products||[]).map(e=>({ref:e.product_ref||e.software_ref||e.service_ref,quantity:e.quantity}))};});
@@ -119,7 +135,7 @@ function assemble(name,registry,collections){
 function filesFor(name,reg){
  const r=reg.views[name];if(r.story)return ['data/world.json','data/timeline-structure.json','data/events.json','data/contracts.json'];
  const files=(r.merge||Object.values(r)).flatMap(x=>[x.file,...(x.device_file?[x.device_file]:[]),...(x.chassis_file?[x.chassis_file,'data/components.json']:[])]);
- return [...new Set(files.filter(f=>!['data/computers.json','data/offers.json','data/product-boms.json','data/retail-catalog.json'].includes(f)).concat(reg.commercial_projection_files||[]))];
+ return [...new Set(files.filter(f=>!['data/computers.json','data/offers.json','data/product-boms.json','data/retail-catalog.json','data/software-products.json'].includes(f)).concat(reg.commercial_projection_files||[]))];
 }
 if(node){const fs=require('node:fs'),path=require('node:path');function read(file,base=__dirname){const reg=JSON.parse(fs.readFileSync(path.join(base,'schemas/data-registry.json'),'utf8')),name=nameFor(file,reg);if(!name){const actual=reg.legacy_paths[file]||file,value=JSON.parse(fs.readFileSync(path.join(base,actual),'utf8'));return actual.startsWith('generated/models/')?normalizeComponentIds(value,reg):value;}const collections=Object.fromEntries(filesFor(name,reg).map(p=>[p,JSON.parse(fs.readFileSync(path.join(base,p),'utf8'))]));return assemble(name,reg,collections);}module.exports={read,assemble,filesFor,nameFor,normalizeComponentIds,assemblyRecords,computerRecords};return;}
 const cache=new Map();function json(path){if(!cache.has(path))cache.set(path,root.fetch(path).then(r=>{if(!r.ok)throw Error('Unable to load '+path);return r.json();}).catch(e=>{cache.delete(path);throw e;}));return cache.get(path);}

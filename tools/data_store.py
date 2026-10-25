@@ -133,7 +133,7 @@ def store_document(path, value, root=ROOT):
     if name in ['logix-aion-technical-catalog-v2','hardware-bom','retail-catalog-1982']:
         if name=='logix-aion-technical-catalog-v2':
             edited=[k for k in current if current[k]!=value.get(k)]
-            allowed=['components','platform_editions','services','software_products','external_partner_products']
+            allowed=['components','services','external_partner_products']
             if not edited or any(k not in allowed for k in edited):raise ValueError('Edit the authoritative product, device or technology record')
             changes={}
             for k in edited:

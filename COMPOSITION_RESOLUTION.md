@@ -106,3 +106,6 @@ unchanged; restored systems retain computer_line null. Simulation again reports
 three multi-computer packages and their seven placement checks, and 25 product
 versions without a legacy BOM. These are explicit qualification/baseline limitations,
 not a reason to omit the system products. Run tests/validate_computer_systems.py.
+
+SOFTWARE_DELIVERY_MIGRATION.md supersedes counts and software delivery ownership above:
+software compositions now participate in physical traversal, with unresolved media counts.

@@ -6128,9 +6128,6 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "software_refs": [
-        "software.aionix"
-      ],
       "connection": "rom_cartridge",
       "composition_history": [
         {
@@ -6159,6 +6156,14 @@
               "quantity": 1,
               "unit": "set",
               "role": "Approved design quantity; complete supplied set, not constituent chip count",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.aionix",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
               "condition": "always",
               "quantity_status": "defined"
             }
@@ -6193,9 +6198,6 @@
         "event_start_date": "1981-05-04"
       },
       "manufacturing_status": "incomplete_bom",
-      "software_refs": [
-        "software.aionix_server"
-      ],
       "connection": "rom_cartridge",
       "composition_history": [
         {
@@ -6224,6 +6226,14 @@
               "quantity": 1,
               "unit": "set",
               "role": "Approved design quantity; complete supplied set, not constituent chip count",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.aionix_server",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
               "condition": "always",
               "quantity_status": "defined"
             }
@@ -6258,9 +6268,6 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "software_refs": [
-        "software.cpm_aurelia"
-      ],
       "connection": "rom_cartridge",
       "composition_history": [
         {
@@ -6289,6 +6296,14 @@
               "quantity": 1,
               "unit": "set",
               "role": "Approved design quantity; complete supplied set, not constituent chip count",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.cpm_aurelia",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
               "condition": "always",
               "quantity_status": "defined"
             }
@@ -6323,9 +6338,6 @@
         "event_start_date": "1981-05-04"
       },
       "manufacturing_status": "incomplete_bom",
-      "software_refs": [
-        "software.cpm_aurelia_networking"
-      ],
       "connection": "rom_cartridge",
       "composition_history": [
         {
@@ -6354,6 +6366,14 @@
               "quantity": 1,
               "unit": "set",
               "role": "Approved design quantity; complete supplied set, not constituent chip count",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.cpm_aurelia_networking",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
               "condition": "always",
               "quantity_status": "defined"
             }
@@ -6388,9 +6408,6 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_status": "incomplete_bom",
-      "software_refs": [
-        "software.business_tools_aurelia"
-      ],
       "connection": "rom_cartridge",
       "composition_history": [
         {
@@ -6419,6 +6436,14 @@
               "quantity": 1,
               "unit": "set",
               "role": "Approved design quantity; complete supplied set, not constituent chip count",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.business_tools_aurelia",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
               "condition": "always",
               "quantity_status": "defined"
             }
@@ -6454,9 +6479,6 @@
         "event_start_date": "1980-05-19"
       },
       "manufacturing_status": "incomplete_bom",
-      "software_refs": [
-        "software.business_tools_artemis"
-      ],
       "connection": "rom_cartridge",
       "composition_history": [
         {
@@ -6485,6 +6507,14 @@
               "quantity": 1,
               "unit": "set",
               "role": "Approved design quantity; complete supplied set, not constituent chip count",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.business_tools_artemis",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
               "condition": "always",
               "quantity_status": "defined"
             }
@@ -9173,9 +9203,6 @@
       "manufacturing_status": "incomplete_bom",
       "connection": "on_mainboard",
       "selectable": false,
-      "software_refs": [
-        "software.aionix2"
-      ],
       "specification": {
         "capacity_bytes": 262144,
         "execution": "Directly executable shared read-only AIONix2 code; private writable data and patch overlays in DRAM.",
@@ -9189,6 +9216,14 @@
           "composition_definition": [
             {
               "ref": "part.athena.system_rom",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.aionix2",
               "quantity": 1,
               "unit": "each",
               "role": "",
@@ -9604,9 +9639,6 @@
       "manufacturing_status": "incomplete_bom",
       "connection": "on_mainboard",
       "selectable": false,
-      "software_refs": [
-        "software.aionix2"
-      ],
       "specification": {
         "capacity_bytes": 262144,
         "execution": "Directly executable shared read-only AIONix2 code; private writable data and patch overlays in DRAM.",
@@ -9620,6 +9652,14 @@
           "composition_definition": [
             {
               "ref": "part.athena_server.system_rom",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "software.aionix2",
               "quantity": 1,
               "unit": "each",
               "role": "",

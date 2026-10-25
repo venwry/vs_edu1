@@ -13,7 +13,7 @@ for(const ports of [4,8,16]){const id=`device.network_hub.${ports}_port`,device=
   if(old==='device.network_hub'){
    assert.equal(d.querySelectorAll('#bom-rows tr').length,3);assert(d.getElementById('bom-inspector').textContent.includes('Select a variant'));
    for(const ports of [4,8,16]){const id=`device.network_hub.${ports}_port`;d.querySelector(`[data-element="${id}"]`).click();d.getElementById('tab-bom').click();assert(d.getElementById('panel-bom').textContent.includes('Bill of materials'));assert.equal(new URL(w.location.href).searchParams.get('element'),id);}
-   d.getElementById('bom-reset').click();assert.equal(d.querySelectorAll('#bom-rows tr').length,505);
+   d.getElementById('bom-reset').click();assert.equal(d.querySelectorAll('#bom-rows tr').length,626);
   }else assert(d.querySelector('[data-element="device.network_card_aurelia"][aria-pressed=true]'));
   w.close();
  }

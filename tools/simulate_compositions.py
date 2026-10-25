@@ -10,6 +10,9 @@ def simulate(root=ROOT):
     root=Path(root)
     load=lambda f:json.loads((root/'data'/f).read_text())
     devices={d['id']:d for d in load('devices.json')['devices']}
+    device_count=len(devices)
+    software={e['id']:e for e in load('software-editions.json')['software_editions']}
+    devices.update(software)
     products=load('product-catalog.json')['products']
     parts={p['id']:p for p in load('components.json')['components']}
     active={a['id']:a for a in load('assemblies.json')['assemblies']}
@@ -118,7 +121,7 @@ def simulate(root=ROOT):
         for h in p['composition_history']:
             for l in h['composition_definition']:
                 if l['ref'].startswith(('software.','edition.','service.')):issue('nonhardware_cost_boundary',p['id'],h['version_number'],l['ref'],'Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.')
-    return dict(summary={'devices':len(devices),'products':len(products),'active_assemblies':len(active),'retired_assemblies':len(retired),'compared_versions':len(comparisons),'unmerged_equal':sum(not c['unmerged_difference'] for c in comparisons),'merged_static_equal':sum(not c['merged_static_difference'] for c in comparisons),'merged_temporal_equal':sum(not c['merged_temporal_difference'] for c in comparisons),'full_cutover_equal':sum(not c['full_cutover_difference'] for c in comparisons),'unknown_components':len({f['ref'] for f in findings if f['kind']=='unknown_quantity'}),'findings_by_kind':dict(Counter(f['kind'] for f in findings))},candidates=candidates,comparisons=comparisons,findings=findings)
+    return dict(summary={'devices':device_count,'software_editions':len(software),'products':len(products),'active_assemblies':len(active),'retired_assemblies':len(retired),'compared_versions':len(comparisons),'unmerged_equal':sum(not c['unmerged_difference'] for c in comparisons),'merged_static_equal':sum(not c['merged_static_difference'] for c in comparisons),'merged_temporal_equal':sum(not c['merged_temporal_difference'] for c in comparisons),'full_cutover_equal':sum(not c['full_cutover_difference'] for c in comparisons),'unknown_components':len({f['ref'] for f in findings if f['kind']=='unknown_quantity'}),'findings_by_kind':dict(Counter(f['kind'] for f in findings))},candidates=candidates,comparisons=comparisons,findings=findings)
 
 def markdown(result):
     lines=['# Composition cutover simulation','','Read-only simulation. Assembly consolidation and date-based BOM calculation are NOT enabled.','', 'Dates use inclusive starts and exclusive ends. Each nested child is selected at its immediate parent version start. Unknown quantities are not converted to zero.','', '## Results','', '```json',json.dumps(result['summary'],indent=2),'```','','Static comparisons ignore version dates to isolate ownership/packout differences. Temporal comparisons additionally enforce the requested parent-start rule. Financial values are not recalculated.','','## Every finding','']

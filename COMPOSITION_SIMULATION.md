@@ -9,7 +9,8 @@ Dates use inclusive starts and exclusive ends. Each nested child is selected at 
 ```json
 {
   "devices": 60,
-  "products": 44,
+  "software_editions": 32,
+  "products": 63,
   "active_assemblies": 28,
   "retired_assemblies": 19,
   "compared_versions": 27,
@@ -17,16 +18,16 @@ Dates use inclusive starts and exclusive ends. Each nested child is selected at 
   "merged_static_equal": 27,
   "merged_temporal_equal": 27,
   "full_cutover_equal": 26,
-  "unknown_components": 1,
+  "unknown_components": 28,
   "findings_by_kind": {
-    "no_legacy_product_bom": 25,
+    "unknown_quantity": 95,
+    "no_legacy_product_bom": 44,
     "quotation_scope_unresolved": 2,
-    "unknown_quantity": 1,
     "multi_computer_package": 3,
     "multiple_placements": 7,
     "separate_device_revision": 2,
     "full_cutover_inventory_change": 1,
-    "nonhardware_cost_boundary": 82
+    "nonhardware_cost_boundary": 87
   }
 }
 ```
@@ -34,6 +35,39 @@ Dates use inclusive starts and exclusive ends. Each nested child is selected at 
 Static comparisons ignore version dates to isolate ownership/packout differences. Temporal comparisons additionally enforce the requested parent-start rule. Financial values are not recalculated.
 
 ## Every finding
+
+### unknown_quantity
+
+Unknown quantities remain null. Every affected component and owner/version is listed below.
+
+- `part.edition.abacus_1.model_ii.installation_media`: `product.abacus_1.model_ii@1`, `edition.abacus_1.model_ii@1`
+- `part.edition.abacus_2.era.installation_media`: `product.abacus_2.era@1`, `edition.abacus_2.era@1`
+- `part.edition.aion_development_team.era_client.installation_media`: `product.retail.development_team@1`, `product.aion_development_team@1`, `edition.aion_development_team.era_client@1`
+- `part.edition.aion_development_team.z80_client.installation_media`: `product.retail.development_team@1`, `product.aion_development_team@1`, `edition.aion_development_team.z80_client@1`
+- `part.edition.bpi_client_server.era_client.installation_media`: `product.retail.connected_office@1`, `product.proposed_artemis_pro_small_office@1`, `product.bpi_client_server@1`, `edition.bpi_client_server.era_client@1`
+- `part.edition.bpi_client_server.era_server.installation_media`: `product.retail.connected_office@1`, `product.proposed_artemis_pro_small_office@1`, `product.bpi_client_server@1`, `edition.bpi_client_server.era_server@1`
+- `part.edition.bpi_suite.era.installation_media`: `product.bpi_suite.era@1`, `edition.bpi_suite.era@1`
+- `part.edition.entertainment_suite.era.installation_media`: `edition.entertainment_suite.era@1`
+- `part.logix_network_cable`: `offer.retail.connect_office@1`
+- `part.software.abacus_1.installation_media`: `bundle.proposed_aurelia_office@1`, `product.abacus_1@1`, `software.abacus_1@1`
+- `part.software.abacus_2.installation_media`: `bundle.proposed_aurelia_plus_office@1`, `bundle.proposed_aurelia_plus_analysis@1`, `product.abacus_2@1`, `software.abacus_2@1`
+- `part.software.abacus_3.installation_media`: `offer.retail.office_professional@1`, `product.abacus_3@1`, `software.abacus_3@1`
+- `part.software.aion_c_ide.installation_media`: `offer.retail.developer_workstation@1`, `bundle.proposed_artemis_developer@1`, `bundle.proposed_artemis_developer@2`, `product.aion_c_ide@1`, `software.aion_c_ide@1`
+- `part.software.aion_development_team.installation_media`: `product.retail.development_team@1`, `product.aion_development_team@1`, `software.aion_development_team@1`
+- `part.software.artemis_sdk.examples_media`: `offer.retail.developer_workstation@1`, `bundle.proposed_artemis_developer@1`, `bundle.proposed_artemis_developer@2`, `product.artemis_sdk@1`, `software.artemis_sdk@1`
+- `part.software.artemis_sdk.interfaces_media`: `offer.retail.developer_workstation@1`, `bundle.proposed_artemis_developer@1`, `bundle.proposed_artemis_developer@2`, `product.artemis_sdk@1`, `software.artemis_sdk@1`
+- `part.software.artemis_sdk.utilities_media`: `offer.retail.developer_workstation@1`, `bundle.proposed_artemis_developer@1`, `bundle.proposed_artemis_developer@2`, `product.artemis_sdk@1`, `software.artemis_sdk@1`
+- `part.software.aurelia_compatibility_kit.installation_media`: `product.aurelia_compatibility_kit@1`, `software.aurelia_compatibility_kit@1`
+- `part.software.aurelia_sdk.examples_media`: `bundle.proposed_aurelia_developer@1`, `bundle.proposed_aurelia_plus_developer@1`, `product.aurelia_sdk@1`, `software.aurelia_sdk@1`
+- `part.software.aurelia_sdk.interfaces_media`: `bundle.proposed_aurelia_developer@1`, `bundle.proposed_aurelia_plus_developer@1`, `product.aurelia_sdk@1`, `software.aurelia_sdk@1`
+- `part.software.aurelia_sdk.utilities_media`: `bundle.proposed_aurelia_developer@1`, `bundle.proposed_aurelia_plus_developer@1`, `product.aurelia_sdk@1`, `software.aurelia_sdk@1`
+- `part.software.autocad_1_artemis.installation_media`: `offer.comdex82_artemis_autocad@1`, `offer.comdex82_upgrade_autocad@1`, `product.autocad_1_artemis@1`, `software.autocad_1_artemis@1`
+- `part.software.bpi_client_server.installation_media`: `product.retail.connected_office@1`, `product.proposed_artemis_pro_small_office@1`, `product.bpi_client_server@1`, `software.bpi_client_server@1`
+- `part.software.bpi_suite.installation_media`: `bundle.proposed_aurelia_accounts@1`, `bundle.proposed_aurelia_plus_accounts@1`, `offer.retail.business_accounts@1`, `bundle.proposed_artemis_accounts@1`, `bundle.proposed_artemis_accounts@2`, `product.bpi_suite@1`, `software.bpi_suite@1`
+- `part.software.entertainment_suite.installation_media`: `offer.ncc82_mouse_learning@1`, `software.entertainment_suite@1`
+- `part.software.pulse_1.installation_media`: `bundle.proposed_aurelia_plus_analysis@1`, `product.pulse_1@1`, `software.pulse_1@1`
+- `part.software.pulse_3.installation_media`: `product.pulse_3@1`, `software.pulse_3@1`
+- `part.software.simple_c_z80.installation_media`: `bundle.proposed_aurelia_developer@1`, `bundle.proposed_aurelia_plus_developer@1`, `product.simple_c_z80@1`, `software.simple_c_z80@1`
 
 ### no_legacy_product_bom
 
@@ -62,17 +96,30 @@ Static comparisons ignore version dates to isolate ownership/packout differences
 - `product.retail.connected_office` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
 - `product.retail.development_team` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
 - `product.proposed_artemis_pro_small_office` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.abacus_1` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.abacus_1.model_ii` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.abacus_2` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.abacus_2.era` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.abacus_3` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.pulse_1` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.pulse_3` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.bpi_suite` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.bpi_suite.era` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.business_tools_aurelia` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.business_tools_artemis` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.simple_c_z80` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.aurelia_sdk` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.aion_c_ide` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.artemis_sdk` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.aurelia_compatibility_kit` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.autocad_1_artemis` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.aion_development_team` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.bpi_client_server` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
 
 ### quotation_scope_unresolved
 
 - `offer.retail.connect_office` version 1: Site survey/application qualification must determine remaining equipment, quantities and services; this is not a complete fixed-price package.
 - `offer.retail.cpm_migration` version 1: Site survey/application qualification must determine remaining equipment, quantities and services; this is not a complete fixed-price package.
-
-### unknown_quantity
-
-Unknown quantities remain null. Every affected component and owner/version is listed below.
-
-- `part.logix_network_cable`: `offer.retail.connect_office@1`
 
 ### multi_computer_package
 
@@ -113,76 +160,81 @@ Unknown quantities remain null. Every affected component and owner/version is li
 - `bundle.artemis_256_color` version 2 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.artemis_256_mono_pro` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.artemis_256_mono_pro` version 2 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.artemis_budget_128` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.artemis_budget_128` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.artemis_budget_128` version 2 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.artemis_budget_128` version 2 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.artemis_budget_128_hdd` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.artemis_budget_128_hdd` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.artemis_budget_128_hdd` version 2 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.artemis_budget_128_hdd` version 2 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_office` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_aurelia_office` version 1 → `software.business_tools_aurelia`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_office` version 1 → `software.abacus_1`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_accounts` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_aurelia_accounts` version 1 → `software.business_tools_aurelia`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_accounts` version 1 → `software.bpi_suite`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_developer` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_aurelia_developer` version 1 → `software.business_tools_aurelia`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_developer` version 1 → `software.simple_c_z80`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_developer` version 1 → `software.aurelia_sdk`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_office` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_aurelia_plus_office` version 1 → `software.business_tools_aurelia`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_office` version 1 → `software.abacus_2`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_accounts` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_aurelia_plus_accounts` version 1 → `software.business_tools_aurelia`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_accounts` version 1 → `software.bpi_suite`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_developer` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_aurelia_plus_developer` version 1 → `software.business_tools_aurelia`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_developer` version 1 → `software.simple_c_z80`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_developer` version 1 → `software.aurelia_sdk`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_analysis` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_aurelia_plus_analysis` version 1 → `software.business_tools_aurelia`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_analysis` version 1 → `software.abacus_2`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_aurelia_plus_analysis` version 1 → `software.pulse_1`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.comdex82_artemis_autocad` version 1 → `software.autocad_1_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.ncc82_mouse_learning` version 1 → `software.entertainment_suite`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.comdex82_upgrade_autocad` version 1 → `software.autocad_1_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.retail.office_professional` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `offer.retail.office_professional` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.retail.office_professional` version 1 → `software.abacus_3`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.retail.business_accounts` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `offer.retail.business_accounts` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.retail.business_accounts` version 1 → `software.bpi_suite`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.retail.business_accounts` version 1 → `service.bpi_training`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.retail.developer_workstation` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `offer.retail.developer_workstation` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.retail.developer_workstation` version 1 → `software.aion_c_ide`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `offer.retail.developer_workstation` version 1 → `software.artemis_sdk`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_accounts` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_artemis_accounts` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_accounts` version 1 → `software.bpi_suite`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_accounts` version 2 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_artemis_accounts` version 2 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_accounts` version 2 → `software.bpi_suite`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_developer` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_artemis_developer` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_developer` version 1 → `software.aion_c_ide`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_developer` version 1 → `software.artemis_sdk`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_developer` version 2 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `bundle.proposed_artemis_developer` version 2 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_developer` version 2 → `software.aion_c_ide`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_developer` version 2 → `software.artemis_sdk`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `product.retail.connected_office` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `product.retail.connected_office` version 1 → `software.bpi_client_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `product.retail.connected_office` version 1 → `edition.bpi_client_server.era_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `product.retail.connected_office` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.connected_office` version 1 → `edition.bpi_client_server.era_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.connected_office` version 1 → `software.bpi_client_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `product.retail.development_team` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.development_team` version 1 → `edition.aion_development_team.era_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.development_team` version 1 → `edition.aion_development_team.z80_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `product.retail.development_team` version 1 → `software.aion_development_team`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `product.proposed_artemis_pro_small_office` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `product.proposed_artemis_pro_small_office` version 1 → `software.bpi_client_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `product.proposed_artemis_pro_small_office` version 1 → `edition.bpi_client_server.era_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
-- `product.proposed_artemis_pro_small_office` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.proposed_artemis_pro_small_office` version 1 → `edition.bpi_client_server.era_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.proposed_artemis_pro_small_office` version 1 → `software.bpi_client_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.abacus_1` version 1 → `software.abacus_1`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.abacus_1.model_ii` version 1 → `edition.abacus_1.model_ii`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.abacus_2` version 1 → `software.abacus_2`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.abacus_2.era` version 1 → `edition.abacus_2.era`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.abacus_3` version 1 → `software.abacus_3`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.pulse_1` version 1 → `software.pulse_1`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.pulse_3` version 1 → `software.pulse_3`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.bpi_suite` version 1 → `software.bpi_suite`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.bpi_suite.era` version 1 → `edition.bpi_suite.era`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.simple_c_z80` version 1 → `software.simple_c_z80`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.aurelia_sdk` version 1 → `software.aurelia_sdk`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.aion_c_ide` version 1 → `software.aion_c_ide`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.artemis_sdk` version 1 → `software.artemis_sdk`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.aurelia_compatibility_kit` version 1 → `software.aurelia_compatibility_kit`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.autocad_1_artemis` version 1 → `software.autocad_1_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.aion_development_team` version 1 → `edition.aion_development_team.era_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.aion_development_team` version 1 → `edition.aion_development_team.z80_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.aion_development_team` version 1 → `software.aion_development_team`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.bpi_client_server` version 1 → `edition.bpi_client_server.era_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.bpi_client_server` version 1 → `edition.bpi_client_server.era_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.bpi_client_server` version 1 → `software.bpi_client_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 
 ## Exact per-product physical differences
 

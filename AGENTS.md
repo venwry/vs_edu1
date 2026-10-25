@@ -40,3 +40,8 @@ COMPOSITION_RESOLUTION.md and run tests/validate_composition_resolution.py.
 FDD data harnesses are owned once per base computer. The three computer systems are restored as product.* records; do not reinstate
 the generic supplemental-media allowance. Manufacturing
 qualification and financial costing remain pending despite defined supplied-set counts.
+
+Software editions and physical fulfillment follow SOFTWARE_DELIVERY_MIGRATION.md.
+There are now 21 collections; software-products.json is removed. Edit
+software-editions.json.software_editions, never the derived legacy line/edition views.
+Run tests/validate_software_delivery.py for software or cartridge composition changes.

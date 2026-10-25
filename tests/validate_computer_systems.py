@@ -36,6 +36,6 @@ try:validate_products(bad,{})
 except ValueError:pass
 else:raise AssertionError('Computer system without computers accepted')
 r=simulate();assert r['summary']['findings_by_kind']['multi_computer_package']==3
-assert r['summary']['findings_by_kind']['no_legacy_product_bom']==25
+assert r['summary']['findings_by_kind']['no_legacy_product_bom']==44
 for f,h in read_document('tests/fixtures/composition-migration.json')['financial_files'].items():assert hashlib.sha256((R/f).read_bytes()).hexdigest()==h
 print('PASS: three restored systems, canonical aliases, host placements, no duplicated cables, historical availability and unchanged financial files')
