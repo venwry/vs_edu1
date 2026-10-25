@@ -459,6 +459,9 @@
         },
         "cost_rollup_status": {
           "type": "string"
+        },
+        "production_status": {
+          "type": "string"
         }
       },
       "allOf": [
@@ -630,6 +633,15 @@
             "pending_reassessment",
             "assessed"
           ]
+        },
+        "configuration": {
+          "type": "object"
+        },
+        "computer_ref": {
+          "type": "string"
+        },
+        "commercial_product_ref": {
+          "type": "string"
         }
       },
       "required": [

@@ -1,0 +1,3582 @@
+{
+  "$schema": "../schemas/collections/product-catalog.schema.json",
+  "schema_version": "4.0.0",
+  "products": [
+    {
+      "id": "computer.aurelia",
+      "name": "Logix Aurelia",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "technology_refs": [
+        "technology.flexibus",
+        "technology.plug_and_execute",
+        "technology.xip_rom_platform",
+        "technology.logix_digital_video",
+        "technology.logix_tui_standard",
+        "technology.aurelia_memory_model",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "lifecycle_policy": "From COMDEX 1979 Logix focuses new hardware development and promotion on Aurelia+. Existing Aurelia support and compatible software continue; independent manufacturers may develop Aurelia-class clones through published interfaces and appropriate software licences. No immediate withdrawal or shutdown date is imposed.",
+      "vendor": "Logix",
+      "category": "computer",
+      "chassis_ref": "device.chassis.aurelia",
+      "record_kind": "platform",
+      "computer_line": null,
+      "catalogue_status": "platform",
+      "technical_profile": {
+        "memory": {
+          "organization": {
+            "source_ref": "technology.aurelia_memory_model",
+            "path": [
+              "specification",
+              "platform_profiles",
+              "computer.aurelia",
+              "organization"
+            ]
+          },
+          "expanded_organization": {
+            "source_ref": "technology.aurelia_memory_model",
+            "path": [
+              "specification",
+              "platform_profiles",
+              "computer.aurelia",
+              "expanded_organization"
+            ]
+          },
+          "physical_population": {
+            "source_ref": "device.subsystem.aurelia.base_memory",
+            "path": [
+              "specification",
+              "physical_population"
+            ]
+          },
+          "video_physical_population": {
+            "source_ref": "device.subsystem.aurelia.video",
+            "path": [
+              "specification",
+              "video_physical_population"
+            ]
+          },
+          "sprite_physical_population": {
+            "source_ref": "device.subsystem.aurelia.video",
+            "path": [
+              "specification",
+              "sprite_physical_population"
+            ]
+          },
+          "organization_ref": {
+            "source_ref": "device.chassis.aurelia",
+            "path": [
+              "memory_interface",
+              "organization_ref"
+            ]
+          },
+          "expansion_ref": {
+            "source_ref": "device.chassis.aurelia",
+            "path": [
+              "memory_interface",
+              "expansion_ref"
+            ]
+          },
+          "system_controller_ref": {
+            "source_ref": "device.chassis.aurelia",
+            "path": [
+              "memory_interface",
+              "system_controller_ref"
+            ]
+          }
+        },
+        "video": {
+          "source_ref": "device.subsystem.aurelia.video",
+          "path": [
+            "specification"
+          ]
+        },
+        "rom_and_cartridges": {
+          "mainboard_rom": {
+            "source_ref": "device.chassis.aurelia",
+            "path": [
+              "firmware_contents"
+            ]
+          }
+        },
+        "software_compatibility": {
+          "source_ref": "technology.logix_c_api",
+          "path": [
+            "specification",
+            "platform_contracts",
+            "computer.aurelia",
+            "software_compatibility"
+          ]
+        },
+        "networking_from_ncc_1981": {
+          "source_ref": "device.network_card_aurelia",
+          "path": [
+            "host_qualification",
+            "computer.aurelia"
+          ]
+        }
+      },
+      "default_configuration": null,
+      "recommended_software_ref": "software.cpm_aurelia",
+      "hardware_assembly_refs": [
+        "assembly.computer.aurelia.base"
+      ],
+      "production_status": "design_baseline"
+    },
+    {
+      "id": "computer.aurelia_plus",
+      "name": "Logix Aurelia+",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "technology_refs": [
+        "technology.flexibus",
+        "technology.plug_and_execute",
+        "technology.xip_rom_platform",
+        "technology.logix_digital_video",
+        "technology.logix_tui_standard",
+        "technology.aurelia_memory_model",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.logix_tui_keyboard_standard"
+      ],
+      "vendor": "Logix",
+      "category": "computer",
+      "chassis_ref": "device.chassis.aurelia_plus",
+      "record_kind": "platform",
+      "computer_line": null,
+      "catalogue_status": "platform",
+      "technical_profile": {
+        "memory": {
+          "organization": {
+            "source_ref": "technology.aurelia_memory_model",
+            "path": [
+              "specification",
+              "platform_profiles",
+              "computer.aurelia_plus",
+              "organization"
+            ]
+          },
+          "physical_population": {
+            "source_ref": "device.subsystem.aurelia_plus.base_memory",
+            "path": [
+              "specification",
+              "physical_population"
+            ]
+          },
+          "video_physical_population": {
+            "source_ref": "device.subsystem.aurelia_plus.video",
+            "path": [
+              "specification",
+              "video_physical_population"
+            ]
+          },
+          "sprite_physical_population": {
+            "source_ref": "device.subsystem.aurelia_plus.video",
+            "path": [
+              "specification",
+              "sprite_physical_population"
+            ]
+          },
+          "organization_ref": {
+            "source_ref": "device.chassis.aurelia_plus",
+            "path": [
+              "memory_interface",
+              "organization_ref"
+            ]
+          },
+          "system_controller_ref": {
+            "source_ref": "device.chassis.aurelia_plus",
+            "path": [
+              "memory_interface",
+              "system_controller_ref"
+            ]
+          }
+        },
+        "video": {
+          "source_ref": "device.subsystem.aurelia_plus.video",
+          "path": [
+            "specification"
+          ]
+        },
+        "rom_and_cartridges": {
+          "mainboard_rom": {
+            "source_ref": "device.chassis.aurelia_plus",
+            "path": [
+              "firmware_contents"
+            ]
+          }
+        },
+        "software_compatibility": {
+          "source_ref": "technology.logix_c_api",
+          "path": [
+            "specification",
+            "platform_contracts",
+            "computer.aurelia_plus",
+            "software_compatibility"
+          ]
+        },
+        "networking_from_ncc_1981": {
+          "source_ref": "device.network_card_aurelia",
+          "path": [
+            "host_qualification",
+            "computer.aurelia_plus"
+          ]
+        }
+      },
+      "default_configuration": null,
+      "recommended_software_ref": "software.cpm_aurelia",
+      "hardware_assembly_refs": [
+        "assembly.computer.aurelia_plus.base"
+      ],
+      "production_status": "design_baseline"
+    },
+    {
+      "id": "computer.artemis",
+      "name": "Logix Artemis",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "technology_refs": [
+        "technology.era1_isa",
+        "technology.artemis_memory_model",
+        "technology.flexibus",
+        "technology.plug_and_execute",
+        "technology.xip_rom_platform",
+        "technology.logix_digital_video",
+        "technology.aionix_os_model",
+        "technology.cpm80_virtual_peripheral_bridge",
+        "technology.aion_c_portability_framework",
+        "technology.logix_tcpip_lan",
+        "technology.logix_lan100_link",
+        "technology.logix_c_api",
+        "technology.logix_display_api"
+      ],
+      "vendor": "Logix",
+      "category": "computer",
+      "chassis_ref": "device.chassis.artemis",
+      "record_kind": "platform",
+      "computer_line": null,
+      "catalogue_status": "platform",
+      "technical_profile": {
+        "memory": {
+          "population_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "population_policy"
+            ]
+          },
+          "upgrade_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "upgrade_policy"
+            ]
+          },
+          "reliability_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "reliability_policy"
+            ]
+          },
+          "bank_data_width_bits": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "bank_data_width_bits"
+            ]
+          },
+          "parity_bits": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "parity_bits"
+            ]
+          },
+          "video_ram_policy": {
+            "source_ref": "device.chassis.artemis",
+            "path": [
+              "integration_requirements",
+              "video_ram_policy"
+            ]
+          }
+        },
+        "video": {
+          "source_ref": "device.artemis_video_card_16kb",
+          "path": [
+            "specification"
+          ]
+        },
+        "software_compatibility": {
+          "source_ref": "technology.logix_c_api",
+          "path": [
+            "specification",
+            "platform_contracts",
+            "computer.artemis",
+            "software_compatibility"
+          ]
+        },
+        "networking_from_ncc_1981": {
+          "source_ref": "device.network_card_artemis",
+          "path": [
+            "host_qualification",
+            "computer.artemis"
+          ]
+        }
+      },
+      "default_configuration": "m32_128",
+      "upgrade_product_refs": [
+        "offer.ncc82_colour_upgrade"
+      ],
+      "hardware_assembly_refs": [
+        "assembly.computer.artemis.m32_128",
+        "assembly.computer.artemis.m32_128.networked",
+        "assembly.computer.artemis.m128_256",
+        "assembly.computer.artemis.m128_256.networked"
+      ],
+      "production_status": "design_baseline"
+    },
+    {
+      "id": "computer.artemis_pro",
+      "name": "Logix Artemis PRO",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "role": "network server",
+      "technology_refs": [
+        "technology.era1_isa",
+        "technology.artemis_memory_model",
+        "technology.flexibus",
+        "technology.plug_and_execute",
+        "technology.xip_rom_platform",
+        "technology.logix_digital_video",
+        "technology.aionix_os_model",
+        "technology.aion_c_portability_framework",
+        "technology.logix_tcpip_lan",
+        "technology.logix_lan100_link",
+        "technology.logix_c_api",
+        "technology.logix_display_api",
+        "technology.nmos_3um"
+      ],
+      "availability": {
+        "announcement_date": "1981-05-04",
+        "shipping_date": null,
+        "status": "announced; shipment date not separately specified"
+      },
+      "vendor": "Logix",
+      "category": "computer",
+      "chassis_ref": "device.chassis.artemis_pro",
+      "record_kind": "platform",
+      "computer_line": null,
+      "catalogue_status": "platform",
+      "technical_profile": {
+        "memory": {
+          "population_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "population_policy"
+            ]
+          },
+          "upgrade_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "upgrade_policy"
+            ]
+          },
+          "reliability_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "reliability_policy"
+            ]
+          },
+          "bank_data_width_bits": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "bank_data_width_bits"
+            ]
+          },
+          "parity_bits": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "parity_bits"
+            ]
+          },
+          "sourcing_policy": {
+            "source_ref": "device.chassis.artemis_pro",
+            "path": [
+              "integration_requirements",
+              "sourcing_policy"
+            ]
+          }
+        },
+        "video": {
+          "source_ref": "device.artemis_video_card",
+          "path": [
+            "specification"
+          ]
+        },
+        "software_compatibility": {
+          "source_ref": "technology.logix_c_api",
+          "path": [
+            "specification",
+            "platform_contracts",
+            "computer.artemis_pro",
+            "software_compatibility"
+          ]
+        },
+        "networking": {
+          "source_ref": "device.network_card_artemis",
+          "path": [
+            "host_qualification",
+            "computer.artemis_pro"
+          ]
+        }
+      },
+      "default_configuration": "m128_512",
+      "upgrade_product_refs": [
+        "offer.ncc82_colour_upgrade"
+      ],
+      "hardware_assembly_refs": [
+        "assembly.computer.artemis_pro.m128_512",
+        "assembly.computer.artemis_pro.m128_1024"
+      ],
+      "production_status": "design_baseline"
+    },
+    {
+      "id": "computer.athena",
+      "name": "Logix Athena",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
+      "positioning": "Lowest-cost Athena configuration: 2 × 128 KiB modules, 256 KiB total.",
+      "vendor": "Logix",
+      "category": "computer",
+      "chassis_ref": "device.chassis.athena",
+      "record_kind": "platform",
+      "computer_line": "Athena",
+      "catalogue_status": "planned",
+      "technical_profile": {
+        "memory": {
+          "population_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "population_policy"
+            ]
+          },
+          "capacity_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "platform_profiles",
+              "computer.athena",
+              "capacity_policy"
+            ]
+          },
+          "bank_data_width_bits": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "bank_data_width_bits"
+            ]
+          },
+          "os_rom": {
+            "source_ref": "device.athena.system_rom",
+            "path": [
+              "specification"
+            ]
+          }
+        },
+        "video": {
+          "source_ref": "device.artemis_video_card_64kb",
+          "path": [
+            "specification"
+          ]
+        },
+        "software_policy": {
+          "source_ref": "technology.logix_c_api",
+          "path": [
+            "specification",
+            "platform_contracts",
+            "computer.athena",
+            "software_policy"
+          ]
+        },
+        "network": {
+          "source_ref": "device.network_card_artemis",
+          "path": [
+            "host_qualification",
+            "computer.athena"
+          ]
+        }
+      },
+      "default_configuration": "base",
+      "recommended_software_ref": "software.aionix2",
+      "inclusion_qualification": "Not specified; do not assume included models or pricing.",
+      "programme_ref": "athena_1983_program",
+      "hardware_assembly_refs": [
+        "assembly.computer.athena.base"
+      ],
+      "production_status": "design_baseline",
+      "main_product": {
+        "device_ref": "device.chassis.athena"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.artemis_video_card_64kb",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.network_card_artemis",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.athena.hdd",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.athena.fdd",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.computer.athena.base",
+      "attached_products": []
+    },
+    {
+      "id": "computer.athena_server",
+      "name": "Logix Athena Server",
+      "introduced": {
+        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
+        "event_start_date": "1983-05-16",
+        "date_precision": "day",
+        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
+      },
+      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
+      "positioning": "Server configuration",
+      "vendor": "Logix",
+      "category": "computer",
+      "chassis_ref": "device.chassis.athena_server",
+      "record_kind": "platform",
+      "computer_line": "Athena",
+      "catalogue_status": "planned",
+      "technical_profile": {
+        "memory": {
+          "population_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "population_policy"
+            ]
+          },
+          "capacity_policy": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "platform_profiles",
+              "computer.athena_server",
+              "capacity_policy"
+            ]
+          },
+          "bank_data_width_bits": {
+            "source_ref": "technology.artemis_memory_model",
+            "path": [
+              "specification",
+              "population_rules",
+              "bank_data_width_bits"
+            ]
+          },
+          "os_rom": {
+            "source_ref": "device.athena_server.system_rom",
+            "path": [
+              "specification"
+            ]
+          }
+        },
+        "video": {
+          "source_ref": "device.artemis_video_card_64kb",
+          "path": [
+            "specification"
+          ]
+        },
+        "software_policy": {
+          "source_ref": "technology.logix_c_api",
+          "path": [
+            "specification",
+            "platform_contracts",
+            "computer.athena_server",
+            "software_policy"
+          ]
+        },
+        "network": {
+          "source_ref": "device.network_card_artemis",
+          "path": [
+            "host_qualification",
+            "computer.athena_server"
+          ]
+        }
+      },
+      "default_configuration": "base",
+      "recommended_software_ref": "software.aionix2",
+      "inclusion_qualification": "Not specified; do not assume included models or pricing.",
+      "programme_ref": "athena_1983_program",
+      "hardware_assembly_refs": [
+        "assembly.computer.athena_server.base"
+      ],
+      "production_status": "design_baseline",
+      "main_product": {
+        "device_ref": "device.chassis.athena_server"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.ram_256kb_x32_2um",
+          "quantity": 4,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.artemis_video_card_64kb",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.network_card_artemis",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.athena_server.hdd",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.athena_server.fdd",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.computer.athena_server.base",
+      "attached_products": []
+    },
+    {
+      "id": "bundle.aurelia_mono",
+      "name": "Logix Aurelia — Monochrome system",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "computer_ref": "computer.aurelia",
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Aurelia",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "Computer + keyboard + Mono I are explicit; add video/keyboard/mains cables, exact CP/M cartridge/media, manuals and cartons. Define whether purchased monitor/keyboard already include cables."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.aurelia"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.mono_monitor_1",
+          "quantity": 1,
+          "used_socket": "video_out"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.rom_cartridge.cpm_aurelia",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.aurelia_mono",
+      "revisions": [],
+      "attached_products": [
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.aurelia_color",
+      "name": "Logix Aurelia — Color system",
+      "introduced": {
+        "event_name": "NCC 1978 — Logix Aurelia launch",
+        "event_start_date": "1978-06-05"
+      },
+      "computer_ref": "computer.aurelia",
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Aurelia",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "Same, using Color I; use its separate OEM assembly and calibration cost, not a generic monitor allowance."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.aurelia"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.color_monitor_1",
+          "quantity": 1,
+          "used_socket": "video_out"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.rom_cartridge.cpm_aurelia",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.aurelia_color",
+      "revisions": [],
+      "attached_products": [
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.aurelia_plus_mono",
+      "name": "Logix Aurelia+ — Monochrome system",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "computer_ref": "computer.aurelia_plus",
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Aurelia",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "Tie to 64 KiB Plus board and two FDDs, Mono II, keyboard, exact cartridge/media and packout."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.aurelia_plus"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.mono_monitor_2",
+          "quantity": 1,
+          "used_socket": "video_out"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.rom_cartridge.cpm_aurelia",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.aurelia_plus_mono",
+      "revisions": [],
+      "attached_products": [
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.aurelia_plus_color",
+      "name": "Logix Aurelia+ — Color system",
+      "introduced": {
+        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
+        "event_start_date": "1979-12-03",
+        "date_precision": "day",
+        "timeline_note": "Author-confirmed introduction date."
+      },
+      "computer_ref": "computer.aurelia_plus",
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Aurelia",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "Same with Color II and its corresponding power/cable/packaging variant."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.aurelia_plus"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.color_monitor_2",
+          "quantity": 1,
+          "used_socket": "video_out"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.rom_cartridge.cpm_aurelia",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.aurelia_plus_color",
+      "revisions": [],
+      "attached_products": [
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.artemis_128_mono",
+      "name": "Logix Artemis 128 KB — Monochrome system",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "computer_ref": "computer.artemis",
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Artemis",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
+        "variants": [
+          {
+            "effective_from": "1981-05-04",
+            "assembly_ref": "assembly.bundle.artemis_128_mono.networked"
+          }
+        ]
+      },
+      "acceptance": [
+        "Two 64 KB 32-bit modules/one bank, Mono II, keyboard and AIONix cartridge; define pre-/post-1981 networking contents."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.mono_monitor_2",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card_16kb"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_128_mono",
+      "revisions": [
+        {
+          "effective_from": "1981-05-04",
+          "hardware_assembly_ref": "assembly.bundle.artemis_128_mono.networked",
+          "main_product": {
+            "device_ref": "device.chassis.artemis"
+          },
+          "connected_devices": [
+            {
+              "id": "connection_1",
+              "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "quantity": 2,
+              "used_socket": "internal_drive"
+            },
+            {
+              "id": "connection_2",
+              "device_ref": "device.ram_64kb_x32",
+              "quantity": 2,
+              "used_socket": "ram"
+            },
+            {
+              "id": "connection_3",
+              "device_ref": "device.artemis_video_card_16kb",
+              "quantity": 1,
+              "used_socket": "video_card"
+            },
+            {
+              "id": "connection_4",
+              "device_ref": "device.network_card_artemis",
+              "quantity": 1,
+              "used_socket": "expansion"
+            },
+            {
+              "id": "connection_5",
+              "device_ref": "device.flexibus_keyboard",
+              "quantity": 1,
+              "used_socket": "flexibus"
+            },
+            {
+              "id": "connection_6",
+              "device_ref": "device.mono_monitor_2",
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card_16kb"
+            },
+            {
+              "id": "connection_7",
+              "device_ref": "device.rom_cartridge.aionix_server",
+              "quantity": 1,
+              "used_socket": "system_cartridge"
+            }
+          ]
+        }
+      ],
+      "attached_products": [
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.artemis_128_color",
+      "name": "Logix Artemis 128 KB — Color system",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "computer_ref": "computer.artemis",
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
+        "variants": [
+          {
+            "effective_from": "1981-05-04",
+            "assembly_ref": "assembly.bundle.artemis_128_color.networked"
+          }
+        ]
+      },
+      "acceptance": [
+        "Same RAM/host revision with Color II; distinguish display and packout costs."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.color_monitor_2",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card_16kb"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_128_color",
+      "revisions": [
+        {
+          "effective_from": "1981-05-04",
+          "hardware_assembly_ref": "assembly.bundle.artemis_128_color.networked",
+          "main_product": {
+            "device_ref": "device.chassis.artemis"
+          },
+          "connected_devices": [
+            {
+              "id": "connection_1",
+              "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "quantity": 2,
+              "used_socket": "internal_drive"
+            },
+            {
+              "id": "connection_2",
+              "device_ref": "device.ram_64kb_x32",
+              "quantity": 2,
+              "used_socket": "ram"
+            },
+            {
+              "id": "connection_3",
+              "device_ref": "device.artemis_video_card_16kb",
+              "quantity": 1,
+              "used_socket": "video_card"
+            },
+            {
+              "id": "connection_4",
+              "device_ref": "device.network_card_artemis",
+              "quantity": 1,
+              "used_socket": "expansion"
+            },
+            {
+              "id": "connection_5",
+              "device_ref": "device.flexibus_keyboard",
+              "quantity": 1,
+              "used_socket": "flexibus"
+            },
+            {
+              "id": "connection_6",
+              "device_ref": "device.color_monitor_2",
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card_16kb"
+            },
+            {
+              "id": "connection_7",
+              "device_ref": "device.rom_cartridge.aionix_server",
+              "quantity": 1,
+              "used_socket": "system_cartridge"
+            }
+          ]
+        }
+      ],
+      "attached_products": [
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.artemis_256_color",
+      "name": "Logix Artemis 256 KB — Color system",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "computer_ref": "computer.artemis",
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Artemis",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
+        "variants": [
+          {
+            "effective_from": "1981-05-04",
+            "assembly_ref": "assembly.bundle.artemis_256_color.networked"
+          }
+        ]
+      },
+      "acceptance": [
+        "Same high-density configuration with Color II; preserve configuration-specific module count."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.color_monitor_2",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_256_color",
+      "revisions": [
+        {
+          "effective_from": "1981-05-04",
+          "hardware_assembly_ref": "assembly.bundle.artemis_256_color.networked",
+          "main_product": {
+            "device_ref": "device.chassis.artemis"
+          },
+          "connected_devices": [
+            {
+              "id": "connection_1",
+              "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "quantity": 2,
+              "used_socket": "internal_drive"
+            },
+            {
+              "id": "connection_2",
+              "device_ref": "device.ram_128kb_x32",
+              "quantity": 2,
+              "used_socket": "ram"
+            },
+            {
+              "id": "connection_3",
+              "device_ref": "device.artemis_video_card",
+              "quantity": 1,
+              "used_socket": "video_card"
+            },
+            {
+              "id": "connection_4",
+              "device_ref": "device.network_card_artemis",
+              "quantity": 1,
+              "used_socket": "expansion"
+            },
+            {
+              "id": "connection_5",
+              "device_ref": "device.flexibus_keyboard",
+              "quantity": 1,
+              "used_socket": "flexibus"
+            },
+            {
+              "id": "connection_6",
+              "device_ref": "device.color_monitor_2",
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card"
+            },
+            {
+              "id": "connection_7",
+              "device_ref": "device.rom_cartridge.aionix_server",
+              "quantity": 1,
+              "used_socket": "system_cartridge"
+            }
+          ]
+        }
+      ],
+      "attached_products": [
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.aurelia_network_upgrade",
+      "name": "Aurelia networking upgrade",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "computer_ref": "computer.aurelia",
+      "also_compatible_with": [
+        "computer.aurelia_plus"
+      ],
+      "vendor": "Logix",
+      "category": "upgrade_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": false,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "NIC plus named OS upgrade medium and installation materials; decide included network cable and any required RAM upgrade. No new host, no implicit hub."
+      ],
+      "main_product": null,
+      "connected_devices": [
+        {
+          "id": "connection_0",
+          "device_ref": "device.network_card_aurelia",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_1",
+          "device_ref": "device.rom_cartridge.cpm_aurelia_networking",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.aurelia_network_upgrade",
+      "revisions": [],
+      "attached_products": []
+    },
+    {
+      "id": "bundle.artemis_network_upgrade",
+      "name": "Existing Artemis networking upgrade",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "computer_ref": "computer.artemis",
+      "vendor": "Logix",
+      "category": "upgrade_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": null,
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": false,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "NIC plus complete Server OS cartridge/media, cable policy and install kit. Do not count a second base OS cartridge unless actually included. No new host or hub."
+      ],
+      "main_product": null,
+      "connected_devices": [
+        {
+          "id": "connection_0",
+          "device_ref": "device.network_card_artemis",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_1",
+          "device_ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_network_upgrade",
+      "revisions": [],
+      "attached_products": []
+    },
+    {
+      "id": "bundle.artemis_pro_512_server",
+      "name": "Artemis PRO 512 KB server",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "computer_ref": "computer.artemis_pro",
+      "availability": "Announced at NCC 1981; shipment date not separately specified.",
+      "availability_status": "announced",
+      "shipping_date": null,
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Artemis",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "announced",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "Two 256 KB 32-bit modules, one HDD, two FDDs, one network interface, Server OS; explicitly decide console keyboard/monitor, cables and headless service tools. Hub not specified. Shipment date unconfirmed."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis_pro"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.ram_256kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.network_card_artemis",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_pro_512_server",
+      "revisions": [],
+      "attached_products": []
+    },
+    {
+      "id": "bundle.artemis_pro_1mb_server",
+      "name": "Artemis PRO 1 MB server",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "computer_ref": "computer.artemis_pro",
+      "availability": "Announced at NCC 1981; shipment date not separately specified.",
+      "availability_status": "announced",
+      "shipping_date": null,
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Artemis",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "announced",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "Four 256 KB 32-bit modules/two banks; otherwise same explicit inclusions and unresolved console/hub/shipment policy. Higher power and full-population testing are configuration-specific."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis_pro"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.ram_256kb_x32",
+          "quantity": 4,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.network_card_artemis",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_pro_1mb_server",
+      "revisions": [],
+      "attached_products": []
+    },
+    {
+      "id": "bundle.artemis_256_mono_pro",
+      "name": "Logix Artemis 256 KB — Mono Pro system",
+      "introduced": {
+        "event_name": "NCC 1980 — Logix Artemis launch",
+        "event_start_date": "1980-05-19"
+      },
+      "computer_ref": "computer.artemis",
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Artemis",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "catalog_offer",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
+        "variants": [
+          {
+            "effective_from": "1981-05-04",
+            "assembly_ref": "assembly.bundle.artemis_256_mono_pro.networked"
+          }
+        ]
+      },
+      "acceptance": [
+        "Includes keyboard and Mono Pro; shipment qualification unchanged."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.mono_pro",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_256_mono_pro",
+      "revisions": [
+        {
+          "effective_from": "1981-05-04",
+          "hardware_assembly_ref": "assembly.bundle.artemis_256_mono_pro.networked",
+          "main_product": {
+            "device_ref": "device.chassis.artemis"
+          },
+          "connected_devices": [
+            {
+              "id": "connection_1",
+              "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "quantity": 2,
+              "used_socket": "internal_drive"
+            },
+            {
+              "id": "connection_2",
+              "device_ref": "device.ram_128kb_x32",
+              "quantity": 2,
+              "used_socket": "ram"
+            },
+            {
+              "id": "connection_3",
+              "device_ref": "device.artemis_video_card",
+              "quantity": 1,
+              "used_socket": "video_card"
+            },
+            {
+              "id": "connection_4",
+              "device_ref": "device.network_card_artemis",
+              "quantity": 1,
+              "used_socket": "expansion"
+            },
+            {
+              "id": "connection_5",
+              "device_ref": "device.flexibus_keyboard",
+              "quantity": 1,
+              "used_socket": "flexibus"
+            },
+            {
+              "id": "connection_6",
+              "device_ref": "device.mono_pro",
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card"
+            },
+            {
+              "id": "connection_7",
+              "device_ref": "device.rom_cartridge.aionix_server",
+              "quantity": 1,
+              "used_socket": "system_cartridge"
+            }
+          ]
+        }
+      ],
+      "attached_products": [
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.artemis_pro_512_mono_pro",
+      "name": "Artemis PRO 512 KB server with Mono Pro console",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "computer_ref": "computer.artemis_pro",
+      "availability": "Announced at NCC 1981; shipment date not separately specified.",
+      "availability_status": "announced",
+      "shipping_date": null,
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": null,
+      "catalogue_status": "purchase_option",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "announced",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "Includes keyboard and Mono Pro; shipment qualification unchanged."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis_pro"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.ram_256kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.network_card_artemis",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        },
+        {
+          "id": "connection_8",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_9",
+          "device_ref": "device.mono_pro",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_pro_512_mono_pro",
+      "revisions": [],
+      "attached_products": [],
+      "option_for": "bundle.artemis_pro_512_server"
+    },
+    {
+      "id": "bundle.artemis_pro_1mb_mono_pro",
+      "name": "Artemis PRO 1 MB server with Mono Pro console",
+      "introduced": {
+        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
+        "event_start_date": "1981-05-04"
+      },
+      "computer_ref": "computer.artemis_pro",
+      "availability": "Announced at NCC 1981; shipment date not separately specified.",
+      "availability_status": "announced",
+      "shipping_date": null,
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": null,
+      "catalogue_status": "purchase_option",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": null,
+        "availability_status": "announced",
+        "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
+      },
+      "acceptance": [
+        "Includes keyboard and Mono Pro; shipment qualification unchanged."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis_pro"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.ram_256kb_x32",
+          "quantity": 4,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.network_card_artemis",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        },
+        {
+          "id": "connection_8",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_9",
+          "device_ref": "device.mono_pro",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_pro_1mb_mono_pro",
+      "revisions": [],
+      "attached_products": [],
+      "option_for": "bundle.artemis_pro_1mb_server"
+    },
+    {
+      "id": "bundle.artemis_budget_128",
+      "name": "Artemis 128 — Budget Colour Office",
+      "introduced": {
+        "event_name": "NCC 1980 — Artemis budget range",
+        "event_start_date": "1980-05-19"
+      },
+      "computer_ref": "computer.artemis",
+      "storage": {
+        "floppies": 2,
+        "hard_disk_mb": 0,
+        "hard_disk_enclosure": null
+      },
+      "software_variants": [
+        {
+          "effective_from": "1980-11-19",
+          "add": [
+            "software.abacus_3"
+          ]
+        }
+      ],
+      "notes": [
+        "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
+        "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Artemis",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": "1980-05-19",
+        "availability_status": "scenario_qualified_shipment",
+        "licenses_and_services": "AIONix, Business Tools, dated Abacus 3 and regular support counted once in budget assessment."
+      },
+      "acceptance": [
+        "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.color_monitor_2",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card_16kb"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_budget_128",
+      "revisions": [
+        {
+          "effective_from": "1981-05-04",
+          "hardware_assembly_ref": "assembly.bundle.artemis_budget_128.networked",
+          "main_product": {
+            "device_ref": "device.chassis.artemis"
+          },
+          "connected_devices": [
+            {
+              "id": "connection_1",
+              "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "quantity": 2,
+              "used_socket": "internal_drive"
+            },
+            {
+              "id": "connection_2",
+              "device_ref": "device.ram_64kb_x32",
+              "quantity": 2,
+              "used_socket": "ram"
+            },
+            {
+              "id": "connection_3",
+              "device_ref": "device.artemis_video_card_16kb",
+              "quantity": 1,
+              "used_socket": "video_card"
+            },
+            {
+              "id": "connection_4",
+              "device_ref": "device.network_card_artemis",
+              "quantity": 1,
+              "used_socket": "expansion"
+            },
+            {
+              "id": "connection_5",
+              "device_ref": "device.flexibus_keyboard",
+              "quantity": 1,
+              "used_socket": "flexibus"
+            },
+            {
+              "id": "connection_6",
+              "device_ref": "device.color_monitor_2",
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card_16kb"
+            },
+            {
+              "id": "connection_7",
+              "device_ref": "device.rom_cartridge.aionix",
+              "quantity": 1,
+              "used_socket": "system_cartridge"
+            }
+          ]
+        }
+      ],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_artemis",
+          "quantity": 1
+        },
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ],
+      "retail_presentation": {
+        "name": "Logix Budget Colour Office",
+        "purpose": "Affordable native Artemis business workstation.",
+        "includes": [
+          "Artemis 128 KiB, two floppy drives, keyboard and Color Monitor II 12-inch",
+          "AIONix, Business Tools and Abacus 3 (from November 1980)",
+          "One-year Regular Support"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "Memory expansion for larger workloads",
+          "Printer and network upgrade",
+          "Backup media and installation quoted separately"
+        ],
+        "id": "budget_colour",
+        "component_product_ref": "bundle.artemis_budget_128"
+      }
+    },
+    {
+      "id": "bundle.artemis_budget_128_hdd",
+      "name": "Artemis 128 — Budget Hard-Disk Office",
+      "introduced": {
+        "event_name": "NCC 1980 — Artemis budget range",
+        "event_start_date": "1980-05-19"
+      },
+      "computer_ref": "computer.artemis",
+      "storage": {
+        "floppies": 2,
+        "hard_disk_mb": 5,
+        "hard_disk_enclosure": "external qualified subsystem"
+      },
+      "software_variants": [
+        {
+          "effective_from": "1980-11-19",
+          "add": [
+            "software.abacus_3"
+          ]
+        }
+      ],
+      "notes": [
+        "Colour II 12-inch 640×200, 80×25 text; 16 KiB video, no 640×400 or 800×600.",
+        "128 KiB workloads require bounded datasets; upgrade RAM for larger jobs."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "record_kind": "commercial_product",
+      "source_group": "offered_bundles",
+      "computer_line": "Artemis",
+      "catalogue_status": "offered",
+      "commercial_terms": {
+        "included_host": true,
+        "shipping_date": "1980-05-19",
+        "availability_status": "scenario_qualified_shipment",
+        "licenses_and_services": "AIONix, Business Tools, dated Abacus 3 and regular support counted once in budget assessment."
+      },
+      "acceptance": [
+        "Budget model uses 128 KiB host and Color II; NIC added May 1981. Released BOM and 1980 qualification remain scenario engineering requirements. See artemis_budget_inputs.json for reproducible incremental cost buckets."
+      ],
+      "main_product": {
+        "device_ref": "device.chassis.artemis"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_5",
+          "device_ref": "device.color_monitor_2",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card_16kb"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.bundle.artemis_budget_128_hdd",
+      "revisions": [
+        {
+          "effective_from": "1981-05-04",
+          "hardware_assembly_ref": "assembly.bundle.artemis_budget_128_hdd.networked",
+          "main_product": {
+            "device_ref": "device.chassis.artemis"
+          },
+          "connected_devices": [
+            {
+              "id": "connection_1",
+              "device_ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "quantity": 2,
+              "used_socket": "internal_drive"
+            },
+            {
+              "id": "connection_2",
+              "device_ref": "device.ram_64kb_x32",
+              "quantity": 2,
+              "used_socket": "ram"
+            },
+            {
+              "id": "connection_3",
+              "device_ref": "device.artemis_video_card_16kb",
+              "quantity": 1,
+              "used_socket": "video_card"
+            },
+            {
+              "id": "connection_4",
+              "device_ref": "device.network_card_artemis",
+              "quantity": 1,
+              "used_socket": "expansion"
+            },
+            {
+              "id": "connection_5",
+              "device_ref": "device.flexibus_keyboard",
+              "quantity": 1,
+              "used_socket": "flexibus"
+            },
+            {
+              "id": "connection_6",
+              "device_ref": "device.color_monitor_2",
+              "quantity": 1,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card_16kb"
+            },
+            {
+              "id": "connection_7",
+              "device_ref": "device.rom_cartridge.aionix",
+              "quantity": 1,
+              "used_socket": "system_cartridge"
+            }
+          ]
+        }
+      ],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_artemis",
+          "quantity": 1
+        },
+        {
+          "service_ref": "service.regular_support",
+          "duration_years": 1,
+          "quantity": 1
+        }
+      ],
+      "retail_presentation": {
+        "name": "Logix Budget Hard-Disk Office",
+        "purpose": "Affordable native Artemis business workstation with 5 MB storage.",
+        "includes": [
+          "Artemis 128 KiB, two floppy drives, keyboard and Color Monitor II 12-inch",
+          "AIONix, Business Tools and Abacus 3 (from November 1980)",
+          "One-year Regular Support",
+          "5 MB hard disk with qualified enclosure, power and interface"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "Memory expansion for larger workloads",
+          "Printer and network upgrade",
+          "Backup media and installation quoted separately"
+        ],
+        "id": "budget_hdd",
+        "component_product_ref": "bundle.artemis_budget_128_hdd"
+      }
+    },
+    {
+      "id": "bundle.proposed_aurelia_office",
+      "name": "Aurelia — Office productivity",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia",
+      "base_bundle_ref": "bundle.aurelia_mono",
+      "description": "A practical writing, calculation and spreadsheet setup.",
+      "earliest_offer_date": "1978-06-05",
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "record_kind": "commercial_product",
+      "source_group": "proposed_bundles",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_aurelia",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.abacus_1",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_accounts",
+      "name": "Aurelia — Small-business accounting",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia",
+      "base_bundle_ref": "bundle.aurelia_mono",
+      "description": "Accounting tools with a dedicated printer for reports and business documents.",
+      "earliest_offer_date": "1978-06-05",
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "record_kind": "commercial_product",
+      "source_group": "proposed_bundles",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [
+        {
+          "device_ref": "device.flexiprint40",
+          "quantity": 1,
+          "used_socket": null,
+          "qualification_status": "connection_not_specified"
+        }
+      ],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_aurelia",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.bpi_suite",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_developer",
+      "name": "Aurelia — C development",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia",
+      "base_bundle_ref": "bundle.aurelia_mono",
+      "description": "A complete platform starting point for C development and hardware/software integration.",
+      "earliest_offer_date": "1978-06-05",
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "record_kind": "commercial_product",
+      "source_group": "proposed_bundles",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_aurelia",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.simple_c_z80",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.aurelia_sdk",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_plus_office",
+      "name": "Aurelia+ — Office productivity",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia_plus",
+      "base_bundle_ref": "bundle.aurelia_plus_mono",
+      "description": "A practical writing, calculation and spreadsheet setup.",
+      "earliest_offer_date": "1979-12-03",
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "record_kind": "commercial_product",
+      "source_group": "proposed_bundles",
+      "computer_line": null,
+      "catalogue_status": "proposed",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_aurelia",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.abacus_2",
+          "quantity": 1
+        }
+      ],
+      "retail_presentation": {
+        "name": "Logix Office Essentials",
+        "purpose": "Write correspondence, prepare budgets and run everyday administration.",
+        "includes": [
+          "Aurelia+ with monochrome display and keyboard",
+          "CP/M & TUI, Business Tools and Abacus 2",
+          "Base-system support entitlement"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "Printer",
+          "Mouse Starter Pack"
+        ],
+        "id": "office_essentials",
+        "component_product_ref": "bundle.proposed_aurelia_plus_office"
+      }
+    },
+    {
+      "id": "bundle.proposed_aurelia_plus_accounts",
+      "name": "Aurelia+ — Small-business accounting",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia_plus",
+      "base_bundle_ref": "bundle.aurelia_plus_mono",
+      "description": "Accounting tools with a dedicated printer for reports and business documents.",
+      "earliest_offer_date": "1979-12-03",
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "record_kind": "commercial_product",
+      "source_group": "proposed_bundles",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [
+        {
+          "device_ref": "device.flexiprint40",
+          "quantity": 1,
+          "used_socket": null,
+          "qualification_status": "connection_not_specified"
+        }
+      ],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_aurelia",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.bpi_suite",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_plus_developer",
+      "name": "Aurelia+ — C development",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia_plus",
+      "base_bundle_ref": "bundle.aurelia_plus_mono",
+      "description": "A complete platform starting point for C development and hardware/software integration.",
+      "earliest_offer_date": "1979-12-03",
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "record_kind": "commercial_product",
+      "source_group": "proposed_bundles",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_aurelia",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.simple_c_z80",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.aurelia_sdk",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle.proposed_aurelia_plus_analysis",
+      "name": "Aurelia+ — Interactive analysis",
+      "status": "proposed",
+      "computer_ref": "computer.aurelia_plus",
+      "base_bundle_ref": "bundle.aurelia_plus_mono",
+      "description": "Pairs the integrated Pulse environment with Abacus reporting.",
+      "earliest_offer_date": "1979-12-03",
+      "pricing": "Not specified; no bundle discount assumed.",
+      "notes": [
+        "Includes the complete monochrome base system and its one-year Regular Support.",
+        "These are proposed commercial packages, not additional software compatibility requirements."
+      ],
+      "vendor": "Logix",
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "record_kind": "commercial_product",
+      "source_group": "proposed_bundles",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "software_ref": "software.business_tools_aurelia",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.abacus_2",
+          "quantity": 1
+        },
+        {
+          "software_ref": "software.pulse_1",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "offer.comdex82_artemis_autocad",
+      "name": "Logix Artemis PRO Professional CAD — Autodesk AutoCAD 1.0",
+      "category": "system_bundle",
+      "introduced": {
+        "event_name": "COMDEX November 1982 — Logix and Autodesk professional CAD presentation",
+        "event_start_date": "1982-11-29"
+      },
+      "status": "Accepted COMDEX presentation and commercial offering; shipment follows hardware/software acceptance.",
+      "description": "A jointly demonstrated professional CAD configuration combining Artemis PRO, the November professional graphics revision, Mono Pro 17, Logix Mouse and independently licensed Autodesk AutoCAD.",
+      "configuration": {
+        "host": "Artemis PRO, 1 MiB reference configuration, AIONix and qualified disk storage; final application minimum measured with representative drawings.",
+        "storage": "Standard 5 MB disk is not promised sufficient for every CAD workload. Quote a tested storage/backup configuration; do not invent a larger shipping accessory.",
+        "professional_display": "128 KiB professional card with separate 1 KiB sprite SRAM and Ball HD17H-based analog Mono Pro 17; use dated revision effective 1982-11-29.",
+        "secondary_display": "COMDEX reference station includes the existing 64 KiB card and Color Pro 14 for commands/status. Upgrade buyers may retain a compatible existing primary card/display.",
+        "software": "One separately identified Autodesk AutoCAD 1.0 Artemis/AIONix licence. Do not imply Logix ownership, a free licence, or later AutoCAD features.",
+        "pointing": "One Logix Mouse; typed coordinates remain available for numerical precision. Explicit Autodesk mouse and dual-display integration.",
+        "output": "Demonstrate a qualified pen plotter with a documented driver; plotter is optional and separately quoted. No unselected model is represented as bundled."
+      },
+      "commercial_routes": [
+        {
+          "name": "Complete professional CAD configuration",
+          "basis": "One host, one primary display/card, one professional display/card, one mouse and one AutoCAD licence. Remove/credit replaced base-system parts in the actual quote; never charge two primary cards."
+        },
+        {
+          "name": "Existing Artemis professional upgrade",
+          "basis": "November professional card, Mono Pro 17 and AutoCAD licence; add mouse only if needed. Verify RAM, OS, slot, storage and primary display compatibility before quoting."
+        }
+      ],
+      "pricing": "Dated November planning prices: comdex_1982_cost_review.json. Hardware at 25% net-contribution fallback; Autodesk licence uses a provisional $1000 historical anchor. Autodesk cost/channel terms remain unknown.",
+      "support_split": {
+        "logix": "Hardware, AIONix integration, drivers, installation and dealer coordination.",
+        "autodesk": "AutoCAD licence, application support and drawing-file compatibility.",
+        "joint": "Reference configuration testing, dealer training and escalation; define response commitments before quoting service."
+      },
+      "acceptance": [
+        "Run the agreed release-quality native AutoCAD build on the reference configuration",
+        "Load/save and exchange a representative drawing; verify numerical geometry",
+        "Use both displays and the mouse with correct focus and cursor restoration",
+        "Show readable antialiased lines and stable display refresh under accelerator load",
+        "Plot a physical drawing and verify scale and geometry",
+        "Recover from interrupted work and restore a backup",
+        "Document supported features; no automatic later-version dimensioning, object-snap or 3D claims"
+      ],
+      "timeline": "June remains initial hardware availability and Autodesk development handover. November 29 is the public joint CAD offering and expanded professional-card presentation, not a rewrite of June history.",
+      "campaign_ref": "comdex_1982_campaign.json",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": "Artemis",
+      "catalogue_status": "qualification_pending",
+      "commercial_terms": {},
+      "main_product": {
+        "device_ref": "device.chassis.artemis_pro"
+      },
+      "connected_devices": [
+        {
+          "id": "connection_1",
+          "device_ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_2",
+          "device_ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "used_socket": "internal_drive"
+        },
+        {
+          "id": "connection_3",
+          "device_ref": "device.ram_256kb_x32",
+          "quantity": 4,
+          "used_socket": "ram"
+        },
+        {
+          "id": "connection_4",
+          "device_ref": "device.network_card_artemis",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_6",
+          "device_ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_7",
+          "device_ref": "device.artemis_video_card_64kb",
+          "quantity": 1,
+          "used_socket": "video_card"
+        },
+        {
+          "id": "connection_8",
+          "device_ref": "device.color_pro_14",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_video_card_64kb"
+        },
+        {
+          "id": "connection_9",
+          "device_ref": "device.artemis_professional_video_128kb",
+          "quantity": 1,
+          "used_socket": "expansion"
+        },
+        {
+          "id": "connection_10",
+          "device_ref": "device.mono_pro_17",
+          "quantity": 1,
+          "used_socket": "video_out",
+          "connected_to": "device.artemis_professional_video_128kb"
+        },
+        {
+          "id": "connection_11",
+          "device_ref": "device.logix_mouse",
+          "quantity": 1,
+          "used_socket": "flexibus"
+        },
+        {
+          "id": "connection_12",
+          "device_ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "used_socket": "system_cartridge"
+        }
+      ],
+      "attached_products": [
+        {
+          "software_ref": "software.autocad_1_artemis",
+          "quantity": 1
+        }
+      ],
+      "computer_ref": "computer.artemis_pro",
+      "retail_presentation": {
+        "name": "Logix Professional CAD — with Autodesk AutoCAD",
+        "purpose": "Create and edit professional technical drawings.",
+        "includes": [
+          "Artemis PRO 1 MiB / 5 MB reference system",
+          "Color Pro 14 primary display and additional 800×600 Mono Pro 17",
+          "November professional graphics controller, keyboard, mouse and AutoCAD 1.0"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "Installation and AutoCAD training",
+          "Compatible plotter and consumables",
+          "Larger storage; validate drawing workload"
+        ],
+        "id": "professional_cad",
+        "component_product_ref": "offer.comdex82_artemis_autocad"
+      },
+      "hardware_assembly_ref": "assembly.offer.comdex82_artemis_autocad"
+    },
+    {
+      "id": "offer.ncc82_colour_upgrade",
+      "name": "Artemis Colour Upgrade",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1982 cost review",
+        "event_start_date": "1982-06-15"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ],
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "qualification_pending",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "retail_presentation": {
+        "name": "Colour Reports Upgrade",
+        "purpose": "Add colour graphical reports to a compatible Artemis.",
+        "includes": [
+          "64 KiB primary controller, Color Pro 14 and mouse",
+          "Required compatible TUI updates"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "Installation; remove/replace existing primary controller"
+        ],
+        "id": "colour_reports",
+        "component_product_ref": "offer.ncc82_colour_upgrade"
+      }
+    },
+    {
+      "id": "offer.comdex82_reference_hardware",
+      "name": "Artemis PRO 1 MiB dual-display reference hardware",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX 1982 cost review",
+        "event_start_date": "1982-11-29"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ],
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": []
+    },
+    {
+      "id": "offer.ncc82_professional_graphics",
+      "name": "Artemis Professional Graphics extension",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1982 cost review",
+        "event_start_date": "1982-06-15"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ],
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "historical_only",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": []
+    },
+    {
+      "id": "offer.ncc82_mouse_learning",
+      "name": "Logix Mouse Learning Pack",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1982 cost review",
+        "event_start_date": "1982-06-15"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ],
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "qualification_pending",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "retail_presentation": {
+        "name": "Mouse Starter Pack",
+        "purpose": "Learn pointing, selection and mouse-based controls.",
+        "includes": [
+          "Two-button, two-roller mouse, learning games and compatible TUI updates"
+        ],
+        "unpriced_requirements": [],
+        "options": [],
+        "id": "mouse_starter",
+        "component_product_ref": "offer.ncc82_mouse_learning"
+      }
+    },
+    {
+      "id": "offer.comdex82_professional_hardware",
+      "name": "November professional graphics upgrade with mouse",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX 1982 cost review",
+        "event_start_date": "1982-11-29"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ],
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "qualification_pending",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "retail_presentation": {
+        "name": "Professional Drawing Upgrade",
+        "purpose": "Add a second high-resolution drawing display.",
+        "includes": [
+          "November 128 KiB professional controller, Mono Pro 17 and mouse"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "AutoCAD licence: $1,000 planning anchor; combined reference $2,604.80",
+          "Installation; existing compatible Artemis and primary display required"
+        ],
+        "id": "professional_drawing",
+        "component_product_ref": "offer.comdex82_professional_hardware"
+      }
+    },
+    {
+      "id": "offer.comdex82_upgrade_autocad",
+      "name": "Professional graphics upgrade and AutoCAD",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "COMDEX 1982 cost review",
+        "event_start_date": "1982-11-29"
+      },
+      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
+      "description": "Dated commercial review; technical specification not separately recorded.",
+      "notes": [
+        "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
+      ],
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "purchase_option",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "option_for": "offer.comdex82_professional_hardware"
+    },
+    {
+      "id": "offer.ram_64kb_module",
+      "name": "Logix 64 KB RAM module",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — RAM expansion offering",
+        "event_start_date": "1980-05-19"
+      },
+      "component_refs": [
+        "device.ram_64kb_x32"
+      ],
+      "configuration": {
+        "modules": [
+          {
+            "module_ref": "device.ram_64kb_x32",
+            "quantity": 1
+          }
+        ],
+        "capacity_kb": 64,
+        "modules_per_bank": 2,
+        "installation": "Power off; a complete bank requires two matching modules. A single module does not populate a complete bank."
+      },
+      "status": "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending.",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "qualification_pending",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [
+        {
+          "id": "connection_0",
+          "device_ref": "device.ram_64kb_x32",
+          "quantity": 1,
+          "used_socket": null,
+          "qualification_status": "connection_not_specified"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.offer.ram_64kb_module",
+      "revisions": [],
+      "attached_products": []
+    },
+    {
+      "id": "offer.ram_256kb_bank",
+      "name": "Logix 256 KB RAM bank (two modules)",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "introduced": {
+        "event_name": "NCC 1980 — RAM expansion offering",
+        "event_start_date": "1980-05-19"
+      },
+      "component_refs": [
+        "device.ram_128kb_x32"
+      ],
+      "configuration": {
+        "modules": [
+          {
+            "module_ref": "device.ram_128kb_x32",
+            "quantity": 2
+          }
+        ],
+        "capacity_kb": 256,
+        "modules_per_bank": 2,
+        "installation": "Power off; a complete bank requires two matching modules. A single module does not populate a complete bank."
+      },
+      "status": "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending.",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "qualification_pending",
+      "commercial_terms": {},
+      "main_product": null,
+      "connected_devices": [
+        {
+          "id": "connection_0",
+          "device_ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "used_socket": null,
+          "qualification_status": "connection_not_specified"
+        }
+      ],
+      "hardware_assembly_ref": "assembly.offer.ram_256kb_bank",
+      "revisions": [],
+      "attached_products": []
+    },
+    {
+      "id": "offer.retail.office_professional",
+      "name": "Logix Office Professional",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "product_ref": "bundle.artemis_256_mono_pro",
+          "quantity": 1
+        },
+        {
+          "quantity": 1,
+          "software_ref": "software.business_tools_artemis"
+        },
+        {
+          "quantity": 1,
+          "software_ref": "software.abacus_3"
+        },
+        {
+          "product_ref": "device.logix_mouse",
+          "quantity": 1
+        }
+      ],
+      "retail_presentation": {
+        "name": "Logix Office Professional",
+        "purpose": "Work with larger spreadsheets, typed tables and graphical reports.",
+        "includes": [
+          "Artemis 256 KiB with Mono Pro display and keyboard",
+          "Business Tools, Abacus 3 and mouse",
+          "Current compatible TUI updates"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "Colour Reports configuration: replace the standard display/controller; do not add a second primary display",
+          "Standalone Pulse 3 for notebook workflows; embedded Abacus scripting does not require a second runtime purchase"
+        ],
+        "id": "office_professional"
+      }
+    },
+    {
+      "id": "offer.retail.business_accounts",
+      "name": "Logix Business Accounts",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "product_ref": "bundle.proposed_artemis_accounts",
+          "quantity": 1
+        },
+        {
+          "quantity": 1,
+          "service_ref": "service.bpi_training"
+        }
+      ],
+      "retail_presentation": {
+        "name": "Logix Business Accounts",
+        "purpose": "Manage bookkeeping, invoicing, inventory and payroll.",
+        "includes": [
+          "Artemis accounting configuration with BPI complete suite",
+          "FlexiPrint40 printer",
+          "Initial BPI training"
+        ],
+        "unpriced_requirements": [
+          "Backup media and tested recovery procedure",
+          "Workload and printer qualification; final setup scope"
+        ],
+        "options": [
+          "Select BPI modules instead of the complete suite; never charge both",
+          "Aurelia+ entry configuration subject to workload qualification"
+        ],
+        "id": "business_accounts"
+      }
+    },
+    {
+      "id": "offer.retail.connected_office",
+      "name": "Logix Connected Office",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "product_ref": "bundle.proposed_artemis_pro_small_office",
+          "quantity": 1
+        }
+      ],
+      "retail_presentation": {
+        "name": "Logix Connected Office",
+        "purpose": "Share business records and a printer between two workstations.",
+        "includes": [
+          "Artemis PRO 512 KiB / 5 MB server and two Artemis workstations",
+          "Four-port hub, three cables, BPI server and two client licences",
+          "Two Office Suite copies and shared printer"
+        ],
+        "unpriced_requirements": [
+          "Installation, backup media and recovery setup",
+          "Administrator training",
+          "Confirm Artemis PRO shipment availability"
+        ],
+        "options": [],
+        "id": "connected_office"
+      }
+    },
+    {
+      "id": "offer.retail.developer_workstation",
+      "name": "Logix Developer Workstation",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "product_ref": "bundle.proposed_artemis_developer",
+          "quantity": 1
+        }
+      ],
+      "retail_presentation": {
+        "name": "Logix Developer Workstation",
+        "purpose": "Build native Artemis and Z80-compatible applications.",
+        "includes": [
+          "Artemis 256 KiB with readable Mono Pro display",
+          "C IDE with native and Z80 cross-compilers",
+          "SDK, TUI libraries, documentation and Business Tools"
+        ],
+        "unpriced_requirements": [],
+        "options": [
+          "CP/M-80 compatibility module and testing service",
+          "Commercial developer licence where required"
+        ],
+        "id": "developer_workstation"
+      }
+    },
+    {
+      "id": "offer.retail.development_team",
+      "name": "Logix Development Team",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [
+        {
+          "product_ref": "bundle.artemis_pro_1mb_server",
+          "quantity": 1
+        },
+        {
+          "product_ref": "bundle.artemis_256_mono_pro",
+          "quantity": 4
+        },
+        {
+          "product_ref": "device.network_hub.8_port",
+          "quantity": 1
+        },
+        {
+          "quantity": 1,
+          "software_ref": "software.aion_development_team"
+        }
+      ],
+      "retail_presentation": {
+        "name": "Logix Development Team",
+        "purpose": "Equip four concurrent developers for collaborative development.",
+        "includes": [
+          "Artemis PRO 1 MiB / 5 MB server",
+          "Four Artemis 256 KiB developer workstations and eight-port hub",
+          "Team Edition: one server / four concurrent users, 20 onboarding hours and 12 first-year support hours"
+        ],
+        "unpriced_requirements": [
+          "Five network cables, installation and backup equipment/media",
+          "Validate shared compiler/SDK workstation entitlements; add only licences not covered by Team Edition",
+          "Confirm server shipment availability and storage capacity for the selected projects"
+        ],
+        "options": [
+          "Larger storage sized to project workload"
+        ],
+        "id": "development_team"
+      }
+    },
+    {
+      "id": "offer.retail.connect_office",
+      "name": "Connect My Office",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "retail_presentation": {
+        "name": "Connect My Office",
+        "purpose": "Connect existing compatible machines.",
+        "includes": [
+          "Interfaces only where absent, sized hub, cables and setup"
+        ],
+        "unpriced_requirements": [
+          "Survey machine count, built-in interfaces, link rates, cable lengths and installation"
+        ],
+        "options": [],
+        "id": "connect_office"
+      }
+    },
+    {
+      "id": "offer.retail.cpm_migration",
+      "name": "Move from CP/M to Artemis",
+      "category": "upgrade_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "retail_presentation": {
+        "name": "Move from CP/M to Artemis",
+        "purpose": "Preserve compatible applications and move business data.",
+        "includes": [
+          "CP/M-80 module where required, data transfer and application qualification"
+        ],
+        "unpriced_requirements": [
+          "Inventory applications, rights, file formats and target hardware before quoting"
+        ],
+        "options": [],
+        "id": "cpm_migration"
+      }
+    },
+    {
+      "id": "bundle.proposed_artemis_accounts",
+      "name": "Artemis Accounts",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "unresolved",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "acceptance": [
+        "Retail reference exists, but an authoritative released composition is not recorded. Resolve the quotation before sale."
+      ]
+    },
+    {
+      "id": "bundle.proposed_artemis_pro_small_office",
+      "name": "Artemis Pro Small Office",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "unresolved",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "acceptance": [
+        "Retail reference exists, but an authoritative released composition is not recorded. Resolve the quotation before sale."
+      ]
+    },
+    {
+      "id": "bundle.proposed_artemis_developer",
+      "name": "Artemis Developer",
+      "category": "system_bundle",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "unresolved",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "no release",
+        "event_start_date": null
+      },
+      "main_product": null,
+      "connected_devices": [],
+      "attached_products": [],
+      "acceptance": [
+        "Retail reference exists, but an authoritative released composition is not recorded. Resolve the quotation before sale."
+      ]
+    }
+  ],
+  "external_platforms": [
+    {
+      "id": "computer.trs80_model_ii",
+      "name": "Tandy TRS-80 Model II — CP/M partner configuration",
+      "category": "computer",
+      "vendor": "Tandy / Radio Shack",
+      "introduced": {
+        "event_name": "Model II announcement",
+        "event_start_date": "1979-05-30"
+      },
+      "customer_release_date": "1979-10-15",
+      "specification": {
+        "cpu": "Z80, 4 MHz",
+        "supported_installed_ram_kb": 64,
+        "display": "Native Tandy 80-column display; no Logix controller, video RAM or monitor required.",
+        "storage": "Native eight-inch disk subsystem; Model II BIOS and delivery media.",
+        "expansion": "Model II-specific internal FlexiBUS option; retain original interfaces.",
+        "support": "Tandy first-line hardware/customer support; DRI OS and AION application escalation."
+      },
+      "compatible_software": [
+        "edition.abacus_1.model_ii",
+        "software.cpm_model_ii"
+      ],
+      "commercial_boundary": "External Tandy hardware: no Logix BOM, manufacturing-cost rollup, retail price or computer revenue assigned."
+    }
+  ],
+  "catalog_editions": [
+    {
+      "effective_from": "1982-11-29",
+      "status": "adopted_catalogue_structure",
+      "currency": "USD",
+      "pricing_policy": {
+        "historical_snapshots": "Preserve June snapshots and historical offerings unchanged. Current catalogue applies from November 29, 1982.",
+        "existing_packages": "Use latest dated recommendation, capped at separately purchased identical contents.",
+        "new_packages": "Office Professional uses the 25% contribution fallback after 25% dealer fee, capped at identical component retail sum. Other assembled quotations preserve constituent package/service prices while unpriced scope is resolved; no complete-package discount is claimed.",
+        "services": "Preserve quoted direct-channel service prices and entitlements; do not apply hardware dealer margins to training.",
+        "availability": "Known subtotals are not complete-package prices. Resolve all unpriced requirements and availability gates before accepting a complete-system order.",
+        "team": "Preserve $745.23 Team Edition and its explicit adoption subsidy; no automatic additional discount.",
+        "support": "Count base-system support and Team onboarding/support once. Optional services are additional only if outside included entitlements."
+      },
+      "solutions": [
+        {
+          "product_ref": "bundle.proposed_aurelia_plus_office"
+        },
+        {
+          "product_ref": "bundle.artemis_budget_128"
+        },
+        {
+          "product_ref": "bundle.artemis_budget_128_hdd"
+        },
+        {
+          "product_ref": "offer.retail.office_professional"
+        },
+        {
+          "product_ref": "offer.retail.business_accounts"
+        },
+        {
+          "product_ref": "offer.retail.connected_office"
+        },
+        {
+          "product_ref": "offer.retail.developer_workstation"
+        },
+        {
+          "product_ref": "offer.retail.development_team"
+        },
+        {
+          "product_ref": "offer.comdex82_artemis_autocad"
+        }
+      ],
+      "upgrades": [
+        {
+          "product_ref": "offer.ncc82_colour_upgrade"
+        },
+        {
+          "product_ref": "offer.comdex82_professional_hardware"
+        },
+        {
+          "product_ref": "offer.retail.connect_office"
+        },
+        {
+          "product_ref": "offer.retail.cpm_migration"
+        },
+        {
+          "product_ref": "offer.ncc82_mouse_learning"
+        }
+      ],
+      "secondary_sections": [
+        {
+          "id": "value_legacy",
+          "name": "Value and legacy systems",
+          "description": "Original Aurelia systems and their task variants move out of standard new-system promotion. Available for value/clearance enquiries; support continues. No manufacturing end date is implied.",
+          "refs": [
+            "bundle.aurelia_mono",
+            "bundle.aurelia_color",
+            "bundle.proposed_aurelia_office",
+            "bundle.proposed_aurelia_accounts",
+            "bundle.proposed_aurelia_developer"
+          ]
+        },
+        {
+          "id": "legacy_software",
+          "name": "Legacy software and replacement displays",
+          "description": "Abacus 1, Artemis Abacus 2 and Monitor I are retained for existing installations. Abacus 2 and Pulse 1 remain current for compatible Z80 systems.",
+          "refs": [
+            "software.abacus_1",
+            "edition.abacus_2.era",
+            "device.mono_monitor_1",
+            "device.color_monitor_1"
+          ]
+        },
+        {
+          "id": "ecosystem",
+          "name": "Connect other computers",
+          "description": "Apple II and S-100 adapters continue to spread Logix standards. FlexiDisk and FlexiDisk II remain distinct pending format/mechanism qualification.",
+          "refs": [
+            "device.apple2_expansion_card",
+            "device.apple2_video_card",
+            "device.s100_flexibus_card",
+            "device.s100_video_card",
+            "device.flexidisk",
+            "device.flexidisk_ii"
+          ]
+        },
+        {
+          "id": "parts",
+          "name": "Expand or repair your system",
+          "description": "Controllers, memory, monitors, keyboards, interfaces and hubs remain available to dealers and existing owners. Use the technical catalogue for individual specifications.",
+          "refs": [
+            "device.mono_pro",
+            "device.artemis_video_card_16kb",
+            "device.artemis_video_card",
+            "device.flexibus_keyboard",
+            "device.mono_monitor_2",
+            "device.color_monitor_2",
+            "device.aurelia_ram_16kb_card",
+            "device.flexiprint40",
+            "device.artemis_cpm80_module",
+            "device.ram_64kb_x32",
+            "device.ram_128kb_x32",
+            "device.artemis_video_card_64kb",
+            "device.color_pro_14",
+            "device.logix_mouse",
+            "device.artemis_professional_video_128kb",
+            "device.mono_pro_17",
+            "device.network_hub.4_port",
+            "device.network_hub.8_port",
+            "device.network_hub.16_port"
+          ]
+        }
+      ],
+      "superseded_current_offers": [
+        {
+          "ref": "offer.ncc82_professional_graphics",
+          "replacement": "professional_drawing",
+          "reason": "November revision replaces June professional extension for new configurations; historical price retained."
+        }
+      ]
+    }
+  ],
+  "bom_policy": {
+    "metadata": {
+      "version": "1.4",
+      "status": "Engineering BOM baseline; not released for purchase or unit-cost quotation.",
+      "source_catalog_version": "2.15",
+      "quantity_policy": "Known quantities are integers; unresolved quantities are null and block cost roll-up. Functional assembly placeholders are not purchasable IC selections.",
+      "cost_policy": "No prices invented. Separate recurring material, conversion, factory overhead, NRE/capital and commercial/service costs. Do not count an OEM subassembly and its included parts twice."
+    },
+    "open_decisions": [
+      {
+        "id": "dram_supplier",
+        "status": "open",
+        "description": "Qualify exact 16Kx1/64Kx1 suppliers, speed, rails, refresh and period volume supply, especially December 1979."
+      },
+      {
+        "id": "memory_electrical",
+        "status": "open",
+        "description": "Freeze DRAM controller implementation, connector, pinout, rails, byte enables and timing; full-width does not mean zero waits."
+      },
+      {
+        "id": "physical_map",
+        "status": "open",
+        "description": "Assign RAM/ROM/video RAM/I/O/reset address ranges without changing 24-bit physical addressing."
+      },
+      {
+        "id": "pro_parity",
+        "status": "open",
+        "description": "Baseline has no parity; optional 18-chip modules need a separately approved BOM and error path."
+      },
+      {
+        "id": "drive_oem",
+        "status": "open",
+        "description": "Select exact FDD/HDD mechanisms, interfaces, formats, OEM assembly boundaries and incoming test."
+      },
+      {
+        "id": "display_oem",
+        "status": "open",
+        "description": "Freeze display OEM kits, receiver/DAC/analog boundaries, raster and calibration."
+      },
+      {
+        "id": "video_ram_rom",
+        "status": "open",
+        "description": "Aurelia family video RAM organization and count fixed: eight AION 4116-equivalent 16Kx1 DRAM chips. Qualify memory process, pinout, rails, timing, refresh and tests. Cartridge capacities remain open."
+      },
+      {
+        "id": "flexibus_ports",
+        "status": "open",
+        "description": "Aurelia and Aurelia+ each have three independent point-to-point ports. Qualify simultaneous keyboard/disk/printer service, port power and transceivers; freeze controller ports per die and resulting die quantity."
+      },
+      {
+        "id": "video_link",
+        "status": "open",
+        "description": "Qualify fixed 320/640 raster profiles and bidirectional Control identification. Freeze sync/porches, electrical levels, termination, connector and capability packet encoding."
+      },
+      {
+        "id": "pro_console",
+        "status": "open",
+        "description": "Mono Pro console offers explicitly include keyboard/monitor; original server-only offers still require validated headless operation or a separately purchased console."
+      },
+      {
+        "id": "custom_silicon",
+        "status": "open",
+        "description": "Specify die/package/process, fabrication versus outsource, yield, test and NRE for every custom chip."
+      },
+      {
+        "id": "smc_process_transfer",
+        "status": "open",
+        "description": "Agreement and staged October 1979 sales are story commitments, not measured engineering proof. Freeze SMC process/mask compatibility, part-specific qualification dates, video RAM process margins, order codes, NRE and independent purchase quotes."
+      }
+    ],
+    "costing_inputs": {
+      "materials": {
+        "status": "unresolved",
+        "required_fields": [
+          "dated supplier quote",
+          "currency",
+          "volume tier",
+          "MOQ",
+          "freight/duty",
+          "accepted-part yield"
+        ]
+      },
+      "conversion": {
+        "status": "unresolved",
+        "required_fields": [
+          "assembly operations",
+          "labor minutes",
+          "test/calibration minutes",
+          "programming",
+          "rework and scrap"
+        ]
+      },
+      "factory_overhead": {
+        "status": "unresolved",
+        "required_fields": [
+          "facilities",
+          "utilities",
+          "maintenance",
+          "supervision",
+          "capacity/utilization",
+          "allocation basis"
+        ]
+      },
+      "nre_and_capital": {
+        "status": "unresolved",
+        "required_fields": [
+          "masks",
+          "engineering",
+          "molds",
+          "fixtures",
+          "equipment",
+          "depreciation or amortization basis"
+        ]
+      },
+      "commercial": {
+        "status": "unresolved",
+        "required_fields": [
+          "warranty",
+          "support/training",
+          "distribution",
+          "retailer margin"
+        ]
+      }
+    }
+  },
+  "retired_configuration_ids": [
+    "assembly.computer.artemis.m32_256",
+    "assembly.computer.artemis.m32_256.networked",
+    "assembly.computer.artemis.m128_512",
+    "assembly.computer.artemis.m128_512.networked",
+    "assembly.computer.artemis.m128_768",
+    "assembly.computer.artemis.m128_768.networked",
+    "assembly.computer.artemis.m128_1024",
+    "assembly.computer.artemis.m128_1024.networked",
+    "assembly.computer.artemis_pro.m128_768"
+  ]
+}

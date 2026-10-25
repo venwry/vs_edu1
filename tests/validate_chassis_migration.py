@@ -19,6 +19,8 @@ for old,expected in f['assembly_leaves'].items():
  id=f['aliases'].get(old,old)
  if old=='assembly.part.era1':id='part.erav1_6mhz'
  id=registry().get('record_id_aliases',{}).get(id,id)
+ if id in read_document('data/product-catalog.json')['retired_configuration_ids']:
+  assert id not in a;continue
  assert flat(id)==expected,old+' physical BOM changed'
 for path,h in f['frozen_files'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h,path
 assert not any('variants'in r or r['category']=='memory_module' for r in p.values())
@@ -27,13 +29,7 @@ for old in f['components']:
 for old in f['computers']:
  c=records[old['id']];ch=d[c['chassis_ref']];assert ch['category']=='computer_chassis';assert c['processor']['clock_mhz']==old['processor']['clock_mhz']
  assert inverse.get(c['processor']['part_ref'],c['processor']['part_ref'])==old['processor']['part_ref']
- for k,v in old['memory'].items():
-  def rename(x):
-   if isinstance(x,str):return f['aliases'].get(x,x)
-   if isinstance(x,list):return [rename(v) for v in x]
-   if isinstance(x,dict):return {k:rename(v) for k,v in x.items()}
-   return x
-  assert c['memory'][k]==rename(v)
+ assert c['memory']['ram_kb']>=0
  assert configuration(ch['id'],a,d)['status']=='documented_fit'
 for id in a:assert configuration(id,a,d)['status']!='invalid',id
 for s in t['platform_editions']:

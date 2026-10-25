@@ -29,7 +29,12 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_requirements": [
-        "Exact key count and regional layouts, switch technology, matrix/diodes, debounce and rollover, scan controller or MCU, firmware ROM/RAM, FlexiBUS transceiver/controller, LEDs, PCB, cable/connector, enclosure/keycaps, bus-power budget and keyboard test fixture. It is not presently linked to a complete controller BOM."
+        "Exact key count and regional layouts, switch technology, matrix/diodes, debounce and rollover, scan controller or MCU, firmware ROM/RAM, FlexiBUS transceiver/controller, LEDs, PCB, cable/connector, enclosure/keycaps, bus-power budget and keyboard test fixture. It is not presently linked to a complete controller BOM.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -130,7 +135,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.flexibus_keyboard"
+      ]
     },
     {
       "id": "device.mono_monitor_1",
@@ -165,7 +174,12 @@
       "manufacturing_requirements": [
         "Decide whether TV-90 means a tube or a complete display assembly",
         "specify included yoke/HV/deflection/PSU boundary. Add link receiver, sync/clock handling, DAC/video amplifier, blanking, controls, enclosure, cable and adjustment/test routing.",
-        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -252,7 +266,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.mono_monitor_1"
+      ]
     },
     {
       "id": "device.color_monitor_1",
@@ -287,7 +305,12 @@
       },
       "manufacturing_requirements": [
         "Define a purchasable OEM assembly with part numbers and supply agreement, rather than assuming disassembly of retail TVs. Specify RGB insertion/video amplifiers, palette storage and conversion, link receiver, exact raster/bandwidth, chassis and calibration. Count the included HV/deflection once.",
-        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -365,7 +388,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.color_monitor_1"
+      ]
     },
     {
       "id": "device.mono_monitor_2",
@@ -407,7 +434,12 @@
       "manufacturing_requirements": [
         "Resolve tube-versus-module purchase boundary",
         "specify readable 80-column raster and video bandwidth, receiver, controller/DAC/analog path, sync, mains/PSU, case and alignment. Qualify all claimed old/new host modes.",
-        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -486,7 +518,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.mono_monitor_2"
+      ]
     },
     {
       "id": "device.color_monitor_2",
@@ -529,7 +565,12 @@
         "Name an OEM/model and electrical/raster specification",
         "define whether HV/yoke/deflection/PSU are included",
         "verify 80-column and 640-pixel modes on the chosen raster. Add receiver/analog electronics, cable, case and calibration. Reusing a palette controller does not prove display bandwidth compatibility.",
-        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production."
+        "Add fixed capability descriptor and bidirectional Control interface; qualify every advertised raster, receiver clock, analog bandwidth, sync and palette behavior before production.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -609,7 +650,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.color_monitor_2"
+      ]
     },
     {
       "id": "device.aurelia_ram_16kb_card",
@@ -644,7 +689,12 @@
         "refresh_owner": "Host memory controller must refresh the card even while its pages are overlaid; exact interface pending."
       },
       "manufacturing_requirements": [
-        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/video RAM."
+        "Add eight 16K×1 DRAMs, power/refresh strategy, identification ROM or defined equivalent, page/address decode, buffers, connector, PCB, decoupling and memory-test route. Specify who supplies refresh while the card is hidden by ROM/video RAM.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -721,7 +771,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.aurelia_ram_16kb_card"
+      ]
     },
     {
       "id": "device.flexiprint40",
@@ -738,7 +792,12 @@
         "event_start_date": "1978-06-05"
       },
       "manufacturing_requirements": [
-        "Establish which motors, printhead, sensors and cable harnesses the purchased mechanism includes. Add motor/head drivers, power supply, local sequencer/MCU, RAM input buffer, font/firmware ROM, paper controls/path, ribbon/consumables, case, interface cable and print/registration test. A bus controller alone is not a complete printer controller."
+        "Establish which motors, printhead, sensors and cable harnesses the purchased mechanism includes. Add motor/head drivers, power supply, local sequencer/MCU, RAM input buffer, font/firmware ROM, paper controls/path, ribbon/consumables, case, interface cable and print/registration test. A bus controller alone is not a complete printer controller.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -831,7 +890,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.flexiprint40"
+      ]
     },
     {
       "id": "device.flexidisk",
@@ -849,7 +912,12 @@
       },
       "manufacturing_requirements": [
         "Exact mechanism, number of drives, sides/tracks/density/format and usable capacity",
-        "floppy controller, data separator, sector buffer, local firmware/processor, interface electronics, PSU, enclosure, cable and alignment/read-write tests. The transport controller is not implicitly the disk controller."
+        "floppy controller, data separator, sector buffer, local firmware/processor, interface electronics, PSU, enclosure, cable and alignment/read-write tests. The transport controller is not implicitly the disk controller.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -935,7 +1003,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.flexidisk"
+      ]
     },
     {
       "id": "device.apple2_expansion_card",
@@ -955,7 +1027,12 @@
         "event_start_date": "1979-06-04"
       },
       "manufacturing_requirements": [
-        "Apple bus decode/buffering and connector, identification/boot/driver ROM size, port-controller count, transceivers and any FIFO, Disk II sequencing/data handling, timing and firmware ownership. Freeze how native Disk II and FlexiBUS drive access coexist. Existing retail price is not component cost."
+        "Apple bus decode/buffering and connector, identification/boot/driver ROM size, port-controller count, transceivers and any FIFO, Disk II sequencing/data handling, timing and firmware ownership. Freeze how native Disk II and FlexiBUS drive access coexist. Existing retail price is not component cost.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -1040,7 +1117,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.apple2_expansion_card"
+      ]
     },
     {
       "id": "device.flexidisk_ii",
@@ -1066,7 +1147,12 @@
       },
       "manufacturing_requirements": [
         "Exact mechanism/media geometry",
-        "controller and firmware able to handle each specified encoding/format, sector/track buffering, local CPU/ROM/RAM, PSU/enclosure and separate format-interchange tests. Define formatting and read/write capability explicitly. Avoid silently using the standard FlexiDisk BOM if its controller cannot implement both formats."
+        "controller and firmware able to handle each specified encoding/format, sector/track buffering, local CPU/ROM/RAM, PSU/enclosure and separate format-interchange tests. Define formatting and read/write capability explicitly. Avoid silently using the standard FlexiDisk BOM if its controller cannot implement both formats.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -1152,7 +1238,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.flexidisk_ii"
+      ]
     },
     {
       "id": "device.artemis_cpm80_module",
@@ -1175,7 +1265,12 @@
       "compatibility_note": "Runs Z80 binaries through the peripheral bridge; distinct from recompiling to native ERA. Bridge capability queries must reflect the emulated CP/M environment, not expose unavailable ERA facilities.",
       "manufacturing_requirements": [
         "Choose eight 64K×1 data DRAMs as a candidate, or another explicitly costed organization",
-        "add refresh, ROM or host-upload boot logic, mailbox RAM/window and arbitration (dual-port is not mandatory), bus transceivers/width conversion, doorbells, clock/reset, mapper emulation, connector and diagnostics. Count its RAM separately from system modules. PRO compatibility is not currently promised."
+        "add refresh, ROM or host-upload boot logic, mailbox RAM/window and arbitration (dual-port is not mandatory), bus transceivers/width conversion, doorbells, clock/reset, mapper emulation, connector and diagnostics. Count its RAM separately from system modules. PRO compatibility is not currently promised.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "public_roadmap": {
@@ -1276,7 +1371,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.artemis_cpm80_module"
+      ]
     },
     {
       "id": "device.network_card_aurelia",
@@ -1300,28 +1399,30 @@
       "manufacturing_requirements": [
         "Host bus/mapper interface, controller or sequencer, serial framing/CRC logic, RAM/FIFO, firmware ROM, differential data and clock transceivers, port connector, protection/termination and cable. Specify Z80 CPU-service latency and buffers",
         "bind the supplied OS media and any RAM prerequisite to the kit BOM.",
-        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release."
+        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "specification": {
         "link_layer_ref": "technology.logix_lan100_link",
         "platform_rate_profiles": [
           {
-            "computer_ref": "computer.aurelia",
-            "supported_rates_kbps": [
-              100,
-              250
-            ],
-            "qualified_max_rate_kbps": 250
+            "source_ref": "device.network_card_aurelia",
+            "path": [
+              "host_qualification",
+              "computer.aurelia"
+            ]
           },
           {
-            "computer_ref": "computer.aurelia_plus",
-            "supported_rates_kbps": [
-              100,
-              250,
-              500
-            ],
-            "qualified_max_rate_kbps": 500
+            "source_ref": "device.network_card_aurelia",
+            "path": [
+              "host_qualification",
+              "computer.aurelia_plus"
+            ]
           }
         ],
         "startup_rate_kbps": 100,
@@ -1442,6 +1543,41 @@
             }
           ]
         }
+      ],
+      "host_qualification": {
+        "computer.aurelia": {
+          "technology_refs": [
+            "technology.logix_tcpip_lan",
+            "technology.logix_lan100_link"
+          ],
+          "implementation": "Optional expansion NIC and Enhanced CP/M networking upgrade from NCC 1981.",
+          "supported_rates_kbps": [
+            100,
+            250
+          ],
+          "qualified_max_rate_kbps": 250,
+          "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link.",
+          "computer_ref": "computer.aurelia"
+        },
+        "computer.aurelia_plus": {
+          "technology_refs": [
+            "technology.logix_tcpip_lan",
+            "technology.logix_lan100_link"
+          ],
+          "implementation": "Optional expansion NIC and Enhanced CP/M networking upgrade from NCC 1981.",
+          "supported_rates_kbps": [
+            100,
+            250,
+            500
+          ],
+          "qualified_max_rate_kbps": 500,
+          "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link.",
+          "computer_ref": "computer.aurelia_plus"
+        }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.network_card_aurelia"
       ]
     },
     {
@@ -1465,31 +1601,30 @@
       "manufacturing_requirements": [
         "Choose physical implementation. A practical first-costing baseline is one common removable NIC installed in new systems and sold for upgrades",
         "this is a proposal. Specify 32-bit slot decode, buffer widths, PIO versus DMA, controller/firmware, link electronics, cable and assembly test. Do not cost both integrated circuitry and a separate card.",
-        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release."
+        "Implement host-specific rate advertisement, hardware framing/CRC and destination filtering, 4 KiB local packet-RAM target, packet interrupts and receiver credits. Qualify serial electronics and worst-case CPU service at each advertised rate; select actual RAM parts and freeze frame/MTU limits before release.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "specification": {
         "link_layer_ref": "technology.logix_lan100_link",
         "platform_rate_profiles": [
           {
-            "computer_ref": "computer.artemis",
-            "supported_rates_kbps": [
-              100,
-              250,
-              500,
-              1000
-            ],
-            "qualified_max_rate_kbps": 1000
+            "source_ref": "device.network_card_artemis",
+            "path": [
+              "host_qualification",
+              "computer.artemis"
+            ]
           },
           {
-            "computer_ref": "computer.artemis_pro",
-            "supported_rates_kbps": [
-              100,
-              250,
-              500,
-              1000
-            ],
-            "qualified_max_rate_kbps": 1000
+            "source_ref": "device.network_card_artemis",
+            "path": [
+              "host_qualification",
+              "computer.artemis_pro"
+            ]
           }
         ],
         "startup_rate_kbps": 100,
@@ -1615,6 +1750,53 @@
             }
           ]
         }
+      ],
+      "host_qualification": {
+        "computer.artemis": {
+          "technology_refs": [
+            "technology.logix_tcpip_lan",
+            "technology.logix_lan100_link"
+          ],
+          "implementation": "One removable NIC occupying one of the four general-purpose expansion slots; not additional integrated circuitry.",
+          "supported_rates_kbps": [
+            100,
+            250,
+            500,
+            1000
+          ],
+          "qualified_max_rate_kbps": 1000,
+          "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link.",
+          "computer_ref": "computer.artemis"
+        },
+        "computer.artemis_pro": {
+          "technology_refs": [
+            "technology.logix_tcpip_lan",
+            "technology.logix_lan100_link"
+          ],
+          "server_role": true,
+          "implementation": "One removable NIC occupying one of the four general-purpose expansion slots; not additional integrated circuitry.",
+          "supported_rates_kbps": [
+            100,
+            250,
+            500,
+            1000
+          ],
+          "qualified_max_rate_kbps": 1000,
+          "rate_policy": "Firmware-enforced host ceiling; actual common network rate also depends on every admitted station and qualified link.",
+          "computer_ref": "computer.artemis_pro"
+        },
+        "computer.athena": {
+          "qualification_status": "Reuse existing network protocol/card baseline; qualify ERA² bus, DMA, drivers and rate advertisement before release.",
+          "computer_ref": "computer.athena"
+        },
+        "computer.athena_server": {
+          "qualification_status": "Reuse existing network protocol/card baseline; qualify ERA² bus, DMA, drivers and rate advertisement before release.",
+          "computer_ref": "computer.athena_server"
+        }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.network_card_artemis"
       ]
     },
     {
@@ -1646,7 +1828,12 @@
         "technology.logix_tcpip_lan"
       ],
       "manufacturing_requirements": [
-        "Qualify this 4-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity."
+        "Qualify this 4-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -1733,6 +1920,10 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.network_hub.4_port"
       ]
     },
     {
@@ -1764,7 +1955,12 @@
         "technology.logix_tcpip_lan"
       ],
       "manufacturing_requirements": [
-        "Qualify this 8-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity."
+        "Qualify this 8-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -1851,6 +2047,10 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.network_hub.8_port"
       ]
     },
     {
@@ -1882,7 +2082,12 @@
         "technology.logix_tcpip_lan"
       ],
       "manufacturing_requirements": [
-        "Qualify this 16-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity."
+        "Qualify this 16-port SKU with a shared selectable clock, negotiation/recovery firmware and receiver-credit-aware arbiter. Forward by streaming at one common rate; no per-port rate conversion. Separate per-port connector/transceiver/protection costs from shared logic/PSU. Qualify cables, fault isolation and diagnostics at 100/250/500/1000 kbit/s. Port count does not multiply the maximum 1 Mbit/s shared raw capacity.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -1969,6 +2174,10 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.network_hub.16_port"
       ]
     },
     {
@@ -2076,7 +2285,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.s100_flexibus_card"
+      ]
     },
     {
       "id": "device.apple2_video_card",
@@ -2261,6 +2474,10 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.apple2_video_card"
       ]
     },
     {
@@ -2446,6 +2663,10 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.s100_video_card"
       ]
     },
     {
@@ -2880,29 +3101,6 @@
             ]
           }
         ],
-        "sprites": {
-          "count": 5,
-          "maximum_per_scanline": 5,
-          "width": 16,
-          "height": 16,
-          "bits_per_pixel": 4,
-          "pattern_bytes_per_sprite": 128,
-          "transparent_index": 0,
-          "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
-          "priority": "Lower sprite number wins; all sprites overlay background/text.",
-          "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
-          "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
-          "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
-          "pattern_bytes_total": 640,
-          "descriptor_bytes_per_sprite": 8,
-          "descriptor_bank_count": 2,
-          "descriptor_bytes_total": 128,
-          "reserved_sprite_sram_bytes": 1024,
-          "spare_sprite_sram_bytes": 256,
-          "available_in_all_modes": true,
-          "pattern_double_buffered": false,
-          "descriptor_allocation_note": "80 bytes of live two-bank descriptors within a 128-byte reserved area; 48 bytes padding. 640 pattern + 128 descriptor + 256 scratch bytes = 1024."
-        },
         "sprite_memory": {
           "chip_ref": "part.aion_2114",
           "chip_count": 2,
@@ -2912,7 +3110,6 @@
           "separate_from_system_and_display_ram": true
         },
         "video_ram_kb": 32,
-        "card_ref": "device.artemis_video_card",
         "display_memory": {
           "chip_ref": "part.aion_4116",
           "chip_count": 16,
@@ -2921,26 +3118,18 @@
           "organization": "16K × 16 bits; ordinary external DRAM, independent display refresh sequencer."
         },
         "pixel_buffer": {
-          "pages": 4,
-          "bytes_per_page": 160,
-          "total_bytes": 640,
-          "pixels_per_page": 320,
-          "bits_per_pixel": 4,
-          "location": "On video ASIC; SRAM banks with page ownership latches",
-          "page_states": [
-            "free",
-            "filling",
-            "ready",
-            "displaying"
-          ],
-          "policy": "Eight-pixel parallel renderer fills free pages; independent clocked serializer drains ready pages. Two pages per 640-pixel line; prefill before active display; never overwrite displaying pages. Underflow blanks pixels, preserves sync and sets sticky fault.",
-          "physical_organization": "Each 160-byte bank is 40 words × 32 bits. Load eight 4-bit pixels into a separate 32-bit serializer latch every eight dot clocks, then shift at 21.504 MHz. SRAM array reads run at 2.688 MHz, not one read per dot; filler and drain use different banks."
+          "source_ref": "part.artemis_graphics_chip",
+          "path": [
+            "specification",
+            "pixel_buffer"
+          ]
         },
         "character_row_cache": {
-          "banks": 2,
-          "bytes_per_bank": 160,
-          "total_bytes": 320,
-          "purpose": "Current and next 80-column character/attribute row; separate from 640-byte pixel FIFO."
+          "source_ref": "part.artemis_graphics_chip",
+          "path": [
+            "specification",
+            "character_row_cache"
+          ]
         },
         "timing_budget": {
           "pixel_clock_mhz": 21.504,
@@ -2950,7 +3139,11 @@
           "qualification": "At 250 ns conservative DRAM cycle, 80 glyph fetches consume 20 microseconds per active line; 160-byte row prefetch amortizes across 8/10/16 scanlines. Two row caches and 16-bit reads cover text-row transitions. Verify sprites, refresh and bounded host/DMA slots together at voltage/temperature corners; no guaranteed maximum CPU upload rate."
         },
         "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
-        "monitor_policy": "Read capability descriptor before enabling sync. Mono Pro accepts only raster_640_400; integer-scale legacy modes. Old monitors retain their advertised 200-line raster(s), never 640×400. Native 400-line modes require Mono Pro; new 200-line bitmap modes also work on capable older displays. This is display-mode/API compatibility, not Z80 binary compatibility."
+        "monitor_policy": "Read capability descriptor before enabling sync. Mono Pro accepts only raster_640_400; integer-scale legacy modes. Old monitors retain their advertised 200-line raster(s), never 640×400. Native 400-line modes require Mono Pro; new 200-line bitmap modes also work on capable older displays. This is display-mode/API compatibility, not Z80 binary compatibility.",
+        "sprite_profile_ref": {
+          "technology_ref": "technology.logix_sprite_system",
+          "profile": "profile_2"
+        }
       },
       "offered_with": [
         "computer.artemis",
@@ -2958,7 +3151,8 @@
       ],
       "manufacturing_status": "incomplete_bom",
       "manufacturing_requirements": [
-        "Dedicated slot; powered-off replacement only; host interface, power rails and signal integrity require qualification."
+        "Dedicated slot; powered-off replacement only; host interface, power rails and signal integrity require qualification.",
+        "Qualification pending."
       ],
       "vendor": "Logix",
       "bom_assembly_definition": [
@@ -3057,6 +3251,10 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.artemis_video_card"
       ]
     },
     {
@@ -3093,7 +3291,8 @@
       },
       "optional_with": [],
       "manufacturing_requirements": [
-        "Qualify bare CRT and yoke at 26.88 kHz horizontal / 60 Hz progressive; geometry, focus, 25–30 MHz video amplifier, grayscale calibration, insulation, EMC and thermal tests."
+        "Qualify bare CRT and yoke at 26.88 kHz horizontal / 60 Hz progressive; geometry, focus, 25–30 MHz video amplifier, grayscale calibration, insulation, EMC and thermal tests.",
+        "Qualification pending."
       ],
       "manufacturing_status": "incomplete_bom",
       "vendor": "Logix",
@@ -3202,7 +3401,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.mono_pro"
+      ]
     },
     {
       "id": "device.artemis_video_card_16kb",
@@ -3529,28 +3732,6 @@
             ]
           }
         ],
-        "sprites": {
-          "count": 5,
-          "maximum_per_scanline": 5,
-          "width": 16,
-          "height": 16,
-          "bits_per_pixel": 4,
-          "pattern_bytes_per_sprite": 128,
-          "transparent_index": 0,
-          "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
-          "priority": "Lower sprite number wins; all sprites overlay background/text.",
-          "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
-          "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
-          "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
-          "pattern_bytes_total": 640,
-          "descriptor_bytes_per_sprite": 8,
-          "descriptor_bank_count": 2,
-          "descriptor_bytes_total": 80,
-          "reserved_sprite_sram_bytes": 1024,
-          "spare_sprite_sram_bytes": 304,
-          "available_in_all_modes": true,
-          "pattern_double_buffered": false
-        },
         "sprite_memory": {
           "chip_ref": "part.aion_2114",
           "chip_count": 2,
@@ -3560,7 +3741,6 @@
           "separate_from_system_and_display_ram": true
         },
         "video_ram_kb": 16,
-        "card_ref": "device.artemis_video_card_16kb",
         "display_memory": {
           "chip_ref": "part.aion_4116",
           "chip_count": 8,
@@ -3569,17 +3749,18 @@
           "organization": "16K × 8 bits; independent display refresh."
         },
         "pixel_buffer": {
-          "pages": 4,
-          "bytes_per_page": 40,
-          "total_bytes": 160,
-          "bits_per_pixel": 4,
-          "location": "Inside reused Aurelia controller",
-          "policy": "FREE/FILLING/READY/READING banks; output latches and serializer. Never overwrite active bank; underrun preserves sync."
+          "source_ref": "part.aurelia_video_chip",
+          "path": [
+            "specification",
+            "pixel_buffer"
+          ]
         },
         "character_row_cache": {
-          "banks": 2,
-          "bytes_per_bank": 160,
-          "total_bytes": 320
+          "source_ref": "part.aurelia_video_chip",
+          "path": [
+            "specification",
+            "character_row_cache"
+          ]
         },
         "host_interface": {
           "host_width_bits": 32,
@@ -3588,14 +3769,19 @@
           "hot_swap": false
         },
         "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
-        "monitor_policy": "Mono II / Color II use legacy 200-line raster profiles. No 26.88 kHz output and no Mono Pro support. CPU word size does not widen local display memory. All five sprites remain available."
+        "monitor_policy": "Mono II / Color II use legacy 200-line raster profiles. No 26.88 kHz output and no Mono Pro support. CPU word size does not widen local display memory. All five sprites remain available.",
+        "sprite_profile_ref": {
+          "technology_ref": "technology.logix_sprite_system",
+          "profile": "profile_1"
+        }
       },
       "offered_with": [
         "computer.artemis"
       ],
       "manufacturing_status": "incomplete_bom",
       "manufacturing_requirements": [
-        "Reuse qualified Aurelia video silicon; verify 32-bit host bridge, byte order, byte enables, DMA wait handling, clocks and power. Mono Pro unsupported."
+        "Reuse qualified Aurelia video silicon; verify 32-bit host bridge, byte order, byte enables, DMA wait handling, clocks and power. Mono Pro unsupported.",
+        "Accepted planning design; qualification pending."
       ],
       "vendor": "Logix",
       "bom_assembly_definition": [
@@ -3702,6 +3888,10 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.artemis_video_card_16kb"
       ]
     },
     {
@@ -4210,29 +4400,6 @@
             ]
           }
         ],
-        "sprites": {
-          "count": 5,
-          "maximum_per_scanline": 5,
-          "width": 16,
-          "height": 16,
-          "bits_per_pixel": 4,
-          "pattern_bytes_per_sprite": 128,
-          "transparent_index": 0,
-          "coordinate_space": "Logical mode pixels; scale together with the background. Signed 16-bit X and Y; clip at screen edges.",
-          "priority": "Lower sprite number wins; all sprites overlay background/text.",
-          "registers": "Two descriptor banks hold signed 16-bit X/Y, enable and reserved controls. CPU/DMA uses auto-incrementing SRAM upload ports.",
-          "updates": "Switch descriptor bank atomically at vertical blank. Pattern writes require scheduled access or disabling affected sprites; 1 KiB does not hold two complete pattern sets.",
-          "allocation_policy": "Five sprites in every text/bitmap mode, including double-buffered backgrounds. Sprite SRAM never consumes display DRAM.",
-          "pattern_bytes_total": 640,
-          "descriptor_bytes_per_sprite": 8,
-          "descriptor_bank_count": 2,
-          "descriptor_bytes_total": 128,
-          "reserved_sprite_sram_bytes": 1024,
-          "spare_sprite_sram_bytes": 256,
-          "available_in_all_modes": true,
-          "pattern_double_buffered": false,
-          "descriptor_allocation_note": "80 bytes of live two-bank descriptors within a 128-byte reserved area; 48 bytes padding. 640 pattern + 128 descriptor + 256 scratch bytes = 1024."
-        },
         "sprite_memory": {
           "chip_ref": "part.aion_2114",
           "chip_count": 2,
@@ -4242,7 +4409,6 @@
           "separate_from_system_and_display_ram": true
         },
         "video_ram_kb": 64,
-        "card_ref": "device.artemis_video_card_64kb",
         "display_memory": {
           "chip_ref": "part.aion_4116",
           "chip_count": 32,
@@ -4251,26 +4417,18 @@
           "organization": "Two 16K x 16-bit banks; ordinary DRAM, not dual-port VRAM. Preserve independent refresh and bounded host access."
         },
         "pixel_buffer": {
-          "pages": 4,
-          "bytes_per_page": 160,
-          "total_bytes": 640,
-          "pixels_per_page": 320,
-          "bits_per_pixel": 4,
-          "location": "On video ASIC; SRAM banks with page ownership latches",
-          "page_states": [
-            "free",
-            "filling",
-            "ready",
-            "displaying"
-          ],
-          "policy": "Eight-pixel parallel renderer fills free pages; independent clocked serializer drains ready pages. Two pages per 640-pixel line; prefill before active display; never overwrite displaying pages. Underflow blanks pixels, preserves sync and sets sticky fault.",
-          "physical_organization": "Each 160-byte bank is 40 words × 32 bits. Load eight 4-bit pixels into a separate 32-bit serializer latch every eight dot clocks, then shift at 21.504 MHz. SRAM array reads run at 2.688 MHz, not one read per dot; filler and drain use different banks."
+          "source_ref": "part.artemis_graphics_chip_64kb",
+          "path": [
+            "specification",
+            "pixel_buffer"
+          ]
         },
         "character_row_cache": {
-          "banks": 2,
-          "bytes_per_bank": 160,
-          "total_bytes": 320,
-          "purpose": "Current and next 80-column character/attribute row; separate from 640-byte pixel FIFO."
+          "source_ref": "part.artemis_graphics_chip_64kb",
+          "path": [
+            "specification",
+            "character_row_cache"
+          ]
         },
         "timing_budget": {
           "pixel_clock_mhz": 21.504,
@@ -4282,7 +4440,11 @@
         "arbitration": "Card-local sequencer arbitrates display fetch and deadline-reserved independent DRAM refresh before bounded host/DMA transfers with READY. Sprite SRAM has its own 8-bit bus. System DMA/MMU remain dedicated host components; the card does not replace system-memory refresh.",
         "monitor_policy": "All earlier modes and sprite/host/API features retained subject to monitor capabilities. Color Pro 14 and Mono Pro support the 640x400 raster; older displays retain their declared raster limits. Horizontal-retrace palette lists require explicit monitor capability; otherwise use static/vertical-retrace palette updates. No forced high scan rate on old monitors.",
         "palette_list_ref": "technology.scanline_palette_list",
-        "feature_continuity_ref": "device.artemis_video_card"
+        "feature_continuity_ref": "device.artemis_video_card",
+        "sprite_profile_ref": {
+          "technology_ref": "technology.logix_sprite_system",
+          "profile": "profile_2"
+        }
       },
       "offered_with": [
         "computer.artemis",
@@ -4290,7 +4452,8 @@
       ],
       "manufacturing_status": "design_baseline_costed_unqualified",
       "manufacturing_requirements": [
-        "New controller, 64 KiB DRAM decoding, palette sequencer and host/DMA arbitration require timing, power and release qualification. No unit cost or qualified production yield inferred."
+        "New controller, 64 KiB DRAM decoding, palette sequencer and host/DMA arbitration require timing, power and release qualification. No unit cost or qualified production yield inferred.",
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
       ],
       "planned_compatible_with": [
         "computer.athena",
@@ -4402,6 +4565,10 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.artemis_video_card_64kb"
       ]
     },
     {
@@ -4516,7 +4683,14 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.color_pro_14"
+      ],
+      "manufacturing_requirements": [
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
+      ]
     },
     {
       "id": "device.logix_mouse",
@@ -4647,7 +4821,14 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.logix_mouse"
+      ],
+      "manufacturing_requirements": [
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
+      ]
     },
     {
       "id": "device.artemis_professional_video_128kb",
@@ -4855,6 +5036,13 @@
             }
           ]
         }
+      ],
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.artemis_professional_video_128kb"
+      ],
+      "manufacturing_requirements": [
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
       ]
     },
     {
@@ -4991,7 +5179,14 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.mono_pro_17"
+      ],
+      "manufacturing_requirements": [
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
+      ]
     },
     {
       "id": "device.artemis_ram_module_prototype",
@@ -5015,6 +5210,17 @@
       "requirements": [
         "Retain noncommercial engineering status. Its chip count implies 32 KiB",
         "define width/PCB/connectors separately from a new shared 64/128 KB 32-bit modules."
+      ],
+      "production_status": "excluded",
+      "hardware_assembly_refs": [],
+      "manufacturing_requirements": [
+        "Retain noncommercial engineering status. Its chip count implies 32 KiB",
+        "define width/PCB/connectors separately from a new shared 64/128 KB 32-bit modules.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ]
     },
     {
@@ -5048,11 +5254,20 @@
         "computer.artemis"
       ],
       "manufacturing_requirements": [
-        "Retire/revise this offering to a matched-pair kit. Define separate 64 KiB low-density and 256 KiB high-density bank kits, included modules, compatible host revisions, installation instructions, spares and kit packaging. The old eight-chip module cannot remain under the new electrical rule."
+        "Retire/revise this offering to a matched-pair kit. Define separate 64 KiB low-density and 256 KiB high-density bank kits, included modules, compatible host revisions, installation instructions, spares and kit packaging. The old eight-chip module cannot remain under the new electrical rule.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+        "Existing eight-chip board is ×8. Supersede in the paired ×16 architecture",
+        "identify how existing prototypes/spares are handled."
       ],
       "alternate_names": [
         "Logix Artemis additional 64 KB RAM module"
-      ]
+      ],
+      "production_status": "excluded",
+      "hardware_assembly_refs": []
     },
     {
       "id": "device.ram_64kb_x32",
@@ -5154,7 +5369,15 @@
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition",
         "cost_assessment_status": "pending_reassessment"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.ram_64kb_x32"
+      ],
+      "manufacturing_requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ]
     },
     {
       "id": "device.ram_128kb_x32",
@@ -5256,7 +5479,15 @@
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition",
         "cost_assessment_status": "pending_reassessment"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.ram_128kb_x32"
+      ],
+      "manufacturing_requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ]
     },
     {
       "id": "device.ram_256kb_x32",
@@ -5358,7 +5589,15 @@
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition",
         "cost_assessment_status": "pending_reassessment"
-      }
+      },
+      "production_status": "design_baseline",
+      "hardware_assembly_refs": [
+        "device.ram_256kb_x32"
+      ],
+      "manufacturing_requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ]
     },
     {
       "id": "device.ram_256kb_x32_2um",
@@ -5460,7 +5699,13 @@
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition",
         "cost_assessment_status": "pending_reassessment"
-      }
+      },
+      "production_status": "excluded",
+      "hardware_assembly_refs": [],
+      "manufacturing_requirements": [
+        "32 ×1 DRAM chips per rank. Independently selected full-width modules; no 64-bit host bus implied.",
+        "Requalify PCB, connector, decoding, refresh, buffers and routing; prior 16-bit module costs are not current estimates."
+      ]
     },
     {
       "id": "device.rom_cartridge.aionix",
@@ -5984,7 +6229,8 @@
               "connection": "expansion_card",
               "capacity": 2,
               "compatible_device_refs": [
-                "device.network_card_aurelia"
+                "device.network_card_aurelia",
+                "device.aurelia_ram_16kb_card"
               ],
               "capacity_status": "documented",
               "device_quantity_limits": {
@@ -6088,7 +6334,18 @@
         "max_ram_kib": 64,
         "mixed_module_types_allowed": false,
         "qualification_status": "Preserve documented capacity and memory-controller qualification requirements."
-      }
+      },
+      "memory_interface": {
+        "organization_ref": "technology.aurelia_memory_model",
+        "expansion_ref": "device.aurelia_ram_16kb_card",
+        "system_controller_ref": "part.aurelia_system_controller"
+      },
+      "firmware_contents": [
+        "Boot",
+        "Monitor",
+        "BIOS",
+        "Hardware Drivers"
+      ]
     },
     {
       "id": "device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism",
@@ -6124,6 +6381,10 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "size_inch": 5.25,
+        "density": "single density"
       }
     },
     {
@@ -6139,7 +6400,16 @@
       "virtual": true,
       "selectable": false,
       "specification": {
-        "capacity_kb": 48
+        "capacity_kb": 48,
+        "physical_population": {
+          "bank_count": 3,
+          "bank_data_width_bits": 8,
+          "parity_bits": 0,
+          "video_ram_separate": true,
+          "common_ram_included": true,
+          "status": "Accepted chip-count baseline; decode/refresh/electrical qualification pending.",
+          "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
+        }
       },
       "bom_assembly_definition": [
         {
@@ -6225,6 +6495,24 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification_ref": "technology.aurelia_video_profile",
+      "specification": {
+        "video_physical_population": {
+          "bank_data_width_bits": 8,
+          "separate_from_system_ram": true
+        },
+        "sprite_physical_population": {
+          "bank_data_width_bits": 8,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        },
+        "controller_ref": "part.aurelia_video_chip",
+        "sprite_memory": {
+          "bank_data_width_bits": 8,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        }
       }
     },
     {
@@ -6499,7 +6787,17 @@
         "max_ram_kib": 64,
         "mixed_module_types_allowed": false,
         "qualification_status": "Preserve documented capacity and memory-controller qualification requirements."
-      }
+      },
+      "memory_interface": {
+        "organization_ref": "technology.aurelia_memory_model",
+        "system_controller_ref": "part.aurelia_system_controller"
+      },
+      "firmware_contents": [
+        "Boot",
+        "Monitor",
+        "BIOS",
+        "Hardware Drivers"
+      ]
     },
     {
       "id": "device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism",
@@ -6535,6 +6833,10 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "size_inch": 5.25,
+        "density": "double density"
       }
     },
     {
@@ -6552,7 +6854,16 @@
       "virtual": true,
       "selectable": false,
       "specification": {
-        "capacity_kb": 64
+        "capacity_kb": 64,
+        "physical_population": {
+          "bank_count": 1,
+          "bank_data_width_bits": 8,
+          "parity_bits": 0,
+          "video_ram_separate": true,
+          "common_ram_included": true,
+          "status": "Accepted AION-manufactured eight-chip baseline; 64K×1 process, speed, power, decode and independent refresh qualification required before December 1979.",
+          "mapping_note": "Existing mapper and common-system-RAM reservations remain unchanged; physical bank/page decode must implement the logical normal view."
+        }
       },
       "bom_assembly_definition": [
         {
@@ -6640,6 +6951,24 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification_ref": "technology.aurelia_video_profile",
+      "specification": {
+        "video_physical_population": {
+          "bank_data_width_bits": 8,
+          "separate_from_system_ram": true
+        },
+        "sprite_physical_population": {
+          "bank_data_width_bits": 8,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        },
+        "controller_ref": "part.aurelia_video_chip",
+        "sprite_memory": {
+          "bank_data_width_bits": 8,
+          "separate_bus": true,
+          "separate_from_system_and_display_ram": true
+        }
       }
     },
     {
@@ -6761,7 +7090,8 @@
           "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
           "Power per rail, startup/thermal limits and region-specific power configuration",
           "Firmware image capacity/revision, programming and verification",
-          "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+          "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+          "One replaceable video card is included in every chassis, on a dedicated connector, in addition to four general-purpose slots. Qualify the selected 16/32 KiB card and 1 KiB sprite SRAM; Mono Pro is offered with the 32 KiB card only."
         ],
         "routing": {
           "operations": [],
@@ -6928,6 +7258,9 @@
         "max_ram_kib": 1024,
         "mixed_module_types_allowed": false,
         "qualification_status": "Design target; all-bank timing, loading and power qualification pending."
+      },
+      "integration_requirements": {
+        "video_ram_policy": "16 KiB with the 128 KiB low-density configuration; 32 KiB with the 256 KiB AION high-density configuration. Expanding a low-density machine does not automatically replace its card."
       }
     },
     {
@@ -6964,6 +7297,10 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "size_inch": 5.25,
+        "density": "double density"
       }
     },
     {
@@ -7087,7 +7424,8 @@
           "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
           "Power per rail, startup/thermal limits and region-specific power configuration",
           "Firmware image capacity/revision, programming and verification",
-          "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+          "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout",
+          "One replaceable video card is included in every chassis, on a dedicated connector, in addition to four general-purpose slots. Qualify 32 KiB DRAM, 1 KiB sprite SRAM and Mono Pro timings together."
         ],
         "routing": {
           "operations": [],
@@ -7251,6 +7589,9 @@
         "max_ram_kib": 1024,
         "mixed_module_types_allowed": false,
         "qualification_status": "Design target; all-bank timing, loading and power qualification pending."
+      },
+      "integration_requirements": {
+        "sourcing_policy": "Qualified AION 64K×1 grades for 256 KB modules: 64/128 chips for the 512 KB/1 MB shipping capacities. The 768 KB target uses paired 128 KB two-rank 16K×1 modules. Shared interface and full-population qualification pending."
       }
     },
     {
@@ -7287,6 +7628,10 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "size_inch": 5.25,
+        "density": "double density"
       }
     },
     {
@@ -7323,6 +7668,9 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "capacity_mb": 5
       }
     },
     {
@@ -7376,7 +7724,9 @@
       "bom_assembly_metadata": {
         "name": "Logix Athena — bare chassis",
         "status": "incomplete",
-        "requirements": [],
+        "requirements": [
+          "Storage sourcing: Seagate ST506 5 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
+        ],
         "routing": {
           "operations": [],
           "minutes_per_unit": null,
@@ -7530,6 +7880,10 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "capacity_mb": 5,
+        "interface": "ST-506 MFM interface"
       }
     },
     {
@@ -7569,6 +7923,13 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "size_inch": 5.25,
+        "sides": 2,
+        "density": "double density",
+        "format": "DS/DD",
+        "formatted_capacity_kb": null
       }
     },
     {
@@ -7611,6 +7972,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "capacity_bytes": 262144,
+        "execution": "Directly executable shared read-only AIONix2 code; private writable data and patch overlays in DRAM.",
+        "implementation": "System ROM bank; physical mounting, chip organization and access timing pending qualification."
       }
     },
     {
@@ -7664,7 +8030,9 @@
       "bom_assembly_metadata": {
         "name": "Logix Athena Server — bare chassis",
         "status": "incomplete",
-        "requirements": [],
+        "requirements": [
+          "Storage sourcing: Rodime RO202E 20 MB HDD and Shugart Associates SA450 DS/DD FDD. Preserve functional BOM sets; model, controller, rail/startup load, enclosure and formatted geometry qualification remain open. Logix assembles the mainboard, controllers, power supply, chassis and wiring set; PSU sizing awaits a complete rail budget."
+        ],
         "routing": {
           "operations": [],
           "minutes_per_unit": null,
@@ -7818,6 +8186,10 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "capacity_mb": 20,
+        "interface": "ST-506-style MFM interface"
       }
     },
     {
@@ -7857,6 +8229,13 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "size_inch": 5.25,
+        "sides": 2,
+        "density": "double density",
+        "format": "DS/DD",
+        "formatted_capacity_kb": null
       }
     },
     {
@@ -7899,6 +8278,11 @@
           "fixture_refs": []
         },
         "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      },
+      "specification": {
+        "capacity_bytes": 262144,
+        "execution": "Directly executable shared read-only AIONix2 code; private writable data and patch overlays in DRAM.",
+        "implementation": "System ROM bank; physical mounting, chip organization and access timing pending qualification."
       }
     }
   ]

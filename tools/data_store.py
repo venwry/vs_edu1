@@ -1,5 +1,5 @@
 """Read the single authoritative collection layer; legacy shapes exist only in memory."""
-import copy, json
+import copy, json, subprocess
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -64,6 +64,11 @@ def computer_records(stored, devices, components):
         if c.get('configuration_video_card_refs'):slot['configuration_card_refs']=c['configuration_video_card_refs']
     return rows
 
+def project_collections(docs):
+    result=subprocess.run(['node',str(ROOT/'data-store.js')],input=json.dumps(docs),text=True,capture_output=True)
+    if result.returncode:raise ValueError('Invalid catalogue projection: '+result.stderr[-1800:])
+    return json.loads(result.stdout)
+
 def read_document(path, root=ROOT):
     root=Path(root);reg=registry(root);name=view_name(path,root)
     if name is None:
@@ -71,11 +76,15 @@ def read_document(path, root=ROOT):
         value=json.loads((root/actual).read_text())
         return normalize_component_ids(value,root) if actual.startswith('generated/models/') else value
     cache={}
+    if reg.get("commercial_projection_files"):
+        source={f:json.loads((root/f).read_text()) for f in reg["commercial_projection_files"]}
+        cache=project_collections(source)
     def collection(file):
         if file not in cache:cache[file]=json.loads((root/file).read_text())
         return cache[file]
     def select(ref):
         rows=collection(ref['file'])[ref['key']]
+        if ref.get('wrap'):return {'products':copy.deepcopy(rows)}
         if ref.get('chassis_file'):return computer_records(rows,collection(ref['chassis_file'])['devices'],collection('data/components.json')['components'])
         return assembly_records(rows,collection(ref['device_file'])['devices']) if ref.get('device_file') else copy.deepcopy(rows)
     recipe=reg['views'][name]
@@ -118,6 +127,37 @@ def store_document(path, value, root=ROOT):
             validate_collections(root,{actual:value})
         target=root/actual;target.parent.mkdir(parents=True,exist_ok=True)
         target.write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n');return
+    current=read_document(path,root)
+    if current==value:return
+    # Derived commercial/technical views are read-only except device-owned BOM edits.
+    if name in ['logix-aion-technical-catalog-v2','hardware-bom','retail-catalog-1982']:
+        if name=='logix-aion-technical-catalog-v2':
+            edited=[k for k in current if current[k]!=value.get(k)]
+            allowed=['components','platform_editions','services','software_products','external_partner_products']
+            if not edited or any(k not in allowed for k in edited):raise ValueError('Edit the authoritative product, device or technology record')
+            changes={}
+            for k in edited:
+                ref=reg['views'][name][k];file=ref['file']
+                if file not in changes:changes[file]=json.loads((root/file).read_text())
+                changes[file][ref['key']]=copy.deepcopy(value[k])
+            from validate_data import validate_collections
+            validate_collections(root,changes)
+            for file,payload in changes.items():(root/file).write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n')
+            return
+        if name!='hardware-bom':raise ValueError('Edit the authoritative product, device or technology record')
+        if any(value.get(k)!=v for k,v in current.items() if k!='assemblies'):raise ValueError('Edit authoritative BOM metadata at its owner')
+        before={a['id']:a for a in current['assemblies']};after={a['id']:a for a in value['assemblies']}
+        if before.keys()!=after.keys():raise ValueError('Add/remove BOM owners in authoritative collections')
+        devices=json.loads((root/'data/devices.json').read_text());by={d['id']:d for d in devices['devices']}
+        for id,a in after.items():
+            if a==before[id]:continue
+            if id not in by:raise ValueError('Edit commercial attachments or stored assembly at its source owner')
+            by[id]['bom_assembly_definition']=copy.deepcopy(a['lines'])
+            by[id]['bom_assembly_metadata']={k:copy.deepcopy(v) for k,v in a.items() if k not in ['id','lines']}
+        from validate_data import validate_collections
+        validate_collections(root,{'data/devices.json':devices})
+        (root/'data/devices.json').write_text(json.dumps(devices,indent=2,ensure_ascii=False)+'\n')
+        return
     changes={}
     def assign(ref,payload):
         file=ref['file']

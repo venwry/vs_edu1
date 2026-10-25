@@ -128,3 +128,7 @@ The computer family right-hand column now has accessible Details and Bill of
 materials tabs. The latter contains selected-element BOMs/costs, or configuration
 physical BOMs, recorded cost history and dated decomposition. Keyboard arrows,
 Home and End switch tabs; selection updates the content within the active tab.
+
+The subsequent commercial migration supersedes the configuration-selection and
+computer-field ownership described above. See PRODUCT_CATALOG_MIGRATION.md for
+the current 14-product selector, shared projections and retired target assemblies.

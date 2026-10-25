@@ -4,7 +4,6 @@
     "data/assemblies.json",
     "data/campaigns.json",
     "data/components.json",
-    "data/computers.json",
     "data/contracts.json",
     "data/cost-inputs.json",
     "data/demand-inputs.json",
@@ -12,11 +11,8 @@
     "data/events.json",
     "data/investment-inputs.json",
     "data/manufacturing-processes.json",
-    "data/offers.json",
     "data/devices.json",
-    "data/product-boms.json",
     "data/programmes.json",
-    "data/retail-catalog.json",
     "data/services.json",
     "data/site.json",
     "data/software-editions.json",
@@ -24,7 +20,8 @@
     "data/sourcing.json",
     "data/standards.json",
     "data/timeline-structure.json",
-    "data/world.json"
+    "data/world.json",
+    "data/product-catalog.json"
   ],
   "views": {
     "artemis-budget-inputs": {
@@ -226,6 +223,11 @@
       "commercial_offerings": {
         "file": "data/offers.json",
         "key": "commercial_offerings"
+      },
+      "product_catalog": {
+        "file": "data/product-catalog.json",
+        "key": "products",
+        "wrap": true
       }
     },
     "manufacturing-programs": {
@@ -796,5 +798,13 @@
       "computer.athena": "part.era2_12mhz",
       "computer.athena_server": "part.era2_12mhz"
     }
-  }
+  },
+  "commercial_projection_files": [
+    "data/product-catalog.json",
+    "data/devices.json",
+    "data/components.json",
+    "data/standards.json",
+    "data/assemblies.json",
+    "data/software-editions.json"
+  ]
 }

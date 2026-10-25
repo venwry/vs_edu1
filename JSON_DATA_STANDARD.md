@@ -2,8 +2,8 @@
 
 ## One source layer
 
-The 24 JSON files immediately under `data/` are the authoritative collections.
-Edit their records directly. Roots declare `schema_version: "3.0.0"` (components, devices, computers and software editions use `"3.3.0"`) and a
+The 21 JSON files immediately under `data/` are the authoritative collections.
+Edit their records directly. Roots declare `schema_version: "3.0.0"` (components, devices and software editions use `"3.3.0"`) and a
 relative `$schema` pointing to its contract in `schemas/collections/`.
 There are no persisted generated catalogues and no per-record files or manifest.
 `data/site.json` owns navigation and page configuration.
@@ -102,3 +102,12 @@ See [DEVICE_BOM_MIGRATION.md](DEVICE_BOM_MIGRATION.md).
 For chassis, slots, processor bins, RAM devices and physical media ownership, read
 [CHASSIS_DEVICE_MIGRATION.md](CHASSIS_DEVICE_MIGRATION.md). Run
 `python tests/validate_chassis_migration.py` after structural hardware changes.
+
+## Commercial source ownership
+
+`data/product-catalog.json` schema 4.0 owns commercial product definitions and
+platform identity. Computer specification payloads belong to devices/components/
+technologies. See [PRODUCT_CATALOG_MIGRATION.md](PRODUCT_CATALOG_MIGRATION.md).
+The former computers/offers/product-boms/retail-catalog files are retired. Their
+logical view shapes are read-time projections only. Python catalogue readers now
+require Node to execute the same projection used by browser readers.

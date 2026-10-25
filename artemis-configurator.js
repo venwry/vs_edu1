@@ -9,7 +9,7 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const human=v=>String(v).replace(/_/g,' ');
 const money=v=>Number.isFinite(v)?'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Not costed';
 const processorLabel=(records,p)=>{const name=records[p.part_ref]?.name||p.variant||'';return /MHz/.test(name)?name:p.clock_mhz+' MHz '+name;};
-const clean=r=>Object.fromEntries(Object.entries(r||{}).filter(([k])=>!['used_by','used_in','compatible_with'].includes(k)));
+const clean=r=>Object.fromEntries(Object.entries(r||{}).filter(([k])=>!['used_by','used_in','compatible_with','source_group','technical_profile'].includes(k)));
 function chassisState(records,option,revision,walk){
  const host=records[option.hostRef],ch=records[host.chassis_ref],tree=walk(revision.id),refs=new Set(tree.assemblyRefs.filter(id=>records[id]));for(const l of tree.leaves)if(records[l.ref])refs.add(l.ref);
  const fixedRam=[...refs].filter(id=>records[id].virtual&&records[id].category==='memory_assembly').reduce((n,id)=>n+(records[id].specification?.capacity_kb||0),0);
@@ -84,31 +84,29 @@ function createModel(catalog,bom,cost){
  return {records,assemblies,components,costs,options,revisions,assessments,state,bomRows,walk,cost};
 }
 function createFamilyModel(catalog,bom,cost,familyId){
- if(familyId==='artemis')return createModel(catalog,bom,cost);
- const model=createModel(catalog,bom,cost),{records,costs}=model;
- const hosts=catalog.computers.filter(r=>r.id==='computer.'+familyId||r.id.startsWith('computer.'+familyId+'_'));
- const options=[];
- for(const host of hosts){
-  const row=cost.products.find(r=>r.id===host.id);
-  options.push({id:host.id,name:host.name+(familyId==='athena'?' · planned configuration':' · configured computer'),group:familyId==='athena'?'Planned systems':'Configured computers',hostRef:host.id,cost:row,assemblyRef:row?.assembly_ref||host.bom_assembly_refs?.[0],available:host.introduced.event_start_date,planning:familyId==='athena'});
- }
- for(const offer of catalog.offered_bundles.filter(o=>hosts.some(h=>h.id===o.computer_ref))){const upgrade=(bom.offers||[]).find(o=>o.catalog_ref===offer.id)?.included_host===false;options.push({id:offer.id,name:offer.name,group:upgrade?'Upgrade kits — host not included':'Complete systems',hostRef:offer.computer_ref,offer,cost:costs.get(offer.id),assemblyRef:offer.bom_assembly_ref,available:offer.introduced.event_start_date,upgrade});}
- if(familyId==='aurelia'){
-  const upgrade=catalog.offered_bundles.find(o=>o.id==='bundle.aurelia_network_upgrade');
-  for(const base of [...options].filter(o=>!o.upgrade))if(upgrade&&(base.hostRef===upgrade.computer_ref||upgrade.also_compatible_with?.includes(base.hostRef))){options.push({...base,id:base.id+'.with-networking',name:base.name+' · networking upgrade fitted',group:'Systems with optional networking upgrade',cost:null,combination:true,upgradeOffer:upgrade,available:upgrade.introduced.event_start_date});}
- }
+ const model=createModel(catalog,bom,cost),line={aurelia:'Aurelia',artemis:'Artemis',athena:'Athena'}[familyId];
+ // The sole membership qualifier is computer_line. Availability only labels the choice.
+ const products=catalog.product_catalog.products.filter(p=>p.computer_line===line);
+ const options=products.map(p=>{
+  const hostRef=p.computer_ref||p.id,host=model.records[hostRef];
+  const ram=(p.connected_devices||[]).find(e=>model.records[e.device_ref]?.category==='memory_expansion');
+  const config=host.memory.configurations?.find(c=>c.module_ref===ram?.device_ref&&c.populated_modules===ram?.quantity);
+  const offer={...p,included_devices:p.connected_devices.map(e=>e.device_ref),included_software:p.attached_products.filter(e=>e.software_ref).map(e=>e.software_ref),manufacturing_variants:(p.revisions||[]).map(r=>({assembly_ref:r.hardware_assembly_ref,effective_from:r.effective_from})),computer_configuration:config?{ram_configuration_id:config.id}:undefined};
+  return {id:p.id,name:p.name,group:line+' products',hostRef,ramId:config?.id,offer,cost:model.costs.get(p.id),assemblyRef:p.hardware_assembly_ref||p.id,available:p.introduced.event_start_date,planning:p.catalogue_status==='planned',professional:p.id==='offer.comdex82_artemis_autocad',product:p};
+ });
  function state(option,revision,date){
-  if(option.chassis)return chassisState(records,option,revision,model.walk);
-  const host=records[option.hostRef],ram=host.memory.configurations?.find(c=>c.id===host.memory.default_configuration)||{ram_kb:host.memory.ram_kb},tree=model.walk(revision.id),refs=new Set([...(option.offer?.included_devices||[]),...(option.offer?.included_software||[])]);
-  for(const id of tree.assemblyRefs){const ref=id.replace(/^assembly\.(media\.)?/,'');if(records[ref])refs.add(ref);}
-  for(const line of tree.leaves)if(line.component)refs.add(line.component.id);
-  for(const id of [...refs])for(const software of records[id]?.software_refs||[])refs.add(software);
-  if(option.upgradeOffer){for(const id of option.upgradeOffer.included_devices||[])refs.add(id);for(const id of option.upgradeOffer.included_software||[])refs.add(id);refs.delete(host.rom_and_cartridges?.system_cartridge_ref);}
-  const primary=host.graphics_card_ref||host.video?.card_ref;
-  const network=[...refs].some(id=>/^device.network_card/.test(id));
-  return {option,revision,date,host,ram,tree,refs,primary,network,displays:[...refs].filter(id=>categories.isMonitor(records[id])),peripherals:[...refs].filter(id=>id.startsWith('device.')),software:[...refs].filter(id=>id.startsWith('software.')||id.startsWith('edition.')),snapshot:model.assessments(option,revision).find(x=>x.date===date)?.snapshot};
+  const host=JSON.parse(JSON.stringify(model.records[option.hostRef])),tree=model.walk(revision.id),refs=new Set(tree.assemblyRefs.filter(id=>model.records[id]));for(const l of tree.leaves)if(model.records[l.ref])refs.add(l.ref);
+  const version=option.product.revisions?.find(r=>r.hardware_assembly_ref===revision.id)||option.product;
+  for(const e of version.connected_devices||[])refs.add(e.device_ref);
+  for(const id of [...refs])for(const software of model.records[id]?.software_refs||[])refs.add(software);
+  for(const e of option.product.attached_products||[])if(e.software_ref)refs.add(e.software_ref);
+  for(const v of option.product.software_variants||[])if(v.effective_from<=date)for(const id of v.add||[])refs.add(id);
+  host.storage={controller_ref:host.storage.controller_ref,internal_fdd:{count:0}};for(const e of version.connected_devices||[]){const d=model.records[e.device_ref];if(['floppy_drive_mechanism','hard_disk_drive'].includes(d?.category)&&e.used_socket==='internal_drive'){host.storage[d.category==='hard_disk_drive'?'internal_hdd':'internal_fdd']={...d.specification,count:e.quantity};}}
+  const modules=(version.connected_devices||[]).filter(e=>model.records[e.device_ref]?.category==='memory_expansion');
+  const first=modules[0],ram=first?{module_ref:first.device_ref,populated_modules:first.quantity,populated_banks:first.quantity/2,ram_kb:modules.reduce((n,e)=>n+e.quantity*model.records[e.device_ref].specification.capacity_kb,0),bank_population:Array.from({length:first.quantity/2},(_,i)=>({bank:i,slots:[2*i,2*i+1]}))}:{ram_kb:host.memory.ram_kb};
+  const video=[...refs].filter(id=>categories.isVideoCard(model.records[id])),primary=video.find(id=>id==='device.artemis_video_card_64kb')||video.find(id=>id!=='device.artemis_professional_video_128kb');
+  return {option,revision,date,host,tree,refs,ram,primary,additional:video.filter(id=>id!==primary),network:[...refs].some(id=>id.startsWith('device.network_card')),displays:[...refs].filter(id=>categories.isMonitor(model.records[id])),peripherals:(version.connected_devices||[]).filter(e=>e.used_socket==='flexibus').flatMap(e=>Array(e.quantity||0).fill(e.device_ref)),software:[...refs].filter(id=>id.startsWith('software.')||id.startsWith('edition.')),snapshot:model.assessments(option,revision).find(x=>x.date===date)?.snapshot,externalHdd:option.product.storage?.hard_disk_enclosure==='external qualified subsystem'};
  }
- options.push(...chassisOptions(catalog,hosts.map(h=>h.id)));
  return {...model,options,state};
 }
 
@@ -136,15 +134,15 @@ root.setupArtemisWorkbench=function(catalog,page){
   activateTab('details');
 
   const select=$('artemis-configuration');
-  const choices=model.options.flatMap(o=>model.revisions(o).map((r,i)=>({option:o,revision:r,value:i?o.id+'::'+r.id:o.id,label:o.name+(model.revisions(o).length>1?' · '+(i?'Networking':'Original')+' · '+r.from:'')})));
+  const choices=model.options.map(o=>({option:o,revision:model.revisions(o).at(-1),value:o.id,label:o.name+(o.planning?' · planned':o.product.availability_status==='announced'?' · announced':o.product.catalogue_status==='qualification_pending'?' · acceptance pending':'')}));
   for(const group of [...new Set(model.options.map(x=>x.group))]){const g=document.createElement('optgroup');g.label=group;for(const c of choices.filter(x=>x.option.group===group)){const el=document.createElement('option');el.value=c.value;el.textContent=c.label;g.append(el);}select.append(g);}
-  function initRevision(wanted){const revisions=model.revisions(option);revision=revisions.find(r=>r.id===wanted)||revisions[0];select.value=choices.find(c=>c.option===option&&c.revision.id===revision.id).value;initDate(params.get('evaluation'));}
+  function initRevision(wanted){const revisions=model.revisions(option);revision=revisions.find(r=>r.id===wanted)||revisions.at(-1);select.value=option.id;initDate(params.get('evaluation'));}
   function initDate(wanted){const rows=model.assessments(option,revision);chosenDate=rows.find(r=>r.date===wanted)?.date||rows.at(-1)?.date||revision.from;}
   function updateUrl(){const url=new URL(location.href);url.searchParams.set('configuration',select.value);url.searchParams.delete('revision');url.searchParams.delete('evaluation');url.searchParams.set('model',option.hostRef);if(url.hash.startsWith('#computer.'))url.hash=option.hostRef;history.replaceState(null,'',url);}
   function button(id,title,subtitle,data,ref,extra=''){
    nodes.set(id,{title,subtitle,data,ref});return '<button type="button" class="configuration-node '+extra+'" data-component="'+esc(id)+'"'+(ref?' data-record-ref="'+esc(ref)+'"':'')+' aria-controls="configuration-inspector" aria-pressed="false"><span class="component-label">'+esc(title)+'</span>'+(subtitle?'<strong class="component-value">'+esc(subtitle)+'</strong>':'')+'</button>';
   }
-  function recordButton(id,ref,title,subtitle,extra={}){const r=records[ref],scope=subtitle||'',reference=/reference|Compatible/.test(scope);const label=title||human(r?.category||ref?.split('.')[0]||'Component');const value=(!title||reference)?r?.name||ref:subtitle;const html=button(id,label,value,{...clean(r),...extra},ref);nodes.get(id).scope=scope;return html;}
+  function recordButton(id,ref,title,subtitle,extra={}){const r=id==='configuration'&&option.product?option.product:records[ref],scope=subtitle||'',reference=/reference|Compatible/.test(scope);const label=title||human(r?.category||ref?.split('.')[0]||'Component');const value=(!title||reference)?r?.name||ref:subtitle;const html=button(id,label,value,{...clean(r),...extra},ref);nodes.get(id).scope=scope;return html;}
   function empty(){return '';}
   function group(id,title,contents,tone){
    const box=document.createElement('div');box.innerHTML=contents;
@@ -171,7 +169,7 @@ root.setupArtemisWorkbench=function(catalog,page){
    let ports='';for(let i=0;i<io.flexibus_ports;i++)ports+=s.peripherals[i]?recordButton('port-'+i,s.peripherals[i],'FlexiBUS port '+(i+1),records[s.peripherals[i]].name):empty('FlexiBUS port '+(i+1));
    let core=recordButton('cpu',host.processor.part_ref,'Processor',processorLabel(records,host.processor),{selected_host_processor:host.processor})+recordButton('mmu','part.artemis_mmu','MMU','Memory management',{architecture:records['technology.artemis_memory_model']?.specification})+recordButton('dma','part.artemis_dma','DMA','Direct memory access')+recordButton('disk-controller',host.storage.controller_ref,'Disk controller','Floppy / hard disk')+recordButton('flexibus-controller','part.flexibus_host_controller','FlexiBUS interface',io.flexibus_ports+' external ports',{host_interface:io.flexibus_ports+' external ports; chip quantities remain subject to the recorded BOM assumptions.'});
    let memory='';for(let i=0;i<host.memory.bank_count;i++){const populated=ram.bank_population?.some(b=>b.bank===i)??i<ram.populated_banks;memory+=populated?recordButton('bank-'+i,ram.module_ref,'DRAM bank '+(i+1),host.memory.modules_per_bank+' × '+module.specification.capacity_kb+' KiB modules',{selected_bank:ram.bank_population?.find(b=>b.bank===i),configuration:ram}):empty('DRAM bank '+(i+1),'Empty · matched pair required');}
-   const os=s.software.find(id=>/^software\.aionix/.test(id));const tools=s.software.find(id=>id==='software.business_tools_artemis');
+   const os=s.software.find(id=>/^software\.aionix/.test(id));const tools=s.refs.has('device.rom_cartridge.business_tools_artemis')?'software.business_tools_artemis':null;
    memory+=os?recordButton('os-rom',records[os]?.physical_media_refs?.[0]||os,'System ROM cartridge',records[os].name,{capacity_note:'ROM capacity is not specified in this offering record.'}):empty('System cartridge','Not included');
    memory+=tools?recordButton('tools-rom',records[tools]?.physical_media_refs?.[0]||tools,'Application cartridge','AION Business Tools',{capacity_note:'ROM capacity is not specified in this offering record.'}):empty('Application cartridge','Not included');
    memory+=button('boot-rom','Boot ROM','On mainboard',{assembly:host.id,boot_components:s.tree.leaves.filter(l=>/boot_rom/.test(l.ref))},'part.'+host.id+'.boot_rom_chips');

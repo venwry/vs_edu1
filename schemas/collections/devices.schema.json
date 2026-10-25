@@ -362,10 +362,7 @@
             ]
           },
           "specification_ref": {
-            "type": [
-              "string"
-            ],
-            "minLength": 1
+            "type": "string"
           },
           "used_in": {
             "type": [
@@ -576,6 +573,24 @@
                 "type": "string"
               }
             }
+          },
+          "integration_requirements": {
+            "type": "object"
+          },
+          "memory_interface": {
+            "type": "object"
+          },
+          "firmware_contents": {
+            "type": "array"
+          },
+          "host_qualification": {
+            "type": "object"
+          },
+          "production_status": {
+            "type": "string"
+          },
+          "hardware_assembly_refs": {
+            "type": "array"
           }
         },
         "dependentRequired": {

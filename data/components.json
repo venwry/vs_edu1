@@ -25,9 +25,15 @@
       "manufacturer": "Zilog",
       "qualification_status": "unresolved",
       "requirements": [
-        "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card."
+        "Freeze manufacturer ordering code, package, speed/temperature grade, supply and timing, socket versus solder, qualified alternate and quantity per host/card.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.z80b",
@@ -53,9 +59,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Same, with 6 MHz timing and December 1979 sourcing qualification",
-        "distinguish speed-bin procurement from a new CPU design."
+        "distinguish speed-bin procurement from a new CPU design.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.dram_16kbit",
@@ -88,9 +100,15 @@
       "manufacturer": null,
       "requirements": [
         "Add 16K×1 organization, exact qualified part/supplier/grade, rails, refresh, timing and package. Extend use lists to Aurelia, its expansion and shared 64/128 KB 32-bit modules",
-        "the current list only names the prototype."
+        "the current list only names the prototype.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.dram_64kbit",
@@ -117,9 +135,17 @@
       "qualification_status": "unresolved",
       "manufacturer": null,
       "requirements": [
-        "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references."
+        "Qualify purchased 64K×1 DRAMs for remaining external-source high-density modules and kits; Aurelia+ and Artemis AION configurations have separate make-part references.",
+        "Add 64K×1 and sourcing by launch date",
+        "rails/refresh/timing/package. Link to Aurelia+, high-density modules and any selected compatibility-card local RAM.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.dram_128kbit",
@@ -139,8 +165,14 @@
       "bom_role": "specification",
       "requirements": [
         "Remove from active production BOMs. Preserve only as a superseded design assumption if history is retained",
-        "it is not a qualified purchased component."
-      ]
+        "it is not a qualified purchased component.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
+      ],
+      "production_status": "excluded"
     },
     {
       "id": "part.flexibus_host_controller",
@@ -174,9 +206,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Specify ports per die, host bus interface, FIFO/register capacity, clock, firmware/ROM requirements, external transceivers and packages",
-        "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required."
+        "update PRO/Apple-card usage where appropriate. All custom-silicon costing fields also required.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.flexibus_device_controller",
@@ -208,9 +246,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Specify whether it is a transport-only state machine or programmable controller",
-        "CPU/ROM/RAM integration, peripheral interfaces, external drivers and power. Define keyboard use explicitly if adopted."
+        "CPU/ROM/RAM integration, peripheral interfaces, external drivers and power. Define keyboard use explicitly if adopted.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.aurelia_video_chip",
@@ -308,6 +352,19 @@
           "capacity_bytes": 1024,
           "separate_bus": true,
           "separate_from_system_and_display_ram": true
+        },
+        "pixel_buffer": {
+          "pages": 4,
+          "bytes_per_page": 40,
+          "total_bytes": 160,
+          "bits_per_pixel": 4,
+          "location": "Inside reused Aurelia controller",
+          "policy": "FREE/FILLING/READY/READING banks; output latches and serializer. Never overwrite active bank; underrun preserves sync."
+        },
+        "character_row_cache": {
+          "banks": 2,
+          "bytes_per_bank": 160,
+          "total_bytes": 320
         }
       },
       "used_in": [
@@ -338,9 +395,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Qualify shared 16 KiB controller for both 4 MHz and 6 MHz hosts, worst-case text/sprite fetch schedule, 14.31818 MHz output pipeline, full-array refresh, CPU waits and bidirectional monitor control.",
-        "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates."
+        "Freeze transistor models, layout, pinout, power, clock/reset, test coverage and package; die/yield figures are estimates.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.aurelia_monitor_dac",
@@ -364,9 +427,15 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Specify reference, transfer function/linearity, output range, settling time, package and required analog stages. Decide custom silicon versus a discrete implementation before assigning die cost."
+        "Specify reference, transfer function/linearity, output range, settling time, package and required analog stages. Decide custom silicon versus a discrete implementation before assigning die cost.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.color_monitor_controller",
@@ -394,9 +463,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Locate the 16×12-bit palette storage, command decoder, clocking, RGB conversion and external analog drivers",
-        "establish whether Monitor I/II share silicon but differ in bandwidth/output stages."
+        "establish whether Monitor I/II share silicon but differ in bandwidth/output stages.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.mono_monitor2_controller",
@@ -424,9 +499,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Locate 16×8-bit palette storage, command decode, DAC and analog output",
-        "define clock/raster and custom-silicon parameters."
+        "define clock/raster and custom-silicon parameters.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.artemis_dma",
@@ -448,9 +529,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Channels, bus-master handshake, byte/word widths, counters, request lines, priority, refresh interaction and external buffering",
-        "freeze die/package/test design."
+        "freeze die/package/test design.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.artemis_mmu",
@@ -472,9 +559,15 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers."
+        "Translate accepted architecture into implementation: entry storage, comparators, control/register interface, restart/wait timing, die/package/power and tests. Identify any external storage or bus buffers.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.artemis_graphics_chip",
@@ -995,9 +1088,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "External 16×4116 DRAM and 2×2114 sprite SRAM; integrated 640-byte pixel FIFO and 320-byte row cache. Die-area estimate 80 mm² (60–110), about 65,000–95,000 transistors including SRAM; not a released layout. Qualify timing, large-package pin count, analog-free digital logic and one respin.",
-        "Define the external video RAM bus, arbitration, scan timing, font path and output serializers/drivers; qualify the package against the buffered controller design."
+        "Define the external video RAM bus, arbitration, scan timing, font path and output serializers/drivers; qualify the package against the buffered controller design.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.artemis_fdd_hdd_controller",
@@ -1026,9 +1125,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Define exact floppy and HDD electrical interfaces, encodings, data separator/PLL, DMA/FIFO and firmware split. Specify what remains external",
-        "“HDD supported” is not a complete controller."
+        "“HDD supported” is not a complete controller.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.ball_tv90_crt",
@@ -1048,9 +1153,15 @@
       "manufacturer": "Ball Brothers",
       "qualification_status": "unresolved",
       "requirements": [
-        "Exact OEM orderable part, supplied assembly boundary, screen/phosphor, scan requirements, life/acceptance limits and what analog/HV components remain to buy."
+        "Exact OEM orderable part, supplied assembly boundary, screen/phosphor, scan requirements, life/acceptance limits and what analog/HV components remain to buy.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.sony_kv1204_display_assembly",
@@ -1080,9 +1191,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Exact OEM supply boundary and permitted purchasable kit, with included component list",
-        "quantify RGB-interface modifications, mechanical fit, yield and calibration."
+        "quantify RGB-interface modifications, mechanical fit, yield and calibration.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.motorola_ds3000_140a_crt",
@@ -1105,9 +1222,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Exact tube or monitor-assembly identification, included electronics, raster/bandwidth and acceptance test",
-        "prevent tube-plus-complete-monitor double counting."
+        "prevent tube-plus-complete-monitor double counting.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.medium_resolution_rgb_crt",
@@ -1129,9 +1252,15 @@
       "qualification_status": "unresolved",
       "manufacturer": null,
       "requirements": [
-        "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis."
+        "Supplier and model are absent. Freeze physical dimensions, dot/stripe pitch, scan range, bandwidth, yoke/HV inclusion and actual volume quote basis.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.mpi_mp40_mechanism",
@@ -1152,9 +1281,15 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Orderable revision and contents: head, motors, sensors, frame, carriage/platen, ribbon system, wiring",
-        "define excluded controller/PSU/case and incoming tests."
+        "define excluded controller/PSU/case and incoming tests.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.hdd_5mb",
@@ -1179,12 +1314,18 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Exact manufacturer/model, interface, formatted versus raw capacity, power/spin-up, dimensions, required controller/cables, defect handling and incoming burn-in.",
-        "Selected ST506: 5.0 MB formatted / 6.38 MB unformatted, MFM 5 Mbit/s, 34-pin control and 20-pin data. Budget +12 V 4.5 A startup and +5 V 1 A maximum; qualify controller, spin-up, airflow, harness and mounting. Seagate preliminary OEM manual, April 1981. No cost or qualification claim."
+        "Selected ST506: 5.0 MB formatted / 6.38 MB unformatted, MFM 5 Mbit/s, 34-pin control and 20-pin data. Budget +12 V 4.5 A startup and +5 V 1 A maximum; qualify controller, spin-up, airflow, harness and mounting. Seagate preliminary OEM manual, April 1981. No cost or qualification claim.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "alternate_names": [
         "5 MB hard disk drive"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.aion_4116",
@@ -1250,7 +1391,8 @@
         "Develop and qualify the ordinary DRAM cell/capacitor, sense amplifiers, retention, refresh and required speed grade before June 1978 launch.",
         "Release 4116-compatible pinout, package, rails, timing, power, wafer probe and final test. AION is the manufacturing source; compatibility and speed require qualification."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.aion_2114",
@@ -1295,7 +1437,8 @@
         "Qualify AION 1Kx4 static cells, 250 ns cycle target, retention while powered, +5 V supply and 18-pin DIP compatibility before launch.",
         "Test two-chip 1Kx8 sprite bus, CPU/DMA write arbitration and worst-case five-sprite overlap."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.aurelia_system_controller",
@@ -1372,7 +1515,8 @@
         "Verify independent refresh for every installed physical bank, including hidden banks and Aurelia 16 KiB expansion; derive deadlines from qualified DRAM ordering codes.",
         "Freeze package/pinout, external buffers, memory decode, bank-latched DMA addressing and simultaneous video/peripheral stress tests."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.brimar_m36_141w_crt",
@@ -1400,9 +1544,11 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance.",
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending.",
+        "Supplier and electrical qualification pending."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.mono_pro_controller",
@@ -1430,9 +1576,11 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Supplier and production qualification, released drawing and sourcing remain pending. Any cost is a planning allowance.",
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending.",
+        "Supplier and electrical qualification pending."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.aion_4164",
@@ -1521,9 +1669,11 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield."
+        "Qualify AION 64K×1 silicon, process, speed/retention bins, refresh, package and power rails for Aurelia+ before December 1979; reuse qualified silicon in Artemis from May 1980. Purchased DRAM maturity is not evidence of AION production yield.",
+        "Accepted planning design; qualification pending."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.artemis_graphics_chip_64kb",
@@ -1545,7 +1695,29 @@
           "640x400x2 and 640x200x4 bitmap modes",
           "bounded palette-list prefetch and horizontal-retrace command sequencer"
         ],
-        "continuity": "Retain prior modes, five sprites with independent SRAM, pixel FIFO, character caches, refresh and host/DMA arbitration. Canonical detailed layout resides in the card specification."
+        "continuity": "Retain prior modes, five sprites with independent SRAM, pixel FIFO, character caches, refresh and host/DMA arbitration. Canonical detailed layout resides in the card specification.",
+        "pixel_buffer": {
+          "pages": 4,
+          "bytes_per_page": 160,
+          "total_bytes": 640,
+          "pixels_per_page": 320,
+          "bits_per_pixel": 4,
+          "location": "On video ASIC; SRAM banks with page ownership latches",
+          "page_states": [
+            "free",
+            "filling",
+            "ready",
+            "displaying"
+          ],
+          "policy": "Eight-pixel parallel renderer fills free pages; independent clocked serializer drains ready pages. Two pages per 640-pixel line; prefill before active display; never overwrite displaying pages. Underflow blanks pixels, preserves sync and sets sticky fault.",
+          "physical_organization": "Each 160-byte bank is 40 words × 32 bits. Load eight 4-bit pixels into a separate 32-bit serializer latch every eight dot clocks, then shift at 21.504 MHz. SRAM array reads run at 2.688 MHz, not one read per dot; filler and drain use different banks."
+        },
+        "character_row_cache": {
+          "banks": 2,
+          "bytes_per_bank": 160,
+          "total_bytes": 320,
+          "purpose": "Current and next 80-column character/attribute row; separate from 640-byte pixel FIFO."
+        }
       },
       "used_in": [
         "device.artemis_video_card_64kb"
@@ -1556,9 +1728,11 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Functional-set procurement allowance; detailed supplier selection pending.",
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending.",
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.nec_pc8853_display_assembly",
@@ -1587,9 +1761,11 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Complete NEC-class 14-inch OEM display core, tube/yoke/HV/deflection/PSU; excludes AION adapter and final Logix cabinet. $280 is a volume procurement scenario, not a quote.",
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending.",
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.color_pro_monitor_controller",
@@ -1621,9 +1797,11 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Functional-set procurement allowance; detailed supplier selection pending.",
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending.",
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.professional_graphics_controller",
@@ -1649,9 +1827,11 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Functional-set procurement allowance; detailed supplier selection pending.",
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending.",
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.mono_pro_17_controller",
@@ -1677,9 +1857,11 @@
       "qualification_status": "unresolved",
       "requirements": [
         "Functional-set procurement allowance; detailed supplier selection pending.",
-        "Engineering baseline; electrical qualification, routing and supplier quotes pending."
+        "Engineering baseline; electrical qualification, routing and supplier quotes pending.",
+        "Engineering planning BOM; quoted costs, electrical qualification and measured routing remain pending."
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.aion_4164_2um",
@@ -1725,8 +1907,11 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Planned 2 µm process; supplier, electrical qualification, yield and current unit cost remain unqualified."
-      ]
+        "Planned 2 µm process; supplier, electrical qualification, yield and current unit cost remain unqualified.",
+        "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
+        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
+      ],
+      "production_status": "excluded"
     },
     {
       "id": "part.artemis_ram_module_128kb.module_pcb",
@@ -5475,7 +5660,12 @@
       "manufacturer": "AION Labs",
       "qualification_status": "unresolved",
       "requirements": [
-        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost."
+        "Define 6/8 MHz die revision versus speed-bin relationship, process/node, die area, wafer source, mask count, package/pinout, power, tester vectors, wafer/package yields and bin distribution. Architectural behavior alone cannot determine unit fabrication cost.",
+        "Manufacturer/MPN or released make drawing, approved alternatives and historical supply qualification",
+        "PCB dimensions, layer stack, finish, connectors, fitted passives and reference designators",
+        "Power per rail, startup/thermal limits and region-specific power configuration",
+        "Firmware image capacity/revision, programming and verification",
+        "Assembly routing, test fixtures, cycle times, yield/rework/scrap and packout"
       ],
       "specification": {
         "clock_mhz": 6
@@ -5483,7 +5673,8 @@
       "used_in": [
         "computer.artemis"
       ],
-      "cost_rollup_status": "blocked_pending_component_and_routing_definition"
+      "cost_rollup_status": "blocked_pending_component_and_routing_definition",
+      "production_status": "design_baseline"
     },
     {
       "id": "part.erav1_8mhz",
@@ -5550,7 +5741,12 @@
         "computer.athena",
         "computer.athena_server"
       ],
-      "qualification_status": "unresolved"
+      "qualification_status": "unresolved",
+      "production_status": "excluded",
+      "requirements": [
+        "Planned Athena/ERA² product; excluded from current costed production coverage, not cancelled. Functional quantities are recorded in athena_1983_program.json.",
+        "Release component selections, electrical design, manufacturing routing and a dated 1983 cost assessment before including in financial forecasts."
+      ]
     },
     {
       "id": "part.era2_16mhz_rev2",
