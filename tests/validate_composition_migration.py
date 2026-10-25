@@ -2,6 +2,7 @@
 import copy,hashlib,json,sys
 from pathlib import Path
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'tools'))
+from completion_audit import historical_bom
 from data_store import read_document,registry,project_collections
 from validate_products import validate_products
 from validate_data import validate_collections
@@ -23,13 +24,13 @@ assert len(source['data/retired_assemblies.json']['assemblies'])==19
 assert not ({a['id'] for a in source['data/assemblies.json']['assemblies']} & {a['id'] for a in source['data/retired_assemblies.json']['assemblies']})
 fixture=read_document('tests/fixtures/composition-migration.json')
 digest=lambda x:hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
-bom=read_document('catalog:hardware-bom');assert {a['id']:digest(a['lines']) for a in bom['assemblies']}==fixture['assembly_lines'],'Production BOM changed during simulation-only migration'
+bom=historical_bom(read_document('catalog:hardware-bom'));assert {a['id']:digest(a['lines']) for a in bom['assemblies']}==fixture['assembly_lines'],'Production BOM changed during simulation-only migration'
 for path,h in fixture['financial_files'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h,path
 before={p:p.read_bytes() for p in (R/'data').glob('*.json')}
 r=simulate();assert all(p.read_bytes()==b for p,b in before.items())
 assert r['summary']['compared_versions']==27 and r['summary']['full_cutover_equal']==26
 assert any(f['kind']=='full_cutover_inventory_change' and f['owner']=='offer.comdex82_artemis_autocad' for f in r['findings'])
-assert r['summary']['findings_by_kind']['unknown_start_date']==10
+assert r['summary']['findings_by_kind'].get('unknown_start_date',0)==0
 # Ref uniqueness, flat products, version ordering and cycles are strict source invariants.
 def reject(fn):
  docs=copy.deepcopy(source);p=next(p for p in docs['data/product-catalog.json']['products'] if p['id']=='bundle.artemis_128_mono');fn(p,docs)
@@ -44,4 +45,4 @@ reject(lambda p,d:d['data/devices.json']['devices'][0]['composition_history'][0]
 reject(lambda p,d:p['composition_history'][0]['composition_definition'][0].update(quantity=None))
 # Unknown proposal dates remain unresolved rather than fabricated launch dates.
 assert all(h.get('date_status')=='unknown' for p in ps for h in p['composition_history'] if h['valid_from'] is None)
-print('PASS: versioned owners, flat products, archive partition, unchanged 97 production BOMs/finances, negative validation and read-only simulation')
+print('PASS: versioned owners, flat products, archive partition, 97 historical BOMs after validated delivery-scope deltas; unchanged finances, negative validation and read-only simulation')

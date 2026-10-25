@@ -60,6 +60,7 @@ def simulate(root=ROOT):
     for p in products:
         for h in p['composition_history']:
             owner=p['id'];v=h['version_number'];start=h['valid_from'];lines=h['composition_definition'];aid=h.get('legacy_assembly_ref')
+            if h.get('composition_status')=='unresolved':issue('quotation_scope_unresolved',owner,v,'','Site survey/application qualification must determine remaining equipment, quantities and services; this is not a complete fixed-price package.')
             if start is None:issue('unknown_start_date',owner,v,'','Cannot select dated children for an undated proposal.')
             if h.get('unresolved_items'):issue('unresolved_package',owner,v,','.join(h['unresolved_items']),'Referenced package has no defined contents; retained as unresolved provenance, not a product nesting edge.')
             mains=[l for l in lines if l['element_type']=='main_product']

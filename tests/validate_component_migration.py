@@ -8,10 +8,10 @@ fixture=read_document('tests/fixtures/component-migration.json')
 digest=lambda x:hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
 validate_collections()
 rows=read_document('data/components.json')['components'];ids={x['id'] for x in rows}
-assert len(rows)==len(ids)==293
+assert len(rows)==len(ids)==347
 assert 'components' not in read_document('data/sourcing.json')
 assert 'base_parts' not in read_document('data/components.json')
-assert sum(x['bom_role']=='material' for x in rows)==291
+assert sum(x['bom_role']=='material' for x in rows)==345
 assert sum(x['bom_role']=='assembly' for x in rows)==0
 assert sum(x['bom_role']=='specification' for x in rows)==2
 for x in rows:

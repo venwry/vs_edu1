@@ -111,3 +111,7 @@ snapshots were reviewed and updated for the intentional product/specification ch
 The subsequent structural migration is documented in COMPOSITION_MIGRATION.md.
 It supersedes source field names and platform ownership above while preserving
 the existing production BOM calculation pending the separate simulation review.
+
+The approved follow-up in PRODUCT_COMPLETION.md fills snapshot-derived product
+dates/contents and changes device delivery scope. It supersedes the prior missing
+product/date counts and unchanged-BOM statement; financial files remain unchanged.

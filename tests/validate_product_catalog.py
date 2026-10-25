@@ -2,6 +2,7 @@
 import sys,json,hashlib,copy,tempfile,shutil
 from pathlib import Path
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'tools'))
+from completion_audit import historical_bom
 from data_store import read_document,registry,project_collections
 from validate_data import validate_collections
 from validate_products import validate_products
@@ -16,7 +17,7 @@ for p in products.values():
  if p.get('computer_line'):
   assert next(e['ref'] for e in p['composition_history'][0]['composition_definition'] if e['element_type']=='main_product').startswith('device.base_computer.')
   assert all(c['used_socket'] is not None for c in p['composition_history'][0]['composition_definition'] if c['element_type']=='connected_device')
-f=read_document('tests/fixtures/product-catalog-migration.json');b=read_document('catalog:hardware-bom');a={x['id']:x for x in b['assemblies']}
+f=read_document('tests/fixtures/product-catalog-migration.json');b=historical_bom(read_document('catalog:hardware-bom'));a={x['id']:x for x in b['assemblies']}
 def flat(id,q=1):
  if id not in a:return [[id,q]]
  return [v for l in a[id]['lines'] for v in flat(l['ref'],None if q is None or l['quantity'] is None else q*l['quantity'])]

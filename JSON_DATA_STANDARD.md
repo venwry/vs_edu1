@@ -119,3 +119,7 @@ Base-computer platform information lives in devices; external platforms live in
 ecosystem-inputs. Retired assemblies have a separate archive. See
 COMPOSITION_MIGRATION.md for the shared line contract and compatibility boundary.
 Assembly consolidation and temporal calculation are simulation-only in this revision.
+
+The approved follow-up in PRODUCT_COMPLETION.md fills snapshot-derived product
+dates/contents and changes device delivery scope. It supersedes the prior missing
+product/date counts and unchanged-BOM statement; financial files remain unchanged.

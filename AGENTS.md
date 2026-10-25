@@ -30,3 +30,7 @@ projection. Do not recreate retired source collections or infer products from co
 For versioned composition and simulation-only BOM cutover read COMPOSITION_MIGRATION.md.
 Run tests/validate_composition_migration.py. Do not enable temporal costing or merge
 assembly lines into compositions without a separate explicit instruction.
+
+For approved product completion and device-owned delivery items read
+PRODUCT_COMPLETION.md and run tests/validate_product_completion.py. Preserve
+conditional/unknown FDD cable allocation and unqualified quotation scope.

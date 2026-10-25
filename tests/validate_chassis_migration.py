@@ -2,11 +2,12 @@
 import json,hashlib,sys,copy,tempfile,shutil
 from pathlib import Path
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'tools'))
+from completion_audit import historical_bom
 from data_store import read_document,registry,store_document
 from validate_data import validate_collections
 from device_configuration import configuration
 f=read_document('tests/fixtures/chassis-migration.json');validate_collections()
-t=read_document('catalog:logix-aion-technical-catalog-v2');b=read_document('catalog:hardware-bom');a={r['id']:r for r in b['assemblies']};d={r['id']:r for r in t['devices']};p={r['id']:r for r in t['components']};records={r['id']:r for rows in t.values() if isinstance(rows,list) for r in rows if isinstance(r,dict) and 'id'in r}
+t=read_document('catalog:logix-aion-technical-catalog-v2');b=historical_bom(read_document('catalog:hardware-bom'));a={r['id']:r for r in b['assemblies']};d={r['id']:r for r in t['devices']};p={r['id']:r for r in t['components']};records={r['id']:r for rows in t.values() if isinstance(rows,list) for r in rows if isinstance(r,dict) and 'id'in r}
 inverse={v:k for k,vs in f['processor_families'].items() for v in vs}
 def flat(id):
  if id in p:return [[inverse.get(id,id),1]]

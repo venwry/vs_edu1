@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const store=require('../data-store.js'),root=path.resolve(__dirname,'..'),reg=store.read('schemas/data-registry.json');
 const components=store.read('data/components.json').components,catalog=store.read('catalog:logix-aion-technical-catalog-v2'),bom=store.read('catalog:hardware-bom');
 assert.deepEqual(catalog.components,components);assert.deepEqual(bom.components,components);
-assert.equal(components.length,293);assert.equal(new Set(components.map(x=>x.id)).size,293);
+assert.equal(components.length,347);assert.equal(new Set(components.map(x=>x.id)).size,347);
 assert(!('base_parts' in catalog));assert(!('components' in store.read('data/sourcing.json')));
 const z=components.find(x=>x.id==='part.z80a');assert(z.specification.clock_mhz===4&&z.vendor==='Zilog'&&z.manufacturer==='Zilog');assert.equal(z.qualification_status,'unresolved');
 const hdd=components.find(x=>x.id==='part.hdd_5mb');assert.equal(hdd.manufacturer_part_number,'ST506');

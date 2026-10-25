@@ -1,0 +1,2592 @@
+{
+  "added_parts": [
+    "part.logix_network_cable",
+    "part.device.mono_monitor_1.documentation",
+    "part.device.mono_monitor_1.mains_cable",
+    "part.device.mono_monitor_1.signal_cable",
+    "part.device.mono_monitor_1.packout",
+    "part.device.color_monitor_1.documentation",
+    "part.device.color_monitor_1.mains_cable",
+    "part.device.color_monitor_1.signal_cable",
+    "part.device.color_monitor_1.packout",
+    "part.device.mono_monitor_2.documentation",
+    "part.device.mono_monitor_2.mains_cable",
+    "part.device.mono_monitor_2.signal_cable",
+    "part.device.mono_monitor_2.packout",
+    "part.device.color_monitor_2.documentation",
+    "part.device.color_monitor_2.mains_cable",
+    "part.device.color_monitor_2.signal_cable",
+    "part.device.color_monitor_2.packout",
+    "part.device.mono_pro.documentation",
+    "part.device.mono_pro.mains_cable",
+    "part.device.mono_pro.signal_cable",
+    "part.device.mono_pro.packout",
+    "part.device.color_pro_14.documentation",
+    "part.device.color_pro_14.mains_cable",
+    "part.device.color_pro_14.signal_cable",
+    "part.device.color_pro_14.packout",
+    "part.device.mono_pro_17.documentation",
+    "part.device.mono_pro_17.mains_cable",
+    "part.device.mono_pro_17.signal_cable",
+    "part.device.mono_pro_17.packout",
+    "part.device.base_computer.aurelia.documentation",
+    "part.device.base_computer.aurelia.mains_cable",
+    "part.device.base_computer.aurelia.packout",
+    "part.device.base_computer.aurelia_plus.documentation",
+    "part.device.base_computer.aurelia_plus.mains_cable",
+    "part.device.base_computer.aurelia_plus.packout",
+    "part.device.base_computer.artemis.documentation",
+    "part.device.base_computer.artemis.mains_cable",
+    "part.device.base_computer.artemis.packout",
+    "part.device.base_computer.artemis_pro.documentation",
+    "part.device.base_computer.artemis_pro.mains_cable",
+    "part.device.base_computer.artemis_pro.packout",
+    "part.device.base_computer.athena.documentation",
+    "part.device.base_computer.athena.mains_cable",
+    "part.device.base_computer.athena.packout",
+    "part.device.base_computer.athena_server.documentation",
+    "part.device.base_computer.athena_server.mains_cable",
+    "part.device.base_computer.athena_server.packout",
+    "part.device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism.controller_cable",
+    "part.device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism.controller_cable",
+    "part.device.storage.computer.artemis.525_inch_double_density_floppy_mechanism.controller_cable",
+    "part.device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism.controller_cable",
+    "part.device.athena.fdd.controller_cable",
+    "part.device.athena_server.fdd.controller_cable",
+    "part.logix_supplemental_distribution_media"
+  ],
+  "superseded_parts": [
+    "part.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.artemis_128_mono.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.artemis_256_color.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.artemis_256_mono.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.artemis_pro_1mb_server.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.artemis_pro_512_server.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.aurelia_color.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.aurelia_mono.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.aurelia_plus_color.bundle_cables_media_manuals_and_carton_packout",
+    "part.bundle.aurelia_plus_mono.bundle_cables_media_manuals_and_carton_packout",
+    "part.device.color_monitor_1.external_cable_and_regional_mains_packout",
+    "part.device.color_monitor_2.external_cable_and_regional_mains_packout",
+    "part.device.color_pro_14.cables_regional_mains",
+    "part.device.mono_monitor_1.external_cable_and_regional_mains_packout",
+    "part.device.mono_monitor_2.external_cable_and_regional_mains_packout",
+    "part.device.mono_pro.external_cable_and_regional_mains_packout",
+    "part.device.mono_pro_17.cables_regional_mains"
+  ],
+  "base_commit": "5684538680b2b865bb4f1f0ff697eba8991041e8",
+  "assembly_changes": {
+    "assembly.bundle.aurelia_mono": {
+      "before": [
+        {
+          "ref": "device.base_computer.aurelia",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.mono_monitor_1",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.cpm_aurelia",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.aurelia_mono.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "fe41fb47ee33cd333bd012e7492f38c11cafa75a486a12078b289bf9895b632c"
+    },
+    "assembly.bundle.aurelia_color": {
+      "before": [
+        {
+          "ref": "device.base_computer.aurelia",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_1",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.cpm_aurelia",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.aurelia_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "3eef560b068f84eff29206a379561a0a5961ca5bf1f56c49eaa9b7e3b9fc2196"
+    },
+    "assembly.bundle.aurelia_plus_mono": {
+      "before": [
+        {
+          "ref": "device.base_computer.aurelia_plus",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.mono_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.cpm_aurelia",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.aurelia_plus_mono.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "58e3e2a2f0c5c9e3272a37509f0df7b119b9e451bc2707149db274b66bea8bef"
+    },
+    "assembly.bundle.aurelia_plus_color": {
+      "before": [
+        {
+          "ref": "device.base_computer.aurelia_plus",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.cpm_aurelia",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.aurelia_plus_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "df3fdf1db7b906e1fefd3f8a10464676555234a3c055593cb31325061b1d6aef"
+    },
+    "assembly.bundle.artemis_128_mono": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.mono_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_128_mono.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "46356f3259014105d3afdd4e06ead09bd4d1df4455a68c4c8f41aa5e286c3901"
+    },
+    "assembly.bundle.artemis_128_mono.networked": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.mono_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_128_mono.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "a4a4a7fafccff6d2c9ad2547ad33c98468f52d0ef6dd42144f283311196697b7"
+    },
+    "assembly.bundle.artemis_128_color": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "b65cba985a0405aa85703397f5218c53cc825a5e91cbaac1d5f8b6ce6736d364"
+    },
+    "assembly.bundle.artemis_128_color.networked": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "3854a6464067267cc60f99820c33fab283d8bfd2b1af57128aa802fe8708d274"
+    },
+    "assembly.bundle.artemis_256_color": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_256_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "7ab53850bed24e49723205957cfe8a93adb6a012f94eb8e79542d84eea51448b"
+    },
+    "assembly.bundle.artemis_256_color.networked": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_256_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "b1722bf336b333af75964b08cd5eb2d5c9f480be070e69bb6688d51064449fd5"
+    },
+    "assembly.bundle.artemis_pro_512_server": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_256kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_pro_512_server.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "9db9997a7357e2434f885a5b58696d8fe7adc6f8ace91b39f018dc29cf8b516b"
+    },
+    "assembly.bundle.artemis_pro_1mb_server": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_256kb_x32",
+          "quantity": 4,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_pro_1mb_server.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "2d8b1310afaf603ea456f68a71815b0fac68ec06ea343010058ce5ef9398c94b"
+    },
+    "assembly.bundle.artemis_256_mono_pro": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.mono_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_256_mono.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "d04595060b2912b2783447b3e3a67dacafdd39c043c28253b0678a7e91617709"
+    },
+    "assembly.bundle.artemis_256_mono_pro.networked": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_128kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.mono_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_256_mono.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "9e06a4631985518e353899fac68536702ba863571a668e6aa78814ea0e40367f"
+    },
+    "assembly.bundle.artemis_pro_512_mono_pro": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_256kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.mono_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_pro_512_server.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "c03a4beb91a46534f9ae11b99470028e1ec7ca51893d4ee234da1375b936926b"
+    },
+    "assembly.bundle.artemis_pro_1mb_mono_pro": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.hdd_5mb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_256kb_x32",
+          "quantity": 4,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix_server",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.mono_pro",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_pro_1mb_server.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "f14225202417bdcd21de31ee62ef331c0b6cf28d972eea0a0c06d2b4aff693c7"
+    },
+    "assembly.device.mono_pro_17.comdex82": {
+      "before": [
+        {
+          "ref": "part.mono_pro_17_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.oem_17inch_core",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.deflection_60hz_upgrade",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.grayscale_dac_linear_amplifier",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.highspeed_link_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.enclosure",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.cables_regional_mains",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "9e5be7cdc525089d1f29d8e478928db29e7e50d6827bd3160ccd46a9b128fccc"
+    },
+    "assembly.bundle.artemis_budget_128": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "b65cba985a0405aa85703397f5218c53cc825a5e91cbaac1d5f8b6ce6736d364"
+    },
+    "assembly.bundle.artemis_budget_128_hdd": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.hdd_5mb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "5 MB drive; external enclosure, power and interface costed separately in budget assessment",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "e6aba2c8be646cc16e5f79eb452d85ac6a956f213b0d7cc3d0c91fc56eb6ce58"
+    },
+    "assembly.bundle.artemis_budget_128.networked": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "b3a72318075e6f1f349d9ddff5eec1f085490886497717745193f5fc362c94eb"
+    },
+    "assembly.bundle.artemis_budget_128_hdd.networked": {
+      "before": [
+        {
+          "ref": "device.base_computer.artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Main product",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.ram_64kb_x32",
+          "quantity": 2,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.artemis_video_card_16kb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.network_card_artemis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.flexibus_keyboard",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.color_monitor_2",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.rom_cartridge.aionix",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Supplied device",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.bundle.artemis_128_color.bundle_cables_media_manuals_and_carton_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "avoid double counting accessory supplied cables",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.hdd_5mb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "5 MB drive; external enclosure, power and interface costed separately in budget assessment",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "f1aefe86c88c93504d9704bfcd386aeb2c32307a0618bcf250f80d44049d2f34"
+    },
+    "device.mono_monitor_1": {
+      "before": [
+        {
+          "ref": "part.ball_tv90_crt",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.aurelia_monitor_dac",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_1.video_receiver_and_sync_circuitry",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_1.video_amplifier",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_1.hv_deflection_and_psu_not_included_by_oem",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_1.monitor_enclosure",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_monitor_1.passives_protection_and_internal_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_1.external_cable_and_regional_mains_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "e74092988ab1b1c74a037b06b7feb93f53f9473e267ca397bad544b6a1e126bd"
+    },
+    "device.color_monitor_1": {
+      "before": [
+        {
+          "ref": "part.sony_kv1204_display_assembly",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.color_monitor_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.color_monitor_1.video_link_receiver",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.color_monitor_1.rgb_dac_and_amplifiers_not_included_by_oem",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.color_monitor_1.monitor_enclosure",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.color_monitor_1.passives_protection_and_internal_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.color_monitor_1.external_cable_and_regional_mains_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "a620c85b1605c77deffd72e21e042edd3104bfe6116d970a2e62385d32f636c6"
+    },
+    "device.mono_monitor_2": {
+      "before": [
+        {
+          "ref": "part.motorola_ds3000_140a_crt",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.mono_monitor2_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_2.video_link_receiver_and_grayscale_amplifier",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_2.hv_deflection_and_psu_not_included_by_oem",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_2.monitor_enclosure",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_monitor_2.passives_protection_and_internal_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.mono_monitor_2.external_cable_and_regional_mains_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "58af656d2485c76a5bb49d5a8d116697921a3630daadf31adb30f30a23c65b95"
+    },
+    "device.color_monitor_2": {
+      "before": [
+        {
+          "ref": "part.medium_resolution_rgb_crt",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.color_monitor_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.color_monitor_2.video_receiver_and_rgb_amplifiers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.color_monitor_2.hv_deflection_and_psu_not_included_by_oem",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.color_monitor_2.monitor_enclosure",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.color_monitor_2.passives_protection_and_internal_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.device.color_monitor_2.external_cable_and_regional_mains_packout",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "7e4b34bab8a8863ab39f7b3ed81a9fa528c0052dbfd177cbe507726b35b3eb1a"
+    },
+    "device.mono_pro": {
+      "before": [
+        {
+          "ref": "part.brimar_m36_141w_crt",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.mono_pro_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.mono_pro_yoke",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.mono_pro_hv_deflection_psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.mono_pro_precision_ladder",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.mono_pro_video_amplifier",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.mono_pro_link_receiver",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.mono_pro_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.mono_pro_enclosure",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.passives_protection_and_internal_harnesses",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro.external_cable_and_regional_mains_packout",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "d31ab32fe714d1ae62a15ac78f835b03aad3242b1db39e6a333c002fbe17c26f"
+    },
+    "device.color_pro_14": {
+      "before": [
+        {
+          "ref": "part.nec_pc8853_display_assembly",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.color_pro_monitor_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.color_pro_14.rgb_dac_amplifiers",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.color_pro_14.digital_receiver_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.color_pro_14.timing_adaptation_components",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.color_pro_14.enclosure",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.color_pro_14.cables_regional_mains",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "164fbf209f6338f8d6e44a181d44c28c3f65fa6288c6a7d6177fd35a8954f0f5"
+    },
+    "device.mono_pro_17": {
+      "before": [
+        {
+          "ref": "part.mono_pro_17_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.oem_17inch_core",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.deflection_60hz_upgrade",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.grayscale_dac_linear_amplifier",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.highspeed_link_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.enclosure",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.device.mono_pro_17.cables_regional_mains",
+          "quantity": 1,
+          "unit": "each",
+          "role": "included component",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "9e5be7cdc525089d1f29d8e478928db29e7e50d6827bd3160ccd46a9b128fccc"
+    },
+    "device.base_computer.aurelia": {
+      "before": [
+        {
+          "ref": "part.z80a",
+          "quantity": 1,
+          "unit": "each",
+          "role": "CPU",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.flexibus_host_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "three independent host ports; die port count unresolved",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia.floppy_controller_data_separator_and_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia.mainboard_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.enclosure_and_chassis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.boot_rom_chips",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia.clock_reset_interrupts_and_bus_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia.connectors_passives_fasteners_and_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.aurelia_system_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "DMA, memory-bank control and independent system refresh",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia.system_controller_interface_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "System controller interface, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.subsystem.aurelia.base_memory",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Permanently fitted system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.subsystem.aurelia.video",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Permanently fitted video subsystem",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "a1ecca0bb73b37cdf79b812eec46fc4cd2f0afdacfc44bb6bfc79c8367cbc707"
+    },
+    "device.storage.computer.aurelia.525_inch_single_density_floppy_mechanism": {
+      "before": [
+        {
+          "ref": "part.computer.aurelia.525_inch_single_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "9e30ead77bab0293ad2c8e6ab4b45868e877eebfcdbc5d774bf87acf1bf1a271"
+    },
+    "device.base_computer.aurelia_plus": {
+      "before": [
+        {
+          "ref": "part.z80b",
+          "quantity": 1,
+          "unit": "each",
+          "role": "CPU",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.flexibus_host_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "three independent host ports; die port count unresolved",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.floppy_controller_data_separator_and_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.mainboard_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.enclosure_and_chassis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.boot_rom_chips",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.clock_reset_interrupts_and_bus_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.connectors_passives_fasteners_and_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.aurelia_system_controller",
+          "quantity": 1,
+          "unit": "each",
+          "role": "DMA, memory-bank control and independent system refresh",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.aurelia_plus.system_controller_interface_pcb_test",
+          "quantity": 1,
+          "unit": "each",
+          "role": "System controller interface, PCB and test allowance",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.subsystem.aurelia_plus.base_memory",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Permanently fitted system RAM",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.subsystem.aurelia_plus.video",
+          "quantity": 1,
+          "unit": "each",
+          "role": "Permanently fitted video subsystem",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "eb9cc674ea217321bb861ee5ef8e5c1b83962447104210b27c0fc9ae610e8f12"
+    },
+    "device.storage.computer.aurelia_plus.525_inch_double_density_floppy_mechanism": {
+      "before": [
+        {
+          "ref": "part.computer.aurelia_plus.525_inch_double_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "41fd7fcd5bb4b65274555331e5a942d08f67eddac02ff3513e78f3aeb628fa1b"
+    },
+    "device.base_computer.artemis": {
+      "before": [
+        {
+          "ref": "part.erav1_6mhz",
+          "quantity": 1,
+          "unit": "each",
+          "role": "CPU",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_dma",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_mmu",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_fdd_hdd_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.flexibus_host_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis.paired_bank_dram_controller_refresh_and_data_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis.mainboard_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis.psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis.enclosure_and_chassis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis.boot_rom_chips",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis.clock_reset_interrupts_mapper_and_bus_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis.connectors_passives_fasteners_and_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "0dd5f0c866c16bce0192c34d418565cae5d47e69ab17686f89f285437ccf3e63"
+    },
+    "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism": {
+      "before": [
+        {
+          "ref": "part.computer.artemis.525_inch_double_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "794567276548b1876e5361693328c43110a005dd6ffd3a931a73c87e72d92cc0"
+    },
+    "device.base_computer.artemis_pro": {
+      "before": [
+        {
+          "ref": "part.erav1_8mhz",
+          "quantity": 1,
+          "unit": "each",
+          "role": "CPU",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.artemis_dma",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_mmu",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.artemis_fdd_hdd_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.flexibus_host_controller",
+          "quantity": null,
+          "unit": "each",
+          "role": "chipset quantity/integration pending",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis_pro.paired_bank_dram_controller_refresh_and_data_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis_pro.mainboard_pcb",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis_pro.psu",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis_pro.enclosure_and_chassis",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.computer.artemis_pro.boot_rom_chips",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis_pro.clock_reset_interrupts_mapper_and_bus_buffers",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        },
+        {
+          "ref": "part.computer.artemis_pro.connectors_passives_fasteners_and_harnesses",
+          "quantity": null,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "unresolved"
+        }
+      ],
+      "after_sha256": "7d2ef70ce2542a2c8ddf467db17238f26fcd31111183853de0fab33d9356bd2b"
+    },
+    "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism": {
+      "before": [
+        {
+          "ref": "part.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "224eaf0ec3cf300c8d2f15568733a3c6483e70bfbc3e907ceb45b4a433bdfc1e"
+    },
+    "device.base_computer.athena": {
+      "before": [
+        {
+          "ref": "part.era2_12mhz",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.athena.bios",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.athena.mainboard_set",
+          "quantity": 1,
+          "unit": "each",
+          "role": "functional set",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.athena.system_rom",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "99ae7a119f0532300bde94e34d7a827fe0f214fa1114ef6fe1c9c7b441144fcd"
+    },
+    "device.athena.fdd": {
+      "before": [
+        {
+          "ref": "part.athena.fdd",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "ce4b3c66be69c4a35a4b81d91928779ac61ebeb54fddb65010fde66e6d1657f8"
+    },
+    "device.base_computer.athena_server": {
+      "before": [
+        {
+          "ref": "part.era2_12mhz",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.athena_server.bios",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "part.athena_server.mainboard_set",
+          "quantity": 1,
+          "unit": "each",
+          "role": "functional set",
+          "condition": "always",
+          "quantity_status": "defined"
+        },
+        {
+          "ref": "device.athena_server.system_rom",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "a64e28c4ae4a035a8c2fdba6c6ec633846150706d5e6e92e34568bc2380419eb"
+    },
+    "device.athena_server.fdd": {
+      "before": [
+        {
+          "ref": "part.athena_server.fdd",
+          "quantity": 1,
+          "unit": "each",
+          "role": "",
+          "condition": "always",
+          "quantity_status": "defined"
+        }
+      ],
+      "after_sha256": "2aa66bb4a552e3902d95b4130d599d1fcf4107c427fbecc2db6aa9e68ac0bd57"
+    }
+  }
+}

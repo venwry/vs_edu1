@@ -113,3 +113,7 @@ suite: 21/22, with the pre-existing timeline pricing-link failure. Python valida
 Fourteen UI snapshots were updated for the explicit identity, composition and date
 changes; derived compatibility composition fields are hidden beside their source
 histories to avoid duplicate details.
+
+The approved follow-up in PRODUCT_COMPLETION.md fills snapshot-derived product
+dates/contents and changes device delivery scope. It supersedes the prior missing
+product/date counts and unchanged-BOM statement; financial files remain unchanged.

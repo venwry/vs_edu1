@@ -35,7 +35,7 @@ function project(input){
  function legacyOffer(p){
   const o=clone(p);o.bom_assembly_ref=p.hardware_assembly_ref;
   o.included_devices=(p.connected_devices||[]).map(e=>e.device_ref);o.included_software=softwareFor(p);o.included_services=(p.attached_products||[]).filter(e=>e.service_ref);
-  o.manufacturing_variants=(p.revisions||[]).map(v=>({effective_from:v.effective_from,assembly_ref:v.hardware_assembly_ref}));
+  o.manufacturing_variants=(p.revisions||[]).filter(v=>v.hardware_assembly_ref).map(v=>({effective_from:v.effective_from,assembly_ref:v.hardware_assembly_ref}));
   const ram=(p.connected_devices||[]).filter(e=>records[e.device_ref]?.category==='memory_expansion');
   if(p.main_product&&ram.length){const e=ram[0],spec=records[e.device_ref].specification;o.computer_configuration={ram_kb:ram.reduce((n,e)=>n+e.quantity*records[e.device_ref].specification.capacity_kb,0),module_ref:e.device_ref,populated_modules:e.quantity,populated_banks:e.quantity/2};}
   return o;
