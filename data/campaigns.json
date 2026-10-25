@@ -239,7 +239,22 @@
         "BPI module-upgrade credits and incremental support; independently accounted, not Logix hardware manufacturing cost"
       ],
       "treatment": "No fabricated campaign total and no automatic per-unit allocation. Reuse existing recurring course costs; do not charge Academy teaching twice. Free station supply creates no content-license revenue; reach and uptake are not guaranteed."
-    }
+    },
+    "id": "campaign.ncc1978",
+    "launch_date": "1978-06-05",
+    "main_launch_event_ref": "event.aurelia_launch",
+    "event_refs": [
+      "event.aurelia_launch",
+      "event.aurelia_campaign_teaser",
+      "event.aurelia_campaign_advert",
+      "event.aurelia_campaign_preparation",
+      "event.ncc78_sessions_media",
+      "event.bpi_pilot",
+      "event.bpi_qualification",
+      "event.bpi_dealer_program",
+      "event.bpi_year_end",
+      "event.bpi_expansion"
+    ]
   },
   "ncc_1979_campaign": {
     "metadata": {
@@ -564,12 +579,24 @@
       ],
       "treatment": "Operating programme expenditure, not unit hardware BOM. No fabricated zero budget or assumed OEM sales receipts. BPI, Tandy and independent suppliers account for their own receipts.",
       "forecast_cutoff": "The original forecast through May 31, 1979 remains unchanged. sales_forecast.json separately extends demand and delivery projections through November 30 with explicit June pricing, campaign effects, substitution and capacity assumptions. No effects are applied retroactively; OEM adoption targets are not shipments. A separate COMDEX-to-NCC 1980 extension now reaches May 18 with product-specific demand and Academy capacity; prior period forecasts are unchanged."
-    }
+    },
+    "id": "campaign.ncc1979",
+    "launch_date": "1979-06-04",
+    "main_launch_event_ref": "event.ncc79_campaign",
+    "event_refs": [
+      "event.ncc79_campaign",
+      "event.oem79_briefings",
+      "event.open79_profiles",
+      "event.open79_workshop",
+      "event.open79_roadshows",
+      "event.open79_delivery",
+      "event.open79_targets",
+      "event.open80_results"
+    ]
   },
   "ncc_1980_campaign": {
     "title": "Artemis. A new generation. A familiar way to work.",
     "launch_date": "1980-05-19",
-    "event_ref": "event.artemis_launch",
     "status": "Accepted campaign plan; demonstrations and performance claims require validation",
     "compatibility_policy": {
       "announced": "1980-05-19",
@@ -682,14 +709,17 @@
       "incremental_budget_usd": 435000,
       "measurement": "Track dealer enquiries and conversions by monitor bundle. 6/12/18% assumed Artemis intent uplift combines display appeal and this campaign; not an empirical ROI claim."
     },
-    "artemis_configuration_policy": "Artemis 128: 16 KiB card with Mono II or Color II. Artemis 256: 32 AION 64 Kbit system RAM chips and 32 KiB card with Mono Pro or Color II. Mono Pro requires the professional card; Color II uses legacy timings. See artemis_tiers.json."
+    "artemis_configuration_policy": "Artemis 128: 16 KiB card with Mono II or Color II. Artemis 256: 32 AION 64 Kbit system RAM chips and 32 KiB card with Mono Pro or Color II. Mono Pro requires the professional card; Color II uses legacy timings. See artemis_tiers.json.",
+    "id": "campaign.ncc1980",
+    "main_launch_event_ref": "event.artemis_launch",
+    "event_refs": [
+      "event.artemis_launch"
+    ]
   },
   "comdex_1979_campaign": {
     "metadata": {
       "title": "COMDEX 1979 campaign and presentation",
       "status": "Accepted alternative-history campaign; demonstrations require qualification, not claimed measured results",
-      "launch_date": "1979-12-03",
-      "launch_event_ref": "event.plus_launch",
       "date_basis": "Existing scenario conference date"
     },
     "messages": {
@@ -865,7 +895,13 @@
       "budget_usd": null,
       "status": "Campaign, venue/AV, staffing, demo equipment, printing, press, travel and workshop budgets remain to be approved; no ROI claim.",
       "forecast_boundary": "Original November 30 forecasts remain unchanged, with no separate confidential-preparation uplift. sales_forecast.json now contains a distinct December–May 18 extension with explicit campaign, price-premium, substitution and capacity assumptions; no campaign delivery guarantee."
-    }
+    },
+    "id": "campaign.comdex1979",
+    "launch_date": "1979-12-03",
+    "main_launch_event_ref": "event.plus_launch",
+    "event_refs": [
+      "event.plus_launch"
+    ]
   },
   "comdex_1982_campaign": {
     "id": "campaign.comdex1982",
@@ -873,7 +909,6 @@
     "headline": "A clear view of your next design.",
     "subheadline": "Autodesk AutoCAD on Logix Artemis PRO. From drawing to plotted output.",
     "continuity": "NCC introduced Pointy ideas with a solid point. COMDEX demonstrates the professional work enabled by the mouse, displays and independent software.",
-    "presentation_date": "1982-11-29",
     "location": "COMDEX, Las Vegas",
     "historical_date_source": "https://www.fourmilab.ch/fourmilog/archives/2017-01/001653.html",
     "offering_ref": "product.comdex82_artemis_autocad",
@@ -1014,7 +1049,16 @@
         "contingency": 10
       },
       "accounting": "Separate from the $253000 NCC campaign provision. Credit shared staff and reused demo equipment; do not charge capital twice or invent sales uplift. Team Edition adoption subsidy remains separate unit economics."
-    }
+    },
+    "launch_date": "1982-11-29",
+    "main_launch_event_ref": "event.autodesk_comdex",
+    "event_refs": [
+      "event.autodesk_comdex",
+      "event.comdex82_dealer_readiness",
+      "event.comdex82_press_invitations",
+      "event.comdex82_customer_followup",
+      "event.comdex82_reference_cases"
+    ]
   },
   "ncc_1982_campaign": {
     "id": "campaign.ncc1982",
@@ -1178,11 +1222,58 @@
     "budget_subtotal_usd": 220000,
     "contingency_rate": 0.15,
     "contingency_usd": 33000.0,
-    "budget_total_usd": 253000.0
+    "budget_total_usd": 253000.0,
+    "launch_date": "1982-06-07",
+    "main_launch_event_ref": "event.ncc82_graphics_mouse",
+    "event_refs": [
+      "event.ncc82_graphics_mouse",
+      "event.ncc82_dealer_preparation",
+      "event.ncc82_press_preview",
+      "event.ncc82_developer_sessions",
+      "event.ncc82_followup",
+      "event.ncc82_case_studies"
+    ]
   },
   "team_development_program": {
     "campaign_message": "Complex products. Whole teams. One development environment.",
     "campaign_promise": "Your team’s development environment should outlast any single computer architecture.",
-    "claim_policy": "Robustness is a design goal demonstrated by recovery and reproducible builds, not an untested most-robust comparison. No write-once/run-anywhere or Apple/Commodore launch claim."
+    "claim_policy": "Robustness is a design goal demonstrated by recovery and reproducible builds, not an untested most-robust comparison. No write-once/run-anywhere or Apple/Commodore launch claim.",
+    "id": "campaign.comdex1981",
+    "launch_date": "1981-11-19",
+    "main_launch_event_ref": "event.team_launch",
+    "event_refs": [
+      "event.team_launch",
+      "event.team_engineering",
+      "event.team_pilots",
+      "event.team_dealer_training",
+      "event.team_followup"
+    ]
+  },
+  "comdex_1980_campaign": {
+    "title": "AION shifts major software development to 32-bit Artemis",
+    "id": "campaign.comdex1980",
+    "launch_date": "1980-11-19",
+    "main_launch_event_ref": "event.software32",
+    "event_refs": [
+      "event.software32"
+    ]
+  },
+  "ncc_1981_campaign": {
+    "title": "Networked business-computing platform presented",
+    "id": "campaign.ncc1981",
+    "launch_date": "1981-05-04",
+    "main_launch_event_ref": "event.network_launch",
+    "event_refs": [
+      "event.network_launch"
+    ]
+  },
+  "ncc_1983_campaign": {
+    "title": "NCC 1983: planned ERA² and Logix Athena premiere",
+    "id": "campaign.ncc1983",
+    "launch_date": "1983-05-16",
+    "main_launch_event_ref": "event.ncc83_athena_premiere",
+    "event_refs": [
+      "event.ncc83_athena_premiere"
+    ]
   }
 }

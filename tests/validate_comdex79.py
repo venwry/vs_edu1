@@ -5,8 +5,8 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 def read(n):return read_document(n, root=R)
 c=read('generated/catalogs/comdex-1979-campaign.json');s=read('generated/catalogs/logix-aion-story.json');t=read('generated/catalogs/logix-aion-technical-catalog-v2.json')
-e=next(e for p in s['phases'] for e in p['events'] if e['id']==c['metadata']['launch_event_ref'])
-assert e['date']['start']==c['metadata']['launch_date']=='1979-12-03'
+e=next(e for p in s['phases'] for e in p['events'] if e['id']==c['main_launch_event_ref'])
+assert e['date']['start']==c['launch_date']=='1979-12-03'
 st=c['premiere']['stages'];assert sum(x['minutes'] for x in st)==c['premiere']['duration_minutes_before_questions']==45
 ids=[x['id'] for x in st];assert ids.index('bpi')==ids.index('abacus_2')+1
 assert 'head of independent BPI' in st[ids.index('bpi')]['description']

@@ -152,7 +152,7 @@ for pack in load('generated/catalogs/ncc-1982-campaign.json')['packages']:
  add(pack['id'],name=pack['name'],group='Application bundles',start='1982-06-07',parts=[{'cost_ref':r,'quantity':1} for r in pack['components']],unit='one upgrade package; host excluded',note=pack['notes'])
 # Approved use-case bundles, both generations, use exact component references.
 for b in catalog['proposed_bundles']:
- add(b['id'],b['name'],'Application bundles',start=b['earliest_offer_date'],parts=[{'cost_ref':r,'quantity':1} for r in [b['base_bundle_ref']]+b['included_software']+b['included_devices']],note='Approved commercial bundle. Base system includes one year Regular Support; no second support charge.')
+ add(b['id'],b['name'],'Application bundles',start=b['composition_history'][0]['valid_from'],parts=[{'cost_ref':r,'quantity':1} for r in [b['base_bundle_ref']]+b['included_software']+b['included_devices']],note='Approved commercial bundle. Base system includes one year Regular Support; no second support charge.')
 def package(id,name,base,software,devices=[],start='1980-05-19',note=''):
  return add('product.proposed_artemis_'+id,'Artemis — '+name,'Application bundles',start=start,parts=[{'cost_ref':r,'quantity':1} for r in [base]+software+devices],note=note or 'Approved commercial package; RAM selection is not a measured software minimum.')
 office=package('office','Office productivity','product.artemis_128_mono',['software.business_tools_artemis','edition.abacus_2.era'])

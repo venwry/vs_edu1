@@ -129,9 +129,9 @@ function bundleItems(b){
 }
 function buildBundle(c){
  const bundles=[...catalog.offered_bundles,...(catalog.proposed_bundles||[])].filter(b=>b.computer_ref===c.id||(b.also_compatible_with||[]).includes(c.id));
- const select=$('bundle-select'),chosen=select.value;select.innerHTML=bundles.map(b=>`<option value="${esc(b.id)}">${b.status==='proposed'?'Proposed':'Existing'} · ${esc(b.name)}</option>`).join('');if(bundles.some(b=>b.id===chosen))select.value=chosen;
- const b=rec(select.value),status=b.status==='proposed'?'Proposed package':'Existing offer';
- add('bundle',b.name,status,2,1,'Bundle',b.description||b.name,[['Status',status],['Available from',b.earliest_offer_date||b.introduced?.event_start_date],['Pricing',b.pricing||'No bundle price specified']],b.notes||[]);
+ const select=$('bundle-select'),chosen=select.value;select.innerHTML=bundles.map(b=>`<option value="${esc(b.id)}">${esc(b.name)}</option>`).join('');if(bundles.some(b=>b.id===chosen))select.value=chosen;
+ const b=rec(select.value),status='Product';
+ add('bundle',b.name,status,2,1,'Bundle',b.description||b.name,[['Status',status],['Available from',b.composition_history?.[0]?.valid_from],['Pricing',b.pricing||'No bundle price specified']],b.notes||[]);
  bundleItems(b).forEach((item,i)=>{const x=rec(item.id),col=i%3+1,row=Math.floor(i/3)+2;
  if(x.id.startsWith('computer.'))add(x.id,x.name,x.memory.ram_kb+' KB base RAM',col,row,'Included computer',x.form_factor,facts({processor:x.processor,ram_kb:x.memory.ram_kb,video_ram_kb:x.memory.video_ram_kb}),['Bundle specifications are independent of the exploratory RAM-card and networking controls.']);
  else{product(x.id,col,row);const n=nodes[nodes.length-1];n.category='Included '+label(x.category);if(item.duration){n.sub=item.duration+' year included';n.facts.push(['Included duration',item.duration+' year']);}if(x.subcomponents)n.extra=x.subcomponents.map(s=>s.name+': '+s.description);}
@@ -217,7 +217,7 @@ window.renderSpecification=function(data,records={}){
    if(v.length>1&&keys.length>1&&keys.length<=5&&v.every(x=>x&&typeof x==='object'&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k)&&simple(x[k])&&scalar(x[k]).length<100)))return '<div class="spec-table-scroll"><table><thead><tr>'+keys.map(k=>'<th scope="col">'+esc(label(k))+'</th>').join('')+'</tr></thead><tbody>'+v.map(x=>'<tr>'+keys.map(k=>'<td>'+esc(scalar(x[k]))+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
    return '<ul class="spec-list">'+v.filter(x=>!empty(x)).map(x=>'<li>'+(simple(x)?esc(scalar(x)):render(x))+'</li>').join('')+'</ul>';
   }
-  const entries=Object.entries(v).filter(([k,x])=>!empty(x)&&!(v.composition_history&&['bom_assembly_definition','main_product','connected_devices','attached_products','revisions','included_devices','included_software','included_services','manufacturing_variants'].includes(k))),short=entries.filter(([k,x])=>simple(x)&&scalar(x).length<=65&&!/status|description|note|qualifier/i.test(k)),rest=entries.filter(e=>!short.includes(e));
+  const entries=Object.entries(v).filter(([k,x])=>!empty(x)&&!(v.launch_campaign_ref&&k==='introduced')&&!(v.composition_history&&['bom_assembly_definition','main_product','connected_devices','attached_products','revisions','included_devices','included_software','included_services','manufacturing_variants'].includes(k))),short=entries.filter(([k,x])=>simple(x)&&scalar(x).length<=65&&!/status|description|note|qualifier/i.test(k)),rest=entries.filter(e=>!short.includes(e));
   return (short.length?'<div class="spec-property-groups">'+table(short)+'</div>':'')+rest.map(([k,x])=>simple(x)?'<section class="spec-explanation"><h4>'+esc(label(k))+'</h4>'+render(x)+'</section>':'<details class="spec-section"'+(/^(text|bitmap)[_ ]modes$/.test(k.toLowerCase())?' open':'')+'><summary>'+esc(label(k))+'</summary>'+render(x)+'</details>').join('');
  }
  return '<div class="structured-spec"><div class="spec-controls"><button type="button" data-spec-expand="true">Expand all</button><button type="button" data-spec-expand="false">Collapse all</button></div>'+render(data)+'</div>';

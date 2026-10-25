@@ -35,7 +35,11 @@
         "acceptance_gates",
         "business_sessions",
         "commercial_configurations",
-        "cost_boundary"
+        "cost_boundary",
+        "id",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
       ],
       "properties": {
         "metadata": {
@@ -73,6 +77,24 @@
         },
         "cost_boundary": {
           "type": "object"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^campaign\\."
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -94,7 +116,11 @@
         "targets",
         "evidence",
         "disclosure_policy",
-        "economics"
+        "economics",
+        "id",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
       ],
       "properties": {
         "metadata": {
@@ -141,6 +167,24 @@
         },
         "economics": {
           "type": "object"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^campaign\\."
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -150,7 +194,6 @@
       "required": [
         "title",
         "launch_date",
-        "event_ref",
         "status",
         "compatibility_policy",
         "presentation",
@@ -161,17 +204,18 @@
         "launch_gates",
         "sales_measurement",
         "mono_pro_campaign",
-        "artemis_configuration_policy"
+        "artemis_configuration_policy",
+        "id",
+        "main_launch_event_ref",
+        "event_refs"
       ],
       "properties": {
         "title": {
           "type": "string"
         },
         "launch_date": {
-          "type": "string"
-        },
-        "event_ref": {
-          "type": "string"
+          "type": "string",
+          "format": "date"
         },
         "status": {
           "type": "string"
@@ -205,6 +249,20 @@
         },
         "artemis_configuration_policy": {
           "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^campaign\\."
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -224,7 +282,11 @@
         "strategy",
         "disclosure",
         "metrics",
-        "economics"
+        "economics",
+        "id",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
       ],
       "properties": {
         "metadata": {
@@ -265,6 +327,24 @@
         },
         "economics": {
           "type": "object"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^campaign\\."
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -277,7 +357,6 @@
         "headline",
         "subheadline",
         "continuity",
-        "presentation_date",
         "location",
         "historical_date_source",
         "offering_ref",
@@ -292,11 +371,15 @@
         "commercial_tactics",
         "measurement",
         "claim_limits",
-        "budget"
+        "budget",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
       ],
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "pattern": "^campaign\\."
         },
         "status": {
           "type": "string"
@@ -308,9 +391,6 @@
           "type": "string"
         },
         "continuity": {
-          "type": "string"
-        },
-        "presentation_date": {
           "type": "string"
         },
         "location": {
@@ -357,6 +437,20 @@
         },
         "budget": {
           "type": "object"
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -390,11 +484,15 @@
         "budget_subtotal_usd",
         "contingency_rate",
         "contingency_usd",
-        "budget_total_usd"
+        "budget_total_usd",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
       ],
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "pattern": "^campaign\\."
         },
         "title": {
           "type": "string"
@@ -473,6 +571,20 @@
         },
         "budget_total_usd": {
           "type": "number"
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -482,7 +594,11 @@
       "required": [
         "campaign_message",
         "campaign_promise",
-        "claim_policy"
+        "claim_policy",
+        "id",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
       ],
       "properties": {
         "campaign_message": {
@@ -493,8 +609,128 @@
         },
         "claim_policy": {
           "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^campaign\\."
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
       }
+    },
+    "comdex_1980_campaign": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^campaign\\."
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "title",
+        "id",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
+      ],
+      "additionalProperties": false
+    },
+    "ncc_1981_campaign": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^campaign\\."
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "title",
+        "id",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
+      ],
+      "additionalProperties": false
+    },
+    "ncc_1983_campaign": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^campaign\\."
+        },
+        "launch_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "main_launch_event_ref": {
+          "type": "string"
+        },
+        "event_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "title",
+        "id",
+        "launch_date",
+        "main_launch_event_ref",
+        "event_refs"
+      ],
+      "additionalProperties": false
     }
   }
 }

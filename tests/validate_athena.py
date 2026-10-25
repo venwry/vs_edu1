@@ -30,7 +30,7 @@ for product, capacity, modules, module_size, disk in [
     assert computer['io_and_expansion']['rom_eeprom_cartridge_slots']['count'] == 0
     assert computer['io_and_expansion']['eeprom_bios']['included']
     assert computer['memory']['os_rom']['capacity_bytes'] == 262144
-    assert not config['shipping_configuration']
+    assert config['shipping_configuration'] # Product ships from its first composition version.
     bom = next(b for b in plan['computer_boms'] if b['computer_ref'] == product)
     rom=records['part.'+product.split('.')[1]+'.system_rom']
     assert rom['specification']['capacity_bytes']==computer['memory']['os_rom']['capacity_bytes']

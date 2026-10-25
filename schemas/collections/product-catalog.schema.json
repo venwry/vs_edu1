@@ -25,9 +25,9 @@
           "id",
           "name",
           "category",
-          "introduced",
           "computer_line",
-          "catalogue_status"
+          "launch_campaign_ref",
+          "composition_history"
         ],
         "properties": {
           "id": {
@@ -37,11 +37,6 @@
           "name": {
             "type": [
               "string"
-            ]
-          },
-          "introduced": {
-            "type": [
-              "object"
             ]
           },
           "technology_refs": {
@@ -86,11 +81,6 @@
               "string"
             ]
           },
-          "catalogue_status": {
-            "type": [
-              "string"
-            ]
-          },
           "technical_profile": {
             "type": [
               "object"
@@ -123,17 +113,6 @@
             ]
           },
           "role": {
-            "type": [
-              "string"
-            ]
-          },
-          "availability": {
-            "type": [
-              "object",
-              "string"
-            ]
-          },
-          "product_status": {
             "type": [
               "string"
             ]
@@ -244,16 +223,6 @@
               "array"
             ]
           },
-          "availability_status": {
-            "type": [
-              "string"
-            ]
-          },
-          "shipping_date": {
-            "type": [
-              "null"
-            ]
-          },
           "option_for": {
             "type": [
               "string"
@@ -279,17 +248,7 @@
               "object"
             ]
           },
-          "status": {
-            "type": [
-              "string"
-            ]
-          },
           "description": {
-            "type": [
-              "string"
-            ]
-          },
-          "earliest_offer_date": {
             "type": [
               "string"
             ]
@@ -315,11 +274,6 @@
             ]
           },
           "timeline": {
-            "type": [
-              "string"
-            ]
-          },
-          "campaign_ref": {
             "type": [
               "string"
             ]
@@ -447,9 +401,16 @@
                 },
                 "bom_assembly_metadata": {
                   "type": "object"
+                },
+                "date_basis": {
+                  "type": "string"
                 }
               }
             }
+          },
+          "launch_campaign_ref": {
+            "type": "string",
+            "pattern": "^campaign\\."
           }
         },
         "allOf": [

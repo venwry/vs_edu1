@@ -21,8 +21,8 @@ for id,n in expected.items():
   assert any(l.get('placements') for l in ls)
   assert not any(l['ref'] in p for l in ls)
   assert 'legacy_assembly_ref' not in h
-assert p['computer_system.proposed_artemis_pro_small_office']['commercial_terms']['shipping_date'] is None
-for id in ['computer_system.retail.connected_office','computer_system.retail.development_team']:assert p[id]['catalogue_status']=='quotation_only'
+assert 'shipping_date' not in p['computer_system.proposed_artemis_pro_small_office']['commercial_terms']
+for id in ['computer_system.retail.connected_office','computer_system.retail.development_team']:assert p[id]['commercial_terms']['purchase_method']=='quotation'
 assert {x['product_ref'] for x in source['data/product-catalog.json']['catalog_editions'][0]['solutions']}>= {'computer_system.retail.connected_office','computer_system.retail.development_team'}
 # Existing bookmarked IDs and archived price references resolve to the restored records.
 reg=registry()

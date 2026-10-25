@@ -15,7 +15,18 @@ def validate_products(source, projected):
         if key in groups and groups[key]!=value:raise ValueError('Inconsistent software line metadata: '+key)
         groups[key]=value
         if any(k in e for k in ['product_ref','delivery','sold_separately','physical_media_refs']):raise ValueError('Duplicate legacy software ownership')
+    campaigns={c['id']:c for c in source['data/campaigns.json'].values() if isinstance(c,dict) and 'id' in c}
+    events={e['id']:e for e in source['data/events.json']['events']}
+    for campaign in campaigns.values():
+        main=campaign['main_launch_event_ref']
+        if main not in campaign['event_refs'] or any(e not in events for e in campaign['event_refs']):raise ValueError('Invalid campaign event reference')
+        if campaign['launch_date']!=events[main]['date']['start']:raise ValueError('Campaign launch date differs from main event')
     for p in products:
+        if p.get('launch_campaign_ref') not in campaigns:raise ValueError('Unknown launch campaign')
+        if any(k in p for k in ['introduced','shipping_date','status','product_status','availability','availability_status','catalogue_status','earliest_offer_date']):raise ValueError('Obsolete product availability field')
+        if 'shipping_date' in p.get('commercial_terms',{}):raise ValueError('Duplicate shipment date')
+        if not p['composition_history']:raise ValueError('Product requires dated composition')
+        if p['composition_history'][0]['valid_from']<campaigns[p['launch_campaign_ref']]['launch_date']:raise ValueError('Product shipment precedes launch campaign')
         category=p['category'];lines=[l for h in p['composition_history'] for l in h['composition_definition']]
         if category not in {'computer','computer_software_bundle','expansion_kit','software','computer_system'}:raise ValueError('Invalid product category')
         prefix='computer_system.' if category=='computer_system' else 'product.'

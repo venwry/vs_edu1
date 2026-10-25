@@ -18,7 +18,7 @@ function createFamilyModel(catalog,bom,cost,familyId){
   const ram=(p.connected_devices||[]).find(e=>model.records[e.device_ref]?.category==='memory_expansion');
   const config=host.memory.configurations?.find(c=>c.module_ref===ram?.device_ref&&c.populated_modules===ram?.quantity);
   const offer={...p,included_devices:p.connected_devices.map(e=>e.device_ref),included_software:p.attached_products.filter(e=>e.software_ref).map(e=>e.software_ref),manufacturing_variants:(p.revisions||[]).map(r=>({assembly_ref:r.hardware_assembly_ref,effective_from:r.effective_from})),computer_configuration:config?{ram_configuration_id:config.id}:undefined};
-  return {id:p.id,name:p.name,group:line+' products',hostRef,ramId:config?.id,offer,cost:model.costs.get(p.id),assemblyRef:p.hardware_assembly_ref||p.id,available:p.introduced.event_start_date,planning:p.catalogue_status==='planned',professional:p.id==='product.comdex82_artemis_autocad',product:p};
+  return {id:p.id,name:p.name,group:line+' products',hostRef,ramId:config?.id,offer,cost:model.costs.get(p.id),assemblyRef:p.hardware_assembly_ref||p.id,available:p.composition_history[0].valid_from,planning:false,professional:p.id==='product.comdex82_artemis_autocad',product:p};
  });
  function state(option,revision,date){
   const host=JSON.parse(JSON.stringify(model.records[option.hostRef])),tree=walk(option.id,revision.version),refs=new Set(tree.assemblyRefs.filter(id=>model.records[id]));for(const l of tree.leaves)if(model.records[l.ref])refs.add(l.ref);
@@ -62,7 +62,7 @@ root.setupArtemisWorkbench=function(catalog,page){
   activateTab('details');
 
   const select=$('artemis-configuration');
-  const choices=model.options.map(o=>({option:o,revision:model.revisions(o).at(-1),value:o.id,label:o.name+(o.planning?' · planned':o.product.availability_status==='announced'?' · announced':o.product.catalogue_status==='qualification_pending'?' · acceptance pending':'')}));
+  const choices=model.options.map(o=>({option:o,revision:model.revisions(o).at(-1),value:o.id,label:o.name}));
   for(const group of [...new Set(model.options.map(x=>x.group))]){const g=document.createElement('optgroup');g.label=group;for(const c of choices.filter(x=>x.option.group===group)){const el=document.createElement('option');el.value=c.value;el.textContent=c.label;g.append(el);}select.append(g);}
   function initRevision(wanted){const revisions=model.revisions(option);revision=revisions.find(r=>r.id===wanted)||revisions.at(-1);select.value=option.id;initDate(params.get('evaluation'));}
   function initDate(wanted){const rows=model.assessments(option,revision);chosenDate=rows.find(r=>r.date===wanted)?.date||rows.at(-1)?.date||revision.from;}
@@ -198,7 +198,7 @@ root.setupArtemisWorkbench=function(catalog,page){
    html+='<details class="configuration-source-details"><summary>Configuration, assumptions and source records</summary>'+root.renderSpecification({configuration:option.chassis?records[option.id]:option.offer||records[option.hostRef],revision,estimate_assumptions:option.cost?.assumptions,quantity_assumptions:Object.fromEntries(Object.entries(model.cost.unresolved_quantity_assumptions||{}).filter(([k])=>s.tree.assemblyRefs.some(id=>k.startsWith(id+'|')))),estimate_status:model.cost.metadata.estimate_status},records)+'</details><p class="configuration-source-links"><a href="data/view.html?view=hardware-bom">BOM source</a> · <a href="generated/models/manufacturing-costs.json">June 15 evaluations</a>'+(option.professional?' · <a href="generated/models/manufacturing-costs.json">November 1982 CAD review</a>':'')+'</p>';
    $('configuration-bom-table').innerHTML=html;root.bindSpecificationControls($('configuration-bom-table'));bomDetails.bind($('configuration-bom-table'));
   }
-  function render(){const s=model.state(option,revision,chosenDate);const status=option.chassis?'Base computer with permanently fitted hardware only; standalone price and manufacturing cost are not established.':option.combination?'Documented host plus optional networking upgrade; no combined cost assessment is recorded.':option.planning?s.host.product_status:option.target?s.ram.validation_status:option.professional?option.offer.status:option.cost?.announced_only||option.offer?.availability_status==='announced'?'Announced; shipment date unconfirmed.':'Offered in the catalogue; engineering estimate, not confirmed shipment.';
+  function render(){const s=model.state(option,revision,chosenDate);const status='Shipment from '+option.product.composition_history[0].valid_from+'. Manufacturing costs remain engineering estimates.';
    $('configuration-status').textContent=option.name+' · '+status;
    $('configuration-stats').innerHTML=[['Processor',option.upgrade?'Host not included':processorLabel(records,s.host.processor)],['System RAM',option.upgrade?'Host not included':s.ram.ram_kb+' KiB']].map(([k,v])=>'<div><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join('');
    diagram(s);renderCosts(s);updateUrl();panel.dataset.ready='true';panel.dataset.configuration=option.id;
