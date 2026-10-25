@@ -5701,6 +5701,750 @@
       "notes": [
         "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated."
       ]
+    },
+    {
+      "id": "product.retail.connected_office",
+      "name": "Logix Connected Office",
+      "category": "computer_system",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "retail_presentation": {
+        "name": "Logix Connected Office",
+        "purpose": "Share business records and a printer between two workstations.",
+        "includes": [
+          "Artemis PRO 512 KiB / 5 MB server and two Artemis workstations",
+          "Four-port hub, three cables, BPI server and two client licences",
+          "Two Office Suite copies and shared printer"
+        ],
+        "unpriced_requirements": [
+          "Installation, backup media and recovery setup",
+          "Administrator training",
+          "Confirm Artemis PRO shipment availability"
+        ],
+        "options": [],
+        "id": "connected_office"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis_pro",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.hdd_5mb",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_256kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 3,
+              "ref": "device.network_card_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "placements": [
+                {
+                  "connected_to": "device.base_computer.artemis_pro",
+                  "used_socket": "expansion",
+                  "quantity": 1
+                },
+                {
+                  "connected_to": "device.base_computer.artemis",
+                  "used_socket": "expansion",
+                  "quantity": 2
+                }
+              ]
+            },
+            {
+              "quantity": 3,
+              "ref": "device.rom_cartridge.aionix_server",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "placements": [
+                {
+                  "connected_to": "device.base_computer.artemis_pro",
+                  "used_socket": "system_cartridge",
+                  "quantity": 1
+                },
+                {
+                  "connected_to": "device.base_computer.artemis",
+                  "used_socket": "system_cartridge",
+                  "quantity": 2
+                }
+              ]
+            },
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 2,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 4,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 4,
+              "used_socket": "ram",
+              "ref": "device.ram_64kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card_16kb",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card_16kb",
+              "ref": "device.mono_monitor_2",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 2,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "device.network_hub.4_port",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.bpi_client_server",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "edition.bpi_client_server.era_client",
+              "quantity": 2,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.business_tools_artemis",
+              "quantity": 2,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "device.flexiprint40",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "flexibus",
+              "connected_to": "device.base_computer.artemis_pro",
+              "element_type": "connected_device"
+            }
+          ]
+        }
+      ],
+      "commercial_terms": {
+        "availability_status": "announced_shipping_unconfirmed",
+        "shipping_date": null
+      },
+      "notes": [
+        "Restored as a computer system. Network cables are included by NIC devices; per-host placement and shipment qualification remain explicit. No product-level legacy cost baseline is asserted."
+      ]
+    },
+    {
+      "id": "product.retail.development_team",
+      "name": "Logix Development Team",
+      "category": "computer_system",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "retail",
+      "computer_line": null,
+      "catalogue_status": "quotation_only",
+      "introduced": {
+        "event_name": "November 1982 retail catalogue adoption",
+        "event_start_date": "1982-11-29"
+      },
+      "retail_presentation": {
+        "name": "Logix Development Team",
+        "purpose": "Equip four concurrent developers for collaborative development.",
+        "includes": [
+          "Artemis PRO 1 MiB / 5 MB server",
+          "Four Artemis 256 KiB developer workstations and eight-port hub",
+          "Team Edition: one server / four concurrent users, 20 onboarding hours and 12 first-year support hours"
+        ],
+        "unpriced_requirements": [
+          "Five network cables, installation and backup equipment/media",
+          "Validate shared compiler/SDK workstation entitlements; add only licences not covered by Team Edition",
+          "Confirm server shipment availability and storage capacity for the selected projects"
+        ],
+        "options": [
+          "Larger storage sized to project workload"
+        ],
+        "id": "development_team"
+      },
+      "composition_history": [
+        {
+          "valid_from": "1982-11-29",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis_pro",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.hdd_5mb",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 5,
+              "ref": "device.artemis_video_card",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "placements": [
+                {
+                  "connected_to": "device.base_computer.artemis_pro",
+                  "used_socket": "video_card",
+                  "quantity": 1
+                },
+                {
+                  "connected_to": "device.base_computer.artemis",
+                  "used_socket": "video_card",
+                  "quantity": 4
+                }
+              ]
+            },
+            {
+              "quantity": 4,
+              "used_socket": "ram",
+              "ref": "device.ram_256kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 5,
+              "ref": "device.network_card_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "placements": [
+                {
+                  "connected_to": "device.base_computer.artemis_pro",
+                  "used_socket": "expansion",
+                  "quantity": 1
+                },
+                {
+                  "connected_to": "device.base_computer.artemis",
+                  "used_socket": "expansion",
+                  "quantity": 4
+                }
+              ]
+            },
+            {
+              "quantity": 5,
+              "ref": "device.rom_cartridge.aionix_server",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "placements": [
+                {
+                  "connected_to": "device.base_computer.artemis_pro",
+                  "used_socket": "system_cartridge",
+                  "quantity": 1
+                },
+                {
+                  "connected_to": "device.base_computer.artemis",
+                  "used_socket": "system_cartridge",
+                  "quantity": 4
+                }
+              ]
+            },
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 4,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 8,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 8,
+              "used_socket": "ram",
+              "ref": "device.ram_128kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 4,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 4,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card",
+              "ref": "device.mono_pro",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 4,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "ref": "device.network_hub.8_port",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 1,
+              "ref": "software.aion_development_team",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Restored as a computer system. Network cables are included by NIC devices; per-host placement and shipment qualification remain explicit. No product-level legacy cost baseline is asserted."
+      ]
+    },
+    {
+      "id": "product.proposed_artemis_pro_small_office",
+      "name": "Artemis Pro Small Office",
+      "category": "computer_system",
+      "vendor": "Logix",
+      "record_kind": "commercial_product",
+      "source_group": "commercial_offerings",
+      "computer_line": null,
+      "catalogue_status": "announced",
+      "introduced": {
+        "event_name": "NCC 1981 — first recorded catalogue snapshot",
+        "event_start_date": "1981-06-15",
+        "date_precision": "day",
+        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1981; not the conference opening date or evidence of shipment."
+      },
+      "acceptance": [
+        "Composition reconstructed from saved retail/pricing snapshot constituent records; electrical qualification and actual shipment remain unconfirmed."
+      ],
+      "composition_history": [
+        {
+          "valid_from": "1981-06-15",
+          "valid_to": "1990-01-01",
+          "version_number": 1,
+          "composition_definition": [
+            {
+              "ref": "device.base_computer.artemis_pro",
+              "quantity": 1,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis_pro.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.hdd_5mb",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 1,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "ram",
+              "ref": "device.ram_256kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis_pro"
+            },
+            {
+              "quantity": 3,
+              "ref": "device.network_card_artemis",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "placements": [
+                {
+                  "connected_to": "device.base_computer.artemis_pro",
+                  "used_socket": "expansion",
+                  "quantity": 1
+                },
+                {
+                  "connected_to": "device.base_computer.artemis",
+                  "used_socket": "expansion",
+                  "quantity": 2
+                }
+              ]
+            },
+            {
+              "quantity": 3,
+              "ref": "device.rom_cartridge.aionix_server",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "placements": [
+                {
+                  "connected_to": "device.base_computer.artemis_pro",
+                  "used_socket": "system_cartridge",
+                  "quantity": 1
+                },
+                {
+                  "connected_to": "device.base_computer.artemis",
+                  "used_socket": "system_cartridge",
+                  "quantity": 2
+                }
+              ]
+            },
+            {
+              "ref": "device.base_computer.artemis",
+              "quantity": 2,
+              "element_type": "main_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "quantity": 4,
+              "used_socket": "internal_drive",
+              "ref": "device.storage.computer.artemis.525_inch_double_density_floppy_mechanism",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 4,
+              "used_socket": "ram",
+              "ref": "device.ram_64kb_x32",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "video_card",
+              "ref": "device.artemis_video_card_16kb",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "flexibus",
+              "ref": "device.flexibus_keyboard",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "connected_to": "device.base_computer.artemis"
+            },
+            {
+              "quantity": 2,
+              "used_socket": "video_out",
+              "connected_to": "device.artemis_video_card_16kb",
+              "ref": "device.mono_monitor_2",
+              "element_type": "connected_device",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "duration_years": 1,
+              "quantity": 2,
+              "ref": "service.regular_support",
+              "element_type": "attached_product",
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined"
+            },
+            {
+              "ref": "device.network_hub.4_port",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.bpi_client_server",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "edition.bpi_client_server.era_client",
+              "quantity": 2,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "software.business_tools_artemis",
+              "quantity": 2,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "element_type": "attached_product"
+            },
+            {
+              "ref": "device.flexiprint40",
+              "quantity": 1,
+              "unit": "each",
+              "role": "",
+              "condition": "always",
+              "quantity_status": "defined",
+              "used_socket": "flexibus",
+              "connected_to": "device.base_computer.artemis_pro",
+              "element_type": "connected_device"
+            }
+          ]
+        }
+      ],
+      "commercial_terms": {
+        "availability_status": "announced_shipping_unconfirmed",
+        "shipping_date": null
+      },
+      "notes": [
+        "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated.",
+        "Restored as a computer system. Network cables are included by NIC devices; per-host placement and shipment qualification remain explicit. No product-level legacy cost baseline is asserted."
+      ]
     }
   ],
   "catalog_editions": [
@@ -5734,7 +6478,13 @@
           "product_ref": "offer.retail.business_accounts"
         },
         {
+          "product_ref": "product.retail.connected_office"
+        },
+        {
           "product_ref": "offer.retail.developer_workstation"
+        },
+        {
+          "product_ref": "product.retail.development_team"
         },
         {
           "product_ref": "offer.comdex82_artemis_autocad"

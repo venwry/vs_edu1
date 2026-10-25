@@ -9,7 +9,7 @@ Dates use inclusive starts and exclusive ends. Each nested child is selected at 
 ```json
 {
   "devices": 60,
-  "products": 41,
+  "products": 44,
   "active_assemblies": 28,
   "retired_assemblies": 19,
   "compared_versions": 27,
@@ -19,12 +19,14 @@ Dates use inclusive starts and exclusive ends. Each nested child is selected at 
   "full_cutover_equal": 26,
   "unknown_components": 1,
   "findings_by_kind": {
-    "no_legacy_product_bom": 22,
+    "no_legacy_product_bom": 25,
     "quotation_scope_unresolved": 2,
     "unknown_quantity": 1,
+    "multi_computer_package": 3,
+    "multiple_placements": 7,
     "separate_device_revision": 2,
     "full_cutover_inventory_change": 1,
-    "nonhardware_cost_boundary": 72
+    "nonhardware_cost_boundary": 82
   }
 }
 ```
@@ -57,6 +59,9 @@ Static comparisons ignore version dates to isolate ownership/packout differences
 - `bundle.proposed_artemis_accounts` version 2: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
 - `bundle.proposed_artemis_developer` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
 - `bundle.proposed_artemis_developer` version 2: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.retail.connected_office` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.retail.development_team` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
+- `product.proposed_artemis_pro_small_office` version 1: Composition exists without a product-level legacy BOM; no equivalent cost baseline can be asserted.
 
 ### quotation_scope_unresolved
 
@@ -68,6 +73,22 @@ Static comparisons ignore version dates to isolate ownership/packout differences
 Unknown quantities remain null. Every affected component and owner/version is listed below.
 
 - `part.logix_network_cable`: `offer.retail.connect_office@1`
+
+### multi_computer_package
+
+- `product.retail.connected_office` version 1: Multiple supplied computers: connection placements must be allocated per host; aggregate capacity does not prove each machine is valid.
+- `product.retail.development_team` version 1: Multiple supplied computers: connection placements must be allocated per host; aggregate capacity does not prove each machine is valid.
+- `product.proposed_artemis_pro_small_office` version 1: Multiple supplied computers: connection placements must be allocated per host; aggregate capacity does not prove each machine is valid.
+
+### multiple_placements
+
+- `product.retail.connected_office` version 1 → `device.network_card_artemis`: Unique ref has distinct connection placements: [{"connected_to": "device.base_computer.artemis_pro", "quantity": 1, "used_socket": "expansion"}, {"connected_to": "device.base_computer.artemis", "quantity": 2, "used_socket": "expansion"}]
+- `product.retail.connected_office` version 1 → `device.rom_cartridge.aionix_server`: Unique ref has distinct connection placements: [{"connected_to": "device.base_computer.artemis_pro", "quantity": 1, "used_socket": "system_cartridge"}, {"connected_to": "device.base_computer.artemis", "quantity": 2, "used_socket": "system_cartridge"}]
+- `product.retail.development_team` version 1 → `device.artemis_video_card`: Unique ref has distinct connection placements: [{"connected_to": "device.base_computer.artemis_pro", "quantity": 1, "used_socket": "video_card"}, {"connected_to": "device.base_computer.artemis", "quantity": 4, "used_socket": "video_card"}]
+- `product.retail.development_team` version 1 → `device.network_card_artemis`: Unique ref has distinct connection placements: [{"connected_to": "device.base_computer.artemis_pro", "quantity": 1, "used_socket": "expansion"}, {"connected_to": "device.base_computer.artemis", "quantity": 4, "used_socket": "expansion"}]
+- `product.retail.development_team` version 1 → `device.rom_cartridge.aionix_server`: Unique ref has distinct connection placements: [{"connected_to": "device.base_computer.artemis_pro", "quantity": 1, "used_socket": "system_cartridge"}, {"connected_to": "device.base_computer.artemis", "quantity": 4, "used_socket": "system_cartridge"}]
+- `product.proposed_artemis_pro_small_office` version 1 → `device.network_card_artemis`: Unique ref has distinct connection placements: [{"connected_to": "device.base_computer.artemis_pro", "quantity": 1, "used_socket": "expansion"}, {"connected_to": "device.base_computer.artemis", "quantity": 2, "used_socket": "expansion"}]
+- `product.proposed_artemis_pro_small_office` version 1 → `device.rom_cartridge.aionix_server`: Unique ref has distinct connection placements: [{"connected_to": "device.base_computer.artemis_pro", "quantity": 1, "used_socket": "system_cartridge"}, {"connected_to": "device.base_computer.artemis", "quantity": 2, "used_socket": "system_cartridge"}]
 
 ### separate_device_revision
 
@@ -152,6 +173,16 @@ Unknown quantities remain null. Every affected component and owner/version is li
 - `bundle.proposed_artemis_developer` version 2 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_developer` version 2 → `software.aion_c_ide`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 - `bundle.proposed_artemis_developer` version 2 → `software.artemis_sdk`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.connected_office` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.connected_office` version 1 → `software.bpi_client_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.connected_office` version 1 → `edition.bpi_client_server.era_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.connected_office` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.development_team` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.retail.development_team` version 1 → `software.aion_development_team`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.proposed_artemis_pro_small_office` version 1 → `service.regular_support`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.proposed_artemis_pro_small_office` version 1 → `software.bpi_client_server`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.proposed_artemis_pro_small_office` version 1 → `edition.bpi_client_server.era_client`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
+- `product.proposed_artemis_pro_small_office` version 1 → `software.business_tools_artemis`: Keep licences/services outside recursive hardware manufacturing totals; duration and commercial quantity remain relevant.
 
 ## Exact per-product physical differences
 

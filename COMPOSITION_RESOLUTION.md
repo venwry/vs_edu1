@@ -86,3 +86,23 @@ Verification: all 22 source collections, legacy schemas and migration audits pas
 Python validators: 22/41 pass, with the same 19 pre-existing failures. Browser
 checks: 21/22 pass after refreshing reviewed content snapshots; the existing atlas
 timeline pricing-link failure remains. Financial files and frozen baselines are unchanged.
+
+## Restored computer systems
+
+The later user instruction supersedes removal of the three multi-computer products.
+They are restored as product.retail.connected_office (three computers),
+product.retail.development_team (five computers), and
+product.proposed_artemis_pro_small_office (three computers), category computer_system.
+Their prior dates, flat compositions, host-specific placements, software and hub
+contents, quotation/announced statuses and shipment qualifications are retained.
+NIC-owned cables replace the former additional product-level cable allowance.
+The two retail systems rejoin catalog_editions.solutions. Old IDs resolve through
+record_id_aliases without modifying archived financial bytes. The broader naming
+and category migration remains a separate proposed change; source_group and
+record_kind remain in use by the compatibility projection.
+
+There are again 44 products. The 14 single-computer selector configurations remain
+unchanged; restored systems retain computer_line null. Simulation again reports
+three multi-computer packages and their seven placement checks, and 25 product
+versions without a legacy BOM. These are explicit qualification/baseline limitations,
+not a reason to omit the system products. Run tests/validate_computer_systems.py.

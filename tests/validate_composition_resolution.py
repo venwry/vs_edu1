@@ -50,8 +50,8 @@ for mutation in ['pointer','payload']:
  else:raise AssertionError('Invalid manufacturing ownership accepted')
 r=simulate();s=r['summary'];assert s['unmerged_equal']==s['compared_versions']==27
 assert s['unknown_components']==1 and s['full_cutover_equal']==26
-assert not set(s['findings_by_kind'])&{'component_after_parent','manufacturing_metadata','assembly_duplicate_line','assembly_only_line','multi_computer_package','multiple_placements'}
-assert s['findings_by_kind']['no_legacy_product_bom']==22
+assert not set(s['findings_by_kind'])&{'component_after_parent','manufacturing_metadata','assembly_duplicate_line','assembly_only_line'}
+assert s['findings_by_kind']['no_legacy_product_bom']==25
 historical_bom(read_document('catalog:hardware-bom'))
 f=read_document('tests/fixtures/composition-migration.json')
 for path,h in f['financial_files'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==h

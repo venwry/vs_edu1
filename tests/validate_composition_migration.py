@@ -9,7 +9,7 @@ from validate_data import validate_collections
 from simulate_compositions import simulate
 validate_collections()
 source={f:read_document(f) for f in registry()['files']};ds=source['data/devices.json']['devices'];ps=source['data/product-catalog.json']['products']
-assert len(ds)==60 and len(ps)==41
+assert len(ds)==60 and len(ps)==44
 assert len([d for d in ds if d['category']=='base_computer'])==6
 assert not any(p['id'].startswith('computer.') for p in ps)
 assert 'external_platforms' not in source['data/product-catalog.json']

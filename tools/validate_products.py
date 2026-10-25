@@ -56,6 +56,9 @@ def validate_products(source, projected):
 
 def validate_connections(product,version,devices):
     lines=version['composition_definition'];mains=[x for x in lines if x['element_type']=='main_product']
+    if product['category']=='computer_system':
+        if not product['id'].startswith('product.') or sum(x['quantity'] or 0 for x in mains)<2:raise ValueError('Computer system requires a product ID and multiple computers')
+        if any(devices[x['ref']]['category']!='base_computer' for x in mains):raise ValueError('Computer system main products must be base computers')
     if product['computer_line'] is not None:
         if len(mains)!=1 or mains[0]['quantity']!=1:raise ValueError('Computer selector product requires one main product')
         expected=next((n for n in ['Aurelia','Artemis','Athena'] if n.lower() in mains[0]['ref']),None)
