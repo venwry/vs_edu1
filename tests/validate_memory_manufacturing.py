@@ -22,7 +22,7 @@ for y,v in c['chip_fabrication_models']['part.era1'].items():
  assert v['die_area_mm2']==55 and v['process_node_um']==3
 assert c['chip_fabrication_models']['part.era1']['1981']['good_packaged_chip_cost_usd']==22.434
 cp={x['id']:x for x in c['products']}
-for ref,count in [('bundle.artemis_pro_512_server',64),('bundle.artemis_pro_1mb_server',128)]:
+for ref,count in [('product.artemis_pro_512_server',64),('product.artemis_pro_1mb_server',128)]:
  parts={x['component_ref']:x['quantity'] for x in cp[ref]['snapshots']['1981']['bom_lines']}
  assert parts['part.aion_4164']==count
  assert 'part.dram_64kbit' not in parts

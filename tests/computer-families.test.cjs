@@ -10,11 +10,12 @@ async function boot(family,query=''){
  assert(d.querySelector('#artemis-workbench[data-ready]'),d.body.textContent.slice(-500));return {dom,w,d,errors};
 }
 // No cost-row, catalogue-status or hardcoded-ID membership filter is permitted.
-const probe=JSON.parse(JSON.stringify(catalog)),template=probe.product_catalog.products.find(p=>p.id==='bundle.aurelia_mono');
+const probe=JSON.parse(JSON.stringify(catalog)),template=probe.product_catalog.products.find(p=>p.id==='product.aurelia_mono');
 probe.product_catalog.products.push({...template,id:'offer.selector_probe',name:'Selector probe',catalogue_status:'planned'});
 assert(createFamilyModel(probe,bom,cost,'aurelia').options.some(o=>o.id==='offer.selector_probe'&&!o.cost));
 template.computer_line=null;assert(!createFamilyModel(probe,bom,cost,'aurelia').options.some(o=>o.id===template.id));
 (async()=>{
+ const legacy=await boot('artemis','?configuration=bundle.artemis_budget_128_hdd');assert.equal(legacy.d.getElementById('artemis-configuration').value,'product.artemis_budget_128_hdd');legacy.dom.window.close();
  for(const family of ['artemis','aurelia','athena']){
   const model=createFamilyModel(catalog,bom,cost,family),{dom,w,d,errors}=await boot(family),select=d.getElementById('artemis-configuration');
   const line={aurelia:'Aurelia',artemis:'Artemis',athena:'Athena'}[family];

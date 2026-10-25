@@ -12,8 +12,7 @@ assert all(not (R/'data'/f).exists() for f in ['computers.json','offers.json','p
 assert {line:sum(p['computer_line']==line for p in products.values()) for line in ['Aurelia','Artemis','Athena']}=={'Aurelia':4,'Artemis':8,'Athena':2}
 assert len(pc['retired_configuration_ids'])==9
 for p in products.values():
- if p['record_kind']=='platform':
-  assert not any(k in p for k in ['memory','video','storage','chipset','compatible_devices','compatible_software'])
+ assert not any(k in p for k in ['record_kind','source_group'])
  if p.get('computer_line'):
   assert next(e['ref'] for e in p['composition_history'][0]['composition_definition'] if e['element_type']=='main_product').startswith('device.base_computer.')
   assert all(c['used_socket'] is not None for c in p['composition_history'][0]['composition_definition'] if c['element_type']=='connected_device')
@@ -29,7 +28,7 @@ for id,expected in f['assembly_inventories'].items():
 for path,expected in f['financial_files'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==expected,path
 # Invalid edited source must fail before it can be written.
 def reject(mutator):
- docs=copy.deepcopy(source);p=next(p for p in docs['data/product-catalog.json']['products'] if p['id']=='bundle.artemis_128_mono');mutator(p,docs)
+ docs=copy.deepcopy(source);p=next(p for p in docs['data/product-catalog.json']['products'] if p['id']=='product.artemis_128_mono');mutator(p,docs)
  try:validate_products(docs,project_collections(docs))
  except ValueError:return
  raise AssertionError('Invalid commercial population accepted')

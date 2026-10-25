@@ -15,12 +15,12 @@ assert not {'offer.retail.connected_office','offer.retail.development_team','bun
 assert 'part.athena.hdd' not in C and registry()['component_id_aliases']['part.athena.hdd']=='part.hdd_5mb'
 assert C['part.hdd_5mb']['introduced']['event_start_date']=='1980-07-15'
 assert lines(D['device.athena.hdd'])['part.hdd_5mb']['quantity']==1
-for id in ['bundle.artemis_budget_128_hdd','product.athena','product.athena_server']:
+for id in ['product.artemis_budget_128_hdd','product.athena','product.athena_server']:
  for v in P[id]['composition_history']:
   storage=[l for l in v['composition_definition'] if D.get(l['ref'],{}).get('category') in ['floppy_drive_mechanism','hard_disk_drive']]
   assert sum(l['quantity'] for l in storage if D[l['ref']]['category']=='floppy_drive_mechanism')==1
   assert sum(l['quantity'] for l in storage if D[l['ref']]['category']=='hard_disk_drive')==1
-assert P['bundle.artemis_budget_128_hdd']['composition_history'][0]['valid_from']=='1980-11-19'
+assert P['product.artemis_budget_128_hdd']['composition_history'][0]['valid_from']=='1980-11-19'
 for id in ['device.base_computer.artemis','device.base_computer.artemis_pro']:
  assert lines(D[id])['part.artemis_dma']['quantity']==1
 for d in D.values():
@@ -36,7 +36,7 @@ for suffix in ['aurelia','artemis']:
  d=D['device.network_card_'+suffix]
  assert lines(d)['part.logix_network_cable']['quantity']==1
  assert any(ref.endswith('.delivery_set') for ref in lines(d))
- assert len(lines(P['bundle.'+suffix+'_network_upgrade']))==2
+ assert len(lines(P['product.'+suffix+'_network_upgrade']))==2
 for p in P.values():
  for h in p['composition_history']:assert not any(l['ref']=='part.logix_supplemental_distribution_media' for l in h['composition_definition'])
 # Metadata belongs to an explicit version; removing it must fail.

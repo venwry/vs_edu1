@@ -38,7 +38,7 @@ from market_outlook import team_units
 for m in I['monthly_demand']:
  n=team_units(m)
  if not n:continue
- for ref,mult in [('software.aion_development_team',1),('bundle.aurelia_network_upgrade',1),('bundle.artemis_network_upgrade',1),('device.network_hub.8_port',.5)]:
+ for ref,mult in [('software.aion_development_team',1),('product.aurelia_network_upgrade',1),('product.artemis_network_upgrade',1),('device.network_hub.8_port',.5)]:
   ps=snap(ref,1982 if m>='1982-06' or ref=='software.aion_development_team' else 1981)
   rev(m,'team_and_network',n*mult*ps['retail_price_usd'],n*mult*ps['revenue_after_fee_usd'],n*mult,'Team cohort; half equip four existing clients plus 8-port hub. Initial Team launch uses first available 1982 cost-based price as explicit launch proxy; no later retrospective reprice of other offers.')
 # Academy throughput is already staffed/costed in the investment model.

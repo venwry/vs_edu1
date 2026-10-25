@@ -10,7 +10,7 @@ c=read('generated/models/manufacturing-costs.json');prices=read('generated/model
 cp={x['id']:x for x in c['products']};pp={x['id']:x for x in prices['products']}
 central=next(x for x in roi['scenarios'] if x['id']=='central')
 products=[]
-for ref in ['bundle.aurelia_plus_mono','bundle.aurelia_plus_color','bundle.artemis_256_color','bundle.artemis_256_mono_pro','bundle.artemis_pro_512_server','bundle.artemis_pro_1mb_server','device.artemis_ram_256kb_bank_kit']:
+for ref in ['product.aurelia_plus_mono','product.aurelia_plus_color','product.artemis_256_color','product.artemis_256_mono_pro','product.artemis_pro_512_server','product.artemis_pro_1mb_server','device.artemis_ram_256kb_bank_kit']:
  for y in ['1980','1981']:
   old=b['prices'][ref][y];new=pp[ref]['snapshots'][y]['retail_price_usd']
   if old is None:continue

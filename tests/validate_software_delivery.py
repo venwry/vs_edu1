@@ -59,7 +59,7 @@ def cycle(d):
  e['composition_history'][0]['composition_definition'][0]['ref']='device.rom_cartridge.aionix'
 reject(cycle)
 def duplicate(d):
- p=next(p for p in d['data/product-catalog.json']['products'] if p['id']=='bundle.artemis_128_mono')
+ p=next(p for p in d['data/product-catalog.json']['products'] if p['id']=='product.artemis_128_mono')
  p['composition_history'][0]['composition_definition'].append(dict(ref='software.aionix',quantity=1,unit='each',role='',condition='always',quantity_status='defined',element_type='attached_product'))
 reject(duplicate)
 # Legacy groups are derived only; old inventories may change only by the explicit reviewed delta.

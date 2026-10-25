@@ -52,12 +52,12 @@ for x in rows.values():
   if x['announced_only']:assert s['status']=='announced_shipping_unconfirmed'
   if x['channel']=='direct':assert fee==0
 assert count==332
-assert rows['bundle.aurelia_plus_mono']['snapshots']['1979']['retail_price_usd'] is None
+assert rows['product.aurelia_plus_mono']['snapshots']['1979']['retail_price_usd'] is None
 assert rows['software.abacus_3']['snapshots']['1980']['retail_price_usd'] is None
 assert rows['bundle.proposed_artemis_office']['snapshots']['1980']['cost_components'][-1]['cost_ref']=='edition.abacus_2.era'
 assert rows['bundle.proposed_artemis_office']['snapshots']['1981']['cost_components'][-1]['cost_ref']=='software.abacus_3'
 network=rows['bundle.proposed_artemis_pro_small_office']['snapshots']['1981']
-assert {x['cost_ref']:x['quantity'] for x in network['cost_components']}['bundle.artemis_128_mono']==2
+assert {x['cost_ref']:x['quantity'] for x in network['cost_components']}['product.artemis_128_mono']==2
 assert all(x['cost_ref']!='device.network_card_artemis' for x in network['cost_components'])
 assert rows['service.academy_customer_site']['snapshots']['1981']['manufacturing_cost_usd']==round(73.85*8,2)
 assert not any(x.startswith('part.') or x.startswith('computer.') for x in rows)

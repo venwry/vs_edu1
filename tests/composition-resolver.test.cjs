@@ -22,7 +22,7 @@ assert.throws(()=>graph.resolve('device.parent',{version:1}),/cycle/);
 const root=path.resolve(__dirname,'..'),docs=Object.fromEntries(['devices','software-editions','product-catalog','components','services'].map(n=>[n,JSON.parse(fs.readFileSync(path.join(root,'data',n+'.json')))]));
 const live=fromDocuments(docs);let count=0;
 for(const p of [...docs.devices.devices,...docs['software-editions'].software_editions,...docs['product-catalog'].products])for(const h of p.composition_history){const result=live.resolve(p.id,{version:h.version_number});assert.deepEqual(result.issues,[],p.id);count++;}
-for(const [id,quantity] of [['offer.comdex82_artemis_autocad',4],['offer.comdex82_reference_hardware',4],['offer.comdex82_professional_hardware',2],['offer.comdex82_upgrade_autocad',2]]){
+for(const [id,quantity] of [['product.comdex82_artemis_autocad',4],['product.comdex82_reference_hardware',4],['product.comdex82_professional_hardware',2],['product.comdex82_upgrade_autocad',2]]){
  const r=live.resolve(id,{date:'1982-11-29'});assert.equal(r.leaves.filter(l=>l.ref==='part.aion_2114').reduce((n,l)=>n+l.total_quantity,0),quantity,id);
 }
 console.log('PASS: '+count+' composition versions; boundary dates, recursive parent dates, unknown quantities, missing coverage, cycles and four November inventories');

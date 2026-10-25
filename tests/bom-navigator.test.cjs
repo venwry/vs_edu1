@@ -27,8 +27,8 @@ for(const [id,vendor] of [
  ['part.hdd_5mb','Seagate Technology'],
  ['software.product.cpm','Digital Research / Logix OEM implementation']
 ])assert.equal(vendorName(model.items.find(x=>x.id===id).record,model.records),vendor,id);
-for(const id of ['computer.artemis','bundle.artemis_128_mono','device.artemis_video_card_64kb'])assert(model.assemblyIds(id).length,id+' has assemblies');
-assert(model.rows(model.assemblyIds('bundle.artemis_128_mono')[0]).some(x=>x.depth>0));
+for(const id of ['computer.artemis','product.artemis_128_mono','device.artemis_video_card_64kb'])assert(model.assemblyIds(id).length,id+' has assemblies');
+assert(model.rows(model.assemblyIds('product.artemis_128_mono')[0]).some(x=>x.depth>0));
 assert(model.render('part.computer.artemis.boot_rom_chips').includes('Supplier quotations are not recorded'));
 (async()=>{
  const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));
@@ -40,7 +40,7 @@ assert(model.render('part.computer.artemis.boot_rom_chips').includes('Supplier q
  d.getElementById('tab-bom').click();assert(!d.getElementById('panel-bom').hidden);assert(d.getElementById('panel-bom').textContent.includes('Bill of materials'));
  d.getElementById('tab-costs').click();assert(d.getElementById('panel-costs').textContent.includes('1982-06-15'));assert(d.getElementById('panel-costs').textContent.includes('ncc-1982'));
  d.getElementById('tab-costs').dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));assert.equal(d.activeElement.id,'tab-events');assert(!d.getElementById('panel-events').hidden);assert(d.querySelector('#panel-events a[href^="timeline.html#"]'));
- d.querySelector('[data-element="offer.comdex82_artemis_autocad"]').click();d.getElementById('tab-costs').click();assert(/Unknown|pending reassessment/i.test(d.getElementById('panel-costs').textContent));assert(d.getElementById('panel-costs').textContent.includes('1982-11-29'));
+ d.querySelector('[data-element="product.comdex82_artemis_autocad"]').click();d.getElementById('tab-costs').click();assert(/Unknown|pending reassessment/i.test(d.getElementById('panel-costs').textContent));assert(d.getElementById('panel-costs').textContent.includes('1982-11-29'));
  d.getElementById('tab-costs').dispatchEvent(new w.KeyboardEvent('keydown',{key:'Home',bubbles:true}));assert.equal(d.activeElement.id,'tab-details');
 
  const change=(id,value)=>{d.getElementById(id).value=value;d.getElementById(id).dispatchEvent(new w.Event('change'));};
@@ -51,7 +51,7 @@ assert(model.render('part.computer.artemis.boot_rom_chips').includes('Supplier q
  assert(![...d.getElementById('bom-release').options].some(option=>option.value==='Unknown'));
  change('bom-release','no release');assert.equal(d.querySelectorAll('#bom-rows tr').length,6);assert([...d.querySelectorAll('#bom-rows tr')].every(tr=>tr.lastElementChild.textContent==='no release'));
  assert.deepEqual(errors,[]);dom.window.close();
- for(const [old,current] of [['bompart.part.z80a','part.z80a'],['bompart.computer.aurelia.boot_rom_chips','part.computer.aurelia.boot_rom_chips'],['edition.abacus_2.z80','software.abacus_2'],['part.artemis_ram_module_128kb_aion','device.ram_128kb_x32'],['device.artemis_ram_256kb_bank_kit','offer.ram_256kb_bank']]){
+ for(const [old,current] of [['bompart.part.z80a','part.z80a'],['bompart.computer.aurelia.boot_rom_chips','part.computer.aurelia.boot_rom_chips'],['edition.abacus_2.z80','software.abacus_2'],['part.artemis_ram_module_128kb_aion','device.ram_128kb_x32'],['device.artemis_ram_256kb_bank_kit','product.ram_256kb_bank']]){
   const redirected=new JSDOM(read('bom-navigator.html'),{url:'https://atlas.test/bom-navigator.html?element='+old,runScripts:'outside-only',virtualConsole:vc});const rw=redirected.window;rw.fetch=async p=>({ok:true,json:async()=>json(p)});
   for(const script of rw.document.scripts)rw.eval(read(new URL(script.src).pathname.slice(1)));
   for(let i=0;i<60&&!rw.document.querySelector('main[data-ready]');i++)await new Promise(r=>setTimeout(r,10));

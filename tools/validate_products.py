@@ -15,6 +15,17 @@ def validate_products(source, projected):
         if key in groups and groups[key]!=value:raise ValueError('Inconsistent software line metadata: '+key)
         groups[key]=value
         if any(k in e for k in ['product_ref','delivery','sold_separately','physical_media_refs']):raise ValueError('Duplicate legacy software ownership')
+    for p in products:
+        category=p['category'];lines=[l for h in p['composition_history'] for l in h['composition_definition']]
+        if category not in {'computer','computer_software_bundle','expansion_kit','software','computer_system'}:raise ValueError('Invalid product category')
+        prefix='computer_system.' if category=='computer_system' else 'product.'
+        if not p['id'].startswith(prefix):raise ValueError('Product ID/category mismatch')
+        if any(k in p for k in ['record_kind','source_group']):raise ValueError('Obsolete product discriminator')
+        mains=[l for l in lines if l.get('element_type')=='main_product' and l['ref'].startswith('device.base_computer.')]
+        if category!='computer_system' and mains:
+            expected='computer_software_bundle' if any(l['ref'].startswith(('software.','edition.')) for l in lines) else 'computer'
+            if category!=expected:raise ValueError('Product category does not match its composition')
+        elif category in {'computer','computer_software_bundle'}:raise ValueError('Computer product has no main computer')
     product_ids={p['id'] for p in products}
     known=set()
     for doc in source.values():
@@ -74,7 +85,7 @@ def validate_products(source, projected):
 def validate_connections(product,version,devices):
     lines=version['composition_definition'];mains=[x for x in lines if x['element_type']=='main_product']
     if product['category']=='computer_system':
-        if not product['id'].startswith('product.') or sum(x['quantity'] or 0 for x in mains)<2:raise ValueError('Computer system requires a product ID and multiple computers')
+        if not product['id'].startswith('computer_system.') or sum(x['quantity'] or 0 for x in mains)<2:raise ValueError('Computer system requires a product ID and multiple computers')
         if any(devices[x['ref']]['category']!='base_computer' for x in mains):raise ValueError('Computer system main products must be base computers')
     if product['computer_line'] is not None:
         if len(mains)!=1 or mains[0]['quantity']!=1:raise ValueError('Computer selector product requires one main product')

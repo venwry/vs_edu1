@@ -9,14 +9,14 @@ R=Path(__file__).resolve().parents[1]
 load=lambda n:read_document(n, root=R)
 def save(n,x):(R/n).write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n')
 I=load('generated/catalogs/artemis-budget-inputs.json');M=load('generated/models/manufacturing-costs.json');P=load('generated/models/pricing-results.json')
-refs=['bundle.artemis_budget_128','bundle.artemis_budget_128_hdd']
+refs=['product.artemis_budget_128','product.artemis_budget_128_hdd']
 M['products']=[p for p in M['products'] if p['id'] not in refs];P['products']=[p for p in P['products'] if p['id'] not in refs]
 def assess(date,disk):
  y=date[:4];source=str(max(int(y),1980));b=deepcopy(I['base_cost_snapshots'][source]['breakdown_usd'])
  base=I['base_cost_snapshots'][source]
  factor=1
  b={k:round(v*factor,2) for k,v in b.items()}
- components=[{'cost_ref':'bundle.artemis_128_color','quantity':1,'extended_cost_usd':round(base['total_usd']*factor,2),'basis':'Dated 128 KiB Color II base; NIC included from May 1981'}]
+ components=[{'cost_ref':'product.artemis_128_color','quantity':1,'extended_cost_usd':round(base['total_usd']*factor,2),'basis':'Dated 128 KiB Color II base; NIC included from May 1981'}]
  for ref in ['software.business_tools_artemis']+(['software.abacus_3'] if date>='1980-11-19' else []):
   ss=I['software_cost_snapshots'][ref];s=ss[source] if ss[source].get('total_usd') is not None else ss['1981']
   for k,v in s['breakdown_usd'].items():b[k]=round(b[k]+v*factor,2)
