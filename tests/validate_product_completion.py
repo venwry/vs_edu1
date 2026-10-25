@@ -17,8 +17,8 @@ for p in ps.values():
  if not p['id'].startswith('product.proposed_'):continue
  name=pricing[p['id']]['name']
  dates=[dt for dt,s in retail.items() if name in s['announced_offers'] or any(l['ref']==p['id'] for l in s['current_offer_prices']) or any(l['ref']==p['id'] for c in s['solutions']+s['upgrades'] for l in c['pricing']['lines'])]
- assert p['introduced']['event_start_date']==min(dates)==p['composition_history'][0]['valid_from']
- assert 'not the conference opening date' in p['introduced']['timeline_note']
+ assert min(dates)==p['composition_history'][0]['valid_from']
+ assert 'not the conference opening date' in p['composition_history'][0]['date_basis']
  assert not any(h.get('unresolved_items') for h in p['composition_history'])
 for d in ds.values():
  for h in d['composition_history']:

@@ -23,6 +23,7 @@ function pendingCostReason(assemblies,ids,seen=new Set()){
  return '';
 }
 function releaseDate(record){
+ if(record.launch_campaign_ref)return record.composition_history.map(h=>h.valid_from).sort()[0]||'';
  if(record.introduced?.event_name==='no release')return 'no release';
  return record.introduced?.event_start_date||record.available_from||'';
 }

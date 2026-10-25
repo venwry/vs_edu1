@@ -61,7 +61,7 @@ for id in ['computer.artemis','computer.artemis_pro']:
   assert inv[module['chip_type_ref']]==cfg['data_chip_count']
 shipping={id:{c['ram_kb']:(c['populated_modules'],c['populated_banks'],c['data_chip_count']) for c in records[id]['memory']['configurations'] if c['shipping_configuration']} for id in ['computer.artemis','computer.artemis_pro']}
 assert shipping['computer.artemis']=={128:(2,1,64),256:(2,1,128)}
-assert shipping['computer.artemis_pro']=={} # Announced products are not confirmed shipping configurations.
+assert set(shipping['computer.artemis_pro'])=={512,1024} # Shipment follows the product composition start.
 assert {c['ram_kb'] for c in records['computer.artemis_pro']['memory']['configurations']}=={512,1024}
 for id,expected in [('computer.aurelia',48),('computer.aurelia_plus',64)]:
  pop=records[id]['memory']['physical_population'];assert pop['data_chip_count']*records[pop['chip_ref']]['specification']['capacity_kbit']/8==expected
@@ -75,9 +75,9 @@ for b in t['offered_bundles']:
   assert c['shipping_configuration'] and c['ram_kb']==cfg['ram_kb']
 for offer in bom['offers']:
  a=assemblies[offer['assembly_ref']]
- assert offer['included_host']==(offer['kind'] in ['computer','computer_software_bundle'])
+ assert offer['included_host']==(offer['kind'] in ['computer','computer_software_bundle','computer_system'])
  if offer['kind']=='expansion_kit':assert not any(l['ref'].startswith('assembly.computer.') for l in a['lines'])
- if 'artemis_pro' in offer['catalog_ref']:
+ if 'artemis_pro' in offer['catalog_ref'] and offer['kind']!='computer_system':
   inv=explode(a['id']);assert inv['part.device.network_card_artemis.network_card_pcb']==1
  for v in offer.get('variants',[]):
   inv=explode(v['assembly_ref']);assert inv['part.device.network_card_artemis.network_card_pcb']==1

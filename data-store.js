@@ -3,6 +3,9 @@
 const clone=x=>JSON.parse(JSON.stringify(x));
 function project(input,{legacyBOM=false}={}){
  const docs=clone(input),pc=docs['data/product-catalog.json'];if(!pc)return docs;
+ // Compatibility release labels are derived, never stored on products.
+ const campaigns=Object.values(docs['data/campaigns.json']||{}).filter(c=>c&&typeof c==='object'&&c.id);
+ for(const p of pc.products){const campaign=campaigns.find(c=>c.id===p.launch_campaign_ref);const start=p.composition_history.map(h=>h.valid_from).sort()[0];p.introduced={event_name:campaign?.title||campaign?.metadata?.title||p.launch_campaign_ref,event_start_date:start};}
  const editions=docs['data/software-editions.json'].software_editions;
  const softwareIds=new Set(editions.map(e=>e.id)),softwareLines=new Map();
  for(const e of editions){
@@ -53,7 +56,7 @@ function project(input,{legacyBOM=false}={}){
  const computers=platforms.map(p=>{
   const c={...clone(p),...resolve(p.technical_profile)},ch=records[p.chassis_ref],familyLine=['Aurelia','Artemis','Athena'].find(x=>ch.id.includes(x.toLowerCase())),slots=ch.expansion_socket_groups.flatMap(g=>g.sockets);
   const offerings=pc.products.filter(x=>x.computer_ref===p.id&&x.composition_history?.length);
-  const configurations=offerings.flatMap(x=>{const h=x.composition_history[0],ram=h.composition_definition.find(l=>records[l.ref]?.category==='memory_expansion'),s=records[ram?.ref]?.specification;if(!ram||!s)return [];return [{id:x.id,product_ref:x.id,shipping_configuration:x.catalogue_status==='offered'&&x.availability_status!=='announced',module_ref:ram.ref,populated_modules:ram.quantity,populated_banks:ram.quantity/2,ram_kb:ram.quantity*s.capacity_kb,data_chip_count:ram.quantity*s.chips,bank_population:Array.from({length:ram.quantity/2},(_,i)=>({bank:i,slots:[2*i,2*i+1]}))}];});
+  const configurations=offerings.flatMap(x=>{const h=x.composition_history[0],ram=h.composition_definition.find(l=>records[l.ref]?.category==='memory_expansion'),s=records[ram?.ref]?.specification;if(!ram||!s)return [];return [{id:x.id,product_ref:x.id,shipping_configuration:true,module_ref:ram.ref,populated_modules:ram.quantity,populated_banks:ram.quantity/2,ram_kb:ram.quantity*s.capacity_kb,data_chip_count:ram.quantity*s.chips,bank_population:Array.from({length:ram.quantity/2},(_,i)=>({bank:i,slots:[2*i,2*i+1]}))}];});
   const base={lines:offerings[0]?.composition_history[0].composition_definition||[]};
   const mem=c.memory||{};const fixed=records['device.subsystem.'+p.id.slice(9)+'.base_memory'];if(mem.physical_population&&fixed){const l=fixed.bom_assembly_definition.find(l=>records[l.ref]?.category==='memory_ic');if(l)Object.assign(mem.physical_population,{chip_ref:l.ref,data_chip_count:l.quantity,data_ram_kb:fixed.specification.capacity_kb});}if(configurations.length){mem.configurations=configurations;mem.default_configuration=configurations.find(x=>x.id===p.default_configuration)?.id||configurations[0].id;mem.module_refs=slots.find(s=>s.id==='ram')?.compatible_device_refs||[];}
   const selected=configurations.find(x=>x.id===mem.default_configuration);mem.ram_kb=selected?.ram_kb||records['device.subsystem.'+p.id.slice(9)+'.base_memory']?.specification.capacity_kb||0;
@@ -76,10 +79,10 @@ function project(input,{legacyBOM=false}={}){
   delete c.technical_profile;return c;
  });
  docs['data/computers.json']={computers,external_platforms:pc.external_platforms};
- const commercialGroup=p=>p.category!=='software'&&p.catalogue_status==='offered'?'offered_bundles':['computer','computer_software_bundle'].includes(p.category)&&['proposed','planned'].includes(p.catalogue_status)?'proposed_bundles':'commercial_offerings';
+ const commercialGroup=p=>p.category==='software'?'commercial_offerings':'offered_bundles';
  docs['data/offers.json']=Object.fromEntries(['offered_bundles','proposed_bundles','commercial_offerings'].map(k=>[k,pc.products.filter(p=>commercialGroup(p)===k).map(legacyOffer)]));
  const mappings=[...computers.map(c=>({catalog_ref:c.id,production_status:c.production_status||'design_baseline',assembly_refs:c.bom_assembly_refs,requirements:c.manufacturing_requirements})),...devices.filter(d=>d.hardware_assembly_refs).map(d=>({catalog_ref:d.id,production_status:d.production_status,assembly_refs:d.hardware_assembly_refs,requirements:d.manufacturing_requirements||[]})),...parts.filter(p=>p.production_status).map(p=>({catalog_ref:p.id,production_status:p.production_status,assembly_refs:p.bom_role==='material'&&p.production_status!=='excluded'?[p.id]:[],requirements:p.requirements||[]}))];
- docs['data/product-boms.json']={...clone(pc.bom_policy),products:mappings,offers:pc.products.filter(p=>commercialGroup(p)==='offered_bundles').map(p=>({catalog_ref:p.id,kind:p.category,assembly_ref:p.hardware_assembly_ref,compatible_host_ref:p.computer_ref,included_host:Boolean(p.main_product),effective_from:p.introduced.event_start_date,...p.commercial_terms,requirements:p.acceptance||[],licenses_and_services:'Tracked outside recurring hardware BOM; physical media remains included.'})),proposed_offer_refs:pc.products.filter(p=>commercialGroup(p)==='proposed_bundles').map(p=>p.id)};
+ docs['data/product-boms.json']={...clone(pc.bom_policy),products:mappings,offers:pc.products.filter(p=>commercialGroup(p)==='offered_bundles').map(p=>({catalog_ref:p.id,kind:p.category,assembly_ref:p.hardware_assembly_ref||p.id,compatible_host_ref:p.computer_ref,included_host:Boolean(p.main_product),effective_from:p.composition_history[0].valid_from,requirements:p.acceptance||[],licenses_and_services:'Tracked outside recurring hardware BOM; physical media remains included.'})),proposed_offer_refs:pc.products.filter(p=>commercialGroup(p)==='proposed_bundles').map(p=>p.id)};
  const retail=clone(pc.catalog_editions[0]);for(const key of ['solutions','upgrades'])retail[key]=retail[key].map(e=>{const p=records[e.product_ref],r=p.retail_presentation;return {...clone(r),components:r.component_product_ref?[{ref:r.component_product_ref,quantity:1}]:(p.attached_products||[]).map(e=>({ref:e.product_ref||e.software_ref||e.service_ref,quantity:e.quantity}))};});
  docs['data/retail-catalog.json']={retail_catalog_1982:retail};
  return docs;

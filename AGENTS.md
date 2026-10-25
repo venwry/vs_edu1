@@ -57,3 +57,8 @@ Product identities/categories follow PRODUCT_STANDARDIZATION.md. Commercial IDs 
 product.* except computer_system.* for multi-computer products. Do not restore
 record_kind/source_group or insert platform records into product_catalog.products.
 Run tests/validate_product_standardization.py after commercial identity/category edits.
+
+Product launches follow PRODUCT_LAUNCH_MIGRATION.md. Products reference campaigns;
+shipment dates come from their first composition version. Do not restore undated
+product availability statuses or independently stored product release/shipping dates.
+Run tests/validate_product_launches.py for launch/date changes.

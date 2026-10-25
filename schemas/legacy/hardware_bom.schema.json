@@ -718,15 +718,6 @@
         "effective_from": {
           "type": "string"
         },
-        "shipping_date": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "availability_status": {
-          "type": "string"
-        },
         "requirements": {
           "type": "array",
           "items": {
@@ -759,12 +750,8 @@
       "required": [
         "catalog_ref",
         "kind",
-        "assembly_ref",
-        "compatible_host_ref",
         "included_host",
         "effective_from",
-        "shipping_date",
-        "availability_status",
         "requirements",
         "licenses_and_services"
       ],

@@ -5,18 +5,10 @@
     {
       "id": "product.athena",
       "name": "Logix Athena",
-      "introduced": {
-        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
-        "event_start_date": "1983-05-16",
-        "date_precision": "day",
-        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
-      },
-      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
       "positioning": "Lowest-cost Athena configuration: 2 × 128 KiB modules, 256 KiB total.",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Athena",
-      "catalogue_status": "planned",
       "composition_history": [
         {
           "valid_from": "1983-05-16",
@@ -101,23 +93,20 @@
           }
         }
       ],
-      "computer_ref": "computer.athena"
+      "computer_ref": "computer.athena",
+      "launch_campaign_ref": "campaign.ncc1983",
+      "commercial_terms": {},
+      "acceptance": [
+        "Accepted planning baseline; production and electrical qualification pending."
+      ]
     },
     {
       "id": "product.athena_server",
       "name": "Logix Athena Server",
-      "introduced": {
-        "event_name": "NCC 1983 — planned ERA² and Logix Athena premiere",
-        "event_start_date": "1983-05-16",
-        "date_precision": "day",
-        "timeline_note": "Planned premiere on the opening day of NCC, 16–19 May 1983; not a confirmed shipment date."
-      },
-      "product_status": "Accepted planning baseline; production and electrical qualification pending.",
       "positioning": "Server configuration",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Athena",
-      "catalogue_status": "planned",
       "composition_history": [
         {
           "valid_from": "1983-05-16",
@@ -202,24 +191,22 @@
           }
         }
       ],
-      "computer_ref": "computer.athena_server"
+      "computer_ref": "computer.athena_server",
+      "launch_campaign_ref": "campaign.ncc1983",
+      "commercial_terms": {},
+      "acceptance": [
+        "Accepted planning baseline; production and electrical qualification pending."
+      ]
     },
     {
       "id": "product.aurelia_mono",
       "name": "Logix Aurelia — Monochrome system",
-      "introduced": {
-        "event_name": "NCC 1978 — Logix Aurelia launch",
-        "event_start_date": "1978-06-05"
-      },
       "computer_ref": "computer.aurelia",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Aurelia",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -308,24 +295,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.aurelia_color",
       "name": "Logix Aurelia — Color system",
-      "introduced": {
-        "event_name": "NCC 1978 — Logix Aurelia launch",
-        "event_start_date": "1978-06-05"
-      },
       "computer_ref": "computer.aurelia",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Aurelia",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -414,26 +395,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.aurelia_plus_mono",
       "name": "Logix Aurelia+ — Monochrome system",
-      "introduced": {
-        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
-        "event_start_date": "1979-12-03",
-        "date_precision": "day",
-        "timeline_note": "Author-confirmed introduction date."
-      },
       "computer_ref": "computer.aurelia_plus",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Aurelia",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -522,26 +495,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.aurelia_plus_color",
       "name": "Logix Aurelia+ — Color system",
-      "introduced": {
-        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
-        "event_start_date": "1979-12-03",
-        "date_precision": "day",
-        "timeline_note": "Author-confirmed introduction date."
-      },
       "computer_ref": "computer.aurelia_plus",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Aurelia",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -630,24 +595,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.artemis_128_mono",
       "name": "Logix Artemis 128 KB — Monochrome system",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "computer_ref": "computer.artemis",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Artemis",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
         "variants": [
           {
@@ -877,24 +836,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.artemis_128_color",
       "name": "Logix Artemis 128 KB — Color system",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "computer_ref": "computer.artemis",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
         "variants": [
           {
@@ -1124,24 +1077,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.artemis_256_color",
       "name": "Logix Artemis 256 KB — Color system",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "computer_ref": "computer.artemis",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Artemis",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
         "variants": [
           {
@@ -1371,15 +1318,12 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.aurelia_network_upgrade",
       "name": "Aurelia networking upgrade",
-      "introduced": {
-        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
-        "event_start_date": "1981-05-04"
-      },
       "computer_ref": "computer.aurelia",
       "also_compatible_with": [
         "computer.aurelia_plus"
@@ -1387,11 +1331,8 @@
       "vendor": "Logix",
       "category": "expansion_kit",
       "computer_line": null,
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": false,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -1441,24 +1382,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1981"
     },
     {
       "id": "product.artemis_network_upgrade",
       "name": "Existing Artemis networking upgrade",
-      "introduced": {
-        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
-        "event_start_date": "1981-05-04"
-      },
       "computer_ref": "computer.artemis",
       "vendor": "Logix",
       "category": "expansion_kit",
       "computer_line": null,
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": false,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -1508,27 +1443,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1981"
     },
     {
       "id": "product.artemis_pro_512_server",
       "name": "Artemis PRO 512 KB server",
-      "introduced": {
-        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
-        "event_start_date": "1981-05-04"
-      },
       "computer_ref": "computer.artemis_pro",
-      "availability": "Announced at NCC 1981; shipment date not separately specified.",
-      "availability_status": "announced",
-      "shipping_date": null,
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Artemis",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "announced",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -1627,27 +1553,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1981"
     },
     {
       "id": "product.artemis_pro_1mb_server",
       "name": "Artemis PRO 1 MB server",
-      "introduced": {
-        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
-        "event_start_date": "1981-05-04"
-      },
       "computer_ref": "computer.artemis_pro",
-      "availability": "Announced at NCC 1981; shipment date not separately specified.",
-      "availability_status": "announced",
-      "shipping_date": null,
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Artemis",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "announced",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -1746,24 +1663,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1981"
     },
     {
       "id": "product.artemis_256_mono_pro",
       "name": "Logix Artemis 256 KB — Mono Pro system",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "computer_ref": "computer.artemis",
       "vendor": "Logix",
       "category": "computer",
       "computer_line": "Artemis",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "catalog_offer",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included.",
         "variants": [
           {
@@ -1992,27 +1903,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.artemis_pro_512_mono_pro",
       "name": "Artemis PRO 512 KB server with Mono Pro console",
-      "introduced": {
-        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
-        "event_start_date": "1981-05-04"
-      },
       "computer_ref": "computer.artemis_pro",
-      "availability": "Announced at NCC 1981; shipment date not separately specified.",
-      "availability_status": "announced",
-      "shipping_date": null,
       "vendor": "Logix",
       "category": "computer",
       "computer_line": null,
-      "catalogue_status": "purchase_option",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "announced",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -2133,27 +2035,18 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1981"
     },
     {
       "id": "product.artemis_pro_1mb_mono_pro",
       "name": "Artemis PRO 1 MB server with Mono Pro console",
-      "introduced": {
-        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
-        "event_start_date": "1981-05-04"
-      },
       "computer_ref": "computer.artemis_pro",
-      "availability": "Announced at NCC 1981; shipment date not separately specified.",
-      "availability_status": "announced",
-      "shipping_date": null,
       "vendor": "Logix",
       "category": "computer",
       "computer_line": null,
-      "catalogue_status": "purchase_option",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": null,
-        "availability_status": "announced",
         "licenses_and_services": "Tracked outside recurring hardware BOM; physical media remains included."
       },
       "acceptance": [
@@ -2274,15 +2167,12 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1981"
     },
     {
       "id": "product.artemis_budget_128",
       "name": "Artemis 128 — Budget Colour Office",
-      "introduced": {
-        "event_name": "NCC 1980 — Artemis budget range",
-        "event_start_date": "1980-05-19"
-      },
       "computer_ref": "computer.artemis",
       "storage": {
         "floppies": 2,
@@ -2296,11 +2186,8 @@
       "vendor": "Logix",
       "category": "computer_software_bundle",
       "computer_line": "Artemis",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": "1980-05-19",
-        "availability_status": "scenario_qualified_shipment",
         "licenses_and_services": "AIONix, Business Tools, dated Abacus 3 and regular support counted once in budget assessment."
       },
       "acceptance": [
@@ -2693,15 +2580,12 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.artemis_budget_128_hdd",
       "name": "Artemis 128 — Budget Hard-Disk Office",
-      "introduced": {
-        "event_name": "COMDEX 1980 — Artemis budget HDD configuration",
-        "event_start_date": "1980-11-19"
-      },
       "computer_ref": "computer.artemis",
       "storage": {
         "floppies": 1,
@@ -2715,11 +2599,8 @@
       "vendor": "Logix",
       "category": "computer_software_bundle",
       "computer_line": "Artemis",
-      "catalogue_status": "offered",
       "commercial_terms": {
         "included_host": true,
-        "shipping_date": "1980-11-19",
-        "availability_status": "scenario_qualified_shipment",
         "licenses_and_services": "AIONix, Business Tools, dated Abacus 3 and regular support counted once in budget assessment."
       },
       "acceptance": [
@@ -3020,15 +2901,14 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1980"
     },
     {
       "id": "product.proposed_aurelia_office",
       "name": "Aurelia — Office productivity",
-      "status": "proposed",
       "computer_ref": "computer.aurelia",
       "description": "A practical writing, calculation and spreadsheet setup.",
-      "earliest_offer_date": "1978-06-15",
       "pricing": "Not specified; no bundle discount assumed.",
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
@@ -3037,14 +2917,7 @@
       ],
       "vendor": "Logix",
       "category": "computer_software_bundle",
-      "introduced": {
-        "event_name": "NCC 1978 — first recorded catalogue snapshot",
-        "event_start_date": "1978-06-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1978; not the conference opening date or evidence of shipment."
-      },
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -3131,17 +3004,17 @@
               "condition": "always",
               "quantity_status": "defined"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with NCC 1978; not the conference opening date."
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.proposed_aurelia_accounts",
       "name": "Aurelia — Small-business accounting",
-      "status": "proposed",
       "computer_ref": "computer.aurelia",
       "description": "Accounting tools with a dedicated printer for reports and business documents.",
-      "earliest_offer_date": "1978-06-15",
       "pricing": "Not specified; no bundle discount assumed.",
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
@@ -3150,14 +3023,7 @@
       ],
       "vendor": "Logix",
       "category": "computer_software_bundle",
-      "introduced": {
-        "event_name": "NCC 1978 — first recorded catalogue snapshot",
-        "event_start_date": "1978-06-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1978; not the conference opening date or evidence of shipment."
-      },
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -3255,17 +3121,17 @@
               "condition": "always",
               "quantity_status": "defined"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with NCC 1978; not the conference opening date."
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.proposed_aurelia_developer",
       "name": "Aurelia — C development",
-      "status": "proposed",
       "computer_ref": "computer.aurelia",
       "description": "A complete platform starting point for C development and hardware/software integration.",
-      "earliest_offer_date": "1978-06-15",
       "pricing": "Not specified; no bundle discount assumed.",
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
@@ -3274,14 +3140,7 @@
       ],
       "vendor": "Logix",
       "category": "computer_software_bundle",
-      "introduced": {
-        "event_name": "NCC 1978 — first recorded catalogue snapshot",
-        "event_start_date": "1978-06-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1978; not the conference opening date or evidence of shipment."
-      },
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -3377,17 +3236,17 @@
               "condition": "always",
               "quantity_status": "defined"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with NCC 1978; not the conference opening date."
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.proposed_aurelia_plus_office",
       "name": "Aurelia+ — Office productivity",
-      "status": "proposed",
       "computer_ref": "computer.aurelia_plus",
       "description": "A practical writing, calculation and spreadsheet setup.",
-      "earliest_offer_date": "1979-12-15",
       "pricing": "Not specified; no bundle discount assumed.",
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
@@ -3396,14 +3255,7 @@
       ],
       "vendor": "Logix",
       "category": "computer_software_bundle",
-      "introduced": {
-        "event_name": "COMDEX 1979 — first recorded catalogue snapshot",
-        "event_start_date": "1979-12-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with COMDEX 1979; not the conference opening date or evidence of shipment."
-      },
       "computer_line": null,
-      "catalogue_status": "proposed",
       "commercial_terms": {},
       "retail_presentation": {
         "name": "Logix Office Essentials",
@@ -3506,17 +3358,17 @@
               "condition": "always",
               "quantity_status": "defined"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with COMDEX 1979; not the conference opening date."
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.proposed_aurelia_plus_accounts",
       "name": "Aurelia+ — Small-business accounting",
-      "status": "proposed",
       "computer_ref": "computer.aurelia_plus",
       "description": "Accounting tools with a dedicated printer for reports and business documents.",
-      "earliest_offer_date": "1979-12-15",
       "pricing": "Not specified; no bundle discount assumed.",
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
@@ -3525,14 +3377,7 @@
       ],
       "vendor": "Logix",
       "category": "computer_software_bundle",
-      "introduced": {
-        "event_name": "COMDEX 1979 — first recorded catalogue snapshot",
-        "event_start_date": "1979-12-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with COMDEX 1979; not the conference opening date or evidence of shipment."
-      },
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -3630,17 +3475,17 @@
               "condition": "always",
               "quantity_status": "defined"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with COMDEX 1979; not the conference opening date."
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.proposed_aurelia_plus_developer",
       "name": "Aurelia+ — C development",
-      "status": "proposed",
       "computer_ref": "computer.aurelia_plus",
       "description": "A complete platform starting point for C development and hardware/software integration.",
-      "earliest_offer_date": "1979-12-15",
       "pricing": "Not specified; no bundle discount assumed.",
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
@@ -3649,14 +3494,7 @@
       ],
       "vendor": "Logix",
       "category": "computer_software_bundle",
-      "introduced": {
-        "event_name": "COMDEX 1979 — first recorded catalogue snapshot",
-        "event_start_date": "1979-12-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with COMDEX 1979; not the conference opening date or evidence of shipment."
-      },
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -3752,17 +3590,17 @@
               "condition": "always",
               "quantity_status": "defined"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with COMDEX 1979; not the conference opening date."
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.proposed_aurelia_plus_analysis",
       "name": "Aurelia+ — Interactive analysis",
-      "status": "proposed",
       "computer_ref": "computer.aurelia_plus",
       "description": "Pairs the integrated Pulse environment with Abacus reporting.",
-      "earliest_offer_date": "1979-12-15",
       "pricing": "Not specified; no bundle discount assumed.",
       "notes": [
         "Includes the complete monochrome base system and its one-year Regular Support.",
@@ -3771,14 +3609,7 @@
       ],
       "vendor": "Logix",
       "category": "computer_software_bundle",
-      "introduced": {
-        "event_name": "COMDEX 1979 — first recorded catalogue snapshot",
-        "event_start_date": "1979-12-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with COMDEX 1979; not the conference opening date or evidence of shipment."
-      },
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -3874,19 +3705,16 @@
               "condition": "always",
               "quantity_status": "defined"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with COMDEX 1979; not the conference opening date."
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.comdex82_artemis_autocad",
       "name": "Logix Artemis PRO Professional CAD — Autodesk AutoCAD 1.0",
       "category": "computer_software_bundle",
-      "introduced": {
-        "event_name": "COMDEX November 1982 — Logix and Autodesk professional CAD presentation",
-        "event_start_date": "1982-11-29"
-      },
-      "status": "Accepted COMDEX presentation and commercial offering; shipment follows hardware/software acceptance.",
       "description": "A jointly demonstrated professional CAD configuration combining Artemis PRO, the November professional graphics revision, Mono Pro 17, Logix Mouse and independently licensed Autodesk AutoCAD.",
       "configuration": {
         "host": "Artemis PRO, 1 MiB reference configuration, AIONix and qualified disk storage; final application minimum measured with representative drawings.",
@@ -3920,13 +3748,12 @@
         "Show readable antialiased lines and stable display refresh under accelerator load",
         "Plot a physical drawing and verify scale and geometry",
         "Recover from interrupted work and restore a backup",
-        "Document supported features; no automatic later-version dimensioning, object-snap or 3D claims"
+        "Document supported features; no automatic later-version dimensioning, object-snap or 3D claims",
+        "Accepted COMDEX presentation and commercial offering; shipment follows hardware/software acceptance."
       ],
       "timeline": "June remains initial hardware availability and Autodesk development handover. November 29 is the public joint CAD offering and expanded professional-card presentation, not a rewrite of June history.",
-      "campaign_ref": "comdex_1982_campaign.json",
       "vendor": "Logix",
       "computer_line": "Artemis",
-      "catalogue_status": "qualification_pending",
       "commercial_terms": {},
       "computer_ref": "computer.artemis_pro",
       "retail_presentation": {
@@ -4107,24 +3934,19 @@
             }
           }
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982"
     },
     {
       "id": "product.ncc82_colour_upgrade",
       "name": "Artemis Colour Upgrade",
       "category": "expansion_kit",
       "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1982 cost review",
-        "event_start_date": "1982-06-15"
-      },
-      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
       "description": "Dated commercial review; technical specification not separately recorded.",
       "notes": [
         "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
       ],
       "computer_line": null,
-      "catalogue_status": "qualification_pending",
       "commercial_terms": {},
       "retail_presentation": {
         "name": "Colour Reports Upgrade",
@@ -4175,24 +3997,19 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1982"
     },
     {
       "id": "product.comdex82_reference_hardware",
       "name": "Artemis PRO 1 MiB dual-display reference hardware",
       "category": "computer",
       "vendor": "Logix",
-      "introduced": {
-        "event_name": "COMDEX 1982 cost review",
-        "event_start_date": "1982-11-29"
-      },
-      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
       "description": "PRO 1 MiB dual-display reference hardware; primary card replaced by the 64 KiB card, with one keyboard, Color Pro 14, November professional card, Mono Pro 17 and mouse. Shipment/qualification pending.",
       "notes": [
         "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
       ],
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -4323,24 +4140,19 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982"
     },
     {
       "id": "product.ncc82_professional_graphics",
       "name": "Artemis Professional Graphics extension",
       "category": "expansion_kit",
       "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1982 cost review",
-        "event_start_date": "1982-06-15"
-      },
-      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
       "description": "Dated commercial review; technical specification not separately recorded.",
       "notes": [
         "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
       ],
       "computer_line": null,
-      "catalogue_status": "historical_only",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -4377,24 +4189,19 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1982"
     },
     {
       "id": "product.ncc82_mouse_learning",
       "name": "Logix Mouse Learning Pack",
       "category": "expansion_kit",
       "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1982 cost review",
-        "event_start_date": "1982-06-15"
-      },
-      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
       "description": "Dated commercial review; technical specification not separately recorded.",
       "notes": [
         "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
       ],
       "computer_line": null,
-      "catalogue_status": "qualification_pending",
       "commercial_terms": {},
       "retail_presentation": {
         "name": "Mouse Starter Pack",
@@ -4433,24 +4240,19 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1982"
     },
     {
       "id": "product.comdex82_professional_hardware",
       "name": "November professional graphics upgrade with mouse",
       "category": "expansion_kit",
       "vendor": "Logix",
-      "introduced": {
-        "event_name": "COMDEX 1982 cost review",
-        "event_start_date": "1982-11-29"
-      },
-      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
       "description": "Dated commercial review; technical specification not separately recorded.",
       "notes": [
         "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
       ],
       "computer_line": null,
-      "catalogue_status": "qualification_pending",
       "commercial_terms": {},
       "retail_presentation": {
         "name": "Professional Drawing Upgrade",
@@ -4501,24 +4303,19 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982"
     },
     {
       "id": "product.comdex82_upgrade_autocad",
       "name": "Professional graphics upgrade and AutoCAD",
       "category": "expansion_kit",
       "vendor": "Logix",
-      "introduced": {
-        "event_name": "COMDEX 1982 cost review",
-        "event_start_date": "1982-11-29"
-      },
-      "status": "Dated reviewed offering; review date is not a confirmed shipment date.",
       "description": "Dated commercial review; technical specification not separately recorded.",
       "notes": [
         "Canonical identity extracted from manufacturing cost review; cost figures remain owned by the dated review."
       ],
       "computer_line": null,
-      "catalogue_status": "purchase_option",
       "commercial_terms": {},
       "option_for": "product.comdex82_professional_hardware",
       "composition_history": [
@@ -4565,17 +4362,14 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982"
     },
     {
       "id": "product.ram_64kb_module",
       "name": "Logix 64 KB RAM module",
       "category": "expansion_kit",
       "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1980 — RAM expansion offering",
-        "event_start_date": "1980-05-19"
-      },
       "component_refs": [
         "device.ram_64kb_x32"
       ],
@@ -4590,9 +4384,7 @@
         "modules_per_bank": 2,
         "installation": "Power off; a complete bank requires two matching modules. A single module does not populate a complete bank."
       },
-      "status": "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending.",
       "computer_line": null,
-      "catalogue_status": "qualification_pending",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -4638,6 +4430,10 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
+      ],
+      "launch_campaign_ref": "campaign.ncc1980",
+      "acceptance": [
+        "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending."
       ]
     },
     {
@@ -4645,10 +4441,6 @@
       "name": "Logix 256 KB RAM bank (two modules)",
       "category": "expansion_kit",
       "vendor": "Logix",
-      "introduced": {
-        "event_name": "NCC 1980 — RAM expansion offering",
-        "event_start_date": "1980-05-19"
-      },
       "component_refs": [
         "device.ram_128kb_x32"
       ],
@@ -4663,9 +4455,7 @@
         "modules_per_bank": 2,
         "installation": "Power off; a complete bank requires two matching modules. A single module does not populate a complete bank."
       },
-      "status": "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending.",
       "computer_line": null,
-      "catalogue_status": "qualification_pending",
       "commercial_terms": {},
       "composition_history": [
         {
@@ -4711,6 +4501,10 @@
             "cost_rollup_status": "blocked_pending_component_and_routing_definition"
           }
         }
+      ],
+      "launch_campaign_ref": "campaign.ncc1980",
+      "acceptance": [
+        "Shared 32-bit module revision; electrical qualification and manufacturing-cost reassessment pending."
       ]
     },
     {
@@ -4719,11 +4513,6 @@
       "category": "computer_software_bundle",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
       "retail_presentation": {
         "name": "Logix Office Professional",
         "purpose": "Work with larger spreadsheets, typed tables and graphical reports.",
@@ -4872,7 +4661,11 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982",
+      "commercial_terms": {
+        "purchase_method": "quotation"
+      }
     },
     {
       "id": "product.retail.business_accounts",
@@ -4880,11 +4673,6 @@
       "category": "computer_software_bundle",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
       "retail_presentation": {
         "name": "Logix Business Accounts",
         "purpose": "Manage bookkeeping, invoicing, inventory and payroll.",
@@ -5040,7 +4828,11 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982",
+      "commercial_terms": {
+        "purchase_method": "quotation"
+      }
     },
     {
       "id": "product.retail.developer_workstation",
@@ -5048,11 +4840,6 @@
       "category": "computer_software_bundle",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
       "retail_presentation": {
         "name": "Logix Developer Workstation",
         "purpose": "Build native Artemis and Z80-compatible applications.",
@@ -5195,7 +4982,11 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982",
+      "commercial_terms": {
+        "purchase_method": "quotation"
+      }
     },
     {
       "id": "product.retail.connect_office",
@@ -5203,11 +4994,6 @@
       "category": "expansion_kit",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
       "retail_presentation": {
         "name": "Connect My Office",
         "purpose": "Connect existing compatible machines.",
@@ -5238,7 +5024,11 @@
           ],
           "composition_status": "unresolved"
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982",
+      "commercial_terms": {
+        "purchase_method": "quotation"
+      }
     },
     {
       "id": "product.retail.cpm_migration",
@@ -5246,11 +5036,6 @@
       "category": "expansion_kit",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
       "retail_presentation": {
         "name": "Move from CP/M to Artemis",
         "purpose": "Preserve compatible applications and move business data.",
@@ -5281,7 +5066,11 @@
           ],
           "composition_status": "unresolved"
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982",
+      "commercial_terms": {
+        "purchase_method": "quotation"
+      }
     },
     {
       "id": "product.proposed_artemis_accounts",
@@ -5289,13 +5078,6 @@
       "category": "computer_software_bundle",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "qualification_pending",
-      "introduced": {
-        "event_name": "NCC 1980 — first recorded catalogue snapshot",
-        "event_start_date": "1980-06-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1980; not the conference opening date or evidence of shipment."
-      },
       "acceptance": [
         "Composition reconstructed from saved retail/pricing snapshot constituent records; electrical qualification and actual shipment remain unconfirmed."
       ],
@@ -5415,7 +5197,8 @@
               "used_socket": "flexibus",
               "element_type": "connected_device"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with NCC 1980; not the conference opening date."
         },
         {
           "valid_from": "1981-05-04",
@@ -5547,7 +5330,9 @@
       ],
       "notes": [
         "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated."
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980",
+      "commercial_terms": {}
     },
     {
       "id": "product.proposed_artemis_developer",
@@ -5555,13 +5340,6 @@
       "category": "computer_software_bundle",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "qualification_pending",
-      "introduced": {
-        "event_name": "NCC 1980 — first recorded catalogue snapshot",
-        "event_start_date": "1980-06-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1980; not the conference opening date or evidence of shipment."
-      },
       "acceptance": [
         "Composition reconstructed from saved retail/pricing snapshot constituent records; electrical qualification and actual shipment remain unconfirmed."
       ],
@@ -5680,7 +5458,8 @@
               "quantity_status": "defined",
               "element_type": "attached_product"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with NCC 1980; not the conference opening date."
         },
         {
           "valid_from": "1981-05-04",
@@ -5811,7 +5590,9 @@
       ],
       "notes": [
         "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated."
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980",
+      "commercial_terms": {}
     },
     {
       "id": "computer_system.retail.connected_office",
@@ -5819,11 +5600,6 @@
       "category": "computer_system",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
       "retail_presentation": {
         "name": "Logix Connected Office",
         "purpose": "Share business records and a printer between two workstations.",
@@ -6095,18 +5871,18 @@
         }
       ],
       "commercial_terms": {
-        "availability_status": "announced_shipping_unconfirmed",
-        "shipping_date": null,
         "included_software_package": {
           "product_ref": "product.bpi_client_server",
           "server_licenses": 1,
           "client_seats": 2,
           "qualification": "Retains existing package entitlements; media distribution sets are not multiplied by client seats."
-        }
+        },
+        "purchase_method": "quotation"
       },
       "notes": [
         "Restored as a computer system. Network cables are included by NIC devices; per-host placement and shipment qualification remain explicit. No product-level legacy cost baseline is asserted."
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982"
     },
     {
       "id": "computer_system.retail.development_team",
@@ -6114,11 +5890,6 @@
       "category": "computer_system",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "November 1982 retail catalogue adoption",
-        "event_start_date": "1982-11-29"
-      },
       "retail_presentation": {
         "name": "Logix Development Team",
         "purpose": "Equip four concurrent developers for collaborative development.",
@@ -6377,8 +6148,10 @@
           "server_licenses": 1,
           "client_seats": 4,
           "qualification": "Retains existing package entitlements; media distribution sets are not multiplied by client seats."
-        }
-      }
+        },
+        "purchase_method": "quotation"
+      },
+      "launch_campaign_ref": "campaign.comdex1982"
     },
     {
       "id": "computer_system.proposed_artemis_pro_small_office",
@@ -6386,13 +6159,6 @@
       "category": "computer_system",
       "vendor": "Logix",
       "computer_line": null,
-      "catalogue_status": "announced",
-      "introduced": {
-        "event_name": "NCC 1981 — first recorded catalogue snapshot",
-        "event_start_date": "1981-06-15",
-        "date_precision": "day",
-        "timeline_note": "First saved snapshot containing this offering, associated with NCC 1981; not the conference opening date or evidence of shipment."
-      },
       "acceptance": [
         "Composition reconstructed from saved retail/pricing snapshot constituent records; electrical qualification and actual shipment remain unconfirmed."
       ],
@@ -6647,12 +6413,11 @@
               "quantity_status": "defined",
               "element_type": "attached_product"
             }
-          ]
+          ],
+          "date_basis": "First saved snapshot containing this offering, associated with NCC 1981; not the conference opening date."
         }
       ],
       "commercial_terms": {
-        "availability_status": "announced_shipping_unconfirmed",
-        "shipping_date": null,
         "included_software_package": {
           "product_ref": "product.bpi_client_server",
           "server_licenses": 1,
@@ -6663,7 +6428,8 @@
       "notes": [
         "Composition/date evidence: generated/models/retail-catalog-1982-results.json and generated/models/pricing-results.json; saved financial values are not recalculated.",
         "Restored as a computer system. Network cables are included by NIC devices; per-host placement and shipment qualification remain explicit. No product-level legacy cost baseline is asserted."
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1981"
     },
     {
       "id": "product.abacus_1",
@@ -6671,11 +6437,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1978 — Logix Aurelia launch",
-        "event_start_date": "1978-06-05"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -6698,7 +6459,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.abacus_1.model_ii",
@@ -6706,11 +6468,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "Model II Abacus qualified customer release",
-        "event_start_date": "1979-10-15"
-      },
       "commercial_terms": {
         "distribution_channel": "Radio Shack / Tandy OEM distribution",
         "pricing_status": "not_rebuilt",
@@ -6733,7 +6490,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1979"
     },
     {
       "id": "product.abacus_2",
@@ -6741,13 +6499,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
-        "event_start_date": "1979-12-03",
-        "date_precision": "day",
-        "timeline_note": "Author-confirmed introduction date."
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -6770,7 +6521,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.abacus_2.era",
@@ -6778,11 +6530,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -6805,7 +6552,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.abacus_3",
@@ -6813,11 +6561,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
-        "event_start_date": "1980-11-19"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -6840,7 +6583,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1980"
     },
     {
       "id": "product.pulse_1",
@@ -6848,13 +6592,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "COMDEX December 1979 — Aurelia+ / Pulse / Abacus 2.0",
-        "event_start_date": "1979-12-03",
-        "date_precision": "day",
-        "timeline_note": "Author-confirmed introduction date."
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -6877,7 +6614,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.pulse_3",
@@ -6885,11 +6623,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "COMDEX 1980 — Abacus 3.0 / Pulse 3.0",
-        "event_start_date": "1980-11-19"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -6912,7 +6645,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1980"
     },
     {
       "id": "product.bpi_suite",
@@ -6920,11 +6654,6 @@
       "vendor": "BPI Systems",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1978 — Logix Aurelia launch",
-        "event_start_date": "1978-06-05"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -6947,7 +6676,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.bpi_suite.era",
@@ -6955,11 +6685,6 @@
       "vendor": "BPI Systems",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -6982,7 +6707,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.business_tools_aurelia",
@@ -6990,11 +6716,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1978 — Logix Aurelia launch",
-        "event_start_date": "1978-06-05"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -7017,7 +6738,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.business_tools_artemis",
@@ -7025,11 +6747,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -7052,7 +6769,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.simple_c_z80",
@@ -7060,11 +6778,6 @@
       "vendor": "Logix",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1978 — Logix Aurelia launch",
-        "event_start_date": "1978-06-05"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -7087,7 +6800,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.aurelia_sdk",
@@ -7095,11 +6809,6 @@
       "vendor": "Logix",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1978 — Logix Aurelia launch",
-        "event_start_date": "1978-06-05"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -7122,7 +6831,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1978"
     },
     {
       "id": "product.aion_c_ide",
@@ -7130,11 +6840,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -7157,7 +6862,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.artemis_sdk",
@@ -7165,11 +6871,6 @@
       "vendor": "Logix",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "NCC 1980 — Logix Artemis launch",
-        "event_start_date": "1980-05-19"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -7192,7 +6893,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1980"
     },
     {
       "id": "product.aurelia_compatibility_kit",
@@ -7200,11 +6902,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "COMDEX 1979 — Aurelia+ and compatibility kit launch",
-        "event_start_date": "1979-12-03"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -7227,7 +6924,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1979"
     },
     {
       "id": "product.autocad_1_artemis",
@@ -7235,11 +6933,6 @@
       "vendor": "Autodesk",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "COMDEX 1982 — AutoCAD for Artemis target",
-        "event_start_date": "1982-11-29"
-      },
       "commercial_terms": {
         "distribution_channel": "Logix commercial catalogue",
         "pricing_status": "not_rebuilt",
@@ -7262,7 +6955,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1982"
     },
     {
       "id": "product.aion_development_team",
@@ -7270,11 +6964,6 @@
       "vendor": "AION Software",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "offered",
-      "introduced": {
-        "event_name": "COMDEX November 1981 — Team Edition premiere",
-        "event_start_date": "1981-11-19"
-      },
       "commercial_terms": {
         "hardware_included": false,
         "pricing_status": "not_rebuilt",
@@ -7341,7 +7030,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.comdex1981"
     },
     {
       "id": "product.bpi_client_server",
@@ -7349,11 +7039,6 @@
       "vendor": "BPI Systems",
       "category": "software",
       "computer_line": null,
-      "catalogue_status": "quotation_only",
-      "introduced": {
-        "event_name": "NCC 1981 — Logix networking / Artemis PRO launch",
-        "event_start_date": "1981-05-04"
-      },
       "commercial_terms": {
         "hardware_included": false,
         "pricing_status": "not_rebuilt",
@@ -7361,7 +7046,8 @@
         "server_installation": "Install from diskettes onto server HDD",
         "server_licenses": 1,
         "client_seat_count": null,
-        "entitlement_status": "Client seat count and media quantities require qualification; no standalone client sale inferred."
+        "entitlement_status": "Client seat count and media quantities require qualification; no standalone client sale inferred.",
+        "purchase_method": "quotation"
       },
       "composition_history": [
         {
@@ -7416,7 +7102,8 @@
             }
           ]
         }
-      ]
+      ],
+      "launch_campaign_ref": "campaign.ncc1981"
     }
   ],
   "catalog_editions": [
