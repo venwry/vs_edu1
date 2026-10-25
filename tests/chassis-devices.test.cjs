@@ -5,17 +5,17 @@ const by=Object.fromEntries([...c.devices,...c.components].map(r=>[r.id,r]));
 assert.deepEqual(c.components.filter(r=>/^part\.(erav1|era2)_/.test(r.id)).map(r=>r.name),['ERAv1 6MHz (initial)','ERAv1 8MHz (upgraded)','ERA^2 12MHz','ERA^2 16MHz rev2']);
 assert(!c.components.some(p=>p.variants||p.category==='memory_module'));
 for(const p of c.platform_editions)for(const ref of p.physical_media_refs||[]){assert.equal(by[ref].category,'rom_cartridge');assert(by[ref].software_refs.includes(p.id));}
-assert.equal(c.devices.filter(d=>d.category==='computer_chassis').length,6);
+assert.equal(c.devices.filter(d=>d.category==='base_computer').length,6);
 for(const family of ['aurelia','artemis','athena']){
  const model=createFamilyModel(c,b,cost,family);assert.equal(model.options.length,{aurelia:4,artemis:8,athena:2}[family]);
  assert(!model.options.some(o=>o.chassis||o.target||o.combination));
- for(const ch of c.devices.filter(d=>d.category==='computer_chassis'))assert(!ch.bom_assembly_definition.some(l=>by[l.ref]&&['memory_expansion','rom_cartridge','video_expansion_card','network_interface_card','floppy_drive_mechanism','hard_disk_drive'].includes(by[l.ref].category)));
+ for(const ch of c.devices.filter(d=>d.category==='base_computer'))assert(!ch.bom_assembly_definition.some(l=>by[l.ref]&&['memory_expansion','rom_cartridge','video_expansion_card','network_interface_card','floppy_drive_mechanism','hard_disk_drive'].includes(by[l.ref].category)));
 }
 (async()=>{
  const errors=[],vc=new VirtualConsole();vc.on('jsdomError',e=>errors.push(e.message));
  async function boot(file,query){const dom=new JSDOM(read(file),{url:'https://atlas.test/'+file+query,runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vc}),w=dom.window;w.fetch=async p=>({ok:true,json:async()=>store.read(p)});w.IntersectionObserver=class{observe(){}disconnect(){}};for(const s of w.document.scripts)w.eval(s.src?read(new URL(s.src).pathname.slice(1)):s.textContent);for(let i=0;i<100&&!w.document.querySelector('[data-ready]');i++)await new Promise(r=>setTimeout(r,10));return dom;}
  for(const family of ['aurelia','artemis','athena']){
-  const dom=await boot(family+'.html','?configuration=device.chassis.'+family),d=dom.window.document;
+  const dom=await boot(family+'.html','?configuration=device.base_computer.'+family),d=dom.window.document;
   assert.deepEqual([...d.querySelectorAll('#configuration-stats>div>span')].map(n=>n.textContent),['Processor','System RAM']);
   const details=d.getElementById('configuration-tab-details'),bomTab=d.getElementById('configuration-tab-bom');
   assert.equal(details.textContent,'Details');assert.equal(bomTab.textContent,'Bill of materials');

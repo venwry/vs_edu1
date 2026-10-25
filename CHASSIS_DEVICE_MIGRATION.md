@@ -132,3 +132,7 @@ Home and End switch tabs; selection updates the content within the active tab.
 The subsequent commercial migration supersedes the configuration-selection and
 computer-field ownership described above. See PRODUCT_CATALOG_MIGRATION.md for
 the current 14-product selector, shared projections and retired target assemblies.
+
+The subsequent structural migration is documented in COMPOSITION_MIGRATION.md.
+It supersedes source field names and platform ownership above while preserving
+the existing production BOM calculation pending the separate simulation review.

@@ -8,7 +8,7 @@ def configuration(assembly_ref, assemblies, devices):
         d=devices.get(ref)
         if d:
             fitted.append({'ref':ref,'quantity':quantity,'path':path,'fixed':inside_chassis})
-            inside_chassis=inside_chassis or d['category']=='computer_chassis'
+            inside_chassis=inside_chassis or d['category']=='base_computer'
         a=assemblies.get(ref)
         if not a:return
         if ref in path:raise ValueError('Cyclic configuration: '+ref)
@@ -16,14 +16,14 @@ def configuration(assembly_ref, assemblies, devices):
             q=None if quantity is None or l['quantity'] is None else quantity*l['quantity']
             walk(l['ref'],q,path+[ref],inside_chassis)
     walk(assembly_ref,1,[])
-    chassis=[r for r in fitted if devices[r['ref']]['category']=='computer_chassis']
+    chassis=[r for r in fitted if devices[r['ref']]['category']=='base_computer']
     if len(chassis)!=1:return {'fitted':fitted,'assignments':[],'issues':[], 'status':'not_single_chassis'}
     ch=devices[chassis[0]['ref']];sockets={s['id']:s for g in ch['expansion_socket_groups'] for s in g['sockets']}
     occupied=defaultdict(int);assignments=[];issues=[];modules=defaultdict(int);device_counts=defaultdict(int);ram_kib=0
     # Video providers supply their own display outputs. Fixed integrated video uses chassis video_out.
     for row in fitted:
         d=devices[row['ref']]
-        if not row['fixed'] and d['category']!='computer_chassis':
+        if not row['fixed'] and d['category']!='base_computer':
             for g in d.get('expansion_socket_groups',[]):
                 for s in g['sockets']:
                     sid=d['id']+':'+s['id'];capacity=None if s['capacity'] is None or row['quantity'] is None else s['capacity']*row['quantity']
@@ -31,7 +31,7 @@ def configuration(assembly_ref, assemblies, devices):
     for row in fitted:
         d=devices[row['ref']]
         if (d.get('virtual') and d['category']=='memory_assembly') or d['category']=='memory_expansion':ram_kib+=(d.get('specification',{}).get('capacity_kb',d.get('capacity_kb',0)))*(row['quantity'] or 0)
-        if row['fixed'] or d['category']=='computer_chassis':continue
+        if row['fixed'] or d['category']=='base_computer':continue
         matches=[id for id,s in sockets.items() if d['id'] in s['compatible_device_refs']]
         if not matches:
             connections={'memory_expansion':['memory_module','expansion_card'],'rom_cartridge':['rom_cartridge'],'network_interface_card':['expansion_card'],'video_expansion_card':['dedicated_video','expansion_card'],'monitor':['video'],'hard_disk_drive':['internal_storage'],'floppy_drive_mechanism':['internal_storage']}.get(d['category'],[])
@@ -65,7 +65,7 @@ def validate_devices(devices,assemblies,records):
         if d.get('virtual') and d.get('selectable') is not False:raise ValueError('Virtual subsystem cannot be selectable')
         for id in d.get('software_refs',[]):
             if id not in records or not records[id].get('product_ref'):raise ValueError('Media must reference a software edition')
-        if d['category']=='computer_chassis':
+        if d['category']=='base_computer':
             if records.get(d['processor']['part_ref'],{}).get('category')!='processor_ic':raise ValueError('Chassis CPU must reference a processor component')
             for row in configuration(d['id'],assemblies,devices)['fitted']:
                 r=devices[row['ref']]

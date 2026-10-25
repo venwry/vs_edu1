@@ -19,6 +19,10 @@ def validate_collections(root=ROOT, overrides=None):
         ids=[r['id'] for r in rows]
         if len(ids)!=len(set(ids)):raise ValueError('Duplicate IDs in '+label)
         return {r['id']:r for r in rows}
+    device_owners={d['id']:d for d in docs['data/devices.json']['devices']}
+    for alias,target in reg.get('platform_device_aliases',{}).items():
+        if target not in device_owners or device_owners[target]['category']!='base_computer' or alias!=target.replace('device.base_computer.','computer.'):
+            raise ValueError('Invalid platform compatibility owner: '+alias)
     source_docs=docs
     docs=project_collections(docs)
     from validate_products import validate_products

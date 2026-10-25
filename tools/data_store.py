@@ -152,7 +152,9 @@ def store_document(path, value, root=ROOT):
         for id,a in after.items():
             if a==before[id]:continue
             if id not in by:raise ValueError('Edit commercial attachments or stored assembly at its source owner')
-            by[id]['bom_assembly_definition']=copy.deepcopy(a['lines'])
+
+            if len(by[id]['composition_history'])!=1:raise ValueError('Edit the explicit composition version at its source owner')
+            by[id]['composition_history'][0]['composition_definition']=copy.deepcopy(a['lines'])
             by[id]['bom_assembly_metadata']={k:copy.deepcopy(v) for k,v in a.items() if k not in ['id','lines']}
         from validate_data import validate_collections
         validate_collections(root,{'data/devices.json':devices})
@@ -165,11 +167,13 @@ def store_document(path, value, root=ROOT):
         if ref.get('device_file'):
             device_file=ref['device_file']
             if device_file not in changes:changes[device_file]=json.loads((root/device_file).read_text())
-            devices={d['id']:d for d in changes[device_file]['devices'] if 'bom_assembly_definition' in d}
+            devices={d['id']:d for d in changes[device_file]['devices'] if d.get('composition_history')}
             owned=[r for r in payload if r['id'] in devices]
             if len(owned)!=len(devices) or {r['id'] for r in owned}!=set(devices):raise ValueError('Device BOMs must be edited at their existing owners')
             for row in owned:
-                device=devices[row['id']];device['bom_assembly_definition']=copy.deepcopy(row['lines'])
+                device=devices[row['id']]
+                if len(device['composition_history'])!=1:raise ValueError('Edit the explicit composition version at its source owner')
+                device['composition_history'][0]['composition_definition']=copy.deepcopy(row['lines'])
                 device['bom_assembly_metadata']=copy.deepcopy({k:v for k,v in row.items() if k not in ['id','lines']})
             payload=[r for r in payload if r['id'] not in devices]
             if any(r['id'].startswith('device.') for r in payload):raise ValueError('Add device BOMs in data/devices.json')

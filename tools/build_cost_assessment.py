@@ -10,7 +10,7 @@ records={x['id']:x for v in C.values() if isinstance(v,list) for x in v if isins
 assemblies={x['id']:x for x in B['assemblies']}; components={x['id']:x for x in B['components'] if x['bom_role']=='material'}
 pending=[a['id'] for a in assemblies.values() if a.get('cost_assessment_status')=='pending_reassessment']
 if pending:raise ValueError('Cost rebuild blocked: qualify revised module routing/allowances and reassess before publishing: '+', '.join(pending))
-if any(d.get('category')=='computer_chassis' for d in C['devices']):raise ValueError('Cost rebuild blocked: qualify chassis, device and configured-product routing ownership before recalculation')
+if any(d.get('category')=='base_computer' for d in C['devices']):raise ValueError('Cost rebuild blocked: qualify chassis, device and configured-product routing ownership before recalculation')
 years=[1978,1979,1980,1981,1982]; snapshots=[f'{y}-06-15' for y in years]
 wages=[5.99,6.54,7.08,7.85,8.30]; electricity=[.028,.031,.037,.043,.047]; overhead=[1,1.09,1.2,1.32,1.43]
 K=['bom_materials','workforce','energy','consumables','operating_overhead','yield_and_rework','instructions','packaging','logistics','recurring_licenses','included_service_delivery']

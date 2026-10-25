@@ -6,7 +6,6 @@
     "$schema",
     "schema_version",
     "products",
-    "external_platforms",
     "catalog_editions",
     "bom_policy"
   ],
@@ -157,101 +156,10 @@
               "string"
             ]
           },
-          "main_product": {
-            "type": [
-              "object",
-              "null"
-            ]
-          },
-          "connected_devices": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "device_ref",
-                "quantity",
-                "used_socket"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "device_ref": {
-                  "type": "string"
-                },
-                "quantity": {
-                  "type": [
-                    "integer",
-                    "null"
-                  ],
-                  "minimum": 1
-                },
-                "used_socket": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "connected_to": {
-                  "type": "string"
-                },
-                "qualification_status": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "hardware_assembly_ref": {
             "type": [
               "string"
             ]
-          },
-          "attached_products": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "quantity"
-              ],
-              "additionalProperties": false,
-              "properties": {
-                "software_ref": {
-                  "type": "string"
-                },
-                "service_ref": {
-                  "type": "string"
-                },
-                "product_ref": {
-                  "type": "string"
-                },
-                "quantity": {
-                  "type": "integer",
-                  "minimum": 1
-                },
-                "duration_years": {
-                  "type": "number",
-                  "exclusiveMinimum": 0
-                }
-              },
-              "oneOf": [
-                {
-                  "required": [
-                    "software_ref"
-                  ]
-                },
-                {
-                  "required": [
-                    "service_ref"
-                  ]
-                },
-                {
-                  "required": [
-                    "product_ref"
-                  ]
-                }
-              ]
-            }
           },
           "computer_ref": {
             "type": [
@@ -384,11 +292,6 @@
               "string"
             ]
           },
-          "base_bundle_ref": {
-            "type": [
-              "string"
-            ]
-          },
           "description": {
             "type": [
               "string"
@@ -433,12 +336,128 @@
             "type": [
               "array"
             ]
+          },
+          "composition_history": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "valid_from",
+                "valid_to",
+                "version_number",
+                "composition_definition"
+              ],
+              "properties": {
+                "valid_from": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "valid_to": {
+                  "type": "string",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "version_number": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "composition_definition": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "ref",
+                      "quantity",
+                      "unit",
+                      "role",
+                      "condition",
+                      "quantity_status"
+                    ],
+                    "properties": {
+                      "ref": {
+                        "type": "string"
+                      },
+                      "quantity": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "exclusiveMinimum": 0
+                      },
+                      "unit": {
+                        "type": "string"
+                      },
+                      "role": {
+                        "type": "string"
+                      },
+                      "condition": {
+                        "type": "string"
+                      },
+                      "quantity_status": {
+                        "enum": [
+                          "defined",
+                          "unresolved"
+                        ]
+                      },
+                      "element_type": {
+                        "enum": [
+                          "main_product",
+                          "connected_device",
+                          "attached_product"
+                        ]
+                      },
+                      "used_socket": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "connected_to": {
+                        "type": "string"
+                      },
+                      "qualification_status": {
+                        "type": "string"
+                      },
+                      "duration_years": {
+                        "type": "number"
+                      },
+                      "placements": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      }
+                    }
+                  }
+                },
+                "legacy_assembly_ref": {
+                  "type": "string"
+                },
+                "unresolved_items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "composition_status": {
+                  "enum": [
+                    "unresolved"
+                  ]
+                },
+                "date_status": {
+                  "enum": [
+                    "unknown"
+                  ]
+                }
+              }
+            }
           }
         }
       }
-    },
-    "external_platforms": {
-      "type": "array"
     },
     "catalog_editions": {
       "type": "array"

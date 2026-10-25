@@ -5,7 +5,7 @@ const model=require('../bom-details.js').createModel(catalog,bom,cost);
 for(const key of ['components','devices','computers','software_products','platform_editions','offered_bundles','proposed_bundles','commercial_offerings'])for(const r of catalog[key]||[])assert(model.items.some(i=>i.id===r.id),'Missing '+r.id);
 for(const c of bom.components)assert(model.items.some(i=>i.id===c.id),'Missing manufacturing part '+c.id);
 assert.equal(new Set(model.items.map(x=>x.id)).size,model.items.length);
-assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Chassis','Internal subsystem','Computer','Expansion','Software','Software product','Software edition','Bundle']));
+assert.deepEqual(new Set(model.items.map(x=>x.class)),new Set(['Part','Peripheral','Base computer','Internal subsystem','Computer','Expansion','Software','Software product','Software edition','Bundle']));
 assert(model.items.filter(x=>x.id.startsWith('bundle.proposed_')).every(x=>x.release==='no release'));
 assert.equal(model.items.filter(x=>x.release==='no release').length,16);
 assert(model.items.every(x=>x.release),'Every navigator element has a date or explicit no release');

@@ -9,7 +9,7 @@ for(const x of c.platform_editions){assert(!Object.hasOwn(x,'category'));assert.
 for(const x of b.components){assert(!Object.hasOwn(x,'catalog_ref'));assert.deepEqual(x,m.records[x.id]);}
 for(const [id,cat] of Object.entries({'part.color_monitor_controller':'display_controller_ic','part.aurelia_monitor_dac':'video_dac_ic','part.artemis_graphics_chip':'graphics_controller_ic','device.color_monitor_1':'monitor','device.artemis_video_card':'video_expansion_card','part.computer.artemis.mainboard_pcb':'printed_circuit_board'}))assert.equal(item(id).category,cat);
 assert.equal(c.devices.filter(categories.isMonitor).length,7);
-for(const x of c.devices)assert.equal(item(x.id).class,x.category==='computer_chassis'?'Chassis':x.virtual?'Internal subsystem':categories.isExpansion(x)?'Expansion':'Peripheral');
+for(const x of c.devices)assert.equal(item(x.id).class,x.category==='base_computer'?'Base computer':x.virtual?'Internal subsystem':categories.isExpansion(x)?'Expansion':'Peripheral');
 assert.equal(categories.hardwareGroup(m.records['device.ram_64kb_x32']),'memory');
 assert.equal(categories.hardwareGroup(m.records['device.artemis_video_card']),'expansion');
 assert.equal(details.vendorName(m.records['computer.artemis'],m.records),'Logix');

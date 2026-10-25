@@ -38,3 +38,7 @@ Run source validation, `tests/validate_device_migration.py`,
 The migration audit compares all 25 logical views against an independently
 transformed pre-migration snapshot, verifies financial-file hashes and tests
 write-through routing and rejection of cyclic device BOMs.
+
+The subsequent structural migration is documented in COMPOSITION_MIGRATION.md.
+It supersedes source field names and platform ownership above while preserving
+the existing production BOM calculation pending the separate simulation review.

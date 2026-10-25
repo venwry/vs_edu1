@@ -21,7 +21,8 @@
     "data/standards.json",
     "data/timeline-structure.json",
     "data/world.json",
-    "data/product-catalog.json"
+    "data/product-catalog.json",
+    "data/retired_assemblies.json"
   ],
   "views": {
     "artemis-budget-inputs": {
@@ -213,7 +214,7 @@
         "key": "review_scope"
       },
       "external_platforms": {
-        "file": "data/computers.json",
+        "file": "data/ecosystem-inputs.json",
         "key": "external_platforms"
       },
       "external_partner_products": {
@@ -773,7 +774,13 @@
     "assembly.part.mono_pro_17_controller": "part.mono_pro_17_controller",
     "assembly.part.nec_pc8853_display_assembly": "part.nec_pc8853_display_assembly",
     "assembly.part.erav1_6mhz": "part.erav1_6mhz",
-    "assembly.part.erav1_8mhz": "part.erav1_8mhz"
+    "assembly.part.erav1_8mhz": "part.erav1_8mhz",
+    "device.chassis.aurelia": "device.base_computer.aurelia",
+    "device.chassis.aurelia_plus": "device.base_computer.aurelia_plus",
+    "device.chassis.artemis": "device.base_computer.artemis",
+    "device.chassis.artemis_pro": "device.base_computer.artemis_pro",
+    "device.chassis.athena": "device.base_computer.athena",
+    "device.chassis.athena_server": "device.base_computer.athena_server"
   },
   "record_family_aliases": {
     "part.era1": [
@@ -805,6 +812,16 @@
     "data/components.json",
     "data/standards.json",
     "data/assemblies.json",
-    "data/software-editions.json"
-  ]
+    "data/software-editions.json",
+    "data/ecosystem-inputs.json",
+    "data/retired_assemblies.json"
+  ],
+  "platform_device_aliases": {
+    "computer.aurelia": "device.base_computer.aurelia",
+    "computer.aurelia_plus": "device.base_computer.aurelia_plus",
+    "computer.artemis": "device.base_computer.artemis",
+    "computer.artemis_pro": "device.base_computer.artemis_pro",
+    "computer.athena": "device.base_computer.athena",
+    "computer.athena_server": "device.base_computer.athena_server"
+  }
 }

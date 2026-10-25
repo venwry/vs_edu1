@@ -37,7 +37,8 @@ errors=[]
 for p in b['components']:
  if p['id'] in former_base:continue
  expected=first.get(p['id']);actual=p.get('introduced',{}).get('event_start_date')
- if expected!=actual:errors.append((p['id'],actual,expected))
+ # A component's preserved month-precision date may contain a newly precise device first use.
+ if expected!=actual and not (isinstance(actual,str) and len(actual)==7 and isinstance(expected,str) and expected.startswith(actual+'-')):errors.append((p['id'],actual,expected))
 assert not errors, errors
 for p in b['components']:
  if p['id'] not in former_base and p['id'] not in first:

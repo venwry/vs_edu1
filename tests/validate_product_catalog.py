@@ -14,13 +14,14 @@ for p in products.values():
  if p['record_kind']=='platform':
   assert not any(k in p for k in ['memory','video','storage','chipset','compatible_devices','compatible_software'])
  if p.get('computer_line'):
-  assert p['main_product']['device_ref'].startswith('device.chassis.')
-  assert all(c['used_socket'] is not None for c in p['connected_devices'])
+  assert next(e['ref'] for e in p['composition_history'][0]['composition_definition'] if e['element_type']=='main_product').startswith('device.base_computer.')
+  assert all(c['used_socket'] is not None for c in p['composition_history'][0]['composition_definition'] if c['element_type']=='connected_device')
 f=read_document('tests/fixtures/product-catalog-migration.json');b=read_document('catalog:hardware-bom');a={x['id']:x for x in b['assemblies']}
 def flat(id,q=1):
  if id not in a:return [[id,q]]
  return [v for l in a[id]['lines'] for v in flat(l['ref'],None if q is None or l['quantity'] is None else q*l['quantity'])]
 for id,expected in f['assembly_inventories'].items():
+ id=registry().get('record_id_aliases',{}).get(id,id)
  if id in pc['retired_configuration_ids']:assert id not in a;continue
  actual=hashlib.sha256(json.dumps(sorted(flat(id),key=lambda x:(x[0],str(x[1]))),sort_keys=True,separators=(',',':')).encode()).hexdigest()
  assert actual==expected,id
@@ -31,11 +32,11 @@ def reject(mutator):
  try:validate_products(docs,project_collections(docs))
  except ValueError:return
  raise AssertionError('Invalid commercial population accepted')
-reject(lambda p,d:p['connected_devices'][0].update(quantity=100))
-reject(lambda p,d:p['connected_devices'][0].update(used_socket='does_not_exist'))
+def connections(p):return [e for e in p['composition_history'][0]['composition_definition'] if e['element_type']=='connected_device']
+reject(lambda p,d:connections(p)[0].update(quantity=100))
+reject(lambda p,d:connections(p)[0].update(used_socket='does_not_exist'))
 reject(lambda p,d:p.update(computer_line='Athena'))
-reject(lambda p,d:p['attached_products'].append({'software_ref':'software.aionix','quantity':1}))
-reject(lambda p,d:next(e for e in p['connected_devices'] if e['device_ref']=='device.ram_64kb_x32').update(quantity=1))
-# The chassis, not a product-local whitelist, controls what fits.
-reject(lambda p,d:next(s for dev in d['data/devices.json']['devices'] if dev['id']==p['main_product']['device_ref'] for g in dev['expansion_socket_groups'] for s in g['sockets'] if s['id']=='ram').update(compatible_device_refs=[]))
+reject(lambda p,d:p['composition_history'][0]['composition_definition'].append({'ref':'software.aionix','element_type':'attached_product','quantity':1,'unit':'each','role':'','condition':'always','quantity_status':'defined'}))
+reject(lambda p,d:next(e for e in connections(p) if e['ref']=='device.ram_64kb_x32').update(quantity=1))
+reject(lambda p,d:next(s for dev in d['data/devices.json']['devices'] if dev['id']==next(e['ref'] for e in p['composition_history'][0]['composition_definition'] if e['element_type']=='main_product') for g in dev['expansion_socket_groups'] for s in g['sockets'] if s['id']=='ram').update(compatible_device_refs=[]))
 print('PASS: 14 line-qualified products, source consolidation, retained BOM equivalence, immutable finances and negative socket/entitlement checks')
