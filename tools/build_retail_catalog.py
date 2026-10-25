@@ -77,19 +77,19 @@ def historical_offer(template, ref, year):
     return result
 
 families = {
- 'budget_colour':['bundle.artemis_budget_128'],
- 'budget_hdd':['bundle.artemis_budget_128_hdd'],
- 'office_essentials':['bundle.proposed_aurelia_plus_office','bundle.proposed_aurelia_office'],
- 'office_professional':['bundle.proposed_artemis_office','bundle.proposed_artemis_office_color','bundle.proposed_artemis_analysis','bundle.proposed_aurelia_plus_analysis'],
- 'business_accounts':['bundle.proposed_artemis_accounts','bundle.proposed_aurelia_plus_accounts','bundle.proposed_aurelia_accounts'],
- 'developer_workstation':['bundle.proposed_artemis_developer','bundle.proposed_artemis_developer_color','bundle.proposed_aurelia_plus_developer','bundle.proposed_aurelia_developer'],
- 'connected_office':['bundle.proposed_artemis_pro_small_office'],
+ 'budget_colour':['product.artemis_budget_128'],
+ 'budget_hdd':['product.artemis_budget_128_hdd'],
+ 'office_essentials':['product.proposed_aurelia_plus_office','product.proposed_aurelia_office'],
+ 'office_professional':['bundle.proposed_artemis_office','bundle.proposed_artemis_office_color','bundle.proposed_artemis_analysis','product.proposed_aurelia_plus_analysis'],
+ 'business_accounts':['product.proposed_artemis_accounts','product.proposed_aurelia_plus_accounts','product.proposed_aurelia_accounts'],
+ 'developer_workstation':['product.proposed_artemis_developer','bundle.proposed_artemis_developer_color','product.proposed_aurelia_plus_developer','product.proposed_aurelia_developer'],
+ 'connected_office':['computer_system.proposed_artemis_pro_small_office'],
 }
 upgrade_refs = {
- 'colour_reports':['offer.ncc82_colour_upgrade'],
- 'professional_drawing':['offer.ncc82_professional_graphics'],
- 'mouse_starter':['offer.ncc82_mouse_learning'],
- 'connect_office':['bundle.artemis_network_upgrade','bundle.aurelia_network_upgrade'],
+ 'colour_reports':['product.ncc82_colour_upgrade'],
+ 'professional_drawing':['product.ncc82_professional_graphics'],
+ 'mouse_starter':['product.ncc82_mouse_learning'],
+ 'connect_office':['product.artemis_network_upgrade','product.aurelia_network_upgrade'],
  'cpm_migration':['bundle.proposed_artemis_migration','bundle.proposed_artemis_migration_color'],
 }
 output['snapshots'] = {}
@@ -131,7 +131,7 @@ def december_assessment(ref, date):
     p = annual[ref]
     if p['offering_start'] > date or (p.get('offering_end') and p['offering_end'] < date) or p.get('announced_only'):
         return None
-    if ref.startswith('bundle.artemis_budget_128'):
+    if ref.startswith('product.artemis_budget_128'):
         choices=[v for v in list(p['snapshots'].values())+[p['launch_snapshot']]+p.get('dated_snapshots',[]) if v.get('retail_price_usd') is not None and v['date']<=date]
         return max(choices,key=lambda v:v['date']), 'Dated budget-system assessment carried forward'
     launch = p.get('launch_snapshot')

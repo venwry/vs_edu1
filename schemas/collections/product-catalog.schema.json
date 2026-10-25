@@ -26,15 +26,13 @@
           "name",
           "category",
           "introduced",
-          "record_kind",
           "computer_line",
           "catalogue_status"
         ],
         "properties": {
           "id": {
-            "type": [
-              "string"
-            ]
+            "type": "string",
+            "pattern": "^(product|computer_system)\\.[a-z0-9_.]+$"
           },
           "name": {
             "type": [
@@ -62,16 +60,15 @@
             ]
           },
           "category": {
-            "type": [
-              "string"
+            "enum": [
+              "computer",
+              "computer_software_bundle",
+              "expansion_kit",
+              "software",
+              "computer_system"
             ]
           },
           "chassis_ref": {
-            "type": [
-              "string"
-            ]
-          },
-          "record_kind": {
             "type": [
               "string"
             ]
@@ -162,11 +159,6 @@
             ]
           },
           "computer_ref": {
-            "type": [
-              "string"
-            ]
-          },
-          "source_group": {
             "type": [
               "string"
             ]
@@ -459,7 +451,32 @@
               }
             }
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "category": {
+                  "const": "computer_system"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^computer_system\\."
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "id": {
+                  "pattern": "^product\\."
+                }
+              }
+            }
+          }
+        ]
       }
     },
     "catalog_editions": {

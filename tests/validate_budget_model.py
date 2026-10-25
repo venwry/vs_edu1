@@ -6,7 +6,7 @@ R=Path(__file__).resolve().parents[1]
 read=lambda n:read_document(n, root=R)
 p=read('generated/models/pricing-results.json');c=read('generated/models/retail-catalog-1982-results.json');s=read('generated/models/sales-forecast.json');r=read('generated/models/roi-1974-1980.json');m=read('generated/models/quarterly-market-share.json')
 close=lambda a,b:abs(a-b)<.06
-for ref,comp in [('bundle.artemis_budget_128',3299),('bundle.artemis_budget_128_hdd',4995)]:
+for ref,comp in [('product.artemis_budget_128',3299),('product.artemis_budget_128_hdd',4995)]:
  x=next(p for p in p['products'] if p['id']==ref)
  assert x['offering_start']=='1980-05-19'
  for y in ['1978','1979']:assert x['snapshots'][y]['retail_price_usd'] is None
@@ -21,7 +21,7 @@ for date,v in c['snapshots'].items():
   assert ('Abacus 3' in ' '.join(x['includes']))==(date>='1980-11-19')
 for case in s['scenarios']:
  for row in case['monthly']:
-  budget=[l for l in row['pricing_links'] if l['product_ref'].startswith('bundle.artemis_budget_128')]
+  budget=[l for l in row['pricing_links'] if l['product_ref'].startswith('product.artemis_budget_128')]
   if row['month']<'1980-05':assert not budget
   else:assert sum(l['quantity'] for l in row['pricing_links'])==row['computer_units']
   assert sum(l['quantity'] for l in budget)<=row['products']['artemis']

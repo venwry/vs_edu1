@@ -30,7 +30,7 @@ def snapshot(ref,y):
 inputs=load('sales_model_inputs');baskets=inputs['basket_components']
 # Conditional server production added only after an explicitly assumed qualification date.
 revision=load('artemis_display_revision'); pro_mix=revision['mono_pro_pro_console_share']
-baskets['artemis_pro']=[{'product_ref':'bundle.artemis_pro_512_server','quantity':.75*(1-pro_mix)},{'product_ref':'bundle.artemis_pro_1mb_server','quantity':.25*(1-pro_mix)},{'product_ref':'bundle.artemis_pro_512_mono_pro','quantity':.75*pro_mix},{'product_ref':'bundle.artemis_pro_1mb_mono_pro','quantity':.25*pro_mix}]
+baskets['artemis_pro']=[{'product_ref':'product.artemis_pro_512_server','quantity':.75*(1-pro_mix)},{'product_ref':'product.artemis_pro_1mb_server','quantity':.25*(1-pro_mix)},{'product_ref':'product.artemis_pro_512_mono_pro','quantity':.75*pro_mix},{'product_ref':'product.artemis_pro_1mb_mono_pro','quantity':.25*pro_mix}]
 programs=[]
 def prog(id,owner,start,end,pm,refs,scope):
  programs.append(dict(id=id,entity=owner,start=start,end=end,person_months=pm,low_person_months=round(pm*.7),high_person_months=round(pm*1.7),product_refs=refs,scope=scope,productive_hours_per_person_month=130,effort_basis='Bottom-up work-package judgement; includes integration, verification, documentation and release work; future tools reduce layout effort, not qualification.'))
@@ -106,7 +106,7 @@ for m,row in monthly.items():
  # clients (two of each family) and one 8-port hub; server networking is bundled.
  if team_units(m):
   items['software.aion_development_team']+=team_units(m)
-  for ref,mult in [('bundle.aurelia_network_upgrade',1),('bundle.artemis_network_upgrade',1),('device.network_hub.8_port',.5)]:
+  for ref,mult in [('product.aurelia_network_upgrade',1),('product.artemis_network_upgrade',1),('device.network_hub.8_port',.5)]:
    for part,count in expand(ref):items[part]+=team_units(m)*mult*count
  for ref,units in items.items():
   if not units:continue

@@ -29,16 +29,16 @@ for path,h in fixture['financial_files'].items():assert hashlib.sha256((R/path).
 before={p:p.read_bytes() for p in (R/'data').glob('*.json')}
 r=simulate();assert all(p.read_bytes()==b for p,b in before.items())
 assert r['summary']['compared_versions']==72 and r['summary']['unchanged_versions']==64
-assert any(f['kind']=='inventory_change' and f['owner']=='offer.comdex82_artemis_autocad' for f in r['findings'])
+assert any(f['kind']=='inventory_change' and f['owner']=='product.comdex82_artemis_autocad' for f in r['findings'])
 assert r['summary']['findings_by_kind'].get('unknown_start_date',0)==0
 # Ref uniqueness, flat products, version ordering and cycles are strict source invariants.
 def reject(fn):
- docs=copy.deepcopy(source);p=next(p for p in docs['data/product-catalog.json']['products'] if p['id']=='bundle.artemis_128_mono');fn(p,docs)
+ docs=copy.deepcopy(source);p=next(p for p in docs['data/product-catalog.json']['products'] if p['id']=='product.artemis_128_mono');fn(p,docs)
  try:validate_products(docs,{})
  except ValueError:return
  raise AssertionError('Invalid composition accepted')
 reject(lambda p,d:p['composition_history'][0]['composition_definition'].append(copy.deepcopy(p['composition_history'][0]['composition_definition'][0])))
-reject(lambda p,d:p['composition_history'][0]['composition_definition'][0].update(ref='bundle.aurelia_mono'))
+reject(lambda p,d:p['composition_history'][0]['composition_definition'][0].update(ref='product.aurelia_mono'))
 reject(lambda p,d:p['composition_history'][1].update(valid_from=p['composition_history'][0]['valid_from']))
 reject(lambda p,d:p['composition_history'][1].update(version_number=1))
 reject(lambda p,d:d['data/devices.json']['devices'][0]['composition_history'][0]['composition_definition'][0].update(ref=d['data/devices.json']['devices'][0]['id']))

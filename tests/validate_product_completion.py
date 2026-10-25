@@ -12,9 +12,9 @@ ps={p['id']:p for p in load('data/product-catalog.json')['products']};ds={d['id'
 f=load('tests/fixtures/product-completion.json');assert len(f['added_parts'])==54 and len(f['superseded_parts'])==17
 assert all(cs[id]['vendor']=='Logix' and cs[id]['bom_role']=='material' for id in f['added_parts'])
 assert all(cs[id]['production_status']=='excluded' for id in f['superseded_parts'])
-retail=load('generated/models/retail-catalog-1982-results.json')['snapshots'];pricing={p['id']:p for p in load('generated/models/pricing-results.json')['products']}
+retail=read_document('generated/models/retail-catalog-1982-results.json')['snapshots'];pricing={p['id']:p for p in read_document('generated/models/pricing-results.json')['products']}
 for p in ps.values():
- if not p['id'].startswith('bundle.proposed_'):continue
+ if not p['id'].startswith('product.proposed_'):continue
  name=pricing[p['id']]['name']
  dates=[dt for dt,s in retail.items() if name in s['announced_offers'] or any(l['ref']==p['id'] for l in s['current_offer_prices']) or any(l['ref']==p['id'] for c in s['solutions']+s['upgrades'] for l in c['pricing']['lines'])]
  assert p['introduced']['event_start_date']==min(dates)==p['composition_history'][0]['valid_from']
@@ -28,7 +28,7 @@ for d in ds.values():
    for key in keys:assert lines['part.'+d['id']+'.'+key]['quantity']==1
    assert not set(lines)&set(f['superseded_parts'])
   if d['category']=='floppy_drive_mechanism':assert not any(ref.endswith('.controller_cable') for ref in lines)
-for id in ['offer.retail.connect_office','offer.retail.cpm_migration']:
+for id in ['product.retail.connect_office','product.retail.cpm_migration']:
  h=ps[id]['composition_history'][0];assert h['composition_status']=='unresolved'
  assert h['composition_definition'] and all(l['quantity'] is None and l['condition']!='always' for l in h['composition_definition'])
 assert 'bundle.proposed_artemis_pro_small_office' not in ps

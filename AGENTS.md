@@ -52,3 +52,8 @@ tools/compositions.py. Never select a child by list position or pricing date: us
 its parent's valid_from. Pricing requires an explicit evaluation date. Keep
 financial qualification guards and saved financial files unchanged during structural
 work. Run tests/validate_composition_cutover.py and both composition *.test.cjs tests.
+
+Product identities/categories follow PRODUCT_STANDARDIZATION.md. Commercial IDs use
+product.* except computer_system.* for multi-computer products. Do not restore
+record_kind/source_group or insert platform records into product_catalog.products.
+Run tests/validate_product_standardization.py after commercial identity/category edits.

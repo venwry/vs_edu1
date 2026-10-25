@@ -22,7 +22,7 @@ oldmonths={r['month']:r for r in oldS['monthly']};oldquarters={r['quarter']:r fo
 F=['customer_retail_spend_usd','supplier_revenue_after_channel_usd','recurring_cost_usd','unit_contribution_total_usd'];families=['aurelia','aurelia_plus','artemis','artemis_pro']
 def unit(ref,m):
  date=m+'-28'
- if ref.startswith('bundle.artemis_budget_128'):
+ if ref.startswith('product.artemis_budget_128'):
   p=annual[ref];choices=[v for v in list(p['snapshots'].values())+[p['launch_snapshot']]+p.get('dated_snapshots',[]) if v.get('retail_price_usd') is not None and v['date']<=date];v=max(choices,key=lambda v:v['date']);return v['retail_price_usd'],v['revenue_after_fee_usd'],v['manufacturing_cost_usd'],v['date'],'Dated budget assessment; launch/Abacus/NIC gates retained'
  if ref.startswith('solution.'):
   assert m>='1982-12'
@@ -38,10 +38,10 @@ def unit(ref,m):
  snapshots=[s for s in p['snapshots'].values() if s['retail_price_usd'] is not None];before=[s for s in snapshots if s['date']<=date];s=max(before,key=lambda s:s['date']) if before else min(snapshots,key=lambda s:s['date'])
  return s['retail_price_usd'],s['revenue_after_fee_usd'],s['manufacturing_cost_usd'],s['date'],'Dated assessment; conditional shipment assumption where announced'
 weights={
- 'aurelia':[('bundle.proposed_aurelia_office',.7),('bundle.proposed_aurelia_accounts',.2),('bundle.proposed_aurelia_developer',.1)],
- 'aurelia_plus':[('bundle.proposed_aurelia_plus_office',.6),('bundle.proposed_aurelia_plus_accounts',.25),('bundle.proposed_aurelia_plus_developer',.1),('bundle.proposed_aurelia_plus_analysis',.05)],
- 'artemis':[('bundle.proposed_artemis_office',.4),('bundle.proposed_artemis_office_color',.1),('bundle.proposed_artemis_accounts',.2),('bundle.proposed_artemis_developer',.15),('bundle.proposed_artemis_analysis',.1),('bundle.proposed_artemis_migration',.05)],
- 'artemis_pro':[('bundle.artemis_pro_512_server',.65),('bundle.artemis_pro_1mb_server',.35)]}
+ 'aurelia':[('product.proposed_aurelia_office',.7),('product.proposed_aurelia_accounts',.2),('product.proposed_aurelia_developer',.1)],
+ 'aurelia_plus':[('product.proposed_aurelia_plus_office',.6),('product.proposed_aurelia_plus_accounts',.25),('product.proposed_aurelia_plus_developer',.1),('product.proposed_aurelia_plus_analysis',.05)],
+ 'artemis':[('bundle.proposed_artemis_office',.4),('bundle.proposed_artemis_office_color',.1),('product.proposed_artemis_accounts',.2),('product.proposed_artemis_developer',.15),('bundle.proposed_artemis_analysis',.1),('bundle.proposed_artemis_migration',.05)],
+ 'artemis_pro':[('product.artemis_pro_512_server',.65),('product.artemis_pro_1mb_server',.35)]}
 def line(ref,n,m,family,scope):
  gross,net,cost,date,basis=unit(ref,m);assert cost is not None,(ref,m)
  g=money(n*gross);r=money(n*net);c=money(n*cost)
@@ -82,16 +82,16 @@ for sid,settings in I['scenarios'].items():
      normal=count-(cad if family=='artemis_pro' else 0)
      mix=dict(weights[family])
      if family=='artemis':
-      if m<'1981-01':mix={'bundle.proposed_artemis_office':.6,'bundle.proposed_artemis_developer':.25,'bundle.proposed_artemis_migration':.15}
-      bm=I['budget_mix'][str(y)];mix={k:v*(1-bm['floppy']-bm['hdd']) for k,v in mix.items()};mix['bundle.artemis_budget_128']=bm['floppy'];mix['bundle.artemis_budget_128_hdd']=bm['hdd']
+      if m<'1981-01':mix={'bundle.proposed_artemis_office':.6,'product.proposed_artemis_developer':.25,'bundle.proposed_artemis_migration':.15}
+      bm=I['budget_mix'][str(y)];mix={k:v*(1-bm['floppy']-bm['hdd']) for k,v in mix.items()};mix['product.artemis_budget_128']=bm['floppy'];mix['product.artemis_budget_128_hdd']=bm['hdd']
      if m>='1982-12' and family=='artemis':
       mix['solution.office_professional']=mix.pop('bundle.proposed_artemis_office')
-      mix['solution.business_accounts']=mix.pop('bundle.proposed_artemis_accounts')
+      mix['solution.business_accounts']=mix.pop('product.proposed_artemis_accounts')
      allocations=allocate(normal,mix)
      for ref,quantity in allocations.items():
       if quantity:lines.append(line(ref,quantity,m,family,'Complete task bundle; component contents counted once'))
-    if cad:lines.append(line('offer.comdex82_reference_hardware',cad,m,'artemis_pro','CAD host replaces ordinary PRO sale; Autodesk licence accounted outside project revenue'))
-    for name,ref in [('team_paid_licenses','software.aion_development_team'),('colour_upgrade_units','offer.ncc82_colour_upgrade'),('mouse_only_learning_units','offer.ncc82_mouse_learning'),('cad_upgrade_licenses','offer.comdex82_professional_hardware')]:
+    if cad:lines.append(line('product.comdex82_reference_hardware',cad,m,'artemis_pro','CAD host replaces ordinary PRO sale; Autodesk licence accounted outside project revenue'))
+    for name,ref in [('team_paid_licenses','software.aion_development_team'),('colour_upgrade_units','product.ncc82_colour_upgrade'),('mouse_only_learning_units','product.ncc82_mouse_learning'),('cad_upgrade_licenses','product.comdex82_professional_hardware')]:
      quantity=round(cohort(name,y,q,j)*scale)
      if quantity:addons.append(line(ref,quantity,m,'existing_owner' if name!='team_paid_licenses' else 'team_software','Separate cohort; no computer unit, no additional bundled mouse or sponsored Autodesk licence counted'))
     cadlic=cad+round(cohort('cad_upgrade_licenses',y,q,j)*scale)
@@ -128,7 +128,7 @@ for sid,settings in I['scenarios'].items():
   y=int(q[:4]);bq=f'{min(y,1982)}-Q{q[-1]}';base=oldroi[bq];olds=oldquarters[bq];rr=[r for r in rows if qtr(r['month'])==q];salesq=next(r for r in quarterlies if r['quarter']==q);factor=salesq['computer_units']/olds['computer_units'];infl=1.06 if y==1983 else 1
   addon=totals([l for r in rr for l in r.get('additional_offer_links',[])]);oem=[r for r in contract_rows if r['quarter']==q];oemnet=sum(r['project_revenue_usd'] for r in oem);oemcost=sum(r['project_recurring_cost_usd'] for r in oem)
   oldteam=olds.get('team_licenses',0);oldteamcost=0
-  for ref,mult in [('software.aion_development_team',1),('bundle.aurelia_network_upgrade',1),('bundle.artemis_network_upgrade',1),('device.network_hub.8_port',.5)]:
+  for ref,mult in [('software.aion_development_team',1),('product.aurelia_network_upgrade',1),('product.artemis_network_upgrade',1),('device.network_hub.8_port',.5)]:
    oldteamcost+=oldteam*mult*unit(ref,'1982-06')[2]
   bpi_net=base['revenue_streams_usd'].get('bpi_licenses',0);bp=unit('software.bpi_suite','1982-06');bpi_cost=bpi_net*bp[2]/bp[1]
   removed_net=base['revenue_streams_usd'].get('computer_baskets',0)+base['revenue_streams_usd'].get('team_and_network',0)+bpi_net

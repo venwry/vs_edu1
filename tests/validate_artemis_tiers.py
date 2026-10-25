@@ -40,7 +40,7 @@ for layer in ['hardware','memory']:
  assert not {'display_dram','sprite_sram','pixel_fifo','display_refresh'}&{n['id'] for n in nodes}
  assert any(n.get('computer_path')=='video' for n in nodes)
 mix=read('generated/catalogs/sales-model-inputs.json')['basket_components']['artemis']
-assert abs(sum(x['quantity'] for x in mix if x['product_ref'].startswith('bundle.'))-1)<.000001
+assert abs(sum(x['quantity'] for x in mix if x['product_ref'].startswith('product.'))-1)<.000001
 iv=read('generated/models/industrial-investment-1974-1981.json')
 assert sum(p['person_months'] for p in iv['engineering_programs'] if p['id'] in ['aion_64k_dram','artemis_tier_hardware','artemis_economy_driver'])==156
 print('PASS: Artemis tier BOMs, mode allocation, monitor constraints, selected-card diagrams, AION sourcing and sales reconciliation.')

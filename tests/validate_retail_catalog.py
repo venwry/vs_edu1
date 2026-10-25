@@ -24,11 +24,11 @@ for p in x['current_offer_prices']:
     s=annual[p['ref']]['snapshots']['1982']
     if p['ref'] not in {'device.artemis_professional_video_128kb','device.mono_pro_17'} and s.get('separate_purchase_price_usd') is not None:
         assert p['retail']<=s['separate_purchase_price_usd']
-assert 'offer.ncc82_professional_graphics' not in {p['ref'] for p in x['current_offer_prices']}
+assert 'product.ncc82_professional_graphics' not in {p['ref'] for p in x['current_offer_prices']}
 assert next(p for p in x['current_offer_prices'] if p['ref']=='software.aion_development_team')['retail']==745.23
 assert next(p for p in x['solutions'] if p['id']=='professional_cad')['pricing']['cost_usd'] is None
 assert next(p for p in x['solutions'] if p['id']=='office_essentials')['pricing']['amount_usd']==1961.08
-assert annual['bundle.proposed_aurelia_plus_office']['snapshots']['1982']['retail_price_usd']==1969.15
+assert annual['product.proposed_aurelia_plus_office']['snapshots']['1982']['retail_price_usd']==1969.15
 print('PASS: references, provenance, current ceilings, original history, supplier unknowns and quotation gates.')
 
 assert set(x['snapshots'])=={f'{y}-{month}-15' for y in range(1978,1983) for month in ['06','12']}
@@ -61,7 +61,7 @@ for date,view in x['snapshots'].items():
         if row['date']>date:assert 'proxy' in row['basis'].lower()
     if date<'1982-12-15':assert not any(p['id']=='professional_cad' for p in view['solutions'])
 d79=x['snapshots']['1979-12-15']
-assert next(p for p in d79['solutions'] if p['id']=='office_essentials')['components'][0]['ref']=='bundle.proposed_aurelia_plus_office'
+assert next(p for p in d79['solutions'] if p['id']=='office_essentials')['components'][0]['ref']=='product.proposed_aurelia_plus_office'
 assert any(p['ref']=='software.abacus_2' for p in d79['current_offer_prices'])
 assert not any(p['ref']=='software.abacus_3' for p in d79['current_offer_prices'])
 d80=x['snapshots']['1980-12-15']

@@ -36,7 +36,7 @@ def validate_collections(root=ROOT, overrides=None):
             for v in value.values():refs(v)
         elif isinstance(value,list):
             for v in value:refs(v)
-        elif isinstance(value,str) and re.fullmatch(r'(?:computer|software|part|device|technology|service|bundle|edition)\.[a-z0-9_.]+',value):
+        elif isinstance(value,str) and re.fullmatch(r'(?:computer_system|product|computer|software|part|device|technology|service|bundle|edition)\.[a-z0-9_.]+',value):
             if value not in records:raise ValueError('Unresolved technical reference: '+value)
     refs(tech)
     for e in tech['platform_editions']:

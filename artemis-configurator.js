@@ -7,7 +7,7 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const human=v=>String(v).replace(/_/g,' ');
 const money=v=>Number.isFinite(v)?'$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'Not costed';
 const processorLabel=(records,p)=>{const name=records[p.part_ref]?.name||p.variant||'';return /MHz/.test(name)?name:p.clock_mhz+' MHz '+name;};
-const clean=r=>Object.fromEntries(Object.entries(r||{}).filter(([k])=>!['used_by','used_in','compatible_with','source_group','technical_profile'].includes(k)));
+const clean=r=>Object.fromEntries(Object.entries(r||{}).filter(([k])=>!['used_by','used_in','compatible_with','technical_profile'].includes(k)));
 function createFamilyModel(catalog,bom,cost,familyId){
  const compositionModel=(typeof module!=='undefined'&&module.exports?require('./bom-details.js'):root.BomDetails).createModel(catalog,bom,cost),graph=compositionModel.graph,model={records:compositionModel.records,components:compositionModel.components,assemblies:new Map(),costs:new Map(cost.products.map(p=>[p.id,p])),cost},line={aurelia:'Aurelia',artemis:'Artemis',athena:'Athena'}[familyId];
  // The sole membership qualifier is computer_line. Availability only labels the choice.
@@ -18,7 +18,7 @@ function createFamilyModel(catalog,bom,cost,familyId){
   const ram=(p.connected_devices||[]).find(e=>model.records[e.device_ref]?.category==='memory_expansion');
   const config=host.memory.configurations?.find(c=>c.module_ref===ram?.device_ref&&c.populated_modules===ram?.quantity);
   const offer={...p,included_devices:p.connected_devices.map(e=>e.device_ref),included_software:p.attached_products.filter(e=>e.software_ref).map(e=>e.software_ref),manufacturing_variants:(p.revisions||[]).map(r=>({assembly_ref:r.hardware_assembly_ref,effective_from:r.effective_from})),computer_configuration:config?{ram_configuration_id:config.id}:undefined};
-  return {id:p.id,name:p.name,group:line+' products',hostRef,ramId:config?.id,offer,cost:model.costs.get(p.id),assemblyRef:p.hardware_assembly_ref||p.id,available:p.introduced.event_start_date,planning:p.catalogue_status==='planned',professional:p.id==='offer.comdex82_artemis_autocad',product:p};
+  return {id:p.id,name:p.name,group:line+' products',hostRef,ramId:config?.id,offer,cost:model.costs.get(p.id),assemblyRef:p.hardware_assembly_ref||p.id,available:p.introduced.event_start_date,planning:p.catalogue_status==='planned',professional:p.id==='product.comdex82_artemis_autocad',product:p};
  });
  function state(option,revision,date){
   const host=JSON.parse(JSON.stringify(model.records[option.hostRef])),tree=walk(option.id,revision.version),refs=new Set(tree.assemblyRefs.filter(id=>model.records[id]));for(const l of tree.leaves)if(model.records[l.ref])refs.add(l.ref);
@@ -48,8 +48,9 @@ root.setupArtemisWorkbench=function(catalog,page){
  for(const node of [...main.children])if(node!==hero)node.remove();
  const panel=document.createElement('section');panel.id='artemis-workbench';panel.innerHTML='<p role="status">Loading configurations, manufacturing evaluations and BOMs…</p>';hero.after(panel);
  DataStore.fetch('generated/models/manufacturing-costs.json').then(r=>r.json()).then(cost=>mount(createFamilyModel(catalog,{},cost,page.id),root.BomDetails.createModel(catalog,{},cost))).catch(error=>{panel.innerHTML='<p role="alert">'+esc(error.message)+'</p><button id="retry-artemis-workbench">Retry</button>';panel.querySelector('button').onclick=()=>location.reload();});
- function mount(model,bomDetails){
+ async function mount(model,bomDetails){
   const records=model.records,params=new URLSearchParams(location.search),modelRef=params.get('model')||page.record_refs[0];
+  if(params.has('configuration')){const [id,...version]=params.get('configuration').split('::');params.set('configuration',[await DataStore.resolveComponentId(id),...version].join('::'));}
   let option=model.options.find(x=>x.id===params.get('configuration')?.split('::')[0])||model.options.find(x=>x.hostRef===modelRef&&!x.upgrade&&!x.target)||model.options.find(x=>!x.upgrade&&!x.target),revision,chosenDate,selected='configuration',nodes=new Map();
   panel.innerHTML=`<div class="configuration-toolbar"><label class="configuration-main-choice" for="artemis-configuration">System configuration<select id="artemis-configuration"></select></label></div><p id="configuration-status" class="configuration-status" role="status"></p><div class="configuration-stats" id="configuration-stats"></div><section class="configuration-workspace" aria-label="Computer configuration and component details"><div class="configuration-canvas"><div class="configuration-canvas-heading"><strong>Configuration contents</strong><span>Select any component to inspect it →</span></div><div class="configuration-diagram-scroll" tabindex="0" role="region" aria-label="Nested configuration contents"><div id="configuration-diagram"></div></div><p id="configuration-diagram-note"></p></div><aside class="configuration-inspector" id="configuration-inspector" aria-label="Selected configuration component" aria-live="polite"></aside></section><section class="configuration-cost-section" id="configuration-cost-history"><div class="configuration-section-heading"><div><span class="eyebrow">Nominal USD · saved engineering estimates</span><h2>Manufacturing cost over time</h2></div></div><p>Each row is a recorded June 15 evaluation of this hardware revision. Select a date to inspect its bill of materials.</p><div id="configuration-cost-table"></div></section><section class="configuration-cost-section" id="configuration-bom"><div class="configuration-section-heading"><div><span class="eyebrow" id="configuration-bom-date"></span><h2>Bill of materials &amp; cost decomposition</h2></div></div><div id="configuration-bom-table"></div></section>`;
   const $=id=>document.getElementById(id);
@@ -120,7 +121,7 @@ root.setupArtemisWorkbench=function(catalog,page){
    const present=new Set([...nodes.values()].map(n=>n.ref));
    for(const id of host.compatible_devices||[]){if(present.has(id)||!records[id])continue;const r=records[id],entry=recordButton('optional-'+id,id,null,'Compatible option — not fitted · '+(r.introduced?.event_start_date||'date unknown'));if(categories.isMemory(r))memory+=entry;else if(categories.isExpansion(r))expansion+=entry;else ports+=entry;present.add(id);}
    // Full platform records previously exposed in the reference accordion remain reachable.
-   for(const id of page.record_refs){if(id===host.id||present.has(id)||!records[id]||id.startsWith('computer.')||id.startsWith('bundle.')||id.startsWith('offer.'))continue;
+   for(const id of page.record_refs){if(id===host.id||present.has(id)||!records[id]||id.startsWith('computer.')||id.startsWith('product.')||id.startsWith('computer_system.'))continue;
     const entry=recordButton('platform-'+id,id,null,'Platform reference — not an included item');
     if(/^(software|edition)\./.test(id)||/api|abi|cpm|os_model|portability|tui/.test(id))software+=entry;else if(/memory|xip/.test(id))memory+=entry;else if(/video|display|monitor|mono_pro|color_pro/.test(id))monitor+=entry;else core+=entry;
    }
@@ -158,7 +159,7 @@ root.setupArtemisWorkbench=function(catalog,page){
     for(const ref of host.compatible_devices||[]){if(included.has(ref))continue;const r=records[ref];if(!r)continue;const group=categories.hardwareGroup(r);groups[group].push(recordButton('optional-'+ref,ref,null,'Compatible option — not fitted'));included.add(ref);}
     for(const ref of host.compatible_software||[]){if(included.has(ref))continue;groups.software.push(recordButton('compatible-'+ref,ref,null,'Compatible / separately supplied'));included.add(ref);}
     const refs=new Set([...(host.technology_refs||[]),...page.record_refs]);
-    for(const ref of refs){if(included.has(ref)||!records[ref]||ref.startsWith('computer.')||ref.startsWith('bundle.'))continue;const group=/memory|ram|xip/.test(ref)?'memory':/^(software|edition)\.|api|abi|os_model|portability|tui/.test(ref)?'software':/video|display|monitor/.test(ref)?'ports':'core';groups[group].push(recordButton('reference-'+ref,ref,null,'Architecture reference'));}
+    for(const ref of refs){if(included.has(ref)||!records[ref]||ref.startsWith('computer.')||ref.startsWith('product.')||ref.startsWith('computer_system.'))continue;const group=/memory|ram|xip/.test(ref)?'memory':/^(software|edition)\.|api|abi|os_model|portability|tui/.test(ref)?'software':/video|display|monitor/.test(ref)?'ports':'core';groups[group].push(recordButton('reference-'+ref,ref,null,'Architecture reference'));}
    }
    if(!s.option.upgrade)groups.core.unshift(recordButton('chassis',host.chassis_ref,'Base computer','Fixed hardware and available sockets'));
    const rootButton=recordButton('configuration',s.option.offer?.id||host.id,s.option.name,'Full specification and BOM',{selected_memory:s.option.upgrade?undefined:s.ram});

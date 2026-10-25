@@ -118,7 +118,7 @@ def row(id,ref,name,group,unit,start,**kwargs):
  d={'id':id,'catalog_ref':ref,'name':name,'group':group,'unit':unit,'available_from':start,'assumptions':[],'snapshots':{},**kwargs};rows.append(d);return d
 # Hardware owners and commercial products use their source identity, never configured assemblies.
 for x in C['devices']+C['product_catalog']['products']:
- if not x.get('composition_history') or x.get('record_kind')=='platform':continue
+ if not x.get('composition_history'):continue
  row(x['id'],x['id'],x['name'],'Bundles' if x in C['product_catalog']['products'] else 'Peripherals','one supplied composition',date(x),composition_ref=x['id'])
 # OEM custom chips are explicitly offered by the component-licensing service.
 for ref in sorted(custom):

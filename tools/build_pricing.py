@@ -110,18 +110,18 @@ for key,vals,refs,desc in [
  ('support',[None,None,None,195],[[],[],[],['support81']],'Apple hardware warranty is only a spending reference. No equivalent telephone-support quote; cost-based recommendation.'),
  ('training',[395,395,395,395],[['course']]*4,'Older four-day engineering course reference only. Course-day normalized price is an estimate, not office-course equivalence.'),
  ('registration',[None]*4,[[]]*4,'No equivalent developer registration quote established. Cost-based access price including SDK.')]: bench(key,vals,refs,desc,'unverified_proxy' if key in ['tools','pulse','pulse3','sdk','sdkera','support','registration','training'] else 'category_proxy')
-for id in ['bundle.aurelia_mono','bundle.aurelia_color','bundle.aurelia_plus_mono','bundle.aurelia_plus_color','bundle.artemis_128_mono','bundle.artemis_128_color','bundle.artemis_256_color','bundle.artemis_pro_512_server','bundle.artemis_pro_1mb_server']:
+for id in ['product.aurelia_mono','product.aurelia_color','product.aurelia_plus_mono','product.aurelia_plus_color','product.artemis_128_mono','product.artemis_128_color','product.artemis_256_color','product.artemis_pro_512_server','product.artemis_pro_1mb_server']:
  b=['aurelia','color','plus','pluscolor','art128','art128color','art256color','pro512','pro1024'][len(P)];add(id,group='Complete computer systems',bench=b)
 bench('monopro',[None,None,450,425],[[],[],[],[]], 'Unverified planning envelope for a 14-inch 26.88-kHz grayscale monitor, not a historical matched price. CRT catalog establishes the tube, not this retail value.', 'unverified_proxy')
 bench('art128pro',[None,None,4511,4296],[[],[],['h78','wc80','m12_80'],['ii81','ram81','m12_81']], 'Existing workstation proxy less old monochrome monitor proxy plus unverified Mono Pro envelope ($450/$425).', 'unverified_proxy')
 bench('art256pro',[None,None,5711,5496],[[],[],['h78','r78','m12_80'],['ii81','ram81','m12_81']], 'Existing expanded workstation proxy less old monitor plus unverified Mono Pro envelope.', 'unverified_proxy')
 bench('pro512display',[None,None,None,11595],[[],[],[],['ii81','server81','ram81']], 'Server proxy plus $170 keyboard and $425 Mono Pro planning envelopes.', 'unverified_proxy')
 bench('pro1024display',[None,None,None,15595],[[],[],[],['ii81','server81','ram81']], 'Server proxy plus $170 keyboard and $425 Mono Pro planning envelopes.', 'unverified_proxy')
-for id,bm in [('artemis_256_mono_pro','art256pro'),('artemis_pro_512_mono_pro','pro512display'),('artemis_pro_1mb_mono_pro','pro1024display')]:add('bundle.'+id,group='Complete computer systems',bench=bm)
+for id,bm in [('artemis_256_mono_pro','art256pro'),('artemis_pro_512_mono_pro','pro512display'),('artemis_pro_1mb_mono_pro','pro1024display')]:add('product.'+id,group='Complete computer systems',bench=bm)
 add('device.mono_pro',group='Peripherals and expansion',bench='monopro')
 add('device.artemis_video_card_16kb',group='Peripherals and expansion',note='Included in Artemis 128; separate replacement only. 32-bit host bridge, 8-bit local memory; Mono Pro unsupported.')
 add('device.artemis_video_card',group='Peripherals and expansion',note='Replacement/spare card. Already included once in each Artemis/PRO chassis; no separate retail attachment assumed.')
-for id in ['bundle.aurelia_network_upgrade','bundle.artemis_network_upgrade']:add(id,group='Networking',bench='net')
+for id in ['product.aurelia_network_upgrade','product.artemis_network_upgrade']:add(id,group='Networking',bench='net')
 for id,b in [('flexibus_keyboard','keyboard'),('mono_monitor_1','mono1'),('color_monitor_1','color1'),('mono_monitor_2','mono2'),('color_monitor_2','color2'),('aurelia_ram_16kb_card','ram16'),('flexiprint40','printer'),('flexidisk','disk'),('apple2_expansion_card','applecard'),('flexidisk_ii','disk2'),('artemis_cpm80_module','compat'),('artemis_ram_64kb_bank_kit','ram64'),('artemis_ram_256kb_bank_kit','ram256')]:add('device.'+id,group='Peripherals and expansion',bench=b)
 for id in ['s100_flexibus_card','apple2_video_card','s100_video_card']:
  add('device.'+id,group='Peripherals and expansion',note='NCC June 1979 offer. Cost-based planning price; no matched historical competitor benchmark. Host, monitor and any separate FlexiBUS card are excluded. Uses AION chips at launch; SMC sourcing remains an alternative scenario.')
@@ -154,23 +154,23 @@ for pack in load('generated/catalogs/ncc-1982-campaign.json')['packages']:
 for b in catalog['proposed_bundles']:
  add(b['id'],b['name'],'Application bundles',start=b['earliest_offer_date'],parts=[{'cost_ref':r,'quantity':1} for r in [b['base_bundle_ref']]+b['included_software']+b['included_devices']],note='Approved commercial bundle. Base system includes one year Regular Support; no second support charge.')
 def package(id,name,base,software,devices=[],start='1980-05-19',note=''):
- return add('bundle.proposed_artemis_'+id,'Artemis — '+name,'Application bundles',start=start,parts=[{'cost_ref':r,'quantity':1} for r in [base]+software+devices],note=note or 'Approved commercial package; RAM selection is not a measured software minimum.')
-office=package('office','Office productivity','bundle.artemis_128_mono',['software.business_tools_artemis','edition.abacus_2.era'])
+ return add('product.proposed_artemis_'+id,'Artemis — '+name,'Application bundles',start=start,parts=[{'cost_ref':r,'quantity':1} for r in [base]+software+devices],note=note or 'Approved commercial package; RAM selection is not a measured software minimum.')
+office=package('office','Office productivity','product.artemis_128_mono',['software.business_tools_artemis','edition.abacus_2.era'])
 office['component_variants']=[{'effective_from':'1980-11-19','replace':{'edition.abacus_2.era':'software.abacus_3'}}]
-package('accounts','Small-business accounting','bundle.artemis_256_mono_pro',['software.business_tools_artemis','software.bpi_suite'],['device.flexiprint40'])
-package('developer','C development','bundle.artemis_256_mono_pro',['software.business_tools_artemis','software.aion_c_ide','software.artemis_sdk'])
-package('analysis','Interactive analysis','bundle.artemis_256_color',['software.business_tools_artemis','software.abacus_3','software.pulse_3'],start='1980-11-19')
-mig=package('migration','CP/M migration','bundle.artemis_256_mono_pro',['software.business_tools_artemis','edition.abacus_2.era','software.cpm_aurelia'],['device.artemis_cpm80_module'],note='Adds one CP/M software pack conservatively; no second keyboard/monitor or onboard module RAM charge.')
+package('accounts','Small-business accounting','product.artemis_256_mono_pro',['software.business_tools_artemis','software.bpi_suite'],['device.flexiprint40'])
+package('developer','C development','product.artemis_256_mono_pro',['software.business_tools_artemis','software.aion_c_ide','software.artemis_sdk'])
+package('analysis','Interactive analysis','product.artemis_256_color',['software.business_tools_artemis','software.abacus_3','software.pulse_3'],start='1980-11-19')
+mig=package('migration','CP/M migration','product.artemis_256_mono_pro',['software.business_tools_artemis','edition.abacus_2.era','software.cpm_aurelia'],['device.artemis_cpm80_module'],note='Adds one CP/M software pack conservatively; no second keyboard/monitor or onboard module RAM charge.')
 mig['component_variants']=office['component_variants']
-package('network_workstation','Network business workstation','bundle.artemis_256_mono_pro',['software.business_tools_artemis','offer.bpi_client'],start='1981-05-04',note='Base 1981 system already includes NIC and AIONix Server. Requires separately purchased compatible BPI server; no standalone operation promised.')
-add('bundle.proposed_artemis_pro_small_office','Artemis PRO — Small-office business network','Network installation bundles',start='1981-05-04',announced=True,parts=[{'cost_ref':r,'quantity':n} for r,n in [('bundle.artemis_pro_512_server',1),('bundle.artemis_128_mono',2),('device.network_hub.4_port',1),('software.bpi_client_server',1),('offer.bpi_client',2),('software.business_tools_artemis',2),('device.flexiprint40',1),('assumption.network_cables',3)]],note='One 512K/5MB server, two 128K monochrome workstations, four-port hub, three cables, BPI server + two clients, two Office Suite copies and one printer. Installation/training/backup media excluded and separately quoted. PRO shipment unconfirmed.')
+package('network_workstation','Network business workstation','product.artemis_256_mono_pro',['software.business_tools_artemis','offer.bpi_client'],start='1981-05-04',note='Base 1981 system already includes NIC and AIONix Server. Requires separately purchased compatible BPI server; no standalone operation promised.')
+add('computer_system.proposed_artemis_pro_small_office','Artemis PRO — Small-office business network','Network installation bundles',start='1981-05-04',announced=True,parts=[{'cost_ref':r,'quantity':n} for r,n in [('product.artemis_pro_512_server',1),('product.artemis_128_mono',2),('device.network_hub.4_port',1),('software.bpi_client_server',1),('offer.bpi_client',2),('software.business_tools_artemis',2),('device.flexiprint40',1),('assumption.network_cables',3)]],note='One 512K/5MB server, two 128K monochrome workstations, four-port hub, three cables, BPI server + two clients, two Office Suite copies and one printer. Installation/training/backup media excluded and separately quoted. PRO shipment unconfirmed.')
 # Color II alternatives keep the same card and system-memory tier.
 for source in ['office','developer','migration']:
- original=byid['bundle.proposed_artemis_'+source]
+ original=byid['product.proposed_artemis_'+source]
  import copy
  revised=copy.deepcopy(original);revised['id']=original['id']+'_color';revised['name']=original['name']+' / Color II'
  for component in revised['components']:
-  component['cost_ref']={'bundle.artemis_128_mono':'bundle.artemis_128_color','bundle.artemis_256_mono_pro':'bundle.artemis_256_color'}.get(component['cost_ref'],component['cost_ref'])
+  component['cost_ref']={'product.artemis_128_mono':'product.artemis_128_color','product.artemis_256_mono_pro':'product.artemis_256_color'}.get(component['cost_ref'],component['cost_ref'])
  P.append(revised);byid[revised['id']]=revised
 # Deliberately explicit non-source cost addition, separate from engineering BOM.
 extra={'assumption.network_cables':{'name':'Finished network cable, allowance','cost_usd':15,'low_usd':10,'high_usd':25,'rationale':'Unspecified cable length/connectors: $15 recurring delivered cost per connection; revise after interface is finalized.'}}
@@ -359,7 +359,7 @@ bp={'business_accounts':['software.bpi_suite.bpi_general_accounting'],
 by_id={x['id']:x for x in P}
 model['partner_configurations']=[]
 for key,licenses in bp.items():
- refs=['bundle.proposed_aurelia_office','device.flexidisk','device.flexiprint40']+licenses
+ refs=['product.proposed_aurelia_office','device.flexidisk','device.flexiprint40']+licenses
  row={'id':'bpi_'+key,'name':'Aurelia '+key.replace('_',' ').title()+' — dealer configuration','supplier_policy':'Logix hardware, AION applications and independently licensed BPI Systems software. Component basket, not an additional SKU.','components':refs,'snapshots':{}}
  for year in YEARS:
   ss=[by_id[r]['snapshots'][str(year)] for r in refs]
